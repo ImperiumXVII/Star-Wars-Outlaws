@@ -1,0 +1,40 @@
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/ash_shp_base.mnpc"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/hut_shp_base.mnpc"
+include "helix/game system data/juice/npc/neu_shp_dariusg_a.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC previs_asg_shp_dariusg_a < uid=6EA7962564A40F8E000055A6C8124846 > : ash_shp_base
+{
+	myCharacterVisuals < uid=6EA7962564A40F8E000055A736DA7875 > = character_visuals_npc_shp_DariusG_Freighter F95CD8F362ECDB5B0000E9CFCA726C84
+	myIsInvulnerable TRUE
+	mySpaceshipType Dummy
+	myMaxHealth 600
+	myHealthFormula 300*SpaceHealthDifficultyModifier
+	myFaction < uid=6EA7962564A41BDC00052E97607129DF > = Empire 16DEADE65F21E5AB000000B35532A71B
+	myLodType Spaceship_Cruiser
+	myVisionProfile < uid=6EA7962564A40F8E000055A8DC1A2055 > = TieFighterVisionProfile B4FBE430643FCC3500000B32C8290515
+	myHearingProfile < uid=6EA7962564A40F8E000055A932DABAD1 > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myThreatProfile < uid=6EA7962564A40F8E000055AA68D094B4 > = DefaultThreatProfile 16DEADE6608474380000004E85DD35EB
+	myAudioParameters
+	{
+		myEmitterName DARIUSG
+		myPropagated TRUE
+		myDoppler FALSE
+		mySwitches
+		{
+		}
+		myEmitters
+		{
+			AgentEmitter "New AgentEmitter"
+			{
+				myEmitterPrefab "emitterLayerName = \"ship_npc\", enableDoppler = true, enablePropagation = true, sphereRadius = 10, stopOnDestroy = true"
+			}
+		}
+		myAudioSwitchByTags
+		{
+		}
+	}
+}
+

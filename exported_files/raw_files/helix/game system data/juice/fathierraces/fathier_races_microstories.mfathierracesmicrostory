@@ -1,0 +1,312 @@
+include "helix/game system data/fruit/settings/fathierracessettings.fruit"
+include "helix/game system data/juice/faction/factions.mfaction"
+include "helix/game system data/juice/fathierraces/fathier_generation_info_microstories.mfathiergenerationinfo"
+include "helix/game system data/juice/intel/chains/intelchains_fathier_races.mintelchain"
+include "helix/game system data/juice/sound/stimuli/stim_id_announcer.mstimulusidentifier"
+include "helix/game system data/juice/sound/stimuli/stim_id_fathier.mstimulusidentifier"
+
+FathierRacesMicrostory MS1001 < uid=CC6CF61E643E74090000BF60AE9EF303 >
+{
+	myActivationConditions
+	{
+		myIsNegated FALSE
+		myOperator And
+		myConditions
+		{
+			GameConditionFathierRacesCount "FathierRacesCount >= 2"
+			{
+				myMinimumCount 2
+				myMaximumCount -1
+			}
+			GameConditionCurrentLevel GameConditionCurrentLevel
+			{
+				myLevel 9C4B6A04601178B20000001A1F0FDFCB
+			}
+			GameConditionGroup "PSY 030 not ongoing"
+			{
+				myOperator Or
+				myConditions
+				{
+					GameConditionQuestState "< Intro"
+					{
+						myQuest CC6CF61E64F05E60000114FEA8F79C51
+						myQuestState Started
+						myOperator LessThan
+					}
+					GameConditionQuestState ">= Completed"
+					{
+						myQuest CC6CF61E64F05E60000114FEA8F79C51
+						myQuestState Completed
+						myOperator GreaterThanOrEqual
+					}
+				}
+			}
+			GameConditionQuestIsCompleted "MQ040 is completed"
+			{
+				myQuest B567AAE061F3F13300001B173A8B0CF2
+			}
+		}
+	}
+	myIntelChain < uid=CC6CF61E643E74270000BF613B8439BF > = MS_1001_IntelChain CC6CF61E643E72110000BF5DE0CEA83F
+	myFathierGenerationInfo < uid=AB9E8ED96569AA2700002F3745F4FCC3 > = MS1001_fathier AB9E8ED96568C29A00002F471C859DF6
+	myUseSpecificJockey TRUE
+	mySpecificJockeyInfo < uid=224FE633644A450F0000B2348C904E8D >
+	{
+		myName "aurabesh = false, branch = \"\", contextComment = \"MS1001 Jockey Name\", enabled = true, guid = #224FE633644A42BC000096D38A435413, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10430, text = \"Keeka Grim\", type = \"MenuLine\""
+		myDescription "aurabesh = false, contextComment = \"MS1001 Jockey Desc\", enabled = true, guid = #224FE633644A44470000B232018EEA59, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 1604, text = \"Ord Mantell\", type = \"MenuLine\""
+	}
+	myOverrideMinimumNPCBet 1000
+	myOverrideMaximumNPCBet 2000
+}
+
+FathierRacesMicrostory MS1002 < uid=225CF62764D10EAE0006E8654125AADD >
+{
+	myActivationConditions
+	{
+		myConditions
+		{
+			GameConditionFathierRacesCount FathierRacesCount
+			{
+				myMinimumCount 2
+			}
+			GameConditionCurrentLevel CurrentLevel
+			{
+				myLevel 9C4B6A046012E658000001A6972FA29E
+			}
+			GameConditionGroup "PSY 030 not ongoing"
+			{
+				myOperator Or
+				myConditions
+				{
+					GameConditionQuestState "< Intro"
+					{
+						myQuest CC6CF61E64F05E60000114FEA8F79C51
+						myQuestState Started
+						myOperator LessThan
+					}
+					GameConditionQuestState ">= Completed"
+					{
+						myQuest CC6CF61E64F05E60000114FEA8F79C51
+						myQuestState Completed
+						myOperator GreaterThanOrEqual
+					}
+				}
+			}
+		}
+	}
+	myIntelChain < uid=225CF62764D12B7B000368A53947203C > = MS_1002_IntelChain 225CF62764D12A3C00021CED14937E29
+	myFathierGenerationInfo < uid=AB9E8ED96569AA2700002F38FB838A7D > = MS1002_fathier AB9E8ED96568C3A000002F76C7650F1B
+	myUseSpecificJockey TRUE
+	mySpecificJockeyInfo < uid=224FE633655F76D400021A7FFE4DCEE5 >
+	{
+		myName "aurabesh = false, branch = \"MAIN\", contextComment = \"MS1002 Jockey Name\", enabled = true, guid = #224FE633655F76A400021A7C14415B72, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10431, text = \"Odon Obrit\", type = \"MenuLine\""
+		myDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"MS1002 Jockey Desc\", enabled = true, guid = #224FE633655F76AE00021A7EB26D0FD8, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10431, text = \"Corellia\", type = \"MenuLine\""
+	}
+}
+
+FathierRacesMicrostory MS1003 < uid=225CF627649473630018E4211A03E0AE >
+{
+	myActivationConditions
+	{
+		myIsNegated FALSE
+		myOperator And
+		myConditions
+		{
+			GameConditionFathierRacesCount "FathierRacesCount >= 2"
+			{
+				myMinimumCount 2
+				myMaximumCount -1
+			}
+			GameConditionCurrentLevel CurrentLevel
+			{
+				myLevel 8F2AC097626BDD5C00002F2423EFE372
+			}
+			GameConditionPlayerHasReputation "PlayerHasReputation >= Good Hutt"
+			{
+				myFaction < uid=225CF6276499AF6000053BE1A940A5EE > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+				myReputationTier Good
+			}
+			GameConditionGroup "PSY 030 not ongoing"
+			{
+				myOperator Or
+				myConditions
+				{
+					GameConditionQuestState "< Intro"
+					{
+						myQuest CC6CF61E64F05E60000114FEA8F79C51
+						myQuestState Started
+						myOperator LessThan
+					}
+					GameConditionQuestState ">= Completed"
+					{
+						myQuest CC6CF61E64F05E60000114FEA8F79C51
+						myQuestState Completed
+						myOperator GreaterThanOrEqual
+					}
+				}
+			}
+		}
+	}
+	myIntelChain < uid=225CF627649473630018E42449D5E498 > = MS_1003_IntelChain 225CF627649473570018E41BC602FEFE
+	myFathierGenerationInfo < uid=AB9E8ED96569AA2700002F3915177CF8 > = MS1003_fathier AB9E8ED96568C3A000002F7AC5A45BE7
+	myUseSpecificJockey TRUE
+	mySpecificJockeyInfo < uid=225CF627649473630018E423ECC9837B >
+	{
+		myName "aurabesh = false, branch = \"\", contextComment = \"MS1003 Jockey Name\", enabled = true, guid = #225CF627649472B90018E40F15F78304, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10432, text = \"Lera Beren\", type = \"MenuLine\""
+		myDescription "aurabesh = false, branch = \"\", contextComment = \"MS1003 Jockey Desc\", enabled = true, guid = #225CF627649472B90018E410A4B0FF78, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10430, text = \"Nal Hutta\", type = \"MenuLine\""
+	}
+	myOverrideMinimumNPCBet 1000
+	myOverrideMaximumNPCBet 2000
+}
+
+FathierRacesMicrostory MS1004 < uid=225CF627649473630018E4254CD67B9C >
+{
+	myActivationConditions
+	{
+		myIsNegated FALSE
+		myOperator And
+		myConditions
+		{
+			GameConditionFathierRacesCount "FathierRacesCount >= 2"
+			{
+				myMinimumCount 2
+				myMaximumCount -1
+			}
+			GameConditionCurrentLevel CurrentLevel
+			{
+				myLevel 8F2AC097626BDD5C00002F2423EFE372
+			}
+			GameConditionGroup "PSY 030 not ongoing"
+			{
+				myOperator Or
+				myConditions
+				{
+					GameConditionQuestState "< Intro"
+					{
+						myQuest CC6CF61E64F05E60000114FEA8F79C51
+						myQuestState Started
+						myOperator LessThan
+					}
+					GameConditionQuestState ">= Completed"
+					{
+						myQuest CC6CF61E64F05E60000114FEA8F79C51
+						myQuestState Completed
+						myOperator GreaterThanOrEqual
+					}
+				}
+			}
+		}
+	}
+	myIntelChain < uid=225CF627649473630018E4286D318A0F > = MS_1004_IntelChain 225CF627649473570018E41EC73C7A0A
+	myFathierGenerationInfo < uid=AB9E8ED96569AA2700002F3A7AFF940A > = MS1004_fathier AB9E8ED96568C3A000002F7E419845CA
+	myUseSpecificJockey TRUE
+	mySpecificJockeyInfo < uid=225CF627649473630018E4278B264ED7 >
+	{
+		myName "aurabesh = false, branch = \"\", contextComment = \"MS1004 Jockey Name\", enabled = true, guid = #225CF627649472C90018E414C1CBB026, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10430, text = \"Jado Halcyr\", type = \"MenuLine\""
+		myDescription "aurabesh = false, branch = \"\", contextComment = \"MS1001 Jockey Desc\", enabled = true, guid = #225CF627649472C90018E4152FD9B1AA, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10430, text = \"Tatooine\", type = \"MenuLine\""
+	}
+	myOverrideMinimumNPCBet 1000
+	myOverrideMaximumNPCBet 2000
+}
+
+FathierRacesMicrostory MS1006 < uid=225CF62764DCEEF400154C069779955B >
+{
+	myActivationConditions
+	{
+		myConditions
+		{
+			GameConditionFathierRacesCount FathierRacesCount
+			{
+				myMinimumCount 2
+			}
+			GameConditionCurrentLevel CurrentLevel
+			{
+				myLevel 9C4B6A046012E6B0000001B224713F01
+			}
+			GameConditionGroup "PSY 030 not ongoing"
+			{
+				myOperator Or
+				myConditions
+				{
+					GameConditionQuestState "< Intro"
+					{
+						myQuest CC6CF61E64F05E60000114FEA8F79C51
+						myQuestState Started
+						myOperator LessThan
+					}
+					GameConditionQuestState ">= Completed"
+					{
+						myQuest CC6CF61E64F05E60000114FEA8F79C51
+						myQuestState Completed
+						myOperator GreaterThanOrEqual
+					}
+				}
+			}
+		}
+	}
+	myIntelChain < uid=225CF62764DCF68D00154C49BCD1DA90 > = MS_1006_Intelchain 225CF62764DCF67D00154C46A52F3734
+	myFathierGenerationInfo < uid=AB9E8ED96569AA2700002F3B980F6D72 > = MS1006_fathier AB9E8ED96568C3A000002F866B2DB461
+	myUseSpecificJockey TRUE
+	mySpecificJockeyInfo < uid=224FE633655F764B00021A7BDB72E3CB >
+	{
+		myName "aurabesh = false, branch = \"MAIN\", contextComment = \"MS1006 Jockey Name\", enabled = true, guid = #224FE633655F75F100021A78CF001F88, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10435, text = \"Vinis Karyvin\", type = \"MenuLine\""
+		myDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"MS1006 Jockey Desc\", enabled = true, guid = #224FE633655F760700021A7A6A5EBEF0, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10435, text = \"Akiva\", type = \"MenuLine\""
+	}
+}
+
+FathierRacesMicrostory MS1007 < uid=225CF627649473630018E42992C416AE >
+{
+	myActivationConditions
+	{
+		myIsNegated FALSE
+		myOperator And
+		myConditions
+		{
+			GameConditionFathierRacesCount "FathierRacesCount >= 5"
+			{
+				myMinimumCount 5
+				myMaximumCount -1
+			}
+			GameConditionCurrentLevel GameConditionCurrentLevel
+			{
+				myLevel 9C4B6A04601178B20000001A1F0FDFCB
+			}
+			GameConditionFathierRacesMicrostoriesOver FathierRacesMicrostoriesMandatoryOver
+			{
+				myMicrostories
+				{
+					uid MS1001 CC6CF61E643E74090000BF60AE9EF303
+					uid MS1002 225CF62764D10EAE0006E8654125AADD
+					uid MS1003 225CF627649473630018E4211A03E0AE
+					uid MS1004 225CF627649473630018E4254CD67B9C
+					uid MS1006 225CF62764DCEEF400154C069779955B
+				}
+			}
+			GameConditionGroup "PSY 030 not ongoing"
+			{
+				myOperator Or
+				myConditions
+				{
+					GameConditionQuestState "< Intro"
+					{
+						myQuest CC6CF61E64F05E60000114FEA8F79C51
+						myQuestState Started
+						myOperator LessThan
+					}
+					GameConditionQuestState ">= Completed"
+					{
+						myQuest CC6CF61E64F05E60000114FEA8F79C51
+						myQuestState Completed
+						myOperator GreaterThanOrEqual
+					}
+				}
+			}
+		}
+	}
+	myIntelChain < uid=225CF627649473630018E42C47604CA0 > = MS_1007_IntelChain 225CF6276478A7EC0008BDC25D9E7253
+	myUseSpecificJockey FALSE
+	myOverrideNPCBet FALSE
+	myOverrideMinimumNPCBet 1000
+	myOverrideMaximumNPCBet 2000
+}
+

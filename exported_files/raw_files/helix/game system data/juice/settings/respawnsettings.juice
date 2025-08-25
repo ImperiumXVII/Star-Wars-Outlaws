@@ -1,0 +1,21 @@
+include "helix/game system data/fruit/settings/respawnsettings.fruit"
+include "helix/game system data/juice/loottable/loot_global.mloottable"
+include "helix/game system data/juice/playerrestrictions/dead.mplayerrestriction"
+include "helix/game system data/juice/playerrestrictions/leveltransition.mplayerrestriction"
+include "helix/game system data/juice/playerrestrictions/teleporting.mplayerrestriction"
+
+RespawnSettings myRespawnSettings < uid=E711F0976384D6F700002DBCCB9D7EBB >
+{
+	myOnRespawnLootTable < uid=E711F09763870BAA0000572C64C87CE1 > = loot_OnRespawn E711F0976384D79C00003146BB19C985
+	myOutOfBoundsParameters
+	{
+		myDurationUntilTeleportWhileFalling 1.0
+		myDurationUntilTeleportWhileInWindTunnel 0.2
+	}
+	myPlayerRestrictionsWhileTeleporting < uid=D9ED8AD463DBBCEC000039A4CE18EFAF > = teleporting D9ED8AD463DBBBF9000039A026FBA9B3
+	myPlayerRestrictionsWhileDead < uid=D9ED8AD463E648DB000009BBC5CAD5B6 > = dead D9ED8AD463E64887000009BAC052C898
+	myPlayerRestrictionsWhileLevelTransition < uid=A207755D66825E34000179BBECF22BE6 > = leveltransition A207755D66825E29000179BAAE9F59F8
+	myWaitingForRespawnUIDuration 2.0
+	myWaitingForRespawnUIDurationWithDeathCamera 1.5
+}
+

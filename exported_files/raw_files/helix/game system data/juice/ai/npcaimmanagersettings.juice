@@ -1,0 +1,162 @@
+include "helix/game system data/fruit/ai/aimmanagersettings.fruit"
+
+AimManagerSettings AimManagerSettings < uid=FFED0CDA641077F90000097A3F8006A2 >
+{
+	myAimManagerSettingsDataList
+	{
+		AimManagerSettingsData "Default AimManagerSettingsData" < uid=91DC5D3C642C35290001077FF28AEA2A >
+		{
+			myNPCAimManagerType NPC
+			myAimManagerSettingsData
+			{
+				myMaxDamagePerThreshold 100
+				myDamageThresoldMaxTime 5.0
+				myTimeReductionPerMetaFireteamMember 2.5
+				myLastHitTimeReductionPerMetaFireteamMember 10
+				myLastHitThresholdTime 0.2+NPCDifficultyAimLastHitThresholdTime
+				myLastHitThresholdCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -23.224621 0.1220521, -1.3333334 0, }, outTangents = { 6.666667 0, -4 0, 0 0, }, properties = { 2051, 7443, 8195, }, values = { 0 2.5999999, 20 0.34999999, 24 0.34999999, }, }, numKeys = 3, }"
+				myLastHitThresholdCurveMinMaxTime 10+NPCDifficultyAimLastHitThresholdCurveMinMaxTime
+				mySettingsTargetData
+				{
+					myIsVisibleMinimumTime 1+NPCQuestDifficultyAimIsVisibleMinTimeModifier
+					myMinimumVisibleTimeTargetSpeedModifierCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.63688874 -0.098484837, -1.3069674 -0.21694234, -1 0, }, outTangents = { 0.43333334 0, 1.4697435 0.22727272, 0.60991788 0.10123973, 0 0, }, properties = { 2051, 5395, 4371, 3347, }, values = { 0 0.85000002, 1.3 1, 4.3000002 1.25, 5.6999998 1.5, }, }, numKeys = 4, }"
+					myIsHiddenMinimumTime 1.2+NPCDifficultyAimIsHiddenMinTime
+					myLastHitTimeModulationVelocityCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.31236562 -0.090624973, -2.066071 0.020598412, -1 0, }, outTangents = { 0.43333334 0, 0.72084379 0.20913458, 0.96416616 -0.0096125891, 0 0, }, properties = { 2051, 4371, 5395, 3347, }, values = { 0 0, 1.3 0.40000001, 4.3000002 0.60000002, 5.6999998 1, }, }, numKeys = 4, }"
+					myLastHitTimeModulationVelocityAppliedOnYAxis TRUE
+					myLastHitTimeModulationDistanceCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 1, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -3.3333335 -0.22222224, -3.9862347 -0.26446247, -5.5904541 -0.67500019, -16.666668 0, }, outTangents = { 3.3333335 0, 6.666666 0.44444442, 1.9931173 0.13223124, 0 3, 0 0, }, properties = { 2051, 7171, 6419, 5395, 9219, }, values = { 0 -2, 10 -1, 30 0, 50 5, 100 6, }, }, numKeys = 5, }"
+					myLastHitTimeModulationDistanceAppliedOnYAxis TRUE
+					myLastHitTimeModulationMovingDirectionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.00039104931 -0.65903121, -0.15003443 -0.14228415, 0 -0.1677677, -0.43400335 -0.20166159, }, outTangents = { 0.7626642 0.2434476, 9.7762328e-05 0.1647578, 0.15003443 0.14228415, 0 0.67107081, 0 0, }, properties = { 2323, 5395, 4371, 6419, 3347, }, values = { -1 -2, -0.69999999 -0.69999999, 0 0, 0.69999999 0.30000001, 1 2, }, }, numKeys = 5, }"
+					myLastHitTimeModulationMovingDirectionAppliedOnYAxis TRUE
+				}
+			}
+			myAimManagerSettingsDataOverridePerCombatRole
+			{
+				AimManagerSettingsDataStructPerRoleType CompanionAiming
+				{
+					myCombatRole Companion
+					myAimManagerSettingsData
+					{
+						myMaxDamagePerThreshold 1.0
+						myDamageThresoldMaxTime 0.5
+						mySettingsTargetData
+						{
+							myIsVisibleMinimumTime 0.5
+							myIsHiddenMinimumTime 1.0
+						}
+					}
+				}
+				AimManagerSettingsDataStructPerRoleType EliteAiming
+				{
+					myCombatRole Elite
+					myAimManagerSettingsData
+					{
+						myMaxDamagePerThreshold 100
+						myDamageThresoldMaxTime 5.0
+						myTimeReductionPerMetaFireteamMember 2.5
+						myLastHitTimeReductionPerMetaFireteamMember 10
+						myLastHitThresholdTime 0.2+NPCDifficultyAimLastHitThresholdTime
+						myLastHitThresholdCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -23.858583 0.0081516504, }, outTangents = { 4.8814936 0.0056188107, 0 0, }, properties = { 2323, 7443, }, values = { 0.01641655 2, 18 0.25, }, }, numKeys = 2, }"
+						myLastHitThresholdCurveMinMaxTime 10
+						mySettingsTargetData
+						{
+							myIsVisibleMinimumTime 1+NPCQuestDifficultyAimIsVisibleMinTimeModifier
+							myMinimumVisibleTimeTargetSpeedModifierCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.63688874 -0.098484837, -1.3069674 -0.21694234, -1 0, }, outTangents = { 0.43333334 0, 1.4697435 0.22727272, 0.60991788 0.10123973, 0 0, }, properties = { 2051, 5395, 4371, 3347, }, values = { 0 0.75, 1.3 1, 4.3000002 1.25, 5.6999998 1.5, }, }, numKeys = 4, }"
+							myIsHiddenMinimumTime 1.2+NPCDifficultyAimIsHiddenMinTime
+							myLastHitTimeModulationVelocityCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.23303944 -0.043333326, -2.066071 0.020598412, -1 0, }, outTangents = { 0.43333334 0, 0.53778338 0.099999994, 0.96416616 -0.0096125891, 0 0, }, properties = { 2051, 4371, 5395, 3347, }, values = { 0 0, 1.3 0.40000001, 4.3000002 0.60000002, 5.6999998 1, }, }, numKeys = 4, }"
+							myLastHitTimeModulationVelocityAppliedOnYAxis TRUE
+							myLastHitTimeModulationDistanceCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 1, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -3.3333335 -0.22222224, -3.9862347 -0.26446247, -5.5904541 -0.67500019, -16.666668 0, }, outTangents = { 3.3333335 0, 6.666666 0.44444442, 1.9931173 0.13223124, 0 3, 0 0, }, properties = { 2051, 7171, 6419, 5395, 9219, }, values = { 0 -2, 10 -1, 30 0, 50 5, 100 6, }, }, numKeys = 5, }"
+							myLastHitTimeModulationDistanceAppliedOnYAxis TRUE
+							myLastHitTimeModulationMovingDirectionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.5 0, -1.0065666 0.0070564747, }, outTangents = { 0.97183979 0.008264482, 0.5 0, 0 0, }, properties = { 2323, 4371, 3347, }, values = { -1 -4, 0 0, 1 2, }, }, numKeys = 3, }"
+							myLastHitTimeModulationMovingDirectionAppliedOnYAxis TRUE
+						}
+					}
+				}
+			}
+		}
+		AimManagerSettingsData "COOP AimManagerSettingsData" < uid=7EE646346486DB0700002109FE0386F7 >
+		{
+			myNPCAimManagerType NPCCoop
+			myAimManagerSettingsData
+			{
+				myMaxDamagePerThreshold 1.0
+				myDamageThresoldMaxTime 4.0
+				myTimeReductionPerMetaFireteamMember 0.2
+				myLastHitThresholdTime 2.0
+				mySettingsTargetData
+				{
+					myIsVisibleMinimumTime 2.5
+				}
+			}
+		}
+		AimManagerSettingsData "Speeder AimManagerSettingsData" < uid=91CF4D486666E239000D7FEE0FB6141E >
+		{
+			myNPCAimManagerType NPCAgainstSpeeder
+			myAimManagerSettingsData
+			{
+				myMaxDamagePerThreshold 1.1
+				myDamageThresoldMaxTime 2.5
+				myTimeReductionPerMetaFireteamMember 0.5
+				myLastHitTimeReductionPerMetaFireteamMember 10
+				myLastHitThresholdTime 0.25+NPCDifficultyAimLastHitThresholdTime
+				myLastHitThresholdCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -3.6649871 0.18653844, -3.3333335 0, }, outTangents = { 3.3333335 0, 3.6649871 -0.18653843, 0 0, }, properties = { 2051, 8467, 7171, }, values = { 0 4, 10 0.75, 20 0.5, }, }, numKeys = 3, }"
+				myLastHitThresholdCurveMinMaxTime 10+NPCDifficultyAimLastHitThresholdCurveMinMaxTime
+				mySettingsTargetData
+				{
+					myIsVisibleMinimumTime 1+NPCQuestDifficultyAimIsVisibleMinTimeModifier
+					myMinimumVisibleTimeTargetSpeedModifierCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = {}, outTangents = {}, properties = {}, values = {}, }, numKeys = 0, }"
+					myIsHiddenMinimumTime 1+NPCDifficultyAimIsHiddenMinTime
+					myLastHitTimeModulationVelocityCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -14.149874 -0.027500033, }, outTangents = { 4.345088 1.0238461, 0 0, }, properties = { 275, 1299, }, values = { 0 -1, 30 1.4, }, }, numKeys = 2, }"
+					myLastHitTimeModulationVelocityAppliedOnYAxis TRUE
+					myLastHitTimeModulationDistanceCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 1, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -4 -0.35135135, -5.1952143 -0.39230776, }, outTangents = { 12.333334 0, 8.333334 0.73198205, 0 0, }, properties = { 8195, 2051, 5395, }, values = { 3 -1.75, 15 0, 40 1.5, }, }, numKeys = 3, }"
+					myLastHitTimeModulationDistanceAppliedOnYAxis TRUE
+					myLastHitTimeModulationMovingDirectionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.5 0, -0.59571791 0.7024039, }, outTangents = { 0.72795975 0.76730764, 0.5 0, 0 -0, }, properties = { 2323, 4371, 3347, }, values = { -1 0, -0.0054328442 1.5, 1 0, }, }, numKeys = 3, }"
+					myLastHitTimeModulationMovingDirectionAppliedOnYAxis TRUE
+				}
+			}
+			myAimManagerSettingsDataOverridePerCombatRole
+			{
+				AimManagerSettingsDataStructPerRoleType CompanionAiming
+				{
+					myCombatRole Companion
+					myAimManagerSettingsData
+					{
+						myMaxDamagePerThreshold 1.0
+						myDamageThresoldMaxTime 0.5
+						mySettingsTargetData
+						{
+							myIsVisibleMinimumTime 0.5
+							myIsHiddenMinimumTime 1.0
+						}
+					}
+				}
+				AimManagerSettingsDataStructPerRoleType EliteAiming
+				{
+					myCombatRole Elite
+					myAimManagerSettingsData
+					{
+						myMaxDamagePerThreshold 100
+						myDamageThresoldMaxTime 5.0
+						myTimeReductionPerMetaFireteamMember 2.5
+						myLastHitTimeReductionPerMetaFireteamMember 10
+						myLastHitThresholdTime 0.25
+						myLastHitThresholdCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -1.3587753 0.34058142, -1.0448724 -1.1426798e-08, -5.2873163 -0.0056935279, -5.1547842 0.36365926, -1.457943 0, }, outTangents = { 0.94121331 0, 2.0235367 -0.50720608, 2.7251401 2.9802322e-08, 4.5637894 0.0049144141, 3.0522509 -0.21532992, 0 0, }, properties = { 2051, 4371, 5395, 3347, 6419, 7171, }, values = { 0.01641655 2.5, 2.8400564 2.0470011, 7.6336765 0.99533772, 18.796904 0.7889365, 35.600372 0.44821066, 39.974201 0.24836189, }, }, numKeys = 6, }"
+						myLastHitThresholdCurveMinMaxTime 10
+						mySettingsTargetData
+						{
+							myIsVisibleMinimumTime 1+NPCQuestDifficultyAimIsVisibleMinTimeModifier
+							myMinimumVisibleTimeTargetSpeedModifierCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.63688874 -0.098484837, -1.3069674 -0.21694234, -1 0, }, outTangents = { 0.43333334 0, 1.4697435 0.22727272, 0.60991788 0.10123973, 0 0, }, properties = { 2051, 5395, 4371, 3347, }, values = { 0 1, 1.3 1.5, 4.3000002 1.75, 5.6999998 2.25, }, }, numKeys = 4, }"
+							myIsHiddenMinimumTime 1
+							myLastHitTimeModulationVelocityCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.34506339 -0.02922897, -2.066071 0.020598412, -1 0, }, outTangents = { 0.43333334 0, 0.79630017 0.067451477, 0.96416616 -0.0096125891, 0 0, }, properties = { 2051, 4371, 5395, 3347, }, values = { 0 0, 1.3 0.5, 4.3000002 1, 5.6999998 1.5, }, }, numKeys = 4, }"
+							myLastHitTimeModulationVelocityAppliedOnYAxis TRUE
+							myLastHitTimeModulationDistanceCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 1, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -3.3333335 -0.22222224, -6.666667 -1.8333334, -6.666667 0, }, outTangents = { 3.3333335 0, 6.666666 0.44444442, 6.666667 1.8333334, 0 0, }, properties = { 2051, 7171, 6147, 5123, }, values = { 0 -2, 10 -1, 30 0, 50 10, }, }, numKeys = 4, }"
+							myLastHitTimeModulationDistanceAppliedOnYAxis TRUE
+							myLastHitTimeModulationMovingDirectionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.5 0, -1.0065666 0.0070564747, }, outTangents = { 0.97183979 0.008264482, 0.5 0, 0 0, }, properties = { 2323, 4371, 3347, }, values = { -1 -4, 0 0, 1 2, }, }, numKeys = 3, }"
+							myLastHitTimeModulationMovingDirectionAppliedOnYAxis TRUE
+						}
+					}
+				}
+			}
+		}
+	}
+}
+

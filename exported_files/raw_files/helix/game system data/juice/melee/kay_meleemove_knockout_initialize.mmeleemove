@@ -1,0 +1,116 @@
+include "helix/game system data/fruit/melee/melee_move.fruit"
+include "helix/game system data/juice/camera/modifiers/player_melee_punch_initialize_hit.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/player_melee_punch_knockout.mcameramodifier"
+include "helix/game system data/juice/melee/kay_meleemove_base.mmeleemove"
+
+MeleeMove kay_meleemove_normal_initial_KO < uid=5CFE16D564E8557F00062B87A6628EBB > : kay_meleemove_base
+{
+	myApproachingEnabled TRUE
+	myExecutionDurationMin 1.33
+	myExecutionDurationMax 1.33
+	myExecutionDurationVariation 0.0
+	myRangeExecution 4.0
+	myExecutionSequence
+	{
+		myGenericTracks
+		{
+			CameraShakeTrack BaseCamShake
+			{
+				myCamShake < uid=5CFE16D5663BE1A400265948EEA3155A > = player_melee_punch_base B0ED9250625FD32B0000403767915B64
+			}
+		}
+		myCustomTracks
+		{
+			MeleeHitTrack Hit
+			{
+				myStartCyclePos 0.43
+				myEndCyclePos 0.65
+				myDamage 0.0
+			}
+			MeleeMovingSpeedingUpTrack MovingSpeedingUp
+			{
+				myEndCyclePos 0.0
+			}
+			MeleeMovingTrack Moving
+			{
+				myEndCyclePos 0.45
+			}
+			MeleeBufferingTrack MeleeBuffering
+			{
+				myStartCyclePos 0.0
+				myEndCyclePos 1.0
+			}
+			MeleeTurnTrack Turn
+			{
+				myEndCyclePos 1.0
+			}
+			MeleeStartNextMoveTrack "Start Next Move"
+			{
+				myStartCyclePos 0.7
+				myEndCyclePos 1.0
+			}
+			MeleePerfectInputTrack PerfectInput
+			{
+				myStartCyclePos 0.0
+				myEndCyclePos 0.0
+			}
+			MeleePerfectStartNextMoveTrack "Perfect Start Next Move"
+			{
+				myStartCyclePos 0.9
+				myEndCyclePos 1.0
+			}
+			MeleeLocomotionFreeTrack "Free Locomotion"
+			{
+				myStartCyclePos 0.8
+			}
+			MeleeUninterruptibleTrack Uninterruptible
+			{
+				myStartCyclePos 0.0
+				myEndCyclePos 0.7
+			}
+		}
+	}
+	myMoveMaxSpeed 20.0
+	myHit
+	{
+		myDamage 1.0
+		myCamShake < uid=5CFE16D564E8557F00062B8935473F9A > = player_melee_punch_knockout 5CFE16D564E86F7F000AFD1F6F9BD767
+		mySlowDownTimeScale "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.32492617 -0.0019296732, -0.048275869 0, }, outTangents = { 0.67740929 0.006862741, 0.055027828 0.00032679958, 0 0, }, properties = { 1299, 275, 2051, }, values = { 0 0, 0.8551724 0.2, 1 0, }, }, numKeys = 3, }"
+		mySlowDownDuration 0.3
+	}
+	myStartConditions
+	{
+		myTargetInRange
+		{
+			myEnabled FALSE
+			myDistance 10.0
+		}
+		myGameCondition
+		{
+			GameConditionMeleeGroup "Multiple Conditions"
+			{
+				myConditions
+				{
+					GameConditionMeleeTargetIsValid HasTarget
+					{
+						myIsNegated FALSE
+					}
+					GameConditionMeleeIsFirstMoveInTheContext FirstAttackInContext
+					{
+					}
+					GameConditionMeleeTargetNumPunchesToDie "KO attack"
+					{
+						myIsNegated FALSE
+						myOperator Equal
+					}
+					GameConditionMeleeTargetPreferredAttack "Not Low Target"
+					{
+						myIsNegated TRUE
+						myPreferredAttack Kick
+					}
+				}
+			}
+		}
+	}
+}
+

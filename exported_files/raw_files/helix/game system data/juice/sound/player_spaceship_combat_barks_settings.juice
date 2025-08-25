@@ -1,0 +1,131 @@
+include "helix/game system data/fruit/sound/player_spaceship_combat_barks_settings.fruit"
+include "helix/game system data/juice/faction/factions.mfaction"
+include "helix/game system data/juice/sound/stimuli/stim_id_main.mstimulusidentifier"
+include "helix/game system data/juice/sound/stimuli/stim_id_space.mstimulusidentifier"
+
+PlayerSpaceshipCombatBarksSettings PlayerSpaceshipCombatBarksSettings < uid=F97070E165E1BD390000022872910A5C >
+{
+	myBarks
+	{
+		PlayerSpaceshipCombatBark ND5_EnemiesBehind
+		{
+			myStimulus < uid=05B06D7D65F017F00003E73A6DFB044D > = S_ND5_Space_SpotEnemyBehind 3A129121643D405E000A11ABE80C886B
+			myPredictedTime 1.0
+			myMinRadius 10.0
+			myMaxRadius 1000.0
+			myAngle 180.0
+			myAngleThreshold 30.0
+			myEnemyOrientationToPlayer Both
+		}
+		PlayerSpaceshipCombatBark ND5_EnemiesLeft
+		{
+			myStimulus < uid=05B06D7D65F017F00003E73B63BEDCC1 > = S_ND5_Space_SpotEnemyLeft 3A129121643D4064000A11AC396F13A2
+			myPredictedTime 1.5
+			myMinRadius 10.0
+			myMaxRadius 1000.0
+			myAngle 90.0
+			myAngleThreshold 50.0
+		}
+		PlayerSpaceshipCombatBark ND5_EnemiesRight
+		{
+			myStimulus < uid=05B06D7D65F017F00003E73C8E11BEF5 > = S_ND5_Space_SpotEnemyRight 3A129121643D406E000A11ADCC529F85
+			myPredictedTime 1.5
+			myMinRadius 10.0
+			myMaxRadius 1000.0
+			myAngle 270.0
+			myAngleThreshold 50.0
+		}
+		PlayerSpaceshipCombatBark ND5_EnemiesFront
+		{
+			myStimulus < uid=05B06D7D65F017F00003E73D63AD0D96 > = S_ND5_Space_SpotEnemyInFront 3A129121643D404E000A11AA13F50F75
+			myMinRadius 10.0
+			myMaxRadius 1200.0
+			myEnemyOrientationToPlayer FacingPlayer
+		}
+		PlayerSpaceshipCombatBark PursuitClose
+		{
+			mySpaceshipTypes
+			{
+				SpaceshipType "New SpaceshipType" Tiefighter
+				SpaceshipType "New SpaceshipType_0" Tieinterceptor
+			}
+			myNamedNPC None
+			myStimulus < uid=05B06D7D65F021A1000577924E568319 > = S_SPACE_PursuitClose 3A12912163078A9B0000E5C8FA2E5726
+			myPredictedTime 2.0
+			myMaxRadius 1000.0
+			myAngle 180.0
+			myPredictedAngleAdditionalThreshold 15.200001
+			myCombatManeuvers
+			{
+				SpaceshipCombatManeuverType Chase Chase
+			}
+			myEnemyOrientationToPlayer Both
+			myDebugColor 0xffc91313
+		}
+		PlayerSpaceshipCombatBark PlayerEscaping
+		{
+			mySpaceshipTypes
+			{
+				SpaceshipType "New SpaceshipType" Tiefighter
+				SpaceshipType "New SpaceshipType_0" Tieinterceptor
+			}
+			mySpaceshipFactions
+			{
+				Faction "New Faction" < uid=C48A863A66310863000000C9F04967A4 > = Empire 16DEADE65F21E5AB000000B35532A71B
+			}
+			myNamedNPC None
+			myStimulus < uid=05B06D7D65F021A10005779381D91987 > = S_SPACE_PlayerEscaping 3A129121631763B00001A77BDD447254
+			myPredictedTime 2.0
+			myMinRadius 500.0
+			myMaxRadius 2000.0
+			myAngle 180.0
+			myAngleThreshold 80.0
+			myIsGroupValidationRequired TRUE
+			myCombatManeuvers
+			{
+				SpaceshipCombatManeuverType Chase Chase
+			}
+			myEnemyOrientationToPlayer FacingPlayer
+		}
+		PlayerSpaceshipCombatBark PlayerPositionBehind
+		{
+			myNamedNPC None
+			myStimulus < uid=05B06D7D65F022D30006C963121F7BBD > = S_SPACE_PlayerPositionBehind 3A12912163078A3D0000E5C3EAA51F20
+			myPredictedTime 2.0
+			myMaxRadius 800.0
+			myAngleThreshold 30.0
+			myCombatManeuvers
+			{
+				SpaceshipCombatManeuverType Evasive Evasive
+				SpaceshipCombatManeuverType Overshoot Overshoot
+				SpaceshipCombatManeuverType "New SpaceshipCombatManeuverType" FakeFlee
+				SpaceshipCombatManeuverType "New SpaceshipCombatManeuverType_0" Leashing
+			}
+			myEnemyOrientationToPlayer Both
+		}
+		PlayerSpaceshipCombatBark AttackingPlayer
+		{
+			myNamedNPC None
+			myStimulus < uid=3A12912165F9D35E0000FC3E257AA622 > = dummytrigger 3A1291216475E01C00015F999D45FFFD
+			myPredictedTime 2.0
+			myMaxRadius 1200.0
+			myAngleThreshold 100.0
+			myCombatManeuvers
+			{
+				SpaceshipCombatManeuverType Chase Chase
+			}
+		}
+		PlayerSpaceshipCombatBark AttackingPlayer_Jousting
+		{
+			myNamedNPC None
+			myStimulus < uid=05B06D7D65F02512000820E3292A9ECE > = S_SPACE_CombatJousting 3A12912165F98FA0000E5A8F5DEFAB31
+			myPredictedTime 2.0
+			myCombatManeuvers
+			{
+				SpaceshipCombatManeuverType Jousting Jousting
+			}
+			myEnemyOrientationToPlayer FacingPlayer
+		}
+	}
+}
+

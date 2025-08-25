@@ -1,0 +1,71 @@
+include "helix/game system data/fruit/item/item_includes.fruit"
+include "helix/game system data/juice/camera/modifiers/player_heal_shake.mcameramodifier"
+include "helix/game system data/juice/item/consumables.mitem"
+include "helix/game system data/juice/sound/stimuli/stim_id_main.mstimulusidentifier"
+
+MedkitEquipmentItem player_medkit_gadget < uid=544DB9086054A845000001386DBBCE9A >
+{
+	myIcon "mySpriteId = -178330584, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_item_icons_01.spritesheet\""
+	myGraphObject "helix/graph objects/gameplayobject/gpo_gadget_bactavial.mgraphobject"
+	myInventoryPouch ToolsAndGadgets
+	myCooldown
+	{
+		myDuration 3.0
+	}
+	myConsumedItem < uid=83E36AE36128B2640000107E7D88FD20 > = con_BactaVial 5F6139B460A4E7DC00021132ACBB4DBD
+	myHealSequence
+	{
+		myDuration 1.5
+		myTracks
+		{
+			myGenericTracks
+			{
+				HealTrack Heal
+				{
+					myStartCyclePos 0.3
+					myEndCyclePos 0.3
+					myHealthAmountFormula 1
+					myIsMaxHealthPercentage TRUE
+					myIsImmediate FALSE
+					myKeepActiveIfHealthFull FALSE
+					myDamageInterruptsHealingExtra 1-DamageDoesNotInterruptMedkit
+					myDamageInterruptingHealingAmount 0.8
+					myDamageInterruptingHealingTimeWindow 0.8
+				}
+				KayBarkTrack KayBark
+				{
+					myStartCyclePos 0.3
+				}
+				HealTrack "Instant Heal"
+				{
+					myStartCyclePos 0.3
+					myEndCyclePos 0.3
+					myHealthAmountFormula "0.4 + MedkitInstantHealAmount"
+					myKeepActiveIfHealthFull FALSE
+					myDamageInterruptsHealing FALSE
+				}
+				RumbleTrack Rumble
+				{
+					myStartCyclePos 0.3
+					myEndCyclePos 0.3
+					myRumble 8E25811B65A7D090000A6B12A828A32A
+				}
+				CameraShakeTrack CameraShake
+				{
+					myStartCyclePos 0.3
+					myEndCyclePos 0.3
+					myCamShake < uid=7113C61166695DA800040140DEDF1D80 > = player_heal_shake 3842910665E34C10000310F5F4BAC133
+				}
+			}
+			myCustomTracks
+			{
+				HoldEquipmentTrack HoldEquipment
+				{
+					myStartCyclePos 0.15
+					myEndCyclePos 0.9
+				}
+			}
+		}
+	}
+}
+

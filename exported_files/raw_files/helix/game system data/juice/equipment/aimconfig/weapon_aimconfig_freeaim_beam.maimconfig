@@ -1,0 +1,62 @@
+include "helix/game system data/fruit/equipment/aiming.fruit"
+include "helix/game system data/juice/camera/modifiers/aimassist_default.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/aimassist_hipfire_default.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/sway_blaster.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_aimmodifier_ion_beam.mcameramodifier"
+include "helix/game system data/juice/equipment/aimconfig/weapon_aimconfig_freeaim.maimconfig"
+
+AimConfig weapon_aimconfig_freeaim_beam < uid=7113C611646B338100018671B6FE2C7C > : weapon_aimconfig_freeaim
+{
+	myPassiveAimMode
+	{
+	}
+	myHipFireAimMode
+	{
+		myEnabled TRUE
+		myAimAssist < uid=7113C611646B338100018672024CC418 > = aimassist_hipfire_default A207755D63691E37000057A881885DA9
+		myCrosshair
+		{
+			myAlignAimDeviationEnabled TRUE
+			myAutoLockCrosshairEnabled FALSE
+			myShape
+			{
+				AimCrosshairShapeCircle2D "New AimCrosshairShapeCircle2D"
+				{
+					myRadius 0.15
+				}
+			}
+		}
+		myCustomCameraModeEnabled TRUE
+		mySensitivity
+		{
+			myRampUp < uid=7113C61164EDE248000454C265ACC23B > = weapon_aimmodifier_ion_beam 7113C611646B27F20001A98316929FD4
+			myRampUpCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.19039088 -0.27464938, }, outTangents = { 0.2 0.001, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 0.20194 1, }, }, numKeys = 2, }"
+		}
+	}
+	myADSAimMode
+	{
+		myEnabled TRUE
+		myAimAssist < uid=7113C611646B3381000186741088F16F > = aimassist_default 544DB9085FCFB72D0000001EEB606904
+		mySway < uid=7113C611646B3381000186755752A2CE > = sway_blaster 1C021E9560ACA6AE00000F3E69A55FA3
+		myDepthOfField
+		{
+			myDOFLerpSpeed 20.0
+			myDOFFStop 8.0
+			myMaxNearCoC 5.0
+			myMaxFarCoC 20.0
+			mySpeedFactorFarToNear 2.0
+			myCloseDistanceThreshold 2.5
+		}
+		myCrosshair
+		{
+			myAlignAimDeviationEnabled TRUE
+		}
+		myCustomCameraModeEnabled TRUE
+		mySensitivity
+		{
+			myRampUp < uid=7113C61164EDE248000454C3514256D1 > = weapon_aimmodifier_ion_beam 7113C611646B27F20001A98316929FD4
+			myRampUpCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.19039088 -0.27464938, }, outTangents = { 0.2 0.001, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 0.20194 1, }, }, numKeys = 2, }"
+		}
+	}
+}
+

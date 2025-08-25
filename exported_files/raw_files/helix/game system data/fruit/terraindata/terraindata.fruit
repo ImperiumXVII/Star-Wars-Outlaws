@@ -1,0 +1,70 @@
+class TerrainDataIndexDef < uid=auto >
+{
+    int     myValue
+    color   myColor
+}
+
+enum TerrainDataImageType
+{
+	None
+	BitMask     // R_16 - (exclusion)
+	GrayScale   // R_16 - (blend)
+	SingleByte  // R_8 - 255 ids - (biome)
+	ARGB
+}
+
+enum TDComponentType
+{
+	UINT8
+	UINT16
+	UINT32
+    FLOAT32
+}
+
+enum TDChannels
+{
+	R
+	RG
+    RGB
+    RGBA
+}
+
+enum TerrainDataBrushType
+{
+	Simple      // RadiusOnly
+	FullParams
+}
+
+list TDIndexFileList
+{
+	file
+}
+
+enum BlendingMode
+{
+	Absolute
+	Additive
+}
+
+list BlendingModes
+{
+	BlendingMode
+}
+
+class TerrainDataDef < uid=auto >
+{
+    string                  myName
+    TDComponentType         myComponentType
+    TDChannels              myChannels
+    TerrainDataImageType    myImageType          // will be legacy
+    BlendingModes           myBlendingModes
+    string                  myOutputFileName
+    TDIndexFileList         myItemsDefinitionFiles
+    TerrainDataBrushType    myBrushType
+    float                   myTexelSizeInMeters
+
+    // bool					myIncludeInSDF
+    // bool					myBakeData
+    // bool					myIsGameData
+    bool					myIsUnique
+}

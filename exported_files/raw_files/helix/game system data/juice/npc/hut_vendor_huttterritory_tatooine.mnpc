@@ -1,0 +1,46 @@
+include "helix/game system data/juice/npc/hut_vendor.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC hut_vendor_huttterritory_tatooine < uid=91DC5D3C6508628D001CF48A9215538A > : hut_vendor
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Sub-name of a Territory Merchant\", enabled = true, guid = #09AEDAAA65C4A8B10000C83C167BC5BF, lineVersion = 13, maxLength = 0, productId = -1, sectionId = 10653, text = \"Hutt Cartel Merchant (TO BE WRITTEN)\", type = \"MenuLine\""
+	myDialogueNameOverride BAC4344665CF552E00092D10FB27A4A7
+	myAdditionalGearGraphs D00CF654668BD33F0017568DFEE9C1DF
+	myPossibleSpeciesTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F25651296110000BDEFA07F7E76 > = Agent_Species_HumanHutteseTag E4123D2763F4F626000798EB1B6F102A
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F25651299D30000BDF39D1BBCAF > = Agent_Faction_HuttClanTag 16DEADE6620AE18B000020CD6EABF4EA
+		RBTagsTag "New RBTagsTag" < uid=1EC89F25651299D30000BDF49090BA64 > = Agent_BarksFamily_HiredGun E4123D2762F4CA2800048CADB39E55F8
+		RBTagsTag "New RBTagsTag (0)" < uid=1EC89F256512961C0000BDF2C6CCE6CE > = Agent_Vendor_CombatantHuttese 1EC89F2564F5CB10000EEE473451198F
+	}
+	myDialogueCharactersFromDatabase
+	{
+		DialogueCharacterWithTags "New DialogueCharacterWithTags_17" < uid=1EC89F2566911DBB000B5BD32D38EFC8 > = HiredGun_Huttese_HumanF01 E4123D2763E238E7000517F064A3CF56
+		DialogueCharacterWithTags "New DialogueCharacterWithTags_18" < uid=1EC89F2566911DBB000B5BD42EC4E4FE > = HiredGun_Huttese_HumanF02 E4123D2763E238E7000517F578AF3E96
+		DialogueCharacterWithTags "New DialogueCharacterWithTags_19" < uid=1EC89F2566911DBB000B5BD57FFB6C6F > = HiredGun_Huttese_HumanF03 E4123D2763E238E7000517FA0CF4D475
+		DialogueCharacterWithTags "New DialogueCharacterWithTags_20" < uid=1EC89F2566911DBB000B5BD67AEA691C > = HiredGun_Huttese_HumanM01 E4123D2763E239040005180252D1AC42
+		DialogueCharacterWithTags "New DialogueCharacterWithTags_21" < uid=1EC89F2566911DBB000B5BD790468F26 > = HiredGun_Huttese_HumanM02 E4123D2763E2390400051807BFD16FE8
+		DialogueCharacterWithTags "New DialogueCharacterWithTags_22" < uid=1EC89F2566911DBB000B5BD899AC6AC4 > = HiredGun_Huttese_HumanM03 E4123D2763E239040005180C588A0E6C
+	}
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout PistolStandard < uid=56CC059666962EBB000B1D68871176EC > = HiredGun_Light_Pistol_Standard 4171A7E16523FB4C00010E15851176BF
+		NPCWeaponLoadout PistolBurtst < uid=56CC059666962EBB000B1D695A38933F > = HiredGun_Light_Pistol_Burst 4171A7E16523FBD800005C850FF94E02
+	}
+	myVendorConfig < uid=91DC5D3C6508628D001CF48BAAC178F4 > = VendorConfig_TAT_OpenWorld_Hutt_Territory_Armorer F4D8AE2664D38CC7000414C60FC8E33C
+	myHideMapRefGameConditions
+	{
+		myConditions
+		{
+			GameConditionContextAgentIsAlive "New GameConditionContextAgentIsAlive"
+			{
+				myIsNegated TRUE
+			}
+		}
+	}
+	myNPCIcon "mySpriteId = -515235874, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_map_icons_07.spritesheet\""
+}
+

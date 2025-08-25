@@ -1,0 +1,648 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/rbtags/quest.mrbtagstags"
+include "helix/game system data/juice/reward/quest_completion_reward.mreward"
+include "helix/game system data/juice/rewardpreview/faction_quest_reward_previews.mrewardpreview"
+
+Quest A_FQ_PSY_010_SurroundedByAmbition < uid=8FD81D51643E8A38000357D6D74E8BA4 >
+{
+	myName "branch = \"\", contextComment = \"A_FQ_PSY_010 Quest name\", enabled = true, guid = #8FD81D51643E8A38000357C826C3B48A, lineVersion = 15, maxLength = 0, productId = -1, sectionId = 9378, text = \"The Traitor\", type = \"MenuLine\""
+	myIntroDescription "branch = \"\", contextComment = \"A_FQ_PSY_010 Quest Intro Description\", enabled = true, guid = #8FD81D51652D57890003756FC7DFE3BB, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9378, text = \"Gorak has a job for Kay that he can't talk about over comms. He's asked to meet at Makal's Gambling Parlor.\", type = \"MenuLine\"}"
+	myDescription "branch = \"\", contextComment = \"A_FQ_PSY_010 Quest Description\", enabled = true, guid = #8FD81D51643E8A38000357C958F5DFEA, lineVersion = 19, maxLength = 0, productId = -1, sectionId = 9378, text = \"Crimson Dawn and Governor Thorden are plotting to overthrow Gorak, and the underboss believes that they're getting help from a member of the Pyke Syndicate. He asks Kay to find the rat in his organization.\", type = \"MenuLine\"}"
+	myType Faction
+	myCompletionReward < uid=2AE2EC85644BEC4B00338F4B088791B9 > = A_FQ_PSY_010_questcomplete_reward 2AE2EC85644A93860000B2E05CD973A8
+	myCompletionRewardPreview < uid=2AE2EC856668758D003FF4C9F6AADA11 > = PSY_010_reward_preview 2AE2EC856668752B003ED84AAB981B1B
+	myGoals
+	{
+		QuestGoal B02_010_FindDigVizan < uid=8FD81D5164414A0E0007277E231BD210 >
+		{
+			myGoalText "aurabesh = false, contextComment = \"A_FQ_PSY_010 Objective Text - Player must find Tizlak Sharr\", enabled = true, guid = #8FD81D5164414A160007277F68C3438C, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9384, text = \"Find Tizlak Sharr\", type = \"MenuLine\""
+		}
+		QuestGoal B04_020_Travel < uid=8FD81D5165E8393B00045C0E18D94AB8 >
+		{
+			myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_FQ_PSY_010 Beat Text - Travel to Mirogana\", enabled = true, guid = #8FD81D5165AE73630000C448B29841A5, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9384, text = \"Bring Tizlak to Mirogana\", type = \"MenuLine\""
+		}
+		QuestGoal B03_010_EscortTizlak < uid=8FD81D5165EAFDBF000271ABD635DFA2 >
+		{
+			myGoalText "aurabesh = false, contextComment = \"A_FQ_PSY_010 Objective Text - Player must reach the Trailblazer with Tizlak\", enabled = true, guid = #8FD81D51644BCA9000026DF6D6B3D7AB, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9383, text = \"Escort Tizlak  to the Trailblazer\", type = \"MenuLine\""
+		}
+	}
+	myRevealBeat < uid=8FD81D5165E203960004B07697F15CD4 >
+	{
+		myScript helix/scripts/scr_a_fq_psy_010_b00_reveal.mscript
+		myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myQuestBeatStateGameValue < uid=8FD81D5165E203960004B077BAD2545F >
+		{
+		}
+	}
+	myIntroBeat < uid=8FD81D51643E8A38000357D7B087001C >
+	{
+		myScript helix/scripts/scr_a_fq_psy_010_b00_talktogorak.mscript
+		myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myAutostartQuestGoal < uid=8FD81D5165B3A7EB003DDCD6E85AAD2B >
+		{
+			myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_FQ_PSY_010 Beat Text - Talk to Gorak\", enabled = true, guid = #8FD81D5165B3A7E4003DDCD583993D53, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9380, text = \"Talk to Gorak\", type = \"MenuLine\""
+		}
+		myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+		myObjectives
+		{
+			QuestObjectiveInteract B00_010_TalkToGorak < uid=8FD81D51643E8A38000357D83B15A38B >
+			{
+				myName "aurabesh = false, contextComment = \"A_FQ_PSY_010 Objective Text - Player must talk to Gorak\", enabled = true, guid = #8FD81D51643E8A38000357CB8219EBAA, lineVersion = 13, maxLength = 0, productId = -1, sectionId = 2652, text = \"Talk to Gorak\", type = \"MenuLine\""
+				myIsHighPrio TRUE
+				myIsImmediate TRUE
+			}
+		}
+		myQuestBeatStateGameValue < uid=8FD81D51643E8A38000357D92A263695 >
+		{
+		}
+		myDeactivateContentLocationOnComplete TRUE
+	}
+	myBeats
+	{
+		QuestBeat "QB01 StealComlink" < uid=8FD81D51643E8A38000357DA89968BDE >
+		{
+			myScript helix/scripts/scr_a_fq_psy_010_b01_marketplace.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myAutostartQuestGoal < uid=8FD81D5165B3A92A003DDCDAAFFE76DF >
+			{
+				myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_FQ_PSY_010 Beat Text - Reach the Mirogana Market\", enabled = true, guid = #8FD81D5165B3A915003DDCD80BA07E13, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9381, text = \"Reach the Mirogana Market\", type = \"MenuLine\""
+			}
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myMood RelaxedNoSpawnpoints
+			myObjectives
+			{
+				QuestObjectiveGoToLocation B01_010_ReachMarket < uid=8FD81D51643E9063000357E9689BF6DE >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_PSY_010 Objective Text - Player must reach the Mirogana Market\", enabled = true, guid = #8FD81D51643E906B000357EAABEDB14A, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9381, text = \"Reach the Mirogana Market\", type = \"MenuLine\""
+					myIsHiddenInHUD FALSE
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+				}
+				QuestObjectiveCustom B01_020_FindCrimsonDawnAgent < uid=8FD81D51643E8A38000357DB0199FD10 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_PSY_010 Objective Text - Player must find the correct person talking on a commlink\", enabled = true, guid = #8FD81D51643E8A38000357CD4FB9EACA, lineVersion = 21, maxLength = 0, productId = -1, sectionId = 9381, text = \"Find the Crimson Dawn agent\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD TRUE
+					myIntel
+					{
+					}
+					myChildObjectives
+					{
+						QuestObjectiveInteract FindNPC1 < uid=8FD81D51648036E5001284B15929E4EC >
+						{
+							myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+						}
+						QuestObjectiveInteract FindNPC2 < uid=8FD81D5164804CBA0001EDBF5F18824E >
+						{
+							myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+						}
+						QuestObjectiveInteract FindNPC3 < uid=8FD81D5164804CBA0001EDC04BC31801 >
+						{
+							myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+						}
+						QuestObjectiveCustom Hint < uid=8FD81D5165168B8E000FF89F9353FCA9 >
+						{
+							myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #8FD81D5165168B8E000FF8A04E0B6B7D, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9381, text = \"The agent is making comlink calls\", type = \"MenuLine\""
+							myIsHiddenInHUD TRUE
+							myIsHint TRUE
+						}
+					}
+				}
+				QuestObjectiveSteal B01_030_StealComlink < uid=8FD81D51643E90B3000357ECAB4E26FC >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_PSY_010 Objective Text - Player must steal the comlink from the crimson dawn agent\", enabled = true, guid = #8FD81D51643E90C1000357ED1CD4184D, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 9381, text = \"Steal the comlink\", type = \"MenuLine\""
+					myIsHiddenInHUD FALSE
+				}
+				QuestObjectiveCustom B01_040_LeaveTheArea < uid=8FD81D516448DF6A0019D6D12BEE86CA >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_PSY_010 Objective Text - Player must leave the area\", enabled = true, guid = #8FD81D516448DF720019D6D2E9DABB2F, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9381, text = \"Leave the area\", type = \"MenuLine\""
+					myChildObjectives
+					{
+						QuestObjectiveLeaveArea B01_041_LeaveTheArea < uid=8FD81D516448DFCB0019D77DF3D55829 >
+						{
+							myName "aurabesh = false, contextComment = \"Objective Text\", enabled = true, guid = #8FD81D516448DFD70019D77F7C4F5473, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2652, text = \"Leave the area\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+							myInVolumeText "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myNotInVolumeInCombatText "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+						}
+					}
+				}
+			}
+			myQuestBeatStateGameValue < uid=8FD81D51643E8A38000357DC97060F53 >
+			{
+			}
+		}
+		QuestBeat "QB02B RenpalliStation" < uid=8FD81D51643E8A38000357DD8C8F11B8 >
+		{
+			myScript helix/scripts/scr_a_fq_psy_010_b02_renpallistation.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myAutostartQuestGoal < uid=8FD81D5165B3A92A003DDCDB345E8E1B >
+			{
+				myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_FQ_PSY_010 Beat Text - Reach Renpalli Station\", enabled = true, guid = #8FD81D5165B3A921003DDCD969D65927, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9382, text = \"Reach Renpalli Station\", type = \"MenuLine\""
+			}
+			myLevelInfo 1EAB3B406396FD840000E19DA0AC6B3E
+			myDebugPlayLandingZone 9D0EE20B6073F7BA000014BE1C1D0903
+			myMood Relaxed
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom B02_010_TalkToBartender < uid=8FD81D5165A140E2000CACAD197D8702 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD FALSE
+					myChildObjectives
+					{
+						QuestObjectiveTalkTo B02_010_FindTizlakSharr < uid=8FD81D51643E8A38000357DEB17AB38C >
+						{
+							myName "aurabesh = false, contextComment = \"A_FQ_PSY_010 Objective Text - Player must find Tizlak Sharr onboard Renpalli space station\", enabled = true, guid = #8FD81D51643E8A38000357CFDDCA1CCF, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 9382, text = \"Find Tizlak Sharr\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD FALSE
+							myChildObjectives
+							{
+								QuestObjectiveInteract B01_020_Hint01_ExperimentsInfo < uid=8FD81D5165A14100000CACAFBFDE7D33 >
+								{
+									myName "aurabesh = false, contextComment = \"Hint text\", enabled = true, guid = #8FD81D51643E8A38000357D04FD9C6B1, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 3614, text = \"Information regarding the extraction experiments\", type = \"MenuLine\""
+									myIsOptional TRUE
+									myIsHiddenInTracker TRUE
+									myIsHiddenInHUD TRUE
+								}
+							}
+						}
+					}
+				}
+				QuestObjectiveInteract B02_020_ReachLowerLevels_Interact < uid=8FD81D51643E8A38000357E0D81E4DF2 >
+				{
+					myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+					myIntel
+					{
+					}
+				}
+				QuestObjectiveGoToLocation B02_020_ReachLowerLevels < uid=8FD81D51644249820002020722E46C8A >
+				{
+					myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD FALSE
+					myIntel
+					{
+					}
+				}
+				QuestObjectiveGoToLocation B02_021_FindDig < uid=8FD81D51643EA26A0004DC41DAAD3402 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_PSY_010 Objective Text - Player must find Tizlak Sharr onboard Renpalli space station\", enabled = true, guid = #8FD81D51643EA2910004DC431CA20785, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9382, text = \"Find Tizlak Sharr\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD FALSE
+				}
+				QuestObjectiveCustom B02_030_TalkToDig < uid=8FD81D51643EA2BB0004DC455ED65E15 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_PSY_010 Objective Text - Player must talk to Tizlak Sharr\", enabled = true, guid = #8FD81D51643EA2C40004DC4617051428, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9382, text = \"Talk to Tizlak\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHighPrio TRUE
+				}
+			}
+			myQuestBeatStateGameValue < uid=8FD81D51643E8A38000357E12CE88598 >
+			{
+			}
+			myWaitForInitCompletedOnInBeatVolume TRUE
+		}
+		QuestBeatBranchList "QB03 1 LeavingRenpalli"
+		{
+			QuestBeat "QB03A ReachTheTrailblazer" < uid=8FD81D51643FA33200089480BDB9E4AD >
+			{
+				myScript helix/scripts/scr_a_fq_psy_010_b03_leaverenpalli.mscript
+				myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myLevelInfo 1EAB3B406396FD840000E19DA0AC6B3E
+				myDebugPlayLandingZone 9D0EE20B6073F7BA000014BE1C1D0903
+				myMood Focused
+				myObjectives
+				{
+					QuestObjectiveGoToLocation B03_010_ReachTheTrailblazer < uid=8FD81D51643FA33200089481B8071163 >
+					{
+						myName "aurabesh = false, contextComment = \"A_FQ_PSY_010 Objective Text - Player must reach the Trailblazer\", enabled = true, guid = #8FD81D51643FA1B90008947D97725920, lineVersion = 23, maxLength = 0, productId = -1, sectionId = 9383, text = \"Reach the Trailblazer\", type = \"MenuLine\""
+					}
+				}
+				myQuestBeatStateGameValue < uid=8FD81D51643FA33200089482434E93D4 >
+				{
+					myDescription ""
+					myDefaultValue 0
+					myIsPersisted FALSE
+					myVariableAttributeName ""
+					myCanBeEditedFromScript FALSE
+					myCanBeEditedFromUI FALSE
+					myCanBeEditedFromProgressionGraph FALSE
+					myIntendedType QuestBeatState
+					myCategory QuestBeat
+					myParentLevelsToUseInInstanceName -1
+				}
+			}
+			QuestBeat "QB03B ReachTheTrailblazerWithTizlak" < uid=8FD81D51643E8A38000357E2486AB55A >
+			{
+				myScript helix/scripts/scr_a_fq_psy_010_b03_leaverenpalliwithdig.mscript
+				myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myLevelInfo 1EAB3B406396FD840000E19DA0AC6B3E
+				myDebugPlayLandingZone 9D0EE20B6073F7BA000014BE1C1D0903
+				myMood Focused
+				mySetPlayerInBeatOnStart TRUE
+				myObjectives
+				{
+					QuestObjectiveKillFireteam B03_010_DefeatCrimsonDawn < uid=8FD81D51644A5E5500044C097D385937 >
+					{
+						myName "aurabesh = false, contextComment = \"A_FQ_PSY_010 Objective Text - Player must defeat Crimson Dawn Agents\", enabled = true, guid = #8FD81D51644A5E5E00044C0A7175F5DB, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9383, text = \"Defeat the Crimson Dawn Agents\", type = \"MenuLine\""
+					}
+					QuestObjectiveTalkTo B03_011_TalkToDig < uid=8FD81D51644B902A0002FD65FA322923 >
+					{
+						myName "aurabesh = false, contextComment = \"A_FQ_PSY_010 Objective Text - Player must talk to Tizlak Sharr\", enabled = true, guid = #8FD81D51644B903D0002FD663A22F11F, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9383, text = \"Talk to Tizlak\", type = \"MenuLine\""
+					}
+					QuestObjectiveGoToLocation B03_020_ReachTheTrailblazer < uid=8FD81D51643FA3320008947E8E8EA790 >
+					{
+						myName "aurabesh = false, contextComment = \"A_FQ_PSY_010 Objective Text - Player must reach the Trailblazer with Tizlak\", enabled = true, guid = #8FD81D51643E8A38000357D3CDD54F6E, lineVersion = 21, maxLength = 0, productId = -1, sectionId = 9383, text = \"Reach the Trailblazer\", type = \"MenuLine\""
+					}
+					QuestObjectiveInteract B03_021_ElevatorButton < uid=8FD81D51644A61F300055937791DF1A6 >
+					{
+						myName "aurabesh = false, contextComment = \"A_FQ_PSY_010 Objective Text - Player must reach the Trailblazer with Tizlak\", enabled = true, guid = #8FD81D51644A620300055938D40F451E, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9383, text = \"Reach Upper Levels\", type = \"MenuLine\""
+						myIsHiddenInTracker TRUE
+						myIsHiddenInHUD TRUE
+					}
+					QuestObjectiveFollow B03_020_WalkDigToTrailblazer < uid=8FD81D51644BCA8400026DF596498CD2 >
+					{
+						myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+						myIsHiddenInTracker TRUE
+					}
+				}
+				myQuestBeatStateGameValue < uid=8FD81D51643FA3320008947F5AAB8E2D >
+				{
+					myDescription ""
+					myDefaultValue 0
+					myIsPersisted FALSE
+					myVariableAttributeName ""
+					myCanBeEditedFromScript FALSE
+					myCanBeEditedFromUI FALSE
+					myCanBeEditedFromProgressionGraph FALSE
+					myIntendedType QuestBeatState
+					myCategory QuestBeat
+					myParentLevelsToUseInInstanceName -1
+				}
+			}
+		}
+		QuestBeatBranchList "QB03 2 Trailblazer"
+		{
+			QuestBeat "QB03C Trailblazer" < uid=8FD81D5164DE36180008DFB388F73C59 >
+			{
+				myScript helix/scripts/scr_a_fq_psy_010_b03c_trailblazer.mscript
+				myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myAutostartQuestGoal < uid=8FD81D5165B3A987003DDCE441B33094 >
+				{
+					myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_FQ_PSY_010 Beat Text - Reach the Trailblazer\", enabled = true, guid = #8FD81D5165B3A974003DDCE2170863C1, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9383, text = \"Reach the Trailblazer\", type = \"MenuLine\""
+				}
+				myLevelInfo 1EAB3B406396FD840000E19DA0AC6B3E
+				myDebugPlayLandingZone 9D0EE20B6073F7BA000014BE1C1D0903
+				myMood Focused
+				myObjectives
+				{
+					QuestObjectiveInteract B03C_010_TalkToDigInTrailblazer < uid=8FD81D5165AE713400010291FAD821D7 >
+					{
+						myName "aurabesh = false, contextComment = \"A_FQ_PSY_010 Objective Text - Player must talk to Tizlak Sharr\", enabled = true, guid = #8FD81D5164E46E9900017860B4AE5C81, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9383, text = \"Talk to Tizlak\", type = \"MenuLine\""
+					}
+				}
+				myScriptInputs
+				{
+				}
+				myHasInitFromPreviousBeatPin FALSE
+				myQuestBeatStateGameValue < uid=8FD81D5165AE713400010293419AEF57 >
+				{
+					myDescription ""
+					myDefaultValue 0
+					myIsPersisted FALSE
+					myVariableAttributeName ""
+					myCanBeEditedFromScript FALSE
+					myCanBeEditedFromUI FALSE
+					myCanBeEditedFromProgressionGraph FALSE
+					myIntendedType QuestBeatState
+					myCategory QuestBeat
+					myParentLevelsToUseInInstanceName -1
+				}
+			}
+			QuestBeat "QB03D TrailblazerWithTizlak" < uid=8FD81D5165AE713400010294C8E5A08D >
+			{
+				myScript helix/scripts/scr_a_fq_psy_010_b03d_trailblazerwithdig.mscript
+				myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myAutostartQuestGoal < uid=8FD81D5165B3A987003DDCE56EBF503B >
+				{
+					myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_FQ_PSY_010 Beat Text - Reach the Trailblazer\", enabled = true, guid = #8FD81D5165B3A980003DDCE3A3C56088, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9383, text = \"Reach the Trailblazer\", type = \"MenuLine\""
+				}
+				myLevelInfo 1EAB3B406396FD840000E19DA0AC6B3E
+				myDebugPlayLandingZone 9D0EE20B6073F7BA000014BE1C1D0903
+				myMood Focused
+				mySetPlayerInBeatOnStart TRUE
+				myObjectives
+				{
+					QuestObjectiveCustom B03C_010_TalkToDigInTrailblazer < uid=8FD81D5165AE713400010295F308F6DF >
+					{
+						myName "aurabesh = false, contextComment = \"A_FQ_PSY_010 Objective Text - Player must talk to Tizlak Sharr\", enabled = true, guid = #8FD81D5165AE70A00000C515D34159F5, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9383, text = \"Talk to Tizlak\", type = \"MenuLine\""
+						myIsHiddenInTracker TRUE
+					}
+				}
+				myScriptInputs
+				{
+					QuestBeatScriptInputAgent Agent_TizlakSharr < uid=8FD81D5165AE7134000102964A3E9D31 >
+					{
+					}
+					QuestBeatScriptInputAgent Agent_ND5 < uid=06F73AE1667A75DE00049E8FB3BBC833 >
+					{
+					}
+				}
+				myHasInitFromPreviousBeatPin FALSE
+				myQuestBeatStateGameValue < uid=8FD81D5165AE713400010297DC482376 >
+				{
+					myDescription ""
+					myDefaultValue 0
+					myIsPersisted FALSE
+					myVariableAttributeName ""
+					myCanBeEditedFromScript FALSE
+					myCanBeEditedFromUI FALSE
+					myCanBeEditedFromProgressionGraph FALSE
+					myIntendedType QuestBeatState
+					myCategory QuestBeat
+					myParentLevelsToUseInInstanceName -1
+				}
+			}
+		}
+		QuestBeatBranchList "QB04_1 SpaceCombat"
+		{
+			QuestBeat "QB04_1A SpaceCombat Pirates" < uid=8FD81D51643E8A38000357E55844C6F9 >
+			{
+				myScript helix/scripts/scr_a_fq_psy_010_b04_spacecombat.mscript
+				myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myLevelInfo 9C4B6A046012DDB0000000AEDF387547
+				myMood Focused
+				mySetPlayerInBeatOnStart FALSE
+				myObjectives
+				{
+					QuestObjectiveCustom B04_010_EvadeOrDefeat < uid=8FD81D5165AE72540000332CA9D1B299 >
+					{
+						myName "aurabesh = false, contextComment = \"A_FQ_PSY_010 Objective Text - Player must defeat attacking ships\", enabled = true, guid = #8FD81D51643E8A38000357D537A4D0CC, lineVersion = 16, maxLength = 0, productId = -1, sectionId = 9384, text = \"Defeat the assailants\", type = \"MenuLine\""
+						myIsHiddenInTracker FALSE
+						myIsHighPrio TRUE
+						myIsImmediate TRUE
+						myChildObjectives
+						{
+							QuestObjectiveKillFireteam B04_012_Defeat < uid=8FD81D5165AE72540000332DEDF08124 >
+							{
+								myName "aurabesh = false, contextComment = \"A_FQ_PSY_010 Objective Text - Player must defeat attacking ships\", enabled = true, guid = #8FD81D5164464F800002BAE358CAFF99, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9384, text = \"Defeat the assailants\", type = \"MenuLine\""
+								myIsHiddenInTracker TRUE
+								myIsHiddenInHUD FALSE
+							}
+						}
+					}
+				}
+				myQuestBeatStateGameValue < uid=8FD81D5165AE72540000332EFC6D0872 >
+				{
+					myDescription ""
+					myDefaultValue 0
+					myIsPersisted FALSE
+					myVariableAttributeName ""
+					myCanBeEditedFromScript FALSE
+					myCanBeEditedFromUI FALSE
+					myCanBeEditedFromProgressionGraph FALSE
+					myIntendedType QuestBeatState
+					myCategory QuestBeat
+					myParentLevelsToUseInInstanceName -1
+				}
+			}
+			QuestBeat "QB04_1B SpaceCombat CrimsonDawn" < uid=8FD81D5165AE72540000332F40ADB146 >
+			{
+				myScript helix/scripts/scr_a_fq_psy_010_b04b_spacecombat_crimsondawn.mscript
+				myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myLevelInfo 9C4B6A046012DDB0000000AEDF387547
+				myMood Focused
+				mySetPlayerInBeatOnStart FALSE
+				myObjectives
+				{
+					QuestObjectiveCustom B04_010_EvadeOrDefeat < uid=8FD81D5165AE72540000333064CC86B0 >
+					{
+						myName "aurabesh = false, contextComment = \"A_FQ_PSY_010 Objective Text - Player must defeat attacking ships\", enabled = true, guid = #8FD81D5165AE7203000033253745931A, lineVersion = 16, maxLength = 0, productId = -1, sectionId = 9384, text = \"Defeat the assailants\", type = \"MenuLine\""
+						myIsHiddenInTracker FALSE
+						myIsHighPrio TRUE
+						myIsImmediate TRUE
+						myChildObjectives
+						{
+							QuestObjectiveKillFireteam B04_012_Defeat < uid=8FD81D5165AE7254000033310D5CD2AC >
+							{
+								myName "aurabesh = false, contextComment = \"A_FQ_PSY_010 Objective Text - Player must defeat attacking ships\", enabled = true, guid = #8FD81D5165AE72030000332676F482D1, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9384, text = \"Defeat the assailants\", type = \"MenuLine\""
+								myIsHiddenInTracker TRUE
+								myIsHiddenInHUD FALSE
+							}
+						}
+					}
+				}
+				myQuestBeatStateGameValue < uid=8FD81D5165AE72540000333299E665ED >
+				{
+					myDescription ""
+					myDefaultValue 0
+					myIsPersisted FALSE
+					myVariableAttributeName ""
+					myCanBeEditedFromScript FALSE
+					myCanBeEditedFromUI FALSE
+					myCanBeEditedFromProgressionGraph FALSE
+					myIntendedType QuestBeatState
+					myCategory QuestBeat
+					myParentLevelsToUseInInstanceName -1
+				}
+			}
+		}
+		QuestBeatBranchList "QB04_2 SpaceTravel"
+		{
+			QuestBeat "QB04_2A SpaceTravelSkip" < uid=8FD81D5165E840940004A7C3AC8ACE57 >
+			{
+				myScript helix/scripts/scr_a_fq_psy_010_b04_2a_spaceskip.mscript
+				myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myLevelInfo 9C4B6A046012DDB0000000AEDF387547
+				myMood Focused
+				myObjectives
+				{
+				}
+				myQuestBeatStateGameValue < uid=8FD81D5165E840940004A7C59FE833E8 >
+				{
+					myDescription ""
+					myDefaultValue 0
+					myIsPersisted FALSE
+					myVariableAttributeName ""
+					myCanBeEditedFromScript FALSE
+					myCanBeEditedFromUI FALSE
+					myCanBeEditedFromProgressionGraph FALSE
+					myIntendedType QuestBeatState
+					myCategory QuestBeat
+					myParentLevelsToUseInInstanceName -1
+				}
+			}
+			QuestBeat "QB04_2B SpaceTravel" < uid=8FD81D5165E840940004A7C64DB61425 >
+			{
+				myScript helix/scripts/scr_a_fq_psy_010_b041b_spacetravel.mscript
+				myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myLevelInfo 9C4B6A046012DDB0000000AEDF387547
+				myMood Focused
+				myObjectives
+				{
+					QuestObjectiveCustom "New QuestObjectiveCustom" < uid=8FD81D5165E840AF0004A7E47D6AC8BE >
+					{
+						myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+						myIsHiddenInTracker TRUE
+					}
+				}
+				myQuestBeatStateGameValue < uid=8FD81D5165E840940004A7C8C9CBC0F6 >
+				{
+					myDescription ""
+					myDefaultValue 0
+					myIsPersisted FALSE
+					myVariableAttributeName ""
+					myCanBeEditedFromScript FALSE
+					myCanBeEditedFromUI FALSE
+					myCanBeEditedFromProgressionGraph FALSE
+					myIntendedType QuestBeatState
+					myCategory QuestBeat
+					myParentLevelsToUseInInstanceName -1
+				}
+			}
+		}
+		QuestBeat "QB04_3 LogicCheck" < uid=8FD81D5165E8446B0004FD059CBC073C >
+		{
+			myScript helix/scripts/scr_a_fq_psy_010_b04_3_logiccheck.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myDebugPlayLandingZone 9D0EE20B6073F5F4000010D6D710D5C6
+			myMood Focused
+			myObjectives
+			{
+			}
+			myQuestBeatStateGameValue < uid=8FD81D5165E8446B0004FD07D5661A80 >
+			{
+				myDescription ""
+				myDefaultValue 0
+				myIsPersisted FALSE
+				myVariableAttributeName ""
+				myCanBeEditedFromScript FALSE
+				myCanBeEditedFromUI FALSE
+				myCanBeEditedFromProgressionGraph FALSE
+				myIntendedType QuestBeatState
+				myCategory QuestBeat
+				myParentLevelsToUseInInstanceName -1
+			}
+		}
+		QuestBeatBranchList "QB05 ReturnToGorak"
+		{
+			QuestBeat "QB05 ReturnToGorak" < uid=8FD81D5165AE725400003333B4ECD016 >
+			{
+				myScript helix/scripts/scr_a_fq_psy_010_b05_returntogorak.mscript
+				myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myAutostartQuestGoal < uid=8FD81D5165B3A9DF003DDCEE209C1270 >
+				{
+					myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_FQ_PSY_010 Beat Text - Talk to Gorak\", enabled = true, guid = #8FD81D5165B3A9AB003DDCEC14F07442, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9385, text = \"Talk to Gorak\", type = \"MenuLine\""
+				}
+				myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+				myDebugPlayLandingZone 9D0EE20B6073F5F4000010D6D710D5C6
+				myMood Relaxed
+				myObjectives
+				{
+					QuestObjectiveCustom B05_010_TalkToGorak < uid=8FD81D5165AE725400003334B415393D >
+					{
+						myName "aurabesh = false, contextComment = \"A_FQ_PSY_010 Objective Text - Player must return to and talk to Gorak\", enabled = true, guid = #8FD81D516446991B00059B0659DF0677, lineVersion = 16, maxLength = 0, productId = -1, sectionId = 9385, text = \"Talk to Gorak\", type = \"MenuLine\""
+						myIsHighPrio TRUE
+						myIsImmediate TRUE
+						myChildObjectives
+						{
+							QuestObjectiveInteract B05_010_TalkToGorak < uid=8FD81D516673C06C0007C3F96A1427FC >
+							{
+								myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+								myIsHiddenInTracker TRUE
+							}
+						}
+					}
+				}
+				myQuestBeatStateGameValue < uid=8FD81D5165AE72540000333727EA897B >
+				{
+					myDescription ""
+					myDefaultValue 0
+					myIsPersisted FALSE
+					myVariableAttributeName ""
+					myCanBeEditedFromScript FALSE
+					myCanBeEditedFromUI FALSE
+					myCanBeEditedFromProgressionGraph FALSE
+					myIntendedType QuestBeatState
+					myCategory QuestBeat
+					myParentLevelsToUseInInstanceName -1
+				}
+			}
+			QuestBeat "QB05 ReturnToGorakWithTizlak" < uid=8FD81D5165AE7254000033383A2B806A >
+			{
+				myScript helix/scripts/scr_a_fq_psy_010_b05b_returntogorak_withdig.mscript
+				myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myAutostartQuestGoal < uid=8FD81D5165B3A9DF003DDCEF6E8AEE2F >
+				{
+					myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_FQ_PSY_010 Beat Text - Talk to Gorak\", enabled = true, guid = #8FD81D5165B3A9B7003DDCEDC18940B8, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9385, text = \"Talk to Gorak\", type = \"MenuLine\""
+				}
+				myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+				myDebugPlayLandingZone 9D0EE20B6073F5F4000010D6D710D5C6
+				myMood Focused
+				myObjectives
+				{
+					QuestObjectiveCustom B05_010_TalkToGorak < uid=8FD81D5165AE725400003339DF5C49D2 >
+					{
+						myName "aurabesh = false, contextComment = \"A_FQ_PSY_010 Objective Text - Player must return to and talk to Gorak\", enabled = true, guid = #8FD81D5165AE724D000033299F7B63C4, lineVersion = 16, maxLength = 0, productId = -1, sectionId = 9385, text = \"Talk to Gorak\", type = \"MenuLine\""
+						myIsHighPrio TRUE
+						myIsImmediate TRUE
+						myChildObjectives
+						{
+							QuestObjectiveInteract B05_010_TalkToGorak < uid=8FD81D516673C1D0000BEAFB326A3552 >
+							{
+								myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+								myIsHiddenInTracker TRUE
+								myChildObjectives
+								{
+								}
+							}
+						}
+					}
+				}
+				myQuestBeatStateGameValue < uid=8FD81D5165AE72540000333C9B187ED7 >
+				{
+					myDescription ""
+					myDefaultValue 0
+					myIsPersisted FALSE
+					myVariableAttributeName ""
+					myCanBeEditedFromScript FALSE
+					myCanBeEditedFromUI FALSE
+					myCanBeEditedFromProgressionGraph FALSE
+					myIntendedType QuestBeatState
+					myCategory QuestBeat
+					myParentLevelsToUseInInstanceName -1
+				}
+			}
+		}
+	}
+	myOutroBeat
+	{
+		QuestBeat QBOB_TizlakWalkOfshame < uid=8FD81D5165FC52370006D3113E0643BA >
+		{
+			myScript helix/scripts/scr_a_fq_psy_010_bob_tizlakwalkofshame.mscript
+			myQuestBeatStateGameValue < uid=8FD81D5165FC53130006D368045A40F2 >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=8FD81D51643E8A38000357E8B24E3F78 >
+	{
+	}
+	myQuestStartedRBTag < uid=DA5615DD64B54E3B0000C65740BFC20E > = World_Quest_FQPSY010_Started DA5615DD64A43C0F0001659EF1DE9CF8
+	myQuestCompletedRBTag < uid=DA5615DD64B54E3B0000C658F5594F85 > = World_Quest_FQPSY010_Completed DA5615DD64A43C1F000165A05A1C4D69
+	myFaction 16DEADE65F7DDB52000000D22C63D964
+}
+

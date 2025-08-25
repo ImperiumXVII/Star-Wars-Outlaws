@@ -1,0 +1,78 @@
+include "helix/game system data/fruit/inputchallenge/inputchallengerumble.fruit"
+
+InputChallengeRumble "Button Mashing Rumble Events" < uid=E259BC2165CB4C340005DF45DB7DF881 >
+{
+	myOnChallengeProgress E259BC2165CB4C2B0005DF4458319A9D
+}
+
+InputChallengeRumble "Buttons Combination Rumble Events" < uid=E259BC2165CA428F00023BAD37C56C59 >
+{
+	myOnChallengeSucceeded E259BC2165CA4A0F0003D551E11D3ED8
+	myOnChallengeProgress E259BC2165CB7EA8000817CEEA97CD3C
+}
+
+InputChallengeRumble "Buttons Sequence Rumble Events" < uid=E259BC2165C3A2B2000A296E2D2760F6 >
+{
+	myOnChallengeTimedOut E259BC2165C9FC1900016519B04602EF
+	myOnCorrectButtonPressed E259BC2165C646FE0013BB5A2191C5D4
+	myOnWrongButtonPressed E259BC2165C9FA330000DCDB987FC8FC
+	myChallengeButtonOutcomeRumbles
+	{
+	}
+}
+
+InputChallengeRumble "Decoy Buttons Rumble Events" < uid=E259BC2165CB77CD0005E03B404DB26F >
+{
+	myOnCorrectButtonPressed E259BC2165CB79EC000667EC6810EF7E
+	myOnWrongButtonPressed E259BC2165CB7A11000668EA7CBD6DE6
+}
+
+InputChallengeRumble "Hold Buttons Rumble Events" < uid=E259BC2165CA49C30003D550F2CF0C47 >
+{
+	myOnChallengeSucceeded E259BC2165CA4B2E0003D553EF6D9CF8
+	myOnChallengeProgress E259BC2165CB45DF0005DF3224913DE7
+}
+
+InputChallengeRumble "Holding Sticks Rumble Events" < uid=E259BC2165CB95600009D4154A582269 >
+{
+	myOnChallengeSucceeded E259BC2165CB95520009D4140A4E06A6
+	myOnChallengeProgress E259BC2165CB94E500094ED80E89DBF5
+}
+
+InputChallengeRumble "Oscillating Sticks Rumble Events" < uid=E259BC2165CB96150009D42196257CD2 >
+{
+	myOnChallengeSucceeded E259BC2165CB976A0009D42A6315957D
+	myOnCorrectButtonPressed E259BC2165CB972B0009D425AA574ADE
+}
+
+InputChallengeRumble "Parallel Buttons Rumble Events" < uid=E259BC2165CB228B000454A4E9BB763C >
+{
+	myOnChallengeSucceeded E259BC2165CB4D240005DF4BC6659440
+	myOnCorrectButtonPressed E259BC2165C646FE0013BB5A2191C5D4
+}
+
+InputChallengeRumble "Timed Button Rumble Evemts" < uid=E259BC2165CB84C90008882877D1DA56 >
+{
+	myOnChallengeSucceeded E259BC2165CB86440008979E35702BCA
+	myOnChallengeTimedOut E259BC2165CB857100089370EF6A7918
+	myOnWrongButtonPressed E259BC2165CB857100089370EF6A7918
+}
+
+InputChallengeRumble "Timed Slider Rumble Events" < uid=E259BC2165CB808C0008181768FE5CDA >
+{
+	myOnChallengeSucceeded E259BC2165CB839F0008186430310ED8
+	myOnWrongButtonPressed E259BC2165CB83580008186348E6131E
+	myChallengeButtonOutcomeRumbles
+	{
+		InputChallengeButtonOutcomeRumble "Good Outcome"
+		{
+			myOnChallengeProgress E259BC2165CB839F0008186430310ED8
+		}
+		InputChallengeButtonOutcomeRumble "Bad Outcome"
+		{
+			myOutcome Bad
+			myOnChallengeProgress E259BC2165CB83580008186348E6131E
+		}
+	}
+}
+

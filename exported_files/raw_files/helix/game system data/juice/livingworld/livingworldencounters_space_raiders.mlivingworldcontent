@@ -1,0 +1,345 @@
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+include "helix/game system data/juice/livingworld/livingworld_generic_conditions_dlc2.juice"
+include "helix/game system data/juice/livingworld/livingworldencounters_space.mlivingworldcontent"
+
+LivingWorldContent Encounter_Space_Patrol_Raiders_Small < uid=2AE2EC8566FE9A2E00023DC75B0CE971 > : Encounter_Space_Patrol_TEMPLATE
+{
+	myTicket < uid=2AE2EC8566FEA73500023E05F5AD0309 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC8566FEA73500023E06177896A6 >
+	{
+		myDescription ""
+		myDefaultValue 1
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "New GameConditionPlayerHasWantedLevel" = "Player is not wanted"
+		LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup" = "Global activation rule Space Medium 750-3000"
+		LivingWorldGameConditionGroup "Raider Unlock Condition" = "Raiders Unlock Condition Space"
+		GameConditionLivingWorldIsContrabandContractActive "Contraband Contract Not Active"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 70.0
+	myTags
+	{
+		LivingWorldTag "Space Patrol" < uid=2AE2EC8566FEBA2900023E507096292B > = LWT_Activity_Space_Patrol 2AE2EC8564B553190000A116836C7A1A
+		LivingWorldTag "Living World Encounter" < uid=2AE2EC8566FEBA2900023E510B6CD0E5 > = LWT_Space_Encounter 616F45966603F89700183DE358C920EF
+		LivingWorldTag "Faction Raiders" < uid=2AE2EC8566FEB9FD00023E4EDE366393 > = LWT_Faction_Space_Raiders 2AE2EC8566FEB8CD00023E2DE877D84B
+	}
+}
+
+LivingWorldContent Encounter_Space_Ambush_Raiders < uid=2AE2EC8566FE9B6300023DCA6FD27E4A > : Encounter_Space_Ambush_TEMPLATE
+{
+	myTicket < uid=2AE2EC8566FEA73500023E07927E5D2C >
+	{
+	}
+	myTicketMax < uid=2AE2EC8566FEA73500023E08C9D6C444 >
+	{
+		myDefaultValue 1
+	}
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "New GameConditionPlayerHasWantedLevel" = "Player is not wanted"
+		LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup" = "Global activation rule Space Very Near 250 - 750"
+		LivingWorldGameConditionGroup "Raider Unlock Condition" = "Raiders Unlock Condition Space"
+		GameConditionLivingWorldIsContrabandContractActive "Contraband Contract Not Active"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 60.0
+	myTags
+	{
+		LivingWorldTag Activity < uid=2AE2EC8566FEBA2900023E52662B00E0 > = LWT_Activity_Space_Ambush 2AE2EC8564B553190000A11301D38704
+		LivingWorldTag "Living World Encounter" < uid=2AE2EC8566FEBA2900023E53FE56CE30 > = LWT_Space_Encounter 616F45966603F89700183DE358C920EF
+		LivingWorldTag "Faction Raider" < uid=2AE2EC8566FEBA1E00023E4F7D5CB732 > = LWT_Faction_Space_Raiders 2AE2EC8566FEB8CD00023E2DE877D84B
+	}
+}
+
+LivingWorldContent Encounter_Space_ShipWreckage_Raiders < uid=2AE2EC8566FE9B8400023DCB53A955A0 > : Encounter_Space_ShipWreckage_TEMPLATE
+{
+	myTicket < uid=2AE2EC8566FEA73500023E0954FE233C >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC8566FEA73500023E0A87E042A3 >
+	{
+		myDefaultValue 1
+	}
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "New GameConditionPlayerHasWantedLevel" = "Player is not wanted"
+		LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup" = "Global activation rule Space Extremely Far 3000 -5000"
+		LivingWorldGameConditionGroup "Raider Unlock Condition" = "Raiders Unlock Condition Space"
+		GameConditionLivingWorldIsContrabandContractActive "Contraband Contract Not Active"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 70.0
+	myTags
+	{
+		LivingWorldTag Activity < uid=2AE2EC8566FEBA6B00023E5724B32908 > = LWT_Activity_Space_Wreckage 2AE2EC8564B553190000A11FE62B3EA5
+		LivingWorldTag "Living World Encounter" < uid=2AE2EC8566FEBA6B00023E58587AE741 > = LWT_Space_Encounter 616F45966603F89700183DE358C920EF
+		LivingWorldTag "Faction Raider" < uid=2AE2EC8566FEBA3100023E543F487FA0 > = LWT_Faction_Space_Raiders 2AE2EC8566FEB8CD00023E2DE877D84B
+	}
+}
+
+LivingWorldContent Encounter_Space_ShipWreckage_Raiders_Ambush < uid=2AE2EC8566FE9B9400023DCC35C5C1EE > : Encounter_Space_ShipWreckage_Raiders
+{
+	myTicket < uid=2AE2EC8566FEA73500023E0BE717F84E >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC8566FEA73500023E0C989CF40C >
+	{
+		myDefaultValue 1
+	}
+	myActivateGameCondition
+	{
+		myType Formula
+		myIsNegated FALSE
+		myFormula ""
+		myContextType Global
+	}
+}
+
+LivingWorldContent Encounter_Space_Skirmish_Raiders_vs_Empire < uid=2AE2EC8566FE9BFA00023DCD41F52025 > : Encounter_Space_Skirmish_TEMPLATE
+{
+	myTicket < uid=2AE2EC8566FEA73500023E0D3DDEC3E0 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC8566FEA73500023E0EB8AE6BA2 >
+	{
+		myDefaultValue 1
+	}
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "New GameConditionPlayerHasWantedLevel" = "Player is not wanted"
+		LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup" = "Global activation rule Space Very Far 750-5000"
+		LivingWorldGameConditionGroup "Raider Unlock Condition" = "Raiders Unlock Condition Space"
+		GameConditionLivingWorldIsContrabandContractActive "Contraband Contract Not Active"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 60.0
+	myTags
+	{
+		LivingWorldTag Activity < uid=2AE2EC8566FEBA6B00023E5979CFB3D1 > = LWT_Activity_Space_Skrimish 2AE2EC8564B553190000A11C5C6D2FF0
+		LivingWorldTag "New LivingWorldTag" < uid=2AE2EC8566FEBA6B00023E5AF7F22A20 > = LWT_Space_Encounter 616F45966603F89700183DE358C920EF
+		LivingWorldTag "Faction Raider" < uid=2AE2EC8566FEBA4E00023E5552CE6B54 > = LWT_Faction_Space_Raiders 2AE2EC8566FEB8CD00023E2DE877D84B
+		LivingWorldTag "Faction Empire" < uid=2AE2EC8566FEBA5500023E566CDC4DED > = LWT_Faction_Space_Empire 2AE2EC8564B553190000A1284702836E
+	}
+}
+
+LivingWorldContent Encounter_Space_Skirmish_Raiders_vs_Empire_Big < uid=2AE2EC8566FE9C8300023DD9A5CAE2D5 > : Encounter_Space_Skirmish_Raiders_vs_Empire
+{
+	myTicket < uid=2AE2EC8566FE9C8300023DDAA065873E >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC8566FE9C8300023DDBAF3B0808 >
+	{
+		myDefaultValue 1
+	}
+}
+
+LivingWorldContent Encounter_Space_Skirmish_Raiders_vs_Pirate < uid=2AE2EC8566FE9C8300023DDD488F933F > : Encounter_Space_Skirmish_Raiders_vs_Empire
+{
+	myTicket < uid=2AE2EC8566FE9C8300023DDEC45FB167 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC8566FE9C8300023DDFB3539AAC >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC8566FE9C8300023DE001D70880 >
+	{
+	}
+	myTags
+	{
+		LivingWorldTag Activity < uid=2AE2EC8566FEBAE600023E5B4AB4A6BF > = LWT_Activity_Space_Skrimish 2AE2EC8564B553190000A11C5C6D2FF0
+		LivingWorldTag "New LivingWorldTag" < uid=2AE2EC8566FEBAE600023E5CC57B0047 > = LWT_Space_Encounter 616F45966603F89700183DE358C920EF
+		LivingWorldTag "Faction Raider" < uid=2AE2EC8566FEBAE600023E5DC12E7202 > = LWT_Faction_Space_Raiders 2AE2EC8566FEB8CD00023E2DE877D84B
+		LivingWorldTag "Faction Pirate" < uid=2AE2EC8566FEBAE600023E5EA7EBE32D > = LWT_Faction_Space_Pirate 2AE2EC8564B553190000A12E1282081A
+	}
+}
+
+LivingWorldContent Encounter_Space_Skirmish_Raiders_vs_Pirate_Big < uid=2AE2EC8566FE9C8300023DE135F575EE > : Encounter_Space_Skirmish_Raiders_vs_Pirate
+{
+	myTicket < uid=2AE2EC8566FE9C8300023DE20C182EBE >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC8566FE9C8300023DE323B1536B >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC8566FE9C8300023DE49A9BCC95 >
+	{
+	}
+}
+
+LivingWorldContent Encounter_Space_Skirmish_Raiders_vs_Ashiga < uid=2AE2EC8566FE9C8300023DE5045F802D > : Encounter_Space_Skirmish_Raiders_vs_Empire
+{
+	myTicket < uid=2AE2EC8566FE9C8300023DE6C9FF33C6 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC8566FE9C8300023DE7607C0B99 >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC8566FE9C8300023DE824C79C67 >
+	{
+	}
+	myTags
+	{
+		LivingWorldTag Activity < uid=2AE2EC8566FEBAE600023E5F48852831 > = LWT_Activity_Space_Skrimish 2AE2EC8564B553190000A11C5C6D2FF0
+		LivingWorldTag "New LivingWorldTag" < uid=2AE2EC8566FEBAE600023E6055E1605E > = LWT_Space_Encounter 616F45966603F89700183DE358C920EF
+		LivingWorldTag "Faction Raider" < uid=2AE2EC8566FEBAE600023E61E7EDB682 > = LWT_Faction_Space_Raiders 2AE2EC8566FEB8CD00023E2DE877D84B
+		LivingWorldTag "Faction Ashiga" < uid=2AE2EC8566FEBAE600023E621FE7D3D9 > = LWT_Faction_Space_Ashiga 2AE2EC8564B553190000A122D920F92B
+	}
+}
+
+LivingWorldContent Encounter_Space_Skirmish_Raiders_vs_Ashiga_Big < uid=2AE2EC8566FE9C8300023DE9DC612E3A > : Encounter_Space_Skirmish_Raiders_vs_Ashiga
+{
+	myTicket < uid=2AE2EC8566FE9C8300023DEAEC305773 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC8566FE9C8300023DEB6C90A9AF >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC8566FE9C8300023DEC74AC24FE >
+	{
+	}
+}
+
+LivingWorldContent Encounter_Space_Skirmish_Raiders_vs_CrimsonDawn < uid=2AE2EC8566FE9C8300023DEDA169C4AF > : Encounter_Space_Skirmish_Raiders_vs_Empire
+{
+	myTicket < uid=2AE2EC8566FE9C8300023DEECF8C943E >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC8566FE9C8300023DEF26B881B1 >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC8566FE9C8300023DF03326DA4C >
+	{
+	}
+	myTags
+	{
+		LivingWorldTag Activity < uid=2AE2EC8566FEBAE600023E637E42B4B4 > = LWT_Activity_Space_Skrimish 2AE2EC8564B553190000A11C5C6D2FF0
+		LivingWorldTag "New LivingWorldTag" < uid=2AE2EC8566FEBAE600023E6420FFC8B2 > = LWT_Space_Encounter 616F45966603F89700183DE358C920EF
+		LivingWorldTag "Faction Raider" < uid=2AE2EC8566FEBAE600023E65AA2C3389 > = LWT_Faction_Space_Raiders 2AE2EC8566FEB8CD00023E2DE877D84B
+		LivingWorldTag "Faction Crimson Dawn" < uid=2AE2EC8566FEBAE600023E668B74440E > = LWT_Faction_Space_CrimsonDawn 2AE2EC8564B553190000A1253A2069C1
+	}
+}
+
+LivingWorldContent Encounter_Space_Skirmish_Raiders_vs_CrimsonDawn_Big < uid=2AE2EC8566FE9C8300023DF1DC852C3B > : Encounter_Space_Skirmish_Raiders_vs_CrimsonDawn
+{
+	myTicket < uid=2AE2EC8566FE9C8300023DF277037EF1 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC8566FE9C8300023DF39554CCA9 >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC8566FE9C8300023DF490A590F5 >
+	{
+	}
+}
+
+LivingWorldContent Encounter_Space_Skirmish_Raiders_vs_Hutt < uid=2AE2EC8566FE9C8300023DF565B4922E > : Encounter_Space_Skirmish_Raiders_vs_Empire
+{
+	myTicket < uid=2AE2EC8566FE9C8300023DF6092C9C9F >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC8566FE9C8300023DF73A2E2897 >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC8566FE9C8300023DF886B0351F >
+	{
+	}
+	myTags
+	{
+		LivingWorldTag Activity < uid=2AE2EC8566FEBAE600023E67E0F8A6C0 > = LWT_Activity_Space_Skrimish 2AE2EC8564B553190000A11C5C6D2FF0
+		LivingWorldTag "New LivingWorldTag" < uid=2AE2EC8566FEBAE600023E683E9C5835 > = LWT_Space_Encounter 616F45966603F89700183DE358C920EF
+		LivingWorldTag "Faction Raider" < uid=2AE2EC8566FEBAE600023E69F5E79414 > = LWT_Faction_Space_Raiders 2AE2EC8566FEB8CD00023E2DE877D84B
+		LivingWorldTag "Faction Hutt" < uid=2AE2EC8566FEBAE600023E6ADC9AEA92 > = LWT_Faction_Space_Hutt 2AE2EC8564B553190000A12BCF888117
+	}
+}
+
+LivingWorldContent Encounter_Space_Skirmish_Raiders_vs_Hutt_Big < uid=2AE2EC8566FE9C8300023DF94754E205 > : Encounter_Space_Skirmish_Raiders_vs_Hutt
+{
+	myTicket < uid=2AE2EC8566FE9C8300023DFA2AF14614 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC8566FE9C8300023DFB61D0B94D >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC8566FE9C8300023DFC66CF60A5 >
+	{
+	}
+}
+
+LivingWorldContent Encounter_Space_Skirmish_Raiders_vs_Pyke < uid=2AE2EC8566FE9C8300023DFD866BE2B3 > : Encounter_Space_Skirmish_Raiders_vs_Empire
+{
+	myTicket < uid=2AE2EC8566FE9C8300023DFE260AD58C >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC8566FE9C8300023DFFC2F41AD1 >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC8566FE9C8300023E00DF238062 >
+	{
+	}
+	myTags
+	{
+		LivingWorldTag Activity < uid=2AE2EC8566FEBAE600023E6BF9719967 > = LWT_Activity_Space_Skrimish 2AE2EC8564B553190000A11C5C6D2FF0
+		LivingWorldTag "New LivingWorldTag" < uid=2AE2EC8566FEBAE600023E6C25F02B8C > = LWT_Space_Encounter 616F45966603F89700183DE358C920EF
+		LivingWorldTag "Faction Raider" < uid=2AE2EC8566FEBAE600023E6DEC7E5C12 > = LWT_Faction_Space_Raiders 2AE2EC8566FEB8CD00023E2DE877D84B
+		LivingWorldTag "Faction Pyke" < uid=2AE2EC8566FEBAE600023E6EE7BBF575 > = LWT_Faction_Space_Pyke 2AE2EC8564B553190000A1317F531D5E
+	}
+}
+
+LivingWorldContent Encounter_Space_Skirmish_Raiders_vs_Pyke_Big < uid=2AE2EC8566FE9C8300023E0106849F4F > : Encounter_Space_Skirmish_Raiders_vs_Pyke
+{
+	myTicket < uid=2AE2EC8566FE9C8300023E0276528CA6 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC8566FE9C8300023E031412322F >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC8566FE9C8300023E04D7F1805F >
+	{
+	}
+}
+

@@ -1,0 +1,46 @@
+include "helix/game system data/fruit/ai/capinteraction.fruit"
+include "helix/game system data/juice/rbtags/agent_dlc.mrbtagstags"
+include "helix/game system data/juice/rbtags/purpose.mrbtagstags"
+
+CAPInteraction DLC2_Relax_None_PirateEating_Unarmed_H2010 < uid=EBE060C267474ACB000A54C17B8D010A >
+{
+	mySequence helix/sequence/CAP_H2010_HUM_pirate_eating_standing_M_V01.msequence
+	myCAPScript helix/scripts/scr_cap_base_loop_and_duration.mscript
+	myPriority Medium
+	myPurposeTag < uid=EBE060C267474C33000A54C35E6EB704 > = Agent_Purpose_RelaxTag 16DEADE6620AE5A60000212F1C0FF247
+	myAgentRequirementsPerSlot
+	{
+		RBTagsReferenceListAgent Content_DLC2
+		{
+			RBTagsTag "New RBTagsTag" < uid=EBE060C267474B48000A54C2C3773637 > = Agent_Content_DLC2 EBE060C26745DACE00068C9362915709
+		}
+	}
+	myAgentInteractionPointCooldown 5.0
+	myInteractionPointCooldown 10.0
+	myNPCInteractionCooldown 0.0
+	myPreferedDuration 30.0
+}
+
+CAPInteraction DLC2_Relax_Seat45cm_Sitting_Pistol_H2011 < uid=EBE060C267474CBF000A54C435626D06 > : DLC2_Relax_None_PirateEating_Unarmed_H2010
+{
+	mySequence helix/sequence/CAP_H2011_HUM_pirate_chilling_sit_PI_M_V01.msequence
+	myMaxOutOfNavMeshNavigationDistance 0.5
+}
+
+CAPInteraction DLC2_Relax_None_PirateDrinking_Unarmed_H2009_M < uid=EBE060C267474DCA000A54C526F4BFF1 > : DLC2_Relax_None_PirateEating_Unarmed_H2010
+{
+	mySequence helix/sequence/CAP_H2009_HUM_pirate_drinking_bottle_M_V01.msequence
+}
+
+CAPInteraction DLC2_Relax_Bar110cm_PirateDrinking_Unarmed_H2012_M < uid=EBE060C267474ED1000A57722EB3E147 > : DLC2_Relax_None_PirateEating_Unarmed_H2010
+{
+	mySequence helix/sequence/CAP_H2012_HUM_pirate_stand_table_M_V01.msequence
+	myMaxOutOfNavMeshNavigationDistance 0.5
+}
+
+CAPInteraction DLC2_Relax_Bar110cm_PirateDrunk_Unarmed_H2013_F < uid=EBE060C267474F7C000A58D354543C94 > : DLC2_Relax_None_PirateEating_Unarmed_H2010
+{
+	mySequence helix/sequence/CAP_H2013_HUM_pirate_drunk_bar_F_V01.msequence
+	myMaxOutOfNavMeshNavigationDistance 0.5
+}
+

@@ -1,0 +1,427 @@
+include "helix/game system data/fruit/melee/melee.fruit"
+include "helix/game system data/juice/camera/modifiers/melee_charge_fovmodifier.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/melee_charge_shake.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/player_melee_punch_miss.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/sway_melee.mcameramodifier"
+include "helix/game system data/juice/melee/kay_meleemove_airpunch.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_blockedbylowcover.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_has_landed.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_height_above.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_in_air.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_initialize.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_initialize_notarget.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_initialize_notarget_sprint.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_initialize_slide.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_initialize_slide_wildlife.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_initialize_sprint_wildlife.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_initializesprint.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_knockout.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_knockout_initialize.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_knockout_initialize_slide.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_knockout_initialize_sprint.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_knockout_landed.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_knockout_normal_far.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_knockout_slide.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_knockout_sprint_normal.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_knockout_wildlife.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_landed_wildlife.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_lowatk_initial_ko.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_lowatk_initial_ko_landed.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_lowatk_initial_ko_slide.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_lowatk_initial_ko_sprint.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_lowatk_initial_landed.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_lowatk_ko_landed.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_lowatk_ko_slide.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_normal_attack_far.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_normal_initial_ko_landed.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_normal_initial_landed.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_notarget.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_notarget_has_landed.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_notarget_in_air.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_notarget_slide.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_notarget_sprint.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_perfectpunch.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_punch.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_punch2.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_slide.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_slopedown.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_sprint.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_target_in_air.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_wildlife_initialize.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_wildlife_knockout_sprint.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_wildlife_normal.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_wildlife_slide.mmeleemove"
+include "helix/game system data/juice/melee/kay_meleemove_wildlife_sprint.mmeleemove"
+include "helix/game system data/juice/playermovementconfig/player_movement_melee.mplayermovementconfig"
+include "helix/game system data/juice/playermovementconfig/player_movement_melee_approaching.mplayermovementconfig"
+include "helix/game system data/juice/playermovementconfig/player_movement_melee_execution.mplayermovementconfig"
+include "helix/game system data/juice/playerrestrictions/melee_approaching.mplayerrestriction"
+include "helix/game system data/juice/playerrestrictions/melee_execution.mplayerrestriction"
+include "helix/game system data/juice/playerrestrictions/melee_uninterruptible.mplayerrestriction"
+include "helix/game system data/juice/playerrestrictions/meleecontext.mplayerrestriction"
+include "helix/game system data/juice/playerrestrictions/meleemove.mplayerrestriction"
+
+MeleeConfig kay_melee_config < uid=544DB90861A0D17300001E4042BF4A29 >
+{
+	myDetectionAimDirectionWeight 0.5
+	myDefaultDetectionConfig
+	{
+		myFrontArea
+		{
+			myDistance 4.0
+			myAngle 120.0
+		}
+		myInputArea
+		{
+			myDistance 4.0
+		}
+		myCameraArea
+		{
+			myDistance 4.0
+			myAngle 80.0
+		}
+		myPassiveArea
+		{
+			myDistance 3.3
+			myAngle 360.0
+		}
+		myKeepTargetArea
+		{
+			myDistance 3.0
+			myAngle 45.0
+		}
+	}
+	myCustomDetectionConfigs
+	{
+		MeleeDetectionCustomConfig Jog
+		{
+			myConfig
+			{
+				myFrontArea
+				{
+					myDistance 5.0
+					myAngle 120.0
+				}
+				myInputArea
+				{
+					myDistance 5.0
+				}
+				myCameraArea
+				{
+					myDistance 5.0
+					myAngle 80.0
+				}
+				myPassiveArea
+				{
+					myDistance 4.0
+					myAngle 360.0
+				}
+				myKeepTargetArea
+				{
+					myDistance 3.0
+					myAngle 45.0
+				}
+			}
+			myCondition
+			{
+				GameConditionMeleeGroup "Is Jogging"
+				{
+					myConditions
+					{
+						GameConditionMeleeAttackerSpeed "Faster then walk"
+						{
+							myTargetSpeed 1.0
+						}
+						GameConditionMeleeAttackerIsInMovementState "Not Sprint"
+						{
+							myIsNegated TRUE
+							myState Sprint
+						}
+					}
+				}
+			}
+		}
+		MeleeDetectionCustomConfig Sprint
+		{
+			myConfig
+			{
+				myFrontArea
+				{
+					myDistance 5.0
+					myAngle 120.0
+				}
+				myInputArea
+				{
+					myDistance 10.0
+					myAngle 60.0
+				}
+				myCameraArea
+				{
+					myDistance 5.0
+					myAngle 80.0
+				}
+				myPassiveArea
+				{
+					myDistance 3.0
+					myAngle 360.0
+				}
+				myKeepTargetArea
+				{
+					myDistance 3.0
+					myAngle 45.0
+				}
+			}
+			myCondition
+			{
+				GameConditionMeleeGroup "Is moving fast"
+				{
+					myOperator Or
+					myConditions
+					{
+						GameConditionMeleeAttackerIsInMovementState Sprinting
+						{
+							myState Sprint
+						}
+						GameConditionMeleeAttackerSpeed Fast
+						{
+							myTargetSpeed 3.0
+						}
+					}
+				}
+			}
+		}
+		MeleeDetectionCustomConfig Powerslide
+		{
+			myConfig
+			{
+				myFrontArea
+				{
+					myDistance 7.0
+					myAngle 120.0
+				}
+				myInputArea
+				{
+					myDistance 10.0
+					myAngle 60.0
+				}
+				myCameraArea
+				{
+					myDistance 5.0
+					myAngle 80.0
+				}
+				myPassiveArea
+				{
+					myDistance 4.0
+					myAngle 360.0
+				}
+				myKeepTargetArea
+				{
+					myDistance 3.0
+					myAngle 45.0
+				}
+			}
+			myCondition
+			{
+				GameConditionMeleeGroup "Is Powersliding"
+				{
+					myOperator Or
+					myConditions
+					{
+						GameConditionMeleeAttackerIsInMovementState "In Powerslide"
+						{
+							myState PowerSlide
+						}
+						GameConditionMeleeAttackerIsInMovementState "Exiting Powerslide"
+						{
+							myState ExitPowerslide
+						}
+					}
+				}
+			}
+		}
+	}
+	myLastMoveGraceTime 2.0
+	myTargetPointDistance 1.6
+	myEffectivePunchDistance 3.0
+	myApproachingPersecutionMaxTime 0.5
+	myApproachingRunAwayTargetSpeed 1.0
+	myApproachingPathDistanceTolerance 3.0
+	myExecutionTurnRate 540.0
+	myFistRadius 0.1
+	myOnlyTargetExtraFistRadius "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.20434314 0.0030903923, -0.10000002 0, }, outTangents = { 0.2 0, 0.14999998 0, 0 0, }, properties = { 275, 5395, 4371, }, values = { 0 0, 0.85000002 0, 1 0.89999998, }, }, numKeys = 3, }"
+	mySpecializedFistRadius 0.2
+	myOnlyTargetExtraSpecializedFistRadius "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.23333333 0, -0.10000002 0, }, outTangents = { 0.2 0, 0.10000001 0.26666668, 0 0, }, properties = { 275, 4299, 3347, }, values = { 0 0, 0.69999999 0, 1 0.80000001, }, }, numKeys = 3, }"
+	myAdrenalineCoolingOverTime 0.5
+	myAdrenalineMoveDurationMultiplier 0.2
+	myGenericHitImpactEffects
+	{
+		myDefaultEffect helix/particles/vfx_des_hitfx_generic_melee_01.mparticles
+	}
+	myGenericBlockedImpactEffects
+	{
+		myDefaultEffect ""
+	}
+	myForwardImpactDirectionAngle 20.0
+	myLateralImpactAngle 65.0
+	myMeleeCamera
+	{
+		myLookAtHorizontalOffsetAngle 5.0
+		myLookAtTransition
+		{
+			myDuration 0.8
+			myCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.44710323 -0.011853434, }, outTangents = { 0.43954659 -0.0010775924, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+		}
+		mySwayModifier < uid=A207755D64E4804B000174F99BC28BFE > = sway_melee A207755D64E350B9000172F651ECFF19
+	}
+	myMeleeContext
+	{
+		myGraceTime 5.0
+		myExtendedLookAt TRUE
+		myAreaRadius 7.5
+	}
+	myMeleeCharge
+	{
+		myEnabled FALSE
+		myChargeTime 0.5
+		myFOVCameraModifier < uid=A207755D6443A32B0000900E48863D84 > = melee_charge_FoVModifier A207755D64438D870001182A02BECA12
+		myShakeCameraModifier < uid=A207755D6443A32B0000900F3C432874 > = melee_charge_shake A207755D64438D960001182BF9189670
+	}
+	myMeleeMovement
+	{
+		myMovementMeleeContextConfig < uid=A207755D6285E96600003208614F9FC8 > = player_movement_melee A207755D6285E8DA000032030D90310D
+		myMovementApproachingConfig < uid=A207755D65AF95770000DE2C2FBB8D29 > = player_movement_melee_approaching A207755D65AF951D0000DE2726046B28
+		myMovementExecutionConfig < uid=A207755D65AF95770000DE2D84A13B06 > = player_movement_melee_execution A207755D669698C7000257ED399C0CE3
+	}
+	myMeleeMoveRestrictions < uid=A207755D626259B6000035D33493394F > = meleemove A207755D62625997000035D1E29CA231
+	myMeleeContextRestrictions < uid=A207755D626259B6000035D413F3EED7 > = meleecontext A207755D626259A2000035D232245C4A
+	myMeleeApproachingRestrictions < uid=A207755D652E3BD700005F8705C3AC43 > = melee_approaching A207755D652A34D8000057059945A7BF
+	myMeleeExecutionRestrictions < uid=A207755D652E3BD700005F88E5D93FAD > = melee_execution A207755D652A34CD0000531A248B7DCA
+	myMeleeUninterruptibleExecutionRestrictions < uid=A207755D652E3BD700005F8933AAFE7B > = melee_uninterruptible A207755D652A34E80000624C683AF7DC
+	myWeapons
+	{
+		MeleeWeapon RightFist
+		{
+			myBoneAlias MeleeRightFist
+			myAudio
+			{
+				myMeleeHitAudioEvent
+				{
+					myGuid 4555C8F021170FE7D089F6D4DC8F13B6
+				}
+				myMeleeBlockAudioEvent
+				{
+					myGuid 48986D6F4503A919C94B19DD95153191
+				}
+			}
+			myHitRumble 38429106653A7D950002447C8E257524
+			myHitBlockedRumble 38429106653FCF840006B056810EC2D4
+			myStartExecutionRumble 38429106653A77A000030383332D2ADA
+		}
+		MeleeWeapon LeftFist
+		{
+			myBoneAlias MeleeLeftFist
+			myAnimationChannelEventType Melee_LeftFist
+			myAudio
+			{
+				myMeleeHitAudioEvent
+				{
+					myGuid 4555C8F021170FE7D089F6D4DC8F13B6
+				}
+				myMeleeBlockAudioEvent
+				{
+					myGuid 48986D6F4503A919C94B19DD95153191
+				}
+			}
+			myHitRumble 38429106653A7EB10002447F725B8D8F
+			myHitBlockedRumble 38429106653FD11A0006BDD97448B11B
+			myStartExecutionRumble 38429106653A779E000303828C3085E6
+		}
+		MeleeWeapon RightFoot
+		{
+			myBoneAlias MeleeRightFoot
+			myAnimationChannelEventType Melee_RightFoot
+			myAudio
+			{
+				myMeleeHitAudioEvent
+				{
+					myGuid 42C2B12CD7EA34BA9A6CC5C75CFEEAA2
+				}
+				myMeleeBlockAudioEvent
+				{
+					myGuid 48986D6F4503A919C94B19DD95153191
+				}
+			}
+			myHitRumble 38429106653B762B00025E0099262FB5
+			myHitBlockedRumble 38429106653FCF9F0006B0580DB80C44
+			myStartExecutionRumble 38429106653B75C100025DFED0A01F29
+		}
+		MeleeWeapon LeftFoot
+		{
+			myBoneAlias MeleeLeftFoot
+			myAnimationChannelEventType Melee_LeftFoot
+			myAudio
+			{
+				myMeleeHitAudioEvent
+				{
+					myGuid 42C2B12CD7EA34BA9A6CC5C75CFEEAA2
+				}
+			}
+			myHitRumble 38429106653B763900025E01A872CB92
+			myHitBlockedRumble 38429106653FCF920006B057864F8207
+			myStartExecutionRumble 38429106653B761500025DFF34B14013
+		}
+	}
+	myMoves
+	{
+		MeleeMove "In Air" < uid=5CFE16D565C2306900650A158A0E0218 > = kay_meleemove_in_air 5CFE16D565C2319A0065663DF3C57B01
+		MeleeMove "No Target Base" < uid=5CFE16D565AA7FD8001AF6E3331DC71F > = kay_meleemove_notarget_base 4AA8064D6437C1BD0007ACA1E99275C4
+		MeleeMove "No Target Sprint" < uid=5CFE16D565AA7FEA001AFF4550654CF4 > = kay_meleemove_notarget_sprint 5CFE16D564DDC19D0002AE917CEFDA33
+		MeleeMove "No Target Slide" < uid=5CFE16D565AA803B001B225F3C6286E1 > = kay_meleemove_notarget_slide 5CFE16D56526633F001F8A3092E1F491
+		MeleeMove "No Target Landed" < uid=5CFE16D565AE5F20001A4F0DA7AEA95C > = kay_meleemove_notarget_landed 5CFE16D56527AED2001C9F5FDCC3D3CF
+		MeleeMove "LowAtk Normal" < uid=5CFE16D565AA8A89001ECC2DEAABD421 > = kay_meleemove_lowAtk_base 5CFE16D5656DDDCE0012D0ADD4342031
+		MeleeMove "LowAtk KO" < uid=5CFE16D565AA8A9B001ED5D5F905DC91 > = kay_meleemove_lowAtk_KO 5CFE16D565AA4B17000F1628E86F15F4
+		MeleeMove "LowAtk Initial" < uid=5CFE16D565B20BA2000980DFE792D31C > = kay_meleemove_lowAtk_initial 5CFE16D565AE220F00034649153E3B75
+		MeleeMove "Nomal Base" < uid=5CFE16D565AA83D9001C3C51624089AC > = kay_meleemove_normal_base A207755D62444A4300002BA4B6C416EA
+		MeleeMove "Normal Sprint" < uid=5CFE16D565AA850D001C8A83586980C3 > = kay_meleemove_normal_sprint A207755D6242FCF100003215699A8BA2
+		MeleeMove "Normal Slide" < uid=5CFE16D565AA89A6001E84F6DBB134DC > = kay_meleemove_normal_slide A207755D624473F000002BA236A2D55B
+		MeleeMove "Normal Landed" < uid=5CFE16D565AE5F28001A534D61D278D3 > = kay_meleemove_normal_landed 5CFE16D565293730000EC08649E16A79
+		MeleeMove "Normal KO" < uid=5CFE16D565AA84DA001C727A2B0DA56F > = kay_meleemove_normal_KO 5CFE16D564E8540B0005479AC2A87C9B
+		MeleeMove "Normal KO Sprint" < uid=5CFE16D565AA8EAB00203E856870F724 > = kay_meleemove_normal_KO_sprint 5CFE16D564E8553D00060411234A0B09
+		MeleeMove "Normal KO Slide" < uid=5CFE16D565AA8EA300203CAFE3782C1A > = kay_meleemove_normal_KO_slide 5CFE16D5652662D3001F4F9F3D88F1D4
+		MeleeMove "Normal KO Landed" < uid=5CFE16D565AE7BCC0023E68446F083C4 > = kay_meleemove_normal_KO_landed 5CFE16D565AE7C2E00240C656F42C330
+		MeleeMove "Normal Initial" < uid=5CFE16D565B0B896000BDD045A441623 > = kay_meleemove_normal_initial 4AA8064D628B6ED0000031EAF22FFCF3
+		MeleeMove "Normal Initial Sprint" < uid=5CFE16D565B206C60007B2CFEB222662 > = kay_meleemove_normal_initial_sprint 5CFE16D564C7AB88002D8CB18E1400A4
+		MeleeMove "Normal Initial Slide" < uid=5CFE16D565B20E8B000AA2AF9E98EAD8 > = kay_meleemove_normal_initial_slide 5CFE16D5652662B5001F428D8568733E
+		MeleeMove "Normal Initial Landed" < uid=5CFE16D565B226D300108A204E972514 > = kay_meleemove_normal_initial_landed 5CFE16D565B226CD001088EF8365A46C
+		MeleeMove "Normal Initial KO" < uid=5CFE16D565B207000007CC6BA058D47E > = kay_meleemove_normal_initial_KO 5CFE16D564E8557F00062B87A6628EBB
+		MeleeMove "Normal Initial KO Slide" < uid=5CFE16D565B2077800080222490D728F > = kay_meleemove_normal_initial_KO_slide 5CFE16D5652662C4001F49B59715CB6D
+		MeleeMove "Normal Initial KO Sprint" < uid=5CFE16D565B2070C0007D2126D3B3DED > = kay_meleemove_normal_initial_KO_sprint 5CFE16D564E8559D00063C6A0C41FE8C
+		MeleeMove "Normal Initial KO Landed" < uid=5CFE16D565B2152C0013169EF209D9CE > = kay_meleemove_normal_initial_KO_landed 5CFE16D565B215BE001353534F92CFC0
+	}
+	myGameScript "helix/game scripts/gs_player_meleecontext.mgamescript"
+	myPerfectMoveDamageMultiplier 1.0
+	myIsTargetWeakCondition
+	{
+		GameConditionMeleeGroup Or
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionMeleeTargetHasStatusEffect BlindedByPlayerPet
+				{
+					myStatusEffect BlindedByPlayerPet
+				}
+				GameConditionTargetIsDazed Dazed
+				{
+				}
+				GameConditionMeleeTargetHasStatusEffect Stunned
+				{
+					myStatusEffect Stunned
+				}
+			}
+		}
+	}
+	myMovementInputDeadZone 0.15
+	myUserCancelInputTimeContext 1.0
+}
+

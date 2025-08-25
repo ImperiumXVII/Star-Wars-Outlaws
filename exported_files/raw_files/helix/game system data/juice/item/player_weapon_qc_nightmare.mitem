@@ -1,0 +1,27 @@
+include "helix/game system data/juice/equipment/aimconfig/test_aimconfig_lock.maimconfig"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_qc_nightmare.mweaponfiremode"
+include "helix/game system data/juice/item/player_weapon_blaster_template.mitem"
+
+WeaponItem player_weapon_qc_nightmare < uid=A207755D627535CC000038F5771E3CA7 > : Player_Weapon_Blaster_Template
+{
+	myAimConfig < uid=A207755D6275364D0000397124B59C30 > = test_aimconfig_lock A207755D61F1680800001B1C37FB97F5
+	myGraphObject "helix/graph objects/weapon/object_weapon_kays_blaster.mgraphobject"
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=A207755D62C3E95F0000376D70666F1A > = player_firemode_qc_nightmare_main A207755D62C3E8BD00003766805BAB9C
+		}
+		WeaponFireModeSlot Secondary
+		{
+			mySlotTag Secondary
+			myFireMode < uid=A207755D62C3E95F0000376E380B4897 > = player_firemode_qc_nightmare_secondary A207755D62C3E8500000376281A51FA9
+		}
+		WeaponFireModeSlot TrickShot
+		{
+			mySlotTag TrickShot
+			myFireMode < uid=A207755D62C3E95F0000376F8B9F1D67 > = player_firemode_blaster_trickshot_default A207755D62C2F37200003756781302DE
+		}
+	}
+}
+

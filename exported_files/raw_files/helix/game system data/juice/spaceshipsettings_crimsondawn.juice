@@ -1,0 +1,545 @@
+include "helix/game system data/fruit/ai/spaceshipsettings.fruit"
+include "helix/game system data/juice/ai/npcshootpatterns.mnpcshootpattern"
+include "helix/game system data/juice/ai/spaceshipavoidanceprofiles.mspaceshipavoidanceprofile"
+include "helix/game system data/juice/ai/spaceshipcombatprofiles.mspaceshipcombatprofile"
+include "helix/game system data/juice/ai/spaceshipformationprofiles.mspaceshipformationprofile"
+include "helix/game system data/juice/ai/spaceshipspawnprofiles.mspaceshipspawnprofile"
+include "helix/game system data/juice/ai/spaceshipspeedprofiles.mspaceshipspeedprofile"
+include "helix/game system data/juice/ai/spaceshiptrajectories.mspaceshiptrajectoryprofile"
+include "helix/game system data/juice/spaceshipsettings_ashigabase.juice"
+include "helix/game system data/juice/spaceshipsettings_crimsondawnbase.juice"
+
+SpaceshipSetting s_FangCrimsonDawn < uid=6AF0BA0464EC65E20004592AA6C61D02 > : s_Fang
+{
+	mySpaceshipType FangCrimsonDawn
+	myPitchSpeed 65.0
+	myYawSpeed 65.0
+	myAISpaceshipControlParameters
+	{
+		mySpaceshipBehaviorParameters = b_FangCrimsonDawn 00000000000000000000000000000000
+		myEvasiveManeuverParams
+		{
+			myEvasiveCooldown 10.0
+			myMaxTimeBetweenProjectileHits 0.5
+			mySustainedDamageRequiredDuration 1.5
+			myReturnTrueDuration 0.3
+		}
+	}
+	myTrajectoryProfile < uid=7EE6463464F1B42900031A50E1B6A4FF > = Fang_TrajectoryProfile_CrimsonDawn 7EE6463464E7208D000ED6DAD9D49EEF
+	myIonCollectorData
+	{
+		myMaxCharge 25.0
+		myDisabledDuration "10.0 * TrailblazerIonDisabledDurationModifier"
+		myTimeUntilRecovery 10.0
+		myRecoveryRate 5.0
+		myResistanceDuration 3.0
+		myResistanceValue 0.75
+		mySlowDownPercentage 0.5
+		myBrakingPowerToTime "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { -0 -0, -0.602639 -0.038683, }, outTangents = { 0.307335 0.942354, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+	}
+	myShieldData
+	{
+		EnergyShieldData Shield
+		{
+			myMaxValue 10
+			myRegenerationCooldown 7
+			myRegenerationRate 2
+			myCanRegenerateWhenDepleted TRUE
+			myShieldInvulnerabilityDuration 0
+		}
+	}
+	myDeathSequenceSettings
+	{
+		myEndExplosionFilename ""
+		myOnExplosionGameScript ""
+		myCollisionDamageThreshold 10.0
+		myDeathSequenceDuration 5.0
+		myAfterDeathSequenceDelay 3.0
+		myShouldTumble TRUE
+		myTumbleProbability 0.6
+		myTumbleMaxDuration 2.5
+		myTumblingType LoseControl
+		myShouldTargetColliders TRUE
+		myTumbleFindTargetRadius 1500.0
+		myTumbleFindTargetAngle 45.0
+		myTumbleFallingCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -500 0, }, outTangents = { 500 0, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 2000 -2000, }, }, numKeys = 2, }"
+	}
+	mySpaceshipFormationProfile < uid=7EE6463464F1B42900031A5132FFA944 > = Fang_FormationProfile_CrimsonDawn 7EE6463464E712CF0009981ECE652C70
+}
+
+SpaceshipSetting s_DurosCrimsonDawn < uid=6AF0BA0464EC65E20004592C12698981 > : s_Duros
+{
+	mySpaceshipType DurosCrimsonDawn
+	myPitchSpeed 85.0
+	myYawSpeed 85.0
+	myAISpaceshipControlParameters
+	{
+		mySpaceshipBehaviorParameters = b_DurosCrimsonDawn 00000000000000000000000000000000
+		myEvasiveManeuverParams
+		{
+			myEvasiveCooldown 10.0
+			myMaxTimeBetweenProjectileHits 0.5
+			mySustainedDamageRequiredDuration 1.5
+			myReturnTrueDuration 0.3
+		}
+	}
+	myTrajectoryProfile < uid=7EE6463464F1B41000031A4EF8647FEB > = Duros_TrajectoryProfile_CrimsonDawn 7EE6463464EDA13700029ACE5DD0646B
+	myIonCollectorData
+	{
+		myMaxCharge 25.0
+		myDisabledDuration "10.0 * TrailblazerIonDisabledDurationModifier"
+		myTimeUntilRecovery 10.0
+		myRecoveryRate 5.0
+		myResistanceDuration 3.0
+		myResistanceValue 0.75
+		mySlowDownPercentage 0.5
+		myBrakingPowerToTime "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { -0 -0, -0.602639 -0.038683, }, outTangents = { 0.307335 0.942354, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+	}
+	myShieldData
+	{
+		EnergyShieldData Shield
+		{
+			myMaxValue 20
+			myRegenerationCooldown 7
+			myRegenerationRate 2
+			myCanRegenerateWhenDepleted TRUE
+			myShieldInvulnerabilityDuration 0
+		}
+	}
+	myDeathSequenceSettings
+	{
+		myEndExplosionFilename ""
+		myOnExplosionGameScript ""
+		myCollisionDamageThreshold 1.0
+		myDeathSequenceDuration 5.0
+		myAfterDeathSequenceDelay 3.0
+		myShouldTumble TRUE
+		myTumbleProbability 0.6
+		myTumbleMaxDuration 2.5
+		myTumblingType LoseControl
+		myShouldTargetColliders TRUE
+		myTumbleFindTargetRadius 1500.0
+		myTumbleFindTargetAngle 45.0
+		myTumbleFallingCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -500 0, }, outTangents = { 500 0, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 2000 -2000, }, }, numKeys = 2, }"
+	}
+	mySpaceshipFormationProfile < uid=7EE6463464F1B41000031A4F8C9AC32F > = Duros_FormationProfile_CrimsonDawn 7EE6463464ECA9F900070D246E0B5644
+}
+
+SpaceshipSetting s_VandorCrimsonDawn < uid=6AF0BA0464EC65E20004592E99548C6F > : s_Vandor
+{
+	mySpaceshipType VandorCrimsonDawn
+	myAISpaceshipControlParameters
+	{
+		mySpaceshipBehaviorParameters = b_VandorCrimsonDawn 00000000000000000000000000000000
+		myEvasiveManeuverParams
+		{
+			myEvasiveCooldown 25.0
+			myMaxTimeBetweenProjectileHits 1.0
+			mySustainedDamageRequiredDuration 4.0
+			myReturnTrueDuration 0.3
+		}
+	}
+	myIonCollectorData
+	{
+		myMaxCharge 50.0
+		myDisabledDuration "10.0 * TrailblazerIonDisabledDurationModifier"
+		myTimeUntilRecovery 10.0
+		myRecoveryRate 5.0
+		myResistanceDuration 3.0
+		myResistanceValue 0.75
+		mySlowDownPercentage 0.5
+		myBrakingPowerToTime "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { -0 -0, -0.602639 -0.038683, }, outTangents = { 0.307335 0.942354, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+	}
+	myShieldData
+	{
+		EnergyShieldData ShieldData
+		{
+			myMaxValue 100
+			myRegenerationCooldown 7
+			myRegenerationRate 6
+			myCanRegenerateWhenDepleted TRUE
+			myShieldInvulnerabilityDuration 0
+		}
+	}
+	myDeathSequenceSettings
+	{
+		myEndExplosionFilename ""
+		myOnExplosionGameScript ""
+		myCollisionDamageThreshold 10.0
+		myDeathSequenceDuration 5.0
+		myAfterDeathSequenceDelay 3.0
+		myShouldTumble TRUE
+		myTumbleProbability 1.0
+		myTumbleMaxDuration 3.0
+		myTumblingType Plunge
+		myShouldTargetColliders FALSE
+		myTumbleFindTargetRadius 1500.0
+		myTumbleFindTargetAngle 45.0
+		myTumbleFallingCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -500 0, }, outTangents = { 500 0, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 2000 -2000, }, }, numKeys = 2, }"
+	}
+	mySpaceshipFormationProfile < uid=05B06D7D653A60F00005C26F9936B7CE > = Vandor_FormationProfile 05B06D7D653A60280005C26E0957054B
+}
+
+SpaceshipSetting s_VWingCrimsonDawn < uid=6AF0BA0464EC65E200045930201EC68D > : s_VWing
+{
+	mySpaceshipType VWingCrimsonDawn
+	myAISpaceshipControlParameters
+	{
+		mySpaceshipBehaviorParameters = b_VWingCrimsonDawn 00000000000000000000000000000000
+		myEvasiveManeuverParams
+		{
+			myEvasiveCooldown 10.0
+			myMaxTimeBetweenProjectileHits 0.5
+			mySustainedDamageRequiredDuration 1.5
+			myReturnTrueDuration 0.3
+		}
+	}
+	myIonCollectorData
+	{
+		myMaxCharge 50.0
+		myDisabledDuration "10.0 * TrailblazerIonDisabledDurationModifier"
+		myTimeUntilRecovery 10.0
+		myRecoveryRate 5.0
+		myResistanceDuration 3.0
+		myResistanceValue 0.75
+		mySlowDownPercentage 0.5
+		myBrakingPowerToTime "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { -0 -0, -0.602639 -0.038683, }, outTangents = { 0.307335 0.942354, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+	}
+	myShieldData
+	{
+		EnergyShieldData ShieldData
+		{
+			myMaxValue 20
+			myRegenerationCooldown 7
+			myRegenerationRate 2
+			myCanRegenerateWhenDepleted TRUE
+			myShieldInvulnerabilityDuration 0
+		}
+	}
+	myDeathSequenceSettings
+	{
+		myEndExplosionFilename ""
+		myOnExplosionGameScript ""
+		myCollisionDamageThreshold 1.0
+		myDeathSequenceDuration 5.0
+		myAfterDeathSequenceDelay 3.0
+		myShouldTumble TRUE
+		myTumbleProbability 0.6
+		myTumbleMaxDuration 2.5
+		myTumblingType LoseControl
+		myShouldTargetColliders TRUE
+		myTumbleFindTargetRadius 1500.0
+		myTumbleFindTargetAngle 45.0
+		myTumbleFallingCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -500 0, }, outTangents = { 500 0, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 2000 -2000, }, }, numKeys = 2, }"
+	}
+}
+
+SpaceshipSetting s_ZH40CrimsonDawn < uid=6AF0BA0464EC65E20004593277E6D693 > : s_ZH40
+{
+	mySpaceshipType ZH40CrimsonDawn
+	myMaximumSpeed 300.0
+	myPitchSpeed 100.0
+	myYawSpeed 120.0
+	myRollSpeed 200.0
+	myAcceleration 200.0
+	myPitchAcceleration 150.0
+	myYawAcceleration 150.0
+	myRollAcceleration 50.0
+	myTranslationSettings
+	{
+		myLateralSpeed 10.0
+		myVerticalSpeed 10.0
+		myLateralAcceleration 20.0
+		myVerticalAcceleration 20.0
+	}
+	myAISpaceshipControlParameters
+	{
+		mySpaceshipBehaviorParameters = b_ZH40CrimsonDawn 00000000000000000000000000000000
+		mySplineLookAheadMinimum 30.0
+		mySplineLookAheadMaximum 200.0
+		mySplineLookAheadSpeedRatio 1.3
+		myDynamicCollisionInfluenceBySpeedDeltaMin 0.2
+		myEvasiveManeuverParams
+		{
+			myEvasiveCooldown 30.0
+			myMaxTimeBetweenProjectileHits 1.0
+			mySustainedDamageRequiredDuration 10.0
+			myReturnTrueDuration 0.3
+		}
+	}
+	mySpeedProfile < uid=F95CD8F36604213C0002051B26615D60 > = speedProfile_base_shp_zh40 F95CD8F364D627840000D909605DF7D8
+	myIonCollectorData
+	{
+		myMaxCharge 50.0
+		myDisabledDuration "10.0 * TrailblazerIonDisabledDurationModifier"
+		myTimeUntilRecovery 10.0
+		myRecoveryRate 5.0
+		myResistanceDuration 3.0
+		myResistanceValue 0.75
+		mySlowDownPercentage 0.5
+		myBrakingPowerToTime "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { -0 -0, -0.602639 -0.038683, }, outTangents = { 0.307335 0.942354, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+	}
+	myShieldData
+	{
+		EnergyShieldData ShieldData
+		{
+			myMaxValue 100
+			myRegenerationCooldown 7
+			myRegenerationRate 4
+			myCanRegenerateWhenDepleted TRUE
+			myShieldInvulnerabilityDuration 0
+		}
+	}
+	myDeathSequenceSettings
+	{
+		myDeathSequenceDuration 5.0
+	}
+}
+
+SpaceshipSetting s_LothalianCrimsonDawn < uid=6AF0BA0464EC65E200045934F440323F > : s_Lothalian
+{
+	mySpaceshipType LothalianCrimsonDawn
+	myHuntingRadius 4000.0
+	myAISpaceshipControlParameters
+	{
+		myAvoidanceProfile < uid=841E78F3657C6531000AFCF1FEBA6B45 > = SpaceshipAvoidance_Low_Mobility_Ships 841E78F3657C62570009C130B733DB18
+		mySpaceshipBehaviorParameters = b_LothalianCrimsonDawn 00000000000000000000000000000000
+		myEvasiveManeuverParams
+		{
+			myEvasiveCooldown 30.0
+			myMaxTimeBetweenProjectileHits 3.0
+			mySustainedDamageRequiredDuration 8.0
+			myReturnTrueDuration 0.3
+		}
+	}
+	myIonCollectorData
+	{
+		myMaxCharge 100.0
+		myDisabledDuration "10.0 * TrailblazerIonDisabledDurationModifier"
+		myTimeUntilRecovery 10.0
+		myRecoveryRate 5.0
+		myResistanceDuration 3.0
+		myResistanceValue 0.75
+		mySlowDownPercentage 0.5
+		myBrakingPowerToTime "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { -0 -0, -0.602639 -0.038683, }, outTangents = { 0.307335 0.942354, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+	}
+	myShieldData
+	{
+		EnergyShieldData ShieldData
+		{
+			myMaxValue 60
+			myRegenerationCooldown 10
+			myRegenerationRate 6
+			myCanRegenerateWhenDepleted TRUE
+			myShieldInvulnerabilityDuration 0
+		}
+	}
+	myDeathSequenceSettings
+	{
+		myEndExplosionFilename ""
+		myOnExplosionWreckGraphObjectPath "helix/graph objects/prop/pr_buc_0844_c.mgraphobject"
+		myCollisionDamageThreshold 10.0
+		myDeathSequenceDuration 5.0
+		myAfterDeathSequenceDelay 3.0
+		myShouldTumble TRUE
+		myTumbleProbability 1.0
+		myTumbleMaxDuration 5.0
+		myTumblingType Plunge
+		myShouldTargetColliders FALSE
+		myTumbleFindTargetRadius 1500.0
+		myTumbleFindTargetAngle 45.0
+		myTumbleFallingCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -500 0, }, outTangents = { 500 0, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 1818.8135 -3146.7202, }, }, numKeys = 2, }"
+	}
+}
+
+SpaceshipSetting s_BFF1CrimsonDawn < uid=6AF0BA0464EC65E200045935DE649656 > : s_BFF1
+{
+	mySpaceshipType BFF1CrimsonDawn
+	myPitchSpeed 20.0
+	myYawSpeed 20.0
+	myHuntingRadius 4000.0
+	myAISpaceshipControlParameters
+	{
+		myAvoidanceProfile < uid=841E78F3657C6626000AFCF3208C1F42 > = SpaceshipAvoidance_Low_Mobility_Ships 841E78F3657C62570009C130B733DB18
+		myCombatProfile < uid=F95CD8F3655DC6C1000A85D5D12A7DAF > = Hauler_CombatProfile F95CD8F364BF99730005E3FD4723AF89
+		mySpaceshipBehaviorParameters = b_BFF1CrimsonDawn 00000000000000000000000000000000
+		myEvasiveManeuverParams
+		{
+			myEvasiveCooldown 30.0
+			myMaxTimeBetweenProjectileHits 3.0
+			mySustainedDamageRequiredDuration 8.0
+			myReturnTrueDuration 0.3
+		}
+	}
+	myIonCollectorData
+	{
+		myMaxCharge 100.0
+		myDisabledDuration "10.0 * TrailblazerIonDisabledDurationModifier"
+		myTimeUntilRecovery 10.0
+		myRecoveryRate 5.0
+		myResistanceDuration 3.0
+		myResistanceValue 0.75
+		mySlowDownPercentage 0.5
+		myBrakingPowerToTime "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { -0 -0, -0.602639 -0.038683, }, outTangents = { 0.307335 0.942354, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+	}
+	myShieldData
+	{
+		EnergyShieldData ShieldData
+		{
+			myMaxValue 150
+			myRegenerationCooldown 10
+			myRegenerationRate 7.5
+			myCanRegenerateWhenDepleted TRUE
+			myShieldInvulnerabilityDuration 0
+		}
+	}
+	myDeathSequenceSettings
+	{
+		myEndExplosionFilename ""
+		myOnExplosionWreckGraphObjectPath "helix/graph objects/prop/pr_buc_0840_e.mgraphobject"
+		myCollisionDamageThreshold 10.0
+		myDeathSequenceDuration 5.0
+		myAfterDeathSequenceDelay 3.0
+		myShouldTumble FALSE
+		myTumbleProbability 0.5
+		myTumbleMaxDuration 5.0
+		myTumblingType Plunge
+		myShouldTargetColliders TRUE
+		myTumbleFindTargetRadius 1500.0
+		myTumbleFindTargetAngle 45.0
+		myTumbleFallingCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -500 0, }, outTangents = { 500 0, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 2000 -2000, }, }, numKeys = 2, }"
+	}
+	mySpaceshipFormationProfile < uid=841E78F36536405A00004945D7537FD6 > = BFF1_FormationProfile_CrimsonDawn 841E78F365363FFA0000444183B42228
+}
+
+SpaceshipSetting s_DariusCrimsonDawn < uid=6AF0BA0464EC65E2000459369F779147 > : s_Darius
+{
+	mySpaceshipType DariusCrimsonDawn
+	myHuntingRadius 4000.0
+	myAISpaceshipControlParameters
+	{
+		myAvoidanceProfile < uid=841E78F3657C6626000AFCF4FE3832FB > = SpaceshipAvoidance_Low_Mobility_Ships 841E78F3657C62570009C130B733DB18
+		myCombatProfile < uid=F95CD8F3655DC6C1000A85D6DA317248 > = Hauler_CombatProfile F95CD8F364BF99730005E3FD4723AF89
+		mySpaceshipBehaviorParameters = b_DariusCrimsonDawn 00000000000000000000000000000000
+		myEvasiveManeuverParams
+		{
+			myEvasiveCooldown 30.0
+			myMaxTimeBetweenProjectileHits 3.0
+			mySustainedDamageRequiredDuration 8.0
+			myReturnTrueDuration 0.3
+		}
+	}
+	myIonCollectorData
+	{
+		myMaxCharge 100.0
+		myDisabledDuration "10.0 * TrailblazerIonDisabledDurationModifier"
+		myTimeUntilRecovery 10.0
+		myRecoveryRate 5.0
+		myResistanceDuration 3.0
+		myResistanceValue 0.75
+		mySlowDownPercentage 0.5
+		myBrakingPowerToTime "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { -0 -0, -0.602639 -0.038683, }, outTangents = { 0.307335 0.942354, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+	}
+	myShieldData
+	{
+		EnergyShieldData ShieldData
+		{
+			myMaxValue 200
+			myRegenerationCooldown 10
+			myRegenerationRate 10
+			myCanRegenerateWhenDepleted TRUE
+			myShieldInvulnerabilityDuration 0
+		}
+	}
+	myDeathSequenceSettings
+	{
+		myOnExplosionWreckGraphObjectPath "helix/graph objects/prop/pr_buc_0845_e.mgraphobject"
+		myShouldTumble TRUE
+		myTumbleProbability 1.0
+		myTumbleMaxDuration 3.0
+		myTumblingType LoseControl
+		myShouldTargetColliders FALSE
+	}
+}
+
+SpaceshipSetting s_UtilipedeCrimsonDawn < uid=6AF0BA0464EC65E200045937589E4608 > : s_Utilipede
+{
+	mySpaceshipType UtilipedeCrimsonDawn
+	myHuntingRadius 4000.0
+	myAISpaceshipControlParameters
+	{
+		myAvoidanceProfile < uid=841E78F3657C6626000AFCF5D3F58E3A > = SpaceshipAvoidance_Low_Mobility_Ships 841E78F3657C62570009C130B733DB18
+		myCombatProfile < uid=F95CD8F3655DC626000A85D4C89E1BBE > = Hauler_CombatProfile F95CD8F364BF99730005E3FD4723AF89
+		mySpaceshipBehaviorParameters = b_UtilipedeCrimsonDawn 00000000000000000000000000000000
+		myEvasiveManeuverParams
+		{
+			myEvasiveCooldown 10.0
+			myMaxTimeBetweenProjectileHits 0.5
+			mySustainedDamageRequiredDuration 1.5
+			myReturnTrueDuration 0.3
+		}
+	}
+	myIonCollectorData
+	{
+		myMaxCharge 100.0
+		myDisabledDuration "10.0 * TrailblazerIonDisabledDurationModifier"
+		myTimeUntilRecovery 10.0
+		myRecoveryRate 5.0
+		myResistanceDuration 3.0
+		myResistanceValue 0.75
+		mySlowDownPercentage 0.5
+		myBrakingPowerToTime "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { -0 -0, -0.602639 -0.038683, }, outTangents = { 0.307335 0.942354, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+	}
+	myShieldData
+	{
+		EnergyShieldData ShieldData
+		{
+			myMaxValue 60
+			myRegenerationCooldown 10
+			myRegenerationRate 3
+			myCanRegenerateWhenDepleted TRUE
+			myShieldInvulnerabilityDuration 0
+		}
+	}
+}
+
+SpaceshipSetting s_BFF1CrimsonDawn_Defend < uid=6AF0BA04656F176500003306D2D32582 > : s_BFF1CrimsonDawn
+{
+	mySpaceshipType BFF1CrimsonDawn_Defend
+	mySpaceshipUsage DefendObjective
+	myIonCollectorData
+	{
+		myMaxCharge 100.0
+		myDisabledDuration "10.0 * TrailblazerIonDisabledDurationModifier"
+		myTimeUntilRecovery 10.0
+		myRecoveryRate 5.0
+		myResistanceDuration 3.0
+		myResistanceValue 0.75
+		mySlowDownPercentage 0.5
+		myBrakingPowerToTime "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { -0 -0, -0.602639 -0.038683, }, outTangents = { 0.307335 0.942354, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+	}
+}
+
+SpaceshipSetting s_DariusCrimsonDawn_Defend < uid=6AF0BA04656F176500003307FA114643 > : s_DariusCrimsonDawn
+{
+	mySpaceshipType DariusCrimsonDawn_Defend
+	mySpaceshipUsage DefendObjective
+	myIonCollectorData
+	{
+		myMaxCharge 100.0
+		myDisabledDuration "10.0 * TrailblazerIonDisabledDurationModifier"
+		myTimeUntilRecovery 10.0
+		myRecoveryRate 5.0
+		myResistanceDuration 3.0
+		myResistanceValue 0.75
+		mySlowDownPercentage 0.5
+		myBrakingPowerToTime "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { -0 -0, -0.602639 -0.038683, }, outTangents = { 0.307335 0.942354, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+	}
+}
+
+SpaceshipSetting s_LothalianCrimsonDawn_Defend < uid=F95CD8F365CA3E3B000661CB9B7EB177 > : s_LothalianCrimsonDawn
+{
+	mySpaceshipType LothalianCrimsonDawn_Defend
+	mySpaceshipUsage DefendObjective
+}
+

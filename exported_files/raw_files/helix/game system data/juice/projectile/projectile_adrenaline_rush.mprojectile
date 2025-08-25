@@ -1,0 +1,80 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_small.mprojectile"
+
+BallisticProjectile projectile_adrenaline_rush < uid=B0ED9250652562670002729B9EB56F9F > : weapon_projectile_blaster_small
+{
+	myObject
+	{
+		myMainShape
+		{
+			myShapeType Point
+			myDynamicShapeEnabled FALSE
+			myShapeRadius 0.1
+			myDynamicShapeRadius "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, }, outTangents = { 1 0, }, properties = { 2250, }, values = { 0 0.1, }, }, maxValueBounds = 10, minValueBounds = -10, numKeys = 1, }"
+			myShapeHeight 0.1
+		}
+	}
+	myActions
+	{
+		ProjectileActionStatusEffect "Adrenaline Shot"
+		{
+			myEnableCondition
+			{
+				myConditions
+				{
+					GameConditionAgentGroup CombatRoles
+					{
+						myOperator Or
+						myConditions
+						{
+							GameConditionContextAgentHasCombatRole EliteCombatRole
+							{
+								myAgentContextType TargetAgent
+								myNPCCombatRole Elite
+							}
+							GameConditionContextAgentHasCombatRole MeleeCombatRole
+							{
+								myAgentContextType TargetAgent
+								myNPCCombatRole Melee
+							}
+							GameConditionContextAgentHasCombatRole HeavyCombatRole
+							{
+								myAgentContextType TargetAgent
+								myNPCCombatRole Heavy
+							}
+							GameConditionContextAgentHasCombatRole AssaultCombatRole
+							{
+								myAgentContextType TargetAgent
+								myNPCCombatRole Assault
+							}
+							GameConditionContextAgentHasCombatRole SniperCombatRole
+							{
+								myAgentContextType TargetAgent
+								myNPCCombatRole Sniper
+							}
+							GameConditionContextAgentHasCombatRole CommanderCombatRole
+							{
+								myAgentContextType TargetAgent
+								myNPCCombatRole Commander
+							}
+						}
+					}
+				}
+			}
+			myStatusEffect Stunned
+			myDuration 7.0
+		}
+	}
+	myInitialSpeed 400.0
+	myBounceEnabled FALSE
+	myCanBounceConditions
+	{
+		myType Group
+		myIsNegated FALSE
+		myOperator Or
+		myConditions
+		{
+		}
+	}
+}
+

@@ -1,0 +1,37 @@
+include "helix/game system data/fruit/item/item_includes.fruit"
+include "helix/game system data/juice/equipment/aimconfig/grenade_aimconfig.maimconfig"
+include "helix/game system data/juice/equipment/throwableconfig/grenade_base_throwable_config.mequipmentthrowableconfig"
+include "helix/game system data/juice/item/consumables.mitem"
+include "helix/game system data/juice/item/equipmentholding/holding_kays_throwable_base.mequipmentholdingconfig"
+include "helix/game system data/juice/projectile/grenade_projectile_sonic_imploder.mprojectile"
+
+ThrowableEquipmentItem player_grenade_thermal_detonator < uid=CC69B22163E384300000382A50B8B77C >
+{
+	myName "aurabesh = false, contextComment = \"The name for the Thermal Detonator grenade equipment\", enabled = true, guid = #CC69B22163E384300000382973EDAB56, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 10284, text = \"Thermal Detonator\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myIcon "mySpriteId = 150696983, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_item_icons_01.spritesheet\""
+	myGraphObject "helix/graph objects/gameplayobject/wpn_thermal_detonator_player.mgraphobject"
+	myInventoryPouch ToolsAndGadgets
+	myLootGraphObject "helix/graph objects/gameplayobject/wpn_thermal_detonator_pickup.mgraphobject"
+	myIsAutoLoot TRUE
+	myBuyPrice 20
+	myCooldown
+	{
+		myDuration 0.0
+	}
+	myAimConfig < uid=CC69B22163E384300000382B041531D8 > = grenade_aimconfig A207755D61F1689000001B2079E673C4
+	myHoldingConfig < uid=CC69B22163E384300000382C8414CC0B > = holding_kays_throwable_base A207755D61F155EA00001B23C06C3601
+	myAlwaysAim FALSE
+	myUI
+	{
+		myDefaultUIGraph helix/ui/Graphs/hud_equipment_trajectory.muigraph
+	}
+	myConsumedItem < uid=CC69B22164639B73000149A6B04D0C90 > = con_ThermalDetonator CC69B22164639AF700014980A759E72E
+	myDefaultSlotGroup Throwables
+	myThrowableModule
+	{
+		myConfig < uid=CC69B22163E384300000382D9ABD70C4 > = grenade_base_throwable_config CC69B22163DCD33B0000437301B6D9E8
+		myProjectile < uid=CC69B22163E384300000382E0F2B37B8 > = grenade_projectile_thermal_detonator CC69B22163ECDACF0000506CA27B395F
+	}
+}
+

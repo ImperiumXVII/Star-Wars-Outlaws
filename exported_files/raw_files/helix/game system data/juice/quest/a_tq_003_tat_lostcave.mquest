@@ -1,0 +1,30 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/rbtags/quest.mrbtagstags"
+
+Quest A_TQ_003_TAT_LostCave < uid=20037F80643030A30000004D3C81792A >
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"TQ_TAT_03 decription quest name\", enabled = true, guid = #20037F80643030A30000004B2694C8AD, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10486, text = \"Horns\", type = \"MenuLine\""
+	myIntroDescription "aurabesh = false, branch = \"\", contextComment = \"Description quest\", enabled = true, guid = #20037F8065366AA70004E3CB86245E8D, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 1603, text = \"Dark Cave\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"TQ_TAT_03 decription \", enabled = true, guid = #20037F80643030A30000004C1214F4D3, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10486, text = \"Nix picked up a unique scent deep on the other side of a cave.\", type = \"MenuLine\""
+	myType PetTrail
+	myToastUIDisplayMode None
+	myBeats
+	{
+		QuestBeat QB01_LostCave < uid=20037F806430324F00000053AED50314 >
+		{
+			myScript helix/scripts/scr_a_tq_003_tat_cav_b01_v2.mscript
+			myName "aurabesh = false, contextComment = \"TQ_TAT_03_B01 description Beat\", enabled = true, guid = #20037F80643038A100010AF5C452049F, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 1603, text = \"Explore the Cave\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myQuestBeatStateGameValue < uid=20037F806430368E000000564389B3EE >
+			{
+			}
+			myDeactivateContentLocationOnComplete TRUE
+		}
+	}
+	myQuestStateGameValue < uid=20037F80643030A30000004EA7892948 >
+	{
+	}
+	myQuestStartedRBTag < uid=DA5615DD64B559F70000C678A49BB07D > = World_Quest_TQTAT030_Started DA5615DD64A44051000165CAD1CA94F6
+	myQuestCompletedRBTag < uid=DA5615DD64B559F70000C679C224C6BB > = World_Quest_TQTAT030_Completed DA5615DD64A44070000165CC2B02C033
+}
+

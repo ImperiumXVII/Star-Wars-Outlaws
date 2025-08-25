@@ -1,0 +1,28 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/projectile/realization/small laser ion.mprojectilerealization"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_small.mprojectile"
+
+BallisticProjectile weapon_projectile_blaster_small_ion < uid=7113C61164131A4500006E677E695CDB > : weapon_projectile_blaster_small
+{
+	myRealization < uid=7113C61164131A4500006E684D63169F > = "Small Laser Ion" F8181D4864183DCE000CE31C29ED32A8
+	myActions
+	{
+	}
+	myNPCImpactSoundEvent < uid=85F4BAC265C6491000000114B4DEB44C > = IonProjectileImpact 85F4BAC265C648BE000001044C581EF7
+	myInitialSpeed 80.0
+	myBounceEnabled FALSE
+	myBounceVsDynamicEnabled FALSE
+	myCanBounceConditions
+	{
+		myType Group
+		myIsNegated FALSE
+		myOperator And
+		myConditions
+		{
+		}
+	}
+	mySeekerEnabled TRUE
+	mySeekerTurnRate 1.0
+	mySeekerActivationDelayFormula 0.1
+}
+

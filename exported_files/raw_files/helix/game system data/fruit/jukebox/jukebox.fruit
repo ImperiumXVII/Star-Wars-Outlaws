@@ -1,0 +1,21 @@
+include "snowdrop/modules/core/audio/audio.fruit"
+include "helix/game system data/fruit/gamevalues/gamevalues.fruit"
+
+class JukeboxSong < uid=auto >
+{
+	AudioEvent myAudioEvent
+	JukeboxSongUnlockedGameValue myUnlockedGameValue < can_be_set=1 tooltip="[OPTIONAL] If set, the song requires its game value to be set to be unlocked at jukeboxes." >
+
+	varmap myUISongName < bhv="localization" ui_info=1 >
+	varmap myUIBandName < bhv="localization" ui_info=1 >
+}
+
+list JukeboxPlaylist
+{
+	uid < bhv="constantData" constantDataType="jukeboxsong" >
+}
+
+class Jukebox < uid=auto >
+{
+	JukeboxPlaylist myPlaylist
+}

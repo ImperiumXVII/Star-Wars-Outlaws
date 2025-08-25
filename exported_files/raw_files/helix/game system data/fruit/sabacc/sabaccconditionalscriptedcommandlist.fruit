@@ -1,0 +1,15 @@
+include "helix\game system data\fruit\sabacc\sabaccgamescriptedcommands.fruit"
+include "helix\game system data\fruit\gameconditions\gameconditions.fruit"
+include "helix\game system data\fruit\sabacc\sabaccgameconditions.fruit"
+
+list SabaccGameScriptedCommandss
+{
+	SabaccGameScriptedCommands*
+}
+
+class SabaccConditionalScriptedCommandList < uid=auto >
+{
+	SabaccGameConditions* mySabaccCondition < tooltip="If this sabacc condition is defined and true, the scripted commands will be enabled" >
+	GameConditionGroup myGameCondition < tooltip="If the sabacc condition is not defined or false, we evaluate this game condition" >
+	SabaccGameScriptedCommandss myGameScriptedCommands
+}

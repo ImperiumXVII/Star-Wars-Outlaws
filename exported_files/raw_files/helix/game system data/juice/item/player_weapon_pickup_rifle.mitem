@@ -1,0 +1,25 @@
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_pickup_rifle.mweaponfiremode"
+include "helix/game system data/juice/item/equipmentholding/holding_pickup_rifle.mequipmentholdingconfig"
+include "helix/game system data/juice/item/player_weapon_pickup_template.mitem"
+
+WeaponItem player_weapon_pickup_rifle < uid=4C1DFD4E636919540000AF850DFE4246 > : player_weapon_pickup_template
+{
+	myName "aurabesh = false, contextComment = \"Rifle class template, not to be used in-game\", enabled = true, guid = #4C1DFD4E636919540000AF83BE63114E, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 394, text = \"Weapon Pickup Rifle Template\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"Weapon Pickup Template\", enabled = true, guid = #4C1DFD4E637504EB0000DD5E6D2DB82A, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 394, text = \"Weapon Pickup Template\", type = \"MenuLine\""
+	myIcon "mySpriteId = -209866608, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_item_icons_03.spritesheet\""
+	myLootGraphObject "helix/graph objects/gameplayobject/gpo_player_weapon_rifle_template.mgraphobject"
+	myAmount < uid=4C1DFD4E640F47F70000AA01760B9B22 >
+	{
+		myDefaultValue 0
+	}
+	myHoldingConfig < uid=4C1DFD4E63691F4B0000AFBF2AA2EDA7 > = holding_pickup_rifle 4C1DFD4E636928920000DACF38CAA373
+	myGraphObject "helix/graph objects/gameplayobject/gpo_player_weapon_rifle_template.mgraphobject"
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=4C1DFD4E63691B6C0000AFA98ADAA0BA > = player_firemode_pickup_rifle 4C1DFD4E63692B0E0000E651547938EB
+		}
+	}
+}
+

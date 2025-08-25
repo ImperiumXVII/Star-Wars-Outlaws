@@ -1,0 +1,36 @@
+include "helix/game system data/juice/ai/npcpackprofiles.mnpcpackprofile"
+include "helix/game system data/juice/item/player_weapon_pickup_e11.mitem"
+include "helix/game system data/juice/melee/npc_melee_config.mnpcmeleeconfig"
+include "helix/game system data/juice/npc/base_emp.mnpc"
+include "helix/game system data/juice/npc/emp_stormtrooper.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC emp_stormtrooper_bouncer < uid=D4F63079652E6E8B003FB08F583AC1F3 > : emp_stormtrooper
+{
+	myCharacterVisuals < uid=D4F63079652E6E8B003FB090ED701233 > = character_visuals_2_silver_empire_stormtrooper 616C01996422F56C000085626C2F5F95
+	myBehavior helix/behaviors/emp_assault.mbehavior
+	myMaxHealth 15
+	myHealthFormula "4 + NPCFinalHealth"
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag (1)" < uid=D4F63079652E6E8B003FB0917D30622A > = Agent_Faction_EmpireTag 16DEADE6614FB69800001863A66D45A1
+		RBTagsTag "New RBTagsTag (2)" < uid=D4F63079652E6E8B003FB092FAE648E8 > = Agent_Archetype_LightTag 16DEADE6626D213900002E666FED23C5
+		RBTagsTag "New RBTagsTag (0)" < uid=D4F63079652E6E8B003FB093745D3B1E > = Agent_Weapon_Rifle2H_Tag EBE060C262A31390000155F83D20E483
+		RBTagsTag "New RBTagsTag" < uid=D4F63079652E6E8B003FB09419D15E2C > = Agent_BarksFamily_Stormtrooper E4123D2762F4C9F000048CA972FB8238
+		RBTagsTag "New RBTagsTag_0" < uid=3C2FA92B661E520E00012257E88DD55F > = Agent_CanCallReinforcements 3C2FA92B661D510B00039C814C5A3821
+	}
+	myHearingProfile < uid=D4F63079652E6E8B003FB095E70E4E0E > = DefaultNPCHearingProfile 5C421F5C62A1BBF7000B8412886C328B
+	myTacticalPositionFinderProfile < uid=D4F63079652E6E8B003FB0962F67FB0F > = "Assault Tactical Position Finder Profile" 5C421F5C64A5764C000057F0C65A6821
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout LoadoutA < uid=D4F63079652E6E8B003FB097B27FB036 > = emp_Stormtrooper_Rifle 2736B365635F9FBD00009B7F2C729781
+	}
+	myPickpocketableLootTable < uid=D4F63079652E6E8B003FB09821CCB86B > = NULLREFERENCE
+	myPackProfile < uid=D4F63079652E6E8B003FB099B427FC62 > = VehicleChasePackProfile 91DC5D3C63F61E9400008FAEB6509FFC
+	myFocusProfile < uid=D4F63079652E6E8B003FB09AA488D66A > = DefaultNPCFocusProfile 16DEADE6627D79E600002F681EE4B5D5
+	myAudioNPCDangerWeight 2.0
+	myMeleeConfig < uid=D4F63079652E6E8B003FB09BEB393CCD > = npc_melee_config BCDE37F162445830000053EBBBF07CF3
+	myStaggerConfig < uid=D4F63079652E6E8B003FB09CAF72CE21 > = NPCStaggerConfig_Humanoid_Medium_MeleeTier3 3C2FA92B651582BD0004A41755AB8CD4
+	myCombatRole Assault
+}
+

@@ -1,0 +1,73 @@
+include "helix/game system data/fruit/inputchallenge/inputchallenge.fruit"
+include "helix/game system data/juice/inputchallenge/audio/input_challenge_challenge_base_audio.minputchallengeaudio"
+include "helix/game system data/juice/inputchallenge/inputchallenges_basetemplates.minputchallenge"
+
+ButtonHoldInputChallenge "[HoldButtons] LS Up - MQ_020_CantoEscape" < uid=942DB5166500702200170C640F633A25 > : "[Hold] Base Template"
+{
+	myChallengeType ButtonHold
+	myUIGraph helix/ui/graphs/hud_input_challenge_button_hold.muigraph
+	myUIAnchorPoint 0.66;0.75;0.0
+	myUIElements
+	{
+		InputChallengeUIElement "LS Up TakeOff"
+		{
+			myButtonAnchorPoint < uid=942DB516650081780019C76CD9672E4C > = "Bottom Center" C6B18B0864240E27000009DA5DBD9297
+			myGameAction Trailblazer_FullThrust
+			myStick < uid=942DB516650081780019C76DD9453975 > = "Left stick" C6B18B0864EC97D600008C1A80AA979B
+			myStickAngle 90.0
+			myStickAngleTolerance 30.0
+			myOverrideButtonAudio < uid=942DB516650081780019C76E79BCFE5E > = "[Hold] Button base audio" C6B18B0864390F450000726869915209
+			myBehaviour Default
+		}
+	}
+	myMaxiumInputDelay 6.0
+	myWaitForPlayerInput FALSE
+	myShouldFailOnWrongInput FALSE
+	myChallengeTimeoutTime 8.0
+	myChallengeAudio < uid=942DB5166500791D0019C75841190D59 > = "[Hold] Challenge base audio" C6B18B0864390EC10000725E37D16338
+	myCanBeDisabledByPlayerPrefernces FALSE
+	myHoldDuration 3.0
+	myConsumeProgressDelay 0.1
+}
+
+ButtonsSequenceInputChallenge "[Sequence] RT - MQ_020_CantoEscape" < uid=BD27FEFF6548B9A30001DF076F2BD9F2 > : "[Sequence] Base Template"
+{
+	myChallengeType ButtonSequence
+	myUIAnchorPoint 0.5;0.2;0.0
+	myUIElementsSpacing 5.0
+	myUIElements
+	{
+		InputChallengeUIElement "Prompt 1"
+		{
+			myButtonAnchorPoint < uid=BD27FEFF6548BC7E0001DF3A05C28283 > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction Trailblazer_UseMainEquipment
+		}
+	}
+	myMaxiumInputDelay 0.0
+	myWaitForPlayerInput FALSE
+	myShouldFailOnWrongInput FALSE
+	myChallengeTimeoutTime 8.0
+	myChallengeAudio < uid=BD27FEFF6548BC7E0001DF3BFF1BC30E > = "[Parallel] Challenge base audio" C6B18B0864390EC10000725D3175A51F
+	myButtonsAudio < uid=BD27FEFF6548BC7E0001DF3CDED26A06 > = "[Sequence] Button base audio" C6B18B0864390F4500007264E3A80469
+	myCanBeDisabledByPlayerPrefernces FALSE
+	myButtonOnScreenTimer 0.4
+}
+
+ButtonsSequenceInputChallenge "[Sequence] RT - C_MQ_040_DLC2_StingerDuel" < uid=9128788867EFD2950002C73CE675070C > : "[Sequence] Base Template"
+{
+	myChallengeType ButtonSequence
+	myUIElements
+	{
+		InputChallengeUIElement "Prompt 1"
+		{
+			myButtonAnchorPoint < uid=9128788867EFD64A00043F333461289E > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction Trailblazer_UseMainEquipment
+		}
+	}
+	myMaxiumInputDelay 0.0
+	myShouldFailOnWrongInput FALSE
+	myChallengeTimeoutTime 41.0
+	myCanBeDisabledByPlayerPrefernces FALSE
+	myNeedFailFeedbackUI FALSE
+}
+

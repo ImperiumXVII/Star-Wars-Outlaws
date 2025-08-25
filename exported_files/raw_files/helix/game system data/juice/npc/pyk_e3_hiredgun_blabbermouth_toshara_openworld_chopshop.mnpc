@@ -1,0 +1,38 @@
+include "helix/game system data/juice/character/character_visuals_e3.mcharactervisuals"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npc/pyk_hiredgunlight.mnpc"
+
+NPC pyk_e3_hiredgun_blabbermouth_toshara_openworld_chopshop < uid=4171A7E16411A4030000CD6B500C3A3D > : pyk_hiredgunlight
+{
+	myCharacterVisuals < uid=4171A7E16411A4030000CD6CACF3FE23 > = character_visuals_e3_rodian_shot_by_kay 6993721763FE11480000094347C31DE5
+	myBehavior helix/behaviors/e3_hiredgunlight_blabber.mbehavior
+	myMaxHealth 2
+	myHealthFormula 2
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=4171A7E16411A4450000CD773AEE7D26 > = Agent_Gender_MasculineTag 16DEADE6626D20EA00002E504CE30DE2
+	}
+	myPossibleSpeciesTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=4171A7E16411A4450000CD785C63AC63 > = Agent_Species_RodianTag 2736B365634D673A0003C282928B2032
+	}
+	myDialogueCharacters
+	{
+		DialogueCharacterWithTags Dialog < uid=4171A7E16411A4360000CD752C31E859 >
+		{
+			myDialogueCharacter < uid=4171A7E16411A4450000CD79FFB3F496 > = TEMP_E3_HIRED_GUN_BLABBER_MOUTH E4123D27640F2160000009A7495AD91D
+		}
+	}
+	myDialogueCharactersFromDatabase
+	{
+	}
+	myVisionProfile < uid=85F4BAC2642584A2000008E98DE32FFE > = E3BlabberVisionProfile 85F4BAC26425847C000008E70CD41EC5
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=85F4BAC26418578A00000966B24D8F11 > = E3BlabbermouthDetectionProfile 85F4BAC26418575B000009641F198089
+	}
+	myAimProfile < uid=5C421F5C64218435000062900BC058EC > = PerfectAimProfile 5C421F5C64216EA30000A16110635C4A
+	myReducedAimProfile < uid=5C421F5C642184350000629124FF291F > = PerfectAimProfile 5C421F5C64216EA30000A16110635C4A
+	myPlayerAwarenessProfile < uid=E4123D27641F5F0B00005F1BA7313A9E > = NULLREFERENCE
+}
+

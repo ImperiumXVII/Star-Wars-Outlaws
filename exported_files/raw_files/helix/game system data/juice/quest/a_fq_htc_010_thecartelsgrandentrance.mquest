@@ -1,0 +1,297 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/rbtags/quest.mrbtagstags"
+include "helix/game system data/juice/reward/quest_completion_reward.mreward"
+include "helix/game system data/juice/rewardpreview/faction_quest_reward_previews.mrewardpreview"
+
+Quest A_FQ_HTC_010_TheCartelsGrandEntrance < uid=C7AA9ADA62DEA334000047B70D1B2E68 >
+{
+	myName "branch = \"\", contextComment = \"Quest Name\", enabled = true, guid = #C7AA9ADA62DEA338000047B93171F19D, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9338, text = \"Sabotage\", type = \"MenuLine\""
+	myIntroDescription "branch = \"MAIN\", contextComment = \"FQ HTC 10 quest intro description\", enabled = true, guid = #2538246A6579BBE20020C51E65A85614, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9338, text = \"Word about Kay Vess has gotten around on Toshara. A Hutt Cartel enforcer has a job for her.\", type = \"MenuLine\""
+	myDescription "branch = \"\", contextComment = \"Faction Quest\", enabled = true, guid = #C7AA9ADA62DEA338000047BAB1338328, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 9338, text = \"After discovering the Pyke Syndicate intruding on Jabba's creature smuggling business, a Hutt Cartel enforcer named Verrick hires Kay to steal their client list and sabotage their factory farm.\", type = \"MenuLine\"}"
+	myType Faction
+	myCompletionReward < uid=2AE2EC85644BEC2F00338F493BE90FC6 > = A_FQ_HTC_010_questcomplete_reward 2AE2EC85644A93860000B2DE9D450361
+	myCompletionRewardPreview < uid=2AE2EC85666876DA0043C20AECD2AABD > = HTC_010_reward_preview 2AE2EC856668752B003ED8466C25AE9B
+	myIntroBeat < uid=C7AA9ADA62DEB4B5000103BBC38B3747 >
+	{
+		myScript helix/scripts/scr_A_FQ_HTC_010_B00_IntroBeat.mscript
+		myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_HTC_010_Introbeat Beat Name\", enabled = true, guid = #C7AA9ADA62DEA3DA000047BDC5779896, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 3614, text = \"Talk to the Hutt enforcer\", type = \"MenuLine\""
+		myAutostartQuestGoal < uid=9128788865AE908600041179180BC47D >
+		{
+			myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_FQ_HTC_010_Introbeat Player goal when outside beat volume\", enabled = true, guid = #9128788865AE906A000411787B7F5C71, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9340, text = \"Talk to the Hutt enforcer\", type = \"MenuLine\""
+		}
+		myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+		myMood RelaxedNoSpawnpoints
+		myObjectives
+		{
+			QuestObjectiveTalkTo B01_TalkToHuttGangster < uid=C7AA9ADA62DEB2DB000103B405EAF526 >
+			{
+				myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_HTC_010_Introbeat Objective text\", enabled = true, guid = #C7AA9ADA62DEB328000103B554CA8D76, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 3614, text = \"Talk to the Hutt enforcer\", type = \"MenuLine\""
+				myIsHiddenInTracker FALSE
+				myIsHiddenInHUD FALSE
+				myIsHighPrio TRUE
+				myIsImmediate TRUE
+			}
+		}
+		myQuestBeatStateGameValue < uid=C7AA9ADA62DEB4B5000103BC674A137C >
+		{
+		}
+		myWaitForInitCompletedOnInBeatVolume TRUE
+	}
+	myBeats
+	{
+		QuestBeat "Beat01 Meet Verrick's Contact" < uid=C7AA9ADA62DEB3A1000103B7987C54FF >
+		{
+			myScript helix/scripts/scr_A_FQ_HTC_010_B01_FindAgent.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_HTC_010_B01 Beat Name\", enabled = true, guid = #C7AA9ADA62DEB509000104AC3671DEC5, lineVersion = 18, maxLength = 0, productId = -1, sectionId = 3614, text = \"Meet Verrick's contact\", type = \"MenuLine\"}"
+			myAutostartQuestGoal < uid=9128788865AE91E5000418857667E772 >
+			{
+				myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_FQ_HTC_010_B01 Player goald when outside beat volume\", enabled = true, guid = #9128788865AE91CC00041884ED4CDAC2, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9341, text = \"Meet Verrick's contact\", type = \"MenuLine\"}"
+			}
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myMood RelaxedNoSpawnpoints
+			myObjectives
+			{
+				QuestObjectiveTalkTo "B01_010_Meet Verrick's contact" < uid=C7AA9ADA62DEB577000104B1ABB9DE2B >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_HTC_010_B01 Objective Text\", enabled = true, guid = #C7AA9ADA62DEB5B7000104B46073E0E6, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 9341, text = \"Meet Verrick's contact\", type = \"MenuLine\"}"
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+					myQuestObjectiveAudioState
+					{
+						myGuid 4B75CDB345103E0B64A8141BA7CC2FAA
+					}
+				}
+				QuestObjectiveInteract "B01_040_Take the bomb" < uid=91287888631F0CC4000982BDD22D0581 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective Text\", enabled = true, guid = #91287888631F0CCE000982BED0888AA8, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9341, text = \"Pick up the bomb\", type = \"MenuLine\""
+					myQuestObjectiveAudioStateOnReset
+					{
+						myGuid 4B75CDB345103E0B64A8141BA7CC2FAA
+					}
+				}
+			}
+			myQuestBeatStateGameValue < uid=C7AA9ADA62DEB4B5000103BDCF0E1F6C >
+			{
+			}
+			myWaitForInitCompletedOnInBeatVolume TRUE
+			myQuestBeatAudioState
+			{
+				myGuid 00000000000000000000000000000000
+			}
+		}
+		QuestBeat "Beat02 Break into the Operations Building" < uid=C7AA9ADA62DEB3B6000103B8CA6DC113 >
+		{
+			myScript helix/scripts/scr_A_FQ_HTC_010_B02_Sabatoge.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_HTC_010_B02 Beat Name\", enabled = true, guid = #C7AA9ADA62DEB5DB000104B6229755B7, lineVersion = 15, maxLength = 0, productId = -1, sectionId = 3614, text = \"Break into the operations building\", type = \"MenuLine\""
+			myAutostartQuestGoal < uid=9128788865AE93D20004188833FB8286 >
+			{
+				myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_FQ_HTC_010_B02 Player goal when outside beat volume\", enabled = true, guid = #9128788865AE91FB00041887B8EAC593, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9342, text = \"Break into the operations building\", type = \"MenuLine\""
+			}
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myMood RelaxedNoSpawnpoints
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "B02_010 Enter the main building" < uid=C7AA9ADA62F4FCD6000147BFB7905244 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_HTC_010_B02 Objective Text\", enabled = true, guid = #C7AA9ADA62F4FD28000147C09EC1CCDE, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 9342, text = \"Break into the operations building\", type = \"MenuLine\""
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+					myQuestObjectiveAudioState
+					{
+						myGuid 406D334F73B78933F0AB757AE8FC8DB4
+					}
+				}
+				QuestObjectiveCustom "B02_020_Steal Keycards" < uid=C7AA9ADA62DEB600000104B861D55881 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_HTC_010_B02 Objective Text\", enabled = true, guid = #C7AA9ADA62DEB60D000104B9956D12F4, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 9342, text = \"Break into the operations building\", type = \"MenuLine\""
+					myIsOptional TRUE
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+					myChildObjectives
+					{
+						QuestObjectiveGetItem "Keycard Security Office" < uid=C7AA9ADA62DFDBBE0000FEC814AD4321 >
+						{
+							myName "aurabesh = false, contextComment = \"Child Objective\", enabled = true, guid = #C7AA9ADA62DFE29800008DE505EA677C, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9342, text = \"Search the Security Office\", type = \"MenuLine\""
+							myIsOptional TRUE
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+						}
+						QuestObjectiveSteal "Keycard Guard Leader" < uid=C7AA9ADA62DFDBC00000FEC9AA106411 >
+						{
+							myName "aurabesh = false, contextComment = \"Child Objective\", enabled = true, guid = #C7AA9ADA62DFE2AB00008DE7EAEE53CF, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9342, text = \"Investigate the Guard Leader\", type = \"MenuLine\""
+							myIsOptional TRUE
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+						}
+					}
+				}
+				QuestObjectiveCustom "B02_030_Steal the holopuck client list" < uid=91287888631EF0CD0006E7F372C3A4DD >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_HTC_010_B02 Objective Text\", enabled = true, guid = #91287888631EF0DC0006E7F41F3D4B43, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9342, text = \"Find the Pyke client data\", type = \"MenuLine\""
+					myChildObjectives
+					{
+						QuestObjectiveInteract "Hint Crimson Dawn" < uid=91287888631EF0F10006E7F6841F4D0F >
+						{
+							myName "aurabesh = false, contextComment = \"Hint Text\", enabled = true, guid = #91287888631EF0F90006E7F7EB95F41D, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 93, text = \"Should be in the server room\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD FALSE
+							myIsHint TRUE
+						}
+					}
+				}
+				QuestObjectiveKillFireteam "B02_035_Kill the double agent" < uid=912878886324406D002D024E64470BE1 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_HTC_010_B02 Objective Text\", enabled = true, guid = #9128788863244087002D024F488BC46E, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 9342, text = \"Defeat Monda\", type = \"MenuLine\""
+				}
+				QuestObjectiveInteract "B02_036_Take the holopuck" < uid=9128788863494C0E0000ABD5F6297112 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_HTC_010_B02 Objective Text\", enabled = true, guid = #9128788863494C150000ABD6C7007FC9, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9342, text = \"Pick up the holopuck\", type = \"MenuLine\""
+				}
+				QuestObjectiveCustom "B02_040_Plant bomb on main generator" < uid=C7AA9ADA62DFE93C0000901E0196F147 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_HTC_010_B02 Objective Text\", enabled = true, guid = #C7AA9ADA62DFE9810000901F6DC519C6, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 9342, text = \"Sabotage the generator\", type = \"MenuLine\""
+					myQuestObjectiveAudioStateOnReset
+					{
+						myGuid 40EEBE4686169AFF0249935E1D187FB6
+					}
+					myChildObjectives
+					{
+						QuestObjectiveInteract "Hutts Hint" < uid=91287888631EF02E0006E7F05B06D2B4 >
+						{
+							myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+							myIsHint TRUE
+						}
+					}
+				}
+			}
+			myQuestBeatStateGameValue < uid=C7AA9ADA62DEB4B5000103BE24764A63 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 00000000000000000000000000000000
+			}
+		}
+		QuestBeat "Beat03 Leave the Location" < uid=C7AA9ADA62DEB3D1000103B9CACC4415 >
+		{
+			myScript helix/scripts/scr_A_FQ_HTC_010_B03_LeaveTheLocation.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_HTC_010_B03 Beat Name\", enabled = true, guid = #C7AA9ADA62DEB53D000104AFA6887C5A, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 3614, text = \"Escape the building\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "B03_010_Leave the location" < uid=C7AA9ADA62DEB65A000104BCAF59B188 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_HTC_010_B03 Objective Text\", enabled = true, guid = #C7AA9ADA62DEB66C000104BD525EEC25, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 9343, text = \"Escape the building\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 40EEBE4686169AFF0249935E1D187FB6
+					}
+					myChildObjectives
+					{
+						QuestObjectiveGoToLocation "Escape the explosion" < uid=C7AA9ADA62E0ED010000BA34D3E2E76D >
+						{
+							myName "aurabesh = false, contextComment = \"Objective Text\", enabled = true, guid = #C7AA9ADA62DFF36C0000BDFA2E24A341, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 93, text = \"Escape the explosion\", type = \"MenuLine\""
+						}
+						QuestObjectiveGoToLocation "Escape point bottom" < uid=C7AA9ADA62E0ED010000BA3588A8FCB3 >
+						{
+							myName "aurabesh = false, contextComment = \"Objective Text\", enabled = true, guid = #C7AA9ADA62DFF3900000BDFC6E09FBDD, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"Survive the explosion\", type = \"MenuLine\""
+						}
+					}
+				}
+				QuestObjectiveLeaveArea "B03_020_Leave the Pyke Poaching Station" < uid=91287888631EF32C00095AE20D12EF81 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_HTC_010_B03 Objective Text\", enabled = true, guid = #91287888631EF34200095AE3ABD1A04C, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9343, text = \"Leave the factory farm\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD TRUE
+					myQuestObjectiveAudioState
+					{
+						myGuid 4ECDF10398C9AEB849821436ABBEDDB2
+					}
+				}
+			}
+			myQuestBeatStateGameValue < uid=C7AA9ADA62DEB4B5000103BFBEDD70A5 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 44CC682966F6839DF2F2DB55A85EAB8C
+			}
+			myQuestBeatAudioStateOnReset
+			{
+				myGuid 00000000000000000000000000000000
+			}
+		}
+		QuestBeat "Beat04 Return to Verrick" < uid=C7AA9ADA62DEB3E4000103BAB92A5731 >
+		{
+			myScript helix/scripts/scr_A_FQ_HTC_010_B04_ReturnToHuttCartel.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_HTC_010_B04 Beat Name\", enabled = true, guid = #C7AA9ADA62DEB53C000104AEF5CFBBDF, lineVersion = 13, maxLength = 0, productId = -1, sectionId = 3614, text = \"Meet Verrick in Jaunta's Hope\", type = \"MenuLine\"}"
+			myAutostartQuestGoal < uid=9128788865AE9A330004188B1A5DAA90 >
+			{
+				myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_FQ_HTC_010_B04 Player goal when not inside beat volume\", enabled = true, guid = #9128788865AE9A180004188AF4752FD0, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9344, text = \"Meet Verrick in Jaunta's Hope\", type = \"MenuLine\"}"
+			}
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myMood RelaxedNoSpawnpoints
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "B04_010_Return to Hutt Cartel gangsters" < uid=C7AA9ADA62DEB6D9000104C19D69583A >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_HTC_010_B04 Objective text\", enabled = true, guid = #C7AA9ADA62DEB6F3000104C26E35AA7B, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 9344, text = \"Meet Verrick in Jaunta's Hope\", type = \"MenuLine\"}"
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+				}
+				QuestObjectiveTalkTo "B04_020_Talk to Hutt Cartel gangsters - Hutt Outcome" < uid=C7AA9ADA62DEB6B9000104C038F3A4C5 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_HTC_010_B04 Objective text\", enabled = true, guid = #C7AA9ADA62DEB712000104C4B520CC21, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9344, text = \"Meet Verrick in Jaunta's Hope\", type = \"MenuLine\"}"
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+				}
+				QuestObjectiveTalkTo "B04_030_Talk to Hutt Cartel gansgster - Dawn Outcome" < uid=91287888632980A80000EC0FC0B2978D >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_HTC_010_B04 Objective text\", enabled = true, guid = #91287888632980B80000EC10F0F0FF57, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9344, text = \"Meet Verrick in Jaunta's Hope\", type = \"MenuLine\"}"
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+				}
+			}
+			myQuestBeatStateGameValue < uid=C7AA9ADA62DEB4B5000103C0893B45F1 >
+			{
+			}
+			myWaitForInitCompletedOnInBeatVolume TRUE
+			myQuestBeatAudioState
+			{
+				myGuid 00000000000000000000000000000000
+			}
+		}
+	}
+	myOutroBeat
+	{
+		QuestBeat "Crimson Dawn Call" < uid=91287888632D5B7A000045C3DC9814F2 >
+		{
+			myScript helix/scripts/scr_a_fq_htc_010_outrobeat.mscript
+			myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myMood RelaxedNoSpawnpoints
+			myQuestBeatStateGameValue < uid=91287888632D64C400057EEB39DBC7A0 >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=C7AA9ADA62DEA334000047B855E96984 >
+	{
+	}
+	myQuestAudioState
+	{
+		myGuid 4036F5ECE0FFC91F3CF3F80CE30B859C
+	}
+	myQuestAudioStateOnReset
+	{
+		myGuid 00000000000000000000000000000000
+	}
+	myQuestStartedRBTag < uid=DA5615DD64B54D670000C651A6D590CF > = World_Quest_FQHTC010_Started DA5615DD64A43BAD000165961A317A23
+	myQuestCompletedRBTag < uid=DA5615DD64B54D670000C652A4DAEE37 > = World_Quest_FQHTC010_Completed DA5615DD64A43BC900016598BDDBE406
+	myFaction 16DEADE65F7DDA76000000C847FBD2A1
+}
+

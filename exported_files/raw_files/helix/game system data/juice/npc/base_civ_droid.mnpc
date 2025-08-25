@@ -1,0 +1,58 @@
+include "helix/game system data/juice/character/character_visuals_droids.mcharactervisuals"
+include "helix/game system data/juice/npc/base_civ.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC base_civ_droid < uid=EBE060C2636D0E510002A6DE3897952C > : base_civ
+{
+	myArchetype Ambient
+	myCharacterVisuals < uid=EBE060C2636D0E510002A6DF4549C97D > = character_visuals_4_droids_r5_astromech_droid 849AB26562B227EA00007C0051663931
+	myAdditionalGearGraphs 91DC5D3C653782E60000F8BB620E1849
+	myBehavior helix/behaviors/civ_droid.mbehavior
+	myAnimSystemType None
+	myMaxHealth 1
+	myHealthFormula 1
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=EBE060C2636D32FF000FC319C94212B9 > = Agent_Gender_UndefinedTag 16DEADE6626D20EA00002E54BFCC6D94
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D27659968AF0002C1E0FC767906 > = Agent_BarksFamily_CivDroid E4123D276599686B00023AC2FC9F9013
+	}
+	myNavigationCapability < uid=EBE060C26439045600008FDA93C40122 > = DroidNavigationCapability D542A0986411867700000D9BBE60D57F
+	myPlayerAwarenessProfile < uid=E4123D2763CE57280008EB360345FCFF > = AmbientDroid_NPC EBE060C264C92CBC00081DDA1B75F836
+	myMotionPatternProfile < uid=EBE060C265708F250019492513D921EE > = AstromechMotionPatternProfile EBE060C26407402B0001149DE3B904AE
+	myAudioParameters
+	{
+		mySwitches
+		{
+			AudioSwitch NPC_Archetype_Switch
+			{
+				myGuid 4E2F124939F8DB8D0BF90ABC8F8AB8AB
+			}
+		}
+		myEmitters
+		{
+			AgentEmitter Default
+			{
+				myEmitterLabel < uid=3A1C5D18655345770000B51A2CACF14F > = Root 3A1C5D1863906F050000AB6FBD984CC4
+				myEmitterPrefab "emitterLayerName = \"droids\", enableDoppler = false, enablePropagation = true, sphereRadius = 1, stopOnDestroy = true"
+			}
+			AgentEmitter Dialogue
+			{
+				myEmitterLabel < uid=3A1C5D18655345770000B51BCE9E515E > = Mouth 3A1C5D1863906F120000AB70A206E385
+				myEmitterPrefab "emitterLayerName = \"droids\", enableDoppler = false, enablePropagation = true, sphereRadius = 1, stopOnDestroy = true"
+				myBoneName Head
+			}
+			AgentEmitter Weapon
+			{
+				myEmitterLabel < uid=3A1C5D18655345770000B51C7843B3B2 > = Hand 3A1C5D1863906F180000AB718F1E9EFD
+				myEmitterPrefab "emitterLayerName = \"weapons_npc\", enableDoppler = false, enablePropagation = true, sphereRadius = 1, stopOnDestroy = true"
+			}
+		}
+	}
+	myCanBeDistractedByPet FALSE
+	myCanInvestigatePlayerWhistle FALSE
+	myExlusionTickets = InvestigationTickets 00000000000000000000000000000000
+}
+

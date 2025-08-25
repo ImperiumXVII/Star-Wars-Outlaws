@@ -1,0 +1,614 @@
+include "helix/game system data/fruit/ui/uiphotomodesettings.fruit"
+include "helix/game system data/juice/galaxy/galaxylocations.mgalaxylocation"
+include "helix/game system data/juice/galaxy/galaxylocations_kijimi.mgalaxylocation"
+
+PhotoModeSettings "New PhotoModeSettings" < uid=5FC60A8F63EFA503000051261D166FED >
+{
+	myCameraSettings
+	{
+		myPlanetCamera
+		{
+			myBaseSpeed 0.1
+			myTetherDistance 10.0
+			myVerticalDistance 4.45
+			myMinSpeedMultiplier 0.1
+			myMaxSpeedMultiplier 2.0
+		}
+		mySpaceCamera
+		{
+			myBaseSpeed 1.0
+			myTetherDistance 500.0
+			myVerticalDistance 500.0
+			myMinSpeedMultiplier 0.1
+			myMaxSpeedMultiplier 2.0
+		}
+	}
+	myCategories
+	{
+		PhotoModeSettingCategory Filters
+		{
+			myName "aurabesh = false, contextComment = \"Settings related to changing image settings such as Contrast, Exposure, etc.\", enabled = true, guid = #5FC60A8F63FE0A71000053EB12E61E50, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 379, text = \"Filters\", type = \"MenuLine\""
+			myIcon "mySpriteId = 663217768, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_generic_05.spritesheet\""
+			mySettingEnums
+			{
+				PhotoModeSettingEnum "New PhotoModeSettingEnum" Preset
+				PhotoModeSettingEnum "New PhotoModeSettingEnum" Saturation
+				PhotoModeSettingEnum "New PhotoModeSettingEnum" Contrast
+				PhotoModeSettingEnum "New PhotoModeSettingEnum" Exposure
+				PhotoModeSettingEnum "New PhotoModeSettingEnum" Shadows
+				PhotoModeSettingEnum "New PhotoModeSettingEnum" Midtones
+				PhotoModeSettingEnum "New PhotoModeSettingEnum" Highlights
+				PhotoModeSettingEnum "New PhotoModeSettingEnum" ColorGrading
+			}
+		}
+		PhotoModeSettingCategory Scene
+		{
+			myName "aurabesh = false, contextComment = \"Settings related to changing the environment.\", enabled = true, guid = #5FC60A8F63FE1949000053EB9995835D, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 379, text = \"Scene\", type = \"MenuLine\""
+			myIcon "mySpriteId = 1333057065, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_generic_05.spritesheet\""
+			mySettingEnums
+			{
+				PhotoModeSettingEnum "New PhotoModeSettingEnum" TimeOfDay
+				PhotoModeSettingEnum "New PhotoModeSettingEnum" ShowPlayer
+				PhotoModeSettingEnum "New PhotoModeSettingEnum" ShowPet
+			}
+		}
+		PhotoModeSettingCategory Camera
+		{
+			myName "aurabesh = false, contextComment = \"Settings related to changing the camera.\", enabled = true, guid = #5FC60A8F63FE197A000053EC04A84F07, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 379, text = \"Camera\", type = \"MenuLine\""
+			myIcon "mySpriteId = 2045616567, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_generic_05.spritesheet\""
+			mySettingEnums
+			{
+				PhotoModeSettingEnum "New PhotoModeSettingEnum" ActiveCamera
+				PhotoModeSettingEnum "New PhotoModeSettingEnum" Lens
+				PhotoModeSettingEnum "New PhotoModeSettingEnum" LensDistortionEnabled
+				PhotoModeSettingEnum "New PhotoModeSettingEnum" LensFringeEnabled
+				PhotoModeSettingEnum "New PhotoModeSettingEnum" LensFilmGrainEnabled
+				PhotoModeSettingEnum "New PhotoModeSettingEnum" LensVignetteEnabled
+				PhotoModeSettingEnum "New PhotoModeSettingEnum" LensChromaticAberrationEnabled
+				PhotoModeSettingEnum "New PhotoModeSettingEnum" ApertureEnabled
+				PhotoModeSettingEnum "New PhotoModeSettingEnum" Aperture
+				PhotoModeSettingEnum "New PhotoModeSettingEnum" FocalLength
+				PhotoModeSettingEnum "New PhotoModeSettingEnum" FocusDistance
+				PhotoModeSettingEnum "New PhotoModeSettingEnum" CameraTilt
+			}
+		}
+		PhotoModeSettingCategory Overlays
+		{
+			myName "aurabesh = false, contextComment = \"Settings that affect what appears on top of the screen such as logos, messages, etc.\", enabled = true, guid = #5FC60A8F648C59530002178C986C6BC9, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 379, text = \"Overlays\", type = \"MenuLine\""
+			myIcon "mySpriteId = -626819309, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_generic_05.spritesheet\""
+			mySettingEnums
+			{
+				PhotoModeSettingEnum "New PhotoModeSettingEnum" Message
+				PhotoModeSettingEnum "New PhotoModeSettingEnum (0)" MessagePosition
+				PhotoModeSettingEnum "New PhotoModeSettingEnum (1)" Frame
+				PhotoModeSettingEnum "New PhotoModeSettingEnum (2)" Guides
+				PhotoModeSettingEnum "New PhotoModeSettingEnum (3)" Scanlines
+			}
+		}
+	}
+	myPresets
+	{
+		PhotoModeSettingPreset Default
+		{
+			myName "aurabesh = false, contextComment = \"Name for the default preset\", enabled = true, guid = #5FC60A8F63FA4732000009C62CA6858B, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 379, text = \"Default\", type = \"MenuLine\""
+		}
+		PhotoModeSettingPreset "Wild West"
+		{
+			myName "aurabesh = false, contextComment = \"Name of a photo mode preset that gives a golden tinted image\", enabled = true, guid = #7D292061669F6A380000003DA2F2742B, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 379, text = \"Wild West\", type = \"MenuLine\""
+			myPresetValueFloats
+			{
+				PhotoModeSettingPresetValueFloat Saturation
+				{
+					mySettingEnum Saturation
+					myOverrideValue 0.35
+				}
+				PhotoModeSettingPresetValueFloat Contrast
+				{
+					mySettingEnum Contrast
+					myOverrideValue 2.0
+				}
+				PhotoModeSettingPresetValueFloat Exposure
+				{
+					mySettingEnum Exposure
+					myOverrideValue 1.4
+				}
+				PhotoModeSettingPresetValueFloat Vignette
+				{
+					mySettingEnum Vignette
+					myOverrideValue 0.95
+				}
+			}
+			myPresetValueColors
+			{
+				PhotoModeSettingPresetValueColor ColorGrading
+				{
+					mySettingEnum ColorGrading
+					myOverrideValue 0xffffed7c
+				}
+			}
+		}
+		PhotoModeSettingPreset Noir
+		{
+			myName "aurabesh = false, contextComment = \"Name of a photo mode preset that gives a desaturated image\", enabled = true, guid = #5FC60A8F63F8BCD80000512E36A539BB, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 379, text = \"Noir\", type = \"MenuLine\""
+			myPresetValueFloats
+			{
+				PhotoModeSettingPresetValueFloat mySaturation
+				{
+					mySettingEnum Saturation
+					myOverrideValue 0.0
+				}
+				PhotoModeSettingPresetValueFloat myContrast
+				{
+					mySettingEnum Contrast
+					myOverrideValue 1.1
+				}
+				PhotoModeSettingPresetValueFloat myVignette
+				{
+					mySettingEnum Vignette
+					myOverrideValue 0.2
+				}
+			}
+		}
+	}
+	mySettingLenses
+	{
+		PhotoModeSettingLens In-Game
+		{
+			myName "aurabesh = false, contextComment = \"Name for the default camera lens used during gameplay.\", enabled = true, guid = #5FC60A8F649047330002F4A74F77D6B8, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 379, text = \"In-Game\", type = \"MenuLine\""
+			myCameraLensPreset < uid=5FC60A8F6492BCB90000E82EF1574376 >
+			{
+				myCameraLensObject "helix/game system data/juice/cameralens/standard-65mm-generic-anamorphic.mcameralens"
+			}
+		}
+		PhotoModeSettingLens 30mm
+		{
+			myName "aurabesh = false, branch = \"\", contextComment = \"A type of camera lens\", enabled = true, guid = #5FC60A8F6499A892000276FB3490E06C, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 379, text = \"30mm\", type = \"MenuLine\""
+			myCameraLensPreset < uid=5FC60A8F6492BCB90000E82FBED72C26 >
+			{
+				myCameraLensObject "helix/game system data/juice/cameralens/lens_30mm_zoom_anamorphic.mcameralens"
+			}
+		}
+		PhotoModeSettingLens 50mm
+		{
+			myName "aurabesh = false, branch = \"\", contextComment = \"A type of camera lens\", enabled = true, guid = #5FC60A8F6499A8A2000276FC58F3DB3D, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 379, text = \"50mm\", type = \"MenuLine\""
+			myCameraLensPreset < uid=5FC60A8F6492BCB90000E830F63165AE >
+			{
+				myCameraLensObject "helix/game system data/juice/cameralens/lens_50mm_zoom_anamorphic.mcameralens"
+			}
+		}
+		PhotoModeSettingLens 75mm
+		{
+			myName "aurabesh = false, branch = \"\", contextComment = \"A type of camera lens\", enabled = true, guid = #5FC60A8F6499A8AD000276FD61E0F750, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 379, text = \"75mm\", type = \"MenuLine\""
+			myCameraLensPreset < uid=5FC60A8F6492BCB90000E8314C1911EB >
+			{
+				myCameraLensObject "helix/game system data/juice/cameralens/lens_75mm_zoom_anamorphic.mcameralens"
+			}
+		}
+		PhotoModeSettingLens 100mm
+		{
+			myName "aurabesh = false, branch = \"\", contextComment = \"A type of camera lens\", enabled = true, guid = #5FC60A8F6499A8B6000276FED8B75FA5, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 379, text = \"100mm\", type = \"MenuLine\""
+			myCameraLensPreset < uid=5FC60A8F6492E4FD00015CD21C668881 >
+			{
+				myCameraLensObject "helix/game system data/juice/cameralens/lens_100mm_zoom_anamorphic.mcameralens"
+			}
+		}
+	}
+	mySettingFloats
+	{
+		PhotoModeSettingFloatData Saturation
+		{
+			mySettingEnum Saturation
+			myName "aurabesh = false, contextComment = \"Photo mode setting for changing image saturation\", enabled = true, guid = #5FC60A8F63FE2322000053ED2AB6BD2D, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 379, text = \"Saturation\", type = \"MenuLine\""
+			myCanBeSavedInPreset TRUE
+			myMin 0.0
+			myMax 2.0
+			myStepSize 0.02
+			myStepSizeWhenHeld 0.04
+		}
+		PhotoModeSettingFloatData Contrast
+		{
+			mySettingEnum Contrast
+			myName "aurabesh = false, contextComment = \"Photo mode setting for changing image contrast\", enabled = true, guid = #5FC60A8F641040A70003BFF6D9C0F3F1, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 379, text = \"Contrast\", type = \"MenuLine\""
+			myCanBeSavedInPreset TRUE
+			myMin 0.25
+			myMax 5.0
+			myStepSize 0.05
+			myStepSizeWhenHeld 0.1
+		}
+		PhotoModeSettingFloatData Exposure
+		{
+			mySettingEnum Exposure
+			myName "aurabesh = false, contextComment = \"Photo mode setting for changing image exposure\", enabled = true, guid = #5FC60A8F641040C80003BFFA07C0EB7E, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 379, text = \"Exposure\", type = \"MenuLine\""
+			myCanBeSavedInPreset TRUE
+			myMin -5.0
+			myMax 5.0
+			myStepSize 0.05
+			myStepSizeWhenHeld 0.1
+		}
+		PhotoModeSettingFloatData Vignette
+		{
+			mySettingEnum Vignette
+			myName "aurabesh = false, contextComment = \"Photo mode setting for changing image vignetting\", enabled = true, guid = #5FC60A8F641040D30003BFFE2D1F0035, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 379, text = \"Vignette\", type = \"MenuLine\""
+			myIsCameraSetting TRUE
+			myCanBeSavedInPreset TRUE
+			myDefaultValue 1.0
+			myMin 0.0
+			myMax 1.0
+			myStepSize 0.02
+			myStepSizeWhenHeld 0.04
+		}
+		PhotoModeSettingFloatData ChromaticAbberation
+		{
+			mySettingEnum ChromaticAbberation
+			myName "aurabesh = false, contextComment = \"Photo mode setting for changing chromatic abberation\", enabled = true, guid = #5FC60A8F641040E40003C002C42C5185, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 379, text = \"Chromatic Abberation\", type = \"MenuLine\""
+			myCanBeSavedInPreset TRUE
+			myMin 0.0
+			myMax 2.0
+			myStepSize 0.25
+		}
+		PhotoModeSettingFloatData Scanlines
+		{
+			mySettingEnum Scanlines
+			myName "aurabesh = false, contextComment = \"Photo mode setting for changing the intensity of the scanlines effect\", enabled = true, guid = #5FC60A8F641040EE0003C0062679C3B8, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 379, text = \"Scanlines\", type = \"MenuLine\""
+			myMax 1.0
+			myStepSize 0.01
+			myStepSizeWhenHeld 0.04
+		}
+		PhotoModeSettingFloatData FieldOfView
+		{
+			mySettingEnum FieldOfView
+			myName "aurabesh = false, contextComment = \"Photo mode setting for changing the camera field of view\", enabled = true, guid = #5FC60A8F641040F70003C00A0C8D2A30, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 379, text = \"Field Of View\", type = \"MenuLine\""
+			myIsCameraSetting TRUE
+			myMin 20.0
+			myMax 120.0
+			myStepSize 1.0
+			myStepSizeWhenHeld 2.0
+		}
+		PhotoModeSettingFloatData DepthOfFieldFStop
+		{
+			mySettingEnum DepthOfFieldFStop
+			myName "aurabesh = false, contextComment = \"Photo mode setting for changing the camera f-stop\", enabled = true, guid = #5FC60A8F641041050003C00E86F78AEB, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 379, text = \"F-Stop\", type = \"MenuLine\""
+			myIsCameraSetting TRUE
+			myCanBeSavedInPreset TRUE
+			myMin 0.0
+			myMax 16.0
+			myStepSize 0.5
+		}
+		PhotoModeSettingFloatData DepthOfFieldFocalPlane
+		{
+			mySettingEnum DepthOfFieldFocalPlane
+			myName "aurabesh = false, contextComment = \"Photo mode setting for changing the camera focal plane\", enabled = true, guid = #5FC60A8F641041110003C0123F3ED3FF, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 379, text = \"Focal Plane\", type = \"MenuLine\""
+			myIsCameraSetting TRUE
+			myCanBeSavedInPreset TRUE
+			myMin 0.1
+			myMax 25.0
+			myStepSize 0.25
+			myStepSizeWhenHeld 0.5
+		}
+		PhotoModeSettingFloatData AnimDuration
+		{
+			mySettingEnum AnimDuration
+			myName "aurabesh = false, contextComment = \"Photo mode setting for changing how long it will take to transition between different camera settings\", enabled = true, guid = #5FC60A8F6410411D0003C01685D616AC, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 379, text = \"Anim Duration\", type = \"MenuLine\""
+			myDefaultValue 1.0
+			myMin 0.25
+			myMax 10.0
+			myStepSize 0.25
+		}
+		PhotoModeSettingFloatData CameraTilt
+		{
+			mySettingEnum CameraTilt
+			myName "aurabesh = false, contextComment = \"Photo mode setting to change the camera tilt\", enabled = true, guid = #5FC60A8F641041290003C02EB5B518B4, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 379, text = \"Tilt\", type = \"MenuLine\""
+			myIsCameraSetting TRUE
+			myMin -180.0
+			myMax 180.0
+			myStepSize 1.0
+			myStepSizeWhenHeld 2.0
+		}
+		PhotoModeSettingFloatData Red
+		{
+			mySettingEnum Red
+			myName "aurabesh = false, contextComment = \"Photo mode setting to change the red tint value\", enabled = true, guid = #5FC60A8F6410418A0003C03C234B6BDF, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 379, text = \"Red\", type = \"MenuLine\""
+			myCanBeSavedInPreset TRUE
+			myDefaultValue 1.0
+			myMin 0.0
+			myMax 1.0
+			myStepSize 0.25
+		}
+		PhotoModeSettingFloatData Green
+		{
+			mySettingEnum Green
+			myName "aurabesh = false, contextComment = \"Photo mode setting to change the green tint value\", enabled = true, guid = #5FC60A8F641041540003C0320C25CF7E, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 379, text = \"Green\", type = \"MenuLine\""
+			myCanBeSavedInPreset TRUE
+			myDefaultValue 1.0
+			myMin 0.0
+			myMax 1.0
+			myStepSize 0.25
+		}
+		PhotoModeSettingFloatData Blue
+		{
+			mySettingEnum Blue
+			myName "aurabesh = false, contextComment = \"Photo mode setting to change the blue tint value\", enabled = true, guid = #5FC60A8F641041610003C0345C9A69DD, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 379, text = \"Blue\", type = \"MenuLine\""
+			myCanBeSavedInPreset TRUE
+			myDefaultValue 1.0
+			myMin 0.0
+			myMax 1.0
+			myStepSize 0.25
+		}
+		PhotoModeSettingFloatData TimeOfDay
+		{
+			mySettingEnum TimeOfDay
+			myName "aurabesh = false, contextComment = \"Photo mode setting to change the time of day\", enabled = true, guid = #5FC60A8F6410416D0003C038B76D8294, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 379, text = \"Time Of Day\", type = \"MenuLine\""
+			myIsAvailableInSpaceContext FALSE
+			myIsAvailableInPlanetContext TRUE
+			myExcludedGalaxyLocations
+			{
+			}
+			myExcludedSurfaceGalaxyLocation
+			{
+				GalaxyLocation "New GalaxyLocation" < uid=5FC60A8F66C88AA900024BC34532EF8D > = Kijimi_Planet B581CAC861852906000019C68E3F7698
+				GalaxyLocation "New GalaxyLocation_0" < uid=5FC60A8F66C88AA900024CF006F6F65C > = Cantonica_Planet B581CAC865D326DA000217046879D995
+			}
+			myMin 0.0
+			myMax 24.0
+			myStepSize 0.05
+			myStepSizeWhenHeld 0.2
+		}
+		PhotoModeSettingFloatData "Lens Distortion Magnifier"
+		{
+			mySettingEnum LensMagnifier
+			myName "aurabesh = false, contextComment = \"Photo mode setting to lens magnification\", enabled = true, guid = #5FC60A8F64590E09000070EBEF77550A, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 379, text = \"Lens Magnifier\", type = \"MenuLine\""
+			myIsAvailableInSpaceContext TRUE
+			myIsAvailableInPlanetContext TRUE
+			myIsCameraSetting TRUE
+			myDefaultValue 0.0
+			myMin 0.0
+			myMax 0.2
+			myStepSize 0.05
+		}
+		PhotoModeSettingFloatData "Lens Distortion K1"
+		{
+			mySettingEnum LensDistortionK1
+			myName "aurabesh = false, contextComment = \"Photo mode setting to change the lens K1 distortion value\", enabled = true, guid = #5FC60A8F645A50CC0002AB93DF198755, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 379, text = \"Lens Distortion K1\", type = \"MenuLine\""
+			myIsAvailableInSpaceContext TRUE
+			myIsAvailableInPlanetContext TRUE
+			myIsCameraSetting TRUE
+			myDefaultValue 0.0
+			myMin -0.2
+			myMax 0.2
+			myStepSize 0.05
+		}
+		PhotoModeSettingFloatData "Lens Distortion K2"
+		{
+			mySettingEnum LensDistortionK2
+			myName "aurabesh = false, contextComment = \"Photo mode setting to change the lens K2 distortion value\", enabled = true, guid = #5FC60A8F645A50E20002CFAAF1A70F85, lineVersion = 14, maxLength = 0, productId = -1, sectionId = 379, text = \"Lens Distortion K2\", type = \"MenuLine\""
+			myIsAvailableInSpaceContext TRUE
+			myIsAvailableInPlanetContext TRUE
+			myIsCameraSetting TRUE
+			myDefaultValue 0.0
+			myMin -0.2
+			myMax 0.2
+			myStepSize 0.05
+		}
+		PhotoModeSettingFloatData "Lens Anamorphic X"
+		{
+			mySettingEnum LensDistortionAnamorphicX
+			myName "aurabesh = false, contextComment = \"Photo mode setting to change the lens anamorphic distortion value along X\", enabled = true, guid = #5FC60A8F645A50F90002E90DA0728ACC, lineVersion = 16, maxLength = 0, productId = -1, sectionId = 379, text = \"Anamorphic X\", type = \"MenuLine\""
+			myIsAvailableInSpaceContext TRUE
+			myIsAvailableInPlanetContext TRUE
+			myIsCameraSetting TRUE
+			myDefaultValue 0.0
+			myMin -0.2
+			myMax 0.2
+			myStepSize 0.05
+		}
+		PhotoModeSettingFloatData "Lens Anamorphic Y"
+		{
+			mySettingEnum LensDistortionAnamorphicY
+			myName "aurabesh = false, contextComment = \"Photo mode setting to change the lens anamorphic distortion value along Y\", enabled = true, guid = #5FC60A8F645A5112000303A05F93FECC, lineVersion = 18, maxLength = 0, productId = -1, sectionId = 379, text = \"Anamorphic Y\", type = \"MenuLine\""
+			myIsAvailableInSpaceContext TRUE
+			myIsAvailableInPlanetContext TRUE
+			myIsCameraSetting TRUE
+			myDefaultValue 0.0
+			myMin -0.2
+			myMax 0.2
+			myStepSize 0.05
+		}
+		PhotoModeSettingFloatData "Lens Anamorphic Squeeze"
+		{
+			mySettingEnum LensDistortionAnamorphicSqueeze
+			myName "aurabesh = false, contextComment = \"Photo mode setting to change the lens anamorphic squeeze value\", enabled = true, guid = #5FC60A8F645A5124000320644CA3F944, lineVersion = 20, maxLength = 0, productId = -1, sectionId = 379, text = \"Anamorphic Squeeze\", type = \"MenuLine\""
+			myIsAvailableInSpaceContext TRUE
+			myIsAvailableInPlanetContext TRUE
+			myIsCameraSetting TRUE
+			myDefaultValue 0.0
+			myMin 0.0
+			myMax 1.0
+			myStepSize 0.05
+		}
+		PhotoModeSettingFloatData Aperture
+		{
+			mySettingEnum Aperture
+			myName "aurabesh = false, contextComment = \"Photo mode setting to change the camera aperture\", enabled = true, guid = #5FC60A8F6491A03F0000BD0AC9D958F0, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 379, text = \"Aperture\", type = \"MenuLine\""
+			myIsCameraSetting TRUE
+			myIsIndented TRUE
+			myMax 1.0
+			myStepSize 0.1
+			myStepSizeWhenHeld 0.2
+		}
+		PhotoModeSettingFloatData "Focal Length"
+		{
+			mySettingEnum FocalLength
+			myName "aurabesh = false, contextComment = \"Setting name for camera focal length\", enabled = true, guid = #5FC60A8F6491A0330000A9515CCBB527, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 379, text = \"Focal Length\", type = \"MenuLine\""
+			myIsCameraSetting TRUE
+			myMax 50.0
+			myStepSize 0.2
+			myStepSizeWhenHeld 0.5
+		}
+		PhotoModeSettingFloatData "Focal Plane"
+		{
+			mySettingEnum FocusDistance
+			myName "aurabesh = false, contextComment = \"Setting name that determines the distance at which the camera is focusing\", enabled = true, guid = #5FC60A8F6491AE7D0000AF61CC2A7736, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 379, text = \"Focal Distance\", type = \"MenuLine\""
+			myIsCameraSetting TRUE
+			myMax 10.0
+			myStepSize 0.05
+			myStepSizeWhenHeld 0.1
+		}
+		PhotoModeSettingFloatData Shadows
+		{
+			mySettingEnum Shadows
+			myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Photo mode setting for modifying the shadow levels of the image\", enabled = true, guid = #5FC60A8F65B3AC29000498BC1937558F, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 379, text = \"Shadows\", type = \"MenuLine\""
+			myCanBeSavedInPreset TRUE
+			myDefaultValue 1.0
+			myMin 0.0
+			myMax 2.0
+			myStepSize 0.02
+			myStepSizeWhenHeld 0.04
+		}
+		PhotoModeSettingFloatData Midtones
+		{
+			mySettingEnum Midtones
+			myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Photo mode setting for modifying the midtone levels of the image\", enabled = true, guid = #5FC60A8F65B3AC5D000498BF6A973F58, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 379, text = \"Midtones\", type = \"MenuLine\""
+			myCanBeSavedInPreset TRUE
+			myDefaultValue 1.0
+			myMin 0.0
+			myMax 2.0
+			myStepSize 0.02
+			myStepSizeWhenHeld 0.04
+		}
+		PhotoModeSettingFloatData Highlights
+		{
+			mySettingEnum Highlights
+			myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Photo mode setting for modifying the highlight levels of the image\", enabled = true, guid = #5FC60A8F65B3AC6B000498C25609B5D5, lineVersion = 13, maxLength = 0, productId = -1, sectionId = 379, text = \"Highlights\", type = \"MenuLine\""
+			myCanBeSavedInPreset TRUE
+			myDefaultValue 1.0
+			myMin 0.0
+			myMax 2.0
+			myStepSize 0.02
+			myStepSizeWhenHeld 0.04
+		}
+	}
+	mySettingBools
+	{
+		PhotoModeSettingBoolData ShowPet
+		{
+			mySettingEnum ShowPet
+			myName "aurabesh = false, contextComment = \"Show Pet\", enabled = true, guid = #5FC60A8F641041980003C03E527B22F8, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 379, text = \"^^Show Pet\", type = \"MenuLine\""
+			myIsAvailableInSpaceContext FALSE
+			myDefaultValue TRUE
+		}
+		PhotoModeSettingBoolData ShowPlayer
+		{
+			mySettingEnum ShowPlayer
+			myName "aurabesh = false, contextComment = \"Show Player\", enabled = true, guid = #5FC60A8F641041A60003C06B2BB22ADC, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 379, text = \"^^Show Player\", type = \"MenuLine\""
+			myIsAvailableInSpaceContext FALSE
+			myDefaultValue TRUE
+		}
+		PhotoModeSettingBoolData "Aperture Enabled"
+		{
+			mySettingEnum ApertureEnabled
+			myName "branch = \"TU1\", contextComment = \"Setting for if the aperture slider is enabled.\", enabled = true, guid = #5FC60A8F666AFAE5000B91C5E841CBB5, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 379, text = \"Aperture Enabled\", type = \"MenuLine\""
+			myIsCameraSetting TRUE
+			myDefaultValue TRUE
+		}
+		PhotoModeSettingBoolData "Lens Distortion Enabled"
+		{
+			mySettingEnum LensDistortionEnabled
+			myName "branch = \"DLC1\", contextComment = \"A type of lens effect that distorts the image based on the lens\", enabled = true, guid = #5FC60A8F66FEAC490002156977E0D1F5, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 379, text = \"Lens Distortion\", type = \"MenuLine\""
+			myIsCameraSetting TRUE
+			myDefaultValue TRUE
+		}
+		PhotoModeSettingBoolData "Lens Film Grain Enabled"
+		{
+			mySettingEnum LensFilmGrainEnabled
+			myName "branch = \"DLC1\", contextComment = \"A type of lens effect\", enabled = true, guid = #5FC60A8F66FEAC6C0002156FD86C4017, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 379, text = \"Film Grain\", type = \"MenuLine\""
+			myIsCameraSetting TRUE
+			myDefaultValue TRUE
+		}
+		PhotoModeSettingBoolData "Lens Vignette Enabled"
+		{
+			mySettingEnum LensVignetteEnabled
+			myName "branch = \"TU5\", contextComment = \"A type of lens effect\", enabled = true, guid = #5FC60A8F6718EBA90002DFF71206F154, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 379, text = \"Vignette\", type = \"MenuLine\""
+			myIsCameraSetting TRUE
+			myDefaultValue TRUE
+		}
+		PhotoModeSettingBoolData "Lens Fring Enabled"
+		{
+			mySettingEnum LensFringeEnabled
+			myName "branch = \"TU5\", contextComment = \"A type of lens effect. See: https://en.wikipedia.org/wiki/Purple_fringing\", enabled = true, guid = #5FC60A8F6718EBB80002E5C71216C638, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 379, text = \"Lens Fringing\", type = \"MenuLine\""
+			myIsCameraSetting TRUE
+			myDefaultValue TRUE
+		}
+		PhotoModeSettingBoolData "Lens Chromatic Aberration"
+		{
+			mySettingEnum LensChromaticAberrationEnabled
+			myName "branch = \"TU5\", contextComment = \"A type of lens effect\", enabled = true, guid = #5FC60A8F6718EBF70002E5CA48CE299F, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 379, text = \"Chromatic Aberration\", type = \"MenuLine\""
+			myIsCameraSetting TRUE
+			myDefaultValue TRUE
+		}
+	}
+	mySettingIntegers
+	{
+		PhotoModeSettingIntegerData Lens
+		{
+			mySettingEnum Lens
+			myName "aurabesh = false, contextComment = \"Lens\", enabled = true, guid = #5FC60A8F64905A420000F1D83AB6F4A0, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 379, text = \"Lens\", type = \"MenuLine\""
+			myIsCameraSetting TRUE
+		}
+		PhotoModeSettingIntegerData Preset
+		{
+			mySettingEnum Preset
+			myName "aurabesh = false, contextComment = \"Preset\", enabled = true, guid = #5FC60A8F63FE2312000053EB2C1E1FAB, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 379, text = \"^^Presets\", type = \"MenuLine\""
+		}
+		PhotoModeSettingIntegerData Message
+		{
+			mySettingEnum Message
+			myName "aurabesh = false, contextComment = \"Message\", enabled = true, guid = #5FC60A8F641041CB0003C07D3419762D, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 379, text = \"^^Message\", type = \"MenuLine\""
+			myIsAvailableInPlanetContext TRUE
+		}
+		PhotoModeSettingIntegerData MessagePosition
+		{
+			mySettingEnum MessagePosition
+			myName "aurabesh = false, contextComment = \"Message Position\", enabled = true, guid = #5FC60A8F641041D40003C08197EF47EE, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 379, text = \"^^Message Position\", type = \"MenuLine\""
+		}
+		PhotoModeSettingIntegerData Frame
+		{
+			mySettingEnum Frame
+			myName "aurabesh = false, contextComment = \"Frame\", enabled = true, guid = #5FC60A8F641041DB0003C0852DC7DF54, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 379, text = \"^^Frame\", type = \"MenuLine\""
+		}
+		PhotoModeSettingIntegerData Guides
+		{
+			mySettingEnum Guides
+			myName "aurabesh = false, contextComment = \"Guides\", enabled = true, guid = #5FC60A8F641041E20003C089AE14B893, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 379, text = \"^^Guides\", type = \"MenuLine\""
+		}
+		PhotoModeSettingIntegerData ActiveCamera
+		{
+			mySettingEnum ActiveCamera
+			myName "aurabesh = false, contextComment = \"Active Camera\", enabled = true, guid = #5FC60A8F641041F30003C08DEAAEEDBD, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 379, text = \"^^Active Camera\", type = \"MenuLine\""
+		}
+		PhotoModeSettingIntegerData AnimCurve
+		{
+			mySettingEnum AnimCurve
+			myName "aurabesh = false, contextComment = \"Anim Curve\", enabled = true, guid = #5FC60A8F641041FB0003C09130514701, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 379, text = \"^^Anim Curve\", type = \"MenuLine\""
+		}
+		PhotoModeSettingIntegerData ViewFinderState
+		{
+			mySettingEnum ViewFinderState
+			myName "aurabesh = false, contextComment = \"Determines what state the view finder is in. (Off/5-point/45-point)\", enabled = true, guid = #5FC60A8F64B8EDCF00008649136D9E6A, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 379, text = \"View Finder State\", type = \"MenuLine\""
+			myAllowWrapping TRUE
+		}
+	}
+	mySettingColors
+	{
+		PhotoModeSettingColorData ColorGrading
+		{
+			mySettingEnum ColorGrading
+			myName "aurabesh = false, contextComment = \"Color Grading\", enabled = true, guid = #5FC60A8F643D51BF0000866E426BBDB2, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2101, text = \"Color Grading\", type = \"MenuLine\""
+			myCanBeSavedInPreset TRUE
+			myDefaultValue 0xffffffff
+			myStepSize 0.01
+			myStepSizeWhenHeld 0.02
+		}
+	}
+	mySaveTargetFolder Photos
+}
+

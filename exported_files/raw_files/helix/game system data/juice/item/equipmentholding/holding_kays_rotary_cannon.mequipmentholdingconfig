@@ -1,0 +1,107 @@
+include "helix/game system data/fruit/equipment/equipment_holding.fruit"
+include "helix/game system data/juice/item/equipmentholding/holding_kays_weapon_base.mequipmentholdingconfig"
+include "helix/game system data/juice/item/equipmentholding/holding_pickup_base.mequipmentholdingconfig"
+include "helix/game system data/juice/playermovementconfig/player_movement_rotary_cannon.mplayermovementconfig"
+include "helix/game system data/juice/playermovementconfig/player_movement_rotary_cannon_firing.mplayermovementconfig"
+
+EquipmentHoldingConfig holding_kays_rotary_cannon < uid=4C1DFD4E62B4176300009581822D8A2D > : holding_pickup_base
+{
+	myHandlingMode TwoHands
+	myAlwaysHold TRUE
+	myAlwaysRaise TRUE
+	mySequences
+	{
+		myPick
+		{
+			myDuration 0.5
+			myTracks
+			{
+				myGenericTracks
+				{
+				}
+				myCustomTracks
+				{
+				}
+			}
+		}
+	}
+	myHolsterConfig
+	{
+		myHolsterMinTime 6.0
+		myHolsterInCombatConstant
+		{
+			myEnabled TRUE
+			myTime 6.0
+		}
+		myHolsterAfterLastUsePulse
+		{
+			myEnabled TRUE
+			myTime 6.0
+		}
+		myHolsterAfterLastUseIntentionPulse
+		{
+			myEnabled TRUE
+			myTime 6.0
+		}
+		myHolsterAfterAimingConstant
+		{
+			myEnabled TRUE
+			myTime 6.0
+		}
+		myHolsterAfterWeaponModifiedConstant
+		{
+			myEnabled TRUE
+			myTime 6.0
+		}
+		myHolsterInAlarmZoneConstant
+		{
+			myEnabled TRUE
+			myTime 6.0
+		}
+		myHolsterNearMissPulse
+		{
+			myEnabled TRUE
+			myTime 6.0
+		}
+		myHolsterTookDamagePulse
+		{
+			myEnabled TRUE
+			myTime 6.0
+		}
+		myHolsterNearAlertedEnemiesConstant
+		{
+			myEnabled TRUE
+			myTime 6.0
+			myRadius 40.0
+		}
+		myHolsterNearHostileEnemiesConstant
+		{
+			myEnabled TRUE
+			myTime 4.9
+			myRadius 40.0
+		}
+		myLongHolsterAfterKillAllTime 8.0
+		myLongAutoHolsterChance 0.0
+		myLongManualHolsterChance 0.0
+		myHolsterAllowed FALSE
+	}
+	myMovement
+	{
+		myTurnWhilePickingEnabled TRUE
+		myMovementConfig < uid=4C1DFD4E62B4176300009582A7C32159 > = player_movement_rotary_cannon 4C1DFD4E62B4172D0000957FE929EFD5
+		myHipFireAimMovementConfig < uid=4C1DFD4E64AFAF1100014BDA3515A4E2 > = player_movement_rotary_cannon_firing 4C1DFD4E62B44A0D000048AF070D8BAB
+	}
+	myPlayerStateBehavior
+	{
+		myMelee HeldNotAllowed
+		myTraversal HeldNotAllowedButStateRestricted
+		myOverHeat HeldNotAllowed
+		myRoll HeldNotAllowed
+		myCrouch StateAllowedButRestricted
+		mySprint StateAllowed
+		myJump HeldNotAllowedButStateRestricted
+		myWeaponModuleSelection HeldNotAllowed
+		myPowerSlide HeldNotAllowedButStateRestricted
+	}
+}
+

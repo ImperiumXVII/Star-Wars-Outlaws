@@ -1,0 +1,39 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/intel/gym_mdinet_intel.mintel"
+
+Quest gym_quest_a_mq_020_test_mdinet < uid=7FD958A362431EC900002D09B5D5F98D >
+{
+	myName "aurabesh = false, contextComment = \"Test Line\", enabled = true, guid = #C564585662459D2900002CA88AD2A1E0, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"Sliro's Mansion\", type = \"MenuLine\"}"
+	myType Event
+	myBeats
+	{
+		QuestBeat "1 - Getting the Job" < uid=C56458566245A0B400004D0F4AB1EE50 >
+		{
+			myScript helix/scripts/gym_A_MQ_020_test_start_mdinet_BEAT_01.mscript
+			myName "aurabesh = false, contextComment = \"Test line\", enabled = true, guid = #C56458566245A0DE00004D1214853D72, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"Getting the Job\", type = \"MenuLine\""
+			myObjectives
+			{
+				QuestObjectiveInteract "Talk to the Mysterious Contact" < uid=C56458566245A0F300004D13D18392DC >
+				{
+					myName "aurabesh = false, contextComment = \"Test Line\", enabled = true, guid = #C56458566245A15000004D16F0C9FB13, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"Talk to the Mysterious Contact\", type = \"MenuLine\""
+				}
+				QuestObjectiveLeaveArea "Leave the Cantina" < uid=C56458566245A0FF00004D143EC9476C >
+				{
+					myName "aurabesh = false, contextComment = \"Test Line\", enabled = true, guid = #C56458566245A15000004D15CD9A217F, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"Leave the Cantina\", type = \"MenuLine\""
+					myIntel
+					{
+						Intel Intel_A < uid=C56458566245CAE60000B71D4B713C1D > = A_MQ_020_Intel_01_Bram C56458566245A3820000571C44653C2C
+						Intel Intel_B < uid=C56458566245CAF40000B71EAD77B4AF > = A_MQ_020_Intel_02_Merchant C56458566245A40600005721A24D17DB
+					}
+				}
+			}
+			myQuestBeatStateGameValue < uid=C56458566245A18400004D173D1182A4 >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=7FD958A362431EC900002D0AC3516A17 >
+	{
+	}
+}
+

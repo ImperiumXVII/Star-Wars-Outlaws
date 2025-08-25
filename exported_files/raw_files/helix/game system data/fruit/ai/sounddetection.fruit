@@ -1,0 +1,21 @@
+include "helix/game system data/fruit/ai/aievents.fruit"
+include "helix/game system data/fruit/ai/npcdetectionsoundevent.fruit"
+
+class NPCHearing_SoundEventReactionMapping
+{
+	NPCSoundEventType mySoundEventType
+	AIEvent myAIEventType
+	float myAgitationMultiplier 1.0
+}
+
+list NPCHearing_SoundEventReactionMappingList
+{
+	NPCHearing_SoundEventReactionMapping
+}
+
+class NPCHearingProfile < uid=auto >
+{
+	NPCHearing_SoundEventReactionMappingList mySoundEventReactions
+	float myHearingRangeMultiplier 1.0
+	float myFootstepMinSpeed 0.0 < tooltip ="The minimum movement speed of the Footstep Source. Exceeding this speed will allow the NPC to hear the footstep, including from a crouched source. ">
+}

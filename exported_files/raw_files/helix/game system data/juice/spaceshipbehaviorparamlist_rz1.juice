@@ -1,0 +1,382 @@
+include "helix/game system data/fruit/ai/spaceshipsettings.fruit"
+include "helix/game system data/juice/ai/npcshootpatterns.mnpcshootpattern"
+include "helix/game system data/juice/ai/spaceshipcombatprofiles.mspaceshipcombatprofile"
+include "helix/game system data/juice/ai/spaceshipformationprofiles.mspaceshipformationprofile"
+include "helix/game system data/juice/ai/spaceshipspawnprofiles.mspaceshipspawnprofile"
+include "helix/game system data/juice/ai/spaceshipspeedprofiles.mspaceshipspeedprofile"
+include "helix/game system data/juice/ai/spaceshiptrajectories.mspaceshiptrajectoryprofile"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_default.juice"
+
+SpaceshipBehaviorParameter rz1EvasiveStartCurrentManeuverMinElapsedTime : EvasiveStartCurrentManeuverMinElapsedTime
+{
+}
+
+SpaceshipBehaviorParameter rz1EvasiveStartMinDistance : EvasiveStartMinDistance
+{
+}
+
+SpaceshipBehaviorParameter rz1EvasiveMinDistance : EvasiveMinDistance
+{
+}
+
+SpaceshipBehaviorParameter rz1EvasiveDurationRandomMin : EvasiveDurationRandomMin
+{
+	myValue 6.0
+}
+
+SpaceshipBehaviorParameter rz1EvasiveDurationRandomMax : EvasiveDurationRandomMax
+{
+	myValue 15.0
+}
+
+SpaceshipBehaviorParameter rz1EvasiveConeAngle : EvasiveConeAngle
+{
+}
+
+SpaceshipBehaviorParameter rz1EvasiveStartAngleFromHostile : EvasiveStartAngleFromHostile
+{
+	myValue 20.0
+}
+
+SpaceshipBehaviorParameter rz1EvasiveSpiralProbability : EvasiveSpiralProbability
+{
+}
+
+SpaceshipBehaviorParameter rz1EvasivePauseBetweenPatternsMin : EvasivePauseBetweenPatternsMin
+{
+	myValue 4.0
+}
+
+SpaceshipBehaviorParameter rz1EvasivePauseBetweenPatternsMax : EvasivePauseBetweenPatternsMax
+{
+	myValue 5.0
+}
+
+SpaceshipBehaviorParameter rz1EvasiveBreakProbability : EvasiveBreakProbability
+{
+}
+
+SpaceshipBehaviorParameter rz1EvasiveScaleWidth : EvasiveScaleWidth
+{
+}
+
+SpaceshipBehaviorParameter rz1EvasiveScaleHeight : EvasiveScaleHeight
+{
+}
+
+SpaceshipBehaviorParameter rz1EvasiveScaleLength : EvasiveScaleLength
+{
+}
+
+SpaceshipBehaviorParameter rz1TimeToStartEvasiveIfStillInFrontOfHostile : TimeToStartEvasiveIfStillInFrontOfHostile
+{
+	myValue 4.0
+}
+
+SpaceshipBehaviorParameter rz1BreakStartCurrentManeuverMinElapsedTime : BreakStartCurrentManeuverMinElapsedTime
+{
+	myValue 6.0
+}
+
+SpaceshipBehaviorParameter rz1ChaseDurationRandomMin : ChaseDurationRandomMin
+{
+	myValue 6.0
+}
+
+SpaceshipBehaviorParameter rz1ChaseDurationRandomMax : ChaseDurationRandomMax
+{
+	myValue 18.0
+}
+
+SpaceshipBehaviorParameter rz1ChaseDistanceMin : ChaseDistanceMin
+{
+}
+
+SpaceshipBehaviorParameter rz1ChaseDistanceMax : ChaseDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter rz1ChaseConeAngle : ChaseConeAngle
+{
+	myValue 35.0
+}
+
+SpaceshipBehaviorParameter rz1ChaseChanceToBreakOnHostileDodgePercent : ChaseChanceToBreakOnHostileDodgePercent
+{
+}
+
+SpaceshipBehaviorParameter rz1ChaseBreakProbabilityOverPass : ChaseBreakProbabilityOverPass
+{
+}
+
+SpaceshipBehaviorParameter rz1OvershootMaxAngle : OvershootMaxAngle
+{
+	myValue 65.0
+}
+
+SpaceshipBehaviorParameter rz1InterceptConeAngle : InterceptConeAngle
+{
+}
+
+SpaceshipBehaviorParameter rz1InterceptDistanceIdeal : InterceptDistanceIdeal
+{
+}
+
+SpaceshipBehaviorParameter rz1InterceptDistanceMin : InterceptDistanceMin
+{
+	myValue 100.0
+}
+
+SpaceshipBehaviorParameter rz1InterceptDistanceMax : InterceptDistanceMax
+{
+	myValue 900.0
+}
+
+SpaceshipBehaviorParameter rz1InterceptDurationMin : InterceptDurationMin
+{
+	myValue 8.0
+}
+
+SpaceshipBehaviorParameter rz1InterceptDurationMax : InterceptDurationMax
+{
+}
+
+SpaceshipBehaviorParameter rz1JoustingProbability : JoustingProbability
+{
+	myValue 10.0
+}
+
+SpaceshipBehaviorParameter rz1JoustingMaxDurationPrepare : JoustingMaxDurationPrepare
+{
+	myValue 8.0
+}
+
+SpaceshipBehaviorParameter rz1JoustingMaxDuration : JoustingMaxDuration
+{
+}
+
+SpaceshipBehaviorParameter rz1JoustingDistanceTurn : JoustingDistanceTurn
+{
+	myValue 900.0
+}
+
+SpaceshipBehaviorParameter rz1JoustingEndDistance : JoustingEndDistance
+{
+	myValue 100.0
+}
+
+SpaceshipBehaviorParameter rz1JoustingAngle : JoustingAngle
+{
+	myValue 45.0
+}
+
+SpaceshipBehaviorParameter rz1JoustingMaxAngle : JoustingMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter rz1JoustingEndBreakProbabilityOverPass : JoustingEndBreakProbabilityOverPass
+{
+}
+
+SpaceshipBehaviorParameter rz1JoustingPositionMaxHeight : JoustingPositionMaxHeight
+{
+}
+
+SpaceshipBehaviorParameter rz1AlignMinDistance : AlignMinDistance
+{
+}
+
+SpaceshipBehaviorParameter rz1AlignMaxDistance : AlignMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter rz1LeashingMinDistance : LeashingMinDistance
+{
+}
+
+SpaceshipBehaviorParameter rz1LeashingMaxDistance : LeashingMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter rz1LeashingToVolumeMaxDistance : LeashingToVolumeMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter rz1ShootMaxDistance : ShootMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter rz1ShootMaxAngle : ShootMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter rz1BarkPositionDistanceMax : BarkPositionDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter rz1BroadcastRangeEnterCombat : BroadcastRangeEnterCombat
+{
+}
+
+SpaceshipBehaviorParameter rz1EscortDistance : EscortDistance
+{
+}
+
+SpaceshipBehaviorParameter rz1LowProhibitedActionAttackDelay : LowProhibitedActionAttackDelay
+{
+}
+
+SpaceshipBehaviorParameter rz1AccurateShootingProbability : AccurateShootingProbability
+{
+}
+
+SpaceshipBehaviorParameter rz1RangeForSecondaryWeapon : RangeForSecondaryWeapon
+{
+}
+
+SpaceshipBehaviorParameter rz1UndetectedTimeBeforeExitingCombat : UndetectedTimeBeforeExitingCombat
+{
+}
+
+SpaceshipBehaviorParameter rz1UndetectedTimeBeforeExitingAware : UndetectedTimeBeforeExitingAware
+{
+}
+
+SpaceshipBehaviorParameter rz1ReinforcementsCallProbabilityPercent : ReinforcementsCallProbabilityPercent
+{
+}
+
+SpaceshipBehaviorParameter rz1ReinforcementsCallDuration : ReinforcementsCallDuration
+{
+}
+
+SpaceshipBehaviorParameter rz1IdleDefaultSplineSizeHorizontal : IdleDefaultSplineSizeHorizontal
+{
+}
+
+SpaceshipBehaviorParameter rz1IdleDefaultSplineSizeVertical : IdleDefaultSplineSizeVertical
+{
+}
+
+SpaceshipBehaviorParameter rz1CooldownDuration : CooldownDuration
+{
+	myValue 2.0
+}
+
+SpaceshipBehaviorParameter rz1CooldownMaxDistance : CooldownMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter rz1SpaceshipMaxEngagementDistance : SpaceshipMaxEngagementDistance
+{
+}
+
+SpaceshipBehaviorParameter rz1SpaceshipPrimaryMaxAngle : SpaceshipPrimaryMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter rz1SpaceshipPrimaryMaxDistance : SpaceshipPrimaryMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter rz1SpaceshipPrimaryMinDistance : SpaceshipPrimaryMinDistance
+{
+	myValue 50.0
+}
+
+SpaceshipBehaviorParameter rz1SpaceshipPrimaryMaxHealth : SpaceshipPrimaryMaxHealth
+{
+}
+
+SpaceshipBehaviorParameter rz1SpaceshipSecondaryMaxAngle : SpaceshipSecondaryMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter rz1SpaceshipSecondaryMaxDistance : SpaceshipSecondaryMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter rz1SpaceshipSecondaryMinDistance : SpaceshipSecondaryMinDistance
+{
+}
+
+SpaceshipBehaviorParameter rz1SpaceshipSecondaryMaxHealth : SpaceshipSecondaryMaxHealth
+{
+}
+
+SpaceshipBehaviorParameter rz1SpaceshipMissileMaxAngle : SpaceshipMissileMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter rz1SpaceshipMissileMaxDistance : SpaceshipMissileMaxDistance
+{
+	myValue 1100.0
+}
+
+SpaceshipBehaviorParameter rz1SpaceshipMissileMinDistance : SpaceshipMissileMinDistance
+{
+	myValue 400.0
+}
+
+SpaceshipBehaviorParameter rz1SpaceshipMissileMaxHealth : SpaceshipMissileMaxHealth
+{
+}
+
+SpaceshipBehaviorParameter rz1CombatLeashingToPlayer : CombatLeashingToPlayer
+{
+	myValue 1100.0
+}
+
+SpaceshipBehaviorParameter rz1SpaceshipAccuracyRadiusMax : SpaceshipAccuracyRadiusMax
+{
+	myValue 6.0
+}
+
+SpaceshipBehaviorParameter rz1SpaceshipAccuracyRadiusMin : SpaceshipAccuracyRadiusMin
+{
+}
+
+SpaceshipBehaviorParameter rz1SpaceshipAccuracyDistanceMax : SpaceshipAccuracyDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter rz1SpaceshipAccuracyDistanceMin : SpaceshipAccuracyDistanceMin
+{
+}
+
+SpaceshipBehaviorParameter rz1SpaceshipShotSpreadPercentage : SpaceshipShotSpreadPercentage
+{
+}
+
+SpaceshipBehaviorParameter rz1SpaceshipMissileLockOnTime : SpaceshipMissileLockOnTime
+{
+}
+
+SpaceshipBehaviorParameter rz1HarassmentChance : HarassmentChance
+{
+	myValue 10.0
+}
+
+SpaceshipBehaviorParameter rz1HarassmentDuration : HarassmentDuration
+{
+	myValue 20.0
+}
+
+SpaceshipBehaviorParameter rz1HarassmentAreaSizeMin : HarassmentAreaSizeMin
+{
+}
+
+SpaceshipBehaviorParameter rz1HarassmentAreaSizeMax : HarassmentAreaSizeMax
+{
+	myValue 150.0
+}
+
+SpaceshipBehaviorParameter rz1HarassmentAreaHeightMin : HarassmentAreaHeightMin
+{
+	myValue 60.0
+}
+
+SpaceshipBehaviorParameter rz1HarassmentAreaHeightMax : HarassmentAreaHeightMax
+{
+}
+

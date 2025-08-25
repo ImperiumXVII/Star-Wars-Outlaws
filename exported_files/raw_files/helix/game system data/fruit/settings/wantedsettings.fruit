@@ -1,0 +1,244 @@
+include "helix/game system data/fruit/faction/faction.fruit"
+include "helix/game system data/fruit/ai/fireteamcore/npcfireteamcore.fruit"
+include "helix/game system data/fruit/reward/reward.fruit"
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+include "helix/game system data/fruit/contentdestination/contentdestination.fruit"
+include "helix/game system data/fruit/gamevalues/gamevalues.fruit"
+
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+
+list WantedPausedGameConditions
+{
+	WantedPausedGameConditionGroup
+	GameConditionQuestBeatState
+	GameConditionQuestState
+}
+
+class WantedPausedGameConditionGroup : GameConditionGroupBase
+{
+	WantedPausedGameConditions myConditions
+}
+
+// Must match enum HC_WantedTraversalContext in code/helix/HClient/HC_WantedDataTypes.h
+enum WantedTraversalContext
+{
+	Unset
+	OnFoot
+	OnMount
+	Ignore
+}
+
+class PointsOverride
+{
+	NPC* myNPC
+	float myPoints 0.0f
+}
+
+list PointsOverrides
+{
+	PointsOverride
+}
+
+class WantedActionData
+{
+	varmap myName < bhv="localization" ui_info=1 >
+	string myIcon < bhv="sprite" ui_info=1 >
+	PointsOverrides myPointsOverrides
+	float myPoints 0.0f
+	float myRewardScore 0.0f
+	float myCooldownTimeInSeconds 0.0f
+	bool myWaitForExitCombat false
+	bool myWaitForExitWanted false
+}
+
+class WantedEscapeOption
+{
+	varmap myName < bhv="localization" ui_info=1 >
+}
+
+class EscapeRewardData
+{
+	float myRewardScoreThreshold 0.0f
+	Reward* myReward
+}
+
+list EscapeRewardDataList
+{
+	EscapeRewardData
+}
+
+class ReinforcementData
+{
+	LivingWorldContentWantedReinforcementList myReinforcementContent
+	uid myLevelInfo < bhv="constantData" constantDataType="levelinfo" tooltip="The associated level (planet or space) for this list of Wanted Level Data." >
+}
+
+list ReinforcementDataList
+{
+	ReinforcementData
+}
+
+enum ReinforcementContext
+{
+	OnFoot
+	OnSpeeder
+	InSpaceship
+}
+
+class ReinforcementRefillCandidate
+{
+	NPC* myNPC
+	int myMaxCount
+}
+
+list ReinforcementRefillCandidateList
+{
+	ReinforcementRefillCandidate
+}
+
+class ReinforcementRefillData
+{
+	ReinforcementRefillCandidateList myReinforcementRefillCandidates
+	ReinforcementContext myReinforcementContext
+}
+
+list ReinforcementRefillDataList
+{
+	ReinforcementRefillData
+}
+
+class WantedLevelData
+{
+	ReinforcementDataList myReinforcements
+	ReinforcementRefillDataList myReinforcementRefills
+	float myNPCDetectionRateMultiplier 1.0f < tooltip="A multiplier for how long it takes NPC to detect the player in this wanted level" >
+	float myPointsThreshold 0.0f
+	string myDepletionTime 0.0f < bhv=formulaEditor formulaResolveContextType=Global tooltip="Depletion timer from this level to the previous one. Wanted level 0 will not be added to total. It is used as a memory period for pre-Wanted crime" >
+	string myBribeCost 1 < bhv=formulaEditor formulaResolveContextType=Global >
+	string myArrestCost 1 < bhv=formulaEditor formulaResolveContextType=Global tooltip="Fromula for the cost of arrest">
+	string myNeutralizationCost 1 < bhv=formulaEditor formulaResolveContextType=Global tooltip="Formula for the cost of neutralization">
+}
+
+list WantedLevelDataList
+{
+	WantedLevelData
+}
+
+class WantedDetectionConfig
+{
+	float myLoseDetectionGracePeriodSeconds 20.0f < tooltip="The duration of how long the player must stay out of NPC vision consecutively until they are counted as not being detected by the Wanted system" >
+	float myLoseLKPGracePeriodSeconds 10.0f < tooltip="The duration of how long Wanted retain the player's last known position once detection is lost" >
+}
+
+class NPCUnrecruitableData
+{
+	NPC* myNPC
+	bool myAddsToNPCCount FALSE < tooltip="Decides if this should count towards the Wanted Recruitment NPC count limits. Can be used to exclude NPCs such as Cameras, but include Turrets that can attack" >
+}
+
+list NPCUnrecruitableList
+{
+	NPCUnrecruitableData
+}
+
+class NPCTraversalContextScore
+{
+	WantedTraversalContext myTraversalContext
+	float myScore 0.f
+}
+
+list NPCTraversalContextScores
+{
+	NPCTraversalContextScore
+}
+
+class WantedPlayerTraversalContextScore
+{
+	WantedTraversalContext myPlayerTraversalContext
+	NPCTraversalContextScores myNPCTraversalContexts
+}
+
+list WantedPlayerTraversalContextScoreList
+{
+	WantedPlayerTraversalContextScore
+}
+
+class NPCFireteamScoreParameters
+{
+	string myScoreDistanceCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -7.3741851 0.00050034933, -20 0, }, outTangents = { 20 0, 0 -0, }, properties = { 1299, 2323, }, values = { 10 1, 40 0.2, }, }, numKeys = 2, }" < bhv=inputgraph tooltip="A flat score added based on the target distance" >
+	WantedPlayerTraversalContextScoreList myTraversalContextScores
+}
+
+class NPCRecruitDespawnLocationSearchParameters
+{
+	ContentDestinationType myContentDestinationType
+	bool myGetClosest TRUE < tooltip="Searches for the closest available content destination" >
+	bool myGetLeastTargeted TRUE < tooltip="Searches for the least targeted content destination" >
+	float myMinSearchDistance 0.0f < min=0 >
+	float myMaxSearchDistance 1000.0f < min=0 >
+}
+
+class NPCRecruitDespawnPolicy
+{
+	float myDespawnInPlace_MinDistanceToPlayer 120.0f < min=0 tooltip="(meters) Fireteam's centroid distance to the player position required to be allowed to be despawned in place, in addition to being outside of player FOV. This is for cases where NPCs cannot find a suitable despawn location" >
+	float myDespawnAtLocation_MinDistanceToPlayer 200.0f < min=0 tooltip="(meters) Fireteam's centroid distance to the player position required to be allowed to be despawned while traveling to a despawn location, in addition to being outside of player FOV" >
+	bool myDespawnAtLocation_EnableDespawnDuringTravel TRUE < tooltip="Enables fireteams to be despawned while they are traveling to a despawn location" >
+}
+
+class NPCRecruitmentConfig < tooltip="The highest scored fireteams will pursue the player." >
+{
+	string myPursuitMaxNPCCount < bhv=formulaEditor formulaResolveContextType=Global tooltip="Formula to decide how many NPCs may actively pursue the player during Wanted." >
+	string myScoreDistanceCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -7.3741851 0.00050034933, -20 0, }, outTangents = { 20 0, 0 -0, }, properties = { 1299, 2323, }, values = { 10 1, 40 0.2, }, }, numKeys = 2, }" < bhv=inputgraph tooltip="DEPRECATED, will be removed" >
+	float myRecruitStateMinimumLifetime 5.0f < tooltip="(seconds) The minimum time a fireteam will spend within a state (such as Pursue, Fallback) before being able to switch" >
+	string myReleaseFromRecruitmentDistance 0.0 < bhv=formulaEditor formulaResolveContextType=Global tooltip="Fireteams exceeding this distance to the player will be released from wanted recruitment" >
+	NPCRecruitDespawnPolicy myDespawnPolicy
+	NPCRecruitDespawnLocationSearchParameters myDespawnLocationSearchParameters
+	NPCFireteamScoreParameters myNPCScoreParameters
+	NPCUnrecruitableList myUnrecruitableNPCs < tooltip="These NPCs are not able to be recruited and pursue the player, but are still able to react to the player" >
+}
+
+class WantedSettings < uid=auto >
+{
+	float myReinforcementsMinSpawnRadius 0.0f
+	float myReinforcementsMaxSpawnRadius 0.0f
+	float myReinforcementRequestTimeout 5.0f < tooltip="If no valid reinforcement location can be found after this many seconds, the request will be discarded" >
+	float myExitCombatGracePeriodSeconds 0.0f < tooltip="Duration of the grace period in seconds after exiting combat" >
+	float myStarSystemTravelWantedResetDelaySeconds 2.0f < tooltip="The delay in seconds before the Wanted level is reset by traveling between star systems, including hyperspace" >
+	WantedDetectionConfig myDetectionConfig
+	NPCRecruitmentConfig myRecruitmentConfigPlanet
+	NPCRecruitmentConfig myRecruitmentConfigSpace
+	int myNPCImmediateCombatWantedLevel 3
+	int myStarSystemTravelWantedLevelClearThreshold 6 < tooltip="What is the max (including) wanted level cleared by traveling between star systems, including hyperspace" >
+	int mySpaceTravelWantedLevelClearThreshold 2 < tooltip="What is the max (including) wanted level cleared by traveling between planet and space" >
+	Faction* myEnforcementFaction
+	WantedLevelDataList myWantedLevels
+	EscapeRewardDataList myEscapeRewards
+	TotalFinesPaidGameValue myTotalFinesPaidGameValue < init_set=1 tooltip="Game value representing the sum of arrested/neutralized fines paid." ui_info=0 >
+	BribeCostGameValue myBribeCostGameValue < init_set=1 tooltip="Game value representing the current wanted levels bribe cost." ui_info=0 >
+	MapRef* myEscapeOptionPlanetMapRef
+	MapRef* myEscapeOptionSpaceMapRef
+	WantedPausedGameConditions myPausedConditions
+	WantedActionData myPlayerShotAtNPC
+	WantedActionData myPlayerShotNearNPC
+	WantedActionData myPlayerEliminatedNPC
+	WantedActionData myPlayerShotAtSpaceStation
+	WantedActionData myPlayerTrespassedLowSecurityArea
+	WantedActionData myPlayerTrespassedHighSecurityArea
+	WantedActionData myPlayerTrespassedFactionTerritory
+	WantedActionData myPlayerAimedAtNPC
+	WantedActionData myPlayerResistedArrest
+	WantedActionData myPlayerDisobeyedOrder
+	WantedActionData myPlayerStoodTooCloseToNPC
+	WantedActionData myPlayerAssaultedNPC
+	WantedActionData myPlayerBumpedIntoNPC
+	WantedActionData myPlayerPerformedForbiddenInteraction
+	WantedActionData myPlayerBecameWanted
+	WantedActionData myPlayerHoldingForbiddenItem
+	WantedActionData myPlayerThrowingForbiddenItem
+	WantedActionData myPlayerFaceOffNPC
+	WantedActionData myPlayerTriggeredAlarm
+	WantedActionData myPlayerStoleFromNPC
+	WantedActionData myPlayerVehicleCollisionWithNPC
+	WantedEscapeOption myCorruptedOfficer
+	WantedEscapeOption myWantedTerminal
+}

@@ -1,0 +1,31 @@
+include "helix/game system data/fruit/item/item.fruit"
+
+class ItemCategoryInfo < ui_info=1 >
+{
+	ItemCategory myCategory < ui_info=0 >
+	varmap myName < bhv="localization" >
+	varmap myLootTypeSubText < bhv="localization" ui_info=0 >
+	string myIcon < bhv="sprite" >
+}
+
+list ItemCategoryInfoList
+{
+	ItemCategoryInfo
+}
+
+class ItemQualityInfo < ui_info=1 >
+{
+	ItemQuality myQuality < ui_info=0 >
+	varmap myName < bhv="localization" >
+}
+
+list ItemQualityInfoList
+{
+	ItemQualityInfo
+}
+
+class ItemSettings < uid=auto >
+{
+	ItemCategoryInfoList myItemCategories
+	ItemQualityInfoList myItemQualities
+}

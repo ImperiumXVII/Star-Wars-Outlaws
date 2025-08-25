@@ -1,0 +1,92 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/ai/npcdetectionsoundevent_projectiles.mnpcdetectionsoundevent"
+include "helix/game system data/juice/projectile/realization/small_stun_ring.mprojectilerealization"
+
+BallisticProjectile weapon_projectile_stun_ring < uid=A207755D62220B1900002E4D3B074031 >
+{
+	myObject
+	{
+		myMaterialType Electric
+		myTravelLifeTime 1.5
+		myMaxTravelDistanceEnabled TRUE
+		myMaxTravelDistance
+		{
+			myFormula 40
+			myDefault 40.0
+		}
+		myExtraShapes
+		{
+			ProjectileExtraShape Ring
+			{
+				myShapeType Cylinder
+				myDynamicShapeEnabled TRUE
+				myShapeRadius 0.9
+				myDynamicShapeRadius "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -98.25563 -0.0031180382, }, outTangents = { 19.058193 -0.006805338, 0 0, }, properties = { 2314, 3347, }, values = { 2 0.1, 80 0.89999998, }, }, maxValueBounds = 10, minValueBounds = -10, numKeys = 2, }"
+				myUseForVisuals TRUE
+				myUseCustomCastType TRUE
+				myCustomCastType VsDynamic
+			}
+		}
+	}
+	myRealization < uid=A207755D62220D5D00002E4F1432415F > = small_stun_ring A207755D62220B1D00002E4E7A0530CC
+	myActions
+	{
+		ProjectileActionStatusEffect Stun
+		{
+			myEnableCondition
+			{
+				myConditions
+				{
+					GameConditionContextSourceAndTargetAgentsHaveFactionRelation TargetIsNotAnAlly
+					{
+						myIsNegated TRUE
+						mySuccessRelationTypes
+						{
+							FactionRelation "New FactionRelation" Friendly
+						}
+					}
+				}
+			}
+			myActionTargetType FinalHit
+			myStatusEffect Stunned
+			myDuration 7.0
+		}
+		ProjectileActionDamage "FakeStunned (Kill)"
+		{
+			myActionTargetType FinalHit
+			myDamageType StunBlast
+			myDamage 30.0
+		}
+		ProjectileActionGameScript OnHit
+		{
+			myEnableCondition
+			{
+				myConditions
+				{
+					GameConditionContextSourceAndTargetAgentsHaveFactionRelation TargetIsNotAnAlly
+					{
+						myIsNegated TRUE
+						mySuccessRelationTypes
+						{
+							FactionRelation "New FactionRelation" Friendly
+						}
+					}
+					GameConditionContextAgentIsAlive "IsAliveAgent (as opposed to a wall or ground)"
+					{
+						myAgentContextType TargetAgent
+					}
+				}
+			}
+			myActionTargetType FinalHit
+			myGameScript "helix/game scripts/gs_projectile_hit_reset_smoke_bomb_cooldown.mgamescript"
+			myDamageFormula 0
+			myDefaultDamage 0.0
+		}
+	}
+	myNPCSensoryProjectileType StunRing
+	myNPCImpactSoundEvent < uid=416E63E4664B52F700044A2B80A8EC7D > = ProjectileImpact_Stun 416E63E4664B521900044838AAC2BF82
+	myInitialSpeed 70.0
+	myAccelerationConstant 5.0
+	myAccelerationCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.96652067 -0.0011136457, }, outTangents = { 0.56476843 0.094654799, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 1 2, }, }, numKeys = 2, }"
+}
+

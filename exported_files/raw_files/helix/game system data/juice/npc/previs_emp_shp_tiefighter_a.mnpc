@@ -1,0 +1,48 @@
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/emp_shp_base.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC previs_emp_shp_tiefighter_a < uid=6EA7962564A40B0C00031F36F5FC4F24 > : emp_shp_base
+{
+	myCharacterVisuals < uid=6EA7962564A40B0C00031F3795C57D15 > = character_visuals_npc_shp_tiefighter 849AB26562B32167000081E7492D3BDF
+	myBehavior helix/behaviors/tiefighter_spaceship_chase_new.mbehavior
+	myNPCComponentSetType Spaceship
+	myIsInvulnerable TRUE
+	mySpaceshipType Dummy
+	myMaxHealth 40
+	myHealthFormula 20*SpaceHealthDifficultyModifier
+	myLodType Spaceship_Small
+	myVisionProfile < uid=6EA7962564A40B0C00031F3AA38CDDE7 > = TieFighterVisionProfile B4FBE430643FCC3500000B32C8290515
+	myHearingProfile < uid=6EA7962564A40B0C00031F3B1D1F3156 > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myThreatProfile < uid=6EA7962564A40B0C00031F3CD429C244 > = DefaultThreatProfile 16DEADE6608474380000004E85DD35EB
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "tiefighter weapon loadout" < uid=6EA7962564A40B0C00031F3D917B96B7 > = weaponloadout_emp_shp_tiefighter F95CD8F3640AF8F7000009791889557F
+	}
+	myPlayerAwarenessProfile < uid=6EA7962564A40B0C00031F3E54DD029A > = SPACE_CombatNPC 3A129121647DDDD40001888490E9E7A2
+	myAudioParameters
+	{
+		myEmitterName "TIE Fighter"
+		myPropagated TRUE
+		myEmitters
+		{
+			AgentEmitter Default
+			{
+				myEmitterLabel < uid=3A1C5D1865534CFC0000B5F34ED14839 > = Root 3A1C5D1863906F050000AB6FBD984CC4
+				myEmitterPrefab "emitterLayerName = \"ship_npc\", enableDoppler = true, enablePropagation = true, sphereRadius = 5, stopOnDestroy = true"
+			}
+			AgentEmitter Dialogue
+			{
+				myEmitterLabel < uid=3A1C5D1865534CFC0000B5F4A01D94AB > = Mouth 3A1C5D1863906F120000AB70A206E385
+				myEmitterPrefab "emitterLayerName = \"misc\", enableDoppler = false, enablePropagation = false, sphereRadius = 5, stopOnDestroy = true"
+			}
+			AgentEmitter Weapon
+			{
+				myEmitterLabel < uid=3A1C5D1865534CFC0000B5F5DF7EE888 > = Hand 3A1C5D1863906F180000AB718F1E9EFD
+				myEmitterPrefab "emitterLayerName = \"weapons_npc\", enableDoppler = false, enablePropagation = true, sphereRadius = 5, stopOnDestroy = true"
+			}
+		}
+	}
+}
+

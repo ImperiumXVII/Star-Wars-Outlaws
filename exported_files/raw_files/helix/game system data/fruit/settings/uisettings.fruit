@@ -1,0 +1,322 @@
+include "helix/game system data/fruit/settings/useroptionssettings.fruit"
+include "helix/game system data/fruit/galaxy/galaxylocation.fruit"
+include "helix/game system data/fruit/ui/uienums.fruit"
+include "snowdrop/modules/core/audio/audio.fruit"
+include "snowdrop/font/fontfamily.fruit"
+
+//////////////////////////////////////////////////////////////////////////
+
+enum UIState
+{
+	Frontend	// Always first
+	Planet
+	Space
+	SystemMenu
+	GameMenu
+	Cinematic
+}
+
+list UIGraphs
+{
+	file < bhv=asset assettype="GUI" >
+}
+
+class StateGraphs
+{
+	UIState myState < tooltip="In which UI state should these graphs be loaded" >
+	UIGraphs myGraphs
+}
+
+list StateGraphList
+{
+	StateGraphs
+}
+
+class UILoadList
+{
+	UIGraphs myAlwaysLoadedGraphs < tooltip="Graphs that are allowed to be constantly loaded." >
+	StateGraphList myStateControlledGraphs < tooltip="Lists of graphs that are loaded/unloaded based on UI states." >
+	UIGraphs myDebugGraphs < tooltip="Graphs that run for debug purposes only. These won't run in retail." >
+}
+
+//////////////////////////////////////////////////////////////////////////
+
+list IconList
+{
+	string < bhv=sprite >
+}
+
+list ColorList
+{
+	uid < bhv=presetcolor >
+}
+
+class MapWaypointOptions
+{
+	float myResolveDistance 25.0 < tooltip="Automatically remove a waypoint when the player is inside this range (m)." >
+	IconList myIcons < tooltip="The number of icons decides how many waypoints the player is allow to place." >
+}
+
+class MapAnnotationOptions
+{
+	IconList myIcons
+	ColorList myColors
+}
+
+//////////////////////////////////////////////////////////////////////////
+
+enum UIMovablePieceID
+{
+	HUDAreaNotification
+	HUDCombatAndGadget
+	HUDCompass
+	HUDContextualUI
+	HUDGameStatusUI
+	HUDInteractionPrompt
+	HUDNotificationLog
+	HUDQuestTracker
+	HUDSituationalNotification
+	HUDSubtitles
+	HUDPing
+	HUDToastNotification
+	HUDTutorialPrompt
+	HUDTutorialHint
+	HUDWantedInformation
+	HUDStatusLeft
+	HUDStatusCenter
+	HUDStatusRight
+	HUDComlink
+}
+
+list UIMovablePieceAdditionalOptions
+{
+	OptionEnum
+}
+
+class UIMovablePiece
+{
+	UIMovablePieceID myPieceID
+	varmap myUserFacingName < bhv="localization" >
+
+	vec2i myDefaultPosition
+	vec2f myPositionAnchor
+
+	vec2i myDefaultSize
+	vec2i myMinSize
+	vec2i myMaxSize
+
+	bool myOffsetFromLeft true
+	bool myOffsetFromBottom true
+	bool myUseUltrawide false
+	bool myUseScreenHeight false
+
+	color myDebugColor 0x80886F68
+
+	bool myHasModeOption false
+	OptionEnum myModeOption < tooltip="The associated enable/mode option to display first in the HUD Editor. Needs to be defined in the appropriate settings list.\nAssumes 0/false means the UI is disabled." >
+	bool myIsScaleSize false
+	UIMovablePieceAdditionalOptions myAdditionalOptions
+}
+
+list UIMovablePieces
+{
+	UIMovablePiece
+}
+
+//////////////////////////////////////////////////////////////////////////
+
+// Keep in sync with \code\helix\HClient\HC_UISettingsConstantData.h
+enum UIDownsample
+{
+	None
+	X2
+	X4
+	X8
+}
+
+class UIBlurSettings
+{
+	UIDownsample myDownsample X4 < tooltip="Factor to downsample image before blur" >
+	vec2f mySpread 0;1 < tooltip="Spread of blur, higher value equals more blur" >
+	vec2f myStrength 0;1 < tooltip="Strength factor applied uniformly" >
+}
+
+class UIGlowSettings
+{
+	UIBlurSettings myBlurSettings
+	vec2f myIntensity 0.0;1.0 < tooltip="Intensity applied addatively to overlay render" >
+}
+
+class UIAnalogSettings
+{
+	UIBlurSettings myBlurSettings
+	vec2f myScaleOffset 0.4;0.1 < tooltip="The scale offset applied to final background rendering" >
+}
+
+class SoundVisualsSettings
+{
+	float myGlowFactor 1.0 < bhv=percent min=0 max=2 tooltip="Factor to apply glow to sound visuals" >
+	uid myIdleColor < bhv=presetcolor >
+	uid myInvestigationColor < bhv=presetcolor >
+	uid myCombatColor < bhv=presetcolor >
+	uid myLDIColor < bhv=presetcolor >
+	uid myObjectiveColor < bhv=presetcolor >
+	
+	string myProximitySenseIntensityCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.16666667 -0, -0.16666667 0, }, outTangents = { 0.16666667 0, 0.16666667 0, 0 0, }, properties = { 3, 1027, 3075, }, values = { 0 0.002, 0.5 0.3, 1 0.002, }, }, numKeys = 3, }" < bhv="inputgraph" >
+	string myPetSenseIntensityCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.16666667 -0, -0.16666667 0, }, outTangents = { 0.16666667 0, 0.16666667 0, 0 0, }, properties = { 3, 1027, 3075, }, values = { 0 0.002, 0.5 0.3, 1 0.002, }, }, numKeys = 3, }" < bhv="inputgraph" >
+}
+
+class StencilSettings
+{
+	uid myLastKnownPositionColor < bhv=presetcolor >
+	string myLastKnownPositionIntensityCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.16666667 -0, -0.16666667 0, }, outTangents = { 0.16666667 0, 0.16666667 0, 0 0, }, properties = { 3, 1027, 3075, }, values = { 0 0.002, 0.5 0.3, 1 0.002, }, }, numKeys = 3, }" < bhv="inputgraph" >
+}
+
+//////////////////////////////////////////////////////////////////////////
+
+list WebMList
+{
+	file < bhv=asset assettype="webm" >
+}
+
+class FrontendOptions
+{
+	WebMList myLogoTrain
+	file myTitleBackground < bhv=asset assettype="webm" >
+	file myMenuBackground < bhv=asset assettype="webm" >
+	WebMList myPCPartners
+	WebMList myDemoAssets
+}
+
+//////////////////////////////////////////////////////////////////////////
+
+list MenuNarrationVoiceNames
+{
+	varmap < bhv="localization" > 
+}
+
+class MenuNarrationSettings
+{
+	AudioEvent myAudioEvent
+	AudioRTPC myAudioRTPC
+	MenuNarrationVoiceNames myVoiceUserOptionLocStrings
+}
+
+//////////////////////////////////////////////////////////////////////////
+
+class SubtitleTextFormattingSettings
+{
+	bool myBoldenName false
+
+	uid myClosedCaptionColor < bhv=presetcolor >
+	uid myEssentialTextColor < bhv=presetcolor >
+	uid myEssentialNameColor < bhv=presetcolor >
+	uid myOverheardTextColor < bhv=presetcolor >
+	uid myOverheardNameColor < bhv=presetcolor >
+}
+
+//////////////////////////////////////////////////////////////////////////
+
+class MenuTabGameValue
+{
+	UIGameMenuTab myMenuTab
+	uid myGameValue < bhv=constantdata constantDataType=gamevalue >
+}
+
+list MenuTabGameValueList
+{
+	MenuTabGameValue
+}
+
+//////////////////////////////////////////////////////////////////////////
+
+class HUDVisibilityRule_GameValue
+{
+	uid myGameValue < bhv=constantdata constantDataType=gamevalue >
+}
+
+class HUDVisibilityRule_UserOption
+{
+	OptionEnum myOption
+	int myRequiredValue
+}
+
+list HUDVisibilityRuleList
+{
+	HUDVisibilityRule_GameValue
+	HUDVisibilityRule_UserOption
+}
+
+class HUDElementVisibility
+{
+	UIHUDElement myElement
+	HUDVisibilityRuleList myRules
+}
+
+list HUDElementVisibilityList
+{
+	HUDElementVisibility
+}
+
+//////////////////////////////////////////////////////////////////////////
+
+class LandingZoneSettings
+{
+	string myDefaultIcon < bhv=sprite >
+	string myCurrentIcon < bhv=sprite tooltip="Icon to use for the landing zone the Trailblazer is currently stationed at." >
+	string myLockedIcon < bhv=sprite >
+	float myInteractionPointCheckRadius 30.0 < tooltip="How many meters in radius should we check for the relevant take off interaction point to attach map refs to?" >
+}
+
+//////////////////////////////////////////////////////////////////////////
+
+class GameActionOffsets
+{
+	string myFont "ProximaNova"
+	float myReferenceHeight 32
+	float myMaxWidth 64
+	float myHoldLineThickness 2.5
+	float myHoldLineDistance 1
+	float myHoldMoveDistance 4
+	float myReferenceFontSize 18
+	float myMinimumFontScale 0.77
+	float myTextMargin 3
+	float myVerticalAlignment 0.4
+}
+
+list GameActionOffsetsList
+{
+	GameActionOffsets
+}
+
+//////////////////////////////////////////////////////////////////////////
+
+class MetroidvaniaGateSettings
+{
+	uid myAdvancedSlicingKitItem < bhv=constantdata constantDataType=item >
+	uid myFusionCutterItem < bhv=constantdata constantDataType=item >
+	uid myPowerBlasterModuleItem < bhv=constantdata constantDataType=item >
+}
+
+//////////////////////////////////////////////////////////////////////////
+
+class UISettings < uid=auto >
+{
+	UILoadList myDefaultLoadList
+	FrontendOptions myFrontendOptions
+	MapWaypointOptions myMapWaypointOptions
+	MapAnnotationOptions myMapAnnotationOptions
+	UIMovablePieces myMovablePieces
+	UIGlowSettings myGlowSettings
+	UIAnalogSettings myAnalogSettings
+	SoundVisualsSettings mySoundVisualsSettings
+	StencilSettings myStencilSettings
+	MenuNarrationSettings myMenuNarrationSettings
+	SubtitleTextFormattingSettings mySubtitleTextFormattingSettings
+	string myDyslexiaFont
+	MenuTabGameValueList myMenuTabGameValues
+	HUDElementVisibilityList myHUDVisibilityRules
+	LandingZoneSettings myLandingZoneSettings < bhv=sprite >
+	GameActionOffsetsList myGameActionOffsets
+	MetroidvaniaGateSettings myMetroidvaniaGateSettings
+}

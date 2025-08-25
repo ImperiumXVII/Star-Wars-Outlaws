@@ -1,0 +1,27 @@
+include "helix/game system data/fruit/projectile/npcsensoryprojectiletype.fruit"
+include "helix/game system data/fruit/ai/sensorypropagationpolicy.fruit"
+include "helix/game system data/fruit/ai/npcsensoryenvironment.fruit"
+include "helix/game system data/fruit/ai/vision.fruit"
+include "helix/game system data/fruit/ai/smell.fruit"
+include "helix/game system data/fruit/ai/sounddetection.fruit"
+include "helix/game system data/fruit/ai/sensorymodifiers.fruit"
+
+class NPCSensoryProfile < uid=auto >
+{
+	NPCSensoryProjectileTypeList myDetectableProjectileTypes < tooltip="Defines the projectile types the NPC will be able to sense" >
+	NPCSensoryModifierProfile* mySensoryModifierProfile < tooltip="Defines how the NPC sensory will be modified in certain contexts" >
+	NPCSensoryPropagationPolicy myCombatEventPolicy ReceiveAll < tooltip="Defines which combat events the NPC is able to receive" >
+}
+
+class NPCSensoryProfileOverride
+{
+	NPCVisionProfile* myVisionProfile
+	NPCHearingProfile* myHearingProfile
+	NPCSensoryEnvironmentType mySensoryEnvironmentType
+	int myPriority < tooltip="Higher number means higher priority" >
+}
+
+list NPCSensoryProfileOverrides
+{
+	NPCSensoryProfileOverride
+} 

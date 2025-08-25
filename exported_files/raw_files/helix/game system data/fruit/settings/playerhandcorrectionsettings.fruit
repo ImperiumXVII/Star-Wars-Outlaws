@@ -1,0 +1,27 @@
+
+
+class PlayerHandCellsConfig
+{
+	bool myEnabled true
+	vec2f myCubeAreaSize 1.0;0.6
+	float myArmLongitude 1.0
+	vec3i myCubeResolution 5;4;5
+	bool myFullHeight false < tooltip="If false, the hand cells cubes will assume only up or down is necessary, so it will divide the number of cubes by 2" >
+	bool myAlwaysUp true < tooltip="If not full height, if true will always pick the upper side of the box, otherwise will be dynamic based on the reference position" >
+	bool myNonRelevantDepthTestingEnabled false
+	vec2i myNonRelevantDepthTestRes 2;2 < min=1 tooltip="Base on the % operator, non relevant hand cells will contribute to the distance to wall or not" >
+}
+
+class PlayerHandCorrectionParameters
+{
+	PlayerHandCellsConfig myHoldingConfig
+	PlayerHandCellsConfig myCrouchedConfig
+	PlayerHandCellsConfig myPreUnholsterConfig < tooltip="This is the setup we use to decide to use QuickHipFire or HipFire when unholstering and shot" >
+	PlayerHandCellsConfig myQuickHipFireConfig
+	string myHandAimCorrectionStrengthByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -4 0, }, outTangents = { 4 0, 0 0, }, properties = { 71, 1095, }, values = { 0 1, 10 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+	float myCalculationTime 0.5 < tooltip="Min amount of time the hand correction is caluclating the best position" >
+	bool myStickinessEnabled true
+	float myStickinessTime 0.4 < tooltip="Min amount of time the stickiness remains" >
+	float myCorrectionLerpStep 3.0 < tooltip="Lerp step for the hand correction" >
+	float myCorrectionStrengthLerpStep 0.5 < tooltip="Lerp step for the hand correction strength based on distance" >
+}

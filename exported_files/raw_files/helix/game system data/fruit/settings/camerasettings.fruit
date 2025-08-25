@@ -1,0 +1,72 @@
+class CameraSettings < uid=auto >
+{
+	float myPitchStrengthTransitionToSlope 3.0 < min=1 max=100 >
+	float myPitchStrengthTransitionToFlat 10.0 < min=1 max=100 >
+
+	float myMinSlopeAngleToRecover 10.0 < min=0 tooltip="Min slope angle in degrees at which you do autocenter on the Pitch" >
+	float myMaxYawAngleToRecover 90.0 < min=0 tooltip="Max angle in degrees at which you do autocenter on the Yaw" >
+	string myYawRecoveryStrengthBasedOnSpeed "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.2 0, }, outTangents = { 0.641985 -0, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 7 5, }, }, numKeys = 2, }" < bhv=inputgraph >
+	string myYawRecoveryStrengthBasedOnAngle "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.2 0, }, outTangents = { 0.641985 -0, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 90 5, }, }, numKeys = 2, }" < bhv=inputgraph >
+
+	float myPitchRecoveryDelay 2.5
+
+	float myPivotMirrorStartAngle 0.3 < tooltip="At this angle we start interpolating towards the mirror mode pivot. You can disable this feature by setting this value to the same as myPivotMirrorStopAngle." >
+	float myPivotMirrorStopAngle 1.0 < tooltip="At this angle we will reach the interpolation target." >
+	float myPivotMirrorTargetRatio 0.9 < tooltip="How far towards the mirror pivot position we will interpolate. So if this is 0.9 we will have moved 90% towards the mirror pivot when we reach the value for myPivotMirrorStopAngle and then it will stop interpolating." >
+	string myPivotMovementRemapCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.3 -0.3, -0.2 0, }, outTangents = { 0.2 0, 0.3 0.3, 0 -0, }, properties = { 275, 2323, 1299, }, values = { 0 0, 0.5 0.5, 1 1, }, }, numKeys = 3, }" < bhv=inputgraph >
+	float myPivotCornerExtentionStartAngle 0.1 < tooltip="At this angle we start interpolating towards the corner extended pivot. You can disable this feature by setting this value to the same as myPivotCornerExtentionStopAngle." >
+	float myPivotCornerExtentionStopAngle 1.57 < tooltip="At this angle we will reach the interpolation target." >
+	float myPivotCornerExtentionDistance  0.75 < tooltip="How far beyond normal should we push the camera out in corners." >
+
+	string myImmersiveSkyFOVCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.2 0, }, outTangents = { 0.641985 -0, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+	float myImmersiveSkyStartAngle 45.0 < tooltip="Minimum angle zenith for performing an immersive sky FoV change in degrees." >
+	float myImmersiveSkyStopAngle 60.0 < tooltip="Zenith angle where the immersive sky FoV change stops in degrees." >
+	float myImmersiveSkyFOVMax 5.0 < tooltip="Maximum amount of degrees added to the current FoV when looking up at the sky." >
+	
+	string myPitchCollisionAvoidanceCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.2 0, }, outTangents = { 0.641985 -0, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+	float myPitchCollisionAvoidanceStartAngle 5.15 < tooltip="Minimum angle zenith for the camera to change rotation pivot when looking up to avoid the camera colliding with the ground." >
+	float myPitchCollisionAvoidancePivotZ 0.15 < tooltip="How far to move the camera pivot in Z, added to the camera preset pivot when looking upwards to avoid the camera colliding with the ground." >
+
+	float myAimPointRetentionMaxRotation 10.0f < tooltip="Maximum rotation change when shoulder switching" >
+	float myAimPointRetentionFadeOutDistanceOOC 7.0 < tooltip="Distance below which aim point retention will diminish when shoulder switching out of cover" >
+	float myAimPointRetentionFadeOutDistanceTarget 0.5 < tooltip="Distance below which aim point retention will diminish when shoulder switching and aiming at a target" >
+	string myAimPointRetentionFadeCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.2 0, }, outTangents = { 0.641985 -0, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+	
+	float myRaiseTriggerDistance 2.0 < tooltip="If the distance between the target and camera is below this value the camera will starts to raise." >
+	float myRaiseOffset 0.1 < tooltip="How much the camera will raise when at a distance of 0 to the target point." >
+	string myRaiseCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.2 0, }, outTangents = { 0.2 0, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+	
+	float myFirstPersonRaiseTime 0.5 < tooltip="The transition time for raise functionality to reach max value" >
+	string myFirstPersonRaiseCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.2 0.001, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph tooltip="This is the transition curve for raise to reach full strength" >
+	
+	float myCollisionHistoryTime 0.2 < tooltip="How long should we use the collision distance before trying to blend out." >
+	float myCollisionOutSpringStrength 15.0 < tooltip="How smoothly the camera returns to its no collision position. High value means less smooth." >
+	float myCollisionOutSpringStrengthAim 70.0 < tooltip="How smoothly the camera returns to its no collision position. High value means less smooth." >
+	float myCollisionFanMinScale 0.3 < tooltip="When scaling the collision fan based on the speed what is the minimum scale." >
+	float myCollisionFanMaxScale 1.0 < tooltip="When scaling the collision fan based on the speed what is the maximum scale." >
+	float myCollisionFanMaxRotationSpeed 2.0 < tooltip="When scaling the collision fan based on the rotation what is the rotation speed when the scale becomes myCollisionFanMinScale" >
+
+    float myCollisionSanityCheckHeightOffset 0.5 < min=0.f tooltip="When we are sanity checking the collision anchor, we will apply this to the height of the target transform as the source of the sanity check" >
+	float myCollisionSanityCheckClampOffset 0.05 < min=0.f tooltip="If the sanity check hits something, it will move in the opposite direction by this amount" >
+	float myCollisionSanityCheckCastRadius 0.02 < min=0.f tooltip="The collision cast radius of the sanity check" >
+	float myCollisionSanityCheckReturnSpringStrength 50.0 < min=0.1f tooltip="Once the collision sanity check no longer hits anything, this will be the spring to move it back to its desired position" >
+    bool myUseCollisionSanityCheck true < tooltip="If this is true, we will do a collision check from an offseted safe position, to where the camera anchor wants to be, to see if there is something inbetween. This is to make sure it is in a safe position." >
+
+    float myFirstPersonDistanceCheckStanding 0.6
+    float myFirstPersonDistanceCheckCrouching 0.8
+	bool myAllowDynamicFirstPerson true
+	
+	float myBlendCollisionSphereRadius 0.05 < min=0.f tooltip="This will be the radius around the blending camera to see if it is hitting something currently" >
+	bool myShouldUseCollisionSphereWhenBlending true < tooltip="If this is true, when we are blending into a GameCamera, we will first require it to hit an object before we check for a safe position. If it is false, we will check between GameCamera anchor and the blender for a safe position always." >
+
+	float myEnterFirstPersonModeXLimit 0.2 < tooltip="How close to the head in local space X can we come before entering first person mode" >
+	float myExitFirstPersonModeXLimit 0.3 < tooltip="How far from the head in local space X can we come before exiting first person mode" >
+	float myFirstPersonDistance 0.2 < tooltip="Distance to head in first person mode" >
+	float myEnterFirstPersonSpringConstant 200 < tooltip="The spring constant when entering forst person mode" >
+	float myShoulderSwitchLimitRatio 1.3 < tooltip="How much better must the opposite shoulder be for us to make the switch?" >
+	float myShoulderSwitchCutoffXDistance 0.25 < tooltip="The distance along the local X axis beyond which we will not switch shoulders out of cover" >
+	
+	float myLookAtMaxDistWS 70.0 < tooltip="Aim point will not be perfectly retained beyond this distance." >
+
+	string myYAxisSensitivityMultiplierCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.2 0, }, outTangents = { 0.00155663 0.285549, 0 0, }, properties = { 275, 1299, }, values = { 0 0.00321889, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+}

@@ -1,0 +1,379 @@
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+
+LivingWorldContent KIJ_VI_BASE < uid=AFFE793B64A66A990008722C3E4DCCD0 >
+{
+	myCompletedGameValue < uid=AFFE793B64A66D110008722FE994D791 >
+	{
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType Ambient Ambient
+		LivingWorldContentLayerType "New LivingWorldContentLayerType" Encounter
+	}
+	myLayerType MicroStory
+	myBlockingRadius 2.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance -50"
+		{
+			myDistance 50.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance +55"
+		{
+			myDistance 55.0
+		}
+	}
+}
+
+LivingWorldContent MS620_VI_ClosedRoads < uid=AFFE793B64A66D5100087231571F63DD > : KIJ_VI_BASE
+{
+	myCompletedGameValue < uid=AFFE793B64A66F600008723E0A631A25 >
+	{
+	}
+}
+
+LivingWorldContent MS621_VI_SyndicateRivalry < uid=AFFE793B64A66DC600087232A0DF4A6A > : KIJ_VI_BASE
+{
+	myCompletedGameValue < uid=AFFE793B64A66F600008723F2FB159AF >
+	{
+	}
+}
+
+LivingWorldContent MS622_VI_ImperialsOnKijimi < uid=AFFE793B64A66E0C00087233EFB829BF > : KIJ_VI_BASE
+{
+	myCompletedGameValue < uid=AFFE793B64A674B700087240FC8755D7 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 50"
+		{
+			myDistance 50.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestIsCompleted "MQ_070 Completed"
+		{
+			myQuest BFA41A0261B36AA20000042AC0DF379C
+		}
+	}
+}
+
+LivingWorldContent MS623_VI_Community < uid=AFFE793B64A66E27000872342BFAE722 > : KIJ_VI_BASE
+{
+	myCompletedGameValue < uid=AFFE793B64A674B70008724178B61D8C >
+	{
+	}
+}
+
+LivingWorldContent MS624_VI_BusinessInterests < uid=AFFE793B64A66E47000872358757680B > : KIJ_VI_BASE
+{
+	myCompletedGameValue < uid=D4F63079651E77D00002A1956E7F4961 >
+	{
+	}
+}
+
+LivingWorldContent MS625_VI_Don'tMindTheDark < uid=AFFE793B64A66E6800087236DD81EE91 > : KIJ_VI_BASE
+{
+	myCompletedGameValue < uid=AFFE793B64A674B7000872426A16928D >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 50"
+		{
+			myDistance 50.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR (Distance OR Completion + Distance)"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 50"
+				{
+					myDistance 100.0
+				}
+				LivingWorldGameConditionGroup "Group AND (Completion + Distance)"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted Completed
+						{
+						}
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 50"
+						{
+							myDistance 100.0
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS626_VI_APlaceYouEndUp < uid=AFFE793B64A66E8500087237F35AD14F > : KIJ_VI_BASE
+{
+	myCompletedGameValue < uid=D4F63079651E77D00002A196296BD29B >
+	{
+	}
+}
+
+LivingWorldContent MS627_VI_NoChoice < uid=AFFE793B64A66EA4000872380F65FBF1 > : KIJ_VI_BASE
+{
+	myCompletedGameValue < uid=AFFE793B64A674B700087243CFCFC241 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 50"
+		{
+			myDistance 50.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestIsCompleted "MQ_070 Complete"
+		{
+			myQuest BFA41A0261B36AA20000042AC0DF379C
+			myQuestState Outro
+		}
+	}
+}
+
+LivingWorldContent MS628_VI_CivilianPerspectives < uid=AFFE793B64A66ECE00087239334EDD26 > : KIJ_VI_BASE
+{
+	myCompletedGameValue < uid=AFFE793B64A674B70008724409201F82 >
+	{
+	}
+}
+
+LivingWorldContent MS629_VI_Replaced < uid=AFFE793B64A66EE70008723AE16948B8 > : KIJ_VI_BASE
+{
+	myCompletedGameValue < uid=AFFE793B64A674B700087245C1B23957 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 50"
+		{
+			myDistance 50.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestState "MS_100 Completed"
+		{
+			myQuest BFA41A0261B36D3600000442ABE68872
+			myQuestState Completed
+		}
+	}
+}
+
+LivingWorldContent MS630_VI_LeavingForGood < uid=AFFE793B64A66F070008723BC49C2D73 > : KIJ_VI_BASE
+{
+	myCompletedGameValue < uid=AFFE793B64A674B7000872461FEE5916 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 50"
+		{
+			myDistance 50.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestState "MS_100 Completed"
+		{
+			myQuest BFA41A0261B36D3600000442ABE68872
+			myQuestState Completed
+		}
+		GameConditionLivingWorldFormula "Queen Dead"
+		{
+			myFormula "gv_A_MQ_100_KillQueen_choice = 1"
+		}
+	}
+}
+
+LivingWorldContent MS631_VI_WeaponsFactory < uid=AFFE793B64A66F280008723CE406FC62 > : KIJ_VI_BASE
+{
+	myCompletedGameValue < uid=AFFE793B64A674B700087247AE824D60 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 50"
+		{
+			myDistance 50.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestState "MS_100 Completed"
+		{
+			myQuest BFA41A0261B36D3600000442ABE68872
+			myQuestState Completed
+		}
+		GameConditionLivingWorldFormula "Queen Alive"
+		{
+			myFormula "gv_A_MQ_100_KillQueen_choice = 2"
+		}
+	}
+}
+
+LivingWorldContent MS632_VI_ClampingDown < uid=AFFE793B64A66F400008723DA1E4AA29 > : KIJ_VI_BASE
+{
+	myCompletedGameValue < uid=AFFE793B64A674B700087248A7578B3D >
+	{
+	}
+	myBlockingRadius 5.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 50"
+		{
+			myDistance 50.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestState "MS_100 Completed"
+		{
+			myQuest BFA41A0261B36D3600000442ABE68872
+			myQuestState Completed
+		}
+		GameConditionLivingWorldFormula "Queen Alive"
+		{
+			myFormula "gv_A_MQ_100_KillQueen_choice = 2"
+		}
+	}
+}
+
+LivingWorldContent MS641_VI_ZerekBesh_LandingPad < uid=ACAEF5AB66152E1C0007E3F0323CB0C0 > : KIJ_VI_BASE
+{
+	myCompletedGameValue < uid=ACAEF5AB66164FAC00037F042E0667C2 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 50"
+		{
+			myDistance 50.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestIsCompleted "MQ 070 Completed"
+		{
+			myQuest BFA41A0261B36AA20000042AC0DF379C
+		}
+	}
+}
+
+LivingWorldContent MS642_VI_ZerekBesh_Cantina1 < uid=ACAEF5AB66152E720007E3F365B9A356 > : KIJ_VI_BASE
+{
+	myCompletedGameValue < uid=ACAEF5AB66164AD5000295DC3E1A1603 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 50"
+		{
+			myDistance 50.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestIsCompleted "MQ 070 Completed"
+		{
+			myQuest BFA41A0261B36AA20000042AC0DF379C
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR (Distance OR Completion + Distance)"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 50"
+				{
+					myDistance 55.0
+				}
+				LivingWorldGameConditionGroup "Group AND (Completion + Distance)"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted Completed
+						{
+						}
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 50"
+						{
+							myDistance 55.0
+						}
+					}
+				}
+				GameConditionLivingWorldFormula QueenIsDead
+				{
+					myFormula "gv_A_MQ_100_KillQueen_choice = 1"
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS643_VI_ZerekBesh_Cantina2 < uid=ACAEF5AB66152E720007E3F4B2D4A591 > : KIJ_VI_BASE
+{
+	myCompletedGameValue < uid=ACAEF5AB662658CB002ACDC189DE7412 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 50"
+		{
+			myDistance 50.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestIsCompleted "MQ 100 Completed"
+		{
+			myQuest BFA41A0261B36D3600000442ABE68872
+		}
+	}
+}
+

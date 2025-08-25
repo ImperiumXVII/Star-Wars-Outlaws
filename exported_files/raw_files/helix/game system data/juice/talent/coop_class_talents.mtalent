@@ -1,0 +1,161 @@
+include "helix/game system data/fruit/talent/talent.fruit"
+
+Talent coop_class_talent_template < uid=7EE6463463355FDB000045BB6BC02AFA >
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+Talent coop_all_pocketable_carry_speed < uid=7EE64634637B7DCD000060FC3232F602 > : coop_class_talent_template
+{
+	myGameScript "helix/game scripts/gs_dev_talent_pocketable_heist_target.mgamescript"
+}
+
+Talent coop_brawler_melee_damage < uid=7EE6463463578D3700009BEE7296E574 > : coop_class_talent_template
+{
+	myGameScript "helix/game scripts/gs_coop_talent_brawler_meleedamage.mgamescript"
+}
+
+Talent coop_brawler_daze_shockwave < uid=7EE646346357AF5100006866FCAF3CC3 > : coop_class_talent_template
+{
+	myGameScript "helix/game scripts/gs_coop_talent_brawler_shockwave.mgamescript"
+}
+
+Talent coop_brawler_pocketable_carry < uid=7EE64634637B7B77000060F21CB74115 > : coop_class_talent_template
+{
+	myAttributeBonuses
+	{
+		BonusAttributeRef MaxPocketableHeistTargets
+		{
+			myAttributeUID 0B1314156368B77A00009AD0162B0E55
+			myValue 2.0
+		}
+	}
+}
+
+Talent coop_gunslinger_health < uid=7EE64634633561160000335A35B5ACBC > : coop_class_talent_template
+{
+	myAttributeBonuses
+	{
+		BonusAttributeRef PlayerHealthBonus
+		{
+			myAttributeUID F8252D3C6268F23300002E2967737D75
+			myValue 2.0
+		}
+	}
+}
+
+Talent coop_slicer_health < uid=7EE646346391CD1900006754CEC93A69 > : coop_class_talent_template
+{
+	myAttributeBonuses
+	{
+		BonusAttributeRef PlayerHealthBonus
+		{
+			myAttributeUID F8252D3C6268F23300002E2967737D75
+			myValue 2.0
+		}
+	}
+}
+
+Talent coop_slicer_extra_charges < uid=0B13141564416E8D00014EA90C07EC92 >
+{
+	myAttributeBonuses
+	{
+		BonusValue MaxGadgetCharges
+		{
+			myAttributeUID 0B13141564416D6000014DC1DD1C76A6
+			myValue 1.0
+		}
+	}
+}
+
+Talent coop_thief_crouch_move < uid=7EE64634633562F00000B48D429BD6B8 > : coop_class_talent_template
+{
+	myAttributeBonuses
+	{
+		BonusAttributeRef PlayerCrouchMovementSpeedMultiplier
+		{
+			myAttributeUID F8252D3C62B31A1D00003598199907BD
+			myValue 0.6
+		}
+	}
+}
+
+Talent coop_thief_crouch_detection_time < uid=7EE64634633564A300015FE62BC14A8B > : coop_class_talent_template
+{
+	myGameScript "helix/game scripts/gs_coop_talent_thief_detection.mgamescript"
+}
+
+Talent coop_talent_takedown_stun < uid=843210E1642584F200007336D52A7AED > : coop_class_talent_template
+{
+	myGameScript "helix/game scripts/gs_coop_talent_takedown_stun.mgamescript"
+}
+
+Talent coop_talent_downed_stun < uid=843210E1642698B1000077565C3E7840 > : coop_class_talent_template
+{
+	myGameScript "helix/game scripts/gs_coop_talent_downed_stun.mgamescript"
+}
+
+Talent coop_talent_MaxRegen < uid=6B0E1DE96426A4A900000904CD1CD13A > : coop_class_talent_template
+{
+	myAttributeBonuses
+	{
+		BonusValue PlayerAllowFullHealthRegen
+		{
+			myAttributeUID 83E36AE362A82EC400007B48E3315224
+			myValue 1.0
+		}
+	}
+}
+
+Talent coop_talent_SilentStep < uid=6B0E1DE96426A5530000633EBB733D1B > : coop_class_talent_template
+{
+	myAttributeBonuses
+	{
+		BonusModifier PlayerFootstepNPCSoundEventRadiusMultiplier
+		{
+			myAttributeUID 91119C9D638F15CE00005A5939A08E6D
+			myModifier -1.0
+		}
+	}
+}
+
+Talent coop_talent_QuickSneak < uid=6B0E1DE96426A5BF00006385945BC20F > : coop_class_talent_template
+{
+	myAttributeBonuses
+	{
+		BonusModifier PlayerCrouchMovementSpeedMultiplier
+		{
+			myAttributeUID F8252D3C62B31A1D00003598199907BD
+			myModifier 0.5
+		}
+	}
+}
+
+Talent coop_talent_shadow < uid=6B0E1DE96426A73B0000644DAA19BC01 > : coop_class_talent_template
+{
+	myAttributeBonuses
+	{
+		BonusModifier NPCDetectionTargetVisibilityStimulusRateModifier
+		{
+			myAttributeUID 83E36AE362A1B908000034EC8E50208B
+			myModifier -0.5
+		}
+	}
+}
+
+Talent coop_talent_Rage < uid=6B0E1DE9642AB74300007354B901AEE3 > : coop_class_talent_template
+{
+	myGameScript "helix/game scripts/gs_dev_talent_rage.mgamescript"
+}
+
+Talent coop_talent_taunt_ability < uid=4F6D80DE645E3BC100012AF331F26C59 > : coop_class_talent_template
+{
+	myGameScript "helix/game scripts/gs_coop_talent_reduce_damage.mgamescript"
+}
+
+Talent coop_talent_thief_ability < uid=4F6D80DE646E23E70000DD1593383B54 > : coop_class_talent_template
+{
+	myGameScript "helix/game scripts/gs_coop_talent_thief_scan.mgamescript"
+}
+

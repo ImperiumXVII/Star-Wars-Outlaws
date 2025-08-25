@@ -1,0 +1,93 @@
+include "helix/game system data/fruit/restriction/playerrestriction.fruit"
+include "helix/game system data/fruit/input/gameinput.fruit"
+include "helix/game system data/fruit/equipment/equipment_slot_types.fruit"
+include "helix/game system data/fruit/equipment/weapon/weapon_fire_mode_enums.fruit"
+include "helix/game system data/fruit/equipment/weapon/weapon_module.fruit"
+include "helix/game system data/fruit/projectile/projectile_object.fruit"
+
+enum EquipmentWeaponModuleCyclingMode
+{
+	HoldAndTap
+	TapTapTap
+}
+
+class EquipmentWeaponModuleCyclingConfig
+{
+	EquipmentSlotTag mySlotTag Unassigned
+	GameAction myGameAction None
+	int myIndex 0 < tooltip="This defines the order of the tags on the menu" >
+}
+
+class EquipmentWeaponModulesMenuCycling
+{
+	bool myCameraEnabled false
+	float myModuleSelectorCameraStartTime 0.5f < tooltip="Time it takes to set the camera selection camera" >
+	PlayerRestriction* myModuleSelectorRestrictions < tooltip="Prevented actions while the module selector menu is open" >
+	
+	EquipmentSlotGroupType myModuleGroup WeaponModules
+	EquipmentWeaponModuleCyclingConfig myModule1
+	EquipmentWeaponModuleCyclingConfig myModule2
+	EquipmentWeaponModuleCyclingConfig myModule3
+	
+	EquipmentWeaponModuleCyclingMode myMode HoldAndTap
+}
+
+class EquipmentWeaponModuleConfig
+{
+	GameAction myGameAction None
+	EquipmentSlotTag mySlotTag Unassigned
+	int myGamepadButtonIndex 0 < tooltip="Button index the module has in the gamepad (Y,B,X or Triangle,Circle,Cross are 0,1,2)" >
+}
+
+class EquipmentWeaponModulesMenuHoldAndPress
+{
+	PlayerRestriction* myModuleSelectorRestrictions < tooltip="Prevented actions while the module selector menu is open" >
+	PlayerRestriction* myQuickChangeModuleRestrictions < tooltip="Prevented actions while quick change module is deciding" >
+	
+	string myModuleSelectorTimeScaleMultiplier "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.1 0, }, outTangents = { 0.1 0, 0 -0, }, properties = { 1299, 275, }, values = { 0 1, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+	float myModuleSelectorTimeScaleInTime 1.0f < tooltip="Time it takes to apply the multiplier formula" >
+	float myModuleSelectorTimeScaleOutTime 0.25f < tooltip="Time it takes to revert the multiplier formula" >
+	float myModuleSelectorCameraStartTime 0.5f < tooltip="Time it takes to set the camera selection camera" >
+	float myModuleSelectorCancelMenuTime 0.5f < tooltip="Time it takes to close the menu iof the player has cancelled the selection" >
+	
+	int myHolsterInputDecidingTimeMS 100 < min=0 tooltip="Time it takes to decide if the holster button has been pressed triggers its action or is combined with a change module input">
+	
+	WeaponFireModeSlotTag myEquipFireModeTag Unassigned
+	GameAction myEquipFireModeGameAction None
+	
+	EquipmentWeaponModuleConfig myModule1
+	EquipmentWeaponModuleConfig myModule2
+	EquipmentWeaponModuleConfig myModule3
+}
+
+enum EquipmentWeaponModulesMenuType
+{
+	HoldAndPress
+	Cycling
+}
+
+class EquipmentWeaponModulesConfigParameters
+{
+	PlayerRestriction* myChangeModuleRestrictions < tooltip="Prevented actions while Kay changes a module" >
+	
+	EquipmentWeaponModulesMenuType myType Cycling
+	EquipmentWeaponModulesMenuHoldAndPress myMenuHoldAndPress < tooltip="This is the original change weapon module menu that requires to hold R1 and then press one of the buttons to select one of the 3 modules or the Stun fire mode" >
+	EquipmentWeaponModulesMenuCycling myMenuCycling < tooltip="New weapon module selection based on Division 2 implementation" >
+	
+	WeaponModuleFamilyList myFamilies
+}
+
+class EquipmentWeaponConfigParameters
+{
+    vec3f myFirstPersonProjectileOffset 0.05;-0.05;0.0 < tooltip="This is how much the projectile will offset from camera perspective when firing in first person" >
+	
+	string myWeaponFinalDamageFormula 1 < tooltip="Calculation for the final damage a weapon will deal" bhv=formulaEditor formulaResolveContextType=Weapon >
+	string myWeaponFinalSpreadFormula 1 < tooltip="Calculation for the final spread" bhv=formulaEditor formulaResolveContextType=WeaponSpread >
+	
+	EquipmentWeaponModulesConfigParameters myModulesConfig
+	
+	bool myDynamicBlokcersProjectileExtraShapeEnabled false
+	ProjectileExtraShape myDynamicBlokcersProjectileExtraShape < tooltip="If the player aim segment is blocked by a physic dynamic objhect, this shape will be added to the projectile. The purpose is try to hit the closest object that we won't hit because parallax nature of aiming" >
+	float myMaxDiffAngleAimShot 10.0f < tooltip="Max angle allowed between the aim vector and the shot vector" >
+	float myAimShotCorrectionMaxDistance 5.0f  < tooltip="Beyond this distance, the aimn correction won't have effect. If the distance is less, then the correction stregnth will be caluclated with a linear distribution using the distance" >
+}

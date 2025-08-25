@@ -1,0 +1,138 @@
+include "helix/game system data/fruit/ai/pathfinding/user_edge_types.fruit"
+include "helix/game system data/fruit/ai/pathfinding/hazard_types.fruit"
+
+class NavigationCapabilityAreaType
+{
+	AI_NavMeshHazardTypeFlags myType
+	bool myEnabled false
+	float myCostMultiplier 1.0 < min=1 >
+}
+
+list NavigationCapabilityAreaTypeList
+{
+	NavigationCapabilityAreaType
+}
+
+class NavigationCapabilityNavlink
+{
+	UserEdgeType myType
+	bool myEnabled false
+	float myEntryCost 0.0 < min=0 >
+	float myCostPerMeter 1.0 < min=1 >
+}
+
+list NavigationCapabilityNavlinkList
+{
+	NavigationCapabilityNavlink
+}
+
+class NavLinkConstraintRange
+{
+	float myMin 0.0 < min=0 display=column tooltip="Minimum distance">
+	float myMax 0.0 < min=0 display=column tooltip="Maximum distance">
+}
+
+enum NavLinkConstraintDirection
+{
+	Up
+	Down
+	Both
+}
+
+class NavLinkConstraint
+{
+	NavLinkConstraintRange myHorizontalRange < tooltip="Distance an NPC can jump horizontally">
+	NavLinkConstraintRange myVerticalRange < tooltip="Distance an NPC can jump vertically">
+	float myApexHeight 0.0 < min=0 tooltip="Maximum height at the highest point">
+
+	NavLinkConstraintDirection myDirection Both
+}
+
+list NavLinkConstraintsList
+{
+	NavLinkConstraint
+}
+
+class NavigationCapabilityPlayerAvoidance
+{
+	bool myIsEnabled false
+	float myRadius 1.0 < min=1 >
+	float myCostMultiplier 1
+}
+
+class NavigationCapability < uid=auto >
+{
+	NavigationCapabilityAreaTypeList myNavigationCapabilityAreas
+	NavigationCapabilityNavlinkList myNavigationCapabilityNavLinks
+	NavigationCapabilityPlayerAvoidance myNavigationCapabilityPlayerAvoidance
+	float myMaxDynamicNavLinkHeightUp 3.0
+}
+
+enum BoolModifierOverride
+{
+	OVERRIDE_FALSE
+	OVERRIDE_TRUE
+	DONT_OVERRIDE
+}
+
+class NavigationCapabilityAreaTypeModifier
+{
+	BoolModifierOverride myEnabled DONT_OVERRIDE
+	float myCostMultiplierModifier 1.0
+}
+
+class NavigationCapabilityNavlinkModifier
+{
+	BoolModifierOverride myEnabled DONT_OVERRIDE
+	float myEntryCostModifier 1.0
+	float myCostPerMeterModifier 1.0
+}
+
+
+enum NavigationCapabilityModifierID
+{
+	NavigationCapabilityModifier_None
+	NavigationCapabilityModifier_Passive_Medium_Flee
+	NavigationCapabilityModifier_Aggressive_Medium_Combat
+	NavigationCapabilityModifier_Aggressive_Medium_Flee
+	NavigationCapabilityModifier_Passive_Large_Flee
+	NavigationCapabilityModifier_Defensive_Large_Combat
+	NavigationCapabilityModifier_Defensive_Large_Flee
+	NavigationCapabilityModifier_Aggressive_Large_Combat
+	NavigationCapabilityModifier_Aggressive_Large_Flee
+	NavigationCapabilityModifier_Defensive_Huge_Combat
+	NavigationCapabilityModifier_Defensive_Huge_Flee
+	NavigationCapabilityModifier_Human_AvoidPoison
+	NavigationCapabilityModifier_Human_AvoidFire
+	NavigationCapabilityModifier_Human_FireResistant
+}
+
+class NavigationCapabilityModifier
+{
+	NavigationCapabilityModifierID myID
+	NavigationCapabilityAreaTypeModifier myFlexible
+	NavigationCapabilityAreaTypeModifier myGlass
+	NavigationCapabilityAreaTypeModifier myBrokenGlass
+	NavigationCapabilityAreaTypeModifier myVine
+	NavigationCapabilityAreaTypeModifier myFire
+	NavigationCapabilityAreaTypeModifier myElectricity
+	NavigationCapabilityAreaTypeModifier myPoison
+	NavigationCapabilityAreaTypeModifier myInsects
+	NavigationCapabilityAreaTypeModifier myWaterShallow
+	NavigationCapabilityAreaTypeModifier myWaterDeep
+	NavigationCapabilityAreaTypeModifier myDeadBody
+	NavigationCapabilityNavlinkModifier myJump
+	NavigationCapabilityNavlinkModifier myLadder
+	NavigationCapabilityNavlinkModifier myBreakableGlassJump
+}
+
+list NavigationCapabilityModifiers
+{
+	NavigationCapabilityModifier 
+}
+
+class NavigationCapabilityModifierConfig
+{
+	NavigationCapabilityModifiers myModifiers
+}
+

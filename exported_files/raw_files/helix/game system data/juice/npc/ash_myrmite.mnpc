@@ -1,0 +1,73 @@
+include "helix/game system data/juice/melee/npc_melee_config.mnpcmeleeconfig"
+include "helix/game system data/juice/npc/base_ash.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC ash_myrmite < uid=2736B36562BC28D80000AE9A553A31F0 > : base_ash
+{
+	myName "aurabesh = false, contextComment = \"The name of the Ashiga Assault Unit and its archetype (assault)\", enabled = true, guid = #91DC5D3C654E40C400051ED220038757, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10572, text = \"Myrmite\nAssault\", type = \"MenuLine\""
+	myCharacterVisuals < uid=2736B36562BC28D80000AE9BD5514B4B > = character_visuals_2_silver_ashiga_myrmite 6993721764EF10F60000C434BCDCE8BE
+	myAdditionalGearGraphs 4171A7E1664380F60008F9DB655ED4BD
+	myBehavior helix/behaviors/ash_myrmite.mbehavior
+	myMaxHealth 15
+	myHealthFormula max(1,2+NPCFinalHealth)
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=EBE060C264F9D1120002F0DA04AD746F > = Agent_Gender_MasculineTag 16DEADE6626D20EA00002E504CE30DE2
+	}
+	myPossibleSpeciesTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D27651420DB0000AFCDAE14B59D > = Agent_Species_MelittoTag FFED0CDA634EC1CA0000AD689E0477D4
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D27651420E60000AFCFA473B8DE > = Agent_Faction_AshigaClanTag 4728ADF9620B7AF800002022DD5E94D3
+		RBTagsTag "New RBTagsTag (0)" < uid=E4123D27651420EE0000AFD0CF806633 > = Agent_BarksFamily_AshigaDefault E4123D2762FCA3FD00010FC125A4C306
+	}
+	myDialogueCharactersFromDatabase
+	{
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=E4123D27651421890000AFDD733C23AD > = AshigaMelittoM01 E4123D27651420750000AFB7F2F11E0D
+		DialogueCharacterWithTags "New DialogueCharacterWithTags (0)" < uid=E4123D276514218C0000AFDFAE313D9F > = AshigaMelittoM02 E4123D27651420B90000AFBED2126E79
+		DialogueCharacterWithTags "New DialogueCharacterWithTags (1)" < uid=E4123D27651421900000AFE03D279455 > = AshigaMelittoM03 E4123D27651420D10000AFC4E65987B6
+	}
+	myVisionProfile < uid=5C421F5C634D4D9000004A04BED9103F > = DefaultVisionProfile 16DEADE65E8E1B4B0000001591E37EAC
+	mySmellProfile < uid=5C421F5C634536010003A50EE6BD67B9 > = NULLREFERENCE
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=5C421F5C634D4970000971AD85985185 > = DefaultDetectionProfile 16DEADE65F0385DF00000015D7B1E14D
+		myNonCombatAreaProfile < uid=5C421F5C634D4970000971AE60340F09 > = DefaultCityDetectionProfile 91DC5D3C632191250002DC395EC03E17
+	}
+	myTacticalPositionFinderProfile < uid=5C421F5C64A6824A0002EBEE039ADCA7 > = "Assault Tactical Position Finder Profile" 5C421F5C64A5764C000057F0C65A6821
+	myAgitationProfile < uid=5C421F5C64A6824A0002EBEF9C703F59 > = "ReputationFaction Agitation Profile" 16C7D1FB6274DA4F00002E254E69ADAE
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout LoadoutA < uid=2736B36563626E1B00013FE298EA6283 > = ash_Myrmite_Shotgun 2736B365636252CE0001D4FC4EBAC279
+	}
+	myPatrolFormationProfile < uid=5C421F5C635102E800058773E1602C27 > = DefaultPatrolFormation C0D149F862D6BC3C00003CE020A2DB0B
+	myPickpocketableLootTable < uid=4171A7E164B6488F000311D75BF7B922 > = loot_pickpocket_grenades 2AE2EC8564AE78F2000253450FCB272B
+	myMotionPatternProfile < uid=4171A7E1654B8C2300030917A0C75C67 > = AssaultMotionPatternProfile 4171A7E16543D25F000722E2FBD78BFE
+	myBehaviorUpdateBoostProfile < uid=4171A7E165F318B5000D2C7598C7EA62 > = hostile_ashiga 4171A7E165F304080013999FD99963E9
+	myAudioParameters
+	{
+		mySwitches
+		{
+			AudioSwitch VocoderMelitto
+			{
+				myGuid 47C48A52CA9E03681F81283C1412DF8D
+			}
+			AudioSwitch VoiceFamilyMelitto
+			{
+				myGuid 41470E5259B6F3C4E85B67A9E0A1E3B1
+			}
+			AudioSwitch "NPC Faction Swich"
+			{
+				myGuid 429A14479D8FEFDBF70A8282BF9C84A1
+			}
+		}
+	}
+	myAudioNPCDangerWeight 3.0
+	myMeleeConfig < uid=5C421F5C634FF47700042203F5E61158 > = npc_melee_config BCDE37F162445830000053EBBBF07CF3
+	myStaggerConfig < uid=2736B365634526620000601CC41EB337 > = NPCStaggerConfig_Humanoid_Medium_MeleeTier2 3C2FA92B6515832C0004A42547889D4B
+	myCombatRole Assault
+	myResistanceProfile < uid=7113C61166BC6534000000E6399A289C > = HumanoidResistanceProfileDifficultyAffector 7113C61166BC5ED2000000DFD4908E31
+}
+

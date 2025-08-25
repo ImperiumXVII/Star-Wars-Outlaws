@@ -1,0 +1,371 @@
+include "helix/game system data/fruit/ai/spaceshipsettings.fruit"
+include "helix/game system data/juice/ai/npcshootpatterns.mnpcshootpattern"
+include "helix/game system data/juice/ai/spaceshipcombatprofiles.mspaceshipcombatprofile"
+include "helix/game system data/juice/ai/spaceshipformationprofiles.mspaceshipformationprofile"
+include "helix/game system data/juice/ai/spaceshipspawnprofiles.mspaceshipspawnprofile"
+include "helix/game system data/juice/ai/spaceshipspeedprofiles.mspaceshipspeedprofile"
+include "helix/game system data/juice/ai/spaceshiptrajectories.mspaceshiptrajectoryprofile"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_default.juice"
+
+SpaceshipBehaviorParameter poraxEvasiveStartCurrentManeuverMinElapsedTime : EvasiveStartCurrentManeuverMinElapsedTime
+{
+}
+
+SpaceshipBehaviorParameter poraxEvasiveStartMinDistance : EvasiveStartMinDistance
+{
+}
+
+SpaceshipBehaviorParameter poraxEvasiveMinDistance : EvasiveMinDistance
+{
+	myValue 150.0
+}
+
+SpaceshipBehaviorParameter poraxEvasiveDurationRandomMin : EvasiveDurationRandomMin
+{
+}
+
+SpaceshipBehaviorParameter poraxEvasiveDurationRandomMax : EvasiveDurationRandomMax
+{
+	myValue 8.0
+}
+
+SpaceshipBehaviorParameter poraxEvasiveConeAngle : EvasiveConeAngle
+{
+}
+
+SpaceshipBehaviorParameter poraxEvasiveStartAngleFromHostile : EvasiveStartAngleFromHostile
+{
+	myValue 60.0
+}
+
+SpaceshipBehaviorParameter poraxEvasiveSpiralProbability : EvasiveSpiralProbability
+{
+}
+
+SpaceshipBehaviorParameter poraxEvasivePauseBetweenPatternsMin : EvasivePauseBetweenPatternsMin
+{
+}
+
+SpaceshipBehaviorParameter poraxEvasivePauseBetweenPatternsMax : EvasivePauseBetweenPatternsMax
+{
+}
+
+SpaceshipBehaviorParameter poraxEvasiveBreakProbability : EvasiveBreakProbability
+{
+}
+
+SpaceshipBehaviorParameter poraxEvasiveScaleWidth : EvasiveScaleWidth
+{
+}
+
+SpaceshipBehaviorParameter poraxEvasiveScaleHeight : EvasiveScaleHeight
+{
+}
+
+SpaceshipBehaviorParameter poraxEvasiveScaleLength : EvasiveScaleLength
+{
+}
+
+SpaceshipBehaviorParameter poraxTimeToStartEvasiveIfStillInFrontOfHostile : TimeToStartEvasiveIfStillInFrontOfHostile
+{
+	myValue 4.0
+}
+
+SpaceshipBehaviorParameter poraxBreakStartCurrentManeuverMinElapsedTime : BreakStartCurrentManeuverMinElapsedTime
+{
+	myValue 4.0
+}
+
+SpaceshipBehaviorParameter poraxChaseDurationRandomMin : ChaseDurationRandomMin
+{
+	myValue 8.0
+}
+
+SpaceshipBehaviorParameter poraxChaseDurationRandomMax : ChaseDurationRandomMax
+{
+	myValue 12.0
+}
+
+SpaceshipBehaviorParameter poraxChaseDistanceMin : ChaseDistanceMin
+{
+}
+
+SpaceshipBehaviorParameter poraxChaseDistanceMax : ChaseDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter poraxChaseConeAngle : ChaseConeAngle
+{
+	myValue 60.0
+}
+
+SpaceshipBehaviorParameter poraxChaseChanceToBreakOnHostileDodgePercent : ChaseChanceToBreakOnHostileDodgePercent
+{
+}
+
+SpaceshipBehaviorParameter poraxChaseBreakProbabilityOverPass : ChaseBreakProbabilityOverPass
+{
+}
+
+SpaceshipBehaviorParameter poraxOvershootMaxAngle : OvershootMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter poraxInterceptConeAngle : InterceptConeAngle
+{
+	myValue 25.0
+}
+
+SpaceshipBehaviorParameter poraxInterceptDistanceIdeal : InterceptDistanceIdeal
+{
+	myValue 400.0
+}
+
+SpaceshipBehaviorParameter poraxInterceptDistanceMin : InterceptDistanceMin
+{
+	myValue 300.0
+}
+
+SpaceshipBehaviorParameter poraxInterceptDistanceMax : InterceptDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter poraxInterceptDurationMin : InterceptDurationMin
+{
+}
+
+SpaceshipBehaviorParameter poraxInterceptDurationMax : InterceptDurationMax
+{
+}
+
+SpaceshipBehaviorParameter poraxJoustingProbability : JoustingProbability
+{
+}
+
+SpaceshipBehaviorParameter poraxJoustingMaxDurationPrepare : JoustingMaxDurationPrepare
+{
+}
+
+SpaceshipBehaviorParameter poraxJoustingMaxDuration : JoustingMaxDuration
+{
+}
+
+SpaceshipBehaviorParameter poraxJoustingDistanceTurn : JoustingDistanceTurn
+{
+}
+
+SpaceshipBehaviorParameter poraxJoustingEndDistance : JoustingEndDistance
+{
+	myValue 50.0
+}
+
+SpaceshipBehaviorParameter poraxJoustingAngle : JoustingAngle
+{
+	myValue 80.0
+}
+
+SpaceshipBehaviorParameter poraxJoustingMaxAngle : JoustingMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter poraxJoustingEndBreakProbabilityOverPass : JoustingEndBreakProbabilityOverPass
+{
+	myValue 80.0
+}
+
+SpaceshipBehaviorParameter poraxJoustingPositionMaxHeight : JoustingPositionMaxHeight
+{
+}
+
+SpaceshipBehaviorParameter poraxAlignMinDistance : AlignMinDistance
+{
+}
+
+SpaceshipBehaviorParameter poraxAlignMaxDistance : AlignMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter poraxLeashingMinDistance : LeashingMinDistance
+{
+}
+
+SpaceshipBehaviorParameter poraxLeashingMaxDistance : LeashingMaxDistance
+{
+	myValue 6000.0
+}
+
+SpaceshipBehaviorParameter poraxLeashingToVolumeMaxDistance : LeashingToVolumeMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter poraxShootMaxDistance : ShootMaxDistance
+{
+	myValue 900.0
+}
+
+SpaceshipBehaviorParameter poraxShootMaxAngle : ShootMaxAngle
+{
+	myValue 30.0
+}
+
+SpaceshipBehaviorParameter poraxBarkPositionDistanceMax : BarkPositionDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter poraxBroadcastRangeEnterCombat : BroadcastRangeEnterCombat
+{
+}
+
+SpaceshipBehaviorParameter poraxEscortDistance : EscortDistance
+{
+}
+
+SpaceshipBehaviorParameter poraxLowProhibitedActionAttackDelay : LowProhibitedActionAttackDelay
+{
+}
+
+SpaceshipBehaviorParameter poraxAccurateShootingProbability : AccurateShootingProbability
+{
+	myValue 100.0
+}
+
+SpaceshipBehaviorParameter poraxRangeForSecondaryWeapon : RangeForSecondaryWeapon
+{
+}
+
+SpaceshipBehaviorParameter poraxUndetectedTimeBeforeExitingCombat : UndetectedTimeBeforeExitingCombat
+{
+}
+
+SpaceshipBehaviorParameter poraxUndetectedTimeBeforeExitingAware : UndetectedTimeBeforeExitingAware
+{
+}
+
+SpaceshipBehaviorParameter poraxReinforcementsCallProbabilityPercent : ReinforcementsCallProbabilityPercent
+{
+}
+
+SpaceshipBehaviorParameter poraxReinforcementsCallDuration : ReinforcementsCallDuration
+{
+}
+
+SpaceshipBehaviorParameter poraxIdleDefaultSplineSizeHorizontal : IdleDefaultSplineSizeHorizontal
+{
+}
+
+SpaceshipBehaviorParameter poraxIdleDefaultSplineSizeVertical : IdleDefaultSplineSizeVertical
+{
+}
+
+SpaceshipBehaviorParameter poraxCooldownDuration : CooldownDuration
+{
+}
+
+SpaceshipBehaviorParameter poraxCooldownMaxDistance : CooldownMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter poraxSpaceshipMaxEngagementDistance : SpaceshipMaxEngagementDistance
+{
+}
+
+SpaceshipBehaviorParameter poraxSpaceshipPrimaryMaxAngle : SpaceshipPrimaryMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter poraxSpaceshipPrimaryMaxDistance : SpaceshipPrimaryMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter poraxSpaceshipPrimaryMinDistance : SpaceshipPrimaryMinDistance
+{
+}
+
+SpaceshipBehaviorParameter poraxSpaceshipPrimaryMaxHealth : SpaceshipPrimaryMaxHealth
+{
+}
+
+SpaceshipBehaviorParameter poraxSpaceshipSecondaryMaxAngle : SpaceshipSecondaryMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter poraxSpaceshipSecondaryMaxDistance : SpaceshipSecondaryMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter poraxSpaceshipSecondaryMinDistance : SpaceshipSecondaryMinDistance
+{
+}
+
+SpaceshipBehaviorParameter poraxSpaceshipSecondaryMaxHealth : SpaceshipSecondaryMaxHealth
+{
+}
+
+SpaceshipBehaviorParameter poraxSpaceshipMissileMaxAngle : SpaceshipMissileMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter poraxSpaceshipMissileMaxDistance : SpaceshipMissileMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter poraxSpaceshipMissileMinDistance : SpaceshipMissileMinDistance
+{
+}
+
+SpaceshipBehaviorParameter poraxSpaceshipMissileMaxHealth : SpaceshipMissileMaxHealth
+{
+}
+
+SpaceshipBehaviorParameter poraxCombatLeashingToPlayer : CombatLeashingToPlayer
+{
+}
+
+SpaceshipBehaviorParameter poraxSpaceshipAccuracyRadiusMax : SpaceshipAccuracyRadiusMax
+{
+}
+
+SpaceshipBehaviorParameter poraxSpaceshipAccuracyRadiusMin : SpaceshipAccuracyRadiusMin
+{
+}
+
+SpaceshipBehaviorParameter poraxSpaceshipAccuracyDistanceMax : SpaceshipAccuracyDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter poraxSpaceshipAccuracyDistanceMin : SpaceshipAccuracyDistanceMin
+{
+}
+
+SpaceshipBehaviorParameter poraxSpaceshipShotSpreadPercentage : SpaceshipShotSpreadPercentage
+{
+}
+
+SpaceshipBehaviorParameter poraxSpaceshipMissileLockOnTime : SpaceshipMissileLockOnTime
+{
+}
+
+SpaceshipBehaviorParameter poraxHarassmentChance : HarassmentChance
+{
+}
+
+SpaceshipBehaviorParameter poraxHarassmentDuration : HarassmentDuration
+{
+}
+
+SpaceshipBehaviorParameter poraxHarassmentAreaSizeMin : HarassmentAreaSizeMin
+{
+}
+
+SpaceshipBehaviorParameter poraxHarassmentAreaSizeMax : HarassmentAreaSizeMax
+{
+}
+
+SpaceshipBehaviorParameter poraxHarassmentAreaHeightMin : HarassmentAreaHeightMin
+{
+}
+
+SpaceshipBehaviorParameter poraxHarassmentAreaHeightMax : HarassmentAreaHeightMax
+{
+}
+

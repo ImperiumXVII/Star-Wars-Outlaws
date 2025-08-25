@@ -1,0 +1,130 @@
+include "helix/game system data/fruit/camerainput/camerainput.fruit"
+include "helix/game system data/fruit/camera/cameramodifier.fruit"
+
+class VehicleCameraControlStateSettings
+{
+	float myCameraOffsetX 0.0
+	float myCameraOffsetY 1.25
+	float myCameraOffsetZ 6.0
+	float myFOV 60.0
+	float myCameraLookHeight 1.0 < tooltip="Height of the camera look at point" >
+}
+
+class VehicleCameraCollisionSettings
+{
+	float myCollisionOutSpringStrength 5.0
+	float myCollisionFanMaxRotationSpeed 6.28 < tooltip="rotation speed in radians/second" >
+	float myCollisionFanMinScale 0.1
+	float myCollisionFanMaxScale 2.0
+	float myCollisionOutSpringStrengthAim 200.0	
+	float myCollisionSearchDistance 1.f
+	float myCollisionProbeOffsetFreeCam 0.1
+	float myCollisionProbeOffsetChaseCamMax 1.5
+	float myCollisionProbeOffsetChaseCamMin 0.2
+	float myCollisionProbeSpeedForMax 20.0
+	float myCollisionProbeSpeedForMin 10.0
+	float myLookAheadModifier 0.025
+	float myLookAheadDistSpringInStrength 200.0
+	float myLookAheadDistSpringOutStrength 5.0
+	float myCollisionPullBackModifier 1.0
+	float myCollisionPosSpringStrength 300.0
+	float myCollisionPosSpringDamping 1.0
+}
+
+class VehicleCameraFreeCamSettings
+{
+    float myFreeCamWaitTime 3.0 < min=0.0 tooltip="Time free camera waits to revert back to chase camera after input ceases" >
+	float myFreeCamMinInputToMoveThreshold 0.5 < min=0.0 max=1.0 tooltip="Percentage of stick input required to move the free cam, between 0 and threshold will trigger the hold free-cam behaviour instead" >
+	float myFreeCamMaxAngleForInstantReturn 20.0 < min=0.0 max=180.0 tooltip="Angle behind speeder below which camera will instantly revert back to chase camera (this mitigates against accidental knocks/nudges of cam stick)" >
+	float myFreeCamMinAngleForFullWaitTime 90.0 < min=0.0 max=180.0 tooltip="Minimum angle from forward required to trigger full wait time" >
+	string myTransitionOutCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, }, outTangents = { 0.1743421 0.001168251, }, properties = { 275, }, values = { 0 -1, }, }, numKeys = 1, }" < bhv=inputgraph tooltip="The easing curve for the camera movement during the transition from free to chase camera">
+	
+	CameraInput myFreeCamInput
+	CameraInput myFreeCamAimInput
+}
+
+class SaddleShotModifierData
+{
+	CameraModifierInOutTransitions myTransitions
+	
+	vec3f myAnchorPos 0.0;1.9;0.0
+	float myDistanceToAnchor 0.6f
+	float myAddedFOV -10.0
+}
+
+class VehicleCameraSaddleShotSettings
+{
+    SaddleShotModifierData myPanicShotData
+	SaddleShotModifierData myTaggingData
+	SaddleShotModifierData myShootingData
+}
+
+class VehicleCameraWheelspinSettings
+{
+	float myWheelspinCameraRollWeight 0.05 < tooltip="How heavily camera will roll with turn direction during wheelspin" >	
+	float myWheelspinLookPointDistance 20.0 < tooltip="Distance of common look point of vehicle and camera during wheelspin as measured from the vehicle position" >
+	float myWheelspinCameraBlendTime 0.3 < tooltip="The blend in/out time from wheelspin settings to normal settings", min=0.001 >
+	float myWheelspinForwardLookSpringStrength 400.0 < tooltip="Strength of spring that smooths out oscilations in the forward look point, lower values give smoother movement but increased laziness while higher values reduce laziness but risk increased jerkiness in the movement" >
+}
+
+class VehicleCameraDownhillOffsetSettings
+{
+	float myDownhillSpeedForMaxOffset 10.0 < tooltip="Speed at which full camera offset for downhill movement happens" >
+	float myDownhillPitchToApplyOffset 5.0 < tooltip="Minimum downward pitch needed to activate the application of the offset" >
+	float myDownhillOffsetAmount 2.0 < tooltip="Offset on y axis that is added to the camera when speeder is travelling downhill" >
+}
+
+class VehicleCameraWallrideSettings
+{
+	float myWallrideOffsetSpringStrength 20.0 < tooltip="Spring strength for wallride camera offset" >
+	float myWallrideOffsetMaxLength 0.5 < tooltip="Max length of offset from standard position camera will take during wallride" >
+	float myWallrideOffsetMinLeanAngle 45.0 < tooltip="Min lean angle for camera offset to be triggered" >
+}
+
+class VehicleCameraSettings < uid=auto >
+{
+	float myRollSpeed 720.0 < tooltip="Base speed for camera orbital rotation during chase camera" >
+	float myTransitionRollSpeed 720.0 < tooltip="speed for camera orbital rotation during transition from free camera to chase camera" >
+	
+	float myLookAheadTurnSpringStrength 10.0 < tooltip="Look ahead turn spring controls how quickly the camera will turn to face direction of turn" >
+	
+	float myPosSpringStrength 300.0 < tooltip="Controls strength/snapiness of positional movement spring" >
+	float myPosSpringDamping 1.0
+	float myPitchSpringStrength 10.0 < tooltip="Controls strength/snapiness of pitch change" >
+	
+	float myHeightChangeLowerBound -1.0 < tooltip="Max downward free cam movement to hold in to chase cam" >
+	float myHeightChangeUpperBound 2.0 < tooltip="Max upward free cam movement to hold in to chase cam" >
+	
+	float myFOVAccelThreshold 5.0 < tooltip="Minimum acceleration required to trigger acceleration based FOV changes (m/s^2)" >
+	float myFOVMinSpeedThreshold 5.0 < tooltip="Minimum speed required to allow any FOV modification (FOV changes at low speed tend to look weird/wrong)" >
+	
+	float myBoostLerpInTime 0.25 < tooltip="Blend time from normal camera setting into boost camera settings" >
+	float myBoostLerpOutTime 1.0 < tooltip="Blend time from boost camera setting into normal camera settings" >
+	
+	float myCameraRollWeight 0.1 < tooltip="How heavily camera will roll with bank angle of speeder (1 = matches speeder roll angle, 0 = doesn't roll with speeder)" >
+		
+	float myTurnInStrength 10.0 < tooltip="Strength of turn/look in effect when vehicle is turning" >
+	
+	float myMaxVehicleSpeed 40.0 < tooltip="Theoretical maximum cruising speed of vehicle in m/s" >
+	
+	float myTransitionToVehicleCameraTime 0.75 < tooltip="Time taken to blend to desired position after entering vehicle camera" >
+	string myTransitionToVehicleCameraCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.79832089 -2.7807119, -17.526897 -24.96526, -36.536285 -2.0069637, -14.314453 8.9807281, }, outTangents = { 1.984055 10.16193, 28.232582 98.339752, 19.52533 27.811821, 41.277721 2.2674141, 0 0, }, properties = { 275, 1299, 6419, 3347, 5395, }, values = { 0.0049052238 0.50632489, 3.2695312 11.287262, 49.124702 125.74115, 160.48059 378.96603, 257.46368 358.83649, }, }, numKeys = , }" < bhv=inputgraph >
+
+	VehicleCameraDownhillOffsetSettings myDownhillOffsetSettings < tooltip="Settings for vertical offset when travelling downhill" >
+	
+	VehicleCameraControlStateSettings myCameraSettingsStopped	< tooltip="Settings for when vehicle is stopped" >
+	VehicleCameraControlStateSettings myCameraSettingsTraversal < tooltip="Settings for during standard traversal" >
+	VehicleCameraControlStateSettings myCameraSettingsBoost < tooltip="Settings for during boost" >
+	VehicleCameraControlStateSettings myCameraSettingsWheelspin < tooltip="Settings for during wheelspin" >
+	VehicleCameraControlStateSettings myCameraSettingsLookback < tooltip="Settings for lookback camera" >
+	
+	VehicleCameraCollisionSettings myCameraCollisionSettings
+	VehicleCameraFreeCamSettings myFreeCamSettings
+	
+	VehicleCameraSaddleShotSettings mySaddleShotSettings
+	
+	VehicleCameraWheelspinSettings myWheelspinSettings
+	VehicleCameraWallrideSettings myWallrideSettings
+	
+	float myFreefireHeightOffsetLerpTime 0.4 < tooltip="time in seconds for camera to transition to full height when shooting", min=0.01 >
+}

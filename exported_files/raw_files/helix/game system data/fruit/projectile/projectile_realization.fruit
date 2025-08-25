@@ -1,0 +1,28 @@
+include "helix/game system data/fruit/sound/audioprojectile.fruit"
+include "helix/game system data/fruit/effects/effects.fruit"
+include "helix/game system data/fruit/impact/impact.fruit"
+
+enum LaserColor
+{
+	Red
+	Green
+	Blue
+	Yellow
+	Purple
+}
+
+class ProjectileRealization < uid=auto >
+{
+	// Visuals
+	file myProjectileGraphObject "" < bhv=asset assettype=object/gameplayobject >
+	LaserColor myLaserColor Red
+	bool myRotate false < tooltip="Set to true if the projectile must rotate once launched. The rotation speed is based on the speed of the projectile and its radius." >
+	bool myBounceInstantiation false < tooltip="If set to true, the projectile once bounce will create a new graph object instance" >
+	
+	// Audio
+	AudioProjectile* myAudioData
+	
+	// Impact
+	ImpactRealization* myHitImpact
+	ImpactRealization* myPierceImpact
+}

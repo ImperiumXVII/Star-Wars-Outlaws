@@ -1,0 +1,160 @@
+include "helix/game system data/fruit/item/collectible.fruit"
+include "helix/game system data/fruit/databank/databankunlockconditions.fruit"
+
+class DatabankAdditionalDescription
+{
+	varmap myDescription < bhv="localization" >
+	DatabankUnlockConditions myUnlockConditions
+}
+
+list DatabankAdditionalDescriptions
+{
+	DatabankAdditionalDescription
+}
+
+class DatabankElement < uid=auto abstract=1 >
+{
+	bool myIsUnlockedByDefault false < tooltip="If true, this element and all the categories it's included in will be unlocked at the beginning of the game." >
+	bool myHasMultipleUnlocks false < tooltip="The entry will be marked as new in the databank each time the unlock conditions are met." >
+	DatabankUnlockConditions myUnlockConditions < tooltip="The entry is unlocked when one of these conditions is true. If the entry is unlocked by default, by reward or in script, you don't need to put anything here." >
+	varmap myDescription < bhv="localization" >
+	DatabankAdditionalDescriptions myAdditionalDescriptions < tooltip="Descriptions that will replace the main one once the conditions are met." >
+	DatabankHideConditions myHideConditions < tooltip="Hide the entry when the conditions are true." >
+}
+
+list DatabanElements
+{
+	DatabankElement*
+}
+
+class DatabankNixTreasureEntry : DatabankElement
+{
+	varmap myGatheringInfo < bhv="localization" >
+	file myTextureIcon < bhv="asset" assettype="texture" >
+	file myImage < bhv="asset" assettype="texture" >
+	NixTreasureCollectibleItem* myItem < tooltip="The item that unlocks this entry in the databank" >
+	file myEntryImage < bhv="asset" assettype="texture" >	
+}
+
+list TextureList
+{
+	file < bhv="asset" assettype="texture" >
+}
+
+class DatabankISBReportEntry : DatabankElement
+{
+	varmap myOccupation < bhv="localization" >
+	varmap myAge < bhv="localization" >
+	file myTextureIcon < bhv="asset" assettype="texture" >
+	TextureList myTextureMugshots
+	file myImage < bhv="asset" assettype="texture" >
+	ISBReportCollectibleItem* myItem < tooltip="The item that unlocks this entry in the databank" >
+}
+
+class DatabankKordosJournalEntry : DatabankElement
+{	
+	KordosJournalCollectibleItem* myItem < tooltip="The item that unlocks this entry in the databank" >
+}
+
+class DatabankTransmissionEntry : DatabankElement
+{	
+	string myIcon < bhv=sprite >
+	file myTextureIcon < bhv="asset" assettype="texture" >
+	file myAudioLog "" < bhv=asset assettype="Dialogue Graph" tooltip="The file path for the dialogue graph played by this transmission" >
+	TransmissionCollectibleItem* myItem < tooltip="The item that unlocks this entry in the databank" >
+}
+
+class DatabankHolodramaEntry : DatabankElement
+{	
+	file myTextureIcon < bhv="asset" assettype="texture" >
+	file myAudioLog "" < bhv=asset assettype="Dialogue Graph" tooltip="The file path for the dialogue graph played by this holodrama" >
+	varmap myAudioTranscription < bhv="localization" >
+	HolodramaCollectibleItem* myItem < tooltip="The item that unlocks this entry in the databank" >
+}
+
+class DatabankLocationHint
+{
+	varmap myDescription < bhv="localization" >
+	DatabankUnlockConditions myUnlockConditions < tooltip="The location hint is not needed anymore (ie the player obtained the shift token) when one of these condition is true" >
+	DatabankUnlockConditions myDisplayConditions < tooltip="As long as this condition is not filled, the location hint stays hidden. If there are no conditions the hint is displayed by default" >
+}
+
+list DatabankLocationHints
+{
+	DatabankLocationHint
+}
+
+class DatabankSabaccShiftTokenEntry : DatabankElement
+{
+	SabaccShiftTokenCollectibleItem* myItem < tooltip="The item that unlocks this entry in the databank. The entry is also unlocked when an opponent plays the shift token set in this item" >
+	file myTexture < bhv="asset" assettype="texture" >
+	string mySprite < bhv=sprite >
+	file myTextureIcon < bhv="asset" assettype="texture" >
+	DatabankLocationHints myLocationHints < tooltip="Descriptions that will be displayed if the player didn't unlock all the tokens and the conditions to remove them." >
+}
+
+class DatabankCharacterEntry : DatabankElement
+{
+	varmap myName < bhv="localization" >
+	file myImage < bhv="asset" assettype="texture" >
+	file myDetailsImage < bhv="asset" assettype="texture" >
+	file myTextureIcon < bhv="asset" assettype="texture" >
+}
+
+class DatabankFactionEntry : DatabankElement
+{
+	varmap myName < bhv="localization" >
+	file myImage < bhv="asset" assettype="texture" >
+	string myIcon < bhv=sprite >
+	file myTextureIcon < bhv="asset" assettype="texture" >
+}
+
+class DatabankFaunaEntry : DatabankElement
+{
+	varmap myName < bhv="localization" >
+	file myImage < bhv="asset" assettype="texture" >
+	file myTextureIcon < bhv="asset" assettype="texture" >
+	uid myPlanet < bhv="constantData" constantDataType="levelinfo" tooltip="The level that unlocks this entry when the player enters in it for the first time">
+}
+
+class DatabankLocationEntry : DatabankElement
+{
+	varmap myName < bhv="localization" >
+	file myImage < bhv="asset" assettype="texture" >
+}
+
+class DatabankActivityEntry : DatabankElement
+{
+	varmap myName < bhv="localization" >
+	varmap myLocation < bhv="localization" >
+	file myImage < bhv="asset" assettype="texture" >
+}
+
+class DatabankTutorialEntry : DatabankElement
+{
+	varmap myName < bhv="localization" >
+	varmap myDescription < bhv="localization" tooltip="Description displayed when the player uses a gamepad or if the keyboard description is empty." >
+	varmap myKeyboardDescription < bhv="localization" tooltip="Description displayed when the player uses a keyboard and a mouse." >
+	varmap myAccessibilityOption < bhv="localization" >
+	file myPicture < bhv="asset" assettype="texture" >
+	string mySprite < bhv=sprite >
+	file myTextureIcon < bhv="asset" assettype="texture" >
+	file myVideo < bhv=asset assettype=webm >
+}
+
+class DatabankCategory : DatabankElement
+{
+	varmap myName < bhv="localization" >
+	file myImage < bhv="asset" assettype="texture" >
+	string myIcon < bhv=sprite >
+	file myTextureIcon < bhv="asset" assettype="texture" >
+	DatabanElements mySubElements < tooltip="The sub categories or sub entries of this category" >
+	bool myIsUnlockedByDefault < tooltip="If true, this element and all the categories it's included in will be unlocked at the beginning of the game. All the subelements of this element will also be unlocked." >
+	bool myHasMultipleUnlocks false < hidden=1 >
+}
+
+class DatabankSettings < uid=auto >
+{
+	DatabanElements myRootElements < tooltip="The elements at the root of the databank menu" >
+	varmap myDatabankLockedHintText < bhv="localization" >
+}

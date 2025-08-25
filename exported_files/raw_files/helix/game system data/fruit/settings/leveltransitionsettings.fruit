@@ -1,0 +1,47 @@
+include "helix/game system data/fruit/restriction/playerrestriction.fruit"
+include "helix/game system data/fruit/cutscene/cutscene.fruit"
+
+class WeatherPresetPair
+{
+	uid myLevelUID < bhv="constantData" constantDataType="levelinfo" >
+	file myWeatherBlendSequence < bhv=asset assettype=sequence tooltip="The weather blend sequence to be played on a level transition" >
+	file myWeatherPresetFile "" < bhv=asset assettype=environment >
+}
+
+list WeatherPresetList
+{
+	WeatherPresetPair
+}
+
+class LevelTransitionSettings < uid=auto >
+{
+	file myPlanetToSpaceSequence < bhv=asset assettype=sequence tooltip="The sequence to be played on a level transition from planet to space" >
+	file mySpaceToPlanetSequence < bhv=asset assettype=sequence tooltip="The sequence to be played on a level transition from space to planet" >
+	file mySpaceToSpaceSequence < bhv=asset assettype=sequence tooltip="The sequence to be played on a level transition from space to space" >
+
+	string myStartUnloadMarkerName < tooltip="The name of the marker in the transition sequences where the unload of the previous level starts" >
+	string myStartLoadMarkerName < tooltip="The name of the marker in the transition sequences where the load of the next level starts" >
+	string myLoadingLoopStartMarkerName < tooltip="The name of the marker in the transition sequences where the looping should start" >
+	string myLoadingLoopBreak1MarkerName < tooltip="The name of the marker in the transition sequences where there the loop can break" >
+	string myLoadingLoopBreak2MarkerName < tooltip="The name of the marker in the transition sequences where there the loop can break" >
+	string myLoadingLoopEndMarkerName < tooltip="The name of the marker in the transition sequences where the looping should end after the loading of the next level is done" >
+	string myMutexLayerLoadMarkerName < tooltip="The name of the marker in the transition sequences where the mutex layer containing the ship interior should load" >
+	string myWeatherBlendStartMarkerName < tooltip="The name of the marker in the transition sequences where the weather blend subsequence should start" >
+	string myWeatherBlendWaitForLoadLevelName < tooltip="The name of the marker in the weather blend subsequence where we will start waiting for the loading of the next level to start" >
+	string myWeatherBlendWaitForLoopEndMarkerName < tooltip="The name of the marker in the weather blend subsequence where we will start waiting for the loading of the next level to be done" >
+	string myWeatherBlendStartScatteringLUTUpdateName < tooltip="The name of the marker in the weather blend subsequence where we will start a new atmospheric scattering LUT update that will be allowed to finish before ending the loading sequence" >
+	string myUnloadSequenceRoomDataMarkerName < tooltip="The name of the marker in transition sequence where we will unload the landing zone room data " >
+	string myLoadSequenceRoomDataMarkerName < tooltip="The name of the marker in transition sequence where we will load the landing zone room data" >
+	string myExtResPlayerName < tooltip="The sequence external resource block where to bind the player" >
+	string myExtResAnySpaceshipName < tooltip="The sequence external resource block where to bind the player current controlled spaceship" >
+	string myExtResSpaceshipName < tooltip="The sequence external resource block where to bind the Trailblazer spaceship" >
+	string myExtResRokanaName < tooltip="The sequence external resource block where to bind the Rokana spaceship" >
+	string myExtResPetName < tooltip="The sequence external resource block where to bind the pet" >
+	string myAnimBlockSpaceshipControlBoneName < tooltip="If an animation block is used to control the spaceship keyframes, which bone to read the transform from" >
+	string myRequestResetSnowParticlesName < tooltip="Used to reset the now particles. This will both invalidate the top height texture and force an update AND it will reset any currently spawned particles." >
+	PlayerRestriction* myPlayerRestrictions < tooltip="The actions that the player can't do while in a level transition sequence" >
+
+	WeatherPresetList myWeatherPresetList
+
+	CutsceneOptimizationSettings myOptimizationSettings < tooltip="So we can controll the preload of sequence assets" >
+}

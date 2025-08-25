@@ -1,0 +1,40 @@
+include "helix/game system data/fruit/coop/coopheiststate.fruit"
+include "helix/game system data/fruit/coop/coopscoring.fruit"
+
+class CoopPlayerColors < uid=auto >
+{
+	uid GroupColor1 < bhv="presetcolor" >
+	uid GroupColor2 < bhv="presetcolor" >
+	uid GroupColor3 < bhv="presetcolor" >
+	uid GroupColor4 < bhv="presetcolor" >
+}
+
+class CoopUISettings < uid=auto >
+{
+	CoopPlayerColors myCoopPlayerColors
+}
+
+/////////////////////////////////
+
+class CoopDifficultySetting < uid=auto >
+{
+    int myTeamLives
+}
+
+class CoopDifficultySettings < uid=auto >
+{
+    CoopDifficultySetting myDifficulty1
+    CoopDifficultySetting myDifficulty2
+    CoopDifficultySetting myDifficulty3
+}
+
+/////////////////////////////////
+
+class CoopSettings < uid=auto >
+{
+    CoopUISettings myCoopUISettings
+    CoopDifficultySettings myCoopDifficultySettings
+    CoopHeistStateSettings myCoopHeistStates < tooltip="The order does not matter, but all enum states should be defined here. The order of the states is the order they're defined in the enum." >
+    CoopScoringSettings myCoopScoringSettings
+	float myDownedDamageMultiplier 0.2 < tooltip="How much time (fraction from total) should be decreased from the bleed out timer for each damage point received." >
+}

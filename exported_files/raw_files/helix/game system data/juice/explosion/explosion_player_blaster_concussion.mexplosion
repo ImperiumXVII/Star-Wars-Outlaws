@@ -1,0 +1,48 @@
+include "helix/game system data/fruit/explosion/explosion.fruit"
+include "helix/game system data/juice/camera/modifiers/player_hitreaction_explosion_power.mcameramodifier"
+include "helix/game system data/juice/explosion/explosion_template.mexplosion"
+
+Explosion explosion_player_blaster_concussion < uid=7113C61165800D670000BCA73AA96DF2 > : explosion_template
+{
+	myDetonation
+	{
+		myPropagationSpeed 35.0
+		myCameraShakeSection
+		{
+			mySize 2.0
+			myCreationShake < uid=7113C61165800D670000BCA89DA62BC4 > = player_hitreaction_base 1C021E956385CDDA0000860B377979EC
+			myCreationStrengthByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.91958702 0.29713112, }, outTangents = { 0.96464336 -0.0081967115, 0 -0, }, properties = { 275, 1299, }, values = { 0 1, 1 0, }, }, numKeys = 2, }"
+			myImpactShake < uid=7113C6116582F3C50002425792E6DC34 > = player_hitreaction_explosion_power 7113C6116526552A0003915808615729
+			myImpactStrengthByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.5 -0.001, }, outTangents = { 1.2459955 0.0092725754, 0 0, }, properties = { 275, 1299, }, values = { 0 1, 1 0.2, }, }, numKeys = 2, }"
+		}
+		myRumbleSection
+		{
+			mySize 5.0
+		}
+		myGameplayDamageSection
+		{
+			myDamageMultiplierByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.55987763 0.006633155, }, outTangents = { 0.96839797 0.011987686, 0 -0, }, properties = { 275, 1299, }, values = { 0 1, 1 0.2, }, }, numKeys = 2, }"
+			mySensoryStaggerEnabled TRUE
+			mySensoryStagger
+			{
+				myStaggerDamage 10.0
+				myStaggerDamageMultiplierByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.14612019 0.40258268, }, outTangents = { 0.75 0, 0 -0, }, properties = { 275, 1299, }, values = { 0 1, 1 0.1, }, }, numKeys = 2, }"
+				myStaggerDamageOverrideDamageType Unknown
+			}
+			myDamageSelf FALSE
+		}
+		myFlinchSection
+		{
+			mySize 1.2
+		}
+		myAudioSection
+		{
+			mySize 10.0
+			myDetonationEvent
+			{
+				myGuid 474635324E711414B337420E1C424281
+			}
+		}
+	}
+}
+

@@ -1,0 +1,53 @@
+include "helix/game system data/juice/ai/ash_bowbreaker_attached_npc_set.mnpconnpcattachmentset"
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/loottable/loot_global.mloottable"
+include "helix/game system data/juice/npc/ash_shp_base.mnpc"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npc/pir_shp_base.mnpc"
+
+NPC ash_shp_bowbreaker_a < uid=F95CD8F364AD14DF0001D7F0F805175F > : ash_shp_base
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Vper /Bowbreaker - Ashiga faction\", enabled = true, guid = #6AE6EE0D657832DB00026697F15500E1, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10726, text = \"B84-Viper\", type = \"MenuLine\""
+	myCharacterVisuals < uid=F95CD8F364AD14DF0001D7F1AB00CA69 > = character_visuals_npc_shp_Bowbreaker F95CD8F362ECDB7B0000E9D00F503654
+	myNPCComponentSetType Spaceship
+	mySpaceshipType BowBreakerAshiga
+	myMaxHealth 2800
+	myHealthFormula 1400*SpaceHealthWarshipDifficultyModifier
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag (0)" < uid=3A12912164EE0E35000323307F8C8AD8 > = Agent_Gender_FeminineTag 16DEADE6626D20EA00002E5277B65AD4
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A12912164EE0E460003234488CF53EC > = Agent_Archetype_Pilot 3A12912163EF7B9500005053123CF383
+		RBTagsTag "New RBTagsTag (0)" < uid=3A12912164EE0E46000323458A87D53D > = Agent_ShipType_CruiserTag 3A12912164DCDD0A00011358B889F2D0
+		RBTagsTag "New RBTagsTag (1)" < uid=3A12912164EE0E4600032346B05214D9 > = Agent_Faction_AshigaClanTag 4728ADF9620B7AF800002022DD5E94D3
+	}
+	myDialogueCharactersFromDatabase
+	{
+		DialogueCharacterWithTags Ashiga_Female_01 < uid=3A12912164EE0E660003235AEF06E6E3 > = Ashiga_Pilot_F01 3A1291216475FF31000162D860E1CD58
+	}
+	myLodType Spaceship_Cruiser
+	mySensoryProfile < uid=F95CD8F3653F6D2B00004D785C4D67BF > = DefaultSpaceship 16C7D1FB631F23570000495589B79C85
+	myVisionProfile < uid=F95CD8F364AD14DF0001D7F2DDD16BF2 > = visionProfile_ash_ship_Warship 6B0E1DE964B7A45D0000AD64DF4A2382
+	myHearingProfile < uid=F95CD8F364AD14DF0001D7F316EB8D53 > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=F95CD8F364AD14DF0001D7F4C684DF3E > = detectionProfile_ash_ship_Warship 6B0E1DE964B662420003C7172DFE3D49
+	}
+	myThreatProfile < uid=F95CD8F3653F6D2B00004D794E87E89B > = warshipnpcthreatprofiles F95CD8F3653F5C6800009CA56C0B9313
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "Bowbreaker weapon loadout" < uid=7EE64634651BD3A0000086C8F653DE69 > = weaponloadout_ash_shp_bowbreaker 7EE64634651BF71900014692B3BF5068
+	}
+	myAttachedNPCsSet < uid=6EA796256509686F0000F93E511456C9 > = ash_bowbreaker_attached_npc_set 6EA79625650A9E4C0000FE0BF4BA3632
+	myLootTable < uid=2AE2EC85654CB7A2000109683AEA2A18 > = loot_OnKill_Ship 2AE2EC85654CB4920001094584D7F698
+	myAudioParameters
+	{
+	}
+	myCombatRole Warship
+}
+

@@ -1,0 +1,74 @@
+include "helix/game system data/juice/melee/npc_melee_config.mnpcmeleeconfig"
+include "helix/game system data/juice/npc/base_ash.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC ash_myrmite_mq070 < uid=9128788866A244350004D41B8F4C4B7D > : base_ash
+{
+	myName "aurabesh = false, branch = \"TU2\", contextComment = \"The name of the Ashiga Assault Unit and its archetype (assault)\", enabled = true, guid = #9128788866A244350004D41A01448652, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10572, text = \"Myrmite\nAssault\", type = \"MenuLine\""
+	myCharacterVisuals < uid=9128788866A244350004D41C167E1379 > = character_visuals_2_silver_ashiga_myrmite 6993721764EF10F60000C434BCDCE8BE
+	myAdditionalGearGraphs 4171A7E1664380F60008F9DB655ED4BD
+	myBehavior helix/behaviors/ash_myrmite.mbehavior
+	myMaxHealth 15
+	myHealthFormula max(1,1+NPCFinalHealth)
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=9128788866A244350004D41DE532A85A > = Agent_Gender_MasculineTag 16DEADE6626D20EA00002E504CE30DE2
+	}
+	myPossibleSpeciesTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=9128788866A244350004D41EC061D4B8 > = Agent_Species_MelittoTag FFED0CDA634EC1CA0000AD689E0477D4
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=9128788866A244350004D41F2D9B786A > = Agent_Faction_AshigaClanTag 4728ADF9620B7AF800002022DD5E94D3
+		RBTagsTag "New RBTagsTag (0)" < uid=9128788866A244350004D420CB98437B > = Agent_BarksFamily_AshigaDefault E4123D2762FCA3FD00010FC125A4C306
+	}
+	myDialogueCharactersFromDatabase
+	{
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=9128788866A244350004D421BB98522A > = AshigaMelittoM01 E4123D27651420750000AFB7F2F11E0D
+		DialogueCharacterWithTags "New DialogueCharacterWithTags (0)" < uid=9128788866A244350004D422759295F5 > = AshigaMelittoM02 E4123D27651420B90000AFBED2126E79
+		DialogueCharacterWithTags "New DialogueCharacterWithTags (1)" < uid=9128788866A244350004D423833CEB05 > = AshigaMelittoM03 E4123D27651420D10000AFC4E65987B6
+	}
+	myVisionProfile < uid=9128788866A244350004D4248AB6E382 > = DefaultVisionProfile 16DEADE65E8E1B4B0000001591E37EAC
+	mySmellProfile < uid=9128788866A244350004D425F3C6F9FC > = NULLREFERENCE
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=9128788866A244350004D426121AE74C > = DefaultDetectionProfile 16DEADE65F0385DF00000015D7B1E14D
+		myNonCombatAreaProfile < uid=9128788866A244350004D427761A42C9 > = DefaultCityDetectionProfile 91DC5D3C632191250002DC395EC03E17
+	}
+	myTacticalPositionFinderProfile < uid=9128788866A244350004D4284B8D157B > = "Assault Tactical Position Finder Profile" 5C421F5C64A5764C000057F0C65A6821
+	myAgitationProfile < uid=9128788866A244350004D4298F400CEF > = "ReputationFaction Agitation Profile" 16C7D1FB6274DA4F00002E254E69ADAE
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout LoadoutA < uid=9128788866A244350004D42A4AA5BACC > = ash_Myrmite_Shotgun 2736B365636252CE0001D4FC4EBAC279
+	}
+	myPatrolFormationProfile < uid=9128788866A244350004D42BEE0DB55B > = DefaultPatrolFormation C0D149F862D6BC3C00003CE020A2DB0B
+	myPickpocketableLootTable < uid=9128788866A244350004D42CCD08432C > = NULLREFERENCE
+	myMotionPatternProfile < uid=9128788866A244350004D42D42A00916 > = AssaultMotionPatternProfile 4171A7E16543D25F000722E2FBD78BFE
+	myBehaviorUpdateBoostProfile < uid=9128788866A244350004D42E25B4A854 > = hostile_ashiga 4171A7E165F304080013999FD99963E9
+	myAudioParameters
+	{
+		mySwitches
+		{
+			AudioSwitch VocoderMelitto
+			{
+				myGuid 47C48A52CA9E03681F81283C1412DF8D
+			}
+			AudioSwitch VoiceFamilyMelitto
+			{
+				myGuid 41470E5259B6F3C4E85B67A9E0A1E3B1
+			}
+			AudioSwitch "NPC Faction Swich"
+			{
+				myGuid 429A14479D8FEFDBF70A8282BF9C84A1
+			}
+		}
+	}
+	myAudioNPCDangerWeight 3.0
+	myCanBeDistractedByPet FALSE
+	myCanInvestigatePlayerWhistle FALSE
+	myMeleeConfig < uid=9128788866A244350004D42FA69066D4 > = npc_melee_config BCDE37F162445830000053EBBBF07CF3
+	myStaggerConfig < uid=9128788866A244350004D430290E4009 > = NPCStaggerConfig_Humanoid_Medium_MeleeTier2 3C2FA92B6515832C0004A42547889D4B
+	myCombatRole Assault
+}
+

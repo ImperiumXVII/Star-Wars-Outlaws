@@ -1,0 +1,60 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/explosion/explosion_atst_grenade.mexplosion"
+include "helix/game system data/juice/explosion/explosion_generic.mexplosion"
+include "helix/game system data/juice/explosion/explosion_mpl.mexplosion"
+include "helix/game system data/juice/explosion/explosion_svd_grenade.mexplosion"
+include "helix/game system data/juice/projectile/realization/small_grenade.mprojectilerealization"
+
+BallisticProjectile weapon_projectile_grenadelauncher_SVD < uid=416E63E465AEA0C00004236B1A11C025 >
+{
+	myObject
+	{
+		myMaterialType Kinetic
+		myMass 0.5
+		myTravelLifeTime 6.0
+		myMainShape
+		{
+			myShapeType Point
+			myShapeRadius 0.3
+		}
+	}
+	myRealization < uid=416E63E465AEA0C00004236CBA36E6A0 > = small_grenade 544DB90860915910000000318FCEBFA0
+	myActions
+	{
+		ProjectileActionExplosion ExpiredExplosion
+		{
+			myActionTargetType Expired
+			myDamageFormula 5
+			myRadiusFormula 8
+			myDefaultDamage 5.0
+			myDefaultRadius 8.0
+			myExplosion < uid=416E63E465AEA0C00004236D5E14E0E3 > = explosion_svd_grenade 30E8B1F265B3DC7E00012504DE742B3C
+		}
+		ProjectileActionGameScript HitAiEvent
+		{
+			myActionTargetType Hit
+			myGameScript "helix/game scripts/gs_grenadelauncher_detonation.mgamescript"
+			myDamageFormula 1
+			myRadiusFormula 2
+			myDefaultDamage 1.5
+			myDefaultRadius 2.0
+		}
+		ProjectileActionExplosion HitExplision
+		{
+			myRadiusFormula 2
+			myDefaultDamage 1.5
+			myExplosion < uid=416E63E465AEA0C00004236E2E873670 > = explosion_svd_grenade 30E8B1F265B3DC7E00012504DE742B3C
+		}
+	}
+	myNPCSensoryProjectileType Grenade
+	myInitialSpeed 20.0
+	myAccelerationType Curve
+	myAccelerationCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.270235 -0.002532, }, outTangents = { 0.13350126 1.0657327, 0 0, }, properties = { 275, 1299, }, values = { 0 0.5, 1 1, }, }, numKeys = 2, }"
+	myBounceEnabled FALSE
+	myBounceVsDynamicEnabled FALSE
+	myBounceFriendlyFireEnabled FALSE
+	myBounceSpeedRestitution 0.2
+	myBounceGroundSpeedRestitution 0.1
+	myBounceMaxBounces 1
+}
+

@@ -1,0 +1,24 @@
+include "helix/game system data/fruit/melee/melee_move.fruit"
+include "helix/game system data/juice/camera/modifiers/player_melee_punch_hit.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/player_melee_punch_miss.mcameramodifier"
+include "helix/game system data/juice/melee/kay_meleemove_base.mmeleemove"
+include "helix/game system data/juice/npc/emp_stormtrooper.mnpc"
+
+MeleeMove kay_meleemove_punch2 < uid=A207755D6238974B0000295F6F288658 > : kay_meleemove_base
+{
+	myStartConditions
+	{
+		myTargetInRange
+		{
+			myEnabled TRUE
+		}
+		myGameCondition
+		{
+			GameConditionMeleeTargetIsNPCType "New GameConditionMeleeTargetIsNPCType (0)"
+			{
+				myNPC < uid=A207755D62430B2900002BA1E04C348D > = emp_stormtrooper 16DEADE661F07FAF00001B5372282E83
+			}
+		}
+	}
+}
+

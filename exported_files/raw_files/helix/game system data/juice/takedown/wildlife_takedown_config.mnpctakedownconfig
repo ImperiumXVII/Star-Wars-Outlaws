@@ -1,0 +1,506 @@
+include "helix/game system data/fruit/takedown/npctakedown.fruit"
+include "helix/game system data/juice/npcmove/coyote_move_evaluation.mnpcmoveevaluationconfig"
+include "helix/game system data/juice/npcmove/massiff_move_evaluation.mnpcmoveevaluationconfig"
+include "helix/game system data/juice/npcmove/sammakho_move_evaluation.mnpcmoveevaluationconfig"
+include "helix/game system data/juice/npcmove/tshikara_move_evaluation.mnpcmoveevaluationconfig"
+include "helix/game system data/juice/rbtags/archetype.mrbtagstags"
+include "helix/game system data/juice/rbtags/barksfamily.mrbtagstags"
+
+NPCTakedownConfig coyote_takedown_config < uid=D85A7684625E14D500000FEE6B4BCDEF >
+{
+	myTakedownAnimVariableName IsInTakedown
+	myTakedownDamageEventName TakedownTriggerDamage
+	myTakedownData
+	{
+		NPCTakedownData NPC
+		{
+			myTakedownVariations
+			{
+				NPCTakedownVariationData Front
+				{
+					myMoveEvaluationConfig < uid=D85A7684627E24CB00002DFD4108EF21 > = coyote_takedown_front D85A7684627E1FF7000000C8A17E9868
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.0
+					myDamage 100.0
+				}
+				NPCTakedownVariationData Back
+				{
+					myMoveEvaluationConfig < uid=D85A7684627E24CB00002DFE1C625891 > = coyote_takedown_back D85A7684627E249B00002DFAE7374019
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.0
+					myDamage 100.0
+				}
+				NPCTakedownVariationData Left
+				{
+					myMoveEvaluationConfig < uid=D85A7684627E24CB00002DFFFCF6D50D > = coyote_takedown_left D85A7684627E249B00002DFBFD23AAEA
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.0
+					myDamage 100.0
+				}
+				NPCTakedownVariationData Right
+				{
+					myMoveEvaluationConfig < uid=D85A7684627E24CB00002E00760D9239 > = coyote_takedown_right D85A7684627E249B00002DFC63FD3183
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.0
+					myDamage 100.0
+				}
+			}
+		}
+	}
+}
+
+NPCTakedownConfig massiff_takedown_config < uid=D85A768462CE3BBF000018A341338ADF >
+{
+	myTakedownAnimVariableName IsInTakedown
+	myTakedownDamageEventName TakedownTriggerDamage
+	myForbidAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=948DDC1D658CE99A0001FF1FA5CC238A > = Agent_Archetype_DeathTrooperTag E4123D2762AF18600000A81C12B56660
+		RBTagsTag "Combat Companion" < uid=E9DD8F60666AA77F0008CE9DC9F4AD2B > = Agent_BarksFamily_CombatCompanion F457223265E885F20000CE4AFDC93CB2
+		RBTagsTag "Civ Combatant" < uid=E9DD8F60668793120001AD2800CC9986 > = Agent_BarksFamily_CivCombatant E4123D276471F5C50000329C4D751A83
+	}
+	myTakedownData
+	{
+		NPCTakedownData Player
+		{
+			myIsTargetPlayer TRUE
+			myTakedownVariations
+			{
+				NPCTakedownVariationData Test
+				{
+					myMoveEvaluationConfig < uid=D85A768462CE3BF0000018A4AEAABE1A > = massiff_takedown_player D85A768462CE3B65000018A273B29F0A
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 2.0
+					mySafetyAreaOffset 0.0;0.0;0.5
+					myDamage 1.0
+					myClampDamageToNotKillVictim TRUE
+					myCameraPreset
+					{
+						myEnablePresetCamera TRUE
+						myPresetCameraOffset 1.0;2.0;0.0
+						myMaxDistanceToPresetCamera 5.0
+						myMaxAngleRangeToPresetCamera 130.0
+						myBlendInTime 1.0
+						myBlendOutTime 1.0
+						mySafetyAreaCheckRadius 2.0
+						mySafetyAreaCheckHeight 0.5
+					}
+					mySlowMotionDuration 4.63
+					mySlowDownScale "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.0066666668 0, -0.0066666668 0, -0.086666673 0, -0.0066666603 -0.30000001, -0.0066666706 0.30000001, -0.066666678 0, -0.0066666603 -0.30000001, -0.023333332 0.30000001, }, outTangents = { 0.0066666668 0, 0.0066666668 0, 0.086666673 0, 0.0066666603 0.30000001, 0.0066666706 -0.30000001, 0.066666678 0, 0.0066666603 0.30000001, 0.023333332 -0.30000001, 0 0, }, properties = { 203, 14539, 13515, 6347, 5323, 7371, 11467, 3275, 2251, }, values = { 0 0, 0.02 0, 0.039999999 0, 0.30000001 0, 0.31999999 0.89999998, 0.34 0, 0.54000002 0, 0.56 0.89999998, 0.63 0, }, }, numKeys = 9, }"
+				}
+			}
+		}
+		NPCTakedownData NPC
+		{
+			myNPCTargetAnimSystemType Human
+			myTakedownVariations
+			{
+				NPCTakedownVariationData Front
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6065151D550000CA79BEE72894 > = massiff_takedown_front E9DD8F6065151C8F0000CA6FBE4CC755
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.5
+					mySafetyAreaOffset 0.0;0.0;3.0
+					myDamage 100.0
+				}
+				NPCTakedownVariationData Back
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6065151D550000CA7A9C1185CF > = massiff_takedown_back E9DD8F6065151C8F0000CA707840158F
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.5
+					mySafetyAreaOffset 0.0;0.0;3.0
+					myDamage 100.0
+				}
+				NPCTakedownVariationData Left
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6065151D550000CA7B16135EA2 > = massiff_takedown_left E9DD8F6065151C8F0000CA71AAB1F54E
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.5
+					mySafetyAreaOffset 0.0;0.0;3.0
+					myDamage 100.0
+				}
+				NPCTakedownVariationData Right
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6065151D550000CA7C40B529C1 > = massiff_takedown_right E9DD8F6065151C8F0000CA723BE326E9
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.5
+					mySafetyAreaOffset 0.0;0.0;3.0
+					myDamage 100.0
+				}
+			}
+		}
+	}
+}
+
+NPCTakedownConfig sammakho_takedown_config < uid=E9DD8F60644B5F640001B98AEDF7A150 > : massiff_takedown_config
+{
+	myTakedownData
+	{
+		NPCTakedownData Player
+		{
+			myIsTargetPlayer TRUE
+			myTakedownVariations
+			{
+				NPCTakedownVariationData Test
+				{
+					myWeight 1.0
+					myMoveEvaluationConfig < uid=E9DD8F60655C5AD40005D072CC8553B5 > = sammakho_takedown_player E9DD8F60644B63350001B9B130556C0B
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 2.0
+					mySafetyAreaOffset 0.0;0.0;4.0
+					myDamage 1.0
+					myClampDamageToNotKillVictim TRUE
+					myCameraPreset
+					{
+						myEnablePresetCamera TRUE
+						myPresetCameraOffset 0.0;2.0;-2.0
+						myMaxDistanceToPresetCamera 5.0
+						myMaxAngleRangeToPresetCamera 60.0
+						myBlendInTime 1.0
+						myBlendOutTime 1.0
+						mySafetyAreaCheckRadius 3.0
+					}
+					mySlowMotionDuration 6.17
+					mySlowDownScale "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.24000001 -5.2303076e-05, -0.0066666603 -0.23328102, -0.0066666603 0.23333333, }, outTangents = { 0.24000001 5.2303076e-05, 0.0066666603 0.23328102, 0.0066666603 -0.23333333, 0 0, }, properties = { 203, 12491, 3275, 2251, }, values = { 0 0, 0.72000003 0.00015690923, 0.74000001 0.69999999, 0.75999999 0, }, }, numKeys = 4, }"
+				}
+			}
+		}
+		NPCTakedownData NPC
+		{
+			myNPCTargetAnimSystemType Human
+			myTakedownVariations
+			{
+				NPCTakedownVariationData Front
+				{
+					myMoveEvaluationConfig < uid=E9DD8F606577C7200008D1E5C0449DDF > = sammakho_takedown_front E9DD8F606577C827000A35FC110ED0FC
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 2.0
+					mySafetyAreaOffset 1.0;0.0;5.0
+					myDamage 100.0
+				}
+				NPCTakedownVariationData Back
+				{
+					myMoveEvaluationConfig < uid=E9DD8F606577C7200008D1E64FA7E171 > = sammakho_takedown_back E9DD8F606577C827000A35FDD34B1B36
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 2.0
+					mySafetyAreaOffset 1.0;0.0;5.0
+					myDamage 100.0
+				}
+				NPCTakedownVariationData Left
+				{
+					myMoveEvaluationConfig < uid=E9DD8F606577C7200008D1E771AACA63 > = sammakho_takedown_left E9DD8F606577C827000A35FE880795C1
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 2.0
+					mySafetyAreaOffset 1.0;0.0;5.0
+					myDamage 100.0
+				}
+				NPCTakedownVariationData Right
+				{
+					myMoveEvaluationConfig < uid=E9DD8F606577C7200008D1E8BF38420F > = sammakho_takedown_right E9DD8F606577C827000A35FF31CA8C9E
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 2.0
+					mySafetyAreaOffset 1.0;0.0;5.0
+					myDamage 100.0
+				}
+			}
+		}
+	}
+}
+
+NPCTakedownConfig tshikara_takedown_config < uid=E9DD8F6064536F6700048108B02F3CEE >
+{
+	myTakedownAnimVariableName IsInTakedown
+	myTakedownDamageEventName TakedownTriggerDamage
+	myForbidAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=948DDC1D658CEB7F0001FF21E4BC02D5 > = Agent_Archetype_DeathTrooperTag E4123D2762AF18600000A81C12B56660
+		RBTagsTag "Combat Companion" < uid=E9DD8F606687972B000482245E6A7B1F > = Agent_BarksFamily_CombatCompanion F457223265E885F20000CE4AFDC93CB2
+		RBTagsTag "Civ Combatant" < uid=E9DD8F606687972B00048225EAC647DB > = Agent_BarksFamily_CivCombatant E4123D276471F5C50000329C4D751A83
+	}
+	myTakedownData
+	{
+		NPCTakedownData NPC
+		{
+			myNPCTargetAnimSystemType Human
+			myTakedownVariations
+			{
+				NPCTakedownVariationData Front
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064536F67000481096C353390 > = tshikara_takedown_front E9DD8F6064536FD800048DA0D00559BA
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.4
+					mySafetyAreaOffset 0.0;0.0;5.0
+					myDamage 100.0
+				}
+				NPCTakedownVariationData Back
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064536F670004810A57B6F21E > = tshikara_takedown_back E9DD8F6064536FD800048DA1652CAC9E
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.4
+					mySafetyAreaOffset 0.0;0.0;5.0
+					myDamage 100.0
+				}
+				NPCTakedownVariationData Left
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064536F670004810B3D194ECA > = tshikara_takedown_left E9DD8F6064536FD800048DA2E043F2D6
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.4
+					mySafetyAreaOffset 0.0;0.0;5.0
+					myDamage 100.0
+				}
+				NPCTakedownVariationData Right
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064536F670004810CF418CDCB > = tshikara_takedown_right E9DD8F6064536FD800048DA3FC928462
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.4
+					mySafetyAreaOffset 0.0;0.0;5.0
+					myDamage 100.0
+				}
+				NPCTakedownVariationData RunFront
+				{
+					myMoveEvaluationConfig < uid=F39985526641BD1B00025F9A73BD8F37 > = tshikara_run_takedown_front F39985526641BC5700025F8A2CAA8600
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.4
+					mySafetyAreaOffset 0.0;0.0;5.0
+					myDamage 100.0
+				}
+				NPCTakedownVariationData RunBack
+				{
+					myMoveEvaluationConfig < uid=F39985526641BD1B00025F9B0C0F6628 > = tshikara_run_takedown_back F39985526641BC5700025F8B10C7FBDB
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.4
+					mySafetyAreaOffset 0.0;0.0;5.0
+					myDamage 100.0
+				}
+				NPCTakedownVariationData RunLeft
+				{
+					myMoveEvaluationConfig < uid=F39985526641BD1B00025F9C1B5524A0 > = tshikara_run_takedown_left F39985526641BC5700025F8C9F47B27C
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.4
+					mySafetyAreaOffset 0.0;0.0;5.0
+					myDamage 100.0
+				}
+				NPCTakedownVariationData RunRight
+				{
+					myMoveEvaluationConfig < uid=F39985526641BD1B00025F9D928E66F9 > = tshikara_run_takedown_right F39985526641BC5700025F8D861F3A42
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.4
+					mySafetyAreaOffset 0.0;0.0;5.0
+					myDamage 100.0
+				}
+			}
+		}
+		NPCTakedownData Player
+		{
+			myIsTargetPlayer TRUE
+			myTakedownVariations
+			{
+				NPCTakedownVariationData TshikaraTakedownPlayer
+				{
+					myMoveEvaluationConfig < uid=E9DD8F606538D9C70000B7AD6D768EEE > = tshikara_takedown_player E9DD8F606539C3FF0000B7CA9FB2E0E0
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.7
+					mySafetyAreaOffset -0.1;0.0;5.7
+					myDamage 2.0
+					myClampDamageToNotKillVictim TRUE
+					myCameraPreset
+					{
+						myEnablePresetCamera TRUE
+						myPresetCameraOffset 0.0;2.0;0.0
+						myMaxDistanceToPresetCamera 7.0
+						myMaxAngleRangeToPresetCamera 150.0
+						myBlendInTime 0.15
+						myBlendOutTime 1.0
+						mySafetyAreaCheckRadius 2.0
+						mySafetyAreaCheckHeight 0.5
+					}
+					mySlowMotionDuration 7.57
+					mySlowDownScale "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.050000004 0, -0.0013333311 -0.31666666, -0.00094611943 -0.00031581521, -0.0035130829 0.39050025, -0.15400001 0, -0.00037060655 -0.054926589, -0.0020391541 0.023247957, -0.00033334893 0.26666668, }, outTangents = { 0.0413059 0.0023884177, 0.0013333311 0.31666666, 0.00076398754 0.0020259023, 0.00076188147 -0.063025042, 0.15400001 0, 0.0016666651 0.26666668, 0.00078107975 0.016800165, 0.00021272898 -0.056527462, 0 0, }, properties = { 275, 6347, 5386, 13586, 7378, 11467, 3346, 12562, 2251, }, values = { 0 0, 0.15000001 0, 0.154 0.94999999, 0.15700001 0.94999999, 0.16599999 0, 0.62800002 0, 0.63300002 0.80000001, 0.64499998 0.80000001, 0.64600003 0, }, }, numKeys = 9, }"
+				}
+			}
+		}
+	}
+}
+
+NPCTakedownConfig dlc2_mq020_massiff_takedown_config < uid=E9DD8F6067DB8A4B000BD58ED68CADB2 > : massiff_takedown_config
+{
+	myTakedownData
+	{
+		NPCTakedownData Player
+		{
+			myIsTargetPlayer TRUE
+			myTakedownVariations
+			{
+				NPCTakedownVariationData Test
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067DB8AD7000BD6569F4F8201 > = massiff_takedown_player D85A768462CE3B65000018A273B29F0A
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 2.0
+					mySafetyAreaOffset 0.0;0.0;0.5
+					myDamage 2.0
+					myClampDamageToNotKillVictim TRUE
+					myCameraPreset
+					{
+						myEnablePresetCamera TRUE
+						myPresetCameraOffset 1.0;2.0;0.0
+						myMaxDistanceToPresetCamera 5.0
+						myMaxAngleRangeToPresetCamera 130.0
+						myBlendInTime 1.0
+						myBlendOutTime 1.0
+						mySafetyAreaCheckRadius 2.0
+						mySafetyAreaCheckHeight 0.5
+					}
+					mySlowMotionDuration 4.63
+					mySlowDownScale "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.0066666668 0, -0.0066666668 0, -0.086666673 0, -0.0066666603 -0.30000001, -0.0066666706 0.30000001, -0.066666678 0, -0.0066666603 -0.30000001, -0.023333332 0.30000001, }, outTangents = { 0.0066666668 0, 0.0066666668 0, 0.086666673 0, 0.0066666603 0.30000001, 0.0066666706 -0.30000001, 0.066666678 0, 0.0066666603 0.30000001, 0.023333332 -0.30000001, 0 0, }, properties = { 203, 14539, 13515, 6347, 5323, 7371, 11467, 3275, 2251, }, values = { 0 0, 0.02 0, 0.039999999 0, 0.30000001 0, 0.31999999 0.89999998, 0.34 0, 0.54000002 0, 0.56 0.89999998, 0.63 0, }, }, numKeys = 9, }"
+				}
+			}
+		}
+		NPCTakedownData NPC
+		{
+			myNPCTargetAnimSystemType Human
+			myTakedownVariations
+			{
+				NPCTakedownVariationData Front
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067DB8AD7000BD657C040DB77 > = massiff_takedown_front E9DD8F6065151C8F0000CA6FBE4CC755
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.5
+					mySafetyAreaOffset 0.0;0.0;3.0
+					myDamage 100.0
+				}
+				NPCTakedownVariationData Back
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067DB8AD7000BD658FF2E02DA > = massiff_takedown_back E9DD8F6065151C8F0000CA707840158F
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.5
+					mySafetyAreaOffset 0.0;0.0;3.0
+					myDamage 100.0
+				}
+				NPCTakedownVariationData Left
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067DB8AD7000BD659052EB29C > = massiff_takedown_left E9DD8F6065151C8F0000CA71AAB1F54E
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.5
+					mySafetyAreaOffset 0.0;0.0;3.0
+					myDamage 100.0
+				}
+				NPCTakedownVariationData Right
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067DB8AD7000BD65AE69267B2 > = massiff_takedown_right E9DD8F6065151C8F0000CA723BE326E9
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.5
+					mySafetyAreaOffset 0.0;0.0;3.0
+					myDamage 100.0
+				}
+			}
+		}
+	}
+}
+
+NPCTakedownConfig dlc2_mq020_varaki_takedown_config < uid=E9DD8F6067DB8AAC000BD65555D5E5F6 > : tshikara_takedown_config
+{
+	myTakedownData
+	{
+		NPCTakedownData NPC
+		{
+			myNPCTargetAnimSystemType Human
+			myTakedownVariations
+			{
+				NPCTakedownVariationData Front
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067DB8AD7000BD65B20CF8374 > = tshikara_takedown_front E9DD8F6064536FD800048DA0D00559BA
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.4
+					mySafetyAreaOffset 0.0;0.0;5.0
+					myDamage 100.0
+				}
+				NPCTakedownVariationData Back
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067DB8AD7000BD65CAF786D65 > = tshikara_takedown_back E9DD8F6064536FD800048DA1652CAC9E
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.4
+					mySafetyAreaOffset 0.0;0.0;5.0
+					myDamage 100.0
+				}
+				NPCTakedownVariationData Left
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067DB8AD7000BD65DDFB29044 > = tshikara_takedown_left E9DD8F6064536FD800048DA2E043F2D6
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.4
+					mySafetyAreaOffset 0.0;0.0;5.0
+					myDamage 100.0
+				}
+				NPCTakedownVariationData Right
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067DB8AD7000BD65EAA68D3F7 > = tshikara_takedown_right E9DD8F6064536FD800048DA3FC928462
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.4
+					mySafetyAreaOffset 0.0;0.0;5.0
+					myDamage 100.0
+				}
+				NPCTakedownVariationData RunFront
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067DB8AD7000BD65FF6E031ED > = tshikara_run_takedown_front F39985526641BC5700025F8A2CAA8600
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.4
+					mySafetyAreaOffset 0.0;0.0;5.0
+					myDamage 100.0
+				}
+				NPCTakedownVariationData RunBack
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067DB8AD7000BD6609A9F7911 > = tshikara_run_takedown_back F39985526641BC5700025F8B10C7FBDB
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.4
+					mySafetyAreaOffset 0.0;0.0;5.0
+					myDamage 100.0
+				}
+				NPCTakedownVariationData RunLeft
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067DB8AD7000BD661D1E4EAB6 > = tshikara_run_takedown_left F39985526641BC5700025F8C9F47B27C
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.4
+					mySafetyAreaOffset 0.0;0.0;5.0
+					myDamage 100.0
+				}
+				NPCTakedownVariationData RunRight
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067DB8AD7000BD6623DFF6C16 > = tshikara_run_takedown_right F39985526641BC5700025F8D861F3A42
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.4
+					mySafetyAreaOffset 0.0;0.0;5.0
+					myDamage 100.0
+				}
+			}
+		}
+		NPCTakedownData Player
+		{
+			myIsTargetPlayer TRUE
+			myTakedownVariations
+			{
+				NPCTakedownVariationData TshikaraTakedownPlayer
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067DB8AD7000BD663CA675D1D > = tshikara_takedown_player E9DD8F606539C3FF0000B7CA9FB2E0E0
+					myEnableSafetyAreaCheck TRUE
+					mySafetyAreaCheckRadius 1.7
+					mySafetyAreaOffset -0.1;0.0;5.7
+					myDamage 3.0
+					myClampDamageToNotKillVictim TRUE
+					myCameraPreset
+					{
+						myEnablePresetCamera TRUE
+						myPresetCameraOffset 0.0;2.0;0.0
+						myMaxDistanceToPresetCamera 7.0
+						myMaxAngleRangeToPresetCamera 150.0
+						myBlendInTime 0.15
+						myBlendOutTime 1.0
+						mySafetyAreaCheckRadius 2.0
+						mySafetyAreaCheckHeight 0.5
+					}
+					mySlowMotionDuration 7.57
+					mySlowDownScale "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.050000004 0, -0.0013333311 -0.31666666, -0.00094611943 -0.00031581521, -0.0035130829 0.39050025, -0.15400001 0, -0.00037060655 -0.054926589, -0.0020391541 0.023247957, -0.00033334893 0.26666668, }, outTangents = { 0.0413059 0.0023884177, 0.0013333311 0.31666666, 0.00076398754 0.0020259023, 0.00076188147 -0.063025042, 0.15400001 0, 0.0016666651 0.26666668, 0.00078107975 0.016800165, 0.00021272898 -0.056527462, 0 0, }, properties = { 275, 6347, 5386, 13586, 7378, 11467, 3346, 12562, 2251, }, values = { 0 0, 0.15000001 0, 0.154 0.94999999, 0.15700001 0.94999999, 0.16599999 0, 0.62800002 0, 0.63300002 0.80000001, 0.64499998 0.80000001, 0.64600003 0, }, }, numKeys = 9, }"
+				}
+			}
+		}
+	}
+}
+

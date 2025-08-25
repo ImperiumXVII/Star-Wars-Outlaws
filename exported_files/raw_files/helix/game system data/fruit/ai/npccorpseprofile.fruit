@@ -1,0 +1,36 @@
+include "helix/game system data/fruit/rbtags/rbtags.fruit"
+include "helix/game system data/fruit/ai/npcdynamiccorpsecapinteraction.fruit"
+include "helix/game system data/fruit/ai/pathfinding/hazard_types.fruit"
+
+list NPCCorseCAPDistanceOffsetList
+{
+    float
+}
+
+class CorpseCAPSpawnParameter
+{
+    NPCDynamicCorpseCAPInteraction* myCorpseCAPInteraction
+    float myCorpseCenterLongAxisOffset 0.0
+    float myCorpseCenterShortAxisOffset 0.0
+    float myLongAxisLength 0.0
+    float myShortAxisLength 0.0
+    NPCCorseCAPDistanceOffsetList myCAPDistanceOffests
+}
+
+class CorpseNavMeshPatchParameter
+{
+    bool myEnablePatch FALSE
+    float myPatchRectangleLengthOffset 0.0
+    float myPatchRectangleWidthOffset 0.0
+    float myPatchRectangleLength 2.0
+    float myPatchRectangleWidth 1.0
+    AI_NavMeshHazardTypeFlags myPatchHazardType DEAD_BODY
+    bool myOverrideFloorCheckLength FALSE
+    float myFloorCheckLength -1
+}
+
+class NPCCorpseProfile < uid=auto >
+{
+    CorpseCAPSpawnParameter myCorpseCAPSpawnParameter
+    CorpseNavMeshPatchParameter myCorpseNavMeshPatchParameter
+}

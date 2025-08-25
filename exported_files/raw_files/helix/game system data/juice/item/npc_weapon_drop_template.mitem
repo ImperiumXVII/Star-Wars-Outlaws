@@ -1,0 +1,39 @@
+include "helix/game system data/fruit/item/item_includes.fruit"
+include "helix/game system data/juice/camera/modifiers/weapon_recoil_kays_blaster.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_shake_kays_blaster.mcameramodifier"
+include "helix/game system data/juice/equipment/aimconfig/weapon_aimconfig_freeaim.maimconfig"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_pickup_template.mweaponfiremode"
+include "helix/game system data/juice/item/equipmentholding/holding_pickup_base.mequipmentholdingconfig"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_small.mprojectile"
+include "helix/game system data/juice/sound/weapons/player_audioweapon_heavyblaster_dlt19.maudioweapon"
+
+WeaponItem npc_weapon_drop_template < uid=4171A7E16596DB4D00016AB004285ADE >
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDisplayAmountInLog FALSE
+	myIcon "mySpriteId = -32006388, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_skill_icons_02.spritesheet\""
+	myGraphObject ""
+	myCategory Weapon
+	myInventoryPouch Weapon
+	myShowInventoryRemoveNotifications FALSE
+	myLootGraphObject ""
+	myBlockedLootBehavior HideInteraction
+	myCanEnterPetTunnels FALSE
+	myAmount < uid=4171A7E16596DB4D00016AB1AD0AF992 >
+	{
+		myDefaultValue 0
+	}
+	myAimConfig < uid=4171A7E16596DB4D00016AB2F6E00920 > = weapon_aimconfig_freeaim A207755D61F1667100001B105CDB4181
+	myHoldingConfig < uid=4171A7E16596DB4D00016AB37AEE9528 > = holding_pickup_base 4C1DFD4E636BB0D90002D8445565F495
+	myAlwaysAim FALSE
+	myIsPickable TRUE
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=4171A7E16596DB4D00016AB43C56CE01 > = player_firemode_pickup_template A207755D62C3E65900003750634C001E
+		}
+	}
+}
+

@@ -1,0 +1,44 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+
+Quest testquest_onboarding_rsalomon < uid=AE8B160161604C3D000018905AC0EFFB >
+{
+	myName "contextComment = \"\", enabled = true, guid = #AE8B160161604C4700001892183A594E, lineVersion = 1, maxLength = 0, productId = -1, sectionId = -1, text = \"Rsalomon Exercise Quest\", type = \"MenuLine\""
+	myType Event
+	myBeats
+	{
+		QuestBeat "1. Talk to the NPC" < uid=AE8B160161604CD900001896BDF1EDC0 >
+		{
+			myScript helix/scripts/scr_testquest_onboarding_rsalomon_beat01.mscript
+			myObjectives
+			{
+				QuestObjectiveInteract "Talk to quest giver" < uid=AE8B160161604FCF000018D259D5BD39 >
+				{
+					myName "contextComment = \"\", enabled = true, guid = #AE8B160161604FF3000018D4B59751EB, lineVersion = 2, maxLength = 0, productId = -1, sectionId = -1, text = \"Talk to Quest Giver\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=6F2AF91962178B05000028C814AA26F1 >
+			{
+			}
+		}
+		QuestBeat "2. Go to Empire outpost" < uid=AE8B160161604CF200001898F4B0894C >
+		{
+			myScript helix/scripts/scr_testquest_onboarding_rsalomon_beat02.mscript
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Find the Empire Terminal" < uid=AE8B16016163F68300002F816D15B07D >
+				{
+				}
+				QuestObjectiveInteract "Retreive the Prisoner datas" < uid=AE8B16016163F69400002F838427D5CE >
+				{
+				}
+			}
+			myQuestBeatStateGameValue < uid=6F2AF91962178B05000028C9CFB768DF >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=6F2AF91962178B05000028CA8D683E93 >
+	{
+	}
+}
+

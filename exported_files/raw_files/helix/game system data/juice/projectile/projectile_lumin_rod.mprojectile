@@ -1,0 +1,32 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/projectile/realization/lumin_rod_player.mprojectilerealization"
+
+BallisticProjectile projectile_lumin_rod < uid=CC69B22163F349AD00007E5D157B9EB3 >
+{
+	myObject
+	{
+		myMaterialType Kinetic
+		myMass 2.0
+		myFriction 0.5
+		myAfterFinalImpactLifeTime 0.0
+		myAlignToHitSurfaceEnabled TRUE
+	}
+	myRealization < uid=CC69B22163F349AD00007E5E6611F2C8 > = lumin_rod_player CC69B22163F3498A00007E5C879B6DDE
+	myActions
+	{
+		ProjectileActionGameScript "New ProjectileActionGameScript"
+		{
+			myGameScript "helix/game scripts/gs_dev_lumin_rod.mgamescript"
+		}
+	}
+	myNPCSensoryProjectileType Grenade
+	myInitialSpeed 25.0
+	myAccelerationConstant 0.0
+	myBounceEnabled TRUE
+	myBounceVsDynamicEnabled TRUE
+	myBounceSpeedRestitution 0.35
+	myBounceGroundSpeedRestitution 0.0
+	myBounceWallSpeedRestitution 0.15
+	myBounceMaxBounces 1
+}
+

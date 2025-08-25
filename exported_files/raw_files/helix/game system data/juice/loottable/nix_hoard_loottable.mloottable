@@ -1,0 +1,215 @@
+include "helix/game system data/fruit/loottable/loottable.fruit"
+include "helix/game system data/juice/item/hidden_item.mitem"
+include "helix/game system data/juice/item/player_gear_charm_major.mitem"
+include "helix/game system data/juice/item/player_gear_charm_minor.mitem"
+include "helix/game system data/juice/item/speeder_trophies.mitem"
+include "helix/game system data/juice/item/trinkets.mitem"
+include "helix/game system data/juice/item/vehicle_trinkets.mitem"
+include "helix/game system data/juice/loottable/loot_global.mloottable"
+
+LootTable nix_hoard_junk_items < uid=2AE2EC856565A37500036DDFAB0689C3 > = loot_global_valuable_junk_all 2AE2EC856566F35A000177B0D484D8A9
+
+LootTable nix_hoard_common_materials < uid=2AE2EC856565A38100036DE09086EDCB > = loot_global_material_common_all 2AE2EC856565A43E00036DE59C25DE59
+
+LootTable nix_hoard_rare_material < uid=2AE2EC856565A39200036DE11B3F902F > = loot_global_material_rare_all 2AE2EC856565A45D00036E04BD5A2DB6
+
+LootTable nix_hoard_common_valuable < uid=2AE2EC856565A39E00036DE243E41027 > = loot_global_valuable_common_all 2AE2EC856565A46800036E05228676E3
+
+LootTable nix_hoard_rare_valuable < uid=2AE2EC856565A3A900036DE3DC33C109 > = loot_global_valuable_rare_all 2AE2EC856565A48C00036E0690E3B3FC
+
+LootTable nix_hoard_contraband_valuable < uid=2AE2EC8565675B7600002FD3AD35E407 > = loot_global_valuable_contraband_all 2AE2EC856565A4A300036E081F7E306D
+
+LootTable nix_hoard_empire_valuable < uid=2AE2EC8565675B8800002FD4E6173ED6 > = loot_global_valuable_empire_all 2AE2EC856565A49700036E0773259422
+
+LootTable nix_hoard_loottable_after_first_time < uid=2AE2EC856673EA0C0057285E5753F1C5 >
+{
+	myRandomDropTable
+	{
+		myMaxRollsOnRandomDropTable 2
+		myDropTableEntries
+		{
+			DropTableEntryLootTable "Junk loot table"
+			{
+				myWeight 60
+				myLootTable < uid=2AE2EC856673EA0C0057285F67CB3113 > = nix_hoard_junk_items 2AE2EC856565A37500036DDFAB0689C3
+			}
+			DropTableEntryLootTable "Common material loot table"
+			{
+				myWeight 15
+				myLootTable < uid=2AE2EC856673EA0C005728600CA2FD26 > = nix_hoard_common_materials 2AE2EC856565A38100036DE09086EDCB
+			}
+			DropTableEntryLootTable "Rare material loot table"
+			{
+				myWeight 15
+				myLootTable < uid=2AE2EC856673EA0C005728612DDEA990 > = nix_hoard_rare_material 2AE2EC856565A39200036DE11B3F902F
+			}
+			DropTableEntryLootTable "Common valuable loot table"
+			{
+				myWeight 4
+				myLootTable < uid=2AE2EC856673EA0C00572862E5CBA837 > = nix_hoard_common_valuable 2AE2EC856565A39E00036DE243E41027
+			}
+			DropTableEntryLootTable "Rare valuable loot table"
+			{
+				myWeight 2
+				myMinAmount 1
+				myLootTable < uid=2AE2EC856673EA0C00572863DBB65E34 > = nix_hoard_rare_valuable 2AE2EC856565A3A900036DE3DC33C109
+			}
+			DropTableEntryLootTable "Contraband valuable loot table"
+			{
+				myWeight 2
+				myLootTable < uid=2AE2EC856673EA0C00572864C0E6C3A9 > = nix_hoard_contraband_valuable 2AE2EC8565675B7600002FD3AD35E407
+			}
+			DropTableEntryLootTable "Empire valuable loot table"
+			{
+				myWeight 2
+				myLootTable < uid=2AE2EC856673EA0C0057286518AC600C > = nix_hoard_empire_valuable 2AE2EC8565675B8800002FD4E6173ED6
+			}
+			DropTableEntryItem "Major Charm 04 (Rancor Baby Tooth)"
+			{
+				myWeight 200
+				myConditions
+				{
+					GameConditionPlayerHasItem "Doesn't have item yet"
+					{
+						myItem < uid=2AE2EC856673EA0C00572866A09EF93E > = player_gear_charm_major_04 BFAAA1FC63FF9175000059FEFAF3CDD9
+						myOperator LessThan
+					}
+					GameConditionContextLootLootContainsItem "Item is not in rolled items"
+					{
+						myItem < uid=2AE2EC8566F3BF76000A6DEAE0195415 > = player_gear_charm_major_04 BFAAA1FC63FF9175000059FEFAF3CDD9
+						myOperator LessThan
+					}
+					GameConditionPlayerHasItem "Has finshed MQ_130 item"
+					{
+						myItem < uid=2AE2EC85668BE3EC000000D7B4502379 > = hidden_item_MQ_130_Complete 2AE2EC85668BE34C000000C92383796E
+					}
+				}
+				myItem < uid=2AE2EC856673EA0C00572867C9B054E7 > = player_gear_charm_major_04 BFAAA1FC63FF9175000059FEFAF3CDD9
+			}
+			DropTableEntryItem "Trinket 14 Common Spray Paint Canister"
+			{
+				myWeight 16
+				myConditions
+				{
+					GameConditionPlayerHasItem "Doesn't have item yet"
+					{
+						myItem < uid=2AE2EC856673EA0C00572869446A9608 > = vehicle_trinket_rewardgivingitem_12 BFAAA1FC650186FE0000C7121FF6263D
+						myOperator LessThan
+					}
+					GameConditionContextLootLootContainsItem "Item is not in rolled items"
+					{
+						myItem < uid=2AE2EC8566F3BF76000A6DEB2E5759F5 > = vehicle_trinket_rewardgivingitem_12 BFAAA1FC650186FE0000C7121FF6263D
+						myOperator LessThan
+					}
+				}
+				myItem < uid=2AE2EC856673EA0C0057286A136AC0B2 > = vehicle_trinket_rewardgivingitem_12 BFAAA1FC650186FE0000C7121FF6263D
+			}
+			DropTableEntryItem "Trinket 12 Common merchant part"
+			{
+				myWeight 16
+				myConditions
+				{
+					GameConditionPlayerHasItem "Doesn't have item yet"
+					{
+						myItem < uid=2AE2EC856673EA0C0057286C8EB24504 > = vehicle_trinket_rewardgivingitem_14 BFAAA1FC6501870C0000C71A5A62ECA3
+						myOperator LessThan
+					}
+					GameConditionContextLootLootContainsItem "Item is not in rolled items"
+					{
+						myItem < uid=2AE2EC8566F3BF76000A6DEC18ABF856 > = vehicle_trinket_rewardgivingitem_14 BFAAA1FC6501870C0000C71A5A62ECA3
+						myOperator LessThan
+					}
+				}
+				myItem < uid=2AE2EC856673EA0C0057286D9E78580C > = vehicle_trinket_rewardgivingitem_14 BFAAA1FC6501870C0000C71A5A62ECA3
+			}
+			DropTableEntryItem "Trophy 05 Cantomo Green"
+			{
+				myWeight 16
+				myConditions
+				{
+					GameConditionPlayerHasItem "Doesn't have item yet"
+					{
+						myItem < uid=2AE2EC856673EA0C0057286F36438A06 > = speeder_trophy_05 BFAAA1FC65007BD60000BB27BF2C454B
+						myOperator LessThan
+					}
+					GameConditionContextLootLootContainsItem "Item is not in rolled items"
+					{
+						myItem < uid=2AE2EC8566F3BF76000A6DEDE50BE14D > = speeder_trophy_05 BFAAA1FC65007BD60000BB27BF2C454B
+						myOperator LessThan
+					}
+				}
+				myItem < uid=2AE2EC856673EA0C005728702AC573AF > = speeder_trophy_05 BFAAA1FC65007BD60000BB27BF2C454B
+			}
+		}
+	}
+	myAlwaysRolls
+	{
+	}
+}
+
+LootTable nix_hoard_loottable < uid=2AE2EC856565A36A00036DDE5B40786F >
+{
+	myRandomDropTable
+	{
+		myMaxRollsOnRandomDropTable 1
+		myDropTableEntries
+		{
+			DropTableEntryItem "First Time Reward - Chew Toy"
+			{
+				myConditions
+				{
+					GameConditionPlayerHasItem "Player doesn't have Chew Toy"
+					{
+						myItem < uid=2AE2EC856673EA0C005728723E9A775A > = player_gear_charm_minor_06 BFAAA1FC644012F500000C5720B48056
+						myOperator LessThan
+					}
+					GameConditionContextLootLootContainsItem "Doesn't have Chew Toy in rolled items"
+					{
+						myItem < uid=2AE2EC8566F3BD8E000652600282FFE7 > = player_gear_charm_minor_06 BFAAA1FC644012F500000C5720B48056
+						myOperator LessThan
+					}
+				}
+				myItem < uid=2AE2EC856673EA0C0057287314A3D935 > = player_gear_charm_minor_06 BFAAA1FC644012F500000C5720B48056
+			}
+			DropTableEntryLootTable "After Frist Time Reward"
+			{
+				myConditions
+				{
+					GameConditionPlayerHasItem "Player Has Chew Toy"
+					{
+						myItem < uid=2AE2EC856673F2BB005D88147F09714B > = player_gear_charm_minor_06 BFAAA1FC644012F500000C5720B48056
+					}
+				}
+				myLootTable < uid=2AE2EC856673EA0C0057287415FA8805 > = nix_hoard_loottable_after_first_time 2AE2EC856673EA0C0057285E5753F1C5
+			}
+			DropTableEntryLootTable "After First Time Reward if Chew Toy is in rolled Items"
+			{
+				myConditions
+				{
+					GameConditionContextLootLootContainsItem "Has Chew Toy in rolled items"
+					{
+						myItem < uid=2AE2EC8566F3BE4600086027D704704A > = player_gear_charm_minor_06 BFAAA1FC644012F500000C5720B48056
+					}
+				}
+				myLootTable < uid=2AE2EC8566F3C14F001099142EA055C0 > = nix_hoard_loottable_after_first_time 2AE2EC856673EA0C0057285E5753F1C5
+			}
+		}
+	}
+	myAlwaysRolls
+	{
+	}
+}
+
+LootTable nix_hoard_x3 < uid=2AE2EC8566F3B7F500011E1B3E7D4C2C >
+{
+	myAlwaysRolls
+	{
+		DropTableEntryLootTable "Nix Hoard"
+		{
+			myMinAmount 3
+			myMaxAmount 3
+			myLootTable < uid=2AE2EC8566F3B83E00011E1C614B2BF4 > = nix_hoard_loottable 2AE2EC856565A36A00036DDE5B40786F
+		}
+	}
+}
+

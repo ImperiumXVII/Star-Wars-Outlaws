@@ -1,0 +1,46 @@
+include "helix/game system data/juice/npc/civ_combatant.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npc/pir_assault.mnpc"
+
+NPC civ_combatant_vendor < uid=2AE2EC856453762D0000CF92BD85ADBB > : civ_combatant
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Neutral wandering Merchant sub-name\", enabled = true, guid = #09AEDAAA65C3A9030000C71221D6541A, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10572, text = \"Wandering Merchant (TO BE WRITTEN)\", type = \"MenuLine\""
+	myCharacterVisuals < uid=2AE2EC856453762D0000CF93E3B2F3A0 > = character_visuals_AI_test_civilian_combatant_vendor 2AE2EC8564539C26000906972657DCFA
+	myAdditionalGearGraphs 91DC5D3C653665B400014B0CC310DD08
+	myMaxHealth 15
+	myHealthFormula max(1,1+NPCFinalHealth)
+	myFaction < uid=2893451666543D7D00038736C32DFC03 > = CivilianCombatant 91DC5D3C63D23B7B00016F4E0748B771
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D276471F9F00006BADA04B39990 > = Agent_Faction_CivilianTag 16DEADE6620AE18B000020C77856AAF4
+		RBTagsTag "New RBTagsTag" < uid=E4123D276471F9F00006BADB61965EBA > = Agent_BarksFamily_HiredGun E4123D2762F4CA2800048CADB39E55F8
+		RBTagsTag "New RBTagsTag (0)" < uid=E4123D2764E75A1F000A7B5BED9DF4F5 > = Agent_Archetype_VendorFactionDistrict 1EC89F2563FC706500005020A5DD40C8
+	}
+	myDialogueCharactersFromDatabase
+	{
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=E4123D276471F77C0000B9C2DC3A0309 > = HiredGun_Huttese_HumanF01 E4123D2763E238E7000517F064A3CF56
+		DialogueCharacterWithTags "New DialogueCharacterWithTags (3)" < uid=E4123D276471F77C0000B9C3BD858E8E > = HiredGun_Huttese_HumanF02 E4123D2763E238E7000517F578AF3E96
+		DialogueCharacterWithTags "New DialogueCharacterWithTags (4)" < uid=E4123D2764E75A3E000A7B5CAD34FB1D > = HiredGun_Huttese_HumanF03 E4123D2763E238E7000517FA0CF4D475
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=E4123D276471F77C0000B9C496203727 > = HiredGun_Huttese_HumanM01 E4123D2763E239040005180252D1AC42
+		DialogueCharacterWithTags "New DialogueCharacterWithTags (2)" < uid=E4123D276471F77C0000B9C5F64E9B71 > = HiredGun_Huttese_HumanM02 E4123D2763E2390400051807BFD16FE8
+		DialogueCharacterWithTags "New DialogueCharacterWithTags (5)" < uid=E4123D2764E75A49000A7B5DB55931AE > = HiredGun_Huttese_HumanM03 E4123D2763E239040005180C588A0E6C
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=E4123D276471F77C0000B9C6FA60ECFA > = HiredGun_Huttese_TwilekF01 E4123D2763E2395900051AC543F52148
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=E4123D276471F77C0000B9C76B00FCC6 > = HiredGun_Huttese_TwilekF02 E4123D2763E2395900051ACAFE44E088
+		DialogueCharacterWithTags "New DialogueCharacterWithTags (6)" < uid=E4123D2764E75A51000A7B5E96FA9A47 > = HiredGun_Huttese_TwilekF03 E4123D2763E2395900051ACF925DF31A
+		DialogueCharacterWithTags "New DialogueCharacterWithTags (0)" < uid=E4123D276471F77C0000B9C8FC0E678E > = HiredGun_Huttese_TwilekM01 E4123D2763E2395900051AD498494BC6
+		DialogueCharacterWithTags "New DialogueCharacterWithTags (1)" < uid=E4123D276471F77C0000B9C97E19FE6D > = HiredGun_Huttese_TwilekM02 E4123D2763E2395900051AD9902FEFBB
+		DialogueCharacterWithTags "New DialogueCharacterWithTags (7)" < uid=E4123D2764E75A59000A7B5F94C2EE31 > = HiredGun_Huttese_TwilekM03 E4123D2763E2395900051ADE97AEB56F
+	}
+	myVendorConfig < uid=2AE2EC85645376570000CF9C212573BE > = VendorConfig_TOS_OpenWorld_Neutral_Wandering 2AE2EC8564539D9B0009CB4A0287DFD0
+	myHideMapRefGameConditions
+	{
+		myConditions
+		{
+			GameConditionContextAgentIsAlive "New GameConditionContextAgentIsAlive"
+			{
+				myIsNegated TRUE
+			}
+		}
+	}
+}
+

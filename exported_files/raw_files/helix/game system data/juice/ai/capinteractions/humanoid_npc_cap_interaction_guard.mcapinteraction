@@ -1,0 +1,379 @@
+include "helix/game system data/fruit/ai/capinteraction.fruit"
+include "helix/game system data/juice/rbtags/allrbtags.juice"
+include "helix/game system data/juice/rbtags/metrics.mrbtagstags"
+include "helix/game system data/juice/rbtags/purpose.mrbtagstags"
+
+CAPInteraction Wait_AtPosition_CAP < uid=EBE060C262AC8FAA0000994A706C08E1 >
+{
+	mySequence ""
+	myCAPScript helix/scripts/scr_cap_wait_idle_10s.mscript
+	myPriority VeryLow
+	myPurposeTag < uid=EBE060C262AC900A0000994BEA452734 > = Agent_Purpose_WaitTag EBE060C2633DA27600009D0A0A2AAEE8
+	myMetricTag < uid=EBE060C262AC900A0000994CBCB88682 > = Metric_None_Tag 16DEADE66188581B000019E105837DAC
+	myAgentRequirementsPerSlot
+	{
+		RBTagsReferenceListAgent "New RBTagsReferenceListAgent"
+		{
+		}
+	}
+	myIgnoreCooldown TRUE
+	myAgentInteractionPointCooldown 0.0
+	myInteractionPointCooldown 0.0
+	myNPCInteractionCooldown 0.0
+}
+
+CAPInteraction Guard_None_StandingUp_H153 < uid=4137A31264F069AF00086415A63B3845 >
+{
+	mySequence helix/sequence/CAP_H153_EMP_storm_stand_guarding_E11_M_V01.msequence
+	myCAPScript helix/scripts/scr_cap_base_loop_and_duration.mscript
+	myPriority Medium
+	myPurposeTag < uid=4137A31264F069AF000864163BDB9FB7 > = Agent_Purpose_GuardTag 16DEADE66202FD7200001E96CF5DD171
+	myIgnoreCooldown TRUE
+	myAgentInteractionPointCooldown 5.0
+	myInteractionPointCooldown 10.0
+	myNPCInteractionCooldown 5.0
+	myPreferedDuration 0.0
+}
+
+CAPInteraction Guard_None_MovingAround_H202 < uid=4137A312640769E6000790CFB50D41C9 > : Guard_None_StandingUp_H153
+{
+	mySequence helix/sequence/CAP_H202_EMP_storm_stand_guarding_E11_M_V02.msequence
+}
+
+CAPInteraction Guard_None_LookingAround_H369_F < uid=4137A312640B300A00007340B769D139 > : Guard_None_StandingUp_H153
+{
+	mySequence helix/sequence/CAP_H369_EMP_officer_supervising_vantage_point_F_V01.msequence
+}
+
+CAPInteraction Guard_None_LookingAround_H370 < uid=4137A312640B30D100007342DDE864A8 > : Guard_None_StandingUp_H153
+{
+	mySequence helix/sequence/CAP_H370_EMP_officer_supervising_vantage_point_M_V01.msequence
+}
+
+CAPInteraction Guard_None_LookingAround_H464_F < uid=41240B2465703B990007AED9C0FAE6F8 > : Guard_None_StandingUp_H153
+{
+	mySequence helix/sequence/CAP_H464_HUM_checking_area_AR_F_V02.msequence
+}
+
+CAPInteraction Guard_None_LookingAroundArmsCrossed_H503_F < uid=41240B246618FC8E0021A8DCAB025745 > : Guard_None_StandingUp_H153
+{
+	mySequence helix/sequence/cap_h503_crim_commando_guarding_ua_f_v01.msequence
+}
+
+CAPInteraction Guard_None_MovingAndLookingAround_H154 < uid=EBE060C2635124D000009CDEC5CBFE9E > : Guard_None_StandingUp_H153
+{
+	mySequence helix/sequence/CAP_H154_EMP_scout_stand_guarding_PULSE_M_V01.msequence
+}
+
+CAPInteraction Guard_None_MovingAndLookingAround_H155 < uid=EBE060C2635124D000009CDFF8502B35 > : Guard_None_StandingUp_H153
+{
+	mySequence helix/sequence/CAP_H155_EMP_heavy_stand_guarding_Z6_M_V01.msequence
+}
+
+CAPInteraction Guard_None_MovingAndLookingAround_H157 < uid=EBE060C262B5ACFA0016E96080569954 > : Guard_None_StandingUp_H153
+{
+	mySequence helix/sequence/CAP_H157_PYK_assault_stand_guarding_A300_M_V01.msequence
+}
+
+CAPInteraction Guard_None_MovingAndLookingAround_H203 < uid=41240B24651C046000091C9982069479 > : Guard_None_StandingUp_H153
+{
+	mySequence helix/sequence/CAP_H203_HUM_guarding_AR_M_V01.msequence
+}
+
+CAPInteraction Guard_None_MovingAndLookingAround_H258 < uid=4137A312640B3B2F00002A53CE03C324 > : Guard_None_StandingUp_H153
+{
+	mySequence helix/sequence/CAP_H258_HUM_guarding_UA_M_V02.msequence
+}
+
+CAPInteraction Guard_None_MovingAndLookingAround_H156 < uid=EBE060C262B5ACFB0016E9619D3DCE42 > : Guard_None_StandingUp_H153
+{
+	mySequence helix/sequence/CAP_H150_PYK_sentinel_stand_guarding_electrostaff_M_V01.msequence
+}
+
+CAPInteraction Guard_None_MovingAndLookingAround_H256 < uid=4137A312640208280001E0CE4E640F1D > : Guard_None_StandingUp_H153
+{
+	mySequence helix/sequence/CAP_H256_HUM_guarding_STAFF_M_V04.msequence
+}
+
+CAPInteraction Guard_None_MovingAndLookingAround_H643_F < uid=41240B2465A1599200008A774F8D6782 > : Guard_None_StandingUp_H153
+{
+	mySequence helix/sequence/cap_h643_agent_eq_060_guarding_rotary_gun_f_v01.msequence
+}
+
+CAPInteraction Guard_None_MovingAndLookingAround_H498 < uid=41240B2465A15AAA000164FC130CA978 > : Guard_None_StandingUp_H153
+{
+	mySequence helix/sequence/cap_h498_emp_heavy_stand_guarding_z6_m_v03.msequence
+}
+
+CAPInteraction Guard_None_InspectingWeaponStaff_H253 < uid=4137A31263FF72320001040D22E0B5E8 > : Guard_None_StandingUp_H153
+{
+	mySequence helix/sequence/CAP_H253_HUM_guarding_STAFF_M_V01.msequence
+}
+
+CAPInteraction Guard_Wall200cm_LeaningAndMovingAround_H184 < uid=EBE060C26387324900041C0F6DC87241 > : Guard_None_StandingUp_H153
+{
+	mySequence helix/sequence/CAP_H184_HUM_guarding_lean_wall_AR_M_V01.msequence
+	myMaxOutOfNavMeshNavigationDistance 0.5
+}
+
+CAPInteraction Guard_Wall200cm_LeaningAndMovingAround_H186 < uid=41240B2465A01FB4000EF7E30518B94C > : Guard_None_StandingUp_H153
+{
+	mySequence helix/sequence/cap_h186_hum_guarding_lean_wall_m_v01.msequence
+	myMaxOutOfNavMeshNavigationDistance 0.5
+}
+
+CAPInteraction Guard_Seat45cm_FootOnSeatAndMovingAround_H189 < uid=41240B24651D35A10002CDC1774BC929 > : Guard_None_StandingUp_H153
+{
+	mySequence helix/sequence/CAP_H189_HUM_chilling_sit_PI_M_V01.msequence
+}
+
+CAPInteraction Guard_Seat45cm_FootOnSeatAndMovingAround_H195 < uid=4137A31263EA60900001465938BD6CE2 > : Guard_None_StandingUp_H153
+{
+	mySequence helix/sequence/CAP_H195_HUM_guarding_sit_AR_M_V03.msequence
+	myMaxOutOfNavMeshNavigationDistance 0.5
+}
+
+CAPInteraction Guard_Seat45cm_FootOnSeatAndMovingAround_H197 < uid=41240B24651C0693000B374AE19ECF7E > : Guard_None_StandingUp_H153
+{
+	mySequence helix/sequence/CAP_H197_HUM_guarding_sit_M_V01.msequence
+}
+
+CAPInteraction Guard_Seat45cm_MovingAndSeating_H192 < uid=4137A31263EA5FF2000146587768CEAC > : Guard_None_StandingUp_H153
+{
+	mySequence helix/sequence/CAP_H192_HUM_guarding_sit_PI_M_V04.msequence
+}
+
+CAPInteraction Guard_Seat45cm_MovingAndSeating_H198 < uid=41240B24651C089E000D669508BB5FC4 > : Guard_None_StandingUp_H153
+{
+	mySequence helix/sequence/CAP_H198_HUM_guarding_sit_M_V02.msequence
+}
+
+CAPInteraction GuardCareless_None_LookingAround_H151 < uid=4137A31264F06A560008676EA61CE87B >
+{
+	mySequence helix/sequence/CAP_H151_EMP_guarding_M_V01.msequence
+	myCAPScript helix/scripts/scr_cap_base_loop_and_duration.mscript
+	myPriority Medium
+	myPurposeTag < uid=4137A31264F06A560008676FE5A49DE5 > = Agent_Purpose_Guard_CarelessTag 4137A31264BFBAD0000FC2D490222846
+	myIgnoreCooldown TRUE
+	myAgentInteractionPointCooldown 5.0
+	myInteractionPointCooldown 10.0
+	myNPCInteractionCooldown 5.0
+	myPreferedDuration 0.0
+}
+
+CAPInteraction GuardCareless_None_LookingAround_H152 < uid=EBE060C26297323D0000C57B36BC077D > : GuardCareless_None_LookingAround_H151
+{
+	mySequence helix/sequence/CAP_H152_EMP_guarding_M_V02.msequence
+}
+
+CAPInteraction GuardCareless_None_LookingAround_H204 < uid=41240B24651C0B6400118BAFF70B5644 > : GuardCareless_None_LookingAround_H151
+{
+	mySequence helix/sequence/CAP_H204_HUM_guarding_AR_M_V02.msequence
+}
+
+CAPInteraction GuardCareless_None_RelaxingAndLookingAround_H201 < uid=4137A312640768DB000790C60EF8D8DD > : GuardCareless_None_LookingAround_H151
+{
+	mySequence helix/sequence/CAP_H201_EMP_storm_stand_guarding_E11_M_V01.msequence
+}
+
+CAPInteraction GuardCareless_None_RelaxingAndLookingAround_H337 < uid=4137A3126408AF9000028319982DDC68 > : GuardCareless_None_LookingAround_H151
+{
+	mySequence helix/sequence/CAP_H337_EMP_standing_relax_AR_M_V01.msequence
+}
+
+CAPInteraction GuardCareless_None_PlayingWithPistol_H217 < uid=4137A31263FF6571000011FF251C4CF2 > : GuardCareless_None_LookingAround_H151
+{
+	mySequence helix/sequence/CAP_H217_HUM_guarding_PI_M_V01.msequence
+}
+
+CAPInteraction GuardCareless_None_PlayingWithPistol_H218 < uid=4137A31263FF666200001201FF5AF879 > : GuardCareless_None_LookingAround_H151
+{
+	mySequence helix/sequence/CAP_H218_HUM_guarding_PI_M_V02.msequence
+}
+
+CAPInteraction GuardCareless_None_PlayingWithPistol_H219 < uid=4137A31263FF6DA20000F8060BDCAFF5 > : GuardCareless_None_LookingAround_H151
+{
+	mySequence helix/sequence/CAP_H219_EMP_guarding_PI_M_V01.msequence
+}
+
+CAPInteraction GuardCareless_None_MovingAndLookingAround_H220 < uid=41240B24651C0E860017C97F0C5DF861 > : GuardCareless_None_LookingAround_H151
+{
+	mySequence helix/sequence/CAP_H220_EMP_guarding_PI_M_V02.msequence
+}
+
+CAPInteraction GuardCareless_None_MovingAndLookingAround_H254 < uid=4137A3126402079F0001E0CDC10A8C35 > : GuardCareless_None_LookingAround_H151
+{
+	mySequence helix/sequence/CAP_H254_HUM_guarding_STAFF_M_V02.msequence
+}
+
+CAPInteraction GuardCareless_None_MovingAndLookingAround_H371_F < uid=4137A312640B30940000734144C4A8B6 > : GuardCareless_None_LookingAround_H151
+{
+	mySequence helix/sequence/CAP_H371_EMP_officer_supervising_vantage_point_F_V02.msequence
+}
+
+CAPInteraction GuardCareless_None_MovingAndLookingAround_H205 < uid=41240B24651C0CB20013A92C6046DAFE > : GuardCareless_None_LookingAround_H151
+{
+	mySequence helix/sequence/CAP_H205_HUM_guarding_AR_M_V03.msequence
+}
+
+CAPInteraction GuardCareless_None_MovingAndLookingAround_H206 < uid=41240B24651C0D9E0015C06BF45F7ACF > : GuardCareless_None_LookingAround_H151
+{
+	mySequence helix/sequence/CAP_H206_HUM_guarding_AR_M_V04.msequence
+}
+
+CAPInteraction GuardCareless_None_WeaponDown_H355 < uid=4137A3126408B45300028F1952F737F3 > : GuardCareless_None_LookingAround_H151
+{
+	mySequence helix/sequence/CAP_H355_EMP_standing_relax_AR_M_V02.msequence
+}
+
+CAPInteraction GuardCareless_None_LookingAroundAndCheckingWeapon_H500 < uid=41240B2465A15E8F000175F08CAFF317 > : GuardCareless_None_LookingAround_H151
+{
+	mySequence helix/sequence/cap_h500_emp_scout_stand_guarding_pulse_m_v01.msequence
+}
+
+CAPInteraction GuardCareless_None_FallingAsleep_H252 < uid=41240B246516F3380003F5F3BDEDDAFA > : GuardCareless_None_LookingAround_H151
+{
+	mySequence helix/sequence/CAP_H252_HUM_guarding_falling_asleep_AR_M_V01.msequence
+}
+
+CAPInteraction GuardCareless_None_StandingAndStreaching_H506 < uid=41240B2466190760002F7DED40DE231B > : GuardCareless_None_LookingAround_H151
+{
+	mySequence helix/sequence/cap_h506_hir_bruiser_guarding_ua_m_v02.msequence
+}
+
+CAPInteraction GuardCareless_Wall200cm_LeaningAndMovingAround_H187 < uid=EBE060C263872D220002F6A9D54A4BDE > : GuardCareless_None_LookingAround_H151
+{
+	mySequence helix/sequence/CAP_H187_HUM_guarding_lean_wall_PI_M_V01.msequence
+	myMaxOutOfNavMeshNavigationDistance 0.5
+}
+
+CAPInteraction GuardCareless_Wall200cm_LeaningAndMovingAround_H188 < uid=4137A31263EA5B650001465127416160 > : GuardCareless_None_LookingAround_H151
+{
+	mySequence helix/sequence/CAP_H188_HUM_guarding_lean_wall_PI_M_V02.msequence
+	myMaxOutOfNavMeshNavigationDistance 0.5
+}
+
+CAPInteraction GuardCareless_Wall200cm_LeaningAndSleeping_H443 < uid=41240B24651ABAAB00027D11CF6F2E19 > : GuardCareless_None_LookingAround_H151
+{
+	mySequence helix/sequence/CAP_H443_HUM_guarding_fall_asleep_on_wall_M_V01.msequence
+	myMaxOutOfNavMeshNavigationDistance 0.5
+}
+
+CAPInteraction GuardCareless_Wall200cm_LeaningAndSleeping_H445 < uid=41240B2465704F50001065EFCB0069AB > : GuardCareless_None_LookingAround_H151
+{
+	mySequence helix/sequence/CAP_H445_HUM_guarding_fall_asleep_on_wall_M_V02.msequence
+}
+
+CAPInteraction GuardCareless_Wall200cm_LeaningAndSleeping_H447 < uid=41240B246570500D00107FB4023B8446 > : GuardCareless_None_LookingAround_H151
+{
+	mySequence helix/sequence/CAP_H447_HUM_guarding_fall_asleep_on_wall_AR_M_V01_r.msequence
+}
+
+CAPInteraction GuardCareless_Seat45cm_FootOnSeatAndMovingAround_H191 < uid=4137A31263EA61590001465A87D9281F > : GuardCareless_None_LookingAround_H151
+{
+	mySequence helix/sequence/CAP_H191_HUM_guarding_sit_PI_M_V03.msequence
+}
+
+CAPInteraction GuardCareless_Seat45cm_FootOnSeatAndMovingAround_H193 < uid=41240B24659FFB11001B9DCFA799953D > : GuardCareless_None_LookingAround_H151
+{
+	mySequence helix/sequence/cap_h193_hum_chilling_sit_ar_m_v01.msequence
+}
+
+CAPInteraction GuardAtAttention_None_Standing_H101_F < uid=4137A31264F06A8E0008690230FF0C11 >
+{
+	mySequence helix/sequence/CAP_H101_HUM_officer_supervising_F_V01.msequence
+	myCAPScript helix/scripts/scr_cap_base_loop_and_duration.mscript
+	myPriority Medium
+	myPurposeTag < uid=4137A31264F06A8E00086903EC6592EE > = Agent_Purpose_Guard_AtAttentionTag 4137A31264BFBAF0000FC2D632377862
+	myIgnoreCooldown TRUE
+	myAgentInteractionPointCooldown 5.0
+	myInteractionPointCooldown 10.0
+	myNPCInteractionCooldown 5.0
+	myPreferedDuration 0.0
+}
+
+CAPInteraction GuardAtAttention_None_Standing_H102_F < uid=EBE060C26351234900009C96934FA2A6 > : GuardAtAttention_None_Standing_H101_F
+{
+	mySequence helix/sequence/CAP_H102_HUM_officer_supervising_F_V02.msequence
+}
+
+CAPInteraction GuardAtAttention_None_Standing_H344_F < uid=4137A312653291FF0003DE89D619353B > : GuardAtAttention_None_Standing_H101_F
+{
+	mySequence helix/sequence/CAP_H344_EMP_standing_at_attention_long_UA_F_V01.msequence
+}
+
+CAPInteraction GuardAtAttention_None_Standing_H339 < uid=4137A312653291880003DE16E612BB5F > : GuardAtAttention_None_Standing_H101_F
+{
+	mySequence helix/sequence/CAP_H339_EMP_standing_at_attention_long_PI_M_V01.msequence
+}
+
+CAPInteraction GuardAtAttention_None_Standing_H343 < uid=4137A312653291D40003DE3BB22DFAEC > : GuardAtAttention_None_Standing_H101_F
+{
+	mySequence helix/sequence/CAP_H343_EMP_standing_at_attention_long_UA_M_V01.msequence
+}
+
+CAPInteraction GuardAtAttention_None_Standing_H104_NotLoopable < uid=EBE060C26351247900009CB9E6F0DA63 > : GuardAtAttention_None_Standing_H101_F
+{
+	mySequence helix/sequence/CAP_H104_HUM_officer_supervising_M_V02.msequence
+}
+
+CAPInteraction GuardAtAttention_None_Standing_H105_NotLoopable < uid=EBE060C26351247900009CBA61295B0B > : GuardAtAttention_None_Standing_H101_F
+{
+	mySequence helix/sequence/CAP_H104_HUM_officer_supervising_M_V03.msequence
+}
+
+CAPInteraction GuardAtAttention_None_Standing_H347 < uid=4137A312653292C50003DEBF59221E5E > : GuardAtAttention_None_Standing_H101_F
+{
+	mySequence helix/sequence/CAP_H347_EMP_standing_at_attention_short_AR_M_V01.msequence
+}
+
+CAPInteraction GuardAtAttention_None_Standing_H384 < uid=4137A312653292420003DEA4C53D00DF > : GuardAtAttention_None_Standing_H101_F
+{
+	mySequence helix/sequence/CAP_H384_EMP_standing_at_attention_short_AR_M_V02.msequence
+}
+
+CAPInteraction GuardAtAttention_None_Standing_H158 < uid=4137A31264098FAF0000116C78B39B91 > : GuardAtAttention_None_Standing_H101_F
+{
+	mySequence helix/sequence/CAP_H158_PYK_marksman_stand_guarding_SNIPER_M_V01.msequence
+}
+
+CAPInteraction GuardAtAttention_None_Standing_H257 < uid=4137A312640B3B0600002A50476B1289 > : GuardAtAttention_None_Standing_H101_F
+{
+	mySequence helix/sequence/CAP_H257_HUM_guarding_UA_M_V01.msequence
+}
+
+CAPInteraction GuardAtAttention_None_Standing_H335 < uid=EBE060C263779641000E591EED6B3173 > : GuardAtAttention_None_Standing_H101_F
+{
+	mySequence helix/sequence/CAP_H335_EMP_standing_at_attention_long_AR_M_V01.msequence
+}
+
+CAPInteraction GuardAtAttention_None_Standing_H469 < uid=41240B24657043A40007F104C3BF77E4 > : GuardAtAttention_None_Standing_H101_F
+{
+	mySequence helix/sequence/CAP_H469_GAM_guarding_lance_V01.msequence
+}
+
+CAPInteraction GuardAtAttention_None_Standing_H471 < uid=41240B24657044DC00080B2E6E597B82 > : GuardAtAttention_None_Standing_H101_F
+{
+	mySequence helix/sequence/CAP_H471_GAM_guarding_lance_V02.msequence
+}
+
+CAPInteraction GuardAtAttention_None_Standing_H505_F < uid=41240B24661907F2002FF821A14A5FC5 > : GuardAtAttention_None_Standing_H101_F
+{
+	mySequence helix/sequence/cap_h505_crim_commando_guarding_ua_f_v02.msequence
+}
+
+CAPInteraction GuardAtAttention_None_StandingReadyToFight_H504 < uid=41240B2465A15F5C00017B46AB733A39 > : GuardAtAttention_None_Standing_H101_F
+{
+	mySequence helix/sequence/cap_h504_hir_bruiser_guarding_ua_m_v01.msequence
+}
+
+CAPInteraction GuardAtAttention_None_MovingAround_H103_NotLoopable < uid=EBE060C26351247900009CB8709823B5 > : GuardAtAttention_None_Standing_H101_F
+{
+	mySequence helix/sequence/CAP_H104_HUM_officer_supervising_M_V01.msequence
+}
+
+CAPInteraction GuardAtAttention_None_MovingAround_H372 < uid=4137A312640B30FC000073439901B362 > : GuardAtAttention_None_Standing_H101_F
+{
+	mySequence helix/sequence/CAP_H372_EMP_officer_supervising_vantage_point_M_V02.msequence
+}
+

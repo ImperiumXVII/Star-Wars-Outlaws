@@ -1,0 +1,80 @@
+include "helix/game system data/fruit/equipment/aiming.fruit"
+include "helix/game system data/juice/camera/modifiers/aimassist_default.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/sway_default.mcameramodifier"
+
+AimConfig test_aimconfig_trailblazer_ship < uid=378315CB620134B7000034BA3DF76870 >
+{
+	myPassiveAimMode
+	{
+		myEnabled FALSE
+	}
+	myADSAimMode
+	{
+		myEnabled TRUE
+		myMaxAimDistance 4000.0
+		myMinAimDistance 100.0
+		myAimAssist < uid=378315CB620134B7000034BBE3338403 > = NULLREFERENCE
+		mySway < uid=378315CB620134B7000034BC324E701B > = NULLREFERENCE
+		myAimHitConfig
+		{
+			mySpaceshipsUseAimHitPositionEnabled FALSE
+		}
+	}
+	myScopeAimMode
+	{
+		myEnabled TRUE
+		myMaxAimDistance 250.0
+		myMinAimDistance 100.0
+		myAimAssist < uid=378315CB620134B7000034BD5A92A18B > = aimassist_default 544DB9085FCFB72D0000001EEB606904
+		mySway < uid=378315CB620134B7000034BEDCA0F641 > = sway_default 544DB9085FC113760000001E72811AF9
+		myZoomList
+		{
+			ScopeZoom "New ScopeZoom (0)"
+			{
+				myTransitions
+				{
+					myInDuration 0.2
+					myOutDuration 0.1
+				}
+				myMagnifiedFov -20.0
+			}
+			ScopeZoom "New ScopeZoom (1)"
+			{
+				myTransitions
+				{
+					myInDuration 0.2
+					myOutDuration 0.1
+				}
+				myMagnifiedFov -15.0
+			}
+			ScopeZoom "New ScopeZoom (2)"
+			{
+				myTransitions
+				{
+					myInDuration 0.2
+					myOutDuration 0.1
+				}
+				myMagnifiedFov -15.0
+			}
+		}
+	}
+	mySpaceshipAimMode
+	{
+		myEnabled TRUE
+		myMaxAimDistance 4000.0
+		myMinAimDistance 100.0
+		myCrosshair
+		{
+			myAlignAimDeviationEnabled FALSE
+			myAutoLockCrosshairEnabled FALSE
+			myShape
+			{
+			}
+		}
+		myAimHitConfig
+		{
+			mySpaceshipsUseAimHitPositionEnabled TRUE
+		}
+	}
+}
+

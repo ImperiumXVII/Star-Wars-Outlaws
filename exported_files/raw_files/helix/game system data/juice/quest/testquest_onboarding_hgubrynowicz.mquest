@@ -1,0 +1,49 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+
+Quest testquest_onboarding_hgubrynowicz < uid=1EAB3B40624FE17700002CF061A562CB >
+{
+	myName "aurabesh = false, contextComment = \"test objective\", enabled = true, guid = #1EAB3B40624FE17800002CF24077E6C8, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"Hgubrynowicz Exercise quest\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"test objective\", enabled = true, guid = #1EAB3B40626110BC00005D22740B2879, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"Find the NPC\", type = \"MenuLine\""
+	myType Contract
+	myBeats
+	{
+		QuestBeat "1 Talk to NPC" < uid=1EAB3B40624FE1F600002CF65ADA6FCE >
+		{
+			myScript helix/scripts/scr_testquest_onboarding_hgubrynowicz_beat01.mscript
+			myName "aurabesh = false, contextComment = \"test objective\", enabled = true, guid = #1EAB3B40624FE92000002E3C92A9CFAF, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"Talk to NPC\", type = \"MenuLine\""
+			myObjectives
+			{
+				QuestObjectiveInteract Obj1 < uid=1EAB3B40624FE86200002E37414597E0 >
+				{
+					myName "aurabesh = false, contextComment = \"test objective\", enabled = true, guid = #1EAB3B406261117F00005D24C58992DC, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 93, text = \"Talk to NPC\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=1EAB3B40624FE21700002CF95D201032 >
+			{
+			}
+		}
+		QuestBeat "2 Empire Outpost" < uid=1EAB3B40624FE20600002CF8DC257346 >
+		{
+			myScript helix/scripts/scr_testquest_onboarding_hgubrynowicz_beat02.mscript
+			myName "aurabesh = false, contextComment = \"Test objective\", enabled = true, guid = #1EAB3B40624FF842000067A295D7F3F7, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"2 Empire Outpost\", type = \"MenuLine\""
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Find Imperial Terminal" < uid=1EAB3B40624FF85B000067A330ABE32F >
+				{
+					myName "aurabesh = false, contextComment = \"test objective\", enabled = true, guid = #1EAB3B406261120300005D27BF01BAA7, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"FInd Imperial Terminal\", type = \"MenuLine\""
+				}
+				QuestObjectiveInteract "Retrieve Prisoner Data" < uid=1EAB3B40624FF874000067A410A7D3C9 >
+				{
+					myName "aurabesh = false, contextComment = \"test objective\", enabled = true, guid = #1EAB3B406261120100005D26DE5C5A77, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"Retrive prisoner data\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=1EAB3B40624FE21700002CFAD40DA047 >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=1EAB3B40624FE17700002CF1F59AA96F >
+	{
+	}
+}
+

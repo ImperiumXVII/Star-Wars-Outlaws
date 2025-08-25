@@ -1,0 +1,1289 @@
+include "helix/game system data/fruit/ai/npcfocus.fruit"
+
+NPCFocusProfile DefaultNPCFocusProfile < uid=16DEADE6627D79E600002F681EE4B5D5 >
+{
+	myFocusPointDataList
+	{
+		NPCFocusPointData Facing
+		{
+			myType Facing
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData HostileTarget
+		{
+			myType HostileTarget
+			myIsEnabled FALSE
+			myPriority High
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData FriendlyNPCEnteringCombat
+		{
+			myType FriendlyNPCEnteringCombat
+			myPriority Medium
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData FriendlyNPC
+		{
+			myType FriendlyNPC
+			myAllowStaticTurn FALSE
+		}
+		NPCFocusPointData WantedPlayerAction
+		{
+			myType WantedPlayerAction
+			myPriority Medium
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData AgentOwner
+		{
+			myType AgentOwner
+			myPriority Medium
+		}
+		NPCFocusPointData PlayerAwarenessTarget
+		{
+			myType PlayerAwarenessTarget
+			myAllowStaticTurn FALSE
+		}
+		NPCFocusPointData PathLookAheadHighPriority
+		{
+			myType PathLookAheadHighPriority
+			myPriority High
+		}
+		NPCFocusPointData PathLookAheadLowPriority
+		{
+			myType PathLookAheadLowPriority
+		}
+		NPCFocusPointData AlertEventTarget
+		{
+			myType AlertEventTarget
+			myPriority High
+			myAllowStaticTurn TRUE
+			myMaxAngleBeforeTurning 22.0
+		}
+		NPCFocusPointData CompanionInterestPoint
+		{
+			myType CompanionInterestPoint
+			myIsEnabled FALSE
+			myPriority High
+			myMaxDistance 10.0
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData VO
+		{
+			myType VO
+			myPriority High
+		}
+		NPCFocusPointData TravelAndTalkPlayer
+		{
+			myType TravelAndTalkPlayer
+			myPriority Medium
+			myMaxLookAtAngle 90.0
+		}
+	}
+}
+
+NPCFocusProfile DefaultWildLifeFocusProfile < uid=EBEEDF3F628EE5FC00020BCCF01D691F >
+{
+	myFocusPointDataList
+	{
+		NPCFocusPointData Facing
+		{
+			myType Facing
+			myPriority Medium
+		}
+		NPCFocusPointData HostileTarget
+		{
+			myType HostileTarget
+			myPriority High
+			myAllowStaticTurn FALSE
+		}
+		NPCFocusPointData FriendlyNPCEnteringCombat
+		{
+			myType FriendlyNPCEnteringCombat
+			myPriority Medium
+			myAllowStaticTurn FALSE
+		}
+		NPCFocusPointData FriendlyNPC
+		{
+			myType FriendlyNPC
+			myAllowStaticTurn FALSE
+		}
+		NPCFocusPointData WantedPlayerAction
+		{
+			myType WantedPlayerAction
+			myPriority Medium
+			myAllowStaticTurn FALSE
+		}
+		NPCFocusPointData AgentOwner
+		{
+			myType AgentOwner
+			myPriority High
+		}
+		NPCFocusPointData PlayerAwarenessTarget
+		{
+			myType PlayerAwarenessTarget
+			myAllowStaticTurn FALSE
+		}
+		NPCFocusPointData PathLookAheadHighPriority
+		{
+			myType PathLookAheadHighPriority
+			myIsEnabled FALSE
+			myPriority High
+		}
+		NPCFocusPointData PathLookAheadLowPriority
+		{
+			myType PathLookAheadLowPriority
+			myIsEnabled FALSE
+		}
+		NPCFocusPointData CompanionInterestPoint
+		{
+			myType CompanionInterestPoint
+			myIsEnabled FALSE
+			myPriority High
+		}
+		NPCFocusPointData VO
+		{
+			myType VO
+			myPriority High
+		}
+	}
+}
+
+NPCFocusProfile WildlifeFleeFocusProfile < uid=2AA3EE5D632ABFC0000178F6284CEE15 > : DefaultWildLifeFocusProfile
+{
+	myFocusPointDataList
+	{
+		NPCFocusPointData PathLookAheadHighPriority
+		{
+			myType PathLookAheadHighPriority
+			myIsEnabled FALSE
+			myPriority Medium
+		}
+		NPCFocusPointData PathLookAheadLowPriority
+		{
+			myType PathLookAheadLowPriority
+			myIsEnabled FALSE
+			myPriority Medium
+		}
+		NPCFocusPointData FleeSource
+		{
+			myType FleeSource
+			myPriority High
+		}
+	}
+}
+
+NPCFocusProfile DefaultSequenceNPCFocusProfile < uid=71108214637F80FC000056A520264D62 >
+{
+	myIsEnabledInSequence TRUE
+	myFocusPointDataList
+	{
+		NPCFocusPointData PlayerAwarenessTarget
+		{
+			myType PlayerAwarenessTarget
+			myPriority High
+			myLookAtDuration 8.0
+			myCooldown 30.0
+			myMaxDistance 8.0
+			myAllowStaticTurn FALSE
+			myMaxLookAtAngle 60.0
+		}
+	}
+}
+
+NPCFocusProfile AmbientNPCFocusProfile < uid=41240B2465DDB8D60012974F11FF3D48 >
+{
+	myIsEnabledInSequence TRUE
+	myFocusPointDataList
+	{
+		NPCFocusPointData PlayerAwarenessTarget
+		{
+			myType PlayerAwarenessTarget
+			myPriority High
+			myLookAtDuration 2.0
+			myCooldown 7.0
+			myTypeCooldown 3.0
+			myMaxDistance 3.0
+			myDelayBeforeTurning 1.0
+			myMaxAngleBeforeTurning 65.0
+			myMaxLookAtAngle 65.0
+			myLookAtSpeed 30.0
+		}
+		NPCFocusPointData CivilianAmbientNPC
+		{
+			myType CivilianAmbientNPC
+			myPriority Medium
+			myDelayBeforeTurning 0.5
+			myMaxAngleBeforeTurning 60.0
+			myMaxLookAtAngle 60.0
+			myLookAtSpeed 15.0
+		}
+	}
+}
+
+NPCFocusProfile PetFocusProfile < uid=B0EA4E53638749FD0000D5E03D809A8B > : DefaultNPCFocusProfile
+{
+	myFocusPointDataList
+	{
+		NPCFocusPointData Facing
+		{
+			myType Facing
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData HostileTarget
+		{
+			myType HostileTarget
+			myPriority High
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData FriendlyNPCEnteringCombat
+		{
+			myType FriendlyNPCEnteringCombat
+			myPriority Medium
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData FriendlyNPC
+		{
+			myType FriendlyNPC
+			myAllowStaticTurn FALSE
+		}
+		NPCFocusPointData WantedPlayerAction
+		{
+			myType WantedPlayerAction
+			myPriority Medium
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData AgentOwner
+		{
+			myType AgentOwner
+			myPriority Medium
+		}
+		NPCFocusPointData PlayerAwarenessTarget
+		{
+			myType PlayerAwarenessTarget
+			myLookAtDuration 5.0
+			myCooldown 0.0
+			myTypeCooldown 10.0
+			myAllowStaticTurn FALSE
+			myDelayBeforeTurning 2.0
+			myMaxLookAtAngle 180.0
+		}
+		NPCFocusPointData PathLookAheadHighPriority
+		{
+			myType PathLookAheadHighPriority
+			myPriority High
+		}
+		NPCFocusPointData PathLookAheadLowPriority
+		{
+			myType PathLookAheadLowPriority
+		}
+		NPCFocusPointData AlertEventTarget
+		{
+			myType AlertEventTarget
+			myPriority High
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData CompanionInterestPoint
+		{
+			myType CompanionInterestPoint
+			myPriority High
+			myLookAtDuration 5.0
+			myCooldown 5.0
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData VO
+		{
+			myType VO
+			myPriority High
+		}
+	}
+}
+
+NPCFocusProfile PetDisabledFocusProfile < uid=5CDD6EF366AB54AE001281E73D1E12FC > : PetFocusProfile
+{
+	myFocusPointDataList
+	{
+		NPCFocusPointData Facing(Disabled)
+		{
+			myType Facing
+			myIsEnabled FALSE
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData HostileTarget(Disabled)
+		{
+			myType HostileTarget
+			myIsEnabled FALSE
+			myPriority High
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData FriendlyNPCEnteringCombat(Disabled)
+		{
+			myType FriendlyNPCEnteringCombat
+			myIsEnabled FALSE
+			myPriority Medium
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData FriendlyNPC(Disabled)
+		{
+			myType FriendlyNPC
+			myIsEnabled FALSE
+			myAllowStaticTurn FALSE
+		}
+		NPCFocusPointData WantedPlayerAction(Disabled)
+		{
+			myType WantedPlayerAction
+			myIsEnabled FALSE
+			myPriority Medium
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData AgentOwner(Disabled)
+		{
+			myType AgentOwner
+			myIsEnabled FALSE
+			myPriority Medium
+		}
+		NPCFocusPointData PlayerAwarenessTarget(Disabled)
+		{
+			myType PlayerAwarenessTarget
+			myIsEnabled FALSE
+			myLookAtDuration 5.0
+			myCooldown 0.0
+			myTypeCooldown 10.0
+			myAllowStaticTurn FALSE
+			myDelayBeforeTurning 2.0
+			myMaxLookAtAngle 180.0
+		}
+		NPCFocusPointData PathLookAheadHighPriority
+		{
+			myType PathLookAheadHighPriority
+			myPriority High
+		}
+		NPCFocusPointData PathLookAheadLowPriority
+		{
+			myType PathLookAheadLowPriority
+		}
+		NPCFocusPointData AlertEventTarget(Disabled)
+		{
+			myType AlertEventTarget
+			myIsEnabled FALSE
+			myPriority High
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData CompanionInterestPoint(Disabled)
+		{
+			myType CompanionInterestPoint
+			myIsEnabled FALSE
+			myPriority High
+			myLookAtDuration 5.0
+			myCooldown 5.0
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData VO(Disabled)
+		{
+			myType VO
+			myIsEnabled FALSE
+			myPriority High
+		}
+	}
+}
+
+NPCFocusProfile PetOnPlayerFocusProfile < uid=B0EA4E536409B59B00005A9C7B967873 > : PetFocusProfile
+{
+	myFocusPointDataList
+	{
+		NPCFocusPointData Facing
+		{
+			myType Facing
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData HostileTarget
+		{
+			myType HostileTarget
+			myPriority High
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData FriendlyNPCEnteringCombat
+		{
+			myType FriendlyNPCEnteringCombat
+			myPriority Medium
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData FriendlyNPC
+		{
+			myType FriendlyNPC
+			myAllowStaticTurn FALSE
+		}
+		NPCFocusPointData WantedPlayerAction
+		{
+			myType WantedPlayerAction
+			myPriority Medium
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData AgentOwner
+		{
+			myType AgentOwner
+			myPriority Medium
+		}
+		NPCFocusPointData PlayerAwarenessTarget
+		{
+			myType PlayerAwarenessTarget
+			myIsEnabled FALSE
+			myLookAtDuration 5.0
+			myCooldown 0.0
+			myTypeCooldown 10.0
+			myAllowStaticTurn FALSE
+			myDelayBeforeTurning 2.0
+			myMaxLookAtAngle 180.0
+		}
+		NPCFocusPointData PathLookAheadHighPriority
+		{
+			myType PathLookAheadHighPriority
+			myPriority High
+		}
+		NPCFocusPointData PathLookAheadLowPriority
+		{
+			myType PathLookAheadLowPriority
+		}
+		NPCFocusPointData AlertEventTarget
+		{
+			myType AlertEventTarget
+			myPriority High
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData CompanionInterestPoint
+		{
+			myType CompanionInterestPoint
+			myPriority High
+			myLookAtDuration 5.0
+			myCooldown 5.0
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData VO
+		{
+			myType VO
+			myPriority High
+			myMaxLookAtAngle 180.0
+		}
+	}
+}
+
+NPCFocusProfile ATSTFocusProfile < uid=2736B36563A32F570001AC3E6B6D3144 > : DefaultNPCFocusProfile
+{
+	myFocusPointDataList
+	{
+		NPCFocusPointData Facing
+		{
+			myType Facing
+			myAllowStaticTurn TRUE
+			myMaxAngleBeforeTurning 45.0
+		}
+		NPCFocusPointData HostileTarget
+		{
+			myType HostileTarget
+			myPriority High
+			myAllowStaticTurn TRUE
+			myDelayBeforeTurning 0.1
+			myMaxAngleBeforeTurning 60.0
+		}
+		NPCFocusPointData FriendlyNPCEnteringCombat
+		{
+			myType FriendlyNPCEnteringCombat
+			myPriority Medium
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData FriendlyNPC
+		{
+			myType FriendlyNPC
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData WantedPlayerAction
+		{
+			myType WantedPlayerAction
+			myPriority Medium
+			myAllowStaticTurn TRUE
+			myMaxAngleBeforeTurning 60.0
+		}
+		NPCFocusPointData AgentOwner
+		{
+			myType AgentOwner
+			myPriority Medium
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData PlayerAwarenessTarget
+		{
+			myType PlayerAwarenessTarget
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData PathLookAheadHighPriority
+		{
+			myType PathLookAheadHighPriority
+			myPriority High
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData PathLookAheadLowPriority
+		{
+			myType PathLookAheadLowPriority
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData AlertEventTarget
+		{
+			myType AlertEventTarget
+			myPriority High
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData VO
+		{
+			myType VO
+			myPriority High
+		}
+	}
+}
+
+NPCFocusProfile NonCombatFocusProfile < uid=91DC5D3C63F33E1D000120A1B69248CD > : DefaultNPCFocusProfile
+{
+	myFocusPointDataList
+	{
+		NPCFocusPointData Facing
+		{
+			myType Facing
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData HostileTarget
+		{
+			myType HostileTarget
+			myIsEnabled FALSE
+			myPriority High
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData FriendlyNPCEnteringCombat
+		{
+			myType FriendlyNPCEnteringCombat
+			myPriority Medium
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData FriendlyNPC
+		{
+			myType FriendlyNPC
+			myAllowStaticTurn FALSE
+		}
+		NPCFocusPointData WantedPlayerAction
+		{
+			myType WantedPlayerAction
+			myPriority Medium
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData AgentOwner
+		{
+			myType AgentOwner
+			myPriority Medium
+		}
+		NPCFocusPointData PlayerAwarenessTarget
+		{
+			myType PlayerAwarenessTarget
+			myAllowStaticTurn FALSE
+		}
+		NPCFocusPointData PathLookAheadHighPriority
+		{
+			myType PathLookAheadHighPriority
+			myPriority High
+		}
+		NPCFocusPointData PathLookAheadLowPriority
+		{
+			myType PathLookAheadLowPriority
+		}
+		NPCFocusPointData AlertEventTarget
+		{
+			myType AlertEventTarget
+			myPriority High
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData VO
+		{
+			myType VO
+			myPriority High
+		}
+	}
+}
+
+NPCFocusProfile CombatFocusProfile < uid=91DC5D3C63FC700F0001A02A36DCA307 > : DefaultNPCFocusProfile
+{
+	myFocusPointDataList
+	{
+		NPCFocusPointData Facing
+		{
+			myType Facing
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData HostileTarget
+		{
+			myType HostileTarget
+			myIsEnabled TRUE
+			myPriority High
+			myAllowStaticTurn TRUE
+			myMaxAngleBeforeTurning 25.0
+		}
+		NPCFocusPointData FriendlyNPCEnteringCombat
+		{
+			myType FriendlyNPCEnteringCombat
+			myPriority Medium
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData FriendlyNPC
+		{
+			myType FriendlyNPC
+			myAllowStaticTurn FALSE
+		}
+		NPCFocusPointData WantedPlayerAction
+		{
+			myType WantedPlayerAction
+			myPriority Medium
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData AgentOwner
+		{
+			myType AgentOwner
+			myPriority Medium
+		}
+		NPCFocusPointData PlayerAwarenessTarget
+		{
+			myType PlayerAwarenessTarget
+			myAllowStaticTurn FALSE
+		}
+		NPCFocusPointData PathLookAheadHighPriority
+		{
+			myType PathLookAheadHighPriority
+			myPriority High
+		}
+		NPCFocusPointData PathLookAheadLowPriority
+		{
+			myType PathLookAheadLowPriority
+		}
+		NPCFocusPointData AlertEventTarget
+		{
+			myType AlertEventTarget
+			myPriority High
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData VO
+		{
+			myType VO
+			myPriority High
+		}
+		NPCFocusPointData InteractionTarget
+		{
+			myType InteractionTarget
+			myPriority Highest
+			myAllowStaticTurn TRUE
+		}
+	}
+}
+
+NPCFocusProfile CombatFocusLostTarget < uid=4171A7E166D1C2C30007B2FF9949D09F > : CombatFocusProfile
+{
+	myFocusPointDataList
+	{
+		NPCFocusPointData Facing
+		{
+			myType Facing
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData HostileTarget
+		{
+			myType HostileTarget
+			myIsEnabled TRUE
+			myPriority High
+			myAllowStaticTurn TRUE
+			myMaxAngleBeforeTurning 25.0
+			myMaxLookAtAngle 60.0
+		}
+		NPCFocusPointData FriendlyNPCEnteringCombat
+		{
+			myType FriendlyNPCEnteringCombat
+			myPriority Medium
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData FriendlyNPC
+		{
+			myType FriendlyNPC
+			myAllowStaticTurn FALSE
+		}
+		NPCFocusPointData WantedPlayerAction
+		{
+			myType WantedPlayerAction
+			myPriority Medium
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData AgentOwner
+		{
+			myType AgentOwner
+			myPriority Medium
+		}
+		NPCFocusPointData PlayerAwarenessTarget
+		{
+			myType PlayerAwarenessTarget
+			myAllowStaticTurn FALSE
+		}
+		NPCFocusPointData PathLookAheadHighPriority
+		{
+			myType PathLookAheadHighPriority
+			myPriority High
+		}
+		NPCFocusPointData PathLookAheadLowPriority
+		{
+			myType PathLookAheadLowPriority
+		}
+		NPCFocusPointData AlertEventTarget
+		{
+			myType AlertEventTarget
+			myPriority High
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData VO
+		{
+			myType VO
+			myPriority High
+		}
+	}
+}
+
+NPCFocusProfile AstromechFocusProfile < uid=EBE060C26436E79500030D29AC754EAD > : NonCombatFocusProfile
+{
+	myFocusPointDataList
+	{
+		NPCFocusPointData Facing
+		{
+			myType Facing
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData HostileTarget
+		{
+			myType HostileTarget
+			myIsEnabled TRUE
+			myPriority High
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData FriendlyNPCEnteringCombat
+		{
+			myType FriendlyNPCEnteringCombat
+			myPriority Medium
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData FriendlyNPC
+		{
+			myType FriendlyNPC
+			myAllowStaticTurn FALSE
+		}
+		NPCFocusPointData WantedPlayerAction
+		{
+			myType WantedPlayerAction
+			myPriority Medium
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData AgentOwner
+		{
+			myType AgentOwner
+			myPriority Medium
+		}
+		NPCFocusPointData PlayerAwarenessTarget
+		{
+			myType PlayerAwarenessTarget
+			myPriority Medium
+			myLookAtDuration 15.0
+			myCooldown 5.0
+			myMaxAngleBeforeTurning 360.0
+		}
+		NPCFocusPointData PathLookAheadHighPriority
+		{
+			myType PathLookAheadHighPriority
+			myPriority High
+		}
+		NPCFocusPointData PathLookAheadLowPriority
+		{
+			myType PathLookAheadLowPriority
+		}
+		NPCFocusPointData AlertEventTarget
+		{
+			myType AlertEventTarget
+			myPriority High
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData VO
+		{
+			myType VO
+			myPriority High
+		}
+	}
+}
+
+NPCFocusProfile NoNeckFocusProfile < uid=416E63E4643F9B740006F22FC3C5E880 > : DefaultNPCFocusProfile
+{
+	myFocusPointDataList
+	{
+		NPCFocusPointData Facing
+		{
+			myType Facing
+			myAllowStaticTurn TRUE
+			myMaxAngleBeforeTurning 20.0
+		}
+		NPCFocusPointData HostileTarget
+		{
+			myType HostileTarget
+			myIsEnabled TRUE
+			myPriority High
+			myAllowStaticTurn TRUE
+			myMaxAngleBeforeTurning 20.0
+		}
+		NPCFocusPointData FriendlyNPCEnteringCombat
+		{
+			myType FriendlyNPCEnteringCombat
+			myPriority Medium
+			myAllowStaticTurn TRUE
+			myMaxAngleBeforeTurning 20.0
+		}
+		NPCFocusPointData FriendlyNPC
+		{
+			myType FriendlyNPC
+			myAllowStaticTurn FALSE
+			myMaxAngleBeforeTurning 20.0
+		}
+		NPCFocusPointData WantedPlayerAction
+		{
+			myType WantedPlayerAction
+			myPriority Medium
+			myAllowStaticTurn TRUE
+			myMaxAngleBeforeTurning 5.0
+		}
+		NPCFocusPointData AgentOwner
+		{
+			myType AgentOwner
+			myPriority Medium
+			myMaxAngleBeforeTurning 5.0
+		}
+		NPCFocusPointData PlayerAwarenessTarget
+		{
+			myType PlayerAwarenessTarget
+			myAllowStaticTurn FALSE
+			myMaxAngleBeforeTurning 5.0
+		}
+		NPCFocusPointData PathLookAheadHighPriority
+		{
+			myType PathLookAheadHighPriority
+			myPriority High
+			myMaxAngleBeforeTurning 5.0
+		}
+		NPCFocusPointData PathLookAheadLowPriority
+		{
+			myType PathLookAheadLowPriority
+			myMaxAngleBeforeTurning 5.0
+		}
+		NPCFocusPointData AlertEventTarget
+		{
+			myType AlertEventTarget
+			myPriority High
+			myAllowStaticTurn TRUE
+			myMaxAngleBeforeTurning 5.0
+		}
+		NPCFocusPointData CompanionInterestPoint
+		{
+			myType CompanionInterestPoint
+			myIsEnabled FALSE
+			myPriority High
+			myMaxAngleBeforeTurning 5.0
+		}
+		NPCFocusPointData VO
+		{
+			myType VO
+			myPriority High
+			myMaxAngleBeforeTurning 5.0
+		}
+	}
+}
+
+NPCFocusProfile WildlifeCAPFocusProfileSmall < uid=4CFBCDBB649D2DBA0001A060D6728A2A >
+{
+	myIsEnabledInSequence TRUE
+	myFocusPointDataList
+	{
+		NPCFocusPointData Sequence
+		{
+			myType Sequence
+			myMaxDistance 10.0
+			myMaxAngleBeforeTurning 45.0
+			myMaxLookAtAngle 120.0
+		}
+	}
+}
+
+NPCFocusProfile WildlifeCAPFocusProfileLarge < uid=290EB60C64AD116100015DDD5C9449EE > : WildlifeCAPFocusProfileSmall
+{
+	myFocusPointDataList
+	{
+		NPCFocusPointData Sequence
+		{
+			myType Sequence
+			myMaxDistance 20.0
+			myMaxAngleBeforeTurning 45.0
+			myMaxLookAtAngle 90.0
+			myLookAtSpeed 20.0
+		}
+	}
+}
+
+NPCFocusProfile CompanionNPCFocusProfile < uid=91DC5D3C650D88E000011859B6CD2841 > : DefaultNPCFocusProfile
+{
+	myFocusPointDataList
+	{
+		NPCFocusPointData Facing
+		{
+			myType Facing
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData HostileTarget
+		{
+			myType HostileTarget
+			myIsEnabled FALSE
+			myPriority High
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData FriendlyNPCEnteringCombat
+		{
+			myType FriendlyNPCEnteringCombat
+			myPriority Medium
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData FriendlyNPC
+		{
+			myType FriendlyNPC
+			myAllowStaticTurn FALSE
+		}
+		NPCFocusPointData WantedPlayerAction
+		{
+			myType WantedPlayerAction
+			myPriority Medium
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData AgentOwner
+		{
+			myType AgentOwner
+			myPriority Medium
+		}
+		NPCFocusPointData PlayerAwarenessTarget
+		{
+			myType PlayerAwarenessTarget
+			myAllowStaticTurn FALSE
+		}
+		NPCFocusPointData PathLookAheadHighPriority
+		{
+			myType PathLookAheadHighPriority
+			myPriority High
+		}
+		NPCFocusPointData PathLookAheadLowPriority
+		{
+			myType PathLookAheadLowPriority
+		}
+		NPCFocusPointData AlertEventTarget
+		{
+			myType AlertEventTarget
+			myPriority High
+			myAllowStaticTurn TRUE
+			myMaxAngleBeforeTurning 22.0
+		}
+		NPCFocusPointData CompanionInterestPoint
+		{
+			myType CompanionInterestPoint
+			myIsEnabled TRUE
+			myPriority High
+			myMaxDistance 10.0
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData VO
+		{
+			myType VO
+			myPriority High
+		}
+		NPCFocusPointData TravelAndTalkPlayer
+		{
+			myType TravelAndTalkPlayer
+			myPriority Medium
+			myMaxLookAtAngle 90.0
+		}
+	}
+}
+
+NPCFocusProfile FortifyFocusProfile < uid=416E63E4661E3147000117E9AD7E0853 > : DefaultNPCFocusProfile
+{
+	myFocusPointDataList
+	{
+		NPCFocusPointData Facing
+		{
+			myType Facing
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData HostileTarget
+		{
+			myType HostileTarget
+			myIsEnabled FALSE
+			myPriority Medium
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData FriendlyNPCEnteringCombat
+		{
+			myType FriendlyNPCEnteringCombat
+			myPriority Medium
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData FriendlyNPC
+		{
+			myType FriendlyNPC
+			myAllowStaticTurn FALSE
+		}
+		NPCFocusPointData WantedPlayerAction
+		{
+			myType WantedPlayerAction
+			myPriority Medium
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData AgentOwner
+		{
+			myType AgentOwner
+			myPriority Medium
+		}
+		NPCFocusPointData PlayerAwarenessTarget
+		{
+			myType PlayerAwarenessTarget
+			myAllowStaticTurn FALSE
+		}
+		NPCFocusPointData PathLookAheadHighPriority
+		{
+			myType PathLookAheadHighPriority
+			myPriority High
+		}
+		NPCFocusPointData PathLookAheadLowPriority
+		{
+			myType PathLookAheadLowPriority
+		}
+		NPCFocusPointData AlertEventTarget
+		{
+			myType AlertEventTarget
+			myPriority High
+			myAllowStaticTurn TRUE
+			myMaxAngleBeforeTurning 22.0
+		}
+		NPCFocusPointData CompanionInterestPoint
+		{
+			myType CompanionInterestPoint
+			myIsEnabled FALSE
+			myPriority High
+			myMaxDistance 10.0
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData VO
+		{
+			myType VO
+			myPriority High
+		}
+		NPCFocusPointData TravelAndTalkPlayer
+		{
+			myType TravelAndTalkPlayer
+			myPriority Medium
+			myMaxLookAtAngle 90.0
+		}
+	}
+}
+
+NPCFocusProfile InvestigationFocusProfile < uid=3C2FA92B661FD041001A9721D9046A0C > : DefaultNPCFocusProfile
+{
+	myFocusPointDataList
+	{
+		NPCFocusPointData PlayerAwarenessTarget
+		{
+			myType PlayerAwarenessTarget
+			myPriority High
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData Facing
+		{
+			myType Facing
+			myPriority Medium
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData HostileTarget
+		{
+			myType HostileTarget
+			myIsEnabled FALSE
+			myPriority High
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData FriendlyNPCEnteringCombat
+		{
+			myType FriendlyNPCEnteringCombat
+			myPriority Medium
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData FriendlyNPC
+		{
+			myType FriendlyNPC
+			myAllowStaticTurn FALSE
+		}
+		NPCFocusPointData WantedPlayerAction
+		{
+			myType WantedPlayerAction
+			myPriority High
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData AgentOwner
+		{
+			myType AgentOwner
+			myPriority Low
+		}
+		NPCFocusPointData PathLookAheadHighPriority
+		{
+			myType PathLookAheadHighPriority
+			myPriority High
+		}
+		NPCFocusPointData PathLookAheadLowPriority
+		{
+			myType PathLookAheadLowPriority
+		}
+		NPCFocusPointData AlertEventTarget
+		{
+			myType AlertEventTarget
+			myPriority High
+			myMaxDistance 0.0
+			myAllowStaticTurn TRUE
+			myMaxAngleBeforeTurning 22.0
+		}
+		NPCFocusPointData CompanionInterestPoint
+		{
+			myType CompanionInterestPoint
+			myIsEnabled FALSE
+			myPriority Low
+			myMaxDistance 10.0
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData VO
+		{
+			myType VO
+			myPriority High
+		}
+		NPCFocusPointData TravelAndTalkPlayer
+		{
+			myType TravelAndTalkPlayer
+			myPriority Low
+			myMaxLookAtAngle 90.0
+		}
+	}
+}
+
+NPCFocusProfile FocusOrderProfile < uid=4171A7E166470A4D0004053D344C49FC > : DefaultNPCFocusProfile
+{
+	myFocusPointDataList
+	{
+		NPCFocusPointData Facing
+		{
+			myType Facing
+			myPriority High
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData HostileTarget(Disabled)
+		{
+			myType HostileTarget
+			myIsEnabled FALSE
+			myPriority High
+			myAllowStaticTurn TRUE
+			myDelayBeforeTurning 0.2
+		}
+		NPCFocusPointData FriendlyNPCEnteringCombat(Disabled)
+		{
+			myType FriendlyNPCEnteringCombat
+			myIsEnabled FALSE
+			myPriority Medium
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData FriendlyNPC(Disabled)
+		{
+			myType FriendlyNPC
+			myIsEnabled FALSE
+			myAllowStaticTurn FALSE
+		}
+		NPCFocusPointData WantedPlayerAction(Disabled)
+		{
+			myType WantedPlayerAction
+			myIsEnabled FALSE
+			myPriority Medium
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData AgentOwner(Disabled)
+		{
+			myType AgentOwner
+			myIsEnabled FALSE
+			myPriority Medium
+		}
+		NPCFocusPointData PlayerAwarenessTarget(Disabled)
+		{
+			myType PlayerAwarenessTarget
+			myIsEnabled FALSE
+			myAllowStaticTurn FALSE
+		}
+		NPCFocusPointData PathLookAheadHighPriority(Disabled)
+		{
+			myType PathLookAheadHighPriority
+			myIsEnabled FALSE
+			myPriority High
+		}
+		NPCFocusPointData PathLookAheadLowPriority(Disabled)
+		{
+			myType PathLookAheadLowPriority
+			myIsEnabled FALSE
+		}
+		NPCFocusPointData AlertEventTarget(Disabled)
+		{
+			myType AlertEventTarget
+			myIsEnabled FALSE
+			myPriority High
+			myLookAtDuration 0.5
+			myAllowStaticTurn TRUE
+			myMaxAngleBeforeTurning 22.0
+			myMaxLookAtAngle 360.200012
+		}
+		NPCFocusPointData CompanionInterestPoint(Disabled)
+		{
+			myType CompanionInterestPoint
+			myIsEnabled FALSE
+			myPriority High
+			myMaxDistance 10.0
+			myAllowStaticTurn TRUE
+		}
+		NPCFocusPointData VO(Disabled)
+		{
+			myType VO
+			myIsEnabled FALSE
+			myPriority High
+			myCooldown 0.3
+		}
+		NPCFocusPointData TravelAndTalkPlayer(Disabled)
+		{
+			myType TravelAndTalkPlayer
+			myIsEnabled FALSE
+			myPriority Medium
+			myMaxLookAtAngle 90.0
+		}
+	}
+}
+
+NPCFocusProfile DLC2MQ020VarakiFocusProfile < uid=E9DD8F6067B6F2A70003D243CFF59883 >
+{
+	myFocusPointDataList
+	{
+		NPCFocusPointData FriendlyNPCEnteringCombat
+		{
+			myType FriendlyNPCEnteringCombat
+			myPriority High
+		}
+		NPCFocusPointData HostileTarget
+		{
+			myType HostileTarget
+			myPriority Medium
+		}
+	}
+}
+

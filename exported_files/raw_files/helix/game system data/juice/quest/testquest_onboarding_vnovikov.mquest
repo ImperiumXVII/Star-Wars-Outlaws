@@ -1,0 +1,47 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+
+Quest testquest_onboarding_vnovikov < uid=F7FDFD606197C37C00006B465F8CCDED >
+{
+	myName "contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myType Event
+	myBeats
+	{
+		QuestBeat "1. Talk to NPC" < uid=F7FDFD606197C47C00006B6490BDF50B >
+		{
+			myScript helix/scripts/scr_testquest_onboarding_vnovikov_beat01.mscript
+			myObjectives
+			{
+				QuestObjectiveInteract "Talk to Quest Giver" < uid=F7FDFD60619B4ED400001A7C39B726B8 >
+				{
+				}
+			}
+			myQuestBeatStateGameValue < uid=6F2AF91962178B05000028CB1907B4B6 >
+			{
+			}
+		}
+		QuestBeat "2. Empire Outpost" < uid=F7FDFD606197C48200006B6569C46CDC >
+		{
+			myScript helix/scripts/scr_testquest_onboarding_vnovikov_beat02.mscript
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Reach Imperial Camp" < uid=F7FDFD60619B547D0000247E92D4600E >
+				{
+				}
+				QuestObjectiveGoToLocation "Find Imperial Terminal" < uid=F7FDFD60619B65F100002C74679870E1 >
+				{
+				}
+				QuestObjectiveInteract "Extract Data" < uid=F7FDFD60619B660000002C75D35FADB7 >
+				{
+				}
+			}
+			myQuestBeatStateGameValue < uid=6F2AF91962178B05000028CC5CDF84C9 >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=6F2AF91962178B05000028CD285AEE1D >
+	{
+	}
+}
+

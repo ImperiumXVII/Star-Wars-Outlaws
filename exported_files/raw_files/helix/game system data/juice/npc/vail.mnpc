@@ -1,0 +1,37 @@
+include "helix/game system data/juice/npc/civ_questnpc.mnpc"
+include "helix/game system data/juice/npc/comp_test_vail.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC vail < uid=91DC5D3C6421A9BA000062313432B1A0 > : base_companion
+{
+	myName "branch = \"TU1\", contextComment = \"Character name\", enabled = true, guid = #28934516666024A4000081F9F6039010, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2073, text = \"Vail Tormin\", type = \"MenuLine\""
+	myCharacterVisuals < uid=91DC5D3C65378D660000CA9BA9780DCD > = character_visuals_1_gold_vail 8AC9ADE462856B2600007DB3089A5D6B
+	myFaction < uid=91DC5D3C64F97B140006319B6DC0AE44 > = PlayerHijackedNPC 1C95AAB262AC690C00002928A0B3934C
+	myDialogueCharacters
+	{
+		DialogueCharacterWithTags Vail < uid=6AE6EE0D65B39E9E0000763F3CB9D5BD >
+		{
+			myDialogueCharacter < uid=6AE6EE0D65B39EA60000764049E93D4E > = NAMED_VAIL E4123D2761D4115300001AABC8B60503
+		}
+	}
+	myDialogueCharactersFromDatabase
+	{
+	}
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout LoadoutA < uid=91DC5D3C64C27C5B000281F0AB80CB97 > = Vail_Pistol 91DC5D3C64C265FC00041E1FA17705F3
+	}
+	myPlayerAwarenessProfile < uid=F457223265E8BE1E002B9E52F26EC886 > = Companion_NPC F457223265E898490000CF4517B3FF9A
+	myAudioParameters
+	{
+		mySwitches
+		{
+			AudioSwitch "NPC Faction Switch"
+			{
+				myGuid 48AD15595BE11909C9772AF2FF1225BD
+			}
+		}
+	}
+	myMeleeDefenseProfile < uid=91DC5D3C64F979AD0004CDC9728EEE49 > = DefaultMeleeDefense 4171A7E1641C75FD0004C9002D69F726
+}
+

@@ -1,0 +1,43 @@
+include "helix/game system data/fruit/item/item.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+include "helix/game system data/fruit/domainsofmastery/domainofmastery.fruit"
+include "helix/game system data/fruit/reward/reward.fruit"
+
+// keep in sync with HC_ItemMTXType in helix/HClient/HC_ItemMTXConstantData.h
+enum ItemMTXType
+{
+    Intel
+    PartsCache
+}
+
+class MTXItem < uid=auto abstract=1 > : Item
+{
+	InventoryPouch myInventoryPouch MTX
+}
+
+list MapLabelGameValueList
+{
+    uid  < bhv="constantData" constantDataType="gamevalue" >
+}
+
+class PartsCacheMTXItem : MTXItem
+{
+    ItemMTXType myType PartsCache < hidden=1 >
+
+    RewardGroup* myReward
+    GameConditionList myUnlockRequirements
+}
+
+list MapRefUIDList
+{
+    uid
+}
+
+class IntelMTXItem : MTXItem
+{
+    ItemMTXType myType Intel < hidden=1 >
+
+    uid myLevel < bhv="constantData" constantDataType="levelinfo" tooltip="The level that this item will affect." ui_info=0 >
+    MapRefUIDList myMapRefUIDs
+    GameConditionList myRevealRequirements
+}

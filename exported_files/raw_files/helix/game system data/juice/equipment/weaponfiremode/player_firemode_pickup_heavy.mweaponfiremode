@@ -1,0 +1,37 @@
+include "helix/game system data/juice/camera/modifiers/weapon_recoil_pickup_heavy.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_shake_pickup_heavy.mcameramodifier"
+include "helix/game system data/juice/equipment/aimconfig/weapon_aimconfig_pickup_heavy.maimconfig"
+include "helix/game system data/juice/equipment/weaponanimationconfig/weapon_anim_kay_blaster_heavy.mweaponanimationconfig"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_pickup_template.mweaponfiremode"
+
+WeaponFireMode player_firemode_pickup_heavy < uid=4C1DFD4E636BB64C00005DD79AA62E11 > : player_firemode_pickup_template
+{
+	myBaseProperties
+	{
+		myAnimation < uid=1C021E95652EABAB0004064CDBE940BE > = weapon_anim_kay_blaster_heavy 7113C611651BB6A400032F8EA0B5B810
+		myRecoil < uid=A207755D6515A20400014E4AE21AC3A5 > = weapon_recoil_pickup_heavy 4C1DFD4E636BB9FB00005DF98102E053
+	}
+	myAimConfig < uid=4C1DFD4E6374BDCF000169476A9F318D > = weapon_aimconfig_pickup_heavy 4C1DFD4E636BB7CB00005DEF1667F92B
+	myFireShake < uid=4C1DFD4E6374BDCF00016949B3D4ED74 > = weapon_shake_pickup_heavy 4C1DFD4E636BBE0C00005E0808329346
+	myUI
+	{
+		myUIGraphByConditions
+		{
+			EquipmentUIByConditions "Accessibility Crosshair"
+			{
+				myConditions
+				{
+					myConditions
+					{
+						GameConditionAccessibilitySimplifiedCrosshair "Simplified Crosshair"
+						{
+							myMode 2
+						}
+					}
+				}
+				myUIGraph helix/ui/graphs/crosshair_accessibility_simple_limitedammo.muigraph
+			}
+		}
+	}
+}
+

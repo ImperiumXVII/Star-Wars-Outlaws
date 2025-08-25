@@ -1,0 +1,52 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/projectile/realization/medium_laser.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/medium_laser_green.mprojectilerealization"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_medium.mprojectile"
+include "helix/game system data/juice/rbtags/species.mrbtagstags"
+
+BallisticProjectile weapon_projectile_blaster_medium_green < uid=F8181D48632B0AB100004E9905C4BA1A > : weapon_projectile_blaster_medium
+{
+	myRealization < uid=F8181D48632B0AB100004E9A3E9B4D18 > = medium_laser_green F8181D48632B03730000524785C03AFC
+	myBounceEnabled TRUE
+	myBounceVsDynamicEnabled TRUE
+	myBounceFriendlyFireEnabled FALSE
+	myAvoidPlayerWhenBouncing TRUE
+	myCanBounceConditions
+	{
+		myType Group
+		myIsNegated FALSE
+		myOperator Or
+		myCanBeOverridden FALSE
+		myConditions
+		{
+			GameConditionContextAgentIsSpecificNPC HitRancor
+			{
+				myAgentContextType TargetAgent
+				myNPCConstantData 2736B36563D140850001DF8C793B440D
+			}
+			GameConditionContextAgentIsSpecificNPC HitATST
+			{
+				myAgentContextType TargetAgent
+				myNPCConstantData 16DEADE661F0807B00001B62A29CB56F
+			}
+			GameConditionImpactHitBodyPart HitShield
+			{
+				myBodyPartType Shield
+			}
+			GameConditionImpactMaterial HitCapacitor
+			{
+				myMaterial < uid=7113C6116659758F0003BF8E867F0698 > = MetalBounceProjectile 8F9DE2876655E0A100033838859A5A40
+			}
+			GameConditionContextAgentIsSpecies HitAncientDroid
+			{
+				myAgentContextType TargetAgent
+				mySuccessSpeciesTags
+				{
+					RBTagsTag Species < uid=3C2FA92B674992E7000B52623532DDA9 > = Agent_Species_AncientDroid 3C2FA92B6748A1910006868C0FC69C06
+				}
+			}
+		}
+	}
+	myBounceSpeedRestitution 0.6
+}
+

@@ -1,0 +1,47 @@
+include "helix/game system data/fruit/alienstreetfood/alienstreetfoodinputchallenge.fruit"
+include "helix/game system data/fruit/alienstreetfood/alienstreetfoodvoice.fruit"
+
+//-----Grouping-----
+class AlienStreetFoodCostAndReward
+{
+    uid myCost < bhv="constantdata" constantDataType="reward" tooltip="Which reward is given when beginning an ASF activity (rewards can also be negative). Set it to Invalid to have no cost." >
+    uid myReward < bhv="constantdata" constantDataType="reward" tooltip="Which reward is given when ending an ASF activity. Set it to Invalid to have no reward." >
+}
+
+class AlienStreetFoodDescription < ui_info=1 >
+{
+    varmap myStallName < bhv="localization" >
+    varmap myDishName < bhv="localization" referenced_by_code=1 >
+    string myDishIcon < bhv="sprite" >
+    varmap myDescription < bhv="localization" >
+}
+
+class AlienStreetFoodAcivitySetup
+{
+    bool myHasDelayedDroidAcquisition false < tooltip="If set to true, this sequence will wait for a marker specified on alienstreetfoodsettings.juice to stop droid idle animation." >
+    uid myActivityCompletionGameValue < bhv=constantdata constantDataType=gamevalue tooltip="Game value to be set to tell if this activity has been completed." >
+    file myGameplaySequence < bhv=asset assettype=sequence tooltip="Sequence to be played during gameplay section" >
+    AlienStreetFoodInputChallenges myChallenges
+}
+
+class AlienStreetFoodVoiceSettings
+{
+    uid myVoiceSettings < bhv="constantData" constantDataType="alienstreetfoodvoicesetting" >
+}
+
+class AlienStreetFoodAdditionalCharacterSetting
+{
+    file mySequence < bhv=asset assettype=sequence tooltip="Sequence to be played by the additional character" >
+    string myTriggerMarker
+    string myJumpMarker
+}
+
+//-----Alien Street Food-----
+class AlienStreetFood < uid=auto >
+{
+    AlienStreetFoodCostAndReward myCostAndReward
+    AlienStreetFoodVoiceSettings myVoiceSettings 
+    AlienStreetFoodDescription myActivityDescription
+    AlienStreetFoodAdditionalCharacterSetting myAdditionalCharacterSettings
+    AlienStreetFoodAcivitySetup myActivitySetup
+}

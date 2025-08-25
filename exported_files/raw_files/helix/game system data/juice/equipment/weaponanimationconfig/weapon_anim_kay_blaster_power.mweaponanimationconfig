@@ -1,0 +1,45 @@
+include "helix/game system data/fruit/equipment/weapon/weapon_animation.fruit"
+
+WeaponAnimationConfig weapon_anim_kay_blaster_power < uid=7113C611651BFC1600024288CD0A9276 >
+{
+	myRecoil
+	{
+		myInitialShot
+		{
+			myWristRotation 0.4
+			myTorsoPushbackStrength 0.5
+			myTorsoPushbackStartTime 0.1
+			myShoulderPushbackStrength 0.7
+			myArmKickupStrength 0.3
+			myArmKickupStartTime 0.0
+			myHorizontalAngleAlignedWithCamera TRUE
+		}
+		myContinuesShot
+		{
+			myWristRotation 0.2
+			myTorsoPushbackStrength 0.5
+			myShoulderPushbackStrength 0.9
+			myArmKickupStrength 0.7
+			myHorizontalAngleAlignedWithCamera FALSE
+		}
+	}
+	myChargeWristShakeStrength "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 0.5 1, }, }, numKeys = 2, }"
+}
+
+WeaponAnimationConfig weapon_anim_kay_blaster_power_ads < uid=7113C611652555D900025A13E5ADA92B > : weapon_anim_kay_blaster_power
+{
+	myRecoil
+	{
+		myInitialShot
+		{
+			myWristRotation 0.25
+			myTorsoPushbackStrength 1.0
+			myTorsoPushbackStartTime 0.0
+			myShoulderPushbackStrength 1.0
+			myArmKickupStrength 0.2
+		}
+		myCeaseFireTime 0.5
+	}
+	myChargeWristShakeStrength "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 0.5 2, }, }, numKeys = 2, }"
+}
+

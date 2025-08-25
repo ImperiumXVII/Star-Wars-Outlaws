@@ -1,0 +1,58 @@
+include "helix/game system data/fruit/settings/playersettings.fruit"
+
+AvoidanceParameters NPCsAvoidanceParameters
+{
+	myDirectionCalculationMethod PlayerIntentDirectionOriented
+	myNumberOfSideCasts 4
+	myMovementBlockedAngleThreshold 0.0
+	myAvoidanceInteractionPointsDetectionParameters
+	{
+		myHitPositionHorizontalOffest 0.35
+		myIsHorizontalOffsetAlongHitNormal TRUE
+		myDetectAvailableInteractionPointsOnly TRUE
+		myInteractionPointsOverriders
+		{
+			myInteractionPointsOverridersList
+			{
+				TypedInteractionPointOverriders NPC
+				{
+					myMovementBlockedAngleThreshold 80.0
+					myDisableAvoidance FALSE
+					myType NPC
+				}
+				TypedInteractionPointOverriders Simple
+				{
+					myMovementBlockedAngleThreshold 80.0
+					myDisableAvoidance FALSE
+					myType Simple
+				}
+				TypedInteractionPointOverriders Takedown
+				{
+					myMovementBlockedAngleThreshold 0.0
+					myDisableAvoidance TRUE
+					myType Takedown
+				}
+			}
+			myUseCommonOverriders TRUE
+			myCommonInteractionPointsOverriders
+			{
+				myMovementBlockedAngleThreshold 60.0
+				myDisableAvoidance FALSE
+			}
+		}
+		myInteractionPointExclusionFilter
+		{
+		}
+	}
+	myConvexObstacleDetectionParameters
+	{
+		myEnableConvexObstacleDetectionParameters FALSE
+	}
+	myPreviousFrameHitNormalInterpolationParameters
+	{
+		myEnablePreviousFrameHitNormalInterpolation FALSE
+		myMaxInterpolationRate 70.0
+		myInterpolationRateCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -1 0, }, outTangents = { 1 0, 0 -0, }, properties = { 275, 1299, }, values = { 0 0.1, 1 1, }, }, numKeys = 2, }"
+	}
+}
+

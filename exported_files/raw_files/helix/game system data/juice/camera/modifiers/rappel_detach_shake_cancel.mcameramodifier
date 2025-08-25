@@ -1,0 +1,44 @@
+include "helix/game system data/fruit/camera/cameramodifier.fruit"
+
+ShakeCameraModifier rappel_detach_shake_cancel < uid=38429106666A170E000D5C71BBD1F726 >
+{
+	myTransitions
+	{
+		myOutDuration 0.1
+		myOutCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 0, }, outTangents = { 0.33333334 0, 0 0, }, properties = { 3, 1027, }, values = { 0 1, 1 0, }, }, numKeys = 2, }"
+		myAllowReverseTransition TRUE
+	}
+	myShakeIntensityCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, 0 -0.20150006, }, outTangents = { 0.25 0, -0 0, }, properties = { 3347, 8467, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+	myBlocks
+	{
+		CameraShakeBlock Release
+		{
+			myIsCyclic FALSE
+			myBlendInTime 0.0
+			myBlendOutTime 0.0
+			myDuration 1.0
+			myPitchRotateCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.061460033 0.033217907, -0.040763527 0.067371249, -0.041502081 0, }, outTangents = { 0.061460029 0, 0.040763527 -0.022031864, 0.041502081 -0.068591878, 0 0, }, properties = { 3, 1027, 2051, 5123, }, values = { 0 0, 0.18438008 0.39918923, 0.30667067 -0.16574931, 0.4311769 -0.0087001324, }, }, numKeys = 4, }"
+			myRollCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.033333335 0, -0.046666663 0, -0.061433222 0, -0.023290038 -0.023722956, -0.048985124 0.0088370768, -0.11962496 0, }, outTangents = { 0.033333335 0, 0.046666663 0, 0.06143323 0, 0.023290036 0, 0.048985124 0.049895663, 0.11962496 -0.021580733, 0 0, }, properties = { 3, 8263, 3143, 4167, 5123, 6147, 2051, }, values = { 0 0, 0.1 0, 0.23999999 1, 0.42429966 -0.20410678, 0.49416977 0.09125343, 0.64112514 0.016749084, 1 0, }, }, numKeys = 7, }"
+			myPitchRotateAmplitude -0.6
+			myRollAmplitude 0.6
+			myMovementStyle Cartesian
+		}
+		CameraShakeBlock Pitch
+		{
+			myDuration 1.5
+			myStartOffset 0.0
+			myPitchRotateCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.19397402 -0.0010018316, -0.31065416 -0.0018305779, }, outTangents = { 0.083333336 0, 0.42504454 -0.071630955, 0 0, }, properties = { 3, 1298, 2323, }, values = { 0 0, 0.25 -1, 0.78436345 0.0018305779, }, }, numKeys = 3, }"
+			myPitchRotateAmplitude -2.0
+			myMovementStyle Cartesian
+		}
+		CameraShakeBlock YMove
+		{
+			myDuration 1.5
+			myYMoveCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.083333336 -0.00019448658, -0.31065416 -0.0018305779, }, outTangents = { 0.083333336 0, 0.1872758 -0.053597927, 0 0, }, properties = { 3, 1282, 2323, }, values = { 0 0, 0.25 -1, 0.78436345 0.0018305779, }, }, numKeys = 3, }"
+			myYMoveAmplitude -0.5
+			myMovementStyle Cartesian
+		}
+	}
+	myShouldHandleCollision TRUE
+}
+

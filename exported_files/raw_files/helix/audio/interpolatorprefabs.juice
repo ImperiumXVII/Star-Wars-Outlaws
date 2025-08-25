@@ -1,0 +1,75 @@
+include snowdrop/modules/core/audio/interpolatorprefabs.fruit
+
+InterpolatorPrefabs myParameterControlRateInterpolatorPrefabs
+{
+	InterpolatorPrefab None_ControlRate < uid=6F5AA1E1638E1B8D0000549463EBDE8E >
+	{
+		myStartingValue 0.0
+	}
+	LinearInterpolatorPrefab Linear_ControlRate_Default < uid=6F5AA1E1638E1B8D000054951218E321 >
+	{
+		myStartingValue 0.0
+		myRampValue 0.25
+	}
+	LinearInterpolatorPrefab Linear_ControlRate_Fast < uid=6F5AA1E1638E1B8D000054966B453273 >
+	{
+		myStartingValue 0.0
+		myRampValue 0.5
+	}
+	LinearInterpolatorPrefab Linear_ControlRate_Slow < uid=6F5AA1E1638E1B8D000054977EA4883E >
+	{
+		myStartingValue 0.0
+		myRampValue 0.125
+	}
+	QuadraticInterpolatorPrefab Quadratic_ControlRate_Default < uid=6F5AA1E1638E1B8D00005498438636CA >
+	{
+		myStartingValue 0.0
+		myCoefficients
+		{
+			float B0 0.142857
+			float B1 0.714286
+			float B2 0.142857
+		}
+	}
+	QuadraticInterpolatorPrefab Quadratic_ControlRate_AccelerateToTarget < uid=6F5AA1E1638E1B8D000054999652D470 >
+	{
+		myStartingValue 0.0
+		myCoefficients
+		{
+			float B0 0.090909
+			float B1 0.363636
+			float B2 0.545455
+		}
+	}
+	QuadraticInterpolatorPrefab Quadratic_ControlRate_DecelerateToTarget < uid=6F5AA1E1638E1B8D0000549AD4C6BA63 >
+	{
+		myStartingValue 0.0
+		myCoefficients
+		{
+			float B0 0.545455
+			float B1 0.363636
+			float B2 0.090909
+		}
+	}
+	MovingAverageInterpolatorPrefab MovingAverage_ControlRate_Default < uid=6F5AA1E1638E1B8D0000549B8E793DBD >
+	{
+		myStartingValue 0.0
+		myWindowLength 64
+	}
+	MovingAverageInterpolatorPrefab MovingAverage_ControlRate_Fast < uid=6F5AA1E1638E1B8D0000549CFC3B7ADE >
+	{
+		myStartingValue 0.0
+		myWindowLength 16
+	}
+	MovingAverageInterpolatorPrefab MovingAverage_ControlRate_Slowish < uid=6F5AA1E1638E1B8D0000549DFCCAC07D >
+	{
+		myStartingValue 0.0
+		myWindowLength 128
+	}
+	MovingAverageInterpolatorPrefab MovingAverage_ControlRate_Slow < uid=6F5AA1E1638E1B8D0000549E1D3E6825 >
+	{
+		myStartingValue 0.0
+		myWindowLength 256
+	}
+}
+

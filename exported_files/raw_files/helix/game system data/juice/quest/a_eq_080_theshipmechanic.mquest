@@ -1,0 +1,342 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/rbtags/quest.mrbtagstags"
+include "helix/game system data/juice/reward/quest_completion_reward.mreward"
+include "helix/game system data/juice/reward/quest_reward.mreward"
+
+Quest A_EQ_080_TheShipMechanic < uid=C5B8DCF6646C7C820001431F532ED5CD >
+{
+	myName "aurabesh = false, contextComment = \"A_EQ_040_TheShipMechanic quest name displayed in the UI\", enabled = true, guid = #C5B8DCF6646C7C850001455D93C896EA, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 9222, text = \"The Ship Mechanic\", type = \"MenuLine\""
+	myIntroDescription "aurabesh = false, branch = \"\", contextComment = \"A_EQ_080_TheShipMechanic intro description is displayed in the UI\", enabled = true, guid = #C5B8DCF66512A49800012C1E9D41FB95, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 9222, text = \"A_EQ_080_TheShipMechanic intro description TODO\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"Expert Quest\", enabled = true, guid = #C5B8DCF6646C7C850001455ED9F45135, lineVersion = 8, maxLength = 0, productId = 6, sectionId = 2504, text = \"Kay is looking around Mos Eisley for someone who can upgrade their ship, but she's not having much luck. \", type = \"MenuLine\"}"
+	myType Expert
+	myCompletionReward < uid=C5B8DCF6646C7DC600015C0F6F68F9AC > = A_EQ_080_questcomplete_reward 2AE2EC85644A93B30000B30C6962DEB8
+	myGoals
+	{
+		QuestGoal "GO_01 Find a tooth from the second mouth" < uid=C5B8DCF6653FB1C1000020B52208910B >
+		{
+			myGoalText "aurabesh = false, contextComment = \"A_EQ_080 Find a tooth from the second mouth planet goal is displayed in UI\", enabled = true, guid = #C5B8DCF6653FB1C1000020B6EF05698C, lineVersion = 5, maxLength = 0, productId = 6, sectionId = 9227, text = \"Find a tooth from the second mouth\", type = \"MenuLine\""
+		}
+	}
+	myBeats
+	{
+		QuestBeat "B01 Find the sarlacc" < uid=C5B8DCF6646C92B9000732393E75DF54 >
+		{
+			myScript helix/scripts/scr_a_eq_080_b01_findthesarlacc.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_EQ_080_B01 Find the sarlacc planet beat is displayed in UI\", enabled = true, guid = #C5B8DCF6646C95A9000733033E9C7D3D, lineVersion = 12, maxLength = 0, productId = 6, sectionId = 3614, text = \"Find the sarlacc\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood RelaxedNoSpawnpoints
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "OBJ_010 Find the sarlacc" < uid=C5B8DCF66475C97D00019B1A12B70E38 >
+				{
+					myName "aurabesh = false, contextComment = \"A_EQ_080_B01 Find the sarlacc objective is displayed in UI\", enabled = true, guid = #C5B8DCF66475C99600019B1BA9D9A3D5, lineVersion = 10, maxLength = 0, productId = 6, sectionId = 9225, text = \"Find the sarlacc\", type = \"MenuLine\""
+				}
+			}
+			myHasInitFromPreviousBeatPin FALSE
+			myQuestBeatStateGameValue < uid=C5B8DCF6646C95CB00073305E793AFF9 >
+			{
+				myDescription ""
+				myDefaultValue 0
+				myIsPersisted FALSE
+				myVariableAttributeName ""
+				myCanBeEditedFromScript FALSE
+				myCanBeEditedFromUI FALSE
+				myCanBeEditedFromProgressionGraph FALSE
+				myIntendedType QuestBeatState
+				myCategory QuestBeat
+				myParentLevelsToUseInInstanceName -1
+			}
+			myCompletionReward < uid=C5B8DCF66509B8F60002F5202E327C8B > = NULLREFERENCE
+		}
+		QuestBeat "B02 Enter the sarlacc" < uid=C5B8DCF66475C4A90003067757A6C272 >
+		{
+			myScript helix/scripts/scr_a_eq_080_b02_enterthesarlacc.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_EQ_080_B02 Enter  the sarlacc planet beat is displayed in UI\", enabled = true, guid = #C5B8DCF66475C4D50003069AF5875CD1, lineVersion = 13, maxLength = 0, productId = 6, sectionId = 3614, text = \"Enter the sarlacc\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myObjectives
+			{
+				QuestObjectiveCustom "OBJ_010 Enter the sarlacc" < uid=C5B8DCF66475CA7B0001FC109FD5EDB4 >
+				{
+					myName "aurabesh = false, contextComment = \"A_EQ_080_B02 Enter the Sarlacc objective is displayed in UI\", enabled = true, guid = #C5B8DCF66475CA9C0001FC1146963D75, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 2504, text = \"Enter the Sarlacc\", type = \"MenuLine\""
+					myChildObjectives
+					{
+						QuestObjectiveGoToLocation "OBJ_010_10 Enter the sarlacc_Mouth" < uid=C5B8DCF666420CCE000AC0AC0F64FF06 >
+						{
+							myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+						}
+						QuestObjectiveGoToLocation "OBJ_010_10 Enter the sarlacc_Squeezethrough" < uid=C5B8DCF666420CF6000AC0AF26AD3013 >
+						{
+							myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+						}
+					}
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=C5B8DCF66475C5360003069C5C78635E >
+			{
+			}
+		}
+		QuestBeat "B03A Find the Tooth" < uid=C5B8DCF6646C93040007323A0E3F1F3D >
+		{
+			myScript helix/scripts/scr_a_eq_080_b03_findthetooth.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "OBJ_010 Find the Tooth" < uid=C5B8DCF6649C3B830002DF67878AF186 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveGoToLocation "OBJ_020 Find a Way to the Bottom" < uid=C5B8DCF6649C3BB20002DF6A142CED39 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputFireteam "Sarlacc Mouth Bandits" < uid=C5B8DCF6649C581A00039332B90EF3EF >
+				{
+				}
+			}
+			myQuestBeatStateGameValue < uid=C5B8DCF6646C95CB0007330687E23085 >
+			{
+				myDescription ""
+				myDefaultValue 0
+				myIsPersisted FALSE
+				myVariableAttributeName ""
+				myCanBeEditedFromScript FALSE
+				myCanBeEditedFromUI FALSE
+				myCanBeEditedFromProgressionGraph FALSE
+				myIntendedType QuestBeatState
+				myCategory QuestBeat
+				myParentLevelsToUseInInstanceName -1
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4342EE425B4560C522C7D516529B32B4
+			}
+		}
+		QuestBeat "B03B Recover the Tooth" < uid=C5B8DCF6649D51CE000C8254BD3AC1C9 >
+		{
+			myScript helix/scripts/scr_a_eq_080_tat_pln_b03b_getthetoothinthesarlacc.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGetItem "OBJ_010 Recover the Tooth" < uid=C5B8DCF66475EEDC0002FC3DE164CD19 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveCustom "OBJ_015 Recover the Tooth (Marker Only)" < uid=C5B8DCF6656DAA6100167151C76FA616 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=C5B8DCF6649D5218000C82A0E91A29D8 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4342EE425B4560C522C7D516529B32B4
+			}
+		}
+		QuestBeat "B04 Find a Way Out" < uid=C5B8DCF6646C931A0007323BB94DDC5C >
+		{
+			myScript helix/scripts/scr_a_eq_080_b04_getoutofthesarlacc.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "OBJ_010 Find a Way Out" < uid=C5B8DCF66475CE1E0001FC6B6BB1065B >
+				{
+					myName "aurabesh = false, contextComment = \"A_EQ_080_B04 Find a way out objective is displayed in UI\", enabled = true, guid = #C5B8DCF66475CE280001FC6CA51E23E7, lineVersion = 10, maxLength = 0, productId = 6, sectionId = 9228, text = \"Find a way out\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD TRUE
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=C5B8DCF6646C95CB000733075A4AC0D1 >
+			{
+				myDescription ""
+				myDefaultValue 0
+				myIsPersisted FALSE
+				myVariableAttributeName ""
+				myCanBeEditedFromScript FALSE
+				myCanBeEditedFromUI FALSE
+				myCanBeEditedFromProgressionGraph FALSE
+				myIntendedType QuestBeatState
+				myCategory QuestBeat
+				myParentLevelsToUseInInstanceName -1
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4342EE425B4560C522C7D516529B32B4
+			}
+		}
+		QuestBeat "B05 Chase the bandit" < uid=C5B8DCF6646C95860007330196E437CE >
+		{
+			myScript helix/scripts/scr_a_eq_080_b05_chasethebandit.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveFollow "OBJ_010 Recover the tooth" < uid=C5B8DCF66475CE850001FC705D98E27E >
+				{
+					myName "aurabesh = false, contextComment = \"A_EQ_080_B05 Recover the tooth objective is displayed in UI\", enabled = true, guid = #C5B8DCF66475CE950001FC71C2F6E8DF, lineVersion = 10, maxLength = 0, productId = 6, sectionId = 9229, text = \"Recover the tooth\", type = \"MenuLine\""
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+				}
+				QuestObjectiveGetItemFromSpawnedLoot "OBJ_020 Recover the Tooth" < uid=C5B8DCF66475F08E0002FC74CFC7BBAB >
+				{
+					myName "aurabesh = false, contextComment = \"A_EQ_080_B05 Recover the tooth objective is displayed in UI\", enabled = true, guid = #C5B8DCF66475F0930002FC75C9441CB6, lineVersion = 9, maxLength = 0, productId = 6, sectionId = 9229, text = \"Recover the tooth\", type = \"MenuLine\""
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+				}
+				QuestObjectiveKillFireteam "OBJ_030 Kill Bandit" < uid=C5B8DCF665D45CCA0005558794D70D0C >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputAgent "Tooth Bandit" < uid=C5B8DCF6664603DF002BAFFE12F56456 >
+				{
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=C5B8DCF6646C95CB00073308FF5236A7 >
+			{
+				myDescription ""
+				myDefaultValue 0
+				myIsPersisted FALSE
+				myVariableAttributeName ""
+				myCanBeEditedFromScript FALSE
+				myCanBeEditedFromUI FALSE
+				myCanBeEditedFromProgressionGraph FALSE
+				myIntendedType QuestBeatState
+				myCategory QuestBeat
+				myParentLevelsToUseInInstanceName -1
+			}
+		}
+		QuestBeat "B06 Reach the Bandit Camp" < uid=C5B8DCF6646C9589000733026B81721C >
+		{
+			myScript helix/scripts/scr_a_eq_080_b06_getthetoothinthehideout.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveSteal "OBJ_010 Recover the Tooth" < uid=C5B8DCF66475CFAA0001FC78241B8CC8 >
+				{
+					myName "aurabesh = false, contextComment = \"A_EQ_080_B06 Recover the tooth objective is displayed in UI\", enabled = true, guid = #C5B8DCF66475CFB20001FC79C3FF6F7D, lineVersion = 10, maxLength = 0, productId = 6, sectionId = 9989, text = \"Recover the tooth\", type = \"MenuLine\""
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+				}
+				QuestObjectiveLeaveArea "0BJ_020 Leave the Hideout" < uid=C5B8DCF6647EFA7A0004B04F0D615A63 >
+				{
+					myName "aurabesh = false, contextComment = \"A_EQ_080_B06 Leave the pirate camp objective is displayed in UI\", enabled = true, guid = #C5B8DCF6647EFAB60004B0507A0A4119, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 9989, text = \"Leave the pirate camp\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputAgent "Tooth Bandit" < uid=C5B8DCF6647DFFD100042B7C021A6B72 >
+				{
+				}
+				QuestBeatScriptInputAgent "Bandit Chaser 1" < uid=C5B8DCF6651D20E500025DCB2CC6F790 >
+				{
+				}
+				QuestBeatScriptInputAgent "Bandit Chaser 2" < uid=C5B8DCF6651D20F300025EE6D0C14600 >
+				{
+				}
+			}
+			myQuestBeatStateGameValue < uid=C5B8DCF6646C95CB0007330985C4A2D3 >
+			{
+				myDescription ""
+				myDefaultValue 0
+				myIsPersisted FALSE
+				myVariableAttributeName ""
+				myCanBeEditedFromScript FALSE
+				myCanBeEditedFromUI FALSE
+				myCanBeEditedFromProgressionGraph FALSE
+				myIntendedType QuestBeatState
+				myCategory QuestBeat
+				myParentLevelsToUseInInstanceName -1
+			}
+			mySkipConditions
+			{
+				GameConditionPlayerHasItem "Player Has Sarlacc Tooth"
+				{
+					myItem < uid=C5B8DCF6651402B9000B4C0644667A50 > = qitem_EQ_080_SarlaccPristineTooth C5B8DCF6647EF6E200032F59202899F0
+					myAmount 0
+					myOperator GreaterThan
+				}
+			}
+		}
+		QuestBeat "B07 Return to Teeka" < uid=C5B8DCF66475B5D60001C8BA2D3F0A94 >
+		{
+			myScript helix/scripts/scr_a_eq_080_b07_returntothejawa.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveTalkTo "OBJ_010 Return to Teeka" < uid=C5B8DCF66475CFDD0001FC7CD8B5FC6D >
+				{
+					myName "aurabesh = false, contextComment = \"A_EQ_080_B07 Deliver the tooth to Teeka objective is displayed in UI\", enabled = true, guid = #C5B8DCF66475CFEB0001FC7DE009E481, lineVersion = 11, maxLength = 0, productId = 6, sectionId = 9990, text = \"Deliver the tooth to Teeka\", type = \"MenuLine\""
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=C5B8DCF66475B63F0001C8D175594FA8 >
+			{
+			}
+		}
+	}
+	myOutroBeat
+	{
+		QuestBeat TurretNowAvailable < uid=C5B8DCF665130EBD001D4BD914BC6FD5 >
+		{
+			myScript helix/scripts/scr_a_eq_080_tat_pln_outrobeat_turretnowavailable.mscript
+			myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood RelaxedNoSpawnpoints
+			myQuestBeatStateGameValue < uid=C5B8DCF665130F06001D4BDDEBEFB1B2 >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=C5B8DCF6646C7C82000143204B41F283 >
+	{
+	}
+	myQuestAudioState
+	{
+		myGuid 481B347B126053629B343912E1A3C58C
+	}
+	myQuestStartedRBTag < uid=DA5615DD64B518850000ABF3D10D481E > = World_Quest_EQ080_Started DA5615DD64A3F50E0000AC9C3B58DD78
+	myQuestCompletedRBTag < uid=DA5615DD64B518850000ABF47DF02A6A > = World_Quest_EQ080_Completed DA5615DD64A3F51F0000AC9E7093DF11
+}
+

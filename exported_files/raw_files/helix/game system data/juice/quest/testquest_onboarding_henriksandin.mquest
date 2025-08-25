@@ -1,0 +1,49 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+
+Quest testquest_onboarding_HenrikSandin < uid=1ED8F316624FF750000034CBE5FC0BF0 >
+{
+	myName "aurabesh = false, contextComment = \"Test dev string\", enabled = true, guid = #1ED8F316624FFAE4000044EA1EC8C1FB, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 93, text = \"HenrikSandin Exercise quest\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"Test dev string\", enabled = true, guid = #1ED8F316624FFAE3000044E9E7D8C482, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 93, text = \"Test quest\", type = \"MenuLine\""
+	myType Main
+	myBeats
+	{
+		QuestBeat "1 Talk to NPC" < uid=1ED8F316624FF750000034CCEA3F9639 >
+		{
+			myScript helix/scripts/scr_testquest_onboarding_henriksandin_beat01.mscript
+			myName "aurabesh = false, contextComment = \"Enter the Building and talk to the NPC inside\", enabled = true, guid = #1ED8F316625427A800004DF816D2194D, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 93, text = \"1. Talk to NPC\", type = \"MenuLine\""
+			myObjectives
+			{
+				QuestObjectiveInteract TalkToQuestGiver < uid=1ED8F316625013CF000045837AA32625 >
+				{
+					myName "aurabesh = false, contextComment = \"Test dev string\", enabled = true, guid = #1ED8F316625013D20000458564ED009B, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"Talk to Quest Giver.\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=1ED8F316624FF750000034CDC6C51806 >
+			{
+			}
+		}
+		QuestBeat "2 Empire Outpost" < uid=1ED8F316624FF750000034CED1AE4C7D >
+		{
+			myScript helix/scripts/scr_testquest_onboarding_henriksandin_beat02.mscript
+			myName "aurabesh = false, contextComment = \"\", enabled = true, guid = #1ED8F31662542EC1000054E8D2E6AC1F, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 93, text = \"Find the Imperial Outpost\", type = \"MenuLine\""
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Empire Terminal" < uid=1ED8F31662541CE900006127754E1953 >
+				{
+					myName "aurabesh = false, contextComment = \"Test dev string\", enabled = true, guid = #1ED8F316625430C500007E55BEF45032, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"Find the Imperial outpost\", type = \"MenuLine\""
+				}
+				QuestObjectiveInteract "Retrieve Prisoner Data" < uid=1ED8F31662541CFA0000612986212976 >
+				{
+					myName "aurabesh = false, contextComment = \"Test dev string\", enabled = true, guid = #1ED8F316625430D200007E56D688CBE9, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"Retrieve the Imperial data\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=1ED8F316624FF750000034CFD4087E33 >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=1ED8F316624FF750000034D0C290B4D5 >
+	{
+	}
+}
+

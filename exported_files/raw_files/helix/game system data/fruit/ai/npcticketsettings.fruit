@@ -1,0 +1,183 @@
+include "helix/game system data/fruit/npc/npcenums.fruit"
+
+// New ticket types can be added by adding to this list. 
+// The order of elements in this list is not important, but changing the text may break places where that name is used (eg existing behavior tree graphs).
+//
+// It's possible to show debug drawing for each ticket type, but it is not sufficient to add the type here for that to work.
+// You also need to add a new debug draw type in HC_DebugDrawerType.h and then add it to the debug drawer type lookup in HC_NPCTicketComponent.h
+enum NPCTicketType
+{
+	NoTicket
+	Investigation
+	InvestigateDistraction
+	InvestigateDistractionFoodBuffBonus
+	InvestigateTrespasser
+	InvestigatePlayerShotNear
+	InvestigateInCombat
+	InvestigateAfterCombat
+	InvestigateSuspiciousSound
+	InvestigateThreateningSecondary
+	MovementAdvance
+	MovementNoCover
+	Shoot
+	SniperShoot
+	Melee
+	MeleeAncientDroid
+	MeleeMoveAroundTarget
+	SuppressiveShoot
+	Alarm
+	ArrestPlayer
+	Grenade
+	SmokeGrenade
+	1v1Combat
+	Blabbermouth
+	BlabbermouthEffected
+	WildlifeMelee
+	Flank
+	Leader
+	SpaceshipOvershoot
+	SpaceshipEvasive
+	SpaceshipIntercept
+	InvestigateOutVolume
+	SpaceEmpireShooting
+	SpaceEmpireInaccurateShooting
+	SpaceTurretShooting
+	SpaceTurretInaccurate
+	SpaceshipMissileShooting
+	WantedOpenWorldSearchReinforcementContent
+	WantedOpenWorldReinforcementCall
+	WantedReport
+	SpaceshipReinforcementsCall
+	MiniQTE
+	WitnessStealMoveTo
+	AshigaScream
+	ReactAimAtNPCMain
+	ReactAimAtNPCSecondary
+	Bouncer
+	DeployableCover
+	InvestigateWhistleSound
+	SpaceshipHarassment
+	SpaceshipSensorJammer
+	Shove
+	GrenadeFast
+	GrenadeLauncher
+	GrenadeBuff
+	PusherStandby
+	PusherStandbyAncientDroid
+	BlabbermouthPrimary
+	JoinCombat
+	EvasiveRoll
+	CombatPropagationScream
+	CombatEnterCoverFire
+	VisionToLowSecurityTrespassingAgent
+	InvestigateWhistleSoundSecondary
+	InvestigateWhistleSoundSecondaryMove
+	InvestigateCorpse
+	WildlifeSupportAttack
+	WildlifeMynockAttack
+	PickUpWeapon
+}
+
+enum NPCTicketVolumePolicy
+{
+	NoPolicy // Don't care about volumes at all
+	ClaimableInInnerVolume
+	ClaimableInInnerAndOuterVolume
+}
+//Enum must be in sync with the one in NPCTicketSettingsConstantData
+enum NPCTicketManagerType
+{
+	Campaign
+	COOP
+}
+
+list NPCTicketTypeList
+{
+	NPCTicketType
+}
+
+class ExtraTicketPerFireteamMemberOfRoleInCombat
+{
+	NPCCombatRole myNPCCombatRole					< tooltip="NPC of this combat role will give the bonus.">
+	float myExtraTicketsPercent 0					< min=0 max=1 tooltip="Added on top of myMaxTickets. Adds an extra percentage of a ticket per alive and in combat fireteam member.">
+	float myMaximumBonusAppliedForRole 0			< tooltip="Used to limit the bonus value, no matter the number of fireteam member of the selected role.">
+}
+
+class TicketScoreBonusPerCombatRole
+{
+	NPCCombatRole myNPCCombatRole					< tooltip="NPC of this combat role will give the bonus.">
+	int myBonus 0									< tooltip="Added scoring bonus when trying to claim a ticket."> 			
+}
+
+list TicketScoreBonusPerCombatRoleList
+{
+	TicketScoreBonusPerCombatRole
+}
+
+list ExtraTicketPerFireteamMemberOfRoleInCombatList
+{
+	ExtraTicketPerFireteamMemberOfRoleInCombat
+}
+
+class NPCTicket < uid=auto >
+{
+	NPCTicketType myType NoTicket																< tooltip="The type of ticket that these settings apply to." >
+	string myMaxTickets 2																		< tooltip="The maximum number of NPCs in a fireteam that will be able to simultaneously claim this ticket." bhv=formulaEditor formulaResolveContextType=Global >
+	float myExtraTicketsPerFireteamMemberInCombat 0												< min=0 max=1 tooltip="Added on top of myMaxTickets. Adds an extra percentage of a ticket per alive and in combat fireteam member.">
+	ExtraTicketPerFireteamMemberOfRoleInCombatList myExtraTicketPerFireteamMemberOfRoleInCombat < min=0 max=1 tooltip="Added on top of myMaxTickets. Adds an extra percentage of a ticket per alive and in combat fireteam member of a defined role.">
+	TicketScoreBonusPerCombatRoleList myTicketScoreBonusPerCombatRole							< min=0 max=1 tooltip="Adds a scoring bonus based on defined combat role.">
+	
+	float myShortDistanceFromThreat 15.0														< tooltip="Distance below which the Short Distance bonus is applied to the priority score (adds up to Long Distance bonus)." >
+	int myShortDistanceFromThreatScore 10														< tooltip="Short Distance Priority score bonus." >
+		
+	float myLongDistanceFromThreat 25.0															< tooltip="Distance below which the Long Distance bonus is applied to the priority score." >
+	int myLongDistanceFromThreatScore 5															< tooltip="Long Distance Priority score bonus." >
+
+	float myHighVerticalDistanceFromThreat 2.0													< tooltip="Vertical distance above which the High Vertical Distance bonus/malus is applied to the priority score." >
+	int myHighVerticalDistanceFromThreatScore -20												< tooltip="High Vertical Distance Priority score bonus. A negative value would be a malus." >
+		
+	int myLOSScore 50																			< tooltip="Bonus score for having line of sight to the target." >
+	
+	int myInTargetViewScore 0																	< tooltip="Bonus score when self is within target view." >
+	int myInPlayerCameraScore 0																	< tooltip="Bonus score when self is within the Player Camera." >
+
+	int myOnHitScore 0																			< tooltip="Bonus score for every 1% health lost from a single hit.\nReset when claim ticket." >
+	
+	float myFireteamAgnosticRadius 100.0														< tooltip="The radius used for fireteam agnostic tickets when getting contesting npcs to calculate place in queue for ticket." >
+	float myExtraTicketsPerCoopPlayerInCombat 0													< tooltip="Added on top of myMaxTickets. Adds an extra percentage of a ticket per alive and in combat player.">
+	
+	float myCooldown 0.0																		< tooltip="Cooldown before the ticket can be claimed by the same NPC again if there are other NPCs that might want this ticket. Starts when the ticket is returned." >
+	float myGlobalCooldown 0.0																	< tooltip="Cooldown before the ticket can be claimed by any NPC again. Starts when enabled through the Claim Ticket BT Node." >
+	
+	bool myIsFireteamAgnostic false																< tooltip="If true, then the max tickets count applies to all NPCs of the same faction no matter which fireteam they belong to." >
+	bool myIsCombatTicket false																	< tooltip="If true, then this ticket can be claimed by all NPCs when Unlimited Combat Tickets is enabled." >
+	bool myEnableScoring false																	< tooltip="If false, then tickets are claimed on a first-come-first-serve basis. Otherwise, scoring is used to prioritize which NPCs can claim the ticket." >
+
+	bool myEnabledInsideLandingZoneSelection true												< tooltip="If false, then tickets can't be claimed if player is in Landing Zone selection menu." >
+
+	bool myAllowNPCInCombat true																< tooltip="If false, then tickets can't be claimed if the NPC is in combat." >
+	bool myAllowNPCWithOrder true																< tooltip="If false, then tickets can't be claimed if the NPC has an order." >
+	
+	NPCTicketVolumePolicy myVolumePolicy														< tooltip="Decides what ticket types should be considered in different scenarios when an npc is bound to a volume" >
+}
+
+list NPCTicketList
+{
+	NPCTicket
+}
+
+class NPCTicketManagerSettings  < uid=auto >
+{
+	NPCTicketManagerType myNPCTicketManagerType
+	NPCTicketList myTickets
+}
+
+list NPCTicketManagerList
+{
+	NPCTicketManagerSettings
+}
+
+class NPCTicketSettings < uid=auto >
+{
+	NPCTicketManagerList myTicketManagerSettingsDataList
+}

@@ -1,0 +1,30 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/cri_shp_base.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC cri_shp_duros_a < uid=F95CD8F36483629C00004531041299B7 > : cri_shp_base
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Scourge / Duros - Crimson Dawn faction\", enabled = true, guid = #6AE6EE0D6578321D00026692B9623DD4, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10726, text = \"DF-11 Scourge\", type = \"MenuLine\""
+	myCharacterVisuals < uid=F95CD8F36483629C000045325DBFECB3 > = character_visuals_npc_shp_Durosian_Starfighter F95CD8F362ECDB8D0000E9D1A33F200A
+	myNPCComponentSetType Spaceship
+	mySpaceshipType DurosCrimsonDawn
+	myMaxHealth 60
+	myHealthFormula 30*SpaceHealthDifficultyModifier
+	myLodType Spaceship_Small
+	myVisionProfile < uid=F95CD8F36483629C000045334B48EE47 > = visionProfile_cri_ship_Fighter 6B0E1DE964B7A45D0000AD66C508485E
+	myHearingProfile < uid=F95CD8F36483629C00004534DDE16D5C > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=F95CD8F36483629C000045354DAE8876 > = detectionProfile_cri_ship_Fighter 6B0E1DE964B6644F0003C72ABDA4601D
+	}
+	myThreatProfile < uid=F95CD8F3653FC45300004D89DCA462E7 > = Spaceshipthreatprofile F95CD8F3653F81EE00057BF796B8AD1A
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "duros weapon loadout" < uid=F95CD8F36483629C00004537E3E0DE6F > = weaponloadout_cri_shp_duros 6AF0BA04649BF17D00049A7C6B866E62
+	}
+	myCombatRole Fighter
+}
+

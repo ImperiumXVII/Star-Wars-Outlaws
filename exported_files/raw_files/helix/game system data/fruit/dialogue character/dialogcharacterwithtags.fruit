@@ -1,0 +1,23 @@
+include "helix/game system data/fruit/rbtags/rbtags.fruit"
+include "helix/game system data/fruit/dialogue character/dialogue_character.fruit"
+
+list DialogueCharacterTagsList
+{
+	RBTagsTag*  < compact_view=1 bhv=rbtags rbtags_filter="~+Agent" >
+}
+
+class DialogueCharacterWithTags < uid=auto >
+{
+	DialogueCharacterHelix* myDialogueCharacter
+	DialogueCharacterTagsList myTagsList
+}
+
+list DialogueCharacterWithTagsList
+{
+	DialogueCharacterWithTags
+}
+
+list DialogueCharacterWithTagsListFromDatabase
+{
+	DialogueCharacterWithTags* < bhv="asset" assettype="DialogueCharacterWithTags" >
+}

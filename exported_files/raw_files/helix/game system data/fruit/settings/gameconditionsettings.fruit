@@ -1,0 +1,20 @@
+include "helix/game system data/fruit/gameconditions/gameconditionbase.fruit"
+
+class GameConditionTypeSetting < ui_info=1 >
+{
+	GameConditionType myType < ui_info=0 >
+
+	varmap myLocLineDefault < bhv="localization" >
+	varmap myLocLineDialogues < bhv="localization" >
+	varmap myLocLineInteractionPrompt < bhv="localization" >
+}
+
+list GameConditionTypeSettingList
+{
+	GameConditionTypeSetting
+}
+
+class GameConditionSettings < uid=auto >
+{
+	GameConditionTypeSettingList myTypeSettings
+}

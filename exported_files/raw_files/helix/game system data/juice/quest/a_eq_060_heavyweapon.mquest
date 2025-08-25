@@ -1,0 +1,150 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/mapref/mapref_quest_expert.mmapref"
+include "helix/game system data/juice/reward/quest_completion_reward.mreward"
+include "helix/game system data/juice/reward/quest_reward.mreward"
+
+Quest A_EQ_060_HeavyWeapon < uid=E1B84E3A64BE3A2100000041CF138561 >
+{
+	myName "aurabesh = false, contextComment = \"A_EQ_060_HeavyWeapons quest name displayed in the UI\", enabled = true, guid = #E1B84E3A64BE3A2100000043626A37D5, lineVersion = 8, maxLength = 0, productId = 6, sectionId = 2007, text = \"A_EQ_060_HeavyWeapons\", type = \"MenuLine\""
+	myIntroDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"A_EQ_060_HeavyWeapon Description os the expert quest context of EQ060_HeavyWeapon\", enabled = true, guid = #8B0C515964C7B5020001A70DFA67754D, lineVersion = 8, maxLength = 0, productId = 6, sectionId = 2007, text = \"Kay wants to learn how to use the heavy weapons and Rooster Trace should be able to help her.\", type = \"MenuLine\""
+	myType Expert
+	myCompletionReward < uid=E1B84E3A64BE5682000409408737E399 > = A_EQ_060_questcomplete_reward 2AE2EC85644A93B30000B30A71D6ECBE
+	myMapRefConstantData < uid=E1B84E3A64BE9F7000204477D2448D5C > = mapref_quest_expert B581CAC8622868DC0000278530C21E1D
+	myBeats
+	{
+		QuestBeat "Beat01 - Search for the weapon tracker in Kijimi's Nebula" < uid=8B0C515964C776D70001A6AB46E8B08C >
+		{
+			myScript helix/scripts/scr_a_eq_060_kij_spc_b01_reachasteroid.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_EQ_060_B01 Reach the asteroid area in Kijimi space beat is displayed in the UI\", enabled = true, guid = #8B0C515964C7A7F90001A6CD8E56ECB6, lineVersion = 12, maxLength = 0, productId = 6, sectionId = 3614, text = \"Search for the weapon tracker in Kijimi's Nebula\", type = \"MenuLine\"}"
+			myLevelInfo 9C4B6A046012DE63000000BA154AA5F2
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Reach the asteroid area" < uid=8B0C515964C778C60001A6CA19C426BF >
+				{
+					myName "aurabesh = false, contextComment = \"A_EQ_060_B01 Reach the asteroid area objective is displayed in the UI\", enabled = true, guid = #8B0C515964C778EB0001A6CB85111C6A, lineVersion = 8, maxLength = 0, productId = 6, sectionId = 9189, text = \"Reach the asteroid area\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=8B0C515964C7AE8C0001A709A8E2CC79 >
+			{
+			}
+		}
+		QuestBeat "Beat02 - Find the weapon tracker for Rooster Trace" < uid=8B0C515964C7774E0001A6ACB9DC1A12 >
+		{
+			myScript helix/scripts/scr_a_eq_060_kij_spc_b02_collectdatas.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_EQ_060_B02 Find and collect the container in Kijimi space beat is displayed in the UI\", enabled = true, guid = #8B0C515964C7A8930001A6D8B69FD21D, lineVersion = 17, maxLength = 0, productId = 6, sectionId = 3614, text = \"Find the weapon tracker for Rooster Trace\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012DE63000000BA154AA5F2
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Find the weapon tracker in the asteroid area" < uid=8B0C515964C7A9770001A6DDFE31D155 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_EQ_060_B02 Find the container in the asteroid area objective is displayed in the UI\", enabled = true, guid = #8B0C515964C7A9B50001A6E150FAD357, lineVersion = 8, maxLength = 0, productId = 6, sectionId = 2007, text = \"Find the weapon tracker in the asteroid area\", type = \"MenuLine\""
+					myIsHiddenInHUD FALSE
+					myIntel
+					{
+					}
+				}
+				QuestObjectiveCustom "Hint Container" < uid=225CF62765CCC70C000CBB31FCC220AF >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"A_EQ_060_B02 hint displayed in the UI\", enabled = true, guid = #225CF62765CCC70C000CBB32F7E65EAE, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 9189, text = \"The beacon is likely in a cargo container\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myIsHint TRUE
+				}
+				QuestObjectiveInteract "Get the data from the Container" < uid=8B0C515964C7A9A20001A6DF9419CFEA >
+				{
+					myName "aurabesh = false, contextComment = \"A_EQ_060_B02 Get the data from the Container objective is displayed in the UI\", enabled = true, guid = #8B0C515964C7A9A20001A6E02031157D, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 2007, text = \"Get the data from the container\", type = \"MenuLine\""
+				}
+				QuestObjectiveLeaveArea "Leave the asteroid area" < uid=8B0C5159653A2F1600032CCF6254CB13 >
+				{
+					myName "aurabesh = false, contextComment = \"A_EQ_060_B02 Leave the asteroid area objective is displayed in the UI\", enabled = true, guid = #8B0C5159653A2F1600032CD0BC78865C, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 9193, text = \"Leave the asteroid area\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myInVolumeText "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myNotInVolumeInCombatText "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=8B0C515964C7AE8C0001A70AE8D7FA3F >
+			{
+			}
+		}
+		QuestBeat "Beat03 - Meet the Expert in Tatooine Canyon area" < uid=8B0C515964C777740001A6AEAE164F4D >
+		{
+			myScript helix/scripts/scr_a_eq_060_tat_pln_b03_meetexpert.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_EQ_060_B03 Meet the Expert in Tatooine Canyon area beat is displayed in UI\", enabled = true, guid = #8B0C515964C7AB040001A6E4F7CB0F85, lineVersion = 9, maxLength = 0, productId = 6, sectionId = 3614, text = \"Meet Rooster Trace on Tatooine\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Reach Rooster Trace" < uid=8B0C515964C7AC050001A6E658102270 >
+				{
+					myName "aurabesh = false, contextComment = \"A_EQ_060_B03 Reach the Expert in the canyon objective is displayed in UI\", enabled = true, guid = #8B0C515964C7AC8E0001A6F0443EB7E2, lineVersion = 9, maxLength = 0, productId = 6, sectionId = 9194, text = \"Reach Rooster Trace\", type = \"MenuLine\""
+				}
+				QuestObjectiveTalkTo "Talk to Rooster Trace" < uid=8B0C515964C7AC1D0001A6E7CC627C3B >
+				{
+					myName "aurabesh = false, contextComment = \"A_EQ_060_B03 Talk to the Expert in the canyon objective is displayed in UI\", enabled = true, guid = #8B0C515964C7ACB80001A6F2F9DCDAB2, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 9194, text = \"Talk to Rooster Trace\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=8B0C515964C7AE8C0001A70B6DA14B6E >
+			{
+			}
+		}
+		QuestBeat "Beat04 - Rob the Imperial Convoy" < uid=8B0C515964C777960001A6B0F42C75E4 >
+		{
+			myScript helix/scripts/scr_a_eq_060_tat_pln_b04_robconvoy.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_EQ_060_B04 Rob the Imperial Convoy beat is displayed in UI\", enabled = true, guid = #8B0C515964C777960001A6B1F08D989D, lineVersion = 6, maxLength = 0, productId = 6, sectionId = 3614, text = \"Rob the Imperial Convoy\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveFollow "Follow Rooster Trace" < uid=8B0C515964C7AC430001A6EAA346B2A1 >
+				{
+					myName "aurabesh = false, contextComment = \"A_EQ_060_B03 Follow the Expert in the canyon objective is displayed in UI\", enabled = true, guid = #8B0C515964C7ACD10001A6F415CF7ABA, lineVersion = 8, maxLength = 0, productId = 6, sectionId = 2007, text = \"Follow Rooster Trace\", type = \"MenuLine\""
+				}
+				QuestObjectiveCustom "Shoot with the Z-6 Rotary Weapon" < uid=8B0C515964C7AC690001A6ECC87C019D >
+				{
+					myName "aurabesh = false, contextComment = \"A_EQ_060_B03 Shoot with the Z-6 Rotary Weapon objective is displayed in UI\", enabled = true, guid = #8B0C515964C7ACF10001A6F6C8FC3634, lineVersion = 9, maxLength = 0, productId = 6, sectionId = 2007, text = \"Shoot with the Z-6 Rotary Cannon\", type = \"MenuLine\""
+				}
+				QuestObjectiveFollow "Follow Rooster to prepare the ambush" < uid=8B0C515964C7AC800001A6EEC4DE1AE6 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_EQ_060_B03 Continue to follow the Expert in the canyon objective is displayed in UI\", enabled = true, guid = #8B0C515964C7AC800001A6EF6C66231A, lineVersion = 10, maxLength = 0, productId = 6, sectionId = 9194, text = \"Follow Rooster to prepare the ambush\", type = \"MenuLine\""
+				}
+				QuestObjectiveCustom "Prepare for the Imperial convoy" < uid=8B0C5159655F2B8300101C1B0F2AAD4A >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"A_EQ_060_B03 Wait for the Imperial convoy objective is displayed in UI\", enabled = true, guid = #8B0C5159655F2B8300101C1C52D412D3, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 9194, text = \"Prepare for the Imperial convoy\", type = \"MenuLine\""
+				}
+				QuestObjectiveKillFireteam "Defeat the Imperial convoy" < uid=8B0C515964C7AD7C0001A6FA5519C626 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_EQ_060_B04 Eliminate convoy's security objective is displayed in UI\", enabled = true, guid = #8B0C515964C7ADD20001A70103C02D92, lineVersion = 12, maxLength = 0, productId = 6, sectionId = 9195, text = \"Defeat the Imperial convoy\", type = \"MenuLine\"}"
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveCustom "Reach the Imperial convoy" < uid=8B0C515964C7ADA50001A6FB35BFC945 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_EQ_060_B04 Reach the convoy objective is displayed in UI\", enabled = true, guid = #8B0C515964C7ADE60001A70338F17199, lineVersion = 10, maxLength = 0, productId = 6, sectionId = 9195, text = \"Reach the Imperial convoy\", type = \"MenuLine\""
+				}
+				QuestObjectiveCustom "Defeat Imperials reinforcements" < uid=8B0C515964C7ADB30001A6FD0AC9264C >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_EQ_060_B04 Defeat Empire's reinforcements objective is displayed in UI\", enabled = true, guid = #8B0C515964C7ADFB0001A705BE67EC86, lineVersion = 9, maxLength = 0, productId = 6, sectionId = 9195, text = \"Defeat Imperials reinforcements\", type = \"MenuLine\"}"
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveCustom "Talk to Rooster Trace" < uid=8B0C515964C7ADC90001A6FF5A44FF4E >
+				{
+					myName "aurabesh = false, contextComment = \"A_EQ_060_B04 Talk to the Expert objective is displayed in UI\", enabled = true, guid = #8B0C515964C7ADC90001A70040789897, lineVersion = 6, maxLength = 0, productId = 6, sectionId = 2007, text = \"Talk to Rooster Trace\", type = \"MenuLine\""
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputAgent "InputAgent Rooster" < uid=8B0C5159653BCE9B0004C467B57AD544 >
+				{
+				}
+			}
+			myQuestBeatStateGameValue < uid=8B0C515964C7AE8C0001A70C4458F8BB >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=E1B84E3A64BE3A2100000042EB7FE68E >
+	{
+	}
+}
+

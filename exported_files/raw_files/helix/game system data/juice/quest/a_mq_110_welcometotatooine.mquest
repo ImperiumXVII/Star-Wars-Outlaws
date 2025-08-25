@@ -1,0 +1,338 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/rbtags/quest.mrbtagstags"
+include "helix/game system data/juice/reward/quest_completion_reward.mreward"
+
+Quest A_MQ_110_WelcomeToTatooine < uid=BFA41A0261B3751E00000496D134E105 >
+{
+	myName "aurabesh = false, contextComment = \"Quest name\", enabled = true, guid = #BFA41A0261C33A79000082C94C010958, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 9126, text = \"The Mercenary\", type = \"MenuLine\""
+	myIntroDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"Quest intro description\", enabled = true, guid = #2538246A6571DBF10002B5D202A8BDBB, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9126, text = \"Quest intro description placeholder\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"Quest description\", enabled = true, guid = #9D01D217651C1F9B00077D89A2D304AB, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9126, text = \"Quest description placeholder\", type = \"MenuLine\""
+	myImage helix/baked/ui/loose_images/quest_bilboard/journal_billboard_mq_110.dds
+	myCompletionReward < uid=2AE2EC85644BE1190029E386345DAEC5 > = A_MQ_110_questcomplete_reward 2AE2EC85644A93860000B2C8376BF733
+	myGoals
+	{
+		QuestGoal FindAWayOut < uid=253B686765B11DAA0024E3C10937438E >
+		{
+			myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"Goal text\", enabled = true, guid = #253B686765B11DAA0024E3C282EBA3E1, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9468, text = \"Find another way out of the cave\", type = \"MenuLine\""
+		}
+	}
+	myIntroBeat < uid=9D01D2176294D9800000762C0D791DA1 >
+	{
+		myScript helix/scripts/scr_A_MQ_110_TAT_PLN_B00_LandOnTatooine.mscript
+		myName "aurabesh = false, branch = \"\", contextComment = \"Beat Text\", enabled = true, guid = #9D01D2176294B4150000300A61149D67, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 3614, text = \"Travel to Tatooine\", type = \"MenuLine\""
+		myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+		myDebugPlayLandingZone 1EAB3B4063D122E000009106AC3BC2C5
+		myObjectives
+		{
+			QuestObjectiveCustom OBJ00_TraveltoTatooine < uid=9D01D21764463A5B0002CC5B4F6220D7 >
+			{
+				myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #9D01D21764463A660002CCF09709E16D, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 9463, text = \"Travel to Tatooine\", type = \"MenuLine\""
+			}
+		}
+		myQuestBeatStateGameValue < uid=9D01D2176294D9800000762D5539E72C >
+		{
+		}
+	}
+	myBeats
+	{
+		QuestBeat "B01a Talk to Sheriff Quint" < uid=BFA41A0261C33A5B000082C34E982038 >
+		{
+			myScript helix/scripts/scr_A_MQ_110_TAT_PLN_B01_TalkToMarshal.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"Beat text\", enabled = true, guid = #BFA41A0261C33A71000082C7CDEFB5E7, lineVersion = 18, maxLength = 0, productId = -1, sectionId = 3614, text = \"Find Sheriff Quint\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myDebugPlayLandingZone 1EAB3B4063D122E000009106AC3BC2C5
+			myMood Relaxed
+			myObjectives
+			{
+				QuestObjectiveTalkTo OBJ010_FindSheriff < uid=BFA41A0261C33A7E000082CAC0571E7C >
+				{
+					myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #BFA41A0261C33A8D000082CB70A7CB1C, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 9464, text = \"Talk to Sheriff Quint\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myChildObjectives
+					{
+					}
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=6F2AF919621789D4000027E5C8705BDF >
+			{
+			}
+			myDeactivateContentLocationOnComplete FALSE
+			myQuestBeatAudioState
+			{
+				myGuid 4286C507D6BF641690630AEBD3CAD58D
+			}
+		}
+		QuestBeat "B01b Defeat Hutts" < uid=253B6867658413B20000B545A5769235 >
+		{
+			myScript helix/scripts/scr_A_MQ_110_TAT_PLN_B01b_DefeatHutts.mscript
+			myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Beat Text\", enabled = true, guid = #253B6867658413C20000B547998A5E45, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 3614, text = \"Defeat the Hutts\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Focused
+			myObjectives
+			{
+				QuestObjectiveKillFireteam OBJ010_DefeatHutts < uid=9D01D217633AD42600010E8B4B247F51 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #9D01D217633AD42F00010E8C8D3EBA3E, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9464, text = \"Defeat the thugs\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 49E307A6F2D792BC41547FAE8CF236AC
+					}
+				}
+				QuestObjectiveFollow OBJ020_FollowQuint < uid=9D01D2176442410500033C633C6C7741 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #9D01D2176442411800033C645D579CF8, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9464, text = \"Follow Quint back to her office\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 4FB77CF41F9FB75C91DFE58DF720909B
+					}
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputAgent Quint < uid=253B68676584392E000153502F80E911 >
+				{
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=253B686765842EE50001295504585E0B >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 41C8CA2B653712AF7BBE343D7541CEB2
+			}
+		}
+		QuestBeat "B02 Search for Hoss" < uid=9D01D2176295FF210000763737437774 >
+		{
+			myScript helix/scripts/scr_A_MQ_110_TAT_PLN_B02_InvestigateFarm.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"Beat text\", enabled = true, guid = #9D01D2176295FF3600007638453AE34A, lineVersion = 14, maxLength = 0, productId = -1, sectionId = 3614, text = \"Search for Hoss at the abandoned moisture farm\", type = \"MenuLine\""
+			myAutostartQuestGoal < uid=253B686765AF89E700082D0EC76D1995 >
+			{
+				myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"Goal Text\", enabled = true, guid = #253B686765AF843F0007A08FD3763951, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9465, text = \"Search for Hoss at the abandoned moisture farm\", type = \"MenuLine\""
+			}
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Relaxed
+			myObjectives
+			{
+				QuestObjectiveInteract OBJ010_SearchTheFarm < uid=9D01D21762A1E81A00022536587D0716 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #9D01D21762A1E8AF0002253975E7954C, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 9465, text = \"Search for Hoss\", type = \"MenuLine\""
+					myIsOptional FALSE
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD FALSE
+					myQuestObjectiveAudioState
+					{
+						myGuid 4B5567CF1F3366A511F7A095AC976C82
+					}
+					myChildObjectives
+					{
+						QuestObjectiveGoToLocation OBJ025_FindBody < uid=253B686765D712B800022F5C7EBB8347 >
+						{
+							myName "aurabesh = false, contextComment = \"Objective Text\", enabled = true, guid = #9D01D217633D848A000268004201F21E, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 403, text = \"Find the body\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+						}
+					}
+				}
+				QuestObjectiveInteract OBJ020b_HiddenRestorePower < uid=253B686766266050000FABCA509604A2 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveInteract OBJ020_RestorePower < uid=9D01D21762A1E90D0002253B6A3A2820 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #9D01D21762A1E9250002253CADA98DB4, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 9465, text = \"Find a way to restore the power\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD TRUE
+					myQuestObjectiveAudioState
+					{
+						myGuid 45D84653BDAA32E602E8A9A8DED12E9A
+					}
+					myChildObjectives
+					{
+						QuestObjectiveInteract OBJ030_010_CutThepower < uid=9D01D217638A1CB20002130E38540F9C >
+						{
+							myName "aurabesh = false, contextComment = \"Objective Text\", enabled = true, guid = #9D01D21762A1E9DE0002253F0963C0C1, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 403, text = \"Find a way to cut the power\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+							myIsHint FALSE
+						}
+					}
+				}
+				QuestObjectiveInteract OBJ030_SearchTheBody < uid=9D01D21762A1EDC9000229228907D12C >
+				{
+					myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #9D01D21762A1EDE60002292303D88B62, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 9465, text = \"Investigate the body\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+					myQuestObjectiveAudioState
+					{
+						myGuid 4A7CEFB569FA06C20033678C44C69488
+					}
+				}
+			}
+			myHasInitFromPreviousBeatPin FALSE
+			myQuestBeatStateGameValue < uid=9D01D217629609AD0000766C5522BBB6 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 48E34694B58CDF31ABBEED5276725AB9
+			}
+		}
+		QuestBeat "B02b Follow the transponder to Hoss" < uid=9D01D217632D999F0001D9F4B6CA09B3 >
+		{
+			myScript helix/scripts/scr_a_mq_110_tat_pln_b025_reachhosslocation.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"Beat Text\", enabled = true, guid = #9D01D217632DAAB20000FD5D00193E38, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 3614, text = \"Follow the transponder signal\", type = \"MenuLine\""
+			myAutostartQuestGoal < uid=253B686765AF8D85001055A552E73EEB >
+			{
+				myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"Goal Text\", enabled = true, guid = #253B686765AF8D6E001055A410910168, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9465, text = \"Follow the transponder signal\", type = \"MenuLine\""
+			}
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Relaxed
+			myObjectives
+			{
+				QuestObjectiveGoToLocation OBJ010_ReachTheCliff < uid=9D01D217632DAB0F0000FD5FF33BF80A >
+				{
+					myName "aurabesh = false, contextComment = \"Objective Text\", enabled = true, guid = #9D01D217632DAB1E0000FD600D2842AA, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 9465, text = \"Follow the transponder signal\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD FALSE
+				}
+				QuestObjectiveGoToLocation OBJ020_FollowTheTrail < uid=9D01D217632DAC35000120EEEB4B97A6 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective Text\", enabled = true, guid = #9D01D217632DAC3F000120EF7F21549C, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 9465, text = \"Follow Hoss' trail\", type = \"MenuLine\"}"
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD TRUE
+					myIsHint FALSE
+					myChildObjectives
+					{
+						QuestObjectiveGoToLocation OBJ021FollowTheTrail < uid=9D01D2176448ED0E000116E030F6BC35 >
+						{
+							myName "aurabesh = false, contextComment = \"Objective Text\", enabled = true, guid = #9D01D2176332EB060000DF0C34BB7AFE, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 403, text = \"This trail must lead to Hoss\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+							myIsHint TRUE
+						}
+					}
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=9D01D217632DA15E00025FCD6B5A2D7C >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 438FB80F3C92F03045EAC5F2D68307B8
+			}
+		}
+		QuestBeat "B03 Talk to O'URR'AKK" < uid=9D01D217629607F500007652FF48DE6E >
+		{
+			myScript helix/scripts/scr_A_MQ_110_TAT_PLN_B03_TrackHoss.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"Beat text\", enabled = true, guid = #9D01D21762960802000076538E905517, lineVersion = 13, maxLength = 0, productId = -1, sectionId = 3614, text = \"Talk to O'Urr'Akk\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=9D01D217629609AD0000766DC64B2B2E >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 41CE10C08FACF22056782DFD598B0B9D
+			}
+		}
+		QuestBeat "B04 Retrieve the Krayt dragon pearl" < uid=9D01D2176296088D0000765D4A3271BD >
+		{
+			myScript helix/scripts/scr_A_MQ_110_TAT_PLN_B04_RetrieveStick.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"Beat text\", enabled = true, guid = #9D01D2176296089F0000765E832B3217, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 3614, text = \"Retrieve the stolen Krayt dragon pearl\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Focused
+			myObjectives
+			{
+				QuestObjectiveCustom OBJ020_LocateThePearl < uid=9D01D217632D6E870000AD719ED76D17 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #9D01D217632D6F1E0000AD7298DBED4F, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 9467, text = \"Retrieve the stolen Krayt dragon pearl\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD TRUE
+					myIsHint FALSE
+					myChildObjectives
+					{
+						QuestObjectiveGoToLocation "OBJ01 - Locate the stick" < uid=9D01D2176332F24800016F163B967540 >
+						{
+							myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #9D01D2176332F25300016F176478C733, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 403, text = \"Retrieve the stolen gaffi stick\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+							myIsHint FALSE
+						}
+					}
+				}
+				QuestObjectiveInteract OBJ030_GetThePearl < uid=9D01D2176296094D000076660BB545A2 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective Text\", enabled = true, guid = #9D01D2176296095B00007667BF876E2D, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 9467, text = \"Retrieve the stolen Krayt dragon pearl\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD FALSE
+					myIsHint FALSE
+				}
+			}
+			myQuestBeatStateGameValue < uid=9D01D217629609AD0000766E3A4C2F54 >
+			{
+			}
+			myDeactivateContentLocationOnComplete FALSE
+			myQuestBeatAudioState
+			{
+				myGuid 4036B37FA5CCF1A1D8C985D56B467291
+			}
+		}
+		QuestBeat "B05 Find a way out of the cave" < uid=253B686765B775D30002E24ADB3D049F >
+		{
+			myScript helix/scripts/scr_a_mq_110_tat_pln_b05_exitcave.mscript
+			myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Beat text\", enabled = true, guid = #253B686765B775D30002E24B6F2F9C65, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 3614, text = \"Find a way out of the cave\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation OBJ000_LeaveCave < uid=9D01D21762974FBF00003171C8C40719 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+					myChildObjectives
+					{
+					}
+				}
+				QuestObjectiveGoToLocation OBJ010_LeaveCave < uid=253B686765B777F60002E97016B2145D >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"Objective Text\", enabled = true, guid = #253B686765B776960002E96DA38C4F5F, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9468, text = \"Find another way out of the cave\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+					myChildObjectives
+					{
+					}
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=253B686765B777F60002E972A634F5FF >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 42C37F5A2E5B587F1A68AED11714B995
+			}
+		}
+	}
+	myQuestStateGameValue < uid=6F2AF919621789D4000027E6A672420D >
+	{
+	}
+	myQuestAudioState
+	{
+		myGuid 41D1BADDD23FAAA66772F797476E5E96
+	}
+	myQuestStartedRBTag < uid=DA5615DD64B4FC2B0000AB99DD783688 > = World_Quest_MQ110_Started DA5615DD64A3E0FB0000AC326579CC9D
+	myQuestCompletedRBTag < uid=DA5615DD64B4FC2B0000AB9AD0226051 > = World_Quest_MQ110_Completed DA5615DD64A3E20F0000AC47ECD90258
+}
+

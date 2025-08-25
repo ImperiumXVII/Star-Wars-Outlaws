@@ -1,0 +1,377 @@
+include "helix/game system data/fruit/ai/spaceshipsettings.fruit"
+include "helix/game system data/juice/ai/npcshootpatterns.mnpcshootpattern"
+include "helix/game system data/juice/ai/spaceshipcombatprofiles.mspaceshipcombatprofile"
+include "helix/game system data/juice/ai/spaceshipformationprofiles.mspaceshipformationprofile"
+include "helix/game system data/juice/ai/spaceshipspawnprofiles.mspaceshipspawnprofile"
+include "helix/game system data/juice/ai/spaceshipspeedprofiles.mspaceshipspeedprofile"
+include "helix/game system data/juice/ai/spaceshiptrajectories.mspaceshiptrajectoryprofile"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_default.juice"
+
+SpaceshipBehaviorParameter vandorEvasiveStartCurrentManeuverMinElapsedTime : EvasiveStartCurrentManeuverMinElapsedTime
+{
+}
+
+SpaceshipBehaviorParameter vandorEvasiveStartMinDistance : EvasiveStartMinDistance
+{
+}
+
+SpaceshipBehaviorParameter vandorEvasiveMinDistance : EvasiveMinDistance
+{
+	myValue 250.0
+}
+
+SpaceshipBehaviorParameter vandorEvasiveDurationRandomMin : EvasiveDurationRandomMin
+{
+	myValue 5.0
+}
+
+SpaceshipBehaviorParameter vandorEvasiveDurationRandomMax : EvasiveDurationRandomMax
+{
+	myValue 10.0
+}
+
+SpaceshipBehaviorParameter vandorEvasiveConeAngle : EvasiveConeAngle
+{
+}
+
+SpaceshipBehaviorParameter vandorEvasiveStartAngleFromHostile : EvasiveStartAngleFromHostile
+{
+}
+
+SpaceshipBehaviorParameter vandorEvasiveSpiralProbability : EvasiveSpiralProbability
+{
+}
+
+SpaceshipBehaviorParameter vandorEvasivePauseBetweenPatternsMin : EvasivePauseBetweenPatternsMin
+{
+	myValue 1.0
+}
+
+SpaceshipBehaviorParameter vandorEvasivePauseBetweenPatternsMax : EvasivePauseBetweenPatternsMax
+{
+	myValue 1.5
+}
+
+SpaceshipBehaviorParameter vandorEvasiveBreakProbability : EvasiveBreakProbability
+{
+}
+
+SpaceshipBehaviorParameter vandorEvasiveScaleWidth : EvasiveScaleWidth
+{
+}
+
+SpaceshipBehaviorParameter vandorEvasiveScaleHeight : EvasiveScaleHeight
+{
+}
+
+SpaceshipBehaviorParameter vandorEvasiveScaleLength : EvasiveScaleLength
+{
+}
+
+SpaceshipBehaviorParameter vandorTimeToStartEvasiveIfStillInFrontOfHostile : TimeToStartEvasiveIfStillInFrontOfHostile
+{
+	myValue 5.0
+}
+
+SpaceshipBehaviorParameter vandorBreakStartCurrentManeuverMinElapsedTime : BreakStartCurrentManeuverMinElapsedTime
+{
+}
+
+SpaceshipBehaviorParameter vandorChaseDurationRandomMin : ChaseDurationRandomMin
+{
+	myValue 8.0
+}
+
+SpaceshipBehaviorParameter vandorChaseDurationRandomMax : ChaseDurationRandomMax
+{
+	myValue 16.0
+}
+
+SpaceshipBehaviorParameter vandorChaseDistanceMin : ChaseDistanceMin
+{
+}
+
+SpaceshipBehaviorParameter vandorChaseDistanceMax : ChaseDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter vandorChaseConeAngle : ChaseConeAngle
+{
+}
+
+SpaceshipBehaviorParameter vandorChaseChanceToBreakOnHostileDodgePercent : ChaseChanceToBreakOnHostileDodgePercent
+{
+	myValue 50.0
+}
+
+SpaceshipBehaviorParameter vandorChaseBreakProbabilityOverPass : ChaseBreakProbabilityOverPass
+{
+	myValue 50.0
+}
+
+SpaceshipBehaviorParameter vandorOvershootMaxAngle : OvershootMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter vandorInterceptConeAngle : InterceptConeAngle
+{
+	myValue 40.0
+}
+
+SpaceshipBehaviorParameter vandorInterceptDistanceIdeal : InterceptDistanceIdeal
+{
+}
+
+SpaceshipBehaviorParameter vandorInterceptDistanceMin : InterceptDistanceMin
+{
+}
+
+SpaceshipBehaviorParameter vandorInterceptDistanceMax : InterceptDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter vandorInterceptDurationMin : InterceptDurationMin
+{
+	myValue 5.0
+}
+
+SpaceshipBehaviorParameter vandorInterceptDurationMax : InterceptDurationMax
+{
+	myValue 15.0
+}
+
+SpaceshipBehaviorParameter vandorJoustingProbability : JoustingProbability
+{
+}
+
+SpaceshipBehaviorParameter vandorJoustingMaxDurationPrepare : JoustingMaxDurationPrepare
+{
+}
+
+SpaceshipBehaviorParameter vandorJoustingMaxDuration : JoustingMaxDuration
+{
+}
+
+SpaceshipBehaviorParameter vandorJoustingDistanceTurn : JoustingDistanceTurn
+{
+}
+
+SpaceshipBehaviorParameter vandorJoustingEndDistance : JoustingEndDistance
+{
+}
+
+SpaceshipBehaviorParameter vandorJoustingAngle : JoustingAngle
+{
+	myValue 45.0
+}
+
+SpaceshipBehaviorParameter vandorJoustingMaxAngle : JoustingMaxAngle
+{
+	myValue 100.0
+}
+
+SpaceshipBehaviorParameter vandorJoustingEndBreakProbabilityOverPass : JoustingEndBreakProbabilityOverPass
+{
+	myValue 50.0
+}
+
+SpaceshipBehaviorParameter vandorJoustingPositionMaxHeight : JoustingPositionMaxHeight
+{
+	myValue 200.0
+}
+
+SpaceshipBehaviorParameter vandorAlignMinDistance : AlignMinDistance
+{
+}
+
+SpaceshipBehaviorParameter vandorAlignMaxDistance : AlignMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter vandorLeashingMinDistance : LeashingMinDistance
+{
+}
+
+SpaceshipBehaviorParameter vandorLeashingMaxDistance : LeashingMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter vandorLeashingToVolumeMaxDistance : LeashingToVolumeMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter vandorShootMaxDistance : ShootMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter vandorShootMaxAngle : ShootMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter vandorBarkPositionDistanceMax : BarkPositionDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter vandorBroadcastRangeEnterCombat : BroadcastRangeEnterCombat
+{
+}
+
+SpaceshipBehaviorParameter vandorEscortDistance : EscortDistance
+{
+}
+
+SpaceshipBehaviorParameter vandorLowProhibitedActionAttackDelay : LowProhibitedActionAttackDelay
+{
+}
+
+SpaceshipBehaviorParameter vandorAccurateShootingProbability : AccurateShootingProbability
+{
+}
+
+SpaceshipBehaviorParameter vandorRangeForSecondaryWeapon : RangeForSecondaryWeapon
+{
+}
+
+SpaceshipBehaviorParameter vandorUndetectedTimeBeforeExitingCombat : UndetectedTimeBeforeExitingCombat
+{
+}
+
+SpaceshipBehaviorParameter vandorUndetectedTimeBeforeExitingAware : UndetectedTimeBeforeExitingAware
+{
+}
+
+SpaceshipBehaviorParameter vandorReinforcementsCallProbabilityPercent : ReinforcementsCallProbabilityPercent
+{
+}
+
+SpaceshipBehaviorParameter vandorReinforcementsCallDuration : ReinforcementsCallDuration
+{
+}
+
+SpaceshipBehaviorParameter vandorIdleDefaultSplineSizeHorizontal : IdleDefaultSplineSizeHorizontal
+{
+}
+
+SpaceshipBehaviorParameter vandorIdleDefaultSplineSizeVertical : IdleDefaultSplineSizeVertical
+{
+}
+
+SpaceshipBehaviorParameter vandorCooldownDuration : CooldownDuration
+{
+	myValue 2.0
+}
+
+SpaceshipBehaviorParameter vandorCooldownMaxDistance : CooldownMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter vandorSpaceshipMaxEngagementDistance : SpaceshipMaxEngagementDistance
+{
+	myValue 1500.0
+}
+
+SpaceshipBehaviorParameter vandorSpaceshipPrimaryMaxAngle : SpaceshipPrimaryMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter vandorSpaceshipPrimaryMaxDistance : SpaceshipPrimaryMaxDistance
+{
+	myValue 1500.0
+}
+
+SpaceshipBehaviorParameter vandorSpaceshipPrimaryMinDistance : SpaceshipPrimaryMinDistance
+{
+	myValue 100.0
+}
+
+SpaceshipBehaviorParameter vandorSpaceshipPrimaryMaxHealth : SpaceshipPrimaryMaxHealth
+{
+}
+
+SpaceshipBehaviorParameter vandorSpaceshipSecondaryMaxAngle : SpaceshipSecondaryMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter vandorSpaceshipSecondaryMaxDistance : SpaceshipSecondaryMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter vandorSpaceshipSecondaryMinDistance : SpaceshipSecondaryMinDistance
+{
+}
+
+SpaceshipBehaviorParameter vandorSpaceshipSecondaryMaxHealth : SpaceshipSecondaryMaxHealth
+{
+}
+
+SpaceshipBehaviorParameter vandorSpaceshipMissileMaxAngle : SpaceshipMissileMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter vandorSpaceshipMissileMaxDistance : SpaceshipMissileMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter vandorSpaceshipMissileMinDistance : SpaceshipMissileMinDistance
+{
+}
+
+SpaceshipBehaviorParameter vandorSpaceshipMissileMaxHealth : SpaceshipMissileMaxHealth
+{
+}
+
+SpaceshipBehaviorParameter vandorCombatLeashingToPlayer : CombatLeashingToPlayer
+{
+}
+
+SpaceshipBehaviorParameter vandorSpaceshipAccuracyRadiusMax : SpaceshipAccuracyRadiusMax
+{
+	myValue 7.5
+}
+
+SpaceshipBehaviorParameter vandorSpaceshipAccuracyRadiusMin : SpaceshipAccuracyRadiusMin
+{
+}
+
+SpaceshipBehaviorParameter vandorSpaceshipAccuracyDistanceMax : SpaceshipAccuracyDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter vandorSpaceshipAccuracyDistanceMin : SpaceshipAccuracyDistanceMin
+{
+	myValue 500.0
+}
+
+SpaceshipBehaviorParameter vandorSpaceshipShotSpreadPercentage : SpaceshipShotSpreadPercentage
+{
+	myValue 0.5
+}
+
+SpaceshipBehaviorParameter vandorSpaceshipMissileLockOnTime : SpaceshipMissileLockOnTime
+{
+}
+
+SpaceshipBehaviorParameter vandorHarassmentChance : HarassmentChance
+{
+}
+
+SpaceshipBehaviorParameter vandorHarassmentDuration : HarassmentDuration
+{
+}
+
+SpaceshipBehaviorParameter vandorHarassmentAreaSizeMin : HarassmentAreaSizeMin
+{
+}
+
+SpaceshipBehaviorParameter vandorHarassmentAreaSizeMax : HarassmentAreaSizeMax
+{
+}
+
+SpaceshipBehaviorParameter vandorHarassmentAreaHeightMin : HarassmentAreaHeightMin
+{
+}
+
+SpaceshipBehaviorParameter vandorHarassmentAreaHeightMax : HarassmentAreaHeightMax
+{
+}
+

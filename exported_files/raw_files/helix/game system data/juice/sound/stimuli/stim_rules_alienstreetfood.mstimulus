@@ -1,0 +1,83 @@
+include helix/audio/votypes.juice
+include "helix/game system data/fruit/audio/stimulus.fruit"
+include "helix/game system data/juice/barks/cooldown_alienstreetfood.mbarkscooldown"
+include "helix/game system data/juice/sound/stimuli/stim_id_alienstreetfood.mstimulusidentifier"
+
+StimulusElementContainer ASF_CookingDroid_Welcome < uid=DA5615DD63EC9632000009D01E2783C4 >
+{
+	myIdentifier < uid=DA5615DD63EC98FC000009D3E00DD594 > = S_ASF_CookDroid_Welcome DA5615DD63EC9582000009CD64F92DFB
+	myVOType < uid=DA5615DD63EC99AB000009D4C21653F2 > = VOType_Scene_Cutscene 3A1C5D1862D94CC900003D730BF553BB
+	mySubtitlePurpose "id = \"3BE919366647128E0003BAF487FC5095\""
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+		}
+	}
+	myElements
+	{
+		StimulusElement CookDroidWelcome_Kijimi
+		{
+			myElement
+			{
+				myGuid 4A1B005A4C76619A61A7053402C469BC
+			}
+			myTemplateOverride
+			{
+				myGuid 442295BFA7F77D29541171A959F187AA
+			}
+			myDelay 0.6
+		}
+	}
+}
+
+StimulusElementContainer ASF_CookingDroid_KayLeaves_NoOrder < uid=DA5615DD63ECAA7B000009CB909343E4 >
+{
+	myIdentifier < uid=DA5615DD63ECAAA9000009CCF1B237BA > = S_ASF_CookDroid_KayLeaves_NoOrder DA5615DD63EC958B000009CEB88057F1
+	myVOType < uid=DA5615DD63ECAAE2000009CDAC064C13 > = VOType_Scene_Cutscene 3A1C5D1862D94CC900003D730BF553BB
+	mySubtitlePurpose "id = \"3BE919366647128E0003BAF487FC5095\""
+	myElements
+	{
+		StimulusElement KayLeaves_NoOrder_Kijimi
+		{
+			myElement
+			{
+				myGuid 47A97FFF167E3D0C520100D34C9F449E
+			}
+			myTemplateOverride
+			{
+				myGuid 483B5015D8BAECFA1FF878B194B058A5
+			}
+		}
+	}
+}
+
+StimulusElementContainer ASF_CookingDroid_Idle < uid=DA5615DD64AFF9A20000AD73653C5DA4 >
+{
+	myIdentifier < uid=DA5615DD64AFFA230000AD749B2A53E3 > = S_ASF_CookDroid_Idle DA5615DD64AFF42800005BB533F34385
+	myCooldowns
+	{
+		BarksCooldown Get_Idle < uid=DA5615DD64AFFB670000AD790DD38596 > = cooldown_alienstreetfood DA5615DD63EC9725000009D209991543
+	}
+	myVOType < uid=DA5615DD64AFFA230000AD75DE9F82BD > = VOType_Scene_Cutscene 3A1C5D1862D94CC900003D730BF553BB
+	mySubtitlePurpose "id = \"3BE919366647128E0003BAF487FC5095\""
+	myElements
+	{
+		StimulusElement Idle_Kijimi
+		{
+			myElement
+			{
+				myGuid 4E9742B154BD7295D0D4AB2A0E182A89
+			}
+			myCooldowns
+			{
+				BarksCooldown Set_Idle < uid=DA5615DD64AFFBCB0000AD7B30C6A0CD > = cooldown_alienstreetfood DA5615DD63EC9725000009D209991543
+			}
+			myTemplateOverride
+			{
+				myGuid 442295BFA7F77D29541171A959F187AA
+			}
+		}
+	}
+}
+

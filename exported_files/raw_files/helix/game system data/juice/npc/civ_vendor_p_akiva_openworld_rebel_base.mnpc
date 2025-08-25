@@ -1,0 +1,43 @@
+include "helix/game system data/juice/npc/base_civ_vendor.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC civ_vendor_p_akiva_openworld_rebel_base < uid=91DC5D3C65086DC90026B5B03EEE8C5A > : base_civ_vendor
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Sub-name for a general goods Rebel merchant\", enabled = true, guid = #09AEDAAA65C5FBE6000001672F9EC8B3, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 10653, text = \"General Goods Merchant (TO BE WRITTEN)\", type = \"MenuLine\""
+	myCharacterVisuals < uid=91DC5D3C65086DC90026B5B1C672DA6A > = character_visuals_2_silver_aki_rebel_base_vendor E4123D2764B658670000CCB1B41C53F7
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F25651D89C0000764E544A799DE > = Agent_Gender_FeminineTag 16DEADE6626D20EA00002E5277B65AD4
+	}
+	myPossibleSpeciesTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F25651D89CF000764E662772D54 > = Agent_Species_MonCalamariTag 2736B365634D673A0003C27E7EAFBDFF
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F25651D89D5000764E7202D694C > = Agent_Vendor_Unique 1EC89F25640075230003D75F86E0E0A3
+	}
+	myDialogueCharacters
+	{
+		DialogueCharacterWithTags VendorRebelMonCalamariF01 < uid=1EC89F25651D89DD000764E81F2F4C91 >
+		{
+			myDialogueCharacter < uid=1EC89F25651D89E6000764EABCF8D3FD > = AI_VENDOR_UNIQUE_REBEL_BASE_MON_CALAMARI_F01 1EC89F25648AD9280000A9865DC95C14
+		}
+	}
+	myVendorConfig < uid=91DC5D3C65086DC90026B5B287A54392 > = VendorConfig_AKI_OpenWorld_Neutral_General_Rebel F4D8AE26653A368D00007CA165378A51
+	myHideMapRefGameConditions
+	{
+		myType Group
+		myIsNegated FALSE
+		myOperator And
+		myCanBeOverridden FALSE
+		myConditions
+		{
+			GameConditionContextAgentIsAlive "New GameConditionContextAgentIsAlive"
+			{
+				myIsNegated TRUE
+			}
+		}
+	}
+}
+

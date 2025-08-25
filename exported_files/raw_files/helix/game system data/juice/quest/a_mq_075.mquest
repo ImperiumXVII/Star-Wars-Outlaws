@@ -1,0 +1,115 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/intel/intel_toshara.mintel"
+include "helix/game system data/juice/rbtags/quest.mrbtagstags"
+include "helix/game system data/juice/reward/quest_completion_reward.mreward"
+include "helix/game system data/juice/reward/quest_reward.mreward"
+
+Quest A_MQ_075 < uid=8FD81D516548C3520004CCF8AF67A475 >
+{
+	myName "aurabesh = false, contextComment = \"A_MQ_075 Quest Name\", enabled = true, guid = #8FD81D516548C3520004CCE1874B88CF, lineVersion = 15, maxLength = 0, productId = -1, sectionId = 10874, text = \"Gunsmith\", type = \"MenuLine\""
+	myIntroDescription "aurabesh = false, contextComment = \"A_MQ_075 Quest Intro Description\", enabled = true, guid = #8FD81D516548C3520004CCE2AB8A5244, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 10874, text = \"Quest Intro Description Placeholder\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"A_MQ_075 Quest Description\", enabled = true, guid = #8FD81D516548C3520004CCE369F54A56, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 10874, text = \"Quest Description Placeholder\", type = \"MenuLine\""
+	myImage helix/baked/ui/loose_images/quest_bilboard/journal_billboard_mq_075.dds
+	myCompletionReward < uid=8FD81D516548C3520004CCF9DB9FCF61 > = NULLREFERENCE
+	myDebugPlayOnlyCompletionReward < uid=8FD81D516548C3520004CCFAA8A2078C > = A_MQ_075_debug_quest_completion_reward 2AE2EC856781231E000DFFB7789CB5B9
+	myDebugPlayOnlyIsCompletionRewardUnique TRUE
+	myDebugPlayOnlyEquipItem TRUE
+	myGoals
+	{
+	}
+	myIntroBeat < uid=8FD81D516548C3520004CCFBA77B860B >
+	{
+		myScript helix/scripts/scr_a_mq_075_trb_pln_b00_talktond5.mscript
+		myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myAutostartQuestGoal < uid=8FD81D5165B3A7AE003DDCD0CFEA95ED >
+		{
+			myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_MQ_075 Beat Text - Talk to ND5\", enabled = true, guid = #8FD81D5165B3A7A6003DDCCFF224C55A, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10878, text = \"Talk to ND5\", type = \"MenuLine\""
+		}
+		myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+		myDebugPlayLandingZone 1EAB3B4063D122E000009106AC3BC2C5
+		myMood RelaxedNoSpawnpoints
+		myObjectives
+		{
+			QuestObjectiveTalkTo B00_010_TalkToND5 < uid=8FD81D516548C3520004CCFC35ADDA9D >
+			{
+				myName "aurabesh = false, contextComment = \"A_MQ_075 Beat Text - Talk to ND5\", enabled = true, guid = #8FD81D516548C3520004CCE5C0CADC25, lineVersion = 16, maxLength = 0, productId = -1, sectionId = 9529, text = \"Talk to ND5\", type = \"MenuLine\""
+				myIsOptional FALSE
+				myIsHiddenInTracker FALSE
+				myIsHiddenInHUD TRUE
+			}
+		}
+		myQuestBeatStateGameValue < uid=8FD81D516548C3520004CCFD106CFF8E >
+		{
+		}
+	}
+	myBeats
+	{
+		QuestBeat "QB01 ReachTrailblazer" < uid=8FD81D516548C3520004CCFEA84A0468 >
+		{
+			myScript helix/scripts/scr_a_mq_075_trb_pln_b01_trailblazerworkbench.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myAutostartQuestGoal < uid=8FD81D5165B3A7C0003DDCD351F016E3 >
+			{
+				myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_MQ_075 Beat Text - Reach the Trailblazer\", enabled = true, guid = #8FD81D5165B3A7B8003DDCD231CBC5B3, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10875, text = \"Talk to ND5\", type = \"MenuLine\""
+			}
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myDebugPlayLandingZone 1EAB3B4063D122E000009106AC3BC2C5
+			myObjectives
+			{
+				QuestObjectiveTalkTo B01_010_TalkToND5 < uid=8FD81D516548C3520004CCFFD37A84B4 >
+				{
+					myName "aurabesh = false, contextComment = \"A_MQ_045 Objective Text - Player must talk to ND5\", enabled = true, guid = #8FD81D516548C3520004CCE7FA4FF483, lineVersion = 23, maxLength = 0, productId = -1, sectionId = 10875, text = \"Talk to ND5\", type = \"MenuLine\""
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+					myIntel
+					{
+					}
+					myChildObjectives
+					{
+					}
+				}
+				QuestObjectiveCustom B01_020_UseWorkbench < uid=8FD81D516548DE890000D02498A69D08 >
+				{
+					myName "aurabesh = false, contextComment = \"A_MQ_075 Beat Text - Player must interact with workbench and build the Explosive Module\", enabled = true, guid = #8FD81D516548DE890000D0254A799B8E, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10875, text = \"Assemble the explosive module\", type = \"MenuLine\""
+					myChildObjectives
+					{
+						QuestObjectiveGetItem "New QuestObjectiveGetItem" < uid=8FD81D516548E1220000D02B1294CE3C >
+						{
+							myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+						}
+					}
+				}
+			}
+			myQuestBeatStateGameValue < uid=8FD81D516548C3520004CD01FFBFDB7E >
+			{
+			}
+			myWaitForInitCompletedOnInBeatVolume FALSE
+		}
+	}
+	myOutroBeat
+	{
+		QuestBeat "QOB ND5 Sits Down" < uid=8FD81D5165F85A0200016FE1F10DB7A4 >
+		{
+			myScript helix/scripts/scr_a_mq_075_trb_pln_ob01_nd5_sitsdown.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood RelaxedNoSpawnpoints
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=8FD81D5165F85A1600016FE44BB9A416 >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=8FD81D516548C3520004CD19098AC5BD >
+	{
+	}
+	myQuestAudioState
+	{
+		myGuid 49C63AD9A16838D83DFF05F15A19BB88
+	}
+	myQuestStartedRBTag < uid=8FD81D516548C3520004CD1A9A6CB8FA > = NULLREFERENCE
+	myQuestCompletedRBTag < uid=8FD81D516548C3520004CD1B3E7FD5F6 > = NULLREFERENCE
+}
+

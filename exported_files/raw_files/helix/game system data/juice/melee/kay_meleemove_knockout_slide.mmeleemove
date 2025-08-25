@@ -1,0 +1,108 @@
+include "helix/game system data/fruit/melee/melee_move.fruit"
+include "helix/game system data/juice/melee/kay_meleemove_base.mmeleemove"
+
+MeleeMove kay_meleemove_normal_KO_slide < uid=5CFE16D5652662D3001F4F9F3D88F1D4 > : kay_meleemove_base
+{
+	myApproachingEnabled FALSE
+	myExecutionDurationMin 1.125
+	myExecutionDurationMax 1.125
+	myExecutionDurationVariation 0.0
+	myRangeExecution 6.0
+	myExecutionSequence
+	{
+		myGenericTracks
+		{
+			CameraShakeTrack BaseCamShake
+			{
+				myCamShake < uid=5CFE16D5652662D3001F4FA0CEF344C2 > = player_melee_punch_base B0ED9250625FD32B0000403767915B64
+			}
+		}
+		myCustomTracks
+		{
+			MeleeHitTrack Hit
+			{
+				myStartCyclePos 0.3
+				myEndCyclePos 0.5
+			}
+			MeleeMovingSpeedingUpTrack MovingSpeedingUp
+			{
+				myEndCyclePos 0.0
+			}
+			MeleeMovingTrack Moving
+			{
+				myEndCyclePos 0.32
+			}
+			MeleeBufferingTrack MeleeBuffering
+			{
+				myStartCyclePos 0.5
+			}
+			MeleeTurnTrack Turn
+			{
+				myEndCyclePos 0.9
+			}
+			MeleeTurnModifierTrack TurnModifier
+			{
+				myStartCyclePos 0.0
+				myEndCyclePos 0.3
+				myMultiplier "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 0, }, outTangents = { 0.33333334 0, 0 0, }, properties = { 1095, 71, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+			}
+			MeleeStartNextMoveTrack StartNextMove
+			{
+				myStartCyclePos 0.51
+			}
+			MeleeUninterruptibleTrack Uninterruptible
+			{
+				myEndCyclePos 0.75
+			}
+			MeleeLocomotionFreeTrack "Free Locomotion"
+			{
+				myStartCyclePos 0.82
+			}
+		}
+	}
+	myStartConditions
+	{
+		myTargetInRange
+		{
+			myEnabled TRUE
+			myDistance 3.0
+		}
+		myGameCondition
+		{
+			GameConditionMeleeGroup "Multiple Conditions"
+			{
+				myConditions
+				{
+					GameConditionMeleeTargetIsValid "Has Target"
+					{
+					}
+					GameConditionMeleeTargetNumPunchesToDie "Is KO"
+					{
+						myOperator LessThanOrEqual
+					}
+					GameConditionMeleeGroup "Is Powersliding"
+					{
+						myOperator Or
+						myConditions
+						{
+							GameConditionMeleeAttackerIsInMovementState Powerslide
+							{
+								myState PowerSlide
+							}
+							GameConditionMeleeAttackerIsInMovementState "Exit Powerslide"
+							{
+								myState ExitPowerslide
+							}
+						}
+					}
+					GameConditionMeleeTargetPreferredAttack "Not Low Target"
+					{
+						myIsNegated TRUE
+						myPreferredAttack Kick
+					}
+				}
+			}
+		}
+	}
+}
+

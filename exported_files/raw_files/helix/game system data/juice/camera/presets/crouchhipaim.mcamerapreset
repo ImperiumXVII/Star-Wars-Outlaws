@@ -1,0 +1,27 @@
+include "helix/game system data/fruit/camera/camera.fruit"
+include "helix/game system data/juice/camera/presets/crouch.mcamerapreset"
+include "helix/game system data/juice/camerainput/hipaim_camera_input.mcamerainput"
+
+CameraPreset crouchHipAim < uid=B0ED92506284FC80000031BAC09CD24D > : crouch
+{
+	myMode CrouchHipAim
+	myFOV 65.0
+	myDistance 3.0
+	myInput < uid=8E0EA530665086C2000000D16F8791B3 > : hipaim_camera_input
+	{
+	}
+	myPivot 0.3;1.2;0.0
+	myCanRaiseWhenCloseToTarget TRUE
+	myHeightDeviationData
+	{
+		myDampingRatio 1.0
+		myDampingRatioOffset 1.0
+		mySpringConstant 200.0
+		mySpringConstantOffset 200.0
+		myMaxDistance 0.1
+		myIsActive TRUE
+	}
+	myIsAimCamera TRUE
+	myAlignToSlope FALSE
+}
+

@@ -1,0 +1,4057 @@
+include "helix/game system data/fruit/ai/dynamiccapinteraction.fruit"
+include "helix/game system data/juice/ai/capinteractions/bantha-interactions.mcapinteraction"
+include "helix/game system data/juice/ai/capinteractions/dewback-interactions.mcapinteraction"
+include "helix/game system data/juice/ai/capinteractions/gushiro-interactions.mcapinteraction"
+include "helix/game system data/juice/ai/capinteractions/ku-interactions.mcapinteraction"
+include "helix/game system data/juice/ai/capinteractions/massiff-interactions.mcapinteraction"
+include "helix/game system data/juice/ai/capinteractions/ngomba-interactions.mcapinteraction"
+include "helix/game system data/juice/ai/capinteractions/sammakho-interactions.mcapinteraction"
+include "helix/game system data/juice/ai/capinteractions/scurrier-interactions.mcapinteraction"
+include "helix/game system data/juice/ai/capinteractions/tshikara-interactions.mcapinteraction"
+include "helix/game system data/juice/ai/wildlifecapbiomedata.juice"
+
+NPCDynamicCAPInteractionProfile ScurrierDynamicCAP < uid=290EB60C63467DEF00046038E3CCD454 >
+{
+	myDynamicCAPSpawnData
+	{
+		DynamicCAPSpawnDataSet default
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=290EB60C63467DEF00046039F031720F > = Scurrier-Idle 290EB60C624682C2000000BEBDB285B6
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 1.0
+						myMaxDistanceToAgent 5.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle -1.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Dig
+				{
+					myCAPInteractionConstantData < uid=290EB60C63467DEF0004603A9976D082 > = Scurrier-Dig 290EB60C624682DC000000BF5B8F6574
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 1.0
+						myMaxDistanceToAgent 5.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 10.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+						myMoveRange 0.8
+					}
+				}
+				DynamicCAPSpawnData Eat
+				{
+					myCAPInteractionConstantData < uid=290EB60C63467DEF0004603B56544218 > = Scurrier-Eat 290EB60C62468531000000C4668D5A2B
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 1.0
+						myMaxDistanceToAgent 5.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 10.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+						myBiomeCollisionList = NULLREFERENCE
+						myMoveRange 0.8
+					}
+				}
+				DynamicCAPSpawnData Clean
+				{
+					myCAPInteractionConstantData < uid=290EB60C63467DEF0004603CD3BF52F2 > = Scurrier-Clean 290EB60C6246850D000000C3BE4B8E49
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 1.0
+						myMaxDistanceToAgent 5.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle -1.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Sniff
+				{
+					myCAPInteractionConstantData < uid=290EB60C63467DEF0004603DA865E380 > = Scurrier-Sniff 290EB60C62468549000000C54ABC65D5
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 1.0
+						myMaxDistanceToAgent 5.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 15.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+						myMoveRange 1.2
+					}
+				}
+				DynamicCAPSpawnData Snooze
+				{
+					myCAPInteractionConstantData < uid=290EB60C63467DEF0004603E87B8C4CE > = Scurrier-Snooze 290EB60C62468561000000C62856152B
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 1.0
+						myMaxDistanceToAgent 5.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Lookaround
+				{
+					myCAPInteractionConstantData < uid=290EB60C63467DEF0004603F730812A3 > = Scurrier-Lookaround 290EB60C62468573000000C7CA8DEFAE
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 1.0
+						myMaxDistanceToAgent 5.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Sniffeachother
+				{
+					myCAPInteractionConstantData < uid=40A8A3F965519CE1000168104680D509 > = Scurrier-Sniffeachother 40A8A3F9654C910C00019AB515D24494
+					mySpawnParameters
+					{
+						myMaxSlopeAngle 16.5
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 100.0
+						myIsSyncCAP TRUE
+					}
+				}
+			}
+		}
+		DynamicCAPSpawnDataSet follow
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=290EB60C63F8338F00010C70A22735F1 > = Scurrier-Idle 290EB60C624682C2000000BEBDB285B6
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 15.0
+						myMinCooldown 0.0
+						myMaxCooldown 0.0
+						myWeight 0.1
+					}
+				}
+				DynamicCAPSpawnData Dig
+				{
+					myCAPInteractionConstantData < uid=290EB60C63F8338F00010C7126397FC7 > = Scurrier-Dig 290EB60C624682DC000000BF5B8F6574
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 15.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Eat
+				{
+					myCAPInteractionConstantData < uid=290EB60C63F8338F00010C7299F74A69 > = Scurrier-Eat 290EB60C62468531000000C4668D5A2B
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 15.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Clean
+				{
+					myCAPInteractionConstantData < uid=290EB60C63F8338F00010C733D226F66 > = Scurrier-Clean 290EB60C6246850D000000C3BE4B8E49
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 15.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Sniff
+				{
+					myCAPInteractionConstantData < uid=290EB60C63F8338F00010C74A6315D8E > = Scurrier-Sniff 290EB60C62468549000000C54ABC65D5
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 15.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Snooze
+				{
+					myCAPInteractionConstantData < uid=290EB60C63F8338F00010C754B1BC9C8 > = Scurrier-Snooze 290EB60C62468561000000C62856152B
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 15.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Lookaround
+				{
+					myCAPInteractionConstantData < uid=290EB60C63F8338F00010C76689C66C0 > = Scurrier-Lookaround 290EB60C62468573000000C7CA8DEFAE
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 15.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+			}
+			myDynamicCAPSpawnDataSetType Follow
+		}
+		DynamicCAPSpawnDataSet guard
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A7C4D0008710B0BBC0FEE > = Scurrier-Idle 290EB60C624682C2000000BEBDB285B6
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 15.0
+						myMinCooldown 0.0
+						myMaxCooldown 0.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Clean
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A7C4D0008710E3FEBB78B > = Scurrier-Clean 290EB60C6246850D000000C3BE4B8E49
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 15.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Snooze
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A7C4D00087110BE3BD8CE > = Scurrier-Snooze 290EB60C62468561000000C62856152B
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 15.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Lookaround
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A7C4D00087111FEE40978 > = Scurrier-Lookaround 290EB60C62468573000000C7CA8DEFAE
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 15.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+			}
+			myDynamicCAPSpawnDataSetType Guard
+		}
+	}
+}
+
+NPCDynamicCAPInteractionProfile MassiffDynamicCAP < uid=290EB60C63467E8100046043AF86D238 >
+{
+	myDynamicCAPSpawnData
+	{
+		DynamicCAPSpawnDataSet default
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=290EB60C63467E8100046044BA2D1F5C > = Massiff-Idle 290EB60C62B5585C00006490A03ABF62
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData "Look Around"
+				{
+					myCAPInteractionConstantData < uid=290EB60C63467E8100046045DC82262E > = "Massiff-Look Around" 290EB60C62B55BF00000649E6A5FFE72
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+						myMoveRange 1.5
+					}
+				}
+				DynamicCAPSpawnData Lying
+				{
+					myCAPInteractionConstantData < uid=290EB60C63467E810004604602C4535C > = Massiff-Lying 290EB60C62B55BF00000649F2EB5DE45
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle 25.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 0.25
+						myMoveRange 1.5
+					}
+				}
+				DynamicCAPSpawnData Roar
+				{
+					myCAPInteractionConstantData < uid=290EB60C63467E81000460479B4A562E > = Massiff-Roar 290EB60C62B55BF0000064A09FEE6E96
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData "Shake Body"
+				{
+					myCAPInteractionConstantData < uid=290EB60C63467E8100046048494F6DE4 > = "Massiff-Shake Body" 290EB60C62B55BF0000064A1124816A2
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Sit
+				{
+					myCAPInteractionConstantData < uid=290EB60C63467E8100046049843181B5 > = Massiff-Sit 290EB60C62B55BF0000064A28771D6F7
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle 20.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 0.25
+						myMoveRange 1.5
+					}
+				}
+				DynamicCAPSpawnData "Sniff Air"
+				{
+					myCAPInteractionConstantData < uid=290EB60C63467E810004604B6D7DB55D > = "Massiff-Sniff Air" 290EB60C62B55BF0000064A5B96FD5C8
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+						myMoveRange 1.5
+					}
+				}
+				DynamicCAPSpawnData "Sniff Ground"
+				{
+					myCAPInteractionConstantData < uid=290EB60C63467E810004604C5F6FD55B > = "Massiff-Sniff Gound" 290EB60C62B55BF0000064A6B0A06A7C
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Yawn
+				{
+					myCAPInteractionConstantData < uid=290EB60C63467E810004604D575BCB2A > = Massiff-Yawn 290EB60C62B55BF0000064A7041F50E5
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Sleep
+				{
+					myCAPInteractionConstantData < uid=290EB60C63D767DF0000434284FF713F > = Massiff-Sleep 290EB60C62B55BF0000064A4EBC03314
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle 25.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 0.25
+						myMoveRange 1.5
+					}
+				}
+				DynamicCAPSpawnData "Sniff eachother"
+				{
+					myCAPInteractionConstantData < uid=1E18D672654894330001C081F7EC936F > = "Massiff-Sniff eachother" 1E18D672654893770001BFE6DF98F833
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.5
+						myMaxSlopeAngle 26.5
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 100.0
+						myIsSyncCAP TRUE
+						myMoveRange 1.5
+					}
+				}
+				DynamicCAPSpawnData "Roar eachother"
+				{
+					myCAPInteractionConstantData < uid=40A8A3F9655C554700002A1889411AFC > = "Massiff-Roar eachother" 40A8A3F9655C53CC000029EC5187663D
+					mySpawnParameters
+					{
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.5
+						myMaxSlopeAngle 31.5
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 100.0
+						myIsSyncCAP TRUE
+						myMoveRange 1.5
+					}
+				}
+			}
+		}
+		DynamicCAPSpawnDataSet guard
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8B37000BC7A23F10AF88 > = Massiff-Idle 290EB60C62B5585C00006490A03ABF62
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 0.0
+						myMaxCooldown 0.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Lying
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8B37000BC7A48C7DD35F > = Massiff-Lying 290EB60C62B55BF00000649F2EB5DE45
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Roar
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8B37000BC7A5FF73FFC8 > = Massiff-Roar 290EB60C62B55BF0000064A09FEE6E96
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData "Shake Body"
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8B37000BC7A645A56341 > = "Massiff-Shake Body" 290EB60C62B55BF0000064A1124816A2
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Sit
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8B37000BC7A728AE5954 > = Massiff-Sit 290EB60C62B55BF0000064A28771D6F7
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData "Sniff Air"
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8B37000BC7A84A2B9035 > = "Massiff-Sniff Air" 290EB60C62B55BF0000064A5B96FD5C8
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData "Sniff Ground"
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8B37000BC7A92AC6AB07 > = "Massiff-Sniff Gound" 290EB60C62B55BF0000064A6B0A06A7C
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Yawn
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8B37000BC7AA44177A75 > = Massiff-Yawn 290EB60C62B55BF0000064A7041F50E5
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Sleep
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8B37000BC7AB1E29EF5A > = Massiff-Sleep 290EB60C62B55BF0000064A4EBC03314
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+			}
+			myDynamicCAPSpawnDataSetType Guard
+		}
+	}
+}
+
+NPCDynamicCAPInteractionProfile BanthaDynamicCAP < uid=290EB60C63467ECC00046050299EA6DD >
+{
+	myDynamicCAPSpawnData
+	{
+		DynamicCAPSpawnDataSet default
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=290EB60C66305969000000C95A91E068 > = bantha-idle 290EB60C6305DAB40000442483A548CA
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						myMinCooldown 0.0
+						myMaxCooldown 0.0
+						myWeight 0.1
+					}
+				}
+				DynamicCAPSpawnData Bark
+				{
+					myCAPInteractionConstantData < uid=290EB60C66305969000000CAC1F2DB10 > = bantha-bark 290EB60C6305E805000347EB87C2A71C
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 10.0
+						myMaxDistanceToAgent 12.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Chew
+				{
+					myCAPInteractionConstantData < uid=290EB60C66305969000000CB9927C64A > = bantha-chew 290EB60C6305EB6200004B0AC7C67AB7
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 10.0
+						myMaxDistanceToAgent 12.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+						myBiomeCollisionList = "eat grass (large animal)"
+					}
+				}
+				DynamicCAPSpawnData Eat
+				{
+					myCAPInteractionConstantData < uid=290EB60C66305969000000CC583AF07A > = bantha-eat 290EB60C6305EE0A000068687F19F6FF
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 10.0
+						myMaxDistanceToAgent 12.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+						myBiomeCollisionList = NULLREFERENCE
+					}
+				}
+				DynamicCAPSpawnData Lookaround
+				{
+					myCAPInteractionConstantData < uid=290EB60C66305969000000CD8D7DC9B5 > = bantha-lookaround 290EB60C6305EE0A0000686C51100F4C
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 10.0
+						myMaxDistanceToAgent 12.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Shakehead
+				{
+					myCAPInteractionConstantData < uid=290EB60C66305969000000CEDA00A951 > = bantha-shakehead 290EB60C6305EE0A0000686EA3254C49
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 8.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Yawn
+				{
+					myCAPInteractionConstantData < uid=290EB60C66305969000000CF7DB231CD > = bantha-yawn A2FC21B5661CDE2A00000D80D0AB5029
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 8.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Sneeze
+				{
+					myCAPInteractionConstantData < uid=290EB60C66305969000000D0F284A721 > = bantha-sneeze 40A8A3F9661E145A00000F9760FB3140
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 8.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData lying
+				{
+					myCAPInteractionConstantData < uid=5FDBC67E663898610001216F05DDBB85 > = bantha-lying 5FDBC67E663895FE0001216C83160BC1
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 0.8
+						myMoveRange 0.9
+					}
+				}
+			}
+		}
+		DynamicCAPSpawnDataSet guard
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8581000A756732BA8DFA > = bantha-idle 290EB60C6305DAB40000442483A548CA
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						myMinCooldown 0.0
+						myMaxCooldown 0.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Bark
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8581000A7568088E0988 > = bantha-bark 290EB60C6305E805000347EB87C2A71C
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Chew
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8581000A75693F420351 > = bantha-chew 290EB60C6305EB6200004B0AC7C67AB7
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Eat
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8581000A756A598AF379 > = bantha-eat 290EB60C6305EE0A000068687F19F6FF
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Lookaround
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8581000A756BBFB970EF > = bantha-lookaround 290EB60C6305EE0A0000686C51100F4C
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Shakehead
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8581000A756CC703ECD9 > = bantha-shakehead 290EB60C6305EE0A0000686EA3254C49
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Yawn
+				{
+					myCAPInteractionConstantData < uid=A2FC21B5661CE0E500000D85E61F00EE > = bantha-yawn A2FC21B5661CDE2A00000D80D0AB5029
+					mySpawnParameters
+					{
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Sneeze
+				{
+					myCAPInteractionConstantData < uid=40A8A3F9661E1715000017E0F4FC4A08 > = bantha-sneeze 40A8A3F9661E145A00000F9760FB3140
+					mySpawnParameters
+					{
+						myWeight 1.0
+					}
+				}
+			}
+			myDynamicCAPSpawnDataSetType Guard
+		}
+		DynamicCAPSpawnDataSet post-petting
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Shakehead
+				{
+					myCAPInteractionConstantData < uid=290EB60C6566AC74000B72B8B9CB5D92 > = bantha-shakehead 290EB60C6305EE0A0000686EA3254C49
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 0.0
+						myMaxCooldown 0.0
+						myWeight 0.0
+					}
+				}
+				DynamicCAPSpawnData Friendly
+				{
+					myCAPInteractionConstantData < uid=C828D669674587D200000A69C231CDE0 > = bantha-friendly C828D6696745847600000A597282D574
+					mySpawnParameters
+					{
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						myWeight 1.0
+					}
+				}
+			}
+			myDynamicCAPSpawnDataSetType PostPetting
+		}
+	}
+}
+
+NPCDynamicCAPInteractionProfile NgombaDynamicCAP < uid=290EB60C66305B66000000D191D7E8A5 >
+{
+	myDynamicCAPSpawnData
+	{
+		DynamicCAPSpawnDataSet default
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=290EB60C66305B66000000D24E4291EF > = ngomba-idle 290EB60C634680E40004605F10D2B447
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 4.9
+						myMaxSlopeAngle 20.0
+						mySpawningPosNavArea Land
+						myMinCooldown 0.0
+						myMaxCooldown 0.0
+						myWeight 0.1
+					}
+				}
+				DynamicCAPSpawnData Bark
+				{
+					myCAPInteractionConstantData < uid=290EB60C66305B66000000D3A292FDB3 > = ngomba-bark 290EB60C634681E5000462C5656CC3DD
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 8.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Chew
+				{
+					myCAPInteractionConstantData < uid=290EB60C66305B66000000D475F8FB6F > = ngomba-chew 290EB60C634681E5000462CDBBCF1E1B
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 8.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+						myBiomeCollisionList = NULLREFERENCE
+					}
+				}
+				DynamicCAPSpawnData "Eat Grass"
+				{
+					myCAPInteractionConstantData < uid=290EB60C66305B66000000D55B44A7B5 > = ngomba-eatgrass 290EB60C634681E5000462C1598404D5
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 8.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 10.0
+						myBiomeCollisionList = "eat grass (large animal)"
+						myMoveRange 3.7
+					}
+				}
+				DynamicCAPSpawnData Lookaround
+				{
+					myCAPInteractionConstantData < uid=290EB60C66305B66000000D601D388DB > = ngomba-lookaround 290EB60C634681E5000462C9919145C8
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 8.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Shakehead
+				{
+					myCAPInteractionConstantData < uid=290EB60C66305B66000000D734999237 > = ngomba-shakehead 290EB60C634681E5000462D112A19E04
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 10.0
+						myMaxDistanceToAgent 12.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+						myMoveRange 4.0
+					}
+				}
+				DynamicCAPSpawnData Drink
+				{
+					myCAPInteractionConstantData < uid=290EB60C66305B66000000D886083448 > = ngomba-drink C828D66964CB5D5000011CF97BB4900C
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 8.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea ShallowWater
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 10.0
+					}
+				}
+				DynamicCAPSpawnData sneeze
+				{
+					myCAPInteractionConstantData < uid=290EB60C66305B66000000D9F80F5233 > = ngomba-sneeze 9A285047661C6F450001E883736E50DA
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 8.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData yawn
+				{
+					myCAPInteractionConstantData < uid=290EB60C66305B66000000DA650788B9 > = ngomba-yawn 9A28504766139D68000119750C4AC980
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 8.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData "Bark Eachother"
+				{
+					myCAPInteractionConstantData < uid=290EB60C66305B66000000DB9DF7A604 > = "ngomba-bark eachother" F399855266221343000704DE14F91A4F
+					mySpawnParameters
+					{
+						myClearanceRadius 3.0
+						myMaxSlopeAngle 31.5
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 200.0
+						myIsSyncCAP TRUE
+						myMoveRange 8.5
+					}
+				}
+				DynamicCAPSpawnData "Sniff Eachother"
+				{
+					myCAPInteractionConstantData < uid=290EB60C66305B66000000DC5A9A6B86 > = "ngomba-sniff eachother" 5FC4EA936629FAEB0004D6E7A6540C93
+					mySpawnParameters
+					{
+						myClearanceRadius 3.0
+						myMaxSlopeAngle 21.5
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 200.0
+						myIsSyncCAP TRUE
+						myMoveRange 8.5
+					}
+				}
+				DynamicCAPSpawnData "Chew var01"
+				{
+					myCAPInteractionConstantData < uid=5FDBC67E6638E04B0004AC74972D094C > = "ngomba-chew var01" 5FDBC67E6638B14E000489DEFE1400C0
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 8.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+						myBiomeCollisionList = NULLREFERENCE
+					}
+				}
+			}
+		}
+		DynamicCAPSpawnDataSet guard
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=290EB60C66305B66000000DDD886342C > = ngomba-idle 290EB60C634680E40004605F10D2B447
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 0.1
+						myMaxCooldown 0.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Bark
+				{
+					myCAPInteractionConstantData < uid=290EB60C66305B66000000DE819D2DC5 > = ngomba-bark 290EB60C634681E5000462C5656CC3DD
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Chew
+				{
+					myCAPInteractionConstantData < uid=290EB60C66305B66000000DFA17A7C74 > = ngomba-chew 290EB60C634681E5000462CDBBCF1E1B
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Lookaround
+				{
+					myCAPInteractionConstantData < uid=290EB60C66305B66000000E02835F586 > = ngomba-lookaround 290EB60C634681E5000462C9919145C8
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Drink
+				{
+					myCAPInteractionConstantData < uid=290EB60C66305B66000000E1C1FB83F8 > = ngomba-drink C828D66964CB5D5000011CF97BB4900C
+					mySpawnParameters
+					{
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+					}
+				}
+				DynamicCAPSpawnData sneeze
+				{
+					myCAPInteractionConstantData < uid=290EB60C66305B66000000E2A9606D07 > = ngomba-sneeze 9A285047661C6F450001E883736E50DA
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData yawn
+				{
+					myCAPInteractionConstantData < uid=290EB60C66305B66000000E3DB8B3D83 > = ngomba-yawn 9A28504766139D68000119750C4AC980
+					mySpawnParameters
+					{
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+			}
+			myDynamicCAPSpawnDataSetType Guard
+		}
+		DynamicCAPSpawnDataSet post-petting
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Bark
+				{
+					myCAPInteractionConstantData < uid=290EB60C66305B66000000E45C957AB1 > = ngomba-bark 290EB60C634681E5000462C5656CC3DD
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 0.0
+						myMaxCooldown 0.0
+						myWeight 0.0
+					}
+				}
+				DynamicCAPSpawnData Friendly
+				{
+					myCAPInteractionConstantData < uid=F3998552674595BF000000C9ECDD9E37 > = ngomba_friendly F3998552673465D400000EFC69B47BFE
+					mySpawnParameters
+					{
+						myMaxSpawnAngle 180.0
+						myMaxSlopeAngle 15.0
+						myWeight 1.0
+					}
+				}
+			}
+			myDynamicCAPSpawnDataSetType PostPetting
+		}
+	}
+}
+
+NPCDynamicCAPInteractionProfile GushiroDynamicCAP < uid=290EB60C637ADCD4000070BC0D432957 >
+{
+	myDynamicCAPSpawnData
+	{
+		DynamicCAPSpawnDataSet default
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=290EB60C637ADCD4000070BDE5570DAF > = Gushiro-Idle 290EB60C637ADFD4000073019934AF17
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 1.0
+						myMaxDistanceToAgent 5.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Cleanfur
+				{
+					myCAPInteractionConstantData < uid=290EB60C637ADCD4000070BE257CFBD8 > = Gushiro-Cleanfur 290EB60C637ADEF5000072F80AE4F824
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 1.0
+						myMaxDistanceToAgent 5.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+						myMoveRange 1.5
+					}
+				}
+				DynamicCAPSpawnData lying
+				{
+					myCAPInteractionConstantData < uid=290EB60C637ADCD4000070BF8C8CF313 > = Gushiro-Lying 290EB60C637ADC700000709BE6C4ADA3
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 1.0
+						myMaxDistanceToAgent 5.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 0.25
+					}
+				}
+				DynamicCAPSpawnData Sit
+				{
+					myCAPInteractionConstantData < uid=290EB60C637AE0FD00007305F81A25B7 > = Gushiro-Sit 290EB60C637ADC70000070A7391F067E
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 1.0
+						myMaxDistanceToAgent 5.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 25.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 4.0
+						myMoveRange 1.5
+					}
+				}
+				DynamicCAPSpawnData Sleep
+				{
+					myCAPInteractionConstantData < uid=290EB60C637AE0FD00007306A2800198 > = Gushiro-Sleep 290EB60C637ADE6E000072EAE03957CF
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 1.0
+						myMaxDistanceToAgent 5.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 0.25
+					}
+				}
+				DynamicCAPSpawnData Stand
+				{
+					myCAPInteractionConstantData < uid=290EB60C637AE0FD000073077BEA91D6 > = Gushiro-Stand 290EB60C637ADEC0000072EF842D78C6
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 1.0
+						myMaxDistanceToAgent 5.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 25.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 4.0
+						myMoveRange 0.0
+					}
+				}
+				DynamicCAPSpawnData Lookaround
+				{
+					myCAPInteractionConstantData < uid=290EB60C637AE0FD00007308EC267327 > = "Gushiro-Look Around" 290EB60C637ADC70000070976A7ABE1B
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 1.0
+						myMaxDistanceToAgent 5.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Sniff-Air
+				{
+					myCAPInteractionConstantData < uid=290EB60C637AE0FD00007309C538C489 > = "Gushiro-Sniff Air" 290EB60C637ADC70000070AF8272B902
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 1.0
+						myMaxDistanceToAgent 5.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Sniff-Ground
+				{
+					myCAPInteractionConstantData < uid=290EB60C637AE0FD0000730A67169177 > = "Gushiro-Sniff Gound" 290EB60C637ADC70000070B352195753
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 1.0
+						myMaxDistanceToAgent 5.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Drink
+				{
+					myCAPInteractionConstantData < uid=290EB60C6384259400006B61E5F74C20 > = Gushiro-Drink C828D66963809051000099C12B79C124
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 1.0
+						myMaxDistanceToAgent 5.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						mySpawningPosNavArea ShallowWater
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 5.0
+					}
+				}
+				DynamicCAPSpawnData Yawn
+				{
+					myCAPInteractionConstantData < uid=290EB60C6384259400006B6253B76E88 > = Gushiro_Yawn 5FDBC67E63808B30000097C3D47F2EB7
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 1.0
+						myMaxDistanceToAgent 5.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+						myMoveRange 1.4
+					}
+				}
+				DynamicCAPSpawnData Dig
+				{
+					myCAPInteractionConstantData < uid=290EB60C638425CE00006B6375AD02DC > = Gushiro-Dig F392FD58637C860B0000927D0A7A3101
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 1.0
+						myMaxDistanceToAgent 5.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+						myMoveRange 1.0
+					}
+				}
+				DynamicCAPSpawnData "Shake Body"
+				{
+					myCAPInteractionConstantData < uid=290EB60C638425CE00006B64CAAD7853 > = "Gushiro-Shake Body" 290EB60C638424B200006B5E373038DE
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 1.0
+						myMaxDistanceToAgent 5.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+						myMoveRange 1.2
+					}
+				}
+				DynamicCAPSpawnData Bark
+				{
+					myCAPInteractionConstantData < uid=290EB60C638D680200009EDBDB95BC86 > = Gushiro-Bark 5FDBC67E638879A60000B0C04C2E02E9
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 1.0
+						myMaxDistanceToAgent 5.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData "Sniff-Corpse dcap"
+				{
+					myCAPInteractionConstantData < uid=4CFBCDBB6481782200024B92242E743A > = "Gushiro-Sniff Corpse dcap" 4CFBCDBB648174480002448C1D2799B5
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 1.0
+						myMaxDistanceToAgent 5.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData "Sniff-Each Other"
+				{
+					myCAPInteractionConstantData < uid=A2FC21B56503D5DB00007C30681D3C7B > = "Gushiro-Sniff Each Other" A2FC21B56503D3A0000018812268DDE9
+					mySpawnParameters
+					{
+						myClearanceRadius 1.0
+						myMaxSlopeAngle 31.5
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 100.0
+						myIsSyncCAP TRUE
+					}
+				}
+			}
+		}
+		DynamicCAPSpawnDataSet guard
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A7FF100095BCB64C957C6 > = Gushiro-Idle 290EB60C637ADFD4000073019934AF17
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 15.0
+						myMinCooldown 0.0
+						myMaxCooldown 0.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Cleanfur
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A7FF100095BCC79D66A7E > = Gushiro-Cleanfur 290EB60C637ADEF5000072F80AE4F824
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData lying
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A7FF100095BCDF60220E0 > = Gushiro-Lying 290EB60C637ADC700000709BE6C4ADA3
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Sit
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A7FF100095BCE5924F27C > = Gushiro-Sit 290EB60C637ADC70000070A7391F067E
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 25.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Sleep
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A7FF100095BCF777DE9F9 > = Gushiro-Sleep 290EB60C637ADE6E000072EAE03957CF
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Stand
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A7FF100095BD0BD32F8F2 > = Gushiro-Stand 290EB60C637ADEC0000072EF842D78C6
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 25.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Lookaround
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A7FF100095BD15AD0CA94 > = "Gushiro-Look Around" 290EB60C637ADC70000070976A7ABE1B
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Sniff-Air
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A7FF100095BD2241964A0 > = "Gushiro-Sniff Air" 290EB60C637ADC70000070AF8272B902
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Sniff-Ground
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A7FF100095BD3BCB373FB > = "Gushiro-Sniff Gound" 290EB60C637ADC70000070B352195753
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Drink
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A7FF100095BD4966CF9F7 > = Gushiro-Drink C828D66963809051000099C12B79C124
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						mySpawningPosNavArea ShallowWater
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 5.0
+					}
+				}
+				DynamicCAPSpawnData Dig
+				{
+					myCAPInteractionConstantData < uid=290EB60C6433DAC70001CB3B23A81D76 > = Gushiro-Dig F392FD58637C860B0000927D0A7A3101
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData "Shake Body"
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A7FF100095BD782ECC7AA > = "Gushiro-Shake Body" 290EB60C638424B200006B5E373038DE
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Bark
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A7FF100095BD873BE3541 > = Gushiro-Bark 5FDBC67E638879A60000B0C04C2E02E9
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+			}
+			myDynamicCAPSpawnDataSetType Guard
+		}
+		DynamicCAPSpawnDataSet follow
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=290EB60C6566A4380002329228746287 > = Gushiro-Idle 290EB60C637ADFD4000073019934AF17
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 15.0
+						myMinCooldown 0.0
+						myMaxCooldown 0.0
+						myWeight 0.1
+					}
+				}
+				DynamicCAPSpawnData Cleanfur
+				{
+					myCAPInteractionConstantData < uid=290EB60C6566A43800023293F3B8B3CF > = Gushiro-Cleanfur 290EB60C637ADEF5000072F80AE4F824
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData lying
+				{
+					myCAPInteractionConstantData < uid=290EB60C6566A438000232945745E947 > = Gushiro-Lying 290EB60C637ADC700000709BE6C4ADA3
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 0.25
+					}
+				}
+				DynamicCAPSpawnData Sit
+				{
+					myCAPInteractionConstantData < uid=290EB60C6566A43800023295874DC382 > = Gushiro-Sit 290EB60C637ADC70000070A7391F067E
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 25.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 0.25
+					}
+				}
+				DynamicCAPSpawnData Sleep
+				{
+					myCAPInteractionConstantData < uid=290EB60C6566A438000232960CA6E9B6 > = Gushiro-Sleep 290EB60C637ADE6E000072EAE03957CF
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 0.25
+					}
+				}
+				DynamicCAPSpawnData Stand
+				{
+					myCAPInteractionConstantData < uid=290EB60C6566A438000232973AB60526 > = Gushiro-Stand 290EB60C637ADEC0000072EF842D78C6
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 25.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 0.25
+					}
+				}
+				DynamicCAPSpawnData Lookaround
+				{
+					myCAPInteractionConstantData < uid=290EB60C6566A4380002329842C1DCE6 > = "Gushiro-Look Around" 290EB60C637ADC70000070976A7ABE1B
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Sniff-Air
+				{
+					myCAPInteractionConstantData < uid=290EB60C6566A43800023299AB7956EF > = "Gushiro-Sniff Air" 290EB60C637ADC70000070AF8272B902
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Sniff-Ground
+				{
+					myCAPInteractionConstantData < uid=290EB60C6566A4380002329A90A9F16F > = "Gushiro-Sniff Gound" 290EB60C637ADC70000070B352195753
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Drink
+				{
+					myCAPInteractionConstantData < uid=290EB60C6566A4380002329B1ABC4969 > = Gushiro-Drink C828D66963809051000099C12B79C124
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						mySpawningPosNavArea ShallowWater
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 5.0
+					}
+				}
+				DynamicCAPSpawnData Yawn
+				{
+					myCAPInteractionConstantData < uid=290EB60C6566A4380002329C56D68034 > = Gushiro_Yawn 5FDBC67E63808B30000097C3D47F2EB7
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 5.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 0.0
+					}
+				}
+				DynamicCAPSpawnData Dig
+				{
+					myCAPInteractionConstantData < uid=290EB60C6566A4380002329D37796A2F > = Gushiro-Dig F392FD58637C860B0000927D0A7A3101
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData "Shake Body"
+				{
+					myCAPInteractionConstantData < uid=290EB60C6566A4380002329EE884C726 > = "Gushiro-Shake Body" 290EB60C638424B200006B5E373038DE
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Bark
+				{
+					myCAPInteractionConstantData < uid=290EB60C6566A4380002329F108B2C5E > = Gushiro-Bark 5FDBC67E638879A60000B0C04C2E02E9
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData "Sniff-Corpse dcap"
+				{
+					myCAPInteractionConstantData < uid=290EB60C6566A438000232A0F2BED95B > = "Gushiro-Sniff Corpse dcap" 4CFBCDBB648174480002448C1D2799B5
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 0.5
+						myMaxSlopeAngle 30.0
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+			}
+			myDynamicCAPSpawnDataSetType Follow
+		}
+	}
+}
+
+NPCDynamicCAPInteractionProfile DewbackDynamicCAP < uid=290EB60C63B694310001189C2BF61140 >
+{
+	myDynamicCAPSpawnData
+	{
+		DynamicCAPSpawnDataSet default
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=290EB60C63B694310001189D482D0001 > = dewback-idle 290EB60C63B694C1000118A374734921
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						mySpawningPosNavArea Land
+						myMinCooldown 0.0
+						myMaxCooldown 0.0
+						myWeight 0.1
+					}
+				}
+				DynamicCAPSpawnData Bark
+				{
+					myCAPInteractionConstantData < uid=290EB60C63B694310001189EB11A3DE9 > = dewback-bark 290EB60C63B694C1000118AB4B72D7E3
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 8.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Chew
+				{
+					myCAPInteractionConstantData < uid=290EB60C63B694310001189F7835FB6E > = dewback-chew 290EB60C63B694C1000118B39F39CF7B
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 8.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+						myBiomeCollisionList = NULLREFERENCE
+					}
+				}
+				DynamicCAPSpawnData Lookaround
+				{
+					myCAPInteractionConstantData < uid=290EB60C63B69431000118A1C3DFA04A > = dewback-lookaround 290EB60C63B694C1000118AF68CC7C41
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 8.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Shakehead
+				{
+					myCAPInteractionConstantData < uid=290EB60C63B69431000118A2A34A38AD > = dewback-shakehead 290EB60C63B694C1000118B776C4ADA7
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 10.0
+						myMaxDistanceToAgent 12.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+						myMoveRange 4.0
+					}
+				}
+				DynamicCAPSpawnData "Lick eachother"
+				{
+					myCAPInteractionConstantData < uid=5FDBC67E6528D956000227D56A8FFD7E > = "dewback-lick eachother" 5FDBC67E6528D792000227C1C01542ED
+					mySpawnParameters
+					{
+						myClearanceRadius 3.0
+						myMaxSlopeAngle 21.5
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 200.0
+						myIsSyncCAP TRUE
+						myMoveRange 8.5
+					}
+				}
+				DynamicCAPSpawnData Yawn
+				{
+					myCAPInteractionConstantData < uid=9A28504766139F070001197E1B229258 > = dewback-yawn 9A285047661C82940003DDDC1E793ACE
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 8.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+						myIsSyncCAP FALSE
+					}
+				}
+				DynamicCAPSpawnData Sneeze
+				{
+					myCAPInteractionConstantData < uid=A13FB988662A1DEF0002EBD578950728 > = dewback-sneeze A13FB988662A1A240002EBD1F0FA8FE7
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 8.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData "Bark Eachother"
+				{
+					myCAPInteractionConstantData < uid=A2FC21B5662F437000000A3D0349DD77 > = "dewback-bark eachother" A2FC21B5662F40FE00000A3800CB71B6
+					mySpawnParameters
+					{
+						myClearanceRadius 3.0
+						myMaxSlopeAngle 31.5
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 200.0
+						myIsSyncCAP TRUE
+						myMoveRange 8.5
+					}
+				}
+				DynamicCAPSpawnData "Chew var01"
+				{
+					myCAPInteractionConstantData < uid=5FDBC67E6638E04B0004AC752BF3594C > = "dewback-chew var01" 5FDBC67E6638B0940004896D319D3EA5
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 8.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+						myBiomeCollisionList = NULLREFERENCE
+					}
+				}
+			}
+		}
+		DynamicCAPSpawnDataSet guard
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A82A10009CF48862E6E91 > = dewback-idle 290EB60C63B694C1000118A374734921
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 0.0
+						myMaxCooldown 0.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Bark
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A82A10009CF4954AC285C > = dewback-bark 290EB60C63B694C1000118AB4B72D7E3
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Chew
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A82A10009CF4AB7DE65E5 > = dewback-chew 290EB60C63B694C1000118B39F39CF7B
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Lookaround
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A82A10009CF4BBCF33469 > = dewback-lookaround 290EB60C63B694C1000118AF68CC7C41
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Yawn
+				{
+					myCAPInteractionConstantData < uid=9A28504766139F6C0001197F417E5E75 > = dewback-yawn 9A285047661C82940003DDDC1E793ACE
+					mySpawnParameters
+					{
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Sneeze
+				{
+					myCAPInteractionConstantData < uid=A13FB988662A1DEF0002EBD6497FD972 > = dewback-sneeze A13FB988662A1A240002EBD1F0FA8FE7
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+			}
+			myDynamicCAPSpawnDataSetType Guard
+		}
+		DynamicCAPSpawnDataSet post-petting
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Bark
+				{
+					myCAPInteractionConstantData < uid=290EB60C6566AE1C000DE96996A07B39 > = dewback-bark 290EB60C63B694C1000118AB4B72D7E3
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 0.0
+						myMaxCooldown 0.0
+						myWeight 0.0
+					}
+				}
+				DynamicCAPSpawnData Friendly
+				{
+					myCAPInteractionConstantData < uid=F399855267459643000000D0C524E624 > = dewback-friendly F3998552673407AC000000C9589201FC
+					mySpawnParameters
+					{
+						myMaxSpawnAngle 180.0
+						myMaxSlopeAngle 15.0
+						myWeight 1.0
+					}
+				}
+			}
+			myDynamicCAPSpawnDataSetType PostPetting
+		}
+	}
+}
+
+NPCDynamicCAPInteractionProfile CompanionMassiffDynamicCAP < uid=290EB60C63E4B58900047A6072CF1AB4 >
+{
+	myDynamicCAPSpawnData
+	{
+		DynamicCAPSpawnDataSet follow
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=290EB60C63E4B58900047A6108070BB1 > = Massiff-Idle 290EB60C62B5585C00006490A03ABF62
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 0.0
+						myMaxCooldown 0.0
+						myWeight 0.1
+					}
+				}
+				DynamicCAPSpawnData "Look Around"
+				{
+					myCAPInteractionConstantData < uid=290EB60C63E4B58900047A62431A3DF1 > = "Massiff-Look Around" 290EB60C62B55BF00000649E6A5FFE72
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Lying
+				{
+					myCAPInteractionConstantData < uid=290EB60C63E4B58900047A6346770328 > = Massiff-Lying 290EB60C62B55BF00000649F2EB5DE45
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Roar
+				{
+					myCAPInteractionConstantData < uid=290EB60C63E4B58900047A644C67ABE8 > = Massiff-Roar 290EB60C62B55BF0000064A09FEE6E96
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData "Shake Body"
+				{
+					myCAPInteractionConstantData < uid=290EB60C63E4B58900047A657C0D7B56 > = "Massiff-Shake Body" 290EB60C62B55BF0000064A1124816A2
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Sit
+				{
+					myCAPInteractionConstantData < uid=290EB60C63E4B58900047A66EE6A3493 > = Massiff-Sit 290EB60C62B55BF0000064A28771D6F7
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData "Sniff Air"
+				{
+					myCAPInteractionConstantData < uid=290EB60C63E4B58900047A6710FA0435 > = "Massiff-Sniff Air" 290EB60C62B55BF0000064A5B96FD5C8
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData "Sniff Ground"
+				{
+					myCAPInteractionConstantData < uid=290EB60C63E4B58900047A6861B3D529 > = "Massiff-Sniff Gound" 290EB60C62B55BF0000064A6B0A06A7C
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Yawn
+				{
+					myCAPInteractionConstantData < uid=290EB60C63E4B58900047A697673C582 > = Massiff-Yawn 290EB60C62B55BF0000064A7041F50E5
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Sleep
+				{
+					myCAPInteractionConstantData < uid=290EB60C63E4B58900047A6AC902A973 > = Massiff-Sleep 290EB60C62B55BF0000064A4EBC03314
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.5
+						myMaxDistanceToAgent 1.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+			}
+			myDynamicCAPSpawnDataSetType Follow
+		}
+		DynamicCAPSpawnDataSet guard
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8E7900000E62F64F0888 > = Massiff-Idle 290EB60C62B5585C00006490A03ABF62
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 0.0
+						myMaxCooldown 0.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Lying
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8E7900000E631395CC70 > = Massiff-Lying 290EB60C62B55BF00000649F2EB5DE45
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Roar
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8E7900000E642220EB73 > = Massiff-Roar 290EB60C62B55BF0000064A09FEE6E96
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData "Shake Body"
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8E7900000E65759AEC2D > = "Massiff-Shake Body" 290EB60C62B55BF0000064A1124816A2
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Sit
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8E7900000E66FB1FA15E > = Massiff-Sit 290EB60C62B55BF0000064A28771D6F7
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData "Sniff Air"
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8E7900000E6746540401 > = "Massiff-Sniff Air" 290EB60C62B55BF0000064A5B96FD5C8
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData "Sniff Ground"
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8E7900000E68630A04CB > = "Massiff-Sniff Gound" 290EB60C62B55BF0000064A6B0A06A7C
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Yawn
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8E7900000E69C1537703 > = Massiff-Yawn 290EB60C62B55BF0000064A7041F50E5
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Sleep
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8E7900000E6AC7402B26 > = Massiff-Sleep 290EB60C62B55BF0000064A4EBC03314
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+			}
+			myDynamicCAPSpawnDataSetType Guard
+		}
+	}
+}
+
+NPCDynamicCAPInteractionProfile KuDynamicCAP < uid=290EB60C63FDAA2F000009CF54ECD387 >
+{
+	myDynamicCAPSpawnData
+	{
+		DynamicCAPSpawnDataSet default
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=290EB60C63FDAA2F000009D01139E3B0 > = ku-idle 290EB60C63FDABA4000009D653A82EB5
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						myMinCooldown 0.0
+						myMaxCooldown 0.0
+						myWeight 0.1
+					}
+				}
+				DynamicCAPSpawnData Bark
+				{
+					myCAPInteractionConstantData < uid=290EB60C63FDAA2F000009D1280D59A0 > = ku-bark 290EB60C63FDABA4000009DAF9C28769
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 10.0
+						myMaxDistanceToAgent 12.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Chew
+				{
+					myCAPInteractionConstantData < uid=290EB60C63FDAA2F000009D2357FAB48 > = ku-chew 290EB60C63FDABA4000009DE35FF041C
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 10.0
+						myMaxDistanceToAgent 12.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+						myBiomeCollisionList = NULLREFERENCE
+					}
+				}
+				DynamicCAPSpawnData Lookaround
+				{
+					myCAPInteractionConstantData < uid=290EB60C63FDAC5A000009F34A7602DC > = ku-lookaround 290EB60C63FDABA4000009E65D3B70F6
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 10.0
+						myMaxDistanceToAgent 12.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Shakehead
+				{
+					myCAPInteractionConstantData < uid=290EB60C63FDAA2F000009D59B45F37E > = ku-shakehead 290EB60C63FDABA4000009EA0D3485DD
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 10.0
+						myMaxDistanceToAgent 12.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+			}
+		}
+		DynamicCAPSpawnDataSet guard
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8955000B55BEF7F1DD5A > = ku-idle 290EB60C63FDABA4000009D653A82EB5
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						myMinCooldown 0.0
+						myMaxCooldown 0.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Bark
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8955000B55BF5C7BD066 > = ku-bark 290EB60C63FDABA4000009DAF9C28769
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Chew
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8955000B55C0FD947D4C > = ku-chew 290EB60C63FDABA4000009DE35FF041C
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Lookaround
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8955000B55C12EC21C3F > = ku-lookaround 290EB60C63FDABA4000009E65D3B70F6
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Shakehead
+				{
+					myCAPInteractionConstantData < uid=290EB60C642A8955000B55C257A00FB0 > = ku-shakehead 290EB60C63FDABA4000009EA0D3485DD
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+			}
+			myDynamicCAPSpawnDataSetType Guard
+		}
+		DynamicCAPSpawnDataSet post-petting
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Shakehead
+				{
+					myCAPInteractionConstantData < uid=290EB60C6566AF4F000DE96B45B7DE7C > = ku-shakehead 290EB60C63FDABA4000009EA0D3485DD
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 0.0
+						myMaxCooldown 0.0
+						myWeight 1.0
+					}
+				}
+			}
+			myDynamicCAPSpawnDataSetType PostPetting
+		}
+	}
+}
+
+NPCDynamicCAPInteractionProfile SammakhoDynamicCAP < uid=290EB60C6450C54200031BADEC606F75 >
+{
+	myDynamicCAPSpawnData
+	{
+		DynamicCAPSpawnDataSet default
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=290EB60C6450C54200031BAE3FB74AAC > = Sammakho-Idle 290EB60C6450C5E700031C188F8F56C4
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Lying
+				{
+					myCAPInteractionConstantData < uid=290EB60C6450C54200031BB0DB53D157 > = Sammakho-Lying 290EB60C6450C34700031B6343B275ED
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle 25.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 0.25
+					}
+				}
+				DynamicCAPSpawnData Sit
+				{
+					myCAPInteractionConstantData < uid=290EB60C6450C54200031BB3B4E66B36 > = Sammakho-Sit 290EB60C6450C34700031B6F3065DAAD
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle 20.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 0.25
+					}
+				}
+				DynamicCAPSpawnData Yawn
+				{
+					myCAPInteractionConstantData < uid=290EB60C6450C54200031BB64AD6855B > = Sammakho-Yawn 290EB60C6450C34700031B7FB5FF7A21
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Snooze
+				{
+					myCAPInteractionConstantData < uid=4CFBCDBB64A4E8C90000B4D95D1DD174 > = Sammakho-Snooze 4CFBCDBB64A4E7AB0000B4D54A961EEE
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Croak
+				{
+					myCAPInteractionConstantData < uid=290EB60C64DB4DB70002505972C37203 > = Sammakho-Croak 290EB60C64DB4D2F00024B311143A973
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+			}
+		}
+		DynamicCAPSpawnDataSet guard
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=290EB60C6450C54200031BB8EADF8AA8 > = Sammakho-Idle 290EB60C6450C5E700031C188F8F56C4
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 0.0
+						myMaxCooldown 0.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Lying
+				{
+					myCAPInteractionConstantData < uid=290EB60C6450C54200031BB93A18FED7 > = Sammakho-Lying 290EB60C6450C34700031B6343B275ED
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Sit
+				{
+					myCAPInteractionConstantData < uid=290EB60C6450C54200031BBC68952ED6 > = Sammakho-Sit 290EB60C6450C34700031B6F3065DAAD
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Yawn
+				{
+					myCAPInteractionConstantData < uid=290EB60C6450C54200031BBFB679546A > = Sammakho-Yawn 290EB60C6450C34700031B7FB5FF7A21
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 20.0
+						myMaxCooldown 30.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Snooze
+				{
+					myCAPInteractionConstantData < uid=4CFBCDBB64A4E8C90000B4DAE731F35D > = Scurrier-Snooze 290EB60C62468561000000C62856152B
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 1.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 0.0
+						myMaxCooldown 0.0
+						myWeight 1.0
+					}
+				}
+			}
+			myDynamicCAPSpawnDataSetType Guard
+		}
+	}
+}
+
+NPCDynamicCAPInteractionProfile TshikaraDynamicCAP < uid=290EB60C64534E9E00003731A808A70B >
+{
+	myDynamicCAPSpawnData
+	{
+		DynamicCAPSpawnDataSet default
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=290EB60C64534E9E000037323333656F > = Tshikara-Idle 290EB60C64534F6B00005DC89CDEAB77
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData "Look Around"
+				{
+					myCAPInteractionConstantData < uid=290EB60C64534E9E0000373357C86BCD > = Tshikara-Lookaround 290EB60C6453505D00008A93C287DDC8
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData "Shake Head"
+				{
+					myCAPInteractionConstantData < uid=290EB60C64534E9E0000373658DD6093 > = Tshikara-Shakehead 290EB60C6453505D00008A9718A85997
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Sit
+				{
+					myCAPInteractionConstantData < uid=290EB60C64534E9E000037374C5FFE46 > = Tshikara-Sit 290EB60C6453505D00008A9BA00CAFE1
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 0.5
+					}
+				}
+				DynamicCAPSpawnData Sleep
+				{
+					myCAPInteractionConstantData < uid=290EB60C64534E9E0000373B4F97DA44 > = Tshikara-Sleep 290EB60C6453505D00008A9F8DC4CF5C
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 0.5
+					}
+				}
+				DynamicCAPSpawnData "Sniff Air"
+				{
+					myCAPInteractionConstantData < uid=290EB60C64534E9E00003738D4CA3DA4 > = "Tshikara-Sniff Air" 290EB60C6453505D00008AA3CF4AAE5F
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Yawn
+				{
+					myCAPInteractionConstantData < uid=290EB60C64534E9E0000373AFC89A65D > = Tshikara-Yawn 290EB60C6453505D00008AA778D538F6
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Roar
+				{
+					myCAPInteractionConstantData < uid=A2FC21B5646C6212000043CA970EABFF > = Tshikara-Roar A2FC21B5646C60B00000021631CBE4CB
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Sniff
+				{
+					myCAPInteractionConstantData < uid=A2FC21B5646EDB3700016D47DF1D1A07 > = Tshikara-Sniff A2FC21B5646ED94E0000D42C99381456
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData "Sniff Corpse"
+				{
+					myCAPInteractionConstantData < uid=A2FC21B5646EDB9200016D4802C7E1EC > = "Tshikara-Sniff Corpse" A2FC21B5646EDA0600010BAC1557CE7E
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Dig
+				{
+					myCAPInteractionConstantData < uid=40A8A3F9648023350000AC025AD073FD > = Tshikara-Dig 40A8A3F9648021630000067FCAFF7721
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData lying
+				{
+					myCAPInteractionConstantData < uid=1E18D672649A95D70002BCB94A87EFF1 > = Tshikara-lying 1E18D6726492C38E0000B8F6754C5778
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 10.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 20.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 0.5
+					}
+				}
+			}
+		}
+		DynamicCAPSpawnDataSet guard
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=290EB60C6453555C00024387EAB4DD0C > = Tshikara-Idle 290EB60C64534F6B00005DC89CDEAB77
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData "Look Around"
+				{
+					myCAPInteractionConstantData < uid=290EB60C6453555C000243889A690BF6 > = Tshikara-Lookaround 290EB60C6453505D00008A93C287DDC8
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData "Shake Head"
+				{
+					myCAPInteractionConstantData < uid=290EB60C6453555C0002438933F34AD9 > = Tshikara-Shakehead 290EB60C6453505D00008A9718A85997
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Sit
+				{
+					myCAPInteractionConstantData < uid=290EB60C6453555C0002438ABA7EC7FC > = Tshikara-Sit 290EB60C6453505D00008A9BA00CAFE1
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Sleep
+				{
+					myCAPInteractionConstantData < uid=290EB60C6453555C0002438BF66E3102 > = Tshikara-Sleep 290EB60C6453505D00008A9F8DC4CF5C
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 0.0
+					}
+				}
+				DynamicCAPSpawnData "Sniff Air"
+				{
+					myCAPInteractionConstantData < uid=290EB60C6453555C0002438C248AA282 > = "Tshikara-Sniff Air" 290EB60C6453505D00008AA3CF4AAE5F
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Yawn
+				{
+					myCAPInteractionConstantData < uid=290EB60C6453555C0002438D8D868148 > = Tshikara-Yawn 290EB60C6453505D00008AA778D538F6
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData lying
+				{
+					myCAPInteractionConstantData < uid=1E18D672649A95D70002BCBA1CEE39D8 > = Tshikara-lying 1E18D6726492C38E0000B8F6754C5778
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle -1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+			}
+			myDynamicCAPSpawnDataSetType Guard
+		}
+	}
+}
+
+NPCDynamicCAPInteractionProfile NgombaDynamicCAPNoEating < uid=290EB60C6495480C00040DCEEE66E7E0 > : NgombaDynamicCAP
+{
+	myDynamicCAPSpawnData
+	{
+		DynamicCAPSpawnDataSet default
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=290EB60C6495484000040DD1802546AB > = ngomba-idle 290EB60C634680E40004605F10D2B447
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 5.0
+						myMaxDistanceToAgent 8.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 45.0
+						myMaxCooldown 75.0
+						myWeight 10.0
+					}
+				}
+				DynamicCAPSpawnData Bark
+				{
+					myCAPInteractionConstantData < uid=290EB60C6495484000040DD2D7996035 > = ngomba-bark 290EB60C634681E5000462C5656CC3DD
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Lookaround
+				{
+					myCAPInteractionConstantData < uid=290EB60C6495484000040DD3D0A1D681 > = ngomba-lookaround 290EB60C634681E5000462C9919145C8
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Shakehead
+				{
+					myCAPInteractionConstantData < uid=290EB60C6495484000040DD4A6EEC63E > = ngomba-shakehead 290EB60C634681E5000462D112A19E04
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 1.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 0.0
+					}
+				}
+			}
+		}
+		DynamicCAPSpawnDataSet guard
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=290EB60C6495484000040DD50C54DC56 > = ngomba-idle 290EB60C634680E40004605F10D2B447
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 0.0
+						myMaxCooldown 0.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Bark
+				{
+					myCAPInteractionConstantData < uid=290EB60C6495484000040DD610D08D21 > = ngomba-bark 290EB60C634681E5000462C5656CC3DD
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+				DynamicCAPSpawnData Lookaround
+				{
+					myCAPInteractionConstantData < uid=290EB60C6495484000040DD7CE1B4464 > = ngomba-lookaround 290EB60C634681E5000462C9919145C8
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 15.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+					}
+				}
+			}
+			myDynamicCAPSpawnDataSetType Guard
+		}
+	}
+}
+
+NPCDynamicCAPInteractionProfile BanthaStationaryDynamicCAP < uid=4CFBCDBB6673CC0600053466B1EC0D83 >
+{
+	myDynamicCAPSpawnData
+	{
+		DynamicCAPSpawnDataSet default
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=4CFBCDBB6673CC06000534677D705CD1 > = bantha-idle 290EB60C6305DAB40000442483A548CA
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 30.0
+						myMinCooldown 0.0
+						myMaxCooldown 0.0
+						myWeight 0.5
+						myDisableNavMeshValidation TRUE
+					}
+				}
+				DynamicCAPSpawnData Chew
+				{
+					myCAPInteractionConstantData < uid=4CFBCDBB6673CC0600053468E888B435 > = bantha-chew 290EB60C6305EB6200004B0AC7C67AB7
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 30.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+						myBiomeCollisionList = "eat grass (large animal)"
+						myDisableNavMeshValidation TRUE
+					}
+				}
+				DynamicCAPSpawnData Eat
+				{
+					myCAPInteractionConstantData < uid=4CFBCDBB6673CC0600053469507960F6 > = bantha-eat 290EB60C6305EE0A000068687F19F6FF
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 30.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+						myBiomeCollisionList = NULLREFERENCE
+						myDisableNavMeshValidation TRUE
+					}
+				}
+			}
+		}
+	}
+}
+
+NPCDynamicCAPInteractionProfile DewbackStationaryDynamicCAP < uid=4CFBCDBB6673CE66000594239020BFAA >
+{
+	myDynamicCAPSpawnData
+	{
+		DynamicCAPSpawnDataSet default
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=4CFBCDBB6673CE6600059424EB2BCF35 > = dewback-idle 290EB60C63B694C1000118A374734921
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 30.0
+						mySpawningPosNavArea Land
+						myMinCooldown 0.0
+						myMaxCooldown 0.0
+						myWeight 0.5
+						myDisableNavMeshValidation TRUE
+					}
+				}
+				DynamicCAPSpawnData Chew
+				{
+					myCAPInteractionConstantData < uid=4CFBCDBB6673CE6600059425D72175BE > = dewback-chew 290EB60C63B694C1000118B39F39CF7B
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 30.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+						myBiomeCollisionList = NULLREFERENCE
+						myDisableNavMeshValidation TRUE
+					}
+				}
+				DynamicCAPSpawnData Lookaround
+				{
+					myCAPInteractionConstantData < uid=4CFBCDBB6673CE6600059426A86A1A15 > = dewback-lookaround 290EB60C63B694C1000118AF68CC7C41
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 30.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+						myDisableNavMeshValidation TRUE
+					}
+				}
+				DynamicCAPSpawnData Sneeze
+				{
+					myCAPInteractionConstantData < uid=4CFBCDBB6673CE66000594273D223D5D > = dewback-sneeze A13FB988662A1A240002EBD1F0FA8FE7
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 30.0
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+						myDisableNavMeshValidation TRUE
+					}
+				}
+			}
+		}
+	}
+}
+
+NPCDynamicCAPInteractionProfile KuStationaryDynamicCAP < uid=4CFBCDBB6673CF430005B6ACA52370F6 >
+{
+	myDynamicCAPSpawnData
+	{
+		DynamicCAPSpawnDataSet default
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=4CFBCDBB6673CF430005B6AD87B93D0F > = ku-idle 290EB60C63FDABA4000009D653A82EB5
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 30.0
+						myMinCooldown 0.0
+						myMaxCooldown 0.0
+						myWeight 0.5
+						myDisableNavMeshValidation TRUE
+					}
+				}
+				DynamicCAPSpawnData Chew
+				{
+					myCAPInteractionConstantData < uid=4CFBCDBB6673CF430005B6AE90C0B097 > = ku-chew 290EB60C63FDABA4000009DE35FF041C
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 30.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+						myBiomeCollisionList = NULLREFERENCE
+						myDisableNavMeshValidation TRUE
+					}
+				}
+			}
+		}
+	}
+}
+
+NPCDynamicCAPInteractionProfile NgombaStationaryDynamicCAP < uid=4CFBCDBB6673D0840006076D42F864F4 >
+{
+	myDynamicCAPSpawnData
+	{
+		DynamicCAPSpawnDataSet default
+		{
+			myDynamicCAPSpawnDataList
+			{
+				DynamicCAPSpawnData Idle
+				{
+					myCAPInteractionConstantData < uid=4CFBCDBB6673D0840006076E9BD88EE2 > = ngomba-idle 290EB60C634680E40004605F10D2B447
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 30.0
+						mySpawningPosNavArea Land
+						myMinCooldown 0.0
+						myMaxCooldown 0.0
+						myWeight 0.5
+						myDisableNavMeshValidation TRUE
+					}
+				}
+				DynamicCAPSpawnData Chew
+				{
+					myCAPInteractionConstantData < uid=4CFBCDBB6673D0840006076F3BC3840D > = ngomba-chew 290EB60C634681E5000462CDBBCF1E1B
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 30.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+						myBiomeCollisionList = NULLREFERENCE
+						myDisableNavMeshValidation TRUE
+					}
+				}
+				DynamicCAPSpawnData Lookaround
+				{
+					myCAPInteractionConstantData < uid=4CFBCDBB6673D08400060770F4E27E92 > = ngomba-lookaround 290EB60C634681E5000462C9919145C8
+					mySpawnParameters
+					{
+						myPositionType AroundSelf
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMinSpawnAngle 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 30.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+						myDisableNavMeshValidation TRUE
+					}
+				}
+				DynamicCAPSpawnData sneeze
+				{
+					myCAPInteractionConstantData < uid=4CFBCDBB6673D0840006077175BC7B3E > = ngomba-sneeze 9A285047661C6F450001E883736E50DA
+					mySpawnParameters
+					{
+						myMinDistanceToAgent 0.0
+						myMaxDistanceToAgent 0.0
+						myMaxSpawnAngle 180.0
+						myClearanceRadius 5.0
+						myMaxSlopeAngle 30.0
+						mySpawningPosNavArea Land
+						myMinCooldown 40.0
+						myMaxCooldown 60.0
+						myWeight 1.0
+						myDisableNavMeshValidation TRUE
+					}
+				}
+			}
+		}
+	}
+}
+

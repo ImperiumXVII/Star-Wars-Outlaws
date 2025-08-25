@@ -1,0 +1,2503 @@
+include helix/audio/votypes.juice
+include "helix/game system data/fruit/audio/stimulus.fruit"
+include "helix/game system data/juice/barks/cooldown_combat_npc.mbarkscooldown"
+include "helix/game system data/juice/barks/cooldown_comms_scanner.mbarkscooldown"
+include "helix/game system data/juice/rbtags/allrbtags.juice"
+include "helix/game system data/juice/sound/stimuli/stim_id_comms_scanner.mstimulusidentifier"
+include "helix/game system data/juice/sound/stimuli/stim_id_main_responses.mstimulusidentifier"
+
+StimulusElementContainer 00_TestTrigger_ToNPC < uid=1EC89F2563C12E4700014CE09BBEC825 >
+{
+	myIdentifier < uid=1EC89F2563C12E96000151F10D778858 > = S_COM_TestTrigger 1EC89F2563C12E6000014E990289C136
+	myTagScoreModifier 5
+	myVOType < uid=3A12912164EF5C38000A9EC13692B340 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+		}
+	}
+	myElements
+	{
+		StimulusElement TestElement
+		{
+			myElement
+			{
+				myGuid 493AD0C56CB5196009FE7296E2AA4D8B
+			}
+			myTemplateOverride
+			{
+				myGuid 49C2A086BE277EFBA8E5AD87054B44AA
+			}
+			myDelay 0.0
+			myResponseDelay 0.3
+			myResponse < uid=1EC89F2563C12ECE00015587F4CECA95 > = S_NPC_TestTrigger_02 3A12912164EF598B000A9DA07BC63429
+		}
+	}
+}
+
+StimulusElementContainer 00_TestTrigger_ToComms < uid=3A12912164EF5A0F000A9DD6F037B895 >
+{
+	myIdentifier < uid=3A12912164EF5A0F000A9DD7AF46A124 > = S_NPC_TestTrigger 3A12912164EF58E9000A9D392B9104FC
+	myTagScoreModifier 5
+	myVOType < uid=3A12912164EF5B9A000A9E6A7ADF6277 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" CommsScanner
+		}
+	}
+	myElements
+	{
+		StimulusElement TestElement
+		{
+			myElement
+			{
+				myGuid 4CBE4961E83124E25A4EC92F4663ABB5
+			}
+			myTemplateOverride
+			{
+				myGuid 4EC51014DD47FC0BE1E654C62C2D84B1
+			}
+			myDelay 0.0
+			myResponseDelay 0.2
+			myResponse < uid=3A12912164EF5A0F000A9DD80D4C51B4 > = S_COM_TestTrigger_02 3A12912164EF5998000A9DA1395D58D9
+		}
+	}
+}
+
+StimulusElementContainer 00_TestTrigger_CommsResponse < uid=3A12912164EF5B40000A9E2F360C90E5 >
+{
+	myIdentifier < uid=3A12912164EF5B40000A9E30BF8ECFA6 > = S_COM_TestTrigger_02 3A12912164EF5998000A9DA1395D58D9
+	myTagScoreModifier 5
+	myUIElementType Commscanner
+	myVOType < uid=3A12912164EF5C11000A9E9E2EAB1F3C > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+		}
+	}
+	myElements
+	{
+		StimulusElement TestElement
+		{
+			myElement
+			{
+				myGuid 493AD0C56CB5196009FE7296E2AA4D8B
+			}
+			myTemplateOverride
+			{
+				myGuid 49C2A086BE277EFBA8E5AD87054B44AA
+			}
+			myDelay 0.0
+			myResponseDelay 0.3
+		}
+	}
+}
+
+StimulusElementContainer 00_TestTrigger_NPCResponse < uid=3A12912164EF5B8E000A9E55D3008547 >
+{
+	myIdentifier < uid=3A12912164EF5B8E000A9E567A167556 > = S_NPC_TestTrigger_02 3A12912164EF598B000A9DA07BC63429
+	myTagScoreModifier 5
+	myVOType < uid=3A12912164EF5B8E000A9E5709753327 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" CommsScanner
+		}
+	}
+	myElements
+	{
+		StimulusElement TestElement
+		{
+			myElement
+			{
+				myGuid 4CBE4961E83124E25A4EC92F4663ABB5
+			}
+			myTemplateOverride
+			{
+				myGuid 4EC51014DD47FC0BE1E654C62C2D84B1
+			}
+			myDelay 0.0
+			myResponseDelay 0.2
+		}
+	}
+}
+
+StimulusElementContainer COM_AbandonSearch_Low < uid=3A12912162CEE824000046E8717779CD >
+{
+	myIdentifier < uid=3A12912162CEE896000046EE9E9B6339 > = S_COM_WantedAbandonSearch 3A129121637CEE6A0001C23FAADFB28D
+	myCooldowns
+	{
+		BarksCooldown Default < uid=3A12912162CEE87B000046ECAA91B34E > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+	}
+	myMaxDistance 0.0
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F25635BE0B10000575BCD94BD41 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=3A12912163F786CE0005442C2C04E69F > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Kay
+		}
+	}
+	myElements
+	{
+		StimulusElement "Abandon Search Announcement"
+		{
+			myElement
+			{
+				myGuid 441B77657DEDDB4CAE73BD885F1D2E8E
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=3A12912162CEE894000046EDD57B7FB8 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E472BC00008FD4EF12E891 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 0.9
+			myResponse < uid=3A12912163765402000273D4B84101A0 > = S_KAY_Response_WantedReset 3A1291216376537E00027388DABF1875
+		}
+	}
+}
+
+StimulusElementContainer COM_AbandonSearch_High < uid=1EC89F2563BFDC8300004B7B2474485A >
+{
+	myIdentifier < uid=1EC89F2563BFDC8300004B7C5F00AB37 > = S_COM_WantedAbandonSearch 3A129121637CEE6A0001C23FAADFB28D
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=1EC89F2563BFDC8300004B7DBBE81A22 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+	}
+	myMaxDistance 0.0
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F2563BFDC8300004B7EFD9E355A > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=3A12912163F786D90005445A738BD3B5 > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Kay
+		}
+	}
+	myElements
+	{
+		StimulusElement "Abandon Search Announcement"
+		{
+			myElement
+			{
+				myGuid 493AD0C56CB5196009FE7296E2AA4D8B
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=1EC89F2563BFDC8300004B7F7B2E842B > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E472D100008FD5651A86DA > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 0.9
+			myResponse < uid=1EC89F2563BFDC8300004B80212DC16A > = S_KAY_Response_WantedReset 3A1291216376537E00027388DABF1875
+		}
+	}
+}
+
+StimulusElementContainer COM_WantedReset_Low_Part1 < uid=1EC89F2563E2293A00017651DAAA3C60 >
+{
+	myIdentifier < uid=1EC89F2563E2293A000176521140DC78 > = S_COM_WantedReset_Part1 3A12912162CEE18B000046D7BDB1F582
+	myCooldowns
+	{
+		BarksCooldown Default < uid=1EC89F2563E2293A000176534D67F77C > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+	}
+	myMaxDistance 0.0
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F2563E2293A000176540EB10EA4 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=3A12912163F786DE0005446A3BBBBE87 > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+		RBTagsTag WantedLevel < uid=1EC89F2565D45E640012024B5596AEB0 > = World_WantedLevel_Not6Tag 16DEADE6626C6BB60000270E5B93B823
+		RBTagsTag WantedLevel < uid=1EC89F2565D486890012024C6D4ED9B3 > = World_WantedLevel_Not5Tag 16DEADE6626C6BB60000270C11F94005
+		RBTagsTag WantedLevel < uid=1EC89F2565D486AC0012024D2A8FA38A > = World_WantedLevel_Not4Tag 16DEADE6626C6BB60000270A93802C66
+		RBTagsTag WantedLevel < uid=1EC89F2565D486B40012024E93F7E6AC > = World_WantedLevel_Not3Tag 16DEADE6626C6BB600002708209F379B
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "Comms Part 2" Self
+		}
+	}
+	myElements
+	{
+		StimulusElement "Wanted Reset Announcement"
+		{
+			myElement
+			{
+				myGuid 4799EE0E38A986FAE15AA8862FD7EC8E
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=1EC89F2563E2293A0001765585737A2E > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E4739D00008FD6D9FBAAD4 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 2.0
+			myResponseDelay 0.0
+			myResponse < uid=1EC89F2563E2293A0001765692C7D5E4 > = S_COM_WantedReset_Part2 1EC89F2563E22EE80001765D87945D2E
+		}
+	}
+}
+
+StimulusElementContainer COM_WantedReset_Low_Part2 < uid=1EC89F2563E22FA600017660F070B542 >
+{
+	myIdentifier < uid=1EC89F2563E22FA600017661D528FB4F > = S_COM_WantedReset_Part2 1EC89F2563E22EE80001765D87945D2E
+	myCooldowns
+	{
+	}
+	myMaxDistance 0.0
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F2563E22FA600017663032D933D > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=3A12912163F786E40005447A19B5A865 > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+		RBTagsTag "Wanted Level" < uid=1EC89F2565D486CC0012025F09CA9A96 > = World_WantedLevel_Not6Tag 16DEADE6626C6BB60000270E5B93B823
+		RBTagsTag "Wanted Level" < uid=1EC89F2565D4872A001202601C8146D8 > = World_WantedLevel_Not5Tag 16DEADE6626C6BB60000270C11F94005
+		RBTagsTag "Wanted Level" < uid=1EC89F2565D48730001202617DF67659 > = World_WantedLevel_Not4Tag 16DEADE6626C6BB60000270A93802C66
+		RBTagsTag "Wanted Level" < uid=1EC89F2565D4873600120262A976489D > = World_WantedLevel_Not3Tag 16DEADE6626C6BB600002708209F379B
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+		}
+	}
+	myElements
+	{
+		StimulusElement "Wanted Reset Announcement"
+		{
+			myElement
+			{
+				myGuid 435007F0BDB1D3105E4FC6A44191EC90
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=1EC89F2563E22FA6000176647682ECBF > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E4753100008FD84C962A86 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 0.0
+			myResponseDelay 0.0
+		}
+	}
+}
+
+StimulusElementContainer COM_WantedReset_High_Part1 < uid=1EC89F2565D486BC0012024FD6B27DA7 >
+{
+	myIdentifier < uid=1EC89F2565D486BC00120250CD2AA583 > = S_COM_WantedReset_Part1 3A12912162CEE18B000046D7BDB1F582
+	myCooldowns
+	{
+		BarksCooldown Default < uid=1EC89F2565D486BC001202519AEEDC5F > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+	}
+	myMaxDistance 0.0
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F2565D486BC00120252B6008B28 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=1EC89F2565D486BC00120253F31A870A > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+		RBTagsTag "Wanted Level" < uid=1EC89F2565D4875000120263F435690F > = World_WantedLevel_Not2Tag 16DEADE6626C6BB60000270695E41DDC
+		RBTagsTag "Wanted Level" < uid=1EC89F2565D4875400120264E29446D7 > = World_WantedLevel_Not1Tag 16DEADE6626C6BB60000270435491D6A
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "Comms Part 2" Self
+		}
+	}
+	myElements
+	{
+		StimulusElement "Wanted Reset Announcement"
+		{
+			myElement
+			{
+				myGuid 4799EE0E38A986FAE15AA8862FD7EC8E
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=1EC89F2565D486BC001202558764075C > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2565D486BC00120256358F8553 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 2.0
+			myResponseDelay 0.0
+			myResponse < uid=1EC89F2565D486BC00120257128A763F > = S_COM_WantedReset_Part2 1EC89F2563E22EE80001765D87945D2E
+		}
+	}
+}
+
+StimulusElementContainer COM_WantedReset_High_Part2 < uid=1EC89F2565D486BC00120258585678A3 >
+{
+	myIdentifier < uid=1EC89F2565D486BC00120259FFAFCA12 > = S_COM_WantedReset_Part2 1EC89F2563E22EE80001765D87945D2E
+	myCooldowns
+	{
+	}
+	myMaxDistance 0.0
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F2565D486BC0012025AB6436DA9 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=1EC89F2565D486BC0012025BF739CED0 > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+		RBTagsTag WantedLevel < uid=1EC89F2565D48770001202652C1EA062 > = World_WantedLevel_Not2Tag 16DEADE6626C6BB60000270695E41DDC
+		RBTagsTag WantedLevel < uid=1EC89F2565D4877D00120266373737DC > = World_WantedLevel_Not1Tag 16DEADE6626C6BB60000270435491D6A
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+		}
+	}
+	myElements
+	{
+		StimulusElement "Wanted Reset Announcement"
+		{
+			myElement
+			{
+				myGuid 435007F0BDB1D3105E4FC6A44191EC90
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=1EC89F2565D486BC0012025D9D3F8534 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2565D486BC0012025E30BC9D1F > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 0.0
+			myResponseDelay 0.0
+		}
+	}
+}
+
+StimulusElementContainer COM_WantedStateUpDefault_Low_Part1 < uid=1EC89F2563C031BA0000E7653FC01859 >
+{
+	myIdentifier < uid=1EC89F2563C031BA0000E766695CA3F6 > = S_COM_WantedStateUp_Low_Part1 3A129121637661CF00010D6E30D6F14F
+	myCooldowns
+	{
+		BarksCooldown WantedStateUp < uid=1EC89F2563C031BA0000E7675FD90544 > = Cooldown_Com_WantedStateUp 3A1291216376638600010E9CA1C8C317
+		BarksCooldown Default < uid=1EC89F2563F8AB8B0002177581A4EEB4 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+		BarksCooldown "Report Enter Wanted" < uid=1EC89F2563F8AF67000331088F10E6B0 > = Cooldown_Com_ReportEnterWanted 1EC89F2563F8AC680003310146D4E9BE
+	}
+	myTagScoreModifier 5
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F2563C031BA0000E768762A64F9 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=3A12912163F786EA0005447BADD377F2 > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Self
+		}
+	}
+	myElements
+	{
+		StimulusElement WantedStateUp
+		{
+			myElement
+			{
+				myGuid 4E01F832E70CA5CE5EDBF9697D2368A6
+			}
+			myCooldowns
+			{
+				BarksCooldown WantedStateUp < uid=1EC89F2563C119CC0000E77131451EBF > = Cooldown_Com_WantedStateUp 3A1291216376638600010E9CA1C8C317
+				BarksCooldown Default < uid=1EC89F2563C9131600007CFFB5DE5AB4 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "NPC Combat Default" < uid=1EC89F25646B7AF7000FCF3D7F6D645E > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E4751400008FD734B81AE0 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 1.5
+			myResponseDelay 0.2
+			myResponse < uid=1EC89F2563C11B1F0000E77564991B50 > = S_COM_WantedStateUp_Low_Part2 1EC89F2563C111C50000E76A9E4C9B59
+		}
+	}
+}
+
+StimulusElementContainer COM_WantedStateUpDefault_Low_Part2 < uid=1EC89F2563C113090000E76DE3538D87 >
+{
+	myIdentifier < uid=1EC89F2563C113090000E76EF5B5A099 > = S_COM_WantedStateUp_Low_Part2 1EC89F2563C111C50000E76A9E4C9B59
+	myCooldowns
+	{
+	}
+	myTagScoreModifier 5
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F2563C113090000E77040281BCB > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=3A12912163F786F20005448B8E0B1306 > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Kay
+		}
+	}
+	myElements
+	{
+		StimulusElement WantedStateUp
+		{
+			myElement
+			{
+				myGuid 48FF8A2595FC6314ECB6F8AF087F82A4
+			}
+			myCooldowns
+			{
+				BarksCooldown WantedStateUp < uid=1EC89F2563C9132300007D00FAF53B68 > = Cooldown_Com_WantedStateUp 3A1291216376638600010E9CA1C8C317
+				BarksCooldown Default < uid=1EC89F2563C9133600007D03EC9AB04F > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "NPC Combat Default" < uid=1EC89F25646B7B4D000FCF3EEF0B0940 > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E4753E00008FD9FD0B5998 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 0.0
+			myResponseDelay 0.3
+			myResponse < uid=1EC89F2563C11BC80000E778B1DC10E4 > = S_KAY_Response_WantedStateUp_Low 3A129121637661FF00010D80494D25B7
+		}
+	}
+}
+
+StimulusElementContainer COM_WantedStateUpDefault_EnterHigh_Part1 < uid=3A1291216376630F00010E585A75C4E7 >
+{
+	myIdentifier < uid=3A1291216376642A00010EEB669B44F0 > = S_COM_WantedStateUp_EnterHigh_Part1 3A129121637661E200010D6FB80F15DA
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=3A129121637663F500010EEA73D0C11D > = Cooldown_Com_WantedStateUp 3A1291216376638600010E9CA1C8C317
+		BarksCooldown Default < uid=1EC89F2563F8AB9D00021776BA44D48C > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+		BarksCooldown ReportEnterWanted < uid=1EC89F2563F8AF79000331098C931A6B > = Cooldown_Com_ReportEnterWanted 1EC89F2563F8AC680003310146D4E9BE
+	}
+	myTagScoreModifier 5
+	myUIElementType Commscanner
+	myVOType < uid=3A1291216376636700010E6BCAE97BD1 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=3A12912163F786F80005449B0BFF1EE0 > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Self
+		}
+	}
+	myElements
+	{
+		StimulusElement WantedStateUp
+		{
+			myElement
+			{
+				myGuid 499F74C39520CF3555FCC0F9CA267FA8
+			}
+			myCooldowns
+			{
+				BarksCooldown WantedStateUp < uid=1EC89F2563C11C4B0000E77AABBDBB3E > = Cooldown_Com_WantedStateUp 3A1291216376638600010E9CA1C8C317
+				BarksCooldown Default < uid=1EC89F2563C9134E00007D04BFE7F8CF > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "Combat Default" < uid=1EC89F25646B7B67000FCF3FCBC85797 > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E4756600008FDAF9A2E1E7 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 1.5
+			myResponseDelay 0.2
+			myResponse < uid=1EC89F2563C11C840000E77BA290F686 > = S_COM_WantedStateUp_High_Part2 1EC89F2563C111D60000E76BEDBC628A
+		}
+	}
+}
+
+StimulusElementContainer COM_WantedStateUpDefault_EnterHigh_Part2 < uid=1EC89F2563C11F350000E77F11D8AA2B >
+{
+	myIdentifier < uid=1EC89F2563C11F350000E78087228F83 > = S_COM_WantedStateUp_EnterHigh_Part2 1EC89F2563C111E70000E76C864AD9D1
+	myCooldowns
+	{
+	}
+	myTagScoreModifier 5
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F2563C11F350000E782B7FFA3AF > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=3A12912163F78700000544ABAEBA8A04 > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Kay
+		}
+	}
+	myElements
+	{
+		StimulusElement WantedStateUp
+		{
+			myElement
+			{
+				myGuid 419E83BC28F8E0079B9ABBD2C459E0B8
+			}
+			myCooldowns
+			{
+				BarksCooldown WantedStateUp < uid=1EC89F2563C9113600007CF2DFE6EC81 > = Cooldown_Com_WantedStateUp 3A1291216376638600010E9CA1C8C317
+				BarksCooldown Default < uid=1EC89F2563C9135800007D0562D7F559 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "Combat Default" < uid=1EC89F25646B7B80000FCF4088D623C1 > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E4757900008FDB0D398B29 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 0.0
+			myResponseDelay 0.3
+			myResponse < uid=1EC89F2563C11F350000E78363A2CE89 > = S_KAY_Response_WantedStateUp_High 3A1291216376620B00010D81CE98CECB
+		}
+	}
+}
+
+StimulusElementContainer COM_WantedStateUpDefault_High_Part1 < uid=3A1291216376632C00010E59B76F1188 >
+{
+	myIdentifier < uid=3A1291216376647700010F0A3A84262C > = S_COM_WantedStateUp_High_Part1 3A1291216376611600010D40F7004A6B
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=3A129121637664F700010F2B55C115D1 > = Cooldown_Com_WantedStateUp 3A1291216376638600010E9CA1C8C317
+		BarksCooldown Default < uid=1EC89F2563F8ABA8000217771C50BEDD > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+		BarksCooldown ReportEnterWanted < uid=1EC89F2563F8AF820003310AD2DE0C26 > = Cooldown_Com_ReportEnterWanted 1EC89F2563F8AC680003310146D4E9BE
+	}
+	myTagScoreModifier 5
+	myUIElementType Commscanner
+	myVOType < uid=3A1291216376636700010E6CE007656C > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=3A12912163F78705000544BBB5139240 > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Self
+		}
+	}
+	myElements
+	{
+		StimulusElement WantedStateUp_High
+		{
+			myElement
+			{
+				myGuid 4399B483161B23A6BB876FFE3252F986
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=1EC89F2563C120D80000E78EBDF5941E > = Cooldown_Com_WantedStateUp 3A1291216376638600010E9CA1C8C317
+				BarksCooldown Default < uid=1EC89F2563C9136400007D067BBB00F4 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "Combat Default" < uid=1EC89F25646B7B9C000FCF419C8DE911 > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E4758400008FDCF0065212 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 1.5
+			myDisable FALSE
+			myResponseDelay 0.2
+			myResponse < uid=1EC89F2563C120D80000E78F11657417 > = S_COM_WantedStateUp_High_Part2 1EC89F2563C111D60000E76BEDBC628A
+		}
+	}
+}
+
+StimulusElementContainer COM_WantedStateUpDefault_High_Part2 < uid=1EC89F2563C11F350000E784F06F0BE9 >
+{
+	myIdentifier < uid=1EC89F2563C11F350000E7853C4E7326 > = S_COM_WantedStateUp_High_Part2 1EC89F2563C111D60000E76BEDBC628A
+	myCooldowns
+	{
+	}
+	myTagScoreModifier 5
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F2563C11F350000E78703451308 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=3A12912163F7870A000544CB16C22C8A > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Kay
+		}
+	}
+	myElements
+	{
+		StimulusElement WantedStateUp_High
+		{
+			myElement
+			{
+				myGuid 4378A3FCDDEA122CB2454ED1CD8C7489
+			}
+			myCooldowns
+			{
+				BarksCooldown WantedStateUp < uid=1EC89F2563C9115C00007CF5E1821501 > = Cooldown_Com_WantedStateUp 3A1291216376638600010E9CA1C8C317
+				BarksCooldown Default < uid=1EC89F2563C9137000007D07429ADF04 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "NPC Combat Default" < uid=1EC89F25646B7BBE000FCF422B7BB2C9 > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E4759500008FDD57661213 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 0.0
+			myResponseDelay 0.3
+			myResponse < uid=1EC89F2563C14EF50000A38FB4D6540C > = S_KAY_Response_WantedStateUp_High 3A1291216376620B00010D81CE98CECB
+		}
+	}
+}
+
+StimulusElementContainer COM_WantedStateUpDefault_Manhunt_Part1 < uid=3A1291216376634900010E5BCA5B5F47 >
+{
+	myIdentifier < uid=3A1291216376662A00010FAB19081AF3 > = S_COM_WantedStateUp_Manhunt_Part1 3A129121637661EC00010D70DC976443
+	myCooldowns
+	{
+		BarksCooldown Default < uid=1EC89F2563F8ABB700021778BB13C7CC > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+		BarksCooldown WantedStateUp < uid=1EC89F2563F8ABC1000217791D644F54 > = Cooldown_Com_WantedStateUp 3A1291216376638600010E9CA1C8C317
+		BarksCooldown ReportEnterWanted < uid=1EC89F2563F8AF8D0003310B84BAA551 > = Cooldown_Com_ReportEnterWanted 1EC89F2563F8AC680003310146D4E9BE
+	}
+	myTagScoreModifier 5
+	myUIElementType Commscanner
+	myVOType < uid=3A1291216376636700010E6EEC703677 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=3A12912163F78710000544DB84921A42 > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Self
+		}
+	}
+	myElements
+	{
+		StimulusElement WantedStateUp_EnterManhunt
+		{
+			myElement
+			{
+				myGuid 491BC54D513A3CDCD22D062FF1D5999A
+			}
+			myCooldowns
+			{
+				BarksCooldown WantedStateUp < uid=1EC89F2563C9138D00007D08C23B7618 > = Cooldown_Com_WantedStateUp 3A1291216376638600010E9CA1C8C317
+				BarksCooldown Default < uid=1EC89F2563C9139400007D091F9B2E3B > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "NPC Combat Default" < uid=1EC89F25646B7BD2000FCF43A2862CDE > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E475A000008FDEB9256CC1 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 1.5
+			myDisable FALSE
+			myResponseDelay 0.2
+			myResponse < uid=3A1291216376663E00010FBC6F8AEF0B > = S_COM_WantedStateUp_Manhunt_Part2 1EC89F2563C122DA0000E793E7F5E9D8
+		}
+	}
+}
+
+StimulusElementContainer COM_WantedStateUpDefault_Manhunt_Part2 < uid=1EC89F2563C11F350000E78A80A9E012 >
+{
+	myIdentifier < uid=1EC89F2563C11F350000E78BAB5F7E5C > = S_COM_WantedStateUp_Manhunt_Part2 1EC89F2563C122DA0000E793E7F5E9D8
+	myCooldowns
+	{
+	}
+	myTagScoreModifier 5
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F2563C11F350000E78CCBC4A0CD > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=3A12912163F78714000544EB1B2D728C > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Kay
+		}
+	}
+	myElements
+	{
+		StimulusElement WantedStateUp_EnterManhunt_Part2
+		{
+			myElement
+			{
+				myGuid 4DBBE3F4E767186C44E59DE6B30B6989
+			}
+			myCooldowns
+			{
+				BarksCooldown WantedStateUp < uid=1EC89F2563C913F900007D0ABC84319C > = Cooldown_Com_WantedStateUp 3A1291216376638600010E9CA1C8C317
+				BarksCooldown Default < uid=1EC89F2563C9140500007D0B2872BBF7 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "NPC Combat Default" < uid=1EC89F25646B7BFA000FCF4568416C7A > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E475AF00008FDF7884D80F > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 0.0
+			myDisable FALSE
+			myResponse < uid=1EC89F2563C11F350000E78D20649700 > = S_KAY_Response_WantedStateUp_Manhunt 3A1291216376621800010D91C97F973A
+		}
+	}
+}
+
+StimulusElementContainer COM_ReportSuccess_Low_ResponseToTrooper_Part1 < uid=3A129121637CF5CB0001C339C24BA08A >
+{
+	myIdentifier < uid=3A129121637DE41C0001D32A4927F6BE > = S_COM_WantedReportSuccessToTrooper_Low_Part1 1EC89F25646727690000BA39C3E8AF56
+	myTagScoreModifier 2
+	myUIElementType Commscanner
+	myVOType < uid=3A129121637DED4E000245F77A52ABCA > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=3A12912163F7871A000544FBC76ACA55 > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope Comms Self
+		}
+	}
+	myElements
+	{
+		StimulusElement ReportSuccess_Low
+		{
+			myElement
+			{
+				myGuid 44B29B7CD90CE15C1F4F03D24D0F91B8
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=1EC89F2563C9143500007D0C31E08357 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "NPC Combat Default" < uid=1EC89F25646B7C32000FCF469E5A7641 > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E475D100008FE0BAD083CF > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+				BarksCooldown "Report Incident" < uid=1EC89F2565F420C1000F90A77E3E4088 > = Cooldown_Com_ReportIncident 1EC89F25638E0C420001A25832CDD8F4
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 0.8
+			myResponseDelay 0.0
+			myResponse < uid=1EC89F2563C16797000140E681F27F4A > = NULLREFERENCE
+		}
+		StimulusElement ReportSuccess_Low_Trooper_Code
+		{
+			myElement
+			{
+				myGuid 4E32DFCFBE69C51BA23D2876BDB6C687
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=1EC89F2564637ADF000AD36419128C0E > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "NPC Combat Default" < uid=1EC89F25646B7C3D000FCF470D295988 > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E475D800008FE1DD41E80C > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+				BarksCooldown "Report Incident" < uid=1EC89F2565F42080000F90A600F6573A > = Cooldown_Com_ReportIncident 1EC89F25638E0C420001A25832CDD8F4
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 0.8
+			myResponseDelay 0.2
+			myResponse < uid=1EC89F2564637ADF000AD365069563B2 > = S_COM_WantedReportSuccessToTrooperOrOfficer_Low_Part2 1EC89F25646739AE0000BA563FC25CF8
+		}
+	}
+}
+
+StimulusElementContainer COM_ReportSuccess_Low_ResponseToOfficer_Part1 < uid=1EC89F2564678163000B0235E7BC7F20 >
+{
+	myIdentifier < uid=1EC89F2564678163000B023652ED2104 > = S_COM_WantedReportSuccessToOfficer_Low_Part1 3A129121637D01330001CD6FF3B09C83
+	myTagScoreModifier 2
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F2564678163000B0237FB6D15F2 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=1EC89F2564678163000B023803774538 > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope Comms Self
+		}
+	}
+	myElements
+	{
+		StimulusElement ReportSuccess_Low
+		{
+			myElement
+			{
+				myGuid 44B29B7CD90CE15C1F4F03D24D0F91B8
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=1EC89F2564678163000B023A3CE89BEA > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "NPC Combat Default" < uid=1EC89F25646B7C53000FCF4828A00FB2 > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E475EE00008FE3118A395C > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+				BarksCooldown "Report Incident" < uid=1EC89F2565F420E6000F90A80DC828EC > = Cooldown_Com_ReportIncident 1EC89F25638E0C420001A25832CDD8F4
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 0.8
+			myResponseDelay 0.0
+			myResponse < uid=1EC89F2564678163000B023BAFB9DB00 > = NULLREFERENCE
+		}
+		StimulusElement ReportSuccess_Low_Officer_Code
+		{
+			myElement
+			{
+				myGuid 4CE1C39A836AC0FDB9BE833BB71C2E90
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=1EC89F2564678163000B023C165E154A > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "NPC Combat Default" < uid=1EC89F25646B7C5C000FCF494BE19460 > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E475E300008FE24F90D401 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+				BarksCooldown "Report Incident" < uid=1EC89F2565F420F7000F90A9D5557A91 > = Cooldown_Com_ReportIncident 1EC89F25638E0C420001A25832CDD8F4
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 0.8
+			myResponseDelay 0.2
+			myResponse < uid=1EC89F2564678163000B023DA224EEBF > = S_COM_WantedReportSuccessToTrooperOrOfficer_Low_Part2 1EC89F25646739AE0000BA563FC25CF8
+		}
+	}
+}
+
+StimulusElementContainer COM_ReportSuccess_Low_ResponseToTrooperOrOfficer_Part2 < uid=1EC89F256467397D0000BA443270D698 >
+{
+	myIdentifier < uid=1EC89F256467397D0000BA45B7447008 > = S_COM_WantedReportSuccessToTrooperOrOfficer_Low_Part2 1EC89F25646739AE0000BA563FC25CF8
+	myTagScoreModifier 2
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F256467397D0000BA464D98303C > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=1EC89F256467397D0000BA477CED7383 > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+		}
+	}
+	myElements
+	{
+		StimulusElement ReportSuccess_Low_Order
+		{
+			myElement
+			{
+				myGuid 40DBF0792F1E550F50CED7CE3F5303AA
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=1EC89F256467397D0000BA495CCD43BB > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "NPC Combat Default" < uid=1EC89F25646B7C8F000FCF4A06440B23 > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E4760200008FE42F7A0E59 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+				BarksCooldown "Report Incident" < uid=1EC89F2565F42113000F90AA67A8A886 > = Cooldown_Com_ReportIncident 1EC89F25638E0C420001A25832CDD8F4
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 0.1
+			myResponseDelay 0.0
+			myResponse < uid=1EC89F256467397D0000BA4AD05881CE > = NULLREFERENCE
+		}
+	}
+}
+
+StimulusElementContainer COM_ReportSuccess_High_ResponseToTrooper_Part1 < uid=3A129121637CF5E30001C33A5AE5484D >
+{
+	myIdentifier < uid=3A129121637DE41C0001D32BCA491359 > = S_COM_WantedReportSuccessToTrooper_High_Part1 3A129121637D01E30001CDF52E972774
+	myTagScoreModifier 2
+	myUIElementType Commscanner
+	myVOType < uid=3A129121637DED8400024616DB88B751 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=3A12912163F7872D0005451B26851492 > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope Comms Self
+		}
+	}
+	myElements
+	{
+		StimulusElement ReportSuccess_High
+		{
+			myElement
+			{
+				myGuid 45460FFE738512F03067E7C9E5E8C2A9
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=1EC89F2563C9145E00007D10E2862628 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "NPC Combat Default" < uid=1EC89F25646B7CE3000FCF4F7E061617 > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E4762F00008FE93AAE9514 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+				BarksCooldown "Report Incident" < uid=1EC89F2565F421DF000F90AFE41AFC5E > = Cooldown_Com_ReportIncident 1EC89F25638E0C420001A25832CDD8F4
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 0.8
+			myResponseDelay 0.0
+		}
+		StimulusElement ReportSuccess_High_Trooper_Code
+		{
+			myElement
+			{
+				myGuid 4E32DFCFBE69C51BA23D2876BDB6C687
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=1EC89F2564676C0600029905D519D6C8 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "NPC Combat Default" < uid=1EC89F25646B7CED000FCF508A0A0459 > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E4763700008FEA8DC3E9BA > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+				BarksCooldown "Report Incident" < uid=1EC89F2565F421EE000F90B0A9ABB845 > = Cooldown_Com_ReportIncident 1EC89F25638E0C420001A25832CDD8F4
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 0.8
+			myResponseDelay 0.1
+			myResponse < uid=1EC89F2564676C0600029906B48DD8B9 > = S_COM_WantedReportSuccessToTrooperOrOfficer_High_Part2 1EC89F25646739BF0000BA57BD0F285A
+		}
+	}
+}
+
+StimulusElementContainer COM_ReportSuccess_High_ResponseToOfficer_Part1 < uid=1EC89F2564678CDE00126F43EEC68D7F >
+{
+	myIdentifier < uid=1EC89F2564678CDE00126F449D7B1ABA > = S_COM_WantedReportSuccessToOfficer_High_Part1 1EC89F25646727DC0000BA3A9272882C
+	myTagScoreModifier 2
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F2564678CDE00126F45FC5D6CB7 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=1EC89F2564678CDE00126F46AA0FE568 > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope Comms Self
+		}
+	}
+	myElements
+	{
+		StimulusElement ReportSuccess_High
+		{
+			myElement
+			{
+				myGuid 45460FFE738512F03067E7C9E5E8C2A9
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=1EC89F2564678CDE00126F483593425C > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "NPC Combat Default" < uid=1EC89F25646B7D02000FCF5117B4B82B > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E4764400008FEB7E129C11 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+				BarksCooldown "Report Incident" < uid=1EC89F2565F42210000F90B1615C91D7 > = Cooldown_Com_ReportIncident 1EC89F25638E0C420001A25832CDD8F4
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 0.8
+		}
+		StimulusElement ReportSuccess_High_Trooper_Code
+		{
+			myElement
+			{
+				myGuid 4CE1C39A836AC0FDB9BE833BB71C2E90
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=1EC89F2564678CDE00126F4922BCA88D > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "NPC Combat Default" < uid=1EC89F25646B7D11000FCF527490E887 > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E4764900008FECCC7568BD > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+				BarksCooldown "Report Incident" < uid=1EC89F2565F42222000F90B2F84DA9DE > = Cooldown_Com_ReportIncident 1EC89F25638E0C420001A25832CDD8F4
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 0.8
+			myResponseDelay 0.2
+			myResponse < uid=1EC89F2564678CDE00126F4AF74D2D17 > = S_COM_WantedReportSuccessToTrooperOrOfficer_High_Part2 1EC89F25646739BF0000BA57BD0F285A
+		}
+	}
+}
+
+StimulusElementContainer COM_ReportSuccess_High_ResponseToTrooperOrOfficer_Part2 < uid=1EC89F256467397D0000BA4DD414090A >
+{
+	myIdentifier < uid=1EC89F256467397D0000BA4EC056B4B7 > = S_COM_WantedReportSuccessToTrooperOrOfficer_High_Part2 1EC89F25646739BF0000BA57BD0F285A
+	myTagScoreModifier 2
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F256467397D0000BA4FF3527279 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=1EC89F256467397D0000BA5083239399 > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+		}
+	}
+	myElements
+	{
+		StimulusElement ReportSuccess_High_Order
+		{
+			myElement
+			{
+				myGuid 4197F31C1CC5EE74C8ABDF733C50D0B8
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=1EC89F256467397D0000BA52828D67F4 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "NPC Combat Default" < uid=1EC89F25646B7D3B000FCF533A68FEAC > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E4765700008FED823D4212 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+				BarksCooldown "Report Incident" < uid=1EC89F2565F42244000F90B3CB864285 > = Cooldown_Com_ReportIncident 1EC89F25638E0C420001A25832CDD8F4
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 0.0
+			myResponseDelay 0.0
+			myResponse < uid=1EC89F256467397D0000BA53E22C0C66 > = NULLREFERENCE
+		}
+	}
+}
+
+StimulusElementContainer COM_RequestBackup_ResponseToTrooper_Part1 < uid=1EC89F25638DF46300005E8BBB1E9606 >
+{
+	myIdentifier < uid=1EC89F25638DF49F00005E8CFFF8F2C4 > = S_COM_RequestBackupResponseToTrooper_Part1 1EC89F25638DCF9500005E8A4BB6EC20
+	myCooldowns
+	{
+		BarksCooldown Default < uid=1EC89F25646724F40000BA2D1A7AF44B > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+	}
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F25638DF49F00005E8D001F329F > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=3A12912163F787320005452B4A313E46 > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "Comms Response" Self
+		}
+	}
+	myElements
+	{
+		StimulusElement "Request Backup Comm"
+		{
+			myElement
+			{
+				myGuid 49254AA449DDF090EBE3DB6C133A6B88
+			}
+			myCooldowns
+			{
+				BarksCooldown RequestBackup < uid=3A129121638F13290000D12460C6E987 > = Cooldown_Com_RequestBackup 3A129121638F12A40000D0E731A843C2
+				BarksCooldown Default < uid=1EC89F256467250F0000BA2E8225A471 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "NPC Combat Default" < uid=1EC89F25646B7D55000FCF54E09A1D74 > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E4765E00008FEE1021E5D6 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myWeighting 50
+			myResponseDelay 0.2
+		}
+		StimulusElement "Request Backup Comm Trooper Code"
+		{
+			myElement
+			{
+				myGuid 4E32DFCFBE69C51BA23D2876BDB6C687
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=1EC89F25646725180000BA2F8816961D > = Cooldown_Com_RequestBackup 3A129121638F12A40000D0E731A843C2
+				BarksCooldown Default < uid=1EC89F256467251E0000BA30A5915A0C > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "NPC Combat Default" < uid=1EC89F25646B7D62000FCF55525D94AC > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E4766900008FEFFA3901D7 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myResponse < uid=1EC89F2564632BD80000B5DEDE87D9A3 > = S_COM_RequestBackupResponseToTrooperOrOfficer_Part2 1EC89F25646249EC0000B45EFECA2728
+		}
+	}
+}
+
+StimulusElementContainer COM_RequestBackup_ResponseToOfficer_Part1 < uid=1EC89F2564624A9A0000B468A741A0C1 >
+{
+	myIdentifier < uid=1EC89F2564624A9A0000B46917603146 > = S_COM_RequestBackupResponseToOfficer_Part1 1EC89F2564624AD40000B476958A2958
+	myCooldowns
+	{
+		BarksCooldown Default < uid=1EC89F25646726350000BA34D4D9B9D2 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+	}
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F2564624A9A0000B46A9B6828D1 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=1EC89F2564624A9A0000B46B07B9E916 > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "Comms Response" Self
+		}
+	}
+	myElements
+	{
+		StimulusElement "Request Backup Comm"
+		{
+			myElement
+			{
+				myGuid 49254AA449DDF090EBE3DB6C133A6B88
+			}
+			myCooldowns
+			{
+				BarksCooldown RequestBackup < uid=1EC89F2564624A9A0000B46DBBA8F865 > = Cooldown_Com_RequestBackup 3A129121638F12A40000D0E731A843C2
+				BarksCooldown Default < uid=1EC89F256467265F0000BA359DC607E2 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "NPC Combat Default" < uid=1EC89F25646B7D78000FCF56A17A9AB0 > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E4767300008FF09D6EAEAD > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myWeighting 50
+		}
+		StimulusElement "Request Backup Comm Officer Code"
+		{
+			myElement
+			{
+				myGuid 4CE1C39A836AC0FDB9BE833BB71C2E90
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=1EC89F25646371AE0005256530C5387E > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown RequestBackup < uid=1EC89F256467266B0000BA3632AC6CF3 > = Cooldown_Com_RequestBackup 3A129121638F12A40000D0E731A843C2
+				BarksCooldown "NPC Combat Default" < uid=1EC89F25646B7D82000FCF57DC9A8DAD > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E4767800008FF1F52B42C0 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myResponse < uid=1EC89F2564632CF00000B5DFE3F949D2 > = S_COM_RequestBackupResponseToTrooperOrOfficer_Part2 1EC89F25646249EC0000B45EFECA2728
+		}
+	}
+}
+
+StimulusElementContainer COM_RequestBackup_ResponseToTrooperOrOfficer_Part2 < uid=1EC89F2564624A9A0000B462F1B0C9C8 >
+{
+	myIdentifier < uid=1EC89F2564624A9A0000B463102F999F > = S_COM_RequestBackupResponseToTrooperOrOfficer_Part2 1EC89F25646249EC0000B45EFECA2728
+	myCooldowns
+	{
+	}
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F2564624A9A0000B4641A9017F5 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=1EC89F2564624A9A0000B46526F2CC7B > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+	}
+	myElements
+	{
+		StimulusElement "Request Backup Comm Part2"
+		{
+			myElement
+			{
+				myGuid 412AD2E66C988810449CF5F5F64ADB81
+			}
+			myCooldowns
+			{
+				BarksCooldown RequestBackup < uid=1EC89F2564624A9A0000B4673DF43735 > = Cooldown_Com_RequestBackup 3A129121638F12A40000D0E731A843C2
+				BarksCooldown Default < uid=1EC89F25646726140000BA33FBB7DD92 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "NPC Combat Default" < uid=1EC89F25646B7DA2000FCF58ECDB5AF7 > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E4768200008FF2EA3B06E6 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 0.1
+		}
+	}
+}
+
+StimulusElementContainer COM_TargetFound_Low_Response < uid=1EC89F2563C1792400017F527674BC14 >
+{
+	myIdentifier < uid=1EC89F25646762BC000298FAD5843BFC > = S_COM_WantedTargetFound_Response_Low 1EC89F2563C179D500017F5B6AEF5926
+	myTagScoreModifier 2
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F25646762BC000298FB70E819A9 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=1EC89F25646762BC000298FCF2A45560 > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+		}
+	}
+	myElements
+	{
+		StimulusElement ReportSuccess_Low
+		{
+			myElement
+			{
+				myGuid 4EBA3CE872E885C56CFA125B04B670B7
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=1EC89F25646762BC000298FEEACE38B9 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "NPC Combat Default" < uid=1EC89F25646B7DB5000FCF59529D4B34 > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E4768700008FF3D83E95CF > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 1.0
+			myResponseDelay 0.0
+			myResponse < uid=1EC89F25646762BC000298FFDADB5118 > = NULLREFERENCE
+		}
+	}
+}
+
+StimulusElementContainer COM_TargetFound_High_Response < uid=1EC89F2563C1792400017F56AB2B61E1 >
+{
+	myIdentifier < uid=1EC89F2563C1792400017F577BDDC508 > = S_COM_WantedTargetFound_Response_High 1EC89F2563C179F100017F5C85374646
+	myTagScoreModifier 2
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F2563C1792400017F58101FE518 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=3A12912163F787410005454BB3BEE4B0 > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+	}
+	myElements
+	{
+		StimulusElement ReportSuccess_High
+		{
+			myElement
+			{
+				myGuid 43E29112105E596BE54CABD7EB288E8E
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=1EC89F2563C9156300007D1A415E6E02 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "NPC Combat Default" < uid=1EC89F25646B7DDB000FCF5A2747F4CD > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E4769100008FF430CD53A3 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 1.0
+		}
+	}
+}
+
+StimulusElementContainer COM_TargetLost_Low_Response < uid=1EC89F2563C5256C00009113DDD5F9E0 >
+{
+	myIdentifier < uid=1EC89F2563C5256C00009114F73D6C11 > = S_COM_WantedTargetLost_Response_Low 1EC89F2563C179B000017F590F5B7A39
+	myTagScoreModifier 2
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F2563C5256C00009115AB16AC11 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=3A12912163F787480005455B89400CBF > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope Kay Kay
+		}
+	}
+	myElements
+	{
+		StimulusElement ReportSuccess_Low
+		{
+			myElement
+			{
+				myGuid 45F2BEE4540F6AA73B8415D245AE578D
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=1EC89F2563C915A200007D1D4743CF98 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "Wanted Reminder Default" < uid=1EC89F25644907C700023878538425EE > = Cooldown_Com_WantedReminder_Default 1EC89F2563C030560000E7638E371081
+				BarksCooldown "NPC Search Default" < uid=1EC89F25646B7DF4000FCF5B2FB8E26D > = NPC_Cooldown_SearchDefault E4123D2762BA0F3900006026097ED2A1
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E4769900008FF59F5F2A38 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 1.0
+			myResponseDelay 0.0
+			myResponse < uid=1EC89F2563C5256C00009116F1E48168 > = S_KAY_Response_WantedEscapingLost 3A129121637CF8D10001C3A75CC11A52
+		}
+	}
+}
+
+StimulusElementContainer COM_TargetLost_High_Response < uid=1EC89F2563C5256C00009117838C7C4D >
+{
+	myIdentifier < uid=1EC89F2563C5256C000091189FCDD5C9 > = S_COM_WantedTargetLost_Response_High 1EC89F2563C179BE00017F5AFF8F365A
+	myTagScoreModifier 2
+	myProbability 100
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F2563C5256C0000911981A59405 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=3A12912163F7874D0005456B8802DCC3 > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope Kay Kay
+		}
+	}
+	myElements
+	{
+		StimulusElement ReportSuccess_High
+		{
+			myElement
+			{
+				myGuid 42651FA5324E0BF5EC9E62EB38A20DA3
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=1EC89F2563C915C500007D20641C51AD > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "Wanted Reminder Default" < uid=1EC89F25644907DE00023879B6E528DB > = Cooldown_Com_WantedReminder_Default 1EC89F2563C030560000E7638E371081
+				BarksCooldown "NPC Search Default" < uid=1EC89F25646B7E0E000FCF5C1982098F > = NPC_Cooldown_SearchDefault E4123D2762BA0F3900006026097ED2A1
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E476C100008FF6AD610303 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myDelay 1.0
+			myResponseDelay 0.0
+			myResponse < uid=1EC89F2563C527CA0000911A549FAA98 > = S_KAY_Response_WantedEscapingLost 3A129121637CF8D10001C3A75CC11A52
+		}
+	}
+}
+
+StimulusElementContainer COM_WantedManhuntLaunched_Part1 < uid=1EC89F25646C7A7A000247EE19A43E18 >
+{
+	myIdentifier < uid=1EC89F25646C7A7A000247EFFB8C24A9 > = S_COM_WantedManhuntLaunched_Part1 1EC89F25646C796400024784F2D6A518
+	myCooldowns
+	{
+	}
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F25646C7A7A000247F1B7FCB1FA > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=1EC89F25646C7A7A000247F28F900DE3 > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "Comms Response" Self
+		}
+	}
+	myElements
+	{
+		StimulusElement "Manhunt Launched"
+		{
+			myElement
+			{
+				myGuid 43A32D401F8BD7B7C26A107C0B0BA0BC
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=1EC89F25646C7A7A000247F5EDC80BD7 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "NPC Combat Default" < uid=1EC89F25646C7A7A000247F6E238FC98 > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E476CC00008FF781DD6B8D > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myWeighting 50
+			myResponseDelay 0.0
+			myResponse < uid=1EC89F25646C7B390002480C36E95A9A > = S_COM_WantedManhuntLaunched_Part2 1EC89F25646C79C8000247A79E1B7A1C
+		}
+	}
+}
+
+StimulusElementContainer COM_WantedManhuntLaunched_Part2 < uid=1EC89F25646C7BAF0002481F0FDFC3B4 >
+{
+	myIdentifier < uid=1EC89F25646C7BAF00024820B9191E52 > = S_COM_WantedManhuntLaunched_Part2 1EC89F25646C79C8000247A79E1B7A1C
+	myCooldowns
+	{
+	}
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F25646C7BAF00024822CE4BDBE3 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag NotSpace < uid=1EC89F25646C7BAF000248233F7863FD > = World_MapType_NotSpace 0E9FA073638290DB0000533F7C66EBC5
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "Comms Response" Self
+		}
+	}
+	myElements
+	{
+		StimulusElement "Manhunt Launched"
+		{
+			myElement
+			{
+				myGuid 41BCCA807768C329CED1E234C834BAA8
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=1EC89F25646C7BAF000248252F4632D2 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "NPC Combat Default" < uid=1EC89F25646C7BAF00024826BF42601A > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E476D500008FF8DBD7605E > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 418C4FF48779A194EDCDED9C75966DA8
+			}
+			myWeighting 50
+			myDelay 0.1
+			myResponseDelay 0.0
+			myResponse < uid=1EC89F25646C7BAF0002482743D99B84 > = NULLREFERENCE
+		}
+	}
+}
+
+StimulusElementContainer ______________________________________________________________NPC < uid=1EC89F2563C90ADA0000AA6CE0D094A0 >
+{
+	myIdentifier < uid=1EC89F2563C90AF00000AA6DADAC757A > = S_COM_TestTrigger 1EC89F2563C12E6000014E990289C136
+	mySubtitlePurpose "id = \"BA9D046A646CCD760000BB318EF49166\""
+}
+
+StimulusElementContainer NPC_ReportIncident_Trooper_Wanted_Low < uid=3A129121637D01A10001CDBDE4B9379E >
+{
+	myIdentifier < uid=3A129121637D01A10001CDBEFA48EB27 > = S_NPC_WantedReportIncident 3A12912163767A2A0001A83AA71A8A0A
+	myCooldowns
+	{
+		BarksCooldown "Report Incident Cooldown" < uid=1EC89F25638E0DB60001A25B5A8BAA77 > = Cooldown_Com_ReportIncident 1EC89F25638E0C420001A25832CDD8F4
+		BarksCooldown Default < uid=1EC89F25646CDB560001F6518E25BCE5 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+		BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E476F600008FF9BDBF9FF6 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+	}
+	myTagScoreModifier 0
+	myMaxDistance 0.0
+	myUIElementType Commscanner
+	myVOType < uid=3A129121637D01A10001CDBFF28F8BC3 > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+	myVOPriorityOverride 6
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag WantedLevel < uid=3A129121637D01A10001CDC0CA2CDBEA > = World_WantedLevel_Not3Tag 16DEADE6626C6BB600002708209F379B
+		RBTagsTag WantedLevel < uid=1EC89F2563C54F480000B5F78B75518A > = World_WantedLevel_Not4Tag 16DEADE6626C6BB60000270A93802C66
+		RBTagsTag WantedLevel < uid=1EC89F2563C54F540000B5F82B4095A8 > = World_WantedLevel_Not5Tag 16DEADE6626C6BB60000270C11F94005
+		RBTagsTag WantedLevel < uid=1EC89F2563C54F5C0000B5F961BC4F67 > = World_WantedLevel_Not6Tag 16DEADE6626C6BB60000270E5B93B823
+		RBTagsTag Trooper < uid=1EC89F2563F36CBF000009CCC203E58F > = Agent_BarksFamily_Stormtrooper E4123D2762F4C9F000048CA972FB8238
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" CommsScanner
+		}
+	}
+	myElements
+	{
+		StimulusElement ReportIncident_Radio
+		{
+			myElement
+			{
+				myGuid 46BF99B15AED494187DB0AB18159B5AE
+			}
+			myCooldowns
+			{
+				BarksCooldown "Report Incident Cooldown" < uid=1EC89F25638E0DF40001A25C06DDD3AA > = Cooldown_Com_ReportIncident 1EC89F25638E0C420001A25832CDD8F4
+				BarksCooldown "Combat NPC" < uid=1EC89F2563C91B4F00007D3938C55346 > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown ReportEnterWanted < uid=1EC89F2563F8AD1D0003310231520D97 > = Cooldown_Com_ReportEnterWanted 1EC89F2563F8AC680003310146D4E9BE
+				BarksCooldown "Request Backup" < uid=1EC89F2564E49E9F00049E68B9E8E166 > = Cooldown_Com_RequestBackup 3A129121638F12A40000D0E731A843C2
+				BarksCooldown Default < uid=1EC89F2565F418BC000742B889C990A3 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2565F45203000CF317687F3863 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 4F6D13EE9EB35534A46677B6C90ABB81
+			}
+			myDelay 0.0
+			myResponse < uid=3A129121637D01A10001CDC1E70400F6 > = S_COM_WantedReportSuccessToTrooper_Low_Part1 1EC89F25646727690000BA39C3E8AF56
+		}
+	}
+}
+
+StimulusElementContainer NPC_ReportIncident_Trooper_Wanted_High < uid=3A12912163808CB00000C620A37DE38A >
+{
+	myIdentifier < uid=3A12912163808CB00000C6212C001B0F > = S_NPC_WantedReportIncident 3A12912163767A2A0001A83AA71A8A0A
+	myCooldowns
+	{
+		BarksCooldown "Report Incident Cooldown" < uid=1EC89F25638E0E050001A25D7760AB41 > = Cooldown_Com_ReportIncident 1EC89F25638E0C420001A25832CDD8F4
+		BarksCooldown Default < uid=1EC89F25646CDBE50001F6539AA11E6A > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+		BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E4772200008FFB72886BDB > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+	}
+	myTagScoreModifier 0
+	myMaxDistance 0.0
+	myUIElementType Commscanner
+	myVOType < uid=3A12912163808CB00000C622EBD6AB56 > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+	myVOPriorityOverride 6
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag WantedLevel < uid=1EC89F2563C551640000DC996184AB2A > = World_WantedLevel_Not1Tag 16DEADE6626C6BB60000270435491D6A
+		RBTagsTag WantedLevel < uid=1EC89F2563C551700000DC9A69067BAC > = World_WantedLevel_Not2Tag 16DEADE6626C6BB60000270695E41DDC
+		RBTagsTag Trooper < uid=1EC89F2563F36CAF000009CB2729F94F > = Agent_BarksFamily_Stormtrooper E4123D2762F4C9F000048CA972FB8238
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" CommsScanner
+		}
+	}
+	myElements
+	{
+		StimulusElement ReportIncident_Radio
+		{
+			myElement
+			{
+				myGuid 4CEBBDA1141EBDA72CE9E26234449381
+			}
+			myCooldowns
+			{
+				BarksCooldown "Report Incident Cooldown" < uid=1EC89F25638E0E100001A25E9FC08237 > = Cooldown_Com_ReportIncident 1EC89F25638E0C420001A25832CDD8F4
+				BarksCooldown "Combat NPC" < uid=1EC89F2563C91B3400007D37B1CAE367 > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown ReportEnterWanted < uid=1EC89F2563F8ADAB00033104B4925B61 > = Cooldown_Com_ReportEnterWanted 1EC89F2563F8AC680003310146D4E9BE
+				BarksCooldown "Request Backup" < uid=1EC89F2564E49EEC00049E6B8E34411F > = Cooldown_Com_RequestBackup 3A129121638F12A40000D0E731A843C2
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2565F45215000CF3185CA5FA3D > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 4F6D13EE9EB35534A46677B6C90ABB81
+			}
+			myDelay 0.0
+			myResponse < uid=3A12912163808CB00000C6243B2FEA5A > = S_COM_WantedReportSuccessToTrooper_High_Part1 3A129121637D01E30001CDF52E972774
+		}
+	}
+}
+
+StimulusElementContainer NPC_ReportIncident_Officer_Wanted_Low < uid=1EC89F2564678A5D001095CB019097C6 >
+{
+	myIdentifier < uid=1EC89F2564678A5D001095CC1F12961A > = S_NPC_WantedReportIncident 3A12912163767A2A0001A83AA71A8A0A
+	myCooldowns
+	{
+		BarksCooldown "Report Incident Cooldown" < uid=1EC89F2564678A5D001095CDE902CF49 > = Cooldown_Com_ReportIncident 1EC89F25638E0C420001A25832CDD8F4
+		BarksCooldown Default < uid=1EC89F25646CDBEF0001F6544C92D5EE > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+		BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E4774C00008FFC123D2044 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+	}
+	myTagScoreModifier 0
+	myMaxDistance 0.0
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F2564678A5D001095CEEDB0E063 > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+	myVOPriorityOverride 6
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag WantedLevel < uid=1EC89F2564678B8000117A6CDB2BAC3A > = World_WantedLevel_Not0Tag 16DEADE6626C6BB60000270286B6E2E2
+		RBTagsTag WantedLevel < uid=1EC89F2564678A5D001095CF681B74B4 > = World_WantedLevel_Not3Tag 16DEADE6626C6BB600002708209F379B
+		RBTagsTag WantedLevel < uid=1EC89F2564678A5D001095D0E3329DEB > = World_WantedLevel_Not4Tag 16DEADE6626C6BB60000270A93802C66
+		RBTagsTag WantedLevel < uid=1EC89F2564678A5D001095D11CB57E43 > = World_WantedLevel_Not5Tag 16DEADE6626C6BB60000270C11F94005
+		RBTagsTag WantedLevel < uid=1EC89F2564678A5D001095D2766C364E > = World_WantedLevel_Not6Tag 16DEADE6626C6BB60000270E5B93B823
+		RBTagsTag Officer < uid=1EC89F2564678A5D001095D3C56152E3 > = Agent_BarksFamily_Officer E4123D2762F4CA2400048CAC1DDAFE39
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" CommsScanner
+		}
+	}
+	myElements
+	{
+		StimulusElement ReportIncident_Radio
+		{
+			myElement
+			{
+				myGuid 46BF99B15AED494187DB0AB18159B5AE
+			}
+			myCooldowns
+			{
+				BarksCooldown "Report Incident Cooldown" < uid=1EC89F2564678A5D001095D5053B651D > = Cooldown_Com_ReportIncident 1EC89F25638E0C420001A25832CDD8F4
+				BarksCooldown "Combat NPC" < uid=1EC89F2564678A5D001095D612F2FDB2 > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown ReportEnterWanted < uid=1EC89F2564678A5D001095D7DDCB4345 > = Cooldown_Com_ReportEnterWanted 1EC89F2563F8AC680003310146D4E9BE
+				BarksCooldown "Request Backup" < uid=1EC89F2564E49EFD00049E6C7029626E > = Cooldown_Com_RequestBackup 3A129121638F12A40000D0E731A843C2
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2565F45223000CF3194C8616DB > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 4F6D13EE9EB35534A46677B6C90ABB81
+			}
+			myDelay 0.0
+			myResponse < uid=1EC89F2564678A5D001095D8357B5AC7 > = S_COM_WantedReportSuccessToOfficer_Low_Part1 3A129121637D01330001CD6FF3B09C83
+		}
+	}
+}
+
+StimulusElementContainer NPC_ReportIncident_Officer_Wanted_High < uid=3A129121637D027D0001CE636FC9F7F3 >
+{
+	myIdentifier < uid=3A129121637D027D0001CE643CE420CF > = S_NPC_WantedReportIncident 3A12912163767A2A0001A83AA71A8A0A
+	myCooldowns
+	{
+		BarksCooldown "Report Incident Cooldown" < uid=1EC89F25638E0F410001A26B62E15335 > = Cooldown_Com_ReportIncident 1EC89F25638E0C420001A25832CDD8F4
+		BarksCooldown Default < uid=1EC89F25646CDC3A0001F656841C458C > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+		BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E4776E00008FFE540A54C6 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+	}
+	myTagScoreModifier 3
+	myMaxDistance 0.0
+	myUIElementType Commscanner
+	myVOType < uid=3A129121637D027D0001CE65259BB778 > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+	myVOPriorityOverride 6
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag WantedLevel < uid=1EC89F2564678B9D00117A6D965C5F0A > = World_WantedLevel_Not0Tag 16DEADE6626C6BB60000270286B6E2E2
+		RBTagsTag WantedLevel < uid=3A129121637D027D0001CE661C54869F > = World_WantedLevel_Not1Tag 16DEADE6626C6BB60000270435491D6A
+		RBTagsTag WantedLevel < uid=1EC89F2563C56B330001783E9E2A5DE3 > = World_WantedLevel_Not2Tag 16DEADE6626C6BB60000270695E41DDC
+		RBTagsTag Officer < uid=1EC89F2563F36D1B000009D0024E3E3D > = Agent_BarksFamily_Officer E4123D2762F4CA2400048CAC1DDAFE39
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" CommsScanner
+		}
+	}
+	myElements
+	{
+		StimulusElement ReportIncident_Radio
+		{
+			myElement
+			{
+				myGuid 4CEBBDA1141EBDA72CE9E26234449381
+			}
+			myCooldowns
+			{
+				BarksCooldown "Report Incident Cooldown" < uid=1EC89F25638E0F510001A26C403BD0A8 > = Cooldown_Com_ReportIncident 1EC89F25638E0C420001A25832CDD8F4
+				BarksCooldown "Combat NPC" < uid=1EC89F2563C91AF100007D34E2333156 > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown ReportEnterWanted < uid=1EC89F2563F8AF4000033107A97FE9AD > = Cooldown_Com_ReportEnterWanted 1EC89F2563F8AC680003310146D4E9BE
+				BarksCooldown "Request Backup" < uid=1EC89F2564E49F2300049E6EA7911289 > = Cooldown_Com_RequestBackup 3A129121638F12A40000D0E731A843C2
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2565F45242000CF31AC9A7A24D > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 4F6D13EE9EB35534A46677B6C90ABB81
+			}
+			myDelay 0.0
+			myResponseDelay 0.3
+			myResponse < uid=3A129121637D027D0001CE673C029C89 > = S_COM_WantedReportSuccessToOfficer_High_Part1 1EC89F25646727DC0000BA3A9272882C
+		}
+	}
+}
+
+StimulusElementContainer NPC_RequestBackup_Officer < uid=1EC89F25638DCBB000005E867FBAA8AF >
+{
+	myIdentifier < uid=1EC89F25638DCE0500005E880E295170 > = S_NPC_RequestBackup 3A129121638DC2100000F9E74929FC44
+	myCooldowns
+	{
+		BarksCooldown "Request Backup" < uid=1EC89F2563C915EF00007D213D7A6DB9 > = Cooldown_Com_RequestBackup 3A129121638F12A40000D0E731A843C2
+		BarksCooldown Default < uid=1EC89F25646CDC450001F65716DC492B > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+		BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E4778500008FFF65ED3B2F > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+	}
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F25638DCE0500005E89E1E3DF63 > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+	myVOPriorityOverride 7
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag Officer < uid=1EC89F2563F36DED000009D43F59F306 > = Agent_BarksFamily_Officer E4123D2762F4CA2400048CAC1DDAFE39
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope Command CommsScanner
+		}
+	}
+	myElements
+	{
+		StimulusElement "NPC Report"
+		{
+			myElement
+			{
+				myGuid 42D86BA0579777E5BC917D82DA77A8B7
+			}
+			myCooldowns
+			{
+				BarksCooldown "Request Backup" < uid=3A129121638F14370000DA62C8C4D229 > = Cooldown_Com_RequestBackup 3A129121638F12A40000D0E731A843C2
+				BarksCooldown "NPC Combat Default" < uid=1EC89F2563C6C1CE000051641D88F136 > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2565F45252000CF31B588A273A > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 4F6D13EE9EB35534A46677B6C90ABB81
+			}
+			myResponseDelay 0.7
+			myResponse < uid=1EC89F25638DF5E100005E8EFC340950 > = S_COM_RequestBackupResponseToOfficer_Part1 1EC89F2564624AD40000B476958A2958
+		}
+	}
+}
+
+StimulusElementContainer NPC_RequestBackup_Trooper < uid=1EC89F25638DF6F700005E908B83B41A >
+{
+	myIdentifier < uid=1EC89F25638DF6F700005E9172F1E43F > = S_NPC_RequestBackup 3A129121638DC2100000F9E74929FC44
+	myCooldowns
+	{
+		BarksCooldown "Request Backup" < uid=1EC89F2563C915FA00007D223414FAED > = Cooldown_Com_RequestBackup 3A129121638F12A40000D0E731A843C2
+		BarksCooldown Default < uid=1EC89F25646CDC500001F658CC3BD3BB > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+		BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E477BB000090009E2908D6 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+	}
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F25638DF6F700005E922ED31DB8 > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+	myVOPriorityOverride 7
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag Trooper < uid=1EC89F2563F36DF9000009D524ADAF3E > = Agent_BarksFamily_Stormtrooper E4123D2762F4C9F000048CA972FB8238
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope Command CommsScanner
+		}
+	}
+	myElements
+	{
+		StimulusElement "NPC Report"
+		{
+			myElement
+			{
+				myGuid 42D86BA0579777E5BC917D82DA77A8B7
+			}
+			myCooldowns
+			{
+				BarksCooldown "Request Backup" < uid=3A129121638F14460000DA73CBAD4017 > = Cooldown_Com_RequestBackup 3A129121638F12A40000D0E731A843C2
+				BarksCooldown "NPC Combat Default" < uid=1EC89F2563C6C1B90000516312C5AFFE > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2565F45279000CF31C2B8D4A04 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 4F6D13EE9EB35534A46677B6C90ABB81
+			}
+			myResponseDelay 0.7
+			myResponse < uid=1EC89F25638DF6F700005E9335EE90BA > = S_COM_RequestBackupResponseToTrooper_Part1 1EC89F25638DCF9500005E8A4BB6EC20
+		}
+	}
+}
+
+StimulusElementContainer NPC_WantedTargetFound_Wanted_Low < uid=3A129121637D04AD0001CE9B88931695 >
+{
+	myIdentifier < uid=3A129121637D04AD0001CE9C0B3DAA3D > = S_NPC_WantedTargetFound 3A129121637CF04B0001C25EBFD746C7
+	myCooldowns
+	{
+		BarksCooldown Default < uid=1EC89F25646CDC5B0001F659BFEB8BD3 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+		BarksCooldown "NPC Target Found" < uid=1EC89F2564E470A400008FCDD67FCCB7 > = Cooldown_Com_NPCTargetFound 1EC89F2564E46C2900008FCAB9D006D9
+		BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E477D0000090012FCAD454 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+	}
+	myTagScoreModifier 0
+	myMaxDistance 0.0
+	myUIElementType Commscanner
+	myVOType < uid=3A129121637D04AD0001CE9D18909D0A > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+	myVOPriorityOverride 6
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag WantedLevel < uid=3A129121637D04AD0001CE9E19F88C86 > = World_WantedLevel_Not3Tag 16DEADE6626C6BB600002708209F379B
+		RBTagsTag WantedLevel < uid=1EC89F2563C520A100005E0833CC6BEC > = World_WantedLevel_Not4Tag 16DEADE6626C6BB60000270A93802C66
+		RBTagsTag WantedLevel < uid=1EC89F2563C520A600005E09FC17DE1E > = World_WantedLevel_Not5Tag 16DEADE6626C6BB60000270C11F94005
+		RBTagsTag WantedLevel < uid=1EC89F2563C520B800005E0A7D1647E6 > = World_WantedLevel_Not6Tag 16DEADE6626C6BB60000270E5B93B823
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Kay
+		}
+	}
+	myElements
+	{
+		StimulusElement TargetFound_Radio
+		{
+			myElement
+			{
+				myGuid 4194771ADBEAD47AE64D1D383943DFA0
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=1EC89F2563C9161900007D234191D481 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "Combat NPC" < uid=1EC89F2563C919DA00007D31A768F8AE > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "NPC Target Found" < uid=1EC89F2564E4706600008FCC8B19017C > = Cooldown_Com_NPCTargetFound 1EC89F2564E46C2900008FCAB9D006D9
+				BarksCooldown "Request Backup" < uid=1EC89F2564E49F7D00049E70B080BAD1 > = Cooldown_Com_RequestBackup 3A129121638F12A40000D0E731A843C2
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2565F44F77000CF3136BFC34B5 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 4F6D13EE9EB35534A46677B6C90ABB81
+			}
+			myDelay 0.0
+			myResponseDelay 0.0
+			myResponse < uid=3A129121637D04AD0001CE9F09CF1692 > = S_KAY_Response_WantedEscapingFound_Low 3A129121637CFCC70001CCF55AFDE29E
+		}
+	}
+}
+
+StimulusElementContainer NPC_WantedTargetFound_Wanted_High < uid=3A129121637D04AD0001CEA0EF4539D4 >
+{
+	myIdentifier < uid=3A129121637D04AD0001CEA173A191FB > = S_NPC_WantedTargetFound 3A129121637CF04B0001C25EBFD746C7
+	myCooldowns
+	{
+		BarksCooldown Default < uid=1EC89F25646CDC680001F65AD9BD8987 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+		BarksCooldown "NPC Target Found" < uid=1EC89F2564E470C800008FCEEFA0FE6F > = Cooldown_Com_NPCTargetFound 1EC89F2564E46C2900008FCAB9D006D9
+		BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E477ED000090022960190F > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+	}
+	myTagScoreModifier 0
+	myMaxDistance 0.0
+	myUIElementType Commscanner
+	myVOType < uid=3A129121637D04AD0001CEA2AEE0BFB5 > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+	myVOPriorityOverride 6
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag WantedLevel < uid=1EC89F2563C5206900005E061EB3E67C > = World_WantedLevel_Not1Tag 16DEADE6626C6BB60000270435491D6A
+		RBTagsTag WantedLevel_0 < uid=1EC89F2563C5207B00005E0723C2E487 > = World_WantedLevel_Not2Tag 16DEADE6626C6BB60000270695E41DDC
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Kay
+		}
+	}
+	myElements
+	{
+		StimulusElement TargetFound_Radio
+		{
+			myElement
+			{
+				myGuid 47CB5A19F5D8A383DBADA2A6ECC90F81
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=1EC89F2563C9162400007D24C7867427 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "Combat NPC" < uid=1EC89F2563C9175600007D3089B96814 > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "NPC Target Found" < uid=1EC89F2564E470D700008FCFA06BA46C > = Cooldown_Com_NPCTargetFound 1EC89F2564E46C2900008FCAB9D006D9
+				BarksCooldown "Request Backup" < uid=1EC89F2564E49F8A00049E71F616F1D7 > = Cooldown_Com_RequestBackup 3A129121638F12A40000D0E731A843C2
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2565F44F8A000CF31419E5A170 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 4F6D13EE9EB35534A46677B6C90ABB81
+			}
+			myDelay 0.0
+			myResponse < uid=3A129121637D04CA0001CEC81043CF60 > = S_KAY_Response_WantedEscapingFound_High 3A129121637F86630001203B33FA225B
+		}
+	}
+}
+
+StimulusElementContainer NPC_WantedTargetLost_Wanted_Low < uid=3A129121638759F70000B617F3208833 >
+{
+	myIdentifier < uid=3A129121638759F70000B61843C771AF > = S_NPC_WantedTargetLost 3A129121638759060000B5C4211C258A
+	myCooldowns
+	{
+		BarksCooldown Default < uid=1EC89F25646CDC740001F65B2DDC168A > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+		BarksCooldown "NPC Target Lost" < uid=1EC89F2564E470F300008FD0E33A43FC > = Cooldown_Com_NPCTargetLost 1EC89F2565F46298000C3CF2E3D08F47
+		BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E477FB0000900325586B4F > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+	}
+	myTagScoreModifier 0
+	myMaxDistance 0.0
+	myUIElementType Commscanner
+	myVOType < uid=3A129121638759F70000B619A2E35E41 > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+	myVOPriorityOverride 6
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag WantedLevel < uid=3A129121638759F70000B61AC6887A3D > = World_WantedLevel_Not3Tag 16DEADE6626C6BB600002708209F379B
+		RBTagsTag WantedLevel < uid=1EC89F2563C524CA0000910E629D884A > = World_WantedLevel_Not4Tag 16DEADE6626C6BB60000270A93802C66
+		RBTagsTag WantedLevel < uid=1EC89F2563C524D80000910FA0A82E18 > = World_WantedLevel_Not5Tag 16DEADE6626C6BB60000270C11F94005
+		RBTagsTag WantedLevel < uid=1EC89F2563C524DE0000911039627407 > = World_WantedLevel_Not6Tag 16DEADE6626C6BB60000270E5B93B823
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope CommsScanner CommsScanner
+		}
+	}
+	myElements
+	{
+		StimulusElement TargetLost
+		{
+			myElement
+			{
+				myGuid 41D8AC4DD00A12B4514341C7FB3AEB8E
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=1EC89F2563C9164100007D2775D57483 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "Combat NPC" < uid=1EC89F2563C9173400007D2FCFBEB6B1 > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "NPC Target Lost" < uid=1EC89F2564E4710200008FD1CB083158 > = Cooldown_Com_NPCTargetLost 1EC89F2565F46298000C3CF2E3D08F47
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2565F44FC9000CF315A716E4A6 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 4F6D13EE9EB35534A46677B6C90ABB81
+			}
+			myDelay 0.0
+			myResponseDelay 0.3
+			myResponse < uid=3A129121638759F70000B61B311E13CF > = S_COM_WantedTargetLost_Response_Low 1EC89F2563C179B000017F590F5B7A39
+		}
+	}
+}
+
+StimulusElementContainer NPC_WantedTargetLost_Wanted_High < uid=3A129121638759F70000B61C492C564A >
+{
+	myIdentifier < uid=3A129121638759F70000B61DF1851878 > = S_NPC_WantedTargetLost 3A129121638759060000B5C4211C258A
+	myCooldowns
+	{
+		BarksCooldown Default < uid=1EC89F25646CDC7D0001F65C3F68BE81 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+		BarksCooldown "NPC Target Lost" < uid=1EC89F2564E4711000008FD223B3FDD0 > = Cooldown_Com_NPCTargetLost 1EC89F2565F46298000C3CF2E3D08F47
+		BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2564E4780100009004F3E1B88A > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+	}
+	myTagScoreModifier 0
+	myMaxDistance 0.0
+	myUIElementType Commscanner
+	myVOType < uid=3A129121638759F70000B61E7459CDE7 > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+	myVOPriorityOverride 6
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag WantedLevel < uid=1EC89F2563C545AC000177FD549D507E > = World_WantedLevel_Not1Tag 16DEADE6626C6BB60000270435491D6A
+		RBTagsTag WantedLevel < uid=1EC89F2563C545BE000177FE20740873 > = World_WantedLevel_Not2Tag 16DEADE6626C6BB60000270695E41DDC
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope CommsScanner CommsScanner
+		}
+	}
+	myElements
+	{
+		StimulusElement TargetLost
+		{
+			myElement
+			{
+				myGuid 475DF58124F3E716D29260653FC48B9C
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=1EC89F2563C9165500007D2A90E52D3D > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "Combat NPC" < uid=1EC89F2563C916D500007D2ED0FDA232 > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "NPC Target Lost" < uid=1EC89F2564E4711D00008FD3DE06750E > = Cooldown_Com_NPCTargetLost 1EC89F2565F46298000C3CF2E3D08F47
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2565F44FE1000CF316E2ACE11F > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 4F6D13EE9EB35534A46677B6C90ABB81
+			}
+			myDelay 0.0
+			myResponse < uid=3A129121638759F70000B6209EADA627 > = S_COM_WantedTargetLost_Response_High 1EC89F2563C179BE00017F5AFF8F365A
+		}
+	}
+}
+
+StimulusElementContainer ______________________________________________________________KAY < uid=1EC89F2563C90B4C0000D013BB43104A >
+{
+	myIdentifier < uid=1EC89F2563C90B4C0000D014CBD46263 > = S_COM_TestTrigger 1EC89F2563C12E6000014E990289C136
+}
+
+StimulusElementContainer KAY_WantedTargetFound_Response_Low < uid=3A129121637F85C2000120093BDC3A2F >
+{
+	myIdentifier < uid=3A129121637F85C20001200A20432CB8 > = S_KAY_Response_WantedEscapingFound_Low 3A129121637CFCC70001CCF55AFDE29E
+	myVOType < uid=3A129121637F85C20001200B25FAD20B > = VOType_Barks_MainKayDefault 3A1C5D1862D94CCF00003D748F07FBFC
+	mySubtitlePurpose "id = \"3BE919366647146F0003BB211AFA9679\""
+	myTags
+	{
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" CommsScanner
+		}
+	}
+	myElements
+	{
+		StimulusElement "Kay and CommsScanner"
+		{
+			myElement
+			{
+				myGuid 405366A4ED8D4DC7795AC830059966AA
+			}
+			myTemplateOverride
+			{
+				myGuid 402EC85FE1F383EA85E407FB5E6387B8
+			}
+			myDelay 0.0
+			myResponseDelay 0.3
+			myResponse < uid=3A129121637F85C20001200C38FC9C4E > = S_COM_WantedTargetFound_Response_Low 1EC89F2563C179D500017F5B6AEF5926
+		}
+		StimulusElement "Blank to comms"
+		{
+			myTemplateOverride
+			{
+				myGuid 402EC85FE1F383EA85E407FB5E6387B8
+			}
+			myResponse < uid=3A129121637F85C20001200DE22BD43C > = S_COM_WantedTargetFound_Response_Low 1EC89F2563C179D500017F5B6AEF5926
+		}
+	}
+}
+
+StimulusElementContainer KAY_WantedTargetFound_Response_High < uid=3A129121637F6D530000E6CC7A441093 >
+{
+	myIdentifier < uid=3A129121637F6DDD0000E6DC20D451D4 > = S_KAY_Response_WantedEscapingFound_High 3A129121637F86630001203B33FA225B
+	myVOType < uid=3A129121637F6DDD0000E6DD31A1A149 > = VOType_Barks_MainKayDefault 3A1C5D1862D94CCF00003D748F07FBFC
+	mySubtitlePurpose "id = \"3BE919366647146F0003BB211AFA9679\""
+	myTags
+	{
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" CommsScanner
+		}
+	}
+	myElements
+	{
+		StimulusElement "Kay and CommsScanner"
+		{
+			myElement
+			{
+				myGuid 405366A4ED8D4DC7795AC830059966AA
+			}
+			myTemplateOverride
+			{
+				myGuid 402EC85FE1F383EA85E407FB5E6387B8
+			}
+			myDelay 0.0
+			myResponseDelay 0.3
+			myResponse < uid=3A129121637F6DF30000E6EDA6EBB1B7 > = S_COM_WantedTargetFound_Response_High 1EC89F2563C179F100017F5C85374646
+		}
+		StimulusElement "Blank to comms"
+		{
+			myResponse < uid=3A129121637F859A00011FE9A42BAF4F > = S_COM_WantedTargetFound_Response_High 1EC89F2563C179F100017F5C85374646
+		}
+	}
+}
+
+StimulusElementContainer KAY_WantedTargetLost_Response < uid=3A12912163875A430000B65A6F7AE70A >
+{
+	myIdentifier < uid=3A12912163875A430000B65B1B35FB7C > = S_KAY_Response_WantedEscapingLost 3A129121637CF8D10001C3A75CC11A52
+	myProbability 75
+	myVOType < uid=3A12912163875A430000B65CA1CD91F4 > = VOType_Barks_MainKayDefault 3A1C5D1862D94CCF00003D748F07FBFC
+	mySubtitlePurpose "id = \"3BE919366647146F0003BB211AFA9679\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A1291216388820500013722B153D809 > = Agent_PlayerState_NotCombatTag 0E9FA07363862A48000052A60B49216D
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+		}
+	}
+	myElements
+	{
+		StimulusElement EscapingLost
+		{
+			myElement
+			{
+				myGuid 4014270CC5BD38C44C89ECA31C80B097
+			}
+			myTemplateOverride
+			{
+				myGuid 402EC85FE1F383EA85E407FB5E6387B8
+			}
+			myDelay 0.0
+			myResponseDelay 0.3
+		}
+		StimulusElement CloseCall
+		{
+			myElement
+			{
+				myGuid 4F6A7D2E85B1E17C2F6CE0799AEBCC84
+			}
+			myTemplateOverride
+			{
+				myGuid 402EC85FE1F383EA85E407FB5E6387B8
+			}
+			myDelay 0.0
+			myResponseDelay 0.3
+		}
+	}
+}
+
+StimulusElementContainer ______________________________________________________________CAMERA < uid=1EC89F256601453A000000C878AF45D7 >
+{
+	myIdentifier < uid=1EC89F256601453A000000C9B5F5FB71 > = S_COM_TestTrigger 1EC89F2563C12E6000014E990289C136
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+}
+
+StimulusElementContainer NPC_CCTV_ReportIncident_Officer_Wanted_Low < uid=1EC89F2566013B0500009A0BB90D7325 >
+{
+	myIdentifier < uid=1EC89F2566013B0500009A0C821FBB8D > = S_NPC_WantedReportIncident 3A12912163767A2A0001A83AA71A8A0A
+	myCooldowns
+	{
+		BarksCooldown "Report Incident Cooldown" < uid=1EC89F2566013B0500009A0D074DD82A > = Cooldown_Com_ReportIncident 1EC89F25638E0C420001A25832CDD8F4
+		BarksCooldown Default < uid=1EC89F2566013B0500009A0EE890F66F > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+		BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2566013B0500009A0F3AD62403 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+	}
+	myTagScoreModifier 0
+	myMaxDistance 0.0
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F2566013B0500009A10456A3307 > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+	myVOPriorityOverride 6
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag WantedLevel < uid=1EC89F2566013B0500009A112C8F3F08 > = World_WantedLevel_Not0Tag 16DEADE6626C6BB60000270286B6E2E2
+		RBTagsTag WantedLevel < uid=1EC89F2566013B0500009A1243C39778 > = World_WantedLevel_Not3Tag 16DEADE6626C6BB600002708209F379B
+		RBTagsTag WantedLevel < uid=1EC89F2566013B0500009A13C8BE553F > = World_WantedLevel_Not4Tag 16DEADE6626C6BB60000270A93802C66
+		RBTagsTag WantedLevel < uid=1EC89F2566013B0500009A14DC58B524 > = World_WantedLevel_Not5Tag 16DEADE6626C6BB60000270C11F94005
+		RBTagsTag WantedLevel < uid=1EC89F2566013B0500009A15897AA6D8 > = World_WantedLevel_Not6Tag 16DEADE6626C6BB60000270E5B93B823
+		RBTagsTag SurveillanceCamera < uid=1EC89F2566013B0500009A16D65D98D8 > = Agent_BarksFamily_SurveillanceCamera 1EC89F2566013639000028B10753C1E0
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" CommsScanner
+		}
+	}
+	myElements
+	{
+		StimulusElement ReportIncident_Radio
+		{
+			myElement
+			{
+				myGuid 46BF99B15AED494187DB0AB18159B5AE
+			}
+			myCooldowns
+			{
+				BarksCooldown "Report Incident Cooldown" < uid=1EC89F2566013B0500009A17EC703881 > = Cooldown_Com_ReportIncident 1EC89F25638E0C420001A25832CDD8F4
+				BarksCooldown "Combat NPC" < uid=1EC89F2566013B0500009A18F59841BE > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown ReportEnterWanted < uid=1EC89F2566013B0500009A19A98875B3 > = Cooldown_Com_ReportEnterWanted 1EC89F2563F8AC680003310146D4E9BE
+				BarksCooldown "Request Backup" < uid=1EC89F2566013B0500009A1A9329A302 > = Cooldown_Com_RequestBackup 3A129121638F12A40000D0E731A843C2
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2566013B0500009A1BFEF035D6 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 4209477C310F34D98090F417BB057385
+			}
+			myDelay 0.0
+			myResponse < uid=1EC89F2566013B0500009A1CC9520E07 > = S_COM_WantedReportSuccessToOfficer_Low_Part1 3A129121637D01330001CD6FF3B09C83
+		}
+	}
+}
+
+StimulusElementContainer NPC_CCTV_ReportIncident_Officer_Wanted_High < uid=1EC89F2566013B0500009A1D239DDF73 >
+{
+	myIdentifier < uid=1EC89F2566013B0500009A1EFD7259B1 > = S_NPC_WantedReportIncident 3A12912163767A2A0001A83AA71A8A0A
+	myCooldowns
+	{
+		BarksCooldown "Report Incident Cooldown" < uid=1EC89F2566013B0500009A1F82539D4C > = Cooldown_Com_ReportIncident 1EC89F25638E0C420001A25832CDD8F4
+		BarksCooldown Default < uid=1EC89F2566013B0500009A20DB289937 > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+		BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2566013B0500009A211683A366 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+	}
+	myTagScoreModifier 3
+	myMaxDistance 0.0
+	myUIElementType Commscanner
+	myVOType < uid=1EC89F2566013B0500009A227953CFD6 > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+	myVOPriorityOverride 6
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag WantedLevel < uid=1EC89F2566013B0500009A2367F4844D > = World_WantedLevel_Not0Tag 16DEADE6626C6BB60000270286B6E2E2
+		RBTagsTag WantedLevel < uid=1EC89F2566013B0500009A24F88A48A5 > = World_WantedLevel_Not1Tag 16DEADE6626C6BB60000270435491D6A
+		RBTagsTag WantedLevel < uid=1EC89F2566013B0500009A25F3195C41 > = World_WantedLevel_Not2Tag 16DEADE6626C6BB60000270695E41DDC
+		RBTagsTag SurveillanceCamera < uid=1EC89F2566013B0500009A2614D3108B > = Agent_BarksFamily_SurveillanceCamera 1EC89F2566013639000028B10753C1E0
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" CommsScanner
+		}
+	}
+	myElements
+	{
+		StimulusElement ReportIncident_Radio
+		{
+			myElement
+			{
+				myGuid 4CEBBDA1141EBDA72CE9E26234449381
+			}
+			myCooldowns
+			{
+				BarksCooldown "Report Incident Cooldown" < uid=1EC89F2566013B0500009A27D7C628B0 > = Cooldown_Com_ReportIncident 1EC89F25638E0C420001A25832CDD8F4
+				BarksCooldown "Combat NPC" < uid=1EC89F2566013B0500009A287DA39D8D > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown ReportEnterWanted < uid=1EC89F2566013B0500009A2944613D2C > = Cooldown_Com_ReportEnterWanted 1EC89F2563F8AC680003310146D4E9BE
+				BarksCooldown "Request Backup" < uid=1EC89F2566013B0500009A2AC8BA2A63 > = Cooldown_Com_RequestBackup 3A129121638F12A40000D0E731A843C2
+				BarksCooldown "Prevent NPC Interrupt" < uid=1EC89F2566013B0500009A2B2EDF186C > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 4209477C310F34D98090F417BB057385
+			}
+			myDelay 0.0
+			myResponseDelay 0.3
+			myResponse < uid=1EC89F2566013B0500009A2C4FF1A7CF > = S_COM_WantedReportSuccessToOfficer_High_Part1 1EC89F25646727DC0000BA3A9272882C
+		}
+	}
+}
+
+StimulusElementContainer NPC_WantedTargetFound_Wanted_Low_OnSpeeder < uid=E4123D276616C4140025041FF8598B1C >
+{
+	myIdentifier < uid=E4123D276616C414002504206C2ED683 > = S_NPC_WantedTargetFound 3A129121637CF04B0001C25EBFD746C7
+	myCooldowns
+	{
+		BarksCooldown Default < uid=E4123D276616C414002504214581C41B > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+		BarksCooldown "NPC Target Found" < uid=E4123D276616C41400250422C7DCFEE7 > = Cooldown_Com_NPCTargetFound 1EC89F2564E46C2900008FCAB9D006D9
+		BarksCooldown "Prevent NPC Interrupt" < uid=E4123D276616C41400250423F3E98C6B > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+	}
+	myTagScoreModifier 0
+	myMaxDistance 0.0
+	myUIElementType Commscanner
+	myVOType < uid=E4123D276616C41400250424E969C65B > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+	myVOPriorityOverride 6
+	mySubtitlePurpose "id = \"BA9D046A646CCD760000BB318EF49166\""
+	myTags
+	{
+		RBTagsTag WantedLevel < uid=E4123D276616C41400250425A2836671 > = World_WantedLevel_Not3Tag 16DEADE6626C6BB600002708209F379B
+		RBTagsTag WantedLevel < uid=E4123D276616C4140025042682889F00 > = World_WantedLevel_Not4Tag 16DEADE6626C6BB60000270A93802C66
+		RBTagsTag WantedLevel < uid=E4123D276616C414002504273DBDD1EE > = World_WantedLevel_Not5Tag 16DEADE6626C6BB60000270C11F94005
+		RBTagsTag WantedLevel < uid=E4123D276616C414002504289A41931C > = World_WantedLevel_Not6Tag 16DEADE6626C6BB60000270E5B93B823
+		RBTagsTag "New RBTagsTag_0" < uid=E4123D276616C40B0025041E15F2E5A1 > = Agent_BarksFamily_Stormtrooper E4123D2762F4C9F000048CA972FB8238
+		RBTagsTag "New RBTagsTag" < uid=E4123D276616C3A00025041B56576229 > = Agent_Speeder_OnSpeederTag E4123D276479ABFC00013AEEF7CE4455
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Kay
+		}
+	}
+	myElements
+	{
+		StimulusElement TargetFound_Radio
+		{
+			myElement
+			{
+				myGuid 497006C05A33995E57CC0B4CAA5F90B1
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=E4123D276616C414002504292348DECB > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "Combat NPC" < uid=E4123D276616C4140025042AE5FE353D > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "NPC Target Found" < uid=E4123D276616C4140025042B361FBACD > = Cooldown_Com_NPCTargetFound 1EC89F2564E46C2900008FCAB9D006D9
+				BarksCooldown "Request Backup" < uid=E4123D276616C4140025042CA0501661 > = Cooldown_Com_RequestBackup 3A129121638F12A40000D0E731A843C2
+				BarksCooldown "Prevent NPC Interrupt" < uid=E4123D276616C4140025042DC58B3A26 > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 4F6D13EE9EB35534A46677B6C90ABB81
+			}
+			myDelay 0.0
+			myResponseDelay 0.0
+			myResponse < uid=E4123D276616C4140025042ED1C8A877 > = S_KAY_Response_WantedEscapingFound_Low 3A129121637CFCC70001CCF55AFDE29E
+		}
+	}
+}
+
+StimulusElementContainer NPC_WantedTargetFound_Wanted_High_OnSpeeder < uid=E4123D276616C4140025042F1ACAA951 >
+{
+	myIdentifier < uid=E4123D276616C414002504303A095777 > = S_NPC_WantedTargetFound 3A129121637CF04B0001C25EBFD746C7
+	myCooldowns
+	{
+		BarksCooldown Default < uid=E4123D276616C41400250431A6CF001A > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+		BarksCooldown "NPC Target Found" < uid=E4123D276616C4140025043232D08FA4 > = Cooldown_Com_NPCTargetFound 1EC89F2564E46C2900008FCAB9D006D9
+		BarksCooldown "Prevent NPC Interrupt" < uid=E4123D276616C414002504337D1F288E > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+	}
+	myTagScoreModifier 0
+	myMaxDistance 0.0
+	myUIElementType Commscanner
+	myVOType < uid=E4123D276616C414002504340DDD7AB5 > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+	myVOPriorityOverride 6
+	mySubtitlePurpose "id = \"BA9D046A646CCD760000BB318EF49166\""
+	myTags
+	{
+		RBTagsTag WantedLevel < uid=E4123D276616C41400250435D3CC64C4 > = World_WantedLevel_Not1Tag 16DEADE6626C6BB60000270435491D6A
+		RBTagsTag WantedLevel_0 < uid=E4123D276616C4140025043665D77CB6 > = World_WantedLevel_Not2Tag 16DEADE6626C6BB60000270695E41DDC
+		RBTagsTag "New RBTagsTag" < uid=E4123D276616C3E90025041CC4AA0935 > = Agent_BarksFamily_Stormtrooper E4123D2762F4C9F000048CA972FB8238
+		RBTagsTag "New RBTagsTag_0" < uid=E4123D276616C3F10025041D7C4AB984 > = Agent_Speeder_OnSpeederTag E4123D276479ABFC00013AEEF7CE4455
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Kay
+		}
+	}
+	myElements
+	{
+		StimulusElement TargetFound_Radio
+		{
+			myElement
+			{
+				myGuid 42174CB3E3CA40B81D61EAF0AEBD73B9
+			}
+			myCooldowns
+			{
+				BarksCooldown Default < uid=E4123D276616C41400250437E10873DA > = Cooldown_Com_Default 3A12912162CEE2E4000046DBD778BF1F
+				BarksCooldown "Combat NPC" < uid=E4123D276616C4140025043807E6B59C > = NPC_Cooldown_CombatDefault E4123D2762B9BF6A00005663521A820A
+				BarksCooldown "NPC Target Found" < uid=E4123D276616C41400250439B7BC1BE0 > = Cooldown_Com_NPCTargetFound 1EC89F2564E46C2900008FCAB9D006D9
+				BarksCooldown "Request Backup" < uid=E4123D276616C4140025043A6950F36D > = Cooldown_Com_RequestBackup 3A129121638F12A40000D0E731A843C2
+				BarksCooldown "Prevent NPC Interrupt" < uid=E4123D276616C4140025043BCB64CB3E > = Cooldown_Com_PreventNPCInterrupt 1EC89F2564E4700000008FCBA49D6334
+			}
+			myTemplateOverride
+			{
+				myGuid 4F6D13EE9EB35534A46677B6C90ABB81
+			}
+			myDelay 0.0
+			myResponse < uid=E4123D276616C4140025043CF91CCD9B > = S_KAY_Response_WantedEscapingFound_High 3A129121637F86630001203B33FA225B
+		}
+	}
+}
+

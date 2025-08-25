@@ -1,0 +1,227 @@
+include "helix/game system data/fruit/ui/uimenuscene.fruit"
+
+UIMenuScene "cargo_space _helix" < uid=A84C6BC8674EC0070002BF1FC6611C5B >
+{
+	myOrientation -0.0;0.0;1.0;0.0;0.0;1.0;-0.0;0.0;-1.0;-0.0;-0.0;0.0;0.0;0.0;0.0;1.0
+	myCharacters
+	{
+		myPlayer TRUE
+		myPet TRUE
+		mySpeeder TRUE
+		mySpaceship TRUE
+	}
+	myLighting
+	{
+		myLightprobePreset ""
+		myAmbient_PositiveX 0x00000000
+		myAmbient_PositiveY 0x00000000
+		myAmbient_PositiveZ 0x00000000
+		myAmbient_NegativeX 0x00000000
+		myAmbient_NegativeY 0x00000000
+		myAmbient_NegativeZ 0x00000000
+	}
+	mySequence
+	{
+		mySequence helix/sequence/cargo_space_helix.msequence
+		myStates
+		{
+			UIMenuSceneSequenceState Tech_Upgrade_State
+			{
+				myMarker Tech_Upgrade_Marker
+				myRequiredCharacters
+				{
+					myPlayer FALSE
+					myPet FALSE
+					mySpeeder FALSE
+					mySpaceship FALSE
+				}
+			}
+			UIMenuSceneSequenceState Cargo_Filled_State
+			{
+				myMarker Cargo_Filled_Marker
+				myRequiredCharacters
+				{
+					myPlayer FALSE
+					myPet FALSE
+					mySpeeder FALSE
+					mySpaceship FALSE
+				}
+			}
+			UIMenuSceneSequenceState Go_Into_Cargo_State
+			{
+				myMarker Go_Into_Cargo_Marker
+				myRequiredCharacters
+				{
+					myPlayer FALSE
+					myPet FALSE
+					mySpeeder FALSE
+					mySpaceship FALSE
+				}
+			}
+			UIMenuSceneSequenceState Cargo_Scene_State
+			{
+				myMarker Cargo_Scene_Marker
+				myRequiredCharacters
+				{
+					myPlayer FALSE
+					myPet FALSE
+					mySpeeder FALSE
+					mySpaceship FALSE
+				}
+			}
+		}
+		myTransitions
+		{
+			UIMenuSceneSequenceTransition Tech_Upgrade
+			{
+				myOriginState Tech_Upgrade_State
+				myDestinationState Tech_Upgrade_State
+				myTransitionStartMarker Tech_Upgrade_Marker
+				myTransitionEndMarker Tech_Upgrade_Marker
+			}
+			UIMenuSceneSequenceTransition Cargo_Filled
+			{
+				myOriginState Cargo_Filled_State
+				myDestinationState Cargo_Filled_State
+				myTransitionStartMarker Cargo_Filled_Marker
+				myTransitionEndMarker Cargo_Filled_Marker
+			}
+			UIMenuSceneSequenceTransition Go_Into_Cargo
+			{
+				myOriginState Go_Into_Cargo_State
+				myDestinationState Go_Into_Cargo_State
+				myTransitionStartMarker Go_Into_Cargo_Marker
+				myTransitionEndMarker Go_Into_Cargo_Marker
+			}
+			UIMenuSceneSequenceTransition Cargo_Scene
+			{
+				myOriginState Cargo_Scene_State
+				myDestinationState Cargo_Scene_State
+				myTransitionStartMarker Cargo_Scene_Marker
+				myTransitionEndMarker Cargo_Scene_Marker
+			}
+		}
+		myLocators
+		{
+			uid Bottom1 A84C6BC8674EC295000000FF7B16AEB4
+			uid Bottom2 A84C6BC8674EC295000000F1187E4902
+			uid Bottom3 A84C6BC8674EC295000000F3AD8FC9E2
+			uid Bottom4 A84C6BC8674EC295000000F55C05C07D
+			uid Middle1 A84C6BC8674EC295000000FD275E05D5
+			uid Middle2 A84C6BC8674EC295000000FBF4468EA7
+			uid Middle3 A84C6BC8674EC295000000F7B6AB364A
+			uid Middle4 A84C6BC8674EC295000000F9BFB250DE
+		}
+	}
+	myEnvironment ""
+	mySceneObjects
+	{
+		UIMenuSceneObject "Trailblazer Workshop Wall Cables"
+		{
+			myFileName "helix/graph objects/prop/ui_renderworld_cargo_space_wall_cables.mgraphobject"
+			myOrientation -0.04431;-1.199143;-0.009718;0.0;1.198353;-0.04464;0.044261;0.0;-0.044591;-0.008071;1.199144;0.0;2.040559;4.496329;-1.484792;1.0
+			myInputStates "[101] = 0.50704223"
+		}
+		UIMenuSceneObject "Trailblazer Wall Addon 01"
+		{
+			myFileName "helix/graph objects/prop/ui_renderworld_cargo_space_wall_utitilty1.mgraphobject"
+			myOrientation -0.0;0.0;-0.999999;0.0;0.0;1.0;0.0;0.0;0.999999;0.0;-0.0;0.0;1.982197;4.584484;0.27999;1.0
+		}
+		UIMenuSceneObject "Trailblazer Workshop Beam"
+		{
+			myFileName "helix/graph objects/prop/ui_renderworld_cargo_space_workshop_beam.mgraphobject"
+			myOrientation -0.999999;0.0;0.0;0.0;0.0;1.0;0.0;0.0;0.0;0.0;-0.999999;0.0;6.56394;5.952039;-0.144218;1.0
+		}
+		UIMenuSceneObject "Trailblazer Workshop Beam"
+		{
+			myFileName "helix/graph objects/prop/ui_renderworld_cargo_space_workshop_beam.mgraphobject"
+			myOrientation -0.999999;0.0;0.0;0.0;0.0;1.0;0.0;0.0;0.0;0.0;-0.999999;0.0;6.589227;5.952039;1.913115;1.0
+		}
+		UIMenuSceneObject "Trailblazer Workshop Beam"
+		{
+			myFileName "helix/graph objects/prop/ui_renderworld_cargo_space_workshop_beam.mgraphobject"
+			myOrientation -0.999999;0.0;0.0;0.0;0.0;1.0;0.0;0.0;0.0;0.0;-0.999999;0.0;6.623449;5.972039;4.155118;1.0
+		}
+		UIMenuSceneObject "Sidewall Circuitboard 01"
+		{
+			myFileName "helix/graph objects/prop/ui_renderworld_cargo_space_circuitboard1.mgraphobject"
+			myOrientation -0.999999;0.0;0.000002;0.0;0.0;0.959167;0.0;0.0;-0.000002;0.0;-0.93225;0.0;6.502614;4.877409;4.203105;1.0
+			myInputStates "[101] = 0.68965518, 0.4770115, 0.41954023"
+		}
+		UIMenuSceneObject "Sidewall Circuitboard 01"
+		{
+			myFileName "helix/graph objects/prop/ui_renderworld_cargo_space_circuitboard1.mgraphobject"
+			myOrientation -0.999999;0.0;0.000002;0.0;0.0;0.959167;0.0;0.0;-0.000002;0.0;-0.93225;0.0;3.326823;4.305891;1.348212;1.0
+			myInputStates "[101] = 0.68965518, 0.4770115, 0.41954023"
+		}
+		UIMenuSceneObject "Sidewall Circuitboard 02"
+		{
+			myFileName "helix/graph objects/prop/ui_renderworld_cargo_space_circuitboard2.mgraphobject"
+			myOrientation -0.0;1.299998;0.0;0.0;1.003668;0.0;-0.000002;0.0;-0.000002;0.0;-1.199999;0.0;3.378006;5.774117;1.106484;1.0
+		}
+		UIMenuSceneObject "Trailblazer Storage Shelves"
+		{
+			myFileName "helix/graph objects/prop/ui_renderworld_cargo_space_storage_shelves.mgraphobject"
+			myOrientation 1.0;0.0;0.0;0.0;0.0;1.0;0.0;0.0;0.0;0.0;1.0;0.0;8.30367;2.506396;1.986398;1.0
+		}
+		UIMenuSceneObject "Trailblazer Storage Lift"
+		{
+			myFileName "helix/graph objects/prop/ui_renderworld_cargo_space_trailblazer_storage_lift.mgraphobject"
+			myOrientation 1.0;0.0;0.0;0.0;0.0;1.0;0.0;0.0;0.0;0.0;1.0;0.0;6.48017;3.915;1.556626;1.0
+			myInputStates "[101] = 0 3 0"
+		}
+		UIMenuSceneObject "TrailBlazer Interior Storage"
+		{
+			myFileName "helix/graph objects/prop/ui_renderworld_cargo_space_interior.mgraphobject"
+			myOrientation 0.999999;0.0;0.0;0.0;0.0;0.999999;0.0;0.0;0.0;0.0;0.999999;0.0;5.071;4.52042;1.564;1.0
+		}
+		UIMenuSceneObject "Template/lt_interaction_door_trailblazer/[GP Ingredient] Trailblazer Door Panel"
+		{
+			myFileName "helix/graph objects/prop/ui_renderworld_cargo_space_door_panel.mgraphobject"
+			myOrientation -1.0;0.0;0.0;0.0;0.0;1.0;0.0;0.0;0.0;0.0;-1.0;0.0;2.278085;2.46427;-3.262949;1.0
+			myInputStates "[104] = 2, [138] = { { memberIds = { 11897, -21664, -1919, 15620, -19162, -11376, -10426, -31625, -31584, -18453, -21053, 2298, }, members = { { Data = -0.34999999 0 1, Type = \"float3\", }, { Meta = 1610809344, Type = \"float\", }, { Data = 140, Type = \"float\", }, { Meta = 1610809344, Type = \"float\", }, { Meta = 1610809344, Type = \"float\", }, { Meta = 1610809344, Type = \"float\", }, { Meta = 1610809344, Type = \"float\", }, { Meta = 1610874880, Type = \"bool\", }, { Meta = 1610874880, Type = \"bool\", }, { Meta = 1610874880, Type = \"bool\", }, { Meta = 1610874880, Type = \"bool\", }, { Data = false, Type = \"bool\", }, }, typeId = \"InteractionAngles\", uid = #A84C6BC8674EC0070002BF1E1BB67EC5, }, }"
+		}
+		UIMenuSceneObject "Template/lt_interaction_door_trailblazer/Trailblazer Storage Door"
+		{
+			myFileName "helix/graph objects/prop/ui_renderworld_cargo_space_door.mgraphobject"
+			myOrientation 1.0;0.0;-0.0;0.0;0.0;1.0;0.0;0.0;0.0;0.0;1.0;0.0;4.367552;2.46427;-2.962949;1.0
+			myInputStates "[102] = true, [104] = false, 0.30327868, 0.2568306, 0.38797814, 0, 7, 12"
+		}
+		UIMenuSceneObject "Strapped Cargo 01"
+		{
+			myFileName "helix/graph objects/prop/pr_msv_1192_a.mgraphobject"
+			myOrientation -1.0;0.0;0.0;0.0;0.0;1.0;0.0;0.0;-0.0;0.0;-1.0;0.0;7.032297;2.484723;-1.771459;1.0
+		}
+		UIMenuSceneObject "Strapped Cargo 01"
+		{
+			myFileName "helix/graph objects/prop/pr_msv_1192_a.mgraphobject"
+			myOrientation -0.0;0.0;-1.0;0.0;0.0;1.0;0.0;0.0;1.0;0.0;-0.0;0.0;3.140877;2.497126;-0.399523;1.0
+		}
+		UIMenuSceneObject "Barrel Small"
+		{
+			myFileName "helix/graph objects/prop/pr_msv_0202_a.mgraphobject"
+			myOrientation -0.067132;0.0;0.997744;0.0;0.795748;0.603255;0.053541;0.0;-0.601894;0.797548;-0.040498;0.0;7.978168;2.776497;0.368484;1.0
+		}
+		UIMenuSceneObject "Box Scrap 03"
+		{
+			myFileName "helix/graph objects/prop/pr_msv_1680_c.mgraphobject"
+			myOrientation 0.8;0.0;0.0;0.0;0.0;0.8;0.0;0.0;0.0;-0.0;0.8;0.0;8.240302;5.16;1.142009;1.0
+			myInputStates "[101] = 29, [104] = 11"
+		}
+		UIMenuSceneObject "Box Scrap 03"
+		{
+			myFileName "helix/graph objects/prop/pr_msv_1680_c.mgraphobject"
+			myOrientation 0.792302;0.0;0.110709;0.0;-0.0;0.8;0.0;0.0;-0.110709;-0.0;0.792302;0.0;8.296182;5.18;3.015147;1.0
+			myInputStates "[101] = 29, [104] = 11"
+		}
+		UIMenuSceneObject "ui trailblazer right landing gear"
+		{
+			myFileName "helix/graph objects/prop/ui_renderworld_trailblazer_landinggear.mgraphobject"
+			myOrientation 0.999999;0.0;0.0;0.0;0.0;0.999999;0.0;0.0;0.0;0.0;0.999999;0.0;0.0;4.5;0.0;1.0
+		}
+	}
+	mySceneLights
+	{
+	}
+}
+

@@ -1,0 +1,29 @@
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npc/wil_fp_predator.mnpc"
+include "helix/game system data/juice/npcmove/wildlife_move_config.mnpcmoveconfig"
+
+NPC wl_monkey_lizard_flat_jabba < uid=289345166613B40700029A9412C3C5DA > : wil_fp_predator
+{
+	myCharacterVisuals < uid=289345166613B40700029A9564DAF0BF > = character_visuals_wil_monkeylizard_sequence_jabba 290EB60C6605284F00018ADE36B92921
+	myBehavior helix/behaviors/wildlife_monkeylizard.mbehavior
+	myAnimSystemType Monkey_Lizard
+	myHealthFormula 99999
+	myFaction < uid=5A06806466796824000F50E083BAAE21 > = Civilian B0EA4E53607561CC0000004DC311CAF9
+	myPositionReservationSize 0.2
+	myNavigationLayerType Medium
+	myInitialNPCControllerContextType Flying
+	myVisionProfile < uid=289345166613B40700029A966B153C91 > = MonkeyLizardVisionProfile 290EB60C652E30210006C8065E83B653
+	mySmellProfile < uid=289345166613B40700029A9710C50666 > = MonkeyLizardSmellProfile 290EB60C652E2E370003B68246164F54
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=289345166613B40700029A981C24FCB1 > = MonkeyLizardDetectionProfile 290EB60C652E2B3B0003B65F8850085C
+	}
+	mySteeringProfile < uid=E9DD8F6066A84DE800000114192DB4EA > = DisabledSteeringProfile E9DD8F6066A84D210000010C27C6DD9A
+	myAudioParameters
+	{
+		myEmitterName "WL Monkey Lizard"
+	}
+	myMoveConfig < uid=289345166613B40700029A99AFC8A882 > = monkey_lizard_move_config E9DD8F606510EC630000968A90287C83
+	myResistanceProfile < uid=289345166613B40700029A9A6DFBF85E > = MonkeyLizardResistanceProfile 290EB60C659BA72F0004FC70B835B193
+}
+

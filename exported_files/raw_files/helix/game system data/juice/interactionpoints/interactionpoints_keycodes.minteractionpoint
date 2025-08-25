@@ -1,0 +1,147 @@
+include "helix/game system data/fruit/interactionpoints/interactionpoints.fruit"
+include "helix/game system data/juice/intel/intel_akiva.mintel"
+include "helix/game system data/juice/intel/intel_tatooine.mintel"
+include "helix/game system data/juice/intel/intel_toshara.mintel"
+include "helix/game system data/juice/interactionpoints/interactionpoints_keycards.minteractionpoint"
+include "helix/game system data/juice/item/items_keycodes.mitem"
+
+InteractionPoint UseKeycodeParent < uid=9D0EE20B640F1FA2000009CDD4650E4B > : UseKeycardParent
+{
+	myDefaultSetup
+	{
+		myLabel "branch = \"TU1\", contextComment = \"Interaction label\", enabled = true, guid = #09BE04796686A7170003ECF4F3081A4D, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 417, text = \"Use key  code\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "branch = \"TU1\", contextComment = \"Interaction label\", enabled = true, guid = #09BE04796686A7170003ECF501978565, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 10730, text = \"Requires: key code\", type = \"MenuLine\""
+		myIcon ""
+		myShouldWaitForGestureAnimation TRUE
+		myStep 1
+	}
+}
+
+InteractionPoint "UseKeycode TOS_IC_01 Vault" < uid=09BE047966868F7500451A7014E9917F > : UseKeycodeParent
+{
+	myDefaultSetup
+	{
+		myLabel "branch = \"TU1\", contextComment = \"Interaction label\", enabled = true, guid = #09BE04796686B1410003EA88A8E4C558, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 417, text = \"Requires: Vault Codes\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "branch = \"TU1\", contextComment = \"Interaction label\", enabled = true, guid = #09BE04796686B1410003EA8963D0B70B, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 10730, text = \"Requires: Vault Codes\", type = \"MenuLine\""
+		myIcon ""
+		myShouldWaitForGestureAnimation TRUE
+		myStep 1
+	}
+	myRestrictions
+	{
+		InteractionConditionGroup "New GameConditionGroup"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel "New GameConditionPlayerHasIntel_Active"
+				{
+					myIntel < uid=09BE04796686ADB80000C7A20269D6F9 > = A_TOS_MS141_ITL056_ImperialCompound_Vault 7110821465030AB200067D78674F2D3A
+					myIntelState Active
+				}
+				GameConditionPlayerHasIntel "New GameConditionPlayerHasIntel_Resolved"
+				{
+					myIntel < uid=09BE04796686ADC40000C7A320A60B91 > = A_TOS_MS141_ITL056_ImperialCompound_Vault 7110821465030AB200067D78674F2D3A
+					myIntelState Resolved
+				}
+			}
+		}
+	}
+}
+
+InteractionPoint "UseKeycode TOS_IC_02 Vault" < uid=09BE04796686A42B0003EBDED1277AAA > : UseKeycodeParent
+{
+	myDefaultSetup
+	{
+		myLabel "branch = \"TU1\", contextComment = \"Interaction label\", enabled = true, guid = #09BE04796686B14D0003EA8A8E63FC4A, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 417, text = \"Requires: Vault Codes\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "branch = \"TU1\", contextComment = \"Interaction label\", enabled = true, guid = #09BE04796686B14D0003EA8BF4D7CFA2, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 10730, text = \"Requires: Vault Codes\", type = \"MenuLine\""
+		myIcon ""
+		myShouldWaitForGestureAnimation TRUE
+		myStep 1
+	}
+	myRestrictions
+	{
+		InteractionConditionGroup "New GameConditionGroup"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel "New GameConditionPlayerHasIntel_Active"
+				{
+					myIntel < uid=09BE04796686AE0A0001861DF7D0CF28 > = A_TOS_MS144_ITL061_ImperialCompound2_VaultCodeUpdate 7110821465314DAB001F6D6A2C3731D5
+					myIntelState Active
+				}
+				GameConditionPlayerHasIntel "New GameConditionPlayerHasIntel_Resolved"
+				{
+					myIntel < uid=09BE04796686AE0A0001861E8650D278 > = A_TOS_MS144_ITL061_ImperialCompound2_VaultCodeUpdate 7110821465314DAB001F6D6A2C3731D5
+					myIntelState Resolved
+				}
+			}
+		}
+	}
+}
+
+InteractionPoint "UseKeycode TAT_IC_02 Vault" < uid=09BE04796686A42B0003EBE10A1BE8AB > : UseKeycodeParent
+{
+	myDefaultSetup
+	{
+		myLabel "branch = \"TU1\", contextComment = \"Interaction label\", enabled = true, guid = #09BE04796686B1520003EA8C7A971A65, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 417, text = \"Requires: Vault Codes\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "branch = \"TU1\", contextComment = \"Interaction label\", enabled = true, guid = #09BE04796686B1520003EA8D9C1992D3, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 10730, text = \"Requires: Vault Codes\", type = \"MenuLine\""
+		myIcon ""
+		myShouldWaitForGestureAnimation TRUE
+		myStep 1
+	}
+	myRestrictions
+	{
+		InteractionConditionGroup "New GameConditionGroup"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel "New GameConditionPlayerHasIntel_Active"
+				{
+					myIntel < uid=09BE04796686AE4400018654A6ACF6E8 > = A_TAT_MS344_ITL237_TatooineImpComp1_Opportunity1 711082146532673C000610ED06F914C2
+					myIntelState Active
+				}
+				GameConditionPlayerHasIntel "New GameConditionPlayerHasIntel_Resolved"
+				{
+					myIntel < uid=09BE04796686AE4400018655AE7D9164 > = A_TAT_MS344_ITL237_TatooineImpComp1_Opportunity1 711082146532673C000610ED06F914C2
+					myIntelState Resolved
+				}
+			}
+		}
+	}
+}
+
+InteractionPoint "UseKeycode AKI_IC_02 Vault" < uid=09BE04796686AD3B0000C7A1D4D74043 > : UseKeycodeParent
+{
+	myDefaultSetup
+	{
+		myLabel "branch = \"TU1\", contextComment = \"Interaction label\", enabled = true, guid = #09BE04796686B1570003EA8E0D09ACB6, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 417, text = \"Requires: Vault Codes\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "branch = \"TU1\", contextComment = \"Interaction label\", enabled = true, guid = #09BE04796686B1570003EA8F47E9D86A, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 10730, text = \"Requires: Vault Codes\", type = \"MenuLine\""
+		myIcon ""
+		myShouldWaitForGestureAnimation TRUE
+		myStep 1
+	}
+	myRestrictions
+	{
+		InteractionConditionGroup "New GameConditionGroup"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel "New GameConditionPlayerHasIntel_Active"
+				{
+					myIntel < uid=09BE04796686AE5D00018670DE31F64D > = A_AKI_MS512_ITL444_AkivaImpComp1_Opportunity1 7110821465327B4C0006114A474FCF1C
+					myIntelState Active
+				}
+				GameConditionPlayerHasIntel "New GameConditionPlayerHasIntel_Resolved"
+				{
+					myIntel < uid=09BE04796686AE5D0001867187B41ED6 > = A_AKI_MS512_ITL444_AkivaImpComp1_Opportunity1 7110821465327B4C0006114A474FCF1C
+					myIntelState Resolved
+				}
+			}
+		}
+	}
+}
+

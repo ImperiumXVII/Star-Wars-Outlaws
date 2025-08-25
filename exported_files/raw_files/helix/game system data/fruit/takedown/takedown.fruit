@@ -1,0 +1,102 @@
+include "helix/game system data/fruit/melee/melee_conditions.fruit"
+include "helix/game system data/fruit/restriction/playerrestriction.fruit"
+include "helix/game system data/fruit/takedown/takedown_coverconstraints.fruit"
+include "helix/game system data/fruit/takedown/takedown_move.fruit"
+include "helix/game system data/fruit/camera/camerablendtransitions.fruit"
+
+class AreaToTargetValidationSettings
+{
+	TakedownBoxCastShapeSettings myBelowGroundValidationBoxSettings < tooltips="Set the box cast shape parameters to check obstacles along the player forward or directly to the target position in case the player's below the target" >
+	TakedownBoxCastShapeSettings myForwardValidationBoxSettings < tooltips="Set the box cast shape parameters to check obstacles along the player forward or directly to the target position in case the player's Y is minor the target's Y + HighGroundSituationDeltaY" >
+	TakedownBoxCastShapeSettings myHighGroundValidationBoxSettings < tooltips="Set the box cast shape parameters to check obstacles along along the vertical segment between the player and the target when the player is on an higher grounds" >
+	float myBelowGroundSituationDeltaY -0.5 < max=0.0 tooltip="It's the maximum delta between the player and the target positions' Y for which a below ground situation is considered. If the delta Y, considered from the target to the player, is less than or equal this parameter, the box shape validation will follow the BelowGroundValidation profile" >
+	float myHighGroundSituationDeltaY 0.8 < tooltip="It's the minimum delta between the player and the target positions' Y for which an high ground situation is considered. If the delta Y, considered from the target to the player, is major or equal than this parameter, the box shape validation will follow the HighGroundPlayerToTargetDeltaYProfile" >
+	float mySwitchToHighGroundValidationAtNormalizedDistance 0.7 < tooltip="Set the normalized distance from the player to the target for which HighGroundValidationBoxSettings are used instead of myForwardValidationBoxSettings" >
+}
+
+class TargetVisibilitySettings
+{
+	bool myPerformLOSCheck false < tooltip="If enabled, line of sight checks will be performed against the target to validate the interaction point" >
+	float myHorizontalLOSCheckOffset 0.0 < min=0.0 tooltip="During LoS checks, horizontal points will be generated on both sides of the interaction point with this offset relative to the camera's rotation. If this offset is equal to zero, no side points will be generated." >
+	float myVerticalLOSCheckOffset 0.0 < min=0.0 tooltip="During LoS checks, one vertical point on top of the interaction point with this offset relative to the camera's rotation. If this offset is equal to zero, the point will not be generated." >
+}
+
+class UnsafeTakedownSettings 
+{
+	float myFromAboveHeightDeltaThreshold 0.5 < min =0.0 tooltip="If the height delta between player and target is higher than this threshold, it will be considered a takedown from above leading to differents unsafe checks" >
+	float myGroundTakedownHeightDeltaUnsafeThreshold 0.1 < min=0.0 tooltip="If the takedown is considered on the same plane, height delta between player and target is higher than this threshold and they're not on a slope, the takedown will be marked as unsafe so that custom branches on the animation system or moves can be triggered" >
+	float myFromAboveEdgeDistanceUnsafeThreshold 1.0 < min=0.0 tooltip="When considering a takedown from above, if the distance between the target and the player's edge is higher than this threshold, the takedown will be marked as unsafe" >
+	float myClearAreaRadius 1.2 < min=0.0 tooltip="Radius for the clear area check performed on the navmesh" >
+	float myClearAreaHeight 1.0 < min=0.0 tooltip="Height for the clear area check performed on the navmesh" >
+	vec3f myClearAreaOffset < default=0.0;0.0;-0.5 tooltip="Offset to the clear area check, centered on the target's position and relative to the direction from the player" >
+}
+
+class CornerTakedownFallbackSettings
+{
+	bool myEnableCornerTakedownFallback false < tooltip="Enable fallback to standard ground takedowns if there's not enough space behind the player for the corner variation. Before starting the takedown, the player will be moved out of the corner through pathing" >
+	float myBoxCastDistance 1.1 < min=0.0 tooltip="Length of the boxcast performed behind the player to detect obstacles" >
+	float myBoxCastSize 0.5 < min=0.0 tooltip="Size of the boxcast performed behind the player to detect obstacles" >
+	float myBoxCastYOffset 0.2 < min=0.0 tooltip="Y offset applied from the box cast starting position" >
+	float myBoxCastZOffset 0.4 < min=0.0 tooltip="Z offset applied from the box cast starting position" >
+	float myCornerForwardOffset 0.3 < min=0.0 tooltip="Forward offset used to define the destination to move out of the corner" >
+	float myCornerHorizontalOffset 0.5 < min=0.0 tooltip="Horizontal offset used to define the destination to move out of the corner" >
+}
+
+class FinisherSettings 
+{
+	float myFinisherBaseChance 1.0 < min=0.0 max=1.0 bhv="percent" tooltip="Chance for the finisher to be available, when conditions are met" >
+	string myAddChanceOverTimeSinceLastTakedownCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0 -0, }, outTangents = { 0 0, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 60 0.5, }, }, numKeys = 2, }" < bhv=inputgraph tooltip="It defines the curve to control the additional chance for finisher availability according to the time passed from the last used takedown. X axis = time passed in second / Y axis = additional chance (from 0.0 to 1.0)" >
+}
+
+list TakedownEffectList
+{
+	TakedownEffect
+}
+
+class TakedownEffect
+{
+	TakedownAnimationEventType myEventType Standard
+	file myEffectFileName "" < bhv=asset assettype=particles >
+}
+
+list PostTakedownShakeHandNPCNameExclusionStringList
+{
+	string
+}
+
+class PostTakedownShakeHandNPCData
+{
+	string myNPCNameInclusionString < tooltip="Set the string to search in the target name to trigger the shake hand animation clip after the last takedown if its alignment's TriggerPostTakedownShakeHandClip is true" >
+	PostTakedownShakeHandNPCNameExclusionStringList myNPCNameExclusionStringList < tooltip="Set the list of strings to search in the target name to block the shake hand animation clip after the last takedown" >
+}
+
+list PostTakedownShakeHandNPCDataList
+{
+	PostTakedownShakeHandNPCData
+}
+
+class PostTakedownData
+{
+	PostTakedownShakeHandNPCDataList myShakeHandNPCDataList
+}
+
+class TakedownConfig < uid=auto >
+{
+	TakedownMoveList myMoves
+	TakedownMoveList myFinisherMoves
+	PlayerRestriction* myRestrictions < tooltip="Prevented actions" >
+	AreaToTargetValidationSettings myAreaToTargetValidationSettings < tooltip="It defines the settings of the box shape considered to verify if there is an obstacle between the player and the target" >
+	TargetVisibilitySettings myTargetVisibilitySettings < tooltip="It defines the visibility settings of the target and verify if their visible depending on the current camera status" >
+	GameConditionMeleeValue myFinisherGameConditions
+	bool myAlignToPredictedTargetPosition false < tooltip="If enabled, the alignment position will be calculated considering the predicted target position along their current path" >
+	TakedownCameraReturnMode myCameraReturnMode
+	CameraTransition* myCameraReturnTransitionIn
+	float mySlopeAngleThresholdToRotate 5.0 < min=0.0 max=180.0 tooltip="If the current slope angle is higher than this threshold, then the player will be rotated according to the slope so that the animation will be parallel to it" >
+	UnsafeTakedownSettings myUnsafeSettings
+	CornerTakedownFallbackSettings myCornerFallbackSettings
+	FinisherSettings myFinisherSettings
+	TakedownEffectList myEffects
+	TakedownBoxCastShapeSettings myFreeCornerBoxCastShapeSettings < tooltip="Set the box cast shape settings for the free corner validation" >
+    PostTakedownData myPostTakedownData < tooltip="Data settings related to post takedown handle logics and behaviors" >
+	float myReorientationDuration 0.05 < min=0.0 tooltip="Duration in seconds for Kay to reorient after a takedown on a slope" >
+}

@@ -1,0 +1,24 @@
+include "snowdrop/modules/core/audio/audio.fruit"
+include "helix/game system data/fruit/sound/audioprojectile.fruit"
+
+class AudioWeapon < uid=auto >
+{
+	AudioEvent mySingleShot < tooltip="The audio event that will be used for weapons that are not fully automatic.">
+	AudioEvent myRemoteSingleShot < tooltip="The audio event that will be used for teammates weapons that are not fully automatic.">
+	AudioEvent myStart < tooltip="Fully automatic weapons posts a loop instead of single shots. This is the start event.">
+	AudioEvent myStop < tooltip="See tooltip for 'myStart'. This is the stop event for that loop.">
+	AudioEvent myChargeStart < tooltip="The audio event that will be posted when a chargeable weapon starts to charge.">
+	AudioEvent myChargeCancelled < tooltip="The audio event that will be posted when a charge process is interrupted.">
+	AudioEvent myChargeFull < tooltip="The audio event that will be posted when a chargeable weapon is fully charged.">
+	AudioEvent myChargeShotReady < tooltip="The audio event that will be posted when a chargeable weapon is has enough charge to shot a projectile.">
+	AudioRTPC myChargeProgressRtpc < tooltip="The RTPC for chargeable weapons. The value ranges from 0 to 1.">
+	AudioRTPC myFullAutoRpmRtpc < tooltip="Fire rate for fully automatic weapons. Range 0 to 1. Wwise value will be 60 divided by actual RPM."
+	AudioSwitchList mySwitches < tooltip="A list of switches to be set on the weapon emitter once this weapon is equipped.">
+	AudioProjectile* myAudioProjectileData < tooltip="Audio needed for projectile impact">
+	AudioEvent myFireEventVariation1 < tooltip="Weapon fire sound variation 1.">
+	AudioEvent myFireEventVariation2 < tooltip="Weapon fire sound variation 2.">
+	AudioEvent myDryFire < tooltip="The audio event that will be used for dry fire.">
+	int myFireEventVariationThreshold1 0 < tooltip="Number of npc's using this weapon before switching to variation 1.">
+	int myFireEventVariationThreshold2 0 < tooltip="Number of npc's using this weapon + variation 1 before switching to variation 2 (must be greater than threshold 1).">
+	bool myUseManualBreak false < tooltip="If true, use a manual Break Action (from code) on loop Start event, rather than posting a Break/Stop event.">
+}

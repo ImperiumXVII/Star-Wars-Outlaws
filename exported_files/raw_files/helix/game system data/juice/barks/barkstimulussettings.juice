@@ -1,0 +1,172 @@
+include helix/audio/votypes.juice
+include "helix/game system data/fruit/barks/barkstimulussettings.fruit"
+include "helix/game system data/juice/dialogue character/databases/bark_characters.mdialoguecharacter"
+include "helix/game system data/juice/dialogue character/databases/unsorted_characters.mdialoguecharacter"
+include "helix/game system data/juice/item/player_weaponmodule_power.mitem"
+include "helix/game system data/juice/item/player_weaponmodule_standard.mitem"
+include "helix/game system data/juice/sound/stimuli/stim_id_combat_npc.mstimulusidentifier"
+include "helix/game system data/juice/sound/stimuli/stim_id_comms_scanner.mstimulusidentifier"
+include "helix/game system data/juice/sound/stimuli/stim_id_coop.mstimulusidentifier"
+include "helix/game system data/juice/sound/stimuli/stim_id_dlc2_main.mstimulusidentifier"
+include "helix/game system data/juice/sound/stimuli/stim_id_e3.mstimulusidentifier"
+include "helix/game system data/juice/sound/stimuli/stim_id_main.mstimulusidentifier"
+include "helix/game system data/juice/sound/stimuli/stim_id_main_onos.mstimulusidentifier"
+include "helix/game system data/juice/sound/stimuli/stim_id_space.mstimulusidentifier"
+include "helix/game system data/juice/sound/stimuli/stim_rules_vendor.mstimulus"
+
+BarkStimulusSettingsData myBarkStimulusSettings < uid=16DEADE6611CEDD80000080EB7C58B1A >
+{
+	mySpaceNPCBarks
+	{
+		mySpacePlayerDisabledStimulusIdentifier < uid=C2B74222652E4A020001030B74669405 > = S_SPACE_PlayerDisabled 3A12912163D3EA4C00009D64C7E4CDF3
+		mySpacePlayerCollisionStimulusIdentifier < uid=3A129121661CF893000282F93F3F6A59 > = S_SPACE_PlayerCollision 3A1291216307899D0000E5BA57B3CC25
+		mySpaceFormationJoinedFightStimulusIdentifier < uid=C2B7422265253B93000068B35CE98688 > = S_SPACE_JoiningFight 3A129121630789B90000E5BD9F9F1B2C
+	}
+	myNPCBarks
+	{
+		myNPCOnDamage < uid=3A129121661D052F00030D44E1DA33F0 > = dummytrigger 3A1291216475E01C00015F999D45FFFD
+		myNPCOnDeath < uid=3A129121661D052F00030D459337AA57 > = S_NPC_DLC2_RokanaRaider_Death F457223267868808000143D30219CDC7
+		myNPCWantedEnterWanted < uid=1EC89F2563F36D8D000009D17F8C8C67 > = S_NPC_WantedReportIncident 3A12912163767A2A0001A83AA71A8A0A
+		myNPCWantedTargetFound < uid=1EC89F2563F36D96000009D277ACC805 > = S_NPC_WantedTargetFound 3A129121637CF04B0001C25EBFD746C7
+		myNPCWantedTargetLost < uid=1EC89F2563F36DC8000009D34C95937F > = S_NPC_WantedTargetLost 3A129121638759060000B5C4211C258A
+		myNPCWantedRequestBackup < uid=1EC89F2563F36E0E000009D63550A74E > = S_NPC_RequestBackup 3A129121638DC2100000F9E74929FC44
+		myNPCLastOneStanding < uid=C48A863A66268CFD000000C91FCB78E0 > = S_NPC_LastOneStanding E4123D276620B835000450A891F2AE58
+	}
+	myPetOutOfRangeCommandResponseStimulusIdentifier < uid=3A129121661D04F80003009BCF9975B4 > = dummytrigger 3A1291216475E01C00015F999D45FFFD
+	myWantedTargetLostFallback < uid=E4123D2767094A1A00078805052380DE > = S_NPC_WantedTargetLost 3A129121638759060000B5C4211C258A
+	myWantedTargetLostFallbackNPCTypes
+	{
+		uid "New uid" 16DEADE661F07FAF00001B5372282E83
+		uid "New uid_0" B0EA4E53607599070000005769C3BA47
+	}
+	mySpaceKayBarks
+	{
+		mySpaceKayCombatExitKilledAllEnemies < uid=6AE3AA10662B92410002DF143879CED1 > = S_KAY_Space_CombatExitKilledAllEnemies 3A12912166226CA700033A26AD6B6A72
+		mySpaceKayCombatExitEscapeShotsFired < uid=6AE3AA10662B92410002DF15D6A86DD6 > = S_KAY_Space_CombatExitEscapeShotsFired 3A12912166226CCC0003495B83AB5988
+		mySpaceKayCombatExitEnemyHyperjumpedAway < uid=6AE3AA10662B92410002DF1687D62005 > = S_KAY_Space_CombatExitEnemyHyperjumped 3A12912166226CE000035D26D2E5729F
+		mySpaceKayCombatExitPlayerHyperjumpedAway < uid=6AE3AA10662B92410002DF170154994C > = S_KAY_SPACE_CombatExitPlayerHyperjumped 3A12912166226CF3000369632ABBD01D
+	}
+	myKayBarks
+	{
+		myKayDeath < uid=3A129121661D04F80003009C03C89FE2 > = dummytrigger 3A1291216475E01C00015F999D45FFFD
+		myKayPainBlaster < uid=3A129121661D04F80003009D0035DC21 > = S_KAY_PlayerHurt_BLANK E4123D276458FFA600088C4B824CA635
+		myKayPainFall < uid=3A129121661D04F80003009E4FB9ADDE > = dummytrigger 3A1291216475E01C00015F999D45FFFD
+		myKayBlabbermouth < uid=6F2AF91962BAF9B7000259AE585E60BD > = dummytrigger 3A1291216475E01C00015F999D45FFFD
+		myKayKilledNPC < uid=3A129121630365A5000089E7573B38D9 > = S_KAY_Space_KilledNPC 3A12912162FD0ED60000BF63C3FF4F38
+		myKayShieldFail < uid=E4123D27642D9E92000A64154BB2DAA8 > = S_KAY_ShootShield 3A129121662CF46A000CFEC3E5A690F2
+		myKayShootInvincibleTarget < uid=3A129121662CF5D2000DCEE8D792BD2B > = S_KAY_ShootInvincible 3A129121662CF470000D00DED4BE80A9
+		myKayStartGameReminder < uid=3A129121661D04F80003009F4B894548 > = dummytrigger 3A1291216475E01C00015F999D45FFFD
+		myKayRespawnReasonArrestedInWantedRelation < uid=3A1291216385E63F0000EE21FF9C2045 > = S_KAY_GameRespawn 3A129121637362060000B10AEA18CE64
+		myKayRespawnReasonArrestedInNonWantedRelation < uid=3A1291216385E63F0000EE2228DF31C3 > = S_KAY_GameRespawnArrestedBySyndicate E4123D2766C733BB001749B1B4E67E7B
+		myKayRespawnReasonNeutralizedByEmpire < uid=3A1291216385E63F0000EE2323AE4F8B > = S_KAY_GameRespawn 3A129121637362060000B10AEA18CE64
+		myKayRespawnReasonDied < uid=3A1291216385E63F0000EE2422AF6765 > = S_KAY_GameRespawn 3A129121637362060000B10AEA18CE64
+		myKayRespawnReasonOutsideActiveQuest < uid=3A129121661D04F8000300A00CF9F454 > = dummytrigger 3A1291216475E01C00015F999D45FFFD
+		myKayEnterCoverOrConcealment < uid=E4123D276468B2E70002855286362009 > = S_KAY_PlayerEnterCover_BLANK E4123D276458FF9500088C4914B025F5
+		myKayAimingThrowable < uid=E4123D2764776E70000048A69ED11C79 > = S_KAY_PlayerAdvantage_BLANK E4123D276458FF8900088C26C5A50761
+		myKayCombatExitKilledAllEnemies < uid=6AE3AA10662B92410002DF18F7ADD0F1 > = S_KAY_CombatExitComplete 3A12912162BC1AF700009FC7190EAD11
+		myKayCombatExitEscapeShotsFired < uid=6AE3AA10662B92410002DF1962FED50F > = S_KAY_CombatExitEscape 3A129121662CE84300049B648AFB2AA5
+		myCombatVOInterruptBarks
+		{
+			myInterruptSelf < uid=3A129121661D052F00030D46FC13DDD2 > = S_KAY_InterruptSelf 3A12912166461564000BB7141A7ABF94
+			myInterruptNPCMale < uid=3A12912166461AF4000BB8A991F99472 > = S_KAY_InterruptOther_Masculine 3A1291216646169D000BB716B06D814B
+			myInterruptNPCFemale < uid=3A12912166461AF4000BB8AA304FBDE9 > = S_KAY_InterruptOther_Feminine 3A12912166461691000BB715058C8677
+			myResumeSelf < uid=3A129121661D052F00030D4810B68C26 > = S_KAY_ResumeSelfExerted 3A129121662CFF3200062698ADE154C6
+			myResumeNPCMale < uid=3A12912166461AF4000BB8AB18089223 > = S_KAY_ResumeOther_Masculine 3A12912166461A32000BB744B4C8DEE3
+			myResumeNPCFemale < uid=3A12912166461AF4000BB8AC807BB8C3 > = S_KAY_ResumeOther_Feminine 3A12912166461A25000BB743D5164508
+		}
+		myRagdollVOInterruptBarks
+		{
+			myInterruptSelf < uid=3A129121661D052F00030D4A5C624E35 > = dummytrigger 3A1291216475E01C00015F999D45FFFD
+			myInterruptNPCMale < uid=3A12912166461AF4000BB8ADDD7CF6BA > = dummytrigger 3A1291216475E01C00015F999D45FFFD
+			myInterruptNPCFemale < uid=3A12912166461AF4000BB8AE9091B809 > = dummytrigger 3A1291216475E01C00015F999D45FFFD
+			myResumeSelf < uid=3A12912166461F3A000BB9D633BB67C2 > = S_KAY_ResumeSelfExerted 3A129121662CFF3200062698ADE154C6
+			myResumeNPCMale < uid=3A12912166461F3A000BB9D727490123 > = S_KAY_ResumeOther_Masculine 3A12912166461A32000BB744B4C8DEE3
+			myResumeNPCFemale < uid=3A12912166461F3A000BB9D8ED3E5374 > = S_KAY_ResumeOther_Feminine 3A12912166461A25000BB743D5164508
+		}
+		myNarrativeContextVOInterruptBarks
+		{
+			myInterruptSelf < uid=3A12912166461F3A000BB9D994877550 > = dummytrigger 3A1291216475E01C00015F999D45FFFD
+			myInterruptNPCMale < uid=3A12912166461F3A000BB9DA7CEA9575 > = dummytrigger 3A1291216475E01C00015F999D45FFFD
+			myInterruptNPCFemale < uid=3A12912166461F3A000BB9DB13C5C3D2 > = dummytrigger 3A1291216475E01C00015F999D45FFFD
+			myResumeSelf < uid=3A12912166461F3A000BB9DC0C7F972D > = dummytrigger 3A1291216475E01C00015F999D45FFFD
+			myResumeNPCMale < uid=3A12912166461F3A000BB9DDA3FD4E07 > = dummytrigger 3A1291216475E01C00015F999D45FFFD
+			myResumeNPCFemale < uid=3A12912166461F3A000BB9DE8B942630 > = dummytrigger 3A1291216475E01C00015F999D45FFFD
+		}
+	}
+	myCommsScannerBarks
+	{
+		myCommsScannerFallback < uid=6F2AF91962CBD969000037738B9BB34A > = AI_IMPERIAL_DISPATCHER_TOSHARA_F01 26F503F7624EEE8A0000001E701056AA
+		myMinInAreaInterval 35.0
+		myMaxInAreaInterval 45.0
+		myTimeThresholdBeforeReset 14.0
+		myWantedTargetInAreaFirst < uid=1EC89F2564C3D68C00009753C455960F > = S_COM_WantedReminder_Location_Part1 1EC89F2564C3D4450000974CBE53E96D
+		myWantedTargetInArea < uid=3A12912162D90D940000A6CDB74DCD61 > = S_COM_WantedReminder_Part1 1EC89F2563EF79B2000050A7968B5CD5
+		myWantedTargetInAreaLevelTransition < uid=1EC89F2564C7A9060013DB9E91F5A48B > = S_COM_WantedReminder_LevelTransition_Part1 1EC89F2564C3D50100009750482F8510
+		myWantedResetPassive < uid=1EC89F2563E227060001764D3BC9BD0B > = S_COM_WantedAbandonSearch 3A129121637CEE6A0001C23FAADFB28D
+		myWantedResetActive < uid=1EC89F2563E227060001764E60356297 > = S_COM_WantedReset_Part1 3A12912162CEE18B000046D7BDB1F582
+		myWantedReinforcementsIncoming < uid=3A129121661D052F00030D52C297F7ED > = dummytrigger 3A1291216475E01C00015F999D45FFFD
+	}
+	myPetBarks
+	{
+		myPetSenseBarks
+		{
+			PetSenseBark Close
+			{
+				myStimulus < uid=3A129121661D052F00030D536EFAF13B > = dummytrigger 3A1291216475E01C00015F999D45FFFD
+				myMinDistance 3.0
+			}
+			PetSenseBark Medium
+			{
+				myStimulus < uid=3A129121661D052F00030D54B1002F5F > = dummytrigger 3A1291216475E01C00015F999D45FFFD
+				myMinDistance 15.0
+			}
+			PetSenseBark Far
+			{
+				myStimulus < uid=3A129121661D052F00030D554D0D676E > = dummytrigger 3A1291216475E01C00015F999D45FFFD
+				myMinDistance 35.0
+			}
+		}
+	}
+	myCoopPlayerBarks
+	{
+		myPlayerPickedUpCarriedHeistTarget < uid=E4123D2763E9F6AE000009BF9EA54214 > = S_COOP_Interact_ObjectivePickupSingle E4123D27648C56E90000AB6A9CD11327
+		myPlayerPickedUpPocketableHeistTarget < uid=E4123D2763E9F6AE000009C0DC11A482 > = S_COOP_Interact_ObjectivePickupMany E4123D27648C56E20000AB691DFC5C35
+		myPlayerRevive < uid=E4123D2763E9F6AE000009C1368E0605 > = S_COOP_Health_Revived E4123D2763C9670000005B41FA456DFA
+		myPlayerDown < uid=E4123D2763E9F6AE000009C24ACF5F40 > = S_COOP_Status_Downed E4123D2762CC08D60000C42FD16D1598
+		myPlayerLowHealth
+		{
+			myThreshold 1.0
+			myStimulus < uid=4F6D80DE64A4348100002C7D17EA7601 > = S_COOP_Status_LowHealth E4123D2764917A4A0004FDDF10288531
+		}
+	}
+	myDefaultVOType < uid=3A1C5D1862F26CFE0000409FD35D5744 > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+	myDefaultVOPrioritySource Override
+	myDefaultVOPriorityOverride 10
+	myWantedTrooperTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A129121638DBEB20000F99A077186EC > = Agent_BarksFamily_Stormtrooper E4123D2762F4C9F000048CA972FB8238
+	}
+	myWantedOfficerTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A129121638DBEBC0000F99B1099C7C8 > = Agent_BarksFamily_Officer E4123D2762F4CA2400048CAC1DDAFE39
+	}
+	myWantedPilotTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F2563F4BE34000009CF1A3C68B7 > = Agent_Archetype_Pilot 3A12912163EF7B9500005053123CF383
+	}
+	myWantedCameraTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E711F097660EA8AA0001FA82C13DC663 > = Agent_BarksFamily_SurveillanceCamera 1EC89F2566013639000028B10753C1E0
+	}
+	myInvincibleTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E711F097664705AA000C8E3AD67B7B63 > = Agent_InvincibleVOTarget 3A1291216634DC1C000439525C698724
+	}
+	myShieldFailBarkWeaponModules
+	{
+		WeaponModuleItem "New WeaponModuleItem" < uid=E711F097667D491C0010C572C521D673 > = player_weaponmodule_standard A207755D6310C6A9000058E93687C223
+		WeaponModuleItem "New WeaponModuleItem_0" < uid=E711F097667D49400010C5736D969C39 > = player_weaponmodule_power 7113C611631B2BFF00004992F3FF42C3
+	}
+	myAgentIdleProximityDistance 30.0
+}
+

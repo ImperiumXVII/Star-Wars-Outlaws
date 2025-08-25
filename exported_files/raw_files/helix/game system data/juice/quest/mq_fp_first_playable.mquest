@@ -1,0 +1,154 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+
+Quest mq01_fp_imperialoutpost < uid=9D0EE20B602A8F9E00000492BC64F601 >
+{
+	myName "contextComment = \"Quest Title\", enabled = true, guid = #9D0EE20B602A8F9F00000495E2F6A1C2, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 93, text = \"Find Lotho\", type = \"MenuLine\""
+	myDescription "contextComment = \"Quest description\", enabled = true, guid = #F12EE1F961111496000007F4CD852BD3, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 93, text = \"Lotho used to work with a bandit called Quint, but he disappeared after they had a run-in with the Empire. Track down Quint to find out where Lotho could be hiding.\", type = \"MenuLine\""
+	myBeats
+	{
+		QuestBeat "1. Pickup in Mirogana" < uid=9D0EE20B602A8FE800000496DEA3AAE0 >
+		{
+			myScript helix/scripts/scr_mq01_fp_beat01_pickup.mscript
+			myName "contextComment = \"Goal Text\", enabled = true, guid = #9D0EE20B602A926E0000049F788592CD, lineVersion = 9, maxLength = 0, productId = -1, sectionId = -1, text = \"Locate the cantina\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myObjectives
+			{
+				QuestObjectiveInteract "Talk with the Bartender" < uid=9D0EE20B602F8416000010DC2E637E8D >
+				{
+					myName "contextComment = \"Objective Text\", enabled = true, guid = #9D0EE20B602F841E000010DD20ABC385, lineVersion = 4, maxLength = 0, productId = -1, sectionId = -1, text = \"Talk to the bartender\", type = \"MenuLine\""
+				}
+				QuestObjectiveGoToLocation "Talk to the Bartender" < uid=9D0EE20B60ED7583000047621F9D1FAC >
+				{
+					myName "contextComment = \"Objective Text\", enabled = true, guid = #9D0EE20B60ED758D00004763219ACE86, lineVersion = 3, maxLength = 0, productId = -1, sectionId = -1, text = \"Talk to the bartender\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=6F2AF91962178AC900002895C9C8508D >
+			{
+			}
+		}
+		QuestBeat "1b. Pickup the Speeder" < uid=9D0EE20B60C22EA70000330C7463A7C2 >
+		{
+			myScript helix/scripts/scr_mq01_fp_beat01b_pickupspeeder.mscript
+			myName "contextComment = \"Goal Text\", enabled = true, guid = #9D0EE20B60C22EDB0000330E5D1425D0, lineVersion = 21, maxLength = 0, productId = -1, sectionId = -1, text = \"Get to your speeder\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myObjectives
+			{
+				QuestObjectiveInteract "Take the Speeder" < uid=9D0EE20B60C22F24000033143E5482CE >
+				{
+					myName "contextComment = \"Objective Text\", enabled = true, guid = #9D0EE20B60C22F2D000033154EEF5336, lineVersion = 4, maxLength = 0, productId = -1, sectionId = -1, text = \"Mount your speeder\", type = \"MenuLine\""
+				}
+				QuestObjectiveCustom "Take the Speeder" < uid=9D0EE20B60E7042900027FE18A311EBA >
+				{
+					myName "contextComment = \"Objective Text\", enabled = true, guid = #9D0EE20B60E7042F00027FE28E517792, lineVersion = 4, maxLength = 0, productId = -1, sectionId = -1, text = \"Mount your speeder\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=6F2AF91962178AC900002896037689D0 >
+			{
+			}
+		}
+		QuestBeat "2. Infiltrating the Outpost" < uid=9D0EE20B602A909600000497874B4B53 >
+		{
+			myScript helix/scripts/scr_mq01_fp_beat02_empireoutpost.mscript
+			myName "contextComment = \"Objective Text\", enabled = true, guid = #9D0EE20B602A951F000004C5E96CCE05, lineVersion = 8, maxLength = 0, productId = -1, sectionId = -1, text = \"Locate the Imperial outpost\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Infiltrate the Empire Outpost" < uid=9D0EE20B602F9187000018ED92006884 >
+				{
+					myName "contextComment = \"Objective Text\", enabled = true, guid = #9D0EE20B602F9194000018EEF092A693, lineVersion = 3, maxLength = 0, productId = -1, sectionId = -1, text = \"Infiltrate the Imperial outpost\", type = \"MenuLine\""
+				}
+				QuestObjectiveCustom "Prepare for The Escape" < uid=9D0EE20B606F1324000018E8F7033C01 >
+				{
+					myName "contextComment = \"Objective Text\", enabled = true, guid = #9D0EE20B606F1332000018E99EA1D82C, lineVersion = 8, maxLength = 0, productId = -1, sectionId = -1, text = \"Break into the prison wing\", type = \"MenuLine\""
+					myChildObjectives
+					{
+						QuestObjectiveInteract "Disable the Security Systems" < uid=9D0EE20B606F1371000018EE9B60DAD0 >
+						{
+							myName "contextComment = \"Objective Text\", enabled = true, guid = #9D0EE20B603F5F20000015C2D1C91FE1, lineVersion = 5, maxLength = 0, productId = -1, sectionId = -1, text = \"Slice the security system\", type = \"MenuLine\""
+						}
+						QuestObjectiveKillFireteam "Take out the Officer" < uid=9D0EE20B60A64D5000001E2E67CDCDC7 >
+						{
+							myName "contextComment = \"Objective Text\", enabled = true, guid = #9D0EE20B60A64DF500001E2F174A225E, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 93, text = \"Take out the Imperial officer\", type = \"MenuLine\""
+						}
+						QuestObjectiveCustom "Retrieve the Officer's Access Card" < uid=9D0EE20B60A64E0900001E3018C0F15F >
+						{
+							myName "contextComment = \"Objective Text\", enabled = true, guid = #9D0EE20B60A64E1300001E3186C096BD, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 93, text = \"Retrieve the officer's access card\", type = \"MenuLine\"}"
+						}
+						QuestObjectiveGoToLocation "Reach the Cell Block" < uid=F12EE1F961137DE2000007DE78E1798F >
+						{
+							myName "contextComment = \"Objective Text\", enabled = true, guid = #F12EE1F961137DE6000007DFDC510AF2, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 93, text = \"Reach the cell block\", type = \"MenuLine\""
+						}
+					}
+				}
+				QuestObjectiveInteract "Erase Black Sun Data Records" < uid=F12EE1F960CA101F00000D6328BF9553 >
+				{
+					myName "contextComment = \"Objective Text\", enabled = true, guid = #F12EE1F960CA102400000D64EA01AE9E, lineVersion = 4, maxLength = 0, productId = -1, sectionId = -1, text = \"Erase the Black Sun data records\", type = \"MenuLine\""
+					myIsOptional TRUE
+				}
+			}
+			myQuestBeatStateGameValue < uid=6F2AF91962178AC900002897CC74B5EC >
+			{
+			}
+		}
+		QuestBeat "3. Find Deke" < uid=9D0EE20B603F6A840000763F2A141520 >
+		{
+			myScript helix/scripts/scr_mq01_fp_beat03_finddeke.mscript
+			myName "contextComment = \"Objective Text\", enabled = true, guid = #9D0EE20B603F6A8F000076403C0A85EA, lineVersion = 7, maxLength = 0, productId = -1, sectionId = -1, text = \"Rescue Quint\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Find Deke" < uid=9D0EE20B603F6AEC0000764A1063A93A >
+				{
+					myName "contextComment = \"\", enabled = true, guid = #9D0EE20B603F6AF40000764B44924AAE, lineVersion = 4, maxLength = 0, productId = -1, sectionId = -1, text = \"Find Quint\", type = \"MenuLine\""
+				}
+				QuestObjectiveInteract "Help Deke Escape" < uid=9D0EE20B603F6ABC0000764821CE5DD3 >
+				{
+					myName "contextComment = \"\", enabled = true, guid = #9D0EE20B603F6ACB0000764973105B2B, lineVersion = 3, maxLength = 0, productId = -1, sectionId = -1, text = \"Help Quint escape\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=6F2AF91962178AC9000028985B355626 >
+			{
+			}
+		}
+		QuestBeat "4. Turn-In" < uid=9D0EE20B6040FB1500000033B9BE1023 >
+		{
+			myScript helix/scripts/scr_mq01_fp_beat04_turn-in.mscript
+			myName "contextComment = \"Objective Text\", enabled = true, guid = #9D0EE20B6040FB2B0000003490BA2F00, lineVersion = 3, maxLength = 0, productId = -1, sectionId = -1, text = \"Leave the Imperial outpost\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myObjectives
+			{
+				QuestObjectiveCustom "Leave the Outpost" < uid=9D0EE20B6040FCAB00000036A1044D61 >
+				{
+					myName "contextComment = \"Objective Text\", enabled = true, guid = #9D0EE20B6040FCB200000037E8726E6A, lineVersion = 4, maxLength = 0, productId = -1, sectionId = -1, text = \"Escape the Imperial outpost\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=6F2AF91962178AC900002899D0F229F5 >
+			{
+			}
+		}
+		QuestBeat "5. Pickup in the Settlement" < uid=F12EE1F9609156A30000002CE0FAB426 >
+		{
+			myScript helix/scripts/scr_mq02_fp_beat01_settlement.mscript
+			myName "contextComment = \"Goal Text\", enabled = true, guid = #F12EE1F9609156DC0000002DA9F162DD, lineVersion = 9, maxLength = 0, productId = -1, sectionId = -1, text = \"Find Quint\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myObjectives
+			{
+				QuestObjectiveCustom "Find Quint's Hideout" < uid=9D0EE20B613A2A21000873D32F3064DA >
+				{
+					myName "contextComment = \"\", enabled = true, guid = #9D0EE20B613A2A2F000873D48ECAC535, lineVersion = 1, maxLength = 0, productId = -1, sectionId = -1, text = \"Find Quint's hideout\", type = \"MenuLine\"}"
+				}
+				QuestObjectiveInteract "Confront Quint" < uid=F12EE1F9609157A000000033A4B1864A >
+				{
+					myName "contextComment = \"Objective Text\", enabled = true, guid = #F12EE1F9609157B800000035AD2C079E, lineVersion = 3, maxLength = 0, productId = -1, sectionId = -1, text = \"Confront Quint\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=6F2AF91962178AC90000289A677D0232 >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=6F2AF91962178AC90000289B0ECF00E4 >
+	{
+	}
+}
+

@@ -1,0 +1,74 @@
+include helix/audio/billboardingcategories.juice
+include "helix/game system data/juice/character/character_visuals_minor_akiva.mcharactervisuals"
+include "helix/game system data/juice/character/character_visuals_minor_toshara.mcharactervisuals"
+include "helix/game system data/juice/melee/alwaysmissmeleedefense.mnpcmeleedefenseprofile"
+include "helix/game system data/juice/npc/base_humanoid.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC base_civ < uid=B0EA4E53607562E10000004E2E368EC4 > : base_humanoid
+{
+	myArchetype Non-Combattant
+	myCharacterVisuals < uid=91119C9D63204EC80000C4F1D0BC0DC0 > = character_visuals_3_bronze_civ_generic_f EBE060C2634D836300046B5595A8EF61
+	myBehavior helix/behaviors/civ_civilian.mbehavior
+	myIsInvulnerable TRUE
+	myFaction < uid=B0EA4E53607562E10000004F0A232BCB > = Civilian B0EA4E53607561CC0000004DC311CAF9
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A129121662B9C4B000B2E7101496EDC > = Agent_Binocular_NotVOTarget 3A129121662B9A29000B2B5A42DACF63
+	}
+	myPositionReservationSize 0.5
+	myLodType Civilian
+	mySensoryProfileOverrides
+	{
+		NPCSensoryProfileOverride OnGroundVehicle
+		{
+			myVisionProfile < uid=41240B2465DF348500160B58B96E8B00 > = OnSpeederDetectionProfile 91DC5D3C650C630B0000E1D8CD9CF016
+			mySensoryEnvironmentType OnGroundVehicle
+			myPriority 10
+		}
+		NPCSensoryProfileOverride DefaultCitySensoryProfile
+		{
+			myVisionProfile < uid=41240B2465DF348500160B5957F0F310 > = DefaultCityAmbientNPCVisionProfile 41240B2465DF341300160AAA2C522DEF
+			mySensoryEnvironmentType DefaultCity
+		}
+	}
+	myPlayerAwarenessProfile < uid=E4123D2762B322B60000B42997988588 > = Ambient_NPC E4123D276231E809000028BA21F1729C
+	myMotionPatternProfile < uid=EBE060C2636BDD9C00028EF7EB7037A7 > = CivilianMotionPatternProfile EBE060C2629F5D3A000103A686C4B256
+	myFocusProfile < uid=41240B2465DF4881000F6CCE8E118E12 > = AmbientNPCFocusProfile 41240B2465DDB8D60012974F11FF3D48
+	myAudioParameters
+	{
+		mySwitches
+		{
+			AudioSwitch "NPC Faction Switch"
+			{
+				myGuid 4362A8070763E2BEE7B62149AD01CDB5
+			}
+		}
+		myEmitters
+		{
+			AgentEmitter Default
+			{
+				myEmitterLabel < uid=3A1C5D186554BB1F0000B4FCB9A67FB1 > = Root 3A1C5D1863906F050000AB6FBD984CC4
+				myEmitterPrefab "emitterLayerName = \"footsteps\", enableDoppler = false, enablePropagation = true, enableReflections = false, sphereRadius = 1, stopOnDestroy = true"
+				myEnableBillboarding FALSE
+				myBillboardingCategory < uid=3A1C5D186554BB3E0000B5010DE1DDAD > = NULLREFERENCE
+				mySetMovementSpeedRTPC TRUE
+			}
+			AgentEmitter Dialogue
+			{
+				myEmitterLabel < uid=3A1C5D186554BB1F0000B4FD9C928998 > = Mouth 3A1C5D1863906F120000AB70A206E385
+				myBoneName Head
+			}
+			AgentEmitter Weapon
+			{
+				myEmitterLabel < uid=3A1C5D186554BB1F0000B4FE8D29C5FD > = Hand 3A1C5D1863906F180000AB718F1E9EFD
+				myEmitterPrefab "emitterLayerName = \"weapons_npc\", enableDoppler = false, enablePropagation = true, sphereRadius = 1, stopOnDestroy = true"
+			}
+		}
+	}
+	myCanBeDetectedByPetSenses FALSE
+	myCanBeDetectedByProximitySenses FALSE
+	myMeleeDefenseProfile < uid=4171A7E1641C87E70009005721E68A6C > = AlwaysMissMeleeDefense 4171A7E1641C67630001C50A5F5286E1
+	myAmbientDutyProfile < uid=EBE060C26304A8F800009ECC3A8990D7 > = CivilianAmbientDutyProfile EBE060C263048BFF00009EC0F4712CF4
+}
+

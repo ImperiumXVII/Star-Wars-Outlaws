@@ -1,0 +1,40 @@
+include "helix/game system data/juice/equipment/weaponfiremode/trailblazer_firemode_template.mweaponfiremode"
+include "helix/game system data/juice/projectile/dlc2_rokana_player_missile_projectile.mprojectile"
+include "helix/game system data/juice/projectile/ship_missile_projectile.mprojectile"
+include "helix/game system data/juice/sound/stimuli/stim_id_main.mstimulusidentifier"
+include "helix/game system data/juice/sound/weapons/dlc2_player_audioweapon_shp_rok_player_torpedo.maudioweapon"
+include "helix/game system data/juice/sound/weapons/player_audioweapon_traiblazer_m1.maudioweapon"
+include "helix/game system data/juice/sound/weapons/player_audioweapon_traiblazer_missile_ion.maudioweapon"
+include "helix/game system data/juice/sound/weapons/player_audioweapon_traiblazer_missile_torpedo.maudioweapon"
+
+WeaponFireMode dlc2_rokana_ion_torpedo_firemode < uid=B4FBE430671654A6000002CF9C1CD141 > : trailblazer_firemode_template
+{
+	myProjectile < uid=B4FBE430671654A6000002D0AE4A538B > = dlc2_rokana_ion_torpedo_projectile B4FBE430671A54BC0006FA9D331B090A
+	myCooldown
+	{
+		myStartType OnBeginUse
+		myDuration 2.5
+		myFinalCooldownFormula "Equipment.BaseCooldown * TrailblazerEquipmentCooldownModifier"
+	}
+	myDamage
+	{
+		myDamage
+		{
+			myVariation 5.0
+			myDamageType Physical
+		}
+	}
+	myLockOn
+	{
+		myIsLockOnEnabled TRUE
+		myIsLockOnRequired TRUE
+		myResetAfterShot FALSE
+		myLockOnDurationSeconds 0.5
+		myMaximumLockOnTargets 1
+		myTagRangeAngles 35.0;25.0
+	}
+	myUIGraph ""
+	myAudioData < uid=B4FBE430671654A6000002D17DD5BB4A > = DLC2_player_audioweapon_shp_rok_player_torpedo 6F5836DC672CBDB0000AFEF99F868969
+	myStimulusIdentifier < uid=B4FBE430671654A6000002D2A67E5E8E > = S_KAY_Space_TrailblazerMissileLaunched 3A1291216308B3ED0001C5D5BE255F62
+}
+

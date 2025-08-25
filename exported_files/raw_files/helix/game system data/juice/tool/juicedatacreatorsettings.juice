@@ -1,0 +1,2507 @@
+include "helix/game system data/fruit/tool/juicedatacreatorsettings.fruit"
+
+CustomListParameter Planets
+{
+	string Akiva AKI
+	string Cantonica CAN
+	string Kijimi KIJ
+	string Toshara TOS
+	string Tatooine TAT
+	string "COOP Maps" COOP
+}
+
+EditType "Living World Encounter"
+{
+	myName "Encounter [Location]_[Idx]_[DescriptiveName]"
+	myType LivingWorldContent
+	myFileSelection
+	{
+		myAssetType ASSETTYPE_LIVINGWORLDCONTENT
+		myDefaultSelection livingworldencounters
+	}
+	myParameters
+	{
+		TextParameter Location
+		{
+			myExampleText TOS
+		}
+		TextParameter Idx
+		{
+			myExampleText 00
+		}
+		TextParameter DescriptiveName
+		{
+		}
+	}
+	myMembers
+	{
+		Member myCompletedGameValue
+		{
+			myOperations
+			{
+				SetOperation Set
+				{
+				}
+			}
+		}
+		Member myActivateGameCondition
+		{
+			myChildren
+			{
+				Member myType
+				{
+					myOperations
+					{
+						AssignString "New AssignString (0)"
+						{
+							myValue Formula
+						}
+					}
+				}
+				Member myFormula
+				{
+					myOperations
+					{
+						AssignString "New AssignString (0)"
+						{
+							myValue "\"[MemberName].myCompletedGameValue != 1\""
+						}
+					}
+				}
+				Member myContextType
+				{
+					myOperations
+					{
+						AssignString "New AssignString (0)"
+						{
+							myValue LivingWorldContentLocation
+						}
+					}
+				}
+			}
+		}
+		Member myDeactivateGameCondition
+		{
+			myChildren
+			{
+				Member myType
+				{
+					myOperations
+					{
+						AssignString "New AssignString (0)"
+						{
+							myValue Formula
+						}
+					}
+				}
+				Member myFormula
+				{
+					myOperations
+					{
+						AssignString "New AssignString (0)"
+						{
+							myValue "\"[MemberName].myCompletedGameValue = 1 AND LivingWorldContentLocation.DistanceToPlayer > ContentLocationDistanceNear\""
+						}
+					}
+				}
+				Member myContextType
+				{
+					myOperations
+					{
+						AssignString "New AssignString (0)"
+						{
+							myValue LivingWorldContentLocation
+						}
+					}
+					myChildren
+					{
+					}
+				}
+			}
+		}
+	}
+}
+
+EditType "Item Material"
+{
+	myName [prefix]_[ID]_[DescriptiveName]
+	myType CurrencyItem
+	myFileSelection
+	{
+		myAssetType ASSETTYPE_ITEM
+		myForcedFiles
+		{
+			file "New file (0)" "helix/game system data/juice/item/craftingmaterials.mitem"
+		}
+	}
+	myParameters
+	{
+		TextParameter prefix
+		{
+			myExampleText mat_
+		}
+		TextParameter DescriptiveName
+		{
+		}
+		TextParameter ID
+		{
+			myExampleText 00
+		}
+	}
+	myMembers
+	{
+		Member "New Member (0)"
+		{
+			myChildren
+			{
+				Member "New Member (0)"
+				{
+				}
+			}
+		}
+	}
+}
+
+EditType Contract
+{
+	myName "Contract  [Planet]_[ID]_[DescriptiveName]"
+	myType Contract
+	myFileSelection
+	{
+		myAssetType ASSETTYPE_CONTRACT
+		myDefaultSelection contracts_toshara
+	}
+	myParameters
+	{
+		CustomListParameter Planet = Planets 00000000000000000000000000000000
+		TextParameter ID
+		{
+			myExampleText 00
+		}
+		TextParameter DescriptiveName
+		{
+		}
+		TextParameter Difficulty
+		{
+			myExampleText 1
+		}
+	}
+	myMembers
+	{
+		Member myReward
+		{
+			myOperations
+			{
+				AssignChildEditType Reward
+				{
+					myValue Reward
+				}
+			}
+			myChildren
+			{
+			}
+		}
+		Member myFailReward
+		{
+			myOperations
+			{
+				AssignChildEditType FailReward
+				{
+					myValue FailReward
+				}
+			}
+		}
+		Member myQuest
+		{
+			myOperations
+			{
+				AssignChildEditType Quest
+				{
+					myValue Quest
+				}
+			}
+		}
+		Member myUIDescription
+		{
+			myOperations
+			{
+				AssignLocString Description
+				{
+					myValue "aurabesh = false, contextComment = \"Contract [Planet]_[ID]_[DescriptiveName] Description\", enabled = true, guid = #E42FA10C62976CDD000085F1CB06E83A, lineVersion = 6, maxLength = 0, productId = 6, sectionId = 2130, text = \"Contract  [Planet]_[ID]_[DescriptiveName]\n\nDescription\", type = \"MenuLine\""
+				}
+			}
+		}
+		Member myDifficulty
+		{
+			myOperations
+			{
+				AssignInt Difficulty
+				{
+					myValue [Difficulty]
+				}
+			}
+		}
+	}
+	myChildEditTypes
+	{
+		EditType Reward
+		{
+			myName contract_[Planet]_[ID]_success_reward
+			myType RewardGroup
+			myFileSelection
+			{
+				myAssetType ASSETTYPE_REWARD
+				myStringFilter contract_
+			}
+			myParameters
+			{
+			}
+			myMembers
+			{
+			}
+		}
+		EditType FailReward
+		{
+			myName contract_[Planet]_[ID]_failure_reward
+			myType RewardGroup
+			myFileSelection
+			{
+				myInheritFrom Reward
+				myAssetType ""
+			}
+			myInheritUID 00000000000000000000000000000000
+			myParameters
+			{
+			}
+			myMembers
+			{
+			}
+			myChildEditTypes
+			{
+			}
+		}
+		EditType Quest
+		{
+			myName A_CQ_[Planet]_[ID]_[DescriptiveName]
+			myType Quest
+			myFileSelection
+			{
+				myAssetType ASSETTYPE_QUEST
+				myStringFilter _CQ_
+				myDefaultSelection ""
+			}
+		}
+	}
+}
+
+EditType "Keycard Item"
+{
+	myName Keycard_A_[Planet]_[Content]_[DescriptiveName]
+	myType CurrencyItem
+	myIsHidden TRUE
+	myFileSelection
+	{
+		myAssetType ASSETTYPE_ITEM
+		myForcedFiles
+		{
+			file "New file" "helix/game system data/juice/item/items_keycards.mitem"
+		}
+	}
+	myInheritUID 596859F662611693000068F104A5C976
+	myParameters
+	{
+		TextParameter UIName
+		{
+			myExampleText "Source Keycard"
+		}
+		TextParameter UIDescription
+		{
+			myExampleText "A Keycard that...."
+		}
+	}
+	myMembers
+	{
+		Member myName
+		{
+			myOperations
+			{
+				AssignLocString "New AssignLocString"
+				{
+					myValue "aurabesh = false, contextComment = \"Keycard_A_[Planet]_[Content]_[DescriptiveName] Name\", enabled = true, guid = #9D0EE20B632B0D9700021F736593A43E, lineVersion = 6, maxLength = 0, productId = 6, sectionId = 10723, text = \"[UIName]\", type = \"MenuLine\""
+				}
+			}
+		}
+		Member myDescription
+		{
+			myOperations
+			{
+				AssignLocString "New AssignLocString"
+				{
+					myValue "aurabesh = false, contextComment = \"Keycard_A_[Planet]_[Content]_[DescriptiveName] Description\", enabled = true, guid = #9D0EE20B632B0E1300021F76CC7BEAF8, lineVersion = 9, maxLength = 0, productId = 6, sectionId = 10723, text = \"[UIDescription]\", type = \"MenuLine\""
+				}
+			}
+		}
+	}
+}
+
+EditType Keycard
+{
+	myName UseKeycard_A_[Planet]_[Content]_[DescriptiveName]
+	myType InteractionPoint
+	myFileSelection
+	{
+		myAssetType ASSETTYPE_INTERACTIONPOINT
+		myForcedFiles
+		{
+			file "New file" "helix/game system data/juice/interactionpoints/interactionpoints_keycards.minteractionpoint"
+		}
+	}
+	myInheritUID 596859F6625FF398000030C5FA16E6B7
+	myParameters
+	{
+		CustomListParameter Planet = Planets 00000000000000000000000000000000
+		TextParameter Content
+		{
+			myExampleText Mirogana_IC1
+		}
+		TextParameter DescriptiveName
+		{
+			myExampleText SabaccInvite
+		}
+	}
+	myMembers
+	{
+		Member myRestrictions
+		{
+			myOperations
+			{
+				CreateListMember "New CreateListMember"
+				{
+					myType GameConditionPlayerHasItem
+					myName "Has Keycard Item Restriction"
+					myChildren
+					{
+						Member myItem
+						{
+							myOperations
+							{
+								AssignChildEditType "New AssignChildEditType"
+								{
+									myValue "Keycard Item"
+								}
+							}
+						}
+					}
+				}
+			}
+			myChildren
+			{
+			}
+		}
+	}
+	myChildEditTypes
+	{
+		EditType "Keycard Item" : "Keycard Item"
+		{
+		}
+	}
+}
+
+EditType "Keycard COOP" : Keycard
+{
+	myChildEditTypes
+	{
+		EditType "Keycard Item" : "Keycard Item"
+		{
+			myMembers
+			{
+				Member myName
+				{
+					myOperations
+					{
+						AssignLocString "New AssignLocString"
+						{
+							myValue "aurabesh = false, contextComment = \"Keycard_A_[Planet]_[Content]_[DescriptiveName] Name\", enabled = true, guid = #9D0EE20B636388CA000059718DA1AC53, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 1069, text = \"[UIName]\", type = \"MenuLine\""
+						}
+					}
+				}
+				Member myDescription
+				{
+					myOperations
+					{
+						AssignLocString "New AssignLocString"
+						{
+							myValue "aurabesh = false, contextComment = \"Keycard_A_[Planet]_[Content]_[DescriptiveName] Description\", enabled = true, guid = #9D0EE20B636388CA00005972EE84C841, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 1069, text = \"[UIDescription]\", type = \"MenuLine\""
+						}
+					}
+				}
+				Member myIcon
+				{
+					myOperations
+					{
+						AssignString "New AssignString"
+						{
+							myValue [Icon]
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+EditType "Keycode Item" : "Keycard Item"
+{
+	myName Keycode_A_[Planet]_[Content]_[DescriptiveName]
+	myFileSelection
+	{
+		myForcedFiles
+		{
+			file "New file" "helix/game system data/juice/item/items_keycodes.mitem"
+		}
+	}
+	myInheritUID 9D0EE20B640F20E1000055CA43D64684
+	myParameters
+	{
+		TextParameter UIName
+		{
+			myExampleText "Source Keycard"
+		}
+		TextParameter UIDescription
+		{
+			myExampleText "A Keycard that...."
+		}
+		AssetParameter Icon
+		{
+			myType Sprite
+			myFileSelection
+			{
+				myAssetType ASSETTYPE_SPRITE
+				myStringFilter keycard
+			}
+		}
+	}
+	myMembers
+	{
+		Member myName
+		{
+			myOperations
+			{
+				AssignLocString "New AssignLocString"
+				{
+					myValue "aurabesh = false, contextComment = \"Keycode_A_[Planet]_[Content]_[DescriptiveName] Name\", enabled = true, guid = #9D0EE20B640F22D9000009869D7AC835, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 417, text = \"[UIName]\", type = \"MenuLine\""
+				}
+			}
+		}
+		Member myDescription
+		{
+			myOperations
+			{
+				AssignLocString "New AssignLocString"
+				{
+					myValue "aurabesh = false, contextComment = \"Keycode_A_[Planet]_[Content]_[DescriptiveName] Description\", enabled = true, guid = #9D0EE20B640F22D900000987E1B2BB20, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 417, text = \"[UIDescription]\", type = \"MenuLine\""
+				}
+			}
+		}
+		Member myIcon
+		{
+			myOperations
+			{
+				AssignString "New AssignString"
+				{
+					myValue [Icon]
+				}
+			}
+		}
+	}
+}
+
+EditType Keycode : Keycard
+{
+	myName UseKeycode_A_[Planet]_[Content]_[DescriptiveName]
+	myFileSelection
+	{
+		myForcedFiles
+		{
+			file "New file" "helix/game system data/juice/interactionpoints/interactionpoints_keycodes.minteractionpoint"
+		}
+	}
+	myMembers
+	{
+		Member myRestrictions
+		{
+			myOperations
+			{
+				CreateListMember "New CreateListMember"
+				{
+					myType GameConditionPlayerHasItem
+					myName "Has Keycode Item Restriction"
+					myChildren
+					{
+						Member myItem
+						{
+							myOperations
+							{
+								AssignChildEditType "New AssignChildEditType"
+								{
+									myValue "Keycard Item"
+								}
+							}
+						}
+					}
+				}
+			}
+			myChildren
+			{
+			}
+		}
+	}
+	myChildEditTypes
+	{
+		EditType "Keycard Item" : "Keycode Item"
+		{
+		}
+	}
+}
+
+EditType "Quest LW Before Intro"
+{
+	myName [Quest]_BeforeIntro
+	myType LivingWorldContent
+	myFileSelection
+	{
+		myAssetType ASSETTYPE_LIVINGWORLDCONTENT
+		myForcedFiles
+		{
+			file "New file" "helix/game system data/juice/livingworld/livingworldquestevents.mlivingworldcontent"
+			file "New file_0" "dlc1/game system data/juice/livingworld/dlc1_livingworldquestevents.mlivingworldcontent"
+			file "New file_1" "dlc2/game system data/juice/livingworld/dlc2_livingworld_questevent.mlivingworldcontent"
+		}
+	}
+	myParameters
+	{
+		AssetParameter Quest
+		{
+			myFileSelection
+			{
+				myAssetType ASSETTYPE_QUEST
+				myDefaultSelection ""
+			}
+		}
+	}
+	myMembers
+	{
+		Member myActivationGameConditions
+		{
+			myOperations
+			{
+				CreateListMember "New CreateListMember"
+				{
+					myType GameConditionQuestState
+					myName GameConditionQuestState_BeforeIntro
+					myChildren
+					{
+						Member myQuest
+						{
+							myOperations
+							{
+								AssignUID "New AssignUID"
+								{
+									myValue [Quest_uid]
+								}
+							}
+						}
+						Member myQuestState
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue None
+								}
+							}
+						}
+					}
+				}
+			}
+			myChildren
+			{
+			}
+		}
+		Member myDeactivationGameConditions
+		{
+			myOperations
+			{
+				CreateListMember "New CreateListMember"
+				{
+					myType GameConditionQuestState
+					myName GameConditionQuestState_AfterUnlocked
+					myChildren
+					{
+						Member myQuest
+						{
+							myOperations
+							{
+								AssignUID "New AssignUID"
+								{
+									myValue [Quest_uid]
+								}
+							}
+						}
+						Member myQuestState
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue None
+								}
+							}
+						}
+						Member myOperator
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue NotEqual
+								}
+							}
+						}
+					}
+				}
+			}
+			myChildren
+			{
+			}
+		}
+	}
+}
+
+EditType "Quest LW During (incl Intro/Outro)"
+{
+	myName [Quest]_DuringQuest_or_Intro_Outro
+	myType LivingWorldContent
+	myFileSelection
+	{
+		myAssetType ASSETTYPE_LIVINGWORLDCONTENT
+		myForcedFiles
+		{
+			file "New file" "helix/game system data/juice/livingworld/livingworldquestevents.mlivingworldcontent"
+			file "New file_0" "dlc1/game system data/juice/livingworld/dlc1_livingworldquestevents.mlivingworldcontent"
+			file "New file_1" "dlc2/game system data/juice/livingworld/dlc2_livingworld_questevent.mlivingworldcontent"
+		}
+	}
+	myParameters
+	{
+		AssetParameter Quest
+		{
+			myFileSelection
+			{
+				myAssetType ASSETTYPE_QUEST
+				myDefaultSelection ""
+			}
+		}
+	}
+	myMembers
+	{
+		Member myActivationGameConditions
+		{
+			myOperations
+			{
+				CreateListMember "Quest is Started OR Intro OR Outro"
+				{
+					myType LivingWorldGameConditionGroup
+					myName "Quest is Started OR Intro OR Outro"
+					myChildren
+					{
+						Member myOperator
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue Or
+								}
+							}
+							myChildren
+							{
+							}
+						}
+						Member myConditions
+						{
+							myOperations
+							{
+								CreateListMember Started
+								{
+									myType GameConditionQuestState
+									myName "Quest is Started"
+									myChildren
+									{
+										Member myQuest
+										{
+											myOperations
+											{
+												AssignUID "New AssignUID"
+												{
+													myValue [Quest_uid]
+												}
+											}
+										}
+										Member myQuestState
+										{
+											myOperations
+											{
+												AssignString "New AssignString"
+												{
+													myValue Started
+												}
+											}
+										}
+										Member myOperator
+										{
+											myOperations
+											{
+												AssignString "New AssignString"
+												{
+													myValue Equal
+												}
+											}
+										}
+									}
+								}
+								CreateListMember Intro
+								{
+									myType GameConditionQuestState
+									myName "Quest is Intro"
+									myChildren
+									{
+										Member myQuest
+										{
+											myOperations
+											{
+												AssignUID "New AssignUID"
+												{
+													myValue [Quest_uid]
+												}
+											}
+										}
+										Member myQuestState
+										{
+											myOperations
+											{
+												AssignString "New AssignString"
+												{
+													myValue Intro
+												}
+											}
+										}
+										Member myOperator
+										{
+											myOperations
+											{
+												AssignString "New AssignString"
+												{
+													myValue Equal
+												}
+											}
+										}
+									}
+								}
+								CreateListMember Outro
+								{
+									myType GameConditionQuestState
+									myName "Quest is Outro"
+									myChildren
+									{
+										Member myQuest
+										{
+											myOperations
+											{
+												AssignUID "New AssignUID"
+												{
+													myValue [Quest_uid]
+												}
+											}
+										}
+										Member myQuestState
+										{
+											myOperations
+											{
+												AssignString "New AssignString"
+												{
+													myValue Outro
+												}
+											}
+										}
+										Member myOperator
+										{
+											myOperations
+											{
+												AssignString "New AssignString"
+												{
+													myValue Equal
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			myChildren
+			{
+			}
+		}
+		Member myDeactivationGameConditions
+		{
+			myOperations
+			{
+				CreateListMember "Quest is Not Started NOR Intro NOR Outro"
+				{
+					myType LivingWorldGameConditionGroup
+					myName "Quest is Started OR Intro OR Outro"
+					myChildren
+					{
+						Member myConditions
+						{
+							myOperations
+							{
+								CreateListMember "Not Started"
+								{
+									myType GameConditionQuestState
+									myName "Quest is Not Started"
+									myChildren
+									{
+										Member myQuest
+										{
+											myOperations
+											{
+												AssignUID "New AssignUID"
+												{
+													myValue [Quest_uid]
+												}
+											}
+										}
+										Member myQuestState
+										{
+											myOperations
+											{
+												AssignString "New AssignString"
+												{
+													myValue Started
+												}
+											}
+										}
+										Member myOperator
+										{
+											myOperations
+											{
+												AssignString "New AssignString"
+												{
+													myValue NotEqual
+												}
+											}
+										}
+									}
+								}
+								CreateListMember "Not Intro"
+								{
+									myType GameConditionQuestState
+									myName "Quest is Not Intro"
+									myChildren
+									{
+										Member myQuest
+										{
+											myOperations
+											{
+												AssignUID "New AssignUID"
+												{
+													myValue [Quest_uid]
+												}
+											}
+										}
+										Member myQuestState
+										{
+											myOperations
+											{
+												AssignString "New AssignString"
+												{
+													myValue Intro
+												}
+											}
+										}
+										Member myOperator
+										{
+											myOperations
+											{
+												AssignString "New AssignString"
+												{
+													myValue NotEqual
+												}
+											}
+										}
+									}
+								}
+								CreateListMember "Not Outro"
+								{
+									myType GameConditionQuestState
+									myName "Quest is Not Outro"
+									myChildren
+									{
+										Member myQuest
+										{
+											myOperations
+											{
+												AssignUID "New AssignUID"
+												{
+													myValue [Quest_uid]
+												}
+											}
+										}
+										Member myQuestState
+										{
+											myOperations
+											{
+												AssignString "New AssignString"
+												{
+													myValue Outro
+												}
+											}
+										}
+										Member myOperator
+										{
+											myOperations
+											{
+												AssignString "New AssignString"
+												{
+													myValue NotEqual
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			myChildren
+			{
+			}
+		}
+	}
+}
+
+EditType "Quest LW Before Started"
+{
+	myName [Quest]_BeforeQuest
+	myType LivingWorldContent
+	myFileSelection
+	{
+		myAssetType ASSETTYPE_LIVINGWORLDCONTENT
+		myForcedFiles
+		{
+			file "New file" "helix/game system data/juice/livingworld/livingworldquestevents.mlivingworldcontent"
+			file "New file_0" "dlc1/game system data/juice/livingworld/dlc1_livingworldquestevents.mlivingworldcontent"
+			file "New file_1" "dlc2/game system data/juice/livingworld/dlc2_livingworld_questevent.mlivingworldcontent"
+		}
+	}
+	myAllowModifyExisting TRUE
+	myParameters
+	{
+		AssetParameter Quest
+		{
+			myFileSelection
+			{
+				myAssetType ASSETTYPE_QUEST
+				myDefaultSelection ""
+			}
+		}
+	}
+	myMembers
+	{
+		Member myActivationGameConditions
+		{
+			myOperations
+			{
+				CreateListMember "New CreateListMember"
+				{
+					myType GameConditionQuestState
+					myName GameConditionQuestState_BeforeStarted
+					myChildren
+					{
+						Member myQuest
+						{
+							myOperations
+							{
+								AssignUID "New AssignUID"
+								{
+									myValue [Quest_uid]
+								}
+							}
+						}
+						Member myQuestState
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue Started
+								}
+							}
+						}
+						Member myOperator
+						{
+							myOperations
+							{
+								AssignString AssignString
+								{
+									myValue LessThan
+								}
+							}
+						}
+					}
+				}
+			}
+			myChildren
+			{
+			}
+		}
+		Member myDeactivationGameConditions
+		{
+			myOperations
+			{
+				CreateListMember "New CreateListMember"
+				{
+					myType GameConditionQuestState
+					myName GameConditionQuestState_AfterStarted
+					myChildren
+					{
+						Member myQuest
+						{
+							myOperations
+							{
+								AssignUID "New AssignUID"
+								{
+									myValue [Quest_uid]
+								}
+							}
+						}
+						Member myQuestState
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue Started
+								}
+							}
+						}
+						Member myOperator
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue GreaterThanOrEqual
+								}
+							}
+						}
+					}
+				}
+			}
+			myChildren
+			{
+			}
+		}
+	}
+}
+
+EditType "Quest LW During (excl Intro/Outro)"
+{
+	myName [Quest]_DuringQuest
+	myType LivingWorldContent
+	myFileSelection
+	{
+		myAssetType ASSETTYPE_LIVINGWORLDCONTENT
+		myForcedFiles
+		{
+			file "New file" "helix/game system data/juice/livingworld/livingworldquestevents.mlivingworldcontent"
+			file "New file_0" "dlc1/game system data/juice/livingworld/dlc1_livingworldquestevents.mlivingworldcontent"
+			file "New file_1" "dlc2/game system data/juice/livingworld/dlc2_livingworld_questevent.mlivingworldcontent"
+		}
+	}
+	myParameters
+	{
+		AssetParameter Quest
+		{
+			myFileSelection
+			{
+				myAssetType ASSETTYPE_QUEST
+				myDefaultSelection ""
+			}
+		}
+	}
+	myMembers
+	{
+		Member myActivationGameConditions
+		{
+			myOperations
+			{
+				CreateListMember "New CreateListMember"
+				{
+					myType GameConditionQuestState
+					myName GameConditionQuestState_BeforeStarted
+					myChildren
+					{
+						Member myQuest
+						{
+							myOperations
+							{
+								AssignUID "New AssignUID"
+								{
+									myValue [Quest_uid]
+								}
+							}
+						}
+						Member myQuestState
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue Started
+								}
+							}
+						}
+						Member myOperator
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue GreaterThanOrEqual
+								}
+							}
+						}
+					}
+				}
+			}
+			myChildren
+			{
+			}
+		}
+		Member myDeactivationGameConditions
+		{
+			myOperations
+			{
+				CreateListMember "New CreateListMember"
+				{
+					myType GameConditionQuestState
+					myName GameConditionQuestState_AfterStarted
+					myChildren
+					{
+						Member myQuest
+						{
+							myOperations
+							{
+								AssignUID "New AssignUID"
+								{
+									myValue [Quest_uid]
+								}
+							}
+						}
+						Member myQuestState
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue Started
+								}
+							}
+						}
+						Member myOperator
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue GreaterThan
+								}
+							}
+						}
+					}
+				}
+			}
+			myChildren
+			{
+			}
+		}
+	}
+}
+
+EditType "Quest LW Not During (incl Intro/Outro)"
+{
+	myName [Quest]_NotDuringQuest_or_Intro_Outro
+	myType LivingWorldContent
+	myFileSelection
+	{
+		myAssetType ASSETTYPE_LIVINGWORLDCONTENT
+		myForcedFiles
+		{
+			file "New file" "helix/game system data/juice/livingworld/livingworldquestevents.mlivingworldcontent"
+			file "New file_0" "dlc1/game system data/juice/livingworld/dlc1_livingworldquestevents.mlivingworldcontent"
+			file "New file_1" "dlc2/game system data/juice/livingworld/dlc2_livingworld_questevent.mlivingworldcontent"
+		}
+	}
+	myParameters
+	{
+		AssetParameter Quest
+		{
+			myFileSelection
+			{
+				myAssetType ASSETTYPE_QUEST
+				myDefaultSelection ""
+			}
+		}
+	}
+	myMembers
+	{
+		Member myActivationGameConditions
+		{
+			myOperations
+			{
+				CreateListMember "Quest is Not Started NOR Intro NOR Outro"
+				{
+					myType LivingWorldGameConditionGroup
+					myName "Quest is Started OR Intro OR Outro"
+					myChildren
+					{
+						Member myOperator
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue Or
+								}
+							}
+							myChildren
+							{
+							}
+						}
+						Member myConditions
+						{
+							myOperations
+							{
+								CreateListMember "Not Started"
+								{
+									myType GameConditionQuestState
+									myName "Quest is Not Started"
+									myChildren
+									{
+										Member myQuest
+										{
+											myOperations
+											{
+												AssignUID "New AssignUID"
+												{
+													myValue [Quest_uid]
+												}
+											}
+										}
+										Member myQuestState
+										{
+											myOperations
+											{
+												AssignString "New AssignString"
+												{
+													myValue Started
+												}
+											}
+										}
+										Member myOperator
+										{
+											myOperations
+											{
+												AssignString "New AssignString"
+												{
+													myValue NotEqual
+												}
+											}
+										}
+									}
+								}
+								CreateListMember "Not Intro"
+								{
+									myType GameConditionQuestState
+									myName "Quest is Not Intro"
+									myChildren
+									{
+										Member myQuest
+										{
+											myOperations
+											{
+												AssignUID "New AssignUID"
+												{
+													myValue [Quest_uid]
+												}
+											}
+										}
+										Member myQuestState
+										{
+											myOperations
+											{
+												AssignString "New AssignString"
+												{
+													myValue Intro
+												}
+											}
+										}
+										Member myOperator
+										{
+											myOperations
+											{
+												AssignString "New AssignString"
+												{
+													myValue NotEqual
+												}
+											}
+										}
+									}
+								}
+								CreateListMember "Not Outro"
+								{
+									myType GameConditionQuestState
+									myName "Quest is Not Outro"
+									myChildren
+									{
+										Member myQuest
+										{
+											myOperations
+											{
+												AssignUID "New AssignUID"
+												{
+													myValue [Quest_uid]
+												}
+											}
+										}
+										Member myQuestState
+										{
+											myOperations
+											{
+												AssignString "New AssignString"
+												{
+													myValue Outro
+												}
+											}
+										}
+										Member myOperator
+										{
+											myOperations
+											{
+												AssignString "New AssignString"
+												{
+													myValue NotEqual
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			myChildren
+			{
+			}
+		}
+		Member myDeactivationGameConditions
+		{
+			myOperations
+			{
+				CreateListMember "Quest is Started OR Intro OR Outro"
+				{
+					myType LivingWorldGameConditionGroup
+					myName "Quest is Started OR Intro OR Outro"
+					myChildren
+					{
+						Member myConditions
+						{
+							myOperations
+							{
+								CreateListMember Started
+								{
+									myType GameConditionQuestState
+									myName "Quest is Started"
+									myChildren
+									{
+										Member myQuest
+										{
+											myOperations
+											{
+												AssignUID "New AssignUID"
+												{
+													myValue [Quest_uid]
+												}
+											}
+										}
+										Member myQuestState
+										{
+											myOperations
+											{
+												AssignString "New AssignString"
+												{
+													myValue Started
+												}
+											}
+										}
+										Member myOperator
+										{
+											myOperations
+											{
+												AssignString "New AssignString"
+												{
+													myValue Equal
+												}
+											}
+										}
+									}
+								}
+								CreateListMember Intro
+								{
+									myType GameConditionQuestState
+									myName "Quest is Intro"
+									myChildren
+									{
+										Member myQuest
+										{
+											myOperations
+											{
+												AssignUID "New AssignUID"
+												{
+													myValue [Quest_uid]
+												}
+											}
+										}
+										Member myQuestState
+										{
+											myOperations
+											{
+												AssignString "New AssignString"
+												{
+													myValue Intro
+												}
+											}
+										}
+										Member myOperator
+										{
+											myOperations
+											{
+												AssignString "New AssignString"
+												{
+													myValue Equal
+												}
+											}
+										}
+									}
+								}
+								CreateListMember Outro
+								{
+									myType GameConditionQuestState
+									myName "Quest is Outro"
+									myChildren
+									{
+										Member myQuest
+										{
+											myOperations
+											{
+												AssignUID "New AssignUID"
+												{
+													myValue [Quest_uid]
+												}
+											}
+										}
+										Member myQuestState
+										{
+											myOperations
+											{
+												AssignString "New AssignString"
+												{
+													myValue Outro
+												}
+											}
+										}
+										Member myOperator
+										{
+											myOperations
+											{
+												AssignString "New AssignString"
+												{
+													myValue Equal
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+						Member myOperator
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue Or
+								}
+							}
+							myChildren
+							{
+							}
+						}
+					}
+				}
+			}
+			myChildren
+			{
+			}
+		}
+	}
+}
+
+EditType "Quest LW Not During (excl Intro/Outro)"
+{
+	myName [Quest]_NotDuringQuest
+	myType LivingWorldContent
+	myFileSelection
+	{
+		myAssetType ASSETTYPE_LIVINGWORLDCONTENT
+		myForcedFiles
+		{
+			file "New file" "helix/game system data/juice/livingworld/livingworldquestevents.mlivingworldcontent"
+			file "New file_0" "dlc1/game system data/juice/livingworld/dlc1_livingworldquestevents.mlivingworldcontent"
+			file "New file_1" "dlc2/game system data/juice/livingworld/dlc2_livingworld_questevent.mlivingworldcontent"
+		}
+	}
+	myParameters
+	{
+		AssetParameter Quest
+		{
+			myFileSelection
+			{
+				myAssetType ASSETTYPE_QUEST
+				myDefaultSelection ""
+			}
+		}
+	}
+	myMembers
+	{
+		Member myActivationGameConditions
+		{
+			myOperations
+			{
+				CreateListMember "New CreateListMember"
+				{
+					myType GameConditionQuestState
+					myName GameConditionQuestState_BeforeStarted
+					myChildren
+					{
+						Member myQuest
+						{
+							myOperations
+							{
+								AssignUID "New AssignUID"
+								{
+									myValue [Quest_uid]
+								}
+							}
+						}
+						Member myQuestState
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue Started
+								}
+							}
+						}
+						Member myOperator
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue NotEqual
+								}
+							}
+						}
+					}
+				}
+			}
+			myChildren
+			{
+			}
+		}
+		Member myDeactivationGameConditions
+		{
+			myOperations
+			{
+				CreateListMember "New CreateListMember"
+				{
+					myType GameConditionQuestState
+					myName GameConditionQuestState_AfterStarted
+					myChildren
+					{
+						Member myQuest
+						{
+							myOperations
+							{
+								AssignUID "New AssignUID"
+								{
+									myValue [Quest_uid]
+								}
+							}
+						}
+						Member myQuestState
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue Started
+								}
+							}
+						}
+						Member myOperator
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue Equal
+								}
+							}
+						}
+					}
+				}
+			}
+			myChildren
+			{
+			}
+		}
+	}
+}
+
+EditType "Quest LW Before Completed"
+{
+	myName [Quest]_BeforeQuestCompleted
+	myType LivingWorldContent
+	myFileSelection
+	{
+		myAssetType ASSETTYPE_LIVINGWORLDCONTENT
+		myForcedFiles
+		{
+			file "New file" "helix/game system data/juice/livingworld/livingworldquestevents.mlivingworldcontent"
+			file "New file_0" "dlc1/game system data/juice/livingworld/dlc1_livingworldquestevents.mlivingworldcontent"
+			file "New file_1" "dlc2/game system data/juice/livingworld/dlc2_livingworld_questevent.mlivingworldcontent"
+		}
+	}
+	myAllowModifyExisting TRUE
+	myParameters
+	{
+		AssetParameter Quest
+		{
+			myFileSelection
+			{
+				myAssetType ASSETTYPE_QUEST
+				myDefaultSelection ""
+			}
+		}
+	}
+	myMembers
+	{
+		Member myActivationGameConditions
+		{
+			myOperations
+			{
+				CreateListMember "New CreateListMember"
+				{
+					myType GameConditionQuestState
+					myName GameConditionQuestState_BeforeCompleted
+					myChildren
+					{
+						Member myQuest
+						{
+							myOperations
+							{
+								AssignUID "New AssignUID"
+								{
+									myValue [Quest_uid]
+								}
+							}
+						}
+						Member myQuestState
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue Completed
+								}
+							}
+						}
+						Member myOperator
+						{
+							myOperations
+							{
+								AssignString AssignString
+								{
+									myValue LessThan
+								}
+							}
+						}
+					}
+				}
+			}
+			myChildren
+			{
+			}
+		}
+		Member myDeactivationGameConditions
+		{
+			myOperations
+			{
+				CreateListMember "New CreateListMember"
+				{
+					myType GameConditionQuestState
+					myName GameConditionQuestState_AfterCompleted
+					myChildren
+					{
+						Member myQuest
+						{
+							myOperations
+							{
+								AssignUID "New AssignUID"
+								{
+									myValue [Quest_uid]
+								}
+							}
+						}
+						Member myQuestState
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue Completed
+								}
+							}
+						}
+						Member myOperator
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue GreaterThanOrEqual
+								}
+							}
+						}
+					}
+				}
+			}
+			myChildren
+			{
+			}
+		}
+	}
+}
+
+EditType "Quest LW After Completed"
+{
+	myName [Quest]_AfterQuest
+	myType LivingWorldContent
+	myFileSelection
+	{
+		myAssetType ASSETTYPE_LIVINGWORLDCONTENT
+		myForcedFiles
+		{
+			file "New file" "helix/game system data/juice/livingworld/livingworldquestevents.mlivingworldcontent"
+			file "New file_0" "dlc1/game system data/juice/livingworld/dlc1_livingworldquestevents.mlivingworldcontent"
+			file "New file_1" "dlc2/game system data/juice/livingworld/dlc2_livingworld_questevent.mlivingworldcontent"
+		}
+	}
+	myParameters
+	{
+		AssetParameter Quest
+		{
+			myFileSelection
+			{
+				myAssetType ASSETTYPE_QUEST
+				myDefaultSelection ""
+			}
+		}
+	}
+	myMembers
+	{
+		Member myActivationGameConditions
+		{
+			myOperations
+			{
+				CreateListMember "New CreateListMember"
+				{
+					myType GameConditionQuestState
+					myName GameConditionQuestState_BeforeStarted
+					myChildren
+					{
+						Member myQuest
+						{
+							myOperations
+							{
+								AssignUID "New AssignUID"
+								{
+									myValue [Quest_uid]
+								}
+							}
+						}
+						Member myQuestState
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue Completed
+								}
+							}
+						}
+						Member myOperator
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue GreaterThanOrEqual
+								}
+							}
+						}
+					}
+				}
+			}
+			myChildren
+			{
+			}
+		}
+	}
+}
+
+EditType "Quest LW After Outro"
+{
+	myName [Quest]_AfterOutro
+	myType LivingWorldContent
+	myFileSelection
+	{
+		myAssetType ASSETTYPE_LIVINGWORLDCONTENT
+		myForcedFiles
+		{
+			file "New file" "helix/game system data/juice/livingworld/livingworldquestevents.mlivingworldcontent"
+			file "New file_0" "dlc1/game system data/juice/livingworld/dlc1_livingworldquestevents.mlivingworldcontent"
+			file "New file_1" "dlc2/game system data/juice/livingworld/dlc2_livingworld_questevent.mlivingworldcontent"
+		}
+	}
+	myParameters
+	{
+		AssetParameter Quest
+		{
+			myFileSelection
+			{
+				myAssetType ASSETTYPE_QUEST
+				myDefaultSelection ""
+			}
+		}
+	}
+	myMembers
+	{
+		Member myActivationGameConditions
+		{
+			myOperations
+			{
+				CreateListMember "New CreateListMember"
+				{
+					myType GameConditionQuestState
+					myName "Quest After Outro"
+					myChildren
+					{
+						Member myQuest
+						{
+							myOperations
+							{
+								AssignUID "New AssignUID"
+								{
+									myValue [Quest_uid]
+								}
+							}
+						}
+						Member myQuestState
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue Outro
+								}
+							}
+						}
+						Member myOperator
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue GreaterThanOrEqual
+								}
+							}
+						}
+					}
+				}
+			}
+			myChildren
+			{
+			}
+		}
+	}
+}
+
+EditType "Quest Beat LW During"
+{
+	myName [QuestBeat]_During
+	myType LivingWorldContent
+	myFileSelection
+	{
+		myAssetType ASSETTYPE_LIVINGWORLDCONTENT
+		myForcedFiles
+		{
+			file "New file" "helix/game system data/juice/livingworld/livingworldquestevents.mlivingworldcontent"
+			file "New file_0" "dlc1/game system data/juice/livingworld/dlc1_livingworldquestevents.mlivingworldcontent"
+			file "New file_1" "dlc2/game system data/juice/livingworld/dlc2_livingworld_questevent.mlivingworldcontent"
+		}
+	}
+	myParameters
+	{
+		AssetParameter QuestBeat
+		{
+			myType Quest
+			mySubType QuestBeat
+			myFileSelection
+			{
+				myAssetType ASSETTYPE_QUEST
+				myDefaultSelection ""
+			}
+		}
+	}
+	myMembers
+	{
+		Member myActivationGameConditions
+		{
+			myOperations
+			{
+				CreateListMember "New CreateListMember"
+				{
+					myType GameConditionQuestBeatState
+					myName "Beat Started"
+					myChildren
+					{
+						Member myQuestBeat
+						{
+							myOperations
+							{
+								AssignUID "New AssignUID"
+								{
+									myValue [QuestBeat_uid]
+								}
+							}
+						}
+						Member myQuestBeatState
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue Started
+								}
+							}
+						}
+						Member myOperator
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue Equal
+								}
+							}
+						}
+					}
+				}
+			}
+			myChildren
+			{
+			}
+		}
+		Member myDeactivationGameConditions
+		{
+			myOperations
+			{
+				CreateListMember "Beat Not Started"
+				{
+					myType GameConditionQuestBeatState
+					myName "Beat Not Started"
+					myChildren
+					{
+						Member myQuestBeat
+						{
+							myOperations
+							{
+								AssignUID "New AssignUID"
+								{
+									myValue [QuestBeat_uid]
+								}
+							}
+						}
+						Member myQuestBeatState
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue Started
+								}
+							}
+						}
+						Member myOperator
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue NotEqual
+								}
+							}
+						}
+					}
+				}
+			}
+			myChildren
+			{
+			}
+		}
+	}
+}
+
+EditType "Quest Beat LW Not During"
+{
+	myName [QuestBeat]_NotDuring
+	myType LivingWorldContent
+	myFileSelection
+	{
+		myAssetType ASSETTYPE_LIVINGWORLDCONTENT
+		myForcedFiles
+		{
+			file "New file" "helix/game system data/juice/livingworld/livingworldquestevents.mlivingworldcontent"
+			file "New file_0" "dlc1/game system data/juice/livingworld/dlc1_livingworldquestevents.mlivingworldcontent"
+			file "New file_1" "dlc2/game system data/juice/livingworld/dlc2_livingworld_questevent.mlivingworldcontent"
+		}
+	}
+	myParameters
+	{
+		AssetParameter QuestBeat
+		{
+			myType Quest
+			mySubType QuestBeat
+			myFileSelection
+			{
+				myAssetType ASSETTYPE_QUEST
+				myDefaultSelection ""
+			}
+		}
+	}
+	myMembers
+	{
+		Member myActivationGameConditions
+		{
+			myOperations
+			{
+				CreateListMember CreateListMember
+				{
+					myType GameConditionQuestBeatState
+					myName "Beat Not Started"
+					myChildren
+					{
+						Member myQuestBeat
+						{
+							myOperations
+							{
+								AssignUID "New AssignUID"
+								{
+									myValue [QuestBeat_uid]
+								}
+							}
+						}
+						Member myQuestBeatState
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue Started
+								}
+							}
+						}
+						Member myOperator
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue NotEqual
+								}
+							}
+						}
+					}
+				}
+			}
+			myChildren
+			{
+			}
+		}
+		Member myDeactivationGameConditions
+		{
+			myOperations
+			{
+				CreateListMember CreateListMember
+				{
+					myType GameConditionQuestBeatState
+					myName "Beat Started"
+					myChildren
+					{
+						Member myQuestBeat
+						{
+							myOperations
+							{
+								AssignUID "New AssignUID"
+								{
+									myValue [QuestBeat_uid]
+								}
+							}
+						}
+						Member myQuestBeatState
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue Started
+								}
+							}
+						}
+						Member myOperator
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue Equal
+								}
+							}
+						}
+					}
+				}
+			}
+			myChildren
+			{
+			}
+		}
+	}
+}
+
+EditType "Quest Beat LW Before"
+{
+	myName [QuestBeat]_Before
+	myType LivingWorldContent
+	myFileSelection
+	{
+		myAssetType ASSETTYPE_LIVINGWORLDCONTENT
+		myForcedFiles
+		{
+			file "New file" "helix/game system data/juice/livingworld/livingworldquestevents.mlivingworldcontent"
+			file "New file_0" "dlc1/game system data/juice/livingworld/dlc1_livingworldquestevents.mlivingworldcontent"
+			file "New file_1" "dlc2/game system data/juice/livingworld/dlc2_livingworld_questevent.mlivingworldcontent"
+		}
+	}
+	myParameters
+	{
+		AssetParameter QuestBeat
+		{
+			myType Quest
+			mySubType QuestBeat
+			myFileSelection
+			{
+				myAssetType ASSETTYPE_QUEST
+				myDefaultSelection ""
+			}
+		}
+	}
+	myMembers
+	{
+		Member myActivationGameConditions
+		{
+			myOperations
+			{
+				CreateListMember "New CreateListMember"
+				{
+					myType GameConditionQuestBeatState
+					myName "Before Beat"
+					myChildren
+					{
+						Member myQuestBeat
+						{
+							myOperations
+							{
+								AssignUID "New AssignUID"
+								{
+									myValue [QuestBeat_uid]
+								}
+							}
+						}
+						Member myQuestBeatState
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue None
+								}
+							}
+						}
+						Member myOperator
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue Equal
+								}
+							}
+						}
+					}
+				}
+			}
+			myChildren
+			{
+			}
+		}
+		Member myDeactivationGameConditions
+		{
+			myOperations
+			{
+				CreateListMember NotEqualNone
+				{
+					myType GameConditionQuestBeatState
+					myName "Beat Not Equal None"
+					myChildren
+					{
+						Member myQuestBeat
+						{
+							myOperations
+							{
+								AssignUID "New AssignUID"
+								{
+									myValue [QuestBeat_uid]
+								}
+							}
+						}
+						Member myQuestBeatState
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue None
+								}
+							}
+						}
+						Member myOperator
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue GreaterThan
+								}
+							}
+						}
+					}
+				}
+			}
+			myChildren
+			{
+			}
+		}
+	}
+}
+
+EditType "Quest Beat LW After"
+{
+	myName [QuestBeat]_After
+	myType LivingWorldContent
+	myFileSelection
+	{
+		myAssetType ASSETTYPE_LIVINGWORLDCONTENT
+		myForcedFiles
+		{
+			file "New file" "helix/game system data/juice/livingworld/livingworldquestevents.mlivingworldcontent"
+			file "New file_0" "dlc1/game system data/juice/livingworld/dlc1_livingworldquestevents.mlivingworldcontent"
+			file "New file_1" "dlc2/game system data/juice/livingworld/dlc2_livingworld_questevent.mlivingworldcontent"
+		}
+	}
+	myParameters
+	{
+		AssetParameter QuestBeat
+		{
+			myType Quest
+			mySubType QuestBeat
+			myFileSelection
+			{
+				myAssetType ASSETTYPE_QUEST
+				myDefaultSelection ""
+			}
+		}
+	}
+	myMembers
+	{
+		Member myActivationGameConditions
+		{
+			myOperations
+			{
+				CreateListMember BeatCompleted
+				{
+					myType GameConditionQuestBeatState
+					myName "Beat Completed"
+					myChildren
+					{
+						Member myQuestBeat
+						{
+							myOperations
+							{
+								AssignUID "New AssignUID"
+								{
+									myValue [QuestBeat_uid]
+								}
+							}
+						}
+						Member myQuestBeatState
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue Started
+								}
+							}
+						}
+						Member myOperator
+						{
+							myOperations
+							{
+								AssignString "New AssignString"
+								{
+									myValue GreaterThan
+								}
+							}
+						}
+					}
+				}
+			}
+			myChildren
+			{
+			}
+		}
+	}
+}
+
+EditType "Loot Table (small container)"
+{
+	myName [Name]
+	myType LootTable
+	myFileSelection
+	{
+		myAssetType ASSETTYPE_LOOTTABLE
+	}
+	myInheritUID 2AE2EC8564F6FC3E00008959B4E44467
+	myAllowModifyExisting TRUE
+	myParameters
+	{
+		TextParameter Name
+		{
+			myExampleText TOS_IC_01_SmallContainer_01
+		}
+	}
+	myMembers
+	{
+	}
+}
+
+EditType "Loot Table (medium container)"
+{
+	myInheritUID 2AE2EC8564F6FCFB00008964AF02FDA8
+}
+
+EditType "Loot Table (space interactible container)"
+{
+	myName [Name]
+	myType LootTable
+	myFileSelection
+	{
+		myAssetType ASSETTYPE_LOOTTABLE
+	}
+	myInheritUID 2AE2EC8564F6FD310000896C31155AA2
+	myAllowModifyExisting TRUE
+	myParameters
+	{
+		TextParameter Name
+		{
+			myExampleText TOS_IC_01_SmallContainer_01
+		}
+	}
+	myMembers
+	{
+	}
+}
+
+EditType "Loot Table (smugglerCache)"
+{
+	myName [Name]
+	myType LootTable
+	myFileSelection
+	{
+		myAssetType ASSETTYPE_LOOTTABLE
+	}
+	myInheritUID 2AE2EC8564F830580000988B0D2B1AED
+	myAllowModifyExisting TRUE
+	myParameters
+	{
+		TextParameter Name
+		{
+			myExampleText TOS_IC_01_SmallContainer_01
+		}
+	}
+	myMembers
+	{
+	}
+}
+

@@ -1,0 +1,155 @@
+include "helix/game system data/fruit/melee/melee_move.fruit"
+include "helix/game system data/juice/melee/kay_meleemove_base.mmeleemove"
+
+MeleeMove kay_meleemove_notarget_in_air < uid=5CFE16D565C0E1B200531A5670F4A8B9 > : kay_meleemove_base
+{
+	myExecutionDurationMin 2.0
+	myExecutionDurationMax 2.0
+	myRangeExecution 2.0
+	myExecutionSequence
+	{
+		myGenericTracks
+		{
+			CameraShakeTrack BaseCamShake
+			{
+				myCamShake < uid=5CFE16D565C0E1B200531A5796EDDF7D > = player_melee_punch_base B0ED9250625FD32B0000403767915B64
+			}
+		}
+		myCustomTracks
+		{
+			MeleeHitTrack Hit
+			{
+				myStartCyclePos 0.15
+				myEndCyclePos 0.3
+				myDamage 0.0
+			}
+			MeleeMovingSpeedingUpTrack MovingSpeedingUp
+			{
+				myStartCyclePos 0.0
+				myEndCyclePos 0.0
+			}
+			MeleeMovingTrack Moving
+			{
+				myStartCyclePos 0.0
+				myEndCyclePos 0.39
+			}
+			MeleeBufferingTrack MeleeBuffering
+			{
+				myStartCyclePos 0.2
+				myEndCyclePos 1.0
+			}
+			MeleeTurnTrack Turn
+			{
+			}
+			MeleeStartNextMoveTrack StartNextMove
+			{
+				myStartCyclePos 0.4
+				myEndCyclePos 1.0
+			}
+			MeleeUninterruptibleTrack Uninterruptible
+			{
+				myStartCyclePos 0.0
+				myEndCyclePos 0.4
+			}
+			MeleePerfectStartNextMoveTrack MeleePerfectStartNextMoveTrack
+			{
+				myStartCyclePos 0.25
+				myEndCyclePos 0.5
+			}
+			MeleeLocomotionFreeTrack MeleeLocomotionFreeTrack
+			{
+				myStartCyclePos 0.4
+			}
+		}
+	}
+	myMoveNoTargetSpeed 2.5
+	myMoveMaxSpeed 2.5
+	myHit
+	{
+		myDamage 1.0
+		mySlowDownTimeScale "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.32492617 -0.0019296732, -0.048275869 0, }, outTangents = { 0.67740929 0.006862741, 0.055027828 0.00032679958, 0 0, }, properties = { 1299, 275, 2051, }, values = { 0 0, 0.8551724 0.2, 1 0, }, }, numKeys = 3, }"
+		mySlowDownDuration 0.0
+	}
+	myStartConditions
+	{
+		myTargetInRange
+		{
+			myEnabled FALSE
+			myDistance 10.0
+		}
+		myGameCondition
+		{
+			GameConditionMeleeGroup "Multiple Conditions"
+			{
+				myConditions
+				{
+					GameConditionMeleeAttackerIsInMovementState "Is In Air"
+					{
+						myState Air
+					}
+					GameConditionMeleeAttackerIsInMovementState "Is In Air_0"
+					{
+						myState Air
+					}
+					GameConditionMeleeAttackerIsInMovementState "Is In Air_1"
+					{
+						myState Air
+					}
+					GameConditionMeleeAttackerIsInMovementState "Is In Air_2"
+					{
+						myState Air
+					}
+					GameConditionMeleeAttackerIsInMovementState "Is In Air_3"
+					{
+						myState Air
+					}
+					GameConditionMeleeAttackerIsInMovementState "Is In Air_4"
+					{
+						myState Air
+					}
+					GameConditionMeleeAttackerIsInMovementState "Is In Air_5"
+					{
+						myState Air
+					}
+					GameConditionMeleeAttackerIsInMovementState "Is In Air_6"
+					{
+						myState Air
+					}
+					GameConditionMeleeAttackerIsInMovementState "Is In Air_7"
+					{
+						myState Air
+					}
+					GameConditionMeleeAttackerIsInMovementState "Is In Air_8"
+					{
+						myState Air
+					}
+					GameConditionMeleeAttackerIsInMovementState "Is In Air_9"
+					{
+						myState Air
+					}
+					GameConditionMeleeAttackerIsInMovementState "Is In Air_10"
+					{
+						myState Air
+					}
+					GameConditionMeleeAttackerIsInMovementState "Is In Air_11"
+					{
+						myState Air
+					}
+					GameConditionMeleeAttackerIsInMovementState "Is In Air_12"
+					{
+						myState Air
+					}
+					GameConditionMeleeAttackerIsInMovementState "Is In Air_13"
+					{
+						myState Air
+					}
+					GameConditionMeleeAttackerIsInMovementState "Is In Air_14"
+					{
+						myState Air
+					}
+				}
+			}
+		}
+	}
+}
+

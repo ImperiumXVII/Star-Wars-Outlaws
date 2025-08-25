@@ -1,0 +1,41 @@
+include "helix/game system data/fruit/item/item.fruit"
+include "helix/game system data/fruit/sabacc/sabaccshiftcards.fruit"
+
+class CollectibleItem < uid=auto abstract=1 > : Item
+{
+	bool myDisplayAmountInLog FALSE
+	ItemCategory myCategory Collectible < readonly=1 >
+	bool myCanBeSold FALSE
+}
+
+class ISBReportCollectibleItem : CollectibleItem
+{
+	InventoryPouch myInventoryPouch ISBReports < readonly=1 >
+}
+
+class KordosJournalCollectibleItem : CollectibleItem
+{
+	file myAudioLog "" < bhv=asset assettype="Dialogue Graph" tooltip="The file path for the dialogue graph that is the audio log for this journal" >
+	InventoryPouch myInventoryPouch KordosJournals < readonly=1 >
+}
+
+class NixTreasureCollectibleItem : CollectibleItem
+{
+	InventoryPouch myInventoryPouch NixTreasures < readonly=1 >
+}
+
+class TransmissionCollectibleItem : CollectibleItem
+{
+	InventoryPouch myInventoryPouch Transmissions < readonly=1 >
+}
+
+class SabaccShiftTokenCollectibleItem : CollectibleItem
+{
+	InventoryPouch myInventoryPouch Sabacc < readonly=1 >
+	SabaccShiftCardSetting* myShiftConstantData
+}
+
+class HolodramaCollectibleItem : CollectibleItem
+{
+	InventoryPouch myInventoryPouch Holodramas < readonly=1 >
+}

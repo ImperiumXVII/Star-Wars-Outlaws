@@ -1,0 +1,52 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/spaceshipnpcthreatprofiles.mnpcthreatprofile"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC pir_shp_bowbreaker_turret < uid=6EA79625650962CC0000F8E197EB48FD >
+{
+	myCharacterVisuals < uid=6EA79625650962CC0000F8E29C68F99C > = character_visuals_npc_shp_bow_loth_turret 6EA796256509632F0000F8F9AAC162DC
+	myBehavior helix/behaviors/spaceship_turret_behavior.mbehavior
+	myNPCComponentSetType Turret
+	myIsInvulnerable TRUE
+	myShouldRedirectDamageToHost TRUE
+	mySpaceshipType Default
+	myMaxHealth 10
+	myHealthFormula 10
+	myFaction < uid=6EA79625650962CC0000F8E3DC190A52 > = Pirates 16DEADE65F7DDA76000000C9CB7D6D62
+	myLodType Spaceship_Small
+	myVisionProfile < uid=6EA79625650962CC0000F8E4E48961A4 > = visionProfile_npc_turret_bowbreaker_lothalian 7EE64634650D65EF00052A2E00F089E5
+	myHearingProfile < uid=6EA79625650962CC0000F8E529E87168 > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=6EA79625650962CC0000F8E6F297C9D0 > = detectionProfile_pir_ship_Warship 6B0E1DE964B663A40003C7240FEF1E7E
+	}
+	myThreatProfile < uid=6EA79625650962CC0000F8E7E6C8064A > = warshipturretnpcthreatprofiles F95CD8F3653F7AFE000413CEFA8959BF
+	myAimProfile < uid=6EA79625650962CC0000F8E849E3DF76 > = ImpGozantiTurretAccurateAimProfile F95CD8F363FDDA5200005B4FF3D94A14
+	myReducedAimProfile < uid=6EA79625650962CC0000F8E923EA8413 > = ImpGozantiTurretReducedAimProfile F95CD8F363FDDDCC00005B52AAD51BF2
+	myMainWeapon < uid=6EA79625650962CC0000F8EA6F7F10F7 > = NULLREFERENCE
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "Bowbreaker turret loadout" < uid=6EA79625650962CC0000F8EBC923B104 > = weaponloadout_pir_shp_bowbreaker_turret 6AF0BA04649BFC9400074B573B9133CC
+	}
+	myAudioParameters
+	{
+		myEmitters
+		{
+			AgentEmitter Default
+			{
+				myEmitterLabel < uid=3A1C5D1865534AC00000B586C8833629 > = Root 3A1C5D1863906F050000AB6FBD984CC4
+				myEmitterPrefab "emitterLayerName = \"weapons_npc\", enableDoppler = false, enablePropagation = true, enableReflections = false, sphereRadius = 3, stopOnDestroy = true"
+			}
+			AgentEmitter Weapon
+			{
+				myEmitterLabel < uid=3A1C5D1865534AC00000B587AA0088E2 > = Hand 3A1C5D1863906F180000AB718F1E9EFD
+				myEmitterPrefab "emitterLayerName = \"weapons_npc\", enableDoppler = false, enablePropagation = true, sphereRadius = 50, stopOnDestroy = true"
+				myAttachToAnyEquipmentSlots TRUE
+			}
+		}
+	}
+	myCombatRole SpaceTurret
+}
+

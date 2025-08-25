@@ -1,0 +1,32 @@
+include "dlc2/game system data/juice/item/equipmentholding/holding_pickup_custom_tl40.mequipmentholdingconfig"
+include "helix/game system data/fruit/item/item_includes.fruit"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_pickup_rifle_rr_rifle.mweaponfiremode"
+include "helix/game system data/juice/item/consumables.mitem"
+include "helix/game system data/juice/item/player_weapon_pickup_rifle.mitem"
+
+WeaponItem player_weapon_pickup_rifle_rr_rifle_custom < uid=25524452676195A4000275CEF8CEDA1B > : player_weapon_pickup_rifle
+{
+	myName "branch = \"DLC2\", contextComment = \"Name of custom TL-40 Fusebreaker used with the Raider Gear set\", enabled = true, guid = #25524452676195A4000275CC2FDB3C2F, lineVersion = 13, maxLength = 0, productId = -1, sectionId = 12361, text = \"Custom TL-40 Fusebreaker (TO BE WRITTEN)\", type = \"MenuLine\""
+	myDescription "branch = \"DLC2\", contextComment = \"Description of custom TL-40 Fusebreaker used with the Raider Gear set\", enabled = true, guid = #25524452676195A4000275CD610F7CBC, lineVersion = 14, maxLength = 0, productId = -1, sectionId = 12361, text = \"A modified TL-40 Fusebreaker with special behavior (TO BE WRITTEN)\", type = \"MenuLine\""
+	myIcon "mySpriteId = -866437877, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_weapon_icons_02.spritesheet\""
+	myGraphObject "helix/graph objects/gameplayobject/gpo_player_weapon_rr_rifle_custom.mgraphobject"
+	myLootGraphObject "helix/graph objects/gameplayobject/gpo_player_weapon_rr_rifle_custom.mgraphobject"
+	myAmount < uid=25524452676195A4000275CF3D78E78C >
+	{
+		myDefaultValue 0
+	}
+	myHoldingConfig < uid=25524452676195A4000275D0CBB49E48 > = holding_pickup_custom_tl40 840A9ABF67AC6136000276AD8158A013
+	myConsumedItem < uid=25524452676195A4000275D1D144F11E > = con_Ammo_RR_Rifle 4C1DFD4E6710BD4B000000D48A2C8384
+	myDefaultSlotGroup Weapons
+	myIsPickable TRUE
+	myResetAmmoOnRemove FALSE
+	myDeployOnPickup FALSE
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=25524452676195A4000275D25FD4F72F > = player_firemode_pickup_rifle_rr_rifle 4C1DFD4E6709259B0007CB06133166D6
+		}
+	}
+}
+

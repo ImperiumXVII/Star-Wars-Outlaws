@@ -1,0 +1,381 @@
+include "helix/game system data/fruit/intel/intel.fruit"
+include "helix/game system data/fruit/mapref/mapref.fruit"
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/mapref/mapref_intel_template.mmapref"
+include "helix/game system data/juice/rbtags/quest.mrbtagstags"
+include "helix/game system data/juice/reward/quest_completion_reward.mreward"
+
+Quest A_MQ_070_FindAnk < uid=BFA41A0261B36AA20000042AC0DF379C >
+{
+	myName "aurabesh = false, contextComment = \"quest title mq_070\", enabled = true, guid = #BFA41A0261C1F52000014FB25C526B32, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9110, text = \"The Relic\", type = \"MenuLine\""
+	myIntroDescription "aurabesh = false, contextComment = \"quest intro description mq_070\", enabled = true, guid = #5E589225653911BF001F4E1A7DD665CE, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 9110, text = \"QUEST INTRO DESCRIPTION MQ070\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"quest description mq_070\", enabled = true, guid = #5E5892256539139F001F4EE31769D652, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9110, text = \"The Ashiga Clan won’t discuss Ank with Kay. It might be that some people in the local cantina can tell Kay more, and that there’s a potential angle at hand.\", type = \"MenuLine\""
+	myImage helix/baked/ui/loose_images/quest_bilboard/journal_billboard_mq_070.dds
+	myCompletionReward < uid=2AE2EC85644BDF370029E380CF412C3B > = A_MQ_070_questcomplete_reward 2AE2EC85644A934E0000B2B04BF02E3A
+	myGoals
+	{
+		QuestGoal "Slice the terminal" < uid=91287888656706C40003A8B520AD1BA2 >
+		{
+			myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_MQ_070 Player has to infiltrate the Ashiga district, goal objective\", enabled = true, guid = #91287888656706C40003A8B63FC8119E, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9441, text = \"Slice a terminal for info on Ank\", type = \"MenuLine\""
+		}
+		QuestGoal "Steal the relic" < uid=9128788865F45AD400086D3F67A95B94 >
+		{
+			myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"Quest Goal to steal the priceless Ashiga relic\", enabled = true, guid = #9128788865F45AD400086D405CF90414, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9443, text = \"Steal the relic\", type = \"MenuLine\""
+		}
+		QuestGoal "Disable the energy barrier" < uid=91287888663A1FFC001D84C3B163AD61 >
+		{
+			myGoalText "branch = \"MAIN\", contextComment = \"Quest Goal for prompting the player to find a way to disable the energy barrier\", enabled = true, guid = #91287888663A1FFD001D84C4EF25137E, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9443, text = \"Disable the energy barrier\", type = \"MenuLine\""
+		}
+	}
+	myIntroBeat < uid=B5AC84E76448DB3E00011A5F97B6AF6D >
+	{
+		myScript helix/scripts/scr_a_mq_070_b00_landonkijimi.mscript
+		myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_070_IntroBeat Beat Name - player has to travel to Kijimi\", enabled = true, guid = #B5AC84E764490C610001DB19163988A2, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 3614, text = \"Travel to Kijimi\", type = \"MenuLine\""
+		myLevelInfo 9C4B6A046012E658000001A6972FA29E
+		myDebugPlayLandingZone FB6AE4D5637C98AE00019CCC8A395287
+		myMood RelaxedNoSpawnpoints
+		myObjectives
+		{
+			QuestObjectiveCustom "Travel To Kijimi" < uid=B5AC84E76448DB5A00011B3877994FC4 >
+			{
+				myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_070_IntroBeat Objective Text\", enabled = true, guid = #2923FE01648AFAC800056B428FD6E72A, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 9439, text = \"Find Ank\", type = \"MenuLine\""
+				myChildObjectives
+				{
+					QuestObjectiveGoToLocation "Talk to Krisk" < uid=5171C0C9654207F50006D8899E533A9C >
+					{
+						myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_070_IntroBeat Objective Text\", enabled = true, guid = #5171C0C9654207F50006D88A961FB76A, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9439, text = \"Find Ank\", type = \"MenuLine\""
+						myIsHiddenInTracker TRUE
+						myIsHiddenInHUD TRUE
+					}
+				}
+			}
+		}
+		myQuestBeatStateGameValue < uid=B5AC84E764490C880001DDCFF2A18B1D >
+		{
+		}
+		myWaitForInitCompletedOnInBeatVolume TRUE
+	}
+	myBeats
+	{
+		QuestBeat "Beat 01 Talk to the bartender" < uid=2923FE01637370E5000100D4C99270FF >
+		{
+			myScript helix/scripts/scr_a_mq070_beat02_02.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_070_B01 Beat Name\", enabled = true, guid = #2923FE01637371230001101D7D05896B, lineVersion = 20, maxLength = 0, productId = -1, sectionId = 3614, text = \"Talk to the bartender\", type = \"MenuLine\""
+			myAutostartQuestGoal < uid=9128788865AE87F90004110B6BC7EBE1 >
+			{
+				myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_MQ_070_B01 Outside of beat goal\", enabled = true, guid = #9128788865AE865E0004110AB7A67C88, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9440, text = \"Talk to the bartender\", type = \"MenuLine\""
+			}
+			myLevelInfo 9C4B6A046012E658000001A6972FA29E
+			myDebugPlayLandingZone FB6AE4D5637C98AE00019CCC8A395287
+			myMood RelaxedNoSpawnpoints
+			myObjectives
+			{
+				QuestObjectiveTalkTo "Talk to bartender about Ank's whereabouts" < uid=2923FE0164A3D19900042C399361F81B >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_070_B01 Objective Text\", enabled = true, guid = #2923FE0164A3D19900042C3A5159A777, lineVersion = 17, maxLength = 0, productId = -1, sectionId = 9440, text = \"Talk to the bartender\", type = \"MenuLine\""
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+					myChildObjectives
+					{
+						QuestObjectiveTalkTo "B01_01_020 - Talk1" < uid=91287888654CFC340006BC4ED073B1CE >
+						{
+							myName "aurabesh = false, contextComment = \"objective-hidden\", enabled = true, guid = #2923FE0164A428A00003DDB24989C226, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 3614, text = \"Talk1\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+						}
+						QuestObjectiveTalkTo "B01_01_020 - Talk2" < uid=91287888654CFC340006BC4F0F0E59D4 >
+						{
+							myName "aurabesh = false, contextComment = \"objective-hidden\", enabled = true, guid = #2923FE0164A428B40003DDB41777CC7D, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 3614, text = \"Talk2\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+						}
+						QuestObjectiveTalkTo "B01_01_020 - Talk3" < uid=91287888654CFC340006BC50CA7E10E9 >
+						{
+							myName "aurabesh = false, contextComment = \"onjective-hidden\", enabled = true, guid = #2923FE0164A428930003DD9FCCB2DCB3, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 3614, text = \"Talk3\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+						}
+					}
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=2923FE016373715E00011C25386346D1 >
+			{
+			}
+			myWaitForInitCompletedOnInBeatVolume TRUE
+		}
+		QuestBeat "Beat 02 Where is Ank" < uid=2923FE01637370F800010499C9960222 >
+		{
+			myScript helix/scripts/scr_a_mq070_beat02_03.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_070_B02 Beat Name\", enabled = true, guid = #2923FE016373713C000117DB5EB48A65, lineVersion = 24, maxLength = 0, productId = -1, sectionId = 3614, text = \"Slice a terminal for info on Ank\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E658000001A6972FA29E
+			myMood RelaxedNoSpawnpoints
+			myObjectives
+			{
+				QuestObjectiveCustom "Interact with terminal" < uid=2923FE016373925E000287EB34D1673E >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_070_B02 hint text, this is not an objective\", enabled = true, guid = #2923FE0163737D09000287943C202039, lineVersion = 25, maxLength = 0, productId = -1, sectionId = 9441, text = \"It is likely in a building with a radar dish on the roof\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD TRUE
+					myIsHint TRUE
+					myChildObjectives
+					{
+					}
+				}
+			}
+			myQuestBeatStateGameValue < uid=2923FE016373715E00011C26D31D0E80 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4FC086C33D7B0EEF1FC784824BB11B84
+			}
+		}
+		QuestBeat "Beat 03 Infiltrate the Wellspring" < uid=2923FE016373710E00010C58F3E92CD8 >
+		{
+			myScript helix/scripts/scr_a_mq070_beat02_04.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_070_B03 Beat Name - player has to get to the bathhouse entrance\", enabled = true, guid = #2923FE016373714A00011A09B59E61AD, lineVersion = 15, maxLength = 0, productId = -1, sectionId = 3614, text = \"Find a way into the Wellspring\", type = \"MenuLine\""
+			myAutostartQuestGoal < uid=9128788865AE88A700041110507189FC >
+			{
+				myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_MQ_070_B03 Player goal when outside the beat volume - player has to get to and find a way inside The Wellspring establishment\", enabled = true, guid = #9128788865AE886B0004110E175C52FE, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9442, text = \"Find a way into the Wellspring\", type = \"MenuLine\""
+			}
+			myLevelInfo 9C4B6A046012E658000001A6972FA29E
+			myMood RelaxedNoSpawnpoints
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Reach interior of Wellspring" < uid=2923FE0162C6A31A0000378259EFED17 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_070_B03 objective text\", enabled = true, guid = #2923FE0162C6A398000037832CFF2F21, lineVersion = 14, maxLength = 0, productId = -1, sectionId = 9442, text = \"Find a way into the Wellspring\", type = \"MenuLine\""
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+				}
+			}
+			myQuestBeatStateGameValue < uid=2923FE016373715E00011C2795C88E47 >
+			{
+			}
+		}
+		QuestBeat "Beat 04 Steal the relic Steal Keycard" < uid=9E6F6DF56514164700108644F9A10D12 >
+		{
+			myScript helix/scripts/scr_a_mq070_beat02_a.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E658000001A6972FA29E
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom "Marker On Relic HIDDEN" < uid=912878886602B5D9000423521DAF9643 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+				QuestObjectiveGoToLocation "Reach Room HIDDEN" < uid=9128788865F9595B000281E5043B4130 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveSteal "Steal Keycard HIDDEN" < uid=9128788865F95009000280D8EF2DDDF0 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveGoToLocation "Reach Control Room HIDDEN" < uid=91287888663A26BB001D860F50CF2378 >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveInteract "Interact Terminal  HIDDEN_02" < uid=912878886646021700093171C628792B >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+			}
+			myQuestBeatStateGameValue < uid=9E6F6DF56514164700108648B0CE9687 >
+			{
+			}
+			myWaitForInitCompletedOnInBeatVolume TRUE
+			myQuestBeatAudioState
+			{
+				myGuid 4FC086C33D7B0EEF1FC784824BB11B84
+			}
+		}
+		QuestBeat "Beat 04b Steal the relic Cut Power" < uid=9128788865F94F62000280830D10569B >
+		{
+			myScript helix/scripts/scr_a_mq_070_kij_pln_b04b_stealtherelic_cutpower.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E658000001A6972FA29E
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom "Marker on Relic 02 HIDDEN" < uid=912878886602B6960004246E36CABE68 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHighPrio TRUE
+				}
+				QuestObjectiveInteract "Interact Terminal  HIDDEN" < uid=9128788865F95009000280D9D369238E >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=9128788865F94F6200028084D506FAF4 >
+			{
+			}
+			myWaitForInitCompletedOnInBeatVolume TRUE
+			myQuestBeatAudioState
+			{
+				myGuid 4FC086C33D7B0EEF1FC784824BB11B84
+			}
+		}
+		QuestBeat "Beat 04c Steal the relic Take Relic" < uid=9128788865F94F6200028085A23FEB0E >
+		{
+			myScript helix/scripts/scr_a_mq_070_kij_pln_b04_stealtherelic_takerelic.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E658000001A6972FA29E
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveInteract "Steal the relic HIDDEN" < uid=9128788865F95009000280D75C679235 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_070 quest objective\", enabled = true, guid = #9E6F6DF5651415DA0010861A908E52A2, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 9441, text = \"Steal the relic\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=9128788865F94F62000280863BDF5285 >
+			{
+			}
+			myWaitForInitCompletedOnInBeatVolume TRUE
+			myQuestBeatAudioState
+			{
+				myGuid 4FC086C33D7B0EEF1FC784824BB11B84
+			}
+		}
+		QuestBeat "Beat 05 Escape from the Wellspring" < uid=4984AD6862A9881D00005072F681576F >
+		{
+			myScript helix/scripts/scr_a_mq070_beat02_b.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E658000001A6972FA29E
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Escape from the Wellspring" < uid=2923FE016475F3AD00170E48C937BA5E >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_070_B05 Objective text\", enabled = true, guid = #2923FE016475F38400170E4700210824, lineVersion = 21, maxLength = 0, productId = -1, sectionId = 9444, text = \"Escape from the Wellspring\", type = \"MenuLine\""
+					myChildObjectives
+					{
+						QuestObjectiveGoToLocation "B02_050 - Exit" < uid=9128788865578F13000735F40A3212C9 >
+						{
+							myName "aurabesh = false, contextComment = \"objective text\", enabled = true, guid = #2923FE01632850990009C48AF8C75312, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 3614, text = \"Leave the bathhouse\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+						}
+						QuestObjectiveKillFireteam "B02_060 - Survive2" < uid=9128788865578F13000735F54F4E8F2A >
+						{
+							myName "aurabesh = false, contextComment = \"objective text\", enabled = true, guid = #2923FE016475D211000403A411939C87, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 3614, text = \"Survive the Crimson Dawn attack\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+						}
+						QuestObjectiveKillFireteam "B02_070 - Survive3" < uid=9128788865578F13000735F6695FFBFC >
+						{
+							myName "aurabesh = false, contextComment = \"objective text\", enabled = true, guid = #2923FE016475D222000403A6B6AE5F42, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 3614, text = \"Survive the Crimson Dawn attack\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+						}
+						QuestObjectiveKillFireteam "B02_080 - Survive4" < uid=9128788865578F13000735F73CF31689 >
+						{
+							myName "aurabesh = false, contextComment = \"objective text\", enabled = true, guid = #2923FE016475D574000403DE7D942515, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 3614, text = \"Survive the Crimson Dawn attack\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+						}
+					}
+				}
+			}
+			myQuestBeatStateGameValue < uid=4984AD6862A988BD0000507770F46CF7 >
+			{
+			}
+			myWaitForInitCompletedOnInBeatVolume TRUE
+			myQuestBeatAudioState
+			{
+				myGuid 4FC086C33D7B0EEF1FC784824BB11B84
+			}
+		}
+		QuestBeat "Beat 06 Offer the relic to the Queen" < uid=4984AD6862A98875000050746FB8430E >
+		{
+			myScript helix/scripts/scr_a_mq070_beat05.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_070_B06 Beat Name\", enabled = true, guid = #4984AD6862A9970F0000978E1559F1B1, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 3614, text = \"Offer the relic to the queen\", type = \"MenuLine\""
+			myAutostartQuestGoal < uid=9128788865AE89EC00041113256C3242 >
+			{
+				myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_MQ_070_B06 Player goal when outside the beat volume\", enabled = true, guid = #9128788865AE890F00041112E766752A, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9444, text = \"Offer the relic to the queen\", type = \"MenuLine\""
+			}
+			myLevelInfo 9C4B6A046012E658000001A6972FA29E
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom "Enter throne room" < uid=912878886643733A0008607038C1607B >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_070_B06 objective text\", enabled = true, guid = #2923FE01649AA2A7000A085772773FFF, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 9444, text = \"Offer the relic to the queen\", type = \"MenuLine\""
+					myIsHiddenInHUD FALSE
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+					myChildObjectives
+					{
+						QuestObjectiveGoToLocation "Breadcrumb 01 HIDDEN" < uid=912878886641E175000A81F8BCAB7D22 >
+						{
+							myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsOptional FALSE
+							myIsHiddenInTracker TRUE
+						}
+						QuestObjectiveGoToLocation "Breadcrumb 02 HIDDEN" < uid=912878886641E207000A8A1E0EC6A8A7 >
+						{
+							myName "branch = \"MAIN\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsOptional FALSE
+							myIsHiddenInTracker TRUE
+						}
+						QuestObjectiveGoToLocation "Breadcrumb 03 HIDDEN" < uid=912878886641E207000A8A1FE4A61612 >
+						{
+							myName "branch = \"MAIN\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsOptional FALSE
+							myIsHiddenInTracker TRUE
+						}
+						QuestObjectiveGoToLocation "Breadcrumb 04 HIDDEN" < uid=912878886641E207000A8A20C6C05D12 >
+						{
+							myName "branch = \"MAIN\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsOptional FALSE
+							myIsHiddenInTracker TRUE
+						}
+						QuestObjectiveGoToLocation "Breadcrumb 05 HIDDEN" < uid=91287888664379C80005A935219DB934 >
+						{
+							myName "branch = \"MAIN\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsOptional FALSE
+							myIsHiddenInTracker TRUE
+						}
+					}
+				}
+			}
+			myQuestBeatStateGameValue < uid=4984AD6862A988BD00005079BCE33883 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 418400F875EF8247CA03E91E6AB17595
+			}
+		}
+	}
+	myQuestStateGameValue < uid=6F2AF919621789D4000027DE76A65F91 >
+	{
+	}
+	myQuestAudioState
+	{
+		myGuid 4E50C476AC7844B134F82DAE602BBB98
+	}
+	myQuestStartedRBTag < uid=DA5615DD64B4FB4C0000AB8DE05B04C9 > = World_Quest_MQ070_Started DA5615DD64A3E0DE0000AC2ECC437675
+	myQuestCompletedRBTag < uid=DA5615DD64B4FB4C0000AB8EF7BE42A2 > = World_Quest_MQ070_Completed DA5615DD64A3E1DC0000AC43F42EA7C7
+}
+

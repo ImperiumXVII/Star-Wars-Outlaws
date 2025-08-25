@@ -1,0 +1,70 @@
+include "helix/game system data/fruit/talent/talent.fruit"
+include "helix/game system data/juice/talent/player_gear_talents.mtalent"
+
+Talent dlc1_Player_Gear_Talent_SuspicionBonus < uid=D00CF65466B496C6000195113CA07DB1 > : Player_Gear_Talent_Template
+{
+	myDescription "branch = \"DLC1\", contextComment = \"DLC1 - Description of gear talent Talent_SuspiciousBonus\", enabled = true, guid = #D00CF65466B496C60001950CE9D8F40E, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 12331, text = \"Sabacc opponents are less suspicious of your failed cheat attempts.\", type = \"MenuLine\""
+	myIcon "mySpriteId = 1922649993, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_gear_icons_02.spritesheet\""
+	myAttributeBonuses
+	{
+		BonusAttributeRef SabaccSuspicionRaiseBlockerBonus
+		{
+			myAttributeUID E52E0D4366EC29750000003DE365292D
+			myValue 1.0
+		}
+	}
+}
+
+Talent dlc1_Player_Gear_Talent_CreditBonus < uid=D00CF65466B496C600019512A09F1BCD > : Player_Gear_Talent_Template
+{
+	myDescription "branch = \"DLC1\", contextComment = \"DLC1 - Description of gear talent Talent_CreditBonus\", enabled = true, guid = #D00CF65466B496C60001950D5B53C864, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 12331, text = \"Gain more credits at Sabacc and fathier tables, but bets are more expensive.\", type = \"MenuLine\""
+	myIcon "mySpriteId = -502512164, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_morenia_icon.spritesheet\""
+	myAttributeBonuses
+	{
+		BonusAttributeRef SabaccBetModifier
+		{
+			myAttributeUID E52E0D4366EC2A9500000050DC763239
+			myValue 1.5
+		}
+		BonusAttributeRef FathierRacesBetModifier
+		{
+			myAttributeUID E52E0D4366EC2A1400000040B542DE0C
+			myValue 1.0
+		}
+	}
+}
+
+Talent dlc1_Player_Gear_Talent_FathierWinBonus < uid=D00CF65466B496C6000195136C935B37 > : Player_Gear_Talent_Template
+{
+	myDescription "branch = \"DLC1\", contextComment = \"DLC1 - Description of gear talent Talent_FathierWinBonus\", enabled = true, guid = #D00CF65466B496C60001950E0832922A, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 12331, text = \"Fathiers you bet on have a better chance to win.\", type = \"MenuLine\""
+	myIcon "mySpriteId = 745406560, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_gear_icons_02.spritesheet\""
+	myAttributeBonuses
+	{
+		BonusAttributeRef FathierRacesRerollProbability
+		{
+			myAttributeUID E52E0D4366EC2AB2000000577FB816A8
+			myValue 0.2
+		}
+	}
+}
+
+Talent dlc1_Player_Gear_Talent_SabaccOpponentLessAggressiveBonus < uid=D00CF65466B496C6000195143963F1B4 > : Player_Gear_Talent_Template
+{
+	myDescription "branch = \"DLC1\", contextComment = \"DLC1 - Description of gear talent Talent_SabaccOpponentLessAggressiveBonus\", enabled = true, guid = #D00CF65466B496C60001950FD7237C7D, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 12331, text = \"Sabacc opponents are dazzled, making them less aggressive and less inclined to use Shift Tokens.\", type = \"MenuLine\""
+	myAttributeBonuses
+	{
+		BonusAttributeRef SabaccDazzledOpponentsChance
+		{
+			myAttributeUID E52E0D4366EC2DE3000000602AA300D9
+			myValue 0.8
+		}
+	}
+}
+
+Talent dlc1_Player_Gear_Talent_OppositeFactionReputationBonus < uid=D00CF65466B496C60001951506114EDC > : Player_Gear_Talent_Template
+{
+	myDescription "branch = \"DLC1\", contextComment = \"DLC1 - Description of gear talent Talent_OppositeFactionReputationBonus\", enabled = true, guid = #D00CF65466B496C600019510F9759A13, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 12331, text = \"Upon losing reputation, you gain a small amount of reputation with an opposing faction.\", type = \"MenuLine\""
+	myIcon "mySpriteId = -1040362013, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_morenia_icon.spritesheet\""
+	myGameScript "helix/game scripts/dlc1_gs_major_charm_12_reputation_gain_on_reputation_loss.mgamescript"
+}
+

@@ -1,0 +1,25 @@
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_pickup_heavy.mweaponfiremode"
+include "helix/game system data/juice/item/equipmentholding/holding_pickup_heavy.mequipmentholdingconfig"
+include "helix/game system data/juice/item/player_weapon_pickup_template.mitem"
+
+WeaponItem player_weapon_pickup_heavy < uid=4C1DFD4E63691B690000AFA7AEE44F47 > : player_weapon_pickup_template
+{
+	myName "aurabesh = false, contextComment = \"Heavy class template, not to be used in-game\", enabled = true, guid = #4C1DFD4E63691B690000AFA50DCB26BE, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 394, text = \"Weapon Pickup Heavy Template\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"Weapon Pickup Template\", enabled = true, guid = #4C1DFD4E63691B690000AFA69448C905, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 394, text = \"Weapon Pickup Template\", type = \"MenuLine\""
+	myIcon "mySpriteId = -9524823, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_weapon_icons_01.spritesheet\""
+	myLootGraphObject "helix/graph objects/gameplayobject/gpo_player_weapon_heavy_template.mgraphobject"
+	myAmount < uid=4C1DFD4E640F47A80000A82E379A74D4 >
+	{
+		myDefaultValue 0
+	}
+	myHoldingConfig < uid=4C1DFD4E63691F480000AFBCD0F600C7 > = holding_pickup_heavy 4C1DFD4E636BB58C00005DC9F1D1B989
+	myGraphObject "helix/graph objects/gameplayobject/gpo_player_weapon_heavy_template.mgraphobject"
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=4C1DFD4E63691B690000AFA8DE70931C > = player_firemode_pickup_heavy 4C1DFD4E636BB64C00005DD79AA62E11
+		}
+	}
+}
+

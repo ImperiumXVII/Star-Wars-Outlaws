@@ -1,0 +1,199 @@
+include "dlc2/game system data/juice/intel/intel_dlc2_khepi.mintel"
+include "helix/game system data/fruit/reward/reward.fruit"
+include "helix/game system data/juice/item/dlc2_items_materials_valuables_and_key_parts.mitem"
+include "helix/game system data/juice/item/dlc2_pet_gear_02_helix.mitem"
+include "helix/game system data/juice/item/dlc2_player_gear_charm_major_13_helix.mitem"
+include "helix/game system data/juice/item/dlc2_player_gear_chest_s09_helix.mitem"
+include "helix/game system data/juice/item/dlc2_player_gear_legs_s09_helix.mitem"
+include "helix/game system data/juice/item/dlc2_player_gear_waist_s09_helix.mitem"
+include "helix/game system data/juice/item/dlc2_quest_items.mitem"
+include "helix/game system data/juice/item/dlc2_ship_gear_helix.mitem"
+include "helix/game system data/juice/item/player_weaponmodule_ion_shock.mitem"
+include "helix/game system data/juice/reward/currency_reward.mreward"
+include "helix/game system data/juice/reward/reputation_reward.mreward"
+
+RewardItem C_MQ_040_Gear_Chest < uid=2AE2EC85672CE5BD000000DE408CD3D2 >
+{
+	myItem < uid=2AE2EC85672CE62E000000E49882F466 > = dlc2_player_gear_chest_s09_helix 25524452672C90D4000000DD8DD9F50D
+	myAmount 1
+	mySupressNotification TRUE
+}
+
+RewardItem C_MQ_040_Gear_Waist < uid=2AE2EC85672CE5CB000000DF32F1E23B > : C_MQ_040_Gear_Chest
+{
+	myItem < uid=2AE2EC85672CE62E000000E5797DA385 > = dlc2_player_gear_waist_s09_helix 25524452672C967E000000ED85D18F15
+}
+
+RewardItem C_MQ_040_Gear_Legs < uid=2AE2EC85672CE62E000000E61C07AFBF > : C_MQ_040_Gear_Chest
+{
+	myItem < uid=2AE2EC85672CE62E000000E72A3CC4A5 > = dlc2_player_gear_legs_s09_helix 25524452672C9834000000FD610503C8
+}
+
+RewardItem C_MQ_040_Gear_Set_Hidden_Item < uid=2AE2EC8567D2E40E0002A69CEB2EFD1A >
+{
+	myItem < uid=2AE2EC8567D2E50F0002A69EF3CABC28 > = dlc2_player_gear_set_s09_hidden_item 2AE2EC8567D2E2A60002A5CDE34A69D7
+	myAmount 1
+}
+
+RewardItem C_MQ_040_NixGear < uid=2AE2EC8567935248000000D644F15662 >
+{
+	myItem < uid=2AE2EC8567935284000000D702AA5B32 > = dlc2_pet_gear_02_helix 2552445267922062000000E22AD275AB
+	myAmount 1
+}
+
+RewardItem C_MQ_040_Major_Charm < uid=2AE2EC856788DC0D00057BD87F40F34E >
+{
+	myItem < uid=2AE2EC856788DC44000585CDF28BBE43 > = dlc2_player_gear_charm_major_13_helix 25524452672CC6FF000ACB33CE7F645F
+	myAmount 1
+}
+
+RewardItem C_MQ_040_Rokana_Ship_Hidden < uid=2AE2EC8567BC76EE00079802796615A3 >
+{
+	myItem < uid=2AE2EC8567BC76EE0007980367BA8CF1 > = Rokana_Ship_Hidden_Item_To_Unlock 2AE2EC8567BC761A00077EB2ED4C1A9D
+	myAmount 1
+}
+
+RewardItem reward_quest_qitem_C_MQ_010_B03B_IonShieldPart_Add < uid=2AE2EC8567249E84000C4E304D0234EA >
+{
+	myItem < uid=2AE2EC8567249F53000C4E497C3F04BD > = qitem_C_MQ_010_B03B_IonShieldPart 8FD81D51671B9DED000392975D36BA3F
+	myAmount 1
+}
+
+RewardItem qitem_C_MQ_010_B04_IonShield_UnlockItem_Add < uid=2AE2EC8567249EAB000C4E3C86B2F786 >
+{
+	myItem < uid=2AE2EC8567249F53000C4E4A6D20C27B > = qitem_C_MQ_010_B04_IonShield_UnlockItem 8FD81D516716464D0002AEC055034579
+	myAmount 1
+}
+
+RewardItem qitem_C_MQ_010_B03B_IonShieldPart_Remove < uid=2AE2EC856724A11D000E28CA7E85814B > : reward_quest_qitem_C_MQ_010_B03B_IonShieldPart_Add
+{
+	myAmount -1
+	mySupressNotification TRUE
+}
+
+RewardItem C_MQ_030_B02_PykesBribe < uid=466625AB674D735200037C2078E81D79 > : cur_credits_loss_veryhigh-500
+{
+}
+
+RewardIntel Reward_Quest_C_MQ_030_Intel_talk_to_Reese < uid=2AE2EC85675C51B80027AB8E9C293D5E >
+{
+	myIntel < uid=2AE2EC85675C520B0027AB8FCD27EF31 > = C_DLC2_MS50XX_ITL50XX_TalkToReese 2AE2EC85675AFD4B0026806E5617D36F
+}
+
+RewardItem C_MQ_030_CargoUnlock < uid=2AE2EC8567570001000963610C8A4938 >
+{
+	myItem < uid=2AE2EC856757005B000963622B2BD1D7 > = Hidden_Item_Ship_Cargo_Unlock 2AE2EC856756EE7C0003F162AE5D6C43
+	myAmount 1
+}
+
+RewardItem reward_quest_C_MQ_010_NewBlasterConfig_reward_item < uid=2AE2EC85670E74BC0004707C6EC44D61 >
+{
+	myItem < uid=2AE2EC85670E74BC0004707DCF4B6D4C > = KP_ConfigUnlockItem_Ion_Shock_DLC2 2AE2EC85670CE34A000000F74352FFE8
+	myAmount 1
+}
+
+RewardItem reward_quest_C_MQ_015_Ion_Shock_Config < uid=2AE2EC856752CC470005FD7D36B6F9E5 >
+{
+	myItem < uid=2AE2EC856752CDF20005FE47337DD5EF > = player_weaponmodule_ion_shock 7113C61167160B3200054240BC9FA09B
+	myAmount 1
+}
+
+RewardGroup reward_quest_C_MQ_010_B04_add_ion_shield_unlock_item_and_remove_ion_shield_part_quest_Item < uid=2AE2EC856724A12F000E28CB3834FD6E >
+{
+	myRewardReferences
+	{
+		RewardItem "Add ion shield unlock item" < uid=2AE2EC856724A181000E28CCD4AB9129 > = qitem_C_MQ_010_B04_IonShield_UnlockItem_Add 2AE2EC8567249EAB000C4E3C86B2F786
+		RewardItem "Remove ion shield part" < uid=2AE2EC856724A190000E28CDD20BD3B6 > = qitem_C_MQ_010_B03B_IonShieldPart_Remove 2AE2EC856724A11D000E28CA7E85814B
+	}
+}
+
+RewardGroup reward_quest_C_MQ_010_B05_SpeakToHondo_BlasterKeyPart < uid=2AE2EC8567C97AD9000AE2F11DF9E5A4 >
+{
+	myRewardReferences
+	{
+		RewardItem "Blater Key part" < uid=2AE2EC8567C97AF5000AE2F218ABF2B5 > = reward_quest_C_MQ_010_NewBlasterConfig_reward_item 2AE2EC85670E74BC0004707C6EC44D61
+	}
+}
+
+RewardGroup reward_quest_C_MQ_040_Hondo_gives_major_charm < uid=2AE2EC856788DCAF0005C01F99FDAC2C >
+{
+	myRewardReferences
+	{
+		RewardItem "Major Charm" < uid=2AE2EC856788DCD40005C6D9158202C8 > = C_MQ_040_Major_Charm 2AE2EC856788DC0D00057BD87F40F34E
+	}
+}
+
+RewardIntel reward_quest_C_MQ_040_MS5012_Intel < uid=2AE2EC8567BF1B3F0005D8219D56A9DA >
+{
+	myIntel < uid=2AE2EC8567BF1B670005D8223683C35E > = C_DLC2_MS5012_ITL5002_RaiderShipChat_Part1 09AB96AD67B5C9070015198B5FFB7866
+}
+
+RewardGroup CompletionReward_C_MQ_030 < uid=2AE2EC85672CBBD3001019A87251D156 >
+{
+	myRewardReferences
+	{
+		RewardItem "Cargo Unlock" < uid=2AE2EC856757010B00096425C3D2A267 > = C_MQ_030_CargoUnlock 2AE2EC8567570001000963610C8A4938
+	}
+}
+
+RewardGroup CompletionReward_C_MQ_040_Beat_00 < uid=2AE2EC8567BF1BAD0008CE3DB9D7D04E >
+{
+	myRewardReferences
+	{
+		RewardItem "Hidden Rokana Ship" < uid=2AE2EC8567BF1BC80008CE3E6766567F > = C_MQ_040_Rokana_Ship_Hidden 2AE2EC8567BC76EE00079802796615A3
+	}
+}
+
+RewardGroup CompletionReward_C_MQ_040 < uid=2AE2EC85670E74BC0004707E9B814AE4 >
+{
+	myRewardReferences
+	{
+		RewardItem "Nix Gear" < uid=2AE2EC85679352C2000000E8B0BF45AE > = C_MQ_040_NixGear 2AE2EC8567935248000000D644F15662
+		RewardItem "Gear Set Hidden Item" < uid=2AE2EC8567D2E4FA0002A69DD2E97A18 > = C_MQ_040_Gear_Set_Hidden_Item 2AE2EC8567D2E40E0002A69CEB2EFD1A
+		RewardItem "Gear Chest" < uid=2AE2EC85672CE611000000E1B98B12A9 > = C_MQ_040_Gear_Chest 2AE2EC85672CE5BD000000DE408CD3D2
+		RewardItem "Gear Waist" < uid=2AE2EC85672CE613000000E29FBF5409 > = C_MQ_040_Gear_Waist 2AE2EC85672CE5CB000000DF32F1E23B
+		RewardItem "Gear Legs" < uid=2AE2EC85672CE615000000E322E29DFF > = C_MQ_040_Gear_Legs 2AE2EC85672CE62E000000E61C07AFBF
+	}
+}
+
+RewardGroup DebugCompletionReward_C_MQ_010 < uid=2AE2EC856724A8750003816D5FFE2D17 >
+{
+	myRewardReferences
+	{
+		RewardItem "Ion Shield Unlock Item" < uid=2AE2EC856724A8BF0003816E8876452B > = qitem_C_MQ_010_B04_IonShield_UnlockItem_Add 2AE2EC8567249EAB000C4E3C86B2F786
+		RewardItem "Ion Module Unlock item" < uid=2AE2EC85678F5E870010252E55B9BC5D > = reward_quest_C_MQ_010_NewBlasterConfig_reward_item 2AE2EC85670E74BC0004707C6EC44D61
+	}
+}
+
+RewardGroup DebugCompletionReward_C_MQ_015 < uid=2AE2EC856752CC3B0005FD7C127596EE >
+{
+	myRewardReferences
+	{
+		RewardItem "Ion Shock Config" < uid=2AE2EC856752CDE20005FE465AB0E073 > = reward_quest_C_MQ_015_Ion_Shock_Config 2AE2EC856752CC470005FD7D36B6F9E5
+		RewardItem "Ion Shock Item" < uid=2AE2EC8567598BF7000436FA507167FC > = reward_quest_C_MQ_010_NewBlasterConfig_reward_item 2AE2EC85670E74BC0004707C6EC44D61
+	}
+}
+
+RewardGroup DebugCompletionReward_C_MQ_040 < uid=2AE2EC856788DB50000553CC77EC3948 >
+{
+	myRewardReferences
+	{
+		RewardGroup "Hondo Reward" < uid=2AE2EC856788DCE30005C984D66F041B > = reward_quest_C_MQ_040_Hondo_gives_major_charm 2AE2EC856788DCAF0005C01F99FDAC2C
+		RewardIntel "Intel Reward" < uid=2AE2EC8567BF3D60000859621E3B02FE > = reward_quest_C_MQ_040_MS5012_Intel 2AE2EC8567BF1B3F0005D8219D56A9DA
+	}
+}
+
+RewardItem reward_quest_C_MQ_010_B02A_RemoveThermalDetonator < uid=381EA52767F935420002885DDE3B6803 >
+{
+	myItem < uid=381EA52767F935420002885E10B24D83 > = con_ThermalDetonator CC69B22164639AF700014980A759E72E
+	myAmount -1
+	mySupressNotification TRUE
+}
+
+RewardItem reward_quest_C_MQ_010_B02A_RemoveBactaVial < uid=381EA52767F935420002885FDDF3894D >
+{
+	myItem < uid=381EA52767F93542000288601F05D4D2 > = con_BactaVial 5F6139B460A4E7DC00021132ACBB4DBD
+	myAmount -1
+	mySupressNotification TRUE
+}
+

@@ -1,0 +1,42 @@
+include "helix/game system data/fruit/dialogue choice tone/dialogue_choice_tone.fruit"
+include "helix/game system data/fruit/statuseffect/status_effect.fruit"
+include "snowdrop/modules/core/audio/audio.fruit"
+include "snowdrop/modules/core/audio/vosettings.fruit"
+
+enum DialogueResourceType
+{
+	Agent
+	Prop
+}
+
+list ExternalResourceNames
+{
+	string
+}
+
+list DialogueGraphNodeSafeList
+{
+	string
+}
+
+list StatusEffectList
+{
+	StatusEffectType
+}
+
+class DialogueGraphSettings < uid=auto >
+{
+	VOType* myDefaultVOType
+	VOPrioritySource myDefaultVOPrioritySource
+	int myDefaultVOPriorityOverride < min=-32768 max=32767 > // int16 on the C++ side
+	VOTemplateEventSource myDefaultVOTemplateEventSource
+	AudioEvent myDefaultVOTemplateEventOverride
+	DialogueChoiceTone* myDefaultChoiceTone
+	string myShowChoicesSequenceMarkerName "showChoices"
+	DialogueGraphNodeSafeList myNodeSafeList
+	float myAutoFadeDuration 1.0 < tooltip = "The fade duration if fade in or out is set on a scene or dialogue" >
+	float myAutoFadeHoldDuration 0.3 < tooltip = "The duration of the hold part of the fade when a fade in/out of a dialogue happens" >
+	float mySkipFadeDuration 0.6 < tooltip = "The duration of the in/out part of the fade when a dialogue is skipped" >
+	float mySkipFadeHoldDuration 0.3 < tooltip = "The duration of the hold part of the fade when a dialogue is skipped" >
+	StatusEffectList myDialogueInterruptStatusEffects < tooltip = "StatusEffects that interrupt scripted VOs, currently only for NPCs" >
+}

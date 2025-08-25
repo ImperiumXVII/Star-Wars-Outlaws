@@ -1,0 +1,108 @@
+include "helix/game system data/fruit/equipment/equipment.fruit"
+include "helix/game system data/fruit/monetization/mtxoffer.fruit"
+include "helix/game system data/fruit/monetization/mtxaddons.fruit"
+include "helix/game system data/fruit/monetization/mtxitem.fruit"
+
+class MTXOfferTest : MTXOffer  
+{
+}
+
+class MTXOfferFirstParty < abstract=1 > : MTXOffer 
+{
+	string myConnectProductId "NOT_SET"
+	string myXboxProductId "NOT_SET"
+	string myXboxAddonId "NOT_SET"
+	string myPlaystationProductId "NOT_SET"
+	string myPlaystationAddonId "NOT_SET"
+	string myStadiaProductId "NOT_SET"
+}
+
+class MTXOfferAddon : MTXOfferFirstParty 
+{	
+	string myEntitlementId
+	MTXAddonType myAddonType
+}
+
+class MTXOfferPremiumCurrency : MTXOfferFirstParty
+{
+	int myTotalPremiumCurrency
+	int myDisplayBonusPremiumCurrency
+	bool myIsVisibleIngameStore FALSE
+}
+
+class MTXOfferGearSet : MTXOffer
+{
+	GearItemList myGearItems
+	GearSet* myGearSet
+}
+
+list MTXItemList
+{
+	MTXItem*
+}
+
+class MTXOfferIntelPack : MTXOffer
+{
+	MTXItemList myIntelItems
+}
+
+class MTXOfferCharacterPack : MTXOffer
+{
+	EquipmentItem* myChest
+	EquipmentItem* myWaist
+	EquipmentItem* myLegs
+	GearSet* myGearSet
+	EquipmentItem* myPetSkin
+	EquipmentItem* myBlasterSkin
+}
+
+class MTXOfferSpeederPack : MTXOffer
+{
+	EquipmentItem* mySpeeder
+	EquipmentItem* myTrophy
+	Item* myTrinket // Special case, for both speeder and ship trinket
+}
+
+class MTXOfferShipPack : MTXOffer
+{
+	EquipmentItem* myShip
+	EquipmentItem* myEngine
+}
+
+list MTXPartsCacheList < size=1 >
+{
+	PartsCacheMTXItem*
+}
+
+class MTXOfferPartsCache : MTXOffer
+{
+	MTXPartsCacheList myPartsCacheItems
+}
+
+class MTXOfferSpeederPartsCache : MTXOfferPartsCache
+{
+
+}
+
+class MTXOfferShipPartsCache : MTXOfferPartsCache
+{
+	
+}
+
+class MTXOfferBundle : MTXOffer
+{
+	MTXOfferCharacterPack* myCharacterPack
+	MTXOfferSpeederPack* mySpeederPack
+	MTXOfferShipPack* myShipPack
+}
+
+class MTXOfferWelcomePack : MTXOfferAddon 
+{	
+	int myTotalPremiumCurrency
+	int myDisplayBonusPremiumCurrency
+}
+
+class MTXOfferStandAloneItem : MTXOffer
+{
+	Item* myItem
+}

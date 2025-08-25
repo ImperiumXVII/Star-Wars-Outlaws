@@ -1,0 +1,24 @@
+
+class EquipmentHoldingParameters
+{
+	float myUseTurnTime 0.25f
+	float myMinAngleToUse 45 < min=0.0 max=180 tooltip="If the angle between the character and the desired turn direction is less than this value the character is allowed to execute the use action, i.e. allowed to fire in case of a weapon" >
+	float myMinAngleWhileRaised 135 < min=0.0 max=180 tooltip="If the angle between the aiming and the character direction is bigger than this value the player direction will be adjusted to be always in this range" >
+	float myMinAngleWhileRaisedAndQuickHipFire 45 < min=0.0 max=180 tooltip="If the angle between the aiming and the character direction is bigger than this value the player direction will be adjusted to be always in this range" >
+	
+	float myMinPitchAngleToAllowTurnUse -45 < min=0.0 max=180 tooltip="If the pitch angle is below this value, the feature turn when use won't work" >
+	float myMinAngleWhileRaisedAndLowPitch 0 < min=0.0 max=180 tooltip="Only active if MinPitchAngleToAllowTurnUse allows it. If the angle between the aiming and the character direction is bigger than this value the player direction will be adjusted to be always in this range" >
+	
+	float myStopWalkTurnTime 0.25f
+	float myStopWalkTurnGraceTime 1.0f < tooltip="Grace extra time while will execute a turn after StopWalk despite the conditions are no longer true (i.e. Is Weapon Raised)" >
+	float myMinAngleToTurnForStopWalk 45  < min=0.0 max=180 tooltip="If the angle between the character and the desired turn direction is less than this value the character is allowed to turn when stop walk is executed" >
+	float myHolsterBlendDuration 0.05f < min=0.0 tooltip="The time it takes to blend an equipment's position during holstering transitions, from holster to hand and vice versa." >
+	bool myTurnWhileUsingIfNoMovementEnabled true < tooltip="If true, the hold configs can be configured with a Movement flag that, as soon the player stop using (i.e. shooting) and stop moving, the character will rotate" >
+	
+	bool myHolsterBlendDurationEnabled true
+	bool myUnholsterBlendDurationEnabled false
+	float myHolsterBlendMaxDistance 0.1 < min=0.0 tooltip="Blend will work if the distance between the source and the destiny is less than this distance">
+	
+	float myExtraHoldingTimeOnceOutOfAmmo 0.5f < tooltip="If the player is using an equipment and spent all the ammo this is the base extra time it takes to holster/throw away" >
+	float myExtraHoldingTimeOnceOutOfAmmoWhileAiming 1.0f < tooltip="If the player is using an equipment and spent all the ammo if he is aiming (i.e. Scope) this is the extra time it takes to holster/throw away" >
+}

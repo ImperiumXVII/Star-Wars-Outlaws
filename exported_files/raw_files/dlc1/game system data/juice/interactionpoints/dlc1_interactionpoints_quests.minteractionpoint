@@ -1,0 +1,171 @@
+include "helix/game system data/fruit/interactionpoints/interactionpoints.fruit"
+include "helix/game system data/juice/intel/intel_a_sl.mintel"
+include "helix/game system data/juice/interactionpoints/interactionpoints.minteractionpoint"
+include "helix/game system data/juice/interactionpoints/petcommands.minteractionpoint"
+include "helix/game system data/juice/interactionpoints/petcommands_holdlever.minteractionpoint"
+
+InteractionPoint DQ_020_DoNotDisturb < uid=E52E0D4366AA0888000807EF8B0B8192 > : interaction_once_base
+{
+	myDefaultSetup
+	{
+		myLabel "branch = \"DLC1\", contextComment = \"Fake interactor on unaccessible cabin doors in the morenia ship\", enabled = true, guid = #E52E0D4366AA0888000807EEDA0EADC2, lineVersion = 6, maxLength = 0, productId = 84, sectionId = 12326, text = \"Do not disturb\", type = \"MenuLine\""
+	}
+	myDefaultVisibilityRadius 5.0
+	myRestrictions
+	{
+		GameConditionFlag "New GameConditionFlag"
+		{
+			myFlag FALSE
+		}
+	}
+}
+
+InteractionPoint DQ_020_LayDown < uid=C9E2299266D86D8B0001DC58300B6FAC > : interaction_once_base
+{
+	myDefaultSetup
+	{
+		myLabel "branch = \"DLC1\", contextComment = \"Kay lays down on bed interactor name. Displayed in UI\", enabled = true, guid = #C9E2299266D86DA50001DC5942B98C6F, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 12326, text = \"Lay Down\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "aurabesh = false, branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myIcon ""
+		myShouldWaitForGestureAnimation TRUE
+		myStep 1
+	}
+}
+
+InteractionPoint DQ_020_Retrieve < uid=C9E2299266E04AE7001B9F5866FF4B16 > : interaction_once_base
+{
+	myDefaultSetup
+	{
+		myLabel "branch = \"DLC1\", contextComment = '\"Retrieve\" interaction promp, player collects something when interacting. Displayed in UI.', enabled = true, guid = #C9E2299266E04ABA001B9F57F7AD18B1, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 12326, text = \"Retrieve\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "aurabesh = false, branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myIcon ""
+		myShouldWaitForGestureAnimation TRUE
+		myStep 1
+	}
+}
+
+InteractionPoint DQ_040_CustomOpenDoor < uid=93D3086566B4DB4E0004545BDD6BB951 > : interaction_once_base
+{
+	myDefaultSetup
+	{
+		myLabel "branch = \"DLC1\", contextComment = \"Quest interaction text\", enabled = true, guid = #93D3086566B4DB7A0004545CFFDB1018, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 11592, text = \"Open\", type = \"MenuLine\""
+	}
+}
+
+InteractionPoint DQ_040_RetrieveMap < uid=93D3086566EAA0F400065012BEC2D962 > : interaction_once_base
+{
+	myDefaultSetup
+	{
+		myLabel "branch = \"DLC1\", contextComment = \"DQ_040 Quest interaction\", enabled = true, guid = #93D3086566EAA16500065013F21C49DC, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 12326, text = \"Retrieve map\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "aurabesh = false, branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myIcon ""
+		myShouldWaitForGestureAnimation TRUE
+		myStep 1
+	}
+}
+
+InteractionPoint DQ_040_DeployDrawbridge < uid=93D3086566EC3DE9001B36E873E374A2 > : interaction_once_base
+{
+	myDefaultSetup
+	{
+		myLabel "branch = \"DLC1\", contextComment = \"Quest interaction\", enabled = true, guid = #93D3086566EC3E99001B36E9725AD4B1, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 12326, text = \"Deploy drawbridge\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "aurabesh = false, branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myIcon ""
+		myShouldWaitForGestureAnimation TRUE
+		myStep 1
+	}
+}
+
+InteractionPoint DQ_040_Pet_DeployDrawbridge < uid=93D3086566EC3FF5001BD30F8E99317A > : PetPressButton
+{
+	myDefaultSetup
+	{
+		myLabel "branch = \"DLC1\", contextComment = \"Pet Quest interaction\", enabled = true, guid = #93D3086566EC51B700217D2A2FE23CA0, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 12326, text = \"Deploy drawbridge\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myIcon ""
+		myShouldWaitForGestureAnimation TRUE
+		myStep 1
+	}
+}
+
+InteractionPoint DQ_040_ActivatePropeller < uid=93D3086566EC4F790020B8FD3B23FE26 > : LeverToggle_Activate
+{
+	myDefaultSetup
+	{
+		myLabel "branch = \"DLC1\", contextComment = \"Quest interaction\", enabled = true, guid = #93D3086566EC52DB002240E717C68F57, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 12326, text = \"Activate propeller\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myIcon ""
+		myShouldWaitForGestureAnimation TRUE
+		myStep 1
+	}
+}
+
+InteractionPoint DQ_040_Pet_ActivatePropeller < uid=93D3086566EC50010020B9015C5F042E > : PetToggleLever_Activate
+{
+	myDefaultSetup
+	{
+		myLabel "branch = \"DLC1\", contextComment = \"Pet Quest interaction\", enabled = true, guid = #93D3086566EC51E900217D2D6221D694, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 12326, text = \"Activate propeller\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myIcon ""
+		myShouldWaitForGestureAnimation TRUE
+		myStep 1
+	}
+}
+
+InteractionPoint DQ_040_DisableBarrier < uid=93D3086566EC529A002240E252E25BCA > : LeverToggle_Activate
+{
+	myDefaultSetup
+	{
+		myLabel "branch = \"DLC1\", contextComment = \"Quest interaction\", enabled = true, guid = #93D3086566EC52F5002240EB3C0F9E3F, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 12326, text = \"Disable override's barrier\", type = \"MenuLine\"}"
+		myForbiddenInteractionLabel "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myIcon ""
+		myShouldWaitForGestureAnimation TRUE
+		myStep 1
+	}
+}
+
+InteractionPoint DQ_040_Pet_DisableBarrier < uid=93D3086566EC53560022412BC688105B > : PetToggleLever_Activate
+{
+	myDefaultSetup
+	{
+		myLabel "branch = \"DLC1\", contextComment = \"Pet quest interaction\", enabled = true, guid = #93D3086566EC53830022412E67D093B7, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 12326, text = \"Disable override's barrier\", type = \"MenuLine\"}"
+		myForbiddenInteractionLabel "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myIcon ""
+		myShouldWaitForGestureAnimation TRUE
+		myStep 1
+	}
+}
+
+InteractionPoint DQ_040_OpenGate < uid=93D3086566EC54720022EF6A89323DFE > : LeverHold_60s
+{
+	myDefaultSetup
+	{
+		myLabel "branch = \"DLC1\", contextComment = \"Quest interaction\", enabled = true, guid = #93D3086566EC5917002525E24B00F40B, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 12326, text = \"Open gate\", type = \"MenuLine\""
+	}
+}
+
+InteractionPoint DQ_040_Pet_MoveCrane < uid=93D3086566EC593B002527391D0AC0C0 > : PetPressButton
+{
+	myDefaultSetup
+	{
+		myLabel "branch = \"DLC1\", contextComment = \"Pet quest interaction\", enabled = true, guid = #93D3086566EC59610025273CCF6FC85E, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 12326, text = \"Move crane\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myIcon ""
+		myShouldWaitForGestureAnimation TRUE
+		myStep 1
+	}
+}
+
+InteractionPoint DQ_040_ConsoleDisabled < uid=93D308656718F5F60002A20BCB81A677 > : "Fathier Races In Cooldown"
+{
+	myDefaultSetup
+	{
+		myShouldWaitForGestureAnimation FALSE
+	}
+	myDefaultInteractionDirection 0.0;0.0;-1.0
+	myDefaultInteractionAngleDegree 360.0
+	myConditions
+	{
+	}
+}
+

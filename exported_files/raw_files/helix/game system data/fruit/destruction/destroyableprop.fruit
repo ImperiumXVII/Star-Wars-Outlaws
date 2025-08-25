@@ -1,0 +1,19 @@
+include "helix/game system data/fruit/equipment/aimassist_target_config.fruit"
+include "helix/game system data/fruit/interactionpoints/interactionpoints.fruit"
+include "helix/game system data/fruit/combat/combat.fruit"
+
+class DestroyableProp < uid=auto >
+{
+	float myGamePlayHealth 125.0
+	float myEnvironmentalHealth 1000.0
+	file myScriptToRun ""
+	AimAssistTargetConfig* myAimAssistTargetConfig
+	bool myIsProjectileDamageSourceEnabled true
+	bool myIsExplosionDamageSourceEnabled true
+	bool myIsMeleeDamageSourceEnabled true
+	bool myDamageAllowListEnabled false
+	DamageTypeList myDamageAllowList
+	bool myIsNetworkSynced false
+	InteractionPointPersistenceType myPersistenceType None < tooltip="The type of persistence for the damage information that should be used.\nNone = No persistence\nSession = Will be saved in memory until new/load game or game is closed.\nSaveGame = Stored as part of the save game. Lasts forever until reset." >
+	InteractionPointPersistenceType myCoopPersistenceType None < tooltip="The type of persistence for the damage information that should be used in coop.\nNone = No persistence\nSession = The state is not lost when the object is streamed out.\nSaveGame = Stored as part of the coop save game/checkpoint." >
+}

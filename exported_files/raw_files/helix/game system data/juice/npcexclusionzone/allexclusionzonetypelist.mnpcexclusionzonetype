@@ -1,0 +1,80 @@
+include "helix/game system data/fruit/npcexclusionzone/exclusionzonetype.fruit"
+
+NPCExclusionZoneType WildLifeMediumExclusionZone < uid=2E5ACA7E6310662600003FBDE7A417A7 >
+{
+	myEnterConditionList
+	{
+		GameConditionExclusionZoneIsAgentInAlertLevel IsAware
+		{
+			myAlertLevel AWARE
+		}
+		GameConditionExclusionZoneIsAgentInAlertLevel IsCombat
+		{
+			myAlertLevel COMBAT
+		}
+		GameConditionExclusionZoneIsNPCSpawnedInThisZone SpawnInThisZone
+		{
+		}
+	}
+}
+
+NPCExclusionZoneType WildLifeStrongExclusionZone < uid=2E5ACA7E6310662600003FBEF75B9033 >
+{
+	myEnterConditionList
+	{
+		GameConditionExclusionZoneIsNPCSpawnedInThisZone SpawnInThisZone
+		{
+		}
+	}
+}
+
+NPCExclusionZoneType "No NPC Zone" < uid=2E5ACA7E6310663E000044506DB1B72D >
+{
+}
+
+NPCExclusionZoneType CombatNpcStrongExlusionZone < uid=5C421F5C6328657E0001FADE77D722E0 >
+{
+	myEnterConditionList
+	{
+		GameConditionExclusionZoneIsNPCSpawnedInThisZone SpawnInThisZone
+		{
+		}
+	}
+}
+
+NPCExclusionZoneType CombatNpcMediumExlusionZone < uid=5C421F5C632866260001FAE088298FFC >
+{
+	myEnterConditionList
+	{
+		GameConditionExclusionZoneIsNPCSpawnedInThisZone SpawnInThisZone
+		{
+		}
+		GameConditionExclusionZoneIsAgentInAlertLevel Combat
+		{
+			myAlertLevel COMBAT
+		}
+		GameConditionExclusionZoneIsAgentInAlertLevel CombatReady
+		{
+			myAlertLevel COMBAT_READY
+		}
+		GameConditionExclusionZoneIsAgentInAlertLevel Aware
+		{
+			myAlertLevel AWARE
+		}
+	}
+}
+
+NPCExclusionZoneType CombatNpcPeacefulExclusionZone < uid=5C421F5C632866EF0001FAE1CA73CD5A >
+{
+	myEnterConditionList
+	{
+		GameConditionExclusionZoneIsNPCSpawnedInThisZone SpawnInThisZone
+		{
+		}
+		GameConditionExclusionZoneIsAgentInAlertLevel Idle
+		{
+			myAlertLevel IDLE
+		}
+	}
+}
+

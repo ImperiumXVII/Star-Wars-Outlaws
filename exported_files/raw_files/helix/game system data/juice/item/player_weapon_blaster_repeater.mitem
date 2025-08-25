@@ -1,0 +1,115 @@
+include "helix/game system data/juice/camera/modifiers/weapon_recoil_blaster_repeater.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_shake_blaster_repeater.mcameramodifier"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_blaster_concussion.mweaponfiremode"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_blaster_repeater.mweaponfiremode"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_blaster_ricochet.mweaponfiremode"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_blaster_stun.mweaponfiremode"
+include "helix/game system data/juice/item/player_weapon_blaster_template.mitem"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_concussion.mprojectile"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_repeater.mprojectile"
+
+WeaponItem player_weapon_blaster_repeater < uid=1C021E9562B438B000007BC0493BCC13 > : Player_Weapon_Blaster_Template
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = true, guid = #1C021E9562B438B000007BBC1D4D8554, lineVersion = 4, maxLength = 0, productId = -1, sectionId = -1, text = \"Light Repeater\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = true, guid = #1C021E9562B438B000007BBD97FF05E9, lineVersion = 4, maxLength = 0, productId = -1, sectionId = -1, text = \"A light\", type = \"MenuLine\""
+	myGraphObject "helix/graph objects/weapon/wpn_test_repeater.mgraphobject"
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=A207755D62C3014B0000374A66C1BF63 > = player_firemode_blaster_repeater A207755D62C2FF090000374258EDE125
+		}
+		WeaponFireModeSlot Secondary
+		{
+			mySlotTag Secondary
+			myFireMode < uid=A207755D62C3014B0000374CC2F2414C > = player_firemode_blaster_concussion A207755D62C3004400003748C8C1D9A9
+		}
+		WeaponFireModeSlot TrickShot
+		{
+			mySlotTag TrickShot
+			myFireMode < uid=A207755D62C3014B0000374B0438DCF3 > = player_firemode_blaster_trickshot_default A207755D62C2F37200003756781302DE
+		}
+	}
+}
+
+WeaponItem player_weapon_blaster_repeater_T2 < uid=1C021E9562B438B000007BC807F3E459 > : player_weapon_blaster_repeater
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = true, guid = #1C021E9562B438B000007BBE3E765F0C, lineVersion = 4, maxLength = 0, productId = -1, sectionId = -1, text = \"VM-19 Special\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = true, guid = #1C021E9562B438B000007BBF382D8967, lineVersion = 5, maxLength = 0, productId = -1, sectionId = -1, text = \"Kay’s blaster is a VM-19 heavy blaster pistol made by the Merr-Sonn Munitions corporation.Upgraded to allow its bolts to ricochet.\", type = \"MenuLine\""
+	myIcon "mySpriteId = 1243021025, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_weapon_icons_01.spritesheet\""
+	myCategory Weapon
+	myQuality Premium
+	myInventoryPouch Weapon
+	myAgentInventoryCapacity ""
+	mySpeederInventoryCapacity ""
+	mySpaceshipInventoryCapacity ""
+	myPetInventoryCapacity ""
+	myDefaultInventory Agent
+	myShowInventoryNotifications TRUE
+	myLootGraphObject ""
+	myAllowUsingLootGraphObjectWithAnyAmount TRUE
+	myBlockedLootBehavior Default
+	myIsAutoLoot FALSE
+	myBuyPrice 1995
+	myCanBeSold TRUE
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+	myAmount < uid=1C021E9562B438B000007BC98F173A16 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory Item
+		myParentLevelsToUseInInstanceName 1
+	}
+	myCooldown
+	{
+		myStartType OnEndUse
+		myDuration 0.0
+	}
+	myAlwaysAim FALSE
+	myDefaultSlotGroup Weapons
+	myIsPickable FALSE
+	myTalents
+	{
+	}
+	myGearSets
+	{
+	}
+	myGraphObject "helix/graph objects/weapon/wpn_kay_blaster_001.mgraphobject"
+	myChangeFireModeSequence
+	{
+		myDuration 0.87
+		myTracks
+		{
+			myGenericTracks
+			{
+			}
+			myCustomTracks
+			{
+			}
+		}
+	}
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=A207755D62C30262000037413BDA8E72 > = player_firemode_blaster_ricochet A207755D62C2F4E20000375D7A9D96B4
+		}
+		WeaponFireModeSlot Secondary
+		{
+			mySlotTag Secondary
+			myFireMode < uid=A207755D62C30262000037423A87ECBD > = player_firemode_blaster_stun A207755D62C2F1FF0000374DFD4FC4D9
+		}
+		WeaponFireModeSlot TrickShot
+		{
+			mySlotTag TrickShot
+			myFireMode < uid=A207755D62C30262000037435EF7365A > = player_firemode_blaster_trickshot_default A207755D62C2F37200003756781302DE
+		}
+	}
+}
+

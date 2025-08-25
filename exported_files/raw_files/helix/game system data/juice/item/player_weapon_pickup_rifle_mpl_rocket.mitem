@@ -1,0 +1,28 @@
+include "helix/game system data/fruit/item/item_includes.fruit"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_pickup_rifle_mpl_grenade.mweaponfiremode"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_pickup_rifle_mpl_rocket.mweaponfiremode"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_pickup_rifle_relbyv10.mweaponfiremode"
+include "helix/game system data/juice/item/consumables.mitem"
+include "helix/game system data/juice/item/player_weapon_pickup_rifle.mitem"
+
+WeaponItem player_weapon_pickup_rifle_MPL_rocket < uid=7113C61164E5D2580000BD5A1C731F7E > : player_weapon_pickup_rifle
+{
+	myName "aurabesh = false, contextComment = \"Weapon name, MPL short for Multi-Purpose Launcher\", enabled = true, guid = #7113C61164E5D2580000BD5883541DA6, lineVersion = 13, maxLength = 0, productId = -1, sectionId = 394, text = \"MPL Rocket Launcher\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"Pyke Demolitionist should drop this weapon\", enabled = true, guid = #7113C61164E5D2580000BD594C8751D4, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 394, text = \"Pick-up rocket launcher, from Pyke Demolitionist\", type = \"MenuLine\""
+	myIcon "mySpriteId = 1247569602, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_weapon_icons_01.spritesheet\""
+	myGraphObject "helix/graph objects/gameplayobject/gpo_player_weapon_mpl_rocket.mgraphobject"
+	myLootGraphObject "helix/graph objects/gameplayobject/gpo_player_weapon_mpl_rocket.mgraphobject"
+	myAmount < uid=7113C61164E5D2580000BD5B901269A7 >
+	{
+		myDefaultValue 0
+	}
+	myConsumedItem < uid=7113C61164E5D2580000BD5CB388EF2E > = con_Ammo_MPL_Rocket 7113C61164E5D2AF0000BD5E41FB7E55
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=7113C61164E5D2580000BD5DC5F7017A > = player_firemode_pickup_rifle_MPL_rocket 7113C61164E5D2050000793C81FA2BD9
+		}
+	}
+}
+

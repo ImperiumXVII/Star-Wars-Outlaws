@@ -1,0 +1,28 @@
+include "helix/game system data/fruit/item/item_includes.fruit"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_pickup_exotic_reconfigurable_beam.mweaponfiremode"
+include "helix/game system data/juice/item/consumables.mitem"
+include "helix/game system data/juice/item/equipmentholding/holding_pickup_rifle.mequipmentholdingconfig"
+include "helix/game system data/juice/item/player_weapon_pickup_exotic.mitem"
+include "helix/game system data/juice/item/player_weapon_pickup_rifle.mitem"
+
+WeaponItem player_weapon_pickup_exotic_reconfigurable_beam < uid=4C1DFD4E645CED9F00015DB0C2A5BC7B > : player_weapon_pickup_rifle
+{
+	myName "aurabesh = false, contextComment = \"Beam variant of the Zerek Besh Reconfigurable weapon\", enabled = true, guid = #4C1DFD4E645CED9F00015DAE0D616085, lineVersion = 14, maxLength = 0, productId = -1, sectionId = 394, text = \"Reconfigurable Beam\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"Zerek Besh Hunters should drop this weapon\", enabled = true, guid = #4C1DFD4E645CED9F00015DAF6DF34B0B, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 394, text = \"Pickup from Zerek Besh\", type = \"MenuLine\""
+	myIcon "mySpriteId = 710037725, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_weapon_icons_02.spritesheet\""
+	myGraphObject "helix/graph objects/gameplayobject/gpo_player_weapon_sniper_template.mgraphobject"
+	myLootGraphObject "helix/graph objects/gameplayobject/gpo_player_weapon_sniper_template.mgraphobject"
+	myAmount < uid=4C1DFD4E645CED9F00015DB13DE8A8B4 >
+	{
+		myDefaultValue 0
+	}
+	myConsumedItem < uid=4C1DFD4E645CED9F00015DB23B8B82C4 > = con_Ammo_Reconfigurable_Beam 4C1DFD4E645CEFD40001C8B95E078193
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=4C1DFD4E645CED9F00015DB3CCD73DAD > = player_firemode_pickup_exotic_reconfigurable_beam 4C1DFD4E645CF0D90001CDC6FED6B318
+		}
+	}
+}
+

@@ -1,0 +1,27 @@
+include "helix/game system data/juice/npc/hut_vendor.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC hut_vendor_wandering_akiva < uid=91DC5D3C650871D60026B88559C40385 > : hut_vendor
+{
+	myName "branch = \"MAIN\", contextComment = \"Sub-name of a Wandering Merchant\", enabled = true, guid = #09AEDAAA65C4A7180000C82624D7E3F2, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 10653, text = \"Traveling Merchant\", type = \"MenuLine\""
+	myCharacterVisuals < uid=28934516668D0B830001C7B8A2A1EEB4 > = character_visuals_3_hired_gun_vendor 2AE2EC8564186CFD0010F3A9DFFEA9DA
+	myAdditionalGearGraphs D00CF654668BD33F0017568DFEE9C1DF
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout PistolStandard < uid=56CC05966696571B00012916DBAE001B > = HiredGun_Light_Pistol_Standard 4171A7E16523FB4C00010E15851176BF
+		NPCWeaponLoadout PistolBurtst < uid=56CC05966696571B0001291750C1B0F7 > = HiredGun_Light_Pistol_Burst 4171A7E16523FBD800005C850FF94E02
+	}
+	myVendorConfig < uid=F4D8AE26653A2670000079E2DA18EF51 > = VendorConfig_AKI_OpenWorld_Hutt_WanderingHutt F4D8AE26653A264F000079B24DCACFDC
+	myHideMapRefGameConditions
+	{
+		myConditions
+		{
+			GameConditionContextAgentIsAlive "New GameConditionContextAgentIsAlive"
+			{
+				myIsNegated TRUE
+			}
+		}
+	}
+	myNPCIcon "mySpriteId = 652654702, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_map_icons_05.spritesheet\""
+}
+

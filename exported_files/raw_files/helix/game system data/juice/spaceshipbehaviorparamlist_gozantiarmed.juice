@@ -1,0 +1,384 @@
+include "helix/game system data/fruit/ai/spaceshipsettings.fruit"
+include "helix/game system data/juice/ai/npcshootpatterns.mnpcshootpattern"
+include "helix/game system data/juice/ai/spaceshipcombatprofiles.mspaceshipcombatprofile"
+include "helix/game system data/juice/ai/spaceshipformationprofiles.mspaceshipformationprofile"
+include "helix/game system data/juice/ai/spaceshipspawnprofiles.mspaceshipspawnprofile"
+include "helix/game system data/juice/ai/spaceshipspeedprofiles.mspaceshipspeedprofile"
+include "helix/game system data/juice/ai/spaceshiptrajectories.mspaceshiptrajectoryprofile"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_default.juice"
+
+SpaceshipBehaviorParameter gozantiarmedEvasiveStartCurrentManeuverMinElapsedTime : EvasiveStartCurrentManeuverMinElapsedTime
+{
+	myValue 8.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedEvasiveStartMinDistance : EvasiveStartMinDistance
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedEvasiveMinDistance : EvasiveMinDistance
+{
+	myValue 150.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedEvasiveDurationRandomMin : EvasiveDurationRandomMin
+{
+	myValue 5.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedEvasiveDurationRandomMax : EvasiveDurationRandomMax
+{
+	myValue 10.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedEvasiveConeAngle : EvasiveConeAngle
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedEvasiveStartAngleFromHostile : EvasiveStartAngleFromHostile
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedEvasiveSpiralProbability : EvasiveSpiralProbability
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedEvasivePauseBetweenPatternsMin : EvasivePauseBetweenPatternsMin
+{
+	myValue 1.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedEvasivePauseBetweenPatternsMax : EvasivePauseBetweenPatternsMax
+{
+	myValue 1.5
+}
+
+SpaceshipBehaviorParameter gozantiarmedEvasiveBreakProbability : EvasiveBreakProbability
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedEvasiveScaleWidth : EvasiveScaleWidth
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedEvasiveScaleHeight : EvasiveScaleHeight
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedEvasiveScaleLength : EvasiveScaleLength
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedTimeToStartEvasiveIfStillInFrontOfHostile : TimeToStartEvasiveIfStillInFrontOfHostile
+{
+	myValue 6.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedBreakStartCurrentManeuverMinElapsedTime : BreakStartCurrentManeuverMinElapsedTime
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedChaseDurationRandomMin : ChaseDurationRandomMin
+{
+	myValue 6.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedChaseDurationRandomMax : ChaseDurationRandomMax
+{
+	myValue 10.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedChaseDistanceMin : ChaseDistanceMin
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedChaseDistanceMax : ChaseDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedChaseConeAngle : ChaseConeAngle
+{
+	myValue 90.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedChaseChanceToBreakOnHostileDodgePercent : ChaseChanceToBreakOnHostileDodgePercent
+{
+	myValue 0.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedChaseBreakProbabilityOverPass : ChaseBreakProbabilityOverPass
+{
+	myValue 0.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedOvershootMaxAngle : OvershootMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedInterceptDistanceIdeal : InterceptDistanceIdeal
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedInterceptConeAngle : InterceptConeAngle
+{
+	myValue 90.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedInterceptDistanceMin : InterceptDistanceMin
+{
+	myValue 200.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedInterceptDistanceMax : InterceptDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedInterceptDurationMin : InterceptDurationMin
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedInterceptDurationMax : InterceptDurationMax
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedJoustingProbability : JoustingProbability
+{
+	myValue 25.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedJoustingMaxDurationPrepare : JoustingMaxDurationPrepare
+{
+	myValue 15.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedJoustingMaxDuration : JoustingMaxDuration
+{
+	myValue 30.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedJoustingDistanceTurn : JoustingDistanceTurn
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedJoustingEndDistance : JoustingEndDistance
+{
+	myValue 280.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedJoustingAngle : JoustingAngle
+{
+	myValue 45.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedJoustingMaxAngle : JoustingMaxAngle
+{
+	myValue 90.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedJoustingEndBreakProbabilityOverPass : JoustingEndBreakProbabilityOverPass
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedJoustingPositionMaxHeight : JoustingPositionMaxHeight
+{
+	myValue 200.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedAlignMinDistance : AlignMinDistance
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedAlignMaxDistance : AlignMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedLeashingMinDistance : LeashingMinDistance
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedLeashingMaxDistance : LeashingMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedLeashingToVolumeMaxDistance : LeashingToVolumeMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedShootMaxDistance : ShootMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedShootMaxAngle : ShootMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedBarkPositionDistanceMax : BarkPositionDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedBroadcastRangeEnterCombat : BroadcastRangeEnterCombat
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedEscortDistance : EscortDistance
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedLowProhibitedActionAttackDelay : LowProhibitedActionAttackDelay
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedAccurateShootingProbability : AccurateShootingProbability
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedRangeForSecondaryWeapon : RangeForSecondaryWeapon
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedUndetectedTimeBeforeExitingCombat : UndetectedTimeBeforeExitingCombat
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedUndetectedTimeBeforeExitingAware : UndetectedTimeBeforeExitingAware
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedReinforcementsCallProbabilityPercent : ReinforcementsCallProbabilityPercent
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedReinforcementsCallDuration : ReinforcementsCallDuration
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedIdleDefaultSplineSizeHorizontal : IdleDefaultSplineSizeHorizontal
+{
+	myValue 700.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedIdleDefaultSplineSizeVertical : IdleDefaultSplineSizeVertical
+{
+	myValue 250.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedCooldownDuration : CooldownDuration
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedCooldownMaxDistance : CooldownMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedSpaceshipMaxEngagementDistance : SpaceshipMaxEngagementDistance
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedSpaceshipPrimaryMaxAngle : SpaceshipPrimaryMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedSpaceshipPrimaryMaxDistance : SpaceshipPrimaryMaxDistance
+{
+	myValue 1200.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedSpaceshipPrimaryMinDistance : SpaceshipPrimaryMinDistance
+{
+	myValue 50.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedSpaceshipPrimaryMaxHealth : SpaceshipPrimaryMaxHealth
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedSpaceshipSecondaryMaxAngle : SpaceshipSecondaryMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedSpaceshipSecondaryMaxDistance : SpaceshipSecondaryMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedSpaceshipSecondaryMinDistance : SpaceshipSecondaryMinDistance
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedSpaceshipSecondaryMaxHealth : SpaceshipSecondaryMaxHealth
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedSpaceshipMissileMaxAngle : SpaceshipMissileMaxAngle
+{
+	myValue 180.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedSpaceshipMissileMaxDistance : SpaceshipMissileMaxDistance
+{
+	myValue 1200.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedSpaceshipMissileMinDistance : SpaceshipMissileMinDistance
+{
+	myValue 300.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedSpaceshipMissileMaxHealth : SpaceshipMissileMaxHealth
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedCombatLeashingToPlayer : CombatLeashingToPlayer
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedSpaceshipAccuracyRadiusMax : SpaceshipAccuracyRadiusMax
+{
+	myValue 16.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedSpaceshipAccuracyRadiusMin : SpaceshipAccuracyRadiusMin
+{
+	myValue 4.0
+}
+
+SpaceshipBehaviorParameter gozantiarmedSpaceshipAccuracyDistanceMax : SpaceshipAccuracyDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedSpaceshipAccuracyDistanceMin : SpaceshipAccuracyDistanceMin
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedSpaceshipShotSpreadPercentage : SpaceshipShotSpreadPercentage
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedSpaceshipMissileLockOnTime : SpaceshipMissileLockOnTime
+{
+	myValue 0.5
+}
+
+SpaceshipBehaviorParameter gozantiarmedHarassmentChance : HarassmentChance
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedHarassmentDuration : HarassmentDuration
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedHarassmentAreaSizeMin : HarassmentAreaSizeMin
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedHarassmentAreaSizeMax : HarassmentAreaSizeMax
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedHarassmentAreaHeightMin : HarassmentAreaHeightMin
+{
+}
+
+SpaceshipBehaviorParameter gozantiarmedHarassmentAreaHeightMax : HarassmentAreaHeightMax
+{
+}
+

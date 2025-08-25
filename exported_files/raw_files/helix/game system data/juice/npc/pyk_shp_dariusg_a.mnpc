@@ -1,0 +1,30 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/loottable/loot_global.mloottable"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npc/pyk_shp_base.mnpc"
+
+NPC pyk_shp_dariusg_a < uid=6EA7962563E50E720000521E26A0A75E > : pyk_shp_base
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Name of ship - Darius G-class Freighter - Pyke faction\", enabled = true, guid = #6AE6EE0D65787549000266C82A09117A, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10726, text = \"Darius G-class Freighter\", type = \"MenuLine\""
+	myCharacterVisuals < uid=F95CD8F3648370010001E53670BFF471 > = character_visuals_npc_shp_DariusG_Freighter F95CD8F362ECDB5B0000E9CFCA726C84
+	mySpaceshipType DariusPyke
+	myMaxHealth 1200
+	myHealthFormula 600*SpaceHealthWarshipDifficultyModifier
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A12912164EE165A0003C48046604B53 > = Agent_Archetype_Pilot 3A12912163EF7B9500005053123CF383
+		RBTagsTag "New RBTagsTag (0)" < uid=3A12912164EE165A0003C4812CA76C64 > = Agent_ShipType_FreighterTag 3A12912164EE0F180000FFAD5587F6E6
+		RBTagsTag "New RBTagsTag (1)" < uid=3A12912164EE165A0003C48272E9B499 > = Agent_Faction_PykeSyndicateTag 16DEADE6620AE18B000020D1381248A0
+	}
+	myLodType Spaceship_Cruiser
+	myVisionProfile < uid=F95CD8F3648370010001E5373137A6A7 > = visionProfile_pyk_ship_HaulerShuttle 6B0E1DE964B7A45D0000AD6FC752CDEE
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=F95CD8F3648370010001E538265FE550 > = detectionProfile_pyk_ship_HaulerShuttle 6B0E1DE964B6644F0003C734356300ED
+	}
+	myLootTable < uid=2AE2EC85654CB8BE00010975B92157C8 > = loot_OnKillShip_Freighter 2AE2EC8565E5C4AE000545FA2874CC04
+}
+

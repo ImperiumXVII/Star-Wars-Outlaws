@@ -1,0 +1,33 @@
+include "helix/game system data/fruit/npc/npc.fruit"
+
+class NPCRandomPassenger
+{
+	NPC* myNPC
+	int myRandomSelectionChance 100 < tooltip="The chance that this npc will be selected when randomizing between the number of npcs used in NPCTrafficPassengerLoadout." min=1 >
+}
+
+list NPCRandomPassengerList
+{
+	NPCRandomPassenger
+}
+
+class NPCRandomPassengerOptions
+{
+	NPCRandomPassengerList myRandomPassengers
+}
+
+list NPCRandomPassengerOptionsList
+{
+	NPCRandomPassengerOptions
+}
+
+class NPCTrafficPassengerLoadout < uid=auto >
+{
+	NPCRandomPassengerOptionsList myRandomPassengerOptions
+	int myRandomSelectionChance 100 < tooltip="The chance that this passenger loadout will be selected when randomizing between the number of loadouts used in npc traffic settings random npc." min=1 >
+}
+
+list NPCTrafficPassengerLoadoutList
+{
+	NPCTrafficPassengerLoadout*
+}

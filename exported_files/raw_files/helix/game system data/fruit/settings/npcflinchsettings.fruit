@@ -1,0 +1,34 @@
+include "helix/game system data/fruit/ai/motion/motionenums.fruit"
+include "helix/game system data/fruit/bodypart/bodypart.fruit"
+
+class BodyPartSettings
+{
+	BodyPartType myBodyPartType None < tooltip="The body part type that the settings refer to" >
+	string myAnimationVariable < tooltip="The name of the animation variable that should be driven by the settings" >
+	float myMaxFlinchSpeed 10.f < tooltip="Maximum flinch speed" min=0 >
+	string myHitStrengthMappingCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.30000001 0, }, outTangents = { 0 4, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 1 5, }, }, numKeys = 2, }" < bhv=inputgraph tooltip="A mapping curve from hit intensity to flinch velocity gain" >
+	string myFlinchResistanceCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.69999999 0, }, outTangents = { 0.30000001 0, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 1 60, }, }, numKeys = 2, }" < bhv=inputgraph tooltip="Resistance curve based on the pose position in the flinch phase" >
+	string myRecoverTimeCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.39999998 0, }, outTangents = { 0.1 0.2, 0 0, }, properties = { 4371, 2323, }, values = { 0 0, 1 0.30000001, }, }, numKeys = 2, }" < bhv=inputgraph tooltip="Recover time based on the pose position when it's switching to the recover phase" >
+	string myRecoverPosCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.60000002 0, }, outTangents = { 0 0.5, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph tooltip="Recover pose position based on normalized time" >
+}
+
+list BodyPartSettingsList
+{
+	BodyPartSettings
+}
+
+class NPCFlinchSettings
+{
+	AnimSystemType myAnimSystemType None
+	BodyPartSettingsList myBodyPartSettings
+}
+
+list NPCFlinchSettingsList
+{
+	NPCFlinchSettings
+}
+
+class NPCFlinchSettingsRoot < uid=auto >
+{
+	NPCFlinchSettingsList mySettings
+}

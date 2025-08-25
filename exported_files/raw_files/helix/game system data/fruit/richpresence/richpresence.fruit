@@ -1,0 +1,16 @@
+enum RichPresenceType
+{
+	Frontend
+	CoopLobby
+	CoopHeist
+	Singleplayer
+	Idle
+}
+
+class RichPresence < uid=auto >
+{
+	int myPCId -1 < tooltip="The id of the presence in the UPC config" >
+	string myGXDKTag < tooltip="The tag of the presence in the GXDK config" >
+	RichPresenceType myPresenceType
+	varmap myXboxLocalizedPresence < bhv="localization" tooltip="This is for the player-facing localized rich-presence on the xbox system" >
+}

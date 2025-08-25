@@ -1,0 +1,75 @@
+include "helix/game system data/fruit/explosion/explosion.fruit"
+include "helix/game system data/juice/collisionmaterials/collisionmaterials.juice"
+include "helix/game system data/juice/explosion/explosion_npc_speeders.mexplosion"
+
+Explosion explosion_npc_itt_transport < uid=9E5BD607654CE91100027E12BC5A8A4C > : explosion_npc_speeders
+{
+	myDefaultRadius 2.0
+	myDetonation
+	{
+		myBaseEffect helix/particles/vfx_exp_vh_k79-s80_01.mparticles
+		myImpactEffect
+		{
+			myEffects
+			{
+				myList
+				{
+					EffectOnMaterial Dirt
+					{
+						myMaterial < uid=F8181D48654E61D200019EEA4E346992 > = Dirt 6F860DB5506C75BF00000E15D8BBCF79
+						myEffect helix/particles/vfx_exp_dirt_small_01.mparticles
+					}
+					EffectOnMaterial Grass
+					{
+						myMaterial < uid=F8181D48654E61D200019EEB3BA6823C > = Grass 6F860DB5506C75BF00000E114D6A4808
+						myEffect helix/particles/vfx_exp_dirt_small_01.mparticles
+					}
+					EffectOnMaterial Gravel
+					{
+						myMaterial < uid=F8181D48654E61D200019EEC8EDC4B86 > = Gravel 6F860DB5506C75BF00000E1729209934
+						myEffect helix/particles/vfx_exp_dirt_small_01.mparticles
+					}
+					EffectOnMaterial Sand
+					{
+						myMaterial < uid=F8181D48654E61D200019EEDD11D0613 > = Sand 6F860DB5506C75BF00000E16E163F30E
+						myEffect helix/particles/vfx_exp_sand_small_01.mparticles
+					}
+					EffectOnMaterial "Snow Heavy"
+					{
+						myMaterial < uid=F8181D48654E61D200019EEE3C889D5B > = SnowHeavy 6F860DB5506C75BF00000E0DAADEA0B9
+						myEffect helix/particles/vfx_exp_snow_small_01.mparticles
+					}
+					EffectOnMaterial "Snow Light"
+					{
+						myMaterial < uid=F8181D48654E61D200019EEF33304F94 > = SnowLight 6F860DB5506C75BF00000E0CA6A2A340
+						myEffect helix/particles/vfx_exp_snow_small_01.mparticles
+					}
+					EffectOnMaterial Water
+					{
+						myMaterial < uid=F8181D48654E61D200019EF05FDCB20F > = Water 0182810B643FDF4A00008FACFC870ECC
+						myEffect helix/particles/vfx_exp_water_small_01.mparticles
+					}
+					EffectOnMaterial "Water Deep"
+					{
+						myMaterial < uid=F8181D48654E61D200019EF166C80A79 > = WaterDeep 6F860DB5506C75BF00000E0FCDA956A7
+						myEffect helix/particles/vfx_exp_water_small_01.mparticles
+					}
+					EffectOnMaterial "Water Shallow"
+					{
+						myMaterial < uid=F8181D48654E61D200019EF21ED221BE > = WaterShallow 6F860DB5506C75BF00000E0E9C4CF120
+						myEffect helix/particles/vfx_exp_water_small_01.mparticles
+					}
+				}
+			}
+		}
+		myPhysicsEnabled TRUE
+		myAudioSection
+		{
+			myDetonationEvent
+			{
+				myGuid 41C8373E662984BC56EF21CEB0DDA890
+			}
+		}
+	}
+}
+

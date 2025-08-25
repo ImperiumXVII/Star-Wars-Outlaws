@@ -1,0 +1,33 @@
+include "helix/game system data/juice/ai/wtk85_attached_npc_set.mnpconnpcattachmentset"
+include "helix/game system data/juice/ai/zh40_attached_npc_set.mnpconnpcattachmentset"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC bh_shp_zh40_a < uid=6EA7962564244CDE0000716373F2067E > : base_shp
+{
+	myCharacterVisuals < uid=6EA7962564244CDE00007164DFEA0155 > = character_visuals_npc_shp_zh40 6EA79625642540850000D2D0348BBA27
+	myBehavior helix/behaviors/tiefighter_spaceship_chase_new.mbehavior
+	myNPCComponentSetType Spaceship
+	mySpaceshipType ZH40
+	myMaxHealth 160
+	myHealthFormula 80*SpaceHealthDifficultyModifier
+	myFaction < uid=6EA7962564244CDE00007165A11FD9CF > = RandomHostile 6994C4B6534699A600000015C6598B9A
+	myLodType Spaceship_Medium
+	myVisionProfile < uid=6EA7962564244CDE00007166C1482727 > = TieFighterVisionProfile B4FBE430643FCC3500000B32C8290515
+	myHearingProfile < uid=6EA7962564244CDE00007167226A0886 > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myThreatProfile < uid=6EA7962564244CDE00007168AD054537 > = DefaultThreatProfile 16DEADE6608474380000004E85DD35EB
+	myAimProfile < uid=6EA7962564244CDE00007169F28B20F9 > = PirateFighter01AccurateAimProfile F966A4EA6319A8DF0000F2238C8CFF3C
+	myReducedAimProfile < uid=6EA7962564244CDE0000716A727A5090 > = PirateFighter01InaccurateProfile F966A4EA631B31C90000B45A630763C1
+	myMainWeapon < uid=6EA7962564244CDE0000716B00264861 > = NULLREFERENCE
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "wtk85 weapon loadout" < uid=6EA7962564244CDE0000716C878D99AF > = weaponloadout_base_shp_zh40 F95CD8F36482CF8F0000AE9740313249
+	}
+	myAttachedNPCsSet < uid=6EA7962564244CDE0000716D2CAAED4F > = zh40_attached_npc_set 4F59E8F0642AE59700007311BE849340
+	myAudioParameters
+	{
+	}
+	myCombatRole LightFreighter
+}
+

@@ -1,0 +1,63 @@
+include "helix/game system data/fruit/settings/taggingentitiessettings.fruit"
+include "helix/game system data/juice/faction/factionrelations.mfactionrelations"
+
+TaggingEntitiesSettings TaggingEntitiesSettings
+{
+	myTaggableEntitiesGameConditions
+	{
+		myConditions
+		{
+			GameConditionContextAgentIsAlive "New GameConditionContextAgentIsAlive"
+			{
+			}
+			GameConditionContextAgentHasFaction Wildlife
+			{
+				myIsNegated TRUE
+				myFaction < uid=E9DD8F6065BB4E6A0000010790C1BE1C > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+			}
+			GameConditionContextAgentIsSpecificNPC "Krayt Dragon"
+			{
+				myIsNegated TRUE
+				myNPCConstantData E9DD8F6064D3369300006A5B82852D72
+			}
+			GameConditionContextAgentIsSpecificNPC "Krayt Dragon EQ080"
+			{
+				myIsNegated TRUE
+				myNPCConstantData E9DD8F6065B34AF90001E4BD3D96F0C3
+			}
+		}
+	}
+	myHoldingTimeToTagMS 2000
+	myScreenRatioThreshold 0.01
+	myTagVisibilityRange 160.0
+	myRumbleData
+	{
+		myAddTagRumble 8E25811B66699E3B0002E8748E916E40
+		myRemoveTagRumble 8E25811B6669A390000000C8F10020FE
+		myAimedAtTaggableEntityRumble 8E25811B66699E220002E8722F720112
+	}
+	myDistanceTimeScaleList
+	{
+		TaggingDistanceTimeScale Close
+		{
+			myTimeToTag 0.5
+		}
+		TaggingDistanceTimeScale Medium
+		{
+			myDistance 30.0
+			myTimeToTag 1.0
+		}
+		TaggingDistanceTimeScale Far
+		{
+			myDistance 60.0
+			myTimeToTag 1.5
+		}
+		TaggingDistanceTimeScale Zooming
+		{
+			myDistance 160.0
+			myTimeToTag 0.5
+			myADSMultiplier 1.0
+		}
+	}
+}
+

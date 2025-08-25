@@ -1,0 +1,1240 @@
+include helix/audio/votypes.juice
+include snowdrop/modules/core/audio/vosettings.fruit
+
+VOModerator VOState_Default < uid=3A1C5D1862D94CEF00003D7AE272F0DE >
+{
+	myApplyInitialActionsToPlayingTypes TRUE
+	myVOBehaviorList
+	{
+		VOBehavior Default_Scene_ScriptedVO
+		{
+			myIncomingType < uid=3A1C5D1862D95A0B0000838CC5921695 > = VOType_Scene_ScriptedVO 3A1C5D1862D94CAA00003D6D2224BA70
+			mySchedulingRuleList
+			{
+				VOSchedulingRule DropVignetteForScriptToPlay
+				{
+					myPlayingType < uid=3A1C5D1862D95A0B0000838DAD695FF5 > = VOType_Scene_Vignette 3A1C5D1862D94CE500003D79531CD7E5
+					myActionForPlayingType Drop
+				}
+				VOSchedulingRule DropKayBarksForScriptToPlay
+				{
+					myPlayingType < uid=E4123D27635D431B00005C291DDAD5D7 > = VOType_Barks_MainKayDefault 3A1C5D1862D94CCF00003D748F07FBFC
+					myActionForPlayingType Drop
+				}
+				VOSchedulingRule DropKaySpaceBarksForScriptToPlay
+				{
+					myPlayingType < uid=3A129121660D780800045280FE52B385 > = VOType_Barks_SpaceMain 3A1C5D186321E29200004C95BCABD389
+					myActionForPlayingType Drop
+				}
+				VOSchedulingRule DropSpaceNPCBarksForScriptToPlay
+				{
+					myPlayingType < uid=3A129121660D780800045281E7C664EB > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+					myActionForPlayingType Drop
+				}
+				VOSchedulingRule DropSpaceNPCBarksStateChangeForScriptToPlay
+				{
+					myPlayingType < uid=3A129121660D780800045282D2F8AFA4 > = VOType_Barks_SpaceCombatNPCStateChange 3A129121660D773F0004260E4685A569
+					myActionForPlayingType Drop
+				}
+				VOSchedulingRule DropSpaceCommsScannerForScriptToPlay
+				{
+					myPlayingType < uid=3A129121660D7808000452830A5EECC5 > = VOType_Barks_SpaceCommsScanner 3A1C5D186321E27D00004C93DEEEE68A
+					myActionForPlayingType Drop
+				}
+				VOSchedulingRule DropContractVO
+				{
+					myPlayingType < uid=3A129121667D6EB2006B3357C17BE199 > = VOType_Scene_Contract 3A129121667D64ED006A510D5AC5E68B
+					myActionForPlayingType Drop
+				}
+				VOSchedulingRule DropSpaceMain
+				{
+					myPlayingType < uid=E4123D2766880F7C0013D21A60F9497F > = VOType_Barks_SpaceMain 3A1C5D186321E29200004C95BCABD389
+					myActionForPlayingType Drop
+				}
+				VOSchedulingRule DropLivingWorldRadioCallForScriptToPlay
+				{
+					myPlayingType < uid=3A12912167127E24001555E4C51590F5 > = VOType_Scene_LivingWorldRadioCall 3A12912167127CA5001555AF1A925022
+					myActionForPlayingType Drop
+				}
+			}
+		}
+		VOBehavior Default_Barks_CombatNPCDefault
+		{
+			myIncomingType < uid=E4123D276335E0AB0000458E9A71CCE3 > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+			mySchedulingRuleList
+			{
+				VOSchedulingRule "New VOSchedulingRule"
+				{
+					myPlayingType < uid=E4123D276335E0AB0000458F7389728A > = VOType_Barks_CombatNPCStateChange 3A1C5D1862D94CBA00003D70CB09EFE6
+					myActionForIncomingType Drop
+				}
+				VOSchedulingRule "New VOSchedulingRule_0"
+				{
+					myPlayingType < uid=E4123D276687DE8000087918B9219106 > = VOType_Scene_Vignette 3A1C5D1862D94CE500003D79531CD7E5
+					myActionForIncomingType Drop
+				}
+				VOSchedulingRule "New VOSchedulingRule_1"
+				{
+					myPlayingType < uid=E4123D276687DE800008791980FDB67A > = VOType_Scene_QuestVignette E4123D27637BB2260000E252EA68D12A
+					myActionForIncomingType Drop
+				}
+			}
+		}
+		VOBehavior Default_Barks_CombatNPCStateChange
+		{
+			myIncomingType < uid=3A1C5D1862D95A2D0000838FD34EC404 > = VOType_Barks_CombatNPCStateChange 3A1C5D1862D94CBA00003D70CB09EFE6
+			mySchedulingRuleList
+			{
+				VOSchedulingRule InterruptCombatNPCDefaultForStateChange
+				{
+					myPlayingType < uid=E4123D276335E0660000458D35DFBBE5 > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+					myActionForPlayingType Drop
+				}
+			}
+		}
+		VOBehavior Default_Barks_MainKayDefault
+		{
+			myIncomingType < uid=E4123D27635D3E120030ED47401385D1 > = VOType_Barks_MainKayDefault 3A1C5D1862D94CCF00003D748F07FBFC
+			mySchedulingRuleList
+			{
+				VOSchedulingRule DropIfScriptedVOIsPlaying
+				{
+					myPlayingType < uid=E4123D27635D3E120030ED481A1EC592 > = VOType_Scene_ScriptedVO 3A1C5D1862D94CAA00003D6D2224BA70
+					myActionForIncomingType Drop
+				}
+			}
+		}
+		VOBehavior Default_Barks_Vendor
+		{
+			myIncomingType < uid=E4123D276360DA6A0001D2A0DDE9239E > = VOType_Barks_Attracts 3A1C5D1862D94CDE00003D78F56B9644
+			mySchedulingRuleList
+			{
+				VOSchedulingRule DropVendorIfScriptedVOIsPlaying
+				{
+					myPlayingType < uid=E4123D276360DA6A0001D2A1F1A0CB8E > = VOType_Scene_ScriptedVO 3A1C5D1862D94CAA00003D6D2224BA70
+					myActionForIncomingType Drop
+				}
+				VOSchedulingRule DropVendorIfVignetteVOIsPlaying
+				{
+					myPlayingType < uid=E4123D276652FB3200011ACEABF6FB4A > = VOType_Scene_Vignette 3A1C5D1862D94CE500003D79531CD7E5
+					myActionForIncomingType Drop
+				}
+			}
+		}
+		VOBehavior Default_Barks_CommsScannerInterrupt
+		{
+			myIncomingType < uid=E4123D27647228F1002692A7C364AF7B > = VOType_Barks_CommsScannerInterrupt 3A129121637F7E1100013E095545B3CD
+			mySchedulingRuleList
+			{
+				VOSchedulingRule InterruptCommsScanner
+				{
+					myPlayingType < uid=E4123D27647228F1002692A885251BE5 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+					myActionForIncomingType Play
+					myActionForPlayingType Drop
+				}
+			}
+		}
+		VOBehavior Default_Barks_SpaceMain
+		{
+			myIncomingType < uid=3A129121647DA5C5000181FD58E4304F > = VOType_Barks_SpaceMain 3A1C5D186321E29200004C95BCABD389
+			mySchedulingRuleList
+			{
+				VOSchedulingRule "Comms Scanner"
+				{
+					myPlayingType < uid=3A129121647DA5FF000181FEDA8CE355 > = VOType_Barks_SpaceCommsScanner 3A1C5D186321E27D00004C93DEEEE68A
+				}
+				VOSchedulingRule "Combat NPC"
+				{
+					myPlayingType < uid=3A129121647DA5FF000181FF0730AC73 > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+				}
+				VOSchedulingRule Scripted
+				{
+					myPlayingType < uid=3A129121655F52D50001F76F5C4DD1AD > = VOType_Scene_ScriptedVO 3A1C5D1862D94CAA00003D6D2224BA70
+					myActionForIncomingType Drop
+				}
+				VOSchedulingRule CombatNPCStatechange
+				{
+					myPlayingType < uid=3A129121660D79ED0004B060376BA0BA > = VOType_Barks_SpaceCombatNPCStateChange 3A129121660D773F0004260E4685A569
+					myActionForIncomingType Drop
+				}
+			}
+		}
+		VOBehavior Default_Barks_SpaceCombatNPC
+		{
+			myIncomingType < uid=3A129121647DA61A000182003386BD21 > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+			mySchedulingRuleList
+			{
+				VOSchedulingRule Main
+				{
+					myPlayingType < uid=3A129121647DA63F000182014A999556 > = VOType_Barks_SpaceMain 3A1C5D186321E29200004C95BCABD389
+					myActionForIncomingType Drop
+					myActionForPlayingType Play
+				}
+				VOSchedulingRule "Comms Scanner"
+				{
+					myPlayingType < uid=3A129121647DA66400018202F7B2411B > = VOType_Barks_SpaceCommsScanner 3A1C5D186321E27D00004C93DEEEE68A
+					myActionForIncomingType Drop
+					myActionForPlayingType Play
+				}
+				VOSchedulingRule Scripted
+				{
+					myPlayingType < uid=3A129121655F532A0001F770687C8209 > = VOType_Scene_ScriptedVO 3A1C5D1862D94CAA00003D6D2224BA70
+					myActionForIncomingType Drop
+				}
+				VOSchedulingRule StateChange
+				{
+					myPlayingType < uid=3A129121661FC6690001F0C740745BD0 > = VOType_Barks_SpaceCombatNPCStateChange 3A129121660D773F0004260E4685A569
+					myActionForIncomingType Drop
+				}
+			}
+		}
+		VOBehavior Default_Barks_SpaceCommsScanner
+		{
+			myIncomingType < uid=3A129121655F54100001F7B7CBC1CB24 > = VOType_Barks_SpaceCommsScanner 3A1C5D186321E27D00004C93DEEEE68A
+			mySchedulingRuleList
+			{
+				VOSchedulingRule Scripted
+				{
+					myPlayingType < uid=3A129121655F54100001F7B84497BFDC > = VOType_Scene_ScriptedVO 3A1C5D1862D94CAA00003D6D2224BA70
+					myActionForIncomingType Drop
+				}
+				VOSchedulingRule StateChange
+				{
+					myPlayingType < uid=3A129121661FC67F0001F0C84C4C456A > = VOType_Barks_SpaceCombatNPCStateChange 3A129121660D773F0004260E4685A569
+					myActionForIncomingType Drop
+				}
+			}
+		}
+		VOBehavior Default_Barks_SpaceCombatNPCStateChange
+		{
+			myIncomingType < uid=3A129121660D796C00049768A5CE040F > = VOType_Barks_SpaceCombatNPCStateChange 3A129121660D773F0004260E4685A569
+			mySchedulingRuleList
+			{
+				VOSchedulingRule "Comms Scanner"
+				{
+					myPlayingType < uid=3A129121660D796C0004976985E3981B > = VOType_Barks_SpaceCommsScanner 3A1C5D186321E27D00004C93DEEEE68A
+					myActionForIncomingType Play
+					myActionForPlayingType Drop
+				}
+				VOSchedulingRule Scripted
+				{
+					myPlayingType < uid=3A129121660D796C0004976A7866EA5D > = VOType_Scene_ScriptedVO 3A1C5D1862D94CAA00003D6D2224BA70
+					myActionForIncomingType Drop
+				}
+				VOSchedulingRule SpaceCombatNPC
+				{
+					myPlayingType < uid=3A129121660D796C0004976B20F04CA6 > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+					myActionForPlayingType Drop
+				}
+				VOSchedulingRule "Drop Main Barks"
+				{
+					myPlayingType < uid=3A129121665975A0000274D4002D2903 > = VOType_Barks_SpaceMain 3A1C5D186321E29200004C95BCABD389
+					myActionForPlayingType Drop
+				}
+			}
+		}
+		VOBehavior Default_Barks_KayOno
+		{
+			myIncomingType < uid=3A1291216642340F0015E80B9119F9E7 > = VOType_Onos_Kay E4123D27661565B00002A2466EF385C9
+			mySchedulingRuleList
+			{
+				VOSchedulingRule Cinematic
+				{
+					myPlayingType < uid=3A1291216642340F0015E80CBE014F4E > = VOType_Scene_Cutscene 3A1C5D1862D94CC900003D730BF553BB
+					myActionForIncomingType Drop
+				}
+			}
+		}
+		VOBehavior Default_Barks_CommsScanner
+		{
+			myIncomingType < uid=3A1291216655842D0002F67C082014E5 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+			mySchedulingRuleList
+			{
+				VOSchedulingRule "Drop if scripted VO is playing"
+				{
+					myPlayingType < uid=3A1291216655842D0002F67DF82736AC > = VOType_Scene_ScriptedVO 3A1C5D1862D94CAA00003D6D2224BA70
+					myActionForIncomingType Drop
+				}
+			}
+		}
+		VOBehavior Default_Scene_Contract
+		{
+			myIncomingType < uid=3A129121667D6EEE006B33588FA78160 > = VOType_Scene_Contract 3A129121667D64ED006A510D5AC5E68B
+			mySchedulingRuleList
+			{
+				VOSchedulingRule DropForScriptedVO
+				{
+					myPlayingType < uid=3A129121667D6EEE006B3359F09F5A91 > = VOType_Scene_ScriptedVO 3A1C5D1862D94CAA00003D6D2224BA70
+					myActionForIncomingType Drop
+				}
+				VOSchedulingRule QueueForContractVo
+				{
+					myPlayingType < uid=3A129121667D712A00015BF5C3A130D0 > = VOType_Scene_Contract 3A129121667D64ED006A510D5AC5E68B
+					myActionForIncomingType Queue
+				}
+			}
+		}
+		VOBehavior Default_Scene_LivingWorldRadioCall
+		{
+			myIncomingType < uid=3A12912167126E6D00292C2E7653F8A2 > = VOType_Scene_LivingWorldRadioCall 3A12912167127CA5001555AF1A925022
+			myActionForIncomingType Play
+			mySchedulingRuleList
+			{
+				VOSchedulingRule DropIfScriptedVOIsPlaying
+				{
+					myPlayingType < uid=3A12912167126E6D00292C2F7FCC43D9 > = VOType_Scene_ScriptedVO 3A1C5D1862D94CAA00003D6D2224BA70
+					myActionForIncomingType Drop
+				}
+			}
+		}
+		VOBehavior Default_Scene_ScriptedVOTimer
+		{
+			myIncomingType < uid=DA5615DD672B701C0000019FE1007776 > = VOType_Scene_ScriptedVOTimer DA5615DD672B6F9C0000019E1EAE2DE4
+		}
+		VOBehavior Default_Barks_LevelTransitionQueue
+		{
+			myIncomingType < uid=DA5615DD67E4054200229BE9D7FD0F5D > = VOType_LevelTransitionQueue DA5615DD67E404D100229B9A1096EDAD
+		}
+	}
+}
+
+VOModerator VOState_Paused < uid=3A1C5D1862D94CFD00003D7BBDC642D6 >
+{
+	myApplyInitialActionsToPlayingTypes TRUE
+	myVOBehaviorList
+	{
+		VOBehavior VOType_Menu
+		{
+			myIncomingType < uid=E4123D2764B8F38B0005A05DE0203393 > = VOType_Menu E4123D2764B7DF910003C7F3DC470B5C
+		}
+	}
+}
+
+VOModerator VOState_CutscenePreRendered < uid=3A1C5D1862D94D2400003D7C14B63A9C >
+{
+	myApplyInitialActionsToPlayingTypes TRUE
+	myVOBehaviorList
+	{
+		VOBehavior CutscenePreRendered_Barks_CombatNPCDefault
+		{
+			myIncomingType < uid=E4123D276335E0EA00004590937AB703 > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutscenePreRendered_Barks_CombatNPCStateChange
+		{
+			myIncomingType < uid=3A1C5D1862D95AB50000839DB6DA08EF > = VOType_Barks_CombatNPCStateChange 3A1C5D1862D94CBA00003D70CB09EFE6
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutscenePreRendered_Barks_CommsScanner
+		{
+			myIncomingType < uid=E4123D27635D44C700005C31CB5B8D56 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutscenePreRendered_Barks_MainKayDefault
+		{
+			myIncomingType < uid=E4123D27635D44C700005C3292A62ED7 > = VOType_Barks_MainKayDefault 3A1C5D1862D94CCF00003D748F07FBFC
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutscenePreRendered_Barks_MainPetDefault
+		{
+			myIncomingType < uid=E4123D27635D44C700005C33B66451AB > = VOType_Barks_MainPetDefault 3A1C5D1862D94CD300003D758A259E82
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutscenePreRendered_Barks_SpaceCombatNPC
+		{
+			myIncomingType < uid=E4123D27635D44C700005C346394190A > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutscenePreRendered_Barks_SpaceCommsScanner
+		{
+			myIncomingType < uid=E4123D27635D44C700005C3574B21913 > = VOType_Barks_SpaceCommsScanner 3A1C5D186321E27D00004C93DEEEE68A
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutscenePreRendered_Barks_SpaceMain
+		{
+			myIncomingType < uid=E4123D27635D44C700005C36D7C151C4 > = VOType_Barks_SpaceMain 3A1C5D186321E29200004C95BCABD389
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutscenePreRendered_Barks_Attracts
+		{
+			myIncomingType < uid=E4123D27635D44C700005C3743BCAB9E > = VOType_Barks_Attracts 3A1C5D1862D94CDE00003D78F56B9644
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutscenePreRendered_Barks_Attracts_MultiOHC
+		{
+			myIncomingType < uid=DA5615DD66D1BC23000005E6CE923CA2 > = VOType_Barks_Attracts_MultiOHC DA5615DD66D19B220000040CB4235D96
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutscenePreRendered_Barks_World
+		{
+			myIncomingType < uid=3A1C5D1862D95AB50000839990B03A7E > = VOType_Barks_World 3A1C5D1862D94CA500003D6C14C78A32
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutscenePreRendered_Barks_Minigames
+		{
+			myIncomingType < uid=DA5615DD65A52B3B0004A252A1DC2A2F > = VOType_Barks_Minigames DA5615DD65A529640004A251B2063FFE
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutscenePreRendered_Scene_QuestVignette
+		{
+			myIncomingType < uid=E4123D27637BB2A20000E272B1E2EDC5 > = VOType_Scene_QuestVignette E4123D27637BB2260000E252EA68D12A
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutscenePreRendered_Scene_Vignette
+		{
+			myIncomingType < uid=3A1C5D1862D95AB50000839CA7A8B5AE > = VOType_Scene_Vignette 3A1C5D1862D94CE500003D79531CD7E5
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutscenePreRendered_Barks_SpaceCombatStateChange
+		{
+			myIncomingType < uid=3A129121661D0DD90004041A97F09CA1 > = VOType_Barks_SpaceCombatNPCStateChange 3A129121660D773F0004260E4685A569
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutscenePreRendered_Barks_KayOnos
+		{
+			myIncomingType < uid=3A129121664235130015E80EC260759A > = VOType_Onos_Kay E4123D27661565B00002A2466EF385C9
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutscenePreRendered_Scene_Contract
+		{
+			myIncomingType < uid=3A129121667D6F1E006B335AE1906D05 > = VOType_Scene_Contract 3A129121667D64ED006A510D5AC5E68B
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutscenePreRendered_Scene_ScriptedVOTimer
+		{
+			myIncomingType < uid=DA5615DD672B70BC000001A191EC6E3D > = VOType_Scene_ScriptedVOTimer DA5615DD672B6F9C0000019E1EAE2DE4
+			myActionForIncomingType Drop
+		}
+	}
+}
+
+VOModerator VOState_CutsceneCIN < uid=E4123D276331C8090001361190E8F12D >
+{
+	myApplyInitialActionsToPlayingTypes TRUE
+	myVOBehaviorList
+	{
+		VOBehavior CutsceneCIN_Barks_CombatNPCDefault
+		{
+			myIncomingType < uid=E4123D276372455D00019CEF0CFDFF6E > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+			myActionForIncomingType Drop
+			myUseAlternativeActionForPlayingType FALSE
+		}
+		VOBehavior CutsceneCIN_Barks_CommsScanner
+		{
+			myIncomingType < uid=E4123D276331C80900013613A3BD5A42 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneCIN_Barks_MainKayDefault
+		{
+			myIncomingType < uid=E4123D276331C80900013615388EF260 > = VOType_Barks_MainKayDefault 3A1C5D1862D94CCF00003D748F07FBFC
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneCIN_Barks_MainPetDefault
+		{
+			myIncomingType < uid=E4123D276331C80900013616B32F77A8 > = VOType_Barks_MainPetDefault 3A1C5D1862D94CD300003D758A259E82
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneCIN_Barks_SpaceCombatNPC
+		{
+			myIncomingType < uid=E4123D27635D461C00005C388023B6AA > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneCIN_Barks_SpaceCommsScanner
+		{
+			myIncomingType < uid=E4123D27635D461C00005C3964BD5D3C > = VOType_Barks_SpaceCommsScanner 3A1C5D186321E27D00004C93DEEEE68A
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneCIN_Barks_SpaceMain
+		{
+			myIncomingType < uid=E4123D27635D461C00005C3AB92F6F1E > = VOType_Barks_SpaceMain 3A1C5D186321E29200004C95BCABD389
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneCIN_Barks_Minigames
+		{
+			myIncomingType < uid=DA5615DD65A52BC40004A253EA52B6B9 > = VOType_Barks_Minigames DA5615DD65A529640004A251B2063FFE
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneCIN_Barks_Attracts
+		{
+			myIncomingType < uid=E4123D27635D461C00005C3B1F69C3FE > = VOType_Barks_Attracts 3A1C5D1862D94CDE00003D78F56B9644
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneCIN_Barks_Attracts_MultiOHC
+		{
+			myIncomingType < uid=DA5615DD66D1BC3C000005E7456FEEF8 > = VOType_Barks_Attracts_MultiOHC DA5615DD66D19B220000040CB4235D96
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneCIN_Barks_World
+		{
+			myIncomingType < uid=E4123D2765B7E8850000A7D26D7BB27B > = VOType_Barks_World 3A1C5D1862D94CA500003D6C14C78A32
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneCIN_Scene_Vignette
+		{
+			myIncomingType < uid=E4123D276391A15C000478F27B6982AA > = VOType_Scene_Vignette 3A1C5D1862D94CE500003D79531CD7E5
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneCIN_Scene_QuestVignette
+		{
+			myIncomingType < uid=DA5615DD65F1CE1E00031F5B05BB889D > = VOType_Scene_QuestVignette E4123D27637BB2260000E252EA68D12A
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneCIN_Scene_ScriptedVO
+		{
+			myIncomingType < uid=E4123D2765C5081F0008ED31B99D24A6 > = VOType_Scene_ScriptedVO 3A1C5D1862D94CAA00003D6D2224BA70
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneCIN_Barks_SpaceCombatStateChange
+		{
+			myIncomingType < uid=3A129121661D0D830003F7D99A9782BD > = VOType_Barks_SpaceCombatNPCStateChange 3A129121660D773F0004260E4685A569
+			myActionForIncomingType Drop
+			mySchedulingRuleList
+			{
+			}
+		}
+		VOBehavior CutsceneCIN_Barks_KayOnos
+		{
+			myIncomingType < uid=3A129121664234F70015E80D48F2E3AA > = VOType_Onos_Kay E4123D27661565B00002A2466EF385C9
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneCIN_Scene_Contract
+		{
+			myIncomingType < uid=3A129121667D6F37006B335BFFF92F87 > = VOType_Scene_Contract 3A129121667D64ED006A510D5AC5E68B
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneCIN_Barks_NewsBroadcast
+		{
+			myIncomingType < uid=DA5615DD6710DD2A003A1331B786CA5D > = VOType_NewsBroadcast F457223266912D580006A461201971D6
+			myActionForIncomingType Drop
+			myAlternativeActionForPlayingType Drop
+		}
+		VOBehavior CutsceneCIN_Scene_ScriptedVOTimer
+		{
+			myIncomingType < uid=DA5615DD672B70D9000001A2FE42B0E9 > = VOType_Scene_ScriptedVOTimer DA5615DD672B6F9C0000019E1EAE2DE4
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneCIN_Barks_LevelTransitionQueue
+		{
+			myIncomingType < uid=DA5615DD67E4059600229BEBBE13D388 > = VOType_LevelTransitionQueue DA5615DD67E404D100229B9A1096EDAD
+			myActionForIncomingType Drop
+		}
+	}
+}
+
+VOModerator VOState_CutsceneDS < uid=E4123D276331C80900013617FA0944C5 >
+{
+	myApplyInitialActionsToPlayingTypes FALSE
+	myVOBehaviorList
+	{
+		VOBehavior CutsceneDS_Barks_CombatNPCDefault
+		{
+			myIncomingType < uid=E4123D2765C28070000AC6EC9C96E485 > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+			myActionForIncomingType Drop
+			myUseAlternativeActionForPlayingType TRUE
+		}
+		VOBehavior CutsceneDS_Barks_CommsScanner
+		{
+			myIncomingType < uid=E4123D276332EB730000A230329FFD47 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneDS_Barks_MainKayDefault
+		{
+			myIncomingType < uid=E4123D276331C8090001361BE2305F23 > = VOType_Barks_MainKayDefault 3A1C5D1862D94CCF00003D748F07FBFC
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneDS_Barks_MainPetDefault
+		{
+			myIncomingType < uid=E4123D276331C8090001361C0DD1D8C8 > = VOType_Barks_MainPetDefault 3A1C5D1862D94CD300003D758A259E82
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneDS_Barks_SpaceCombatNPC
+		{
+			myIncomingType < uid=E4123D27635D461C00005C3C8262B05F > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneDS_Barks_SpaceCommsScanner
+		{
+			myIncomingType < uid=E4123D27635D461C00005C3D0CB84992 > = VOType_Barks_SpaceCommsScanner 3A1C5D186321E27D00004C93DEEEE68A
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneDS_Barks_SpaceMain
+		{
+			myIncomingType < uid=E4123D27635D461C00005C3ECE2D8084 > = VOType_Barks_SpaceMain 3A1C5D186321E29200004C95BCABD389
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneDS_Barks_Minigames
+		{
+			myIncomingType < uid=DA5615DD65A52BEF0004A25406F809F5 > = VOType_Barks_Minigames DA5615DD65A529640004A251B2063FFE
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneDS_Barks_Attracts
+		{
+			myIncomingType < uid=E4123D27635D461C00005C3F9F0ADC8C > = VOType_Barks_Attracts 3A1C5D1862D94CDE00003D78F56B9644
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneDS_Barks_Attracts_MultiOHC
+		{
+			myIncomingType < uid=DA5615DD66D1BCA5000005E824A85B10 > = VOType_Barks_Attracts_MultiOHC DA5615DD66D19B220000040CB4235D96
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneDS_Barks_World
+		{
+			myIncomingType < uid=E4123D2765C0AE8E00025819C158D00C > = VOType_Barks_World 3A1C5D1862D94CA500003D6C14C78A32
+			myActionForIncomingType Drop
+			myUseAlternativeActionForPlayingType TRUE
+		}
+		VOBehavior CutsceneDS_Bark_SpaceCombatStateChange
+		{
+			myIncomingType < uid=3A129121661D0DBC0003FE2A1C48DD4C > = VOType_Barks_SpaceCombatNPCStateChange 3A129121660D773F0004260E4685A569
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneDS_Bark_KayOnos
+		{
+			myIncomingType < uid=3A129121664235300015E80F08F15FA1 > = VOType_Onos_Kay E4123D27661565B00002A2466EF385C9
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneDS_Scene_Vignette
+		{
+			myIncomingType < uid=E4123D276391A14D000478F10051666C > = VOType_Scene_Vignette 3A1C5D1862D94CE500003D79531CD7E5
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneDS_Scene_QuestVignette
+		{
+			myIncomingType < uid=DA5615DD65F1CE3300031F5CE974BB6E > = VOType_Scene_QuestVignette E4123D27637BB2260000E252EA68D12A
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneDS_Scene_ScriptedVO
+		{
+			myIncomingType < uid=E4123D276651F595001856485AD7139C > = VOType_Scene_ScriptedVO 3A1C5D1862D94CAA00003D6D2224BA70
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneDS_Scene_Contract
+		{
+			myIncomingType < uid=3A129121667D6F54006B335C4CE61D99 > = VOType_Scene_Contract 3A129121667D64ED006A510D5AC5E68B
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneDS_Scene_ScriptedVOTimer
+		{
+			myIncomingType < uid=DA5615DD672B7126000001A31C1BD390 > = VOType_Scene_ScriptedVOTimer DA5615DD672B6F9C0000019E1EAE2DE4
+			myActionForIncomingType Drop
+		}
+		VOBehavior CutsceneDS_Barks_LevelTransitionQueue
+		{
+			myIncomingType < uid=DA5615DD67E4059600229BECEED2A88A > = VOType_LevelTransitionQueue DA5615DD67E404D100229B9A1096EDAD
+			myActionForIncomingType Drop
+		}
+	}
+}
+
+VOModerator VOState_LevelTransition < uid=E4123D2763763BED0000B080A0977140 >
+{
+	myApplyInitialActionsToPlayingTypes FALSE
+	myVOBehaviorList
+	{
+		VOBehavior RealizationScene_Barks_CombatNPCDefault
+		{
+			myIncomingType < uid=E4123D2766C4D566001944ECB6AC8896 > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+			myActionForIncomingType Drop
+			myUseAlternativeActionForPlayingType TRUE
+			myAlternativeActionForPlayingType Play
+		}
+		VOBehavior RealizationScene_Barks_CommsScanner
+		{
+			myIncomingType < uid=E4123D2763763C200000B09FCC94FA20 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+			myActionForIncomingType Drop
+			myUseAlternativeActionForPlayingType TRUE
+		}
+		VOBehavior RealizationScene_Barks_KayBarks
+		{
+			myIncomingType < uid=DA5615DD660D5137000B7CACDBE2EDC8 > = VOType_Barks_MainKayDefault 3A1C5D1862D94CCF00003D748F07FBFC
+			myActionForIncomingType Drop
+		}
+		VOBehavior RealizationScene_Barks_NixBarks
+		{
+			myIncomingType < uid=DA5615DD660D51B8000B7CADD75D6ABF > = VOType_Barks_MainPetDefault 3A1C5D1862D94CD300003D758A259E82
+			myActionForIncomingType Drop
+			myUseAlternativeActionForPlayingType TRUE
+		}
+		VOBehavior RealizationScene_Barks_SpaceCombat
+		{
+			myIncomingType < uid=3A129121661D0E2B00041518D0D4A1D9 > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+			myActionForIncomingType Drop
+			myUseAlternativeActionForPlayingType TRUE
+			myAlternativeActionForPlayingType Play
+		}
+		VOBehavior RealizationScene_Barks_SpaceCombatStateChange
+		{
+			myIncomingType < uid=3A129121661D0E4E00041C0EF12C0183 > = VOType_Barks_SpaceCombatNPCStateChange 3A129121660D773F0004260E4685A569
+			myActionForIncomingType Drop
+			myUseAlternativeActionForPlayingType TRUE
+		}
+		VOBehavior RealizationScene_Barks_SpaceCommsScanner
+		{
+			myIncomingType < uid=3A129121661D0E4E00041C0F1A540128 > = VOType_Barks_SpaceCommsScanner 3A1C5D186321E27D00004C93DEEEE68A
+			myActionForIncomingType Drop
+			myUseAlternativeActionForPlayingType TRUE
+		}
+		VOBehavior RealizationScene_Barks_World
+		{
+			myIncomingType < uid=E4123D2766EC0EBA00015C8606201899 > = VOType_Barks_World 3A1C5D1862D94CA500003D6C14C78A32
+			myActionForIncomingType Drop
+			myUseAlternativeActionForPlayingType TRUE
+		}
+		VOBehavior RealizationScene_Barks_SpaceMain
+		{
+			myIncomingType < uid=E4123D27670D12440017D90287344113 > = VOType_Barks_SpaceMain 3A1C5D186321E29200004C95BCABD389
+			myActionForIncomingType Drop
+			myUseAlternativeActionForPlayingType TRUE
+			myAlternativeActionForPlayingType Play
+		}
+		VOBehavior RealizationScene_Barks_Walla
+		{
+			myIncomingType < uid=DA5615DD6710FB7E001739ADC655E31F > = VOType_Barks_Walla E4123D2765C0AE67000258180AF1CE62
+			myActionForIncomingType Drop
+		}
+		VOBehavior RealizationScene_Barks_NewsBroadcast
+		{
+			myIncomingType < uid=DA5615DD6710FB7E001739AE447399C4 > = VOType_NewsBroadcast F457223266912D580006A461201971D6
+			myActionForIncomingType Drop
+		}
+		VOBehavior LevelTransition_Barks_VoQueue
+		{
+			myIncomingType < uid=DA5615DD67E4054200229BEA274DEA81 > = VOType_LevelTransitionQueue DA5615DD67E404D100229B9A1096EDAD
+			myActionForIncomingType Queue
+			myAlternativeActionForPlayingType Queue
+		}
+	}
+}
+
+VOModerator VOState_BulletTime < uid=E4123D27642AC7DC000008EA7AC9F1EB >
+{
+	myApplyInitialActionsToPlayingTypes FALSE
+	myVOBehaviorList
+	{
+		VOBehavior "Drop Minigame Lines"
+		{
+			myIncomingType < uid=DA5615DD66030435001B9AF4D6BD6DA1 > = VOType_Barks_Minigames DA5615DD65A529640004A251B2063FFE
+			myActionForIncomingType Drop
+			myUseAlternativeActionForPlayingType TRUE
+			mySchedulingRuleList
+			{
+				VOSchedulingRule "New VOSchedulingRule"
+				{
+					myPlayingType < uid=E4123D276688EB5A000438BA4CAF33BB > = VOType_Barks_Minigames DA5615DD65A529640004A251B2063FFE
+					myActionForIncomingType Drop
+				}
+			}
+		}
+		VOBehavior "Drop Vignettes"
+		{
+			myIncomingType < uid=3A129121667BD8DE000DA07E5DFDB9F5 > = VOType_Scene_Vignette 3A1C5D1862D94CE500003D79531CD7E5
+			myActionForIncomingType Drop
+		}
+	}
+}
+
+VOModerator VOState_VendorMenu < uid=E4123D2764E8C02C000E930D5A8FB37D >
+{
+	myApplyInitialActionsToPlayingTypes TRUE
+	myVOBehaviorList
+	{
+		VOBehavior VendorMenu_Barks_CombatNPCDefault
+		{
+			myIncomingType < uid=E4123D2764E8C02C000E930EC5D2183A > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+			myActionForIncomingType Drop
+		}
+		VOBehavior VendorMenu_Barks_CommsScanner
+		{
+			myIncomingType < uid=E4123D2764E8C02C000E930FB4AC35B4 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+			myActionForIncomingType Drop
+		}
+		VOBehavior VendorMenu_Barks_MainKayDefault
+		{
+			myIncomingType < uid=E4123D2764E8C02C000E9310794E292B > = VOType_Barks_MainKayDefault 3A1C5D1862D94CCF00003D748F07FBFC
+			myActionForIncomingType Drop
+		}
+		VOBehavior VendorMenu_Barks_MainPetDefault
+		{
+			myIncomingType < uid=E4123D2764E8C02C000E93115E7D6924 > = VOType_Barks_MainPetDefault 3A1C5D1862D94CD300003D758A259E82
+			myActionForIncomingType Drop
+		}
+		VOBehavior VendorMenu_Barks_SpaceCombatNPC
+		{
+			myIncomingType < uid=E4123D2764E8C02C000E93120B3BB919 > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+			myActionForIncomingType Drop
+		}
+		VOBehavior VendorMenu_Barks_SpaceCommsScanner
+		{
+			myIncomingType < uid=E4123D2764E8C02C000E9313DEEF2C5F > = VOType_Barks_SpaceCommsScanner 3A1C5D186321E27D00004C93DEEEE68A
+			myActionForIncomingType Drop
+		}
+		VOBehavior VendorMenu_Barks_SpaceMain
+		{
+			myIncomingType < uid=E4123D2764E8C02C000E9314D6E041D8 > = VOType_Barks_SpaceMain 3A1C5D186321E29200004C95BCABD389
+			myActionForIncomingType Drop
+		}
+		VOBehavior VendorMenu_Barks_Vendor
+		{
+			myIncomingType < uid=E4123D2764E8C02C000E931563612669 > = VOType_Barks_AttractsWantedReset E4123D2766925D14000233B79C303C5F
+			myActionForIncomingType Drop
+		}
+		VOBehavior VendorMenu_Barks_World
+		{
+			myIncomingType < uid=E4123D2766868BBF0007C8C07225AA61 > = VOType_Barks_World 3A1C5D1862D94CA500003D6C14C78A32
+			myActionForIncomingType Drop
+		}
+		VOBehavior VendorMenu_Scene_Vignette
+		{
+			myIncomingType < uid=E4123D2764E8C02C000E9316B544A86D > = VOType_Scene_Vignette 3A1C5D1862D94CE500003D79531CD7E5
+			myActionForIncomingType Drop
+		}
+		VOBehavior VendorMenu_Scene_QuestVignette
+		{
+			myIncomingType < uid=DA5615DD65F1CE7B00031F5E4D3E7FEB > = VOType_Scene_QuestVignette E4123D27637BB2260000E252EA68D12A
+			myActionForIncomingType Drop
+		}
+		VOBehavior VendorMenu_Scene_AttractsMultiOHC
+		{
+			myIncomingType < uid=DA5615DD66D1BC0A000005E5E19CF7FB > = VOType_Barks_Attracts_MultiOHC DA5615DD66D19B220000040CB4235D96
+			myActionForIncomingType Drop
+		}
+		VOBehavior VendorMenu_Scene_VendorQueue
+		{
+			myIncomingType < uid=F457223267C87A4200058699147A79D9 > = VOType_Scene_VendorQueue F457223267C8796D000553988B9BFA7A
+			myActionForIncomingType Queue
+			myPostRequestPendingInfo
+			{
+				myPendingTime 0.0
+				myPlayAfterTimeout FALSE
+			}
+			mySchedulingRuleList
+			{
+			}
+		}
+	}
+}
+
+VOModerator VOState_Minigame < uid=DA5615DD65A526300004A24798FB34A5 >
+{
+	myApplyInitialActionsToPlayingTypes TRUE
+	myVOBehaviorList
+	{
+		VOBehavior Minigame_Barks_CombatNPCDefault
+		{
+			myIncomingType < uid=DA5615DD65A526300004A2488693E58D > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+			myActionForIncomingType Drop
+			mySchedulingRuleList
+			{
+			}
+		}
+		VOBehavior Minigame_Barks_CommsScanner
+		{
+			myIncomingType < uid=DA5615DD65A526300004A24AE55193A6 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+			myActionForIncomingType Drop
+		}
+		VOBehavior Minigame_Barks_World
+		{
+			myIncomingType < uid=DA5615DD65A526300004A24954E97C1C > = VOType_Barks_World 3A1C5D1862D94CA500003D6C14C78A32
+			myActionForIncomingType Drop
+		}
+		VOBehavior Minigame_Barks_Vendor
+		{
+			myIncomingType < uid=DA5615DD65A526300004A24ECB5B125B > = VOType_Barks_Attracts 3A1C5D1862D94CDE00003D78F56B9644
+			myActionForIncomingType Drop
+		}
+		VOBehavior Minigame_Barks_Attracts_MultiOHC
+		{
+			myIncomingType < uid=DA5615DD66D1BBE6000005E486FCEB5E > = VOType_Barks_Attracts_MultiOHC DA5615DD66D19B220000040CB4235D96
+			myActionForIncomingType Drop
+		}
+		VOBehavior Minigame_Scene_Vignette
+		{
+			myIncomingType < uid=DA5615DD65A526300004A24F19AA4DE0 > = VOType_Scene_Vignette 3A1C5D1862D94CE500003D79531CD7E5
+			myActionForIncomingType Drop
+		}
+		VOBehavior Minigame_Barks_CombatNPCStateChange
+		{
+			myIncomingType < uid=E4123D27667847540007167E9E93275B > = VOType_Barks_CombatNPCStateChange 3A1C5D1862D94CBA00003D70CB09EFE6
+			myActionForIncomingType Drop
+		}
+		VOBehavior Minigame_Barks_Minigames
+		{
+			myIncomingType < uid=E4123D2766FE41790005C7BABC09537A > = VOType_Barks_Minigames DA5615DD65A529640004A251B2063FFE
+			mySchedulingRuleList
+			{
+				VOSchedulingRule DropSabaccBarksIfScriptedVOIsAlreadyPlaying
+				{
+					myPlayingType < uid=E4123D2766FE41790005C7BBA547C75B > = VOType_Scene_ScriptedVO 3A1C5D1862D94CAA00003D6D2224BA70
+					myActionForIncomingType Drop
+				}
+			}
+		}
+		VOBehavior Minigame_Scene_ScriptedVOTimer
+		{
+			myIncomingType < uid=DA5615DD672B701C000001A00C6B8987 > = VOType_Scene_ScriptedVOTimer DA5615DD672B6F9C0000019E1EAE2DE4
+			myActionForIncomingType Queue
+		}
+	}
+}
+
+VOModerator VOState_GameplayDialogue < uid=3A12912165CA16C6000D74C920E4B8BC >
+{
+	myApplyInitialActionsToPlayingTypes FALSE
+	myVOBehaviorList
+	{
+		VOBehavior GameplayDialogue_Barks_CombatNPCDefault
+		{
+			myIncomingType < uid=3A12912165CA16C6000D74CAA5FA8B1D > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+			myActionForIncomingType Drop
+			myUseAlternativeActionForPlayingType TRUE
+		}
+		VOBehavior GameplayDialogue_Barks_CombatNPCStateChange
+		{
+			myIncomingType < uid=F457223266315C61000D041A7AFA07F6 > = VOType_Barks_CombatNPCStateChange 3A1C5D1862D94CBA00003D70CB09EFE6
+			myActionForIncomingType Drop
+			myUseAlternativeActionForPlayingType TRUE
+		}
+		VOBehavior GameplayDialogue_Barks_CommsScanner
+		{
+			myIncomingType < uid=3A12912165CA16C6000D74CB089E3667 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+			myActionForIncomingType Drop
+		}
+		VOBehavior GameplayDialogue_Barks_MainKayDefault
+		{
+			myIncomingType < uid=3A12912165CA16C6000D74CCA68DD151 > = VOType_Barks_MainKayDefault 3A1C5D1862D94CCF00003D748F07FBFC
+			myActionForIncomingType Drop
+		}
+		VOBehavior GameplayDialogue_Barks_MainPetDefault
+		{
+			myIncomingType < uid=3A12912165CA16C6000D74CDA3A9BC64 > = VOType_Barks_MainPetDefault 3A1C5D1862D94CD300003D758A259E82
+			myActionForIncomingType Drop
+			myUseAlternativeActionForPlayingType TRUE
+		}
+		VOBehavior GameplayDialogue_Barks_SpaceCombatNPC
+		{
+			myIncomingType < uid=3A12912165CA16C6000D74CED27A696F > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+			myActionForIncomingType Drop
+		}
+		VOBehavior GameplayDialogue_Barks_SpaceCommsScanner
+		{
+			myIncomingType < uid=3A12912165CA16C6000D74CF2BAE5049 > = VOType_Barks_SpaceCommsScanner 3A1C5D186321E27D00004C93DEEEE68A
+			myActionForIncomingType Drop
+		}
+		VOBehavior GameplayDialogue_Barks_SpaceMain
+		{
+			myIncomingType < uid=3A12912165CA16C6000D74D0E3610B34 > = VOType_Barks_SpaceMain 3A1C5D186321E29200004C95BCABD389
+			myActionForIncomingType Drop
+		}
+		VOBehavior GameplayDialogue_Barks_Minigames
+		{
+			myIncomingType < uid=3A12912165CA16C6000D74D10DC5C1A0 > = VOType_Barks_Minigames DA5615DD65A529640004A251B2063FFE
+			myActionForIncomingType Drop
+			mySchedulingRuleList
+			{
+			}
+		}
+		VOBehavior GameplayDialogue_Barks_Attracts_MultiOHC
+		{
+			myIncomingType < uid=DA5615DD66D1BBC6000005D41AD10FF2 > = VOType_Barks_Attracts_MultiOHC DA5615DD66D19B220000040CB4235D96
+			myActionForIncomingType Drop
+			myUseAlternativeActionForPlayingType FALSE
+		}
+		VOBehavior GameplayDialogue_Barks_Attracts
+		{
+			myIncomingType < uid=3A12912165CA16C6000D74D20CF5E066 > = VOType_Barks_Attracts 3A1C5D1862D94CDE00003D78F56B9644
+			myActionForIncomingType Drop
+			myUseAlternativeActionForPlayingType TRUE
+		}
+		VOBehavior GameplayDialogue_Barks_World
+		{
+			myIncomingType < uid=3A12912165CA16C6000D74D35580D5A9 > = VOType_Barks_World 3A1C5D1862D94CA500003D6C14C78A32
+			myActionForIncomingType Drop
+			myUseAlternativeActionForPlayingType TRUE
+			mySchedulingRuleList
+			{
+				VOSchedulingRule "New VOSchedulingRule"
+				{
+					myPlayingType < uid=E4123D276688291F00149E883878DB6C > = VOType_Barks_World 3A1C5D1862D94CA500003D6C14C78A32
+					myActionForIncomingType Drop
+					myFadeOutTime 0.5
+				}
+			}
+		}
+		VOBehavior GameplayDialogue_Scene_Vignette
+		{
+			myIncomingType < uid=3A12912165CA16C6000D74D4BE534C86 > = VOType_Scene_Vignette 3A1C5D1862D94CE500003D79531CD7E5
+			myActionForIncomingType Drop
+		}
+		VOBehavior GameplayDialogue_Scene_QuestVignette
+		{
+			myIncomingType < uid=DA5615DD65F1CE6200031F5DA3729727 > = VOType_Scene_QuestVignette E4123D27637BB2260000E252EA68D12A
+			myActionForIncomingType Drop
+		}
+		VOBehavior GameplayDialogue_Scene_VendorQueue
+		{
+			myIncomingType < uid=F457223267C87A5C0005869A3E623EAD > = VOType_Scene_VendorQueue F457223267C8796D000553988B9BFA7A
+			myActionForIncomingType Queue
+		}
+		VOBehavior GameplayDialogue_Barks_LevelTransitionVOQueue
+		{
+		}
+	}
+}
+
+VOModerator VOState_MultiOHC_Observe < uid=DA5615DD66D1BBC6000005D5740885B6 >
+{
+	myApplyInitialActionsToPlayingTypes FALSE
+	myVOBehaviorList
+	{
+		VOBehavior MultiOHC_Barks_CombatNPCDefault
+		{
+			myIncomingType < uid=DA5615DD66D1BBC6000005D6CF14E6F6 > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+			myActionForIncomingType Drop
+		}
+		VOBehavior MultiOHC_Barks_CombatNPCStateChange
+		{
+			myIncomingType < uid=DA5615DD66D1BBC6000005D7C7988CCA > = VOType_Barks_CombatNPCStateChange 3A1C5D1862D94CBA00003D70CB09EFE6
+			myActionForIncomingType Drop
+		}
+		VOBehavior MultiOHC_Barks_CommsScanner
+		{
+			myIncomingType < uid=DA5615DD66D1BBC6000005D855A4A554 > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+			myActionForIncomingType Drop
+		}
+		VOBehavior MultiOHC_Barks_MainKayDefault
+		{
+			myIncomingType < uid=DA5615DD66D1BBC6000005D965B1BF63 > = VOType_Barks_MainKayDefault 3A1C5D1862D94CCF00003D748F07FBFC
+			myActionForIncomingType Drop
+			myUseAlternativeActionForPlayingType TRUE
+		}
+		VOBehavior MultiOHC_Barks_MainPetDefault
+		{
+			myIncomingType < uid=DA5615DD66D1BBC6000005DA0DFAC675 > = VOType_Barks_MainPetDefault 3A1C5D1862D94CD300003D758A259E82
+			myActionForIncomingType Drop
+			myUseAlternativeActionForPlayingType TRUE
+		}
+		VOBehavior MultiOHC_Barks_SpaceCombatNPC
+		{
+			myIncomingType < uid=DA5615DD66D1BBC6000005DB0E07E5DC > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+			myActionForIncomingType Drop
+		}
+		VOBehavior MultiOHC_Barks_SpaceCommsScanner
+		{
+			myIncomingType < uid=DA5615DD66D1BBC6000005DC7EF96F4D > = VOType_Barks_SpaceCommsScanner 3A1C5D186321E27D00004C93DEEEE68A
+			myActionForIncomingType Drop
+		}
+		VOBehavior MultiOHC_Barks_SpaceMain
+		{
+			myIncomingType < uid=DA5615DD66D1BBC6000005DD965B8D56 > = VOType_Barks_SpaceMain 3A1C5D186321E29200004C95BCABD389
+			myActionForIncomingType Drop
+		}
+		VOBehavior MultiOHC_Barks_Minigames
+		{
+			myIncomingType < uid=DA5615DD66D1BBC6000005DE4D493886 > = VOType_Barks_Minigames DA5615DD65A529640004A251B2063FFE
+			myActionForIncomingType Drop
+			mySchedulingRuleList
+			{
+			}
+		}
+		VOBehavior MultiOHC_Barks_Attracts
+		{
+			myIncomingType < uid=DA5615DD66D1BBC6000005DF7C511DF6 > = VOType_Barks_Attracts 3A1C5D1862D94CDE00003D78F56B9644
+			myActionForIncomingType Drop
+			myUseAlternativeActionForPlayingType TRUE
+		}
+		VOBehavior MultiOHC_Barks_World
+		{
+			myIncomingType < uid=DA5615DD66D1BBC6000005E0C9679636 > = VOType_Barks_World 3A1C5D1862D94CA500003D6C14C78A32
+			myActionForIncomingType Drop
+			myUseAlternativeActionForPlayingType TRUE
+			mySchedulingRuleList
+			{
+				VOSchedulingRule "New VOSchedulingRule"
+				{
+					myPlayingType < uid=DA5615DD66D1BBC6000005E1831C8371 > = VOType_Barks_World 3A1C5D1862D94CA500003D6C14C78A32
+					myActionForIncomingType Drop
+					myFadeOutTime 0.5
+				}
+			}
+		}
+		VOBehavior MultiOHC_Scene_Vignette
+		{
+			myIncomingType < uid=DA5615DD66D1BBC6000005E28795169C > = VOType_Scene_Vignette 3A1C5D1862D94CE500003D79531CD7E5
+			myActionForIncomingType Drop
+			myUseAlternativeActionForPlayingType TRUE
+		}
+		VOBehavior MultiOHC_Scene_QuestVignette
+		{
+			myIncomingType < uid=DA5615DD66D1BBC6000005E373DF1535 > = VOType_Scene_QuestVignette E4123D27637BB2260000E252EA68D12A
+			myActionForIncomingType Drop
+			myUseAlternativeActionForPlayingType TRUE
+		}
+	}
+}
+
+VOModerator VOState_GameOver < uid=1EC89F2566150267000330C930C66A4D >
+{
+	myApplyInitialActionsToPlayingTypes TRUE
+	myVOBehaviorList
+	{
+		VOBehavior KayDead_Barks_CombatNPCDefault
+		{
+			myIncomingType < uid=1EC89F2566150267000330CA0A9BE407 > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+			myActionForIncomingType Drop
+		}
+		VOBehavior KayDead_Barks_CommsScanner
+		{
+			myIncomingType < uid=1EC89F2566150267000330CBF593982C > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+			myActionForIncomingType Drop
+		}
+		VOBehavior KayDead_Barks_MainKayDefault
+		{
+			myIncomingType < uid=1EC89F2566150267000330CC24D0387D > = VOType_Barks_MainKayDefault 3A1C5D1862D94CCF00003D748F07FBFC
+			myActionForIncomingType Drop
+		}
+		VOBehavior KayDead_Barks_MainPetDefault
+		{
+			myIncomingType < uid=1EC89F2566150267000330CD2747AAA8 > = VOType_Barks_MainPetDefault 3A1C5D1862D94CD300003D758A259E82
+			myActionForIncomingType Drop
+		}
+		VOBehavior KayDead_Barks_SpaceCombatNPC
+		{
+			myIncomingType < uid=1EC89F2566150267000330CEF229C99B > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+			myActionForIncomingType Drop
+		}
+		VOBehavior KayDead_Barks_SpaceCommsScanner
+		{
+			myIncomingType < uid=1EC89F2566150267000330CF9B127D0A > = VOType_Barks_SpaceCommsScanner 3A1C5D186321E27D00004C93DEEEE68A
+			myActionForIncomingType Drop
+		}
+		VOBehavior KayDead_Barks_SpaceMain
+		{
+			myIncomingType < uid=1EC89F2566150267000330D03EA4ADC5 > = VOType_Barks_SpaceMain 3A1C5D186321E29200004C95BCABD389
+			myActionForIncomingType Drop
+		}
+		VOBehavior KayDead_Barks_Minigames
+		{
+			myIncomingType < uid=1EC89F2566150267000330D124AC5253 > = VOType_Barks_Minigames DA5615DD65A529640004A251B2063FFE
+			myActionForIncomingType Drop
+		}
+		VOBehavior KayDead_Barks_Attracts
+		{
+			myIncomingType < uid=1EC89F2566150267000330D29875224C > = VOType_Barks_Attracts 3A1C5D1862D94CDE00003D78F56B9644
+			myActionForIncomingType Drop
+		}
+		VOBehavior KayDead_Barks_Attracts_MultiOHC
+		{
+			myIncomingType < uid=DA5615DD66D1BCF1000005E9228D5351 > = VOType_Barks_Attracts_MultiOHC DA5615DD66D19B220000040CB4235D96
+			myActionForIncomingType Drop
+		}
+		VOBehavior KayDead_Barks_World
+		{
+			myIncomingType < uid=1EC89F2566150267000330D39087E665 > = VOType_Barks_World 3A1C5D1862D94CA500003D6C14C78A32
+			myActionForIncomingType Drop
+		}
+		VOBehavior KayDead_Barks_LevelTransition
+		{
+			myIncomingType < uid=DA5615DD67E405AB00229BEDD16AD5EA > = VOType_LevelTransitionQueue DA5615DD67E404D100229B9A1096EDAD
+			myActionForIncomingType Drop
+		}
+	}
+}
+
+VOModerator VOState_Takedown < uid=3A1291216654A3BE000FB9A3E20C3D3A >
+{
+	myApplyInitialActionsToPlayingTypes TRUE
+	myVOBehaviorList
+	{
+		VOBehavior "Drop Kay Barks"
+		{
+			myIncomingType < uid=3A1291216654A434000FB9A43512B1DA > = VOType_Barks_MainKayDefault 3A1C5D1862D94CCF00003D748F07FBFC
+			myActionForIncomingType Drop
+			mySchedulingRuleList
+			{
+				VOSchedulingRule "New VOSchedulingRule"
+				{
+					myPlayingType < uid=3A12912166558C670002F680F22DA7B4 > = VOType_Barks_MainKayDefault 3A1C5D1862D94CCF00003D748F07FBFC
+					myActionForIncomingType Drop
+					myActionForPlayingType Drop
+				}
+			}
+		}
+		VOBehavior "Drop Nix Barks"
+		{
+			myIncomingType < uid=3A1291216655C45700035CD2E6DE27A1 > = VOType_Barks_MainPetDefault 3A1C5D1862D94CD300003D758A259E82
+			myActionForIncomingType Drop
+		}
+	}
+}
+
+VOModerator VOState_LoadingScreen < uid=3A12912166559A3000035ECEBA27319E >
+{
+	myApplyInitialActionsToPlayingTypes FALSE
+	myVOBehaviorList
+	{
+		VOBehavior KayDead_Barks_CombatNPCDefault
+		{
+			myIncomingType < uid=3A12912166559A3000035ECF2A5AA4F4 > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+			myActionForIncomingType Drop
+		}
+		VOBehavior KayDead_Barks_CommsScanner
+		{
+			myIncomingType < uid=3A12912166559A3000035ED0CC0296DC > = VOType_Barks_CommsScanner 3A1C5D1862D94CD800003D76E4CAA2AA
+			myActionForIncomingType Drop
+		}
+		VOBehavior KayDead_Barks_MainKayDefault
+		{
+			myIncomingType < uid=3A12912166559A3000035ED1062E8900 > = VOType_Barks_MainKayDefault 3A1C5D1862D94CCF00003D748F07FBFC
+			myActionForIncomingType Drop
+			myUseAlternativeActionForPlayingType TRUE
+			myAlternativeActionForPlayingType Drop
+		}
+		VOBehavior KayDead_Barks_MainPetDefault
+		{
+			myIncomingType < uid=3A12912166559A3000035ED28506E39A > = VOType_Barks_MainPetDefault 3A1C5D1862D94CD300003D758A259E82
+			myActionForIncomingType Drop
+		}
+		VOBehavior KayDead_Barks_SpaceCombatNPC
+		{
+			myIncomingType < uid=3A12912166559A3000035ED37A848ACA > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+			myActionForIncomingType Drop
+		}
+		VOBehavior KayDead_Barks_SpaceCommsScanner
+		{
+			myIncomingType < uid=3A12912166559A3000035ED4A2E84730 > = VOType_Barks_SpaceCommsScanner 3A1C5D186321E27D00004C93DEEEE68A
+			myActionForIncomingType Drop
+		}
+		VOBehavior KayDead_Barks_SpaceMain
+		{
+			myIncomingType < uid=3A12912166559A3000035ED5D0FCBCE4 > = VOType_Barks_SpaceMain 3A1C5D186321E29200004C95BCABD389
+			myActionForIncomingType Drop
+		}
+		VOBehavior KayDead_Barks_Minigames
+		{
+			myIncomingType < uid=3A12912166559A3000035ED662548F52 > = VOType_Barks_Minigames DA5615DD65A529640004A251B2063FFE
+			myActionForIncomingType Drop
+		}
+		VOBehavior KayDead_Barks_Attracts
+		{
+			myIncomingType < uid=3A12912166559A3000035ED73CD88B08 > = VOType_Barks_Attracts 3A1C5D1862D94CDE00003D78F56B9644
+			myActionForIncomingType Drop
+		}
+		VOBehavior KayDead_Barks_Attracts_MultiOHC
+		{
+			myIncomingType < uid=DA5615DD66D1BD0E000005EA7DA50C8E > = VOType_Barks_Attracts_MultiOHC DA5615DD66D19B220000040CB4235D96
+			myActionForIncomingType Drop
+		}
+		VOBehavior KayDead_Barks_World
+		{
+			myIncomingType < uid=3A12912166559A3000035ED8DCE99A64 > = VOType_Barks_World 3A1C5D1862D94CA500003D6C14C78A32
+			myActionForIncomingType Drop
+		}
+		VOBehavior KayDead_Onos_Kay
+		{
+			myIncomingType < uid=3A12912167125B9B001BBAE059D3F512 > = VOType_Onos_Kay E4123D27661565B00002A2466EF385C9
+			myActionForIncomingType Drop
+			myUseAlternativeActionForPlayingType TRUE
+		}
+	}
+}
+

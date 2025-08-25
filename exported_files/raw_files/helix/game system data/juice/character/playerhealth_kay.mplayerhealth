@@ -1,0 +1,55 @@
+include "helix/game system data/fruit/character/playerhealth.fruit"
+include "helix/game system data/juice/playerrestrictions/brinkofdeath.mplayerrestriction"
+
+PlayerHealth playerhealth_kay < uid=FD10711764804CF50000AD4FF9503370 >
+{
+	myHealthSettings
+	{
+		myMaxHealthFormula "3 + PlayerHealthBonus"
+		myHealingRateFormula "0.4 * PlayerHealingRateModifier"
+		myCanRegenerate TRUE
+		myRegenerationRateFormula 0.20
+		myRegenerationRateDuringCombatFormula PlayerRegenerationRateDuringCombat
+		myHealthRegenCooldown "(5 + PlayerHealthRegenCooldownReduction) * PlayerRegenRateMultiplier"
+		myUseSafetyBelt TRUE
+		mySafetyBelt
+		{
+			myAccumulatedDamageTakenToActivate 1.1
+			myDamageReductionPerSecond 1.0
+			myImmunityDuration 3.0
+			myMinIntervalBetweenResets 20.0
+		}
+		myHealthAttributes
+		{
+			myHealthRegenModeAttribute 58C9A198650969330003FC00D45B296F
+			myHealthSegmentsToRegenerateAttribute 58C9A1986509690F0003FBF790A8B7BC
+			myHealthSegmentsToRegenerateDuringCombatAttribute 58C9A1986509691F0003FBF97EF454DA
+			myReviveAttribute 1C73D33B64C22AA000013868D0146029
+			myDifficultyDamageAttributes
+			{
+				DifficultyDamageAttributeModifier Physical_Damage_Modifier
+				{
+					myDamageType Physical
+					myDamageSourceType Projectile
+					myDifficultyDamageAttribute 85F4BAC2657AF05C0025A8E6104D921A
+				}
+				DifficultyDamageAttributeModifier Blast_Damage_Modifier
+				{
+					myDamageType Blast
+					myDamageSourceType Explosion
+					myDifficultyDamageAttribute 85F4BAC2657AF32000064BBD0DBF1216
+				}
+				DifficultyDamageAttributeModifier Melee_Damage_Modifier
+				{
+					myDamageType Physical
+					myDamageSourceType Melee
+					myDifficultyDamageAttribute 85F4BAC2657AFFCA002438D019727FF3
+				}
+			}
+		}
+	}
+	myLowHealthWarningThreshold 1.0
+	myBrinkOfDeathRestrictions < uid=58C9A1986509B21A0000541FA2BA2604 > = BrinkOfDeath 58C9A1986509B1B600003DFC64D3DED0
+	myCoopDeathAnimationDuration 30.0
+}
+

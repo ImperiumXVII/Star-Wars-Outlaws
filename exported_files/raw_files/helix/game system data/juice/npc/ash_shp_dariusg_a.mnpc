@@ -1,0 +1,39 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/loottable/loot_global.mloottable"
+include "helix/game system data/juice/npc/ash_shp_base.mnpc"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/neu_shp_dariusg_a.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC ash_shp_dariusg_a < uid=6EA7962563E50DC900005203C33C2DFA > : ash_shp_base
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"name of ship - Darius G-class Freighter - Ashiga faction\", enabled = true, guid = #6AE6EE0D65798FC9000265853F9D75D0, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10726, text = \"Darius G-class Freighter\", type = \"MenuLine\""
+	myCharacterVisuals < uid=F95CD8F365002BBD000078AF8B7064C3 > = character_visuals_npc_shp_DariusG_Freighter F95CD8F362ECDB5B0000E9CFCA726C84
+	mySpaceshipType DariusAshiga
+	myMaxHealth 1400
+	myHealthFormula 700*SpaceHealthWarshipDifficultyModifier
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag (0)" < uid=3A12912164EE11CF0003C20343AEDF33 > = Agent_Gender_MasculineTag 16DEADE6626D20EA00002E504CE30DE2
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A12912164EE11BF0003C200BB013AD7 > = Agent_Archetype_Pilot 3A12912163EF7B9500005053123CF383
+		RBTagsTag "New RBTagsTag (0)" < uid=3A12912164EE11C50003C201ECBA7043 > = Agent_ShipType_FreighterTag 3A12912164EE0F180000FFAD5587F6E6
+		RBTagsTag "New RBTagsTag (1)" < uid=3A12912164EE11CA0003C202C23DF194 > = Agent_Faction_AshigaClanTag 4728ADF9620B7AF800002022DD5E94D3
+	}
+	myDialogueCharactersFromDatabase
+	{
+		DialogueCharacterWithTags "Ashiga M01" < uid=3A12912164EE11DD0003C21779CB2E1E > = Ashiga_Pilot_M01 3A1291216475FE6A0001627DE862B6ED
+	}
+	myLodType Spaceship_Cruiser
+	myVisionProfile < uid=6B0E1DE965786D71001E6E8AE744F55F > = visionProfile_ash_ship_HaulerShuttle 6B0E1DE964B7A45D0000AD65E6A9B9FC
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=6B0E1DE964B67EDF0000A10646F29B5E > = detectionProfile_ash_ship_HaulerShuttle 6B0E1DE964B662520003C71850AE16FB
+	}
+	myThreatProfile < uid=F95CD8F364AD679C0000A4A0FDD94FD5 > = spaceshipnpcthreatprofilesdefault F95CD8F364ABB9CB0000B1CE8AEE9E0B
+	myLootTable < uid=2AE2EC85654CB8210001096C6BD31F7A > = loot_OnKillShip_Freighter 2AE2EC8565E5C4AE000545FA2874CC04
+}
+

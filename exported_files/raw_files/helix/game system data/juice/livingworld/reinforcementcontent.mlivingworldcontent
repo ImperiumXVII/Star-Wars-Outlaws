@@ -1,0 +1,171 @@
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+include "helix/game system data/juice/livingworld/livingworld_generic_conditions.juice"
+
+LivingWorldContentWantedReinforcement "Wanted Reinforcement  Dropship Troop Deployment" < uid=4728ADF961A0B6F80000376F18A45E4A >
+{
+	myTicket < uid=4728ADF961A0B6F8000037707414F42C >
+	{
+	}
+	myTicketMax < uid=4728ADF961A0B6F800003771E93DFFC2 >
+	{
+		myDefaultValue 5
+	}
+	myActivationGameConditions
+	{
+		GameConditionFlag True
+		{
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_IsCompletedInCurrentActivation IsCompletedInCurrentActivation
+		{
+		}
+	}
+}
+
+LivingWorldContentWantedReinforcement "Space Wanted Reinforcement  Tie Fighter Group" < uid=E42FA10C624E988B00002BE03926D91E >
+{
+	myTicket < uid=E42FA10C62B2B902000200EEC1FC7F77 >
+	{
+	}
+	myTicketMax < uid=E42FA10C624E9B4900002BE1906EF3B3 >
+	{
+		myDefaultValue 2
+	}
+	myActivationGameConditions
+	{
+		GameConditionFlag True
+		{
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_IsCompletedInCurrentActivation IsCompletedInCurrentActivation
+		{
+		}
+	}
+}
+
+LivingWorldContentWantedReinforcement Encounter_SearchParty_RoadTransport < uid=85F4BAC265A965FB000301B1A71B8654 >
+{
+	myLocationCooldown 5.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayerRange "New GameConditionContextLivingWorldContentLocation_DistanceToPlayerRange"
+		{
+			myMinDistance 250.0
+			myMaxDistance 500.0
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "New GameConditionContextLivingWorldContentLocation_DistanceToPlayer"
+		{
+			myDistance 250.0
+		}
+	}
+}
+
+LivingWorldContentWantedReinforcement "Wanted Reinforcement" < uid=5C148C4665E86B1F0003E0199EF331DD >
+{
+	myLocationCooldown 5.0
+	myTicket < uid=5C148C4665E86BAF0003E01AA3372C90 >
+	{
+	}
+	myTicketMax < uid=5C148C4665E86BAF0003E01B8EAC2416 >
+	{
+		myDefaultValue 3
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_IsInLivingWorldLazyFrustum "NOT in Near Frustum"
+		{
+			myIsNegated TRUE
+			myFrustumType Near
+		}
+		GameConditionContextLivingWorldContentLocation_IsInLivingWorldLazyFrustum "NOT in Middle Frustum"
+		{
+			myIsNegated TRUE
+			myFrustumType Middle
+		}
+		GameConditionContextLivingWorldContentLocation_IsInLivingWorldLazyFrustum "NOT in Far Frustum"
+		{
+			myIsNegated TRUE
+			myFrustumType Far
+		}
+		LivingWorldGameConditionGroup Distance = "Distance to Player is between Very Near and Far"
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup AND
+		{
+			myOperator And
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_IsCompletedInCurrentActivation IsCompletedInCurrentActivation
+				{
+				}
+				LivingWorldGameConditionGroup Distance = "Global deactivation rule ground event Medium"
+			}
+		}
+	}
+	myIsRecruitableToWantedPursuit TRUE
+}
+
+LivingWorldContentWantedReinforcement "Wanted Reinforcement Speeder" < uid=BAB09C5865DCA4720003079BF5DD8C48 > : "Wanted Reinforcement"
+{
+	myTicket < uid=5C148C4665E88B50000000EDD7CD3DAD >
+	{
+	}
+	myTicketMax < uid=5C148C4665E88B50000000EE91F211DD >
+	{
+		myDefaultValue 4
+	}
+}
+
+LivingWorldContentWantedReinforcement "Wanted Reinforcement Road Transport" < uid=6F2AF919618A7FC70000198B51C39E5C > : "Wanted Reinforcement"
+{
+	myTicket < uid=5C148C4665E88B50000000EB30D20BCB >
+	{
+	}
+	myTicketMax < uid=5C148C4665E88B50000000EC1594E311 >
+	{
+		myDefaultValue 4
+	}
+}
+
+LivingWorldContentWantedReinforcement "Wanted Reinforcement On Foot" < uid=BAB09C5865DC9DD50000CABF850F4967 > : "Wanted Reinforcement"
+{
+	myTicket < uid=5C148C4665E88B50000000EF31DEDC7B >
+	{
+	}
+	myTicketMax < uid=5C148C4665E88B50000000F083E03D3A >
+	{
+		myDefaultValue 4
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer Distance = "Distance to Player is Near"
+		GameConditionContextLivingWorldContentLocation_IsInLivingWorldLazyFrustum "NOT in Near Frustum"
+		{
+			myIsNegated TRUE
+			myFrustumType Near
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup AND
+		{
+			myOperator And
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_IsCompletedInCurrentActivation IsCompletedInCurrentActivation
+				{
+				}
+				LivingWorldGameConditionGroup Distance = "Distance to Player is between Near and Far"
+			}
+		}
+	}
+}
+

@@ -1,0 +1,207 @@
+include "helix/game system data/fruit/ai/detection.fruit"
+include "helix/game system data/juice/ai/npcdetectionmodifierprofiles.mnpcdetectionmodifierprofile"
+
+NPCDetectionProfile detectionProfile_base_ship < uid=6B0E1DE964B651460003C70C6430BCB7 >
+{
+	myAwareThreshold 0.5
+	myCombatThreshold 1.0
+	myPlayerAwareThreshold 0.5
+	myPlayerCombatThreshold 1
+	myVisibilityStimulusRate 1.5
+	myCanEnterCombatWhenHaveVisionToHostile TRUE
+	myDetectionModifierProfile < uid=6B0E1DE964B651920003C70DC73CD520 > = DefaultModifierProfile 16C7D1FB630DFA90000046FD93947419
+	myProjectileDetectionRadius 30.0
+	myDecayStartTime 1.5
+	myDecayRate 0.2
+	myBreadcrumbMaxSampleTime 30.0
+	myVisionToNonHostilePropagationPolicy IgnoreAll
+}
+
+NPCDetectionProfile detection_fighter_base < uid=B4FBE4306540D03000006BB5DC3042CA >
+{
+	myAwareThreshold 0.0
+	myCombatThreshold 1.5
+	myPlayerCombatThreshold 1.5
+	myVisionStimulusDropoffCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -7.3741851 0.00050034933, -28.469231 -0.010003939, }, outTangents = { 20 0, 0 0, }, properties = { 1299, 2323, }, values = { 70 3, 200 0.30000001, }, }, numKeys = 2, }"
+	myVisibilityStimulusRate 3
+	myCanEnterCombatWhenHaveVisionToHostile TRUE
+	myDetectionModifierProfile < uid=B4FBE4306540D03000006BB64FAAE1FD > = DefaultModifierProfile 16C7D1FB630DFA90000046FD93947419
+	myProjectileDetectionRadius 30.0
+	myDecayStartTime 1.5
+	myDecayRate 0.0
+	myBeforeCombatDecayModifier 1.5
+	myBreadcrumbMinTimeBetweenSamples 4.6
+	myBreadcrumbMaxSampleTime 30.0
+	myVisionToNonHostilePropagationPolicy IgnoreAll
+}
+
+NPCDetectionProfile detection_warship_base < uid=B4FBE4306540D03000006BB9EA288497 >
+{
+	myAwareThreshold 0.0
+	myCombatThreshold 1.5
+	myPlayerCombatThreshold 1.5
+	myVisionStimulusDropoffCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -432.86292 -0.049105763, }, outTangents = { 251.88916 -0.039999962, 0 0, }, properties = { 1299, 2323, }, values = { 500 3, 1500 0.2, }, }, numKeys = 2, }"
+	myVisibilityStimulusRate 1
+	myVisibilityStimulusRateMinimumThreshold 0
+	myCanEnterCombatWhenHaveVisionToHostile TRUE
+	myDetectionModifierProfile < uid=B4FBE4306540D03000006BBAF2953526 > = DefaultModifierProfile 16C7D1FB630DFA90000046FD93947419
+	myProjectileDetectionRadius 30.0
+	myDecayStartTime 1.5
+	myDecayRate 0.0
+	myBeforeCombatDecayModifier 1.5
+	myBreadcrumbMinTimeBetweenSamples 4.6
+	myBreadcrumbMaxSampleTime 30.1
+	myVisionToNonHostilePropagationPolicy IgnoreAll
+}
+
+NPCDetectionProfile detectionProfile_emp_ship_Interceptor < uid=6B0E1DE964B6520C0003C70E217BC568 > : detection_fighter_base
+{
+}
+
+NPCDetectionProfile detectionProfile_emp_ship_Fighter < uid=6B0E1DE964B6560C0003C7104FFE7EA2 > : detection_fighter_base
+{
+}
+
+NPCDetectionProfile detectionProfile_emp_ship_LightFreighter < uid=6B0E1DE964B656220003C7116E4A37A8 > : detection_fighter_base
+{
+}
+
+NPCDetectionProfile detectionProfile_emp_ship_Warship < uid=6B0E1DE964B6563D0003C71291E5EF8C > : detection_warship_base
+{
+}
+
+NPCDetectionProfile detectionProfile_emp_ship_HaulerShuttle < uid=6B0E1DE964B6564F0003C7136A021B82 > : detection_warship_base
+{
+}
+
+NPCDetectionProfile detectionProfile_ash_ship_Interceptor < uid=6B0E1DE964B660570003C714D6B5730E > : detection_fighter_base
+{
+}
+
+NPCDetectionProfile detectionProfile_ash_ship_Fighter < uid=6B0E1DE964B662190003C715E97DE907 > : detection_fighter_base
+{
+}
+
+NPCDetectionProfile detectionProfile_ash_ship_LightFreighter < uid=6B0E1DE964B6622B0003C716575AE22B > : detection_fighter_base
+{
+}
+
+NPCDetectionProfile detectionProfile_ash_ship_Warship < uid=6B0E1DE964B662420003C7172DFE3D49 > : detection_warship_base
+{
+}
+
+NPCDetectionProfile detectionProfile_ash_ship_HaulerShuttle < uid=6B0E1DE964B662520003C71850AE16FB > : detection_warship_base
+{
+}
+
+NPCDetectionProfile detectionProfile_cri_ship_interceptor < uid=6B0E1DE964B662670003C719569DF838 > : detection_fighter_base
+{
+}
+
+NPCDetectionProfile detectionProfile_cri_ship_Fighter < uid=6B0E1DE964B6644F0003C72ABDA4601D > : detection_fighter_base
+{
+}
+
+NPCDetectionProfile detectionProfile_cri_ship_LightFreighter < uid=6B0E1DE964B6644F0003C72BCF71B9B6 > : detection_fighter_base
+{
+}
+
+NPCDetectionProfile detectionProfile_cri_ship_Warship < uid=6B0E1DE964B6644F0003C72C95679D42 > : detection_warship_base
+{
+}
+
+NPCDetectionProfile detectionProfile_cri_ship_HaulerShuttle < uid=6B0E1DE964B6644F0003C72D86E51963 > : detection_warship_base
+{
+}
+
+NPCDetectionProfile detectionProfile_hut_ship_Interceptor < uid=6B0E1DE964B662E80003C71EF569437F > : detection_fighter_base
+{
+}
+
+NPCDetectionProfile detectionProfile_hut_ship_Fighter < uid=6B0E1DE964B6644F0003C72E18DF252A > : detection_fighter_base
+{
+}
+
+NPCDetectionProfile detectionProfile_hut_ship_LightFreighter < uid=6B0E1DE964B6644F0003C72F5A21938E > : detection_fighter_base
+{
+}
+
+NPCDetectionProfile detectionProfile_hut_ship_Warship < uid=6B0E1DE964B6644F0003C730F3059805 > : detection_warship_base
+{
+}
+
+NPCDetectionProfile detectionProfile_hut_ship_HaulerShuttle < uid=6B0E1DE964B6644F0003C7315D85A907 > : detection_warship_base
+{
+}
+
+NPCDetectionProfile detectionProfile_pir_ship_Fighter < uid=6B0E1DE964B663680003C7237D16F27F > : detection_fighter_base
+{
+}
+
+NPCDetectionProfile detectionProfile_pir_ship_Warship < uid=6B0E1DE964B663A40003C7240FEF1E7E > : detection_warship_base
+{
+}
+
+NPCDetectionProfile detectionProfile_pyk_ship_Interceptor < uid=6B0E1DE964B663E20003C72528E65AC3 > : detection_fighter_base
+{
+}
+
+NPCDetectionProfile detectionProfile_pyk_ship_Fighter < uid=6B0E1DE964B663FF0003C726DE234DC7 > : detection_fighter_base
+{
+}
+
+NPCDetectionProfile detectionProfile_pyk_ship_LightFreighter < uid=6B0E1DE964B6644F0003C732BC9221E8 > : detection_fighter_base
+{
+}
+
+NPCDetectionProfile detectionProfile_pyk_ship_Warship < uid=6B0E1DE964B6644F0003C733EA796817 > : detection_warship_base
+{
+}
+
+NPCDetectionProfile detectionProfile_pyk_ship_HaulerShuttle < uid=6B0E1DE964B6644F0003C734356300ED > : detection_warship_base
+{
+}
+
+NPCDetectionProfile detectionProfile_reb_ship_Interceptor < uid=6B0E1DE964B68A100000A1449A9173F6 > : detection_fighter_base
+{
+}
+
+NPCDetectionProfile detectionProfile_reb_ship_Fighter < uid=6B0E1DE964B68A260000A1456FBD9C5D > : detection_fighter_base
+{
+}
+
+NPCDetectionProfile detectionProfile_neu_ship_HaulerShuttle < uid=6B0E1DE964B68AD90000A151DE59C166 > : detection_warship_base
+{
+}
+
+NPCDetectionProfile detectionProfile_turret_base < uid=7EE64634657ABC360002661B6F77E827 >
+{
+	myAwareThreshold 0.5
+	myCombatThreshold 1.0
+	myPlayerAwareThreshold 0.5
+	myPlayerCombatThreshold 1
+	myVisibilityStimulusRate 0.5
+	myDetectionModifierProfile < uid=7EE64634657AC35800026621A474631A > = DefaultModifierProfile 16C7D1FB630DFA90000046FD93947419
+	myProjectileDetectionRadius 30.0
+	myDecayStartTime 1.5
+	myDecayRate 0.1
+	myBreadcrumbMaxSampleTime 30.0
+}
+
+NPCDetectionProfile detectionProfile_emp_turret_floating < uid=7EE64634657ABCC70002661D1F4634A6 > : detectionProfile_turret_base
+{
+	myProjectileDetectionRadius 100.0
+}
+
+NPCDetectionProfile detectionProfile_emp_turret_surface < uid=7EE64634657ABCD50002661EBDD13F03 > : detectionProfile_turret_base
+{
+}
+
+NPCDetectionProfile detectionProfile_emp_turret_star_destroyer < uid=7EE64634657ABCE10002661F6D37CE4E > : detectionProfile_turret_base
+{
+}
+
+NPCDetectionProfile detectionProfile_emp_turret_turbolaser < uid=7EE64634657AC7DF0002663166797FBF > : detectionProfile_turret_base
+{
+}
+

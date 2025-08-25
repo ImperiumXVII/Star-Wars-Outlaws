@@ -1,0 +1,36 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/pyk_wtk85_attached_npc_set.mnpconnpcattachmentset"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/ai/wtk85_attached_npc_set.mnpconnpcattachmentset"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/bh_shp_wtk85_a.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npc/pyk_shp_base.mnpc"
+
+NPC pyk_shp_wtk85_a < uid=4F59E8F0642A8070000072FA42632471 > : pyk_shp_base
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"WTK-85A - Pyke faction\", enabled = true, guid = #6AE6EE0D65787187000266A9736EE777, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10726, text = \"WTK-85A Interstellar Transport\", type = \"MenuLine\""
+	myCharacterVisuals < uid=F95CD8F36483672D000039D58451CF55 > = character_visuals_npc_shp_wtk85 6EA79625641D7812000072F72C25A9AE
+	mySpaceshipType WTK85Pyke
+	myMaxHealth 200
+	myHealthFormula 100*SpaceHealthDifficultyModifier
+	myFaction < uid=4F59E8F0642A8070000072FBA14D9E2E > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+	myLodType Spaceship_Medium
+	myVisionProfile < uid=F95CD8F36483672D000039D6F0B56737 > = visionProfile_pyk_ship_LightFreighter 6B0E1DE964B7A45D0000AD6D63252C1C
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=F95CD8F36483672D000039D7B678953A > = detectionProfile_pyk_ship_LightFreighter 6B0E1DE964B6644F0003C732BC9221E8
+	}
+	myThreatProfile < uid=F95CD8F36540CFCE0000658F9D34E98F > = Spaceshipthreatprofile F95CD8F3653F81EE00057BF796B8AD1A
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "wtk85 weapon loadout" < uid=F95CD8F36483672D000039D945DBFBC3 > = weaponloadout_pyk_shp_wtk85 6AF0BA04649BFC9400074B263F8E8370
+	}
+	myAttachedNPCsSet < uid=F95CD8F36483672D000039DA1E0CA090 > = pyk_wtk85_attached_npc_set F95CD8F36483652D0000AAE4EA830D64
+	myAudioParameters
+	{
+	}
+	myCombatRole LightFreighter
+}
+

@@ -1,0 +1,40 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/explosion/explosion_generic.mexplosion"
+include "helix/game system data/juice/projectile/realization/glowrod.mprojectilerealization"
+
+StaticBallisticProjectile glowRod_test < uid=1C021E9562A0698A000098215C1FA9DD >
+{
+	myObject
+	{
+		myMaterialType Kinetic
+		myMass 0.5
+		myFriction -2.0
+	}
+	myRealization < uid=1C021E9562A0698A000098229B370A85 > = GlowRod 1C021E9562A068A60000980A3012D72F
+	myActions
+	{
+		ProjectileActionExplosion "BoomBoom Expired"
+		{
+			myActionTargetType Expired
+			myDamageFormula 100
+			myRadiusFormula 4
+			myDefaultDamage 100.0
+			myDefaultRadius 4.0
+			myExplosion < uid=A207755D64A5839E0001A5FF570ECE38 > = explosion_generic A207755D64A582C00001A5DA05173953
+		}
+		ProjectileActionGameScript HitDetonation
+		{
+			myActionTargetType FinalHit
+			myGameScript "helix/game scripts/gs_dev_glowstick.mgamescript"
+			myDamageFormula 5
+			myRadiusFormula 10
+			myDefaultDamage 5.0
+			myDefaultRadius 10.0
+		}
+	}
+	myNPCSensoryProjectileType Grenade
+	myInitialSpeed 17.0
+	myBounceEnabled TRUE
+	myBounceSpeedRestitution 0.2
+}
+

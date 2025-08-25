@@ -1,0 +1,28 @@
+enum CameraBlendSpaceType
+{
+	LocalSpace
+	WorldSpace
+	Static
+}
+
+class CameraTransition < uid=auto >
+{
+	string myCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.2 0.001, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+	float myDistance 0.f
+	float myDuration 0.4f
+	CameraBlendSpaceType myBlendSpaceType
+	int myMaxActiveBlends 3
+	bool myUseDistanceBlend FALSE
+	bool myDistanceBlendUseCameraRotation FALSE
+	bool myResetZenith FALSE
+}
+
+list CameraTransitionOverrides
+{
+	CameraTransition
+}
+
+list CameraTransitionSpecials
+{
+	CameraTransition
+}

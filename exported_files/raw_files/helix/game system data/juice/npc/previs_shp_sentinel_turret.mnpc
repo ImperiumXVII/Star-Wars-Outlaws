@@ -1,0 +1,47 @@
+include "helix/game system data/juice/ai/spaceshipnpcthreatprofiles.mnpcthreatprofile"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC previs_shp_sentinel_turret < uid=51545CE4651D69E0000C38AA97A9E1C5 >
+{
+	myCharacterVisuals < uid=51545CE4651D69E0000C38AB02E82A5F > = character_visuals_npc_shp_sentinel_turret 4F59E8F0641B1060000062C074A833B7
+	myBehavior helix/behaviors/spaceship_turret_behavior.mbehavior
+	myNPCComponentSetType Turret
+	mySpaceshipType Default
+	myMaxHealth 10
+	myHealthFormula 10
+	myFaction < uid=51545CE4651D69E0000C38AC0E84253B > = Empire 16DEADE65F21E5AB000000B35532A71B
+	myLodType Spaceship_Small
+	myVisionProfile < uid=51545CE4651D69E0000C38ADD1AEE800 > = visionProfile_npc_turret_sentinel 7EE64634650D66A200052A34525FDF50
+	myHearingProfile < uid=51545CE4651D69E0000C38AE09D19C39 > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=51545CE4651D69E0000C38AF4A28F58E > = TiefighterDetectionProfile B4FBE430648AB2A300008156205C1AB4
+	}
+	myThreatProfile < uid=51545CE4651D69E0000C38B065AAAC0D > = spaceshipnpcthreatprofilesdefault F95CD8F364ABB9CB0000B1CE8AEE9E0B
+	myAimProfile < uid=51545CE4651D69E0000C38B1C3E2A650 > = NULLREFERENCE
+	myReducedAimProfile < uid=51545CE4651D69E0000C38B24657DA41 > = NULLREFERENCE
+	myMainWeapon < uid=51545CE4651D69E0000C38B34BDED380 > = NULLREFERENCE
+	myWeaponLoadouts
+	{
+	}
+	myAudioParameters
+	{
+		myEmitters
+		{
+			AgentEmitter Default
+			{
+				myEmitterLabel < uid=3A1C5D1865534BAD0000B5AD98751796 > = Root 3A1C5D1863906F050000AB6FBD984CC4
+				myEmitterPrefab "emitterLayerName = \"ship_npc\", enableDoppler = false, enablePropagation = true, enableReflections = false, sphereRadius = 1, stopOnDestroy = true"
+			}
+			AgentEmitter Weapon
+			{
+				myEmitterLabel < uid=3A1C5D1865534BAD0000B5AE31BFFECE > = Hand 3A1C5D1863906F180000AB718F1E9EFD
+				myEmitterPrefab "emitterLayerName = \"weapons_npc\", enableDoppler = false, enablePropagation = true, enableReflections = false, sphereRadius = 1, stopOnDestroy = true"
+			}
+		}
+	}
+	myCombatRole SpaceTurret
+}
+

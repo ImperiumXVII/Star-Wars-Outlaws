@@ -1,0 +1,85 @@
+include "helix/game system data/juice/character/character_visuals_2_silver_crimson_dawn.mcharactervisuals"
+include "helix/game system data/juice/loottable/loot_global.mloottable"
+include "helix/game system data/juice/melee/npc_melee_config.mnpcmeleeconfig"
+include "helix/game system data/juice/npc/base_humanoid.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC base_cri < uid=16DEADE66057785200000055C792EA2B > : base_humanoid
+{
+	myFaction < uid=16DEADE660577852000000560D05F00D > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2763578F560000524C94DEC35E > = Agent_Gender_FeminineTag 16DEADE6626D20EA00002E5277B65AD4
+	}
+	myPossibleSpeciesTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2763578F5D0000574335C8DDD2 > = Agent_Species_HumanTag 2736B365634D673A0003C27CFCFEFD1A
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2763578F6100005744BB2CA4DD > = Agent_Faction_CrimsonDawnTag 16DEADE6620AE18B000020CB8EDA8070
+		RBTagsTag "New RBTagsTag" < uid=E4123D2763578F6800005745DA5187D4 > = Agent_BarksFamily_CrimsonDawnDefault E4123D2762FCA43600010FC3F3CA1D96
+	}
+	myPositionReservationSize 0.5
+	myDialogueCharactersFromDatabase
+	{
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=416E63E4642C24360000103872C4CC35 > = CrimsonDawnF01 E4123D2764B92EA90002DA727887DDD8
+	}
+	mySensoryProfileOverrides
+	{
+		NPCSensoryProfileOverride DefaultCitySensoryProfile
+		{
+			myVisionProfile < uid=595E8DFF62AB1BCE000154E669639DC3 > = DefaultCityVisionProfile 595E8DFF62AADB4100007B71ACEA3C59
+			mySensoryEnvironmentType DefaultCity
+		}
+		NPCSensoryProfileOverride Distracted
+		{
+			myVisionProfile < uid=3C2FA92B663342EE000A62FF9C52A3F1 > = DistractedVisionProfile 3C2FA92B6631043C001169CF5B719AC7
+			mySensoryEnvironmentType Distract
+		}
+	}
+	myAgitationProfile < uid=3C2FA92B656A05E6000AE94989FF74BF > = "ReputationFaction Agitation Profile" 16C7D1FB6274DA4F00002E254E69ADAE
+	myPatrolFormationProfile < uid=06F3F6E465F1CAC50005AC07C80CA81F > = DefaultPatrolFormation C0D149F862D6BC3C00003CE020A2DB0B
+	myLootTable < uid=85F4BAC26464B7E70005CC828BDBB49C > = loot_con_OnKill_BactaGrenade BFAAA1FC6389D751000063AB1F48E723
+	myBehaviorUpdateBoostProfile < uid=2736B36563DCEAB70000DE6FFEFF6889 > = hostile 2736B36563DCDB14000114E560E4B9A2
+	myAudioParameters
+	{
+		mySwitches
+		{
+			AudioSwitch "NPC Faction Switch"
+			{
+				myGuid 4AB00FB3C1EEA7D510B1548790F013B7
+			}
+		}
+		myAudioSwitchByTags
+		{
+			AudioSwitchByTags "New AudioSwitchByTags"
+			{
+				myTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=E4123D2764B52AA50001288C3213DB0C > = Agent_Species_HumanTag 2736B365634D673A0003C27CFCFEFD1A
+					RBTagsTag "New RBTagsTag (0)" < uid=E4123D2764B52AAF0001288D5A0027E2 > = Agent_Gender_MasculineTag 16DEADE6626D20EA00002E504CE30DE2
+				}
+				mySwitch
+				{
+					myGuid 4DB0C88DE96DE4C796CEEA765A5B15B6
+				}
+			}
+			AudioSwitchByTags "Copy of New AudioSwitchByTags"
+			{
+				myTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=E4123D2764B52ACC0001288EFAB775C7 > = Agent_Species_HumanTag 2736B365634D673A0003C27CFCFEFD1A
+					RBTagsTag "New RBTagsTag (0)" < uid=E4123D2764B52ACC0001288F46C7F615 > = Agent_Gender_MasculineTag 16DEADE6626D20EA00002E504CE30DE2
+				}
+				mySwitch
+				{
+					myGuid 459F0CFB6341D970A0798926716B89BA
+				}
+			}
+		}
+	}
+	myMeleeConfig < uid=4171A7E1656F58920015F4D6764FD09E > = npc_melee_config BCDE37F162445830000053EBBBF07CF3
+	myStaggerConfig < uid=3C2FA92B65169D3C000242AC06B56B83 > = NPCStaggerConfig_Default 3C2FA92B6516D6EF000072E705D52753
+}
+

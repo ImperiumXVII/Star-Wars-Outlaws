@@ -1,0 +1,61 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/rbtags/quest.mrbtagstags"
+
+Quest A_EQ_040_TheTempleOfGaroon < uid=842ECCE4638471470000F7781F7E9500 >
+{
+	myName "aurabesh = false, contextComment = \"The Temple of Garoon\", enabled = true, guid = #842ECCE4638471510000F789D168B92D, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 404, text = \"A_EQ_040\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"Description\", enabled = true, guid = #842ECCE4638471510000F78A293FF6E6, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 2496, text = \"While exploring Kijimi, Kay will hear about an explorer who has challenged the harsh climate in search of a long lost Dai Bendu temple.\", type = \"MenuLine\""
+	myIntroBeat < uid=842ECCE4638472F90000F790AEC7CEA4 >
+	{
+		myScript helix/scripts/scr_a_eq_040_b00_introbeat.mscript
+		myName "aurabesh = false, contextComment = \"Beat Text\", enabled = true, guid = #842ECCE4638472DD0000F78DC9B3D4C4, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 404, text = \"Expert\", type = \"MenuLine\""
+		myLevelInfo 9C4B6A046012E658000001A6972FA29E
+		myObjectives
+		{
+			QuestObjectiveGoToLocation B0_010_FindTheExplorer < uid=842ECCE4638478F6000216BD260C4454 >
+			{
+				myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #842ECCE463847911000216BE725D7000, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 404, text = \"Find the intriguing Explorer\", type = \"MenuLine\""
+			}
+			QuestObjectiveDefendAgent B0_020_HelpExplorer < uid=842ECCE463847957000216C0D955B9E3 >
+			{
+				myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #842ECCE46384797C000216C19D3F6879, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 404, text = \"Help the Explorer\", type = \"MenuLine\""
+			}
+			QuestObjectiveTalkTo B0_030_TalkWithExplorer < uid=842ECCE463847BBD000216E103AF0B2E >
+			{
+				myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #842ECCE463847BD4000216E2D07FCA5A, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 404, text = \"Talk with Lor San Tekka\", type = \"MenuLine\""
+			}
+		}
+		myQuestBeatStateGameValue < uid=842ECCE4638472F90000F791F9853A4C >
+		{
+		}
+	}
+	myBeats
+	{
+		QuestBeat "QB02 - Help Lor Retrieve the Artifact" < uid=842ECCE46384882300021801976FEE54 >
+		{
+			myScript helix/scripts/scr_a_eq_040_kij_pln_b02_helplor.mscript
+			myName "aurabesh = false, contextComment = \"Beat Text\", enabled = true, guid = #842ECCE46384886C00021802BA5E4DFC, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 404, text = \"Help Lor Retrieve the Artifact\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E658000001A6972FA29E
+			myObjectives
+			{
+				QuestObjectiveCustom B02_010_SolvePuzzle < uid=842ECCE4638488AC00021804DCBC67E6 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #842ECCE4638488BC0002180534492F6B, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 404, text = \"Help Lor Solve the Puzzle\", type = \"MenuLine\""
+				}
+				QuestObjectiveTalkTo B02_020_TalkLor < uid=842ECCE4638488E00002180726916412 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #842ECCE4638488ED00021808192DB471, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 404, text = \"Talk to Lor\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=842ECCE4638489000002180B301A181C >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=842ECCE4638471470000F7790053EDE8 >
+	{
+	}
+	myQuestStartedRBTag < uid=DA5615DD64B517E30000ABE849DEB837 > = World_Quest_EQ040_Started DA5615DD64A3F2510000AC8C793AAC43
+	myQuestCompletedRBTag < uid=DA5615DD64B517E30000ABE93A29B6F8 > = World_Quest_EQ040_Completed DA5615DD64A3F36F0000AC8E900A3ADB
+}
+

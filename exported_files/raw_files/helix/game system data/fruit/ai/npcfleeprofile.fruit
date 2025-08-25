@@ -1,0 +1,119 @@
+include "helix/game system data/fruit/ai/motion/motionpatternprofile.fruit"
+include "helix/game system data/fruit/ai/aievents.fruit"
+
+enum HC_NPCFleeStimType
+{
+	Hostile
+	DamageInstigator
+	CustomEvent
+}
+
+class NPCFleeMotionPatternTypeEntry
+{
+	float myMinDistanceFromThreat 0.0 < tooltip="The minimal distance from the threat to use this motion pattern type to flee" >
+	NPCMotionPatternType myMotionPatternType
+}
+
+list NPCFleeMotionPatternTypes
+{
+	NPCFleeMotionPatternTypeEntry
+}
+
+class NPCFleeStimSetting
+{
+	bool myEnabled true
+	HC_NPCFleeStimType myType Hostile
+	AIEvent myCustomEvent NotSet
+	float myDamageInstigatorAwarenessRadius 10.0 < tooltip="The npc will keep on taking a damage instigator as a flee stim if the damage instigator is within this range" >
+	NPCFleeMotionPatternTypes myMotionPatternTypes
+	bool myAllowSpeedBoost true
+	NPCMotionPatternType mySpeedBoostMotionPatternType FleeSpeedBoost
+	
+	float myInitialWeight 1.0
+	float myWeightFalloffDuration 4.0 < tooltip="Duration, in seconds, for the initial weight to decay to 0.\nSpecify zero to indicate that the weight should not decay over time." >
+	float myWeightFalloffDistance 10.0 < tooltip="Linear falloff distance of the weight.\nSpecify zero to indicate that the weight should not attenuate on distance." >
+	
+	float myMinFleeAwayDistance 50.0 < tooltip="The minimal distance to flee from the source" >
+	float myMaxFleeAwayDistance 60.0 < tooltip="The maximal distance to flee from the source" >	
+
+	float myMinFleeDuration 6.0 < tooltip="The minimal duration to flee from the source" >
+}
+
+class NPCFleeCornerBehaviorInterruptEvent
+{
+	AIEvent myEvent NotSet
+}
+
+list NPCFleeCornerBehaviorInterruptEvents
+{
+	NPCFleeCornerBehaviorInterruptEvent
+}
+
+class NPCFleeCornerBehaviorSetting
+{
+	bool myEnabled false
+	float myBlockerDetectRadius 5.0 < tooltip="The corner behavior will be triggered if the pack is blocked in all the directions around it.This value specifies the detect range of the blockers" >
+	float myBlockerDetectAngleRange 45.0 < min=0 max=180 tooltip="A move direction will be blocked if the blocker is within this angle range of that direction" >
+	float myBlockerRadius 5.0 < tooltip="Size of the blocker" >
+	float myMaxDuration 10.0
+	float myMaxRoarDuration 5.0
+	float myCoolDownDuration 20.0
+	float myDispelDuration 5.0 < tooltip="In corner behavior, if the corner behavior target is out of the vision for this duration,it will be considered dispelled and the agent will enter idle behavior" >
+	NPCFleeCornerBehaviorInterruptEvents myInterruptEvents
+}
+
+list NPCFleeStimSettings
+{
+	NPCFleeStimSetting
+}
+
+class NPCFleeLookAtEnabledMotionPatternTypes
+{
+	//these need to match the naming convention my[MotionPatternType]Enabled
+	bool myJogEnabled true
+	bool myNoFocusJogEnabled false
+	bool mySprintEnabled false
+	bool myWalkEnabled true
+	bool myNoFocusWalkEnabled false
+	bool myStrafeEnabled false
+	bool myPatrolEnabled false
+	bool myNoFocusPatrolEnabled false
+	bool myInvestigateEnabled false
+	bool myNoFocusInvestigateEnabled false
+	bool myRunEnabled false
+	bool myNoFocusRunEnabled false
+	bool myFleeSpeedBoostEnabled false
+	bool myTravelEnabled false
+}
+
+class NPCFleeLookAtSetting
+{
+	NPCFleeLookAtEnabledMotionPatternTypes myEnabledMotionPatternTypes < tooltip="Restrict look at behavior to the enabled motion pattern types only during flee" >
+	float myPossibility 0.3 < min=0 max=1 bhv="percent" tooltip="Odds to trigger look at after each interval" >
+	float myInterval 5 < min=0 tooltip="Interval to decide whether or not to look at the threat, in seconds" >
+	float myMinDuration 1 < tooltip="Minimum duration once a look at has been triggerred, in seconds" >
+	float myMaxDuration 3 < tooltip="Maximum duration once a look at has been triggerred, in seconds" >
+}
+
+class NPCFleeDistantTargetSetting
+{
+	float myPathDistanceFromThreat 60.0
+	float myDistance2DFromThreat 60.0
+	float myMoveSegmentDistance 10.0
+}
+
+class NPCFleePackStuckCheckSetting
+{
+	float myDuration 20.0
+	float myRadius 30.0
+}
+
+class NPCFleeProfile < uid=auto >
+{
+	NPCFleeStimSettings myStimSettings < hiddenFromFruitParser=1 >
+	NPCFleeCornerBehaviorSetting myCornerBehaviorSetting < hiddenFromFruitParser=1 >
+	NPCFleeLookAtSetting myLookAtSetting < hiddenFromFruitParser=1 >
+	NPCFleeDistantTargetSetting myDistantTargetSetting < hiddenFromFruitParser=1 tooltip="Decide if predators should start flee immediately when threat is too far away" >
+	NPCFleePackStuckCheckSetting myPackStuckCheckSetting < hiddenFromFruitParser=1 >
+	float myDefaultMinFleeDuration 4.0 < tooltip="myMinFleeDuration will be initialized here when there is no Flee Source" >
+}

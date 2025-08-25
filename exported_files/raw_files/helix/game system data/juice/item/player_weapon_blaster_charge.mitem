@@ -1,0 +1,54 @@
+include "helix/game system data/juice/equipment/aimconfig/weapon_aimconfig_freeaim.maimconfig"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_blaster_charge.mweaponfiremode"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_blaster_handcannon.mweaponfiremode"
+include "helix/game system data/juice/item/equipmentholding/holding_kays_blaster_charge.mequipmentholdingconfig"
+include "helix/game system data/juice/item/player_weapon_blaster_template.mitem"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_small.mprojectile"
+
+WeaponItem player_weapon_blaster_charge < uid=A207755D6214FE1400002AEF1A611825 > : Player_Weapon_Blaster_Template
+{
+	myName "aurabesh = false, contextComment = \"https://starwars.fandom.com/wiki/Bryar_pistol\", enabled = true, guid = #1C021E95623209D10000C08435965AEF, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 394, text = \"K-16 Bryar Pistol\", type = \"MenuLine\""
+	myIcon "mySpriteId = -907580623, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_weapon_icons_02.spritesheet\""
+	myAimConfig < uid=A207755D6214FE1400002AF0CEBE1211 > = weapon_aimconfig_freeaim A207755D61F1667100001B105CDB4181
+	myHoldingConfig < uid=A207755D6215F4F000002C676F5A0CA2 > = holding_kays_blaster_charge A207755D6215F49900002C5F4F84C0D9
+	myGraphObject "helix/graph objects/weapon/wpn_k16.mgraphobject"
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=A207755D62C2F8AC0000374B0D2932B2 > = player_firemode_blaster_handcannon A207755D62C2FBE30000374104A84D33
+		}
+		WeaponFireModeSlot Secondary
+		{
+			mySlotTag Secondary
+			myFireMode < uid=A207755D62C2F8AC0000374C3D7E1646 > = player_firemode_blaster_charge A207755D62C2F6FC000037701AE74E53
+		}
+		WeaponFireModeSlot TrickShot
+		{
+			mySlotTag TrickShot
+			myFireMode < uid=A207755D62C2F8AC0000374D55E1EC83 > = player_firemode_blaster_trickshot_default A207755D62C2F37200003756781302DE
+		}
+	}
+}
+
+WeaponItem player_weapon_blaster_charge_T2 < uid=7113C61162B1EA730000B130AF98C7FC > : player_weapon_blaster_charge
+{
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=A207755D62C2FDDA0000375082497E57 > = player_firemode_blaster_handcannon_explosive A207755D62C2FD6F000037484CDA0DBC
+		}
+		WeaponFireModeSlot Secondary
+		{
+			mySlotTag Secondary
+			myFireMode < uid=A207755D62C2FDDA00003751E4DFDAA8 > = player_firemode_blaster_charge A207755D62C2F6FC000037701AE74E53
+		}
+		WeaponFireModeSlot TrickShot
+		{
+			mySlotTag TrickShot
+			myFireMode < uid=A207755D62C2FDDA00003752BEAF6197 > = player_firemode_blaster_trickshot_default A207755D62C2F37200003756781302DE
+		}
+	}
+}
+

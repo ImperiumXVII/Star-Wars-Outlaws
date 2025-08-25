@@ -1,0 +1,216 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/reputation/reputations.mreputation"
+include "helix/game system data/juice/rewardpreview/faction_quest_reward_previews.mrewardpreview"
+
+Quest a_fq_ash_020_spacesabotage < uid=CC6CF61E64E4E2C300009E71DD57080C >
+{
+	myName "aurabesh = false, contextComment = \"A_FQ_ASH_020 Name\", enabled = true, guid = #CC6CF61E64E4E2F300009E7361E9A30F, lineVersion = 6, maxLength = 0, productId = 6, sectionId = 9298, text = \"Hidden Archive\", type = \"MenuLine\""
+	myIntroDescription "branch = \"\", contextComment = \"A_FQ_ASH_020 Intro Description\", enabled = true, guid = #7C12810B650BEB2C000279C430B8F53A, lineVersion = 5, maxLength = 0, productId = 6, sectionId = 9298, text = \"An Ashiga Clan myrmitrix named Mayiu requested an audience with Kay.\", type = \"MenuLine\""
+	myDescription "branch = \"\", contextComment = \"A_FQ_ASH_020 Description\", enabled = true, guid = #CC6CF61E64E4E2F300009E747E127067, lineVersion = 6, maxLength = 0, productId = 6, sectionId = 9298, text = \"The Ashiga Clan wants to strengthen their position on Kijimi by stealing a Crimson Dawn archive. Mayiu hires Kay to find it and bring it back to the hive.\", type = \"MenuLine\""
+	myType Faction
+	myCompletionRewardPreview < uid=2AE2EC8566687602004158855F69B5EB > = ASH_020_reward_preview 2AE2EC856668752B003ED83EC0B34AC3
+	myRevealBeat < uid=E1B84E3A658075F00038141C0EBE45BC >
+	{
+		myScript helix/scripts/a_fq_ash_020_revealbeat.mscript
+		myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myLevelInfo 9C4B6A046012E6B0000001B224713F01
+		myQuestBeatStateGameValue < uid=E1B84E3A658075F00038141DB3B81C82 >
+		{
+		}
+	}
+	myIntroBeat < uid=CC6CF61E64E4E6020001019520A81388 >
+	{
+		myScript helix/scripts/a_fq_ash_020_kij_pln_b00_introbeat.mscript
+		myName "aurabesh = false, contextComment = \"A_FQ_ASH_020_Beat_00 Description\", enabled = true, guid = #CC6CF61E64E4E637000101A97AB60AEF, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 9300, text = \"Meet the Ashiga Emissary\", type = \"MenuLine\""
+		myLevelInfo 9C4B6A046012E658000001A6972FA29E
+		myDebugPlayLandingZone FB6AE4D5637C98AE00019CCC8A395287
+		myObjectives
+		{
+			QuestObjectiveTalkTo "Talk To Ashiga Emissary" < uid=7C12810B650BEC5B0002B9EA777D2898 >
+			{
+				myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_ASH_020_Beat_00 Objective Title\", enabled = true, guid = #7C12810B650BEC660002B9EBDBECDA5E, lineVersion = 6, maxLength = 0, productId = 6, sectionId = 9300, text = \"Talk to Mayiu\", type = \"MenuLine\""
+			}
+		}
+		myQuestBeatStateGameValue < uid=CC6CF61E64E4E60200010196B190C182 >
+		{
+		}
+	}
+	myBeats
+	{
+		QuestBeat "Beat 01 - Lay your plan" < uid=CC6CF61E64E4E719000101F2CAA5E1D8 >
+		{
+			myScript helix/scripts/a_fq_ash_020_kij_pln_b01_layyourplan.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_ASH_020_Beat01 Name\", enabled = true, guid = #CC6CF61E64E4E756000101F30D83BC55, lineVersion = 12, maxLength = 0, productId = 6, sectionId = 3614, text = \"Find the Empire Intel in Kijimi City\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E658000001A6972FA29E
+			myDebugPlayLandingZone FB6AE4D5637C98AE00019CCC8A395287
+			myObjectives
+			{
+				QuestObjectiveCustom "Find the Empire intel around Cantina streets" < uid=7C12810B650C081B000655F06D7E6A06 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_ASH_020_Beat01 First Objective Name\", enabled = true, guid = #7C12810B650C0837000655F119F5C4F6, lineVersion = 14, maxLength = 0, productId = 6, sectionId = 9301, text = \"Find the Empire plan\", type = \"MenuLine\""
+					myChildObjectives
+					{
+						QuestObjectiveCustom "It's in the Thieves Quarter" < uid=7C12810B65547C200007751181C06A15 >
+						{
+							myName "aurabesh = false, contextComment = \"A_FQ_ASH_020_Beat01 First SubObjective Name\", enabled = true, guid = #7C12810B65547C2000077512C8D24471, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 9301, text = \"It should be around the Thieves Quarter\", type = \"MenuLine\""
+							myIsHiddenInTracker FALSE
+							myIsHiddenInHUD TRUE
+							myIsHint TRUE
+						}
+					}
+				}
+			}
+			myQuestBeatStateGameValue < uid=CC6CF61E64E4E7D2000102081810551C >
+			{
+			}
+		}
+		QuestBeat "Beat 01B - Lay your plan" < uid=7C12810B662B6D8C0009971CCE1737D0 >
+		{
+			myScript helix/scripts/a_fq_ash_020_kij_pln_b01_b_layyourplan.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E658000001A6972FA29E
+			myDebugPlayLandingZone FB6AE4D5637C98AE00019CCC8A395287
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Find the Captain" < uid=8B0C5159652E76FF000FF45938F6860A >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_ASH_020_Beat01 Find the Captain around Crimson Dawn district Objective displayed in UI\", enabled = true, guid = #8B0C5159652E7719000FF45BA8290957, lineVersion = 12, maxLength = 0, productId = 6, sectionId = 9301, text = \"Find the Empire captain\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveCustom "Find the Captain Hint" < uid=7C12810B6554CC7100202D2E113CE500 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_ASH_020_Beat01 Find the Captain around Crimson Dawn district Hint displayed in UI\", enabled = true, guid = #7C12810B6554CC9400202D33477867EB, lineVersion = 14, maxLength = 0, productId = 6, sectionId = 9301, text = \"She is in the Crimson Dawn District\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD TRUE
+					myIsHint TRUE
+				}
+				QuestObjectiveCustom "Take down the Crimson" < uid=7C12810B6569957300048C6425F7B54D >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"A_FQ_ASH_020_Beat01 Third Objective Name\", enabled = true, guid = #7C12810B656995A300048C67D7C5CED9, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9301, text = \"Take down the Crimson Dawn Agent\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveGetItem "Search the body" < uid=7C12810B650D834A0007CB0B471CBD59 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_ASH_020_Beat01 Fourth Objective Name\", enabled = true, guid = #7C12810B650D834A0007CB0C7A40F9B3, lineVersion = 10, maxLength = 0, productId = 6, sectionId = 9301, text = \"Pick up the datapad\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+			}
+			myQuestBeatStateGameValue < uid=7C12810B662B6E2A0009973D4E91F268 >
+			{
+			}
+		}
+		QuestBeat "Beat 02A - Sabotage" < uid=7C12810B668FA1DE00030E24832AA8A9 >
+		{
+			myScript helix/scripts/a_fq_ash_020_kij_space_b02a_sabotage.mscript
+			myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012DE63000000BA154AA5F2
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Reach the Crimson Dawn Space Base" < uid=8B0C5159652FC0E50000EF91C8165E8C >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_ASH_020_Beat02 Reach Crimson Dawn Space Base Objective Name\", enabled = true, guid = #8B0C5159652FC1050000EF930220F370, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 9302, text = \"Reach Crimson Dawn space base\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveCustom "Stash Location Custom" < uid=7C12810B65E5CF3F000330BCF0EACA2D >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+			}
+			myQuestBeatStateGameValue < uid=7C12810B668FA23300030E28B16453B7 >
+			{
+			}
+		}
+		QuestBeat "Beat 02B - Sabotage" < uid=CC6CF61E64E4E8560001022BFB8614D3 >
+		{
+			myScript helix/scripts/a_fq_ash_020_kij_space_b02_sabotage.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_ASH_020_Beat02 Name\", enabled = true, guid = #CC6CF61E64E4E8560001022C440C7241, lineVersion = 12, maxLength = 0, productId = 6, sectionId = 3614, text = \"Reach Crimson Dawn space base\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012DE63000000BA154AA5F2
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCounter "Destroy the generators" < uid=CC6CF61E64EDAEEF00023F46292E657C >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_ASH_020_Beat02 Second Objective Name\", enabled = true, guid = #CC6CF61E64EDAF3900023F48CE0FAD5F, lineVersion = 10, maxLength = 0, productId = 6, sectionId = 9302, text = \"Destroy the generators\", type = \"MenuLine\""
+					myIsOptional FALSE
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+					myChildObjectives
+					{
+					}
+					myMaxCount 3
+				}
+				QuestObjectiveCustom "Generator 01" < uid=7C12810B655647E30004DDE1FB8E7542 >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"A_FQ_ASH_020_Beat02 Second Child Objective Name (Hidden in tracker)\", enabled = true, guid = #7C12810B6556481F0004DDE72F5D355E, lineVersion = 5, maxLength = 0, productId = 6, sectionId = 9302, text = \"Generator 01\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveCustom "Generator 02" < uid=7C12810B655647ED0004DDE32034D2C9 >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"A_FQ_ASH_020_Beat02 Second Child Objective Name (Hidden in tracker)\", enabled = true, guid = #7C12810B655648360004DDE8CABBFED2, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 9302, text = \"Generator 02\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveCustom "Generator 03" < uid=7C12810B655647F40004DDE51942CEB0 >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"A_FQ_ASH_020_Beat02 Second Child Objective Name (Hidden in tracker)\", enabled = true, guid = #7C12810B655647F40004DDE6A9791822, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 9302, text = \"Generator 03\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveInteract "Steal the Crimson Dawn stash" < uid=CC6CF61E64EDB09500023F72C053D604 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_ASH_020_Beat02 Fourth Objective Name\", enabled = true, guid = #CC6CF61E64EDB09500023F73E2697C71, lineVersion = 9, maxLength = 0, productId = 6, sectionId = 9302, text = \"Steal the Crimson Dawn datas\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD FALSE
+				}
+			}
+			myQuestBeatStateGameValue < uid=CC6CF61E64E4E937000102672955D379 >
+			{
+			}
+		}
+		QuestBeat "Beat 03 - Escape" < uid=CC6CF61E64E4E97000010279D75AB666 >
+		{
+			myScript helix/scripts/a_fq_ash_020_kij_pln_b03_escape.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_ASH_020_Beat03 Name\", enabled = true, guid = #CC6CF61E64E4E98B0001027C8EF35549, lineVersion = 9, maxLength = 0, productId = 6, sectionId = 3614, text = \"Escape Crimson Dawn Space Base\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012DE63000000BA154AA5F2
+			myMood Relaxed
+			myObjectives
+			{
+				QuestObjectiveLeaveArea "Leave the stash" < uid=7C12810B650D86C7000056D36986C478 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_ASH_020_Beat03 First Objective Name\", enabled = true, guid = #7C12810B650D86C7000056D4C56EA5F9, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 2009, text = \"Leave the Crimson Dawn stash\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myInVolumeText "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myNotInVolumeInCombatText "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				}
+				QuestObjectiveLeaveArea "Flee Crimson Dawn Space Base from the Empire" < uid=7C12810B650D5A9F00027909CEB1BD7E >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_ASH_020_Beat03 Second Objective Name\", enabled = true, guid = #7C12810B650D5AAA0002790AE66AAFF3, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9313, text = \"Escape the Crimson Dawn space base\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myInVolumeText "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myNotInVolumeInCombatText "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				}
+				QuestObjectiveCustom "Leave the Stash beacon 01" < uid=7C12810B65E5DA160003332AD3D06E36 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				}
+				QuestObjectiveCustom "Leave the Stash beacon 02" < uid=7C12810B65E5DA2B0003332D160C21AE >
+				{
+				}
+			}
+			myQuestBeatStateGameValue < uid=CC6CF61E64E4E98B0001027BE213EF06 >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=CC6CF61E64E4E2C300009E7275F4B3A3 >
+	{
+	}
+	myFaction 4728ADF9620B6C2B0000201F5FC5C937
+}
+

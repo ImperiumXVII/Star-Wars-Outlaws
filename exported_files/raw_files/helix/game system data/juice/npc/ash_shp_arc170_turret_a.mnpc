@@ -1,0 +1,53 @@
+include "helix/game system data/juice/ai/arc170_attached_npc_set.mnpconnpcattachmentset"
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/spaceshipnpcthreatprofiles.mnpcthreatprofile"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC ash_shp_arc170_turret_a < uid=F95CD8F364AD0AA50001321E07DAE6F7 >
+{
+	myCharacterVisuals < uid=F95CD8F364AD0AA50001321FAC62F738 > = character_visuals_npc_shp_ARC170_turret 4F59E8F06425455D0000BEC12234728F
+	myBehavior helix/behaviors/spaceship_turret_behavior.mbehavior
+	myNPCComponentSetType Turret
+	myIsInvulnerable TRUE
+	myShouldRedirectDamageToHost TRUE
+	mySpaceshipType Default
+	myMaxHealth 10
+	myHealthFormula 10
+	myFaction < uid=F95CD8F364AD0AA5000132205A8A1CF9 > = AshigaClan 4728ADF9620B6C2B0000201F5FC5C937
+	myLodType Spaceship_Small
+	myVisionProfile < uid=F95CD8F364AD0AA500013221C681A2D6 > = visionProfile_npc_turret_arc170_ashiga 6B0E1DE9651A89B8000284B3680CCFC0
+	myHearingProfile < uid=F95CD8F364AD0AA50001322216BC09AF > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=F95CD8F364AD0AA500013223ADDCE777 > = detectionProfile_ash_ship_Fighter 6B0E1DE964B662190003C715E97DE907
+	}
+	myThreatProfile < uid=F95CD8F364AD0AA500013224A7BB4BE1 > = lightturretnpcthreatprofiles F95CD8F3653F803800057BF4FD52599F
+	myAimProfile < uid=F95CD8F364AD0AA5000132256CE7DAD2 > = NULLREFERENCE
+	myReducedAimProfile < uid=F95CD8F364AD0AA5000132269AE05790 > = NULLREFERENCE
+	myMainWeapon < uid=F95CD8F364AD0AA500013227D04DFCE4 > = NULLREFERENCE
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "arc170 turret weapon loadout" < uid=F95CD8F364AD0AA500013228ADD4414F > = weaponloadout_ash_shp_arc170_turret 6AF0BA04649BFC9400074B0A8E88B140
+	}
+	myAudioParameters
+	{
+		myEmitters
+		{
+			AgentEmitter Default
+			{
+				myEmitterLabel < uid=3A1C5D18655342EC0000B4EAFF245DD6 > = Root 3A1C5D1863906F050000AB6FBD984CC4
+				myEmitterPrefab "emitterLayerName = \"ship_npc\", enableDoppler = false, enablePropagation = true, enableReflections = false, sphereRadius = 1, stopOnDestroy = true"
+			}
+			AgentEmitter Weapon
+			{
+				myEmitterLabel < uid=3A1C5D18655342EC0000B4EBD29ED312 > = Hand 3A1C5D1863906F180000AB718F1E9EFD
+				myEmitterPrefab "emitterLayerName = \"weapons_npc\", enableDoppler = false, enablePropagation = true, sphereRadius = 50, stopOnDestroy = true"
+				myAttachToAnyEquipmentSlots TRUE
+			}
+		}
+	}
+	myCombatRole SpaceTurret
+}
+

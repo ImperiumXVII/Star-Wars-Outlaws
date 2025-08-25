@@ -1,0 +1,55 @@
+include "dlc2/game system data/juice/sound/weapons/npc_audioweapon_pickup_dlc02_rokana_ml40.maudioweapon"
+include "dlc2/game system data/juice/sound/weapons/npc_audioweapon_pickup_dlc02_stinger_tash_secondary.maudioweapon"
+include "helix/game system data/fruit/ai/npcweapon.fruit"
+include "helix/game system data/juice/ai/npcweapons.mnpcweapon"
+include "helix/game system data/juice/item/player_weapon_pickup_rifle_rr_rifle.mitem"
+include "helix/game system data/juice/projectile/dlc2_weapon_projectile_power_shot.mprojectile"
+
+NPCWeapon weapon_npc_Blaster_RR_Rifle_Shield < uid=91DC5D3C66FD053300037E25AA569FF5 > : weapon_npc_Blaster_TL50_shield
+{
+	myGraphObject "helix/graph objects/weapon/dlc2_rr_blaster.mgraphobject"
+	myProjectile < uid=91DC5D3C66FD135C00082E5DB5B2BF05 > = dlc2_weapon_projectile_power_shot 91DC5D3C66FD1240000740181ADE9E54
+	myDamage 1.1
+	myFiringInterval 0.2
+	myAudioData < uid=DADB4E046785371B000000CC241CA5EE > = NPC_audioweapon_pickup_dlc02_Rokana_ML40 DADB4E046785358E000000CB50CD977B
+	myWeaponDrop < uid=4C1DFD4E670F73C90007B9890B2284A3 > = player_weapon_pickup_rifle_rr_rifle 4C1DFD4E670914760004A70D665BB539
+	myWeaponDropChance 0.4
+}
+
+NPCWeapon weapon_npc_blaster_RR_Rifle_Shield_nodrop < uid=91DC5D3C677D326E0002764CCE82E4CF > : weapon_npc_Blaster_RR_Rifle_Shield
+{
+	myAudioData < uid=DADB4E046785371B000000CD101820F3 > = NPC_audioweapon_pickup_dlc02_Rokana_ML40 DADB4E046785358E000000CB50CD977B
+	myWeaponDropChance 0.0
+}
+
+NPCWeapon weapon_npc_RR_pistol_SE14C_modified < uid=91DC5D3C677FEC6D0004259742C143ED > : weapon_npc_Pistol_SE14C
+{
+	myDamage 0.9
+	myAudioData < uid=DADB4E046785371B000000CE97B3B42D > = NPC_audioweapon_pickup_dlc02_Rokana_ML40 DADB4E046785358E000000CB50CD977B
+}
+
+NPCWeapon weapon_npc_pistol_HondoBlaster < uid=91DC5D3C67A32F99000238FBBFCA9BB5 > : weapon_npc_Pistol_QuintBlaster
+{
+}
+
+NPCWeapon weapon_npc_pistol_HondoBlaster_maxDamage < uid=91DC5D3C67A32FB3000238FCA0071FEC > : weapon_npc_Pistol_QuintBlaster_MaxDamage
+{
+}
+
+NPCWeapon weapon_npc_Blaster_RR_Rifle_Shield_100drop < uid=2E03BECB67A481960004D31540957EFA > : weapon_npc_Blaster_RR_Rifle_Shield
+{
+	myWeaponDropChance 1.0
+}
+
+NPCWeapon weapon_npc_pistol_StingerTashBlaster < uid=91DC5D3C67AA06DD000237F16D8D2FFA > : weapon_npc_RR_pistol_SE14C_modified
+{
+	myGraphObject "helix/graph objects/weapon/dlc2_wpn_s195_stinger_tash.mgraphobject"
+	myAudioData < uid=37D03CEA67F90064000222456F2DC4D7 > = NPC_audioweapon_pickup_dlc02_Stinger_Tash_Secondary 37D03CEA67EE51B1000000CC060FBDEA
+	myAttachment
+	{
+		mySlot HolsterWeaponWestern
+		myMultipleInstances FALSE
+		myNumInstances 1
+	}
+}
+

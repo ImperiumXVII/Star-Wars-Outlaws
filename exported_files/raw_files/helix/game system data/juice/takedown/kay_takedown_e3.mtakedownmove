@@ -1,0 +1,61 @@
+include "helix/game system data/fruit/takedown/takedown_move.fruit"
+include "helix/game system data/juice/camera/animatedcameradata/e3takedownanimatedcameradata.manimatedcameradata"
+include "helix/game system data/juice/takedown/kay_takedown_base.mtakedownmove"
+
+TakedownMove kay_takedown_E3 < uid=B8A5D47363DCD67F00003F59C8DC6CA8 > : kay_takedown_base
+{
+	myAnimationEntryType Crouched
+	myAlignments
+	{
+		TakedownAlignment 180
+		{
+			myAngle 180
+			mySequenceDuration 3.23
+			myAlignmentPosDuration 0.66
+			myAlignmentRotDuration 0.2
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 1.0
+			myOptimalOffset 0.0;0.0;0.0
+		}
+		TakedownAlignment -180
+		{
+			myAngle -180
+			mySequenceDuration 3.23
+			myAlignmentPosDuration 0.66
+			myAlignmentRotDuration 0.2
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 1.0
+			myOptimalOffset 0.0;0.0;0.0
+		}
+		TakedownAlignment 0
+		{
+			mySequenceDuration 2.8
+			myAlignmentPosDuration 0.64
+			myAlignmentRotDuration 0.53
+			myOptimalDistance 0.7415
+		}
+	}
+	myStartConditions
+	{
+		myTargetInRange
+		{
+			myEnabled FALSE
+			myDistance 10.0
+		}
+		myGameCondition
+		{
+			GameConditionMeleeGroup Group
+			{
+				myConditions
+				{
+					GameConditionRandom Rand1
+					{
+						myProbabilityFormula 1
+					}
+				}
+			}
+		}
+	}
+	myAnimatedCameraData < uid=91CC094B6426AD920002C74DEA301F5D > = E3TakedownAnimatedCameraData 91CC094B6426AD540002C74C22CBCC57
+}
+

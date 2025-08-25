@@ -1,0 +1,49 @@
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/emp_shp_base.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC previs_emp_shp_tieinterceptor_a < uid=6EA7962564A40B5D00031F543785AEF6 > : emp_shp_base
+{
+	myCharacterVisuals < uid=6EA7962564A40B5D00031F5516DE38DD > = character_visuals_npc_shp_tieinterceptor 5DBECD5962C57F1F00009E43679FB2EF
+	myIsInvulnerable TRUE
+	mySpaceshipType Dummy
+	myMaxHealth 60
+	myHealthFormula 30*SpaceHealthDifficultyModifier
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag_1" < uid=6EA7962564A40B5D00031F56131BA73F > = Agent_Archetype_Pilot 3A12912163EF7B9500005053123CF383
+		RBTagsTag "New RBTagsTag" < uid=6EA7962564A40B5D00031F575C143E85 > = Agent_Faction_EmpireTag 16DEADE6614FB69800001863A66D45A1
+	}
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "New NPCWeaponLoadout" < uid=6EA7962564A40B5D00031F5846FCD9EF > = weaponloadout_emp_shp_tieinterceptor F95CD8F3640AFE140000097A0BFA2EE6
+	}
+	myAudioParameters
+	{
+		myEmitterName "TIE Interceptor"
+		myPropagated FALSE
+		myDoppler FALSE
+		mySwitches
+		{
+		}
+		myEmitters
+		{
+			AgentEmitter Default
+			{
+				myEmitterLabel < uid=3A1C5D1865534CEF0000B5EF0B1D08DC > = Root 3A1C5D1863906F050000AB6FBD984CC4
+				myEmitterPrefab "emitterLayerName = \"misc\", enableDoppler = false, enablePropagation = false, sphereRadius = 1, stopOnDestroy = true"
+			}
+			AgentEmitter Dialogue
+			{
+				myEmitterLabel < uid=3A1C5D1865534CEF0000B5F0165F0FBF > = Mouth 3A1C5D1863906F120000AB70A206E385
+				myEmitterPrefab "emitterLayerName = \"misc\", enableDoppler = false, enablePropagation = false, sphereRadius = 1, stopOnDestroy = true"
+			}
+			AgentEmitter Weapon
+			{
+				myEmitterLabel < uid=3A1C5D1865534CEF0000B5F189BED454 > = Hand 3A1C5D1863906F180000AB718F1E9EFD
+				myEmitterPrefab "emitterLayerName = \"misc\", enableDoppler = false, enablePropagation = false, sphereRadius = 1, stopOnDestroy = true"
+			}
+		}
+	}
+}
+

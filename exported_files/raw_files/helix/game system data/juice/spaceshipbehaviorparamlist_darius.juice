@@ -1,0 +1,379 @@
+include "helix/game system data/fruit/ai/spaceshipsettings.fruit"
+include "helix/game system data/juice/ai/npcshootpatterns.mnpcshootpattern"
+include "helix/game system data/juice/ai/spaceshipcombatprofiles.mspaceshipcombatprofile"
+include "helix/game system data/juice/ai/spaceshipformationprofiles.mspaceshipformationprofile"
+include "helix/game system data/juice/ai/spaceshipspawnprofiles.mspaceshipspawnprofile"
+include "helix/game system data/juice/ai/spaceshipspeedprofiles.mspaceshipspeedprofile"
+include "helix/game system data/juice/ai/spaceshiptrajectories.mspaceshiptrajectoryprofile"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_default.juice"
+
+SpaceshipBehaviorParameter dariusEvasiveStartCurrentManeuverMinElapsedTime : EvasiveStartCurrentManeuverMinElapsedTime
+{
+	myValue 0.0
+}
+
+SpaceshipBehaviorParameter dariusEvasiveStartMinDistance : EvasiveStartMinDistance
+{
+	myValue 500.0
+}
+
+SpaceshipBehaviorParameter dariusEvasiveMinDistance : EvasiveMinDistance
+{
+	myValue 200.0
+}
+
+SpaceshipBehaviorParameter dariusEvasiveDurationRandomMin : EvasiveDurationRandomMin
+{
+	myValue 5.0
+}
+
+SpaceshipBehaviorParameter dariusEvasiveDurationRandomMax : EvasiveDurationRandomMax
+{
+	myValue 20.0
+}
+
+SpaceshipBehaviorParameter dariusEvasiveConeAngle : EvasiveConeAngle
+{
+	myValue 15.0
+}
+
+SpaceshipBehaviorParameter dariusEvasiveStartAngleFromHostile : EvasiveStartAngleFromHostile
+{
+	myValue 15.0
+}
+
+SpaceshipBehaviorParameter dariusEvasiveSpiralProbability : EvasiveSpiralProbability
+{
+}
+
+SpaceshipBehaviorParameter dariusEvasivePauseBetweenPatternsMin : EvasivePauseBetweenPatternsMin
+{
+}
+
+SpaceshipBehaviorParameter dariusEvasivePauseBetweenPatternsMax : EvasivePauseBetweenPatternsMax
+{
+}
+
+SpaceshipBehaviorParameter dariusEvasiveBreakProbability : EvasiveBreakProbability
+{
+	myValue 0.0
+}
+
+SpaceshipBehaviorParameter dariusEvasiveScaleWidth : EvasiveScaleWidth
+{
+	myValue 3.0
+}
+
+SpaceshipBehaviorParameter dariusEvasiveScaleHeight : EvasiveScaleHeight
+{
+	myValue 1.0
+}
+
+SpaceshipBehaviorParameter dariusEvasiveScaleLength : EvasiveScaleLength
+{
+	myValue 5.0
+}
+
+SpaceshipBehaviorParameter dariusTimeToStartEvasiveIfStillInFrontOfHostile : TimeToStartEvasiveIfStillInFrontOfHostile
+{
+}
+
+SpaceshipBehaviorParameter dariusBreakStartCurrentManeuverMinElapsedTime : BreakStartCurrentManeuverMinElapsedTime
+{
+}
+
+SpaceshipBehaviorParameter dariusChaseDurationRandomMin : ChaseDurationRandomMin
+{
+}
+
+SpaceshipBehaviorParameter dariusChaseDurationRandomMax : ChaseDurationRandomMax
+{
+}
+
+SpaceshipBehaviorParameter dariusChaseDistanceMin : ChaseDistanceMin
+{
+	myValue 0.1
+}
+
+SpaceshipBehaviorParameter dariusChaseDistanceMax : ChaseDistanceMax
+{
+	myValue 0.1
+}
+
+SpaceshipBehaviorParameter dariusChaseConeAngle : ChaseConeAngle
+{
+	myValue 0.1
+}
+
+SpaceshipBehaviorParameter dariusChaseChanceToBreakOnHostileDodgePercent : ChaseChanceToBreakOnHostileDodgePercent
+{
+}
+
+SpaceshipBehaviorParameter dariusChaseBreakProbabilityOverPass : ChaseBreakProbabilityOverPass
+{
+}
+
+SpaceshipBehaviorParameter dariusOvershootMaxAngle : OvershootMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter dariusInterceptConeAngle : InterceptConeAngle
+{
+	myValue 180.0
+}
+
+SpaceshipBehaviorParameter dariusInterceptDistanceIdeal : InterceptDistanceIdeal
+{
+	myValue 0.1
+}
+
+SpaceshipBehaviorParameter dariusInterceptDistanceMin : InterceptDistanceMin
+{
+}
+
+SpaceshipBehaviorParameter dariusInterceptDistanceMax : InterceptDistanceMax
+{
+	myValue 1.0
+}
+
+SpaceshipBehaviorParameter dariusInterceptDurationMin : InterceptDurationMin
+{
+}
+
+SpaceshipBehaviorParameter dariusInterceptDurationMax : InterceptDurationMax
+{
+	myValue 0.1
+}
+
+SpaceshipBehaviorParameter dariusJoustingProbability : JoustingProbability
+{
+	myValue 0.1
+}
+
+SpaceshipBehaviorParameter dariusJoustingMaxDurationPrepare : JoustingMaxDurationPrepare
+{
+}
+
+SpaceshipBehaviorParameter dariusJoustingMaxDuration : JoustingMaxDuration
+{
+}
+
+SpaceshipBehaviorParameter dariusJoustingDistanceTurn : JoustingDistanceTurn
+{
+}
+
+SpaceshipBehaviorParameter dariusJoustingEndDistance : JoustingEndDistance
+{
+}
+
+SpaceshipBehaviorParameter dariusJoustingAngle : JoustingAngle
+{
+}
+
+SpaceshipBehaviorParameter dariusJoustingMaxAngle : JoustingMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter dariusJoustingEndBreakProbabilityOverPass : JoustingEndBreakProbabilityOverPass
+{
+}
+
+SpaceshipBehaviorParameter dariusJoustingPositionMaxHeight : JoustingPositionMaxHeight
+{
+}
+
+SpaceshipBehaviorParameter dariusAlignMinDistance : AlignMinDistance
+{
+}
+
+SpaceshipBehaviorParameter dariusAlignMaxDistance : AlignMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter dariusLeashingMinDistance : LeashingMinDistance
+{
+}
+
+SpaceshipBehaviorParameter dariusLeashingMaxDistance : LeashingMaxDistance
+{
+	myValue 3000.0
+}
+
+SpaceshipBehaviorParameter dariusLeashingToVolumeMaxDistance : LeashingToVolumeMaxDistance
+{
+	myValue 100.0
+}
+
+SpaceshipBehaviorParameter dariusShootMaxDistance : ShootMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter dariusShootMaxAngle : ShootMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter dariusBarkPositionDistanceMax : BarkPositionDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter dariusBroadcastRangeEnterCombat : BroadcastRangeEnterCombat
+{
+}
+
+SpaceshipBehaviorParameter dariusEscortDistance : EscortDistance
+{
+	myValue 200.0
+}
+
+SpaceshipBehaviorParameter dariusLowProhibitedActionAttackDelay : LowProhibitedActionAttackDelay
+{
+}
+
+SpaceshipBehaviorParameter dariusAccurateShootingProbability : AccurateShootingProbability
+{
+}
+
+SpaceshipBehaviorParameter dariusRangeForSecondaryWeapon : RangeForSecondaryWeapon
+{
+}
+
+SpaceshipBehaviorParameter dariusUndetectedTimeBeforeExitingCombat : UndetectedTimeBeforeExitingCombat
+{
+}
+
+SpaceshipBehaviorParameter dariusUndetectedTimeBeforeExitingAware : UndetectedTimeBeforeExitingAware
+{
+}
+
+SpaceshipBehaviorParameter dariusReinforcementsCallProbabilityPercent : ReinforcementsCallProbabilityPercent
+{
+	myValue 100.0
+}
+
+SpaceshipBehaviorParameter dariusReinforcementsCallDuration : ReinforcementsCallDuration
+{
+}
+
+SpaceshipBehaviorParameter dariusIdleDefaultSplineSizeHorizontal : IdleDefaultSplineSizeHorizontal
+{
+	myValue 2000.0
+}
+
+SpaceshipBehaviorParameter dariusIdleDefaultSplineSizeVertical : IdleDefaultSplineSizeVertical
+{
+	myValue 10.0
+}
+
+SpaceshipBehaviorParameter dariusCooldownDuration : CooldownDuration
+{
+}
+
+SpaceshipBehaviorParameter dariusCooldownMaxDistance : CooldownMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter dariusSpaceshipMaxEngagementDistance : SpaceshipMaxEngagementDistance
+{
+}
+
+SpaceshipBehaviorParameter dariusSpaceshipPrimaryMaxAngle : SpaceshipPrimaryMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter dariusSpaceshipPrimaryMaxDistance : SpaceshipPrimaryMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter dariusSpaceshipPrimaryMinDistance : SpaceshipPrimaryMinDistance
+{
+}
+
+SpaceshipBehaviorParameter dariusSpaceshipPrimaryMaxHealth : SpaceshipPrimaryMaxHealth
+{
+}
+
+SpaceshipBehaviorParameter dariusSpaceshipSecondaryMaxAngle : SpaceshipSecondaryMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter dariusSpaceshipSecondaryMaxDistance : SpaceshipSecondaryMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter dariusSpaceshipSecondaryMinDistance : SpaceshipSecondaryMinDistance
+{
+}
+
+SpaceshipBehaviorParameter dariusSpaceshipSecondaryMaxHealth : SpaceshipSecondaryMaxHealth
+{
+}
+
+SpaceshipBehaviorParameter dariusSpaceshipMissileMaxAngle : SpaceshipMissileMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter dariusSpaceshipMissileMaxDistance : SpaceshipMissileMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter dariusSpaceshipMissileMinDistance : SpaceshipMissileMinDistance
+{
+}
+
+SpaceshipBehaviorParameter dariusSpaceshipMissileMaxHealth : SpaceshipMissileMaxHealth
+{
+}
+
+SpaceshipBehaviorParameter dariusCombatLeashingToPlayer : CombatLeashingToPlayer
+{
+	myValue 4000.0
+}
+
+SpaceshipBehaviorParameter dariusSpaceshipAccuracyRadiusMax : SpaceshipAccuracyRadiusMax
+{
+}
+
+SpaceshipBehaviorParameter dariusSpaceshipAccuracyRadiusMin : SpaceshipAccuracyRadiusMin
+{
+}
+
+SpaceshipBehaviorParameter dariusSpaceshipAccuracyDistanceMax : SpaceshipAccuracyDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter dariusSpaceshipAccuracyDistanceMin : SpaceshipAccuracyDistanceMin
+{
+}
+
+SpaceshipBehaviorParameter dariusSpaceshipShotSpreadPercentage : SpaceshipShotSpreadPercentage
+{
+}
+
+SpaceshipBehaviorParameter dariusSpaceshipMissileLockOnTime : SpaceshipMissileLockOnTime
+{
+}
+
+SpaceshipBehaviorParameter dariusHarassmentChance : HarassmentChance
+{
+}
+
+SpaceshipBehaviorParameter dariusHarassmentDuration : HarassmentDuration
+{
+}
+
+SpaceshipBehaviorParameter dariusHarassmentAreaSizeMin : HarassmentAreaSizeMin
+{
+}
+
+SpaceshipBehaviorParameter dariusHarassmentAreaSizeMax : HarassmentAreaSizeMax
+{
+}
+
+SpaceshipBehaviorParameter dariusHarassmentAreaHeightMin : HarassmentAreaHeightMin
+{
+}
+
+SpaceshipBehaviorParameter dariusHarassmentAreaHeightMax : HarassmentAreaHeightMax
+{
+}
+

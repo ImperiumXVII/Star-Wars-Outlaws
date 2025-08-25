@@ -1,0 +1,44 @@
+include "snowdrop/modules/core/audio/audio.fruit"
+include "helix/game system data/fruit/inputchallenge/inputchallengeenum.fruit"
+
+list AudioEvents
+{
+    AudioEvent
+}
+
+class InputChallengeButtonOutcomeAudio
+{
+    InputChallengeButtonOutcome myOutcome
+    AudioEvents myOnOutcomeAudioEvents
+}
+
+list InputChallengeButtonOutcomeAudios
+{
+    InputChallengeButtonOutcomeAudio
+}
+
+class InputChallengeAudio < uid=auto abstract=1 >
+{
+}
+
+class InputChallengeButtonAudioEvents : InputChallengeAudio
+{
+    AudioEvents myOnButtonPressed
+    AudioEvents myOnButtonReleased
+    AudioEvents myOnButtonHoldStart
+    AudioEvents myOnButtonHoldStop
+    InputChallengeButtonOutcomeAudios myChallengeButtonOutcomeAudios
+}
+
+class InputChallengeAudioEvents : InputChallengeAudio
+{            
+    AudioEvents myOnChallengeStarted
+    AudioEvents myOnChallengeSucceeded
+    AudioEvents myOnChallengeInputFailed
+    AudioEvents myOnChallengeTimerFailed
+    AudioEvents myOnMoveToNextButton
+    AudioEvents myOnMoveToPreviousButton
+    AudioEvents myOnProgressLoopStart
+    AudioEvents myOnProgressLoopStop
+    AudioRTPC myOnProgressRTPC
+}

@@ -1,0 +1,45 @@
+include "helix/game system data/fruit/npcmove/movesetting.fruit"
+
+enum NPCFollowType
+{
+	Invalid
+	WildlifeFollow
+}
+
+class FollowData < abstract=1 >
+{
+	NPCFollowType myFollowType Invalid < hidden = 1 >
+}
+
+list FollowDistanceTable
+{
+	float
+}
+
+list FollowMotionPatternTypeTable
+{
+	NPCMotionPatternType
+}
+
+class WildlifeFollowData : FollowData
+{
+	NPCFollowType myFollowType WildlifeFollow < hidden = 1 >
+		
+	bool myIsPredator false
+	float myOwnerRunningSpeed 2.0
+	float myFollowRadius 5.0
+	float myRebindRadius 20.0
+	vec3f myOwnerPositionOffset 0.0;0.0;-5.0
+	FollowDistanceTable myDistanceTable
+	FollowMotionPatternTypeTable myFollowMotionPatternTypeTable
+}
+
+list FollowDataList
+{
+	FollowData
+}
+
+class NPCFollowProfile < uid=auto >
+{
+	FollowDataList myFollowDatas
+}

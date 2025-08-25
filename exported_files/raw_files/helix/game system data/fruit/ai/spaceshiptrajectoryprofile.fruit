@@ -1,0 +1,32 @@
+include "helix/game system data/fruit/settings/spaceshipenums.fruit"
+
+class SpaceshipTrajectoryPattern
+{
+	SpaceshipTrajectoryPatternType myType None
+	file myTrajectory "" < bhv=asset assettype=curve3 >
+
+	float myProbability 1
+	float myCooldown 0
+	float myCooldownProbabilitySubtract 0.5
+
+	float myBreakProbabilityIncrease 0
+
+	float myScale 1
+	float myScaleLength 1
+	float myScaleWidth 1
+	float myScaleHeight 1
+	bool myUsesRolling false
+	float myRollSpeed 0
+	bool myUseCombatHeightLimits false
+	SpaceshipSpeedProfileType mySpeedProfile None
+}
+
+list SpaceshipTrajectoryPatternEntries
+{
+	SpaceshipTrajectoryPattern
+}
+
+class SpaceshipTrajectoryProfile < uid=auto >
+{
+	SpaceshipTrajectoryPatternEntries myTrajectories
+}

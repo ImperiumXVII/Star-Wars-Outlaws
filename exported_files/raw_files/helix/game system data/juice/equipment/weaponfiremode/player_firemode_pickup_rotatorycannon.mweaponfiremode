@@ -1,0 +1,124 @@
+include "helix/game system data/juice/camera/modifiers/weapon_recoil_pickup_heavy.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_recoil_pickup_rotarycannon.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_shake_pickup_heavy.mcameramodifier"
+include "helix/game system data/juice/equipment/aimconfig/weapon_aimconfig_rifle_shield.maimconfig"
+include "helix/game system data/juice/equipment/weaponanimationconfig/weapon_anim_pickup_rotarycannon.mweaponanimationconfig"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_pickup_template.mweaponfiremode"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_small_red.mprojectile"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_tiny_red.mprojectile"
+include "helix/game system data/juice/sound/weapons/player_audioweapon_hb_rotarycannon.maudioweapon"
+
+WeaponFireMode player_firemode_pickup_rotatorycannon < uid=A207755D62C3EAE90000377A6B01B1C5 > : player_firemode_pickup_template
+{
+	myFireEvent
+	{
+		FullAutoFireEvent FullAutoFireEvent
+		{
+			myRPM
+			{
+				myRPM 1200
+			}
+		}
+	}
+	myBaseProperties
+	{
+		myAnimation < uid=7113C61165C3362900004E549DF96019 > = weapon_anim_pickup_rotarycannon 7113C61165C335C100004E52A790A986
+		myRecoil < uid=A207755D6515A28900014E4FFEE8DACC > = weapon_recoil_pickup_rotarycannon 7113C61165C3364A00004E5BC7FF859E
+		myInputController
+		{
+			myFireRumble 8E25811B656097CE00146F210CD3B817
+		}
+	}
+	myFireRampUpAndDown
+	{
+		myConfig
+		{
+			myRampUpTime 1.0
+			myRampDownTime 1.5
+			myRumble
+			{
+				myRampUpRumble 8E25811B6560C25E0002EBDA1ABC58F1
+				myRampUpRumbleIntensityCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.97778475 -0.11880161, }, outTangents = { 0.63610762 0.084710747, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+				myRampDownRumble 8E25811B6560C26F0002EBE271E0B33A
+			}
+		}
+		myRampUpWithADS TRUE
+	}
+	myAimConfig < uid=A207755D62C3EAE90000377B072E88F1 > = weapon_aimconfig_rifle_shield A207755D61F1678100001B18A2AABA6C
+	myAlwaysAim FALSE
+	myProjectile < uid=F8181D48632C61F900012F7EB751B109 > = weapon_projectile_blaster_tiny_red F8181D48650EEAE600012327899883FE
+	myOverHeat
+	{
+		myMaxHeatFormula "200.0 + PlayerOverheatBonus"
+		myHeatPerUseFormula 1.5
+		myHeatOverTimeFormula 5.0
+		myCoolingOverTimeFormula 0.0
+		myCoolingTimeToStartFormula 0.0
+		myOverHeatCoolingTimeToStartFormula 0.0
+		myOverHeatCoolingTime 5.0
+		myOverHeatCoolingOvertimeTime 5.0
+		myOverHeatReactionTime 2.0
+	}
+	myDamage
+	{
+		myBodyDamageMultipliers
+		{
+		}
+	}
+	mySpread
+	{
+		mySpreadValues
+		{
+			mySpread
+			{
+				myMin 0.7
+				myMax 1.5
+				myIsUniform TRUE
+			}
+		}
+		mySpreadIncreaseTime 0.1
+		myTimeToMinAccuracy 3.0
+		myTimeToMaxAccuracy 1.0
+		mySpreadIncreaseSpeed 0.1
+		mySpreadReductionSpeed 2.0
+		myMovementModifier 1.5
+		myMovementSpreadThreshold 0.0
+		myMovementSpreadAcceleration 6.0
+		myMovementSpreadDeceleration 6.0
+		myAimChangeModifier 2.0
+		myMovementModifierSpeedCap 3.0
+		myAimChangeSensitivity 1.0
+		myAimChangeAccuracyRecoveryTime 0.5
+		myUIMinimumSpread 75.0
+		myAmountOfAccuracyLockedRounds 0
+		myUseReverseSpread TRUE
+		myAimModifierData
+		{
+			myHipFireFormula 1.3
+		}
+	}
+	myFireShake < uid=1C021E95638A1339000135240D855ACF > = weapon_shake_pickup_heavy 4C1DFD4E636BBE0C00005E0808329346
+	myUI
+	{
+		myDefaultUIGraph helix/ui/graphs/crosshair_rotarycannon.muigraph
+		myUIGraphByConditions
+		{
+			EquipmentUIByConditions "Accessibility Crosshair"
+			{
+				myConditions
+				{
+					myConditions
+					{
+						GameConditionAccessibilitySimplifiedCrosshair "Simplified Crosshair"
+						{
+							myMode 2
+						}
+					}
+				}
+				myUIGraph helix/ui/graphs/crosshair_accessibility_simple_limitedammo.muigraph
+			}
+		}
+	}
+	myAudioData < uid=8DF138C6651D17F10000674E92F75776 > = player_audioweapon_hb_rotarycannon 8DF138C6651D13A30000C266CEA13654
+}
+

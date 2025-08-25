@@ -1,0 +1,119 @@
+include "helix/game system data/fruit/contract/contract.fruit"
+include "helix/game system data/juice/reward/contract_reward.mreward"
+include "helix/game system data/juice/reward/fp_reward.mreward"
+
+Contract "STAT -Thief Burglary 1 - SGI_01" < uid=0185C508653A804000006132DFCF8987 >
+{
+	myGalaxyLocation B581CAC861852906000019CADF551324
+	myInitialFaction 4728ADF9620B6C2B0000201F5FC5C937
+	myPossibleFactions
+	{
+		Faction Pyke < uid=0185C508653A80400000613355835231 > = AshigaClan 4728ADF9620B6C2B0000201F5FC5C937
+		Faction "Crimson Dawn" < uid=0185C508653A804000006134CD0184D4 > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+	}
+	myUIName "aurabesh = false, branch = \"\", contextComment = \"Space Burglary 1 contract name\", enabled = true, guid = #0185C508653A7F2D0000612E51452021, lineVersion = 32, maxLength = 0, productId = 6, sectionId = 2097, text = \"Steal Hutt goods\", type = \"MenuLine\""
+	myUIDescription "aurabesh = false, branch = \"\", contextComment = \"Space Burglary 1 objective description\", enabled = true, guid = #0185C508653A7F2D0000612F28B44E49, lineVersion = 30, maxLength = 0, productId = 6, sectionId = 2097, text = \"Steal Hutt goods from their collection area\", type = \"MenuLine\""
+	myNarrativeDescription "aurabesh = false, branch = \"\", contextComment = \"Space Burglary 1 narrative description\", enabled = true, guid = #BE60F07F654BAB3200075157D5D89452, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2097, text = \"The client needs a skilled thief to retrieve some rare goods that the Hutts are collecting.\", type = \"MenuLine\""
+	myDifficulty 1
+	myCooldown 9000.0
+	myReward < uid=0185C508653A8040000061365661B8EB > = Contract_Reward_Credit_Small BE60F07F65266CD00000921B65ECEC26
+	myFailReward < uid=0185C508653A804000006137193C7ACC > = Contract_Fail_Small BE60F07F6526844A0000924A874C2953
+	myBetrayReward < uid=0185C508653A804000006138D8DA7A1B > = Contract_Reward_Betrayal_Small BE60F07F652670550000923B61C434E5
+	myParts
+	{
+		ContractPart "STAT -Thief Burglary 1 -SGI_01" < uid=0185C508653A80400000613921C1BF49 >
+		{
+			myLevelInfo 9C4B6A046012DF06000000C9D0F252B6
+			myHasCompletedPersistentActionGameValue < uid=FD13B5146581A18C00035286EC84F0F4 >
+			{
+			}
+		}
+	}
+	myType Burglary
+	myRequirements
+	{
+		GameConditionContextPlayerHasReputation Tier
+		{
+		}
+	}
+}
+
+Contract "STAT - Action Raid 1 - SGI_01" < uid=0185C508653B6264000020CA82C081CB >
+{
+	myGalaxyLocation B581CAC861852906000019CADF551324
+	myInitialFaction 4728ADF9620B6C2B0000201F5FC5C937
+	myPossibleFactions
+	{
+		Faction Pyke < uid=0185C508653B6264000020CBDD1222B3 > = AshigaClan 4728ADF9620B6C2B0000201F5FC5C937
+		Faction "Crimson Dawn" < uid=0185C508653B6264000020CCBB17B86A > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+	}
+	myUIName "aurabesh = false, branch = \"\", contextComment = \"Space Raid 1 contract name\", enabled = true, guid = #0185C508653B614F000020C53C1A944C, lineVersion = 39, maxLength = 0, productId = 6, sectionId = 2097, text = \"Recover Hutt goods\", type = \"MenuLine\""
+	myUIDescription "aurabesh = false, branch = \"\", contextComment = \"Space Raid 1 objective description\", enabled = true, guid = #0185C508653B614F000020C62052A808, lineVersion = 34, maxLength = 0, productId = 6, sectionId = 2097, text = \"Raid the Hutts collection site and steal their goods. \", type = \"MenuLine\""
+	myNarrativeDescription "aurabesh = false, branch = \"\", contextComment = \"Space Raid 1 narrative description\", enabled = true, guid = #BE60F07F654BAB3200075155376698AF, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2097, text = \"The client needs a ruthless hired gun to retrieve rare goods from the Hutts.\", type = \"MenuLine\""
+	myDifficulty 2
+	myCooldown 9000.0
+	myReward < uid=0185C508653B6264000020CE31DA626A > = Contract_Reward_Credit_Medium_HighRisk 5C148C4666337AA20000013215CC35D7
+	myFailReward < uid=0185C508653B6264000020CF7D91D958 > = Contract_Fail_Medium BE60F07F6526844A0000924C84E1D11D
+	myBetrayReward < uid=0185C508653B6264000020D07B43EA68 > = Contract_Reward_Betrayal_Medium BE60F07F652670550000923EFA3B799D
+	myParts
+	{
+		ContractPart "STAT -Gun-for-hire Raid 1 - SGI_01" < uid=0185C508653B6264000020D15FE958B9 >
+		{
+			myLevelInfo 9C4B6A046012DF06000000C9D0F252B6
+			myShouldBlockFastTravel FALSE
+			myHasCompletedPersistentActionGameValue < uid=FD13B5146581A18C00035288563E1D3C >
+			{
+			}
+		}
+	}
+	myType Raid
+	myRequirements
+	{
+		GameConditionContextPlayerHasReputation Tier
+		{
+			myReputationTier Good
+		}
+	}
+	myIsHighRiskContract TRUE
+}
+
+Contract "STAT - Action Raid 2 - Traffic Lines" < uid=0185C508653B6894000020D78E9178E1 >
+{
+	myGalaxyLocation B581CAC861852906000019CADF551324
+	myInitialFaction 16DEADE65F7DDA76000000C847FBD2A1
+	myPossibleFactions
+	{
+		Faction Pyke < uid=0185C508653B6894000020D856201EC7 > = AshigaClan 4728ADF9620B6C2B0000201F5FC5C937
+		Faction "Crimson Dawn" < uid=0185C508653B6894000020D956BB7874 > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+		Faction "Hutt Clan" < uid=0185C508653B6894000020DAA8991429 > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	}
+	myUIName "aurabesh = false, branch = \"\", contextComment = \"Space Raid 2 contract name\", enabled = true, guid = #0185C508653B6849000020D34E6AFDE5, lineVersion = 39, maxLength = 0, productId = 6, sectionId = 2097, text = \"Recover Pyke goods\", type = \"MenuLine\""
+	myUIDescription "aurabesh = false, branch = \"\", contextComment = \"Space Raid 2 objective description\", enabled = true, guid = #0185C508653B6849000020D42A1E4EEA, lineVersion = 36, maxLength = 0, productId = 6, sectionId = 2097, text = \"Raid the Pykes collection site and steal their goods\", type = \"MenuLine\""
+	myNarrativeDescription "aurabesh = false, branch = \"\", contextComment = \"Space Raid 2 narrative description\", enabled = true, guid = #BE60F07F654BAB3100075154D8CBFEA6, lineVersion = 5, maxLength = 1, productId = -1, sectionId = 2097, text = \"The client needs a ruthless hired gun to retrieve rare goods from the Pykes.\", type = \"MenuLine\""
+	myDifficulty 3
+	myCooldown 9000.0
+	myReward < uid=0185C508653B6894000020DBADCA27AB > = Contract_Reward_Credit_Large_HighRisk 5C148C4666337AA200000135EEB5262A
+	myFailReward < uid=0185C508653B6894000020DCFB4AC2F3 > = Contract_Fail_Large BE60F07F6526844A0000924EBFF77C3C
+	myBetrayReward < uid=0185C508653B6894000020DD76BF7D36 > = Contract_Reward_Betrayal_Large BE60F07F652670550000924107D809A4
+	myParts
+	{
+		ContractPart "STAT -Gun-for-hire Raid 2 - Traffic Lines" < uid=0185C508653B6894000020DE16E71794 >
+		{
+			myLevelInfo 9C4B6A046012DF06000000C9D0F252B6
+			myShouldBlockFastTravel FALSE
+			myHasCompletedPersistentActionGameValue < uid=FD13B5146581A18C000352898D70AD72 >
+			{
+			}
+		}
+	}
+	myType Raid
+	myRequirements
+	{
+		GameConditionContextPlayerHasReputation Tier
+		{
+			myReputationTier Excellent
+		}
+	}
+	myIsHighRiskContract TRUE
+}
+

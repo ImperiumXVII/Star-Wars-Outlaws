@@ -1,0 +1,81 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/intel/a_co_to_010_intel.mintel"
+
+Quest A_CO_TO_01 < uid=F3CF752961DE7F3600001B0F58E57E86 >
+{
+	myName "aurabesh = false, contextComment = \"contract title\", enabled = true, guid = #F3CF752961DE7F3600001B052271D428, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 415, text = \"Lost and found\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"quest description\", enabled = true, guid = #F3CF752961DE7F3600001B062086077F, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 415, text = \"Recover valuable cargo from the Stellar Graveyard in Toshara Space. The Empire knows of this cargo and has also sent ships to find it. Find the cargo and deliver it to the Pyke Contact on Tatooine.\", type = \"MenuLine\""
+	myType Contract
+	myCompletionReward < uid=F3CF752961DE7F3600001B105936B470 > = NULLREFERENCE
+	myBeats
+	{
+		QuestBeat "Retrieve Cargo" < uid=F3CF752961DE7F3600001B1183992D42 >
+		{
+			myScript helix/scripts/scr_A_CO_001_B01_RetrieveCargo.mscript
+			myName "aurabesh = false, contextComment = \"contact beat\", enabled = true, guid = #F3CF752961DE7F3600001B072162D935, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 415, text = \"Retrieve Cargo from Toshara Space\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012DDB0000000AEDF387547
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Reach Sector (x) in Stellar Graveyard" < uid=F3CF752961DE7F3600001B12E7D36B42 >
+				{
+					myName "aurabesh = false, contextComment = \"quest objective\", enabled = true, guid = #F3CF752961DE7F3600001B084C9C9D0C, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 415, text = \"Reach the Center of Stellar Graveyard\", type = \"MenuLine\""
+					myAutoResolveIntel FALSE
+				}
+				QuestObjectiveGoToLocation "Track the Ship" < uid=F3CF752961DE7F3600001B1394B12870 >
+				{
+					myName "aurabesh = false, contextComment = \"quest objective\", enabled = true, guid = #F3CF752961DE7F3600001B09E0E0D023, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 415, text = \"Track the Ship\", type = \"MenuLine\""
+				}
+				QuestObjectiveGetItem "Collect Cargo" < uid=F3CF752961DE7F3600001B1532715AC4 >
+				{
+					myName "aurabesh = false, contextComment = \"quest objective - get item \", enabled = true, guid = #F3CF752961DE7F3600001B0AF04D8EBF, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 415, text = \"Collect Cargo\", type = \"MenuLine\""
+				}
+				QuestObjectiveInteract "Collect Cargo" < uid=F3CF752961E67C1D00001AFA6E959705 >
+				{
+					myName "aurabesh = false, contextComment = \"quest objective - interact\", enabled = true, guid = #F3CF752961E67C2800001AFB805016FE, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 415, text = \"Collect Cargo\", type = \"MenuLine\""
+				}
+				QuestObjectiveGoToLocation "Collect Cargo" < uid=4984AD6861F1265C0000A2675A7CB36D >
+				{
+					myName "aurabesh = false, contextComment = \"quest objective - reach\", enabled = true, guid = #4984AD6861F1266B0000A2687E6B977E, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 415, text = \"Collect Cargo\", type = \"MenuLine\""
+					myIntel
+					{
+					}
+				}
+				QuestObjectiveGoToLocation GoToTatooine < uid=1EAB3B4062B1CFE700105DF09D500C2E >
+				{
+					myName "aurabesh = false, contextComment = \"\", enabled = true, guid = #1EAB3B4062B1CFF200105DF148D41A67, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 415, text = \"Go to Tatooine \", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=6F2AF91962175D9E000033BA387AF994 >
+			{
+			}
+		}
+		QuestBeat "Deliver Cargo" < uid=F3CF752961DE7F3600001B17536BFDBB >
+		{
+			myScript helix/scripts/scr_A_CO_001_B02_DeliverCargo.mscript
+			myName "aurabesh = false, contextComment = \"contact beat\", enabled = true, guid = #F3CF752961DE7F3600001B0BC7D14AF2, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 415, text = \"Deliver Cargo on Tatooine Surface\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E35C00000177C6EF52CE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Reach the Tatooine Space" < uid=1EAB3B4062B1BF49000CD2EF69DFFF36 >
+				{
+					myName "aurabesh = false, contextComment = \"quest objective\", enabled = true, guid = #1EAB3B4062B1BF62000CD2F000251908, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 415, text = \"Reach the Tatooine Space\", type = \"MenuLine\""
+				}
+				QuestObjectiveGoToLocation "Reach Contact Location" < uid=F3CF752961DE7F3600001B19D75DB9A9 >
+				{
+					myName "aurabesh = false, contextComment = \"quest objective\", enabled = true, guid = #F3CF752961DE7F3600001B0D898A7FF3, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 415, text = \"Reach Contact Location\", type = \"MenuLine\""
+				}
+				QuestObjectiveInteract "Talk to Pyke Contact" < uid=F3CF752961DE7F3600001B1ABCC764C7 >
+				{
+					myName "aurabesh = false, contextComment = \"quest objective\", enabled = true, guid = #F3CF752961DE7F3600001B0E152E200B, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 415, text = \"Talk to Pyke Contact\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=6F2AF91962175D9E000033BB9AF09DAE >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=6F2AF91962175D9E000033BC69C027EB >
+	{
+	}
+}
+

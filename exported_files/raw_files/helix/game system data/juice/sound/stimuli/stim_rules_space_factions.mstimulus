@@ -1,0 +1,1460 @@
+include helix/audio/votypes.juice
+include "helix/game system data/fruit/audio/stimulus.fruit"
+include "helix/game system data/juice/barks/cooldown_main.mbarkscooldown"
+include "helix/game system data/juice/barks/cooldown_space.mbarkscooldown"
+include "helix/game system data/juice/rbtags/allrbtags.juice"
+include "helix/game system data/juice/rbtags/dlc2_quest_tags.mrbtagstags"
+include "helix/game system data/juice/sound/stimuli/stim_id_main.mstimulusidentifier"
+include "helix/game system data/juice/sound/stimuli/stim_id_main_responses.mstimulusidentifier"
+include "helix/game system data/juice/sound/stimuli/stim_id_space.mstimulusidentifier"
+
+StimulusElementContainer CallOfDistress_Group < uid=3A12912164745DEC0001667F9ACCFD3F >
+{
+	myIdentifier < uid=3A129121647462FE000166FA16F724AB > = S_SPACE_CallOfDistress 3A12912163D3EF9D00009D94CE9359F3
+	myCooldowns
+	{
+	}
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=3A129121647463B2000167B846DD3153 > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+	myVOPriorityOverride 50
+	mySubtitlePurpose "id = \"E4123D27662284560006449484ECA716\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A12912164746D740002B3F3EC818557 > = Agent_Faction_NotEmpireTag 16DEADE6614FB6BB00001864B2DE2CF6
+	}
+	myOtherAgentRequirements
+	{
+		StimulusElementContainerAgentRequirements "Kay Combat"
+		{
+			myAgentScopes
+			{
+				BarkAgentScope "New BarkAgentScope" Kay
+			}
+			myAgentTags
+			{
+				RBTagsTag "New RBTagsTag" < uid=3A129121647463F8000167DBA4E9A0DD > = Agent_PlayerState_NotCombatTag 0E9FA07363862A48000052A60B49216D
+			}
+		}
+	}
+	myElements
+	{
+		StimulusElement CallOfDistress
+		{
+			myElement
+			{
+				myGuid 4757D9C82913FB4A0001C83941B597A4
+			}
+			myCooldowns
+			{
+				BarksCooldown Distress < uid=3A1291216474649D000167FE0E25A10B > = cooldown_space_callofdistress 3A1291216474630F0001672EB8E954E0
+			}
+			myTemplateOverride
+			{
+				myGuid 425663F8CC6E87316061A570BAF7098F
+			}
+			myDelay 0.0
+			myPendingTime 10.0
+		}
+	}
+}
+
+StimulusElementContainer Pirate_EnterCombatAttacking_Enemy < uid=3A1291216475DEC300015F6AF43BE535 >
+{
+	myIdentifier < uid=3A1291216475DEC300015F6B3FB12BE8 > = S_SPACE_AttackingPlayer 3A1291216307886A0000E5B686F455B0
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=3A12912165FB0B3E0012854B071EDE69 > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+	}
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=3A129121660D7AA50004D7427AAFE24A > = VOType_Barks_SpaceCombatNPCStateChange 3A129121660D773F0004260E4685A569
+	myVOPriorityOverride 2
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A1291216475DEC300015F713400C13B > = Agent_Faction_NotEmpireTag 16DEADE6614FB6BB00001864B2DE2CF6
+		RBTagsTag "New RBTagsTag (0)" < uid=3A1291216475DEBF00015F69CE351751 > = Agent_Faction_PiratesTag 16DEADE6620AE18B000020CFC3D6D96A
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope ND5 Kay
+		}
+	}
+	myElements
+	{
+		StimulusElement EnterCombatAttacking
+		{
+			myElement
+			{
+				myGuid 4022B34A402F4C697EFB5AC6930D7993
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=3A1291216475DEC300015F725C6BF3F9 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+				BarksCooldown "New BarksCooldown (0)" < uid=3A1291216475DEC300015F7346AA645A > = cooldown_space_takingfire 3A1291216315C0980000D51483A63DBF
+				BarksCooldown "New BarksCooldown (1)" < uid=3A1291216475DEC300015F7484E77310 > = cooldown_space_takingfire_again 3A129121631733240001708A53047135
+				BarksCooldown "New BarksCooldown (2)" < uid=3A1291216475DEC300015F75B6DC73AE > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+				BarksCooldown "New BarksCooldown_0" < uid=3A12912165F992F7000E5D2F053816CC > = cooldown_space_playerengaging 3A12912163652855000311F5FBBEA4D6
+			}
+			myTemplateOverride
+			{
+				myGuid 425663F8CC6E87316061A570BAF7098F
+			}
+			myDelay 1.0
+			myPendingTime 2.0
+			myResponseDelay 0.15
+			myResponse < uid=3A129121647E03E400012AF50493E738 > = S_KAY_Space_EnterCombatDefending 3A129121660D6704000BDB50F14AEFD9
+		}
+	}
+}
+
+StimulusElementContainer EnterCombatAttacking_Player < uid=3A1291216474650B00016843837D0569 >
+{
+	myIdentifier < uid=3A1291216474652C0001684442C967A4 > = S_SPACE_AttackingPlayer 3A1291216307886A0000E5B686F455B0
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=3A12912165FB0BBD0012A167E8163387 > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+	}
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=3A129121660D7AA50004D7436FC876E0 > = VOType_Barks_SpaceCombatNPCStateChange 3A129121660D773F0004260E4685A569
+	myVOPriorityOverride 2
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A12912164746D7E0002B4056A7E5CE2 > = Agent_Faction_NotEmpireTag 16DEADE6614FB6BB00001864B2DE2CF6
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope ND5 Kay
+		}
+	}
+	myElements
+	{
+		StimulusElement EnterCombatAttacking
+		{
+			myElement
+			{
+				myGuid 4FCFBC3179DEAE327696AD1CA6B4639D
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=3A12912165F853EE001F09543AC13F5B > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+				BarksCooldown "New BarksCooldown_0" < uid=3A12912165F9922F000E5C6DD3364C67 > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+				BarksCooldown "New BarksCooldown_1" < uid=3A12912165F99234000E5C6E7A0ABA46 > = cooldown_space_playerengaging 3A12912163652855000311F5FBBEA4D6
+				BarksCooldown "New BarksCooldown_2" < uid=3A129121660D588C000809E6B04E043B > = Cooldown_SpaceEnemyPosition 3A129121647DD840000184AA3C1CB044
+			}
+			myTemplateOverride
+			{
+				myGuid 425663F8CC6E87316061A570BAF7098F
+			}
+			myDelay 1.0
+			myPendingTime 2.0
+			myResponseDelay 0.15
+			myResponse < uid=3A129121647E041E00012B186DAE2617 > = S_KAY_Space_EnterCombatDefending 3A129121660D6704000BDB50F14AEFD9
+		}
+	}
+}
+
+StimulusElementContainer EnterCombatAttacked_Enemy < uid=3A1291216474657000016856408D25AB >
+{
+	myIdentifier < uid=3A12912164746598000168688F80565B > = S_SPACE_CombatEnterAttacked 3A1291216307889D0000E5B8B26BFBEE
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown (0)" < uid=3A129121647465D10001687E5F299742 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+		BarksCooldown "New BarksCooldown" < uid=3A129121647468FF00016932FA206D3D > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+	}
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=3A129121660D7AA50004D74401838793 > = VOType_Barks_SpaceCombatNPCStateChange 3A129121660D773F0004260E4685A569
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A12912164746DA40002B40663A65173 > = Agent_Faction_NotEmpireTag 16DEADE6614FB6BB00001864B2DE2CF6
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Kay
+		}
+	}
+	myElements
+	{
+		StimulusElement EnterCombatDefending
+		{
+			myElement
+			{
+				myGuid 489404EF5EBE2B9BDC1075346A68FBBB
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=3A12912164746CD80002B3DE6FFAA8D7 > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+				BarksCooldown "New BarksCooldown (0)" < uid=3A12912164746CE30002B3DF75FFD0F5 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+				BarksCooldown "New BarksCooldown (1)" < uid=3A12912164746CE90002B3E033A27BE6 > = cooldown_space_takingfire 3A1291216315C0980000D51483A63DBF
+				BarksCooldown "New BarksCooldown (2)" < uid=3A12912164746CEC0002B3E1EF42F4B4 > = cooldown_space_takingfire_again 3A129121631733240001708A53047135
+				BarksCooldown "New BarksCooldown_0" < uid=3A12912165F99306000E5D30DBBB3F82 > = cooldown_space_playerengaging 3A12912163652855000311F5FBBEA4D6
+				BarksCooldown "New BarksCooldown_1" < uid=3A129121660D5876000809CBF3C8B8BF > = Cooldown_SpaceEnemyPosition 3A129121647DD840000184AA3C1CB044
+			}
+			myTemplateOverride
+			{
+				myGuid 425663F8CC6E87316061A570BAF7098F
+			}
+			myDelay 1.0
+			myResponseDelay 0.15
+			myResponse < uid=3A129121657351AE0019E706349A5F9E > = S_KAY_Response_CombatEnterAttacking 3A12912163358895000088C1816B9355
+		}
+		StimulusElement "Blank to Kay"
+		{
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=3A12912165F99316000E5D31306CEF80 > = cooldown_space_playerengaging 3A12912163652855000311F5FBBEA4D6
+			}
+			myDelay 0.0
+			myPendingTime 0.0
+			myPlayAfterPendingTimeout TRUE
+			myResponseDelay 0.3
+			myResponse < uid=3A129121657351D60019E7373D2D8D11 > = S_KAY_Response_CombatEnterAttacking 3A12912163358895000088C1816B9355
+		}
+	}
+}
+
+StimulusElementContainer EnterCombatAttacked_Response < uid=3A129121660E764B00079DEFD8FAA020 >
+{
+	myIdentifier < uid=3A129121660E764B00079DF024858637 > = S_SPACE_CombatEnterAttacked_Response 3A129121660E765B0007A16C4696FE22
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown (0)" < uid=3A129121660E764B00079DF10B71CC28 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+		BarksCooldown "New BarksCooldown" < uid=3A129121660E764B00079DF2A440880C > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+	}
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=3A129121660E764B00079DF3A9B6C704 > = VOType_Barks_SpaceCombatNPCStateChange 3A129121660D773F0004260E4685A569
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A129121660E764B00079DF4A10A583B > = Agent_Faction_NotEmpireTag 16DEADE6614FB6BB00001864B2DE2CF6
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+		}
+	}
+	myElements
+	{
+		StimulusElement EnterCombatDefending
+		{
+			myElement
+			{
+				myGuid 489404EF5EBE2B9BDC1075346A68FBBB
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=3A129121660E764B00079DF5249FD0BE > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+				BarksCooldown "New BarksCooldown (0)" < uid=3A129121660E764B00079DF6843F3CC9 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+				BarksCooldown "New BarksCooldown (1)" < uid=3A129121660E764B00079DF79BAE45AD > = cooldown_space_takingfire 3A1291216315C0980000D51483A63DBF
+				BarksCooldown "New BarksCooldown (2)" < uid=3A129121660E764B00079DF868961D63 > = cooldown_space_takingfire_again 3A129121631733240001708A53047135
+				BarksCooldown "New BarksCooldown_0" < uid=3A129121660E764B00079DF9B2562AEF > = cooldown_space_playerengaging 3A12912163652855000311F5FBBEA4D6
+				BarksCooldown "New BarksCooldown_1" < uid=3A129121660E764B00079DFACFF29118 > = Cooldown_SpaceEnemyPosition 3A129121647DD840000184AA3C1CB044
+			}
+			myTemplateOverride
+			{
+				myGuid 425663F8CC6E87316061A570BAF7098F
+			}
+			myDelay 0.0
+			myResponseDelay 0.0
+		}
+	}
+}
+
+StimulusElementContainer MisbehaviorFinalWarning_Player < uid=3A1291216475D9A900015C4077116C84 >
+{
+	myIdentifier < uid=3A1291216491930A0001560A24EF23F9 > = S_SPACE_MisbehaviorFinalWarning 3A12912164746F170002B4317D7B136A
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myVOType < uid=3A129121655F53D00001F79F37C960FE > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+}
+
+StimulusElementContainer MisbehaviorCareless_Player < uid=3A129121647491A90001414768CE4258 >
+{
+	myIdentifier < uid=3A129121647491B80001414839EA03CA > = S_SPACE_MisbehaviorCareless 3A12912164746F030002B42F0480B255
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=3A129121647492440001418183CA0A1A > = cooldown_space_misbehavior_careless 3A129121647491FA0001416DF49AAFBB
+		BarksCooldown "New BarksCooldown (0)" < uid=3A12912164749281000141A65EDBB7FF > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+	}
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=3A1291216474927B000141941DADBF07 > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A12912164749252000141822F35656D > = Agent_NotInCombatTag 16DEADE66143C7F50000185A5B4B20A9
+	}
+	myElements
+	{
+		StimulusElement Careless
+		{
+			myElement
+			{
+				myGuid 454CF7C9E5D4E301D23108803314D4AC
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=3A12912164749315000141F24B854268 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+				BarksCooldown "New BarksCooldown (0)" < uid=3A1291216474931D000141F34D6F0AC3 > = cooldown_space_misbehavior_careless 3A129121647491FA0001416DF49AAFBB
+				BarksCooldown "New BarksCooldown (1)" < uid=3A1291216474934A0001423A8414D717 > = cooldown_space_tresspassing 3A12912164749335000142178256B181
+			}
+			myTemplateOverride
+			{
+				myGuid 425663F8CC6E87316061A570BAF7098F
+			}
+			myPendingTime 2.0
+			myPlayAfterPendingTimeout FALSE
+		}
+	}
+}
+
+StimulusElementContainer MisbehaviorDangerous_Player < uid=3A12912164749308000141DBD214BB0D >
+{
+	myIdentifier < uid=3A12912164749308000141DCF6F2C5C0 > = S_SPACE_MisbehaviorDangerous 3A12912164746F0C0002B430C8B9FCA8
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=3A12912164749308000141DD4BE3F5A9 > = cooldown_space_misbehavior_careless 3A129121647491FA0001416DF49AAFBB
+		BarksCooldown "New BarksCooldown (0)" < uid=3A12912164749308000141DE3CCA7113 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+	}
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=3A12912164749308000141DF4B716954 > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A12912164749308000141E02BCD793F > = Agent_NotInCombatTag 16DEADE66143C7F50000185A5B4B20A9
+	}
+	myElements
+	{
+		StimulusElement Dangerous
+		{
+			myElement
+			{
+				myGuid 456E53B5EF92E6A23467B869857F2794
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=3A129121647493530001424C5150F383 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+				BarksCooldown "New BarksCooldown (0)" < uid=3A129121647493570001424DBA2DE11B > = cooldown_space_misbehavior_dangerous 3A129121647492270001416FFA771C40
+				BarksCooldown "New BarksCooldown (1)" < uid=3A1291216474935F0001424EB66976BD > = cooldown_space_tresspassing 3A12912164749335000142178256B181
+			}
+			myTemplateOverride
+			{
+				myGuid 425663F8CC6E87316061A570BAF7098F
+			}
+			myPendingTime 2.0
+			myPlayAfterPendingTimeout TRUE
+		}
+	}
+}
+
+StimulusElementContainer MisbehaviorTrespassing_Player < uid=3A129121647494C2000142FACA146E47 >
+{
+	myIdentifier < uid=3A129121647494C2000142FBDE6BB16E > = S_SPACE_MisbehaviorTrespassing 3A129121647491E20001415A24364421
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=3A129121647494C2000142FC4453797C > = cooldown_space_tresspassing 3A12912164749335000142178256B181
+		BarksCooldown "New BarksCooldown (0)" < uid=3A129121647494C2000142FD8FACA85F > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+	}
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=3A129121647494C2000142FEE6A389BB > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A129121647494C2000142FF65C0B4C0 > = Agent_NotInCombatTag 16DEADE66143C7F50000185A5B4B20A9
+	}
+	myElements
+	{
+		StimulusElement Trespassing
+		{
+			myElement
+			{
+				myGuid 459095B8CF137629D3AAA38E31DBC9BD
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=3A129121647494C200014300BA87B99D > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+				BarksCooldown "New BarksCooldown (0)" < uid=3A129121647494C200014301508310C2 > = cooldown_space_misbehavior_dangerous 3A129121647492270001416FFA771C40
+				BarksCooldown "New BarksCooldown (1)" < uid=3A129121647494C200014302AA97A538 > = cooldown_space_tresspassing 3A12912164749335000142178256B181
+			}
+			myTemplateOverride
+			{
+				myGuid 425663F8CC6E87316061A570BAF7098F
+			}
+			myPendingTime 2.0
+			myPlayAfterPendingTimeout TRUE
+		}
+	}
+}
+
+StimulusElementContainer ExitCombat_Player < uid=3A129121647496E000014327AAA75787 >
+{
+	myIdentifier < uid=3A129121647496E00001432822C84A07 > = S_SPACE_CombatExit 3A12912164746EEA0002B41836DF35BE
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown (0)" < uid=3A129121647496E000014329818C1F99 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+	}
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=3A129121647496E00001432DB2B3BB05 > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+	myVOPriorityOverride 20
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A129121647496E00001432E9D18AB72 > = Agent_Faction_NotEmpireTag 16DEADE6614FB6BB00001864B2DE2CF6
+		RBTagsTag "New RBTagsTag (0)" < uid=3A1291216475D96500015C0CC57EF5F8 > = Agent_NotInCombatTag 16DEADE66143C7F50000185A5B4B20A9
+		RBTagsTag "New RBTagsTag (1)" < uid=3A12912164DCE3460003779BF6589E7A > = Agent_Archetype_Pilot 3A12912163EF7B9500005053123CF383
+	}
+	myElements
+	{
+		StimulusElement EnterCombatDefending
+		{
+			myElement
+			{
+				myGuid 41D1DDF895B5117B4E04D2349427CC8E
+			}
+			myCooldowns
+			{
+			}
+			myTemplateOverride
+			{
+				myGuid 425663F8CC6E87316061A570BAF7098F
+			}
+			myDelay 1.0
+			myPendingTime 10.0
+			myPlayAfterPendingTimeout FALSE
+		}
+	}
+}
+
+StimulusElementContainer CombatJousting < uid=3A12912165F99238000E5C6F6B0BB5E2 >
+{
+	myIdentifier < uid=3A12912165F99238000E5C700A3F9990 > = S_SPACE_CombatJousting 3A12912165F98FA0000E5A8F5DEFAB31
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=3A12912165F99238000E5C7125C8CA1B > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+		BarksCooldown "New BarksCooldown_0" < uid=3A12912165F99238000E5C72A4AA1DA9 > = cooldown_space_playerengaging 3A12912163652855000311F5FBBEA4D6
+		BarksCooldown "New BarksCooldown_1" < uid=3A1291216616936000066BE477CB1920 > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+	}
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=3A12912165F99238000E5C739238087B > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+	myVOPriorityOverride 2
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A12912165F99238000E5C74643DF0B5 > = Agent_Faction_NotEmpireTag 16DEADE6614FB6BB00001864B2DE2CF6
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+		}
+	}
+	myElements
+	{
+		StimulusElement EnterCombatAttacking
+		{
+			myElement
+			{
+				myGuid 4FCFBC3179DEAE327696AD1CA6B4639D
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=3A12912165F99238000E5C7507C6763B > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+				BarksCooldown "New BarksCooldown_0" < uid=3A12912166169357000667AB28ECC386 > = cooldown_space_playerengaging 3A12912163652855000311F5FBBEA4D6
+			}
+			myTemplateOverride
+			{
+				myGuid 425663F8CC6E87316061A570BAF7098F
+			}
+			myPendingTime 2.0
+		}
+	}
+}
+
+StimulusElementContainer PlayerCollision_Civilian < uid=3A129121661D00BF0002E7057B6F6368 >
+{
+	myIdentifier < uid=3A129121661D00BF0002E7061CA5FC8C > = S_SPACE_PlayerCollision 3A1291216307899D0000E5BA57B3CC25
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=3A129121661D00BF0002E70709D64339 > = cooldown_space_misbehavior_careless 3A129121647491FA0001416DF49AAFBB
+		BarksCooldown "New BarksCooldown (0)" < uid=3A129121661D00BF0002E708B57AFD10 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+	}
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=3A129121661D00BF0002E709B50EBCF4 > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+	myVOPriorityOverride 15
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A129121661D00BF0002E70A867C7745 > = Agent_NotInCombatTag 16DEADE66143C7F50000185A5B4B20A9
+		RBTagsTag "New RBTagsTag_0" < uid=3A129121661D013F0002EE4A28D424BE > = Agent_Faction_NotEmpireTag 16DEADE6614FB6BB00001864B2DE2CF6
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Kay
+		}
+	}
+	myOtherAgentRequirements
+	{
+	}
+	myElements
+	{
+		StimulusElement Dangerous
+		{
+			myElement
+			{
+				myGuid 456E53B5EF92E6A23467B869857F2794
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=3A129121661D00BF0002E70B3D082338 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+				BarksCooldown "New BarksCooldown (0)" < uid=3A129121661D00BF0002E70C5FF8CBF4 > = cooldown_space_misbehavior_dangerous 3A129121647492270001416FFA771C40
+			}
+			myTemplateOverride
+			{
+				myGuid 425663F8CC6E87316061A570BAF7098F
+			}
+			myDelay 0.5
+			myPendingTime 2.0
+			myPlayAfterPendingTimeout TRUE
+			myResponseDelay -0.1
+			myResponse < uid=3A129121661D01030002EE156E428ADC > = S_KAY_Space_CollisionWithNPCResponse 3A129121661D00CD0002E7281777B86C
+		}
+	}
+}
+
+StimulusElementContainer CallOfDistress_Group_Melitto < uid=E4123D2765FDC75C000275ED55C2F76C >
+{
+	myIdentifier < uid=E4123D2765FDC75C000275EE9197AAAD > = S_SPACE_CallOfDistress 3A12912163D3EF9D00009D94CE9359F3
+	myCooldowns
+	{
+		BarksCooldown Distress < uid=E4123D2765FDC75C000275EFD5ACA95B > = cooldown_space_callofdistress 3A1291216474630F0001672EB8E954E0
+	}
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=E4123D2765FDC75C000275F0AFF32301 > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+	myVOPriorityOverride 50
+	mySubtitlePurpose "id = \"E4123D27662284560006449484ECA716\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2765FDC75C000275F1EDC8D804 > = Agent_Faction_NotEmpireTag 16DEADE6614FB6BB00001864B2DE2CF6
+		RBTagsTag "New RBTagsTag_0" < uid=E4123D2765FDC78E00027645B92421C4 > = Agent_Faction_AshigaClanTag 4728ADF9620B7AF800002022DD5E94D3
+	}
+	myOtherAgentRequirements
+	{
+		StimulusElementContainerAgentRequirements "Kay Combat"
+		{
+			myAgentScopes
+			{
+				BarkAgentScope "New BarkAgentScope" Kay
+			}
+			myAgentTags
+			{
+				RBTagsTag "New RBTagsTag" < uid=E4123D2765FDC75C000275F2C126C5D2 > = Agent_PlayerState_NotCombatTag 0E9FA07363862A48000052A60B49216D
+			}
+		}
+	}
+	myElements
+	{
+		StimulusElement CallOfDistress
+		{
+			myElement
+			{
+				myGuid 4757D9C82913FB4A0001C83941B597A4
+			}
+			myCooldowns
+			{
+				BarksCooldown Distress < uid=E4123D2765FDC75C000275F371704ADC > = cooldown_space_callofdistress 3A1291216474630F0001672EB8E954E0
+			}
+			myTemplateOverride
+			{
+				myGuid 4BF1446EB84C6DACD7C0474799BCC583
+			}
+			myDelay 0.0
+			myPendingTime 10.0
+		}
+	}
+}
+
+StimulusElementContainer Pirate_EnterCombatAttacking_Enemy_Melitto < uid=E4123D2765FDC75C000275F447AD84D8 >
+{
+	myIdentifier < uid=E4123D2765FDC75C000275F5EC0E7CD1 > = S_SPACE_AttackingPlayer 3A1291216307886A0000E5B686F455B0
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=E4123D2765FDC75C000275F61BF13CD7 > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+	}
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=3A129121660D7AA50004D7456BC1F4E1 > = VOType_Barks_SpaceCombatNPCStateChange 3A129121660D773F0004260E4685A569
+	myVOPriorityOverride 2
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2765FDC75C000275F8C3846147 > = Agent_Faction_NotEmpireTag 16DEADE6614FB6BB00001864B2DE2CF6
+		RBTagsTag "New RBTagsTag_0" < uid=E4123D2765FDC79600027646B63FE107 > = Agent_Faction_AshigaClanTag 4728ADF9620B7AF800002022DD5E94D3
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope ND5 ND5
+		}
+	}
+	myElements
+	{
+		StimulusElement EnterCombatAttacking
+		{
+			myElement
+			{
+				myGuid 4022B34A402F4C697EFB5AC6930D7993
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=E4123D2765FDC75C000275FACE76FDDF > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+				BarksCooldown "New BarksCooldown (0)" < uid=E4123D2765FDC75C000275FB03011585 > = cooldown_space_takingfire 3A1291216315C0980000D51483A63DBF
+				BarksCooldown "New BarksCooldown (1)" < uid=E4123D2765FDC75C000275FCE36FC2FB > = cooldown_space_takingfire_again 3A129121631733240001708A53047135
+				BarksCooldown "New BarksCooldown (2)" < uid=E4123D2765FDC75C000275FD2473F071 > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+				BarksCooldown "New BarksCooldown_0" < uid=E4123D2765FDC75C000275FE5D926925 > = cooldown_space_playerengaging 3A12912163652855000311F5FBBEA4D6
+			}
+			myTemplateOverride
+			{
+				myGuid 4BF1446EB84C6DACD7C0474799BCC583
+			}
+			myPendingTime 2.0
+			myResponse < uid=E4123D2765FDC75C000275FF5634F22F > = S_ND5_Response_CombatEnterDefending 3A129121647E037A00012ABC053B10FA
+		}
+	}
+}
+
+StimulusElementContainer EnterCombatAttacking_Player_Melitto < uid=E4123D2765FDC75C00027600CBD19A08 >
+{
+	myIdentifier < uid=E4123D2765FDC75C00027601709A0B7B > = S_SPACE_AttackingPlayer 3A1291216307886A0000E5B686F455B0
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=E4123D2765FDC75C00027602BE8F9F0C > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+	}
+	myTagScoreModifier 5
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=3A129121660D7AA50004D7466E79F661 > = VOType_Barks_SpaceCombatNPCStateChange 3A129121660D773F0004260E4685A569
+	myVOPriorityOverride 2
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2765FDC75C00027604089D7551 > = Agent_Faction_NotEmpireTag 16DEADE6614FB6BB00001864B2DE2CF6
+		RBTagsTag "New RBTagsTag_0" < uid=E4123D2765FDC7A4000276478E69899C > = Agent_Faction_AshigaClanTag 4728ADF9620B7AF800002022DD5E94D3
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope ND5 ND5
+		}
+	}
+	myElements
+	{
+		StimulusElement EnterCombatAttacking
+		{
+			myElement
+			{
+				myGuid 4FCFBC3179DEAE327696AD1CA6B4639D
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=E4123D2765FDC75C00027605A8FC66EA > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+				BarksCooldown "New BarksCooldown_0" < uid=E4123D2765FDC75C000276066A49FB06 > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+				BarksCooldown "New BarksCooldown_1" < uid=E4123D2765FDC75C00027607F83B7150 > = cooldown_space_playerengaging 3A12912163652855000311F5FBBEA4D6
+			}
+			myTemplateOverride
+			{
+				myGuid 4BF1446EB84C6DACD7C0474799BCC583
+			}
+			myPendingTime 2.0
+			myResponse < uid=E4123D2765FDC75C000276081BEFA4FB > = S_ND5_Response_CombatEnterDefending 3A129121647E037A00012ABC053B10FA
+		}
+	}
+}
+
+StimulusElementContainer EnterCombatAttacked_Enemy_Melitto < uid=E4123D2765FDC75C00027609506F5A5A >
+{
+	myIdentifier < uid=E4123D2765FDC75C0002760A75DB0A9A > = S_SPACE_CombatEnterAttacked 3A1291216307889D0000E5B8B26BFBEE
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown (0)" < uid=E4123D2765FDC75C0002760B56494480 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+		BarksCooldown "New BarksCooldown" < uid=E4123D2765FDC75C0002760C30E7FACE > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+	}
+	myTagScoreModifier 5
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=3A129121660D7AA50004D747422AF238 > = VOType_Barks_SpaceCombatNPCStateChange 3A129121660D773F0004260E4685A569
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2765FDC75C0002760EB7529D0C > = Agent_Faction_NotEmpireTag 16DEADE6614FB6BB00001864B2DE2CF6
+		RBTagsTag "New RBTagsTag_0" < uid=E4123D2765FDC7AB00027648954304F9 > = Agent_Faction_AshigaClanTag 4728ADF9620B7AF800002022DD5E94D3
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Kay
+		}
+	}
+	myElements
+	{
+		StimulusElement EnterCombatDefending
+		{
+			myElement
+			{
+				myGuid 489404EF5EBE2B9BDC1075346A68FBBB
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=E4123D2765FDC75C0002760FAB23A222 > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+				BarksCooldown "New BarksCooldown (0)" < uid=E4123D2765FDC75C00027610A41D0C02 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+				BarksCooldown "New BarksCooldown (1)" < uid=E4123D2765FDC75C0002761138A9EB58 > = cooldown_space_takingfire 3A1291216315C0980000D51483A63DBF
+				BarksCooldown "New BarksCooldown (2)" < uid=E4123D2765FDC75C000276121B30ABBC > = cooldown_space_takingfire_again 3A129121631733240001708A53047135
+				BarksCooldown "New BarksCooldown_0" < uid=E4123D2765FDC75C00027613ADB4284A > = cooldown_space_playerengaging 3A12912163652855000311F5FBBEA4D6
+			}
+			myTemplateOverride
+			{
+				myGuid 4BF1446EB84C6DACD7C0474799BCC583
+			}
+			myResponse < uid=E4123D2765FDC75C00027614E1855CE2 > = S_KAY_Response_CombatEnterAttacking 3A12912163358895000088C1816B9355
+		}
+		StimulusElement "Blank to Kay"
+		{
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=E4123D2765FDC75C00027615960198A1 > = cooldown_space_playerengaging 3A12912163652855000311F5FBBEA4D6
+				BarksCooldown "New BarksCooldown_0" < uid=E4123D2765FDC75C0002761608F2AC96 > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+			}
+			myResponse < uid=E4123D2765FDC75C00027617040823BA > = S_KAY_Response_CombatEnterAttacking 3A12912163358895000088C1816B9355
+		}
+	}
+}
+
+StimulusElementContainer EnterCombatAttacked_Response_Melitto < uid=3A129121660E8B740008A74EA2B81D62 >
+{
+	myIdentifier < uid=3A129121660E8B740008A74FAE32AEF4 > = S_SPACE_CombatEnterAttacked_Response 3A129121660E765B0007A16C4696FE22
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown (0)" < uid=3A129121660E8B740008A7500000A279 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+		BarksCooldown "New BarksCooldown" < uid=3A129121660E8B740008A7516B4C07C8 > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+	}
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=3A129121660E8B740008A752097D54CE > = VOType_Barks_SpaceCombatNPCStateChange 3A129121660D773F0004260E4685A569
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A129121660E8B740008A75332031E1B > = Agent_Faction_NotEmpireTag 16DEADE6614FB6BB00001864B2DE2CF6
+		RBTagsTag "New RBTagsTag_0" < uid=3A129121660E8B6F0008A6544FB64000 > = Agent_Faction_AshigaClanTag 4728ADF9620B7AF800002022DD5E94D3
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+		}
+	}
+	myElements
+	{
+		StimulusElement EnterCombatDefending
+		{
+			myElement
+			{
+				myGuid 489404EF5EBE2B9BDC1075346A68FBBB
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=3A129121660E8B740008A75437156148 > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+				BarksCooldown "New BarksCooldown (0)" < uid=3A129121660E8B740008A7553C6C5225 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+				BarksCooldown "New BarksCooldown (1)" < uid=3A129121660E8B740008A756DF54AA42 > = cooldown_space_takingfire 3A1291216315C0980000D51483A63DBF
+				BarksCooldown "New BarksCooldown (2)" < uid=3A129121660E8B740008A757F58D8475 > = cooldown_space_takingfire_again 3A129121631733240001708A53047135
+				BarksCooldown "New BarksCooldown_0" < uid=3A129121660E8B740008A758690EA4AD > = cooldown_space_playerengaging 3A12912163652855000311F5FBBEA4D6
+				BarksCooldown "New BarksCooldown_1" < uid=3A129121660E8B740008A75937AD2ED3 > = Cooldown_SpaceEnemyPosition 3A129121647DD840000184AA3C1CB044
+			}
+			myTemplateOverride
+			{
+				myGuid 4BF1446EB84C6DACD7C0474799BCC583
+			}
+			myDelay 0.0
+			myResponseDelay 0.0
+		}
+	}
+}
+
+StimulusElementContainer MisbehaviorFinalWarning_Player_Melitto < uid=E4123D2765FDC75C00027618CFA10D95 >
+{
+	myIdentifier < uid=E4123D2765FDC75C0002761955FF4050 > = S_SPACE_MisbehaviorFinalWarning 3A12912164746F170002B4317D7B136A
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myVOType < uid=E4123D2765FDC75C0002761AC8F4C065 > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2765FDC7B200027649EFF25CFE > = Agent_Faction_AshigaClanTag 4728ADF9620B7AF800002022DD5E94D3
+	}
+}
+
+StimulusElementContainer MisbehaviorCareless_Player_Melitto < uid=E4123D2765FDC75C0002761B8DA43F32 >
+{
+	myIdentifier < uid=E4123D2765FDC75C0002761C4AAE46B6 > = S_SPACE_MisbehaviorCareless 3A12912164746F030002B42F0480B255
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=E4123D2765FDC75C0002761DE5FC7273 > = cooldown_space_misbehavior_careless 3A129121647491FA0001416DF49AAFBB
+		BarksCooldown "New BarksCooldown (0)" < uid=E4123D2765FDC75C0002761E8B657141 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+	}
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=E4123D2765FDC75C0002761F279492B0 > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2765FDC75C000276201F37FB02 > = Agent_NotInCombatTag 16DEADE66143C7F50000185A5B4B20A9
+		RBTagsTag "New RBTagsTag_0" < uid=E4123D2765FDC7BD0002764AA80CFAA9 > = Agent_Faction_AshigaClanTag 4728ADF9620B7AF800002022DD5E94D3
+	}
+	myElements
+	{
+		StimulusElement Careless
+		{
+			myElement
+			{
+				myGuid 454CF7C9E5D4E301D23108803314D4AC
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=E4123D2765FDC75C00027621195E7D7D > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+				BarksCooldown "New BarksCooldown (0)" < uid=E4123D2765FDC75C00027622B911E86E > = cooldown_space_misbehavior_careless 3A129121647491FA0001416DF49AAFBB
+				BarksCooldown "New BarksCooldown (1)" < uid=E4123D2765FDC75C000276233A93ECEE > = cooldown_space_tresspassing 3A12912164749335000142178256B181
+			}
+			myTemplateOverride
+			{
+				myGuid 4BF1446EB84C6DACD7C0474799BCC583
+			}
+			myPendingTime 2.0
+			myPlayAfterPendingTimeout FALSE
+		}
+	}
+}
+
+StimulusElementContainer MisbehaviorDangerous_Player_Melitto < uid=E4123D2765FDC75C000276249ADCEF55 >
+{
+	myIdentifier < uid=E4123D2765FDC75C000276257083DCE6 > = S_SPACE_MisbehaviorDangerous 3A12912164746F0C0002B430C8B9FCA8
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=E4123D2765FDC75C0002762646E71800 > = cooldown_space_misbehavior_careless 3A129121647491FA0001416DF49AAFBB
+		BarksCooldown "New BarksCooldown (0)" < uid=E4123D2765FDC75C00027627E3B678AE > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+	}
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=E4123D2765FDC75C000276289E6D85CA > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2765FDC75C00027629F0671E0D > = Agent_NotInCombatTag 16DEADE66143C7F50000185A5B4B20A9
+		RBTagsTag "New RBTagsTag_0" < uid=E4123D2765FDC7C10002764BFF90891A > = Agent_Faction_AshigaClanTag 4728ADF9620B7AF800002022DD5E94D3
+	}
+	myElements
+	{
+		StimulusElement Dangerous
+		{
+			myElement
+			{
+				myGuid 456E53B5EF92E6A23467B869857F2794
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=E4123D2765FDC75C0002762A8E3E3F19 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+				BarksCooldown "New BarksCooldown (0)" < uid=E4123D2765FDC75C0002762BDE1D5578 > = cooldown_space_misbehavior_dangerous 3A129121647492270001416FFA771C40
+				BarksCooldown "New BarksCooldown (1)" < uid=E4123D2765FDC75C0002762C2CACD8A4 > = cooldown_space_tresspassing 3A12912164749335000142178256B181
+			}
+			myTemplateOverride
+			{
+				myGuid 4BF1446EB84C6DACD7C0474799BCC583
+			}
+			myPendingTime 2.0
+			myPlayAfterPendingTimeout TRUE
+		}
+	}
+}
+
+StimulusElementContainer MisbehaviorTrespassing_Player_Melitto < uid=E4123D2765FDC75C0002762DE4F33C4A >
+{
+	myIdentifier < uid=E4123D2765FDC75C0002762E9B4A113A > = S_SPACE_MisbehaviorTrespassing 3A129121647491E20001415A24364421
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=E4123D2765FDC75C0002762FAFC821BE > = cooldown_space_tresspassing 3A12912164749335000142178256B181
+		BarksCooldown "New BarksCooldown (0)" < uid=E4123D2765FDC75C00027630E5EBA51B > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+	}
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=E4123D2765FDC75C000276319887C480 > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2765FDC75C00027632538FD56B > = Agent_NotInCombatTag 16DEADE66143C7F50000185A5B4B20A9
+		RBTagsTag "New RBTagsTag_0" < uid=E4123D2765FDC7C70002764C44D8521D > = Agent_Faction_AshigaClanTag 4728ADF9620B7AF800002022DD5E94D3
+	}
+	myElements
+	{
+		StimulusElement Trespassing
+		{
+			myElement
+			{
+				myGuid 459095B8CF137629D3AAA38E31DBC9BD
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=E4123D2765FDC75C00027633BDA4CB75 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+				BarksCooldown "New BarksCooldown (0)" < uid=E4123D2765FDC75C0002763405DF62A7 > = cooldown_space_misbehavior_dangerous 3A129121647492270001416FFA771C40
+				BarksCooldown "New BarksCooldown (1)" < uid=E4123D2765FDC75C00027635A3DA0558 > = cooldown_space_tresspassing 3A12912164749335000142178256B181
+			}
+			myTemplateOverride
+			{
+				myGuid 4BF1446EB84C6DACD7C0474799BCC583
+			}
+			myPendingTime 2.0
+			myPlayAfterPendingTimeout TRUE
+		}
+	}
+}
+
+StimulusElementContainer ExitCombat_Player_Melitto < uid=E4123D2765FDC75C000276368ED3B8C5 >
+{
+	myIdentifier < uid=E4123D2765FDC75C0002763715B73509 > = S_SPACE_CombatExit 3A12912164746EEA0002B41836DF35BE
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown (0)" < uid=E4123D2765FDC75C00027638EB83A742 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+	}
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=E4123D2765FDC75C0002763998008FAF > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+	myVOPriorityOverride 20
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2765FDC75C0002763A8B0619FA > = Agent_Faction_NotEmpireTag 16DEADE6614FB6BB00001864B2DE2CF6
+		RBTagsTag "New RBTagsTag (0)" < uid=E4123D2765FDC75C0002763B27B56AEE > = Agent_NotInCombatTag 16DEADE66143C7F50000185A5B4B20A9
+		RBTagsTag "New RBTagsTag (1)" < uid=E4123D2765FDC75C0002763CD1FA60ED > = Agent_Archetype_Pilot 3A12912163EF7B9500005053123CF383
+		RBTagsTag "New RBTagsTag_0" < uid=E4123D2765FDC7CB0002764DFAE907AA > = Agent_Faction_AshigaClanTag 4728ADF9620B7AF800002022DD5E94D3
+	}
+	myElements
+	{
+		StimulusElement EnterCombatDefending
+		{
+			myElement
+			{
+				myGuid 41D1DDF895B5117B4E04D2349427CC8E
+			}
+			myCooldowns
+			{
+			}
+			myTemplateOverride
+			{
+				myGuid 4BF1446EB84C6DACD7C0474799BCC583
+			}
+			myDelay 1.0
+			myPendingTime 5.0
+			myPlayAfterPendingTimeout FALSE
+		}
+	}
+}
+
+StimulusElementContainer CombatJousting_Melitto < uid=E4123D2765FDC75C0002763D4D1BF08A >
+{
+	myIdentifier < uid=E4123D2765FDC75C0002763EF669F91A > = S_SPACE_CombatJousting 3A12912165F98FA0000E5A8F5DEFAB31
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=E4123D2765FDC75C0002763F7A071F23 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+		BarksCooldown "New BarksCooldown_0" < uid=E4123D2765FDC75C0002764078F8E586 > = cooldown_space_playerengaging 3A12912163652855000311F5FBBEA4D6
+		BarksCooldown "New BarksCooldown_1" < uid=3A1291216616936F0006733731B19D14 > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+	}
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=E4123D2765FDC75C00027641EAF5D5B3 > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+	myVOPriorityOverride 2
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2765FDC75C0002764253ED40DE > = Agent_Faction_NotEmpireTag 16DEADE6614FB6BB00001864B2DE2CF6
+		RBTagsTag "New RBTagsTag_0" < uid=E4123D2765FDC7D00002764EA793A07F > = Agent_Faction_AshigaClanTag 4728ADF9620B7AF800002022DD5E94D3
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+		}
+	}
+	myElements
+	{
+		StimulusElement EnterCombatAttacking
+		{
+			myElement
+			{
+				myGuid 4FCFBC3179DEAE327696AD1CA6B4639D
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=E4123D2765FDC75C000276431151B387 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+				BarksCooldown "New BarksCooldown_0" < uid=3A1291216616937A00067864112D69A3 > = cooldown_space_playerengaging 3A12912163652855000311F5FBBEA4D6
+			}
+			myTemplateOverride
+			{
+				myGuid 4BF1446EB84C6DACD7C0474799BCC583
+			}
+			myPendingTime 2.0
+		}
+	}
+}
+
+StimulusElementContainer PlayerCollision_Melitto < uid=3A129121661D02B10002EEF8123273A4 >
+{
+	myIdentifier < uid=3A129121661D02B10002EEF9AFC9DC5E > = S_SPACE_PlayerCollision 3A1291216307899D0000E5BA57B3CC25
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=3A129121661D02B10002EEFAA02195FE > = cooldown_space_misbehavior_careless 3A129121647491FA0001416DF49AAFBB
+		BarksCooldown "New BarksCooldown (0)" < uid=3A129121661D02B10002EEFBAD1D330D > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+	}
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=3A129121661D02B10002EEFC2C33DA59 > = VOType_Barks_SpaceCombatNPC 3A1C5D186321E28700004C943CD9589C
+	myVOPriorityOverride 15
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag_0" < uid=3A129121661D02B10002EEFE61DB2A89 > = Agent_Faction_NotEmpireTag 16DEADE6614FB6BB00001864B2DE2CF6
+		RBTagsTag "New RBTagsTag_1" < uid=3A129121661D02B10002EEFF251AF8E4 > = Agent_Faction_AshigaClanTag 4728ADF9620B7AF800002022DD5E94D3
+		RBTagsTag "New RBTagsTag_2" < uid=3A129121661D02B10002EF0097490F0C > = Agent_NotInCombatTag 16DEADE66143C7F50000185A5B4B20A9
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Kay
+		}
+	}
+	myOtherAgentRequirements
+	{
+	}
+	myElements
+	{
+		StimulusElement Dangerous
+		{
+			myElement
+			{
+				myGuid 456E53B5EF92E6A23467B869857F2794
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=3A129121661D02B10002EF01947691F8 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+				BarksCooldown "New BarksCooldown (0)" < uid=3A129121661D02B10002EF022C416E9D > = cooldown_space_misbehavior_dangerous 3A129121647492270001416FFA771C40
+				BarksCooldown "New BarksCooldown (1)" < uid=3A129121661D02B10002EF03DE6E6E29 > = cooldown_space_tresspassing 3A12912164749335000142178256B181
+			}
+			myTemplateOverride
+			{
+				myGuid 4BF1446EB84C6DACD7C0474799BCC583
+			}
+			myDelay 0.5
+			myPendingTime 2.0
+			myPlayAfterPendingTimeout TRUE
+			myResponseDelay -0.1
+			myResponse < uid=3A129121661D02B10002EF0401802B87 > = S_KAY_Space_CollisionWithNPCResponse 3A129121661D00CD0002E7281777B86C
+		}
+	}
+}
+
+StimulusElementContainer Raider_EnterCombatAttacking_AfterCMQ040 < uid=3A12912167A4D6EA000858A1B86EE9DE >
+{
+	myIdentifier < uid=3A12912167A4D6EA000858A23B1462A5 > = S_SPACE_AttackingPlayer 3A1291216307886A0000E5B686F455B0
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=3A12912167A4D6EA000858A3BC2CE7DD > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+	}
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=3A12912167A4D6EA000858A43ED4337C > = VOType_Barks_SpaceCombatNPCStateChange 3A129121660D773F0004260E4685A569
+	myVOPriorityOverride 2
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A12912167A4D6EA000858A5F13B0D61 > = Agent_Faction_NotEmpireTag 16DEADE6614FB6BB00001864B2DE2CF6
+		RBTagsTag "New RBTagsTag_0" < uid=3A12912167A5D9F30003F364C2166FF1 > = Agent_Faction_RaidersTag 91DC5D3C66FBD9700000004D50C60694
+		RBTagsTag "New RBTagsTag_1" < uid=3A12912167A5D9A40003F3636223E29A > = World_Quest_CMQ040_Completed 3A129121677FECB900023766AF4C7DC3
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope ND5 Kay
+		}
+	}
+	myElements
+	{
+		StimulusElement EnterCombatAttacking
+		{
+			myElement
+			{
+				myGuid 439CDD700ED4E3FA9E9CBAD12C432382
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=3A12912167A4D6EA000858A669A258A9 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+				BarksCooldown "New BarksCooldown_0" < uid=3A12912167A4D6EA000858A7B26B484F > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+				BarksCooldown "New BarksCooldown_1" < uid=3A12912167A4D6EA000858A82DBBC2AD > = cooldown_space_playerengaging 3A12912163652855000311F5FBBEA4D6
+				BarksCooldown "New BarksCooldown_2" < uid=3A12912167A4D6EA000858A904C2927E > = Cooldown_SpaceEnemyPosition 3A129121647DD840000184AA3C1CB044
+			}
+			myTemplateOverride
+			{
+				myGuid 425663F8CC6E87316061A570BAF7098F
+			}
+			myDelay 1.0
+			myPendingTime 2.0
+			myResponseDelay 0.15
+			myResponse < uid=3A12912167A4D6EA000858AA7FDEE55F > = S_KAY_Space_EnterCombatDefending 3A129121660D6704000BDB50F14AEFD9
+		}
+	}
+}
+
+StimulusElementContainer Raider_EnterCombatAttacked_AfterCMQ040 < uid=3A12912167A5D9F30003F36508F1F31A >
+{
+	myIdentifier < uid=3A12912167A5D9F30003F366C0612DC9 > = S_SPACE_CombatEnterAttacked 3A1291216307889D0000E5B8B26BFBEE
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown (0)" < uid=3A12912167A5D9F30003F367BD2B306D > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+		BarksCooldown "New BarksCooldown" < uid=3A12912167A5D9F30003F368CC33A9DE > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+	}
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=3A12912167A5D9F30003F3694BDDFA61 > = VOType_Barks_SpaceCombatNPCStateChange 3A129121660D773F0004260E4685A569
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A12912167A5D9F30003F36A821B99B6 > = Agent_Faction_NotEmpireTag 16DEADE6614FB6BB00001864B2DE2CF6
+		RBTagsTag "New RBTagsTag_0" < uid=3A12912167A5D9F30003F36B665779C0 > = Agent_Faction_RaidersTag 91DC5D3C66FBD9700000004D50C60694
+		RBTagsTag "New RBTagsTag_1" < uid=3A12912167A5DA830003F39DD5A0F4D8 > = World_Quest_CMQ040_Completed 3A129121677FECB900023766AF4C7DC3
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Kay
+		}
+	}
+	myElements
+	{
+		StimulusElement EnterCombatDefending
+		{
+			myElement
+			{
+				myGuid 4726E0AD1A75DE65201B67353232EDBC
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=3A12912167A5D9F30003F36C377B518D > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+				BarksCooldown "New BarksCooldown (0)" < uid=3A12912167A5D9F30003F36D93D1ABF1 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+				BarksCooldown "New BarksCooldown (1)" < uid=3A12912167A5D9F30003F36ECD594614 > = cooldown_space_takingfire 3A1291216315C0980000D51483A63DBF
+				BarksCooldown "New BarksCooldown (2)" < uid=3A12912167A5D9F30003F36F101DBF06 > = cooldown_space_takingfire_again 3A129121631733240001708A53047135
+				BarksCooldown "New BarksCooldown_0" < uid=3A12912167A5D9F30003F370FD0773B1 > = cooldown_space_playerengaging 3A12912163652855000311F5FBBEA4D6
+				BarksCooldown "New BarksCooldown_1" < uid=3A12912167A5D9F30003F371E397C1C3 > = Cooldown_SpaceEnemyPosition 3A129121647DD840000184AA3C1CB044
+			}
+			myTemplateOverride
+			{
+				myGuid 425663F8CC6E87316061A570BAF7098F
+			}
+			myDelay 1.0
+			myResponseDelay 0.15
+			myResponse < uid=3A12912167A5D9F30003F372E4F95243 > = S_KAY_Response_CombatEnterAttacking 3A12912163358895000088C1816B9355
+		}
+		StimulusElement "Blank to Kay"
+		{
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=3A12912167A5D9F30003F37319E12455 > = cooldown_space_playerengaging 3A12912163652855000311F5FBBEA4D6
+			}
+			myDelay 0.0
+			myPendingTime 0.0
+			myPlayAfterPendingTimeout TRUE
+			myResponseDelay 0.3
+			myResponse < uid=3A12912167A5D9F30003F374DFBD4623 > = S_KAY_Response_CombatEnterAttacking 3A12912163358895000088C1816B9355
+		}
+	}
+}
+
+StimulusElementContainer Raider_EnterCombatAttacked_Response_AfterCMQ040 < uid=3A12912167A5D9F30003F37582791DCE >
+{
+	myIdentifier < uid=3A12912167A5D9F30003F376AC3C2C88 > = S_SPACE_CombatEnterAttacked_Response 3A129121660E765B0007A16C4696FE22
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown (0)" < uid=3A12912167A5D9F30003F377BCEF76D6 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+		BarksCooldown "New BarksCooldown" < uid=3A12912167A5D9F30003F3788956B336 > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+	}
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=3A12912167A5D9F30003F379C38B58BF > = VOType_Barks_SpaceCombatNPCStateChange 3A129121660D773F0004260E4685A569
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A12912167A5D9F30003F37A8E9E742A > = Agent_Faction_NotEmpireTag 16DEADE6614FB6BB00001864B2DE2CF6
+		RBTagsTag "New RBTagsTag_0" < uid=3A12912167A5CD4C0003F36006F4CC3B > = Agent_Faction_RaidersTag 91DC5D3C66FBD9700000004D50C60694
+		RBTagsTag "New RBTagsTag_1" < uid=3A12912167A5DA830003F39ED5139E9E > = World_Quest_CMQ040_Completed 3A129121677FECB900023766AF4C7DC3
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+		}
+	}
+	myElements
+	{
+		StimulusElement EnterCombatDefending
+		{
+			myElement
+			{
+				myGuid 4726E0AD1A75DE65201B67353232EDBC
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=3A12912167A5D9F30003F37B4900FAE9 > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+				BarksCooldown "New BarksCooldown (0)" < uid=3A12912167A5D9F30003F37C75F33FFC > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+				BarksCooldown "New BarksCooldown (1)" < uid=3A12912167A5D9F30003F37DEC24DF5D > = cooldown_space_takingfire 3A1291216315C0980000D51483A63DBF
+				BarksCooldown "New BarksCooldown (2)" < uid=3A12912167A5D9F30003F37E9166D9D7 > = cooldown_space_takingfire_again 3A129121631733240001708A53047135
+				BarksCooldown "New BarksCooldown_0" < uid=3A12912167A5D9F30003F37FDFFFAEA0 > = cooldown_space_playerengaging 3A12912163652855000311F5FBBEA4D6
+				BarksCooldown "New BarksCooldown_1" < uid=3A12912167A5D9F30003F380331F667C > = Cooldown_SpaceEnemyPosition 3A129121647DD840000184AA3C1CB044
+			}
+			myTemplateOverride
+			{
+				myGuid 425663F8CC6E87316061A570BAF7098F
+			}
+			myDelay 0.0
+			myResponseDelay 0.0
+		}
+	}
+}
+
+StimulusElementContainer Raider_EnterCombatAttacking_BeforeCMQ040 < uid=3A12912167A5DAFA0003F3BD1961C7AA >
+{
+	myIdentifier < uid=3A12912167A5DAFA0003F3BE2B01B0A4 > = S_SPACE_AttackingPlayer 3A1291216307886A0000E5B686F455B0
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=3A12912167A5DAFA0003F3BF750F7155 > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+	}
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=3A12912167A5DAFA0003F3C01AB4F7FB > = VOType_Barks_SpaceCombatNPCStateChange 3A129121660D773F0004260E4685A569
+	myVOPriorityOverride 2
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A12912167A5DAFA0003F3C10DFF3F90 > = Agent_Faction_NotEmpireTag 16DEADE6614FB6BB00001864B2DE2CF6
+		RBTagsTag "New RBTagsTag_0" < uid=3A12912167A5DAFA0003F3C22B5D2A1B > = Agent_Faction_RaidersTag 91DC5D3C66FBD9700000004D50C60694
+		RBTagsTag "New RBTagsTag_1" < uid=3A12912167A5DAFA0003F3C325D673FC > = World_Quest_CMQ010_Completed 3A129121677FECB900023756A4030A20
+		RBTagsTag "New RBTagsTag_2" < uid=3A12912167A5DAEB0003F3BCD9F6C453 > = World_Quest_CMQ040_NotCompleted 3A129121677FECB900023767F96C1AE8
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope ND5 Kay
+		}
+	}
+	myElements
+	{
+		StimulusElement EnterCombatAttacking
+		{
+			myElement
+			{
+				myGuid 46AE100C08E0AB1D2D700903AE1D2CBA
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=3A12912167A5DAFA0003F3C498605392 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+				BarksCooldown "New BarksCooldown_0" < uid=3A12912167A5DAFA0003F3C56C97FCB1 > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+				BarksCooldown "New BarksCooldown_1" < uid=3A12912167A5DAFA0003F3C6AE580ECA > = cooldown_space_playerengaging 3A12912163652855000311F5FBBEA4D6
+				BarksCooldown "New BarksCooldown_2" < uid=3A12912167A5DAFA0003F3C73887C16E > = Cooldown_SpaceEnemyPosition 3A129121647DD840000184AA3C1CB044
+			}
+			myTemplateOverride
+			{
+				myGuid 425663F8CC6E87316061A570BAF7098F
+			}
+			myDelay 1.0
+			myPendingTime 2.0
+			myResponseDelay 0.15
+			myResponse < uid=3A12912167A5DAFA0003F3C8A2E1F92F > = S_KAY_Space_EnterCombatDefending 3A129121660D6704000BDB50F14AEFD9
+		}
+	}
+}
+
+StimulusElementContainer Raider_EnterCombatAttacked_BeforeCMQ040 < uid=3A12912167A5DAFA0003F3C97140EBB6 >
+{
+	myIdentifier < uid=3A12912167A5DAFA0003F3CA1F00950A > = S_SPACE_CombatEnterAttacked 3A1291216307889D0000E5B8B26BFBEE
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown (0)" < uid=3A12912167A5DAFA0003F3CB198AAB35 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+		BarksCooldown "New BarksCooldown" < uid=3A12912167A5DAFA0003F3CCB40F01AA > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+	}
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=3A12912167A5DAFA0003F3CDC26451C6 > = VOType_Barks_SpaceCombatNPCStateChange 3A129121660D773F0004260E4685A569
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A12912167A5DAFA0003F3CED9D72445 > = Agent_Faction_NotEmpireTag 16DEADE6614FB6BB00001864B2DE2CF6
+		RBTagsTag "New RBTagsTag_0" < uid=3A12912167A5DAFA0003F3CF9548EF49 > = Agent_Faction_RaidersTag 91DC5D3C66FBD9700000004D50C60694
+		RBTagsTag "New RBTagsTag_1" < uid=3A12912167A5DAFA0003F3D05986AE1B > = World_Quest_CMQ040_NotCompleted 3A129121677FECB900023767F96C1AE8
+		RBTagsTag "New RBTagsTag_2" < uid=3A12912167A5DB9F0003F404D01B1DA5 > = World_Quest_CMQ010_Completed 3A129121677FECB900023756A4030A20
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Kay
+		}
+	}
+	myElements
+	{
+		StimulusElement EnterCombatDefending
+		{
+			myElement
+			{
+				myGuid 4DDFA63FD0E33801DF8AF4E6708367BC
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=3A12912167A5DAFA0003F3D1B98C2E8C > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+				BarksCooldown "New BarksCooldown (0)" < uid=3A12912167A5DAFA0003F3D2D919C0F4 > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+				BarksCooldown "New BarksCooldown (1)" < uid=3A12912167A5DAFA0003F3D30BF94E39 > = cooldown_space_takingfire 3A1291216315C0980000D51483A63DBF
+				BarksCooldown "New BarksCooldown (2)" < uid=3A12912167A5DAFA0003F3D46763CF2B > = cooldown_space_takingfire_again 3A129121631733240001708A53047135
+				BarksCooldown "New BarksCooldown_0" < uid=3A12912167A5DAFA0003F3D5BF437505 > = cooldown_space_playerengaging 3A12912163652855000311F5FBBEA4D6
+				BarksCooldown "New BarksCooldown_1" < uid=3A12912167A5DAFA0003F3D6A84A1C79 > = Cooldown_SpaceEnemyPosition 3A129121647DD840000184AA3C1CB044
+			}
+			myTemplateOverride
+			{
+				myGuid 425663F8CC6E87316061A570BAF7098F
+			}
+			myDelay 1.0
+			myResponseDelay 0.15
+			myResponse < uid=3A12912167A5DAFA0003F3D7690307CF > = S_KAY_Response_CombatEnterAttacking 3A12912163358895000088C1816B9355
+		}
+		StimulusElement "Blank to Kay"
+		{
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=3A12912167A5DAFA0003F3D810608753 > = cooldown_space_playerengaging 3A12912163652855000311F5FBBEA4D6
+			}
+			myDelay 0.0
+			myPendingTime 0.0
+			myPlayAfterPendingTimeout TRUE
+			myResponseDelay 0.3
+			myResponse < uid=3A12912167A5DAFA0003F3D9B42F3307 > = S_KAY_Response_CombatEnterAttacking 3A12912163358895000088C1816B9355
+		}
+	}
+}
+
+StimulusElementContainer Raider_EnterCombatAttacked_Response_BeforeCMQ040 < uid=3A12912167A5DAFA0003F3DA4C7E582F >
+{
+	myIdentifier < uid=3A12912167A5DAFA0003F3DB3D321310 > = S_SPACE_CombatEnterAttacked_Response 3A129121660E765B0007A16C4696FE22
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown (0)" < uid=3A12912167A5DAFA0003F3DC297C51FA > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+		BarksCooldown "New BarksCooldown" < uid=3A12912167A5DAFA0003F3DDE406E8D9 > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+	}
+	myMaxDistance 0.0
+	myUseDialogueCharacter TRUE
+	myUIElementType Commlink
+	myVOType < uid=3A12912167A5DAFA0003F3DE5A076B56 > = VOType_Barks_SpaceCombatNPCStateChange 3A129121660D773F0004260E4685A569
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"3BE9193666473D010003BB4429F6D561\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A12912167A5DAFA0003F3DFF7005995 > = Agent_Faction_NotEmpireTag 16DEADE6614FB6BB00001864B2DE2CF6
+		RBTagsTag "New RBTagsTag_0" < uid=3A12912167A5DAFA0003F3E03C38350E > = Agent_Faction_RaidersTag 91DC5D3C66FBD9700000004D50C60694
+		RBTagsTag "New RBTagsTag_1" < uid=3A12912167A5DAFA0003F3E1EFAB5270 > = World_Quest_CMQ040_NotCompleted 3A129121677FECB900023767F96C1AE8
+		RBTagsTag "New RBTagsTag_2" < uid=3A12912167A5DB9F0003F4050A67296F > = World_Quest_CMQ010_Completed 3A129121677FECB900023756A4030A20
+	}
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+		}
+	}
+	myElements
+	{
+		StimulusElement EnterCombatDefending
+		{
+			myElement
+			{
+				myGuid 4DDFA63FD0E33801DF8AF4E6708367BC
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=3A12912167A5DAFA0003F3E28E97C908 > = cooldown_space_entercombat 3A12912164746737000168EBF1848FE4
+				BarksCooldown "New BarksCooldown (0)" < uid=3A12912167A5DAFA0003F3E37BAEE5BE > = cooldown_space_default 3A12912163078D2E0000E5D1DF8A94D5
+				BarksCooldown "New BarksCooldown (1)" < uid=3A12912167A5DAFA0003F3E486C33F80 > = cooldown_space_takingfire 3A1291216315C0980000D51483A63DBF
+				BarksCooldown "New BarksCooldown (2)" < uid=3A12912167A5DAFA0003F3E5334EC5FA > = cooldown_space_takingfire_again 3A129121631733240001708A53047135
+				BarksCooldown "New BarksCooldown_0" < uid=3A12912167A5DAFA0003F3E603A19512 > = cooldown_space_playerengaging 3A12912163652855000311F5FBBEA4D6
+				BarksCooldown "New BarksCooldown_1" < uid=3A12912167A5DAFA0003F3E70F2E03CD > = Cooldown_SpaceEnemyPosition 3A129121647DD840000184AA3C1CB044
+			}
+			myTemplateOverride
+			{
+				myGuid 425663F8CC6E87316061A570BAF7098F
+			}
+			myDelay 0.0
+			myResponseDelay 0.0
+		}
+	}
+}
+

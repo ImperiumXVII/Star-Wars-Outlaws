@@ -1,0 +1,92 @@
+include "helix/game system data/fruit/equipment/weapon/weapon_values.fruit"
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/fruit/camera/cameramodifier.fruit"
+include "helix/game system data/fruit/projectile/projectile_actions.fruit"
+include "helix/game system data/fruit/ai/npcshootpattern.fruit"
+
+class WeaponRPM
+{
+	string myRPM 500 < bhv=formulaEditor formulaResolveContextType=AgentAttributes tooltip="Rounds Fired Per Minute" >
+	string myRPMFluctuationMin 0 < bhv=formulaEditor formulaResolveContextType=AgentAttributes max=0 tooltip="Fluctuating value removed from RPM randomly, has to be negative." >														 
+	string myRPMFluctuationMax 0 < bhv=formulaEditor formulaResolveContextType=AgentAttributes min=0 tooltip="Fluctuating value added to RPM randomly, has to be positive." >
+}
+
+list NPCPatternList
+{
+	NPCShootPattern*
+}
+
+class MultiShotPattern
+{
+	int myShootingRoundsPerTarget 1 < min=1 tooltip="Number of times to shoot a target (ShootingRoundsPerTarget x ProjectilesPerRound)" >
+
+	bool myOverrideNumberOfShots false < tooltip="If false, the number of shots will be equal to the number of  targets" >
+	int myMinProjectilesFired 1 < tooltip="Min number of projectiles fired, regardles of charge level (100% charge level for non charging weapons)" >
+	int myMaxProjectilesFired 20 < tooltip="Max number of projectiles fired, affected by charge level (100% charge level for non charging weapons)" >
+}
+
+class FireEventPatterns
+{
+	NPCPatternList myShootPatterns
+	bool myShouldShuffle true < tooltip="Will shuffle shootpattern list" >
+}
+
+class FireEvent < abstract=1 >
+{
+	int myProjectilesPerRound 1 < tooltip="Number of projectiles fired at the same time" >
+	WeaponRPM myRPM
+	MultiShotPattern myMultiShotPattern
+}
+
+class FullAutoFireEvent : FireEvent
+{
+	FireEventPatterns myPatterns
+	bool myBufferingEnabled true < tooltip="If true the fire event can buffer shots if the last intention to shot was close to the end of the rpm time window" >
+}
+
+class BurstFireEventData
+{
+	int myRoundsPerBurst 3 < tooltip="Number of projectiles fired during a burst" >
+	bool myFullBurstModeEnabled false < tooltip="If true, the burst will be deployed completley once triggered even if more input is not provided" >
+	WeaponRPM myBPM < tooltip="Number of bursts per minute" >
+	bool myAutoBurstEnabled false < tooltip="If true while the input is press the weapon will keep starting bursts" >
+	bool myBurstTriggerBufferMatchBPM true < tooltip="If true, the player press the trigger during the burst stage a new burst will be buffered. If false, it will be used instead the BufferMS value instead." >
+	int myBurstMaxTriggerBufferMS 100 < min=0 tooltip="If the player press the trigger during the burst stage x MS before it ends, a new burst will be buffered" >
+    string myNumShotToDisableCameraModifiers 1 < tooltip="When this number of projectiles has been fired in the burst, remove custom modifiers that has been applied related to the burst" bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+}
+
+class BurstFireEvent : FireEvent
+{
+   BurstFireEventData myBurstData
+}
+
+class SemiAutoFireEvent : FireEvent
+{
+
+}
+
+class BinaryFireEvent : FireEvent
+{
+
+}
+
+class ChargedFireEvent : FireEvent
+{
+	string myChargeDurationFormula 2.0 < tooltip="Time until 100% charge in milliseconds" bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	float myMinChargeStrength 0.25 < tooltip="Percentage of charge that needs to be full before we are able to fire if reach full charge flag is not set." >
+	float myDischargeDuration 0.0 < tooltip="Time it takes to discharge a full charge." >
+	bool myAutomaticFireAfterReachFullCharge true < tooltip="If true, this event will fire automatically after reach full charge. If false, the event will fire after the player stops the input" >
+	float myAutomaticFireAfterReachFullChargeTime 0.0 < tooltip="If AutomaticFireAfterReachFullCharge is enabled, the shot will happen after this amount of time while in full charge" >
+	bool myFullChargeFireOnly true < tooltip="If true, only fire can happen with full charge. If false, partial charge is allowed (if charged duration is longer than min duration)" >
+	bool myAutomaticResetEnabled true < tooltip="If true, after a round has been executed, the charge process will restart after the reset interval time. If false, the charge will restart just when player stops pressing the input" >
+	float myAutomaticResetInterval 1.0 < tooltip="Time used by the AutomaticResetEnabled feature" >
+	bool myBurstEnabled false < tooltip="If true, burst will be enabled and be based on settings below" >
+	BurstFireEventData myBurstData
+	ShakeCameraModifier* myChargeCameraShake
+	FOVCameraModifier* myChargeFOVCameraModifier
+}
+
+list FireEventList < size=1 >
+{
+	FireEvent
+}

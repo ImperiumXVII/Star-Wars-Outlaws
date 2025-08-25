@@ -1,0 +1,320 @@
+include "helix/game system data/fruit/domainsofmastery/domainofmastery.fruit"
+include "helix/game system data/juice/domainsofmastery/domain_expert_selo_rovak.mdomainofmasteryexpertset"
+include "helix/game system data/juice/intel/fp_intel.mintel"
+include "helix/game system data/juice/intel/intel_tatooine_quest.mintel"
+include "helix/game system data/juice/item/fp_ dom_dummy_ability.mitem"
+include "helix/game system data/juice/item/items_dom_skill.mitem"
+include "helix/game system data/juice/item/keyitems.mitem"
+include "helix/game system data/juice/quest/a_eq_080_theshipmechanic.mquest"
+include "helix/game system data/juice/quest/expert_fp_pet.mquest"
+include "helix/game system data/juice/rbtags/dom_abilities.mrbtagstags"
+
+DomainOfMasteryExpertSet domain_expert_teeka < uid=F3127A02626A915F00002E4FFCA9749B >
+{
+	myUIInfo
+	{
+		myTitle "aurabesh = false, branch = \"\", contextComment = \"Domain of mastery expert name\", enabled = true, guid = #F3127A02626A915F00002E422A7B8A15, lineVersion = 14, maxLength = 0, productId = -1, sectionId = 2381, text = \"Jawa Mechanic\", type = \"MenuLine\""
+		myIcon ""
+		myExpertImage helix/baked/ui/loose_images/domainsofmastery/domainofmastery_teekajawa_found_gameready.dds
+		myUnknownExpertImage helix/baked/ui/loose_images/domainsofmastery/domainofmastery_teekajawa_unknown_gameready.dds
+		myHiddenExpertImage helix/baked/ui/loose_images/domainsofmastery/domainofmastery_teekajawa_hidden_gameready.dds
+		myIsNotAvailableForCurrentVersion FALSE
+	}
+	myNames
+	{
+		DomainOfMasteryExpertName "Expert name" < uid=09AEDAAA6555F54B0003AEAD0A85EB8B >
+		{
+			myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Expert's Name\", enabled = true, guid = #09AEDAAA6555F54B0003AEAE45CB6285, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 2381, text = \"Teeka\", type = \"MenuLine\"}"
+		}
+		DomainOfMasteryExpertName Unknown < uid=F8252D3C629624530000316B3FBCEF43 >
+		{
+			myName "aurabesh = false, branch = \"\", contextComment = \"Fake Expert Name\", enabled = true, guid = #F8252D3C6296245C0000316C9EC1FFD6, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2381, text = \"Unknown\", type = \"MenuLine\""
+		}
+	}
+	myAbilities
+	{
+		DomainOfMasteryAbilitySkill "Turbolaser Turret" < uid=F3127A02626A915F00002E50D8FEE51C >
+		{
+			myUIInfo
+			{
+				myName "aurabesh = false, contextComment = \"Ability name\", enabled = true, guid = #F3127A02626A915F00002E43F2558BF4, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 2381, text = \"Turbolaser Turret\", type = \"MenuLine\""
+				myDescription "aurabesh = false, contextComment = \"Ability description\", enabled = true, guid = #F3127A02626A915F00002E44E6B1A395, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 2381, text = \"Repairs the trailblazer's turret slot and installes an upgradeable turret.\", type = \"MenuLine\""
+				myLoreDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"Lore Description for Turbolaser Turret\", enabled = true, guid = #09AEDAAA65B1339300032618A3C9E21F, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 2381, text = \"TBD.\", type = \"MenuLine\""
+				myLongDescription "aurabesh = false, branch = \"\", contextComment = \"Long Description\", enabled = true, guid = #F4D8AE266530EEEA0000EDC1FE909E30, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2381, text = '<font preset=\"Light Bodytext\">The Turret slot is repaired, allowing the usage of the upgradable </font><font preset=\"Medium Bodytext\">Laser Turret</font><font preset=\"Light Bodytext\">, and allowing for other Turret types to be installed.</font>', type = \"MenuLine\""
+				myUnlockHint "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myIcon "mySpriteId = -1472392715, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_skill_icons_01.spritesheet\""
+				myVideo helix/baked/ui/videos/dom/dom_laser_turret.webm
+			}
+			myAbilityItem < uid=F3127A02626A915F00002E51F94ABAAD > = DoM_item_ShipTurret F4D8AE2664C0D1850000B27F0E2F4836
+			myState < uid=F3127A02626A915F00002E52E8760BB0 >
+			{
+			}
+			myRequiresManualUnlock FALSE
+			myDefaultState Locked
+			myAbilityUnlockedTag < uid=3A12912164A3E174000139F45D980E4B > = DOM_Ability_TrailblazerTurret_Unlocked 3A129121649E9CF90001A32984F1F0E5
+		}
+		DomainOfMasteryAbilityItem "Improved Thermal Detonator" < uid=F3127A02626A915F00002E535FCCB789 >
+		{
+			myUIInfo
+			{
+				myName "aurabesh = false, contextComment = \"Ability name\", enabled = true, guid = #F3127A02626A915F00002E45439DA0D9, lineVersion = 13, maxLength = 0, productId = -1, sectionId = 2381, text = \"Improved Thermal Detonator\", type = \"MenuLine\""
+				myDescription "aurabesh = false, contextComment = \"Ability description\", enabled = true, guid = #F3127A02626A915F00002E46B540A19D, lineVersion = 13, maxLength = 0, productId = -1, sectionId = 2381, text = \"Improves the Thermal Detonator radius and damage.\", type = \"MenuLine\""
+				myLoreDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"Lore Description for Improved Thermal Detonator\", enabled = true, guid = #09AEDAAA65B1339300032619382C58F3, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 2381, text = \"TBD.\", type = \"MenuLine\""
+				myLongDescription "aurabesh = false, branch = \"\", contextComment = \"Long Description\", enabled = true, guid = #F4D8AE266530EEFC0000EDC3B4E42893, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2381, text = '<font preset=\"Light Bodytext\">Increases the radius and damage dealt with </font><font preset=\"Medium Bodytext\">Thermal Detonators</font><font preset=\"Light Bodytext\"> by 50% each.</font>', type = \"MenuLine\""
+				myUnlockHint "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myIcon "mySpriteId = -506523217, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_skill_icons_04.spritesheet\""
+				myVideo helix/baked/ui/videos/dom/dom_improved_thermal_detonator.webm
+				myIsNotAvailableForCurrentVersion TRUE
+			}
+			myAbilityItem < uid=F3127A02626A915F00002E5470356F69 > = DoM_item_SonicImploderUpgrade F4D8AE2664C0E2260000B2A83A00FCBA
+			myState < uid=F3127A02626A915F00002E55DC062C10 >
+			{
+			}
+			myRequiresManualUnlock TRUE
+			myDefaultState Locked
+			myAbilityUnlockedTag < uid=3A12912164A3E174000139F5C8972A16 > = DOM_Ability_SonicImploderUpgrade_Unlocked 3A129121649E9D0C0001A33C19BD6F6E
+			myUnlockRequirements
+			{
+				AbilityItemUnlockRequirement KP
+				{
+					myItem < uid=F4D8AE26650049420000B7FEFD5566AE > = KP_DoM_09_GrenadeUpgrade_Jawa_05 2AE2EC85650980650000BA14D034C7FE
+					mySettings
+					{
+						myUIInfo
+						{
+							myUnlockHint "aurabesh = false, contextComment = \"Hint Description\", enabled = true, guid = #09AEDAAA65490A760007B00914597CA7, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 2381, text = \"Imperials should have a unit in one of their camps, somewhere at the *Sub-Region 03*\", type = \"MenuLine\""
+						}
+						myIntel < uid=09AEDAAA656DC319000225EBEF147881 > = A_TAT_Teeka_ThermalUpgrade_KeyPart 09AEDAAA656DC2FD000225CA83234CF4
+					}
+				}
+				AbilityItemUnlockRequirement CRAW03
+				{
+					myItem < uid=F4D8AE26650049420000B7FF91907C99 > = Mat_General_Common_03 F4D8AE2664F5E8DC00036FA58305736D
+					myAmount 20
+					mySettings
+					{
+						myUIInfo
+						{
+							myUnlockHint "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+						}
+					}
+				}
+				AbilityItemUnlockRequirement CSPEEDER03
+				{
+					myItem < uid=F4D8AE26650049420000B8005B744BC9 > = Mat_Speeder_Common_03 F4D8AE2664F5ED26000370F12EE4774B
+					myAmount 6
+					mySettings
+					{
+						myUIInfo
+						{
+							myUnlockHint "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+						}
+					}
+				}
+			}
+		}
+		DomainOfMasteryAbilityItem "Bacta Vial Upgrade" < uid=F4D8AE2664E466C200030AF036DAFEB0 >
+		{
+			myUIInfo
+			{
+				myName "aurabesh = false, branch = \"\", contextComment = \"Ability name\", enabled = true, guid = #F4D8AE2664E4668C00030AED746D8ED8, lineVersion = 15, maxLength = 0, productId = -1, sectionId = 2381, text = \"Kurruzza\", type = \"MenuLine\""
+				myDescription "aurabesh = false, contextComment = \"Ability description\", enabled = true, guid = #F4D8AE2664E4668C00030AEE881F35D1, lineVersion = 13, maxLength = 0, productId = -1, sectionId = 2381, text = \"Improves Kay's lockpicking capabilities\", type = \"MenuLine\"}"
+				myLoreDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"Lore Description for Kurruzza\", enabled = true, guid = #09AEDAAA65B133930003261A562D5B39, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2381, text = \"TBD.\", type = \"MenuLine\""
+				myLongDescription "aurabesh = false, branch = \"\", contextComment = \"Long Description\", enabled = true, guid = #F4D8AE266530EF0B0000EDC55444C8A3, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 2381, text = '<font preset=\"Light Bodytext\">Increases the amount of health instantly recovered by </font><font preset=\"Medium Bodytext\">Bacta Vials</font><font preset=\"Light Bodytext\"> by 1, without affecting the over time regeneration. Press </font><gameaction src=\"MedkitUse\"><font preset=\"Light Bodytext\"> to heal.</font>', type = \"MenuLine\""
+				myUnlockHint "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myIcon "mySpriteId = 620737830, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_skill_icons_04.spritesheet\""
+				myVideo helix/baked/ui/videos/dom/dom_adapt.webm
+				myIsNotAvailableForCurrentVersion TRUE
+			}
+			myAbilityItem < uid=F4D8AE2664E466C200030AF12ED9ADFD > = DoM_skill_BactaUpgrade 09AEDAAA6571E7F40002B5DB7093D727
+			myState < uid=F4D8AE2664E466C200030AF25F19A44A >
+			{
+			}
+			myRequiresManualUnlock TRUE
+			myDefaultState Locked
+			myAbilityUnlockedTag < uid=F4D8AE2664E466C200030AF30EECC912 > = DOM_Ability_BactaUpgrade_Unlocked 09AEDAAA6571D5D10002B617C5789BC2
+			myUnlockRequirements
+			{
+				AbilityItemUnlockRequirement KP
+				{
+					myItem < uid=F4D8AE26650049420000B7FC60354369 > = KP_DoM_07_LockpickingUpgrade_Jawa_02 2AE2EC85650980650000BA0EB1BD5DA2
+					mySettings
+					{
+						myUIInfo
+						{
+							myUnlockHint "aurabesh = false, contextComment = \"Hint Description\", enabled = true, guid = #09AEDAAA654908C30007AFE5319F40BF, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 2381, text = \"There seems to be one at a Jawa camp in the *Sub-Region 01*\", type = \"MenuLine\""
+						}
+						myIntel < uid=09AEDAAA656DCFCE0002260EE84FB320 > = A_TAT_Teeka_AdvancedLockpicking_KeyPart 09AEDAAA656DD2A90002262F83E9DFF2
+					}
+				}
+				AbilityItemUnlockRequirement CRAW06
+				{
+					myItem < uid=F4D8AE26650079D900008035BB9A2981 > = Mat_General_Common_06 F4D8AE2664F5E98100036FEFC8775E12
+					myAmount 15
+					mySettings
+					{
+						myUIInfo
+						{
+							myUnlockHint "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+						}
+					}
+				}
+				AbilityItemUnlockRequirement CSPEEDER01
+				{
+					myItem < uid=F4D8AE26650049420000B7FD00BB95D7 > = Mat_Speeder_Common_01 E42FA10C60D31106000531F90C34F89F
+					myAmount 6
+					mySettings
+					{
+						myUIInfo
+						{
+							myUnlockHint "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+						}
+					}
+				}
+			}
+		}
+		DomainOfMasteryAbilityItem "Magnetic Chance Cubes" < uid=F3127A02626A915F00002E598821B0D3 >
+		{
+			myUIInfo
+			{
+				myName "aurabesh = false, contextComment = \"Ability name\", enabled = true, guid = #F3127A02626A915F00002E492EE7CEBD, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 2381, text = \"Magnetic Chance Cubes\", type = \"MenuLine\""
+				myDescription "aurabesh = false, contextComment = \"Ability description\", enabled = true, guid = #F3127A02626A915F00002E4A9E1BCEB5, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 2381, text = \"Item used to perform a sabacc trick.\", type = \"MenuLine\""
+				myLoreDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"Lore Description for Magnetic Chance Cube\", enabled = true, guid = #09AEDAAA65B133930003261BED234210, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 2381, text = \"TBD.\", type = \"MenuLine\""
+				myLongDescription "aurabesh = false, branch = \"\", contextComment = \"Long Description\", enabled = true, guid = #F4D8AE266530EF1A0000EDC72BE748BB, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2381, text = '<font preset=\"Light Bodytext\">Allows Kay to tip the odds in her favor when throwing the Dice at Sabacc. Accept the prompt during the Dice Throwing Phase to cheat.</font>', type = \"MenuLine\""
+				myUnlockHint "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myIcon "mySpriteId = -911174491, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_skill_icons_03.spritesheet\""
+				myVideo helix/baked/ui/videos/dom/dom_magnetic_chance_cubes.webm
+			}
+			myAbilityItem < uid=F3127A02626A915F00002E5AA0C1A6B3 > = DoM_skill_Sabacc_DiceCheat E7561B02652816D40003237BA5649166
+			myState < uid=F3127A02626A915F00002E5BE6FA5F68 >
+			{
+			}
+			myDefaultState Locked
+			myAbilityUnlockedTag < uid=3A12912164A3E174000139F66B9A0586 > = DOM_Ability_MagneticDisc_Unlocked 3A129121649E9D260001A34F7D368FD3
+			myUnlockRequirements
+			{
+				AbilityItemUnlockRequirement KP
+				{
+					myItem < uid=F4D8AE26650049420000B80187BD785D > = KP_DoM_08_MagneticDice_Jawa_04 2AE2EC85650980650000BA112DCEA23D
+					mySettings
+					{
+						myUIInfo
+						{
+							myUnlockHint "aurabesh = false, contextComment = \"Hint Description\", enabled = true, guid = #09AEDAAA654909820007B0045C0D6823, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2381, text = \"Can be found at a Hideout in the *Sub-Region 05*\", type = \"MenuLine\""
+						}
+						myIntel < uid=09AEDAAA656DDA22000226958C2F1BD2 > = A_TAT_Teeka_MagneticChanceCubes_KeyPart 09AEDAAA656DDA08000226743546F8BE
+					}
+				}
+				AbilityItemUnlockRequirement CRAW04
+				{
+					myItem < uid=F4D8AE26650049420000B802D18B1E12 > = Mat_General_Common_04 F4D8AE2664F5E90B00036FBC8BB3155F
+					myAmount 15
+					mySettings
+					{
+						myUIInfo
+						{
+							myUnlockHint "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+						}
+					}
+				}
+				AbilityItemUnlockRequirement CSPEEDER02
+				{
+					myItem < uid=F4D8AE26650049420000B803C3EDC40E > = Mat_Speeder_Common_02 5F6139B460A3DA0300000039098E28C6
+					myAmount 6
+					mySettings
+					{
+						myUIInfo
+						{
+							myUnlockHint "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+						}
+					}
+				}
+			}
+		}
+		DomainOfMasteryAbilitySkill "Effective Pounce" < uid=F4D8AE26650C3D390003EBB230E1B0D6 >
+		{
+			myUIInfo
+			{
+				myName "aurabesh = false, contextComment = \"Ability name\", enabled = true, guid = #F4D8AE26650C3CD90003EBB0EF828DC6, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 2381, text = \"Effective Pounce\", type = \"MenuLine\""
+				myDescription "aurabesh = false, contextComment = \"Ability description\", enabled = true, guid = #F4D8AE26650C3CD90003EBB17081F9D6, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 2381, text = \"Unlocks additional opportunities for Nix to take advantage of enemies.\", type = \"MenuLine\""
+				myLoreDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"Lore Description for Effective Pounce\", enabled = true, guid = #09AEDAAA65B133930003261C01169CB1, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 2381, text = \"TBD.\", type = \"MenuLine\""
+				myLongDescription "aurabesh = false, branch = \"\", contextComment = \"Long Description\", enabled = true, guid = #F4D8AE266530EF3F0000EDCAA60E2A23, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 2381, text = '<font preset=\"Light Bodytext\">Nix will now be able to trigger </font><font preset=\"Medium Bodytext\">Thermal Detonators</font><font preset=\"Light Bodytext\">. Select an enemy who is carrying a Thermal Detonator to trigger it.</font>', type = \"MenuLine\""
+				myUnlockHint "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myIcon "mySpriteId = -728445580, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_skill_icons_04.spritesheet\""
+				myVideo helix/baked/ui/videos/dom/dom_effective_pounce.webm
+			}
+			myAbilityItem < uid=F4D8AE26650C3D390003EBB3AEB04192 > = DoM_skill_Pet_EffectivePounce 75B1D5B365B28DEF000B30E33BFF2F0E
+			myState < uid=F4D8AE26650C3D390003EBB455A7053F >
+			{
+			}
+			myAbilityUnlockedTag < uid=F4D8AE26650C3D390003EBB52A970914 > = DOM_Ability_NixSkilled_Unlocked F4D8AE26650D4FAD000645D64AEDFA1B
+			myUnlockRequirements
+			{
+				AbilitySkillUnlockRequirement Pickpocket
+				{
+					myGameStatistic < uid=09AEDAAA656853AC000175D07D89056B > = gs_dom_Blabbermouth_NixSteal F4D8AE26649BE618000A87682A3DA68D
+					myTargetValue 3
+					mySettings
+					{
+						myUIInfo
+						{
+							myUnlockHint "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+						}
+					}
+				}
+				AbilitySkillUnlockRequirement NixMeals
+				{
+					myGameStatistic < uid=09AEDAAA656F4E9100179CA2A794BCDE > = gs_dom_EffectivePounce_NixTreatedMealsCompiled 09AEDAAA656F4C5E00179B4771FA333F
+					myTargetValue 3
+					mySettings
+					{
+						myUIInfo
+						{
+							myUnlockHint "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+						}
+					}
+				}
+			}
+		}
+		DomainOfMasteryAbilitySkill Mgasha < uid=F4D8AE2664930CA400030AEAC99D3F03 >
+		{
+			myUIInfo
+			{
+				myName "aurabesh = false, contextComment = \"Ability name\", enabled = true, guid = #F4D8AE2664930CB000030AEBB39D83DE, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 2381, text = \"M'gasha\", type = \"MenuLine\"}"
+				myDescription "aurabesh = false, contextComment = \"Ability description\", enabled = true, guid = #F4D8AE2664930CB000030AEC303AC5F0, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 2381, text = \"Decrease vendor prices and increase Kay's selling value.\", type = \"MenuLine\"}"
+				myLoreDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"Lore Description for Mgasha\", enabled = true, guid = #09AEDAAA65B133930003261D5BA7B7A0, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 2381, text = \"TBD.\", type = \"MenuLine\""
+				myLongDescription "aurabesh = false, branch = \"\", contextComment = \"Long Description\", enabled = true, guid = #F4D8AE266530EF4E0000EDCC8764E927, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 2381, text = '<font preset=\"Light Bodytext\">Decreases Merchant prices and increases the amount of credits received for selling items by 10% each.</font>', type = \"MenuLine\""
+				myUnlockHint "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myIcon "mySpriteId = -571580469, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_skill_icons_03.spritesheet\""
+				myVideo helix/baked/ui/videos/dom/dom_mgasha.webm
+			}
+			myAbilityItem < uid=F4D8AE2664930CFC00030AEF88530E2D > = DoM_skill_JawaHaggling F4D8AE26650C3EAD0003EBD5E7F72918
+			myState < uid=F4D8AE2664930CFC00030AF06EA04F92 >
+			{
+			}
+			myAbilityUnlockedTag < uid=3A12912164A3E174000139F89AD2560B > = DOM_Ability_JawaHaggling_Unlocked 3A129121649E9D430001A364167C2E0B
+			myUnlockRequirements
+			{
+				AbilitySkillUnlockRequirement TrustedCustomer
+				{
+					myGameStatistic < uid=F4D8AE2664930CFC00030AF1CC0D9532 > = gs_dom_Shoplifting_NumerOfTrustedCustomers E41F4D1B62B1B0CF000035A96EF8E718
+					myTargetValue 3
+				}
+				AbilitySkillUnlockRequirement JawasFound
+				{
+					myGameStatistic < uid=09AEDAAA656F4E4A00179C773573D1C9 > = gs_dom_MGasha_FindJawas 09AEDAAA656F46A000179A1E8B18A929
+					myTargetValue 5
+				}
+			}
+		}
+	}
+	myState < uid=F3127A02626A915F00002E62F8EC1323 >
+	{
+	}
+	myStartingIntel < uid=F3127A02626A915F00002E63C1208C30 > = A_EQ_080_Intel_FindMosEisleyShipMechanic C5B8DCF6646CDBA6000200104CFE027B
+	myAdventure < uid=F3127A02626A915F00002E64E288048D > = A_EQ_080_TheShipMechanic C5B8DCF6646C7C820001431F532ED5CD
+	myMapRef < uid=F3127A02626A915F00002E65AAFDE2F5 > = mapref_dom_expertlocation 15AAF5F660D9DCBB00001016A5DFB2FB
+	myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+	myDefaultState Undiscovered
+}
+

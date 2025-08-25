@@ -1,0 +1,280 @@
+include "helix/game system data/fruit/camera/cameramodifier.fruit"
+include "helix/game system data/fruit/audio/stimulus.fruit"
+include "snowdrop/modules/core/audio/audio.fruit"
+include "helix/game system data/fruit/combat/combat.fruit"
+include "helix/game system data/fruit/combat/damagemodifier.fruit"
+include "helix/game system data/fruit/melee/melee_conditions.fruit"
+include "helix/game system data/fruit/attribute/attribute_bonus.fruit"
+include "helix/game system data/fruit/talent/talent.fruit"
+include "helix/game system data/fruit/restriction/playerrestriction.fruit"
+
+class TimeSequenceTrack < abstract=1 >
+{
+	float myStartCyclePos 0.0 < min=0.0 max=1.0 >
+	float myEndCyclePos 1.0 < min=0.0 max=1.0 >
+}
+
+class GenericTimeSequenceTrack < abstract=1 > : TimeSequenceTrack
+{
+}
+
+class CustomTimeSequenceTrack < abstract=1 > : TimeSequenceTrack
+{
+}
+
+list GenericTimeSequenceTrackList
+{
+	GenericTimeSequenceTrack
+}
+
+list CustomTimeSequenceTrackList
+{
+	CustomTimeSequenceTrack
+}
+
+class TimeSequenceTracks
+{
+	GenericTimeSequenceTrackList myGenericTracks
+	CustomTimeSequenceTrackList myCustomTracks
+}
+
+class TimeSequence
+{
+	float myDuration 0.0
+	TimeSequenceTracks myTracks
+}
+
+// Generic tracks
+class CameraShakeTrack : GenericTimeSequenceTrack
+{
+	ShakeCameraModifier* myCamShake
+}
+
+class CameraFOVTrack : GenericTimeSequenceTrack
+{
+	FOVCameraModifier* myFOV
+}
+
+class KayBarkTrack : GenericTimeSequenceTrack
+{
+	StimulusIdentifier* myStimulusIdentifier
+}
+
+class AudioEventTrack : GenericTimeSequenceTrack
+{
+	AudioEvent myEvent
+}
+
+class CombatTakedownTrack : GenericTimeSequenceTrack
+{	
+}
+
+class HealTrack : GenericTimeSequenceTrack
+{
+	string myHealthAmountFormula 1 < bhv=formulaEditor tooltip="If myIsMaxHealthPercentage is false, this value will be used as max amount to regenerate" formulaResolveContextType=AgentAttributes >
+	bool myIsMaxHealthPercentage false < tooltip="If true the amount should be specified as a decimal (e.g. 0.3 as 30%). It will be multiplied by the target's Max Health" >
+	bool myIsSegmentCount false < tooltip="If true the amount of health will be the number of segments to regenerate" >
+	bool myIsImmediate true < tooltip="If true the health amount will be applied instantly" >
+	bool myKeepActiveIfHealthFull true < tooltip="If true the track will stay active for the entire duration, it will not end if the health was restored and will heal any damage received while the track is active" >
+	bool myDamageInterruptsHealing true < tooltip="If true and myDamageInterruptsHealingExtra not equals to 0, incoming damage stops healing" >
+	string myDamageInterruptsHealingExtra 1 < bhv=formulaEditor tooltip="If not equals to 0 and myDamageInterruptsHealing is true, incoming damage stops healing. This has no effect if myDamageInterruptsHealing is false. This allows a talent to make heal over time uninterruptible." formulaResolveContextType=AgentAttributes >
+	string myDamageInterruptingHealingAmount 0 < bhv=formulaEditor tooltip="Minimum amount of damage that interrupts healing over time." formulaResolveContextType=AgentAttributes >
+	string myDamageInterruptingHealingTimeWindow 0 < bhv=formulaEditor tooltip="Time window (in seconds) during which we consider the sum of the damages. 0 means we only count the last damage." formulaResolveContextType=AgentAttributes >
+}
+
+class ShieldRepairTrack : GenericTimeSequenceTrack
+{
+	string myRegeneration 100.0 < bhv=formulaEditor formulaResolveContextType=AgentAttributes tooltip="If IsMaxShieldPercentage is enabled, it will regenerate a percentage of MaxShield (between 0.0 and 1.0), otherwise it will regenerate the shield with a value" >
+	bool myIsMaxShieldPercentage false < tooltip="If true the amount of shield will be a percentage of target's Max Shield" >
+	bool myKeepActiveIfShieldFull true < tooltip="If true the track will stay active for the entire duration, it will not end if the shield was restored and will heal any damage received while the track is active" >
+}
+
+class CombatDamageOverTimeTrack : GenericTimeSequenceTrack
+{
+	DamageSourceType myDamageSourceType Unknown
+	DamageTargetType myDamageTargetType All
+	DamageType myDamageType Physical
+	bool myIsMaxHealthPercentage false < tooltip="If true the amount of damage will be a percentage of target's Max Health" >
+	bool myCanKill false
+	float myDamageRate 1.0
+	float myDamage 40.0 < tooltip="Amount of damage to deal" >
+}
+
+class ShipImmuneToIonEffectsTrack : GenericTimeSequenceTrack
+{
+}
+
+class ApplyTalentTrack : GenericTimeSequenceTrack
+{
+	Talent* myTalent
+}
+
+class CommScannerBarkTrack : GenericTimeSequenceTrack
+{
+	StimulusIdentifier* myCommScannerBarkIdentifier
+}
+
+class CombatDamageModifierTrack : GenericTimeSequenceTrack
+{	
+	DamageModifier myDamageModifier
+}
+
+class TimeScaleModifierTrack : GenericTimeSequenceTrack
+{	
+	bool myWorldClock true
+	bool myPlayerClock true
+	bool myCameraClock false
+	string myMultiplier "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.1 0, }, outTangents = { 0.1 0, 0 -0, }, properties = { 1299, 275, }, values = { 0 1, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+}
+
+class RestrictionsTrack : GenericTimeSequenceTrack
+{	
+	PlayerRestriction* myRestrictions < tooltip="The actions prevented" >
+	PlayerActionRestrictReason myRestrictReason
+}
+
+class RumbleTrack : GenericTimeSequenceTrack
+{
+	uid myRumble < bhv="constantData" constantDataType="rumble">
+	float myIntensity 1.0
+}
+
+// Custom tracks
+class MeleeHitTrack : CustomTimeSequenceTrack
+{
+	float myDamage
+}
+
+class MeleeMovingTrack : CustomTimeSequenceTrack
+{
+}
+
+class MeleeMovingSpeedingUpTrack : CustomTimeSequenceTrack
+{
+}
+
+class MeleeTurnTrack : CustomTimeSequenceTrack
+{
+}
+
+class MeleeLookAtHorizontalOffsetAngleTrack : CustomTimeSequenceTrack
+{
+	string myExtraAngle "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.1 0, }, outTangents = { 0.1 0, 0 -0, }, properties = { 1299, 275, }, values = { 0 0, 1 0, }, }, numKeys = 2, }" < bhv=inputgraph >
+}
+
+class MeleeTurnModifierTrack : CustomTimeSequenceTrack
+{
+	string myMultiplier "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.1 0, }, outTangents = { 0.1 0, 0 -0, }, properties = { 1299, 275, }, values = { 0 1, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+}
+
+class MeleeBufferingTrack : CustomTimeSequenceTrack
+{
+}
+
+class MeleeTimeScaleTrack : CustomTimeSequenceTrack
+{
+	GameConditionMeleeValue myGameCondition
+	string myMultiplier "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.1 0, }, outTangents = { 0.1 0, 0 -0, }, properties = { 1299, 275, }, values = { 0 1, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+}
+
+class MeleeUninterruptibleTrack : CustomTimeSequenceTrack
+{
+}
+
+class MeleeStartNextMoveTrack : CustomTimeSequenceTrack
+{
+}
+
+class MeleePerfectInputTrack : CustomTimeSequenceTrack 
+{
+}
+
+class MeleePerfectStartNextMoveTrack : CustomTimeSequenceTrack 
+{
+}
+
+class MeleeLocomotionFreeTrack : CustomTimeSequenceTrack 
+{
+}
+
+class HoldEquipmentRaiseUseAllowedTrack : CustomTimeSequenceTrack 
+{
+}
+
+class HoldEquipmentUseTrack : CustomTimeSequenceTrack 
+{
+}
+
+// TODO Remove me
+class HoldEquipmentSwapHolsterTrack : CustomTimeSequenceTrack 
+{
+}
+//
+
+class HoldEquipmentTrack : CustomTimeSequenceTrack 
+{
+}
+
+class TrickShotSpeedUpTrack : CustomTimeSequenceTrack 
+{
+}
+
+class TrickShotSlowDownTrack : CustomTimeSequenceTrack 
+{
+}
+
+class TrickShotFireTrack : CustomTimeSequenceTrack 
+{
+}
+
+class TrickShotLookAtTrack : CustomTimeSequenceTrack 
+{
+}
+
+class GrapplingThrowTrack : CustomTimeSequenceTrack 
+{
+}
+
+class GrapplingEnterTrack  : CustomTimeSequenceTrack 
+{
+}
+
+class ThrowableThrowTrack : CustomTimeSequenceTrack 
+{
+}
+
+class ThrowableAllowThrowDuringUnholsterTrack : CustomTimeSequenceTrack 
+{
+}
+
+class WeaponChangeModuleRemoveTrack : CustomTimeSequenceTrack 
+{
+}
+
+class WeaponChangeModuleHolsterTrack : CustomTimeSequenceTrack 
+{
+}
+
+class WeaponChangeModuleUnholsterTrack : CustomTimeSequenceTrack 
+{
+}
+
+class WeaponChangeModuleAssembleTrack : CustomTimeSequenceTrack 
+{
+}
+
+class WeaponChangeModuleCloseTrack : CustomTimeSequenceTrack 
+{
+}
+
+class EMDisruptorRunScriptTrack : CustomTimeSequenceTrack 
+{
+}
+
+class EquipmentGenericScriptSpawnerRunScriptTrack : CustomTimeSequenceTrack 
+{
+}
+
+class RemoveEquipmentSafetyTrack : CustomTimeSequenceTrack 
+{
+}

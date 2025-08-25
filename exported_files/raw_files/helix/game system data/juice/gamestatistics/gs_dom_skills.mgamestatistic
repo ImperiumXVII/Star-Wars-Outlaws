@@ -1,0 +1,5475 @@
+include "helix/game system data/fruit/gamestatistics/gamestatistics.fruit"
+include "helix/game system data/juice/faction/factions.mfaction"
+include "helix/game system data/juice/gamestatistics/gs_crack_shot_kills.mgamestatistic"
+include "helix/game system data/juice/gamestatistics/gs_trackable_actions.mgamestatistic"
+include "helix/game system data/juice/item/consumables.mitem"
+include "helix/game system data/juice/item/currencies.mitem"
+include "helix/game system data/juice/item/items_dom_skill.mitem"
+include "helix/game system data/juice/item/pet_gear_food.mitem"
+include "helix/game system data/juice/legend/legendranks.mlegendrank"
+include "helix/game system data/juice/rbtags/species.mrbtagsbinarytags"
+
+DomainAbilityStatistic gs_dom_template < uid=E42FA10C620E6C1D00004069CA04D44F >
+{
+	myGameValue < uid=E42FA10C620E6C1D0000406AA1452731 >
+	{
+	}
+	myUIDescription "aurabesh = false, contextComment = \"Placeholder Unlock action, can be ignored.\", enabled = true, guid = #E42FA10C620E6C1D0000405ACD177EA9, lineVersion = 2, maxLength = 0, productId = -1, sectionId = 459, text = \"Placeholder Action Completed\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_SmoothTalking_example < uid=E42FA10C620E6C1D0000405BA83EF341 > : gs_dom_template
+{
+	myGameValue < uid=E42FA10C620E6C1D0000405CD7A7D461 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Bribing
+		{
+			myConditions
+			{
+				GameConditionGameStatistic "Bribing statistic cap 10"
+				{
+					myGameStatistic < uid=E41F4D1B635FF6DE000055158E0F0007 > = gs_ta_Bribe 2718EFD660D9C6F700001010813D57A1
+					myTargetValue 10
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_ArrestedAdrenaline_LegendPoints < uid=83E36AE3621503D000002638927F953C > : gs_dom_template
+{
+	myIsDefaultEnabled TRUE
+	myGameValue < uid=83E36AE3621503D00000263982CFA347 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Legend point changed"
+		{
+			myGameTriggerType LegendPointsChanged
+			myConditions
+			{
+				GameConditionPlayerHasLegendRank Legend3orMore
+				{
+					myLegendRank < uid=F4D8AE2664CA6D760001781DBBDEFA49 > = "Rank 3" 6F2AF91960A4B4370000002F74175A33
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #83E36AE36215039D000026349C948910, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 457, text = \"Having reached Legend 3.\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_HardBall_DefeatTroopers < uid=83E36AE3621503D00000263A5013050E > : gs_dom_template
+{
+	myGameValue < uid=83E36AE3621503D00000263B2053DA9F >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Kill Empire Agent in WantedLevel 4 or more"
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionGroup "ConditionGroup Empireagent killed on Wantedlevel 4"
+				{
+					myConditions
+					{
+						GameConditionContextAgentHasFaction "Killed agent has faction"
+						{
+							myFaction < uid=E41F4D1B635FF7BC00005518BE29A3F0 > = Empire 16DEADE65F21E5AB000000B35532A71B
+						}
+						GameConditionPlayerHasWantedLevel "Player Has Wanted Level 4 Or More"
+						{
+							myWantedLevel 4
+						}
+						GameConditionContextAgentHasCombatRole "IsCombatant (not a CCTV nor Turret)"
+						{
+							myIsNegated TRUE
+							myAgentContextType TargetAgent
+						}
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #83E36AE3621503C400002637AA9B5576, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 11560, text = \"Defeated troopers in Wanted level 4 or higher\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_HardBall_OverhearRumors < uid=83E36AE36215097200002637F47685AD > : gs_dom_template
+{
+	myIncrementOncePerTrigger FALSE
+	myGameValue < uid=83E36AE3621509B00000263A31114FCE >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "OverHear Rumors"
+		{
+			myGameTriggerType GameStatisticChanged
+			myConditions
+			{
+				GameConditionContextHasGameStatistic "Context Game Condition Is Overhear"
+				{
+					myGameStatistic < uid=E41F4D1B635FF8190000551A4E9A008E > = gs_ta_Overhear 83E36AE36214FFAA0000DC6FA208CD63
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #83E36AE362150984000026398F07AF18, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 11560, text = \"Overheard rumors\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_HiddenCompartment_CompleteContracts < uid=F8252D3C6216B8640000318540C57A33 > : gs_dom_template
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F8252D3C6216B922000031871F4DC8C8 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Complete Smuggling Contract"
+		{
+			myGameTriggerType ContractStateChanged
+			myConditions
+			{
+				GameConditionContextContractIsInState "Smuggling contract is completed"
+				{
+					myRestrictedToTypes
+					{
+						ContractType "Type Cargo_Transport" Cargo_Transport
+						ContractType "Type Normal_Delivery" Normal_Delivery
+						ContractType "Type Express_Delivery" Express_Delivery
+						ContractType "Type Hot_Cargo" Hot_Cargo
+						ContractType "Type Pick_Up_Trouble" Pick_Up_Trouble
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F8252D3C6216B94600003189D1E53C67, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10714, text = \"Complete a smuggling contract\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_Endurance_Wanted < uid=F8252D3C62176787000027A98BD7812B > : gs_dom_template
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F8252D3C621767EF000027ABE202B26F >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Escape Wanted Level 3"
+		{
+			myGameTriggerType WantedStateChanged
+			myConditions
+			{
+				GameConditionContextWantedIsInState "Go from wanted level 3 to 0"
+				{
+					myStartWantedLevelOperator Equal
+					myStartWantedLevel 3
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F8252D3C62176788000027AA6009B8CB, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 10714, text = \"Escape Wanted level 3\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_Rappel_UseGrappleHook < uid=F8252D3C62177E7200002C5EE444A84D > : gs_dom_template
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F8252D3C62177E7200002C5F6938E24C >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Use Grappling Hook"
+		{
+			myGameTriggerType InteractionPerformed
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType "Is Grappling Hook Interaction"
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "Type Grappling Hook" GrapplingHook
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F8252D3C62177E3000002C5D8B98EDA1, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 389, text = \"Use grapple hook 10 times\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_SpeederSoftLanding_Speed < uid=F8252D3C62177DD1000027AC4835D8E7 > : gs_dom_template
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F8252D3C62177DD1000027AD40B6318D >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Reach 500 kph"
+		{
+			myGameTriggerType PlayerSpeederSpeedChanged
+			myConditions
+			{
+				GameConditionPlayerHasSpeederSpeed "Reach 500 kph"
+				{
+					myTargetSpeed 500
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F8252D3C62177DBB000027AB5E476076, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 389, text = \"Reach 500 kph with the speeder\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_BlabberMouth_GainDialogueReputation < uid=E41F4D1B629A0F9100008CF25850A108 > : gs_dom_template
+{
+	myIsDefaultEnabled FALSE
+	myIncrementOncePerTrigger FALSE
+	myGameValue < uid=E41F4D1B629A0F9100008CF38D8000C8 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory GameStatistic
+		myParentLevelsToUseInInstanceName 1
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Gain Reputation From Dialogues"
+		{
+			myGameTriggerType ReputationChanged
+			myConditions
+			{
+				GameConditionContextReputationChangeIsSource "Reputation is from dialogue"
+				{
+					mySourceType Dialogue
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #E41F4D1B629A0F5100008CEDC9997005, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 459, text = \"Gain 100 reputation from dialogues\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_Improvisator_MomentsOfOpportunity < uid=F8252D3C6298CDA90000383087B9C443 > : gs_dom_template
+{
+	myGameValue < uid=F8252D3C6298CEFB00003831DABC5FF3 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Use moments of opportunity"
+		{
+			myGameTriggerType InteractionPerformed
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType "Is Moment Of Opportunity"
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType Blabbermouth BlabberMouth
+						InteractionPointType "Pet Shove" PetMomentOfOpportunityShove
+					}
+				}
+				GameConditionGroup "Is Valid Agent"
+				{
+					myOperator Or
+					myConditions
+					{
+						GameConditionContextAgentHasFaction "Is Player"
+						{
+							myFaction < uid=F8252D3C62A097550000335D4327AAE4 > = Player 6994C4B6534699A60000001372FEB686
+						}
+						GameConditionContextAgentHasFaction "Is Pet"
+						{
+							myFaction < uid=F8252D3C62A097550000335ECA673A3C > = PlayerPet 16DEADE66032341B0000004E35341473
+						}
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F8252D3C6299BF22000057619166BC73, lineVersion = 14, maxLength = 0, productId = -1, sectionId = 11560, text = \"Perform 3 different moments of opportunity\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_NixAid_SmugglerCache < uid=E41F4D1B6298D682000032D79A3287BE > : gs_dom_template
+{
+	myIsDefaultEnabled TRUE
+	myIncrementOncePerTrigger FALSE
+	myGameValue < uid=E41F4D1B6298D73E000032D800D41C08 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Smuggler Cache Interaction"
+		{
+			myGameTriggerType InteractionPerformed
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType "Interacted WithSmuggler Cache"
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "Smuggler cache" LootSmugglerCache
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #E41F4D1B629A0F6C00008CF102B03BC7, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 2517, text = \"Find a <b>Smuggler Cache</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_Blabbermouth_TakedownDistractedEnemies < uid=F8252D3C629F71570000797F80474779 > : gs_dom_template
+{
+	myGameValue < uid=F8252D3C629F71AB0000798497152C6E >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Take down distracted enemies"
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentHasStatusEffect "Distracted Agent"
+				{
+					myAgentContextType TargetAgent
+					myStatusEffect Distracted
+				}
+				GameConditionContextAgentKilledByDamageSourceType "Takedown Kill"
+				{
+					myDamageSourceType Takedown
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65143AF5000FE6C73F893F6C > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasFaction NotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=3B9A06CF65FB1220000FC13BB2B19D5A > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F8252D3C629F719600007983346472B7, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 10714, text = \"Perform <b>Stealth Takedowns</b> on <b>Distracted</b> enemies\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_BlabberMouth_PickSmoothTalkerDialogueDEPRECATED < uid=F8252D3C62A88F6A00003534298525FB > : gs_dom_template
+{
+	myGameValue < uid=F8252D3C62A88FD5000035397CD49FC7 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Pick Smooth Talker Dialogue Choices"
+		{
+			myGameTriggerType DialogueChoice
+			myConditions
+			{
+				GameConditionContextDialogueChoiceItemRequirement "Smooth Talker Dialogue Choice"
+				{
+					myItem < uid=E41F4D1B6360E6690000578D323A76DF > = DoM_skill_SmoothTalk E42FA10C620E47CF0000215136324BE4
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_NotForPB9 < uid=F4D8AE2662A9A876000045997EBEA901 >
+{
+	myGameValue < uid=F4D8AE2662A9A8BF0000459C55530690 >
+	{
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_Shoplifting_ReputationWithUniqueFactions < uid=F8252D3C62A89B610000352D256C56A4 > : gs_dom_template
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F8252D3C62A89BB600003532BCEB27A9 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Reputation with unique factions"
+		{
+			myGameTriggerType ReputationChanged
+			myConditions
+			{
+				GameConditionContextPlayerHasReachedReputationForFirstTime "Reached Good Reputation With Faction"
+				{
+					myReputationTier Good
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F8252D3C62A89B93000035312533E9F4, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10714, text = \"Reach good reputation with any faction\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_NixAid_NixTakedown < uid=F4D8AE2663774EA3000062AD1E1592C3 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE2663774EA3000062AE33E59318 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "From Pet Behavior Attack Knockout"
+		{
+			myGameTriggerType Manual
+			myGameStatisticOperation IncrementOnce
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_NixAid_Restaurant < uid=F4D8AE26645BA5EA00069667EC864CEE >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26645BA5EA0006966850BFE60D >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "New GameStatisticEventBlock"
+		{
+			myGameTriggerType AlienStreetFoodCompleted
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_NixAid_NixPlayDead < uid=F4D8AE26645BA5EA00069669C08ED809 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26645BA5EA0006966A41160695 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "New GameStatisticEventBlock"
+		{
+			myGameTriggerType Manual
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_NixAid_NixSabotage < uid=F4D8AE2663774DC2000062A65DFF503C >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE2663774E61000062AA32A3EFC6 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "New GameStatisticEventBlock"
+		{
+			myGameTriggerType InteractionPerformed
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType "New GameConditionContextInteractionPointIsType"
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "New InteractionPointType" PetCommandSabotage
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_NixAid_NixPetCounter < uid=E41F4D1B62FBAEB5000042A9440BEF37 > : gs_dom_template
+{
+	myIsDefaultEnabled FALSE
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=E41F4D1B62FBAF8D000042AB579B7D70 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Pet Nix"
+		{
+			myGameTriggerType InteractionPerformed
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType "Pet Interaction"
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "New InteractionPointType" NPC
+					}
+				}
+				GameConditionContextAgentHasFaction "Is Pet Agent"
+				{
+					myAgentContextType TargetAgent
+					myFaction < uid=E41F4D1B6360E75C0000578F5308D030 > = PlayerPet 16DEADE66032341B0000004E35341473
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_MakeNixHappy_SpeederBoost < uid=E41F4D1B63076590000044684B6EA446 > : gs_dom_template
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=E41F4D1B630765F200004469F8AAA9FA >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Player is using boost"
+		{
+			myGameTriggerType PlayerSpeederSpeedChanged
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionPlayerSpeederIsBoosting "Player Speeder Boosting"
+				{
+				}
+				GameConditionPetIsEnabledAndSpawned NixIsNearby
+				{
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_NixAid_GrappleSwing < uid=3B9A06CF651D90F0000021C9A70A4739 >
+{
+	myIsDefaultEnabled FALSE
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=3B9A06CF651D9180000079E947B9CE91 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock GrapplingSwingFast
+		{
+			myGameTriggerType PlayerGrappleSwingSpeedChanged
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionPlayerHasGrapplingSwingSpeed "New GameConditionPlayerHasGrapplingSwingSpeed"
+				{
+					myTargetSpeed 9.0
+					myMinTimeBetweenTrueEvaluations 700
+				}
+				GameConditionPetIsOnPlayersBack "New GameConditionPetIsOnPlayersBack"
+				{
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_NixAid_MakeNixHappy < uid=F4D8AE2662A9D29B0000351D1CDE8717 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE2662A9D2F7000035200DFD3843 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Make Nix Happy"
+		{
+			myGameTriggerType GameStatisticChanged
+			myGameStatisticOperation CountConditionsTrue
+			myConditions
+			{
+				GameConditionGameStatistic PetNix
+				{
+					myGameStatistic < uid=F4D8AE26645CF1FF0000B4607BDA1ABD > = gs_dom_NixAid_NixPetCounter E41F4D1B62FBAEB5000042A9440BEF37
+				}
+				GameConditionGameStatistic SpeedBoost
+				{
+					myGameStatistic < uid=F4D8AE26645CF21A0000B462BA5D5AE7 > = gs_dom_MakeNixHappy_SpeederBoost E41F4D1B63076590000044684B6EA446
+				}
+				GameConditionGameStatistic Sabotage
+				{
+					myGameStatistic < uid=F4D8AE26645CF2AB0000B465CC7046B3 > = gs_dom_NixAid_NixSabotage F4D8AE2663774DC2000062A65DFF503C
+				}
+				GameConditionGameStatistic Takedown
+				{
+					myGameStatistic < uid=F4D8AE26645CF2AB0000B4669CAAB7B8 > = gs_dom_NixAid_NixTakedown F4D8AE2663774EA3000062AD1E1592C3
+				}
+				GameConditionGameStatistic PlayDead
+				{
+					myGameStatistic < uid=F4D8AE26645CF2AB0000B467B9DBAA65 > = gs_dom_NixAid_NixPlayDead F4D8AE26645BA5EA00069669C08ED809
+				}
+				GameConditionGameStatistic Restaurant
+				{
+					myGameStatistic < uid=F4D8AE26645CF9690001AC247CD2DCAF > = gs_dom_NixAid_Restaurant F4D8AE26645BA5EA00069667EC864CEE
+				}
+				GameConditionGameStatistic Swing
+				{
+					myGameStatistic < uid=09AEDAAA65450A1200002293873D3B80 > = gs_dom_NixAid_GrappleSwing 3B9A06CF651D90F0000021C9A70A4739
+				}
+				GameConditionQuestBeatState MQ_130_NixSaved
+				{
+					myQuestBeat 9D01D2176408A3C70001A2C32D46A03B
+					myQuestBeatState Completed
+				}
+				GameConditionQuestIsCompleted TQ_TOS_02_Flyers
+				{
+					myQuest CC6CF61E63C16B17000B1152DE165864
+				}
+				GameConditionQuestIsCompleted TQ_TOS_03_Gushiro
+				{
+					myQuest 20037F80642D3E160006E430FC1C4DA3
+				}
+				GameConditionQuestIsCompleted TQ_TOS_04_Crevice
+				{
+					myQuest 20037F8064300BEE0000094664004638
+				}
+				GameConditionQuestIsCompleted TQ_TOS_05_Tunnel
+				{
+					myQuest 20037F8064301150000009607459C2AF
+				}
+				GameConditionQuestIsCompleted TQ_TOS_06_Suburbs
+				{
+					myQuest 20037F8064301C2E0000378908B415C6
+				}
+				GameConditionQuestIsCompleted TQ_TAT_01_Pillar
+				{
+					myQuest 20037F806430213500012ED8EAB9B24B
+				}
+				GameConditionQuestIsCompleted TQ_TAT_02_HighPathway
+				{
+					myQuest 20037F8064302F890000003EA6355E1D
+				}
+				GameConditionQuestIsCompleted TQ_TAT_03_LostCave
+				{
+					myQuest 20037F80643030A30000004D3C81792A
+				}
+				GameConditionQuestIsCompleted TQ_TAT_04_SideStreet
+				{
+					myQuest 20037F80648C361A0000AAD8EDF3B813
+				}
+				GameConditionQuestIsCompleted TQ_AKI_02_Shadow
+				{
+					myQuest 20037F80647463CD0000E2F918042F10
+				}
+				GameConditionQuestIsCompleted TQ_AKI_03_Jungle
+				{
+					myQuest 20037F80647463B20000E2EC789C7CD7
+				}
+				GameConditionQuestIsCompleted TQ_AKI_04_Cliff
+				{
+					myQuest 20037F80649ADCA4000137EFD9116E02
+				}
+				GameConditionQuestIsCompleted TQ_AKI_05_AhiakoRuins
+				{
+					myQuest 20037F80647DF5C000018768E1C88B24
+				}
+				GameConditionQuestIsCompleted TQ_KIJ_01_Snow
+				{
+					myQuest 20037F80649AFF1300013898316CB46E
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F4D8AE2662A9D2B00000351E9BDDC11D, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 2517, text = \"Make <b>Nix Happy</b> in different ways\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_Improvisator_ShoplifitingDEPRECATED < uid=F8252D3C62AAEAA500003554F8C17D5E > : gs_dom_template
+{
+	myGameValue < uid=F8252D3C62AAEAE6000035596FFC4819 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Good Or Perfect Timings"
+		{
+			myConditions
+			{
+				GameConditionFormula "Good or Perfect Timings"
+				{
+					myFormula "gs_dom_Improvisator_ShoplifitingOkaySearch.myGameValue + gs_dom_Improvisator_ShoplifitingPerfectSearch.myGameValue >= 5"
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_Improvisator_ShoplifitingMissSearchDEPRECATED < uid=F8252D3C62AAEBB30000355EEAEC69FF > : gs_dom_template
+{
+	myIsDefaultEnabled TRUE
+	myGameValue < uid=F8252D3C62AAEBC20000355F0E673615 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Miss counter"
+		{
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_Improvisator_ShoplifitingOkaySearchDEPRECATED < uid=F8252D3C62AAEBCB000035610A4004E7 > : gs_dom_template
+{
+	myIsDefaultEnabled TRUE
+	myGameValue < uid=F8252D3C62AAEC65000035715DB80955 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Okay result counter"
+		{
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_Improvisator_ShoplifitingPerfectSearchDEPRECATED < uid=F8252D3C62AAEBE200003562836A37C1 > : gs_dom_template
+{
+	myIsDefaultEnabled TRUE
+	myGameValue < uid=F8252D3C62AAEC6500003572D38C5EB4 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Perfect Result Counter"
+		{
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_IKnowAGuy_UniqueVendors < uid=E41F4D1B62AB21E5000035D6D671FDF9 > : gs_dom_template
+{
+	myIsDefaultEnabled TRUE
+	myGameValue < uid=E41F4D1B62AB2217000035D833FA35D2 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Unique vendor interaction"
+		{
+			myGameTriggerType VendorFirstTimeInteraction
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #E41F4D1B62B1C5180000A9CC175D8E6C, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 2517, text = \"Meet different <b>Merchants</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_Shoplifting_NumerOfTrustedCustomers < uid=E41F4D1B62B1B0CF000035A96EF8E718 > : gs_dom_template
+{
+	myIsDefaultEnabled TRUE
+	myGameValue < uid=E41F4D1B62B1B155000035ABD705FD64 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Become trusted Customer"
+		{
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #E41F4D1B62B1C53D0000AA012B672FC6, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10714, text = \"Reach <b>Trusted Customer</b> status with <b>Merchants</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_LightFeet_RetrieveContract < uid=F4D8AE266363E208000059B43AE18806 >
+{
+	myGameValue < uid=F4D8AE266363E2C1000059B7F442E220 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock RetrieveContract
+		{
+			myGameTriggerType ContractStateChanged
+			myConditions
+			{
+				GameConditionContextContractIsInState SmugglingContractCompleted
+				{
+					myRestrictedToTypes
+					{
+						ContractType Pick_Up_Trouble Pick_Up_Trouble
+						ContractType "Type Normal_Delivery" Normal_Delivery
+						ContractType "Type Express_Delivery" Express_Delivery
+						ContractType "Type Hot_Cargo" Hot_Cargo
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F4D8AE266363E22B000059B595620FC7, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10714, text = \"Complete a <b>Smuggler Contract</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_LightFeet_LockpickLocks < uid=F4D8AE266363E602000059BB973DC7A1 >
+{
+	myGameValue < uid=F4D8AE266363E804000059BEC42014AE >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Lockpick3locks
+		{
+			myGameTriggerType InteractionRequiredMinigameResult
+			myConditions
+			{
+				GameConditionContextInteractionRequiredMinigameResult "New GameConditionContextInteractionRequiredMinigameResult"
+				{
+					myRequiredMinigameType Lockpicking
+					myRequiredMinigameResult Success
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F4D8AE266363E60E000059BCFAAD7D05, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 2517, text = \"<b>Lockpick</b> different locks\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_LightFeet_TakedownCommander < uid=F4D8AE266363ED36000059C3ED91FE6C >
+{
+	myGameValue < uid=F4D8AE266363ED36000059C4AF7B775D >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Takedown
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentKilledByDamageSourceType "New GameConditionContextAgentKilledByDamageSourceType"
+				{
+					myDamageSourceType Takedown
+				}
+				GameConditionContextAgentHasFaction "New GameConditionContextAgentHasFaction"
+				{
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE266363EDCA000059C706A5C307 > = Empire 16DEADE65F21E5AB000000B35532A71B
+				}
+				GameConditionContextAgentHasCombatRole "New GameConditionContextAgentHasCombatRole"
+				{
+					myAgentContextType TargetAgent
+					myNPCCombatRole Commander
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FB0A61000FC0F705714754 > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F4D8AE266363ECD7000059C29EA14D1F, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 2517, text = \"Perform a <b>Stealth Takedown</b> on an <b>Imperial Officer</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_SneakShot_ShootDistractedEnemies < uid=F4D8AE266364D20C00009D85EB90A79F >
+{
+	myGameValue < uid=F4D8AE266364D34300009D880AEAC4F1 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock DistractedEnemiesKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentHasStatusEffect "New GameConditionContextAgentHasStatusEffect"
+				{
+					myAgentContextType TargetAgent
+					myStatusEffect Distracted
+				}
+				GameConditionContextAgentKilledByDamageSourceType "New GameConditionContextAgentKilledByDamageSourceType"
+				{
+					myDamageSourceType Projectile
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FB0A61000FC0F819D547CE > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F4D8AE266364D21E00009D86AD45F7CE, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10714, text = \"Blast down <b>Distracted</b> enemies\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_SneakShot_CompleteInfiltrationContract < uid=F4D8AE2663651D9F00015492089A0F27 >
+{
+	myGameValue < uid=F4D8AE2663651D9F0001549368FB9763 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "New GameStatisticEventBlock"
+		{
+			myGameTriggerType ContractStateChanged
+			myConditions
+			{
+				GameConditionContextContractIsInState InflitrationContractComplete
+				{
+					myRestrictedToTypes
+					{
+						ContractType "Slicing subtype" Slicing
+						ContractType "Surveillance subtype" Surveillance
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F4D8AE2663651D83000154919E08B057, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10714, text = \"Complete an <b>Infiltration Contract</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_SneakShot_CompleteThiefGearSet < uid=F4D8AE266364F0A50000AF814AE37D6E >
+{
+	myGameValue < uid=F4D8AE266364F0A50000AF82D98A9E7B >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock ThiefGear
+		{
+			myGameTriggerType PlayerGearSetChanged
+			myConditions
+			{
+				GameConditionPlayerHasCompletedGearSet "New GameConditionPlayerHasCompletedGearSet"
+				{
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F4D8AE266364F0500000AF809E6F3FA3, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 10714, text = \"Collect and equip the Thief gear set\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_SneakShot_OverhearConversations < uid=E711F09763BFCC2C0000614B7762951C > : gs_dom_template
+{
+	myGameValue < uid=E711F09763BFCC460000614D8E63F3DA >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "New GameStatisticEventBlock"
+		{
+			myGameTriggerType GameStatisticChanged
+			myConditions
+			{
+				GameConditionContextHasGameStatistic "New GameConditionContextHasGameStatistic"
+				{
+					myGameStatistic < uid=E711F09763BFD5A50000591694CA5B3F > = gs_ta_Overhear 83E36AE36214FFAA0000DC6FA208CD63
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #E711F09763BFD5C50000596CC1747788, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2517, text = \"Overhear conversations\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_UNASSIGNED_Legend2 < uid=F4D8AE266364F34E0000B0533E4D30CD >
+{
+	myGameValue < uid=F4D8AE266364F34E0000B0543D05AB8D >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "New GameStatisticEventBlock"
+		{
+			myGameTriggerType LegendPointsChanged
+			myConditions
+			{
+				GameConditionPlayerHasLegendRank "New GameConditionPlayerHasLegendRank"
+				{
+					myLegendRank < uid=F4D8AE266369140100017F6904D6A5E6 > = "Rank 2" 6F2AF91960A4B4370000002E89A38AAD
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F4D8AE266364F30E0000B05285F8AE5A, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 389, text = \"Reach Legend 2\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_Resilient_Defeat10WhileWanted < uid=F4D8AE266364F4CB0000B121FEA2D6BC >
+{
+	myGameValue < uid=F4D8AE266364F4CB0000B122C46C673A >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Defeat10
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionPlayerHasWantedLevel Wanted3
+				{
+					myWantedLevel 3
+				}
+				GameConditionContextAgentHasFaction IsEmpire
+				{
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE266369134200017F48BA6047CE > = Empire 16DEADE65F21E5AB000000B35532A71B
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not a cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FB0B9C000FC10836E90081 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentIsVehicle IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+			}
+		}
+		GameStatisticEventBlock ResetCondition1_Wanted
+		{
+			myGameTriggerType WantedStateChanged
+			myGameStatisticOperation Reset
+			myConditions
+			{
+				GameConditionPlayerHasWantedLevel WantedUnder3
+				{
+					myWantedLevel 3
+					myOperator LessThan
+				}
+			}
+		}
+		GameStatisticEventBlock ResetCondition2_Death
+		{
+			myGameTriggerType AgentKilledByAgent
+			myGameStatisticOperation Reset
+			myConditions
+			{
+				GameConditionPlayerHasHealth "New GameConditionPlayerHasHealth"
+				{
+					myOperator LessThan
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F4D8AE266364F4630000B120FBDA139F, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 10714, text = \"Defeat <b>Imperial</b> forces while at <b>Wanted Level 3</b> or higher without dying\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_Resilient_Defeat5While1HP < uid=F4D8AE26636514160000B49CF5DCFDB8 >
+{
+	myGameValue < uid=F4D8AE26636514160000B49D76A37DC6 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Defeat5
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionPlayerHasHealth "New GameConditionPlayerHasHealth"
+				{
+					myOperator Equal
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FB0E10000FC11C327827C2 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not a CCTV nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction NotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=3B9A06CF65FB1220000FC13C8EDDBA37 > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentIsVehicle IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+			}
+		}
+		GameStatisticEventBlock ResetCondition1_Heal
+		{
+			myGameTriggerType PlayerHealthChanged
+			myGameStatisticOperation Reset
+			myConditions
+			{
+				GameConditionPlayerHasHealth HealthNot1
+				{
+					myOperator NotEqual
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F4D8AE26636513740000B49B93DCD6D8, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 10714, text = \"Defeat enemies while at low <b>Health</b> without dying\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_Speeder_Jump_SpeederJump < uid=F4D8AE26637503CD000062A7101565B5 >
+{
+	myGameValue < uid=F4D8AE2663750438000062AA3725F894 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "New GameStatisticEventBlock_0"
+		{
+			myGameTriggerType PlayerSpeederLanded
+			myGameStatisticOperation Reset
+		}
+		GameStatisticEventBlock "New GameStatisticEventBlock"
+		{
+			myGameTriggerType PlayerSpeederLanded
+			myGameStatisticOperation SetIfGreater
+			myConditions
+			{
+				GameConditionPlayerJumpedSpeeder "New GameConditionPlayerJumpedSpeeder"
+				{
+					myDistanceThreshold 20
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Requirement description\", enabled = true, guid = #F4D8AE26637503D7000062A8401BEC60, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 10714, text = \"Perform a 60 meters long jump without being ejected\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_SneakyTraps_InteractionDropObject < uid=09AEDAAA6568686F000619F2F04F6DBA >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=09AEDAAA6568686F000619F34BAF7A72 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Int
+		{
+			myGameTriggerType InteractionPerformed
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType IntDrop
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "New InteractionPointType" PetCommandDropObject
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_SneakyTraps_InteractionReleasePin < uid=09AEDAAA6568686F000619F0D61A5A81 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=09AEDAAA6568686F000619F1C3599B9A >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Int
+		{
+			myGameTriggerType InteractionPerformed
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType IntPin
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "New InteractionPointType" PetCommandReleaseLockedPin
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_SneakyTraps_InteractionMakeNoise < uid=09AEDAAA6568673E0006193EC9844FDA >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=09AEDAAA6568673E0006193F84C0CA40 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Intnoise
+		{
+			myGameTriggerType InteractionPerformed
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType IntmakeNoise
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "New InteractionPointType" PetCommandMakeNoise
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_SneakyTraps_InteractionCreateHole < uid=09AEDAAA65686823000619C49AB52BA9 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=09AEDAAA65686823000619C5A461C1CA >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Int
+		{
+			myGameTriggerType InteractionPerformed
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType IntHole
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "New InteractionPointType" PetCommandCreateHole
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_SneakyTraps_InteractionHoldLever < uid=09AEDAAA6568673E00061940331FB16A >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=09AEDAAA6568673E0006194168A0A8BF >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock IntLever
+		{
+			myGameTriggerType InteractionPerformed
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType IntHoldLever
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "New InteractionPointType" PetCommandHoldLever
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_SneakyTraps_InteractionSteal < uid=09AEDAAA656867E800061997D4D0A51A >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=09AEDAAA656867E800061998574C2DEB >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock IntSteal
+		{
+			myGameTriggerType InteractionPerformed
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType IntSteal
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "New InteractionPointType" PetCommandSteal
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_SneakyTraps_InteractionAttack < uid=09AEDAAA656866BC00061912E940C397 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=09AEDAAA656866BC00061913A432C8B7 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock IntAttack
+		{
+			myGameTriggerType InteractionPerformed
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType IntAttack
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "New InteractionPointType" PetCommandBlind
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_SneakyTraps_InteractionSabotage < uid=09AEDAAA656867970006196BE0058B42 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=09AEDAAA656867970006196C43455C48 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock IntSabot
+		{
+			myGameTriggerType InteractionPerformed
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType IntSabot
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "New InteractionPointType" PetCommandSabotage
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_SneakyTraps_InteractionSimple < uid=09AEDAAA6568668E000618E75762F050 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=09AEDAAA6568668E000618E865E04685 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock IntSimple
+		{
+			myGameTriggerType InteractionPerformed
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType IntSImple
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "New InteractionPointType" PetCommandInteractSimple
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_SneakyTraps_InteractionFetch < uid=09AEDAAA656867E800061999F681E241 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=09AEDAAA656867E80006199A8E90E409 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock IntFetch
+		{
+			myGameTriggerType InteractionPerformed
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType IntFetch
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "New InteractionPointType" PetCommandFetch
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_SneakyTraps_InteractionsLadder < uid=F4D8AE266375071100008FA4A6AACD58 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE266375071100008FA51902FF67 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Ladder
+		{
+			myGameTriggerType InteractionPerformed
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType InteractLadder
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "New InteractionPointType" PetCommandReleaseLadder
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_SneakyTraps_InteractionsHoldLatch < uid=F4D8AE26645B59FA0000B473E05F1D08 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26645B59FA0000B4748AF95EE3 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Latch
+		{
+			myGameTriggerType InteractionPerformed
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType HoldLatch
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "New InteractionPointType" PetCommandHoldOpenLatch
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"Requirement description\", enabled = true, guid = #F4D8AE26645B59CA0000B472F8A33092, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 389, text = \"Command Nix to interact with 4 different elements\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_SneakyTraps_InteractionsVent < uid=F4D8AE26637509290000D6416994B446 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26637509290000D642EAA72CFE >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Vent
+		{
+			myGameTriggerType InteractionPerformed
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType InteractVent
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "New InteractionPointType" PetCommandRemoveVent
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_SneakyTraps_InteractionsPullCrate < uid=F4D8AE266375099D0000D66129BC1D4F >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE266375099D0000D662D67D36E8 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Crate
+		{
+			myGameTriggerType InteractionPerformed
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType InteractCrate
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "New InteractionPointType" PetCommandPullCrate
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_SneakyTraps_InteractionsCamera < uid=F4D8AE26637509CD0000D68139541DE0 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26637509CD0000D68264FA031D >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Camera
+		{
+			myGameTriggerType InteractionPerformed
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType InteractCamera
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "New InteractionPointType" PetCommandBlindCamera
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_SneakyTraps_InteractionsDistract < uid=09AEDAAA65B2788D000036C7F6507F6F >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=09AEDAAA65B2788D000036C88139689C >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Distract (comes from bt_base_investigate_pet_distraction)"
+		{
+			myGameTriggerType Manual
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_SneakyTraps_InteractionsCompiled < uid=F4D8AE26645B99410000B464AC0A4EE8 >
+{
+	myGameValue < uid=F4D8AE26645B99410000B46527257619 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock All
+		{
+			myGameTriggerType GameStatisticChanged
+			myGameStatisticOperation CountConditionsTrue
+			myConditions
+			{
+				GameConditionGameStatistic Latch
+				{
+					myGameStatistic < uid=F4D8AE26645B99410000B466F113A3C3 > = gs_dom_SneakyTraps_InteractionsHoldLatch F4D8AE26645B59FA0000B473E05F1D08
+				}
+				GameConditionGameStatistic Vent
+				{
+					myGameStatistic < uid=F4D8AE26645B99840000B46AFDD718E6 > = gs_dom_SneakyTraps_InteractionsVent F4D8AE26637509290000D6416994B446
+				}
+				GameConditionGameStatistic Camera
+				{
+					myGameStatistic < uid=F4D8AE26645B99980000B46C184D801C > = gs_dom_SneakyTraps_InteractionsCamera F4D8AE26637509CD0000D68139541DE0
+				}
+				GameConditionGameStatistic Ladder
+				{
+					myGameStatistic < uid=09AEDAAA65686A7A00061A6C6A8F90B1 > = gs_dom_SneakyTraps_InteractionsLadder F4D8AE266375071100008FA4A6AACD58
+				}
+				GameConditionGameStatistic Fetch
+				{
+					myGameStatistic < uid=09AEDAAA65686A7A00061A6D70A7E81A > = gs_dom_SneakyTraps_InteractionFetch 09AEDAAA656867E800061999F681E241
+				}
+				GameConditionGameStatistic Simple
+				{
+					myGameStatistic < uid=09AEDAAA65686A7A00061A6E8A3C4348 > = gs_dom_SneakyTraps_InteractionSimple 09AEDAAA6568668E000618E75762F050
+				}
+				GameConditionGameStatistic Sabotage
+				{
+					myGameStatistic < uid=09AEDAAA65686A7A00061A6FD93B7125 > = gs_dom_SneakyTraps_InteractionSabotage 09AEDAAA656867970006196BE0058B42
+				}
+				GameConditionGameStatistic Attack
+				{
+					myGameStatistic < uid=09AEDAAA65686A7A00061A70CF2778AB > = gs_dom_SneakyTraps_InteractionAttack 09AEDAAA656866BC00061912E940C397
+				}
+				GameConditionGameStatistic Steal
+				{
+					myGameStatistic < uid=09AEDAAA65686A7A00061A71808FBE6D > = gs_dom_SneakyTraps_InteractionSteal 09AEDAAA656867E800061997D4D0A51A
+				}
+				GameConditionGameStatistic HoldLever
+				{
+					myGameStatistic < uid=09AEDAAA65686A7A00061A72E8C18B37 > = gs_dom_SneakyTraps_InteractionHoldLever 09AEDAAA6568673E00061940331FB16A
+				}
+				GameConditionGameStatistic CreateHole
+				{
+					myGameStatistic < uid=09AEDAAA65686A7A00061A73EA717D53 > = gs_dom_SneakyTraps_InteractionCreateHole 09AEDAAA65686823000619C49AB52BA9
+				}
+				GameConditionGameStatistic MakeNoise
+				{
+					myGameStatistic < uid=09AEDAAA65686A7A00061A741E67A296 > = gs_dom_SneakyTraps_InteractionMakeNoise 09AEDAAA6568673E0006193EC9844FDA
+				}
+				GameConditionGameStatistic ReleasePin
+				{
+					myGameStatistic < uid=09AEDAAA65686A7A00061A75E3E60BE1 > = gs_dom_SneakyTraps_InteractionReleasePin 09AEDAAA6568686F000619F0D61A5A81
+				}
+				GameConditionGameStatistic DropObject
+				{
+					myGameStatistic < uid=09AEDAAA65686A7A00061A76079ABC99 > = gs_dom_SneakyTraps_InteractionDropObject 09AEDAAA6568686F000619F2F04F6DBA
+				}
+				GameConditionGameStatistic Distract
+				{
+					myGameStatistic < uid=3B9A06CF65E5A1070000CBBE375189B2 > = gs_dom_SneakyTraps_InteractionsDistract 09AEDAAA65B2788D000036C7F6507F6F
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Requirement description\", enabled = true, guid = #F4D8AE26645B99190000B46315B0F3B3, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 10714, text = \"Command <b>Nix</b> to perform different actions\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_TreasureHunter_NixFetch < uid=F4D8AE266385F75400005226A2E28EFA >
+{
+	myGameValue < uid=F4D8AE266385F754000052273AA31CE6 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Fetch
+		{
+			myGameTriggerType InteractionPerformed
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType InteractFetch
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "New InteractionPointType" PetCommandFetch
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Requirement description\", enabled = true, guid = #F4D8AE266385F7950000522A172FD59D, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 10714, text = \"Use Nix to fetch an item\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_FastTalk_DefeatWithMelee < uid=F4D8AE266411CBBA000008D0806A2BA2 > : gs_dom_template
+{
+	myGameValue < uid=F4D8AE266411CBBA000008D10DBE2FA1 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Kill Agent with melee or takedown"
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionGroup ConditionGroupisPlayervsNotWildlife
+				{
+					myConditions
+					{
+						GameConditionContextAgentHasFaction isNotWildlife
+						{
+							myIsNegated TRUE
+							myAgentContextType TargetAgent
+							myFaction < uid=F4D8AE266411CBBA000008D231D425FF > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+						}
+						GameConditionContextAgentHasFaction isPlayer
+						{
+							myIsNegated FALSE
+							myAgentContextType SourceAgent
+							myFaction < uid=F4D8AE2664A2889F00009DC50C149951 > = Player 6994C4B6534699A60000001372FEB686
+						}
+						GameConditionContextAgentHasCombatRole "Is Combatant (not CCTV nor Turret)"
+						{
+							myIsNegated TRUE
+							myAgentContextType TargetAgent
+						}
+						GameConditionContextAgentIsVehicle IsNotVehicle
+						{
+							myIsNegated TRUE
+							myAgentContextType TargetAgent
+						}
+					}
+				}
+				GameConditionGroup meleeORfinisher
+				{
+					myOperator Or
+					myConditions
+					{
+						GameConditionContextAgentKilledByDamageSourceType "melee damage"
+						{
+							myDamageSourceType Melee
+						}
+						GameConditionContextAgentKilledByDamageSourceType finisher
+						{
+							myDamageSourceType Finisher
+						}
+						GameConditionContextAgentKilledByDamageSourceType takedown
+						{
+							myDamageSourceType Takedown
+						}
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F4D8AE266411BF2D000008CD17F35543, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2517, text = \"Defeat enemies with <b>Melee</b> attacks\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_WhoKnowsAGuy_PersonalRequests < uid=F4D8AE26643FD4F70000085B1E5C190A >
+{
+	myIsDefaultEnabled TRUE
+	myGameValue < uid=F4D8AE26643FD5930000085FC54664C0 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "New GameStatisticEventBlock"
+		{
+			myGameTriggerType VendorTransactionCompleted
+			myConditions
+			{
+				GameConditionContextVendorIsPersonalRequest IsRequest
+				{
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F4D8AE26643FD50D0000085CDC8C3D55, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 2139, text = \"Fulfill <b>Merchant Requests</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_FeelersOut_NixFetchBatcaVial < uid=F4D8AE26648C33580000A9EDEF67502F >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26648C33580000A9EEFFF81AA2 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Fetch
+		{
+			myGameTriggerType InteractionPerformed
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType InteractFetch
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "New InteractionPointType" PetCommandFetch
+					}
+				}
+				GameConditionContextItemIsSpecificItem IsBacta
+				{
+					myItem < uid=3B9A06CF66559D52000000C99D817652 > = con_BactaVial 5F6139B460A4E7DC00021132ACBB4DBD
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_FeelersOut_NixFetchGrenade < uid=F4D8AE266492C1D7000CAA97F43D381C >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE266492C1D7000CAA98707A8903 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Fetch
+		{
+			myGameTriggerType InteractionPerformed
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType InteractFetch
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "New InteractionPointType" PetCommandFetch
+					}
+				}
+				GameConditionContextItemIsSpecificItem IsGrenade
+				{
+					myItem < uid=3B9A06CF66559D52000000CAA15D0128 > = con_ThermalDetonator CC69B22164639AF700014980A759E72E
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_FeelersOut_NixFetchDifferentItemsWeapons < uid=F4D8AE26648C33250000A9E95095C774 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26648C33250000A9EA400A10B9 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Fetch
+		{
+			myGameTriggerType InteractionPerformed
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType InteractFetch
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "New InteractionPointType" PetCommandFetch
+					}
+				}
+				GameConditionContextItemIsCategory IsWeapon
+				{
+					myItemCategory Weapon
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_FeelersOut_NixFetchDifferentItemsCompiled < uid=F4D8AE26648C21FB0000A9E4C155D3B9 >
+{
+	myGameValue < uid=F4D8AE26648C21FB0000A9E5EB3048F8 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Fetch
+		{
+			myGameTriggerType GameStatisticChanged
+			myGameStatisticOperation CountConditionsTrue
+			myConditions
+			{
+				GameConditionGameStatistic Weapons
+				{
+					myGameStatistic < uid=F4D8AE26648C376D0000A9F741398FB3 > = gs_dom_FeelersOut_NixFetchDifferentItemsWeapons F4D8AE26648C33250000A9E95095C774
+				}
+				GameConditionGameStatistic Bacta
+				{
+					myGameStatistic < uid=F4D8AE266492A7B50005294BF13F84E1 > = gs_dom_FeelersOut_NixFetchBatcaVial F4D8AE26648C33580000A9EDEF67502F
+				}
+				GameConditionGameStatistic Grenade
+				{
+					myGameStatistic < uid=F4D8AE266492C225000CAAD95A2CA7C9 > = gs_dom_FeelersOut_NixFetchGrenade F4D8AE266492C1D7000CAA97F43D381C
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Requirement description\", enabled = true, guid = #F4D8AE26648C21340000A9E3A8C6E5D9, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 10714, text = \"Use <b>Nix</b> to <b>Fetch</b> a <b>Pick-Up Weapon</b>, <b>Grenade</b>, and <b>Bacta Vial</b>\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_SneakShot_CompleteScrapperGearSet < uid=F4D8AE26648C61B60000AA0BFDF2DE3E >
+{
+	myGameValue < uid=F4D8AE26648C61B60000AA0C1546FD2B >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock ScrapperGear
+		{
+			myGameTriggerType PlayerGearSetChanged
+			myConditions
+			{
+				GameConditionPlayerHasCompletedGearSet "New GameConditionPlayerHasCompletedGearSet"
+				{
+					mySpecificGearSet BFAAA1FC62166F4500032B3FB523E896
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F4D8AE26648C61670000AA0A56236AED, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 10714, text = \"Collect and equip the Scrapper gear set\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_JawaHaggling_FindJawaVendorsWIP < uid=F4D8AE26648C64E70000AA1091326A1F >
+{
+	myIsDefaultEnabled TRUE
+	myGameValue < uid=F4D8AE26648C696C0000AA135FEFD569 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "New GameStatisticEventBlock"
+		{
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Requirement Description\", enabled = true, guid = #F4D8AE26648C64FE0000AA11751D6753, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10714, text = \"Find Jawa merchants\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_TheBetter_Defeat3DeathTroopersInARow < uid=F4D8AE266492FFF600216E7AEC3B7942 >
+{
+	myGameValue < uid=F4D8AE266492FFF600216E7BFA43A2A0 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Defeat3
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentIsSpecificNPC IsDeathTrooper
+				{
+					myAgentContextType TargetAgent
+					myNPCConstantData 16DEADE661F0801600001B5E1B0B1745
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FC0DEE000000E1114897F3 > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+		GameStatisticEventBlock ResetCondition_Death
+		{
+			myGameTriggerType AgentKilledByAgent
+			myGameStatisticOperation Reset
+			myConditions
+			{
+				GameConditionPlayerHasHealth "New GameConditionPlayerHasHealth"
+				{
+					myOperator LessThan
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F4D8AE266492FF0500216E79ACFF00D5, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 10714, text = \"Defeat <b>Death Troopers</b> without dying\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_Blabbermouth_NixSteal < uid=F4D8AE26649BE618000A87682A3DA68D >
+{
+	myGameValue < uid=F4D8AE26649BE618000A876911FEA905 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Steal
+		{
+			myGameTriggerType InteractionPerformed
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType Steal
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "New InteractionPointType" PetCommandSteal
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Requirement description\", enabled = true, guid = #F4D8AE26649BE5E1000A87671AB8D963, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 10714, text = \"Use <b>Nix</b> to <b>Pickpocket</b> an item\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_AdvancedWeapons_KillWithE11 < uid=F4D8AE26649C2F6C00009ADFEF037D62 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26649C2F6C00009AE0964936DE >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentKilledByAgentWithWeapon KilledWithSpecificWeapon
+				{
+					myWeapon 4C1DFD4E6346B3AE0000BB253687AB27
+				}
+				GameConditionContextAgentHasFaction ISNotPlayer
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C309B00009AE36D6CCB37 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasFaction IsNotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C309B00009AE4B24CFF82 > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasFaction IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C30EF00009AE62B0EBEB6 > = Vehicle 16DEADE65EB50E3B000000327244DD21
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FB1220000FC13D1BE8EE9A > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_AdvancedWeapons_KillWithPistol < uid=F4D8AE26649C318700009AFACBC1F7AB >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26649C318700009AFBF40DE8CE >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentKilledByAgentWithWeapon KilledWithSpecificWeapon
+				{
+					myWeapon 4C1DFD4E636919D40000AF912FF46524
+				}
+				GameConditionContextAgentHasFaction ISNotPlayer
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C318700009AFCF62B6840 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasFaction IsNotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C318700009AFDA6B6498B > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasFaction IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C318700009AFE620E8E59 > = Vehicle 16DEADE65EB50E3B000000327244DD21
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myIsNegated FALSE
+					myFaction < uid=3B9A06CF65FB1220000FC13E38905C91 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_AdvancedWeapons_KillWithPistolA280 < uid=F4D8AE26649C318700009AFFF9DE514E >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26649C318700009B00541A4F5D >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentKilledByAgentWithWeapon KilledWithSpecificWeapon
+				{
+					myWeapon 4C1DFD4E63C153D20000ADEA74F1E919
+				}
+				GameConditionContextAgentHasFaction ISNotPlayer
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C318700009B0140F4AE44 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasFaction IsNotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C318700009B02569E9C45 > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasFaction IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C318700009B035DC1E3F9 > = Vehicle 16DEADE65EB50E3B000000327244DD21
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FB1220000FC13D1BE8EE9A > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_AdvancedWeapons_KillWithPistolDL18 < uid=F4D8AE26649C318700009B04DB272FBB >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26649C318700009B053E443C15 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentKilledByAgentWithWeapon KilledWithSpecificWeapon
+				{
+					myWeapon 4C1DFD4E643D3837000216A0F1DEB174
+				}
+				GameConditionContextAgentHasFaction ISNotPlayer
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C318700009B069C9AF32C > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasFaction IsNotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C318700009B07CE16156D > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasFaction IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C318700009B082CAEA1E3 > = Vehicle 16DEADE65EB50E3B000000327244DD21
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FB1220000FC13D1BE8EE9A > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_AdvancedWeapons_KillWithPistolRK3 < uid=F4D8AE26649C318700009B09331594F7 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26649C318700009B0A785D022A >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentKilledByAgentWithWeapon KilledWithSpecificWeapon
+				{
+					myWeapon 4C1DFD4E643570150000EFB486F182AA
+				}
+				GameConditionContextAgentHasFaction ISNotPlayer
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C318700009B0B069ECD31 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasFaction IsNotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C318700009B0C5F66D5B8 > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasFaction IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C318700009B0DC04B408F > = Vehicle 16DEADE65EB50E3B000000327244DD21
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FB1220000FC13D1BE8EE9A > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_AdvancedWeapons_KillWithPistolS195 < uid=F4D8AE26649C318700009B0E509746FE >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26649C318700009B0FA090FE98 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentKilledByAgentWithWeapon KilledWithSpecificWeapon
+				{
+					myWeapon 4C1DFD4E645CF6C80001EC6D73A4E680
+				}
+				GameConditionContextAgentHasFaction ISNotPlayer
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C318700009B10C9323427 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasFaction IsNotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C318700009B1153E75AB6 > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasFaction IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C318700009B12B9AD4682 > = Vehicle 16DEADE65EB50E3B000000327244DD21
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FB1220000FC13D1BE8EE9A > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_AdvancedWeapons_KillWithPistolSE14C < uid=F4D8AE26649C318700009B139EEE0B11 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26649C318700009B14C62587E7 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentKilledByAgentWithWeapon KilledWithSpecificWeapon
+				{
+					myWeapon 4C1DFD4E643D518B0002ACA8D275BBB8
+				}
+				GameConditionContextAgentHasFaction ISNotPlayer
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C318700009B15AF7E477F > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasFaction IsNotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C318700009B167C349D44 > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasFaction IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C318700009B17926CA750 > = Vehicle 16DEADE65EB50E3B000000327244DD21
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FB1220000FC13D1BE8EE9A > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_AdvancedWeapons_KillWithExoticMyrmite < uid=F4D8AE26649C366E00009B4C6BD26167 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26649C366E00009B4DC3863AA2 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentKilledByAgentWithWeapon KilledWithSpecificWeapon
+				{
+					myWeapon 4C1DFD4E645CF5F80001E89D128D8FA0
+				}
+				GameConditionContextAgentHasFaction ISNotPlayer
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B4EF91A8D15 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasFaction IsNotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B4F87AFC579 > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasFaction IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B507F8E55B2 > = Vehicle 16DEADE65EB50E3B000000327244DD21
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FB1220000FC13D1BE8EE9A > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_AdvancedWeapons_KillWithExoticReconBeam < uid=F4D8AE26649C366E00009B518D2F23CB >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26649C366E00009B52A070655E >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentKilledByAgentWithWeapon KilledWithSpecificWeapon
+				{
+					myWeapon 4C1DFD4E645CED9F00015DB0C2A5BC7B
+				}
+				GameConditionContextAgentHasFaction ISNotPlayer
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B53590DF824 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasFaction IsNotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B5454231572 > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasFaction IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B55A0E65546 > = Vehicle 16DEADE65EB50E3B000000327244DD21
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FB1220000FC13D1BE8EE9A > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_AdvancedWeapons_KillWithExoticReconGrenade < uid=F4D8AE26649C366E00009B56839F8E91 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26649C366E00009B57B5658A1E >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentKilledByAgentWithWeapon KilledWithSpecificWeapon
+				{
+					myWeapon 4C1DFD4E645CEE2A0001605959C0DC5B
+				}
+				GameConditionContextAgentHasFaction ISNotPlayer
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B58F9A19145 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasFaction IsNotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B596B7FA752 > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasFaction IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B5A14EB47AA > = Vehicle 16DEADE65EB50E3B000000327244DD21
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FB1220000FC13D1BE8EE9A > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_AdvancedWeapons_KillWithHeavyDLT19 < uid=F4D8AE26649C366E00009B5B8D470A53 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26649C366E00009B5C78998907 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentKilledByAgentWithWeapon KilledWithSpecificWeapon
+				{
+					myWeapon 4C1DFD4E6422E336000159762E8E1753
+				}
+				GameConditionContextAgentHasFaction ISNotPlayer
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B5DEE4AF471 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasFaction IsNotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B5EA0D22805 > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasFaction IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B5F1572BBDE > = Vehicle 16DEADE65EB50E3B000000327244DD21
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FB1220000FC13D1BE8EE9A > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_AdvancedWeapons_KillWithHeavyTL50 < uid=F4D8AE26649C366E00009B60A117D9C6 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26649C366E00009B61184758E9 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentKilledByAgentWithWeapon KilledWithSpecificWeapon
+				{
+					myWeapon 4C1DFD4E63D77DC80000E9EDDCD5BC21
+				}
+				GameConditionContextAgentHasFaction ISNotPlayer
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B6229E4C9E4 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasFaction IsNotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B63A9C82B4D > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasFaction IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B64B60E0E5B > = Vehicle 16DEADE65EB50E3B000000327244DD21
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FB1220000FC13D1BE8EE9A > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_AdvancedWeapons_KillWithMarksmanRifle < uid=F4D8AE26649C366E00009B6594AC8863 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26649C366E00009B669B08D8FB >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentKilledByAgentWithWeapon KilledWithSpecificWeapon
+				{
+					myWeapon 7113C61162B41A82000049F1274B6BA1
+				}
+				GameConditionContextAgentHasFaction ISNotPlayer
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B6773721A94 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasFaction IsNotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B68B5C8BE77 > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasFaction IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B6945D7D73D > = Vehicle 16DEADE65EB50E3B000000327244DD21
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FB1220000FC13D1BE8EE9A > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_AdvancedWeapons_KillWithRifleA300 < uid=F4D8AE26649C366E00009B6A98C5107C >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26649C366E00009B6B7B801F4A >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentKilledByAgentWithWeapon KilledWithSpecificWeapon
+				{
+					myWeapon 7113C611638F613800008115EA24D793
+				}
+				GameConditionContextAgentHasFaction ISNotPlayer
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B6C8B4B2D4B > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasFaction IsNotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B6D70DE6D20 > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasFaction IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B6EC028D5B7 > = Vehicle 16DEADE65EB50E3B000000327244DD21
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FB1220000FC13D1BE8EE9A > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_AdvancedWeapons_KillWithRifleE11D < uid=F4D8AE26649C366E00009B6FBB29F8B7 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26649C366E00009B7069DABBEC >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentKilledByAgentWithWeapon KilledWithSpecificWeapon
+				{
+					myWeapon 4C1DFD4E643D2E510001E1091626AE51
+				}
+				GameConditionContextAgentHasFaction ISNotPlayer
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B71EAEE6C9A > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasFaction IsNotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B726CED991D > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasFaction IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B7398F53877 > = Vehicle 16DEADE65EB50E3B000000327244DD21
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FB1220000FC13D1BE8EE9A > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_AdvancedWeapons_KillWithRifleJND41 < uid=F4D8AE26649C366E00009B74244CF55E >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26649C366E00009B75BD5FC7F1 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentKilledByAgentWithWeapon KilledWithSpecificWeapon
+				{
+					myWeapon 4C1DFD4E643D4B4300028BD3D6646F2E
+				}
+				GameConditionContextAgentHasFaction ISNotPlayer
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B76BD7A8436 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasFaction IsNotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B778C7D256E > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasFaction IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B78CFD8D7BA > = Vehicle 16DEADE65EB50E3B000000327244DD21
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FB1220000FC13D1BE8EE9A > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_AdvancedWeapons_KillWithRifleRelvyV10 < uid=F4D8AE26649C366E00009B798CFBE1FF >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26649C366E00009B7AE5C99F62 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentKilledByAgentWithWeapon KilledWithSpecificWeapon
+				{
+					myWeapon 4C1DFD4E643D3AE500022671CFCD1704
+				}
+				GameConditionContextAgentHasFaction ISNotPlayer
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B7B80FA80E0 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasFaction IsNotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B7C8996F242 > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasFaction IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B7DDA310E96 > = Vehicle 16DEADE65EB50E3B000000327244DD21
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FB1220000FC13D1BE8EE9A > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_AdvancedWeapons_KillWithRifleReconRifle < uid=F4D8AE26649C366E00009B7E73AAA83D >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26649C366E00009B7F2703DB28 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentKilledByAgentWithWeapon KilledWithSpecificWeapon
+				{
+					myWeapon 4C1DFD4E645CEDF100015F455A93E60B
+				}
+				GameConditionContextAgentHasFaction ISNotPlayer
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B8019393968 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasFaction IsNotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B814B2EC167 > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasFaction IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C366E00009B826DE3637F > = Vehicle 16DEADE65EB50E3B000000327244DD21
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FB1220000FC13D1BE8EE9A > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_AdvancedWeapons_KillWithRotatoryCannon < uid=F4D8AE26649C36D200009B909F241FE2 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26649C36D200009B9161699AEE >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentKilledByAgentWithWeapon KilledWithSpecificWeapon
+				{
+					myWeapon 4C1DFD4E630723D200004468A68CD0D9
+				}
+				GameConditionContextAgentHasFaction ISNotPlayer
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C36D200009B92866C0D6C > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasFaction IsNotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C36D200009B93F35E0763 > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasFaction IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C36D200009B944C3ACDE5 > = Vehicle 16DEADE65EB50E3B000000327244DD21
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FB1220000FC13D1BE8EE9A > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_AdvancedWeapons_KillWithSniperDLT20A < uid=F4D8AE26649C36D200009B9561A99066 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26649C36D200009B968748F652 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentKilledByAgentWithWeapon KilledWithSpecificWeapon
+				{
+					myWeapon 4C1DFD4E643D28920001C6091D755298
+				}
+				GameConditionContextAgentHasFaction ISNotPlayer
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C36D200009B97842E9CC7 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasFaction IsNotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C36D200009B981EE13C42 > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasFaction IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C36D200009B9933E6B558 > = Vehicle 16DEADE65EB50E3B000000327244DD21
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FB1220000FC13D1BE8EE9A > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_AdvancedWeapons_KillWithSniperPhasePulse < uid=F4D8AE26649C36D200009B9AF3DC2F10 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=F4D8AE26649C36D200009B9B03E45D08 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentKilledByAgentWithWeapon KilledWithSpecificWeapon
+				{
+					myWeapon 4C1DFD4E643D44AD000269F690F76AA6
+				}
+				GameConditionContextAgentHasFaction ISNotPlayer
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C36D200009B9C14F0721A > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasFaction IsNotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C36D200009B9D12BA49A9 > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasFaction IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C36D200009B9E000C4041 > = Vehicle 16DEADE65EB50E3B000000327244DD21
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FB1220000FC13D1BE8EE9A > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_AdvancedWeapons_KillWithMPLRocket < uid=3B9A06CF664DE86B000209EB73DD976D >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=3B9A06CF664DE86B000209ECC766FFAD >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentKilledByAgentWithWeapon KilledWithSpecificWeapon
+				{
+					myWeapon 7113C61164E5D2580000BD5A1C731F7E
+				}
+				GameConditionContextAgentHasFaction ISNotPlayer
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=3B9A06CF664DE86B000209EDF4E142F6 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasFaction IsNotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=3B9A06CF664DE86B000209EE88CD706F > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasFaction IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=3B9A06CF664DE86B000209EF1734F8E4 > = Vehicle 16DEADE65EB50E3B000000327244DD21
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF664DE86B000209F0E75FF638 > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_AdvancedWeapons_KillWithMPLGrenade < uid=3B9A06CF664DE86B000209F11957EED7 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=3B9A06CF664DE86B000209F2FAFAAB9A >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentKilledByAgentWithWeapon KilledWithSpecificWeapon
+				{
+					myIsNegated FALSE
+					myWeapon 7113C61164E49EAD0000938F60A9809C
+				}
+				GameConditionContextAgentHasFaction ISNotPlayer
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=3B9A06CF664DE86B000209F34AB99FF9 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasFaction IsNotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=3B9A06CF664DE86B000209F4524F4EA0 > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasFaction IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=3B9A06CF664DE86B000209F5F4C83368 > = Vehicle 16DEADE65EB50E3B000000327244DD21
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF664DE86B000209F6DB41F010 > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_AdvancedWeapons_KillWithTL40_DLC2 < uid=2AE2EC8567D3E7F8000000DF04A139ED >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=2AE2EC8567D3E7F8000000E0E8516CF8 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionGroup "Killed with TL-40 or Custom TL-40"
+				{
+					myOperator Or
+					myConditions
+					{
+						GameConditionContextAgentKilledByAgentWithWeapon Killed_With_TL-40
+						{
+							myWeapon 4C1DFD4E670914760004A70D665BB539
+						}
+						GameConditionContextAgentKilledByAgentWithWeapon Killed_With_Custom_TL-40
+						{
+							myWeapon 25524452676195A4000275CEF8CEDA1B
+						}
+					}
+				}
+				GameConditionContextAgentHasFaction ISNotPlayer
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=2AE2EC8567D3E7F8000000E1089A97A8 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasFaction IsNotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=2AE2EC8567D3E7F8000000E21D6A60D8 > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasFaction IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=2AE2EC8567D3E7F8000000E310095CC9 > = Vehicle 16DEADE65EB50E3B000000327244DD21
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=2AE2EC8567D3E7F8000000E4735CC49C > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, branch = \"DLC2\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_AdvancedWeapons_WeaponsCompiled < uid=F4D8AE26649C32C700009B1F6C24B808 >
+{
+	myGameValue < uid=F4D8AE26649C32C700009B20D0648A6E >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock All
+		{
+			myGameTriggerType GameStatisticChanged
+			myGameStatisticOperation CountConditionsTrue
+			myConditions
+			{
+				GameConditionGameStatistic E11
+				{
+					myGameStatistic < uid=F4D8AE26649C32C700009B2139A72E40 > = gs_dom_AdvancedWeapons_KillWithE11 F4D8AE26649C2F6C00009ADFEF037D62
+				}
+				GameConditionGameStatistic Pistol
+				{
+					myGameStatistic < uid=F4D8AE26649C32C700009B22D6FAD32E > = gs_dom_AdvancedWeapons_KillWithPistol F4D8AE26649C318700009AFACBC1F7AB
+				}
+				GameConditionGameStatistic PistolA280
+				{
+					myGameStatistic < uid=F4D8AE26649C32C700009B239F57D501 > = gs_dom_AdvancedWeapons_KillWithPistolA280 F4D8AE26649C318700009AFFF9DE514E
+				}
+				GameConditionGameStatistic PistolDL18
+				{
+					myGameStatistic < uid=F4D8AE26649C32C700009B246B940B7F > = gs_dom_AdvancedWeapons_KillWithPistolDL18 F4D8AE26649C318700009B04DB272FBB
+				}
+				GameConditionGameStatistic PistolRK3
+				{
+					myGameStatistic < uid=F4D8AE26649C32C700009B256B41FD63 > = gs_dom_AdvancedWeapons_KillWithPistolRK3 F4D8AE26649C318700009B09331594F7
+				}
+				GameConditionGameStatistic PistolS195
+				{
+					myGameStatistic < uid=F4D8AE26649C32C700009B266B223086 > = gs_dom_AdvancedWeapons_KillWithPistolS195 F4D8AE26649C318700009B0E509746FE
+				}
+				GameConditionGameStatistic PistolSE14C
+				{
+					myGameStatistic < uid=F4D8AE26649C32C700009B274AFC1F3E > = gs_dom_AdvancedWeapons_KillWithPistolSE14C F4D8AE26649C318700009B139EEE0B11
+				}
+				GameConditionGameStatistic ExoticMyrmite
+				{
+					myGameStatistic < uid=F4D8AE26649C386400009BA2148D3F6E > = gs_dom_AdvancedWeapons_KillWithExoticMyrmite F4D8AE26649C366E00009B4C6BD26167
+				}
+				GameConditionGameStatistic ExoticReconBeam
+				{
+					myGameStatistic < uid=F4D8AE26649C386400009BA33F0D6F53 > = gs_dom_AdvancedWeapons_KillWithExoticReconBeam F4D8AE26649C366E00009B518D2F23CB
+				}
+				GameConditionGameStatistic ExoticReconGrenade
+				{
+					myGameStatistic < uid=F4D8AE26649C386400009BA43D67DFA4 > = gs_dom_AdvancedWeapons_KillWithExoticReconGrenade F4D8AE26649C366E00009B56839F8E91
+				}
+				GameConditionGameStatistic HeavyDLT19
+				{
+					myGameStatistic < uid=F4D8AE26649C386400009BA540462B1C > = gs_dom_AdvancedWeapons_KillWithHeavyDLT19 F4D8AE26649C366E00009B5B8D470A53
+				}
+				GameConditionGameStatistic HeavyTL50
+				{
+					myGameStatistic < uid=F4D8AE26649C386400009BA63D4D1A35 > = gs_dom_AdvancedWeapons_KillWithHeavyTL50 F4D8AE26649C366E00009B60A117D9C6
+				}
+				GameConditionGameStatistic MarksmanRifle
+				{
+					myGameStatistic < uid=F4D8AE26649C386400009BA7696E9D38 > = gs_dom_AdvancedWeapons_KillWithMarksmanRifle F4D8AE26649C366E00009B6594AC8863
+				}
+				GameConditionGameStatistic RifleA300
+				{
+					myGameStatistic < uid=F4D8AE26649C386400009BA86AF7F54E > = gs_dom_AdvancedWeapons_KillWithRifleA300 F4D8AE26649C366E00009B6A98C5107C
+				}
+				GameConditionGameStatistic RifleE11D
+				{
+					myGameStatistic < uid=F4D8AE26649C386400009BA91B982DC7 > = gs_dom_AdvancedWeapons_KillWithRifleE11D F4D8AE26649C366E00009B6FBB29F8B7
+				}
+				GameConditionGameStatistic RifleJND41
+				{
+					myGameStatistic < uid=F4D8AE26649C38C900009BAB53CBD39C > = gs_dom_AdvancedWeapons_KillWithRifleJND41 F4D8AE26649C366E00009B74244CF55E
+				}
+				GameConditionGameStatistic RifleRelvyV10
+				{
+					myGameStatistic < uid=F4D8AE26649C38C900009BAC8643012E > = gs_dom_AdvancedWeapons_KillWithRifleRelvyV10 F4D8AE26649C366E00009B798CFBE1FF
+				}
+				GameConditionGameStatistic RifleReconRifle
+				{
+					myGameStatistic < uid=F4D8AE26649C38C900009BAD5C6FF234 > = gs_dom_AdvancedWeapons_KillWithRifleReconRifle F4D8AE26649C366E00009B7E73AAA83D
+				}
+				GameConditionGameStatistic RotatoryCannon
+				{
+					myGameStatistic < uid=F4D8AE26649C38C900009BAE9AF93112 > = gs_dom_AdvancedWeapons_KillWithRotatoryCannon F4D8AE26649C36D200009B909F241FE2
+				}
+				GameConditionGameStatistic SniperDLT20A
+				{
+					myGameStatistic < uid=F4D8AE26649C38C900009BAF97A346E2 > = gs_dom_AdvancedWeapons_KillWithSniperDLT20A F4D8AE26649C36D200009B9561A99066
+				}
+				GameConditionGameStatistic SniperPhasePulse
+				{
+					myGameStatistic < uid=F4D8AE26649C38C900009BB009776F49 > = gs_dom_AdvancedWeapons_KillWithSniperPhasePulse F4D8AE26649C36D200009B9AF3DC2F10
+				}
+				GameConditionGameStatistic MPLGrenade
+				{
+					myGameStatistic < uid=3B9A06CF664DE8BE000209FD75938588 > = gs_dom_AdvancedWeapons_KillWithMPLGrenade 3B9A06CF664DE86B000209F11957EED7
+				}
+				GameConditionGameStatistic MPLRocket
+				{
+					myGameStatistic < uid=3B9A06CF664DE8BE000209FEC075AB21 > = gs_dom_AdvancedWeapons_KillWithMPLRocket 3B9A06CF664DE86B000209EB73DD976D
+				}
+				GameConditionGameStatistic DLC2_TL40
+				{
+					myGameStatistic < uid=2AE2EC8567D3E7F8000000E5AFA73A88 > = gs_dom_AdvancedWeapons_KillWithTL40_DLC2 2AE2EC8567D3E7F8000000DF04A139ED
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Requirement description\", enabled = true, guid = #F4D8AE26649C320100009B1E7972D812, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 10714, text = \"Defeat enemies with different types of <b>Pick-Up Weapons</b>\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_SidewayRolls_DefeatInSpace < uid=F4D8AE26649C441D00009BB780E8BBFF >
+{
+	myIncrementOncePerTrigger FALSE
+	myGameValue < uid=F4D8AE26649C441D00009BB83851BEF0 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentHasFaction ISNotPlayer
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE26649C441D00009BB94C5DD17B > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentIsSpaceship IsSpaceship
+				{
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction SourceIsPlayer
+				{
+					myAgentContextType SourceAgent
+					myFaction < uid=3B9A06CF65E0B1BC0003BF40336F1114 > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Requirement description\", enabled = true, guid = #F4D8AE26649C43DB00009BB64A022FC2, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10714, text = \"Defeat enemy <b>Ships</b>\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_Improvise_FindHideouts < uid=F4D8AE2664C0E94E0000B2ADFDE30B29 >
+{
+	myIsDefaultEnabled TRUE
+	myGameValue < uid=F4D8AE2664C0E9940000B2AFA40E0F68 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Findhideouts
+		{
+			myGameTriggerType Manual
+			myConditions
+			{
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F4D8AE2664C0E9B70000B2B21F2DCA6C, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10714, text = \"Find <b>Hideouts</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_UNASSIGNED_FindArtifactLocations < uid=F4D8AE2664C0E9EF0000B2B70C4535DA >
+{
+	myGameValue < uid=F4D8AE2664C0E9EF0000B2B88951CD3E >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock FindArtifactLoc
+		{
+			myGameTriggerType Manual
+			myConditions
+			{
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F4D8AE2664C0E9CC0000B2B6A0F8B3E8, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10714, text = \"Find artifact locations\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_TheMore_Defeat4Trickshot < uid=F4D8AE2664C22DC40002C9C4DFE11375 >
+{
+	myGameValue < uid=F4D8AE2664C22DC40002C9C5374D7000 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Defeat4
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentHasFaction NotNeutralWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE2664C22DC40002C9C6A025EC3E > = WildlifeFriendly 290EB60C64644ED90000B7B265360CCF
+				}
+				GameConditionAgentsKilledByAdrenalineRush 4orMore
+				{
+					myNumberOfAgents 4
+					myShouldOnlyEvaluateTrueOncePerAdrenalineRushActivation TRUE
+				}
+				GameConditionContextAgentHasFaction isPlayer
+				{
+					myFaction < uid=F4D8AE2664C22E710002C9EA9016B216 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentIsVehicle IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F4D8AE2664C22C6F0002C9C31AD811DC, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 10714, text = \"Defeat <b>4</b> enemies with a single <b>Adrenaline Rush</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_TheBetter_Defeat6Trickshot < uid=F4D8AE2664C22E710002C9EBC63C8CEB >
+{
+	myGameValue < uid=F4D8AE2664C22E710002C9EC50BADC6F >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Adrenaline rush finished"
+		{
+			myGameTriggerType GameStatisticChanged
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionGameStatistic "Defeated 6 people simultaenously"
+				{
+					myGameStatistic < uid=634C3123671655FB0005094C49629330 > = gs_crack_shot_kills_dom 634C312367164D250005004F375E50D5
+					myTargetValue 6
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F4D8AE2664C22DDB0002C9E9A2ACF050, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 10714, text = \"Defeat 6 enemies via a single use of Adrenaline rush\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_ShootFirstAskLater_DefeatViaHipfire < uid=F4D8AE2664C241100002CA3597BEF733 >
+{
+	myGameValue < uid=F4D8AE2664C241100002CA36EE034853 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock DefeatX
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentHasFaction NotNeutralWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE2664C241100002CA37FAD0B94C > = WildlifeFriendly 290EB60C64644ED90000B7B265360CCF
+				}
+				GameConditionContextAgentHasFaction isPlayer
+				{
+					myFaction < uid=F4D8AE2664C241100002CA388FC8F655 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionPlayerIsInAimMode hipfire
+				{
+					myIsNegated FALSE
+					myAimModeType HipFire
+				}
+				GameConditionContextAgentHasCombatRole "IsCombatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction NotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=3B9A06CF65FB165400102FE1206558C8 > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentIsVehicle IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentDamagedByAgentWithFireMode NotAdrenalineRushWeak
+				{
+					myIsNegated TRUE
+					myFireMode AdrenalineRushWeak
+				}
+				GameConditionContextAgentDamagedByAgentWithFireMode NotAdrenalineRushStrong
+				{
+					myIsNegated TRUE
+					myFireMode AdrenalineRushStrong
+				}
+				GameConditionContextAgentKilledByAgentWithWeapon BlasterShot
+				{
+					myWeapon 1C021E9562AC872A00003579446C1EDA
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F4D8AE2664C2408C0002CA344306CD7E, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 10714, text = \"Defeat enemies with blaster <b>Hip Fire</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_AskLater_DefeatInOneHit < uid=F4D8AE2664CCFDF6000316CFF5BC1708 >
+{
+	myIncrementOncePerTrigger FALSE
+	myGameValue < uid=F4D8AE2664CCFDF6000316D0E00A76E0 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentDamagedByAgent
+			myConditions
+			{
+				GameConditionContextAgentHasFaction ISNotPlayer
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=F4D8AE2664CCFDF6000316D1199A3A2D > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasFaction SourceIsPlayer
+				{
+					myIsNegated FALSE
+					myAgentContextType SourceAgent
+					myFaction < uid=F4D8AE2664CCFE2800031B29A8B88969 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionPlayerIsInAimMode isHipfire
+				{
+					myAimModeType HipFire
+				}
+				GameConditionContextAgentHasCombatRole "IsCombatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction NotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=3B9A06CF65FB174500102FF13B5CBC50 > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentIsVehicle IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentDamagedWasOneShotKill WasOneShotKillDamage
+				{
+				}
+				GameConditionContextAgentDamagedByAgentWithFireMode NotAdrenalineRushWeak
+				{
+					myIsNegated TRUE
+					myFireMode AdrenalineRushWeak
+				}
+				GameConditionContextAgentDamagedByAgentWithFireMode NotAdrenalineRushStrong
+				{
+					myIsNegated TRUE
+					myFireMode AdrenalineRushStrong
+				}
+				GameConditionContextAgentKilledByAgentWithWeapon IsBlaster
+				{
+					myWeapon 1C021E9562AC872A00003579446C1EDA
+					myAllowDamageEvents TRUE
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Requirement description\", enabled = true, guid = #F4D8AE2664CCFD39000316CEE83489CD, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10714, text = \"Defeat an enemy with a single <b>Quickdraw</b> or <b>Hip Fire</b> shot\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_UNASSIGNED_FindPykeHideouts < uid=F4D8AE2664D23FBB00040A8AD23FB6D0 >
+{
+	myGameValue < uid=F4D8AE2664D23FBB00040A8BB2C9774A >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Findhideouts
+		{
+			myGameTriggerType Manual
+			myConditions
+			{
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F4D8AE2664D23F7F00040A81479954D7, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10714, text = \"Find Pyke Syndicate hideouts\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_UNASSIGNED_FindAshigaHideouts < uid=F4D8AE2664D23FBB00040A8C50CEEFB7 >
+{
+	myGameValue < uid=F4D8AE2664D23FBB00040A8D341A3CED >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Findhideouts
+		{
+			myGameTriggerType Manual
+			myConditions
+			{
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F4D8AE2664D23F9100040A853ED52812, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 10714, text = \"Find Ashiga Clan hideouts\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_UNASSIGNED_FindCrimsonHideouts < uid=F4D8AE2664D23FBB00040A8E1BBC8588 >
+{
+	myGameValue < uid=F4D8AE2664D23FBB00040A8FE236D292 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Findhideouts
+		{
+			myGameTriggerType Manual
+			myConditions
+			{
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F4D8AE2664D23FA700040A89AD79392A, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 10714, text = \"Find Crimson Dawn hideouts\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_UNASSIGNED_FindHuttHideouts < uid=F4D8AE2664D23FE200040F267CE20C12 >
+{
+	myGameValue < uid=F4D8AE2664D23FE200040F27ACC5B854 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Findhideouts
+		{
+			myGameTriggerType Manual
+			myConditions
+			{
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F4D8AE2664D23FC900040F2500E48BC8, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 10714, text = \"Find Hutt Cartel hideouts\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_Overcome_DefeatDeathTroopersWanted < uid=F4D8AE2664DF6A17000092F8EB14B884 >
+{
+	myIncrementOncePerTrigger FALSE
+	myGameValue < uid=F4D8AE2664DF6A17000092F99B1E5489 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Escape Wanted 6"
+		{
+			myGameTriggerType WantedStateChanged
+			myConditions
+			{
+				GameConditionContextWantedIsInState "Go from wanted level 6 to 0"
+				{
+					myStartWantedLevelOperator Equal
+					myStartWantedLevel 6
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Requirement description\", enabled = true, guid = #F4D8AE2664DF69C7000092F7FD1C7633, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 10714, text = \"Clear <b>Wanted Level 6</b>\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_UNASSIGNED_FindNeutralHideouts < uid=F4D8AE2664F5C04A00036F79487289FC >
+{
+	myGameValue < uid=F4D8AE2664F5C04A00036F7AAFE5144F >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Findhideouts
+		{
+			myGameTriggerType Manual
+			myConditions
+			{
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #F4D8AE2664F5C02E00036F781F72446C, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 10714, text = \"Find independent hideouts\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_BlabbermouthUpgrade_TakedownDistractedEnemies < uid=3B9A06CF651436CC000D3F184EB83308 > : gs_dom_template
+{
+	myGameValue < uid=3B9A06CF651436CC000D3F19FFD67E78 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Take down distracted enemies"
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentHasStatusEffect "Distracted Agent"
+				{
+					myAgentContextType TargetAgent
+					myStatusEffect Distracted
+				}
+				GameConditionContextAgentKilledByDamageSourceType "Takedown Kill"
+				{
+					myDamageSourceType Takedown
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65143AF5000FE6C8A990811E > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #3B9A06CF651436AB000D3F17F2CF11AD, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 10714, text = \"Use takedown on distracted enemies\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_KeepTalking_DefeatFasttalkedEnemiesWithStun < uid=09AEDAAA656855370001762DB1D1F8A6 > : gs_dom_template
+{
+	myGameValue < uid=09AEDAAA656855370001762E2873EB0C >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Defeat
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=09AEDAAA656855370001762F3BDE74D7 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionSourceAgentIsAssistedByBlabbermouthAgainstTarget fastTalked
+				{
+				}
+				GameConditionGroup UsingStunShot
+				{
+					myOperator Or
+					myConditions
+					{
+						GameConditionContextAgentKilledByAgentWithActiveWeaponModule AsModule
+						{
+							myWeaponModule A207755D6315EE49000045AC9092C5D6
+						}
+						GameConditionContextAgentDamagedByAgentWithFireMode AsFireMode
+						{
+							myFireMode Stun
+						}
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #09AEDAAA656854AA0001762CDCA85BB8, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 10714, text = \"Use <b>Stun Shot</b> on enemies <b>Distracted</b> by <b>Fast-Talk</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_TreasureHunter_ContainersFound < uid=09AEDAAA656861520005805D87278ABB > : gs_dom_template
+{
+	myIsDefaultEnabled FALSE
+	myIncrementOncePerTrigger FALSE
+	myGameValue < uid=09AEDAAA656861520005805E8F05A393 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Container
+		{
+			myGameTriggerType InteractionPerformed
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType "Interacted With Container"
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "New InteractionPointType" LootContainer
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #09AEDAAA656860E800058034E1FF64F1, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 10714, text = \"Find <b>Containers</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_SneakyTraps_SliceInLessThanAttempts < uid=09AEDAAA6568BC2A00002DE381680CB0 >
+{
+	myGameValue < uid=09AEDAAA6568BC9A00002E05D6E14E51 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "New GameStatisticEventBlock"
+		{
+			myGameTriggerType InteractionRequiredMinigameResult
+			myConditions
+			{
+				GameConditionContextInteractionRequiredMinigameSlicingGuessLimit FastFinish
+				{
+					mySlicingGuessLimit 3
+				}
+				GameConditionContextInteractionRequiredMinigameResult CompletedSuccessfully
+				{
+					myRequiredMinigameType Slicing
+					myRequiredMinigameResult Success
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"MAIN\", contextComment = \"Requirement Description\", enabled = true, guid = #09AEDAAA6568BC4800002DE6328F6E23, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10714, text = \"<b>Slice</b> devices in <b>3</b> attempts or less\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_FeelersOut_InfiltrationNotDetected < uid=09AEDAAA6569F91C000411B9A6EDA82A >
+{
+	myGameValue < uid=09AEDAAA6569FA59000411BBB4D8F1D2 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "New GameStatisticEventBlock"
+		{
+			myGameTriggerType ContractStateChanged
+			myConditions
+			{
+				GameConditionContextContractPlayerWasDetected "New GameConditionContextContractPlayerWasDetected"
+				{
+				}
+				GameConditionContextContractIsInState "New GameConditionContextContractIsInState"
+				{
+					myRestrictedToTypes
+					{
+						ContractType "New ContractType" Burglary
+						ContractType "New ContractType_0" Pickpocket
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"MAIN\", contextComment = \"Requirement Description\", enabled = true, guid = #09AEDAAA6569F91D000411BA808E5048, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10714, text = \"Complete a <b>Thief Contract</b> without being <b>Detected</b>\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_FeelersOut_MakeNixJealous < uid=09AEDAAA656A0299000535A88312F5CA >
+{
+	myGameValue < uid=09AEDAAA656A0299000535A9113532F3 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "New GameStatisticEventBlock"
+		{
+			myGameTriggerType InteractionPerformed
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType "New GameConditionContextInteractionPointIsType"
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "New InteractionPointType" NPC
+					}
+				}
+				GameConditionAgentGroup IsFriendlyWildlife
+				{
+					myOperator Or
+					myConditions
+					{
+						GameConditionContextAgentHasFaction IsWildlife
+						{
+							myAgentContextType TargetAgent
+							myFaction < uid=3B9A06CF65980AE000012CF32CF328C7 > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+						}
+						GameConditionContextAgentHasFaction IsNeutralWildlife
+						{
+							myAgentContextType TargetAgent
+							myFaction < uid=3B9A06CF65980AE000012CF4294A740D > = WildlifeFriendly 290EB60C64644ED90000B7B265360CCF
+						}
+					}
+				}
+				GameConditionPetIsEnabledAndSpawned NixIsNearby
+				{
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"MAIN\", contextComment = \"Requirement Description\", enabled = true, guid = #09AEDAAA656A02130005357F637D6BC5, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10714, text = \"Make <b>Nix Jealous</b>\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_SharpShooter_HitHeadshots < uid=09AEDAAA656EF84400064B1F7F1E5826 >
+{
+	myGameValue < uid=09AEDAAA656EF84400064B202F6E652D >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "New GameStatisticEventBlock"
+		{
+			myGameTriggerType AgentDamagedByAgent
+			myGameStatisticOperation Increment
+			myConditions
+			{
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=09AEDAAA656EF84400064B2177741535 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentDamagedOnBodyPart "New GameConditionContextAgentDamagedInWeakpoint"
+				{
+					myValidBodyPartTypes
+					{
+						BodyPartType "New BodyPartType" Head
+					}
+				}
+				GameConditionContextAgentHasCombatRole "IsCombatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction NotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=3B9A06CF65FB174500102FF23C4E600D > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"MAIN\", contextComment = \"Requirement Description\", enabled = true, guid = #09AEDAAA656EF75900064B1E1EC953B9, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10714, text = \"Land <b>Headshots</b>\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_SharpShooter_CompleteRaidContract < uid=09AEDAAA656F03900014993D10645CB7 >
+{
+	myGameValue < uid=09AEDAAA656F03900014993ED5A05912 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "New GameStatisticEventBlock"
+		{
+			myGameTriggerType ContractStateChanged
+			myConditions
+			{
+				GameConditionContextContractIsInState RaidContractCompleted
+				{
+					myRestrictedToTypes
+					{
+						ContractType "Type Raid" Raid
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #09AEDAAA656F031200149914FFFCA512, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 10714, text = \"Complete an <b>Enforcer Contract</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_Sharpshooter_KillWithMarksmanRifle < uid=09AEDAAA656F1CA30014999F06DFFCF4 >
+{
+	myIncrementOncePerTrigger FALSE
+	myGameValue < uid=09AEDAAA656F1CA3001499A0C929346C >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentHasFaction ISNotPlayer
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=09AEDAAA656F1CA3001499A1A25592B0 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentHasFaction IsNotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=09AEDAAA656F1CA3001499A269441893 > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasFaction IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=09AEDAAA656F1CA3001499A390857113 > = Vehicle 16DEADE65EB50E3B000000327244DD21
+				}
+				GameConditionGroup IsSniper
+				{
+					myOperator Or
+					myConditions
+					{
+						GameConditionContextAgentKilledByAgentWithWeapon KilledWithSpecificWeapon1
+						{
+							myWeapon 7113C61162B41A82000049F1274B6BA1
+						}
+						GameConditionContextAgentKilledByAgentWithWeapon KilledWithSpecificWeapon2
+						{
+							myWeapon 4C1DFD4E643D28920001C6091D755298
+						}
+						GameConditionContextAgentKilledByAgentWithWeapon KilledWithSpecificWeapon3
+						{
+							myWeapon 4C1DFD4E643D44AD000269F690F76AA6
+						}
+					}
+				}
+				GameConditionContextAgentHasCombatRole "IsCombatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FC0D6B000000DADA29EA16 > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"MAIN\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #09AEDAAA656F2E9500179942625789EE, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10714, text = \"Defeat enemies using any <b>Marksman Rifle</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_LoopManeuver_CompleteSpaceHotCargoContract < uid=09AEDAAA656F2F760017996D2E171FD6 >
+{
+	myGameValue < uid=09AEDAAA656F2F760017996E1804239D >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Contract Changed"
+		{
+			myGameTriggerType ContractStateChanged
+			myConditions
+			{
+				GameConditionContextContractIsInState "Is Completed and of type Hot Cargo"
+				{
+					myRestrictedToTypes
+					{
+						ContractType Pick_Up_Trouble Pick_Up_Trouble
+						ContractType "Type Normal_Delivery" Normal_Delivery
+						ContractType "Type Express_Delivery" Express_Delivery
+						ContractType "Hot Cargo" Hot_Cargo
+					}
+				}
+				GameConditionContextContractHasGalaxyLocationType IsSpaceContract
+				{
+					myValidLocationTypes
+					{
+						GalaxyLocationType "New GalaxyLocationType" Orbit
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #09AEDAAA656F2F120017996CA3F9A5E4, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 10714, text = \"Complete a <b>Smuggler Contract</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_LoopManeuve_DefeatInterceptors < uid=09AEDAAA656F3DC10017999919744691 >
+{
+	myGameValue < uid=09AEDAAA656F3DC10017999A1F3B8F5A >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Defeat
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentIsSpecificNPC "New GameConditionContextAgentIsSpecificNPC"
+				{
+					myAgentContextType TargetAgent
+					myNPCConstantData 6EA79625636A82F60000E801725B3C9F
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FB181000103011CA5D4D98 > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #09AEDAAA656F3D4C00179998304A964E, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 10714, text = \"Defeat <b>TIE Interceptors</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_LoopManeuve_DefeatFighters < uid=09AEDAAA656F45AF001799F1428D84F4 >
+{
+	myGameValue < uid=09AEDAAA656F45AF001799F2A6B3F615 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Defeat
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentHasCombatRole "New GameConditionContextAgentHasCombatRole"
+				{
+					myAgentContextType TargetAgent
+					myNPCCombatRole Fighter
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FB181000103012B1CBE209 > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #09AEDAAA656F3E0B001799F067F76570, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 10714, text = \"Defeat enemy <b>Ships</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_TopRollManeuve_DefeatAGozanti < uid=09AEDAAA656F481000179A4A36313524 >
+{
+	myGameValue < uid=09AEDAAA656F481000179A4B7AE887D9 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Defeat
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF65FB18100010301322E2F67C > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionGroup IsGozanti
+				{
+					myOperator Or
+					myConditions
+					{
+						GameConditionContextAgentIsSpecificSpaceshipType BasicGozanti
+						{
+							myAgentContextType TargetAgent
+							mySpaceshipType Gozanti
+						}
+						GameConditionContextAgentIsSpecificSpaceshipType "Quest Gozanti"
+						{
+							myAgentContextType TargetAgent
+							mySpaceshipType Gozanti_mq220
+						}
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #09AEDAAA656F47E000179A498127A2D1, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 10714, text = \"Defeat an <b>Imperial Gozanti-class Cruiser</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_MGasha_FindJawas < uid=09AEDAAA656F46A000179A1E8B18A929 >
+{
+	myIsDefaultEnabled TRUE
+	myGameValue < uid=09AEDAAA656F46A000179A1F8C291E64 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Found
+		{
+			myGameTriggerType VendorFirstTimeInteraction
+			myConditions
+			{
+				GameConditionContextAgentIsSpecies "New GameConditionContextAgentIsSpecies"
+				{
+					myAgentContextType SourceAgent
+					mySuccessSpeciesTags
+					{
+						RBTagsTag "New RBTagsTag" < uid=09AEDAAA656F491600179AF221C49398 > = Agent_Species_JawaTag E4123D27635135B100016205E38C21C1
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #09AEDAAA656F45B900179A1CC2430A68, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 10714, text = \"Find <b>Jawa Traders</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_EffectivePounce_NixTreatedMeals_Akiva < uid=09AEDAAA656F4D1800179B9C8267CCFC >
+{
+	myIsDefaultEnabled TRUE
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=09AEDAAA656F4D1800179B9D1B95475B >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "New GameStatisticEventBlock"
+		{
+			myGameTriggerType ItemAdded
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionPlayerHasItem "New GameConditionPlayerHasItem"
+				{
+					myItem < uid=09AEDAAA656F4D1800179B9E9FDCB4D6 > = pet_gear_food_AKI D00CF654650C58710000D0665EF990F9
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_EffectivePounce_NixTreatedMeals_Kijimi < uid=09AEDAAA656F4D6D00179BF127E9EE53 >
+{
+	myIsDefaultEnabled TRUE
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=09AEDAAA656F4D6D00179BF214EA16E7 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "New GameStatisticEventBlock"
+		{
+			myGameTriggerType ItemAdded
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionPlayerHasItem "New GameConditionPlayerHasItem"
+				{
+					myItem < uid=09AEDAAA656F4D6D00179BF32173FCB9 > = pet_gear_food_KIJ D00CF654650C58880000D073020C03F9
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_EffectivePounce_NixTreatedMeals_Toshara < uid=09AEDAAA656F4D6D00179BF4A7AE540E >
+{
+	myIsDefaultEnabled TRUE
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=09AEDAAA656F4D6D00179BF5CF5DADDE >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "New GameStatisticEventBlock"
+		{
+			myGameTriggerType ItemAdded
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionPlayerHasItem "New GameConditionPlayerHasItem"
+				{
+					myItem < uid=09AEDAAA656F4D6D00179BF68B44C7FC > = pet_gear_food_TOS D00CF654650C56F20000D04A0722294B
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_EffectivePounce_NixTreatedMeals_Tatooine < uid=09AEDAAA656F4D8800179C2068F35FBB >
+{
+	myIsDefaultEnabled TRUE
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=09AEDAAA656F4D8800179C21CAA9C50F >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "New GameStatisticEventBlock"
+		{
+			myGameTriggerType ItemAdded
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionPlayerHasItem "New GameConditionPlayerHasItem"
+				{
+					myItem < uid=09AEDAAA656F4D8800179C22C673ADEA > = pet_gear_food_TAT D00CF654650C571A0000D059A78758FD
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_EffectivePounce_NixTreatedMealsCompiled < uid=09AEDAAA656F4C5E00179B4771FA333F >
+{
+	myIsDefaultEnabled TRUE
+	myGameValue < uid=09AEDAAA656F4C5E00179B4845AAA465 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "New GameStatisticEventBlock"
+		{
+			myGameTriggerType ItemAdded
+			myGameStatisticOperation CountConditionsTrue
+			myConditions
+			{
+				GameConditionGameStatistic "New GameConditionGameStatistic"
+				{
+					myGameStatistic < uid=09AEDAAA656F4DF800179C4B0F796C23 > = gs_dom_EffectivePounce_NixTreatedMeals_Akiva 09AEDAAA656F4D1800179B9C8267CCFC
+				}
+				GameConditionGameStatistic "New GameConditionGameStatistic_0"
+				{
+					myGameStatistic < uid=09AEDAAA656F4DF800179C4C6E09DA19 > = gs_dom_EffectivePounce_NixTreatedMeals_Kijimi 09AEDAAA656F4D6D00179BF127E9EE53
+				}
+				GameConditionGameStatistic "New GameConditionGameStatistic_1"
+				{
+					myGameStatistic < uid=09AEDAAA656F4DF800179C4D7DD4F42D > = gs_dom_EffectivePounce_NixTreatedMeals_Toshara 09AEDAAA656F4D6D00179BF4A7AE540E
+				}
+				GameConditionGameStatistic "New GameConditionGameStatistic_2"
+				{
+					myGameStatistic < uid=09AEDAAA656F4DF800179C4ECB1243CC > = gs_dom_EffectivePounce_NixTreatedMeals_Tatooine 09AEDAAA656F4D8800179C2068F35FBB
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #09AEDAAA656F4C1400179B460149DFB9, lineVersion = 13, maxLength = 0, productId = -1, sectionId = 10714, text = \"Enjoy various tasty meals with <b>Nix</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_PoweredRecharge_LockpickLocksFlawlessly < uid=09AEDAAA6572F0F8001BA225763F5305 >
+{
+	myGameValue < uid=09AEDAAA6572F0F8001BA226A33B0C1D >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Lockpick3locks
+		{
+			myGameTriggerType InteractionRequiredMinigameResult
+			myConditions
+			{
+				GameConditionContextInteractionRequiredMinigameResult "New GameConditionContextInteractionRequiredMinigameResult"
+				{
+					myRequiredMinigameType Lockpicking
+					myRequiredMinigameResult Success
+				}
+				GameConditionContextInteractionRequiredMinigameLockpickingHasHitOnlyGaps "New GameConditionContextInteractionRequiredMinigameLockpickingHasHitOnlyGaps"
+				{
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #09AEDAAA6572F0B6001BA224551EAC5F, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10714, text = \"Flawless <b>Lockpicking</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_SneakShot_CompleteGunslingerGearSet < uid=09AEDAAA65733BE6000236107114AB0D >
+{
+	myGameValue < uid=09AEDAAA65733BE600023611A0DBB547 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Gear
+		{
+			myGameTriggerType PlayerGearSetChanged
+			myConditions
+			{
+				GameConditionPlayerHasCompletedGearSet "New GameConditionPlayerHasCompletedGearSet"
+				{
+					mySpecificGearSet BFAAA1FC62A0B8D20002013004E7845D
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #09AEDAAA65733B760002360931F799E7, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 10714, text = \"Complete and equip the Gunslinger gear set\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_DodgeRoll_ContainersFoundInSpace < uid=09AEDAAA6579B947000265A18DB5638C > : gs_dom_template
+{
+	myIsDefaultEnabled TRUE
+	myIncrementOncePerTrigger FALSE
+	myGameValue < uid=09AEDAAA6579B947000265A2FA0C9D7E >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Space Container"
+		{
+			myGameTriggerType InteractionPerformed
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType "Interacted With Container"
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "New InteractionPointType" LootContainerSpace
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #09AEDAAA6579B903000265A087020CD5, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 10714, text = \"Loot <b>Containers</b> in space\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_ShootFirst_SabbacCheatsUsedSuccessfully < uid=09AEDAAA6579CA4C000266237D508F54 > : gs_dom_template
+{
+	myIsDefaultEnabled TRUE
+	myIncrementOncePerTrigger FALSE
+	myGameValue < uid=09AEDAAA6579CA4C000266245888B0E7 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Sabacc Cheats"
+		{
+			myGameTriggerType SabaccGameCompleted
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionSabaccGameCompletedUsingNumberOfCheats "New GameConditionSabaccGameCompletedUsingNumberOfCheats"
+				{
+					myNumberOfCheatsUsed 3
+					myCountOnlySuccessfulCheatAttempts TRUE
+				}
+				GameConditionSabaccGameCompletedAsPlayerWin "New GameConditionSabaccGameCompletedAsPlayerWin"
+				{
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #09AEDAAA6579C9D900026622F70E62FD, lineVersion = 14, maxLength = 0, productId = -1, sectionId = 10714, text = \"Win a game of <b>Sabacc</b> after cheating 3 times or more\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_ShootFirst_SabbacGamesWonHighStakes < uid=09AEDAAA6579CB34000266452BCF6371 > : gs_dom_template
+{
+	myIsDefaultEnabled TRUE
+	myIncrementOncePerTrigger FALSE
+	myGameValue < uid=09AEDAAA6579CB3400026646FBAE63E6 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Games won"
+		{
+			myGameTriggerType SabaccGameCompleted
+			myConditions
+			{
+				GameConditionSabaccGameCompletedAsPlayerWin "New GameConditionSabaccGameCompletedAsPlayerWin"
+				{
+				}
+				GameConditionSabaccGameCompletedIsTableTier "New GameConditionSabaccGameCompletedIsTableTier"
+				{
+					myTableTier Nemesis
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #09AEDAAA6579CA6A0002664436DDE2C5, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 10714, text = \"Defeat <b>Sabacc High-Rollers</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_ShootFirstAskLater_DefeatViaHipfire1shot < uid=09AEDAAA6579D2BA000267071D06BC4A >
+{
+	myGameValue < uid=09AEDAAA6579D2BA0002670841CCE800 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Defeat1
+		{
+			myGameTriggerType AgentDamagedByAgent
+			myConditions
+			{
+				GameConditionContextAgentHasFaction NotNeutralWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=09AEDAAA6579D2BA000267094B3DE9B1 > = WildlifeFriendly 290EB60C64644ED90000B7B265360CCF
+				}
+				GameConditionContextAgentHasFaction isPlayer
+				{
+					myFaction < uid=09AEDAAA6579D2BA0002670AE84FEC4C > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionPlayerIsInAimMode hipfire
+				{
+					myIsNegated FALSE
+					myAimModeType HipFire
+				}
+				GameConditionContextAgentDamagedWasOneShotKill OneShotDamage
+				{
+				}
+				GameConditionContextAgentHasFaction NotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=3B9A06CF65FB1857001030239E9D0C6A > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasCombatRole "Is Combatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentIsVehicle IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentDamagedByAgentWithFireMode NotAdrenalineRushWeak
+				{
+					myIsNegated TRUE
+					myFireMode AdrenalineRushWeak
+				}
+				GameConditionContextAgentDamagedByAgentWithFireMode NotAdrenalineRushStrong
+				{
+					myIsNegated TRUE
+					myFireMode AdrenalineRushStrong
+				}
+				GameConditionContextAgentKilledByAgentWithWeapon IsBlaster
+				{
+					myWeapon 1C021E9562AC872A00003579446C1EDA
+					myAllowDamageEvents TRUE
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #09AEDAAA6579D22E000266C8BAF1BAAA, lineVersion = 14, maxLength = 0, productId = -1, sectionId = 10714, text = \"Defeat an enemy with a single hipfire shot\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_SpeederShot_WinSpeederRace < uid=3B9A06CF657B2D2C001B7D5B810A1BE2 >
+{
+	myGameValue < uid=3B9A06CF657B2D89001B7D5E56A98553 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "scr_lt_lwev_speeder_race script activation"
+		{
+		}
+	}
+	myUIDescription "branch = \"MAIN\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #09AEDAAA657C1B920006028F227A089D, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10714, text = \"Win <b>Speeder Races</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_AskLater_SabbacGamesWonNemesis < uid=09AEDAAA657C7893000100239998A2AF > : gs_dom_template
+{
+	myIsDefaultEnabled TRUE
+	myIncrementOncePerTrigger FALSE
+	myGameValue < uid=09AEDAAA657C789300010024CCA0530D >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Games won"
+		{
+			myGameTriggerType SabaccGameCompleted
+			myConditions
+			{
+				GameConditionSabaccGameCompletedAsPlayerWin "New GameConditionSabaccGameCompletedAsPlayerWin"
+				{
+				}
+				GameConditionSabaccGameCompletedIsTableTier "New GameConditionSabaccGameCompletedIsTableTier"
+				{
+					myTableTier Nemesis
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #09AEDAAA657C786B00010022E29455A0, lineVersion = 13, maxLength = 0, productId = -1, sectionId = 10714, text = \"Defeat <b>Sabacc Nemesis</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_AskLater_CharmsCollected < uid=09AEDAAA657C7B81000100A4372AF8A1 > : gs_dom_template
+{
+	myIsDefaultEnabled TRUE
+	myIncrementOncePerTrigger FALSE
+	myGameValue < uid=09AEDAAA657C7B81000100A594FE01D0 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Charms
+		{
+			myGameTriggerType ItemAdded
+			myConditions
+			{
+				GameConditionGroup "New GameConditionGroup"
+				{
+					myOperator Or
+					myConditions
+					{
+						GameConditionContextItemHasInventoryPouch MinorCharm
+						{
+							myValidPouchTypes
+							{
+								InventoryPouch "New InventoryPouch" CharmMinor
+							}
+						}
+						GameConditionContextItemHasInventoryPouch MajorCharm
+						{
+							myValidPouchTypes
+							{
+								InventoryPouch "New InventoryPouch" CharmMajor
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #09AEDAAA657C7AE7000100A3CCA4D162, lineVersion = 14, maxLength = 0, productId = -1, sectionId = 10714, text = \"Collect <b>Charms</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_JustImprovise_ReputationWith3Factions < uid=09AEDAAA657C7FDB00010103A7E3D6A8 > : gs_dom_template
+{
+	myIsDefaultEnabled TRUE
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=09AEDAAA657C7FDB000101045D12CEA7 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Reputation with unique factions"
+		{
+			myGameTriggerType ReputationChanged
+			myGameStatisticOperation CountConditionsTrue
+			myConditions
+			{
+				GameConditionPlayerHasReputation "New GameConditionPlayerHasReputation"
+				{
+					myFaction < uid=09AEDAAA657C7FDB0001010548967CA1 > = AshigaClan 4728ADF9620B6C2B0000201F5FC5C937
+					myReputationTier Good
+				}
+				GameConditionPlayerHasReputation "New GameConditionPlayerHasReputation_0"
+				{
+					myFaction < uid=09AEDAAA657C7FDB0001010657EA548F > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+					myReputationTier Good
+				}
+				GameConditionPlayerHasReputation "New GameConditionPlayerHasReputation_1"
+				{
+					myFaction < uid=09AEDAAA657C7FDB00010107EE059E4C > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+					myReputationTier Good
+				}
+				GameConditionPlayerHasReputation "New GameConditionPlayerHasReputation_2"
+				{
+					myFaction < uid=09AEDAAA657C7FDB0001010825A912DD > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+					myReputationTier Good
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #09AEDAAA657C7D50000101029AF0B27E, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 10714, text = \"Have <b>Good</b> or better <b>Reputation</b> with <b>3</b> different <b>Syndicates</b> at the same time\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_JustImprovise_FactionVaultsFound < uid=3B9A06CF6613B21E000000C737B4A174 >
+{
+	myIsDefaultEnabled TRUE
+	myGameValue < uid=3B9A06CF6613B29D000000CCC464E955 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock ItemAdded
+		{
+			myGameTriggerType ItemAdded
+			myConditions
+			{
+				GameConditionContextItemIsSpecificItem IsVaultHiddenReward
+				{
+					myItem < uid=3B9A06CF6613B360000000DAAFCFA4C6 > = DoM_skill_JustImprovise_BreakIntoFactionVault 2AE2EC85660EAA1D001C4526FD7762BF
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"MAIN\", contextComment = \"Shown in the domains of mastery menu. It's the description of the requirement to unlock the domain of mastery unlock.\", enabled = true, guid = #B77272C56633A63F000000CB933F55C2, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 2387, text = \"Steal from <b>Syndicate Vaults</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_Survivor_FindStrandedBarterer < uid=09AEDAAA658022E000010166C8BEBFED > : gs_dom_template
+{
+	myIsDefaultEnabled TRUE
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=09AEDAAA658022E000010167D14ABF07 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Vendor
+		{
+			myGameTriggerType VendorFirstTimeInteraction
+			myGameStatisticOperation Increment
+			myConditions
+			{
+				GameConditionContextAgentIsSpecificNPC "New GameConditionContextAgentIsSpecificNPC"
+				{
+					myNPCConstantData 91DC5D3C650870E70026B7AE41ED2655
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #09AEDAAA658021C3000101652AD367E0, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 10714, text = \"Find the <b>Stranded Merchant</b> on <b>Akiva</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_Improvise_defeatWithEnvironment < uid=09AEDAAA6580256400010229AFB6F604 > : gs_dom_template
+{
+	myGameValue < uid=09AEDAAA658025640001022A64B328E2 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Kill Agent with enviro"
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionGroup ConditionGroupisPlayervsNotWildlife
+				{
+					myConditions
+					{
+						GameConditionContextAgentHasFaction isNotWildlife
+						{
+							myIsNegated TRUE
+							myAgentContextType TargetAgent
+							myFaction < uid=09AEDAAA658025640001022BBD68A926 > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+						}
+						GameConditionContextAgentHasFaction isPlayer
+						{
+							myIsNegated FALSE
+							myAgentContextType SourceAgent
+							myFaction < uid=09AEDAAA658025640001022C772EA788 > = Player 6994C4B6534699A60000001372FEB686
+						}
+						GameConditionContextAgentHasCombatRole "IsCombatant (not cctv nor turret)"
+						{
+							myIsNegated TRUE
+							myAgentContextType TargetAgent
+						}
+						GameConditionContextAgentIsVehicle IsNotVehicle
+						{
+							myIsNegated TRUE
+							myAgentContextType TargetAgent
+						}
+					}
+				}
+				GameConditionGroup "environment types"
+				{
+					myOperator Or
+					myConditions
+					{
+						GameConditionContextAgentKilledByDamageSourceType enviro
+						{
+							myDamageSourceType Environment
+						}
+						GameConditionContextAgentKilledByDamageSourceType "ship explosion"
+						{
+							myDamageSourceType ShipOvercharge
+						}
+						GameConditionGroup "barrel explosion"
+						{
+							myConditions
+							{
+								GameConditionContextAgentKilledByDamageSourceType "explosion type"
+								{
+									myDamageSourceType Explosion
+								}
+								GameConditionContextAgentKilledByExplosionCause NonGrenadeAndNonProjectile
+								{
+									myExplosionCause Other
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #09AEDAAA658024A400010228CBA02596, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 2517, text = \"Defeat enemies using the environment.\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_NixCommando_NixTakedown < uid=09AEDAAA65804247000102DADF599121 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=09AEDAAA65804247000102DB779DBDAF >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "New GameStatisticEventBlock"
+		{
+			myGameTriggerType PetPromptCompleted
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextPetPromptCompletedIsResult "New GameConditionContextPetPromptCompletedIsResult"
+				{
+					myResult TRUE
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_NixCommando_Restaurant < uid=09AEDAAA65804247000102DCBEA7A103 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=09AEDAAA65804247000102DDF5201580 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "New GameStatisticEventBlock"
+		{
+			myGameTriggerType AlienStreetFoodCompleted
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_NixCommando_NixPlayDead < uid=09AEDAAA65804247000102DEE6E3429C >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=09AEDAAA65804247000102DF7C09EB2A >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "New GameStatisticEventBlock"
+		{
+			myGameTriggerType Manual
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_NixCommando_NixSabotage < uid=09AEDAAA65804247000102E0FF25F211 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=09AEDAAA65804247000102E10A5C7460 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "New GameStatisticEventBlock"
+		{
+			myGameTriggerType InteractionPerformed
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType "New GameConditionContextInteractionPointIsType"
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "New InteractionPointType" PetCommandSabotage
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_NixCommando_NixPetCounter < uid=09AEDAAA65804247000102E2F6572015 > : gs_dom_template
+{
+	myIsDefaultEnabled FALSE
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=09AEDAAA65804247000102E3C534D54E >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Pet Nix"
+		{
+			myGameTriggerType InteractionPerformed
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType "Pet Interaction"
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "New InteractionPointType" NPC
+					}
+				}
+				GameConditionContextAgentHasFaction "Is Pet Agent"
+				{
+					myAgentContextType TargetAgent
+					myFaction < uid=09AEDAAA65804247000102E415510283 > = PlayerPet 16DEADE66032341B0000004E35341473
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_NixCommandoy_SpeederBoost < uid=09AEDAAA65804247000102E5FC478B3D > : gs_dom_template
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=09AEDAAA65804247000102E6B35F4B28 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Player is using boost"
+		{
+			myGameTriggerType PlayerSpeederSpeedChanged
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionPlayerSpeederIsBoosting "Player Speeder Boosting"
+				{
+				}
+				GameConditionPetIsEnabledAndSpawned NixIsNearby
+				{
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_NixCommando_GrappleSwing < uid=09AEDAAA65804247000102E7D0A266A8 >
+{
+	myIsDefaultEnabled FALSE
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=09AEDAAA65804247000102E84D7A2325 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock GrapplingSwingFast
+		{
+			myGameTriggerType PlayerGrappleSwingSpeedChanged
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionPlayerHasGrapplingSwingSpeed "New GameConditionPlayerHasGrapplingSwingSpeed"
+				{
+					myTargetSpeed 9.0
+					myMinTimeBetweenTrueEvaluations 700
+				}
+				GameConditionPetIsEnabledAndSpawned NixIsNearby
+				{
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_NixCommando_MakeNixHappy6 < uid=09AEDAAA65804247000102E98DA457D4 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=09AEDAAA65804247000102EAC4EB4B43 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Make Nix Happy"
+		{
+			myGameTriggerType GameStatisticChanged
+			myGameStatisticOperation CountConditionsTrue
+			myConditions
+			{
+				GameConditionGameStatistic PetNix
+				{
+					myGameStatistic < uid=09AEDAAA65804247000102EB07BFE250 > = gs_dom_NixCommando_NixPetCounter 09AEDAAA65804247000102E2F6572015
+				}
+				GameConditionGameStatistic SpeedBoost
+				{
+					myGameStatistic < uid=09AEDAAA65804247000102EC9B408A89 > = gs_dom_NixCommandoy_SpeederBoost 09AEDAAA65804247000102E5FC478B3D
+				}
+				GameConditionGameStatistic Sabotage
+				{
+					myGameStatistic < uid=09AEDAAA65804247000102ED34F574C2 > = gs_dom_NixCommando_NixSabotage 09AEDAAA65804247000102E0FF25F211
+				}
+				GameConditionGameStatistic Takedown
+				{
+					myGameStatistic < uid=09AEDAAA65804247000102EEAADA904C > = gs_dom_NixCommando_NixTakedown 09AEDAAA65804247000102DADF599121
+				}
+				GameConditionGameStatistic PlayDead
+				{
+					myGameStatistic < uid=09AEDAAA65804247000102EF528F4A25 > = gs_dom_NixCommando_NixPlayDead 09AEDAAA65804247000102DEE6E3429C
+				}
+				GameConditionGameStatistic Restaurant
+				{
+					myGameStatistic < uid=09AEDAAA65804247000102F0CD04963F > = gs_dom_NixCommando_Restaurant 09AEDAAA65804247000102DCBEA7A103
+				}
+				GameConditionGameStatistic Swing
+				{
+					myGameStatistic < uid=09AEDAAA65804247000102F152C8B839 > = gs_dom_NixCommando_GrappleSwing 09AEDAAA65804247000102E7D0A266A8
+				}
+				GameConditionQuestIsCompleted TQ_KIJ_01_Snow
+				{
+					myQuest 20037F80649AFF1300013898316CB46E
+				}
+				GameConditionQuestIsCompleted TQ_AKI_04_Cliff
+				{
+					myQuest 20037F80649ADCA4000137EFD9116E02
+				}
+				GameConditionQuestIsCompleted TQ_AKI_05_AhiakoRuins
+				{
+					myQuest 20037F80647DF5C000018768E1C88B24
+				}
+				GameConditionQuestIsCompleted TQ_AKI_03_Jungle
+				{
+					myQuest 20037F80647463B20000E2EC789C7CD7
+				}
+				GameConditionQuestIsCompleted TQ_AKI_02_Shadow
+				{
+					myQuest 20037F80647463CD0000E2F918042F10
+				}
+				GameConditionQuestIsCompleted TQ_TAT_04_SideStreet
+				{
+					myQuest 20037F80648C361A0000AAD8EDF3B813
+				}
+				GameConditionQuestIsCompleted TQ_TAT_03_LostCave
+				{
+					myQuest 20037F80643030A30000004D3C81792A
+				}
+				GameConditionQuestIsCompleted TQ_TAT_02_HighPathway
+				{
+					myQuest 20037F8064302F890000003EA6355E1D
+				}
+				GameConditionQuestIsCompleted TQ_TAT_01_Pillar
+				{
+					myQuest 20037F806430213500012ED8EAB9B24B
+				}
+				GameConditionQuestIsCompleted TQ_TOS_06_Suburbs
+				{
+					myQuest 20037F8064301C2E0000378908B415C6
+				}
+				GameConditionQuestIsCompleted TQ_TOS_05_Tunnel
+				{
+					myQuest 20037F8064301150000009607459C2AF
+				}
+				GameConditionQuestIsCompleted TQ_TOS_04_Crevice
+				{
+					myQuest 20037F8064300BEE0000094664004638
+				}
+				GameConditionQuestIsCompleted TQ_TOS_03_Gushiro
+				{
+					myQuest 20037F80642D3E160006E430FC1C4DA3
+				}
+				GameConditionQuestIsCompleted TQ_TOS_02_Flyers
+				{
+					myQuest CC6CF61E63C16B17000B1152DE165864
+				}
+				GameConditionQuestBeatState MQ_130_NixSaved
+				{
+					myQuestBeat 9D01D2176408A3C70001A2C32D46A03B
+					myQuestBeatState Completed
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #09AEDAAA658041AE000102D9E6B5AF38, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 10714, text = \"Make <b>Nix Happy</b> in different ways\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_Overcome_defeatWithSameGrenade < uid=09AEDAAA6580487700010312FA5A1C35 > : gs_dom_template
+{
+	myGameValue < uid=09AEDAAA6580487700010313A63EC158 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Kill Agent with grenade"
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionGroup ConditionGroupisPlayervsNotWildlife
+				{
+					myConditions
+					{
+						GameConditionContextAgentHasFaction isNotWildlife
+						{
+							myIsNegated TRUE
+							myAgentContextType TargetAgent
+							myFaction < uid=09AEDAAA658048770001031467FF460A > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+						}
+						GameConditionContextAgentHasFaction isPlayer
+						{
+							myIsNegated FALSE
+							myAgentContextType SourceAgent
+							myFaction < uid=09AEDAAA6580487700010315A9B310F9 > = Player 6994C4B6534699A60000001372FEB686
+						}
+						GameConditionContextAgentHasCombatRole "IsCombatant(not cctv nor turret)"
+						{
+							myIsNegated TRUE
+							myAgentContextType TargetAgent
+						}
+						GameConditionContextAgentIsVehicle IsNotVehicle
+						{
+							myIsNegated TRUE
+							myAgentContextType TargetAgent
+						}
+					}
+				}
+				GameConditionAgentsKilledByAreaDamage "New GameConditionAgentsKilledByAreaDamage"
+				{
+					myNumberOfAgents 3
+					myShouldOnlyEvaluateTrueOncePerAreaDamage TRUE
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #09AEDAAA6580482600010311ED4478D4, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 2517, text = \"Defeat <b>3</b> enemies with a single explosion.\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_EffectivePounce_MakeNixLookScary < uid=09AEDAAA6582A90800076A698F2C8806 > : gs_dom_template
+{
+	myGameValue < uid=09AEDAAA6582A90800076A6A09AFFAED >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Equip
+		{
+			myGameTriggerType PlayerEquippedGearChanged
+			myConditions
+			{
+				GameConditionPlayerHasGearItemEquipped "New GameConditionPlayerHasGearItemEquipped"
+				{
+					myGearItem BFAAA1FC6501AB550000C78F9E987682
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #09AEDAAA6582A80500076A68CCDDF64F, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 2517, text = \"Make Nix look scary\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_SpeederShot_SpeederHeadshots < uid=3B9A06CF65E05F4A000000C222170A05 >
+{
+	myGameValue < uid=3B9A06CF65E06076000000C5BC742722 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Damage (that's actually a kill)"
+		{
+			myGameTriggerType AgentDamagedByAgent
+			myConditions
+			{
+				GameConditionContextAgentDamagedOnSpeeder DamagedAgentOnSpeeder
+				{
+				}
+				GameConditionContextAgentDamagedOnBodyPart headshot
+				{
+					myValidBodyPartTypes
+					{
+						BodyPartType "New BodyPartType" Head
+					}
+				}
+				GameConditionContextAgentHasFaction SourceIsPlayer
+				{
+					myFaction < uid=3B9A06CF65E0A3AE000000C350A3B94B > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"MAIN\", contextComment = \"Shown in the domains of mastery menu. It's the description of the requirement to unlock the domain of mastery unlock.\", enabled = true, guid = #B77272C565F1CA43000871D03640D0ED, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 2384, text = \"Land <b>Headshots</b> on speeder-mounted enemies\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_DodgeRoll_DodgeMissiles < uid=3B9A06CF65F300C3000000C2300EDBCF >
+{
+	myGameValue < uid=3B9A06CF65F30144000000C5F6179C23 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock PlayerDodgedMissile
+		{
+			myGameTriggerType PlayerDodgedSeekingMissile
+			myConditions
+			{
+				GameConditionPlayerIsInLevelType PlayerIsInSpace
+				{
+					myLevelInfoType Space
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"MAIN\", contextComment = \"Shown in the domains of mastery menu. It's the description of the requirement to unlock the domain of mastery unlock. The player must dodge X missiles with an evasive maneuver in space. \", enabled = true, guid = #B77272C565F48427000F9E25B6CB5193, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2387, text = \"<b>Dodge</b> incoming missiles\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_IKnowAGuy_SpendCreditsAtVendors < uid=3B9A06CF65F32229000000C2FB80C032 >
+{
+	myGameValue < uid=3B9A06CF65F32317000000CD581FED42 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock SpentCurrency
+		{
+			myGameTriggerType PlayerSpentCurrencyAtVendor
+			myConditions
+			{
+				GameConditionContextVendorTransactionCurrencyIsType IsCredits
+				{
+					myCurrencyType < uid=3B9A06CF65F33241000000C31D4C4F7A > = Credits 83E36AE360487E88000000375F5EDD50
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"MAIN\", contextComment = \"Shown in the domains of mastery menu. It's the description of the requirement to unlock the domain of mastery unlock.\", enabled = true, guid = #B77272C565F485A10018B52CE59B4583, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2139, text = \"Spend <b>Credits</b> at <b>Merchants</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_PoweredRecharge_PowerModuleKills < uid=3B9A06CF65FAB557000000C27C107C4E >
+{
+	myGameValue < uid=3B9A06CF65FAB68A000000C99D7D2760 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentHasFaction IsPlayerKill
+				{
+					myFaction < uid=3B9A06CF65FAB68A000000CA36D73F61 > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionGroup PowerModUsed
+				{
+					myOperator Or
+					myConditions
+					{
+						GameConditionContextAgentKilledByAgentWithActiveWeaponModule IsBasicPowerModule
+						{
+							myWeaponModule 7113C611631B2BFF00004992F3FF42C3
+						}
+						GameConditionContextAgentKilledByAgentWithActiveWeaponModule IsBlastVariant
+						{
+							myWeaponModule 7113C611643674F60000D1754FBA806D
+						}
+						GameConditionContextAgentKilledByAgentWithActiveWeaponModule IsPhasePulseVariant
+						{
+							myWeaponModule 7113C61164369832000054B26974601E
+						}
+					}
+				}
+				GameConditionContextAgentHasFaction NotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=3B9A06CF65FB197400103052A39EADCD > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasCombatRole "IsCombatant(not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentIsVehicle IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"MAIN\", contextComment = \"Shown in the domains of mastery menu. It's the description of the requirement to unlock the domain of mastery unlock.\", enabled = true, guid = #B77272C565FD411400000122F8C43CF1, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 2384, text = \"Defeat enemies with <b>Kay's Blaster</b> using the <b>Power Module</b>\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_PoweredRecharge_IonModuleKills < uid=3B9A06CF65FAB620000000C5F559CA4D >
+{
+	myGameValue < uid=3B9A06CF65FAB68A000000CB4DE3B0CC >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock AgentKilled
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentHasFaction IsPlayerKill
+				{
+					myFaction < uid=3B9A06CF65FAB68A000000CC87B68C9C > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionGroup IonModuleUsed
+				{
+					myOperator Or
+					myConditions
+					{
+						GameConditionContextAgentKilledByAgentWithActiveWeaponModule BaseIonModule
+						{
+							myWeaponModule 7113C611640B41AD000095D922A7DC11
+						}
+						GameConditionContextAgentKilledByAgentWithActiveWeaponModule BlastVariant
+						{
+							myWeaponModule 7113C611643E45E600000835ADFD9B74
+						}
+						GameConditionContextAgentKilledByAgentWithActiveWeaponModule BeamModule
+						{
+							myWeaponModule 7113C611643CFEDE00001452D5696B1C
+						}
+					}
+				}
+				GameConditionContextAgentHasFaction NotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=3B9A06CF65FB197400103052A39EADCD > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+				GameConditionContextAgentHasCombatRole "IsCombatant(not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentIsVehicle IsNotVehicle
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"MAIN\", contextComment = \"Shown in the domains of mastery menu. It's the description of the requirement to unlock the domain of mastery unlock.\", enabled = true, guid = #B77272C565FD420F000001238DA6FB19, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2384, text = \"Defeat enemies with the blaster's Ion Module\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_TopRollManeuver_CompleteSpaceRaidContract < uid=3B9A06CF65FDB2760004885222B71059 >
+{
+	myGameValue < uid=3B9A06CF65FDB27600048853FB1CB4BD >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Contract Changed"
+		{
+			myGameTriggerType ContractStateChanged
+			myConditions
+			{
+				GameConditionContextContractIsInState "Is Completed and of type Raid"
+				{
+					myRestrictedToTypes
+					{
+						ContractType "Hot Cargo" Raid
+					}
+				}
+				GameConditionContextContractHasGalaxyLocationType IsSpaceContract
+				{
+					myValidLocationTypes
+					{
+						GalaxyLocationType "New GalaxyLocationType" Orbit
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #3B9A06CF65FDB1B800048851107B8256, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 10714, text = \"Complete a <b>Raid Contract</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_AssistedScavenging_CollectCredits < uid=3B9A06CF66015DA6000000C76493D0A6 >
+{
+	myGameValue < uid=3B9A06CF66015EEE000000CACDB98497 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock CreditsGained
+		{
+			myGameTriggerType ItemAdded
+			myConditions
+			{
+				GameConditionContextItemIsSpecificItem IsCredits
+				{
+					myItem < uid=3B9A06CF66015EEE000000CCDAE34F66 > = Credits 83E36AE360487E88000000375F5EDD50
+				}
+				GameConditionContextItemFromSource NotFromVendors
+				{
+					myIsNegated TRUE
+					myValidItemSources
+					{
+						ItemSource "New ItemSource" VendorTransaction
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"MAIN\", contextComment = \"Shown in the domains of mastery menu. It's the description of the requirement to unlock the domain of mastery unlock. The player must collect a certain amount of credits to fulfill the requirement. \", enabled = true, guid = #B77272C5660BD145000000CD494A10EA, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 2388, text = \"Collect <b>Credits</b>\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_Survivor_Defeat3DeathTroopersInARow < uid=3B9A06CF6672D7CA0006E8EAC43EF267 >
+{
+	myGameValue < uid=3B9A06CF6672D7CA0006E8EB74CB410C >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Defeat3
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentIsSpecificNPC IsDeathTrooper
+				{
+					myAgentContextType TargetAgent
+					myNPCConstantData 16DEADE661F0801600001B5E1B0B1745
+				}
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF6672D7CA0006E8ECB5857D70 > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+		GameStatisticEventBlock ResetCondition_Death
+		{
+			myGameTriggerType AgentKilledByAgent
+			myGameStatisticOperation Reset
+			myConditions
+			{
+				GameConditionPlayerHasHealth "New GameConditionPlayerHasHealth"
+				{
+					myOperator LessThan
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"TU1\", contextComment = \"Shown in the domains of mastery menu. It's the name of the requeriment to unlock the domain of mastery unlock.\", enabled = true, guid = #3B9A06CF6672D70D0006E8E93595BFF3, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 2388, text = \"Defeat <b>Death Troopers</b> without dying\", type = \"MenuLine\"}"
+}
+
+DomainAbilityStatistic gs_dom_TheMore_HitHeadshots < uid=3B9A06CF6672E49B0006E9A70866DB69 >
+{
+	myGameValue < uid=3B9A06CF6672E49B0006E9A89566E922 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "New GameStatisticEventBlock"
+		{
+			myGameTriggerType AgentDamagedByAgent
+			myGameStatisticOperation Increment
+			myConditions
+			{
+				GameConditionContextAgentHasFaction IsPlayer
+				{
+					myFaction < uid=3B9A06CF6672E49B0006E9A9E949CCFF > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentDamagedOnBodyPart "New GameConditionContextAgentDamagedInWeakpoint"
+				{
+					myValidBodyPartTypes
+					{
+						BodyPartType "New BodyPartType" Head
+					}
+				}
+				GameConditionContextAgentHasCombatRole "IsCombatant (not cctv nor turret)"
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentHasFaction NotWildlife
+				{
+					myIsNegated TRUE
+					myAgentContextType TargetAgent
+					myFaction < uid=3B9A06CF6672E49B0006E9AA73A95BC4 > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"TU1\", contextComment = \"Requirement Description\", enabled = true, guid = #3B9A06CF6672E4850006E9A6757DE0E2, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10714, text = \"Land <b>Headshots</b>\", type = \"MenuLine\""
+}
+
+DomainAbilityStatistic gs_dom_NixCommando_ShootDistractedEnemies < uid=D00CF654669A77530001555CD45A7906 > : gs_dom_SneakShot_ShootDistractedEnemies
+{
+	myGameValue < uid=D00CF654669A77530001555DFA73B8C3 >
+	{
+	}
+}
+

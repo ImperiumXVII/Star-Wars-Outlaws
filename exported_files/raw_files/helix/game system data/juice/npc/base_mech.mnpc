@@ -1,0 +1,23 @@
+include "helix/game system data/juice/npc/base_npc.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC base_mech < uid=B0EA4E536075A3790000005DF2FCDBFC > : base_npc
+{
+	myPatrolFormationProfile < uid=06F3F6E465F1D68E0000BE0999959E8D > = DefaultPatrolFormation C0D149F862D6BC3C00003CE020A2DB0B
+	myAudioParameters
+	{
+		myEmitters
+		{
+			AgentEmitter Default
+			{
+				myEmitterLabel < uid=3A1C5D18655345B70000B524CBF089B9 > = Root 3A1C5D1863906F050000AB6FBD984CC4
+			}
+			AgentEmitter Weapon
+			{
+				myEmitterLabel < uid=3A1C5D18655345B70000B52501CE295D > = Hand 3A1C5D1863906F180000AB718F1E9EFD
+				myEmitterPrefab "emitterLayerName = \"weapons_npc\", enableDoppler = false, enablePropagation = true, sphereRadius = 3, stopOnDestroy = true"
+			}
+		}
+	}
+}
+

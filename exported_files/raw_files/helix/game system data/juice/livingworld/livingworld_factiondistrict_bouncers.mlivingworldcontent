@@ -1,0 +1,31 @@
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+
+LivingWorldContent livingworld_factiondistrict_bouncers < uid=06F73AE1670E1C6400021E62719EF5FF >
+{
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType "New LivingWorldContentLayerType" Dummy
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_HasActiveLivingWorldLocationInContentZone GameConditionContextLivingWorldContentLocation_HasActiveLivingWorldLocationInContentZone
+		{
+			myLayers
+			{
+				LivingWorldContentLayerType FactionDistrictLayerType FactionDistrict
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_HasActiveLivingWorldLocationInContentZone "NOT GameConditionContextLivingWorldContentLocation_HasActiveLivingWorldLocationInContentZone"
+		{
+			myIsNegated TRUE
+			myLayers
+			{
+				LivingWorldContentLayerType FactionDistrictLayerType FactionDistrict
+			}
+		}
+	}
+}
+

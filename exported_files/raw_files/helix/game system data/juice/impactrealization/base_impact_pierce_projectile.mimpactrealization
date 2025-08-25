@@ -1,0 +1,60 @@
+include "helix/game system data/fruit/impact/impact.fruit"
+include "helix/game system data/juice/collisionmaterials/collisionmaterials.juice"
+
+ImpactRealization base_impact_pierce_projectile < uid=A207755D63F36D58000009C626F100C2 >
+{
+	myEffects
+	{
+		myList
+		{
+			EffectOnMaterial Water
+			{
+				myMaterial < uid=F8181D48650AF9AB000A213867109831 > = Water 0182810B643FDF4A00008FACFC870ECC
+				myEffect helix/particles/vfx_des_hitfx_water_blaster_01.mparticles
+			}
+			EffectOnMaterial "Water Deep"
+			{
+				myMaterial < uid=F8181D48650AF9AB000A21396561AA5C > = WaterDeep 6F860DB5506C75BF00000E0FCDA956A7
+				myEffect helix/particles/vfx_des_hitfx_water_blaster_01.mparticles
+			}
+			EffectOnMaterial "Water Shallow"
+			{
+				myMaterial < uid=F8181D48650AF9AB000A213A9A06912E > = WaterShallow 6F860DB5506C75BF00000E0E9C4CF120
+				myEffect helix/particles/vfx_des_hitfx_water_blaster_01.mparticles
+			}
+			EffectOnMaterial Leaf
+			{
+				myMaterial < uid=9E5BD60765FD7BE70001A6F9FD41BF53 > = Leaf 6F860DB5506C75BF00000E13894B8888
+				myEffect "helix/particles/vfx des hitfx leaves blaster pierce 01.mparticles"
+			}
+			EffectOnMaterial StemThin
+			{
+				myMaterial < uid=9E5BD60765FD81540005310F0BEA81FC > = StemThin 9C4B6A04637B5C0C0001608D1AAF26A6
+				myEffect "helix/particles/vfx des hitfx leaves blaster pierce 01.mparticles"
+			}
+		}
+	}
+	myImpactOnFragmentablesEnabled TRUE
+	myImpactOnPhysicsEnabled TRUE
+	myPhysics
+	{
+		myImpactEnergy 1000.0
+	}
+	myImpactOnBendShockwaveEnabled TRUE
+	myBendShockwave
+	{
+		myBendStrength 3.0
+		myTrampleStrength 2.0
+		myVelocity 5.0
+		myWidth 0.5
+		myRadius 1.0
+	}
+	myImpactOnWaterEnabled TRUE
+	myWater
+	{
+		mySplashStrength 1.0
+		mySplashSize 0.3
+		mySplashFoamStrength 0.5
+	}
+}
+

@@ -1,0 +1,46 @@
+include "helix/game system data/fruit/reward/reward.fruit"
+
+class CutscenePreloadedGraphObjectInfo
+{
+	file myGraphObject < bhv=asset assettype=object >
+	bool myUseFullDetailMesh TRUE
+	bool myUseFullDetailTextures FALSE < tooltip="/!\ may lead to very long or infinite loading" >
+	int myMeshLod < min=0 >
+}
+
+list GraphObjectList
+{
+	CutscenePreloadedGraphObjectInfo
+}
+
+list CutsceneAudioEventList
+{
+	uid < bhv=AudioID type=Event >
+}
+
+// Keep the same order as HC_CutsceneFadeType in code/helix/HClient/HC_CutsceneFadeSettings.h
+enum CutsceneFadeType
+{
+	Crossfade
+	Screenwipe
+}
+
+class CutsceneFadeSettings
+{
+	float myFadeIn 0.f
+	float myFadeHold 0.f
+	float myFadeOut 0.f
+	CutsceneFadeType myFadeType Crossfade
+}
+
+class CutsceneOptimizationSettings
+{
+	float myPreloadedGraphObjectsFullDetailTimeOut 10.0 < tooltip="Time out when waiting for graph object to be at the desired mesh/texture/lod quality" >
+	GraphObjectList myPreloadedGraphObjects < tooltip="List of graph objects to preload before starting the cutscene" >
+	CutsceneAudioEventList myPreloadedAudioEvents < tooltip="List of audio events to preload before starting the cutscene" >
+}
+
+class Cutscene < uid=auto >
+{
+	CutsceneOptimizationSettings myOptimizationSettings
+}

@@ -1,0 +1,765 @@
+include "helix/game system data/fruit/character/charactervisuals.fruit"
+include "helix/game system data/juice/character/geargraphinfolistwrapper/character_visual_list_species_selector.mcharactervisualsgeargraphinfolistwrapper"
+include "helix/game system data/juice/character/geargraphinfolistwrapper/character_visuals_list_hauler_keep_outfit_combiner.mcharactervisualsgeargraphinfolistwrapper"
+include "helix/game system data/juice/character/geargraphinfolistwrapper/character_visuals_list_hired_gun_outfit_combiner.mcharactervisualsgeargraphinfolistwrapper"
+include "helix/game system data/juice/character/geargraphinfolistwrapper/character_visuals_list_hired_guns_outfit_assets_selector.mcharactervisualsgeargraphinfolistwrapper"
+include "helix/game system data/juice/rbtags/agent.mrbtagstags"
+include "helix/game system data/juice/rbtags/factions.mrbtagstags"
+include "helix/game system data/juice/rbtags/planet.mrbtagstags"
+include "helix/game system data/juice/rbtags/species.mrbtagstags"
+
+CharacterVisuals dlc2_character_visuals_npc_haulers_keep_generator < uid=66F57289678E0C44002FDB69BA000AAA >
+{
+	myCharacterGraphs
+	{
+		CharacterGraph Male
+		{
+			myCharacterGraph "helix/graph objects/character/chr_body_human_m_base_light.mgraphobject"
+			myAgentTagsList
+			{
+				RBTagsTag "New RBTagsTag" < uid=66F57289678E0C95002FDB6ADFA03C5B > = Agent_Gender_MasculineTag 16DEADE6626D20EA00002E504CE30DE2
+			}
+		}
+		CharacterGraph Female
+		{
+			myCharacterGraph "helix/graph objects/character/chr_body_human_f_base_light.mgraphobject"
+			myAgentTagsList
+			{
+				RBTagsTag "New RBTagsTag" < uid=66F57289678E0C95002FDB6B38FAD425 > = Agent_Gender_FeminineTag 16DEADE6626D20EA00002E5277B65AD4
+			}
+		}
+	}
+	myCharacterVisualsParts
+	{
+		GearGraphInfoList Faction
+		{
+			EmptyGearGraphInfo Civilian
+			{
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F57289678E0C95002FDB6CEAF60AC8 > = Agent_Faction_CivilianTag 16DEADE6620AE18B000020C77856AAF4
+				}
+			}
+		}
+		GearGraphInfoList PlanetSelector
+		{
+			EmptyGearGraphInfo Cantonica
+			{
+				myWeight 1
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F57289678E0C95002FDB6D9D1D073E > = Agent_Planet_CantonicaTag 66F572896527AF5E000128177E895A78
+				}
+			}
+			EmptyGearGraphInfo Toshara
+			{
+				myWeight 0
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F57289678E0C95002FDB6E4381B222 > = Agent_Planet_TosharaTag 66F572896527B0EC0001281A47673417
+				}
+			}
+			EmptyGearGraphInfo Tatooine
+			{
+				myWeight 0
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F57289678E0C95002FDB6FAD341D8B > = Agent_Planet_TatooineTag 66F572896527B0FC0001281B275E4740
+				}
+			}
+			EmptyGearGraphInfo Akiva
+			{
+				myWeight 0
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F57289678E0C95002FDB70F7CEE2AF > = Agent_Planet_AkivaTag 66F572896527B1130001281C6F84FEFE
+				}
+			}
+			EmptyGearGraphInfo Kijimi
+			{
+				myWeight 0
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F57289678E0C95002FDB71829F2F9F > = Agent_Planet_KijimiTag 66F572896527B11D0001281D657298EC
+				}
+			}
+		}
+		GearGraphInfoList SpeciesSelection
+		{
+			EmptyGearGraphInfo Human
+			{
+				myWeight 20
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D915AF2437487 > = Agent_Species_HumanTag 2736B365634D673A0003C27CFCFEFD1A
+				}
+				myChildCharacterVisualsParts
+				{
+					GearGraphInfoListWrapper HairColorSelector < uid=66F57289678E7FDE003D915BBA094B7A > = TagHairColorSelector 66F5728965C21285000FC238F38596F2
+				}
+			}
+			EmptyGearGraphInfo Aqualish
+			{
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D915C7849015D > = Agent_Species_AqualishTag 2736B365634D673A0003C278D0993580
+				}
+				myChildCharacterVisualsParts
+				{
+					GearGraphInfoList Ethnicities
+					{
+						EmptyGearGraphInfo 001
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D915D6413FCFA > = Agent_Ethnicity_Alien001 66F572896543C939000137BC3EEFA4FD
+							}
+						}
+						EmptyGearGraphInfo 002
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D915E8D1D5BB3 > = Agent_Ethnicity_Alien002 66F572896543C97B000137BEA332B353
+							}
+						}
+						EmptyGearGraphInfo 003
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D915F7DBF83F1 > = Agent_Ethnicity_Alien003 66F572896543C9A0000137C01C78AFED
+							}
+						}
+						EmptyGearGraphInfo 004
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D91604DCC26F2 > = Agent_Ethnicity_Alien004 66F572896543CD410000ED29542DB5F5
+							}
+						}
+						EmptyGearGraphInfo 005
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D9161B6C3F79D > = Agent_Ethnicity_Alien005 66F572896543CDAC000158A78CA98426
+							}
+						}
+					}
+				}
+			}
+			EmptyGearGraphInfo Sullustan
+			{
+				myWeight 1
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D9162D164E235 > = Agent_Species_SullustanTag 2736B365634D673A0003C28470A16CA0
+				}
+				myChildCharacterVisualsParts
+				{
+					GearGraphInfoList Ethnicities
+					{
+						EmptyGearGraphInfo 001
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D9163504553E3 > = Agent_Ethnicity_Alien001 66F572896543C939000137BC3EEFA4FD
+							}
+						}
+						EmptyGearGraphInfo 002
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D91647C9214AF > = Agent_Ethnicity_Alien002 66F572896543C97B000137BEA332B353
+							}
+						}
+						EmptyGearGraphInfo 003
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D9165D5447BBF > = Agent_Ethnicity_Alien003 66F572896543C9A0000137C01C78AFED
+							}
+						}
+						EmptyGearGraphInfo 004
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D916623C75E68 > = Agent_Ethnicity_Alien004 66F572896543CD410000ED29542DB5F5
+							}
+						}
+					}
+				}
+			}
+			EmptyGearGraphInfo Rodian
+			{
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D91675967CBB8 > = Agent_Species_RodianTag 2736B365634D673A0003C282928B2032
+				}
+				myChildCharacterVisualsParts
+				{
+				}
+			}
+			EmptyGearGraphInfo Trandoshan
+			{
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D9168B5BC9B57 > = Agent_Species_TrandoshanTag 2736B365634D673A0003C2866B458638
+				}
+				myChildCharacterVisualsParts
+				{
+				}
+			}
+			EmptyGearGraphInfo Twilek
+			{
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D916943D397DC > = Agent_Species_TwilekTag 2736B365634D673A0003C288220669A0
+				}
+				myChildCharacterVisualsParts
+				{
+				}
+			}
+			EmptyGearGraphInfo Calamari
+			{
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D916A5AFEB5D0 > = Agent_Species_MonCalamariTag 2736B365634D673A0003C27E7EAFBDFF
+				}
+				myChildCharacterVisualsParts
+				{
+				}
+			}
+			EmptyGearGraphInfo Quarren
+			{
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D916B3DA38F3C > = Agent_Species_QuarrenTag 2736B365634D673A0003C280071A1BC1
+				}
+				myChildCharacterVisualsParts
+				{
+					GearGraphInfoList Ethnicities
+					{
+						EmptyGearGraphInfo 001
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D916C6C94CDFC > = Agent_Ethnicity_Alien001 66F572896543C939000137BC3EEFA4FD
+							}
+						}
+						EmptyGearGraphInfo 002
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D916DB326DAC5 > = Agent_Ethnicity_Alien002 66F572896543C97B000137BEA332B353
+							}
+						}
+						EmptyGearGraphInfo 003
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D916E1CD9A944 > = Agent_Ethnicity_Alien003 66F572896543C9A0000137C01C78AFED
+							}
+						}
+						EmptyGearGraphInfo 004
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D916F3D221F8C > = Agent_Ethnicity_Alien004 66F572896543CD410000ED29542DB5F5
+							}
+						}
+						EmptyGearGraphInfo 005
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D9170F713CEF9 > = Agent_Ethnicity_Alien005 66F572896543CDAC000158A78CA98426
+							}
+						}
+					}
+				}
+			}
+			EmptyGearGraphInfo Zabrak
+			{
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D91717266D22C > = Agent_Species_ZabrakTag E4123D27647222E6002607B023821F98
+				}
+				myChildCharacterVisualsParts
+				{
+					GearGraphInfoList Etnicities
+					{
+						EmptyGearGraphInfo Afr
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D9172A324C6AD > = Agent_Ethnicity_African E4123D2763525AF4000163E00B71AAC8
+							}
+						}
+						EmptyGearGraphInfo Cau
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D91738ED7733A > = Agent_Ethnicity_Caucasian E4123D2763525B2B000163E2DBB30838
+							}
+						}
+						EmptyGearGraphInfo eas
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D9174E7DA001F > = Agent_Ethnicity_EastAsian E4123D2763525B3E000163E54862DDC6
+							}
+						}
+						EmptyGearGraphInfo Sea
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D9175A369597A > = Agent_Ethnicity_SouthAsian E4123D2763525B4B000163E60BD3EE3A
+							}
+						}
+					}
+					GearGraphInfoListWrapper HairColor < uid=66F57289678E7FDE003D917626FDF214 > = TagHairColorSelector 66F5728965C21285000FC238F38596F2
+				}
+			}
+			EmptyGearGraphInfo Weequay
+			{
+				myWeight 1
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D917713861B52 > = Agent_Species_WeequayTag E4123D27647222D9002607AECE369A8C
+				}
+				myChildCharacterVisualsParts
+				{
+					GearGraphInfoList Ethnicities
+					{
+						EmptyGearGraphInfo 001
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D9178246B3BC5 > = Agent_Ethnicity_Alien001 66F572896543C939000137BC3EEFA4FD
+							}
+						}
+						EmptyGearGraphInfo 002
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D9179CD2014BB > = Agent_Ethnicity_Alien002 66F572896543C97B000137BEA332B353
+							}
+						}
+						EmptyGearGraphInfo 003
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D917A04843259 > = Agent_Ethnicity_Alien003 66F572896543C9A0000137C01C78AFED
+							}
+						}
+						EmptyGearGraphInfo 004
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D917B27FBE510 > = Agent_Ethnicity_Alien004 66F572896543CD410000ED29542DB5F5
+							}
+						}
+					}
+				}
+			}
+			EmptyGearGraphInfo Pantoran
+			{
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D917C5A334739 > = Agent_Species_PantoranTag E4123D27647222CD002607AC8F1399FD
+				}
+				myChildCharacterVisualsParts
+				{
+					GearGraphInfoListWrapper HairColor < uid=66F57289678E7FDE003D917D977B0508 > = TagHairColorSelector 66F5728965C21285000FC238F38596F2
+				}
+			}
+			EmptyGearGraphInfo Mirialan
+			{
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F57289678E7FDE003D917EB248FB44 > = Agent_Species_MirialanTag E4123D27647222AE002607AAAF555911
+				}
+				myChildCharacterVisualsParts
+				{
+					GearGraphInfoListWrapper HairColor < uid=66F57289678E7FDE003D917F4A635B78 > = TagHairColorSelector 66F5728965C21285000FC238F38596F2
+				}
+			}
+		}
+		GearGraphInfoListWrapper Bodytype < uid=66F57289678E0CB0002FDB73A0755346 > = TagMaleAverageFemaleSkinny 66F5728965CE0F9100048347FD69F85D
+		GearGraphInfoListWrapper Species < uid=66F57289678E0CDC002FDB75FD6699DB > = TagSpeciesSelector 66F5728965C210F2000FC237EC984975
+		GearGraphInfoListWrapper Outfit < uid=66F57289678E0D65002FDB786A7C367E > = HaulerOutfitCombiner 66F57289678E1AE3003134FE440B7E90
+		GearGraphInfoListWrapper Body < uid=66F57289678E0D65002FDB7943C0B198 > = SpeciesCivilianSelector 66F572896762C2A4000A91EF1718C0C0
+	}
+}
+
+CharacterVisuals dlc2_character_visuals_npc_haulers_keep_generator_sequence < uid=66F5728967A3627200013730CBBA6E9A > : dlc2_character_visuals_npc_haulers_keep_generator
+{
+	myCharacterVisualLogicItems
+	{
+		file collision "helix/graph objects/gear/chr_collision_sequence_human.mgraphobject"
+		file Walla "helix/graph objects/gear/chr_audio_billboarding_static_npc.mgraphobject"
+	}
+}
+
+CharacterVisuals dlc2_character_visuals_npc_haulers_keep_sabacc_generator < uid=66F5728967C9B02A0002C908E5B1327D > : dlc2_character_visuals_npc_haulers_keep_generator
+{
+	myCharacterVisualsParts
+	{
+		GearGraphInfoList Faction
+		{
+			EmptyGearGraphInfo Civilian
+			{
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C90AE4D7340B > = Agent_Faction_CivilianTag 16DEADE6620AE18B000020C77856AAF4
+					RBTagsTag "New RBTagsTag_0" < uid=66F5728967C9B07C0002C909205E6769 > = Agent_Archetype_SabaccGambler DA5615DD63B6ADE10000D98F4BF4C920
+				}
+			}
+		}
+		GearGraphInfoList PlanetSelector
+		{
+			EmptyGearGraphInfo Cantonica
+			{
+				myWeight 1
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C90BB50428EA > = Agent_Planet_CantonicaTag 66F572896527AF5E000128177E895A78
+				}
+			}
+			EmptyGearGraphInfo Toshara
+			{
+				myWeight 0
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C90C50BF6FE3 > = Agent_Planet_TosharaTag 66F572896527B0EC0001281A47673417
+				}
+			}
+			EmptyGearGraphInfo Tatooine
+			{
+				myWeight 0
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C90D83092FB2 > = Agent_Planet_TatooineTag 66F572896527B0FC0001281B275E4740
+				}
+			}
+			EmptyGearGraphInfo Akiva
+			{
+				myWeight 0
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C90EDE2324B4 > = Agent_Planet_AkivaTag 66F572896527B1130001281C6F84FEFE
+				}
+			}
+			EmptyGearGraphInfo Kijimi
+			{
+				myWeight 0
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C90F4AF404E2 > = Agent_Planet_KijimiTag 66F572896527B11D0001281D657298EC
+				}
+			}
+		}
+		GearGraphInfoList SpeciesSelection
+		{
+			EmptyGearGraphInfo Human
+			{
+				myWeight 20
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C910E19FBA28 > = Agent_Species_HumanTag 2736B365634D673A0003C27CFCFEFD1A
+				}
+				myChildCharacterVisualsParts
+				{
+					GearGraphInfoListWrapper HairColorSelector < uid=66F5728967C9B0820002C9112B216D16 > = TagHairColorSelector 66F5728965C21285000FC238F38596F2
+				}
+			}
+			EmptyGearGraphInfo Aqualish
+			{
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C912ECE0EA42 > = Agent_Species_AqualishTag 2736B365634D673A0003C278D0993580
+				}
+				myChildCharacterVisualsParts
+				{
+					GearGraphInfoList Ethnicities
+					{
+						EmptyGearGraphInfo 001
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C91306D93028 > = Agent_Ethnicity_Alien001 66F572896543C939000137BC3EEFA4FD
+							}
+						}
+						EmptyGearGraphInfo 002
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C9141A8B8421 > = Agent_Ethnicity_Alien002 66F572896543C97B000137BEA332B353
+							}
+						}
+						EmptyGearGraphInfo 003
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C9153AE213BB > = Agent_Ethnicity_Alien003 66F572896543C9A0000137C01C78AFED
+							}
+						}
+						EmptyGearGraphInfo 004
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C916D1BB5C5F > = Agent_Ethnicity_Alien004 66F572896543CD410000ED29542DB5F5
+							}
+						}
+						EmptyGearGraphInfo 005
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C9171E2C6E30 > = Agent_Ethnicity_Alien005 66F572896543CDAC000158A78CA98426
+							}
+						}
+					}
+				}
+			}
+			EmptyGearGraphInfo Sullustan
+			{
+				myWeight 1
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C91858C04B58 > = Agent_Species_SullustanTag 2736B365634D673A0003C28470A16CA0
+				}
+				myChildCharacterVisualsParts
+				{
+					GearGraphInfoList Ethnicities
+					{
+						EmptyGearGraphInfo 001
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C9197295F430 > = Agent_Ethnicity_Alien001 66F572896543C939000137BC3EEFA4FD
+							}
+						}
+						EmptyGearGraphInfo 002
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C91A79C70799 > = Agent_Ethnicity_Alien002 66F572896543C97B000137BEA332B353
+							}
+						}
+						EmptyGearGraphInfo 003
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C91B04E7BB7F > = Agent_Ethnicity_Alien003 66F572896543C9A0000137C01C78AFED
+							}
+						}
+						EmptyGearGraphInfo 004
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C91C5E27AA30 > = Agent_Ethnicity_Alien004 66F572896543CD410000ED29542DB5F5
+							}
+						}
+					}
+				}
+			}
+			EmptyGearGraphInfo Rodian
+			{
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C91D83CEE1B0 > = Agent_Species_RodianTag 2736B365634D673A0003C282928B2032
+				}
+				myChildCharacterVisualsParts
+				{
+				}
+			}
+			EmptyGearGraphInfo Trandoshan
+			{
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C91EC274C59F > = Agent_Species_TrandoshanTag 2736B365634D673A0003C2866B458638
+				}
+				myChildCharacterVisualsParts
+				{
+				}
+			}
+			EmptyGearGraphInfo Twilek
+			{
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C91FFB71A2ED > = Agent_Species_TwilekTag 2736B365634D673A0003C288220669A0
+				}
+				myChildCharacterVisualsParts
+				{
+				}
+			}
+			EmptyGearGraphInfo Calamari
+			{
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C9209864E199 > = Agent_Species_MonCalamariTag 2736B365634D673A0003C27E7EAFBDFF
+				}
+				myChildCharacterVisualsParts
+				{
+				}
+			}
+			EmptyGearGraphInfo Quarren
+			{
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C9216C535044 > = Agent_Species_QuarrenTag 2736B365634D673A0003C280071A1BC1
+				}
+				myChildCharacterVisualsParts
+				{
+					GearGraphInfoList Ethnicities
+					{
+						EmptyGearGraphInfo 001
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C922086F386C > = Agent_Ethnicity_Alien001 66F572896543C939000137BC3EEFA4FD
+							}
+						}
+						EmptyGearGraphInfo 002
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C9237E7F9546 > = Agent_Ethnicity_Alien002 66F572896543C97B000137BEA332B353
+							}
+						}
+						EmptyGearGraphInfo 003
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C924C1A8DB39 > = Agent_Ethnicity_Alien003 66F572896543C9A0000137C01C78AFED
+							}
+						}
+						EmptyGearGraphInfo 004
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C925378F6238 > = Agent_Ethnicity_Alien004 66F572896543CD410000ED29542DB5F5
+							}
+						}
+						EmptyGearGraphInfo 005
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C926465290FD > = Agent_Ethnicity_Alien005 66F572896543CDAC000158A78CA98426
+							}
+						}
+					}
+				}
+			}
+			EmptyGearGraphInfo Zabrak
+			{
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C927C405E8D4 > = Agent_Species_ZabrakTag E4123D27647222E6002607B023821F98
+				}
+				myChildCharacterVisualsParts
+				{
+					GearGraphInfoList Etnicities
+					{
+						EmptyGearGraphInfo Afr
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C92843F3927E > = Agent_Ethnicity_African E4123D2763525AF4000163E00B71AAC8
+							}
+						}
+						EmptyGearGraphInfo Cau
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C9290F21A69A > = Agent_Ethnicity_Caucasian E4123D2763525B2B000163E2DBB30838
+							}
+						}
+						EmptyGearGraphInfo eas
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C92ADD260AFB > = Agent_Ethnicity_EastAsian E4123D2763525B3E000163E54862DDC6
+							}
+						}
+						EmptyGearGraphInfo Sea
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C92B368E1AC3 > = Agent_Ethnicity_SouthAsian E4123D2763525B4B000163E60BD3EE3A
+							}
+						}
+					}
+					GearGraphInfoListWrapper HairColor < uid=66F5728967C9B0820002C92CE9311E0E > = TagHairColorSelector 66F5728965C21285000FC238F38596F2
+				}
+			}
+			EmptyGearGraphInfo Weequay
+			{
+				myWeight 1
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C92DEB2660C4 > = Agent_Species_WeequayTag E4123D27647222D9002607AECE369A8C
+				}
+				myChildCharacterVisualsParts
+				{
+					GearGraphInfoList Ethnicities
+					{
+						EmptyGearGraphInfo 001
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C92E06BADE89 > = Agent_Ethnicity_Alien001 66F572896543C939000137BC3EEFA4FD
+							}
+						}
+						EmptyGearGraphInfo 002
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C92F40A4849F > = Agent_Ethnicity_Alien002 66F572896543C97B000137BEA332B353
+							}
+						}
+						EmptyGearGraphInfo 003
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C930210423EB > = Agent_Ethnicity_Alien003 66F572896543C9A0000137C01C78AFED
+							}
+						}
+						EmptyGearGraphInfo 004
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C931F9FC474F > = Agent_Ethnicity_Alien004 66F572896543CD410000ED29542DB5F5
+							}
+						}
+					}
+				}
+			}
+			EmptyGearGraphInfo Pantoran
+			{
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C9322962806F > = Agent_Species_PantoranTag E4123D27647222CD002607AC8F1399FD
+				}
+				myChildCharacterVisualsParts
+				{
+					GearGraphInfoListWrapper HairColor < uid=66F5728967C9B0820002C9334D8679A0 > = TagHairColorSelector 66F5728965C21285000FC238F38596F2
+				}
+			}
+			EmptyGearGraphInfo Mirialan
+			{
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728967C9B0820002C9344D9D1080 > = Agent_Species_MirialanTag E4123D27647222AE002607AAAF555911
+				}
+				myChildCharacterVisualsParts
+				{
+					GearGraphInfoListWrapper HairColor < uid=66F5728967C9B0820002C9355640E043 > = TagHairColorSelector 66F5728965C21285000FC238F38596F2
+				}
+			}
+		}
+		GearGraphInfoListWrapper Bodytype < uid=66F5728967C9B0820002C9366B1C731C > = TagMaleAverageFemaleSkinny 66F5728965CE0F9100048347FD69F85D
+		GearGraphInfoListWrapper Species < uid=66F5728967C9B0820002C93715294CA6 > = TagSpeciesSelector 66F5728965C210F2000FC237EC984975
+		GearGraphInfoListWrapper Outfit < uid=66F5728967C9B0820002C938B0954793 > = HaulerOutfitCombiner 66F57289678E1AE3003134FE440B7E90
+		GearGraphInfoListWrapper Body < uid=66F5728967C9B0820002C939E186EB3A > = SpeciesCivilianSelector 66F572896762C2A4000A91EF1718C0C0
+	}
+}
+

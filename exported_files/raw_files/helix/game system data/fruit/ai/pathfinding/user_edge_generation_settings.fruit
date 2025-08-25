@@ -1,0 +1,126 @@
+include "helix/game system data/fruit/ai/pathfinding/user_edge_types.fruit"
+
+class TraversalCost
+{
+	float myBaseCost 0.0		//one off cost for traversing the edge
+	float myVerticalCost 1.0	//cost per vertical meter moved up or down
+	float myHorizontalCost 1.0	//cost per horizontal meter moved
+}
+
+class MeshProbe
+{
+	float myHorizontalOffset 0.0
+	float myVerticalOffset 0.3
+	float myProbeLength 0.5
+	float myProbeMinLength 0.0
+}
+
+list MeshProbeList
+{
+	MeshProbe
+}
+
+class MeshProbes
+{
+	bool myReverseHint FALSE		//reverse the jump hint before finding edges
+	bool myReverseResults FALSE		//reverse the direction of the generated edge pairs
+	bool myUseHintDepth FALSE		//take the fatness of the jump hint into account
+	MeshProbeList myStarts
+	MeshProbeList myDestinations
+}
+
+class TraversalAnalyzer < abstract=1 >
+{
+	UserEdgeType myUserEdgeType NONE
+	TraversalCost myTraversalCost
+}
+
+class AnalyzerHintVault : TraversalAnalyzer
+{
+	float myClearanceDistanceAboveWall 1.0
+	float myFarSideClearanceDistance 0.5
+	float myWallExtrusionDistance 0.6
+	float myGrabScanDepth 0.4
+	float myGrabScanHeight 0.4
+	float myMaxUnsupportedGapWidth 0.32
+	float myTrimDistanceFromUnsupportedGaps 0.32
+
+	MeshProbes myProbes
+}
+
+class AnalyzerDropDown : TraversalAnalyzer
+{
+	MeshProbes myProbes
+	
+	float myClearanceDistanceAboveWall 1.0
+	float myLedgeProbeHorizontalOffset 0.2
+	float myLedgeProbeVerticalOffset 0.3
+	float myLedgeProbeVerticalDistance 0.6
+}
+
+class AnalyzerClimbUp : TraversalAnalyzer
+{
+	MeshProbes myProbes
+
+	float myClearanceDistanceAboveWall 1.0
+	
+	float myGrabAngle 1.0					//grab angle in radians
+	float myGrabScanDepth 0.4
+	float myGrabScanHeight 0.4
+	
+	float myLedgeProbeHorizontalOffset 0.2
+	float myLedgeProbeVerticalOffset 0.3
+	float myLedgeProbeVerticalDistance 0.6
+}
+
+class AnalyzerLadderClimb : TraversalAnalyzer
+{
+	float myTopSetBack 0.42
+	float myBottomSetBack 0.42
+	MeshProbes myProbes
+}
+
+class AnalyzerZipLine : TraversalAnalyzer
+{
+	float mySetBack 0.42
+	MeshProbes myProbes
+}
+
+class AnalyzerManualUserEdge : TraversalAnalyzer
+{
+	float mySetBack 0.42
+	MeshProbes myProbes
+}
+
+list AnalyzerManualUserEdgeList
+{
+	AnalyzerManualUserEdge
+}
+
+class AnalyzerVehicleHop : TraversalAnalyzer
+{
+	MeshProbes myProbes
+
+	// The destination mesh probes should be listed from smallest horizontal offset to largest. The meaning of each variable for vehicle hop is explained below.
+	// MeshProbe
+	// {
+	//		myHorizontalOffset 0.35	// horizontal hop distance
+	//		myVerticalOffset 0.8	// max up height + vertical cast spacing
+	//		myProbeLength 1.3		// max up height + max down height + vertical cast spacing
+	//		myProbeMinLength 0.3	// vertical cast spacing
+	// }
+}
+
+class UserEdgeGenerationSettings
+{
+	AnalyzerHintVault 		myLowVaultAnalyzer
+	AnalyzerHintVault 		myHighVaultAnalyzer
+	AnalyzerDropDown 		myDropDownAnalyzer
+	AnalyzerClimbUp 		myClimbUpAnalyzer
+	AnalyzerLadderClimb 	myLadderClimbAnalyzer
+	AnalyzerLadderClimb		myRopeClimbAnalyzer
+	AnalyzerZipLine			myZipLineAnalyzer
+	AnalyzerHintVault		mySlideVaultAnalyzer
+	AnalyzerVehicleHop		myVehicleHopAnalyzer
+	AnalyzerManualUserEdgeList	myManualUserEdgeAnalyzers
+}

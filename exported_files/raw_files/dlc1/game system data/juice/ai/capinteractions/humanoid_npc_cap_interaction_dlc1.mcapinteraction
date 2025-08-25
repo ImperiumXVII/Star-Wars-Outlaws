@@ -1,0 +1,138 @@
+include "dlc1/game system data/juice/rbtags/dlc1_agent.mrbtagstags"
+include "dlc1/game system data/juice/rbtags/dlc1_world.mrbtagstags"
+include "helix/game system data/fruit/ai/capinteraction.fruit"
+include "helix/game system data/juice/rbtags/metrics.mrbtagstags"
+include "helix/game system data/juice/rbtags/purpose.mrbtagstags"
+
+CAPInteraction DLC1_DRO_Guard_None_StandAndMoveAround_H1026 < uid=41240B24668FA9FB00427C710F9F9617 >
+{
+	mySequence dlc1/sequence/CAP_H1026_DRO_hiredgun_guarding_pi_v02_bckup.msequence
+	myCAPScript helix/scripts/scr_cap_base_loop_and_duration.mscript
+	myPriority Medium
+	myPurposeTag < uid=41240B24668FAB680042E7FDF4B73351 > = Agent_Purpose_GuardTag 16DEADE66202FD7200001E96CF5DD171
+	myAgentRequirementsPerSlot
+	{
+		RBTagsReferenceListAgent Agent_Content_DLC1_ReferenceList
+		{
+			RBTagsTag "New RBTagsTag" < uid=E680F8E666B23AE800049FD7B336893A > = Agent_Content_DLC1 E680F8E666B239DC00049FD0BDE0BAD7
+		}
+	}
+	myIgnoreCooldown TRUE
+	myPreferedDuration 0.0
+}
+
+CAPInteraction DLC1_DRO_Guard_None_StandAndMoveAround_H1025 < uid=41240B24668FE030000A02C1FE2B6F82 > : DLC1_DRO_Guard_None_StandAndMoveAround_H1026
+{
+	mySequence dlc1/sequence/CAP_H1025_DRO_hiredgun_guarding_pi_v01.msequence
+}
+
+CAPInteraction DLC1_DRO_Guard_None_StandAndMoveAround_H1005 < uid=41240B2466979B48000EB5E9D8154809 > : DLC1_DRO_Guard_None_StandAndMoveAround_H1026
+{
+	mySequence dlc1/sequence/CAP_H1005_DRO_bouncer_droid_v01.msequence
+}
+
+CAPInteraction DLC1_DRO_Guard_None_StandAndMoveAround_H1006 < uid=41240B2466979B48000EB5EAA2F58AD6 > : DLC1_DRO_Guard_None_StandAndMoveAround_H1026
+{
+	mySequence dlc1/sequence/CAP_H1006_DRO_bouncer_droid_v02.msequence
+}
+
+CAPInteraction DLC1_DRO_Guard_None_StandAndRepairHimself_H1037 < uid=41240B24668FAB5D0042E7F62DD74008 > : DLC1_DRO_Guard_None_StandAndMoveAround_H1026
+{
+	mySequence dlc1/sequence/CAP_H1037_DRO_hiredgun_repairing_itself_pi_v01.msequence
+}
+
+CAPInteraction DLC1_DRO_Guard_None_StandAndRepairHimself_H1038 < uid=41240B24668FDC0B00093C29467ED661 > : DLC1_DRO_Guard_None_StandAndMoveAround_H1026
+{
+	mySequence dlc1/sequence/CAP_H1038_DRO_hiredgun_repairing_itself_pi_v02.msequence
+}
+
+CAPInteraction DLC1_DRO_Inspect_Crate60cm_TouchWithHand_H1033 < uid=41240B24668FDCF40009F9A8E6EE9F1C >
+{
+	mySequence dlc1/sequence/CAP_H1033_DRO_hiredgun_checking_crates_pi_v01.msequence
+	myCAPScript helix/scripts/scr_cap_base_loop_and_duration.mscript
+	myPurposeTag < uid=41240B24668FDD330009F9A9FCE245FC > = Agent_Purpose_InspectTag EBE060C262A30DB40000C032B1E0C754
+	myAgentRequirementsPerSlot
+	{
+		RBTagsReferenceListAgent Agent_Content_DLC1_ReferenceList
+		{
+			RBTagsTag "New RBTagsTag" < uid=E680F8E666B21B560007E14185A10452 > = Agent_Content_DLC1 E680F8E666B239DC00049FD0BDE0BAD7
+		}
+	}
+	myPreferedDuration 10.0
+}
+
+CAPInteraction DLC1_DRO_Inspect_Crate60cm_TouchWithHand_H1047 < uid=E680F8E666E19503002641389BDF06CD > : DLC1_DRO_Inspect_Crate60cm_TouchWithHand_H1033
+{
+	mySequence dlc1/sequence/CAP_H1047_DRO_hiredgun_checking_crates_short_pi_v01.msequence
+}
+
+CAPInteraction DLC1_DRO_Inspect_Crate60cm_TouchWithFootAndHand_H1034 < uid=41240B24668FDDA00009FBE740383C08 > : DLC1_DRO_Inspect_Crate60cm_TouchWithHand_H1033
+{
+	mySequence dlc1/sequence/CAP_H1034_DRO_hiredgun_checking_crates_pi_v02.msequence
+}
+
+CAPInteraction DLC1_DRO_Inspect_Rail110cm_LookDown_H1041 < uid=41240B24668FDE080009FD6183BCDC75 > : DLC1_DRO_Inspect_Crate60cm_TouchWithHand_H1033
+{
+	mySequence dlc1/sequence/CAP_H1041_DRO_hiredgun_checking_rails_pi_v01.msequence
+}
+
+CAPInteraction DLC1_DRO_Inspect_Rail110cm_LookDown_H1042 < uid=41240B24668FDE3C0009FD8D497AAFAC > : DLC1_DRO_Inspect_Crate60cm_TouchWithHand_H1033
+{
+	mySequence dlc1/sequence/CAP_H1042_DRO_hiredgun_checking_rails_pi_v02.msequence
+}
+
+CAPInteraction DLC1_DRO_Inspect_InspectableEntrance_LookLeftAndRight_H1029 < uid=41240B24668FDFB4000A02BFE2F30563 > : DLC1_DRO_Inspect_Crate60cm_TouchWithHand_H1033
+{
+	mySequence dlc1/sequence/CAP_H1029_DRO_hiredgun_investigating_area_pi_v01.msequence
+}
+
+CAPInteraction DLC1_DRO_Inspect_InspectableEntrance_LookLeftAndRight_H1030 < uid=41240B24668FDF8F000A02A84EF246D7 > : DLC1_DRO_Inspect_Crate60cm_TouchWithHand_H1033
+{
+	mySequence dlc1/sequence/CAP_H1030_DRO_hiredgun_investigating_area_pi_v02.msequence
+}
+
+CAPInteraction DLC1_DRO_WorkOnComputer_Computer80to90cm_TypingOnKeyboard_H1003 < uid=41240B24668FDE890009FDB844C9C3D3 >
+{
+	mySequence dlc1/sequence/CAP_H1003_DRO_droid_on_computer_pi_v01.msequence
+	myCAPScript helix/scripts/scr_cap_base_loop_and_duration.mscript
+	myPurposeTag < uid=41240B24668FDEB20009FDB9E3F9E526 > = Agent_Purpose_WorkOnComputerTag 4137A31263FC6D99000009C44442E28D
+	myAgentRequirementsPerSlot
+	{
+		RBTagsReferenceListAgent Agent_Content_DLC1_ReferenceList
+		{
+			RBTagsTag "New RBTagsTag" < uid=E680F8E666B21B6B0007E142631A8B1C > = Agent_Content_DLC1 E680F8E666B239DC00049FD0BDE0BAD7
+		}
+	}
+	myPreferedDuration 25.0
+}
+
+CAPInteraction DLC1_DRO_WorkOnComputer_Computer80to90cm_TypingOnKeyboard_H1004 < uid=41240B24668FDEEB0009FDE5DEBA3D81 > : DLC1_DRO_WorkOnComputer_Computer80to90cm_TypingOnKeyboard_H1003
+{
+	mySequence dlc1/sequence/CAP_H1004_DRO_droid_on_computer_pi_v02.msequence
+}
+
+CAPInteraction DLC1_DRO_WorkOnComputer_Computer80to90cm_TypingOnKeyboard_H1001 < uid=41240B2466969E58000DFBBBB6516BF4 > : DLC1_DRO_WorkOnComputer_Computer80to90cm_TypingOnKeyboard_H1003
+{
+	mySequence dlc1/sequence/CAP_H1001_DRO_droid_on_computer_ua_v01.msequence
+}
+
+CAPInteraction DLC1_Spectate_Inspectable90cm_WatchingAndMovingAround_H1017_F < uid=41240B24669696E20006C7B8353BEE72 >
+{
+	mySequence dlc1/sequence/CAP_H1017_HUM_watching_game_table_f_v01.msequence
+	myCAPScript helix/scripts/scr_cap_base_loop_and_duration.mscript
+	myPurposeTag < uid=41240B24669697890006C7B9D7823DB4 > = Agent_Purpose_SpectateTag 41240B246568BECA00065A5EA547C93A
+	myAgentRequirementsPerSlot
+	{
+		RBTagsReferenceListAgent Agent_Content_DLC1_ReferenceList
+		{
+			RBTagsTag "New RBTagsTag" < uid=E680F8E666B21B780007E143E633EE89 > = Agent_Content_DLC1 E680F8E666B239DC00049FD0BDE0BAD7
+		}
+	}
+	myPreferedDuration 25.0
+}
+
+CAPInteraction DLC1_Spectate_Inspectable90cm_WatchingAndMovingAround_H1016_M < uid=E680F8E666B0D5B500077FC8EC08F868 > : DLC1_Spectate_Inspectable90cm_WatchingAndMovingAround_H1017_F
+{
+	mySequence dlc1/sequence/CAP_H1016_HUM_watching_game_table_m_v01.msequence
+}
+

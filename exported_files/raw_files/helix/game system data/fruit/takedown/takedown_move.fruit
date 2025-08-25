@@ -1,0 +1,146 @@
+include "helix/game system data/fruit/camera/animatedcameradata.fruit"
+include "helix/game system data/fruit/camera/camerablendtransitions.fruit"
+include "helix/game system data/fruit/interactionpoints/interactionpointtags.fruit"
+include "helix/game system data/fruit/melee/melee_conditions.fruit"
+include "helix/game system data/fruit/takedown/takedown_enums.fruit"
+include "helix/game system data/fruit/timesequence/time_sequence.fruit"
+
+class TakedownOverrideTargetAlignmentSettings
+{
+	bool myIsEnabled false < tooltip="If true, the alignment duration is defined by the curve DurationOverDistance, otherwise it will be 0.1 times the animation time" >
+	string myBoneAliasID < tooltip="If PlaySynchedAnimationOnTarget is false, set the alias ID of the bone from which retrieve the position to which align the target" >
+	string myDurationOverDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.2 0.001, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph tooltip="The alignment duration will be defined by this curve: x axis: distance (in meters) between player/bone alias and NPC; y axis: alignment duration (in seconds)" >
+}
+
+list TakedownOverrideTargetAlignmentSettingsList < size=1 >
+{
+	TakedownOverrideTargetAlignmentSettings
+}
+
+list TakedownAlignmentList
+{
+	TakedownAlignment
+}
+
+list TakedownDirectionList
+{
+	TakedownDirection
+}
+
+list TakedownCameraVariationList
+{
+	TakedownCameraVariation
+}
+
+class TakedownCameraSafetySettings 
+{
+	TakedownCameraSafetyShapeType mySafetyAreaShapeType Cylinder
+	float mySafetyAreaPositioningRatio 0.5f < min=0.f max=1.f tooltip="This normalized value is used to lerp the shape position from Kay to the target NPC. 0 => the shape will be centered on the player. 1 => the shape will be centered on the target NPC" >
+	vec3f mySafetyAreaCheckOffset 0.0;1.0;0.0 < tooltip="Offset applied to the shape position" >
+	vec3f mySafetyAreaCheckSize 0.5;0.5;0.5 < tooltip="Defines the shape's dimension. For the cylinder the Z value (as depth) will be ignored" >
+	bool myUseClosestWallHitAsTargetReference false < tooltip="If true, will use the closest wall hit position as a reference instead of the target NPC's position" >
+}
+
+class TakedownCameraVariation
+{
+	float myMinAngleRange 0.0 < min=0.0 max=360.0 tooltip="Lower bound for the camera variation angle range" >
+	float myMaxAngleRange 0.0 < min=0.0 max=360.0  tooltip="Upper bound for the camera variation angle range" >
+	float myTolerance 45.0 < min=0.0 max=180.0 tooltip="Angle tolerance added to the range so that this variation can be considered as a fallback" >
+	int myVariationID 0 < min=0 tooltip="ID used by the animation system to select the correct animated camera variation" >
+	bool myEnableOverrideSafetySettings false < tooltip="When enabled, override the camera safety settings with the following ones" >
+	TakedownCameraSafetySettings myOverrideSafetySettings
+}
+
+class TakedownStickToGroundSettings
+{
+	bool myEnableStickToGround false < tooltip="If true, stick to ground condition is set to true. NB: when stick to ground is enabled, also physics will be renabled if disabled" >
+	float myStickToGroundTimeDelay 0.0 < min=0.0 tooltip="It's the time delay, in seconds, to wait before enabling the stick to ground condition if 'EnableStickToGround' is true" >
+}
+
+class TakedownAlignment
+{
+	TakedownMode myMode Default < tooltip="Set the takedown mode for which this alignment is referred" >
+	TakedownCoverReference myCoverReference < tooltip="Specify the cover geometric reference for which this alignment is referred." >
+	int myAngle 0 < min=0 max=360 >
+	int myAnimationExtraID < min=0 tooltip="ID used by the animation system to play the correct animation" >
+	float myWeight 1.0 < min=1.0 tooltip="Weight when selecting at random betwee alignments for the same angle" >
+	float mySequenceDuration 1.0
+	float myActionStartedEventTimeDelay 0.0 < min=0.0 tooltip="Set a time interval to wait before notifing the target that the takedown action is started" >
+	float myKillEventTimeDelay 0.0 < min=0.0 tooltip="Set a time interval to wait before logically killing the target when the main sequence start" >
+	bool myOverrideSequenceEnabled false
+	bool myDisableGravityDuringAlignment false < tooltip="If true, the gravity is disabled during the alignment" >
+	TimeSequenceTracks myOverrideSequence
+	bool myEnableAngleRangeCheckForMainAnimatedCamera false < tooltip="If true, the main animated camera will be used only if it's within the given angle range" >
+	float myMainCameraMinAngleRange 0.0 < min=0.0 max=360.0 tooltip="Lower bound for the main animated camera angle range" >
+	float myMainCameraMaxAngleRange 0.0 < min=0.0 max=360.0 tooltip="Upper bound for the main animated camera angle range" >
+	TakedownCameraVariationList myCameraVariations
+	bool myEnableOverrideCameraSafetySettings false < tooltip="When enabled, override the move's standard camera safety settings with the following ones" >
+	TakedownCameraSafetySettings myOverrideCameraSafetySettings < tooltip="" >
+	CameraTransition* myOverrideCameraReturnTransitionIn
+	bool myEnableOverrideAnimatedCameraEndPercentage false < tooltip="When enabled, override the move animated camera's end percentage with the following value" >
+	float myOverrideAnimatedCameraEndPercentage 1.0 < tooltip="Value used to override the move animated camera's end percentage" >
+	TakedownOverrideTargetAlignmentSettingsList myOverrideTargetAlignmentSettings
+	float myAlignmentPosDuration 1.f
+	string myAlignmentHorizontalPosProgressionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 -0.33333334, }, outTangents = { 0.33333334 0.33333334, 0 0, }, properties = { 203, 1227, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph  tooltip="It defines the curve to control the horizontal player position progression according to the animtion position duration time" >
+	string myAlignmentVerticalPosProgressionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 -0.33333334, }, outTangents = { 0.33333334 0.33333334, 0 0, }, properties = { 203, 1227, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph  tooltip="It defines the curve to control the vertical player rotation progression according to the animtion rotation duration time" >
+	float myAlignmentRotDuration 0.f
+	string myAlignmentRotProgressionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 -0.33333334, }, outTangents = { 0.33333334 0.33333334, 0 0, }, properties = { 203, 1227, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph  tooltip="It defines the curve to control the player rotation progression according to the animtion rotation duration time" >
+	float myOptimalRotAngleOffset 0.0 < min=-180.0 max=180.0 tootlip="Set the angle offset relative to 'player to target' final direction" >
+	float myAlignmentStandStillDuration 0.f 
+	float myOptimalDistance 0.f < tooltip="Time before we start Pos Alignment. This timing eats out of the TakedownAlignmentPosDuration" >
+	vec3f myOptimalOffset < default=0.0;0.0;0.0 tooltip="Offset to the optimal position determined by OptimalDistance" >
+	vec3f myPetOptimalPosition < default=0.0;0.0;0.0 tooltip="Pet alignment position at the start of the takedown synced animation" >
+	TakedownStickToGroundSettings myTakedownStickToGroundSettings
+	bool myTriggerPostTakedownShakeHandClip false < tooltip="If true and if the target's name satisfies the requirements set in the PostTakedownShakeHandNPCDataList in the takedown move juice, the player will perform a shake hand after the takedown clip via the animation system's dedicated layer" >
+}
+
+class TakedownObstacleDetectionSettings 
+{
+	TakedownDirectionList myDirectionsToCheck < tooltip="List of directions to detect obstacles through boxcasts, relative to the NPC transform. If the list is empty, no cast will be performed" >
+	float myBoxCastYOffset 0.3f < tooltip="Y offset applied from the box cast starting position" >
+	float myBoxCastLength 2.0f < tooltip="Length of the boxcasts to detect obstacles around the target" >
+	float myBoxCastSize 0.3f < tooltip="Size of the boxcasts to detect obstacles around the target" >
+	float myFreeFallCastForwardOffset 1.f < tooltip="Offset applied to the free fall cast position from the target position towards the chosen direction (front, back, left, right)" >
+	float myFreeFallCastTopHeightOffset 1.f < tooltip="Height offset applied to the cast start position" >
+	float myFreeFallCastBottomHeightOffset 0.1f < tooltip="Height offset applied to the cast end position" >
+}
+
+class TakedownMove < uid=auto >
+{
+	InteractionPointTag myInteractionPointTag TakeDown_IsHumanTarget < tooltip="Set the tag to pair this move with the takedown interaction point" > 
+	
+	bool myPlaySynchedAnimationOnTarget true < tooltip="if true, the target will play a synched animation after the player alignment" >
+	
+	TakedownOverrideTargetAlignmentSettings myOverrideTargetAlignmentSettings
+	
+	bool myRequiresItemDuringAnimation false < tooltip="If true, the takedown weapon will be enabled during the animation sequence" >
+	
+	bool myDisablePhysicsDuringSyncedAnimation false < tooltip="If true, all physics and collisions will be disabled during the synced animation" >
+	
+	bool myHolsterWeaponOnExecution true < tooltip="If true, the player will automatically holster the held weapon" >
+	
+	bool myIsFallback false < tooltip="If true, in specific situation (like the corner fallback), the move will be considered valid without evaluating its conditions" >
+	
+	TakedownAnimationEntryType myAnimationEntryType Normal
+	
+	TimeSequenceTracks myBaseSequence
+
+	TakedownAlignmentList myAlignments
+	
+	MeleeConditions myStartConditions
+	
+	AnimatedCameraData* myAnimatedCameraData
+	
+	TakedownCameraSafetySettings myAnimatedCameraSafetySettings
+	
+	CameraTransition* myEarlyExitCameraTransition < tooltip="Camera transition used when the player early exits from the takedown animation by input" >
+	
+	TakedownObstacleDetectionSettings myObstacleDetectionSettings
+	
+	int myPriority 0 < min=0 tooltip="Value to define priority of a takedown move relative to each other. An higher priority value means that the move will be chosen even if another takedown as an higher score (dependant on its start conditions)" >
+}
+
+list TakedownMoveList
+{
+	TakedownMove*
+}

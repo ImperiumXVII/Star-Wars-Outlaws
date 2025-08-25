@@ -1,0 +1,66 @@
+include "helix/game system data/fruit/timesequence/time_sequence.fruit"
+include "helix/game system data/fruit/melee/melee_conditions.fruit"
+include "helix/game system data/fruit/camera/cameramodifier.fruit"
+include "helix/game system data/fruit/effects/effects.fruit"
+include "helix/game system data/fruit/restriction/playerrestriction.fruit"
+
+class MeleeHit
+{
+	float myDamage 1.0f
+	float myEnvironmentalDamage 100.f
+	ShakeCameraModifier* myCamShake
+	string mySlowDownTimeScale "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.1 0, }, outTangents = { 0.1 0, 0 -0, }, properties = { 1299, 275, }, values = { 0 1, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+	float mySlowDownDuration 0.2
+	EffectsByMaterials myImpactEffects
+	uid myRumble < bhv="constantData" constantDataType="rumble" tooltip="This rumble will replace the base one defined in melee config if set" >
+}
+
+class MeleeBlocked
+{
+	ShakeCameraModifier* myCamShake
+	EffectsByMaterials myImpactEffects
+	uid myRumble < bhv="constantData" constantDataType="rumble" tooltip="This rumble will replace the base one defined in melee config if set" >
+}
+
+class MeleeHitCast
+{
+	bool myFistRadiusGrowingEnabled true < tooltip = "If true, the fist radius will grow using curves. If fasle, the fist radius will be constant" >
+	bool myApexCastEnabled true
+}
+
+class MeleeMove < uid=auto >
+{
+	// Approaching
+	bool myApproachingEnabled true
+
+	// Execution
+	float myExecutionDurationMin 0.35f < tooltip="Min execution sequence duration; based on target distance" >
+	float myExecutionDurationMax 0.8f < tooltip="Max execution sequence duration; based on target distance" >
+	float myExecutionDurationVariation 0.025f < min=0.0 tooltip="A random duration will be added (can be negative too) to the current duration value. It cannot exceed the min/max range." >
+	
+	float myRangeExecution 3.0f < tooltip="At this range the execution happens; out of this range but if the start range condition is triggered, then we apply approach instead" >
+	
+	TimeSequenceTracks myExecutionSequence
+	
+	float myMoveNoTargetSpeed 2.0f
+	float myMoveMaxSpeed 10.0f
+	
+	bool myCustomTargetPointDistanceEnabled false
+	float myCustomTargetPointDistance 1.6
+	
+	MeleeHitCast myCast
+	
+	float myAdrenalineBoost 0.35
+	
+	MeleeHit myHit
+	MeleeBlocked myBlocked
+	
+	MeleeConditions myStartConditions
+	
+	PlayerRestriction* myRestrictions < tooltip="Prevented actions while executing this melee move" >
+}
+
+list MeleeMoveList
+{
+	MeleeMove*
+}

@@ -1,0 +1,26 @@
+
+list GearGraphListInternal
+{
+	file < bhv=asset assettype=object/gear >
+}
+
+list VehicleGearGraphListInternal
+{
+	file < bhv=asset assettype=object/vehiclegear >
+}
+
+class GearGraphListWrapperBase < uid=auto abstract=true >
+{
+}
+
+class GearGraphListWrapper : GearGraphListWrapperBase
+{
+	GearGraphListInternal myGraphs
+	bool myIsForVehicles false < hidden=true >
+}
+
+class VehicleGearGraphListWrapper : GearGraphListWrapperBase
+{
+	VehicleGearGraphListInternal myGraphs
+	bool myIsForVehicles true < hidden=true >
+}

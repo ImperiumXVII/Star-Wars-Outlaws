@@ -1,0 +1,30 @@
+include "helix/game system data/fruit/audio/stimulus.fruit"
+include "helix/game system data/fruit/npc/npc.fruit"
+include "helix/game system data/fruit/settings/spaceshipenums.fruit"
+
+class MynockShakeOffSettings
+{
+	SpaceshipManeuverType myManeuverType
+	float myRatio
+	float myDuration
+	string myProgressCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.33333334 0, }, outTangents = { 0.33333334 0, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+}
+
+list MynockShakeOffSettingsList
+{
+	MynockShakeOffSettings
+}
+
+class SpaceWildlifeSettings < uid=auto >
+{
+	float myAttachDamage 5.0
+	float myAttachDamageInterval 1.0
+	float myAutoDetachDuration 10.0
+	uid myAttachRumble < bhv="constantData" constantDataType="rumble" >
+	MynockShakeOffSettingsList myShakeOffSettings
+	MynockShakeOffSettings myCollisionShakeOffSetting
+	MynockShakeOffSettings myHitShakeOffSetting
+	MynockShakeOffSettings myLeaveLairShakeOffSetting
+	StimulusIdentifier* myAttachDamageBark
+	NamedNPC myAttachDamageBarkNamedNPC ND5
+}

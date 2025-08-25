@@ -1,0 +1,186 @@
+include "helix/game system data/fruit/npc/npcsynergy.fruit"
+include "helix/game system data/juice/legend/legendranks.mlegendrank"
+include "helix/game system data/juice/npc/pir_shp_pirate_01_a.mnpc"
+include "helix/game system data/juice/npc/pir_shp_pirate_02_a.mnpc"
+include "helix/game system data/juice/npc/pir_shp_pirate_03_a.mnpc"
+include "helix/game system data/juice/npc/pir_shp_pirate_04_a.mnpc"
+include "helix/game system data/juice/rbtags/living_world_activities_binary_tags.mrbtagsbinarytags"
+
+NPCSynergy space_pirate_npc_synergy < uid=05B06D7D66FE3E1C00000042790BCFC4 >
+{
+	myCoreMembers
+	{
+		NPCSynergyMember "Duros 50 Percent"
+		{
+			myNPC < uid=2AE2EC856740835D00000996AEBA4AA2 > = pir_shp_pirate_02_a 6EA79625636BB4700000764893D3568B
+			myAlwaysAdd FALSE
+			myWeight 0.5
+		}
+	}
+	myFillerMember
+	{
+		myNPC < uid=2AE2EC856740835D00000997143E4089 > = pir_shp_pirate_01_a 6EA79625636BBC4D00006F17DEAA71AB
+		myWeight 1.0
+	}
+	myMaxAmount 10
+	myFaction 16DEADE65F7DDA76000000C9CB7D6D62
+	myMinLegendRank < uid=05B06D7D66FE3E1C00000045C7F310D3 > = NULLREFERENCE
+	myMaxLegendRank < uid=05B06D7D66FE3E1C00000046E0A19206 > = "Rank 20" 7110821464E310E10001275686AD600A
+	myTags
+	{
+	}
+}
+
+NPCSynergy pirate_small_skirmish < uid=05B06D7D6704E0340004A2CE0FEADCDC > : space_pirate_npc_synergy
+{
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=05B06D7D6704E09C0004A2D1592F41B7 > = lwen_SpaceSkirmishTag 05B06D7D66FE46B100000043DF062E81
+		RBTagsTag "New RBTagsTag_0" < uid=05B06D7D6704E09E0004A2D2007A7A72 > = lwen_SpaceFireteamSmallTag 05B06D7D6704D8A40004A044000B27C9
+	}
+}
+
+NPCSynergy pirate_medium_skirmish < uid=05B06D7D6704E0440004A2CF7D46F677 > : space_pirate_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember "Duros 1"
+		{
+			myNPC < uid=05B06D7D6704E0FC0004A2D9E29FE5F0 > = pir_shp_pirate_02_a 6EA79625636BB4700000764893D3568B
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "Duros 2"
+		{
+			myNPC < uid=05B06D7D6704E0FC0004A2DA81D89A4E > = pir_shp_pirate_02_a 6EA79625636BB4700000764893D3568B
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=05B06D7D6704E0A80004A2D34AC5C144 > = lwen_SpaceSkirmishTag 05B06D7D66FE46B100000043DF062E81
+		RBTagsTag "New RBTagsTag_0" < uid=05B06D7D6704E0AA0004A2D45BE28B1C > = lwen_SpaceFireteamMediumTag 05B06D7D6704D8AC0004A0454853D772
+	}
+}
+
+NPCSynergy pirate_large_skirmish < uid=05B06D7D6704E04C0004A2D0FFDDDD75 > : space_pirate_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember "Duros 1"
+		{
+			myNPC < uid=05B06D7D6704E13F0004A2F64DC1502C > = pir_shp_pirate_02_a 6EA79625636BB4700000764893D3568B
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "Duros 2"
+		{
+			myNPC < uid=05B06D7D6704E13F0004A2F75EA650EA > = pir_shp_pirate_02_a 6EA79625636BB4700000764893D3568B
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "Duros 3"
+		{
+			myNPC < uid=05B06D7D6704E13F0004A2F837C8E084 > = pir_shp_pirate_02_a 6EA79625636BB4700000764893D3568B
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "Duros 4"
+		{
+			myNPC < uid=05B06D7D6704E13F0004A2F96898D8F7 > = pir_shp_pirate_02_a 6EA79625636BB4700000764893D3568B
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=05B06D7D6704E0B50004A2D578E35B2E > = lwen_SpaceSkirmishTag 05B06D7D66FE46B100000043DF062E81
+		RBTagsTag "New RBTagsTag_0" < uid=05B06D7D6704E0B70004A2D6AB9917AA > = lwen_SpaceFireteamLargeTag 05B06D7D6704D8B50004A046A63F1E27
+	}
+}
+
+NPCSynergy pirate_ambush < uid=05B06D7D6704ED8E000916E8E2EF23DE > : space_pirate_npc_synergy
+{
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=05B06D7D6704EEEE000917A6EE2487AF > = lwen_SpaceAmbushTag 05B06D7D66FE50A5000498D070A37B5B
+	}
+}
+
+NPCSynergy pirate_small_patrol < uid=05B06D7D6704FDFD00021A943631686E > : space_pirate_npc_synergy
+{
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=05B06D7D6705009A00021ABC95B5FB23 > = lwen_SpacePatrolTag 05B06D7D66FE4B2E000498CB6478A74B
+		RBTagsTag "New RBTagsTag_0" < uid=05B06D7D6705009B00021ABDCF238332 > = lwen_SpaceFireteamSmallTag 05B06D7D6704D8A40004A044000B27C9
+	}
+}
+
+NPCSynergy pirate_large_patrol < uid=05B06D7D6704FE0600021A9593C036EB > : space_pirate_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember "Duros 1"
+		{
+			myNPC < uid=05B06D7D670500E800021AC13E1A2598 > = pir_shp_pirate_02_a 6EA79625636BB4700000764893D3568B
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "Duros 2"
+		{
+			myNPC < uid=05B06D7D670500E800021AC211A466AE > = pir_shp_pirate_02_a 6EA79625636BB4700000764893D3568B
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=05B06D7D670500A700021ABEE938D520 > = lwen_SpacePatrolTag 05B06D7D66FE4B2E000498CB6478A74B
+		RBTagsTag "New RBTagsTag_0" < uid=05B06D7D670500A800021ABFD7A58433 > = lwen_SpaceFireteamLargeTag 05B06D7D6704D8B50004A046A63F1E27
+	}
+}
+
+NPCSynergy pirate_shipwreckage < uid=05B06D7D670516E30004B0AB5768BCD7 > : space_pirate_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember "Duros 75 percent"
+		{
+			myNPC < uid=05B06D7D670517580004B0E059F76754 > = pir_shp_pirate_02_a 6EA79625636BB4700000764893D3568B
+			myAlwaysAdd FALSE
+			myWeight 0.75
+		}
+	}
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=05B06D7D6705177E0004B0FC17089891 > = lwen_SpaceWreckage 05B06D7D670516320004B024B465FA6C
+	}
+}
+
+NPCSynergy pirate_space_fallback < uid=05B06D7D67051EA80004B2FC16FD9CC8 > : space_pirate_npc_synergy
+{
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=05B06D7D67051FB70004B3D7E7C437B7 > = lwen_SpaceFallback 05B06D7D67051F080004B33147508CAD
+	}
+}
+
+NPCSynergy pirate_factiontransport_wave1 < uid=05B06D7D670532FD00038DD25350345F > : space_pirate_npc_synergy
+{
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=05B06D7D6705335700038E0AE94FDBCA > = lwen_SpaceFactionTransportTag 05B06D7D66FE50DD000498D296196B28
+		RBTagsTag "New RBTagsTag_0" < uid=05B06D7D67053A7600038F0827C7DA55 > = lwen_SpaceWave1 05B06D7D670533DE00038E0CAD56CCB1
+	}
+}
+
+NPCSynergy pirate_factiontransport_wave2 < uid=05B06D7D6705330900038DD35D01EF97 > : space_pirate_npc_synergy
+{
+	myTags
+	{
+		RBTagsTag "New RBTagsTag_0" < uid=05B06D7D6705348900038E45E8579E22 > = lwen_SpaceFactionTransportTag 05B06D7D66FE50DD000498D296196B28
+		RBTagsTag "New RBTagsTag" < uid=05B06D7D67053A8100038F09D7CE326A > = lwen_SpaceWave2 05B06D7D67053A3800038EEC811EF09E
+	}
+}
+

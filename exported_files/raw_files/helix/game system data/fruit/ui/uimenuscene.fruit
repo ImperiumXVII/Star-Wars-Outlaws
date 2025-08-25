@@ -1,0 +1,101 @@
+include "helix/game system data/fruit/character/charactervisuals.fruit"
+
+list Visuals
+{
+	CharacterVisualsBase*
+}
+
+class Characters
+{
+	bool myPlayer
+	bool myPet
+	bool mySpeeder
+	bool mySpaceship
+	
+	Visuals myCharacterVisuals
+}
+
+class UIMenuSceneObject
+{
+	file myFileName < bhv=asset assettype="Object" >
+	mat44 myOrientation
+	varmap myInputStates
+}
+
+list UIMenuSceneObjects
+{
+	UIMenuSceneObject
+}
+
+class UIMenuSceneLight
+{
+	mat44 myOrientation
+	varmap myLightProperties
+}
+
+list UIMenuSceneLights
+{
+	UIMenuSceneLight
+}
+
+class UIMenuSceneLighting
+{
+	file myLightprobePreset < bhv=asset assettype="Lightprobe Preset" >
+	color myAmbient_PositiveX 0xff000000 < tooltip="If no lightprobe preset is set, this color will be used as a global ambient light level." >
+	color myAmbient_PositiveY 0xff000000 < tooltip="If no lightprobe preset is set, this color will be used as a global ambient light level." >
+	color myAmbient_PositiveZ 0xff000000 < tooltip="If no lightprobe preset is set, this color will be used as a global ambient light level." >
+	color myAmbient_NegativeX 0xff000000 < tooltip="If no lightprobe preset is set, this color will be used as a global ambient light level." >
+	color myAmbient_NegativeY 0xff000000 < tooltip="If no lightprobe preset is set, this color will be used as a global ambient light level." >
+	color myAmbient_NegativeZ 0xff000000 < tooltip="If no lightprobe preset is set, this color will be used as a global ambient light level." >
+}
+
+class UIMenuSceneSequenceState
+{
+	string myMarker < tooltip="The marker that defines the end of this state." >
+	Characters myRequiredCharacters < tooltip="Characters required to be loaded for state to function" >
+}
+
+list UIMenuSceneSequenceStates
+{
+	UIMenuSceneSequenceState
+}
+
+class UIMenuSceneSequenceTransition
+{
+	string myOriginState
+	string myDestinationState
+
+	string myTransitionStartMarker < tooltip="Specifies the starting-marker for this transition. If empty, it will simply cut to the target state." >
+	string myTransitionEndMarker < tooltip="Specifies the starting-marker for this transition. If empty, it will simply cut to the target state." >
+
+	bool myAddCutTransitionToReturn true < tooltip="Generates a cut-transition in the reverse direction, to be able to go back properly." >
+}
+
+list UIMenuSceneSequenceTransitions
+{
+	UIMenuSceneSequenceTransition
+}
+
+list UIMenuSceneSequenceLocators
+{
+	uid
+}
+
+class UIMenuSceneSequene
+{
+	file mySequence < bhv=asset assettype=sequence >
+	UIMenuSceneSequenceStates myStates < tooltip="Specifies the sequence target states, which UI can use to select a target state. The nodes in a nodegraph." >
+	UIMenuSceneSequenceTransitions myTransitions < tooltip="Specifies how sequence targets link together and the transition sections to play in between. The links in a nodegraph." >
+	UIMenuSceneSequenceLocators myLocators < tooltip = "Specifies the names of the locators that should be available in the UI graphs, and the Sequence Track UID they correspond to." >
+}
+
+class UIMenuScene < uid=auto >
+{
+	mat44 myOrientation
+	Characters myCharacters
+	UIMenuSceneLighting myLighting
+	UIMenuSceneSequene mySequence
+	file myEnvironment < bhv=asset assettype="Environment" >
+	UIMenuSceneObjects mySceneObjects
+	UIMenuSceneLights mySceneLights
+}

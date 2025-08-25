@@ -1,0 +1,110 @@
+include "helix/game system data/fruit/equipment/weapon/weapon_fire_mode.fruit"
+include "helix/game system data/juice/bodypart/bodypart.mbodypart"
+include "helix/game system data/juice/camera/modifiers/sniper_charge_shake.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_recoil_pickup_sniper_dlt20a.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_recoil_pickup_sniper_dlt20a_scope.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_shake_kays_blaster_power.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_shake_pickup_sniper_charge.mcameramodifier"
+include "helix/game system data/juice/equipment/weaponanimationconfig/weapon_anim_pickup_dlt20a.mweaponanimationconfig"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_pickup_sniper.mweaponfiremode"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_large_green.mprojectile"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_large_green_dtl20.mprojectile"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_large_red.mprojectile"
+include "helix/game system data/juice/sound/weapons/player_aduioweapon_kays_sig_mod_charge.maudioweapon"
+include "helix/game system data/juice/sound/weapons/player_audioweapon_lb_dlt20a.maudioweapon"
+
+WeaponFireMode player_firemode_pickup_sniper_dlt20a < uid=4C1DFD4E643D28A10001C653964C61D5 > : player_firemode_pickup_sniper
+{
+	myFireEvent
+	{
+		ChargedFireEvent ChargedFireEvent
+		{
+			myRPM
+			{
+				myRPM 500
+			}
+			myChargeDurationFormula 0.8
+			myMinChargeStrength 0.5
+			myAutomaticFireAfterReachFullCharge TRUE
+			myAutomaticFireAfterReachFullChargeTime 3.0
+			myFullChargeFireOnly FALSE
+			myAutomaticResetEnabled FALSE
+			myChargeCameraShake < uid=1C021E9565339516002068CD0BAAD7F7 > = weapon_shake_pickup_sniper_charge 7113C6116509A01E000541D40B39676E
+		}
+	}
+	myBaseProperties
+	{
+		myAnimation < uid=7113C61165C0B847000AE3760E4F25FC > = weapon_anim_pickup_dlt20a 7113C61165C0B73A000AE1943555C630
+		myRecoil < uid=A207755D6515A2B500014E51F32778C0 > = weapon_recoil_pickup_sniper_dlt20a 7113C611650988EA0005DE53A6E7C9B5
+		myInputController
+		{
+			myFireRumble 8E25811B65607D9100146C857CBC707B
+			myHardPressTriggerEffect helix/trigger_effects/triggereffect_rifle_chargeup.mtriggereffect
+			myCharge
+			{
+				myChargingTriggerVibrationEnabled TRUE
+				myChargingTriggerVibration
+				{
+					myAmplitude "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0, 0 0, }, properties = { 275, 1299, }, values = { 0 0.30000001, 1 0.60000002, }, }, numKeys = 2, }"
+					myFrequency "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0.0, 0 0, }, properties = { -749, -749, }, values = { 0 0.05, 1 0.1, }, }, numKeys = 2, }"
+					myPosition 9
+				}
+				myChargingRumble 7113C611663A3BCE000347A911B819D3
+				myOnFullChargeTriggerEffectEnabled TRUE
+				myOnFullChargeTriggerEffect
+				{
+					myAmplitude 1.0
+					myPosition 0
+				}
+				myOnFullChargeRumble 7113C611663A3C4800043DE680A4C762
+				myFullChargeTriggerVibrationEnabled TRUE
+				myFullChargeTriggerVibration
+				{
+					myAmplitude 0.4
+					myFrequency 0.15
+				}
+				myFullChargeRumble 7113C611663A3C6700043DE7B6419ABD
+			}
+		}
+	}
+	mySpecializations
+	{
+		WeaponFireModeSpecialization Scope
+		{
+			myAimMode Scope
+			myProperties
+			{
+				myRecoil < uid=A207755D651687960001E8DF09D64A08 > = weapon_recoil_pickup_sniper_dlt20a_scope 7113C611650989790005DE55FE1FBA28
+				myInputController
+				{
+				}
+			}
+		}
+	}
+	myProjectile < uid=4C1DFD4E643D31B20001F6C5DC7CEC43 > = weapon_projectile_blaster_large_green_DTL20 F8181D486511A4EC000124D4EA9F5379
+	myDamage
+	{
+		myDamage
+		{
+			myDamageFormula "8 * PickUpWeaponDamageBonus"
+		}
+		myFullChargeBonusFormula 1.5
+	}
+	mySpread
+	{
+		myUIMinimumSpread 8.0
+		myAimModifierData
+		{
+			myPassiveFormula 0.2
+			myHipFireFormula 0.2
+		}
+	}
+	myFireShake < uid=7113C61165099F230003A0072512B3E6 > = weapon_shake_pickup_sniper 4C1DFD4E636BBE3D00005E0B10CA4B52
+	myUI
+	{
+		myDefaultUIGraph helix/ui/graphs/crosshair_marksmanrifle_chargeup_ammunition.muigraph
+	}
+	myAudioData < uid=7113C611650AE40500032941795D40C0 > = player_audioweapon_lb_dlt20a 8DF138C66526675B0000BD8DCBB54C30
+	myNPCDetectionSoundEvent < uid=3C2FA92B66ACF9120000B1BB65A0C2B8 > = WeaponTrigger_Loud 3C2FA92B66B089CB000B7A4263B21E82
+}
+

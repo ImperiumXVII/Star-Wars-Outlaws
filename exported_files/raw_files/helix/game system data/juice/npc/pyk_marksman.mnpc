@@ -1,0 +1,32 @@
+include "helix/game system data/juice/item/player_weapon_pickup_marksmanrifle.mitem"
+include "helix/game system data/juice/melee/npc_melee_config.mnpcmeleeconfig"
+include "helix/game system data/juice/npc/base_pyk.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC pyk_marksman < uid=16DEADE661F1A88500001B775983A623 > : base_pyk
+{
+	myCharacterVisuals < uid=B0EA4E536225CE760000284C6B347786 > = character_visuals_2_silver_pyke_syndicate_marksman 8AC9ADE46202CA5100005FEE2BBDE6D7
+	myBehavior helix/behaviors/pyk_marksman.mbehavior
+	myMaxHealth 15
+	myHealthFormula 2+NPCFinalHealth
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag (0)" < uid=E4123D2762AF111A000035741427ACC2 > = Agent_Faction_PykeSyndicateTag 16DEADE6620AE18B000020D1381248A0
+		RBTagsTag "New RBTagsTag (1)" < uid=E4123D2762AF11210000357566E6B433 > = Agent_Archetype_SniperTag 16DEADE6620AE45500002127C6AE63F9
+		RBTagsTag "New RBTagsTag" < uid=E4123D276303675B00089F565F244015 > = Agent_BarksFamily_PykeDefault E4123D2762F4CA3A00048CB0EF7F9A5E
+	}
+	myVisionProfile < uid=2736B365625FDC7900002DBF7EBF02DF > = SniperVisionProfile 2736B365625FDB0800000B32BA2AB46D
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=91DC5D3C638F08530000CF0B19058ADE > = SniperDetectionProfile 91DC5D3C638F08330000CEDAD9052F43
+	}
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout LoadoutA < uid=2736B365635FFE070003858196C02170 > = pyk_marksman_A 2736B365635FFD8A00038575ADEE3275
+	}
+	myAudioNPCDangerWeight 2.0
+	myMeleeConfig < uid=5C421F5C62613F8100002E894B855B7C > = npc_melee_config BCDE37F162445830000053EBBBF07CF3
+	myStaggerConfig < uid=5C421F5C637E3C900000A75BCA4E1987 > = NPCStaggerConfig_Humanoid_Medium_MeleeTier3 3C2FA92B651582BD0004A41755AB8CD4
+	myCombatRole Sniper
+}
+

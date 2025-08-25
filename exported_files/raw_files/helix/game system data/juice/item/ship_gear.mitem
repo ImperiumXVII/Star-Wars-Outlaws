@@ -1,0 +1,1051 @@
+include "helix/game system data/fruit/camera/aimassistdata.fruit"
+include "helix/game system data/fruit/camera/cameramodifier.fruit"
+include "helix/game system data/fruit/camera/camerapreset.fruit"
+include "helix/game system data/fruit/camerainput/camerainput.fruit"
+include "helix/game system data/fruit/effects/effects.fruit"
+include "helix/game system data/fruit/equipment/aiming.fruit"
+include "helix/game system data/fruit/equipment/equipment.fruit"
+include "helix/game system data/fruit/equipment/equipment_cooldown.fruit"
+include "helix/game system data/fruit/equipment/equipment_holding.fruit"
+include "helix/game system data/fruit/equipment/equipment_overheat.fruit"
+include "helix/game system data/fruit/equipment/equipment_slot_types.fruit"
+include "helix/game system data/fruit/equipment/equipment_throwable.fruit"
+include "helix/game system data/fruit/gamevalues/gamevalues.fruit"
+include "helix/game system data/fruit/gearset/gearset.fruit"
+include "helix/game system data/fruit/impact/impact.fruit"
+include "helix/game system data/fruit/input/rumble.fruit"
+include "helix/game system data/fruit/item/item.fruit"
+include "helix/game system data/fruit/item/item_includes.fruit"
+include "helix/game system data/fruit/player/movement.fruit"
+include "helix/game system data/fruit/projectile/npcsensoryprojectiletype.fruit"
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/fruit/projectile/projectile_actions.fruit"
+include "helix/game system data/fruit/projectile/projectile_object.fruit"
+include "helix/game system data/fruit/projectile/projectile_realization.fruit"
+include "helix/game system data/fruit/sound/audioprojectile.fruit"
+include "helix/game system data/fruit/timesequence/time_sequence.fruit"
+include "helix/game system data/fruit/utils/ramp_up_and_down.fruit"
+include "helix/game system data/juice/equipment/weaponfiremode/trailblazer_laser_firemodes.mweaponfiremode"
+include "helix/game system data/juice/equipment/weaponfiremode/trailblazer_missile_firemodes.mweaponfiremode"
+include "helix/game system data/juice/item/consumables.mitem"
+include "helix/game system data/juice/sound/stimuli/stim_id_main.mstimulusidentifier"
+include "helix/game system data/juice/talent/ship_gear_talents.mtalent"
+include snowdrop/modules/core/audio/audio.fruit
+include snowdrop/modules/core/input/input.fruit
+
+GearItem ship_gear_template < uid=BFAAA1FC6377A3590000CFF43615BD11 >
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWhereToFind "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWantedByVendor "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myIcon "mySpriteId = 1941254340, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_generic_03.spritesheet\""
+	myCategory ShipGear
+	myTier Big
+	myInventoryPouch Ship
+	myDefaultInventory Spaceship
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+}
+
+GearItem ship_gear_engine_a < uid=B4FBE430642A916A00000BE3AE8DC2D1 > : ship_gear_template
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #B4FBE430642A8FF800000BCEFC7424C3, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10300, text = \"E-210 Sublight Engine\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Engine \", enabled = true, guid = #B4FBE43065E983640008CE699692B12B, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10300, text = \"A standard <b>starship engine.</b>\", type = \"MenuLine\""
+	myIcon "mySpriteId = -935314324, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_systems.spritesheet\""
+	myGraphObject "helix/graph objects/vehiclegear/gear_playership_trailblazer_engines_01.mgraphobject"
+	myInventoryPouch ShipEngine
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+	myAmount < uid=B4FBE430642A916A00000BE4F1303A9C >
+	{
+	}
+	myDefaultSlotGroup Engine
+	myTalents
+	{
+		Talent ship_engine_a < uid=B4FBE430642C235800000B752F437A1D > = ship_engine_a B4FBE430642C0FBC00000B9913A937FA
+	}
+}
+
+GearItem ship_gear_engine_b < uid=B4FBE430642A916A00000BE5EB4184F8 > : ship_gear_template
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #B4FBE430642A901100000BD1C5C6E05D, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10300, text = \"E-310 Sublight Engine\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Engine Upgrade\", enabled = true, guid = #B4FBE43065E990C000184D24038C3928, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = 'An engine upgrade that <color name=\"Menu Green\"><b>increases speed during Travel Mode.</b></color>', type = \"MenuLine\""
+	myIcon "mySpriteId = -1526385999, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_systems.spritesheet\""
+	myGraphObject "helix/graph objects/vehiclegear/gear_playership_trailblazer_engines_02.mgraphobject"
+	myInventoryPouch ShipEngine
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+	myAmount < uid=B4FBE430642A916A00000BE6B2B67CD8 >
+	{
+	}
+	myDefaultSlotGroup Engine
+	myTalents
+	{
+		Talent ship_engine_b < uid=B4FBE430642C23E900000B78AD9B6F41 > = ship_engine_b B4FBE430642C217800000B5071757D9D
+	}
+}
+
+GearItem ship_gear_engine_c < uid=B4FBE430642A916A00000BE772EDBB15 > : ship_gear_template
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #B4FBE430642A902500000BD41B3EF5BA, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10300, text = \"E-410 Sublight Engine\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Engine Upgrade\", enabled = true, guid = #B4FBE43065E990FE0018DFA1E729C88E, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = 'An engine upgrade that <color name=\"Menu Green\"><b>greatly increases speed during Travel Mode.</b></color>', type = \"MenuLine\""
+	myIcon "mySpriteId = -1526171986, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_systems.spritesheet\""
+	myGraphObject "helix/graph objects/vehiclegear/gear_playership_trailblazer_engines_03.mgraphobject"
+	myInventoryPouch ShipEngine
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+	myAmount < uid=B4FBE430642A916A00000BE802798B0E >
+	{
+	}
+	myDefaultSlotGroup Engine
+	myTalents
+	{
+		Talent ship_engine_c < uid=B4FBE43064CA0FB00003C2D02348CC45 > = ship_engine_c B4FBE43064C90DF6000486CC3949F968
+	}
+}
+
+GearItem ship_gear_hull_a < uid=B4FBE430642A916A00000BE9E5F8A9FD > : ship_gear_template
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #B4FBE430642A913100000BD7E3E4BEB6, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = \"H-AD Duralloy Hull\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Hull \", enabled = true, guid = #B4FBE43065E99136001956502622AAE0, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = \"A <b>standard hull</b> used for starships.\", type = \"MenuLine\""
+	myIcon "mySpriteId = 1700523804, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_systems.spritesheet\""
+	myInventoryPouch ShipHull
+	myAmount < uid=B4FBE430642A916A00000BEAE4A95926 >
+	{
+	}
+	myDefaultSlotGroup Hull
+	myTalents
+	{
+		Talent ship_hull_health_a < uid=B4FBE430642C243B00000B79875FE249 > = ship_hull_health_a B4FBE430642C0CD300000B835EEE2F2B
+	}
+}
+
+GearItem ship_gear_hull_b < uid=B4FBE430642A916A00000BEBFB8363B5 > : ship_gear_template
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #B4FBE430642A914000000BDAB29875EC, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = \"H-RD Duralloy Hull\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Hull Upgrade\", enabled = true, guid = #B4FBE43065E99204001B6695C7DEBC20, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10300, text = 'A hull upgrade that <color name=\"Menu Green\"><b>increases durability and adds an auto-repair function</b></color> during combat.', type = \"MenuLine\""
+	myIcon "mySpriteId = 770802098, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_systems.spritesheet\""
+	myInventoryPouch ShipHull
+	myAmount < uid=B4FBE430642A916A00000BEC356CA630 >
+	{
+	}
+	myDefaultSlotGroup Hull
+	myTalents
+	{
+		Talent ship_hull_health_b < uid=B4FBE430642C245F00000B7B5CAC9930 > = ship_hull_health_b B4FBE430642C1FF400000B2C5BD86DCA
+	}
+}
+
+GearItem ship_gear_hull_c < uid=B4FBE430642A916A00000BED15FB5621 > : ship_gear_template
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #B4FBE430642A915800000BDD790E8554, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = \"H-SD Duralloy Hull\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Hull Upgrade\", enabled = true, guid = #B4FBE43065E99269001C6B7ED4317150, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = 'A hull upgrade that <color name=\"Menu Green\"><b>greatly increases durability and enhances the auto-repair function</b></color> during combat.', type = \"MenuLine\""
+	myIcon "mySpriteId = 770588085, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_systems.spritesheet\""
+	myInventoryPouch ShipHull
+	myAmount < uid=B4FBE430642A916A00000BEEBB355DD1 >
+	{
+	}
+	myDefaultSlotGroup Hull
+	myTalents
+	{
+		Talent ship_hull_health_c < uid=B4FBE430642C247500000B7C24997546 > = ship_hull_health_c B4FBE430642C1FF400000B2DCF61BEEE
+	}
+}
+
+GearItem ship_gear_shield_a < uid=B4FBE430642A93A000000C0653A014B2 > : ship_gear_template
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #B4FBE430642A936E00000BFAA1D9E732, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = \"S15a Deflector Shield\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Shield \", enabled = true, guid = #B4FBE43065E993E1001D9485C34C2669, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10300, text = \"A <b>deflector shield</b> surrounding the Trailblazer's hull.\", type = \"MenuLine\"}"
+	myIcon "mySpriteId = -1784015144, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_systems.spritesheet\""
+	myInventoryPouch ShipShield
+	myBuyPrice 18000
+	myAmount < uid=B4FBE430642A93A000000C07E78E50F3 >
+	{
+	}
+	myDefaultSlotGroup Shield
+	myTalents
+	{
+		Talent ship_shield_a < uid=B4FBE430642C249D00000B7EC37C6380 > = ship_shield_a B4FBE430642C0EC500000B93E960B833
+	}
+}
+
+GearItem ship_gear_shield_b < uid=B4FBE430642A93A000000C080A00986F > : ship_gear_template
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #B4FBE430642A938400000BFD87D143A1, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = \"S30b Deflector Shield\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Shield Upgrade\", enabled = true, guid = #B4FBE43065E99405001E0A37869D89D9, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10300, text = 'A shield upgrade that <color name=\"Menu Green\"><b>increases its capacity.</b></color>', type = \"MenuLine\""
+	myIcon "mySpriteId = -1476868450, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_systems.spritesheet\""
+	myInventoryPouch ShipShield
+	myBuyPrice 18000
+	myAmount < uid=B4FBE430642A93A000000C09E2F86116 >
+	{
+	}
+	myDefaultSlotGroup Shield
+	myTalents
+	{
+		Talent ship_shield_b < uid=B4FBE430642C24AF00000B7FE2BED8BB > = ship_shield_b B4FBE430642C0F4800000B96C8EE391F
+	}
+}
+
+GearItem ship_gear_shield_c < uid=B4FBE430642A93A000000C0AB1AEFC7F > : ship_gear_template
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #B4FBE430642A939000000C0094190CB8, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = \"S50c Deflector Shield\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Shield Upgrade \", enabled = true, guid = #B4FBE43065E9941D001E5195DCC69FBC, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = 'A shield upgrade that <color name=\"Menu Green\"><b>greatly increases its capacity.</b></color>', type = \"MenuLine\""
+	myIcon "mySpriteId = -1477082463, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_systems.spritesheet\""
+	myInventoryPouch ShipShield
+	myBuyPrice 18000
+	myAmount < uid=B4FBE430642A93A000000C0B24322B71 >
+	{
+	}
+	myDefaultSlotGroup Shield
+	myTalents
+	{
+		Talent ship_shield_c < uid=B4FBE430642C24C100000B80B9E88281 > = ship_shield_c B4FBE430642C211400000B42DE43B883
+	}
+}
+
+WeaponItem ship_gear_laser_cannons_a < uid=B4FBE430642A8E4200000BB2EC003F6B >
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #B4FBE430642A896000000B8631D38363, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = \"LC-50 Laser Cannon\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Laser Cannons\", enabled = true, guid = #B4FBE43065E9943B001EB398325E54EE, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10300, text = \"A laser cannon used as <b>main weaponry on the Trailblazer.</b> Overheating may occur during extended use.\", type = \"MenuLine\""
+	myWhereToFind "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWantedByVendor "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myIcon "mySpriteId = 2133013213, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_weapons.spritesheet\""
+	myGraphObject "helix/graph objects/weapon/wpn_trailblazer_cannon.mgraphobject"
+	myCategory Weapon
+	myTier Big
+	myInventoryPouch Weapons
+	myDefaultInventory Spaceship
+	myAmount < uid=B4FBE43064F71B8100003C3E4CC5C7F9 >
+	{
+	}
+	myDefaultSlotGroup Weapons
+	myTalents
+	{
+		Talent ship_laser_cannons_a < uid=B4FBE43064F71B8100003C3F7DCEAD39 > = ship_laser_cannons_a B4FBE430642C13C000000BA1D887F4E7
+	}
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=B4FBE43064F71E9700009E9B9524804C > = trailblazer_firemode_laser_cannons_base B4FBE430650854BF00282692D0456EE5
+		}
+	}
+}
+
+WeaponItem ship_gear_laser_cannons_b < uid=B4FBE430642A8E4200000BB472403398 > : ship_gear_laser_cannons_a
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #B4FBE430642A896E00000B899FD0E3C7, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = \"LC-60 Laser Cannon\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Laser Cannons Upgrade\", enabled = true, guid = #B4FBE43065E99465001F48FA44133C42, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10300, text = 'A laser cannon upgrade that <color name=\"Menu Green\"><b>increases its rate of fire.</b></color>', type = \"MenuLine\""
+	myIcon "mySpriteId = 1747530720, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_weapons.spritesheet\""
+	myCategory Weapon
+	myInventoryPouch Weapons
+	myDefaultInventory Spaceship
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+	myAmount < uid=B4FBE43064F71B8100003C40ACD943E7 >
+	{
+	}
+	myDefaultSlotGroup Weapons
+	myTalents
+	{
+		Talent ship_laser_cannons_b < uid=B4FBE43064F71B8100003C4150448C4C > = ship_laser_cannons_b B4FBE430642C1FF400000B2E59875B56
+	}
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=B4FBE43065085507002826A745C1DA0B > = trailblazer_firemode_laser_cannons B4FBE43064F73BFD0005002154FB26FF
+		}
+	}
+}
+
+WeaponItem ship_gear_laser_cannons_c < uid=B4FBE430642A8E4200000BB6AF800E02 > : ship_gear_laser_cannons_a
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #B4FBE430642A8AAD00000B984A066B58, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = \"LC-70 Laser Cannon\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Laser Cannons Upgrade\", enabled = true, guid = #B4FBE43065E99475001F8010767B7AAC, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10300, text = 'A laser cannon upgrade that <color name=\"Menu Green\"><b>greatly increases its rate of fire.</b></color>', type = \"MenuLine\""
+	myIcon "mySpriteId = -1465127405, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_weapons.spritesheet\""
+	myCategory Weapon
+	myInventoryPouch Weapons
+	myDefaultInventory Spaceship
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+	myAmount < uid=B4FBE43064F71B8100003C4232DC73B2 >
+	{
+	}
+	myDefaultSlotGroup Weapons
+	myTalents
+	{
+		Talent ship_laser_cannons_c < uid=B4FBE43064F71B8100003C433A73B7B5 > = ship_laser_cannons_c B4FBE430642C231600000B6D2A5BE835
+	}
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=B4FBE43065085507002826A8A5D07B6E > = trailblazer_firemode_laser_cannons B4FBE43064F73BFD0005002154FB26FF
+		}
+	}
+}
+
+WeaponItem ship_gear_rapid_fire_cannons_a < uid=B4FBE43064A6CD730000A7D34477533C > : ship_gear_laser_cannons_a
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #B4FBE43064A6CD630000A7D173061FC7, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = \"C-K10a Rapid Fire Cannon\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Rapid Fire Cannons \", enabled = true, guid = #B4FBE43065E99499001FDB21A0B89755, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = 'An upgraded laser cannon that <color name=\"Menu Green\"><b>fires bursts at multiple targets.</b></color>', type = \"MenuLine\""
+	myIcon "mySpriteId = -1083005476, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_weapons.spritesheet\""
+	myGraphObject "helix/graph objects/weapon/wpn_trailblazer_rapidfire.mgraphobject"
+	myCategory Weapon
+	myInventoryPouch Weapons
+	myDefaultInventory Spaceship
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+	myAmount < uid=B4FBE43064F73DD80005006F0B341C63 >
+	{
+	}
+	myDefaultSlotGroup Weapons
+	myTalents
+	{
+		Talent ship_rapid_fire_cannons_a < uid=B4FBE43064F71B8100003C452881CC5D > = ship_rapid_fire_cannons_a B4FBE43064C913B600024A4D79D40D6A
+	}
+	myFireModes
+	{
+		WeaponFireModeSlot ChargedFireMode
+		{
+			myFireMode < uid=B4FBE43064F71E4500009E9186BE19F6 > = trailblazer_firemode_rapid_fire_cannons B4FBE43064F73BFD00050027647AFC4C
+		}
+		WeaponFireModeSlot "Multi Shot"
+		{
+			mySlotTag MultiShot
+			myFireMode < uid=B4FBE43064F71E4500009E9246A80BAE > = trailblazer_firemode_rapid_fire_cannons B4FBE43064F73BFD00050027647AFC4C
+		}
+	}
+}
+
+WeaponItem ship_gear_rapid_fire_cannons_b < uid=B4FBE43064A6CDBF0000A7EC6891C256 > : ship_gear_rapid_fire_cannons_a
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #B4FBE43064A6CD890000A7DC10DEB47D, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = \"C-K12b Rapid Fire Cannon\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Rapid Fire Cannons Upgrade\", enabled = true, guid = #B4FBE43065E994AD00201F8FF1EDE0A2, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10300, text = 'An upgraded laser cannon that <color name=\"Menu Green\"><b>increases the rate of fire and burst duration.</b></color>', type = \"MenuLine\""
+	myIcon "mySpriteId = 1815574956, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_weapons.spritesheet\""
+	myCategory Weapon
+	myInventoryPouch Weapons
+	myDefaultInventory Spaceship
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+	myAmount < uid=B4FBE43064F71B8100003C46F9116B1C >
+	{
+	}
+	myDefaultSlotGroup Weapons
+	myTalents
+	{
+		Talent ship_rapid_fire_cannons_b < uid=B4FBE43064F71B8100003C475E78A594 > = ship_rapid_fire_cannons_b B4FBE43064C913B600024A4EB944ADDE
+	}
+	myFireModes
+	{
+		WeaponFireModeSlot ChargedFireMode
+		{
+			myFireMode < uid=B4FBE43065702CC40004AFC173770031 > = trailblazer_firemode_rapid_fire_cannons_upgrade B4FBE43065702C2B0004AA31FAE32A0F
+		}
+		WeaponFireModeSlot "Multi Shot"
+		{
+			mySlotTag MultiShot
+			myFireMode < uid=B4FBE43065702CC40004AFC2AB26A553 > = trailblazer_firemode_rapid_fire_cannons_upgrade B4FBE43065702C2B0004AA31FAE32A0F
+		}
+	}
+}
+
+WeaponItem ship_gear_plasburst_cannons_a < uid=B4FBE43064A6CDBF0000A7EF8E999F09 > : ship_gear_laser_cannons_a
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #B4FBE43064A6CD970000A7E3F2AE5408, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = \"C-5B Plasburst Cannon\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Plasburst Cannons\", enabled = true, guid = #B4FBE43065E994C300206B290A655E01, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10300, text = 'An advanced laser cannon that <color name=\"Menu Green\"><b>adds a charge function to deal great damage.</b></color>', type = \"MenuLine\""
+	myIcon "mySpriteId = -1779338177, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_weapons.spritesheet\""
+	myGraphObject "helix/graph objects/weapon/wpn_trailblazer_burstcannon.mgraphobject"
+	myCategory Weapon
+	myInventoryPouch Weapons
+	myDefaultInventory Spaceship
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+	myAmount < uid=B4FBE43064F71B8100003C489A042309 >
+	{
+	}
+	myDefaultSlotGroup Weapons
+	myTalents
+	{
+		Talent ship_plasburst_cannons_a < uid=B4FBE43064F71B8100003C49BCC1F730 > = ship_plasburst_cannons_a B4FBE43064C913B600024A5035342483
+	}
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=B4FBE43064F722E000019811A9045ABC > = trailblazer_firemode_plasburst_cannons B4FBE43064F73BFD0005002B3A709871
+		}
+	}
+}
+
+WeaponItem ship_gear_plasburst_cannons_b < uid=B4FBE43064A6CDBF0000A7F2812DE98C > : ship_gear_plasburst_cannons_a
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #B4FBE43064A6CDAA0000A7EA2C024CD8, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = \"C-10 Plasburst Cannon\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Plasburst Cannons Upgrade\", enabled = true, guid = #B4FBE43065E994D30020A2973B4B5B82, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = 'An upgraded laser cannon that <color name=\"Menu Green\"><b>deals increased damage when charged.</b></color>', type = \"MenuLine\""
+	myIcon "mySpriteId = 507465329, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_weapons.spritesheet\""
+	myCategory Weapon
+	myInventoryPouch Weapons
+	myDefaultInventory Spaceship
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+	myAmount < uid=B4FBE43064F71B8100003C4ACEFA223F >
+	{
+	}
+	myDefaultSlotGroup Weapons
+	myTalents
+	{
+		Talent ship_plasburst_cannons_b < uid=B4FBE43064F71B8100003C4B55356A71 > = ship_plasburst_cannons_b B4FBE43064C913B600024A51EC52C012
+	}
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=B4FBE430653FADAB0000538F442CBA9C > = trailblazer_firemode_plasburst_cannons_upgrade B4FBE430653FA9E20000537FA4022710
+		}
+	}
+}
+
+WeaponItem ship_gear_launcher_concussion_a < uid=B4FBE430642A8E4200000BB870658DB6 >
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #B4FBE430642A8AC400000B9BCB415C26, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = \"M-52 Concussion Missiles\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Concussion Missiles \", enabled = true, guid = #B4FBE43065E994DC0020BDEDC7657AF0, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10300, text = \"An agile missile type that <b>deals light damage to enemies.</b>\", type = \"MenuLine\""
+	myWhereToFind "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWantedByVendor "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myIcon "mySpriteId = -1602552365, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_weapons.spritesheet\""
+	myGraphObject "helix/graph objects/weapon/spaceship_dummy_weapon.mgraphobject"
+	myCategory ShipGear
+	myTier Big
+	myInventoryPouch ShipLauncher
+	myDefaultInventory Spaceship
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+	myAmount < uid=B4FBE43064F98C110003DFD29FF514E4 >
+	{
+		myDefaultValue 0
+	}
+	myConsumedItem < uid=B4FBE43064F9B0B600084E1D6806A33F > = con_MissileProjectile F8D368186310A14B000045D16B3818B6
+	myConsumedItemConfig
+	{
+		myShouldRefill TRUE
+		myFullRefillOnEquip TRUE
+		myCanRefillDuringCombat TRUE
+		myRefillOnlyWhenEmpty FALSE
+		myRefillStepByStep TRUE
+		myRefillStepFormula 1
+		myRefillDurationFormula "25 * TrailblazerLauncherRefillSpeedModifier * AuxCooldownReset"
+	}
+	myDefaultSlotGroup Missiles
+	myTalents
+	{
+		Talent ship_concussion_missiles_a < uid=B4FBE43064F98C110003DFD3121ECFAD > = ship_concussion_missiles_a B4FBE430642C16F900000BBAAA03FD09
+	}
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=B4FBE43064F98C110003DFD4E01D41DC > = trailblazer_concussion_missile_firemode B4FBE43065081A5D000B0B00E63411F7
+		}
+	}
+}
+
+WeaponItem ship_gear_launcher_concussion_b < uid=B4FBE430642A8E4200000BBA2988435A > : ship_gear_launcher_concussion_a
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #B4FBE430642A8AD100000B9E6049D0B3, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10300, text = \"M-72 Concussion Missiles\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Concussion Missiles Upgrade\", enabled = true, guid = #B4FBE43065E994FA002124E34C39CF2A, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10300, text = 'An upgrade to missiles that <color name=\"Menu Green\"><b>increases the damage.</b></color>', type = \"MenuLine\""
+	myIcon "mySpriteId = -1029393099, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_weapons_02.spritesheet\""
+	myCategory ShipGear
+	myInventoryPouch ShipLauncher
+	myDefaultInventory Spaceship
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+	myAmount < uid=B4FBE43064F98E2C0003E4D47D503DF9 >
+	{
+		myDefaultValue 0
+	}
+	myConsumedItemConfig
+	{
+		myRefillDurationFormula "20 * TrailblazerLauncherRefillSpeedModifier * AuxCooldownReset"
+	}
+	myDefaultSlotGroup Missiles
+	myTalents
+	{
+		Talent ship_concussion_missiles_b < uid=B4FBE43064F98E2C0003E4D54A2F7A7A > = ship_concussion_missiles_b B4FBE430642C231600000B6EFE61F308
+	}
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=B4FBE43065081A91000B0B0E36FDDAE0 > = trailblazer_advanced_concussion_missile_firemode B4FBE43064F980F30002BAB67E5A00BB
+		}
+	}
+}
+
+WeaponItem ship_gear_launcher_concussion_c < uid=B4FBE43064F98E2C0003E4D6D3111134 > : ship_gear_launcher_concussion_a
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #B4FBE43064F98DD40003E4CB2431B31D, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = \"CM-2 Arana Cluster Missiles\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Concussion Missiles Upgrade\", enabled = true, guid = #B4FBE43065E9952E00217A097EB4B432, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10300, text = 'An upgrade to the missiles that <color name=\"Menu Green\"><b>locks on multiple targets.</b></color>', type = \"MenuLine\""
+	myIcon "mySpriteId = 1537344324, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_weapons.spritesheet\""
+	myCategory ShipGear
+	myInventoryPouch ShipLauncher
+	myDefaultInventory Spaceship
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+	myAmount < uid=B4FBE43064F98E2C0003E4D7AF6B7602 >
+	{
+		myDefaultValue 0
+	}
+	myConsumedItem < uid=B4FBE43064F9B0B600084E1E1EC48FD4 > = con_MissileProjectile F8D368186310A14B000045D16B3818B6
+	myConsumedItemConfig
+	{
+		myRefillDurationFormula "20 * TrailblazerLauncherRefillSpeedModifier * AuxCooldownReset"
+	}
+	myDefaultSlotGroup Missiles
+	myTalents
+	{
+		Talent ship_concussion_missiles_c < uid=B4FBE4306500324B000729DA0EEF06C2 > = ship_concussion_missiles_c B4FBE43065003221000729B62517FB62
+	}
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=B4FBE43064F98E2C0003E4D962E57556 > = trailblazer_advanced_concussion_missile_firemode B4FBE43064F980F30002BAB67E5A00BB
+		}
+		WeaponFireModeSlot MultiLockOn
+		{
+			mySlotTag MultiShot
+			myFireMode < uid=B4FBE43064F9AF9900084E0F709AC035 > = trailblazer_cluster_missile_firemode B4FBE43064F980F30002BABA62F60042
+		}
+	}
+}
+
+WeaponItem ship_gear_launcher_torpedo_a < uid=B4FBE430642A8E4200000BBE73AC414E >
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #B4FBE430642A8C4C00000BA7CF764A10, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = \"T-350 Torpedoes\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Torpedoes \", enabled = true, guid = #B4FBE43065E99535002193E6F59A2569, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10300, text = \"A <b>less maneuverable</b> missile type that <b>deals great damage in a big explosion radius.</b>\", type = \"MenuLine\""
+	myWhereToFind "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWantedByVendor "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myIcon "mySpriteId = 461951066, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_weapons.spritesheet\""
+	myGraphObject "helix/graph objects/weapon/spaceship_dummy_weapon.mgraphobject"
+	myCategory ShipGear
+	myTier Big
+	myInventoryPouch ShipLauncher
+	myDefaultInventory Spaceship
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+	myAmount < uid=B4FBE430650054CC000056AB103748C9 >
+	{
+	}
+	myConsumedItem < uid=B4FBE43065005AF70001B6B8931BF58A > = con_TorpedoProjectile AE04054766698FB900060368A6E6E299
+	myConsumedItemConfig
+	{
+		myShouldRefill TRUE
+		myFullRefillOnEquip TRUE
+		myCanRefillDuringCombat TRUE
+		myRefillOnlyWhenEmpty FALSE
+		myRefillStepByStep TRUE
+		myRefillStepFormula 1
+		myRefillDurationFormula "28 * TrailblazerLauncherRefillSpeedModifier * AuxCooldownReset"
+	}
+	myDefaultSlotGroup Missiles
+	myTalents
+	{
+		Talent ship_torpedoes_a < uid=B4FBE430650054CC000056AC94855C57 > = ship_torpedoes_a B4FBE430642C176900000BBF92F2F4ED
+	}
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=B4FBE430650054CC000056ADFE310BC3 > = trailblazer_torpedo_missile_firemode B4FBE430650054A1000053EB2E511A04
+		}
+	}
+}
+
+WeaponItem ship_gear_launcher_torpedo_b < uid=B4FBE430642A8E4200000BC08ED6AAB2 > : ship_gear_launcher_torpedo_a
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #B4FBE430642A8C5800000BAABE29EADA, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = \"PT-240 Proton Torpedoes\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Torpedoes Upgrade\", enabled = true, guid = #B4FBE43065E9954D0021E373209850D2, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10300, text = 'An upgrade to missiles that <color name=\"Menu Green\"><b>increases the damage, explosion radius and maneuverability.</b></color>', type = \"MenuLine\""
+	myIcon "mySpriteId = 337117742, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_weapons.spritesheet\""
+	myCategory ShipGear
+	myInventoryPouch ShipLauncher
+	myDefaultInventory Spaceship
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+	myAmount < uid=B4FBE43065005507000072F180FAF9E5 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory Item
+		myParentLevelsToUseInInstanceName 1
+	}
+	myConsumedItemConfig
+	{
+		myShouldRefill TRUE
+		myRefillDurationFormula "28 * TrailblazerLauncherRefillSpeedModifier * AuxCooldownReset"
+	}
+	myDefaultSlotGroup Missiles
+	myTalents
+	{
+		Talent ship_torpedoes_b < uid=B4FBE43065005507000072F24AF96928 > = ship_torpedoes_b B4FBE430642C231600000B6F8EF90A12
+	}
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=B4FBE4306523F98100088BBCEE1E086A > = trailblazer_proton_torpedo_missile_firemode B4FBE4306523F8E700088B98FD452BA2
+		}
+	}
+}
+
+WeaponItem ship_gear_launcher_ion_a < uid=B4FBE43064A6CE6D0000A80F4304F3A4 >
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #B4FBE43064A6CDFB0000A806C6E46A04, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = \"M-IO4 Ion Missiles\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Ion Missiles \", enabled = true, guid = #B4FBE43065E99556002200F8EDAD9585, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10300, text = \"A missile type with ionized energy that <b>disables ships.</b>\", type = \"MenuLine\""
+	myWhereToFind "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWantedByVendor "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myIcon "mySpriteId = 718669596, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_weapons.spritesheet\""
+	myGraphObject "helix/graph objects/weapon/spaceship_dummy_weapon.mgraphobject"
+	myCategory ShipGear
+	myTier Big
+	myInventoryPouch ShipLauncher
+	myDefaultInventory Spaceship
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+	myAmount < uid=B4FBE430650056EC00009A11A4505BD5 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory Item
+		myParentLevelsToUseInInstanceName 1
+	}
+	myConsumedItem < uid=B4FBE43065005AF70001B6B91DBD2208 > = con_IonMissileProjectile AE04054766695FFD00083F342120AE79
+	myConsumedItemConfig
+	{
+		myShouldRefill TRUE
+		myFullRefillOnEquip TRUE
+		myCanRefillDuringCombat TRUE
+		myRefillOnlyWhenEmpty FALSE
+		myRefillStepByStep TRUE
+		myRefillStepFormula 1
+		myRefillDurationFormula "20 * TrailblazerLauncherRefillSpeedModifier * AuxCooldownReset"
+	}
+	myDefaultSlotGroup Missiles
+	myTalents
+	{
+		Talent ship_ion_missiles_a < uid=B4FBE430650056EC00009A125B1F0A2B > = ship_ion_missiles_a B4FBE43064CA0D1F0003C2546D365F03
+	}
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=B4FBE430650056EC00009A13B144D585 > = trailblazer_ion_missile_firemode B4FBE43065005527000073277F86E42F
+		}
+	}
+}
+
+WeaponItem ship_gear_launcher_ion_b < uid=B4FBE43064A6CE6D0000A8120B6229DF > : ship_gear_launcher_ion_a
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #B4FBE43064A6CE0E0000A80D4F857F7F, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = \"M-IO8 Ion Missiles\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Ion Missiles Upgrade\", enabled = true, guid = #B4FBE43065E9957100225CB546108966, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10300, text = 'An upgrade to the missiles that <color name=\"Menu Green\"><b>increases damage and effectiveness.</b></color>', type = \"MenuLine\""
+	myIcon "mySpriteId = -1120974740, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_weapons.spritesheet\""
+	myCategory ShipGear
+	myInventoryPouch ShipLauncher
+	myDefaultInventory Spaceship
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+	myAmount < uid=B4FBE430650058A500009A2147D86C9E >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory Item
+		myParentLevelsToUseInInstanceName 1
+	}
+	myConsumedItemConfig
+	{
+		myShouldRefill TRUE
+		myCanRefillDuringCombat TRUE
+		myRefillOnlyWhenEmpty FALSE
+		myRefillStepByStep TRUE
+		myRefillStepFormula 1
+		myRefillDurationFormula "20 * TrailblazerLauncherRefillSpeedModifier * AuxCooldownReset"
+		myResetRefillTimerOnItemConsumed FALSE
+	}
+	myDefaultSlotGroup Missiles
+	myTalents
+	{
+		Talent ship_ion_missiles_b < uid=B4FBE430650058A500009A2295618CAF > = ship_ion_missiles_b B4FBE43064CA0D1F0003C2557660D61B
+	}
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=B4FBE4306523F98100088BBD7E820D1B > = trailblazer_advanced_ion_missile_firemode B4FBE4306523F8E700088B9CFA21828B
+		}
+	}
+}
+
+TurretMountEquipmentItem ship_gear_turret_laser_a < uid=C107E9E964EF5E860004802728372A65 >
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #C107E9E964EF5EC70004E7A430C71204, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = \"TU-B4 Laser Turret\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Turret\", enabled = true, guid = #B4FBE43065E9957A00227D53B945BFBD, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10300, text = \"A turret that <b>automatically fires laser cannons at enemy targets</b> when activated.\", type = \"MenuLine\""
+	myWhereToFind "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWantedByVendor "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myIcon "mySpriteId = -584671712, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_weapons.spritesheet\""
+	myTier Big
+	myInventoryPouch ShipTurret
+	myDefaultInventory Spaceship
+	myAmount < uid=C107E9E964EF5E8600048028DD21EC9B >
+	{
+	}
+	myCooldown
+	{
+		myDuration 35.0
+		myFinalCooldownFormula "Equipment.BaseCooldown * TrailblazerTurretCooldownModifier * AuxCooldownReset"
+		myKeepCooldownOnSwitch TRUE
+	}
+	myDefaultSlotGroup TurretMount
+	myTalents
+	{
+		Talent ship_turret_laser_a < uid=C107E9E964EF5F450004E7B2E4613036 > = ship_turret_laser_a B4FBE430642C188900000BCD00E675DA
+	}
+	myActivationBark < uid=C2B742226554CFF0000029F7854234E3 > = S_ND5_Space_TurretActive 3A1291216554BBDE00033A83102C05B3
+	myNPCAttachmentSlot < uid=C107E9E964EF5E8600048029C364E449 >
+	{
+		mySlot TrailblazerTurret
+		myAttachedAgent 6EA7962563C7F95700002402B3CE9468
+		myReleaseable FALSE
+		myRespawnable TRUE
+	}
+	myTurretActiveDuration "15 * TrailblazerTurretDurationModifier"
+}
+
+TurretMountEquipmentItem ship_gear_turret_laser_b < uid=C107E9E964EF5E860004802ABE28CFC3 >
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #C107E9E964EF5FCA00054F55083345D2, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = \"TU-C6 Laser Turret\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Turret Upgrade\", enabled = true, guid = #B4FBE43065E995930022D1D72F789426, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10300, text = 'An upgrade to the laser turret that <color name=\"Menu Green\"><b>increases its damage.</b></color>', type = \"MenuLine\""
+	myWhereToFind "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWantedByVendor "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myIcon "mySpriteId = 486051534, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_weapons.spritesheet\""
+	myTier Big
+	myInventoryPouch ShipTurret
+	myDefaultInventory Spaceship
+	myAmount < uid=C107E9E964EF5E860004802B2FDDBE61 >
+	{
+	}
+	myCooldown
+	{
+		myDuration 35.0
+		myFinalCooldownFormula "Equipment.BaseCooldown * TrailblazerTurretCooldownModifier * AuxCooldownReset"
+		myKeepCooldownOnSwitch TRUE
+	}
+	myDefaultSlotGroup TurretMount
+	myTalents
+	{
+		Talent ship_turret_laser_b < uid=C107E9E964EF5FFB00054F5E60010CEB > = ship_turret_laser_b B4FBE430642C231600000B701E13BC6F
+	}
+	myActivationBark < uid=C2B742226554CFF0000029F8D74353CA > = S_ND5_Space_TurretActive 3A1291216554BBDE00033A83102C05B3
+	myNPCAttachmentSlot < uid=C107E9E964EF5E860004802CFD4ACA35 >
+	{
+		mySlot TrailblazerTurret
+		myAttachedAgent 7EE64634658303E00000F6551788E53E
+		myReleaseable FALSE
+		myRespawnable TRUE
+	}
+	myTurretActiveDuration "15 * TrailblazerTurretDurationModifier"
+}
+
+TurretMountEquipmentItem ship_gear_turret_ion < uid=C107E9E964EF5F450004E7B3342F010B >
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #C107E9E964EF608F0005B6C0E6A20B1A, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = \"IT-11 Ion Turret\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Turret Ion\", enabled = true, guid = #B4FBE43065E995A7002311CA9C6FADDE, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10300, text = 'An advanced turret that <color name=\"Menu Green\"><b>fires ionized energy blasts and disables ships.</b></color>', type = \"MenuLine\""
+	myWhereToFind "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWantedByVendor "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myIcon "mySpriteId = 292169449, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_weapons.spritesheet\""
+	myTier Big
+	myInventoryPouch ShipTurret
+	myDefaultInventory Spaceship
+	myAmount < uid=C107E9E964EF5F450004E7B4A5B139E3 >
+	{
+	}
+	myCooldown
+	{
+		myDuration 35.0
+		myFinalCooldownFormula "Equipment.BaseCooldown * TrailblazerTurretCooldownModifier * AuxCooldownReset"
+		myKeepCooldownOnSwitch TRUE
+	}
+	myDefaultSlotGroup TurretMount
+	myTalents
+	{
+		Talent ship_turret_laser_b < uid=C107E9E964EF60AF0005B6C9EE1D9771 > = ship_turret_laser_b B4FBE430642C231600000B701E13BC6F
+		Talent ship_turret_ion < uid=B4FBE43065E9BB73000851D54BCFC31D > = ship_turret_ion B4FBE43065E9B26D00000B405CF40DF2
+	}
+	myActivationBark < uid=C2B742226554CFF0000029F9D7EAC040 > = S_ND5_Space_TurretActive 3A1291216554BBDE00033A83102C05B3
+	myNPCAttachmentSlot < uid=C107E9E964EF5F450004E7B5B972A03C >
+	{
+		mySlot TrailblazerTurret
+		myAttachedAgent 6EA7962565045FA00001E701270F5C4D
+		myReleaseable FALSE
+		myRespawnable TRUE
+	}
+	myTurretActiveDuration "15 * TrailblazerTurretDurationModifier"
+}
+
+SensorJammerEquipmentItem ship_gear_aux_sensor_jammer < uid=B4FBE430642A93A000000C028EB0C1C0 >
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #B4FBE430642A92F700000BF1C4C37AA1, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = \"SE-JA-4 Sensor Jammer\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Sensor Jammer\", enabled = true, guid = #B4FBE43065E995B7002347BC20444F46, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10300, text = \"A device used to <b>make the Trailblazer harder to detect</b> by interfering with enemy scanners.\", type = \"MenuLine\""
+	myWhereToFind "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWantedByVendor "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myIcon "mySpriteId = -993517447, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_systems.spritesheet\""
+	myCategory ShipActiveSystem
+	myTier Big
+	myInventoryPouch ShipAux
+	mySpaceshipInventoryCapacity 1
+	myDefaultInventory Spaceship
+	myBuyPrice 19500
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+	myAmount < uid=C10161EF64A288220000415AC30D4E7D >
+	{
+	}
+	myCooldown
+	{
+		myDuration 30.0
+		myFinalCooldownFormula "Equipment.BaseCooldown * TrailblazerAuxCooldownModifier"
+		myKeepCooldownOnSwitch TRUE
+	}
+	myActiveDurationTalents
+	{
+		Talent ship_aux_sensor_jammer < uid=C10161EF64A28BAB0000AD93CEEF288E > = ship_aux_sensor_jammer C10161EF648B0A59000021F23E3819AB
+	}
+	myActivationBark < uid=C2B742226554CFF0000029FA8D856AB7 > = S_KAY_Space_AbilitySensorJammer 3A1291216554BC6200033AA524C0B7DF
+	myDuration 20.0
+}
+
+WeaponOverdriveEquipmentItem ship_gear_aux_weapon_overdrive < uid=B4FBE430642A93A000000C04065D67DA >
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #B4FBE430642A930300000BF4EEBC6ABC, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = \"HS-2300 Heat Sink\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Heat Sink\", enabled = true, guid = #B4FBE43065E995CB00238C2750104219, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10300, text = \"A device that <b>temporarily boosts the rate of fire of laser cannons and prevents overheating.</b>\", type = \"MenuLine\""
+	myWhereToFind "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWantedByVendor "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myIcon "mySpriteId = -1712386802, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_systems.spritesheet\""
+	myCategory ShipActiveSystem
+	myTier Big
+	myInventoryPouch ShipAux
+	mySpaceshipInventoryCapacity 1
+	myDefaultInventory Spaceship
+	myBuyPrice 19500
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+	myAmount < uid=C10161EF64A288220000415B1C894E61 >
+	{
+	}
+	myCooldown
+	{
+		myDuration 45.0
+		myFinalCooldownFormula "Equipment.BaseCooldown * TrailblazerAuxCooldownModifier"
+		myKeepCooldownOnSwitch TRUE
+	}
+	myActiveDurationTalents
+	{
+		Talent ship_aux_weapon_overdrive < uid=C10161EF64A28B9B0000AD92346FDBBA > = ship_aux_weapon_overdrive C10161EF649EDA7F00031634F72E6A7D
+	}
+	myActivationBark < uid=C2B742226554CFF0000029FB19F4B2C8 > = S_KAY_Space_AbilityWeaponOverdrive 3A1291216554BC6D00033AA6A424D1A5
+	myDuration 8.0
+}
+
+RepairkitEquipmentItem ship_gear_aux_repair_kit < uid=C10161EF64A287D3000030FADB30302C >
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #B4FBE43064D1E4E200006DC621C42BDD, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10300, text = \"RK-250 Repair Kit\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Repair Kit\", enabled = true, guid = #B4FBE43065E995E50023E23ED370F2C3, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10300, text = \"A device that <b>recharges the deflector shield and repairs the hull over time.</b>\", type = \"MenuLine\""
+	myWhereToFind "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWantedByVendor "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myIcon "mySpriteId = -2099462857, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_systems.spritesheet\""
+	myGraphObject ""
+	myCategory ShipGear
+	myTier Big
+	myInventoryPouch ShipAux
+	mySpaceshipInventoryCapacity 1
+	myDefaultInventory Spaceship
+	myAmount < uid=C10161EF64A288220000415C155F6BE7 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory Item
+		myParentLevelsToUseInInstanceName 1
+	}
+	myCooldown
+	{
+		myDuration 100.0
+		myFinalCooldownFormula "Equipment.BaseCooldown * AuxCooldownReset * TrailblazerRepairCooldownModifier"
+		myKeepCooldownOnSwitch TRUE
+	}
+	myTalents
+	{
+		Talent ship_aux_repair_kit < uid=B4FBE43065E9BBAF000851F2DC0A109F > = ship_aux_repair_kit B4FBE43065E9B2FD00000B484BB09C1C
+	}
+	myActivationBark < uid=C2B742226554F6B30000BA7C69221735 > = S_KAY_Space_TrailblazerShieldRepair 3A129121634813190000ED821DC1507C
+	myHealSequence
+	{
+		myDuration 1.0
+		myTracks
+		{
+			myGenericTracks
+			{
+				ShieldRepairTrack ShieldRepair
+				{
+					myStartCyclePos 0.0
+					myEndCyclePos 1.0
+					myRegeneration "100.0 * NebulaRepairKit * TrailblazerShieldRepairModifier"
+					myIsMaxShieldPercentage FALSE
+				}
+				HealTrack HealTrack
+				{
+					myEndCyclePos 1.0
+					myHealthAmountFormula "0.5 * TrailblazerHealthRepairModifier"
+					myIsMaxHealthPercentage TRUE
+					myIsImmediate FALSE
+					myKeepActiveIfHealthFull FALSE
+					myDamageInterruptsHealing FALSE
+				}
+			}
+		}
+	}
+}
+
+CountermeasureEquipmentItem ship_gear_aux_countermeasure < uid=C10161EF64A2881200003E63CAC2B33E >
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of ship component\", enabled = true, guid = #B4FBE43064D1E4E700006EEE8EA87871, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10300, text = \"CO-BA Countermeasures\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Gear - Countermeasures \", enabled = true, guid = #B4FBE43065E99608002433751E760CDA, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10300, text = \"A device used to <b>deflect incoming missiles.</b>\", type = \"MenuLine\""
+	myWhereToFind "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWantedByVendor "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myIcon "mySpriteId = -852066987, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_systems.spritesheet\""
+	myCategory ShipActiveSystem
+	myTier Big
+	myInventoryPouch ShipAux
+	mySpaceshipInventoryCapacity 1
+	myDefaultInventory Spaceship
+	myCooldown
+	{
+		myDuration 30.0
+		myFinalCooldownFormula "Equipment.BaseCooldown * TrailblazerAuxCooldownModifier"
+		myKeepCooldownOnSwitch TRUE
+	}
+	myTalents
+	{
+		Talent ship_aux_countermeasure < uid=B4FBE43065E9BB97000851EBD1A88337 > = ship_aux_countermeasure B4FBE43065E9B35900000B5806FA1FCF
+	}
+	myActiveDurationTalents
+	{
+	}
+	myActivationBark < uid=C2B742226554CFF0000029FCD4E46F3F > = S_KAY_Space_AbilityCountermeasures 3A1291216554BC4E00033AA45CE80CDC
+	myActivationParticleEffect helix/particles/vfx_wpn_countermeasures_01.mparticles
+	myDuration 10.0
+}
+
+GearItem ship_gear_dodge < uid=AE040547657AF28F0001F091A49AD5F9 >
+{
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Manuvers - Dodge\", enabled = true, guid = #B4FBE43065E9B3CC00000B691150C34D, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10300, text = \"A maneuver used to <b>dodge sideways</b> with the Trailblazer.\", type = \"MenuLine\""
+	myWhereToFind "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWantedByVendor "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myTier Big
+	myDefaultInventory Spaceship
+	myDefaultSlotGroup Attachment
+	myTalents
+	{
+		Talent "Upgraded Dodge" < uid=AE040547657B0F680001F082A75F8E82 > = ship_dodge AE040547657C1C5E0001EF5CB36A562A
+	}
+}
+
+GearItem rokana_ship_gear_dodge < uid=25319C7067371B220000014FAC45F16E > : ship_gear_dodge
+{
+	myDefaultInventory RokanaSpaceship
+}
+
+GearItem ship_gear_upgraded_dodge < uid=AE040547657C1CDA0001EFA859C5D24F >
+{
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Maneuver - Dodge Roll\", enabled = true, guid = #B4FBE43065E9B3ED00000B7298349BD1, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10300, text = \"An improved dodge used to <b>roll sideways</b> to avoid obstacles.\", type = \"MenuLine\""
+	myWhereToFind "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWantedByVendor "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myTier Big
+	myDefaultInventory Spaceship
+	myAmount < uid=AE040547657C1CDA0001EFA978630668 >
+	{
+	}
+	myDefaultSlotGroup Attachment
+	myTalents
+	{
+		Talent "Upgraded Dodge" < uid=AE040547657C1CDA0001EFAA7885DD31 > = ship_upgraded_dodge AE040547657B0F880001F089BB901B6B
+	}
+}
+
+GearItem ship_gear_maneuver_180 < uid=AE040547657AF4360001F09693055E1F >
+{
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Maneuver - 180\", enabled = true, guid = #B4FBE43065E9B40600000B7DC0CB1868, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10300, text = \"A maneuver used to <b>loop the Trailblazer to position behind a pursuing enemy.</b>\", type = \"MenuLine\""
+	myWhereToFind "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWantedByVendor "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myTier Big
+	myDefaultInventory Spaceship
+	myDefaultSlotGroup Attachment
+	myTalents
+	{
+		Talent "New Talent" < uid=AE040547657B10030001F0DB38FC6D52 > = ship_maneuver_180 AE040547657B0F9D0001F08CDFB59B26
+	}
+}
+
+GearItem ship_gear_maneuver_360 < uid=AE040547657AF6A00001F08335009428 >
+{
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay Description for Ship Maneuver - 360\", enabled = true, guid = #B4FBE43065E9B42200000B88FA4F1819, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10300, text = 'A loop upgrade used to <color name=\"Menu Green\"><b>quickly turn the Trailblazer into the opposite direction.</b></color>', type = \"MenuLine\""
+	myWhereToFind "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWantedByVendor "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myTier Big
+	myDefaultInventory Spaceship
+	myAmount < uid=AE040547657AF6A00001F084BFAE0958 >
+	{
+	}
+	myDefaultSlotGroup Attachment
+	myTalents
+	{
+		Talent "New Talent" < uid=AE040547657B10150001F102FD21B4AE > = ship_maneuver_360 AE040547657B0FEA0001F09A4EEC3154
+	}
+}
+

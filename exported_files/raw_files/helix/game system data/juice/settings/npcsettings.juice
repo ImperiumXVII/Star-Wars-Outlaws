@@ -1,0 +1,38 @@
+include "helix/game system data/fruit/settings/npcsettings.fruit"
+include "helix/game system data/juice/npc/_includes_all_npcs.juice"
+
+NPCSettings myNPCSettings < uid=16DEADE65F5A1EB20000001E14A45778 >
+{
+	myDefaultPlayerAwarenessBehavior helix/behaviors/npc_playerawareness.mbehavior
+	myDefaultFireteamBehavior "helix/npc fireteam behaviors/test_fireteam.mnpcfireteambehavior"
+	myDebugMoveOrderBehavior helix/behaviors/test_npc_orders.mbehavior
+	myNPCBumpSettings
+	{
+		myCooldown 3.0
+		myLightBumpVelocity 4.1
+		myHeavyBumpVelocity 5.6
+		myLightSlideBumpVelocity 1.5
+		myHeavySlideBumpVelocity 2.0
+		myVehicleLightHitCooldown 5.0
+		myRequiredLightVehicleHits 10
+		myLightVehicleBumpVelocity 4.0
+		myHeavyVehicleBumpVelocity 6.5
+	}
+	myTraversalSettings
+	{
+		TraversalSettings Ladders
+		{
+			myUserEdgeType LADDER_CLIMB
+			myAllowMultipleEntries TRUE
+			myCooldownBetweenUsages 3.0
+			myExclusivityCooldown 2.0
+			mySwitchDirectionCooldown 2.0
+			myStopDistanceBetweenNPC 0.7
+		}
+	}
+	myDifficultyOverrideGameValue < uid=7FD958A365C4A18B000000E72B9725E9 >
+	{
+		myVariableAttributeName NPCDifficultyOverrideGameValue
+	}
+}
+

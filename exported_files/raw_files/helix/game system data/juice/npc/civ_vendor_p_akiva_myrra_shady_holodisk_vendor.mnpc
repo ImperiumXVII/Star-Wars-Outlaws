@@ -1,0 +1,44 @@
+include "helix/game system data/juice/npc/base_civ_vendor.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC civ_vendor_p_akiva_myrra_shady_holodisk_vendor < uid=CC6CF61E651FD53B001026AE2FCCD789 > : base_civ_vendor
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"vendor type for SL merchant\", enabled = true, guid = #D00CF6546634A3A000195EEDD587747A, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10653, text = \"Scavenger\", type = \"MenuLine\""
+	myCharacterVisuals < uid=CC6CF61E651FD597001026B20EE1DF3A > = character_visuals_npc_generator_02_planet_akiva_vendor 66F57289657C55FB0005F8291CC5D87E
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1657B1AA65E9C2DC000933E5E6527FD7 > = Agent_Gender_MasculineTag 16DEADE6626D20EA00002E504CE30DE2
+	}
+	myPossibleSpeciesTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1657B1AA65E9C2E6000933E6E13F8D09 > = Agent_Species_HumanTag 2736B365634D673A0003C27CFCFEFD1A
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F25663CF275000000CAFD6B73D2 > = Agent_Binocular_NotVOTarget 3A129121662B9A29000B2B5A42DACF63
+		RBTagsTag vendor < uid=1EC89F25663CF268000000C96248317D > = Agent_Archetype_VendorMarket E4123D2762A7919C00007B4F3ED4B367
+	}
+	myDialogueCharacters
+	{
+		DialogueCharacterWithTags CIV_Vendor_AKI_ShadyVendor < uid=CC6CF61E652411C60001F16F4047C09D >
+		{
+			myDialogueCharacter < uid=CC6CF61E6524120E0001F171BD61A27A > = AI_VENDOR_DEFAULT_M03 E4123D2762712C3D00002D8E1A42713F
+		}
+	}
+	myVendorConfig < uid=CC6CF61E651FDFD3001026B61F84E8BD > = VendorConfig_AKI_City_ShadyHolodiskVendor CC6CF61E651FCD5B0010268FE4B7EC0E
+	myHideMapRefGameConditions
+	{
+		myType Group
+		myIsNegated FALSE
+		myOperator And
+		myCanBeOverridden FALSE
+		myConditions
+		{
+			GameConditionContextAgentIsAlive "New GameConditionContextAgentIsAlive"
+			{
+				myIsNegated TRUE
+			}
+		}
+	}
+}
+

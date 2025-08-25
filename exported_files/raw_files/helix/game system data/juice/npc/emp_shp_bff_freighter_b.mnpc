@@ -1,0 +1,37 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/emp_shp_base.mnpc"
+include "helix/game system data/juice/npc/neu_shp_bff_freighter_a.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC emp_shp_bff_freighter_b < uid=6EA79625651D5BE40004B0D5A1332F9D > : emp_shp_base
+{
+	myCharacterVisuals < uid=6EA79625651D5BE40004B0D6AF121CFB > = character_visuals_npc_shp_bff_freighter_V2 6EA79625651D7FFA00005E899EE7D31E
+	mySpaceshipType BFF1Empire
+	myMaxHealth 1200
+	myHealthFormula 600*SpaceHealthDifficultyModifier
+	myFaction < uid=6EA79625651D5BE40004B0D774694D48 > = Empire 16DEADE65F21E5AB000000B35532A71B
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag (0)" < uid=6EA79625651D5BE40004B0D80F43EE60 > = Agent_Gender_MasculineTag 16DEADE6626D20EA00002E504CE30DE2
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=6EA79625651D5BE40004B0D9373467D2 > = Agent_Archetype_Pilot 3A12912163EF7B9500005053123CF383
+		RBTagsTag "New RBTagsTag (0)" < uid=6EA79625651D5BE40004B0DA08FE500B > = Agent_ShipType_FreighterTag 3A12912164EE0F180000FFAD5587F6E6
+		RBTagsTag "New RBTagsTag (1)" < uid=6EA79625651D5BE40004B0DB36C35F51 > = Agent_Faction_AshigaClanTag 4728ADF9620B7AF800002022DD5E94D3
+	}
+	myDialogueCharactersFromDatabase
+	{
+		DialogueCharacterWithTags "Ashiga M01" < uid=6EA79625651D5BE40004B0DC26E38707 > = Ashiga_Pilot_M01 3A1291216475FE6A0001627DE862B6ED
+	}
+	myLodType Spaceship_Cruiser
+	myVisionProfile < uid=6EA79625651D5BE40004B0DDB27D7EFE > = visionProfile_emp_ship_HaulerShuttle 6B0E1DE964B7A45D0000AD5930260AFA
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=6EA79625651D5BE40004B0DE48F91EB2 > = detectionProfile_emp_ship_HaulerShuttle 6B0E1DE964B6564F0003C7136A021B82
+	}
+	myLootTable < uid=2AE2EC8565E5D32200054B2A57FB48FA > = loot_OnKillShip_Freighter 2AE2EC8565E5C4AE000545FA2874CC04
+}
+

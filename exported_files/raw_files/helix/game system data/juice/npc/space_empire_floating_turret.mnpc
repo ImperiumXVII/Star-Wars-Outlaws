@@ -1,0 +1,50 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC space_empire_floating_turret < uid=6EA7962563247A210000619A670708C3 >
+{
+	myCharacterVisuals < uid=6EA7962563247A210000619BD3BA83E0 > = character_visual_npc_space_empire_floating_turret 6EA79625632477A800006232CFC72630
+	myBehavior helix/behaviors/emp_floating_turret.mbehavior
+	myNPCComponentSetType Turret
+	mySpaceshipType Default
+	myTurretType FloatingTurret
+	myMaxHealth 10
+	myHealthFormula 10
+	myFaction < uid=6EA7962563247A210000619CCAE0C8AB > = Empire 16DEADE65F21E5AB000000B35532A71B
+	myLodType Spaceship_Medium
+	mySensoryProfile < uid=06FDC2DB6602CDA70000FCDED32535BA > = DefaultTurret 06FDC2DB6602CD600000FCA3E06DE992
+	myVisionProfile < uid=6EA7962563247A210000619DF9FE1C98 > = visionProfile_npc_large_turret_floating 7EE646346572F3E200040DC48553DDB4
+	myHearingProfile < uid=6EA7962563247A210000619EA6E05274 > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=6EA7962563247A210000619FA14260CB > = detectionProfile_emp_turret_floating 7EE64634657ABCC70002661D1F4634A6
+	}
+	myThreatProfile < uid=6EA7962563247A21000061A06D2B41D8 > = DefaultThreatProfile 16DEADE6608474380000004E85DD35EB
+	myAimProfile < uid=6EA7962563247A21000061A164388A39 > = DefaultShipAimProfile B1CE79566214B8B7000075420B966556
+	myReducedAimProfile < uid=6EA7962563247A21000061A2C0EF0738 > = DefaultShipAimProfile B1CE79566214B8B7000075420B966556
+	myMainWeapon < uid=6EA7962563247A21000061A3721963D6 > = NULLREFERENCE
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout NPCWeaponLoadout < uid=6EA796256499832D00001E210B3D972F > = weaponloadout_emp_shp_floating_turret F95CD8F3640B0ACD0000098858970FC0
+	}
+	myAudioParameters
+	{
+		myEmitters
+		{
+			AgentEmitter Default
+			{
+				myEmitterLabel < uid=3A1C5D18655348CB0000B5623210DE34 > = Root 3A1C5D1863906F050000AB6FBD984CC4
+				myEmitterPrefab "emitterLayerName = \"weapons_npc\", enableDoppler = false, enablePropagation = true, sphereRadius = 1, stopOnDestroy = true"
+			}
+			AgentEmitter Weapon
+			{
+				myEmitterLabel < uid=3A1C5D18655348CB0000B563B0C34E34 > = Hand 3A1C5D1863906F180000AB718F1E9EFD
+				myEmitterPrefab "emitterLayerName = \"weapons_npc\", enableDoppler = false, enablePropagation = true, sphereRadius = 50, stopOnDestroy = true"
+				myAttachToAnyEquipmentSlots TRUE
+			}
+		}
+	}
+}
+

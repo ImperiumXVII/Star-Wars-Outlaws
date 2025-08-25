@@ -1,0 +1,33 @@
+include helix/audio/emitterlabels.juice
+include "helix/game system data/fruit/vehicle/vehicle.fruit"
+include "helix/game system data/juice/character/character_visuals_vehicle.mcharactervisuals"
+include "helix/game system data/juice/faction/factions.mfaction"
+include "helix/game system data/juice/impactrealization/base_impact_passthrough_ship.mimpactrealization"
+include "helix/game system data/juice/talent/player_overheat_talents.mtalent"
+
+Vehicle trailblazer_vehicle < uid=9D0EE20B60240B9F0000909855E18CD5 >
+{
+	myCharacterVisuals < uid=83E36AE361976966000019E4B8A7F76D > = character_visuals_trailblazer_vehicle 83E36AE361925B870000191AE8DADD87
+	myFaction < uid=9D0EE20B60240BFF000090991D6D01A1 > = Player 6994C4B6534699A60000001372FEB686
+	myCameraMode Spaceship
+	myAudioParameters
+	{
+		myEmitterName Trailblazer
+		myEmitters
+		{
+			AgentEmitter Default
+			{
+				myEmitterLabel < uid=3A1C5D18655346340000B52CDD8851B0 > = Root 3A1C5D1863906F050000AB6FBD984CC4
+				myEmitterPrefab "emitterLayerName = \"ship_player\", enableDoppler = false, enablePropagation = true, sphereRadius = 1, stopOnDestroy = true"
+			}
+			AgentEmitter Weapon
+			{
+				myEmitterLabel < uid=3A1C5D18655346340000B52D57B59DBB > = Hand 3A1C5D1863906F180000AB718F1E9EFD
+				myEmitterPrefab "emitterLayerName = \"weapons_player\", enableDoppler = false, enablePropagation = false, sphereRadius = 1, stopOnDestroy = true"
+			}
+		}
+	}
+	myEquipmentSet A207755D61F1539100001B115F7B241F
+	myPassThroughImpact < uid=B508F424645A2AF9000333D1A06492B1 > = base_impact_passthrough_ship B508F424645A030B0000B46BE1DEBC61
+}
+

@@ -1,0 +1,137 @@
+include "helix/game system data/fruit/timesequence/time_sequence.fruit"
+include "helix/game system data/fruit/camera/cameramodifier.fruit"
+include "helix/game system data/fruit/restriction/playerrestriction.fruit"
+
+class CastData
+{
+	float myStartCastOffsetFromAttachmentPoint 1.0 < min=0.0 tooltip="Every Cast check starting (or ending) from (or to) the grappling point will be offset with this amount from the grappling point position" >
+	float myMinimumRelevantDistanceToRaycastCheckGround 3.0 < min=0.0 tooltip="If we are making a Cast to check if we need a correction to avoid to attach the rope in a way that would make the swing hit the ground, if we hit anything with a distance lower than or equal this value, we will avoid to make the correction" >
+	float myThresholdToHitPencilTip 0.05 < min=0.0 tooltip="If the Pencil collider hits a point with a distance lower than this value from the Player position, the auto drop off may be triggered" >
+	float myXZOffsetToRaycastCheckGroundsNearPencilTip 0.3 < min=0.0 tooltip="If the Pencil collider is hitting the ground, we make two vertical Raycasts from the player position with this offset in the XZ plane, one in the swinging direction and one in the opposite one. Only if they both hit we trigger the auto drop off" >
+	float myUpOffsetToRaycastCheckGroundsNearPencilTip 0.2 < min=0.0 tooltip="If the Pencil collider is hitting the ground, we make two vertical Raycasts starting from the player position with this positive offset in the y axis, one in the swinging direction and one in the opposite one. Only if they both hit we trigger the auto drop off" >
+	float myRaycastLengthToCheckGroundsNearPencilTip 0.4 < min=0.0 tooltip="If the Pencil collider is hitting the ground, we make two vertical Raycasts with this length, one in the swinging direction and one in the opposite one. Only if they both hit we trigger the auto drop off" >
+	float myPlayerRadiusMultiplierForFreeJumpFromPath 0.8 < min=0.0 tooltip="Multiplier for the player radius when we check if the jump to attach to a Grappling Point is free" >
+	float myMinRopeLengthToCheckRopeObstruction 2.5 < min=0.0 tooltip="If the rope is shorter than this value, we will not compute if it is obstructed by any object to trigger an auto detach" >
+	float myCheckRopeObstructionPercentageOnRopeLength 0.5 < bhv=percent min=0.0 max=1.0 tooltip="If the rope is long enough, this is the percentage of the rope length, starting from the attachment on player position, that we will check if it is obstructed. If it is, we will have an auto detach" >
+}
+
+class RappelSwingCommonData
+{
+	PlayerRestriction* myGrapplingHookRestrictionsOnPreparation < tootlip="restrictions active from the preparation to the throw of the rope" >
+	float myInputZoneToInterruptInteraction 0.5 < min=-1 tooltip="The minimum value of the dot product between the player's movement input intention and forward to interrupt the interaction before finishing the attachment phase" >
+	float myMovementInputInterruptionDeadZoneThreshold 0.1 < min=0 max=1 tooltip="dead zone movmement input strength for the interruption of the path to the attach position" >
+	float myRopeThrowTravelTime 0.2 < min=0 tooltip="The time in seconds it should take to launch the rope" >
+}
+
+class SwingInteractionValidationData
+{
+	float myMaxHorizontalDistanceToInteract 6.0 < tooltip="The radius of the area the player should be in with respect to the swing point to be able to grapple" >
+	float myMinVerticalDistanceFromAttachmentPoint 0.2 < tooltip="minimum distance between the grappling position and the attach on player position to trigger the grappling hook" >
+	float myMinVerticalDistanceFromGround 1.75 < tooltip="Minimum distance the player can have from ground when attaching and during reel out (NOTE: while swinging, this minimum distance is guaranteed only from the ground that is vertically below the grappling point)" >
+	float myMinVerticalDistanceFromGroundInAir 1.25 < tooltip="Minimum distance the player should have from ground when attaching while in air - if not respected this distance will be covered with an auto-reel in" >
+	float myDistanceFromEdgeToStartPreparing 0.5 < tooltip="If an edge was found, this is the distance from it where the player will start grappling" >
+	bool myShouldLetJumpAttachCloseToEdge true < tooltip="This bool switches on or off the logic to not wait on ground when jump attaching close to the edge. The closeness to the edge is determined by MaxHorizontalDistanceFromEdgeToJumpAttach" >
+	string myMaxHorizontalDistanceFromEdgeToJumpAttachCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.28333336 -0.26666668, }, outTangents = { 0.28333336 0.26666668, 0 0, }, properties = { 203, 1227, }, values = { 0 0.2, 0.85000002 1, }, }, numKeys = 2, }" < bhv=inputgraph tooltip="this curve is used to determine, depending on the predicted position ok the player during jump, how far from the edge we want to allow jump attaching (Horizontal axis playerPos height, vertical axis distance from the edge)" >
+}
+
+class AttachFromClimbData
+{
+	float myMaxApexHeight 0.25 < min=0 tooltip="The maximum height in meters the jump will reach" >
+	float myMaxReach 1.5 < min=0 tooltip="The maximum reach (horizontal distance covered) in meters the jump will have" >
+	float myMaxSpeed 2 < min=0 tooltip="The maximum speed the jump will reach during the execution" >
+	float myStompOffMultiplier 1.5 < min=0 tooltip="Multiplier that will be applied to gravity during the first part of the jump" >
+	float myAfterApexDescentMultiplier 1.25 < min=0 tooltip="Multiplier that will be applied to Gravity when the jump starts its descent to give the weight feeling during the descent" >
+	float myPreparationTime 0.6 < min=0 tooltip="This preparation time should take into account how much time want to stay in the jump context" >
+}
+
+class SwingAttachData
+{
+	bool myShouldLetJumpAttachWithAutoReelIn true < tooltip="This bool switches on or off the logic to not wait on ground when jump attaching from the ground below a grappling point" >
+	float myAutoReelInSpeedMultiplier 2.5 < min=1 tooltip="Multiplier to the normal reel in speed for the auto reel in performed during attachment" >
+	float myGroundPreparationTime 0.6 < min=0 tooltip="Time to prepare the grappling hook before attaching. This time includes throwing the hook" >
+	float myGroundTurnToAttachmentTime 0.0 < min=0 tooltip="Time to turn 180 deg if the player is not facing the prop while on ground. If set to 0 it'll be computed as the remaining preparation time from when she stops pathing" >
+	string myAttachEnterFromGroundTrajectoryCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.2 0.001, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph tooltip="reel velocity multiplier. X axis refers to the input pression strength" >
+	int myAttachEnterFromGroundTrajectoryControlPoints 6  < tooltip="Amount of samples used on the AttachEnterFromGroundTrajectoryCurve to create the 3D enter trajectory" >
+	float myGroundAttachVelocityReductionRate 0.5 < tooltip="This number will be used to lower player velocity over time instead of setting it to zero altogether at the beginning of the grappling context" >
+	float myInAirCloseToGroundPredictionTime 0.6 < min=0 tooltip="Time in seconds to anticipate if we're about to hit the ground or not. It is used to enqueue the attachment if being so close to the ground would mean hitting it with an InAir attachment" >
+	float myForcedWaitOnGroundPredictionTime 0.35 < min=0 tooltip="Time in seconds to anticipate if we're about to hit the ground or not. It is used to find the point from which to do the ground checks when forcing an on ground attachment" >
+	float myInAirPreparationTime 0.35 < min=0 tooltip="Time to prepare the grappling hook before attaching while being inAir. This time includes throwing the hook" >
+	float myInAirTurnToAttachmentTime 0.6 < min=0 tooltip="Time to turn 180 deg if the player is not facing the prop while falling or jumping. If set to 0 it'll be equal to the preparation time since InAir we don't do pathing" >
+	float myInAirTurnToAttachmentDeadZoneAngle 45.0 < min=0 tooltip="Angle in degrees between Kay's facing and the desired direction we want to turn to, to block turn on spot" >
+	float myInAirAttachVelocityReductionFactor 0.5 < tooltip="This number will be used to lower player velocity right at the begginning of the attachment while in air. The resulting velocity will be passed to the rope as starting velocity" >
+	AttachFromClimbData myAttachFromClimbData
+}
+
+class SwingDetachData
+{
+	float myJumpoffTurnDuration 1.0 < tooltip="Time in s to blend a 180 degrees rotation of Kay the jumpoff changes her orientation" >
+	float myJumpOffPrepareTime 0.0
+	float myJumpOffMinApexHeight 0.5
+	float myJumpOffMaxApexHeight 1.0
+	float myJumpOffMinHorizontalReach 2.5
+	float myJumpOffMaxHorizontalReach 4.0
+	float myJumpOffPerfectJumpMinAngle 45.0 < tooltip="The minimum angle between the perpendicular below the grapple point and the current player position to enforce the perfect jump height and reach" >
+	float myPerfectJumpHeight 0.5 < tooltip="The height of the jumpoff that will be enforced if we're in the perfect jump angle range" >
+	float myPerfectJumpReach 3.5 < tooltip="The reach of the jumpoff that will be enforced if we're in the perfect jump angle range" >
+	float myJumpOffInPlaceJumpMaxAngle 1.0
+	string myJumpOffModiferOverVelocityYCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.54266423 0.0043127919, -0.22166252 0.010775805, }, outTangents = { 0.20654905 -0.015086174, 0.54244196 -0.0043110251, 0 -0, }, properties = { 275, 1299, 2323, }, values = { -4 1, 0 0, 4 1, }, }, numKeys = 3, }" < bhv=inputgraph tooltip="This curve has on the X axis the vertical speed and on the Y axis the correspondent modifier, which should be defined in the 0-1 interval. It's used to tune the jumpoff's desired height in the min-max interval." >
+	string myJumpOffModiferOverVelocityXZCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -1.3904285 -0.0021551847, -0.99022329 0.00086259842, }, outTangents = { 0.99418628 -0.0007686615, 1.3904285 0.0021551847, 0 0, }, properties = { 5395, 7443, 6419, }, values = { -9 1, 0 0, 9 1, }, }, numKeys = 3, }" < bhv=inputgraph tooltip="This curve has on the X axis the horizontal speed and on the Y axis the correspondent modifier, which should be defined in the 0-1 interval. It's used to tune the jumpoff's desired reach in the min-max interval." >
+	float myJumpOffStompOffMultiplier 3.0
+	float myJumpOffAfterApexDescentMultiplier 1.25
+	float mySpeedThresholdToAutoDropOff 10.0 < tooltip="Maximum speed to trigger the auto drop off (we also need to press the reel out button, meet the angle threshold and the distance from ground has to be less than MinimumDistanceFromGround)" >
+	float myAngleThresholdToAutoDropOff 15.0 < tooltip="Maximum angle to trigger the auto drop off (we also need to press the reel out button, meet the velocity threshold and the distance from ground has to be less than MinimumDistanceFromGround)" >
+	float myDetachVelocityReductionFactor 0.5 < tooltip="This number will be used to reduce the velocity transferred by the swing motion to the different detach options" >
+}
+
+class PlayerGrapplingRopeSettings < uid=auto >
+{
+	ShakeCameraModifier* myThrowCameraShake
+	ShakeCameraModifier* myInAirThrowCameraShake
+	ShakeCameraModifier* myClimbThrowCameraShake
+	ShakeCameraModifier* myJumpoffCameraShake
+	ShakeCameraModifier* myCancelCameraShake
+	ShakeCameraModifier* myAutodetachCameraShake
+	uid myThrowRumble < bhv="constantData" constantDataType="rumble" >
+	uid myInAirThrowRumble < bhv="constantData" constantDataType="rumble" >
+	uid myClimbThrowRumble < bhv="constantData" constantDataType="rumble" >
+	uid myJumpoffRumble < bhv="constantData" constantDataType="rumble" >
+	uid myCancelRumble < bhv="constantData" constantDataType="rumble" >
+	uid myAutodetachRumble < bhv="constantData" constantDataType="rumble" >
+	RappelSwingCommonData myRappelSwingCommonData < tooltip="Data used by both Rappel and Swing right at the beginning of the interaction activation." >
+	SwingInteractionValidationData mySwingInteractionValidationData < tooltip="Data used to validate the Swing interaction both on ground and on edge." >
+	SwingAttachData mySwingAttachData < tooltip="Data used to handle Swing attaching, from closing in, to throwing the rope to actually attaching to the grapple point." >
+	SwingDetachData mySwingDetachData < tooltip="Data used to detach from a swing grapple point." >
+	string myReelVelocityMultiplierCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.2 0.001, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph tooltip="reel velocity multiplier. X axis refers to the input pression strength" >
+	float myReelInVelocity 400.0 < tooltip="This is not m/s, this is a blend value for mass, incrementing and decrementing mass of vertices that the player are inbetween" >
+	float myReelOutVelocity 400.0 < tooltip="This is not m/s, this is a blend value for mass, incrementing and decrementing mass of vertices that the player are inbetween" >
+	float mySwingTurnDuration 2.0 < tooltip="Time in s to blend a 180 degrees rotation of Kay when aligning her shoulders to camera view" >
+	float mySwingBlendResetTime 0.2f < tooltip="Time to reset the SwingInputDirectionBlendTime after the player input is not read anymore" >
+	float mySwingInputDirectionBlendTime 1.0 < tooltip="Time in s to blend a 180 degrees rotation of Kay when swinging" >
+	int myRenderPointsAmount 15 < tooltip="Number of dynamic pins with positions along the rope for the Grappling rope info node" >
+	float myLowHandOffset 1.0 < tooltip="Lower hand offset from the rope end position" >
+	float myHighHandOffset 1.0 < tooltip="Higher hand offset from the rope end position" >
+	vec3f myEndRopePositionLS 0.0;1.0;0.0 < tooltip="rope end position offset from the player position" >
+	vec3f myEndRopePositionInAirLS 0.0;1.0;0.0 < tooltip="rope end position offset from the player position when InAir" >
+	vec3f myLeftFootPositionLS 0.2;-0.5;0.0 < tooltip="left feet offset from the rope end position" >
+	vec3f myRightFootPositionLS -0.2;-0.5;0.0 < tooltip="right feet offset from the rope end position" >
+	float myMinRopeLength 1.4 < min=1.3 tooltip="Minimum length of the rope. The reel in will be blocked if the rope length is lower than or equal to this value" >
+
+	CastData myCastData < tooltip="Data about thresholds and offsets for Raycasts and Spherecasts. They are mostly meant to avoid bugs; they don't need specific fine tune on design side." >
+	
+	float myPBDSwingForce 150.0 < tooltip="Force used to calculate acceleration of player vertices: (aForce *(1/myPBDPlayerVerticesWeight))" >
+	float myPBDNonPlayerVerticesWeight 0.5 < tooltip="The mass of a single vertex" >
+	float myPBDPlayerVerticesWeight 60.0 < tooltip="The mass of the player on the rope" >
+	float myPBDMaxLength 10.0 < tooltip="The max length the rope can have" >
+	int myPBDAmountOfVertices 50 < tooltip="The amount of vertices, higher amount equals higher resolution, lower amount equals lower resolution of the simulation" >
+	float myPBDGravity 10.0 < tooltip="The gravity used during velocity update" >
+	float myPBDDragConstant 0.05 < tooltip="Drag constant applied during velocity update" >
+	float myPBDFixedTimeStep 60.0 < tooltip="The frequency(FPS) at which the simulation should update" >
+	float myPBDStructuralStiffness 1.0 < tooltip="The stiffness of structural constraints, lower value will make it more springy. Structural means the constraint between every vertex" >
+	float myPBDBendingStiffness 1.0 < tooltip="The stiffness of bending constraints, lower value will make it more springy. Bending means the constraint between every other vertex" >
+	float myPBDMaxSpeed 100.0 < tooltip="The max speed at which the vertices can move in one frame" >
+	int myPBDNumberofSolverIterations 30 < tooltip="The number of iterations the solver will do, less iterations will make the entire PBD rope more springy, more iterations will make it more stiff, however be careful since this could impact performance if set to high" >
+	float myPBDEntityVertexRadius 1.0 < tooltip="Radius of vertex that will be used to do sphere cast" >
+	float myPBDEntityRestitutionCoefficient 0.5 < tooltip="Restitution of player vertex when colliding with geometry" >
+	float myPBDPotentialCollisionFuturePredictionAmount 10.0 < tooltip="How many frames in the future it will check for potential collisions" >
+	float myPBDReelOutInterferenceOffsetMultiplier 2.0 < tooltip="Offset for new vertices to check if there is any interference before reeling out" >
+}

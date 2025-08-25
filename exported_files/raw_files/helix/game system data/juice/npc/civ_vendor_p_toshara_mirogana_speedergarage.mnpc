@@ -1,0 +1,26 @@
+include "helix/game system data/juice/npc/base_civ_vendor.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC civ_vendor_p_toshara_mirogana_speedergarage < uid=16DEADE660D7A7F2000010F7C5FAD377 > : base_civ_vendor
+{
+	myName "aurabesh = false, contextComment = \"NPC vendor selling speeder upgrades\", enabled = true, guid = #F4D8AE26621785AD00025A5A6F83F569, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 435, text = \"Speeder Vendor\", type = \"MenuLine\""
+	myCharacterVisuals < uid=D4F6307965BCEB8100146BCC2859725B > = character_visuals_silver_toshara_mirogana_vendor_speeder E053C1D56538FF590000C3A5F6164A60
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D276698000E00056C76B8A0557A > = Agent_Gender_FeminineTag 16DEADE6626D20EA00002E5277B65AD4
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag (0)" < uid=E4123D2762A88C740002A525AC49314C > = Agent_Archetype_VendorSpeederMechanic E4123D2762A791BE00007B532B475484
+	}
+	myDialogueCharacters
+	{
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=1EC89F2563DA669500035C3109404B40 >
+		{
+			myDialogueCharacter < uid=1EC89F25635162F10000536C50953190 > = AI_VENDOR_MECHANIC_F01 E4123D2762712A6500002D724BCBE4D5
+		}
+	}
+	myPlayerAwarenessProfile < uid=E4123D2762A8880C00017FE6915992DA > = Vendor_Mechanic E4123D2762A8878B00017F8B479815F6
+	myVendorConfig < uid=F4D8AE266374D6DF0001776C589C7F98 > = VendorConfig_TOS_City_Neutral_Speeder F4D8AE266336EE6E00071EEF0C5B6909
+}
+

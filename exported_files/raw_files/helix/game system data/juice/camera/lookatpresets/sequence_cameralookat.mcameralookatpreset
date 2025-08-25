@@ -1,0 +1,48 @@
+include "helix/game system data/fruit/camera/cameralookatpreset.fruit"
+include "helix/game system data/juice/camera/blendtransitions/dialogueoutcamerablend.mcamerablendtransition"
+
+CameraLookAtPreset Sequence_CameraLookAt < uid=7110821465339427001E5501E01F66E8 >
+{
+	myRestrictionData
+	{
+		myAllowedMovementDegrees 15.0;15.0
+	}
+	myZoomData
+	{
+		myTransitions
+		{
+			myInDuration 1.0
+			myOutDuration 1.0
+		}
+	}
+	myPivotOffsetData
+	{
+		myPivotOffset 0.0;0.0;0.0
+	}
+	myShoulderSwitchData
+	{
+		myTransitionOut < uid=840A9ABF66421CBD0003E0792E52FB04 > = dialogueoutcamerablend B0ED925064F5E2FA000076BFCA1A9149
+		myCanSwitchShoulder TRUE
+	}
+	myBaseTransition
+	{
+		myDuration 2.0
+	}
+	myOutTransition
+	{
+		myDuration 0.0
+	}
+	myMaxAngleDifferenceDegrees 180.0
+	myStayTime 0.0
+}
+
+CameraLookAtPreset Sequence_CameraLookAt_RightShoulder < uid=ACAEF5AB66605A9B0019ABB96E5743C3 > : Sequence_CameraLookAt
+{
+	myShoulderSwitchData
+	{
+		myTransitionIn < uid=ACAEF5AB66605A9B0019ABBA49B5889E > = NULLREFERENCE
+		myTransitionOut < uid=ACAEF5AB66605A9B0019ABBB89EE4848 > = dialogueoutcamerablend B0ED925064F5E2FA000076BFCA1A9149
+		myCanSwitchShoulder FALSE
+	}
+}
+

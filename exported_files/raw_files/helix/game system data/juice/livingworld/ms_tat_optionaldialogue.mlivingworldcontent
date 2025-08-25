@@ -1,0 +1,2214 @@
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+include "helix/game system data/juice/faction/factions.mfaction"
+include "helix/game system data/juice/intel/intel_tatooine.mintel"
+include "helix/game system data/juice/item/consumables.mitem"
+include "helix/game system data/juice/item/questitems.mitem"
+
+LivingWorldContent "TAT OD BASE" < uid=D4F6307964995AB4001196BF13573608 >
+{
+	myCompletedGameValue < uid=D4F6307964995FDD00120088E71C2C5C >
+	{
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType Ambient Ambient
+		LivingWorldContentLayerType "New LivingWorldContentLayerType" Encounter
+	}
+	myLayerType MicroStory
+	myBlockingRadius 2.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance -100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance +105"
+		{
+			myDistance 105.0
+		}
+	}
+}
+
+LivingWorldContent MS206_OD_NixToy < uid=D4F630796499730F001200E985F7F22D > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F630796499730F001200EA8A7EA068 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+		{
+			myDistance 105.0
+		}
+	}
+}
+
+LivingWorldContent MS207_OD_CaughtCheating < uid=D4F630796499738F001200F889015290 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F630796499738F001200F9AAFB9F1D >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+		{
+			myDistance 105.0
+		}
+	}
+}
+
+LivingWorldContent MS208_OD_PatientDroid_P0 < uid=D4F6307964D9DFAC0003184E3B625203 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F6307964D9DFAC0003184FD9C400F7 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionLivingWorldContent_HasBeenCompleted "MS208 IWM Not Completed"
+		{
+			myIsNegated TRUE
+			myLivingWorldContent D4F6307964C8EF080003A03531B282AD
+		}
+		GameConditionLivingWorldContent_HasBeenCompleted "MS208 P2 Bartender Not Completed"
+		{
+			myIsNegated TRUE
+			myLivingWorldContent D4F63079649972D8001200E179F0F6EE
+		}
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestState "MQ130 Is Not Started (Intro Beat)"
+				{
+					myQuest BFA41A0261B3755D0000049A3563A922
+					myQuestState Intro
+					myOperator Equal
+				}
+				GameConditionQuestState "MQ130 Is Not Active"
+				{
+					myQuest BFA41A0261B3755D0000049A3563A922
+					myQuestState Started
+					myOperator Equal
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator And
+			myConditions
+			{
+				GameConditionQuestState "MQ130 Is Active"
+				{
+					myQuest BFA41A0261B3755D0000049A3563A922
+					myQuestState Started
+					myOperator NotEqual
+				}
+				GameConditionQuestState "MQ130 Is Intro (Intro Beat)"
+				{
+					myQuest BFA41A0261B3755D0000049A3563A922
+					myQuestState Intro
+					myOperator NotEqual
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS208_OD_PatientDroid_P1 < uid=D4F63079649972D8001200DF8DFBC90D > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F63079649972D8001200E06F87CCE7 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 105.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionLivingWorldContent_HasBeenCompleted "MS208 IWM Not Completed"
+		{
+			myIsNegated TRUE
+			myLivingWorldContent D4F6307964C8EF080003A03531B282AD
+		}
+		GameConditionLivingWorldContent_HasBeenCompleted "MS208 P2 Bartender Not Completed"
+		{
+			myIsNegated TRUE
+			myLivingWorldContent D4F63079649972D8001200E179F0F6EE
+		}
+		GameConditionQuestState "MQ130 Is Not Active"
+		{
+			myQuest BFA41A0261B3755D0000049A3563A922
+			myQuestState Started
+			myOperator NotEqual
+		}
+		GameConditionQuestState "MQ130 Is Not Started (Intro Beat)"
+		{
+			myQuest BFA41A0261B3755D0000049A3563A922
+			myQuestState Intro
+			myOperator NotEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+				{
+					myDistance 105.0
+				}
+				GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted Completed
+				{
+				}
+				GameConditionQuestState "MQ130 Is Active"
+				{
+					myQuest BFA41A0261B3755D0000049A3563A922
+					myQuestState Started
+				}
+				GameConditionQuestState "MQ130 Is Intro (Intro Beat)"
+				{
+					myQuest BFA41A0261B3755D0000049A3563A922
+					myQuestState Intro
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS208_OD_PatientDroid_P2_Bartender < uid=D4F63079649972D8001200E179F0F6EE > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F63079649972D8001200E21AB94BE1 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionLivingWorldFormula "GV_MS208_PatientDroid_P1_Visited = 1"
+		{
+			myFormula "GV_MS208_PatientDroid_P1_Visited = 1"
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+		{
+			myDistance 105.0
+		}
+	}
+}
+
+LivingWorldContent MS208_OD_PatientDroid_P3_Datapad < uid=D4F6307964C902F20000F7BDC666893F > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F6307964C90B5D000266D4013E5B66 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionLivingWorldFormula "GV_MS208_PatientDroid_P2_FoundDatapad = 1"
+		{
+			myFormula "GV_MS208_PatientDroid_P2_FoundDatapad = 1"
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+				{
+					myDistance 105.0
+				}
+				GameConditionLivingWorldContent_HasBeenCompleted "New GameConditionLivingWorldContent_HasBeenCompleted"
+				{
+					myLivingWorldContent D4F63079649972D8001200E179F0F6EE
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS208_OD_PatientDroid_P3 < uid=D4F63079649972D8001200E349595A1A > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F63079649972D8001200E418E84722 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionLivingWorldContent_HasBeenCompleted "MS208 P2 Completed"
+		{
+			myLivingWorldContent D4F63079649972D8001200E179F0F6EE
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+		{
+			myDistance 105.0
+		}
+	}
+}
+
+LivingWorldContent MS210_OD_NixSkin < uid=D4F630796499731E001200EC8C75E66F > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F630796499731E001200EDB6290B56 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestIsCompleted "MQ_110 Completed"
+		{
+			myQuest BFA41A0261B3751E00000496D134E105
+		}
+		GameConditionQuestBeatState "MQ_130 B00a started"
+		{
+			myQuestBeat 253B686765DC813B0002F81C6B4DCC6C
+			myQuestBeatState Started
+			myOperator NotEqual
+		}
+		GameConditionQuestBeatState "MQ_130 B00b started"
+		{
+			myQuestBeat 253B6867663497630013459E659E7B93
+			myQuestBeatState Started
+			myOperator NotEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+		{
+			myDistance 105.0
+		}
+	}
+}
+
+LivingWorldContent MS211_OD_WantedReset_P1 < uid=D4F6307964997351001200F09D8EFF69 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F6307964997351001200F163032435 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance -100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup OR
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance +105"
+				{
+					myDistance 105.0
+				}
+				GameConditionPlayerHasIntel "Intel P1 Resolved"
+				{
+					myIntel < uid=ACAEF5AB668FC702001A7A3B1D5F1C7C > = A_TAT_MS211_ITL_WantedReset D4F6307964DF56B8000469A6CFACEF7D
+					myIntelState Resolved
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS211_OD_WantedReset_P2 < uid=D4F6307964997351001200F2F6BD5B16 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F6307964997351001200F31133349C >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel "MS211 Intel Active"
+				{
+					myIntel < uid=ACAEF5AB6602A67700133D23BC82B3B7 > = A_TAT_MS211_ITL_WantedReset D4F6307964DF56B8000469A6CFACEF7D
+				}
+				GameConditionPlayerHasIntel "MS211 Intel Resolved"
+				{
+					myIntel < uid=ACAEF5AB6602A67700133D2416BAED3F > = A_TAT_MS211_ITL_WantedReset D4F6307964DF56B8000469A6CFACEF7D
+					myIntelState Resolved
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+		{
+			myDistance 105.0
+		}
+	}
+}
+
+LivingWorldContent MS211_OD_WantedReset_P2_Complete < uid=D4F6307964DF8430000F48871BE46053 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F6307964DF8430000F4888D0B73745 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionLivingWorldFormula "GV_MS211_WantedReset_Visited = 1"
+		{
+			myFormula "GV_MS211_WantedReset_Visited = 1"
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted Completed
+		{
+		}
+	}
+}
+
+LivingWorldContent MS213_OD_TranslationService_P1 < uid=D4F63079649974ED00120118BE5FC347 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F63079649974ED00120119F647286D >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestState "MQ_130 Completed"
+		{
+			myQuest BFA41A0261B3755D0000049A3563A922
+			myQuestState Completed
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				LivingWorldGameConditionGroup "Group AND"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+						{
+							myDistance 105.0
+						}
+						GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+						{
+						}
+						GameConditionPlayerHasIntel "MS213 Intel P1 Resolved"
+						{
+							myIntel < uid=D4F6307965C203F2000AD105D011FACE > = A_TAT_MS213_ITL253_TranslationServices_P1 D4F6307964E6108000041A461D391F63
+							myIntelState Resolved
+						}
+					}
+				}
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+				{
+					myDistance 105.0
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS213_OD_TranslationService_P2 < uid=D4F63079649974ED0012011AAAE94984 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F63079649974ED0012011B910AE947 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 50"
+		{
+			myDistance 50.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel "Intel P1 Active"
+		{
+			myIntel < uid=D4F6307964E6150C0007137E72FE67FB > = A_TAT_MS213_ITL253_TranslationServices_P1 D4F6307964E6108000041A461D391F63
+		}
+		GameConditionQuestState "MQ130 Completed"
+		{
+			myQuest BFA41A0261B3755D0000049A3563A922
+			myQuestState Completed
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				LivingWorldGameConditionGroup "Group AND"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 50"
+						{
+							myDistance 55.0
+						}
+						GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+						{
+						}
+					}
+				}
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 50"
+				{
+					myDistance 55.0
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS213_OD_TranslationService_P3 < uid=D4F63079649974ED0012011CD10F45DA > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F63079649974ED0012011D1EC41BD6 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel "Intel P2 Active"
+		{
+			myIntel < uid=D4F6307964E61A7700090DA5B809E26A > = A_TAT_MS213_ITL254_TranslationServices_P2 D4F6307964E619130008950A41179DB0
+		}
+	}
+}
+
+LivingWorldContent MS215_OD_FixedRace_P1 < uid=D4F630796499747400120109F26189E6 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F63079649974740012010A1023166C >
+	{
+	}
+}
+
+LivingWorldContent MS215_OD_FixedRace_P2 < uid=D4F63079649974740012010BF3E56EBC > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F63079649974740012010C6ED75CF3 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel "MS215 Intel P1 Active"
+		{
+			myIntel < uid=D4F63079652A8D980011159286809C20 > = A_TAT_MS215_ITL218_FixedRace_P1 D4F630796499832200126DE5E9C7A58F
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				LivingWorldGameConditionGroup "Group AND"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+						{
+							myDistance 105.0
+						}
+						GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+						{
+						}
+						GameConditionPlayerHasIntel "Intel MS215 P1 Resolved"
+						{
+							myIntel < uid=D4F6307965C0DC8D001A168933F3DB51 > = A_TAT_MS215_ITL218_FixedRace_P1 D4F630796499832200126DE5E9C7A58F
+							myIntelState Resolved
+						}
+					}
+				}
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+				{
+					myDistance 105.0
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS215_OD_FixedRace_P3 < uid=D4F63079649974740012010D9007C676 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F63079649974740012010E989F326C >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel "MS215 Intel P2 Active"
+		{
+			myIntel < uid=D4F63079652A94B00017E419636D374D > = A_TAT_MS215_ITL218_FixedRace_P2 D4F630796499833C00126DF674538FBE
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				LivingWorldGameConditionGroup "Group AND"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+						{
+							myDistance 105.0
+						}
+						GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+						{
+						}
+					}
+				}
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+				{
+					myDistance 105.0
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS215_OD_FixedRace_P4_Return < uid=D4F63079652A94CD0017E42E8180B089 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F63079652A94CD0017E42FE87207E2 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionPlayerHasIntel "MS215 Intel P2 Resolve"
+		{
+			myIntel < uid=D4F63079652A94E80017E44127E84081 > = A_TAT_MS215_ITL218_FixedRace_P2 D4F630796499833C00126DF674538FBE
+			myIntelState Resolved
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted Completed
+		{
+		}
+	}
+}
+
+LivingWorldContent MS215_OD_FixedRace_P4 < uid=D4F63079652A94B00017E41AC157490F > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F63079652A94B00017E41B766D2564 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionLivingWorldFormula "GV_MS215_FixedRace_CashIn = 1"
+		{
+			myFormula "GV_MS215_FixedRace_CashIn = 1"
+		}
+	}
+}
+
+LivingWorldContent MS217_OD_SabaccRules < uid=D4F6307964C3DA32000480632B9B36E5 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F6307964C3DA32000480642C6A6897 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+	}
+}
+
+LivingWorldContent MS219_OD_ZyssykContract < uid=D4F63079652E459400127963B01CC8F9 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F63079652E45C800127964BA5C53F8 >
+	{
+		myDescription ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestState "FQ_ASH_040 Completed"
+		{
+			myQuest 913C1076642A9E9A0002986397C3751C
+			myQuestState Completed
+		}
+	}
+	myTags
+	{
+		LivingWorldTag "New LivingWorldTag" < uid=D4F6307965BA951100278C1F9750C02F > = NULLREFERENCE
+	}
+}
+
+LivingWorldContent MS221_OD_FixedRacePart2 < uid=D4F63079649975330012011F38075AA5 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F630796499753300120120938DE9EA >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+		{
+			myDistance 105.0
+		}
+	}
+}
+
+LivingWorldContent MS306_OD_SpareParts_Droid < uid=D4F630796507088A000701AA69962225 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F630796507088A000701AB95370C5E >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 200.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel "MS306 Intel not Resolved"
+		{
+			myIsNegated TRUE
+			myIntel < uid=ACAEF5AB66430D2600032D16CD7B8926 > = A_TAT_MS306_ITL226_SparePart D4F63079649987AA00126EC952F53854
+			myIntelState Resolved
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance  100"
+		{
+			myDistance 205.0
+		}
+	}
+}
+
+LivingWorldContent MS306_OD_SpareParts_P1 < uid=D4F63079649976F20012015378429B29 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F63079649976F200120154D8903911 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 200.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel "MS306 Intel not Resolved"
+		{
+			myIsNegated TRUE
+			myIntel < uid=ACAEF5AB66430CFB00021CE2F2937670 > = A_TAT_MS306_ITL226_SparePart D4F63079649987AA00126EC952F53854
+			myIntelState Resolved
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+				{
+					myDistance 205.0
+				}
+				GameConditionPlayerHasIntel "MS306 Intel Resolved"
+				{
+					myIntel < uid=D4F63079650709740007025E2CEC7CD0 > = A_TAT_MS306_ITL226_SparePart D4F63079649987AA00126EC952F53854
+					myIntelState Resolved
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS306_OD_SpareParts_P2 < uid=D4F63079649976F20012015515BF1767 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F63079649976F200120156BE8F8FF1 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance +200"
+		{
+			myDistance 200.0
+			myOperator LessThan
+		}
+		GameConditionPlayerHasIntel "MS306 Intel Resolved"
+		{
+			myIntel < uid=D4F6307965070A1500070305AC9B7EAB > = A_TAT_MS306_ITL226_SparePart D4F63079649987AA00126EC952F53854
+			myIntelState Resolved
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance +200"
+		{
+			myDistance 205.0
+		}
+	}
+}
+
+LivingWorldContent MS307_OD_RatBite < uid=D4F6307964997593001201254488FE4C > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F630796499759300120126E4FC77F4 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasItem "Player Has At Least 1 Bacta"
+		{
+			myItem < uid=D4F63079653294CA0025C56D99C919A3 > = con_BactaVial 5F6139B460A4E7DC00021132ACBB4DBD
+		}
+	}
+}
+
+LivingWorldContent MS308_OD_Carbonite < uid=D4F63079649975EC001201312D026D48 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F63079649975EC00120132DEC28483 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 50"
+		{
+			myDistance 50.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestState "MQ_130 Completed"
+		{
+			myQuest BFA41A0261B3755D0000049A3563A922
+			myQuestState Completed
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 50"
+				{
+					myDistance 55.0
+				}
+				LivingWorldGameConditionGroup "Group AND"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+						{
+							myDistance 55.0
+						}
+						GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+						{
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS309_OD_BibContract < uid=D4F63079649977A900120167D50D2B15 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F63079649977A9001201688ECBE19A >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 50"
+		{
+			myDistance 50.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestState "HTC_030 Completed"
+		{
+			myQuest C5B8DCF664A2A0760001A5991526EDDE
+			myQuestState Completed
+		}
+		GameConditionPlayerHasItem "New GameConditionPlayerHasItem"
+		{
+			myItem < uid=D4F6307965A8F33D0003B0CAAE37F0CD > = MS_TOS_MS122_Delicacy D4F63079648C2ECC00035DAF1CA1695C
+			myAmount 0
+			myOperator Equal
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				LivingWorldGameConditionGroup "Group AND"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 50"
+						{
+							myDistance 55.0
+						}
+						GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+						{
+						}
+					}
+				}
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 50"
+				{
+					myDistance 55.0
+				}
+				GameConditionPlayerHasItem "Has Fompa Bread"
+				{
+					myItem < uid=D4F63079654A06470005713FF151DAF3 > = MS_TOS_MS122_Delicacy D4F63079648C2ECC00035DAF1CA1695C
+					myOperator Equal
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS310_OD_SherrifCompliments < uid=D4F63079649978BD0012018582E4066E > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F63079649978BD0012018611F4CFAB >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestState "EQ090 Completed"
+		{
+			myQuest 913C10766408B288000063B69AD8F48F
+			myQuestState Completed
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+		{
+			myDistance 105.0
+		}
+	}
+}
+
+LivingWorldContent MS310_OD_SherrifCompliments_Trickshot < uid=D4F6307964E4C3FE000DD24D2945106C > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F6307964E4C3FE000DD24E34EDF957 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestState "EQ090 Completed"
+		{
+			myQuest 913C10766408B288000063B69AD8F48F
+			myQuestState Completed
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+		{
+			myDistance 105.0
+		}
+	}
+}
+
+LivingWorldContent MS311_OD_Thirst < uid=D4F63079649976420012013A1E60339A > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F63079649976420012013B8ECE375D >
+	{
+	}
+	myBlockingRadius 40.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+				{
+					myDistance 105.0
+				}
+				GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted Completed
+				{
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS311_OD_Thirst_Combat < uid=D4F6307964E384CE0006A033526FC651 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F6307964E384CE0006A0342A2B34A9 >
+	{
+	}
+	myBlockingRadius 40.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+				{
+					myDistance 105.0
+				}
+				GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+				{
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS312_OD_DomesticatedMassifs < uid=D4F630796499760D001201348743A453 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F630796499760D00120135B915F1DE >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				LivingWorldGameConditionGroup "Group AND"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+						{
+							myDistance 105.0
+						}
+						GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+						{
+						}
+					}
+				}
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+				{
+					myDistance 105.0
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS313_OD_LarsHomestead < uid=D4F630796499762D001201372D77A932 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F630796499762D00120138B78CF1F3 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+		{
+			myDistance 105.0
+		}
+	}
+}
+
+LivingWorldContent MS314_OD_StoppingForADrink < uid=D4F6307964DB964B0002BB6EC97F85F1 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F6307964DB96930002BB6F4EA7E98F >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestBeatState "MQ110 B01 Completed"
+		{
+			myQuestBeat BFA41A0261C33A5B000082C34E982038
+			myQuestBeatState Completed
+		}
+	}
+}
+
+LivingWorldContent MS315_OD_OldHologram < uid=D4F630796499771C001201588B792335 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F630796499771C0012015966901912 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionLivingWorldFormula "GV_MS315_OldHologram_Interacted = 1"
+		{
+			myFormula "GV_MS315_OldHologram_Interacted = 1"
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted Completed
+		{
+		}
+	}
+}
+
+LivingWorldContent MS315_OD_OldHologram_Start < uid=D4F6307964E36D0800033CD451605124 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F6307964E481C00005661542CB8454 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+				{
+					myDistance 105.0
+				}
+				LivingWorldGameConditionGroup "Group AND"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+						{
+						}
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+						{
+							myDistance 105.0
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS316_OD_DewbackHerding_P1 < uid=D4F63079649975D00012012AEF75F863 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F63079649975D00012012B0C40B15E >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel "Intel MS316 Not Resolved"
+				{
+					myIsNegated TRUE
+					myIntel < uid=D4F6307964E5E3930006A154B2BEA019 > = A_TAT_MS316_ITL256_DewbackHearding D4F6307964E5D7760002DD072F3A2885
+					myIntelState Resolved
+				}
+				GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+				{
+					myIsNegated TRUE
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+				{
+					myDistance 105.0
+				}
+				GameConditionLivingWorldFormula "GV_MS316_DewbackHearding_FoundBantha = 1"
+				{
+					myFormula "GV_MS316_DewbackHearding_FoundBantha = 1"
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS316_OD_DewbackHerding_P2 < uid=D4F63079649975D00012012CA3E0DF4B > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F63079649975D00012012DC0383130 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 250"
+		{
+			myDistance 250.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				LivingWorldGameConditionGroup "Group AND"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 250"
+						{
+							myDistance 255.0
+						}
+						GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+						{
+						}
+					}
+				}
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 250"
+				{
+					myDistance 255.0
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS316_OD_DewbackHerding_P3 < uid=D4F63079649975D00012012E80CE7FB4 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F63079649975D00012012F890DE4B2 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionLivingWorldFormula "GV_MS316_DewbackHearding_FoundBantha = 1"
+		{
+			myFormula "GV_MS316_DewbackHearding_FoundBantha = 1"
+		}
+		GameConditionLivingWorldFormula "GV_MS316_DewbackHearding_StoryEnded = 0"
+		{
+			myFormula "GV_MS316_DewbackHearding_StoryEnded = 0"
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				LivingWorldGameConditionGroup "Group AND"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+						{
+							myDistance 105.0
+						}
+						GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "New GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted"
+						{
+						}
+					}
+				}
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+				{
+					myDistance 105.0
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS316_OD_DewbackHerding_P4 < uid=D4F6307964E5F7EE001E53D6BB0E7125 > : "TAT OD BASE"
+{
+	myTicket < uid=D4F6307964E5F7EE001E53D7EF5FF1A6 >
+	{
+	}
+	myTicketMax < uid=D4F6307964E5F7EE001E53D8C3D1FCFF >
+	{
+	}
+	myCompletedGameValue < uid=D4F6307964E5F7EE001E53D9197B3D14 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 200"
+		{
+			myDistance 200.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionLivingWorldContent_HasBeenCompleted "P3 Completed"
+		{
+			myLivingWorldContent D4F63079649975D00012012E80CE7FB4
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 200"
+		{
+			myDistance 205.0
+		}
+	}
+}
+
+LivingWorldContent MS317_OD_SpeederJump < uid=D4F63079649977840012016246E55751 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F63079649977840012016369906346 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+		{
+			myDistance 105.0
+		}
+	}
+}
+
+LivingWorldContent MS318_OD_DebtCollector_P1 < uid=D4F630796499784D001201784EEDE652 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F630796499784D00120179C98A7454 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasReputation "Hutt Rep > Good"
+		{
+			myFaction < uid=D4F6307964DCBA030011DBFFD6FFFBE9 > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+			myReputationTier Good
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				LivingWorldGameConditionGroup "Group AND"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+						{
+							myDistance 105.0
+						}
+						GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+						{
+						}
+					}
+				}
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+				{
+					myDistance 105.0
+				}
+				GameConditionPlayerHasReputation "Hutt Rep < Good"
+				{
+					myFaction < uid=D4F6307964DCB9ED0011DBFEA2D26697 > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+					myReputationTier Good
+					myOperator LessThan
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS318_OD_DebtCollector_P2 < uid=D4F630796499784D0012017A6EF85BA1 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F630796499784D0012017B1D5168C5 >
+	{
+	}
+	myBlockingRadius 25.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel "MS318 Intel P1 Active"
+		{
+			myIntel < uid=D4F6307964DCBEA80000A0DAAB1AD287 > = A_TAT_MS318_ITL213_DebtCollector_P1 D4F63079649989D600126EF5E0121E86
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+				{
+					myDistance 105.0
+				}
+				LivingWorldGameConditionGroup "Group AND"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+						{
+							myDistance 105.0
+						}
+						GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+						{
+						}
+						GameConditionPlayerHasIntel "Intel P2 COmpleted"
+						{
+							myIntel < uid=D4F6307965C0E9F400135A557368A324 > = A_TAT_MS318_ITL257_DebtCollector_P2 D4F6307964DCC2020003BED850B1B2BC
+							myIntelState Resolved
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS318_OD_DebtCollector_P3 < uid=D4F630796499784D0012017C3CAFC24B > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F630796499784D0012017DA61D395E >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasItem "Has Droid Part"
+		{
+			myItem < uid=D4F6307964DCC3AC0005757A9C600B86 > = MS_TAT_MS318_DroidPart D4F6307964DCC0820001D72FE5A3005F
+			myOperator Equal
+		}
+		GameConditionPlayerHasReputation "Hutt rep > Good"
+		{
+			myFaction < uid=D4F6307964DCC7D70003B0904D451C3F > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+			myReputationTier Good
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+				{
+					myDistance 105.0
+				}
+				LivingWorldGameConditionGroup "Group AND"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+						{
+							myDistance 105.0
+						}
+						GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+						{
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS319_OD_SparePartsPart2_Return < uid=D4F63079649978760012017F9C150DB8 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F630796499787600120180DEEA39EB >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionLivingWorldContent_HasBeenCompleted "MS306 Completed"
+		{
+			myLivingWorldContent D4F63079649976F20012015515BF1767
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted Completed
+		{
+		}
+	}
+}
+
+LivingWorldContent MS319_OD_SparePartsPart2 < uid=D4F63079650D3F910005714BE2BBC58F > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F63079650D3F910005714CF686B2BA >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance +200"
+		{
+			myDistance 200.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionLivingWorldContent_HasBeenCompleted "MS319 Return Completed"
+		{
+			myLivingWorldContent D4F63079649978760012017F9C150DB8
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance +200"
+		{
+			myDistance 205.0
+		}
+	}
+}
+
+LivingWorldContent MS320_OD_JabbasOffering < uid=D4F630796499789600120182399542C3 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F6307964997896001201830DD9F084 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance  50"
+		{
+			myDistance 50.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasItem "Item Fompa Bread"
+		{
+			myItem < uid=D4F6307964E74CFF000606FA654A5A1F > = MS_TOS_MS122_Delicacy D4F63079648C2ECC00035DAF1CA1695C
+			myOperator Equal
+		}
+		GameConditionQuestState "HTC_030 Completed"
+		{
+			myQuest C5B8DCF664A2A0760001A5991526EDDE
+			myQuestState Completed
+		}
+		GameConditionQuestBeatState "SQ_010 B11 Not Active"
+		{
+			myQuestBeat 0EA96C6A651D5B89000D54CD2A5D0E92
+			myQuestBeatState Started
+			myOperator NotEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 50"
+				{
+					myDistance 55.0
+				}
+				GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted Completed
+				{
+				}
+				GameConditionQuestBeatState "SQ_010 B11 Started"
+				{
+					myQuestBeat 0EA96C6A651D5B89000D54CD2A5D0E92
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS321_OD_CrimsonDawnVendor_P1 < uid=D4F630796499781E00120171FB40E18E > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F630796499781E001201720055B931 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+		{
+			myDistance 105.0
+		}
+	}
+}
+
+LivingWorldContent MS321_OD_CrimsonDawnVendor_P2 < uid=D4F630796499781E00120173368899C0 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F630796499781E00120174908DB4AE >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+		{
+			myDistance 105.0
+		}
+	}
+}
+
+LivingWorldContent MS323_OD_PykeRailroad_P1 < uid=D4F63079649977D40012016BC2B6EA80 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F63079649977D40012016C13A0047D >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasReputation "Fair = Pyke"
+		{
+			myFaction < uid=D4F6307965BE518D003ADC66AD1822F7 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+			myReputationTier Fair
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				LivingWorldGameConditionGroup "Group AND"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+						{
+							myDistance 105.0
+						}
+						GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+						{
+						}
+						GameConditionPlayerHasIntel "Intel P1 Resolved"
+						{
+							myIntel < uid=D4F6307965BE5329003C35DF1B2F137A > = A_TAT_MS323_ITL232_PykeRailroad_P1 D4F63079649987E200126EDF0F5EE3BB
+							myIntelState Resolved
+						}
+					}
+				}
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+				{
+					myDistance 105.0
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS323_OD_PykeRailroad_P2 < uid=D4F63079649977D40012016D566349B4 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F63079649977D40012016ED125597E >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel "Intel P1 Activate"
+		{
+			myIntel < uid=D4F6307964E632320006AE3281DAB1B0 > = A_TAT_MS323_ITL232_PykeRailroad_P1 D4F63079649987E200126EDF0F5EE3BB
+		}
+	}
+}
+
+LivingWorldContent MS323_OD_PykeRailroad_P3 < uid=D4F6307964E633930006D11B4E206BCD > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F6307964E633930006D11C7C462B78 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel "MS323 P2"
+		{
+			myIntel < uid=D4F630796536580800079927A0777CF5 > = A_TAT_MS323_ITL225_PykeRailroad_P2 F12EE1F9651AC3DF00017E56D35737A7
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted Completed
+		{
+		}
+	}
+}
+
+LivingWorldContent MS323_OD_PykeRailroad_P4_IWM_01 < uid=D4F6307965365E4E001C343D3B1BB888 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F6307965365E4E001C343E17F14ED8 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel "MS323 P2"
+		{
+			myIntel < uid=D4F6307965365E4E001C343FF0A7ED40 > = A_TAT_MS323_ITL225_PykeRailroad_P2 F12EE1F9651AC3DF00017E56D35737A7
+		}
+	}
+}
+
+LivingWorldContent MS323_OD_PykeRailroad_P4_IWM_02 < uid=D4F6307965365E4E001C344037569131 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F6307965365E4E001C3441D16FB0AB >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel "MS323 P2"
+		{
+			myIntel < uid=D4F6307965365E4E001C34424C75A3D0 > = A_TAT_MS323_ITL225_PykeRailroad_P2 F12EE1F9651AC3DF00017E56D35737A7
+		}
+	}
+}
+
+LivingWorldContent MS323_OD_PykeRailroad_P4_IWM_03 < uid=D4F6307965365E4E001C344383778AF3 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F6307965365E4E001C3444002B5CB5 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel "MS323 P2"
+		{
+			myIntel < uid=D4F6307965365E4E001C3445AC6D5EF3 > = A_TAT_MS323_ITL225_PykeRailroad_P2 F12EE1F9651AC3DF00017E56D35737A7
+		}
+	}
+}
+
+LivingWorldContent MS244_OD_QuintsSabbac_Post090 < uid=1657B1AA64E87756001C0B79E344FA57 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=1657B1AA64E8782F001C0B7B86613F2E >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionQuestState EQ090_Completed
+		{
+			myQuest 913C10766408B288000063B69AD8F48F
+			myQuestState Completed
+		}
+		GameConditionQuestIsCompleted "SNQ_010 Completed"
+		{
+			myQuest 91908ED26483176700072FE1A8F5796B
+		}
+	}
+	myDeactivationGameConditions
+	{
+	}
+}
+
+LivingWorldContent MS245_OD_QuintsSabacc_Pre090 < uid=1657B1AA64E877B6001C0B7A487006D8 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=1657B1AA64E8782F001C0B7CA3F8F003 >
+	{
+	}
+	myActivationGameConditions
+	{
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionQuestIsCompleted EQ_090_isCompleted
+		{
+			myQuest 913C10766408B288000063B69AD8F48F
+		}
+	}
+}
+
+LivingWorldContent MS331_OD_CrimsonContract < uid=D4F630796538C7D300074133B5949237 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=D4F630796538C8770007415AB3FD0002 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestState "FQ_CRM_020 Completed"
+		{
+			myQuest C5B8DCF6651420800000F6EB218F45E2
+			myQuestState Completed
+		}
+	}
+}
+
+LivingWorldContent MS248_OD_MosEisleyPuzzle_LockedRoom < uid=2AEFFC79670D1EB1001F8AA2670D4131 > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=2AEFFC79670D1F83001F8AA31CAB99A3 >
+	{
+	}
+}
+
+LivingWorldContent MS249_OD_MosEisleyPuzzle_Powerbreaker < uid=2AEFFC79670D236D0023D5EEA6FC837F > : "TAT OD BASE"
+{
+	myCompletedGameValue < uid=2AEFFC79670D236D0023D5EFDCBA638C >
+	{
+	}
+}
+

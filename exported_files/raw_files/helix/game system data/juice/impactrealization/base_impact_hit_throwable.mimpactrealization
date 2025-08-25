@@ -1,0 +1,95 @@
+include "helix/game system data/fruit/impact/impact.fruit"
+include "helix/game system data/juice/collisionmaterials/collisionmaterials.juice"
+
+ImpactRealization base_impact_hit_throwable < uid=CC69B2216439219B000029560159D107 >
+{
+	myEffects
+	{
+		myList
+		{
+			EffectOnMaterial Sand
+			{
+				myMaterial < uid=061AC046660413FF0009CF17B47FC667 > = Sand 6F860DB5506C75BF00000E16E163F30E
+				myEffect helix/particles/vfx_loc_ch_sand_footstep.mparticles
+			}
+			EffectOnMaterial Dirt
+			{
+				myMaterial < uid=061AC046660413FF0009CF1844086002 > = Dirt 6F860DB5506C75BF00000E15D8BBCF79
+				myEffect helix/particles/vfx_loc_ch_dirt_footstep.mparticles
+			}
+			EffectOnMaterial Gravel
+			{
+				myMaterial < uid=061AC046660413FF0009CF195F19BD41 > = Gravel 6F860DB5506C75BF00000E1729209934
+				myEffect helix/particles/vfx_loc_ch_dust_footstep_01.mparticles
+			}
+			EffectOnMaterial Grass
+			{
+				myMaterial < uid=061AC046660413FF0009CF1A6D3738AB > = Grass 6F860DB5506C75BF00000E114D6A4808
+				myEffect helix/particles/vfx_loc_ch_dirt_footstep.mparticles
+			}
+			EffectOnMaterial "Snow Heavy"
+			{
+				myMaterial < uid=061AC046660413FF0009CF1B27318794 > = SnowHeavy 6F860DB5506C75BF00000E0DAADEA0B9
+				myEffect helix/particles/vfx_loc_ch_snow_footstep.mparticles
+			}
+			EffectOnMaterial "Snow Light"
+			{
+				myMaterial < uid=061AC046660413FF0009CF1C203EFB00 > = SnowLight 6F860DB5506C75BF00000E0CA6A2A340
+				myEffect helix/particles/vfx_loc_ch_snow_footstep.mparticles
+			}
+			EffectOnMaterial Mud
+			{
+				myMaterial < uid=061AC046660413FF0009CF1DB25FB9F3 > = Mud 6F860DB5506C75BF00000E1A31723630
+				myEffect helix/particles/vfx_loc_ch_mud_footstep.mparticles
+			}
+			EffectOnMaterial Concrete
+			{
+				myMaterial < uid=061AC046660413FF0009CF1E66793D73 > = Concrete 84B8EF744FFE8DAC000000048239FD54
+				myEffect helix/particles/vfx_loc_ch_dust_footstep_01.mparticles
+			}
+			EffectOnMaterial "Concrete Rough"
+			{
+				myMaterial < uid=061AC046660413FF0009CF1FCDDF1B0F > = ConcreteRough 4ADBE9C459DB6EE40000D92AE2533A78
+				myEffect helix/particles/vfx_loc_ch_dust_footstep_01.mparticles
+			}
+			EffectOnMaterial "Fluffy Sand"
+			{
+				myMaterial < uid=061AC046660413FF0009CF201AEE1F4F > = FluffySand 0BACD8E1657B0B5F0009A09459382C24
+				myEffect helix/particles/vfx_loc_ch_sand_fluffy_footstep_01.mparticles
+			}
+			EffectOnMaterial "Fluffy Snow"
+			{
+				myMaterial < uid=061AC046660413FF0009CF215531ADC0 > = FluffySnow 0BACD8E1657B0B5F0009A0959F762115
+				myEffect helix/particles/vfx_loc_ch_snow_fluffy_footstep_01.mparticles
+			}
+		}
+	}
+	myImpactOnFragmentablesEnabled TRUE
+	myFragmentables
+	{
+		myBulletImpact FALSE
+	}
+	myImpactOnPhysicsEnabled TRUE
+	myPhysics
+	{
+		myImpactEnergy 15.0
+	}
+	myImpactOnBendShockwaveEnabled TRUE
+	myBendShockwave
+	{
+		myBendStrength 1.0
+		myTrampleStrength 0.4
+	}
+	myImpactOnWaterEnabled FALSE
+	myImpactOnFluffy TRUE
+	myFluffy
+	{
+		myDeformation
+		{
+			myExpansionTime 0.1
+		}
+	}
+	myOverrideStaggerValue TRUE
+	myOverridenStaggerValue 100.0
+}
+

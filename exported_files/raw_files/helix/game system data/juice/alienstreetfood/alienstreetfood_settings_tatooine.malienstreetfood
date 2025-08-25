@@ -1,0 +1,395 @@
+include "helix/game system data/fruit/alienstreetfood/alienstreetfood.fruit"
+include "helix/game system data/juice/alienstreetfood/alienstreetfoodbaseeventconditions.juice"
+
+AlienStreetFood AlienStreetFood_Settings_Tatooine < uid=E259BC216492EDD8000199E0DACDDBEE >
+{
+	myCostAndReward
+	{
+		myCost D00CF654650C62D70000D00C56F35EFA
+		myReward D00CF654650C5D180000D5E2A423121A
+	}
+	myVoiceSettings
+	{
+		myVoiceSettings DA5615DD65EB201E00031AFB3C3E9DAA
+	}
+	myActivityDescription
+	{
+		myDishName "aurabesh = true, contextComment = \"Name of the dish served Tatooine alien street food stall\", enabled = true, guid = #E259BC216492EDD8000199DE4B11585E, lineVersion = 9, maxLength = 0, productId = 6, sectionId = 1606, text = \"SKETTO CHUGA\", type = \"MenuLine\""
+		myDishIcon "mySpriteId = 1275872644, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_asf_01.spritesheet\""
+		myDescription "aurabesh = false, contextComment = \"Description Comment \", enabled = true, guid = #E259BC216492EDD8000199DFD0278CC3, lineVersion = 14, maxLength = 0, productId = 6, sectionId = 1606, text = \"Fried sketto meatballs and chuga fruit on a skewer served with pickled legume puree and hot kankee spices.\", type = \"MenuLine\""
+	}
+	myAdditionalCharacterSettings
+	{
+		mySequence helix/sequence/ASF_Sequence_Tatooine_Gammorean.msequence
+		myTriggerMarker Mk_GammoreanAction
+		myJumpMarker GammoreanAction
+	}
+	myActivitySetup
+	{
+		myHasDelayedDroidAcquisition TRUE
+		myActivityCompletionGameValue 91908ED265C106580006AD94C815E9A4
+		myGameplaySequence helix/sequence/ASF_Sequence_Tatooine_Main.msequence
+		myChallenges
+		{
+			AlienStreetFoodInputChallenge "KOChallenge01A - Kick Off" < uid=E259BC216492EDD8000199E143C29EF5 >
+			{
+				myInputChallenge E259BC2164B5225B0001A1F8D02433DE
+				myStartChallengeMaker Mk_KOChallenge01A_StartIdle
+				mySuccessMarker Mk_KOChallenge01A_EndChallenge
+				myFailureMarker Mk_KOChallenge01A_StartIdle
+				myJumpDelays
+				{
+					myUseDefaultJumpDelays FALSE
+					myHasSuccessJumpDelay TRUE
+					mySuccessJumpDelay 0.0
+					myHasChallengeStartDelay TRUE
+					myChallengeStartDelay 0.75
+				}
+			}
+			AlienStreetFoodInputChallenge "SChallenge01A - Skewer I" < uid=E259BC216492EDD8000199E282D0ED7B >
+			{
+				myInputChallenge E259BC216553816D0008FC603869AD94
+				mySimplifiedInputChallenge E259BC2164F73EFD0004EED9B741D03B
+				myStartChallengeMaker Mk_SChallenge01A_StartIdle
+				mySuccessMarker Mk_SChallenge01A_EndChallenge
+				myFailureMarker Mk_SChallenge01A_StartIdle
+				myJumpDelays
+				{
+					myUseDefaultJumpDelays FALSE
+					myHasSuccessJumpDelay TRUE
+					mySuccessJumpDelay 2.0
+					myHasChallengeStartDelay FALSE
+					myChallengeStartDelay 1.0
+				}
+				myEvents
+				{
+					AlienStreetFoodJumpEvent StartAction < uid=E259BC216492EDD8000199E36E7D2876 >
+					{
+						myTriggerConditions = "Progress Greater Than 0"
+						myJumpMarker Mk_SChallenge01A_StartAction
+					}
+				}
+			}
+			AlienStreetFoodInputChallenge "SChallenge01B - Skewer II" < uid=E259BC216492EDD8000199E4DADB9CFC >
+			{
+				myInputChallenge E259BC21655383D00008FCBAFC1CEF51
+				mySimplifiedInputChallenge E259BC21664DEC1A003B700EEA9D132B
+				myStartChallengeMaker Mk_SChallenge01B_StartIdle
+				mySuccessMarker Mk_SChallenge01B_EndChallenge
+				myFailureMarker Mk_SChallenge01B_StartIdle
+				myJumpDelays
+				{
+					myUseDefaultJumpDelays FALSE
+					myHasSuccessJumpDelay TRUE
+					mySuccessJumpDelay 2.0
+					myHasChallengeStartDelay TRUE
+					myChallengeStartDelay 1.5
+				}
+				myEvents
+				{
+					AlienStreetFoodJumpEvent StartAction < uid=E259BC216492EDD8000199E58DB98464 >
+					{
+						myTriggerConditions = "Reached Step 1"
+						myJumpMarker Mk_SChallenge01B_StartAction
+					}
+				}
+			}
+			AlienStreetFoodInputChallenge "SChallenge01C - Skewer III" < uid=E259BC216492EDD8000199E688071B9D >
+			{
+				myInputChallenge E259BC216553866B0008FD6B27A9B65F
+				mySimplifiedInputChallenge E259BC21664E0B6F004D5692FADCE0CA
+				myStartChallengeMaker Mk_SChallenge01C_StartIdle
+				mySuccessMarker Mk_SChallenge01C_EndChallenge
+				myFailureMarker Mk_SChallenge01C_StartIdle
+				myJumpDelays
+				{
+					myUseDefaultJumpDelays FALSE
+					myHasSuccessJumpDelay TRUE
+					mySuccessJumpDelay 2.5
+				}
+				myEvents
+				{
+					AlienStreetFoodJumpEvent StartAction < uid=E259BC216492EDD8000199E70FBEAC73 >
+					{
+						myTriggerConditions = "Reached Step 1"
+						myJumpMarker Mk_SChallenge01C_StartAction
+					}
+				}
+			}
+			AlienStreetFoodInputChallenge "SChallenge02A - Not-Spicy Veggies" < uid=E259BC216492EDD8000199E80984ED04 >
+			{
+				myInputChallenge E259BC21654B8F830005FEC509B8A772
+				mySimplifiedInputChallenge E259BC21664E19120054BBBF45459B0A
+				myStartChallengeMaker Mk_SChallenge02A_StartIdle
+				mySuccessMarker Mk_SChallenge02A_EndChallenge
+				myFailureMarker Mk_SChallenge02A_StartIdle
+				myJumpDelays
+				{
+					myUseDefaultJumpDelays FALSE
+					myHasSuccessJumpDelay TRUE
+					mySuccessJumpDelay 3.0
+					myHasFailureJumpDelay TRUE
+					myHasChallengeStartDelay TRUE
+					myChallengeStartDelay 2.0
+				}
+				myEvents
+				{
+					AlienStreetFoodJumpEvent StartAction < uid=E259BC2164F6FB320003404BF769F4E8 >
+					{
+						myTriggerConditions = "Progress Greater Than 0"
+						myJumpMarker Mk_SChallenge02A_StartAction
+					}
+				}
+			}
+			AlienStreetFoodInputChallenge "EChallenge03A - Spicy Veggies I" < uid=E259BC216492EDD8000199ED9AAF9B47 >
+			{
+				myInputChallenge E259BC2164F72DC800047F67CCD67592
+				mySimplifiedInputChallenge E259BC2164F872D00004896604F21CD1
+				myStartChallengeMaker Mk_EChallenge03A_StartIdle
+				mySuccessMarker Mk_EChallenge03A_EndChallenge
+				myFailureMarker Mk_EChallenge03A_StartIdle
+				myJumpDelays
+				{
+					myUseDefaultJumpDelays FALSE
+					myHasSuccessJumpDelay TRUE
+					mySuccessJumpDelay 1.0
+					myHasFailureJumpDelay TRUE
+					myHasChallengeStartDelay TRUE
+					myChallengeStartDelay 2.0
+				}
+				myEvents
+				{
+					AlienStreetFoodJumpEvent StartAction < uid=E259BC216492EDD8000199EEC5585BF8 >
+					{
+						myTriggerConditions = "Progress Greater Than 0"
+						myJumpMarker Mk_EChallenge03A_StartAction
+					}
+				}
+			}
+			AlienStreetFoodInputChallenge "EChallenge03B/1 - Blue Milk I (Grab)" < uid=E259BC216492EDD8000199EF5FFFFB06 >
+			{
+				myInputChallenge E259BC21654E43D10008ABB8CBFEC1F3
+				mySimplifiedInputChallenge E259BC21654E3EB20008AB6BD4D3A9DA
+				myStartChallengeMaker Mk_EChallenge03B_StartIdle
+				mySuccessMarker Mk_EChallenge03B_StartAction
+				myFailureMarker Mk_EChallenge03B_StartIdle
+				myJumpDelays
+				{
+					myUseDefaultJumpDelays FALSE
+					myHasSuccessJumpDelay TRUE
+					mySuccessJumpDelay 0.0
+				}
+				myEvents
+				{
+				}
+			}
+			AlienStreetFoodInputChallenge "EChallenge03B/2 - Blue Milk I (Drink)" < uid=E259BC2164F838E8000441244AAA82C5 >
+			{
+				myInputChallenge E259BC21654E42050008AB9BC58560CB
+				mySimplifiedInputChallenge E259BC21664EF912007C1109E2E8E010
+				myStartChallengeMaker Mk_EChallenge03B_StartAction
+				mySuccessMarker Mk_EChallenge03B_EndChallenge
+				myFailureMarker Mk_EChallenge03B_StartAction
+				myJumpDelays
+				{
+					myUseDefaultJumpDelays FALSE
+					myHasSuccessJumpDelay TRUE
+					mySuccessJumpDelay 0.0
+					myHasChallengeStartDelay TRUE
+					myChallengeStartDelay 1.0
+				}
+				myEvents
+				{
+				}
+			}
+			AlienStreetFoodInputChallenge "EChallenge03C - Spicy Veggies, Nix" < uid=E259BC216492EDD8000199F11C3A36EF >
+			{
+				myInputChallenge E259BC21655342040002A9A084127F86
+				mySimplifiedInputChallenge E259BC21664F1AB90006C898E7828238
+				myStartChallengeMaker Mk_EChallenge03C_StartIdle
+				mySuccessMarker Mk_EChallenge03C_EndChallenge
+				myFailureMarker Mk_EChallenge03C_StartIdle
+				myJumpDelays
+				{
+					myUseDefaultJumpDelays FALSE
+					myHasSuccessJumpDelay TRUE
+					mySuccessJumpDelay 2.0
+				}
+				myEvents
+				{
+					AlienStreetFoodJumpEvent StartAction < uid=E259BC216492EDD8000199F21BBA290B >
+					{
+						myTriggerConditions = "Progress Greater Than 0"
+						myJumpMarker Mk_EChallenge03C_StartAction
+					}
+					AlienStreetFoodJumpEvent StopAction < uid=E259BC216492EDD8000199F3BB3DC6B1 >
+					{
+						myTriggerConditions = "Progress Less Than or Equal to 0"
+						myJumpMarker Mk_EChallenge03C_StartIdle
+					}
+				}
+			}
+			AlienStreetFoodInputChallenge "EChallenge03D - Spicy Veggies II" < uid=E259BC2164F052980000F6917B5C20BD >
+			{
+				myInputChallenge E259BC2164F73AF90003F39AC6150C02
+				mySimplifiedInputChallenge E259BC21664F3A050006D919858817A8
+				myStartChallengeMaker Mk_EChallenge03D_StartIdle
+				mySuccessMarker Mk_EChallenge03D_EndChallenge
+				myFailureMarker Mk_EChallenge03D_StartIdle
+				myJumpDelays
+				{
+					myUseDefaultJumpDelays FALSE
+					myHasSuccessJumpDelay TRUE
+					mySuccessJumpDelay 0.0
+					myHasChallengeStartDelay TRUE
+					myChallengeStartDelay 2.0
+				}
+				myEvents
+				{
+					AlienStreetFoodJumpEvent StartAction < uid=E259BC2164F052980000F6921BFB32C9 >
+					{
+						myTriggerConditions = "Progress Greater Than 0"
+						myJumpMarker Mk_EChallenge03D_StartAction
+					}
+					AlienStreetFoodJumpEvent StopAction < uid=E259BC2164F052980000F69308734214 >
+					{
+						myTriggerConditions = "Progress Less Than or Equal to 0"
+						myJumpMarker Mk_EChallenge03D_StartIdle
+					}
+				}
+			}
+			AlienStreetFoodInputChallenge "EChallenge03E/1 - Blue Milk II (Grab)" < uid=E259BC2164F0A6E900102FC447F8065D >
+			{
+				myInputChallenge E259BC2165524ED8000D4CBB5128D17D
+				mySimplifiedInputChallenge E259BC2164F83F100005412BFC49A97D
+				myStartChallengeMaker Mk_EChallenge03E_StartIdle
+				mySuccessMarker Mk_EChallenge03E_StartAction
+				myFailureMarker Mk_EChallenge03E_StartIdle
+				myJumpDelays
+				{
+					myUseDefaultJumpDelays FALSE
+					myHasSuccessJumpDelay TRUE
+					mySuccessJumpDelay 0.0
+				}
+				myEvents
+				{
+				}
+			}
+			AlienStreetFoodInputChallenge "EChallenge03E/2 - Blue Milk II (Drink)" < uid=E259BC2164F8473F0002408765B3A132 >
+			{
+				myInputChallenge E259BC2164F86EB40004893E5D600A50
+				mySimplifiedInputChallenge E259BC21664F40C600077BED7A623C09
+				myStartChallengeMaker Mk_EChallenge03E_StartAction
+				mySuccessMarker Mk_EChallenge03E_EndChallenge
+				myFailureMarker Mk_EChallenge03E_StartAction
+				myJumpDelays
+				{
+					myUseDefaultJumpDelays FALSE
+					myHasSuccessJumpDelay TRUE
+					mySuccessJumpDelay 0.0
+					myHasChallengeStartDelay TRUE
+					myChallengeStartDelay 1.2
+				}
+				myEvents
+				{
+				}
+			}
+			AlienStreetFoodInputChallenge "EChallenge03F - Spicy Veggies III" < uid=E259BC2164F0A6E900102FC7736698CE >
+			{
+				myInputChallenge E259BC2164F73AF90003F39BBB5BFC49
+				mySimplifiedInputChallenge E259BC21664F4341000799D571EB9305
+				myStartChallengeMaker Mk_EChallenge03F_StartIdle
+				mySuccessMarker Mk_EChallenge03F_EndChallenge
+				myFailureMarker Mk_EChallenge03F_StartIdle
+				myJumpDelays
+				{
+					myUseDefaultJumpDelays FALSE
+					myHasSuccessJumpDelay TRUE
+					mySuccessJumpDelay 0.0
+					myHasChallengeStartDelay TRUE
+					myChallengeStartDelay 2.5
+				}
+				myEvents
+				{
+					AlienStreetFoodJumpEvent StartAction < uid=E259BC2164F0A6E900102FC8F42BB211 >
+					{
+						myTriggerConditions = "Progress Greater Than 0"
+						myJumpMarker Mk_EChallenge03F_StartAction
+					}
+					AlienStreetFoodJumpEvent StopAction < uid=E259BC2164F0A6E900102FC9CC29B97C >
+					{
+						myTriggerConditions = "Progress Less Than or Equal to 0"
+						myJumpMarker Mk_EChallenge03F_StartIdle
+					}
+				}
+			}
+			AlienStreetFoodInputChallenge "EChallenge03G/1 - Blue Milk III (Grab)" < uid=E259BC2164F74FBF0005F0E56CD3BFF6 >
+			{
+				myInputChallenge E259BC2165533D5D0002A955D675D0EC
+				mySimplifiedInputChallenge E259BC21664F4B0F00079A80F67B7144
+				myStartChallengeMaker Mk_EChallenge03G_StartIdle
+				mySuccessMarker Mk_EChallenge03G_StartAction
+				myFailureMarker Mk_EChallenge03G_StartIdle
+				myJumpDelays
+				{
+					myUseDefaultJumpDelays FALSE
+					myHasSuccessJumpDelay TRUE
+					mySuccessJumpDelay 0.0
+				}
+				myEvents
+				{
+				}
+			}
+			AlienStreetFoodInputChallenge "EChallenge03G/2 - Blue Milk III (Drink)" < uid=E259BC2164F8495C000287650F479C27 >
+			{
+				myInputChallenge E259BC21655340360002A96FB6FDBC13
+				mySimplifiedInputChallenge E259BC21664F4E2800079AE3BBB19585
+				myStartChallengeMaker Mk_EChallenge03G_StartAction
+				mySuccessMarker Mk_EChallenge03G_EndChallenge
+				myFailureMarker Mk_EChallenge03G_StartAction
+				myJumpDelays
+				{
+					myUseDefaultJumpDelays FALSE
+					myHasSuccessJumpDelay TRUE
+					mySuccessJumpDelay 0.0
+					myHasChallengeStartDelay TRUE
+					myChallengeStartDelay 1.2
+				}
+				myEvents
+				{
+				}
+			}
+			AlienStreetFoodInputChallenge "BMChallenge03H - Nix Clears The Plate" < uid=E259BC216492EDD8000199EAF834F391 >
+			{
+				myInputChallenge E259BC216579DC800007AD5B987E28A9
+				mySimplifiedInputChallenge E259BC21664F519D0007A3BC365159BD
+				myStartChallengeMaker Mk_BMChallenge03H_StartIdle
+				mySuccessMarker Mk_BMChallenge03H_EndChallenge
+				myFailureMarker Mk_BMChallenge03H_StartIdle
+				myJumpDelays
+				{
+					myUseDefaultJumpDelays FALSE
+					myHasSuccessJumpDelay TRUE
+					mySuccessJumpDelay 3.0
+					myFailureJumpDelay 0.0
+					myHasChallengeStartDelay TRUE
+					myChallengeStartDelay 1.0
+				}
+				myEvents
+				{
+					AlienStreetFoodJumpEvent StartAction < uid=E259BC21657C7ED4001A2BA546D3BE18 >
+					{
+						myTriggerConditions = "Progress Greater Than 0"
+						myJumpMarker Mk_BMChallenge03H_StartAction
+					}
+					AlienStreetFoodJumpEvent StopAction < uid=E259BC21657C7EF8001A2BD14E4B51EB >
+					{
+						myTriggerConditions = "Progress Less Than or Equal to 0"
+						myJumpMarker Mk_BMChallenge03H_StartIdle
+					}
+				}
+			}
+		}
+	}
+}
+

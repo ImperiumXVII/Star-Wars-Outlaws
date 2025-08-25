@@ -1,0 +1,58 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/projectile/realization/ship_small_laser_red.mprojectilerealization"
+
+BallisticProjectile weapon_projectile_trailblazer_turret < uid=B4FBE4306412CC84000057C25F28CFC8 >
+{
+	myObject
+	{
+		myMaterialType Energy
+		myStickType OnlyTranslation
+	}
+	myRealization < uid=B4FBE4306412CC84000057C31C114B9F > = ship_small_laser_red F8181D48632AF52C000051FE56904714
+	myActions
+	{
+		ProjectileActionDamage ProjectileDamage
+		{
+			myDamageType Laser
+			myDamage 1.0
+		}
+	}
+	myInitialSpeed 1250.0
+	myAccelerationType Constant
+	myAccelerationConstant 0.0
+	myAccelerationCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.38326675 -4.7615814, -0.4883796 -1.2316742, }, outTangents = { 0.30116838 8.6079407, 0.10857789 1.3489363, 0 0, }, properties = { 274, 4371, 2066, }, values = { 0 0, 1.1780767 0, 1.511821 50, }, }, numKeys = 3, }"
+	myBounceEnabled FALSE
+	myBounceMaxBounces 1
+	mySeekerEnabled FALSE
+	mySeekerTurnRate 5.0
+}
+
+BallisticProjectile weapon_projectile_trailblazer_turret_ion < uid=B4FBE4306422D7680003CC89C5239222 >
+{
+	myObject
+	{
+		myMaterialType Energy
+		myStickType OnlyTranslation
+	}
+	myRealization < uid=B4FBE4306422D7680003CC8A850D9C54 > = ship_small_laser_red F8181D48632AF52C000051FE56904714
+	myActions
+	{
+		ProjectileActionDamage ProjectileDamage
+		{
+			myDamageType Laser
+			myDamage 0.0
+		}
+		ProjectileActionIonCharge ProjectileActionIonCharge
+		{
+		}
+	}
+	myInitialSpeed 1250.0
+	myAccelerationType Constant
+	myAccelerationConstant 0.0
+	myAccelerationCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.38326675 -4.7615814, -0.4883796 -1.2316742, }, outTangents = { 0.30116838 8.6079407, 0.10857789 1.3489363, 0 0, }, properties = { 274, 4371, 2066, }, values = { 0 0, 1.1780767 0, 1.511821 50, }, }, numKeys = 3, }"
+	myBounceEnabled FALSE
+	myBounceMaxBounces 1
+	mySeekerEnabled FALSE
+	mySeekerTurnRate 5.0
+}
+

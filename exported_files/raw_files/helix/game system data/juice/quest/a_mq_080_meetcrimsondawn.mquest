@@ -1,0 +1,117 @@
+include "helix/game system data/fruit/intel/intel.fruit"
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/mapref/mapref_intel_template.mmapref"
+include "helix/game system data/juice/rbtags/quest.mrbtagstags"
+
+Quest A_MQ_080_MeetCrimsonDawn < uid=BFA41A0261B36B0E000004325FD0100F >
+{
+	myName "aurabesh = false, contextComment = \"Title of mission 08\", enabled = true, guid = #BFA41A0261C1F52400014FB617F550B4, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 1990, text = \"Meet Crimson Dawn\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myBeats
+	{
+		QuestBeat QB01_InfiltrateTheShadowport < uid=BFA41A0261C1FDE400018AAD136B2649 >
+		{
+			myScript helix/scripts/scr_a_mq080_beat01.mscript
+			myName "aurabesh = false, contextComment = \"beat name\", enabled = true, guid = #BFA41A0261C1FDE600018AAE86835F24, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 403, text = \"Infiltrate the Shadowport\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E658000001A6972FA29E
+			myObjectives
+			{
+				QuestObjectiveInteract B01_010_DisableGates < uid=BFA41A0261C1FE2500018AAF9EDE0C7F >
+				{
+					myName "aurabesh = false, contextComment = \"obj name\", enabled = true, guid = #BFA41A0261C1FE3F00018AB1094291FD, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 403, text = \"Disable the Gates\", type = \"MenuLine\""
+				}
+				QuestObjectiveGoToLocation B01_020_ReachTheShadowport < uid=FB6AE4D5636E509A000220776D00FAB8 >
+				{
+					myName "aurabesh = false, contextComment = \"obj name\", enabled = true, guid = #FB6AE4D5636E50AA00022078291ABF4B, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 403, text = \"Reach the Shadowport\", type = \"MenuLine\""
+				}
+				QuestObjectiveGoToLocation B01_030_InfiltrateTheShadowport < uid=FB6AE4D5636E50EC0002207A9F773317 >
+				{
+					myName "aurabesh = false, contextComment = \"obj type\", enabled = true, guid = #FB6AE4D5636E510E0002207BF5C8CF7B, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 403, text = \"Infiltrate the Shadowport\", type = \"MenuLine\""
+				}
+				QuestObjectiveInteract B01_000_TalkToAshigaScout < uid=FB6AE4D5636E5B5E00032756A3C93330 >
+				{
+					myName "aurabesh = false, contextComment = \"obj text\", enabled = true, guid = #FB6AE4D5636E5B7300032757B5CC7828, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 403, text = \"Talk to the Ashiga Scout\", type = \"MenuLine\""
+				}
+				QuestObjectiveGoToLocation B01_001_ReachCDCommandCenter < uid=FB6AE4D5636E5BEC00032780FC7DF13B >
+				{
+					myName "aurabesh = false, contextComment = \"obj name\", enabled = true, guid = #FB6AE4D5636E5C040003278165BA3ED3, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 403, text = \"Reach the CD Command Center\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=6F2AF919621789D4000027DF3572B653 >
+			{
+			}
+		}
+		QuestBeat QB02_FendOffCD < uid=FB6AE4D5636E514A0002207EF820FDC1 >
+		{
+			myScript helix/scripts/scr_a_mq080_beat02.mscript
+			myName "aurabesh = false, contextComment = \"beat name\", enabled = true, guid = #FB6AE4D5636E51610002207F4B2046A9, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 403, text = \"Fend Off the Crimson Dawn guards\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E658000001A6972FA29E
+			myMood Focused
+			myObjectives
+			{
+				QuestObjectiveGoToLocation B02_010_ReachShip < uid=FB6AE4D5636E5192000220817687ED9A >
+				{
+					myName "aurabesh = false, contextComment = \"obj name\", enabled = true, guid = #FB6AE4D5636E51C500022083C0EAD2EF, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 403, text = \"Reach the Ship\", type = \"MenuLine\""
+				}
+				QuestObjectiveInteract B02_020_ClearTheEnemies < uid=FB6AE4D5636E51E30002208529702EEC >
+				{
+					myName "aurabesh = false, contextComment = \"obj name\", enabled = true, guid = #FB6AE4D5636E520300022086163A7694, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 403, text = \"Clear the remaining enemies\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=FB6AE4D5636E5222000220887756BF21 >
+			{
+			}
+		}
+		QuestBeat QB03_SpaceChase < uid=FB6AE4D5636E523D0002208A1AB2BBD4 >
+		{
+			myScript helix/scripts/scr_a_mq080_beat03.mscript
+			myName "aurabesh = false, contextComment = \"beat name\", enabled = true, guid = #FB6AE4D5636E52540002208B17766287, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 403, text = \"Space Chase\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012DE63000000BA154AA5F2
+			myMood Relaxed
+			myObjectives
+			{
+				QuestObjectiveGoToLocation B03_010_ReachShip < uid=FB6AE4D5636E52AB0002208FEE14B66B >
+				{
+					myName "aurabesh = false, contextComment = \"obj name\", enabled = true, guid = #FB6AE4D5636E52BC00022090E0C6F7D6, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 403, text = \"Reach the Ship\", type = \"MenuLine\""
+				}
+				QuestObjectiveInteract B03_020_IncapacitateTheFreighter < uid=FB6AE4D5636E52E10002209274CA41DF >
+				{
+					myName "aurabesh = false, contextComment = \"obj name\", enabled = true, guid = #FB6AE4D5636E52EF000220933F2606C3, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 403, text = \"Incapacitate the Freighter\", type = \"MenuLine\""
+				}
+				QuestObjectiveInteract B03_030_CollectCargo < uid=FB6AE4D5636E530D0002209588E4282A >
+				{
+					myName "aurabesh = false, contextComment = \"obj name\", enabled = true, guid = #FB6AE4D5636E531800022096AE064450, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 403, text = \"Collect the cargo\", type = \"MenuLine\""
+				}
+				QuestObjectiveGoToLocation B03_040_ReturnToKijimiPlanet < uid=FB6AE4D56371EF8C0000C83EB65E4B88 >
+				{
+					myName "aurabesh = false, contextComment = \"obj name\", enabled = true, guid = #FB6AE4D56371EFA20000C83F7F633975, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 403, text = \"Return to Kijimi Planet\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=FB6AE4D5636E529E0002208DC531E885 >
+			{
+			}
+		}
+		QuestBeat QB04_ReturnWithATwist < uid=FB6AE4D5636E53400002209800C4B956 >
+		{
+			myScript helix/scripts/scr_a_mq080_beat04.mscript
+			myName "aurabesh = false, contextComment = \"beat name\", enabled = true, guid = #FB6AE4D5636E534E00022099A9C8641C, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 403, text = \"Return to the Kijimi City Spaceport\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E658000001A6972FA29E
+			myObjectives
+			{
+				QuestObjectiveGoToLocation B04_010_ReturnToKijimi < uid=FB6AE4D5636E53AE0002209B5EF84365 >
+				{
+					myName "aurabesh = false, contextComment = \"obj name\", enabled = true, guid = #FB6AE4D5636E53C20002209C7BD34FE5, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 403, text = \"Return to Kijimi City Spaceport\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=FB6AE4D5636E54110002209E209DDA95 >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=6F2AF919621789D4000027E05A79AA8F >
+	{
+	}
+	myQuestStartedRBTag < uid=DA5615DD64B4FB6E0000AB90F5185E53 > = World_Quest_MQ080_Started DA5615DD64A3E0E30000AC2F8E9B0A02
+	myQuestCompletedRBTag < uid=DA5615DD64B4FB6E0000AB91CD5D7175 > = World_Quest_MQ080_Completed DA5615DD64A3E1E90000AC443ECD6B22
+}
+

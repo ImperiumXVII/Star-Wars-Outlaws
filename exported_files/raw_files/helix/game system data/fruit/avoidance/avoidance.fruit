@@ -1,0 +1,129 @@
+include "helix/game system data/fruit/interactionpoints/interactionpointtypes.fruit"
+include "helix/game system data/fruit/player/movement.fruit"
+include "helix/game system data/fruit/player/playeragentstate.fruit"
+include "snowdrop/modules/core/physics/collisionmaterials.fruit"
+
+list AvoidancePlayerMovementConfingList
+{
+	PlayerMovementConfig*
+}
+
+list AvoidanceCollisionMaterialList
+{
+	CollisionMaterial*
+}
+
+// Keep it in sync with AvoidanceDirectionCalculationMethod in HC_AvoidanceUtils.h
+enum AvoidanceDirectionCalculationMethod
+{
+	ObstacleInferenceOriented
+	ObstacleInferenceRestricted
+	PlayerIntentDirectionOriented
+}
+
+class BaseInteractionPointOverriders
+{
+	float myMovementBlockedAngleThreshold 60.0 < min=0.0 tooltip="Set the overrider for the movement blocked angle threshold" >
+	bool myMovementBlockedAngleCheckWithEntityFacing false < tooltip="If true, the angle used to check the movement blocked state is the one between the entity facing, i.e. the Z axis, and the player intent direction inverted" >
+	bool myDisableAvoidance true < tooltip="If true, the avoidance is disabled if the player is going torwards this interaction point and the movement blocked conditions are not met" >
+}
+
+class TypedInteractionPointOverriders : BaseInteractionPointOverriders
+{
+	InteractionPointType myType
+}
+
+list TypedInteractionPointOverridersList
+{
+	TypedInteractionPointOverriders
+}
+
+class InteractionPointsOverriders
+{
+	TypedInteractionPointOverridersList myInteractionPointsOverridersList < tooltip="Set the list of overriders for interaction points of a certain type" >
+	bool myUseCommonOverriders false < tooltip="If true, the CommonInteractionPointsOverriders is considered for any interaction points which don't have a dedicated entry in InteractionPointsOverridersList" >
+	BaseInteractionPointOverriders myCommonInteractionPointsOverriders < tooltip="Set the overriders for any interaction points which don't have a dedicated entry in the InteractionPointsOverridersList" >
+}
+
+class AvoidanceInteractionPointsDetectionParameters
+{
+	float myCylinderRadius 0.35 < min=0.0 tooltip="It's the radius of the cylinder used to detect interaction points. The cylinder center is considered starting from the hit position" > 
+	float myCylinderHeight 2.0f < min=0.0 tooltip="It's the height of the cylinder used to detect interaction points. The cylinder center is considered starting from the hit position" > 
+	float myHitPositionVerticalOffest 0.0 < min=0.0 tooltip="It's a vertical offest for the cylinder center relative to the obstacle hit position" > 
+	float myHitPositionHorizontalOffest 0.0 < min=0.0 tooltip="It's an horizontal offest along the movement direction for the cylinder center relative to the obstacle hit position" > 
+	bool myIsHorizontalOffsetAlongHitNormal false < tooltip="If true, the horizontal offset will be made along hit normal, but in the opposite direction" >
+	bool myDetectAvailableInteractionPointsOnly false < tooltip="If true, only available interaction points are considered. If false, all logically visible interaction points are considered instead" >
+	float myNPCInteractionPointDistanceThreshold 1.5 < tooltip="If the anticipation is hitting an NPC and we don't detect any of its interaction points with the cylinder check, we still search if there are any NPCs' interaction points with the distance from the hit position that meets this threshold (also the angle threshold must be met)" >
+	float myNPCInteractionPointAngleThreshold 0.78539816 < bhv=angle min=0.0 max=3.1415926535 tooltip="If the anticipation is hitting an NPC and we don't detect any of its interaction points with the cylinder check, we still search if there are any NPCs' interaction points with the angle between the cast direction and the direction between the hit point and the interaction point that meets this threshold (also the distance threshold must be met)" >
+	InteractionPointsOverriders myInteractionPointsOverriders < tooltip="Set the overrider to consider when an interaction point is detected" >
+	InteractionPointTypeList myInteractionPointInclusionFilter < tooltip="It's the list of interaction point types that are considered within the cylinder shape. If none, all types are considered" >
+	InteractionPointTypeList myInteractionPointExclusionFilter < tooltip="It's the list of interaction point types that aren't considered within the cylinder. If none, no types are considered" >
+}
+
+class PreviousFrameHitNormalInterpolationParameters
+{
+	bool myEnablePreviousFrameHitNormalInterpolation false < tooltip="If true and if the avoidance has redirected the player in the previous frame, the hit normal of the detected obstacle in the current frame is computed as the result of the linear interpolation from the previous frame obstacle hit normal to the current one. This will prevent abrupt changes in the avoidance direction calculation" >
+	float myMaxInterpolationRate 70.0 < min=0.0 tooltip="Set the maximum interpolation rate in degree/seconds" >
+	string myInterpolationRateCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -1 0, }, outTangents = { 1 0, 0 -0, }, properties = { 275, 1299, }, values = { 0 0.1, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph tooltip="Define the interpolation rate profile in function of the distance between the current hit obstacle position and the obstacle position from which the interpolation has started. This curve must be considered and be set as normalized" >
+	float myMaxNormalDistanceFromPreviousFrameObstacle 0.2 < min=0.0 tooltip="Set the max distance along the previous frame hit normal between the obstacle points of the previous and current frame. If the distance is higher than this threshold, no interpolation is made and the current frame hit normal is considered for the avoidance calculation" >
+	float myMaxOrthogonalDistanceFromPreviousFrameObstacle 0.4 < min=0.0 tooltip="Set the max orthogonal distance to the previous frame hit normal between the obstacle points of the previous and current frame. If the distance is higher than this threshold, no interpolation is made and the current frame hit normal is considered for the avoidance calculation" >
+}
+
+class AvoidanceTiltReductionParameters
+{
+	int myMaxAvoidanceDirectionSwitches 1 < min=0 tooltip="In case the choosen AvoidanceDirectionCalculationMethod expects an avoidance direction switch during a player redirection, i.e. right-to-left avoidance direction switch and vice versa, this value allows to limit the direction switches in order to reduce potential tilts during the movement" >
+	float myContinuousAvoidanceResetSwitchCounterTimeInterval 0.1 < min=0.0 tooltip="Set a time interval to wait before resetting the direction switch counter the player avoidance is continuously redirecting the player" >
+	float myPostAvoidanceResetSwitchCounterTimeInterval 0.1 < min=0.0 tooltip="Set a time interval to wait before resetting the direction switch counter if in the current frame no obstacle has been detected by the player avoidance" >
+}
+
+class AvoidanceConvexObstacleDetectionParameters
+{
+	bool myEnableConvexObstacleDetectionParameters false
+	string myMinHitNormalsRotationCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.033333335 0, }, outTangents = { 0.033333335 0, 0 0, }, properties = { 3, 1027, }, values = { 0 3, 0.1 10, }, }, numKeys = 2, }" < bhv=inputgraph tooltip="Set the min angle variation of the hit normal detected by the corner sphere casts in order to consider the obstacle as convex. The curve is expressed in function of the distance from the hit position of the detected obstacle and the position detected by the corner sphere casts" >
+	float myMovementBlockedAngleThresholdOverrider 5.f < tooltip="Set the MovementBlockedAngleThreshold overrider in case the obstacle is detected as convex" >
+}
+
+class PlayerIntentDirectionConsistencyParameters
+{
+	float myMaxAvoidanceDirectionDivergence 120.f < min=0.0 tooltip="Set the max angle between the current player intent direction and the ongoing avoidance target direction. If the angle between these two directions is higher than this threshold, the ongoing avoidance information are not considered in the avoidance computation in the current frame" >
+	float myMaxAvoidanceReferenceIntentDirectionDivergence 90.f < min=0.0 tooltip="Set the max angle between the current player intent direction and the one detected when computing the first time an ongoing avoidance desired direction. If the angle between these two directions is higher than this threshold, the ongoing avoidance information are not considered in the avoidance computation in the current frame" >
+}
+
+list FallbackCastOffsetsFromReferenceBone
+{
+	vec2f
+}
+
+list AvoidHandPlacementStates
+{
+	PlayerAgentState
+}
+
+class MovementBlockedHandsData
+{
+	FallbackCastOffsetsFromReferenceBone myFallbackCastOffsetsFromReferenceBone < tooltip="If we are not hitting anything from the reference bone, we will also check with raycasts starting with these offsets from the reference bone. Notice that this is a PRIORITY LIST (we will check in the order set here)" >
+	float myMaxForwardDistanceFromPlayer 1.0 < min=0.0 tooltip="If the detected surface is more distant than this value from the player, the hand will not be placed" >
+	string myRightHandBoneAliasID < tooltip="Bone Alias ID of the right hand during movement blocked" >
+	string myLeftHandBoneAliasID < tooltip="Bone Alias ID of the left hand during movement blocked" >
+	AvoidHandPlacementStates myAvoidHandPlacementStates < tooltip="If the player will be in any of these PlayerAgentState, the hand placement logic will not be triggered" >
+}
+
+class AvoidanceParameters
+{
+	AvoidanceDirectionCalculationMethod myDirectionCalculationMethod ObstacleInferenceRestricted < tooltip="Set the method to compute the avoidance direction when an obstalce is detected" >
+	int myNumberOfSideCasts 2 < min=1 >
+	float myMaxPlayerRotationRate 180.0 < tooltip="Set the maximum player rotation rate expressed in degree over seconds. This entry allows to have smmother rotations when redirection the player" >
+	float myMovementBlockedAngleThreshold 60.f
+	float myBreakingDistance 0.75f
+	float myObstacleSurfaceNormalDiscardThreshold 0.5f
+	float myMovementBlockedDistanceToObstacle 0.45f
+	float myMovementBlockedNarrowPassagesAllowedWidth 0.9 < min=0.0 tooltip="Set the maximum narrow passage width where the player can go through if more than one obstalce is detected around him" >
+	float myMovementAlongObstacleDistance 0.45f
+	float myMinMovementAlongObstacleReflectedPositionRotation 30.0 < min=0.0 tooltip="In case of moving along an obstacle, the desired direction is computed as the direction from the player position to the position along the obstacle hit normal at MovementAlongObstacleDistance rotated by the max value of between the inference angle and this value" >
+	float myMovementBlockedBreakingInputLengthModifier 0.15f
+	AvoidanceInteractionPointsDetectionParameters myAvoidanceInteractionPointsDetectionParameters < tooltip="It defines the parameters to detect interaction points along the players intended direction that will block the player avoidance movement correction" >
+	float myRadiusHitPercentageToAvoidCorner 0.5 < bhv=percent min=0.0 max=1.0 tooltip="If the anticipation SphereCast hits a corner for less than this percentage, we will trigger the avoidance (withouth checking the angle of incidence)" >
+	AvoidanceConvexObstacleDetectionParameters myConvexObstacleDetectionParameters
+	PreviousFrameHitNormalInterpolationParameters myPreviousFrameHitNormalInterpolationParameters
+	MovementBlockedHandsData myMovementBlockedHandsData
+}

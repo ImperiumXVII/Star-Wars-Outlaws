@@ -1,0 +1,76 @@
+include "helix/game system data/juice/ai/wl_krayt_dragon.mnpcmotionpatternprofile"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npc/wl_tshikara.mnpc"
+
+NPC wl_krayt_dragon < uid=E9DD8F6064D3369300006A5B82852D72 > : wil_fp_predator
+{
+	myName "branch = \"TU1\", contextComment = \"The name of the Tatooine apex predator\", enabled = true, guid = #E9DD8F606684AD7F001EAFA59269CE19, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10572, text = \"Krayt Dragon\", type = \"MenuLine\""
+	myCharacterVisuals < uid=E9DD8F6064D336BB0000713AF75C71B3 > = character_visuals_wil_krayt_dragon E9DD8F6064D33379000034F7ECA741AB
+	myBehavior helix/behaviors/wildlife_predator.mbehavior
+	myAnimSystemType Krayt_Dragon
+	myHealthFormula 99999
+	myFaction < uid=E9DD8F6065C09DB0000000F6B8F0E642 > = WildlifeKraytDragon E9DD8F6065C09CDC000000D2095BDADE
+	myPositionReservationSize 0.0
+	myNavigationLayerType Gigantic
+	myNavigationCapability < uid=2E5ACA7E650044020014657C9BCD6B33 > = KraytDragonNavigationCappability 2E5ACA7E64EDC9F7000A02CBF2A5D014
+	myInitialNPCControllerContextType Flying
+	myLodType KraytDragon
+	myLodProfile < uid=E8E55FD86686102300038977B5C5526F > = Wildlife_Huge E8E55FD8667A396D00060A7E6819ABDA
+	myVisionProfile < uid=2E5ACA7E650029470005ABF2CCB6372A > = KraytDragonVisionProfile 2E5ACA7E650026FD00044A2E29E4A7BA
+	mySmellProfile < uid=E9DD8F6064D9E2B9001207A2C781B82D > = KraytDragonSmellProfile E9DD8F6064D9DDE70012071E277FD2E9
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=E9DD8F6064DAD707000093898E1C3A9E > = DefaultWildlifePredatorDetectionProfile 290EB60C63365376000045881C721F26
+	}
+	myThreatProfile < uid=E9DD8F6064F93BAE00038E98CA71E284 > = KraytDragonThreatProfile E9DD8F6064F7EF380002E98F052AC04D
+	myMotionPatternProfile < uid=E9DD8F6064D33C290000A3B016D72CD1 > = KraytDragonMotionPatternProfile E9DD8F6064D33B680000A39C2550CBDD
+	myMotionPlanFollowProfile < uid=EBEEDF3F661E39B30002ABA624568101 > = DragonMotionPlanFollowProfile EBEEDF3F661E394000026109B124B450
+	myMoveTurnCapabilitiesProfile < uid=EBEEDF3F659CF9430000BAD972C1B748 > = kraytdragon_NPCMoveTurnCapabilitiesProfile 290B720F64DB4587000BC86B17F78D4D
+	mySteeringProfile < uid=E9DD8F6066A84A6D000001097CC160F9 > = DisabledSteeringProfile E9DD8F6066A84D210000010C27C6DD9A
+	myFleeProfile < uid=E9DD8F6064D346EA0000A3DBED25EA2B > = KraytDragonFleeProfile E9DD8F6064D345360000A3C4B1E314F8
+	myPackProfile < uid=2AA3EE5D6540CE960000CB29E04A0660 > = KraytDragonPackProfile 2AA3EE5D6540CDCF0000894AD4FF858C
+	myAudioParameters
+	{
+		myEmitterName "WL Krayt Dragon"
+		myEmitters
+		{
+			AgentEmitter Default
+			{
+				myEmitterLabel < uid=1877DA4E6563F6A0000A31095B1DE1AF > = Root 3A1C5D1863906F050000AB6FBD984CC4
+				myEmitterPrefab "emitterLayerName = \"wildlife\", enableDoppler = false, enablePropagation = false, sphereRadius = 1, stopOnDestroy = true"
+			}
+			AgentEmitter Mouth
+			{
+				myEmitterLabel < uid=1877DA4E6563F6A0000A310A77DE0BCE > = Mouth 3A1C5D1863906F120000AB70A206E385
+				myEmitterPrefab "emitterLayerName = \"wildlife\", enableDoppler = false, enablePropagation = false, sphereRadius = 1, stopOnDestroy = true"
+				myBoneName Jaw
+			}
+		}
+		myBodyPartImpactSounds
+		{
+			BodyPartImpactSound Head
+			{
+				myBodyPart Head
+				myImpactAudioEvent
+				{
+					myGuid 492A3EA51218CF40CE9E0301C288CE8C
+				}
+			}
+			BodyPartImpactSound Body
+			{
+				myBodyPart Body
+				myImpactAudioEvent
+				{
+					myGuid 492A3EA51218CF40CE9E0301C288CE8C
+				}
+			}
+		}
+	}
+	myAudioNPCDangerWeight 20.0
+	myCanBeDetectedByProximitySenses FALSE
+	myMeleeConfig < uid=E9DD8F6064D347880000A3E4D7391B61 > = krayt_dragon_melee_config E9DD8F6064D3476A0000A3E0071BB368
+	myPhysicsProfile < uid=2AA3EE5D65B874AF0006ECC74B881F49 > = KraytDragon 2AA3EE5D65B871EE0006ECAEB9ACD6EB
+	myMoveConfig < uid=E9DD8F6064D353EC00020496C1346958 > = krayt_dragon_move_config E9DD8F6064D34EED0000A6D18A5D270D
+	myResistanceProfile < uid=E9DD8F6065C0A3A700019C7BEF533A44 > = KraytDragonResistanceProfile E9DD8F6065C0A33F00019C6A2A629C35
+}
+

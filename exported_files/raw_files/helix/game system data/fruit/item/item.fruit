@@ -1,0 +1,294 @@
+include "helix/game system data/fruit/gamevalues/gamevalues.fruit"
+include "helix/game system data/fruit/attribute/attribute_bonus.fruit"
+include "helix/game system data/fruit/talent/talent.fruit"
+include "helix/game system data/fruit/intel/intel.fruit"
+
+enum ItemCategory
+{
+	Currency
+	Equipment
+	KeyPart
+	Material
+	Trinket
+	Valuable
+	Junk
+	QuestItem
+	Upgrade
+	Gear
+	ShipGear
+	SpeederGear
+	Weapon
+	Consumable
+	CharmMajor
+	CharmMinor
+	Collectible
+	PartBlaster
+	PartSpaceship
+	PartSpeeder
+	DataItem
+	SabaccShiftToken
+	PetFood
+	KeyPart_Blaster
+	KeyPart_DomainsOfMastery
+	KeyPart_Ship
+	KeyPart_Speeder
+	KeyPart_Trading
+	Cosmetic
+	Cosmetic_BlasterSkin
+	Cosmetic_PetGear
+	Cosmetic_ShipFuel
+	Cosmetic_ShipSkin
+	Cosmetic_SpeederSkin
+	Cosmetic_SpeederTrophy
+	Cosmetic_VehicleTrinket
+	Material_Tailoring
+	KeyPart_Blaster_NewConfig
+	KeyCard
+	KeyCard_FactionVault
+	Intel_Item
+	CrewMember_Item
+	KeyPart_Blaster_Ank
+	KeyPart_Blaster_Asara
+	KeyPart_Blaster_Gedeek
+	KeyPart_Blaster_Lando
+	KeyPart_Blaster_ND5
+	NewQuestFeedback
+	ShipCharm
+	KeyPart_Blaster_DLC2
+	ShipCargoCapacity
+	ShipCargoType
+	ShipCargoUpgrade_KayInventory
+	ShipCargoUpgrade_ShipInventory
+	ShipActiveSystem
+}
+
+list ItemCategoryList
+{
+	ItemCategory
+}
+
+enum InventoryPouch
+{
+	CurrenciesAndGoods
+	PartsAndMaterials
+	VehicleParts
+	SupportAndUtility
+	JourneyItems
+	Chest
+	Waist
+	Legs
+	Weapon	
+	PetFood
+	Cosmetics
+	ToolsAndGadgets
+	Gameplay
+	Hidden
+	Currencies
+	Gadgets
+	Gameplay
+	KeyParts
+	Materials
+	Trinkets
+	Valuables
+	Junk
+	QuestItems
+	VisibleUpgrades
+	HiddenUpgrades	
+	Gear
+	Weapons
+	Consumables
+	PocketableHeistTarget
+	Speeder
+	SpeederBoost
+	SpeederJump
+	SpeederRepulsorA
+	SpeederRepulsorB
+	SpeederTowCable
+	SpeederJammer
+	SpeederEngine
+	SpeederArmor
+	SpeederHandling
+	Ship
+	ShipEngine
+	ShipHull
+	ShipShield
+	ShipGun
+	ShipLauncher
+	ShipTurret
+	ShipAux
+	Ammo
+	CharmMajor
+	CharmMinor
+	ISBReports
+	KordosJournals
+	NixTreasures
+	MTX
+	Sabacc
+	Transmissions
+	Holodramas
+	PetGear
+	ShipShieldGenerator
+	ShipCharm
+	ShipCargoCapacity
+	ShipCargoType
+	ShipCargoUpgrade_KayInventory
+	ShipCargoUpgrade_ShipInventory
+}
+
+list InventoryPouchList
+{
+	InventoryPouch
+}
+
+enum PlayerInventoryType
+{
+	Agent
+	Speeder
+	Spaceship
+	Pet
+	RokanaSpaceship
+}
+
+enum ItemSource
+{
+	Unknown
+	Debug
+	DomainOfMasterAbilityUnlock
+	EquipmentUpgrade
+	InventoryTypeItemMove
+	VendorTransaction
+	MTX
+}
+
+list ItemSourceList
+{
+	ItemSource
+}
+
+enum ItemBlockedLootBehavior
+{
+	Default
+	HideInteraction
+	HideGraphObject
+	RestrictInteractionByQuantityOne
+}
+
+enum ItemTier
+{
+	Small
+	SmallPlus
+	Medium
+	Big
+}
+
+enum ItemQuality
+{
+	Standard
+	Premium
+	Cosmetic
+}
+
+class Item < uid=auto >
+{
+	varmap myName < bhv="localization" ui_info=1 referenced_by_code=1 ui_info_debug_ui_name=1 tooltip="For items where you're dealing with large amounts(credits), the plural form should be used. For unique(particular clothing item) or low amount items(grenade), singular should be preferred." >
+	varmap myDescription < bhv="localization" ui_info=1 >
+	varmap myGameplayDescription < bhv="localization" ui_info=1 >
+	varmap myWhereToFind < bhv="localization" ui_info=1 tooltip="For displaying information on where the player can find an item.">
+	varmap myHint < bhv="localization" ui_info=1 tooltip="For displaying additional info about an item." >
+	varmap myWantedByVendor < bhv="localization" ui_info=1 tooltip="For displaying information about vendors that might be interested in this item." >
+	bool myDisplayAmountInLog true < ui_info=1 tooltip="If TRUE, when gaining or losing the item, should the amount be shown. Example: FALSE for unique items." >
+	string myIcon < bhv="sprite" ui_info=1 referenced_by_code=1 >
+	bool myIconUseAlphaMask TRUE < ui_info=1 >
+	string myWatermark < bhv="sprite" ui_info=1 >
+	file myThumbnail < bhv="asset" assettype="texture" ui_info=1 >
+	file myHighresImage < bhv="asset" assettype="texture" ui_info=1 >
+	file myGraphObject < bhv=asset assettype=object hidden=1 ui_info=1 >
+	ItemCategory myCategory
+	ItemTier myTier Small < ui_info=1 >
+	ItemQuality myQuality Standard
+	file myVideo < bhv="asset" assettype="webm" ui_info=1 >
+	
+	InventoryPouch myInventoryPouch
+	string myAgentInventoryCapacity < bhv=formulaEditor formulaResolveContextType=AgentAttributes tooltip="Not set means unlimited, but can be capped by pouch capacity" >
+	string mySpeederInventoryCapacity < bhv=formulaEditor formulaResolveContextType=AgentAttributes tooltip="Not set means unlimited, but can be capped by pouch capacity" >
+	string mySpaceshipInventoryCapacity < bhv=formulaEditor formulaResolveContextType=AgentAttributes tooltip="Not set means unlimited, but can be capped by pouch capacity" >
+	string myRokanaSpaceshipInventoryCapacity < bhv=formulaEditor formulaResolveContextType=AgentAttributes tooltip="Not set means unlimited, but can be capped by pouch capacity" >
+	string myPetInventoryCapacity < bhv=formulaEditor formulaResolveContextType=AgentAttributes tooltip="Not set means unlimited, but can be capped by pouch capacity" >
+	PlayerInventoryType myDefaultInventory Agent
+	bool myShowInventoryAddNotifications TRUE
+	bool myShowInventoryRemoveNotifications TRUE
+	bool myShouldAutoSave FALSE < tooltip="This will request an autosave if the item is added to, or removed from the inventory" >
+		
+	file myLootGraphObject "" < bhv=asset assettype=object tooltip="If set, when spawning this item as loot it will use this graph object instead." >
+	file mySpaceOverrideLootGraphObject "" < bhv=asset assettype=object tooltip="If set, overrides 'LootGraphObject' in space levels." >
+	bool myAllowUsingLootGraphObjectWithAnyAmount TRUE < tooltip="If TRUE, when spawning this item as loot at ANY amount it will use the graph object specified in myLootGraphObject. If FALSE, then the graph object will only be used if the item is spawned as one item." >
+	ItemBlockedLootBehavior myBlockedLootBehavior Default < tooltip="What happens when the item can't be picked up." >
+	bool myIsAutoLoot FALSE < tooltip="If true, the loot pile will be considered auto-lootable, not requiring the player to manually interact with it." >
+	bool myCanEnterPetTunnels TRUE < tooltip="If set to false and the Pet steals this loot and needs to go back through a Manual Pet Tunnel, he will drop the loot containing this item." >
+
+	int myBuyPrice
+	bool myCanBeSold TRUE < tooltip="If the item can be sold to a vendor or not" >
+	bool myHideAtVendorIfCantBeAddedToInventory FALSE < tooltip="If this is set to true the item won't show up in the vendor if it can't be added to the player inventory. It will still show if the player doesn't have enough money to buy it." >
+	
+	ItemAmountGameValue myAmount < can_be_set=1 tooltip="[OPTIONAL]: If set, this game value will track the amount of this item in the agent inventory to be used in formulas." >
+
+	Intel* myKeyPartIntel < tooltip="[OPTIONAL]: This Intel is for Key Parts, you should not use it for other intent. It will be activated when the player found the hint to found it" >
+}
+
+class CurrencyItem : Item
+{
+	ItemTotalGainedGameValue myTotalGained < can_be_set=1 tooltip="[OPTIONAL]: If set, this game value will track the gained amount of currency." >
+}
+
+class RewardGivingItem : Item
+{
+	string myAgentInventoryCapacity < hidden=1 >
+	string mySpeederInventoryCapacity < hidden=1 >
+	string mySpaceshipInventoryCapacity < hidden=1 >
+	PlayerInventoryType myDefaultInventory Agent < hidden=1 >
+	bool myShowInventoryAddNotifications FALSE < hidden=1 >
+	bool myShowInventoryRemoveNotifications FALSE < hidden=1 >
+	ItemBlockedLootBehavior myBlockedLootBehavior HideGraphObject
+	bool myHideAtVendorIfCantBeAddedToInventory TRUE
+	ItemAmountGameValue myAmount < hidden=1 >
+
+	uid myReward < bhv="constantData" constantDataType="reward" >
+}
+
+class UpgradeItem : Item
+{
+	string mySpeederInventoryCapacity < hidden=1 >
+	string mySpaceshipInventoryCapacity < hidden=1 >
+	ItemCategory myCategory Upgrade
+	InventoryPouch myInventoryPouch VisibleUpgrades
+	TalentList myTalents < tooltip="Applied when item is added to inventory." >
+}
+
+class ReputationLootItem : Item
+{
+	uid myReputation < bhv="constantData" constantDataType="reputation" can_be_set=1 >
+	uid mySameFactionSellReward < bhv="constantData" constantDataType="reward" >
+	uid myOtherFactionSellReward < bhv="constantData" constantDataType="reward" >
+}
+
+class InWorldMessageItem : Item
+{
+	string myAgentInventoryCapacity < hidden=1 >
+	string mySpeederInventoryCapacity < hidden=1 >
+	string mySpaceshipInventoryCapacity < hidden=1 >
+	PlayerInventoryType myDefaultInventory Agent < hidden=1 >
+	bool myShowInventoryAddNotifications FALSE < hidden=1 >
+	bool myShowInventoryRemoveNotifications FALSE < hidden=1 >
+	uid myInWorldMessage < bhv="constantData" constantDataType="inworldmessage" >
+}
+
+class ItemStack
+{
+	Item* myItem
+	int myAmount 1
+}
+
+list ItemStackList
+{
+	ItemStack
+}

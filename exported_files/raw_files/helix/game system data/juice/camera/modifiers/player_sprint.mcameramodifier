@@ -1,0 +1,40 @@
+include "helix/game system data/fruit/camera/cameramodifier.fruit"
+
+ShakeCameraModifier player_sprint < uid=0B6B42D760A3EF8D0000002CE7EFDEAE >
+{
+	myTransitions
+	{
+		myInDuration 0.75
+		myOutDuration 0.5
+		myOutCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 0, }, outTangents = { 0.12020648 0, 0 0, }, properties = { 275, 1027, }, values = { 0 1, 1 0, }, }, numKeys = 2, }"
+		myAllowReverseTransition TRUE
+	}
+	myBlocks
+	{
+		CameraShakeBlock FOV
+		{
+			myIsCyclic TRUE
+			myBlendInTime 0.0
+			myBlendOutTime 0.0
+			myDuration 0.2
+			myPitchMoveCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0.001 0, }, outTangents = { 0.001 0, }, properties = { 3, }, values = { 0 1, }, }, numKeys = 1, }"
+			myPitchRotateCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0.001 0, }, outTangents = { 0.001 0, }, properties = { 3, }, values = { 0 1, }, }, numKeys = 1, }"
+			myYawRotateCurve ""
+			myDistanceCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, }, outTangents = { 0.33333334 0, }, properties = { 3, }, values = { 0 1, }, }, numKeys = 1, }"
+			myRollCurve ""
+			myFOVCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0.001 0, }, outTangents = { 0.001 0, }, properties = { 3, }, values = { 0 1, }, }, numKeys = 1, }"
+			myYMoveCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0.001 0, }, outTangents = { 0.001 0, }, properties = { 3, }, values = { 0 1, }, }, numKeys = 1, }"
+			myPitchMoveAmplitude 0.0
+			myPitchRotateAmplitude 0.0
+			myYawRotateAmplitude 0.0
+			myDistanceAmplitude 0.3
+			myRollAmplitude 0.0
+			myFOVAmplitude 6.0
+			myYMoveAmplitude 0.0
+			myMovementStyle Spherical
+			myDirectionCameraShakeTrajectoryType CodeDirection
+		}
+	}
+	myShouldHandleCollision TRUE
+}
+

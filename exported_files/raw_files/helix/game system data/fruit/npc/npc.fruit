@@ -1,0 +1,333 @@
+include "helix/game system data/fruit/ai/aimprofile.fruit"
+include "helix/game system data/fruit/ai/audiobillboarding.fruit"
+include "helix/game system data/fruit/ai/audiotriggervolumeprofile.fruit"
+include "helix/game system data/fruit/ai/capinteractionevaluatorprofile.fruit"
+include "helix/game system data/fruit/ai/detection.fruit"
+include "helix/game system data/fruit/ai/dynamiccapinteraction.fruit"
+include "helix/game system data/fruit/ai/npcfootstepprofile.fruit"
+include "helix/game system data/fruit/ai/motion/motionenums.fruit"
+include "helix/game system data/fruit/ai/motion/motionpatternprofile.fruit"
+include "helix/game system data/fruit/ai/motion/motionplanfollowprofile.fruit"
+include "helix/game system data/fruit/ai/npcagitationprofile.fruit"
+include "helix/game system data/fruit/ai/npcambientdutyprofile.fruit"
+include "helix/game system data/fruit/ai/npccorpseprofile.fruit"
+include "helix/game system data/fruit/ai/npcpack.fruit"
+include "helix/game system data/fruit/ai/npcpatrolformationprofile.fruit"
+include "helix/game system data/fruit/ai/npcplayerawareness.fruit"
+include "helix/game system data/fruit/ai/npcfleeprofile.fruit"
+include "helix/game system data/fruit/ai/npcfocus.fruit"
+include "helix/game system data/fruit/ai/npcfollowprofile.fruit"
+include "helix/game system data/fruit/ai/npchitreactionsettings.fruit"
+include "helix/game system data/fruit/ai/npconnpcattachment.fruit"
+include "helix/game system data/fruit/ai/npcplayerawareness.fruit"
+include "helix/game system data/fruit/ai/npcstagger.fruit"
+include "helix/game system data/fruit/ai/npctacticalpositionfinderprofile.fruit"
+include "helix/game system data/fruit/ai/npcticketsettings.fruit"
+include "helix/game system data/fruit/ai/npcmoveturncapabilitiesprofile.fruit"
+include "helix/game system data/fruit/ai/npcbehaviorupdateboostprofile.fruit"
+include "helix/game system data/fruit/ai/npcsteeringprofile.fruit"
+include "helix/game system data/fruit/ai/npcweapon.fruit"
+include "helix/game system data/fruit/ai/pathfinding/navigation_capabilities.fruit"
+include "helix/game system data/fruit/ai/pathfinding/navmesh_layer_type.fruit"
+include "helix/game system data/fruit/ai/npcpathwaytraversalcapability.fruit"
+include "helix/game system data/fruit/ai/npcresistanceprofile.fruit"
+include "helix/game system data/fruit/ai/npcvisualeffect.fruit"
+include "helix/game system data/fruit/ai/sensory.fruit"
+include "helix/game system data/fruit/ai/smell.fruit"
+include "helix/game system data/fruit/ai/sounddetection.fruit"
+include "helix/game system data/fruit/ai/spaceshipsettings.fruit"
+include "helix/game system data/fruit/ai/threat.fruit"
+include "helix/game system data/fruit/ai/vision.fruit"
+include "helix/game system data/fruit/ai/wantedprofile.fruit"
+include "helix/game system data/fruit/ai/npcsuppressionprofile.fruit"
+include "helix/game system data/fruit/ai/npclodprofile.fruit"
+include "helix/game system data/fruit/animation/facialanimvariablemappingprofile.fruit"
+include "helix/game system data/fruit/attribute/attribute_bonus.fruit"
+include "helix/game system data/fruit/character/charactervisuals.fruit"
+include "helix/game system data/fruit/character/geargraphlist.fruit"
+include "helix/game system data/fruit/contractgiver/contractgiver.fruit"
+include "helix/game system data/fruit/datastorage/datastorage.fruit"
+include "helix/game system data/fruit/dialogue character/dialogcharacterwithtags.fruit"
+include "helix/game system data/fruit/dialogue character/dialoguecharacternameoverridewithtags.fruit"
+include "helix/game system data/fruit/faction/faction.fruit"
+include "helix/game system data/fruit/faction/factionoverrideinfo.fruit"
+include "helix/game system data/fruit/groundaligner/groundaligner.fruit"
+include "helix/game system data/fruit/item/item.fruit"
+include "helix/game system data/fruit/loottable/loottable.fruit"
+include "helix/game system data/fruit/melee/npcmelee.fruit"
+include "helix/game system data/fruit/melee/npcmeleedefense.fruit"
+include "helix/game system data/fruit/npc/npcenums.fruit"
+include "helix/game system data/fruit/npc/npctagslists.fruit"
+include "helix/game system data/fruit/npcexclusionzone/exclusionzoneprofile.fruit"
+include "helix/game system data/fruit/npcmove/moveconfig.fruit"
+include "helix/game system data/fruit/physics/npcphysics.fruit"
+include "helix/game system data/fruit/rumble/rumble.fruit"
+include "helix/game system data/fruit/settings/spaceshipenums.fruit"
+include "helix/game system data/fruit/sound/audiocomponentparameters.fruit"
+include "helix/game system data/fruit/takedown/npctakedown.fruit"
+include "helix/game system data/fruit/vehicle/vehicle.fruit"
+include "helix/game system data/fruit/vendor/vendorconfig.fruit"
+include "helix/game system data/fruit/equipment/aimassist_target_config.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+
+include "snowdrop/modules/character/core_character.fruit"
+
+// Must match enum HC_NamedNPC in code/helix/HClient/HC_NamedNPCEnum.h
+enum NamedNPC
+{
+	None
+	Nix
+	ND5
+	Ank
+	Asara
+	Gedeek
+	Riko
+	Waka
+	Sliro
+	DLC2_Hondo
+}
+
+// Must match enum HC_NPCControllerContextType in code/helix/HClient/HC_NPCControllerContextTypes.h
+enum NPCControllerContextType
+{
+	 NotSet
+	 Ground
+	 Dead
+	 Sequence
+	 SyncedAnim
+	 OnVehicle
+	 Flying
+	 Hover
+	 Falling
+	 MovablePlatform
+}
+
+// These enums are referenced in data by string.
+// It is okay to add enums or change the order or these enums, but changing the text values will break existing uses.
+enum Archetype
+{
+	None
+	Assault
+	Sentry
+	Rusher
+	Spotter
+	Elite
+	Non-Combattant
+	Ambient
+}
+
+class NPCDetectionProfiles
+{
+	NPCDetectionProfile* myDefaultProfile < tooltip="Default detection profile NPCs use in non-specified areas" >
+	NPCDetectionProfile* myNonCombatAreaProfile < tooltip="Detection profile which will be used if the NPC is within a NPCNonCombatArea. If this is unset the NPC will use the Default Profile" >
+}
+
+list HideMapRefGameConditions
+{
+	HideMapRefGameConditionGroup
+	GameConditionContextAgentIsAlive
+	GameConditionQuestState
+}
+
+list ConditionalAgentRBTagsGameConditions
+{
+	GameConditionQuestState
+}
+
+class HideMapRefGameConditionGroup : GameConditionGroupBase
+{
+	HideMapRefGameConditions myConditions
+}
+
+class ConditionalAgentRBTagsGameConditionGroup : GameConditionGroupBase
+{
+	ConditionalAgentRBTagsGameConditions myConditions
+}
+
+// Do not allow loop footstep rumbles
+class NPCRumbleEffectFootstep : Rumble
+{
+	bool myIsLoop false < tooltip="If true, the rumble will loop" hidden=1 >
+}
+
+class NPC < uid=auto >
+{
+	varmap myName < bhv="localization" ui_info=1 >
+	varmap myNameFeminine < bhv="localization" ui_info=1 >
+	Archetype myArchetype None < ui_info=1 >
+	bool myForceHideFromRadar false < ui_info=1 >
+	uid myDialogueNameOverride < bhv="constantData" constantDataType="dialoguenameoverride" ui_info=1 >
+	DialogueCharacterNameOverrideWithTagsList myDialogueNameOverrides
+	CharacterVisualsBase* myCharacterVisuals
+	uid myAdditionalGearGraphs < bhv="constantData" constantDataType="geargraphlist" tooltip="Combined with the character visuals, intended for things like interactions" >
+	file myBehavior "" < bhv=asset assettype=behavior >
+	file myVehicleDriverBehavior "" < bhv=asset assettype=behavior tooltip="Beahvior Running when the npc is on a vehicle instead of the default behavior" >
+	file myVehiclePassengerBehavior "" < bhv=asset assettype=behavior tooltip="Behavior Running when the npc is passenger on a vehicle instead of the default behavior" >
+	AnimSystemType myAnimSystemType None
+	FacialAnimVariableMappingProfile* myFacialAnimVariableMappingProfile
+	NamedNPC myNamedNPC None
+
+	NPCComponentSetType myNPCComponentSetType Default
+	bool myIsInvulnerable FALSE < tooltip="Prevent NPC to take any damage" >
+	bool myShouldRedirectDamageToHost FALSE < tooltip="Redirects damage to host if IsInvulnerable is set to true" >
+
+	SpaceshipType mySpaceshipType Default
+	TurretType myTurretType Default
+
+	int myMaxHealth 5
+	string myHealthFormula < bhv=formulaEditor formulaResolveContextType=AgentAttributes tooltip="Not set means unlimited" >
+	float myHealthBarOffset
+
+	float myUIFeedbackOffset 2.1 < tooltip="Value used to set where the Intention Icon UI will be placed, doesn't impact the dectection Icon that used the UIHat Bone Alias" >
+
+	bool myIsClaimable FALSE
+
+	Faction* myFaction < tooltip="Faction of the npc, will also set the Faction Tag on the agent" >
+	uid myFactionOverrideInfo < bhv="constantData" constantDataType="factionoverrideinfo" ui_info=1 tooltip="If set, some faction ui info can be overriden by this">
+	NPCGenderTagsList myPossibleGenderTags < tooltip="Gender tags the npc can use, if empty will use all available from the Character Graph entry" >
+	NPCSpeciesTagsList myPossibleSpeciesTags < tooltip="Species tags the npc can use, if empty will use all available from the Character Graph entry" >
+	NPCAgentTagsList myAgentRBTags < tooltip="Additonal Tags needed other than Faction, Gender and Species" >
+
+	float myPositionReservationSize 0.0
+
+	AI_NavMeshLayerEnumType myNavigationLayerType Small < tooltip="What type of navmesh the npc use to move in the world" >
+	NavigationCapability* myNavigationCapability < tooltip="What Navmesh Type and User Edge the npc can use/ should avoid" >
+	NPCPathwayTraversalCapabilityProfile* myPathwayTraversalCapabilityProfile
+
+	NPCControllerContextType myInitialNPCControllerContextType Ground
+
+	DialogueCharacterWithTagsList myDialogueCharacters
+	DialogueCharacterWithTagsListFromDatabase myDialogueCharactersFromDatabase
+
+	NPCLodType myLodType Default < tooltip="DEPRECATED Use LOD Profile instead" >
+	NPCLodProfile* myLodProfile < tooltip="The LOD Profile overrides the lod type and controls the rest of the visual lod settings for the agent." >
+
+	NPCSensoryProfileOverrides mySensoryProfileOverrides < tooltip="Allow npc to have differents vision profiles depending on the Area they're in" >
+	NPCSensoryProfile* mySensoryProfile < tooltip="Setup what npc can detect around them" >
+	NPCVisionProfile* myVisionProfile < tooltip="Default vision cone of the npc" >
+	NPCHearingProfile* myHearingProfile < tooltip="What type of sound and how far the npc can hear them" >
+	NPCSmellProfile* mySmellProfile < tooltip="Size of area the npc can automatically detect their target" >
+	NPCDetectionProfiles myDetectionProfiles < tooltip="How quick and far the npc can see hostile and goes in combat" >
+	NPCTacticalPositionFinderProfile* myTacticalPositionFinderProfile < tooltip="Manage weight on the points the npc can find to move to in combat" >
+	NPCThreatProfile* myThreatProfile < tooltip="Scoring of known hostile threat to select the one to fight" >
+	NPCWantedProfile* myWantedProfile
+	NPCAgitationProfile* myAgitationProfile
+	NPCAimProfile* myAimProfile < tooltip="DEPRECATED Use Weapon Loadout to setup weapon and aim profile on npc" >
+	NPCAimProfile* myReducedAimProfile < tooltip="DEPRECATED Use Weapon Loadout to setup weapon and aim profile on npc" >
+	NPCAimProfile* myNearMissAimProfile < tooltip="DEPRECATED Use Weapon Loadout to setup weapon and aim profile on npc" >
+	NPCWeapon* myMainWeapon < tooltip="DEPRECATED Use Weapon Loadout to setup weapon and aim profile on npc" >
+	NPCWeapon* mySecondaryWeapon < tooltip="DEPRECATED Use Weapon Loadout to setup weapon and aim profile on npc" >
+	NPCWeaponLoadoutList myWeaponLoadouts < tooltip="List all the weapons the npc is able to use, each loadout will also setup the aim profile" >
+	NPConNPCAttachmentSet* myAttachedNPCsSet
+	NPCPatrolFormationProfile* myPatrolFormationProfile
+	NPCAudioTriggerVolumeProfile* myAudioTriggerVolumeProfile < tooltip="Profile used when NPC is colliding with Audio Trigger Volumes (foliage)" >
+	Item* myWeaponDrop
+	LootTable* myLootTable < tooltip="Items dropped when the NPC dies." >
+	LootTable* myPickpocketableLootTable < tooltip="Items that can be pickpocketed by the pet, will NOT drop if the NPC dies." >
+
+	NPCDynamicCAPInteractionProfile* myDynamicCAPInteractionProfile
+
+	NPCCAPInteractionEvaluatorProfile* myCAPInteractionEvaluatorProfile
+
+	NPCPlayerAwarenessProfile* myPlayerAwarenessProfile
+
+	NPCMotionPatternProfile* myMotionPatternProfile
+	NPCMotionPlanFollowProfile* myMotionPlanFollowProfile
+	NPCMoveTurnCapabilitiesProfile* myMoveTurnCapabilitiesProfile
+	NPCSteeringProfile* mySteeringProfile
+	NPCBehaviorUpdateBoostProfile* myBehaviorUpdateBoostProfile
+
+	NPCFleeProfile* myFleeProfile
+
+	NPCFollowProfile* myFollowProfile
+
+	NPCFootStepProfile* myFootStepProfile
+
+	NPCPackProfile* myPackProfile
+
+	NPCFocusProfile* myFocusProfile
+
+	VendorConfig* myVendorConfig
+	ContractGiver* myContractGiverData
+	uid myDomainOfMasteryExpertSet < bhv="constantData" constantDataType="domainofmasteryexpertset" >
+	HideMapRefGameConditionGroup myHideMapRefGameConditions
+
+	Vehicle* myVehicle
+	VehiclePickList myVehicles
+	bool myAllowDriverDismount TRUE
+
+	float myPlayerMeleeDamageModifier 1.0
+	AimAssistTargetConfig* myPlayerCustomAimAssistConfig < tooltip="If set, this profile configuration will replace the default one for the player aim assist" >
+
+	AudioParameters myAudioParameters < tooltip="The parameters for setting up this agent's audio component" >
+	float myAudioNPCDangerWeight 0.0 < tooltip="The danger weight of the NPC, from the player's perspective. Used by Audio to be able to modify sounds based on the danger around the player." >
+
+	bool myCanBeDetectedByNPC TRUE < tooltip = "If FALSE the NPC can't be detected by any NPC detection system." >
+
+	PetAttackTargetType myPetAttackTargetType None
+	bool myCanBeDetectedByPetSenses TRUE < tooltip = "If enabled, the enemy will be shown when pet senses are active. Disable to ignore this NPC when scanning for targets." >
+	bool myCanBeDetectedByProximitySenses TRUE < tooltip = "If enabled, the enemy will be shown when close enough for the proximity sense. Disable to ignore this NPC when scanning for targets." >
+	bool myCanBeDistractedByPet TRUE < tooltip = "If disabled, this NPC won't be able to be distracted by the Pet." >
+
+	bool myCanInvestigatePlayerWhistle TRUE < tooltip = "If disabled, this NPC won't be able to investigate the Player Whistle." >
+
+	NPCMeleeConfig* myMeleeConfig
+	NPCMeleeDefenseProfile* myMeleeDefenseProfile
+	NPCStaggerConfig* myStaggerConfig
+	NPCTakedownConfig* myTakedownConfig
+
+	NPCPhysicsProfile* myPhysicsProfile
+	QuadrupedalGroundAlignerConfig* myQuadrupedalGroundAlignerConfig
+
+	NPCCombatRole myCombatRole None
+	NPCRiderType myRiderType Civilian
+
+	NPCMoveConfig* myMoveConfig
+
+	file myOnAgentKilledGameScript "" < tooltip="GameScript to run when the NPC dies." bhv=asset assettype="Game Script/KillScript" >
+	bool myIsIgnoredDuringDeadBodyDespawnTests FALSE < tooltip="This prevents these NPCs from being automatically despawned when dead if there are too many dead bodies" >
+
+	NPCAmbientDutyProfile* myAmbientDutyProfile
+
+	NPCExclusionZoneProfile* myExclusionZoneProfile
+
+	NPCCorpseProfile* myCorpseProfile
+
+	NPCHitReactionSettings* myHitReactionSettings
+
+	NPCSuppressionProfile* mySuppressionProfile
+
+	NPCResistanceProfile* myResistanceProfile
+	
+	NPCVisualEffectFootstep myVisualEffectFootstep
+	NPCRumbleEffectFootstep myRumbleEffectFootstep
+	bool myAllowHighContrastVisuals TRUE
+
+	DataStorageItemsInitializationList myDataStorageItemsInitializationList
+
+	file myHologramGraphObject "" < bhv = asset assettype = object ui_info = 1 >
+
+	string myNPCIcon < bhv="sprite" referenced_by_code=1 ui_info=1 >
+	
+	NPCMusicProfileType myMusicProfileType None
+
+	float myFootstepVFXRange 100
+	float myFootstepAudioRange 100
+
+	bool myExcludeFromQuickThrows FALSE < tooltip="Tick to exclude that NPC from the potential targets of a quick throw." >
+	
+	bool myTrafficObjectiveCanBeInterruptedByCombat TRUE < tooltip="if false the traffic objective will not be put on hold when in combat." >
+	
+	bool myAllyForceHighContrastMode FALSE < tooltip="force the highcontrast mode on allied npc." >
+
+	bool myForceFriendlyRelationToPlayer FALSE < tooltip="use this for npc in for example cities so the player can't shoot them." >
+	bool myIgnoreFactionRelationForPlayerWhistle FALSE < tooltip="use this to make friendly NPCs react to player whistle." >
+	bool myIgnoreFactionRelationForPetPulse FALSE < tooltip="if false, faction relation will be ignored when npc is evualated for pet pulse." >
+	bool myIgnoreFactionRelationForAdrenalineRush FALSE < tooltip="if true, the target can be evaluated as friendly and still be a valid AdrenalineRush target">
+	bool myCanBeTargetedByPetProtectSkill TRUE < tooltip="if false, player pet won't be able to target the NPC when throwing back an enemy grenade." >
+	
+	NPCTicketTypeList myExlusionTickets < tooltip="List of all ticket types NPC won't be allowed to claim." >
+	
+	ConditionalAgentRBTagsGameConditionGroup myAgentRBTagsGameConditions
+	NPCAgentTagsList myCondtionalAgentRBTags
+}

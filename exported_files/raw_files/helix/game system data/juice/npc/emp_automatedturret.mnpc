@@ -1,0 +1,36 @@
+include "helix/game system data/juice/character/character_visuals_ld_ingredients.mcharactervisuals"
+include "helix/game system data/juice/npc/emp_mech.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC emp_automatedturret < uid=16DEADE661A14A6D00001AAA0448AB1E > : emp_mech
+{
+	myName "branch = \"TU1\", contextComment = \"Name of the Automated Turret LDI used by different factions\", enabled = true, guid = #4171A7E16683B39700080AB77021A9C6, lineVersion = 6, maxLength = 0, productId = 149, sectionId = 10572, text = \"Automated Turret\", type = \"MenuLine\""
+	myArchetype Non-Combattant
+	myCharacterVisuals < uid=16DEADE661A14A6D00001AAB4EEE4674 > = character_visuals_automated_turret 2736B36563FDC6710000DA6860459DD1
+	myBehavior helix/behaviors/emp_automatedturret.mbehavior
+	myIsInvulnerable TRUE
+	myMaxHealth 1000
+	myHealthFormula 1000
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A129121662B9BA7000B2DCCFA107098 > = Agent_Binocular_NotVOTarget 3A129121662B9A29000B2B5A42DACF63
+	}
+	myInitialNPCControllerContextType NotSet
+	myVisionProfile < uid=16DEADE661A14A6D00001AAC32F0FA71 > = AutomatedTurretVisionProfile 16DEADE661A167BE0000ADDB005525E8
+	myHearingProfile < uid=16DEADE661A2B9B70000583855EEBF56 > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=16C7D1FB6311CD6B0000A9CF412680F5 > = AutomatedTurretDetectionProfile 16DEADE661A164F10000541DCF9630FE
+	}
+	myThreatProfile < uid=16DEADE661A6532B000067E520EA5614 > = AutomatedTurretThreatProfile 16DEADE661A6532F000067E6A76DF48C
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout LoadoutA < uid=2736B36563FE374A000216ACE839C0A5 > = emp_AutomatedTurret_default 2736B36563FE30CD00001D86C1361E7D
+	}
+	myFocusProfile < uid=4171A7E16418994C0008ADF2295EDA90 > = CombatFocusProfile 91DC5D3C63FC700F0001A02A36DCA307
+	myResistanceProfile < uid=7113C611661E68FC000B051E70AB723F > = InvulnerableResistanceProfile 7113C611661E6846000A8A64417D761B
+	myExcludeFromQuickThrows TRUE
+	myCanBeTargetedByPetProtectSkill FALSE
+	myExlusionTickets = InvestigationTickets 00000000000000000000000000000000
+}
+

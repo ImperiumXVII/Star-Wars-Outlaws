@@ -1,0 +1,33 @@
+
+enum NarrativeContentFlags
+{
+	NoAgents
+	ReferencesNPC
+	BindsNPC
+	ReferencesPlayer
+	BindsPlayer
+	SharesResource
+	UseCamera
+	IsForeground
+}
+
+list NarrativeContentFlagsList
+{
+	NarrativeContentFlags
+}
+
+class NarrativeContentSelectionRule
+{
+	string myName
+	NarrativeContentFlagsList myFlags
+}
+
+list NarrativeContentSelectionRuleList
+{
+	NarrativeContentSelectionRule
+}
+
+class NarrativeContextSettings < uid=auto >
+{
+	NarrativeContentSelectionRuleList mySelectionRules
+}

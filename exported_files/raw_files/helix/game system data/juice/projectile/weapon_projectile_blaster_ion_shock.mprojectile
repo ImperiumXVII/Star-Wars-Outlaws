@@ -1,0 +1,64 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/explosion/explosion_generic_no_effect.mexplosion"
+include "helix/game system data/juice/explosion/explosion_player_blaster_concussion.mexplosion"
+include "helix/game system data/juice/explosion/explosion_player_blaster_ion_shock.mexplosion"
+include "helix/game system data/juice/explosion/explosion_player_blaster_power.mexplosion"
+include "helix/game system data/juice/projectile/realization/blaster_ion_shock.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/concussion_blast.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/small_grenade.mprojectilerealization"
+
+BallisticProjectile weapon_projectile_blaster_ion_shock < uid=7113C611671614450005424F0A22E46E >
+{
+	myObject
+	{
+		myMaterialType Kinetic
+		myMass 1.0
+	}
+	myRealization < uid=7113C611671614450005425076BA8435 > = blaster_ion_shock 7113C6116716192000054256A1C6D652
+	myActions
+	{
+		ProjectileActionExplosion IonExplosion
+		{
+			myActionTargetType FinalHit
+			myDamageType Ion
+			myDamageFormula "0.3 * BlasterIonDamageBonus * AllExplosionDamageModifier"
+			myRadiusFormula "4 * BlasterProjectileExplosionRadius * AllExplosionRadiusModifier"
+			myDefaultDamage 0.0
+			myDefaultRadius 0.0
+			myDamageSelf FALSE
+			myExplosion < uid=7113C6116716144500054251D32AE942 > = explosion_player_blaster_ion_shock 7113C6116716170B000542532DAFC640
+		}
+	}
+	myNPCSensoryProjectileType BlasterBolt
+	myInitialSpeed 55.0
+	myAccelerationType Constant
+	myAccelerationConstant 0.0
+	myAccelerationCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.39855033 -0.19564819, }, outTangents = { 1.3275924 8.615303, 0 0, }, properties = { 274, 4371, }, values = { 0 10, 3.1189384 -0.1184845, }, }, numKeys = 2, }"
+	myBounceEnabled TRUE
+	myBounceVsDynamicEnabled TRUE
+	myBounceFriendlyFireEnabled FALSE
+	myAvoidPlayerWhenBouncing TRUE
+	myCanBounceConditions
+	{
+		myOperator Or
+		myConditions
+		{
+			GameConditionContextAgentIsSpecificNPC HitRancor
+			{
+				myAgentContextType TargetAgent
+				myNPCConstantData 2736B36563D140850001DF8C793B440D
+			}
+			GameConditionContextAgentIsSpecificNPC HitATST
+			{
+				myAgentContextType TargetAgent
+				myNPCConstantData 16DEADE661F0807B00001B62A29CB56F
+			}
+		}
+	}
+	myBounceSpeedRestitution 0.4
+	myBounceGroundSpeedRestitution 0.9
+	myBounceMaxBounces 2
+	mySeekerEnabled FALSE
+	mySeekerTurnRate 5.0
+}
+

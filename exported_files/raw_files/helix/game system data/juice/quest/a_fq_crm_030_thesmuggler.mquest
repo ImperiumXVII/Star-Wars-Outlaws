@@ -1,0 +1,140 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/mapref/mapref_quest_faction.mmapref"
+
+Quest A_FQ_CRM_030_thesmuggler < uid=E1B84E3A64DE3E9A0003170B417301C4 >
+{
+	myName "aurabesh = false, contextComment = \"A_FQ_CRM_030_thesmuggler title \", enabled = true, guid = #E1B84E3A64DE3E9D0003171E6D15CE1E, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 2012, text = \"A_FQ_CRM_030_thesmuggler\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myMapRefConstantData < uid=E1B84E3A64DE40670003175F86B3F21F > = mapref_quest_faction B581CAC862286A5500002779A0BF92D4
+	myIntroBeat < uid=C9E2299264EF092E0003734C713375F1 >
+	{
+		myScript helix/scripts/scr_a_fq_crm_030_aki_pln_b00_introbeat.mscript
+		myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myLevelInfo 9C4B6A046012E6B0000001B224713F01
+		myObjectives
+		{
+			QuestObjectiveTalkTo "Talk to the CRM Contact" < uid=C9E2299264EF05AB00037349B335FD4F >
+			{
+				myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			}
+		}
+		myQuestBeatStateGameValue < uid=C9E2299264EF092E0003734D6DF0211D >
+		{
+		}
+	}
+	myBeats
+	{
+		QuestBeat "BEAT 01 - Talk to CRM Contact" < uid=C9E2299264E390280015FA82F0C8448F >
+		{
+			myScript helix/scripts/scr_a_fq_crm_030_aki_spc_b01_talktotheagent.mscript
+			myName "aurabesh = false, contextComment = \"A_FQ_CRM_030_B01 This is the name for BEAT 01. Displayed in UI.\", enabled = true, guid = #C9E2299264E48ED900021CB228C46862, lineVersion = 6, maxLength = 0, productId = 6, sectionId = 2012, text = \"Talk to the Contact\", type = \"MenuLine\""
+			myLevelInfo B5AFC8E463DA6CCA000041094B1FB6BC
+			myObjectives
+			{
+				QuestObjectiveTalkTo "Talk to the CRM Contact" < uid=C9E2299264E4A45A00021CB4A187AD50 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_CRM_030_B02 This is the name for the talk to objective. Displayed in UI. TEMP INTERACT FOR QUEST SKELETON\", enabled = true, guid = #C9E2299264E4A46B00021CBF942DB101, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 2012, text = \"Talk to the Contact\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=C9E2299264E391350015FA8FA4AFF2FD >
+			{
+			}
+		}
+		QuestBeat "BEAT 02 - Go to Akiva Planet" < uid=C9E2299264DE480E0000BBB2F026A782 >
+		{
+			myScript helix/scripts/scr_a_fq_crm_030_aki_spc_b02_gotoakiva.mscript
+			myName "aurabesh = false, contextComment = \"A_FQ_CRM_030_B02 This is the name for Beat 02. Displayed in UI.\", enabled = true, guid = #C9E2299264DE4B040000BBCE28C291AE, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 2012, text = \"Go to Akiva\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012DFB0000001032A60B086
+			myMood Focused
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Land at Akiva Amari Lake" < uid=C9E2299264DE4BCC0000BBD3FEBBAEC4 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_CRM_030_B02 This is the name for the go to location objective. Displayed in UI.\", enabled = true, guid = #C9E2299264DE4BCC0000BBD40DA3984E, lineVersion = 11, maxLength = 0, productId = 6, sectionId = 2012, text = \"Land at Akiva Amari Lake\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=C9E2299264DE48C10000BBBCC8A8B8D0 >
+			{
+			}
+		}
+		QuestBeat "BEAT 03 - Talk to Agent" < uid=C9E2299264DE483A0000BBB41469488C >
+		{
+			myScript helix/scripts/scr_a_fq_crm_030_aki_pln_b03_talktoagent.mscript
+			myName "aurabesh = false, contextComment = \"A_FQ_CRM_030_B03 This is the name for Beat 03. Displayed in UI.\", enabled = true, guid = #C9E2299264DE4D1D0000BBD6ACB2391E, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 2012, text = \"Talk to Agent\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E6B0000001B224713F01
+			myMood Focused
+			myObjectives
+			{
+				QuestObjectiveInteract "Talk to Agent (Choose CRM)" < uid=C9E2299264DE4D5B0000BBD89E2CF78F >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_CRM_030_B03 This is the name for the talk to objetive. Displayed in UI. TEMP ITS AN INTERACT FOR QUEST SKELETON\", enabled = true, guid = #C9E2299264DE4D750000BBD9DBDBD39B, lineVersion = 6, maxLength = 0, productId = 6, sectionId = 2012, text = \"Talk to Agent\", type = \"MenuLine\""
+				}
+				QuestObjectiveInteract "Talk to Agent (Choose PYK)" < uid=C9E2299264EF5F6900214FCD4AE44812 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_CRM_030_B03 This is the name for the talk to objetive. Displayed in UI. TEMP ITS AN INTERACT FOR QUEST SKELETON\", enabled = true, guid = #C9E2299264EF5F5C00214FCCFEECFF2E, lineVersion = 6, maxLength = 0, productId = 6, sectionId = 2012, text = \"Talk to Agent\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=C9E2299264DE48C10000BBBD375E8AF1 >
+			{
+			}
+		}
+		QuestBeatBranchList "BEAT 04 - Deliver the Package"
+		{
+			QuestBeat "BEAT A 04 - Deliver the Package (CRM)" < uid=20037F8064EE005400009B55C6D208A4 >
+			{
+				myScript helix/scripts/scr_a_fq_crm_030_aki_pln_b04a_deliverthepackage.mscript
+				myName "aurabesh = false, contextComment = \"A_FQ_CRM_030_B04 This is the name for Beat 04 Branching A. Displayed in UI.\", enabled = true, guid = #20037F8064EE006900009B588C466BD0, lineVersion = 6, maxLength = 0, productId = 6, sectionId = 2012, text = \"Catch the ship\", type = \"MenuLine\""
+				myLevelInfo 9C4B6A046012E6B0000001B224713F01
+				myMood Focused
+				myObjectives
+				{
+					QuestObjectiveGoToLocation "Deliver the Package  in Time" < uid=C9E2299264EF04D00003733376035794 >
+					{
+						myName "aurabesh = false, contextComment = \"A_FQ_CRM_030_B04 BRANCH A This is the name for the go to location objective. Displayed in UI.\", enabled = true, guid = #C9E2299264EF0406000373310032AB51, lineVersion = 6, maxLength = 0, productId = 6, sectionId = 2012, text = \"Reach the ship\", type = \"MenuLine\""
+					}
+					QuestObjectiveKillFireteam "Defeat the Pykes" < uid=C9E2299264EF04D000037334CE8461CA >
+					{
+						myName "aurabesh = false, contextComment = \"A_FQ_CRM_030_B04 BRANCH AThis is the name for the kill fireteam objective. Displayed in UI.\", enabled = true, guid = #C9E2299264EF0406000373326070362D, lineVersion = 8, maxLength = 0, productId = 6, sectionId = 2012, text = \"Defeat the Pykes\", type = \"MenuLine\""
+					}
+					QuestObjectiveInteract "Talk to the CRM Agent" < uid=C9E2299264EF0CCA0003782097F0BC89 >
+					{
+						myName "aurabesh = false, contextComment = \"A_FQ_CRM_030_B04 BRANCH AThis is the name for the talk to objective. Displayed in UI. TEMP INTERACT FOR QUEST SKELETON\", enabled = true, guid = #C9E2299264EF0CCA0003782101046174, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 2012, text = \"Talk to the CRM Agent \", type = \"MenuLine\""
+					}
+				}
+				myQuestBeatStateGameValue < uid=20037F8064EE00F600009B5D6434D0F4 >
+				{
+				}
+			}
+			QuestBeat "BEAT B 04 - Deliver the Package (Pyke)" < uid=20037F8064EE005600009B568FEBE295 >
+			{
+				myScript helix/scripts/scr_a_fq_crm_030_aki_pln_b04b_deliverthepackage.mscript
+				myName "aurabesh = false, contextComment = \"A_FQ_CRM_030_B04 This is the name for Beat 04 Branching B. Displayed in UI.\", enabled = true, guid = #20037F8064EE00A700009B5A0AA86B5B, lineVersion = 5, maxLength = 0, productId = 6, sectionId = 2012, text = \"Catch the Pyke ship\", type = \"MenuLine\""
+				myLevelInfo 9C4B6A046012E6B0000001B224713F01
+				myMood Focused
+				myObjectives
+				{
+					QuestObjectiveGoToLocation "Deliver the Package  in Time" < uid=C9E2299264EF01960003731908BE6221 >
+					{
+						myName "aurabesh = false, contextComment = \"A_FQ_CRM_030_B04 Branch B This is the name for the go to location objective. Displayed in UI.\", enabled = true, guid = #C9E2299264EF021B0003731E72AD3469, lineVersion = 5, maxLength = 0, productId = 6, sectionId = 2012, text = \"Deliver the Package in Time\", type = \"MenuLine\""
+					}
+					QuestObjectiveKillFireteam "Defeat the CRM" < uid=C9E2299264EF01C70003731B4F0B3C45 >
+					{
+						myName "aurabesh = false, contextComment = \"A_FQ_CRM_030_B04 BRANCH BThis is the name for the kill fireteam objective. Displayed in UI.\", enabled = true, guid = #C9E2299264EF01C70003731CAEDBD101, lineVersion = 5, maxLength = 0, productId = 6, sectionId = 2012, text = \"Defeat the ambush\", type = \"MenuLine\""
+					}
+					QuestObjectiveInteract "Report to the Pyke Agent" < uid=C9E2299264EF0EA70003785CE6E3DA95 >
+					{
+						myName "aurabesh = false, contextComment = \"A_FQ_CRM_030_B04 BRANCH B This is the name for the talk to objective. Displayed in UI. TEMP INTERACT FOR QUEST SKELETON\", enabled = true, guid = #C9E2299264EF0DD50003785BE7A69560, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 2012, text = \"Report to the Pyke Agent \", type = \"MenuLine\""
+					}
+				}
+				myQuestBeatStateGameValue < uid=20037F8064EE00F600009B5E2D8F9D9A >
+				{
+				}
+			}
+		}
+	}
+	myQuestStateGameValue < uid=E1B84E3A64DE3E9A0003170C542B5DD6 >
+	{
+	}
+	myFaction 16DEADE65F7DDA76000000C74AD19DCA
+}
+

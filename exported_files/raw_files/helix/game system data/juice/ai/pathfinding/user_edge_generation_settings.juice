@@ -1,0 +1,484 @@
+include "helix/game system data/fruit/ai/pathfinding/user_edge_generation_settings.fruit"
+
+UserEdgeGenerationSettings myUserEdgeSettings
+{
+	myLowVaultAnalyzer
+	{
+		myUserEdgeType LEAPOVER
+		myTraversalCost
+		{
+			myBaseCost 0.5
+		}
+		myFarSideClearanceDistance 0.6
+		myMaxUnsupportedGapWidth 0.1
+		myProbes
+		{
+			myReverseHint TRUE
+			myStarts
+			{
+				MeshProbe Near
+				{
+					myHorizontalOffset -0.42
+					myVerticalOffset 0.0
+					myProbeLength 1.5
+					myProbeMinLength 0.3
+				}
+				MeshProbe Far
+				{
+					myHorizontalOffset -0.72
+					myVerticalOffset 0.0
+					myProbeLength 1.5
+					myProbeMinLength 0.5
+				}
+			}
+			myDestinations
+			{
+				MeshProbe Mid
+				{
+					myHorizontalOffset 1.3
+					myVerticalOffset 0.3
+					myProbeLength 7.5
+					myProbeMinLength 0.5
+				}
+				MeshProbe Far
+				{
+					myHorizontalOffset 1.8
+					myVerticalOffset 0.3
+					myProbeLength 7.5
+					myProbeMinLength 0.5
+				}
+			}
+		}
+	}
+	myHighVaultAnalyzer
+	{
+		myUserEdgeType HIGH_VAULT
+		myTraversalCost
+		{
+			myBaseCost 10.0
+		}
+		myFarSideClearanceDistance 0.6
+		myMaxUnsupportedGapWidth 0.1
+		myProbes
+		{
+			myReverseHint TRUE
+			myStarts
+			{
+				MeshProbe Near
+				{
+					myHorizontalOffset -0.42
+					myVerticalOffset 0.3
+					myProbeLength 3.5
+					myProbeMinLength 1.8
+				}
+				MeshProbe Far
+				{
+					myHorizontalOffset -0.72
+					myVerticalOffset 0.3
+					myProbeLength 3.5
+					myProbeMinLength 1.8
+				}
+			}
+			myDestinations
+			{
+				MeshProbe Mid
+				{
+					myHorizontalOffset 1.3
+					myVerticalOffset 0.3
+					myProbeLength 7.8
+					myProbeMinLength 0.5
+				}
+				MeshProbe Far
+				{
+					myHorizontalOffset 1.8
+					myVerticalOffset 0.3
+					myProbeLength 7.8
+					myProbeMinLength 0.5
+				}
+			}
+		}
+	}
+	myDropDownAnalyzer
+	{
+		myUserEdgeType DROP
+		myTraversalCost
+		{
+			myBaseCost 0.5
+			myVerticalCost 2.0
+		}
+		myProbes
+		{
+			myUseHintDepth TRUE
+			myStarts
+			{
+				MeshProbe Near
+				{
+					myHorizontalOffset -0.42
+					myVerticalOffset 0.3
+					myProbeLength 0.6
+					myProbeMinLength 0.0
+				}
+			}
+			myDestinations
+			{
+				MeshProbe Mid
+				{
+					myHorizontalOffset 0.8
+					myVerticalOffset 0.0
+					myProbeLength 7.5
+					myProbeMinLength 3.0
+				}
+				MeshProbe Near
+				{
+					myHorizontalOffset 0.5
+					myVerticalOffset 0.0
+					myProbeLength 7.5
+					myProbeMinLength 3.0
+				}
+				MeshProbe Far
+				{
+					myHorizontalOffset 1.1
+					myVerticalOffset 0.0
+					myProbeLength 7.5
+					myProbeMinLength 3.0
+				}
+				MeshProbe Furthest
+				{
+					myHorizontalOffset 1.4
+					myVerticalOffset 0.0
+					myProbeLength 7.5
+					myProbeMinLength 3.0
+				}
+			}
+		}
+	}
+	myClimbUpAnalyzer
+	{
+		myUserEdgeType CLIMB
+		myTraversalCost
+		{
+			myBaseCost 2.0
+			myVerticalCost 1.5
+		}
+		myProbes
+		{
+			myReverseHint TRUE
+			myUseHintDepth TRUE
+			myStarts
+			{
+				MeshProbe Mid
+				{
+					myHorizontalOffset -0.8
+					myVerticalOffset 0.0
+					myProbeLength 3.2
+					myProbeMinLength 0.26
+				}
+				MeshProbe Near
+				{
+					myHorizontalOffset -0.5
+					myVerticalOffset 0.0
+					myProbeLength 3.2
+					myProbeMinLength 0.26
+				}
+				MeshProbe Far
+				{
+					myHorizontalOffset -1.1
+					myVerticalOffset 0.0
+					myProbeLength 3.2
+					myProbeMinLength 0.26
+				}
+				MeshProbe Furthest
+				{
+					myHorizontalOffset -1.4
+					myVerticalOffset 0.0
+					myProbeLength 3.2
+					myProbeMinLength 0.26
+				}
+			}
+			myDestinations
+			{
+				MeshProbe Near
+				{
+					myHorizontalOffset 0.42
+					myVerticalOffset 0.3
+					myProbeLength 0.6
+					myProbeMinLength -0.0
+				}
+			}
+		}
+		myGrabAngle 0.785
+	}
+	myLadderClimbAnalyzer
+	{
+		myUserEdgeType LADDER_CLIMB
+		myTraversalCost
+		{
+			myBaseCost 2.0
+			myVerticalCost 2.0
+		}
+		myTopSetBack 0.74
+		myBottomSetBack 0.42
+		myProbes
+		{
+			myReverseResults FALSE
+			myUseHintDepth FALSE
+			myStarts
+			{
+				MeshProbe Near
+				{
+					myHorizontalOffset -0.74
+					myVerticalOffset 0.3
+					myProbeLength 0.6
+					myProbeMinLength 0.0
+				}
+			}
+			myDestinations
+			{
+				MeshProbe Mid
+				{
+					myHorizontalOffset 0.42
+					myVerticalOffset 0.3
+					myProbeLength 0.6
+					myProbeMinLength 0.0
+				}
+			}
+		}
+	}
+	myRopeClimbAnalyzer
+	{
+		myUserEdgeType ROPE_CLIMB
+		myTraversalCost
+		{
+			myBaseCost 1.0
+			myVerticalCost 2.0
+		}
+		myTopSetBack 1.02
+		myBottomSetBack 0.0
+		myProbes
+		{
+			myReverseResults FALSE
+			myUseHintDepth FALSE
+			myStarts
+			{
+				MeshProbe Near
+				{
+					myHorizontalOffset -1.02
+					myVerticalOffset 0.3
+					myProbeLength 0.6
+					myProbeMinLength 0.0
+				}
+			}
+			myDestinations
+			{
+				MeshProbe Mid
+				{
+					myHorizontalOffset 0.0
+					myVerticalOffset 0.3
+					myProbeLength 0.6
+					myProbeMinLength 0.0
+				}
+			}
+		}
+	}
+	myZipLineAnalyzer
+	{
+		myUserEdgeType ZIP_LINE
+		myTraversalCost
+		{
+			myBaseCost 1.0
+		}
+		myProbes
+		{
+			myReverseResults FALSE
+			myUseHintDepth FALSE
+			myStarts
+			{
+				MeshProbe Near
+				{
+					myHorizontalOffset -0.42
+					myVerticalOffset 0.0
+					myProbeLength 3.0
+					myProbeMinLength 0.0
+				}
+			}
+			myDestinations
+			{
+				MeshProbe Mid
+				{
+					myHorizontalOffset 0.42
+					myVerticalOffset 0.0
+					myProbeLength 3.0
+					myProbeMinLength 0.0
+				}
+			}
+		}
+	}
+	mySlideVaultAnalyzer
+	{
+		myUserEdgeType SLIDE_VAULT
+		myFarSideClearanceDistance 0.42
+		myMaxUnsupportedGapWidth 0.1
+		myProbes
+		{
+			myReverseHint TRUE
+			myStarts
+			{
+				MeshProbe Near
+				{
+					myHorizontalOffset -0.42
+					myVerticalOffset 0.0
+					myProbeLength 1.61
+					myProbeMinLength 0.45
+				}
+			}
+			myDestinations
+			{
+				MeshProbe Near
+				{
+					myHorizontalOffset 1.92
+					myVerticalOffset 0.0
+					myProbeLength 2.0
+					myProbeMinLength 0.5
+				}
+				MeshProbe Mid
+				{
+					myHorizontalOffset 2.42
+					myVerticalOffset 0.0
+					myProbeLength 2.0
+					myProbeMinLength 0.5
+				}
+				MeshProbe Far
+				{
+					myHorizontalOffset 2.92
+					myVerticalOffset 0.0
+					myProbeLength 2.0
+					myProbeMinLength 0.5
+				}
+			}
+		}
+	}
+	myVehicleHopAnalyzer
+	{
+		myUserEdgeType VEHICLE_HOP
+		myTraversalCost
+		{
+			myBaseCost 0.5
+			myVerticalCost 2.0
+		}
+		myProbes
+		{
+			myUseHintDepth TRUE
+			myStarts
+			{
+				MeshProbe Near
+				{
+					myHorizontalOffset -0.42
+					myVerticalOffset 0.3
+					myProbeLength 0.6
+					myProbeMinLength 0.0
+				}
+			}
+			myDestinations
+			{
+				MeshProbe Near
+				{
+					myHorizontalOffset 0.35
+					myVerticalOffset 0.8
+					myProbeLength 1.3
+					myProbeMinLength 0.3
+				}
+				MeshProbe Mid
+				{
+					myHorizontalOffset 0.6
+					myVerticalOffset 0.8
+					myProbeLength 1.3
+					myProbeMinLength 0.3
+				}
+				MeshProbe Far
+				{
+					myHorizontalOffset 0.9
+					myVerticalOffset 0.8
+					myProbeLength 1.3
+					myProbeMinLength 0.3
+				}
+				MeshProbe VeryFar
+				{
+					myHorizontalOffset 1.2
+					myVerticalOffset 0.8
+					myProbeLength 1.3
+					myProbeMinLength 0.3
+				}
+			}
+		}
+	}
+	myManualUserEdgeAnalyzers
+	{ 
+		AnalyzerManualUserEdge COMPANION
+		{
+			myUserEdgeType COMPANION
+			myTraversalCost
+			{
+				myBaseCost 1.0
+			}
+			myProbes
+			{
+				myReverseResults FALSE
+				myUseHintDepth FALSE
+				myStarts
+				{
+					MeshProbe Near
+					{
+						myProbeMinLength 0.0
+						myVerticalOffset 0.9
+						myProbeLength 1.8
+						myProbeMinLength 0.0
+					}
+				}
+				myDestinations
+				{
+					MeshProbe Mid
+					{
+						myProbeMinLength 0.0
+						myVerticalOffset 0.9
+						myProbeLength 1.8
+						myProbeMinLength 0.0
+					}
+				}
+			}
+		}
+		AnalyzerManualUserEdge LADDER_CLIMB
+		{
+			myUserEdgeType LADDER_CLIMB
+			myTraversalCost
+			{
+				myBaseCost 1.0
+			}
+			myProbes
+			{
+				myReverseResults FALSE
+				myUseHintDepth FALSE
+				myStarts
+				{
+					MeshProbe Near
+					{
+						myProbeMinLength 0.0
+						myVerticalOffset 0.9
+						myProbeLength 1.8
+						myProbeMinLength 0.0
+					}
+				}
+				myDestinations
+				{
+					MeshProbe Mid
+					{
+						myProbeMinLength 0.0
+						myVerticalOffset 0.9
+						myProbeLength 1.8
+						myProbeMinLength 0.0
+					}
+				}
+			}
+		}
+	}
+}
+

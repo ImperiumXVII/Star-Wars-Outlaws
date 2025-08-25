@@ -1,0 +1,68 @@
+include "helix/game system data/fruit/item/item.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+
+list LootTableConditions
+{
+	LootTableConditionGroup
+	GameConditionPlayerCanAddItem
+	GameConditionPlayerHasHealth
+	GameConditionPlayerHasIntel
+	GameConditionPlayerHasItem
+	GameConditionPlayerHasLegendRank
+	GameConditionPlayerHasLootNearby
+	GameConditionPlayerHasReputation
+	GameConditionPlayerIsInCombatWithNPCs
+	GameConditionPlayerIsInLevelInfo
+	GameConditionRandom
+	GameConditionExtraCreditsBonusProbability
+	GameConditionContextLootLootContainsItem
+}
+
+class LootTableConditionGroup : GameConditionGroupBase
+{
+	LootTableConditions myConditions
+}
+
+list DropTableEntries
+{
+	DropTableEntryItem
+	DropTableEntryLootTable
+}
+
+class RandomDropTable
+{
+	int myEmptyWeight 0 < min=0 >
+	int myMinRollsOnRandomDropTable 1 < min=1 >
+	int myMaxRollsOnRandomDropTable 1 < min=1 >
+	LootTableConditions myConditions
+	DropTableEntries myDropTableEntries
+}
+
+class LootTable < uid=auto >
+{
+	bool myIsDeterministic FALSE
+	RandomDropTable myRandomDropTable
+	DropTableEntries myAlwaysRolls
+}
+
+class DropTableEntry < abstract=1 >
+{
+	int myWeight 1 < min=0 >
+	int myMinAmount 1 < min=0 >
+	int myMaxAmount 1 < min=0 >
+	LootTableConditions myConditions
+	Item* myItem < hidden=1>
+	LootTable* myLootTable < hidden=1 >
+}
+
+class DropTableEntryItem : DropTableEntry
+{
+	Item* myItem < hidden=0 >
+	LootTable* myLootTable < hidden=1 >
+}
+
+class DropTableEntryLootTable : DropTableEntry
+{
+	Item* myItem < hidden=1 >
+	LootTable* myLootTable < hidden=0 >
+}

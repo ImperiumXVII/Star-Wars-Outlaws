@@ -1,0 +1,54 @@
+include "helix/game system data/juice/ai/dynamiccapinteractions/wildlifedcap.mnpcdynamiccapinteractionprofile"
+include "helix/game system data/juice/ai/wildlife corpse profile.mnpccorpseprofile"
+include "helix/game system data/juice/ai/wildlifecapevaluatorprofiles.mnpccapinteractionevaluatorprofile"
+include "helix/game system data/juice/ai/wl_bantha.mnpcmotionpatternprofile"
+include "helix/game system data/juice/ai/wl_ms316_bantha.mnpcmotionpatternprofile"
+include "helix/game system data/juice/melee/wildlifemeleedefense.mnpcmeleedefenseprofile"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npc/wil_fp_prey.mnpc"
+include "helix/game system data/juice/npc/wl_bantha.mnpc"
+include "helix/game system data/juice/quadrupedalgroundaligner/wildlife_ground_aligner_config.mquadalignerconfig"
+
+NPC wl_ms316_bantha < uid=D4F630796552326A006B51B966EEB3B7 > : wl_bantha
+{
+	myCharacterVisuals < uid=D4F630796552326A006B51BA1FE5BEDC > = character_visuals_wil_bantha_riding E9DD8F606537262F0001EFBFBE008133
+	myAnimSystemType Bantha
+	myHealthFormula 5+5
+	myFaction < uid=D4F63079655232B2006B51EB96ED9690 > = Civilian B0EA4E53607561CC0000004DC311CAF9
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=D4F630796552326A006B51BB35A36FE9 > = Agent_Wildlife_BanthaTag 290EB60C6305DF92000044220A6A08FF
+	}
+	myPositionReservationSize 0.9
+	myNavigationLayerType Large
+	myNavigationCapability < uid=D4F630796552326A006B51BC30203ADC > = DefaultWildlifeNavigationCapability 290EB60C64D1A5C50000CA29617570E5
+	myVisionProfile < uid=D4F630796552326A006B51BD23404464 > = BlindVisionProfile 16DEADE65E8E1B4B000000142ED02E71
+	myHearingProfile < uid=D4F63079655234240072434744E1BE3D > = DefaultWildlifeHearingProfile 16DEADE660B4CAFC000009C29AB841E8
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=D4F630796552326A006B51BE11610D8E > = BanthaDetectionProfile 290EB60C630F231D000047FB5EDCEA2F
+	}
+	myThreatProfile < uid=D4F630796552342C00724361D95229DD > = NULLREFERENCE
+	myAgitationProfile < uid=D4F630796552326A006B51BF3F93F46C > = NULLREFERENCE
+	myDynamicCAPInteractionProfile < uid=D4F630796552326A006B51C00E54DF98 > = BanthaDynamicCAP 290EB60C63467ECC00046050299EA6DD
+	myCAPInteractionEvaluatorProfile < uid=D4F630796552326A006B51C12F16D952 > = wildlifecapevaluatorprofiles 290EB60C633262C600008C045368B169
+	myMotionPatternProfile < uid=D4F630796552326A006B51C23602AC43 > = BanthaMotionPatternProfileMS316 71108214660154720000D0B8661E9DFE
+	myMoveTurnCapabilitiesProfile < uid=D4F630796552326A006B51C396920E7B > = bantha_NPCMoveTurnCapabilitiesProfile 290B720F64705DA80002DEBA0D35ED2A
+	mySteeringProfile < uid=D4F630796552326A006B51C43E92AB2E > = BigWildlifeSteeringProfile 948DDC1D644A1B7100000E8CB784DC9D
+	myFleeProfile < uid=D4F630796552326A006B51C5A7D739E7 > = BanthaFleeProfile E9DD8F6063059E7200004478493EF0B5
+	myFootStepProfile < uid=D4F630796552326A006B51C68494F9EA > = BanthaFootstep E9DD8F606459B4A100016E8D045817A1
+	myPackProfile < uid=D4F630796552326A006B51C78273DED5 > = BanthaPackProfile E9DD8F606305962500004508F8567A64
+	myMeleeDefenseProfile < uid=D4F630796552326A006B51C82913DE6E > = LargePreyMeleeDefense E9DD8F6064ACCF1900016EB1623B90CE
+	myStaggerConfig < uid=D4F630796552326A006B51C93715C2AA > = WildlifeBantha E9DD8F6063ED8B2300006C2A30CC4620
+	myPhysicsProfile < uid=D4F630796552326A006B51CA146D360B > = Bantha 290EB60C63E9D3FB0000DF5C1CA52566
+	myQuadrupedalGroundAlignerConfig < uid=D4F630796552326A006B51CB08F4C725 > = "Bantha Aligner Config" 4999D94C63CA02FD0000A543B67FF496
+	myMoveConfig < uid=D4F630796552326A006B51CCBFA388FB > = bantha_move_config E9DD8F6063EF2F0500001D937A3A830B
+	myCorpseProfile < uid=D4F630796552326A006B51CD263A0D37 > = "Bantha Corpse" 290EB60C63FED571000032C9C52E4760
+	myVisualEffectFootstep < uid=D4F630796552326A006B51CE5B9ABA95 >
+	{
+		myFootstepEffects = Big_wildlife
+		myLeftHandBoneAliasName LeftHand
+		myRightHandBoneAliasName RightHand
+	}
+}
+

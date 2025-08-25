@@ -1,0 +1,814 @@
+include snowdrop/modules/core/physics/collisionmaterials.fruit
+
+CollisionMaterial AbsorbBullets < uid=9C4B6A0462CE8386000046D0362CF7EF >
+{
+	myUIName "Absorb Bullets"
+	myHoleSize 0.0
+	myBulletTransparent FALSE
+	myLosTransparent FALSE
+	myAimTransparent FALSE
+	myAcousticallyOpaque FALSE
+}
+
+CollisionMaterial Amber < uid=9C4B6A04615D9ACE000018D48FA4AA98 >
+{
+	myUIName Amber
+	myColor 0xffff3c00
+	myDensity 2500.0
+	myFriction 0.6
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial Asphalt < uid=6F860DB5506C75BF00000E12455C749F >
+{
+	myUIName Asphalt
+	myColor 0x64433e50
+	myHoleSize 2.0
+	myHoleRandomness 0.2
+	myHoleSizeRandomness 0.2
+	myHolePunchThroughLength 3.0
+	myDensity 1500.0
+	myFriction 0.8
+	myRestitution 0.1
+	myObstructionFactor 40.0
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial AsteroidLarge < uid=9C4B6A0462A8425D00007B5A601A5AD9 >
+{
+	myUIName AsteroidLarge
+	myColor 0x64271f1f
+	myHoleSize 300.0
+	myHoleRandomness 0.7
+	myHoleTextureSize 300.0
+	myBulletDamageModifier 1.0
+	myMaxCuttingDepthModifier 3.0
+	myHoleInteriorShader helix/shaders/px_hole_interior__aster_akiva.mshader
+	myHoleInteriorTexture1 ""
+	myHoleInteriorTexture2 ""
+	myHoleInteriorTexture3 ""
+	myHoleInteriorTexture4 ""
+	myFragmentReleaseParticleEffect helix/particles/vfx_des_rel_concrete_debris.mparticles
+	myFragmentReleaseCheapParticleEffect helix/particles/vfx_des_rel_concrete_debris.mparticles
+	myFragmentReleaseCheapRange 500.0
+	myInnerMaterial 00000000000000000000000000000000
+}
+
+CollisionMaterial AsteroidMedium < uid=9C4B6A0462A9A03800007B64C608BF30 >
+{
+	myUIName AsteroidMedium
+	myColor 0x646c4c4c
+	myCollisionMaterialHitCategory Hard
+	myFragmentHealthLight 100.0
+	myFragmentHealthMedium 300.0
+	myFragmentHealthHeavy 1000.0
+	myHoleSize 300.0
+	myHoleDepthMod 1.0
+	myHoleRandomness 0.7
+	myHoleSizeRandomness 0.0
+	myHolePunchThroughLength 2.0
+	myHoleTextureSize 300.0
+	myBulletDamageModifier 1.0
+	myExplosionDamageModifier 1.0
+	myMaxCuttingDepthModifier 1.0
+	myHoleInteriorShader helix/shaders/px_hole_interior__aster_akiva.mshader
+	myHoleInteriorTexture1 ""
+	myHoleInteriorTexture2 ""
+	myHoleInteriorTexture3 ""
+	myHoleInteriorTexture4 ""
+	myFragmentShatterParticleEffect ""
+	myFragmentReleaseParticleEffect helix/particles/vfx_des_rel_concrete_debris.mparticles
+	myFragmentReleaseCheapParticleEffect helix/particles/vfx_des_rel_concrete_debris.mparticles
+	myFragmentReleaseCheapRange 500.0
+	myFragmentReleaseCheapMaxNonCheap 3.0
+	myFragmentReleaseCheapTimeIntervall 1.0
+	myInnerMaterialDepth 1000.0
+	myInnerMaterial 6F860DB5506C75BF00000E0BB2E0801B
+	myExplosionHoleResistance -1.0
+	myUseGlassDestruction FALSE
+	myDensity 1000.0
+	myFriction 0.5
+	myRestitution 0.0
+	myObstructionFactor 1.0
+	myBulletTransparent FALSE
+	myLosTransparent FALSE
+	myAimTransparent FALSE
+	myAcousticallyOpaque FALSE
+	myGameplayMaterialSettingsUID 00000000000000000000000000000000
+}
+
+CollisionMaterial AsteroidSmall < uid=4F59E8F063D297C20000F65DEABB8C31 >
+{
+	myUIName AsteroidSmall
+	myColor 0x64766a6a
+	myCollisionMaterialHitCategory Soft
+}
+
+CollisionMaterial Brick < uid=8A04BA2150EAA7420000093CB8423EEA >
+{
+	myUIName Brick
+	myColor 0x64f38870
+	myFragmentHealthLight 100.0
+	myFragmentHealthMedium 300.0
+	myFragmentHealthHeavy 1000.0
+	myHoleSize 1.0
+	myHoleDepthMod 3.0
+	myHoleRandomness 0.4
+	myHoleSizeRandomness 0.3
+	myHolePunchThroughLength 2.0
+	myHoleTextureSize 1.0
+	myExplosionDamageModifier 0.3
+	myHoleInteriorShader helix/shaders/px_hole_interior__concrete.mshader
+	myHoleInteriorTexture1 helix/baked/art/textures/tech_textures/destruction/tt_concrete_destr_01_d.dds
+	myHoleInteriorTexture2 helix/baked/art/textures/tech_textures/destruction/tt_concrete_destr_01_n.dds
+	myFragmentReleaseParticleEffect helix/particles/vfx_des_rel_concrete_debris.mparticles
+	myExplosionHoleResistance -1.0
+	myDensity 2000.0
+	myFriction 0.7
+	myRestitution 0.1
+	myObstructionFactor 40.0
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial Cardboard < uid=8A04BA21511363FD0000000AF22AA3F1 >
+{
+	myUIName Cardboard
+	myColor 0x64ffe39c
+	myHoleRandomness 0.2
+	myHoleSizeRandomness 0.2
+	myDensity 500.0
+	myFriction 0.6
+	myBulletTransparent FALSE
+}
+
+CollisionMaterial CarpetFloor < uid=71B756D45F4FB1CA000000797F1B5E61 >
+{
+	myUIName CarpetFloor
+	myColor 0x647bad93
+	myBulletTransparent FALSE
+}
+
+CollisionMaterial Concrete < uid=84B8EF744FFE8DAC000000048239FD54 >
+{
+	myUIName Concrete
+	myColor 0x649a947e
+	myFragmentHealthLight 100.0
+	myFragmentHealthMedium 300.0
+	myFragmentHealthHeavy 1000.0
+	myHoleSize 3.0
+	myHoleDepthMod 0.9
+	myHoleRandomness 0.4
+	myHoleSizeRandomness 0.2
+	myHolePunchThroughLength 0.1
+	myHoleTextureSize 0.5
+	myExplosionDamageModifier 0.3
+	myHoleInteriorShader helix/shaders/px_hole_interior__concrete.mshader
+	myHoleInteriorTexture1 helix/baked/art/textures/tech_textures/destruction/tt_concrete_destr_01_d.dds
+	myHoleInteriorTexture2 helix/baked/art/textures/tech_textures/destruction/tt_concrete_destr_01_n.dds
+	myFragmentReleaseParticleEffect helix/particles/vfx_des_rel_concrete_debris.mparticles
+	myExplosionHoleResistance -1.0
+	myDensity 2000.0
+	myFriction 0.7
+	myRestitution 0.1
+	myObstructionFactor 40.0
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial ConcreteRough < uid=4ADBE9C459DB6EE40000D92AE2533A78 >
+{
+	myUIName ConcreteRough
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial Dirt < uid=6F860DB5506C75BF00000E15D8BBCF79 >
+{
+	myUIName Dirt
+	myColor 0x64a76010
+	myHoleSize 3.0
+	myFriction 0.6
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial EnergyShield < uid=9C4B6A0462F4E34B00008C492FCD613B >
+{
+	myUIName Shield
+	myColor 0x6400b7ff
+	myHoleSize 0.0
+	myLosTransparent TRUE
+	myAcousticallyOpaque FALSE
+}
+
+CollisionMaterial Fabric < uid=6F860DB5506C75BF00000E1977EE1F0F >
+{
+	myUIName Fabric
+	myColor 0x64d771d5
+	myHoleTextureSize 1.0
+	myDensity 500.0
+	myFriction 0.8
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial Flesh < uid=84B8EF744FFE8DAC000000023707B9D4 >
+{
+	myUIName Flesh
+	myColor 0x64f4b2c9
+	myCollisionMaterialHitCategory Soft
+	myHoleInteriorShader helix/shaders/px_hole_interior__flesh.mshader
+}
+
+CollisionMaterial GlassBroken < uid=47EB6CF154C663510000334E3060F4EA >
+{
+	myUIName GlassBroken
+	myColor 0x64c084d4
+}
+
+CollisionMaterial GlassHeavy < uid=6F860DB5506C75BF00000E1C221CFB8A >
+{
+	myUIName GlassHeavy
+	myColor 0x648c1cfe
+	myHoleSize 0.0
+	myHoleTextureSize 2.0
+	myHoleInteriorShader helix/shaders/px_hole_interior__glass.mshader
+	myUseGlassDestruction TRUE
+	myDensity 2000.0
+	myObstructionFactor 20.0
+	myLosTransparent TRUE
+	myAimTransparent TRUE
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial GlassThin < uid=6F860DB5506C75BF00000E1BA681A910 >
+{
+	myUIName GlassThin
+	myColor 0x644f0777
+	myFragmentHealthMedium 300.0
+	myHoleSize 1.0
+	myHoleRandomness 0.06
+	myHoleSizeRandomness 0.2
+	myHoleTextureSize 2.0
+	myBulletDamageModifier 0.1
+	myHoleInteriorShader helix/shaders/px_hole_interior__glass.mshader
+	myFragmentShatterParticleEffect helix/particles/vfx_des_rel_glass_pieces.mparticles
+	myUseGlassDestruction TRUE
+	myDensity 2000.0
+	myObstructionFactor 10.0
+	myBulletTransparent TRUE
+	myLosTransparent TRUE
+}
+
+CollisionMaterial GlassVehicle < uid=8A04BA215165291400000685211A8AE3 >
+{
+	myUIName GlassVehicle
+	myColor 0x6498a2d5
+	myFragmentHealthLight 200.0
+	myFragmentHealthMedium 6000.0
+	myFragmentHealthHeavy 20000.0
+	myHoleSize 0.0
+	myHoleRandomness 0.06
+	myHoleSizeRandomness 0.06
+	myHoleTextureSize 1.6
+	myBulletDamageModifier 0.01
+	myExplosionDamageModifier 0.1
+	myHoleInteriorShader helix/shaders/px_hole_interior__glass.mshader
+	myFragmentShatterParticleEffect helix/particles/vfx_des_rel_glass_pieces.mparticles
+	myUseGlassDestruction TRUE
+	myDensity 1800.0
+	myObstructionFactor 10.0
+	myBulletTransparent TRUE
+	myLosTransparent TRUE
+}
+
+CollisionMaterial Grass < uid=6F860DB5506C75BF00000E114D6A4808 >
+{
+	myUIName Grass
+	myColor 0x64169510
+	myRestitution 0.2
+	myAcousticallyOpaque FALSE
+}
+
+CollisionMaterial Gravel < uid=6F860DB5506C75BF00000E1729209934 >
+{
+	myUIName Gravel
+	myColor 0x64ccf924
+	myFriction 0.8
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial Ice < uid=9C4B6A0462B1AA3E00011975475BF872 >
+{
+	myUIName Ice
+	myHoleInteriorShader helix/shaders/px_hole_interior__amberine.mshader
+	myHoleInteriorTexture1 ""
+	myHoleInteriorTexture2 ""
+	myFragmentShatterParticleEffect helix/particles/vfx_des_rel_glass_pieces.mparticles
+	myUseGlassDestruction FALSE
+	myDensity 2000.0
+	myObstructionFactor 20.0
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial IceThin < uid=61A9E8DE63C019F1000091C71226EB39 >
+{
+	myUIName IceThin
+	myColor 0x646ecdf6
+	myCollisionMaterialHitCategory Medium
+	myHoleInteriorShader helix/shaders/px_hole_interior__ice_thin.mshader
+	myHoleInteriorTexture1 ""
+	myHoleInteriorTexture2 ""
+	myFragmentShatterParticleEffect helix/particles/vfx_des_rel_glass_pieces.mparticles
+	myUseGlassDestruction TRUE
+	myDensity 2000.0
+	myObstructionFactor 20.0
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial Leaf < uid=6F860DB5506C75BF00000E13894B8888 >
+{
+	myUIName Leaf
+	myColor 0x965eff54
+	myCollisionMaterialHitCategory Soft
+	myFragmentHealthLight 10.0
+	myFragmentHealthMedium 30.0
+	myFragmentHealthHeavy 100.0
+	myHoleInteriorShader helix/shaders/px_hole_interior__basic.mshader
+	myHoleInteriorTexture1 helix/baked/art/textures/generic_textures/gn_damaged_plant_stem_01/gn_damaged_plant_stem_01_d.dds
+	myHoleInteriorTexture2 helix/baked/art/textures/generic_textures/gn_damaged_plant_stem_01/gn_damaged_plant_stem_01_m.dds
+	myHoleInteriorTexture3 helix/baked/art/textures/generic_textures/gn_damaged_plant_stem_01/gn_damaged_plant_stem_01_n.dds
+	myExplosionHoleResistance -1.0
+	myDensity 0.01
+	myFriction 0.01
+	myRestitution 0.01
+	myObstructionFactor 5.0
+	myBulletTransparent TRUE
+	myLosTransparent TRUE
+	myAimTransparent TRUE
+	myAcousticallyOpaque FALSE
+}
+
+CollisionMaterial Marble < uid=6F860DB5506C75BF00000E1803EC03AB >
+{
+	myUIName Marble
+	myColor 0x64f7260f
+	myHoleInteriorShader helix/shaders/px_hole_interior__marble.mshader
+	myHoleInteriorTexture1 helix/baked/art/textures/tech_textures/destruction/tt_marble_white_01_d.dds
+	myHoleInteriorTexture2 helix/baked/art/textures/tech_textures/destruction/tt_concrete_destr_01_n.dds
+	myFragmentShatterParticleEffect helix/particles/vfx_des_rel_marble_debris.mparticles
+	myFragmentReleaseParticleEffect helix/particles/vfx_des_rel_concrete_debris.mparticles
+	myInnerMaterialDepth 0.02
+	myInnerMaterial 84B8EF744FFE8DAC000000048239FD54
+	myDensity 2300.0
+	myRestitution 0.2
+	myObstructionFactor 40.0
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial MetalSolid < uid=6F860DB5506C75BF00000E0BB2E0801B >
+{
+	myUIName MetalSolid
+	myColor 0x646aaeb2
+	myHoleSize 1.5
+	myHoleTextureSize 1.5
+	myHoleInteriorShader helix/shaders/px_hole_interior__metal.mshader
+	myDensity 5000.0
+	myFriction 0.6
+	myRestitution 0.2
+	myObstructionFactor 40.0
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial MetalTile < uid=61A9E8DE63EE2DEA00015E95AA765311 >
+{
+	myUIName MetalTile
+	myColor 0x648cf3ec
+	myHoleInteriorShader helix/shaders/px_generic__co_2dirt_dnorm__bullethole_metal.mshader
+	myFragmentShatterParticleEffect helix/particles/vfx_des_releasefrag_tiefighter_wing_01.mparticles
+	myFragmentReleaseParticleEffect helix/particles/vfx_des_releasefrag_tiefighter_wing_01.mparticles
+	myFragmentReleaseCheapParticleEffect helix/particles/vfx_des_releasefrag_tiefighter_wing_01.mparticles
+	myExplosionHoleResistance -1.0
+	myDensity 2000.0
+	myFriction 0.7
+	myRestitution 0.1
+	myObstructionFactor 40.0
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial MetalThin < uid=6F860DB5506D6D1E000001BD9CD480CD >
+{
+	myUIName MetalThin
+	myColor 0x6423676a
+	myCollisionMaterialHitCategory Soft
+	myFragmentHealthHeavy 2000.0
+	myHoleSize 1.5
+	myHolePunchThroughLength 6.0
+	myHoleTextureSize 1.5
+	myExplosionDamageModifier 0.0
+	myHoleInteriorTexture2 snowdrop/baked/snowdrop/dev/assets/textures/flat/sd_flat_normal_128_n.dds
+	myDensity 4000.0
+	myFriction 0.4
+	myObstructionFactor 20.0
+}
+
+CollisionMaterial "Metal Transparent" < uid=9C4B6A046239CA3A0000299B101FD75B >
+{
+	myUIName "Metal Transparent"
+	myHoleSize 0.0
+	myBulletTransparent TRUE
+	myLosTransparent TRUE
+	myAimTransparent TRUE
+}
+
+CollisionMaterial MetalVehicle < uid=47EB6CF15469AF06000021D128DBE6FB >
+{
+	myUIName MetalVehicle
+	myColor 0x6489c2ff
+	myFragmentHealthLight 200.0
+	myFragmentHealthMedium 300.0
+	myFragmentHealthHeavy 300.0
+	myHoleSize 1.5
+	myHoleRandomness 0.0
+	myHoleTextureSize 0.75
+	myExplosionHoleResistance -1.0
+	myObstructionFactor 1.0
+}
+
+CollisionMaterial Mud < uid=6F860DB5506C75BF00000E1A31723630 >
+{
+	myUIName Mud
+	myColor 0x644c3535
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial Plastic < uid=6F860DB5506C75BF00000E1D2B9C5272 >
+{
+	myUIName Plastic
+	myColor 0x648e163a
+	myHoleSize 1.0
+	myHoleTextureSize 1.0
+	myExplosionDamageModifier 2.0
+	myDensity 1200.0
+	myObstructionFactor 5.0
+}
+
+CollisionMaterial PlasticThin < uid=47EB6CF15469B3BB000021D1C890FE90 >
+{
+	myUIName PlasticThin
+	myColor 0x64eb4747
+	myHoleSize 1.0
+	myHoleTextureSize 1.0
+	myExplosionDamageModifier 2.0
+	myUseGlassDestruction TRUE
+	myDensity 1200.0
+	myBulletTransparent TRUE
+}
+
+CollisionMaterial Rock < uid=71B756D45F4FB1CA00000078405C761E >
+{
+	myUIName Rock
+	myColor 0x647c4611
+	myHoleInteriorShader helix/shaders/px_hole_interior__concrete.mshader
+	myHoleInteriorTexture1 helix/baked/art/textures/tech_textures/destruction/tt_concrete_destr_01_d.dds
+	myHoleInteriorTexture2 helix/baked/art/textures/tech_textures/destruction/tt_concrete_destr_01_n.dds
+	myFragmentReleaseParticleEffect helix/particles/vfx_des_rel_rock_debris.mparticles
+	myDensity 2500.0
+	myFriction 0.6
+	myRestitution 0.1
+	myObstructionFactor 40.0
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial Rubber < uid=6F860DB5506C75BF00000E10564F65A8 >
+{
+	myUIName Rubber
+	myColor 0x64262626
+	myCollisionMaterialHitCategory VeryHard
+	myFragmentHealthMedium 100.0
+	myFragmentHealthHeavy 100.0
+	myDensity 1500.0
+	myFriction 0.9
+	myObstructionFactor 5.0
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial Sand < uid=6F860DB5506C75BF00000E16E163F30E >
+{
+	myUIName Sand
+	myColor 0x647ddf7b
+	myExplosionHoleResistance -1.0
+	myFriction 0.7
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial SnowHeavy < uid=6F860DB5506C75BF00000E0DAADEA0B9 >
+{
+	myUIName SnowHeavy
+	myColor 0x645d786f
+	myDensity 500.0
+	myFriction 0.4
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial SnowLight < uid=6F860DB5506C75BF00000E0CA6A2A340 >
+{
+	myUIName SnowLight
+	myColor 0x64424b48
+	myDensity 800.0
+	myFriction 0.4
+}
+
+CollisionMaterial StemThick < uid=9C4B6A04637B5C140001608E1748557A >
+{
+	myUIName StemThick
+	myBulletTransparent TRUE
+	myLosTransparent TRUE
+	myAimTransparent TRUE
+}
+
+CollisionMaterial StemThin < uid=9C4B6A04637B5C0C0001608D1AAF26A6 >
+{
+	myUIName StemThin
+	myColor 0x6400b456
+	myCollisionMaterialHitCategory Soft
+	myFragmentHealthLight 10.0
+	myFragmentHealthMedium 30.0
+	myFragmentHealthHeavy 100.0
+	myHoleRandomness 0.7
+	myHoleTextureSize 1.0
+	myHoleInteriorShader helix/shaders/px_hole_interior__default.mshader
+	myHoleInteriorTexture1 ""
+	myHoleInteriorTexture2 ""
+	myExplosionHoleResistance -1.0
+	myDensity 0.3
+	myFriction 0.8
+	myRestitution 0.1
+	myObstructionFactor 80.0
+	myBulletTransparent TRUE
+	myLosTransparent TRUE
+	myAimTransparent TRUE
+}
+
+CollisionMaterial SpaceDebrisMedium < uid=9C4B6A0463775F490000EE8662FD47D3 >
+{
+	myUIName SpaceDebrisMedium
+	myCollisionMaterialHitCategory Hard
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial SpaceDebrisSoft < uid=9C4B6A04637C977100010DC3EC3A5A5D >
+{
+	myUIName SpaceDebrisSoft
+	myCollisionMaterialHitCategory Soft
+}
+
+CollisionMaterial Stone < uid=6F860DB5506C75BF00000E14508A97DB >
+{
+	myUIName Stone
+	myColor 0x64b59025
+	myHoleInteriorShader helix/shaders/px_hole_interior__concrete.mshader
+	myHoleInteriorTexture1 helix/baked/art/textures/tech_textures/destruction/tt_concrete_destr_01_d.dds
+	myHoleInteriorTexture2 helix/baked/art/textures/tech_textures/destruction/tt_concrete_destr_01_n.dds
+	myDensity 2500.0
+	myFriction 0.6
+	myRestitution 0.1
+	myObstructionFactor 40.0
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial Tarp < uid=47EB6CF154C663510000334DA099C974 >
+{
+	myUIName Tarp
+	myColor 0x647bad93
+	myBulletTransparent TRUE
+}
+
+CollisionMaterial Terracotta < uid=9C4B6A04617965AC000059EC9CF6F7B6 >
+{
+	myUIName Terracotta
+	myColor 0x64c66e4e
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial WaterDeep < uid=6F860DB5506C75BF00000E0FCDA956A7 >
+{
+	myUIName WaterDeep
+	myColor 0x643d92fc
+	myBulletTransparent TRUE
+	myLosTransparent TRUE
+	myAimTransparent TRUE
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial WoodPlank < uid=6F860DB5506C75BF00000E0A5D34DECD >
+{
+	myUIName WoodPlank
+	myColor 0x64fba117
+	myFragmentHealthLight 250.0
+	myFragmentHealthMedium 2000.0
+	myHoleSize 1.2
+	myHoleRandomness 0.1
+	myHoleSizeRandomness 0.1
+	myHolePunchThroughLength 5.0
+	myHoleTextureSize 2.0
+	myHoleTextureScaling 1.0;1.0
+	myExplosionDamageModifier 0.0
+	myHoleInteriorShader helix/shaders/px_hole_interior__concrete.mshader
+	myHoleInteriorTexture1 helix/baked/art/textures/tech_textures/destruction/tt_wood_destr_01_d.dds
+	myHoleInteriorTexture2 helix/baked/art/textures/tech_textures/destruction/tt_wood_destr_01_n.dds
+	myDensity 700.0
+	myFriction 0.6
+	myRestitution 0.2
+	myObstructionFactor 5.0
+	myBulletTransparent TRUE
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial WaterShallow < uid=6F860DB5506C75BF00000E0E9C4CF120 >
+{
+	myUIName WaterShallow
+	myColor 0x64fffdff
+	myBulletTransparent TRUE
+	myLosTransparent TRUE
+	myAimTransparent TRUE
+	myAcousticallyOpaque FALSE
+}
+
+CollisionMaterial WoodSolid < uid=6F860DB5506D6D1E000001BC2EDFFAF0 >
+{
+	myUIName WoodSolid
+	myColor 0x64f7631b
+	myHoleRandomness 0.7
+	myHoleTextureSize 2.0
+	myHoleTextureScaling 1.0;1.0
+	myMaxCuttingDepthModifier 0.14
+	myHoleInteriorShader helix/shaders/px_hole_interior__concrete.mshader
+	myHoleInteriorTexture1 helix/baked/art/textures/tech_textures/destruction/tt_wood_destr_01_d.dds
+	myHoleInteriorTexture2 helix/baked/art/textures/tech_textures/destruction/tt_wood_destr_01_n.dds
+	myDensity 700.0
+	myFriction 0.7
+	myRestitution 0.3
+	myObstructionFactor 80.0
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial Water < uid=0182810B643FDF4A00008FACFC870ECC >
+{
+	myUIName Water
+	myColor 0x64fffdff
+	myBulletTransparent TRUE
+	myLosTransparent TRUE
+	myAimTransparent TRUE
+	myAcousticallyOpaque FALSE
+}
+
+CollisionMaterial IceAsteroidMedium < uid=61A9E8DE64492B11002116B8A01EE296 >
+{
+	myUIName IceAsteroidMedium
+	myCollisionMaterialHitCategory Hard
+	myHoleSize 300.0
+	myHoleRandomness 0.7
+	myHoleTextureSize 300.0
+	myHoleInteriorShader helix/shaders/px_asteroid_ice__interhole.mshader
+	myHoleInteriorTexture1 ""
+	myHoleInteriorTexture2 ""
+	myHoleInteriorTexture3 ""
+	myHoleInteriorTexture4 ""
+	myFragmentShatterParticleEffect helix/particles/vfx_des_rel_glass_pieces.mparticles
+	myUseGlassDestruction FALSE
+	myDensity 2000.0
+	myObstructionFactor 20.0
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial IceAsteroidLarge < uid=61A9E8DE64492B11002116B9D5ED1B33 >
+{
+	myUIName IceAsteroidLarge
+	myCollisionMaterialHitCategory VeryHard
+	myHoleSize 300.0
+	myHoleRandomness 0.7
+	myHoleTextureSize 300.0
+	myHoleInteriorShader helix/shaders/px_asteroid_ice__interhole.mshader
+	myHoleInteriorTexture1 ""
+	myHoleInteriorTexture2 ""
+	myHoleInteriorTexture3 ""
+	myHoleInteriorTexture4 ""
+	myFragmentShatterParticleEffect helix/particles/vfx_des_rel_glass_pieces.mparticles
+	myUseGlassDestruction FALSE
+	myDensity 2000.0
+	myObstructionFactor 20.0
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial SpaceDebrisHard < uid=9E5BD60764F054A00004088EE93F13D6 >
+{
+	myUIName SpaceDebrisHard
+	myCollisionMaterialHitCategory Hard
+}
+
+CollisionMaterial FluffySand < uid=0BACD8E1657B0B5F0009A09459382C24 >
+{
+	myUIName FluffySand
+	myColor 0x64f9e470
+	myFriction 0.7
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial FluffySnow < uid=0BACD8E1657B0B5F0009A0959F762115 >
+{
+	myUIName FluffySnow
+	myColor 0x649ca8a4
+	myDensity 800.0
+	myFriction 0.4
+}
+
+CollisionMaterial StarDestroyerShield < uid=16C01FDF6634D7F9000AEAA23C391D6C >
+{
+	myUIName StarDestroyerShield
+	myColor 0x640026ff
+	myHoleSize 0.0
+	myHoleRandomness 0.0
+	myHoleSizeRandomness -0.1
+	myLosTransparent TRUE
+}
+
+CollisionMaterial FabricFeather < uid=9E5BD60766461F05000113AFA8A1D262 >
+{
+	myUIName FabricFeather
+	myColor 0x64d771d5
+	myHoleTextureSize 1.0
+	myDensity 500.0
+	myFriction 0.8
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial WaterFall < uid=9E5BD6076647502C002D5F16E1E0797B >
+{
+	myUIName WaterFall
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial MetalBounceProjectile < uid=8F9DE2876655E0A100033838859A5A40 >
+{
+	myUIName MetalBounceProjectile
+	myColor 0x646aaeb2
+	myHoleSize 1.5
+	myHoleTextureSize 1.5
+	myHoleInteriorShader helix/shaders/px_hole_interior__metal.mshader
+	myDensity 5000.0
+	myFriction 0.6
+	myRestitution 0.2
+	myObstructionFactor 40.0
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial WoodFence < uid=9E5BD607666A95F1000339E0B2A471A6 >
+{
+	myUIName WoodFence
+	myColor 0x64fba117
+	myFragmentHealthLight 250.0
+	myFragmentHealthMedium 2000.0
+	myHoleSize 1.2
+	myHoleRandomness 0.1
+	myHoleSizeRandomness 0.1
+	myHolePunchThroughLength 5.0
+	myHoleTextureSize 2.0
+	myHoleTextureScaling 1.0;1.0
+	myExplosionDamageModifier 1.0
+	myHoleInteriorShader helix/shaders/px_hole_interior__concrete.mshader
+	myHoleInteriorTexture1 helix/baked/art/textures/tech_textures/destruction/tt_wood_destr_01_d.dds
+	myHoleInteriorTexture2 helix/baked/art/textures/tech_textures/destruction/tt_wood_destr_01_n.dds
+	myDensity 700.0
+	myFriction 0.6
+	myRestitution 0.2
+	myObstructionFactor 5.0
+	myBulletTransparent TRUE
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial RockLDI < uid=9E5BD607667134060001C027A27E8465 >
+{
+	myUIName RockLDI
+	myColor 0x647c4611
+	myHoleInteriorShader helix/shaders/px_hole_interior__concrete.mshader
+	myHoleInteriorTexture1 helix/baked/art/textures/tech_textures/destruction/tt_concrete_destr_01_d.dds
+	myHoleInteriorTexture2 helix/baked/art/textures/tech_textures/destruction/tt_concrete_destr_01_n.dds
+	myFragmentReleaseParticleEffect helix/particles/vfx_des_rel_rock_debris.mparticles
+	myDensity 2500.0
+	myFriction 0.6
+	myRestitution 0.1
+	myObstructionFactor 40.0
+	myAcousticallyOpaque TRUE
+}
+
+CollisionMaterial KhepiDroid < uid=16C01FDF679B8D67000000D6102D0866 >
+{
+	myUIName KhepiDroid
+	myColor 0xff6aaeb2
+	myHoleSize 1.5
+	myHoleTextureSize 1.5
+	myHoleInteriorShader helix/shaders/px_hole_interior__metal.mshader
+	myDensity 5000.0
+	myFriction 0.6
+	myRestitution 0.2
+	myObstructionFactor 40.0
+	myAcousticallyOpaque TRUE
+}
+

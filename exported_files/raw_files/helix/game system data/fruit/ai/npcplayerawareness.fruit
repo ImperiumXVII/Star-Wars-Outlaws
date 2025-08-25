@@ -1,0 +1,47 @@
+include "helix/game system data/fruit/audio/stimulus.fruit"
+
+class NonBehaviorConfig
+{
+	StimulusIdentifier* myBarkStimulus < tooltip="Bark that triggers upon the start of the state." >
+	StimulusIdentifier* myIdleBarkStimulus < tooltip="Bark that triggers when the player is not interacting." >
+	float myIdleBarkCooldown 60.0 < tooltip="Cooldown in seconds for myIdleBarkStimulus." >
+}
+
+class NPCPlayerAwarenessState
+{
+	float myActivationRange 0 < tooltip="Meters" >
+	file myBehavior < tooltip="If set, will ignore the NonBehaviorConfig settings." bhv=asset assettype=behavior >
+	NonBehaviorConfig myNonBehaviorConfig
+	bool myRequirePlayerIsVisible TRUE
+	bool myAddPlayerAsNPCFocusPoint TRUE
+	bool mySetCameraLookAt FALSE
+}
+
+list NPCPlayerAwarenessStates
+{
+	NPCPlayerAwarenessState
+}
+
+class OnInteractStateStart
+{
+	bool myIsEnabled FALSE
+	NonBehaviorConfig myNonBehaviorConfig
+}
+
+class OnInteractStateEnd
+{
+	bool myIsEnabled FALSE
+	NonBehaviorConfig myNonBehaviorConfig
+	float myTimeUntilAttentionLost -1.0 < tooltip="How long in seconds the NPC should be in the state until returning to a proximity based awareness state." >	
+}
+
+class NPCPlayerAwarenessProfile < uid=auto >
+{
+	NPCPlayerAwarenessStates myPlayerAwarenessStates
+	OnInteractStateStart myOnInteractStart
+	OnInteractStateEnd myOnInteractEnd
+	bool myOverrideDefaultNPCBehavior FALSE
+	bool myDisableProximityBarksAfterInteraction FALSE
+	bool myDisableProximityWhenNotInIdle TRUE
+}
+

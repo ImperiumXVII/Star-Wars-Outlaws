@@ -1,0 +1,1063 @@
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+include "helix/game system data/juice/intel/intel_fathierraces.mintel"
+include "helix/game system data/juice/livingworld/ambientlife_livingworldcontent.mlivingworldcontent"
+
+LivingWorldContent ProceduralFixedRace_livingworldcontent < uid=CC6CF61E64AED80D000EC241AF59A9BC >
+{
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "OR Debug"
+		{
+			myOperator Or
+			myConditions
+			{
+				LivingWorldGameConditionGroup "Base conditions"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "GameConditionContextLivingWorldContentLocation_DistanceToPlayer <= 150"
+						{
+							myDistance 150.0
+							myOperator LessThanOrEqual
+						}
+						GameConditionFathierRacesAreFixed GameConditionFathierRacesAreFixed
+						{
+							myIsNegated TRUE
+						}
+						GameConditionFathierRacesProceduralEnigmasAreInCooldown "NOT  GameConditionFathierRacesProceduralEnigmasAreInCooldown"
+						{
+							myIsNegated TRUE
+						}
+						GameConditionFathierRacesAreInCooldown "NOT GameConditionFathierRacesAreInCooldown >600"
+						{
+							myIsNegated TRUE
+							myRemainingTime 600.0
+						}
+					}
+				}
+				GameConditionLivingWorldFormula "Debug Game Value = True"
+				{
+					myFormula gv_fr_Debug_Spawn_Fixed_Race_Clues=1
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "AND Debug"
+		{
+			myConditions
+			{
+				LivingWorldGameConditionGroup OR
+				{
+					myOperator Or
+					myConditions
+					{
+						GameConditionFathierRacesProceduralEnigmasAreInCooldown GameConditionFathierRacesProceduralEnigmasAreInCooldown
+						{
+						}
+						GameConditionFathierRacesAreInCooldown "GameConditionFathierRacesAreInCooldown >600"
+						{
+							myRemainingTime 600.0
+						}
+						LivingWorldGameConditionGroup RacesAreFixed
+						{
+							myOperator Or
+							myConditions
+							{
+								GameConditionFathierRacesAreFixed "MS Fixed"
+								{
+									myTestProcedural FALSE
+								}
+								LivingWorldGameConditionGroup "Procedural Fixed"
+								{
+									myConditions
+									{
+										GameConditionFathierRacesAreFixed "Procedural are fixed"
+										{
+											myTestMicrostories FALSE
+											myTestProcedural TRUE
+										}
+										GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance gt 25m"
+										{
+											myDistance 25.0
+										}
+									}
+								}
+							}
+						}
+						LivingWorldGameConditionGroup "Any MS intel chain are started"
+						{
+							myOperator Or
+							myConditions
+							{
+								GameConditionPlayerHasIntel MS1001_ITL010
+								{
+									myIntel < uid=03BE13BA663A33FE0005DE347137D359 > = A_TO_MS1001_ITL010_QuestionForAFormerChampion 225CF6276478A7920008BDAF533E413C
+								}
+								GameConditionPlayerHasIntel MS1001_ITL020
+								{
+									myIntel < uid=03BE13BA663A33FE0005DE35D29F4309 > = A_TO_MS1001_ITL020_QuestionForAFormerChampion 225CF6276478A7920008BDB275EB6CD7
+								}
+								GameConditionPlayerHasIntel MS1002_ITL020
+								{
+									myIntel < uid=03BE13BA663A42CB0008007CC4F1DB89 > = A_TO_MS1002_ITL020_Switcheroo 225CF62764D12A2600021CE7A3EB3DBE
+								}
+								GameConditionPlayerHasIntel MS1002_ITL030
+								{
+									myIntel < uid=03BE13BA663A42CB0008007D8DD9F999 > = A_TO_MS1002_ITL030_Switcheroo 225CF62764D12A2600021CEA777B4D88
+								}
+								GameConditionPlayerHasIntel MS1003_ITL010
+								{
+									myIntel < uid=03BE13BA663A33FE0005DE3678ACD0EF > = A_TO_MS1003_ITL010_WeNeedACleaner 225CF627649474D20018E4375F601248
+								}
+								GameConditionPlayerHasIntel MS1003_ITL020
+								{
+									myIntel < uid=03BE13BA663A33FE0005DE3748B60E44 > = A_TO_MS1003_ITL020_WeNeedACleaner 225CF6276495A8D9001B0C0AF184DA46
+								}
+								GameConditionPlayerHasIntel MS1003_ITL030
+								{
+									myIntel < uid=03BE13BA663A33FE0005DE3887D4B110 > = A_TO_MS1003_ITL030_WeNeedACleaner 225CF62764999C6E001059BD6B8CFF9C
+								}
+								GameConditionPlayerHasIntel MS1004_ITL010
+								{
+									myIntel < uid=03BE13BA663A33FE0005DE39AF7B2DE8 > = A_TO_MS1004_ITL010_DirtyFiles 225CF62764958FC20004D06297005D2D
+								}
+								GameConditionPlayerHasIntel MS1004_ITL020
+								{
+									myIntel < uid=03BE13BA663A33FE0005DE3AB14EBB40 > = A_TO_MS1004_ITL020_DirtyFiles 225CF62764989BBB0001C16F4DBEB08E
+								}
+								GameConditionPlayerHasIntel MS1004_ITL030
+								{
+									myIntel < uid=03BE13BA663A33FE0005DE3B49724703 > = A_TO_MS1004_ITL030_DirtyFiles 225CF62764989BBB0001C1726B01EC52
+								}
+								GameConditionPlayerHasIntel MS1006_ITL010
+								{
+									myIntel < uid=03BE13BA663A347F0005DE563A8607ED > = A_TO_MS1006_ITL010_Empire_Racing 225CF62764DCEF9F00154C07F59341F9
+								}
+								GameConditionPlayerHasIntel MS1006_ITL020
+								{
+									myIntel < uid=03BE13BA663A347F0005DE570429A41B > = A_TO_MS1006_ITL020_Empire_Racing 225CF62764DCF60B00154C35710ADB2F
+								}
+								GameConditionPlayerHasIntel MS1006_ITL030
+								{
+									myIntel < uid=03BE13BA663A347F0005DE58336915B0 > = A_TO_MS1006_ITL030_Empire_Racing 225CF62764DCF60B00154C387A002C69
+								}
+								GameConditionPlayerHasIntel MS1006_ITL040
+								{
+									myIntel < uid=03BE13BA663A347F0005DE5976299816 > = A_TO_MS1006_ITL040_Empire_Racing 225CF62764DCF60B00154C3BF04AE2DE
+								}
+								GameConditionPlayerHasIntel MS1007_ITL010
+								{
+									myIntel < uid=03BE13BA663A347F0005DE5A7C9A4051 > = A_TO_MS1007_ITL_010_KayEntersTheBusiness 225CF6276478A7920008BDB559F7DF8A
+								}
+								GameConditionPlayerHasIntel MS1007_ITL015
+								{
+									myIntel < uid=03BE13BA663A347F0005DE5B35DA3AA5 > = A_TO_MS1007_ITL_015_KayEntersTheBusiness 91803AE165AA5B33003C1426674682BD
+								}
+								GameConditionPlayerHasIntel MS1007_ITL020B
+								{
+									myIntel < uid=03BE13BA663A347F0005DE5C4E656D3B > = A_TO_MS1007_ITL_020B_KayEntersTheBusiness 225CF627649AA9FD0004E4BB650C1C0D
+								}
+								GameConditionPlayerHasIntel MS1007_ITL022
+								{
+									myIntel < uid=03BE13BA663A347F0005DE5D74B6A5C9 > = A_TO_MS1007_ITL_022_KayEntersTheBusiness 91803AE165786711000B5FA99BB91440
+								}
+								GameConditionPlayerHasIntel MS1007_ITL025
+								{
+									myIntel < uid=03BE13BA663A347F0005DE5EDA80FBC6 > = A_TO_MS1007_ITL_025_KayEntersTheBusiness 91803AE165410C0B00422C912670C916
+								}
+								GameConditionPlayerHasIntel MS1007_ITL030
+								{
+									myIntel < uid=03BE13BA663A347F0005DE5F3E6BFD21 > = A_TO_MS1007_ITL_030_KayEntersTheBusiness 225CF6276499BA6800013FA2E5B3F9DF
+								}
+								GameConditionPlayerHasIntel MS1007_ITL040
+								{
+									myIntel < uid=03BE13BA663A347F0005DE605B024362 > = A_TO_MS1007_ITL_040_KayEntersTheBusiness 225CF627649AA0190001CA01AA01A807
+								}
+							}
+						}
+					}
+				}
+				GameConditionLivingWorldFormula "Debug Game Value = False"
+				{
+					myFormula gv_fr_Debug_Spawn_Fixed_Race_Clues=0
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS1001_TOS_FR_QuestionsForAFormerChampion < uid=CC6CF61E643E6DD00000BF443906982E >
+{
+	myActivationMinDistanceToPlayerLoadingOverride 0.0
+	myActivationGameConditions
+	{
+		GameConditionFathierRacesMicrostoryState "MS1001 is Active or Started"
+		{
+			myMicrostory CC6CF61E643E74090000BF60AE9EF303
+			myTestIsStarted TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayerRange "Distance to player 60-100"
+		{
+			myMinDistance 60.0
+			myMaxDistance 100.0
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "OR - LivingWorldGameConditionGroup"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player more than 100m"
+				{
+					myDistance 100.0
+					myOperator GreaterThan
+				}
+				GameConditionFathierRacesAreFixed GameConditionFathierRacesAreFixed
+				{
+					myTestMicrostories FALSE
+					myTestProcedural TRUE
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS1002_KIJ_FR_SWITCHEROO < uid=225CF62764D120BC001679D85CE5B970 >
+{
+	myCompletedGameValue < uid=91803AE16573485C0041227CCFE92E53 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player is less than 100m"
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		GameConditionFathierRacesMicrostoryState "MS1002 is Active or Started"
+		{
+			myMicrostory 225CF62764D10EAE0006E8654125AADD
+		}
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "This LWC is NOT Completed"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "OR - LivingWorldGameConditionGroup"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player more than 110m"
+				{
+					myDistance 110.0
+					myOperator GreaterThanOrEqual
+				}
+				GameConditionFathierRacesAreFixed RacesAreFixed
+				{
+					myTestMicrostories FALSE
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS1003_TAT_FR_OHC_OD_WeNeedACleaner < uid=225CF62764999F5A0011F3543DCBA04E >
+{
+	myCompletedGameValue < uid=225CF62764AD151700015A280BD9F22D >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player is less than 100m"
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		GameConditionFathierRacesMicrostoryState "MS1003 is Active or Started"
+		{
+			myMicrostory 225CF627649473630018E4211A03E0AE
+		}
+		GameConditionPlayerHasIntel "Intel 20 is not Active"
+		{
+			myIsNegated TRUE
+			myIntel < uid=91803AE16618F0970006172E6C87CD89 > = A_TO_MS1003_ITL020_WeNeedACleaner 225CF6276495A8D9001B0C0AF184DA46
+		}
+		GameConditionPlayerHasIntel "Intel 30 is not Active"
+		{
+			myIsNegated TRUE
+			myIntel < uid=91803AE16618F0970006172FDB933703 > = A_TO_MS1003_ITL030_WeNeedACleaner 225CF62764999C6E001059BD6B8CFF9C
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "GROUP OR - Distance is more than 100m or Intel 20 is Active or RacesAreFixed"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player is more than 110m"
+				{
+					myDistance 110.0
+					myOperator GreaterThanOrEqual
+				}
+				GameConditionFathierRacesAreFixed GameConditionFathierRacesAreFixed
+				{
+					myTestMicrostories FALSE
+				}
+				GameConditionPlayerHasIntel "Intel 20 is Active"
+				{
+					myIntel < uid=91803AE16618F097000617300BACED6C > = A_TO_MS1003_ITL020_WeNeedACleaner 225CF6276495A8D9001B0C0AF184DA46
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS1004_TAT_FR_DirtyFiles < uid=225CF6276499A0C2001355B01B1DFBE1 >
+{
+	myCompletedGameValue < uid=225CF627650AD4E800172A2D6D9E7E69 >
+	{
+	}
+	myActivationMinDistanceToPlayerLoadingOverride 0.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayerRange "Distance to Player is between 60-100"
+		{
+			myMinDistance 60.0
+			myMaxDistance 100.0
+		}
+		GameConditionFathierRacesMicrostoryState "MS1004 is Active or Started"
+		{
+			myMicrostory 225CF627649473630018E4254CD67B9C
+		}
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "This LWC is NOT Completed"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "GROUP OR - Distance is more than 100m or RacesAreFixed"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player is more than 100m"
+				{
+					myDistance 110.0
+					myOperator GreaterThanOrEqual
+				}
+				GameConditionFathierRacesAreFixed "Races are fixed"
+				{
+					myTestMicrostories FALSE
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS1006_AKI_FR_Empire_Racing_P1_PosterSpawn < uid=91803AE165BD1AB400166FECD23CEF4D >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player is less than 150m"
+		{
+			myDistance 150.0
+			myOperator LessThan
+		}
+		LivingWorldGameConditionGroup "Group OR - PSY_030 is not Started or is Completed"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestState "PSY_030 is not Started"
+				{
+					myQuest CC6CF61E64F05E60000114FEA8F79C51
+					myQuestState Started
+					myOperator LessThan
+				}
+				GameConditionQuestState "PSY_030 is Completed"
+				{
+					myQuest CC6CF61E64F05E60000114FEA8F79C51
+					myQuestState Completed
+				}
+			}
+		}
+		LivingWorldGameConditionGroup "Group OR - MS1006 is Active or started OR Completed"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionFathierRacesMicrostoryState "MS1006 is Active or Started"
+				{
+					myMicrostory 225CF62764DCEEF400154C069779955B
+				}
+				GameConditionFathierRacesMicrostoriesOver "MS1006 is Over"
+				{
+					myMicrostories
+					{
+						uid "New uid" 225CF62764DCEEF400154C069779955B
+					}
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "GROUP OR - Distance is more than 150m or RacesAreFixed"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionFathierRacesAreFixed GameConditionFathierRacesAreFixed
+				{
+					myTestMicrostories FALSE
+				}
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player is more than 160m"
+				{
+					myDistance 160.0
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS1006_AKI_FR_Empire_Racing_P1_Poster < uid=225CF62764DCF70000154C4F13A43094 >
+{
+	myCompletedGameValue < uid=91803AE1656A04A000545D094BD5FEEE >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player is less than 20m"
+		{
+			myDistance 20.0
+			myOperator LessThan
+		}
+		GameConditionFathierRacesMicrostoryState "MS1006 is Active or Started"
+		{
+			myMicrostory 225CF62764DCEEF400154C069779955B
+		}
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "This LWC is not Completed"
+		{
+			myIsNegated TRUE
+		}
+		LivingWorldGameConditionGroup "Group OR - PSY_030 is not Started or is Completed"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestState "PSY_030 is not Started"
+				{
+					myQuest CC6CF61E64F05E60000114FEA8F79C51
+					myQuestState Started
+					myOperator LessThan
+				}
+				GameConditionQuestState "PSY_030 is Completed"
+				{
+					myQuest CC6CF61E64F05E60000114FEA8F79C51
+					myQuestState Completed
+					myOperator GreaterThanOrEqual
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR - Distance is more than 30m OR PSY_030 is Ongoing OR RacesAreFixed"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer is more than 30m"
+				{
+					myDistance 30.0
+					myOperator GreaterThanOrEqual
+				}
+				LivingWorldGameConditionGroup "PSY_030 is Ongoing"
+				{
+					myConditions
+					{
+						GameConditionQuestState "Is more than Started"
+						{
+							myQuest CC6CF61E64F05E60000114FEA8F79C51
+							myQuestState Started
+							myOperator GreaterThanOrEqual
+						}
+						GameConditionQuestState "Is not Completed"
+						{
+							myQuest CC6CF61E64F05E60000114FEA8F79C51
+							myQuestState Completed
+							myOperator LessThan
+						}
+					}
+				}
+				GameConditionFathierRacesAreFixed GameConditionFathierRacesAreFixed
+				{
+					myTestMicrostories FALSE
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS1006_AKI_FR_Empire_Racing_P2_Guards < uid=D4F6307964E3511A0012504E5C3BDF82 >
+{
+	myCompletedGameValue < uid=D4F6307964E3511A0012504F8D984521 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player is less than 100m"
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		GameConditionFathierRacesMicrostoryState "MS1006 is Active or Started"
+		{
+			myMicrostory 225CF62764DCEEF400154C069779955B
+		}
+		GameConditionPlayerHasIntel "Intel MS1006_ITL010 is Active"
+		{
+			myIntel < uid=D4F6307964E3514D00125C5A0A24A4FB > = A_TO_MS1006_ITL010_Empire_Racing 225CF62764DCEF9F00154C07F59341F9
+		}
+		LivingWorldGameConditionGroup "Group OR - PSY_030 is not Started or is Completed"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestState "PSY_030 is not Started"
+				{
+					myQuest CC6CF61E64F05E60000114FEA8F79C51
+					myQuestState Started
+					myOperator LessThan
+				}
+				GameConditionQuestState "PSY_030 is Completed"
+				{
+					myQuest CC6CF61E64F05E60000114FEA8F79C51
+					myQuestState Completed
+					myOperator GreaterThanOrEqual
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR - Distance is more than 100m OR PSY030 is Ongoing"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player is more than 100m"
+				{
+					myDistance 110.0
+					myOperator GreaterThanOrEqual
+				}
+				LivingWorldGameConditionGroup "PSY_030 is Ongoing"
+				{
+					myConditions
+					{
+						GameConditionQuestState "PSY_030 is Started"
+						{
+							myQuest CC6CF61E64F05E60000114FEA8F79C51
+							myQuestState Started
+							myOperator GreaterThanOrEqual
+						}
+						GameConditionQuestState "PSY_030 is not Completed"
+						{
+							myQuest CC6CF61E64F05E60000114FEA8F79C51
+							myQuestState Completed
+							myOperator LessThan
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS1006_AKI_FR_Empire_Racing_P3_Officers < uid=225CF62764DE48750038ED32E8FFBDC2 >
+{
+	myActivateGameCondition
+	{
+		myFormula ""
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance toPlayer is less than 100m"
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		GameConditionFathierRacesMicrostoryState "MS1006 is Active or started"
+		{
+			myMicrostory 225CF62764DCEEF400154C069779955B
+		}
+		LivingWorldGameConditionGroup "Group OR - PSY_030 is not Started or is Completed"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestState "PSY_030 is not Started"
+				{
+					myQuest CC6CF61E64F05E60000114FEA8F79C51
+					myQuestState Started
+					myOperator LessThan
+				}
+				GameConditionQuestState "PSY_030 is completed"
+				{
+					myQuest CC6CF61E64F05E60000114FEA8F79C51
+					myQuestState Completed
+					myOperator GreaterThanOrEqual
+				}
+			}
+		}
+		GameConditionPlayerHasIntel "Intel MS1006_ITL020 is Active"
+		{
+			myIntel < uid=91803AE1656DB01B001AA0B6CF50371F > = A_TO_MS1006_ITL020_Empire_Racing 225CF62764DCF60B00154C35710ADB2F
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR - Distance is more than 110m OR Intel 40 is Active OR PSY030 is Ongoing"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player is more than 110m"
+				{
+					myDistance 110.0
+					myOperator GreaterThan
+				}
+				LivingWorldGameConditionGroup "PSY_030 is Ongoing"
+				{
+					myConditions
+					{
+						GameConditionQuestState "PSY_030 is Started"
+						{
+							myQuest CC6CF61E64F05E60000114FEA8F79C51
+							myQuestState Started
+							myOperator GreaterThanOrEqual
+						}
+						GameConditionQuestState "PSY_030 is not Completed"
+						{
+							myQuest CC6CF61E64F05E60000114FEA8F79C51
+							myQuestState Completed
+							myOperator LessThan
+						}
+					}
+				}
+				LivingWorldGameConditionGroup "Group AND - Intel 40 is Active and Distance"
+				{
+					myConditions
+					{
+						GameConditionPlayerHasIntel "Intel MS1006_ITL040 is Active"
+						{
+							myIntel < uid=91803AE16718CD19001F1639080DEC9A > = A_TO_MS1006_ITL040_Empire_Racing 225CF62764DCF60B00154C3BF04AE2DE
+						}
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance more than 110m"
+						{
+							myDistance 110.0
+							myOperator GreaterThan
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS1006_AKI_FR_Empire_Racing_P3_Datapad < uid=91803AE1656DB01B001AA0B770BABED3 >
+{
+	myActivateGameCondition
+	{
+		myFormula ""
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player is less than 100m"
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		GameConditionFathierRacesMicrostoryState "MS1006 is Active or started"
+		{
+			myMicrostory 225CF62764DCEEF400154C069779955B
+		}
+		LivingWorldGameConditionGroup "Group OR - PSY_030 is not Started or is Completed"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestState "PSY_030 is not Started"
+				{
+					myQuest CC6CF61E64F05E60000114FEA8F79C51
+					myQuestState Started
+					myOperator LessThan
+				}
+				GameConditionQuestState "PSY_030 is Completed"
+				{
+					myQuest CC6CF61E64F05E60000114FEA8F79C51
+					myQuestState Completed
+					myOperator GreaterThanOrEqual
+				}
+			}
+		}
+		LivingWorldGameConditionGroup "Group OR - Intel 020 or 030 are Active"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel "MS1006 Intel 020 is Active"
+				{
+					myIntel < uid=91803AE1656DB01B001AA0BB3ED994AA > = A_TO_MS1006_ITL020_Empire_Racing 225CF62764DCF60B00154C35710ADB2F
+				}
+				GameConditionPlayerHasIntel "MS1006 Intel 030 is Active"
+				{
+					myIntel < uid=91803AE1656DB01B001AA0BC5B1E8CD3 > = A_TO_MS1006_ITL030_Empire_Racing 225CF62764DCF60B00154C387A002C69
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR - Distance is more than 100m OR PSY_030 is Ongoing"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player is more than 100m"
+				{
+					myDistance 110.0
+					myOperator GreaterThanOrEqual
+				}
+				LivingWorldGameConditionGroup "PSY_030 is Ongoing"
+				{
+					myConditions
+					{
+						GameConditionQuestState "PSY_030 is Started"
+						{
+							myQuest CC6CF61E64F05E60000114FEA8F79C51
+							myQuestState Started
+							myOperator GreaterThanOrEqual
+						}
+						GameConditionQuestState "PSY_030 is not Completed"
+						{
+							myQuest CC6CF61E64F05E60000114FEA8F79C51
+							myQuestState Completed
+							myOperator LessThan
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS1007_TOS_FR_KayEntersTheBusiness_P1_Jockey < uid=225CF6276499A0A8001355AFAFB4CCCA >
+{
+	myCompletedGameValue < uid=225CF62765252D0E00127A565B14B957 >
+	{
+	}
+	myActivationMinDistanceToPlayerLoadingOverride 0.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayerRange "Distance to Player is between 50 and 100m"
+		{
+			myMinDistance 50.0
+			myMaxDistance 100.0
+		}
+		GameConditionFathierRacesMicrostoryState "MS1007 is Active or Started"
+		{
+			myMicrostory 225CF627649473630018E42992C416AE
+		}
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "This LWC is not Completed"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR - Intel 030 or 040 are active or Distance gt 100m or RacesAreFixed"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel "Intel 030 is Active"
+				{
+					myIntel < uid=CC6CF61E660BC44700190BD74AADB933 > = A_TO_MS1007_ITL_030_KayEntersTheBusiness 225CF6276499BA6800013FA2E5B3F9DF
+				}
+				GameConditionPlayerHasIntel "Intel 040 is Active"
+				{
+					myIntel < uid=CC6CF61E660BC44700190BD8DD33B91C > = A_TO_MS1007_ITL_040_KayEntersTheBusiness 225CF627649AA0190001CA01AA01A807
+				}
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player is more than 110m"
+				{
+					myDistance 110.0
+					myOperator GreaterThanOrEqual
+				}
+				GameConditionFathierRacesAreFixed GameConditionFathierRacesAreFixed
+				{
+					myTestMicrostories FALSE
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS1007_TOS_FR_KayEntersTheBusiness_P2_CrimsonAgentLookAt < uid=91803AE165F9AB15000FB38E150B986E >
+{
+	myCompletedGameValue < uid=91803AE165F9AB90000FB3C3FB97FD10 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player is less than 30m"
+		{
+			myDistance 30.0
+			myOperator LessThan
+		}
+		LivingWorldGameConditionGroup "Group OR - Intel 20B or 25 are Active"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel "Intel 20B is Active"
+				{
+					myIntel < uid=91803AE165F9AB90000FB3C432D8176D > = A_TO_MS1007_ITL_020B_KayEntersTheBusiness 225CF627649AA9FD0004E4BB650C1C0D
+				}
+				GameConditionPlayerHasIntel "Intel 25 is Active"
+				{
+					myIntel < uid=91803AE165F9AB90000FB3C542CAE30F > = A_TO_MS1007_ITL_025_KayEntersTheBusiness 91803AE165410C0B00422C912670C916
+				}
+			}
+		}
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "This LWC is not Completed"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player is more than 40m"
+		{
+			myDistance 40.0
+			myOperator GreaterThanOrEqual
+		}
+	}
+}
+
+LivingWorldContent MS1007_TOS_FR_KayEntersTheBusiness_P2_CrimsonAgent < uid=225CF62764E6250D00291A7D9A0FF245 >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player is less than 100m"
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		LivingWorldGameConditionGroup "Group OR - Intel 20B or 25 are Active"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel "Intel 20B is Active"
+				{
+					myIntel < uid=91803AE165784B710047E7D882F86C45 > = A_TO_MS1007_ITL_020B_KayEntersTheBusiness 225CF627649AA9FD0004E4BB650C1C0D
+				}
+				GameConditionPlayerHasIntel "Intel 25 is Active"
+				{
+					myIntel < uid=91803AE165784B710047E7D97767407C > = A_TO_MS1007_ITL_025_KayEntersTheBusiness 91803AE165410C0B00422C912670C916
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR - Distance more than 100m OR Intel 30 is Active"
+		{
+			myIsNegated FALSE
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player is more than 110m"
+				{
+					myDistance 110.0
+					myOperator GreaterThanOrEqual
+				}
+				LivingWorldGameConditionGroup "Group AND - Intel 30 is Active AND Distance more than 30m"
+				{
+					myConditions
+					{
+						GameConditionPlayerHasIntel "Intel MS1007_ITL030 is Active"
+						{
+							myIntel < uid=91803AE16605A8B50039D640545E2906 > = A_TO_MS1007_ITL_030_KayEntersTheBusiness 225CF6276499BA6800013FA2E5B3F9DF
+						}
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player is more than 30m"
+						{
+							myDistance 30.0
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS1007_TOS_FR_KayEntersTheBusiness_P2_Terminal < uid=91803AE16577547700233E8E853686D7 >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player is less than 100m"
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		GameConditionPlayerHasIntel "Intel 20B is Active"
+		{
+			myIntel < uid=91803AE16577554900233E8F1A2D4484 > = A_TO_MS1007_ITL_020B_KayEntersTheBusiness 225CF627649AA9FD0004E4BB650C1C0D
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR - Distance more than 100m or Intel 25 is Active"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player more than 100m"
+				{
+					myDistance 110.0
+					myOperator GreaterThanOrEqual
+				}
+				GameConditionPlayerHasIntel "Intel 25 is Active"
+				{
+					myIntel < uid=91803AE165F454A30012590AAD2F31B2 > = A_TO_MS1007_ITL_025_KayEntersTheBusiness 91803AE165410C0B00422C912670C916
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS1007_TOS_FR_KayEntersTheBusiness_P2_Datapad < uid=91803AE165782436000426EC4F5F9C1E >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player is less than 100m"
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		GameConditionPlayerHasIntel "Intel 20B is Active"
+		{
+			myIntel < uid=91803AE16578262A000426ED3FD96564 > = A_TO_MS1007_ITL_020B_KayEntersTheBusiness 225CF627649AA9FD0004E4BB650C1C0D
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR - Distance more than 100m or Intel 30 is Active"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player is more than 110m"
+				{
+					myDistance 110.0
+					myOperator GreaterThanOrEqual
+				}
+				GameConditionPlayerHasIntel "Intel 30 is Active"
+				{
+					myIsNegated FALSE
+					myIntel < uid=91803AE16578262A000426EED970F8AD > = A_TO_MS1007_ITL_030_KayEntersTheBusiness 225CF6276499BA6800013FA2E5B3F9DF
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS1007_TOS_FR_KayEntersTheBusiness_P3_BuytheFathier < uid=225CF62764E626C60003067164A59064 >
+{
+	myCompletedGameValue < uid=225CF627652463420000F40AB0C5741B >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player is less than 100m"
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		LivingWorldGameConditionGroup "Group OR - Intel 030 or 040 are active"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel "Intel 030 is Active"
+				{
+					myIntel < uid=225CF62765244CA50008BE0DF8F8E12E > = A_TO_MS1007_ITL_030_KayEntersTheBusiness 225CF6276499BA6800013FA2E5B3F9DF
+				}
+				GameConditionPlayerHasIntel "Intel 040 is Active"
+				{
+					myIntel < uid=225CF62765244CA50008BE0E8BBD1DB5 > = A_TO_MS1007_ITL_040_KayEntersTheBusiness 225CF627649AA0190001CA01AA01A807
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player is more than 110m"
+		{
+			myDistance 110.0
+			myOperator GreaterThanOrEqual
+		}
+	}
+}
+
+LivingWorldContent TQ_TOS_GD_TailQuestVendorReward_Start < uid=91803AE1654D094E0027DD682E944D2B >
+{
+	myCompletedGameValue < uid=91803AE1654D0A1D0027DD978E66C2F0 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer is less than 70m"
+		{
+			myDistance 70.0
+			myOperator LessThan
+		}
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "This Content is NOT Completed"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "ContentHasBeenCompleted OR DistanceToPlayer > 50m"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "This Content is Completed"
+				{
+				}
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer is more than 80m"
+				{
+					myDistance 80.0
+					myOperator GreaterThan
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent Fathier_Races_Table < uid=CC6CF61E65A54511000113C3BBF0FCC9 > : AmbientLife_ShortRange_TEMPLATE
+{
+}
+

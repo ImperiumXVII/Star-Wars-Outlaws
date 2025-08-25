@@ -1,0 +1,40 @@
+include "helix/game system data/juice/item/player_weapon_pickup_rotarycannon.mitem"
+include "helix/game system data/juice/npc/emp_assault.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC emp_heavytrooper < uid=16DEADE661F07FFD00001B598880F582 > : base_emp
+{
+	myName "aurabesh = false, contextComment = \"The name of the Empire unit that wields a rotary canon and its archetype (Pusher)\", enabled = true, guid = #91DC5D3C654E400B00051BA67E893F45, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10572, text = \"Heavy Trooper\nPusher\", type = \"MenuLine\""
+	myCharacterVisuals < uid=16DEADE661F07FFD00001B5A58C9E86B > = character_visuals_2_silver_empire_heavytrooper 616C01996422F56C00008586CFC110A5
+	myAdditionalGearGraphs 4171A7E165F41342000BD63854F64C48
+	myBehavior helix/behaviors/emp_heavyassault.mbehavior
+	myMaxHealth 15
+	myHealthFormula max(1,3+NPCFinalHealth)
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag (1)" < uid=E4123D2762AF18F00000A83C0437C43C > = Agent_Archetype_HeavyTag 16DEADE6626D213900002E64966E0FFD
+		RBTagsTag "New RBTagsTag" < uid=E4123D276303542B00089F022A2ACFD5 > = Agent_BarksFamily_Stormtrooper E4123D2762F4C9F000048CA972FB8238
+	}
+	myPositionReservationSize 0.75
+	myNavigationCapability < uid=4171A7E1648ACC32000351933C1FE3DC > = HeavyTrooperNavigationCapability 4171A7E1648AC2AB0000B9157FE05811
+	myTacticalPositionFinderProfile < uid=91DC5D3C64BA3ACF0002DA14DBF28036 > = WeaponSpecialistTacticalPositionFinder 91DC5D3C64BA3AB00002D9B85211045D
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout NoShield < uid=4171A7E16569E2F00000B557F2DDD584 > = emp_HeavyTrooper_RotaryCannon 4171A7E1656897D000006A5DC5CD4CE6
+		NPCWeaponLoadout Shield < uid=2736B365635FE0230001F9DF9D4CD7C3 > = emp_HeavyTrooper_RotaryCannon_Shield 2736B365635FDF6B0001F99ED4DDB78A
+	}
+	myLootTable < uid=4171A7E165F843900008C1A2FABD2A90 > = loot_con_OnKill_BactaOnly 2AE2EC8565F81F4F0002A84860BF6E62
+	myMotionPatternProfile < uid=2736B36563D8EB9F00010FE73843CFBD > = HeavyMotionPatternProfile 2736B365634EBC5B00016D7E0B8522AF
+	mySteeringProfile < uid=4171A7E165F420D1001C1115B934A1D4 > = HeavyTrooperSteeringProfile 4171A7E165F42073001C109E51EC79EC
+	myPackProfile < uid=91DC5D3C62E107EB000107C2D9671E54 > = HeavyPackProfile 91DC5D3C62E107BC000107A7C3930941
+	myAudioNPCDangerWeight 5.0
+	myPetAttackTargetType HumanoidHeavy
+	myStaggerConfig < uid=2736B36562DFF7650000C1E33AE41CAF > = NPCStaggerConfig_Humanoid_Heavy_MeleeTier2 3C2FA92B651583840004A43B8F2A947B
+	myCombatRole Heavy
+	myResistanceProfile < uid=7113C611668F92EF000000D5E8C6D712 > = ShieldedResistanceProfile 7113C611668F901500053A7D33909F77
+	myExlusionTickets
+	{
+		NPCTicketType Alarm Alarm
+	}
+}
+

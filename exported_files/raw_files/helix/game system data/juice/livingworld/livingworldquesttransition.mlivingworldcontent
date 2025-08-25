@@ -1,0 +1,62 @@
+include "helix/game system data/fruit/attribute/formulacontexttypes.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditionbase.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+include "helix/game system data/fruit/gamevalues/gamevalues.fruit"
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+include "helix/game system data/fruit/livingworld/livingworldenums.fruit"
+include "helix/game system data/fruit/livingworld/livingworldtag.fruit"
+include "helix/game system data/fruit/quest/questenums.fruit"
+
+LivingWorldContent livingworldquesttransition < uid=F7FDFD6062C5533B00007D8FA8AF6218 >
+{
+	myLayerType QuestTransition
+}
+
+LivingWorldContent mq_150_IntroBeat < uid=C5B8DCF66594281C001215BDEB3DB6E6 >
+{
+	myCompletedGameValue < uid=C5B8DCF66594281C001215C04A6C4080 >
+	{
+	}
+	myLayerType QuestTransition
+	myActivationGameConditions
+	{
+		GameConditionQuestBeatState "mq_150 intro started"
+		{
+			myQuestBeat AFFE793B63BE8EFB0003EF93FFEB34B0
+			myQuestBeatState Started
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionQuestBeatState "mq_150 intro not started"
+		{
+			myQuestBeat AFFE793B63BE8EFB0003EF93FFEB34B0
+			myQuestBeatState Started
+			myOperator NotEqual
+		}
+	}
+}
+
+LivingWorldContent Trailblazer_During_Sequence < uid=06F73AE1664C970B0011960181B408C4 >
+{
+	myActivationGameConditions
+	{
+		GameConditionLivingWorldFormula "During Sequence"
+		{
+			myFormula "gv_trailblazer_during_sequence = 1"
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer GameConditionContextLivingWorldContentLocation_DistanceToPlayer
+		{
+			myDistance 500.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionLivingWorldFormula "Not During Sequence"
+		{
+			myFormula "gv_trailblazer_during_sequence = 0"
+		}
+	}
+}
+

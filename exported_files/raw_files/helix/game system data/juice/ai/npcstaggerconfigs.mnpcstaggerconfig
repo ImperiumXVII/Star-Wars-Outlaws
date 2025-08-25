@@ -1,0 +1,1521 @@
+include "helix/game system data/fruit/ai/npcstagger.fruit"
+include "helix/game system data/fruit/rbtags/rbtags.fruit"
+include "helix/game system data/juice/rbtags/wildlifetags.mrbtagstags"
+
+NPCStaggerConfig WildlifeStagger < uid=2E5ACA7E63A16F9400009B3AA67D1CA1 >
+{
+	myStaggerGaugeMaxValue 2.0
+	myStaggerGaugeTreshold 2.0
+	myStaggerImmunityDuration 2.0
+	myStaggerBodyPartModifiers
+	{
+		NPCStaggerBodyPartModifier Head1x
+		{
+			myBodyPartType Head
+		}
+		NPCStaggerBodyPartModifier Body0x
+		{
+			myBodyPartType Body
+			myValue 0.0
+		}
+		NPCStaggerBodyPartModifier Arms0x
+		{
+			myBodyPartType Arms
+			myValue 0.0
+		}
+		NPCStaggerBodyPartModifier Legs0x
+		{
+			myBodyPartType Legs
+			myValue 0.0
+		}
+		NPCStaggerBodyPartModifier LOSPosition0x
+		{
+			myBodyPartType LOSPosition
+			myValue 0.0
+		}
+		NPCStaggerBodyPartModifier SecondaryLOSPosition0x
+		{
+			myBodyPartType SecondaryLOSPosition
+			myValue 0.0
+		}
+		NPCStaggerBodyPartModifier Shield0x
+		{
+			myBodyPartType Shield
+			myValue 0.0
+		}
+		NPCStaggerBodyPartModifier EyePosition0x
+		{
+			myBodyPartType EyePosition
+			myValue 0.0
+		}
+		NPCStaggerBodyPartModifier Tail0x
+		{
+			myBodyPartType Tail
+			myValue 0.0
+		}
+		NPCStaggerBodyPartModifier Abdomen0x
+		{
+			myBodyPartType Abdomen
+			myValue 0.0
+		}
+	}
+	myStaggerDamageModifiers
+	{
+		NPCStaggerDamageModifier Melee
+		{
+			myDamageSourceType
+			{
+				DamageSourceType Melee Melee
+			}
+			myValue 1.0
+			myExtraImmunityDuration 8.0
+		}
+		NPCStaggerDamageModifier ContactCollision
+		{
+			myDamageSourceType
+			{
+				DamageSourceType ContactCollision ContactCollision
+			}
+			myValue 1.0
+			myExtraImmunityDuration 8.0
+		}
+	}
+	myOverrideAnimationDirection FALSE
+	myFaceTargetAfterStagger FALSE
+	myForceInterruptCAP FALSE
+	myDazedGaugeMaxValue 1
+	myDazedGaugeTreshold 1
+	myDazedRecoveryRate 0.0
+	myDazedDuration 5
+	myDazedIgnoreDirection TRUE
+	myDazedDamageModifiers
+	{
+		NPCStaggerDamageModifier "Ion Damage"
+		{
+			myDamageType
+			{
+				DamageType "New DamageType" Ion
+			}
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Projectile
+			}
+			myValue 1000.0
+		}
+		NPCStaggerDamageModifier "Ion Explosion"
+		{
+			myDamageType
+			{
+				DamageType "New DamageType" Ion
+			}
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Explosion
+			}
+			myValue 1000.0
+		}
+	}
+	myIsDazedImmune FALSE
+}
+
+NPCStaggerConfig WildlifeMassiff < uid=2E5ACA7E63A3FBF90000B287BEC1A117 > : WildlifeStagger
+{
+	myStaggerGaugeMaxValue 3.0
+	myStaggerGaugeTreshold 3.0
+	myStaggerImmunityDuration 3.0
+	myDazedGaugeMaxValue 300
+	myDazedGaugeTreshold 300
+	myDazedDuration 4
+}
+
+NPCStaggerConfig WildlifeGushiro < uid=2E5ACA7E63A3FC830000B2882C134C72 > : WildlifeStagger
+{
+	myStaggerGaugeMaxValue 2.0
+	myStaggerGaugeTreshold 0.002
+	myStaggerImmunityDuration 3.0
+	myStaggerDamageModifiers
+	{
+		NPCStaggerDamageModifier Melee
+		{
+			myDamageSourceType
+			{
+				DamageSourceType Melee Melee
+			}
+			myValue 1.0
+			myExtraImmunityDuration 8.0
+		}
+		NPCStaggerDamageModifier ContactCollision
+		{
+			myDamageSourceType
+			{
+				DamageSourceType ContactCollision ContactCollision
+			}
+			myValue 1.0
+			myExtraImmunityDuration 8.0
+		}
+		NPCStaggerDamageModifier "Disable Stagger From Predator Melee Use Flinch Instead"
+		{
+			myDamageSourceType
+			{
+				DamageSourceType Melee Melee
+			}
+			myDamageDealerRBTags
+			{
+				RBTagsTag Massiff < uid=2E5ACA7E664F0B960003817CDD2B56C1 > = Agent_Wildlife_MassiffTag 290EB60C62BAC7D10002F500BAFB6A30
+				RBTagsTag Tshikara < uid=2E5ACA7E664F0B960003817D0092F236 > = Agent_Wildlife_TshikaraTag 290EB60C641AAE4B0003496770221562
+				RBTagsTag Sammakho < uid=2E5ACA7E664F0B960003817E587B6ECE > = Agent_Wildlife_SammakhoTag 290EB60C6450C07200031A030791E24F
+			}
+		}
+	}
+	myDazedGaugeMaxValue 0.00001
+	myDazedGaugeTreshold 0.00001
+}
+
+NPCStaggerConfig WildlifeNgomba < uid=2E5ACA7E63A3FCBB0000B289E5826AD3 > : WildlifeStagger
+{
+	myStaggerGaugeMaxValue 4.0
+	myStaggerGaugeTreshold 0.004
+	myStaggerImmunityDuration 3.0
+	myStaggerDamageModifiers
+	{
+		NPCStaggerDamageModifier Melee
+		{
+			myDamageSourceType
+			{
+				DamageSourceType Melee Melee
+			}
+			myValue 1.0
+			myExtraImmunityDuration 8.0
+		}
+		NPCStaggerDamageModifier ContactCollision
+		{
+			myDamageSourceType
+			{
+				DamageSourceType ContactCollision ContactCollision
+			}
+			myValue 1.0
+			myExtraImmunityDuration 8.0
+		}
+		NPCStaggerDamageModifier "Disable Stagger From Predator Melee Use Flinch Instead"
+		{
+			myDamageSourceType
+			{
+				DamageSourceType Melee Melee
+			}
+			myDamageDealerRBTags
+			{
+				RBTagsTag Massiff < uid=2E5ACA7E664DC29E000013A0964A05F0 > = Agent_Wildlife_MassiffTag 290EB60C62BAC7D10002F500BAFB6A30
+				RBTagsTag Tshikara < uid=2E5ACA7E664DC3B5000013A2B6008A18 > = Agent_Wildlife_TshikaraTag 290EB60C641AAE4B0003496770221562
+				RBTagsTag Sammakho < uid=2E5ACA7E664DC3C4000013A3E65CDCE4 > = Agent_Wildlife_SammakhoTag 290EB60C6450C07200031A030791E24F
+			}
+		}
+	}
+	myDazedGaugeMaxValue 0.00009
+	myDazedGaugeTreshold 0.00009
+}
+
+NPCStaggerConfig WildlifeDewback < uid=E9DD8F6063B6712B0000D2680E8CC86C > : WildlifeStagger
+{
+	myStaggerGaugeMaxValue 4.0
+	myStaggerGaugeTreshold 0.004
+	myStaggerImmunityDuration 3.0
+	myStaggerDamageModifiers
+	{
+		NPCStaggerDamageModifier Melee
+		{
+			myDamageSourceType
+			{
+				DamageSourceType Melee Melee
+			}
+			myValue 1.0
+			myExtraImmunityDuration 8.0
+		}
+		NPCStaggerDamageModifier ContactCollision
+		{
+			myDamageSourceType
+			{
+				DamageSourceType ContactCollision ContactCollision
+			}
+			myValue 1.0
+			myExtraImmunityDuration 8.0
+		}
+		NPCStaggerDamageModifier "Disable Stagger From Predator Melee Use Flinch Instead"
+		{
+			myDamageSourceType
+			{
+				DamageSourceType Melee Melee
+			}
+			myDamageDealerRBTags
+			{
+				RBTagsTag Massiff < uid=2E5ACA7E664F0B960003817F483253CD > = Agent_Wildlife_MassiffTag 290EB60C62BAC7D10002F500BAFB6A30
+				RBTagsTag Tshikara < uid=2E5ACA7E664F0B9600038180CF289954 > = Agent_Wildlife_TshikaraTag 290EB60C641AAE4B0003496770221562
+				RBTagsTag Sammakho < uid=2E5ACA7E664F0B960003818158BCC1C5 > = Agent_Wildlife_SammakhoTag 290EB60C6450C07200031A030791E24F
+			}
+		}
+	}
+	myDazedGaugeMaxValue 0.00009
+	myDazedGaugeTreshold 0.00009
+}
+
+NPCStaggerConfig WildlifeBantha < uid=E9DD8F6063ED8B2300006C2A30CC4620 > : WildlifeStagger
+{
+	myStaggerGaugeMaxValue 4.0
+	myStaggerGaugeTreshold 0.004
+	myStaggerImmunityDuration 3.0
+	myStaggerDamageModifiers
+	{
+		NPCStaggerDamageModifier Melee
+		{
+			myDamageSourceType
+			{
+				DamageSourceType Melee Melee
+			}
+			myValue 1.0
+			myExtraImmunityDuration 8.0
+		}
+		NPCStaggerDamageModifier ContactCollision
+		{
+			myDamageSourceType
+			{
+				DamageSourceType ContactCollision ContactCollision
+			}
+			myValue 1.0
+			myExtraImmunityDuration 8.0
+		}
+		NPCStaggerDamageModifier "Disable Stagger From Predator Melee Use Flinch Instead"
+		{
+			myDamageSourceType
+			{
+				DamageSourceType Melee Melee
+			}
+			myDamageDealerRBTags
+			{
+				RBTagsTag Massiff < uid=2E5ACA7E664F0B9600038182DB32D902 > = Agent_Wildlife_MassiffTag 290EB60C62BAC7D10002F500BAFB6A30
+				RBTagsTag Tshikara < uid=2E5ACA7E664F0B960003818301445592 > = Agent_Wildlife_TshikaraTag 290EB60C641AAE4B0003496770221562
+				RBTagsTag Sammakho < uid=2E5ACA7E664F0B96000381848A2D8ED7 > = Agent_Wildlife_SammakhoTag 290EB60C6450C07200031A030791E24F
+			}
+		}
+	}
+	myDazedGaugeMaxValue 0.00009
+	myDazedGaugeTreshold 0.00009
+}
+
+NPCStaggerConfig WildlifeKu < uid=E9DD8F6063ED8B8C00006C2CDED5627A > : WildlifeStagger
+{
+	myStaggerGaugeMaxValue 4.0
+	myStaggerGaugeTreshold 0.004
+	myStaggerImmunityDuration 3.0
+	myStaggerDamageModifiers
+	{
+		NPCStaggerDamageModifier Melee
+		{
+			myDamageSourceType
+			{
+				DamageSourceType Melee Melee
+			}
+			myValue 1.0
+			myExtraImmunityDuration 8.0
+		}
+		NPCStaggerDamageModifier ContactCollision
+		{
+			myDamageSourceType
+			{
+				DamageSourceType ContactCollision ContactCollision
+			}
+			myValue 1.0
+			myExtraImmunityDuration 8.0
+		}
+		NPCStaggerDamageModifier "Disable Stagger From Predator Melee Use Flinch Instead"
+		{
+			myDamageSourceType
+			{
+				DamageSourceType Melee Melee
+			}
+			myDamageDealerRBTags
+			{
+				RBTagsTag Massiff < uid=2E5ACA7E664F0B96000381853421C4BE > = Agent_Wildlife_MassiffTag 290EB60C62BAC7D10002F500BAFB6A30
+				RBTagsTag Tshikara < uid=2E5ACA7E664F0B96000381867996F1F1 > = Agent_Wildlife_TshikaraTag 290EB60C641AAE4B0003496770221562
+				RBTagsTag Sammakho < uid=2E5ACA7E664F0B96000381875A5DD394 > = Agent_Wildlife_SammakhoTag 290EB60C6450C07200031A030791E24F
+			}
+		}
+	}
+	myDazedGaugeMaxValue 0.00009
+	myDazedGaugeTreshold 0.00009
+}
+
+NPCStaggerConfig WildlifeScurrier < uid=E9DD8F6063F47C7D0002F61E61E835C8 > : WildlifeStagger
+{
+	myStaggerGaugeMaxValue 1.5
+	myStaggerGaugeTreshold 0.0015
+	myStaggerBodyPartModifiers
+	{
+		NPCStaggerBodyPartModifier Head1x
+		{
+			myBodyPartType Head
+		}
+		NPCStaggerBodyPartModifier Body1x
+		{
+			myBodyPartType Body
+			myValue 1.0
+		}
+		NPCStaggerBodyPartModifier Arms0x
+		{
+			myBodyPartType Arms
+			myValue 0.0
+		}
+		NPCStaggerBodyPartModifier Legs0x
+		{
+			myBodyPartType Legs
+			myValue 0.0
+		}
+		NPCStaggerBodyPartModifier LOSPosition0x
+		{
+			myBodyPartType LOSPosition
+			myValue 0.0
+		}
+		NPCStaggerBodyPartModifier SecondaryLOSPosition0x
+		{
+			myBodyPartType SecondaryLOSPosition
+			myValue 0.0
+		}
+		NPCStaggerBodyPartModifier Shield0x
+		{
+			myBodyPartType Shield
+			myValue 0.0
+		}
+		NPCStaggerBodyPartModifier EyePosition0x
+		{
+			myBodyPartType EyePosition
+			myValue 0.0
+		}
+		NPCStaggerBodyPartModifier Tail0x
+		{
+			myBodyPartType Tail
+			myValue 0.0
+		}
+		NPCStaggerBodyPartModifier Abdomen0x
+		{
+			myBodyPartType Abdomen
+			myValue 0.0
+		}
+	}
+	myStaggerDamageModifiers
+	{
+		NPCStaggerDamageModifier Melee
+		{
+			myDamageSourceType
+			{
+				DamageSourceType Melee Melee
+			}
+			myValue 1.0
+			myExtraImmunityDuration 8.0
+		}
+		NPCStaggerDamageModifier ContactCollision
+		{
+			myDamageSourceType
+			{
+				DamageSourceType ContactCollision ContactCollision
+			}
+			myValue 1.0
+			myExtraImmunityDuration 8.0
+		}
+		NPCStaggerDamageModifier "Disable Stagger From Predator Melee Use Flinch Instead"
+		{
+			myDamageSourceType
+			{
+				DamageSourceType Melee Melee
+			}
+			myDamageDealerRBTags
+			{
+				RBTagsTag Massiff < uid=2E5ACA7E664F0B9600038188BCE0B53E > = Agent_Wildlife_MassiffTag 290EB60C62BAC7D10002F500BAFB6A30
+				RBTagsTag Tshikara < uid=2E5ACA7E664F0B960003818986DE9228 > = Agent_Wildlife_TshikaraTag 290EB60C641AAE4B0003496770221562
+				RBTagsTag Sammakho < uid=2E5ACA7E664F0B960003818A4809E27B > = Agent_Wildlife_SammakhoTag 290EB60C6450C07200031A030791E24F
+			}
+		}
+	}
+	myDazedGaugeMaxValue 0.00001
+	myDazedGaugeTreshold 0.00001
+}
+
+NPCStaggerConfig WildlifeTshikara < uid=E9DD8F60641972A400007D5520BEA039 > : WildlifeStagger
+{
+	myStaggerGaugeTreshold 1.0
+	myStaggerImmunityDuration 3.0
+	myStaggerBodyPartModifiers
+	{
+		NPCStaggerBodyPartModifier Head1x
+		{
+			myBodyPartType Head
+		}
+		NPCStaggerBodyPartModifier Body1x
+		{
+			myBodyPartType Body
+			myValue 1.0
+		}
+		NPCStaggerBodyPartModifier Arms1x
+		{
+			myBodyPartType Arms
+			myValue 1.0
+		}
+		NPCStaggerBodyPartModifier Legs1x
+		{
+			myBodyPartType Legs
+			myValue 1.0
+		}
+		NPCStaggerBodyPartModifier LOSPosition1x
+		{
+			myBodyPartType LOSPosition
+			myValue 1.0
+		}
+		NPCStaggerBodyPartModifier SecondaryLOSPosition1x
+		{
+			myBodyPartType SecondaryLOSPosition
+			myValue 1.0
+		}
+		NPCStaggerBodyPartModifier Shield1x
+		{
+			myBodyPartType Shield
+			myValue 1.0
+		}
+		NPCStaggerBodyPartModifier EyePosition1x
+		{
+			myBodyPartType EyePosition
+			myValue 1.0
+		}
+		NPCStaggerBodyPartModifier Tail0x
+		{
+			myBodyPartType Tail
+			myValue 0.0
+		}
+		NPCStaggerBodyPartModifier Abdomen1x
+		{
+			myBodyPartType Abdomen
+			myValue 1.0
+		}
+	}
+	myStaggerDamageModifiers
+	{
+		NPCStaggerDamageModifier Explosion1x
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Explosion
+			}
+			myValue 1.0
+		}
+		NPCStaggerDamageModifier Takedown0x
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Takedown
+			}
+		}
+		NPCStaggerDamageModifier Projectile0x
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Projectile
+			}
+		}
+		NPCStaggerDamageModifier Melee0x
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Melee
+			}
+			myExtraImmunityDuration 8.0
+		}
+		NPCStaggerDamageModifier Environment0x
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Environment
+			}
+		}
+		NPCStaggerDamageModifier ShipOverCharge0x
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" ShipOvercharge
+			}
+		}
+		NPCStaggerDamageModifier ContactCollision0x
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" ContactCollision
+			}
+			myValue 1.0
+			myExtraImmunityDuration 8.0
+		}
+	}
+	myDazedGaugeMaxValue 700
+	myDazedGaugeTreshold 700
+	myDazedRecoveryRate 100
+	myDazedDurationBeforeRecoveryStart 5
+	myDazedDuration 4
+}
+
+NPCStaggerConfig WildlifeDewbackStationary < uid=09E88278668F6FCA00015A452DF254C4 > : WildlifeDewback
+{
+	myStaggerIgnoreNavmesh TRUE
+	myDazedIgnoreNavmesh TRUE
+}
+
+NPCStaggerConfig E3StaggerConfig < uid=91DC5D3C6440F17500012B8BF7DF09B8 >
+{
+	myIsStaggerImmune TRUE
+	myIsDazedImmune TRUE
+}
+
+NPCStaggerConfig WildlifeSammakho < uid=E9DD8F60644B5EE60001B97086DE336C > : WildlifeStagger
+{
+	myStaggerGaugeMaxValue 3.0
+	myStaggerGaugeTreshold 3.0
+	myStaggerImmunityDuration 3.0
+	myDazedGaugeMaxValue 300
+	myDazedGaugeTreshold 300
+	myDazedDuration 3
+}
+
+NPCStaggerConfig NPC_Rancor < uid=416E63E464F1A5380001EE87A3158EF2 >
+{
+	myStaggerGaugeMaxValue 12
+	myStaggerGaugeTreshold 12
+	myStaggerRecoveryRate 4.0
+	myStaggerDurationBeforeRecoveryStart 1.2
+	myStaggerImmunityDuration 2.0
+	myStaggerBodyPartModifiers
+	{
+	}
+	myStaggerDamageModifiers
+	{
+		NPCStaggerDamageModifier Takedown
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Takedown
+			}
+		}
+		NPCStaggerDamageModifier Projectile
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Projectile
+			}
+		}
+		NPCStaggerDamageModifier Melee
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Melee
+			}
+		}
+		NPCStaggerDamageModifier Environment
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Environment
+			}
+		}
+		NPCStaggerDamageModifier ShipOvercharge
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" ShipOvercharge
+			}
+		}
+		NPCStaggerDamageModifier "Contact Collision"
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" ContactCollision
+			}
+		}
+		NPCStaggerDamageModifier Finisher
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Finisher
+			}
+		}
+		NPCStaggerDamageModifier Fall
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Fall
+			}
+		}
+		NPCStaggerDamageModifier Explosion
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Explosion
+			}
+			myValue 1.0
+		}
+	}
+	myIsStaggerImmune TRUE
+	myOverrideAnimationDirection FALSE
+	myFaceTargetAfterStagger FALSE
+	myStaggerOnEveryMelee FALSE
+	myIsDazedImmune TRUE
+}
+
+NPCStaggerConfig NPCStaggerConfig_Humanoid_Light < uid=3C2FA92B65156FFF0004A39691F0BEF4 >
+{
+	myStaggerGaugeMaxValue 1
+	myStaggerGaugeTreshold 1
+	myStaggerRecoveryRate 1.5
+	myStaggerDurationBeforeRecoveryStart 1.2
+	myStaggerImmunityDuration 0.1
+	myStaggerBodyPartModifiers
+	{
+		NPCStaggerBodyPartModifier Head
+		{
+			myBodyPartType Head
+			myValue 2.0
+		}
+		NPCStaggerBodyPartModifier Arms
+		{
+			myBodyPartType Arms
+			myValue 0.75
+		}
+		NPCStaggerBodyPartModifier Legs
+		{
+			myBodyPartType Legs
+			myValue 0.85
+		}
+	}
+	myStaggerDamageModifiers
+	{
+		NPCStaggerDamageModifier Explosion
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Explosion
+			}
+			myValue 5.0
+		}
+		NPCStaggerDamageModifier Projectile
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Projectile
+			}
+			myValue 1.0
+		}
+		NPCStaggerDamageModifier Melee
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Melee
+			}
+		}
+	}
+	myFaceTargetAfterStagger FALSE
+	myOverrideFaceTargetAfterStaggerForDamage
+	{
+		FaceTargetAfterStaggerForDamage "Melee Hit"
+		{
+			myDamageType
+			{
+			}
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Melee
+			}
+			myFaceTargetAfterStagger TRUE
+		}
+	}
+	myStaggerOnEveryMelee FALSE
+	myDazedGaugeMaxValue 2.0
+	myDazedGaugeTreshold 2.0
+	myDazedRecoveryRate 0.25
+	myDazedDurationBeforeRecoveryStart 1.0
+	myDazedDuration "(7.0 + NPCDazedDifficultyModifier) * StaggerDazedDurationModifier * StaggerOrganicDazedDurationMultiplier"
+	myDazedIgnoreDirection TRUE
+	myDazedDamageModifiers
+	{
+		NPCStaggerDamageModifier "Ion Projectile"
+		{
+			myDamageType
+			{
+				DamageType "New DamageType" Ion
+			}
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Projectile
+			}
+			myValue 100.0
+		}
+		NPCStaggerDamageModifier "Ion Explosion"
+		{
+			myDamageType
+			{
+				DamageType Ion Ion
+			}
+			myDamageSourceType
+			{
+				DamageSourceType Explosion Explosion
+			}
+			myValue 100.0
+		}
+	}
+	myIsDazedAllowedOnVehicle TRUE
+}
+
+NPCStaggerConfig NPCStaggerConfig_Humanoid_Medium < uid=3C2FA92B65156FFF0004A397111A25A7 >
+{
+	myStaggerGaugeMaxValue 3.0
+	myStaggerGaugeTreshold 3.0
+	myStaggerRecoveryRate 1.5
+	myStaggerDurationBeforeRecoveryStart 1.2
+	myStaggerImmunityDuration 0.1
+	myStaggerBodyPartModifiers
+	{
+		NPCStaggerBodyPartModifier Head
+		{
+			myBodyPartType Head
+			myValue 1.0
+		}
+		NPCStaggerBodyPartModifier Arms
+		{
+			myBodyPartType Arms
+			myValue 1.0
+		}
+		NPCStaggerBodyPartModifier Legs
+		{
+			myBodyPartType Legs
+			myValue 1.0
+		}
+	}
+	myStaggerDamageModifiers
+	{
+		NPCStaggerDamageModifier Explosion
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Explosion
+			}
+			myValue 5.0
+		}
+		NPCStaggerDamageModifier Projectile
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Projectile
+			}
+			myValue 3.0
+		}
+		NPCStaggerDamageModifier Melee
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Melee
+			}
+		}
+	}
+	myFaceTargetAfterStagger FALSE
+	myOverrideFaceTargetAfterStaggerForDamage
+	{
+		FaceTargetAfterStaggerForDamage "Melee Hit"
+		{
+			myDamageType
+			{
+			}
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Melee
+			}
+			myFaceTargetAfterStagger TRUE
+		}
+	}
+	myStaggerOnEveryMelee FALSE
+	myIsStaggerAllowedOnVehicle FALSE
+	myDazedGaugeMaxValue 3.0
+	myDazedGaugeTreshold 3.0
+	myDazedRecoveryRate 0.25
+	myDazedDurationBeforeRecoveryStart 1.0
+	myDazedDuration "(7.0 + NPCDazedDifficultyModifier) * StaggerDazedDurationModifier * StaggerOrganicDazedDurationMultiplier"
+	myDazedIgnoreDirection TRUE
+	myDazedDamageModifiers
+	{
+		NPCStaggerDamageModifier "Ion Projectile"
+		{
+			myDamageType
+			{
+				DamageType Ion Ion
+			}
+			myDamageSourceType
+			{
+				DamageSourceType Projectile Projectile
+			}
+			myValue 10.0
+		}
+		NPCStaggerDamageModifier "Ion Explosion"
+		{
+			myDamageType
+			{
+				DamageType Ion Ion
+			}
+			myDamageSourceType
+			{
+				DamageSourceType Explosion Explosion
+			}
+			myValue 10.0
+		}
+	}
+	myIsDazedImmune FALSE
+	myIsDazedAllowedOnVehicle TRUE
+}
+
+NPCStaggerConfig NPCStaggerConfig_Humanoid_Heavy < uid=3C2FA92B65156FFF0004A39898B19AAB >
+{
+	myStaggerGaugeMaxValue 6.0
+	myStaggerGaugeTreshold 6.0
+	myStaggerRecoveryRate 1.5
+	myStaggerDurationBeforeRecoveryStart 0.35
+	myStaggerImmunityDuration 0.1
+	myStaggerBodyPartModifiers
+	{
+		NPCStaggerBodyPartModifier Head
+		{
+			myBodyPartType Head
+			myValue 3.5
+		}
+		NPCStaggerBodyPartModifier Arms
+		{
+			myBodyPartType Arms
+			myValue 0.4
+		}
+		NPCStaggerBodyPartModifier Legs
+		{
+			myBodyPartType Legs
+			myValue 0.5
+		}
+		NPCStaggerBodyPartModifier Body
+		{
+			myBodyPartType Body
+			myValue 0.925
+		}
+	}
+	myStaggerDamageModifiers
+	{
+		NPCStaggerDamageModifier Explosion
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Explosion
+			}
+			myValue 5.0
+		}
+		NPCStaggerDamageModifier Projectile
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Projectile
+			}
+			myValue 2.5
+		}
+		NPCStaggerDamageModifier Melee
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Melee
+			}
+		}
+	}
+	myFaceTargetAfterStagger FALSE
+	myOverrideFaceTargetAfterStaggerForDamage
+	{
+		FaceTargetAfterStaggerForDamage "Melee Hit"
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Melee
+			}
+			myFaceTargetAfterStagger TRUE
+		}
+	}
+	myStaggerOnEveryMelee FALSE
+	myDazedGaugeMaxValue 6.0
+	myDazedGaugeTreshold 6.0
+	myDazedRecoveryRate 0.25
+	myDazedDurationBeforeRecoveryStart 2.0
+	myDazedDuration "(7.0 + NPCDazedDifficultyModifier) * StaggerDazedDurationModifier * StaggerOrganicDazedDurationMultiplier"
+	myDazedIgnoreDirection TRUE
+	myDazedDamageModifiers
+	{
+		NPCStaggerDamageModifier "Ion Projectile"
+		{
+			myDamageType
+			{
+				DamageType "New DamageType" Ion
+			}
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Projectile
+			}
+			myValue 10.0
+		}
+		NPCStaggerDamageModifier "Ion Explosion"
+		{
+			myDamageType
+			{
+				DamageType Ion Ion
+			}
+			myDamageSourceType
+			{
+				DamageSourceType Explosion Explosion
+			}
+			myValue 10.0
+		}
+	}
+	myIsDazedAllowedOnVehicle TRUE
+}
+
+NPCStaggerConfig NPCStaggerConfig_Droid_Medium < uid=3C2FA92B65157F740004A3C8BB20DE59 >
+{
+	myStaggerGaugeMaxValue 0.7
+	myStaggerGaugeTreshold 0.7
+	myStaggerRecoveryRate 1.5
+	myStaggerDurationBeforeRecoveryStart 0.35
+	myStaggerImmunityDuration 2.0
+	myStaggerBodyPartModifiers
+	{
+		NPCStaggerBodyPartModifier Head
+		{
+			myBodyPartType Head
+			myValue 3.5
+		}
+		NPCStaggerBodyPartModifier Arms
+		{
+			myBodyPartType Arms
+			myValue 0.4
+		}
+		NPCStaggerBodyPartModifier Legs
+		{
+			myBodyPartType Legs
+			myValue 0.5
+		}
+		NPCStaggerBodyPartModifier Body
+		{
+			myBodyPartType Body
+			myValue 0.925
+		}
+	}
+	myStaggerDamageModifiers
+	{
+		NPCStaggerDamageModifier Explosion
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Explosion
+			}
+			myValue 2.5
+		}
+		NPCStaggerDamageModifier Projectile
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Projectile
+			}
+		}
+		NPCStaggerDamageModifier Ion
+		{
+			myDamageType
+			{
+				DamageType "New DamageType" Ion
+			}
+		}
+		NPCStaggerDamageModifier Melee
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Melee
+			}
+		}
+	}
+	myFaceTargetAfterStagger FALSE
+	myOverrideFaceTargetAfterStaggerForDamage
+	{
+		FaceTargetAfterStaggerForDamage "Melee Hit"
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Melee
+			}
+			myFaceTargetAfterStagger TRUE
+		}
+	}
+	myStaggerOnEveryMelee FALSE
+	myDazedGaugeMaxValue 2.0
+	myDazedGaugeTreshold 2.0
+	myDazedRecoveryRate 0.2
+	myDazedDurationBeforeRecoveryStart 1.5
+	myDazedDuration "4.5 * StaggerDazedDurationModifier"
+	myDazedDamageModifiers
+	{
+		NPCStaggerDamageModifier "Ion Projectile"
+		{
+			myDamageType
+			{
+				DamageType Ion Ion
+			}
+			myDamageSourceType
+			{
+				DamageSourceType Projectile Projectile
+			}
+			myValue 5.0
+		}
+		NPCStaggerDamageModifier "Ion Explosion"
+		{
+			myDamageType
+			{
+				DamageType Ion Ion
+			}
+			myDamageSourceType
+			{
+				DamageSourceType Explosion Explosion
+			}
+			myValue 5.0
+		}
+	}
+	myIsDazedImmune FALSE
+}
+
+NPCStaggerConfig NPCStaggerConfig_Humanoid_Light_MeleeTier3 < uid=3C2FA92B65157FB00004A3D0B15856C3 > : NPCStaggerConfig_Humanoid_Light
+{
+	myStaggerOnEveryMelee TRUE
+}
+
+NPCStaggerConfig NPCStaggerConfig_Humanoid_Light_MeleeTier2 < uid=3C2FA92B6515823D0004A4042B663A2E > : NPCStaggerConfig_Humanoid_Light
+{
+	myStaggerDamageModifiers
+	{
+		NPCStaggerDamageModifier Explosion
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Explosion
+			}
+			myValue 5.0
+		}
+		NPCStaggerDamageModifier Projectile
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Projectile
+			}
+			myValue 5.0
+		}
+		NPCStaggerDamageModifier Melee
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Melee
+			}
+			myValue 999.0
+			myExtraImmunityDuration 5.0
+		}
+	}
+}
+
+NPCStaggerConfig NPCStaggerConfig_Humanoid_Light_MeleeTier1 < uid=3C2FA92B6515823D0004A4059871FE31 > : NPCStaggerConfig_Humanoid_Light
+{
+	myStaggerDamageModifiers
+	{
+		NPCStaggerDamageModifier Explosion
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Explosion
+			}
+			myValue 5.0
+		}
+		NPCStaggerDamageModifier Projectile
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Projectile
+			}
+			myValue 5.0
+		}
+		NPCStaggerDamageModifier Melee
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Melee
+			}
+		}
+	}
+}
+
+NPCStaggerConfig NPCStaggerConfig_Humanoid_Medium_MeleeTier3 < uid=3C2FA92B651582BD0004A41755AB8CD4 > : NPCStaggerConfig_Humanoid_Medium
+{
+	myStaggerOnEveryMelee TRUE
+}
+
+NPCStaggerConfig NPCStaggerConfig_Humanoid_Medium_MeleeTier2 < uid=3C2FA92B6515832C0004A42547889D4B > : NPCStaggerConfig_Humanoid_Medium
+{
+	myStaggerDamageModifiers
+	{
+		NPCStaggerDamageModifier Explosion
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Explosion
+			}
+			myValue 5.0
+		}
+		NPCStaggerDamageModifier Projectile
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Projectile
+			}
+			myValue 3.0
+		}
+		NPCStaggerDamageModifier Melee
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Melee
+			}
+			myValue 999.0
+			myExtraImmunityDuration 5.0
+		}
+	}
+}
+
+NPCStaggerConfig NPCStaggerConfig_Humanoid_Medium_MeleeTier1 < uid=3C2FA92B6515832C0004A426F5AD7D10 > : NPCStaggerConfig_Humanoid_Medium
+{
+	myStaggerDamageModifiers
+	{
+		NPCStaggerDamageModifier Explosion
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Explosion
+			}
+			myValue 5.0
+		}
+		NPCStaggerDamageModifier Projectile
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Projectile
+			}
+			myValue 3.0
+		}
+		NPCStaggerDamageModifier Melee
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Melee
+			}
+		}
+	}
+}
+
+NPCStaggerConfig NPCStaggerConfig_Humanoid_Heavy_MeleeTier3 < uid=3C2FA92B651583320004A42E119D2B1A > : NPCStaggerConfig_Humanoid_Heavy
+{
+	myStaggerOnEveryMelee TRUE
+}
+
+NPCStaggerConfig NPCStaggerConfig_Humanoid_Heavy_MeleeTier2 < uid=3C2FA92B651583840004A43B8F2A947B > : NPCStaggerConfig_Humanoid_Heavy
+{
+	myStaggerDamageModifiers
+	{
+		NPCStaggerDamageModifier Explosion
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Explosion
+			}
+			myValue 5.0
+		}
+		NPCStaggerDamageModifier Projectile
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Projectile
+			}
+			myValue 2.5
+		}
+		NPCStaggerDamageModifier Melee
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Melee
+			}
+			myValue 999.0
+			myExtraImmunityDuration 5.0
+		}
+	}
+}
+
+NPCStaggerConfig NPCStaggerConfig_Humanoid_Heavy_MeleeTier1 < uid=3C2FA92B651583840004A43C491E3B91 > : NPCStaggerConfig_Humanoid_Heavy
+{
+	myStaggerDamageModifiers
+	{
+		NPCStaggerDamageModifier Explosion
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Explosion
+			}
+			myValue 5.0
+		}
+		NPCStaggerDamageModifier Projectile
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Projectile
+			}
+			myValue 2.5
+		}
+		NPCStaggerDamageModifier Melee
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Melee
+			}
+		}
+	}
+}
+
+NPCStaggerConfig NPCStaggerConfig_Default < uid=3C2FA92B6516D6EF000072E705D52753 >
+{
+	myStaggerGaugeMaxValue 4.0
+	myStaggerGaugeTreshold 3.0
+	myStaggerRecoveryRate 1.5
+	myStaggerDurationBeforeRecoveryStart 0.5
+	myStaggerImmunityDuration 2.0
+	myDazedGaugeMaxValue 3.0
+	myDazedGaugeTreshold 1.5
+	myDazedRecoveryRate 0.1
+	myDazedDurationBeforeRecoveryStart 2.0
+	myDazedDuration "5.0 * StaggerDazedDurationModifier"
+}
+
+NPCStaggerConfig NPC_Elite < uid=416E63E465242310000377F2DCF7DE2F > : NPCStaggerConfig_Humanoid_Heavy_MeleeTier1
+{
+	myStaggerDamageModifiers
+	{
+		NPCStaggerDamageModifier Explosion
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Explosion
+			}
+			myValue 8.0
+		}
+		NPCStaggerDamageModifier Stun
+		{
+			myDamageType
+			{
+				DamageType "New DamageType" StunBlast
+			}
+			myValue 6.0
+		}
+		NPCStaggerDamageModifier Melee
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Melee
+			}
+		}
+		NPCStaggerDamageModifier Blaster
+		{
+			myDamageType
+			{
+				DamageType "New DamageType" Physical
+			}
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Projectile
+			}
+		}
+	}
+}
+
+NPCStaggerConfig NPC_SuperViperDroid < uid=416E63E4654A76C7000D894D628E56A2 >
+{
+	myIsStaggerImmune TRUE
+	myStaggerOnEveryMelee FALSE
+	myDazedGaugeMaxValue 6
+	myDazedGaugeTreshold 6
+	myDazedRecoveryRate 1
+	myDazedDurationBeforeRecoveryStart 1.5
+	myDazedDuration 3
+	myDazedIgnoreDirection TRUE
+	myDazedDamageModifiers
+	{
+		NPCStaggerDamageModifier ION
+		{
+			myDamageType
+			{
+				DamageType "New DamageType" Ion
+			}
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Projectile
+			}
+			myValue 2.6
+		}
+	}
+}
+
+NPCStaggerConfig NPCStaggerConfig_HirdeGunDroids < uid=2893451665C634940004A08823D9ACB1 >
+{
+	myStaggerGaugeMaxValue 0.7
+	myStaggerGaugeTreshold 0.7
+	myStaggerRecoveryRate 1.5
+	myStaggerDurationBeforeRecoveryStart 0.35
+	myStaggerImmunityDuration 0.1
+	myStaggerBodyPartModifiers
+	{
+		NPCStaggerBodyPartModifier Head
+		{
+			myBodyPartType Head
+			myValue 3.5
+		}
+		NPCStaggerBodyPartModifier Arms
+		{
+			myBodyPartType Arms
+			myValue 0.75
+		}
+		NPCStaggerBodyPartModifier Legs
+		{
+			myBodyPartType Legs
+			myValue 0.85
+		}
+		NPCStaggerBodyPartModifier Body
+		{
+			myBodyPartType Body
+			myValue 1.0
+		}
+	}
+	myStaggerDamageModifiers
+	{
+		NPCStaggerDamageModifier Explosion
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Explosion
+			}
+			myValue 2.5
+		}
+		NPCStaggerDamageModifier Projectile
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Projectile
+			}
+			myValue 5.0
+		}
+		NPCStaggerDamageModifier Ion
+		{
+			myDamageType
+			{
+				DamageType "New DamageType" Ion
+			}
+			myValue 5.0
+		}
+		NPCStaggerDamageModifier Melee
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Melee
+			}
+		}
+	}
+	myFaceTargetAfterStagger FALSE
+	myOverrideFaceTargetAfterStaggerForDamage
+	{
+		FaceTargetAfterStaggerForDamage "Melee Hit"
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Melee
+			}
+			myFaceTargetAfterStagger TRUE
+		}
+	}
+	myStaggerOnEveryMelee FALSE
+	myDazedGaugeMaxValue 2.0
+	myDazedGaugeTreshold 2.0
+	myDazedRecoveryRate 0.2
+	myDazedDurationBeforeRecoveryStart 1.5
+	myDazedDuration "4.5 * StaggerDazedDurationModifier"
+	myDazedDamageModifiers
+	{
+		NPCStaggerDamageModifier "Ion Projectile"
+		{
+			myDamageType
+			{
+				DamageType Ion Ion
+			}
+			myDamageSourceType
+			{
+				DamageSourceType Projectile Projectile
+			}
+			myValue 5.0
+		}
+		NPCStaggerDamageModifier "Ion Explosion"
+		{
+			myDamageType
+			{
+				DamageType Ion Ion
+			}
+			myDamageSourceType
+			{
+				DamageSourceType Explosion Explosion
+			}
+			myValue 5.0
+		}
+	}
+	myIsDazedImmune FALSE
+}
+
+NPCStaggerConfig NPCStaggerConfig_Humanoid_Companions < uid=289345166659916000023682F0BCDF6A > : NPCStaggerConfig_Humanoid_Light
+{
+	myStaggerImmunityDuration 3.0
+}
+
+NPCStaggerConfig NPCStaggerConfig_Humanoid_Companions_NoStagger < uid=EBE060C266A90918000221484DF5E0A2 > : NPCStaggerConfig_Humanoid_Companions
+{
+	myIsStaggerImmune TRUE
+}
+
+NPCStaggerConfig NPCStaggerConfig_Humanoid_RR_Heavy < uid=F3BDB0646798D520000000D96DF1DA48 > : NPCStaggerConfig_Humanoid_Heavy
+{
+	myStaggerBodyPartModifiers
+	{
+		NPCStaggerBodyPartModifier Head
+		{
+			myBodyPartType Head
+			myValue 3.5
+		}
+		NPCStaggerBodyPartModifier Arms
+		{
+			myBodyPartType Arms
+			myValue 0.4
+		}
+		NPCStaggerBodyPartModifier Legs
+		{
+			myBodyPartType Legs
+			myValue 0.5
+		}
+		NPCStaggerBodyPartModifier Body
+		{
+			myBodyPartType Body
+			myValue 0.5
+		}
+	}
+	myStaggerOnEveryMelee TRUE
+	myUseAlternateDazedAnimation TRUE
+}
+

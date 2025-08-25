@@ -1,0 +1,195 @@
+include "helix/game system data/fruit/ai/spaceshipsettings.fruit"
+include "helix/game system data/juice/ai/npcshootpatterns.mnpcshootpattern"
+include "helix/game system data/juice/ai/spaceshipavoidanceprofiles.mspaceshipavoidanceprofile"
+include "helix/game system data/juice/ai/spaceshipcombatprofiles.mspaceshipcombatprofile"
+include "helix/game system data/juice/ai/spaceshipformationprofiles.mspaceshipformationprofile"
+include "helix/game system data/juice/ai/spaceshipspawnprofiles.mspaceshipspawnprofile"
+include "helix/game system data/juice/ai/spaceshipspeedprofiles.mspaceshipspeedprofile"
+include "helix/game system data/juice/ai/spaceshiptrajectories.mspaceshiptrajectoryprofile"
+include "helix/game system data/juice/spaceshipbehaviorparams_rebels.juice"
+
+SpaceshipSetting s_Xwing < uid=6AF0BA0464EF4CE300038F69470124A7 >
+{
+	mySpaceshipType XWing
+	mySpaceshipArchetype Fighter
+	myMaximumSpeed 230.0
+	myMinimumSpeed 0.0
+	myPitchSpeed 60.0
+	myYawSpeed 70.0
+	myRollSpeed 60.0
+	myAcceleration 150.0
+	myPitchAcceleration 45.0
+	myYawAcceleration 50.0
+	myRollAcceleration 90.0
+	myMaximumPitchUp 70.0
+	myMaximumPitchDown 70.0
+	myMass 10.0
+	myFormationDistanceScale 10.0
+	myHuntingRadius 1500.0
+	myTranslationSettings
+	{
+		myLateralSpeed 10.0
+		myVerticalSpeed 10.0
+		myLateralAcceleration 20.0
+		myVerticalAcceleration 20.0
+	}
+	myAISpaceshipControlParameters
+	{
+		myAvoidanceProfile < uid=841E78F36512CC75000083DBF48D7008 > = SpaceshipAvoidance_Default F97070E164F5977B000032568052ABB2
+		myCombatProfile < uid=F95CD8F3648315490004C7695050776A > = SignatureFighter F95CD8F364BF99230005E3FA96F00BD0
+		myCombatRoleType MissileBehavior
+		mySpaceshipBehaviorParameters = b_XWing 00000000000000000000000000000000
+		myLateralAttractorThresholdDistance 10.0
+		myLateralAttractorInput 1.0
+		mySplineLookAheadMinimum 25.0
+		mySplineLookAheadMaximum 100.0
+		mySplineLookAheadSpeedRatio 0.4
+		myEvasiveManeuverParams
+		{
+			myEvasiveCooldown 25.0
+			myMaxTimeBetweenProjectileHits 1.0
+			mySustainedDamageRequiredDuration 4.0
+			myReturnTrueDuration 0.3
+		}
+	}
+	mySpawnProfile < uid=F97070E164A40CFB000130276780933F > = Fighter_Hyperjump F97070E164A4034400005ED3AB7AC7B0
+	mySpeedProfile < uid=F95CD8F3648315490004C76A4B142D17 > = speedProfile_reb_shp_xwing F95CD8F364D627840000D90DBC1AC487
+	myTrajectoryProfile < uid=F95CD8F3648315490004C76BD89996C5 > = X-Wing_TrajectoryProfile 841E78F36514006D0007F6F338970F24
+	myIonCollectorData
+	{
+		myMaxCharge 25.0
+		myDisabledDuration "10.0 * TrailblazerIonDisabledDurationModifier"
+		myTimeUntilRecovery 10.0
+		myRecoveryRate 5.0
+		myResistanceDuration 3.0
+		mySlowDownPercentage 0.5
+	}
+	myShieldData
+	{
+		EnergyShieldData ShieldData
+		{
+			myMaxValue 40
+			myRegenerationCooldown 5
+			myRegenerationRate 6
+			myCanRegenerateWhenDepleted TRUE
+			myShieldInvulnerabilityDuration 0
+		}
+	}
+	myDimensions
+	{
+		myLength 13.5
+		myWidth 11.5
+		myHeight 2.5
+	}
+	myPhysicsParams
+	{
+		myCollisionDamageMultiplier 0.1
+	}
+	myShootPatternAccurate < uid=F95CD8F3648315490004C76C43544646 > = NULLREFERENCE
+	myShootPatternInaccurate < uid=F95CD8F3648315490004C76D906C8261 > = NULLREFERENCE
+	myShootTicketAccurate SpaceEmpireShooting
+	myShootTicketInaccurate SpaceEmpireInaccurateShooting
+	myDeathSequenceSettings
+	{
+		myCollisionDamageThreshold 1.0
+		myDeathSequenceDuration 5.0
+		myAfterDeathSequenceDelay 2.0
+		myShouldTumble TRUE
+		myTumbleProbability 1.0
+		myTumbleMaxDuration 3.0
+		myTumblingType Plunge
+		myShouldTargetColliders FALSE
+	}
+	myDamagedEnginesModifiers
+	{
+		mySpeedModifier 0.8
+		mySteeringModifier 0.8
+	}
+	mySpaceshipFormationProfile < uid=F95CD8F3648315490004C76E7AFA79EE > = X-Wing_Formation_Profile 841E78F365158CAD00008295FA32A39F
+}
+
+SpaceshipSetting s_RZ1 < uid=6AF0BA0464EF4CFD00038F6B22F823ED >
+{
+	mySpaceshipType RZ1
+	mySpaceshipArchetype Interceptor
+	myMaximumSpeed 280.0
+	myMinimumSpeed 0.0
+	myPitchSpeed 80.0
+	myYawSpeed 100.0
+	myRollSpeed 120.0
+	myAcceleration 250.0
+	myPitchAcceleration 200.0
+	myYawAcceleration 200.0
+	myRollAcceleration 200.0
+	myMaximumPitchUp 90.0
+	myMaximumPitchDown 90.0
+	myMass 10.0
+	myHuntingRadius 1500.0
+	myAISpaceshipControlParameters
+	{
+		myAvoidanceProfile < uid=841E78F36516C61900009A47BE2A2DDD > = SpaceshipAvoidance_Default F97070E164F5977B000032568052ABB2
+		myCombatProfile < uid=F95CD8F36482E84C000325EE5F17BB11 > = Interceptor_CombatProfile F95CD8F364BF96E60005E3D11C5960AF
+		myCombatRoleType MissileBehavior
+		mySpaceshipBehaviorParameters = b_RZ1 00000000000000000000000000000000
+		myEvasiveManeuverParams
+		{
+			myEvasiveCooldown 25.0
+			myMaxTimeBetweenProjectileHits 1.0
+			mySustainedDamageRequiredDuration 4.0
+			myReturnTrueDuration 0.3
+		}
+	}
+	mySpawnProfile < uid=F97070E164A40CFB0001302530381924 > = Fighter_Hyperjump F97070E164A4034400005ED3AB7AC7B0
+	mySpeedProfile < uid=4F59E8F0644A1A860001939CDE3FC392 > = speedProfile_reb_shp_rz1 F95CD8F364D6243A0000D905333E4539
+	myTrajectoryProfile < uid=4F59E8F0644A1A860001939DA6EF752F > = Fighter_TrajectoryProfile 82D16ABE628DF25A000025051D8485CD
+	myIonCollectorData
+	{
+		myMaxCharge 25.0
+		myDisabledDuration "10.0 * TrailblazerIonDisabledDurationModifier"
+		myTimeUntilRecovery 10.0
+		myRecoveryRate 5.0
+		myResistanceDuration 3.0
+		mySlowDownPercentage 0.5
+	}
+	myShieldData
+	{
+		EnergyShieldData ShieldData
+		{
+			myMaxValue 20
+			myRegenerationCooldown 5
+			myRegenerationRate 2
+			myCanRegenerateWhenDepleted TRUE
+			myShieldInvulnerabilityDuration 0
+		}
+	}
+	myDimensions
+	{
+		myLength 6.5
+		myWidth 4.3
+		myHeight 2.0
+	}
+	myPhysicsParams
+	{
+		myCollisionDamageMultiplier 0.1
+	}
+	myShootPatternAccurate < uid=4F59E8F0644A1A860001939E5C52FDB4 > = NULLREFERENCE
+	myShootPatternInaccurate < uid=4F59E8F0644A1A860001939FB8A47419 > = NULLREFERENCE
+	myShootTicketAccurate SpaceEmpireShooting
+	myShootTicketInaccurate SpaceEmpireInaccurateShooting
+	myDeathSequenceSettings
+	{
+		myDeathSequenceDuration 5.0
+		myShouldTumble TRUE
+		myTumbleProbability 1.0
+		myTumbleMaxDuration 3.0
+		myTumblingType Plunge
+		myShouldTargetColliders FALSE
+	}
+	myDamagedEnginesModifiers
+	{
+		mySpeedModifier 0.6
+		mySteeringModifier 0.8
+	}
+	mySpaceshipFormationProfile < uid=F95CD8F364830DEF00038EBAA67EB14B > = RZ1_FormationProfile 841E78F3651BC3F00000C1719EC5BAA4
+}
+

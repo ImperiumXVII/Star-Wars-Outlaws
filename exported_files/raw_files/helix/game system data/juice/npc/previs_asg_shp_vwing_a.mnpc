@@ -1,0 +1,29 @@
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/ash_shp_base.mnpc"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC previs_asg_shp_vwing_a < uid=6EA7962564A40D4900031FE179E844A2 > : ash_shp_base
+{
+	myCharacterVisuals < uid=6EA7962564A40D4900031FE20CBA2571 > = character_visuals_npc_shp_VWing F95CD8F362ECDB180000E9CDAA60D460
+	myBehavior helix/behaviors/tiefighter_spaceship_chase_new.mbehavior
+	myNPCComponentSetType Spaceship
+	myIsInvulnerable TRUE
+	mySpaceshipType Dummy
+	myMaxHealth 24
+	myHealthFormula 12*SpaceHealthDifficultyModifier
+	myFaction < uid=6EA7962564A41C1C00052EB74EDF9A27 > = Empire 16DEADE65F21E5AB000000B35532A71B
+	myLodType Spaceship_Small
+	myVisionProfile < uid=6EA7962564A40D4900031FE39D7B154A > = TieFighterVisionProfile B4FBE430643FCC3500000B32C8290515
+	myHearingProfile < uid=6EA7962564A40D4900031FE4EE118FE5 > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=6EA7962564A40D4900031FE5D5E70BD1 > = TiefighterDetectionProfile B4FBE430648AB2A300008156205C1AB4
+	}
+	myThreatProfile < uid=6EA7962564A40D4900031FE608AB2DB1 > = DefaultThreatProfile 16DEADE6608474380000004E85DD35EB
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "vwing weapon loadout" < uid=6EA7962564A40D4900031FE74D3FB8AB > = weaponloadout_ash_shp_vwing 6AF0BA04649BFC9400074AF890B1B115
+	}
+}
+

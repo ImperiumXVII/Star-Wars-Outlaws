@@ -1,0 +1,60 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npc/reb_shp_base.mnpc"
+
+NPC reb_shp_rz1_a < uid=4F59E8F0644927190001155EA2495811 > : reb_shp_base
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Name of Ship - A-Wing - Rebel faction\", enabled = true, guid = #6AE6EE0D657879F7000266EF353744A4, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10726, text = \"A-Wing\", type = \"MenuLine\""
+	myCharacterVisuals < uid=4F59E8F0644927190001155FA1E71C4C > = character_visuals_npc_shp_rz1 4F59E8F064492BF7000121150FCD5D93
+	myNPCComponentSetType Spaceship
+	mySpaceshipType RZ1
+	myMaxHealth 60
+	myHealthFormula 30*SpaceHealthDifficultyModifier
+	myDialogueCharacters
+	{
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=4F59E8F06449271900011561114324A7 >
+		{
+			myDialogueCharacter < uid=4F59E8F06449271900011562F9227F4E > = AI_SPACE_IMPERIAL_PILOT_M01 3A12912163060F8600008A36260EB1B5
+		}
+	}
+	myLodType Spaceship_Small
+	myVisionProfile < uid=4F59E8F0644927190001156360BE195A > = visionProfile_reb_ship_Interceptor 6B0E1DE964B7A45D0000AD7085C88551
+	myHearingProfile < uid=4F59E8F06449271900011564BC8F6C06 > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=F95CD8F36483676600004540CF1E9F7D > = detectionProfile_reb_ship_Interceptor 6B0E1DE964B68A100000A1449A9173F6
+	}
+	myThreatProfile < uid=F95CD8F36540D0360000659B6A33FAF6 > = Spaceshipthreatprofile F95CD8F3653F81EE00057BF796B8AD1A
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout LoadoutA < uid=4F59E8F06449271900011569B54B544A > = weaponloadout_reb_shp_rz1 4F59E8F06449336E0000BCCBC17D0CB7
+	}
+	myAudioParameters
+	{
+		myEmitterName X-wing
+		myPropagated FALSE
+		myEmitters
+		{
+			AgentEmitter Default
+			{
+				myEmitterLabel < uid=3A1C5D1865534B1B0000B59450589924 > = Root 3A1C5D1863906F050000AB6FBD984CC4
+				myEmitterPrefab "emitterLayerName = \"misc\", enableDoppler = false, enablePropagation = false, sphereRadius = 1, stopOnDestroy = true"
+			}
+			AgentEmitter Weapon
+			{
+				myEmitterLabel < uid=3A1C5D1865534B1B0000B595CED4B74E > = Hand 3A1C5D1863906F180000AB718F1E9EFD
+				myEmitterPrefab "emitterLayerName = \"misc\", enableDoppler = false, enablePropagation = false, sphereRadius = 1, stopOnDestroy = true"
+			}
+			AgentEmitter Dialogue
+			{
+				myEmitterLabel < uid=3A1C5D1865534B1B0000B596FA46F769 > = Mouth 3A1C5D1863906F120000AB70A206E385
+				myEmitterPrefab "emitterLayerName = \"misc\", enableDoppler = false, enablePropagation = false, sphereRadius = 1, stopOnDestroy = true"
+			}
+		}
+	}
+	myCombatRole Interceptor
+}
+

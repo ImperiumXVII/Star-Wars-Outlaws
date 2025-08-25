@@ -1,0 +1,29 @@
+include "helix/game system data/fruit/camera/cameramodifier.fruit"
+include "helix/game system data/fruit/input/rumble.fruit"
+
+// Must match enum LandingType in code/helix/HClient/HC_ContextUtils.h
+enum LandingType
+{
+	None
+	Light
+	Medium
+	Heavy
+	Fatal
+}
+
+class LandingSettings
+{
+	LandingType myLandingType
+	float myMinHeightThreshold 0.0f
+	string myFallDamagePercentage 0 < bhv=formulaEditor formulaResolveContextType=AgentAttributes ui_info=0 >
+	bool myIsConcussive false
+	bool myCanRollExit false
+	float mySpeedRecoveryTime 0.f
+	string mySpeedRecoveryCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.30289078 -0.38653803, }, outTangents = { 0.59589279 0.02256757, 0 0, }, properties = { 275, 1299, }, values = { 0 0.40000001, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+	int myJumpCooldown 150 < tooltip="Custom cooldown (ms) to set the jump cooldown timer to when landing" >
+	int myPowerSlideCooldown 0.0f < tooltip="Custom cooldown (ms) to set the powerslide cooldown timer to when landing" >
+	int myRollCooldown 0.0f < tooltip="Custom cooldown (ms) to set the roll cooldown timer to when landing" >
+	bool myResetPowerSlideInput false < tooltip="You need to press the button again after landing to perform the action" >
+	bool myResetRollInput false < tooltip="You need to press the button again after landing to perform the action" >
+	bool myIgnoreAutoStepup false < tooltip="Disable auto stepup from falling" >
+}

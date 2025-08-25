@@ -1,0 +1,1431 @@
+include "helix/game system data/fruit/ai/motion/motionpattern.fruit"
+
+NPCMotionPattern StationaryNoStaticTurns < uid=16DEADE661A2A74400001AA820066773 >
+{
+	myPathMergeLookAheadDistance 1.0
+	myRespectStartDirectionOnStopAndStart TRUE
+	myCanPerformStaticTurn FALSE
+	myDisableStopAndStarts FALSE
+}
+
+NPCMotionPattern DefaultInvestigation < uid=B0EA4E5360521D980000002D4597C0E6 >
+{
+	myMovementStyle Investigation
+	myPathMergeLookAheadDistance 1.0
+	myRespectStartDirectionOnStopAndStart TRUE
+	myCanPerformStaticTurn TRUE
+	myDisableStopAndStarts TRUE
+}
+
+NPCMotionPattern FastInvestigation < uid=16DEADE66213AD420003797F980D968C >
+{
+	myMovementStyle Investigation
+	myCruiseSpeed 2.0
+	myMaxAcceleration 2.0
+	myPathMergeLookAheadDistance 1.0
+	myRespectStartDirectionOnStopAndStart TRUE
+	myCanPerformStaticTurn TRUE
+	myDisableStopAndStarts TRUE
+}
+
+NPCMotionPattern DefaultPatrol < uid=B0EA4E536075BF230000004DF6F1555D >
+{
+	myMovementStyle Patrol
+	myMaxCruiseSpeedAdjustment 0.3
+	myRespectStartDirectionOnStopAndStart TRUE
+	myCanPerformStaticTurn TRUE
+	myDisableStopAndStarts TRUE
+	myImmobilePlanPathThreshold 0.4
+}
+
+NPCMotionPattern FastPatrol < uid=B0EA4E53619D183A00001E7AEA4487ED >
+{
+	myMovementStyle Patrol
+	myCruiseSpeed 2.0
+	myMaxCruiseSpeedAdjustment 0.3
+	myMaxAcceleration 2.0
+	myRespectStartDirectionOnStopAndStart TRUE
+	myCanPerformStaticTurn TRUE
+	myDisableStopAndStarts TRUE
+}
+
+NPCMotionPattern DefaultRun < uid=B0EA4E536006F0DB0000004DD8314C0C >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 5.7
+	myMaxAcceleration 3.0
+	myTurnRate 360.0
+	myPathMergeLookAheadDistance 1.0
+	myPathMergeMaxDistanceBasedTurnSpeed 100000.0
+	myRespectStartDirectionOnStopAndStart TRUE
+	myDisableStopAndStarts TRUE
+}
+
+NPCMotionPattern DefaultStrafe < uid=B0EA4E53603E609F0000004FA505ACDD >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 2.2
+	myMaxAcceleration 3.0
+	myTurnRate 180.0
+	myPathMergeLookAheadDistance 1.0
+	myPathMergeMaxDistanceBasedTurnSpeed 10000000.0
+	myRespectStartDirectionOnStopAndStart TRUE
+	myCanStrafe TRUE
+	myDisableStopAndStarts TRUE
+	myImmobilePlanPathThreshold 0.4
+}
+
+NPCMotionPattern SlowStafe < uid=4171A7E1670523A40000010005A77E1D > : DefaultStrafe
+{
+	myCruiseSpeed 1.0
+}
+
+NPCMotionPattern DefaultWalk < uid=B0EA4E536006EF52000000460EC75C31 >
+{
+	myMovementStyle Casual
+	myCruiseSpeed 2.0
+	myMaxCruiseSpeedAdjustment 0.3
+	myMaxAcceleration 2.0
+	myTurnRate 360.0
+	myPathMergeLookAheadDistance 1.0
+	myPathMergeMaxDistanceBasedTurnSpeed 1000.0
+	myRespectStartDirectionOnStopAndStart TRUE
+	myDisableStopAndStarts TRUE
+	myMaxTravelAndTalkSpeed 2.0
+	myImmobilePlanPathThreshold 0.4
+}
+
+NPCMotionPattern SlowWalk < uid=EBE060C2636BDCEE0002010E830A3DFC > : DefaultWalk
+{
+	myCruiseSpeed 1.0
+	myMaxAcceleration 1.0
+}
+
+NPCMotionPattern DefaultJog < uid=B0EA4E53629604E3000089FFC3028361 >
+{
+	myMovementStyle Casual
+	myCruiseSpeed 4.0
+	myMaxAcceleration 2.0
+	myTurnRate 360.0
+	myDesiredTurnRadius 0.6
+	myTurnSmootherArcLength 0.5
+	myTurnSmootherFixed 0.25
+	myPathMergeLookAheadDistance 1.0
+	myPathMergeMaxDistanceBasedTurnSpeed 10000.0
+	myRespectStartDirectionOnStopAndStart TRUE
+	myCanStrafe FALSE
+	myCanPerformStaticTurn TRUE
+	myDisableStopAndStarts TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+	myImmobilePlanPathThreshold 0.4
+}
+
+NPCMotionPattern DefaultPetCommandResponsive < uid=5CDD6EF365CE6BA30005B1FF34E28C58 >
+{
+	myMovementStyle Casual
+	myCruiseSpeed 10.0
+	myMaxAcceleration 4.0
+	myTurnRate 720.0
+	myWaitForAnimStateTransitions FALSE
+	myPathMergeLookAheadDistance 0.0
+	myPathMergeMaxDistanceBasedTurnSpeed 1000000.0
+	myPathMergeStopDistanceToReserve 0.2
+	myDisableStopAndStarts TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+}
+
+NPCMotionPattern DefaultPetCommand < uid=B0EA4E53638E13380000F89BB122FC82 >
+{
+	myMovementStyle Casual
+	myCruiseSpeed 10.0
+	myMaxAcceleration 4.0
+	myTurnRate 720.0
+	myWaitForAnimStateTransitions FALSE
+	myPathMergeLookAheadDistance 0.5
+	myPathMergeMaxDistanceBasedTurnSpeed 1000000.0
+	myPathMergeStopDistanceToReserve 0.2
+	myDisableStopAndStarts TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+}
+
+NPCMotionPattern PetOffscreen < uid=16DEADE660B94A5800000A4B0E0D3453 >
+{
+	myMovementStyle Casual
+	myCruiseSpeed 16.0
+	myMaxAcceleration 800.0
+	myTurnRate 7200.0
+	myWaitForAnimStateTransitions FALSE
+	myPathMergeMaxDistanceBasedTurnSpeed 10000.0
+	myPathMergeStopDistanceToReserve 0.0
+	myRespectStartDirectionOnStopAndStart FALSE
+	myDisableStopAndStarts TRUE
+}
+
+NPCMotionPattern PetTransitionJump < uid=B0EA4E5363D7F6B30000BA238928797C >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 4.5
+	myMaxAcceleration 800.0
+	myTurnRate 7200.0
+	myDesiredTurnRadius 0.6
+	myTurnSmootherArcLength 0.5
+	myTurnSmootherFixed 0.25
+	myDisableSlowDownUponArrival FALSE
+	myPathMergeMaxDistanceBasedTurnSpeed 10000.0
+	myPathMergeStopDistanceToReserve 0.0
+	myCanStrafe FALSE
+	myPrioritizeFocusOnPath FALSE
+	myCanPerformStaticTurn TRUE
+	myDisableStopAndStarts TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+}
+
+NPCMotionPattern PetJump < uid=B0EA4E5362C5AF620000842B438E1585 >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 10.0
+	myMaxAcceleration 800.0
+	myTurnRate 7200.0
+	myDesiredTurnRadius 0.6
+	myTurnSmootherArcLength 0.5
+	myTurnSmootherFixed 0.25
+	myDisableSlowDownUponArrival FALSE
+	myPathMergeMaxDistanceBasedTurnSpeed 10000.0
+	myPathMergeStopDistanceToReserve 0.0
+	myCanStrafe FALSE
+	myPrioritizeFocusOnPath FALSE
+	myCanPerformStaticTurn TRUE
+	myDisableStopAndStarts TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+}
+
+NPCMotionPattern PetRunFast < uid=16DEADE6603E04440000004B698E04D7 >
+{
+	myMovementStyle Casual
+	myCruiseSpeed 8.0
+	myMaxAcceleration 8.0
+	myTurnRate 720.0
+	myWaitForAnimStateTransitions FALSE
+	myPathMergeLookAheadDistance 1.0
+	myPathMergeMaxDistanceBasedTurnSpeed 1000000.0
+	myPathMergeStopDistanceToReserve 0.2
+	myDisableStopAndStarts TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+}
+
+NPCMotionPattern PetRun < uid=B0EA4E5364242D300000F19B6D3DEE24 >
+{
+	myMovementStyle Casual
+	myCruiseSpeed 7.0
+	myMaxAcceleration 4.0
+	myTurnRate 720.0
+	myWaitForAnimStateTransitions FALSE
+	myPathMergeLookAheadDistance 1.0
+	myPathMergeMaxDistanceBasedTurnSpeed 1000000.0
+	myPathMergeStopDistanceToReserve 0.2
+	myDisableStopAndStarts TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+}
+
+NPCMotionPattern PetJog < uid=B0EA4E53637F9FB200011249CA355214 >
+{
+	myMovementStyle Casual
+	myCruiseSpeed 4.5
+	myMaxAcceleration 4.0
+	myTurnRate 720.0
+	myWaitForAnimStateTransitions FALSE
+	myPathMergeLookAheadDistance 1.0
+	myPathMergeMaxDistanceBasedTurnSpeed 1000000.0
+	myPathMergeStopDistanceToReserve 0.2
+	myDisableStopAndStarts TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+}
+
+NPCMotionPattern PetJogSlow < uid=B0EA4E536384BCE90000A22A1EF49ABE >
+{
+	myMovementStyle Casual
+	myCruiseSpeed 3.2
+	myMaxAcceleration 4.0
+	myTurnRate 720.0
+	myWaitForAnimStateTransitions FALSE
+	myPathMergeLookAheadDistance 0.5
+	myPathMergeMaxDistanceBasedTurnSpeed 1000000.0
+	myPathMergeStopDistanceToReserve 0.2
+	myDisableStopAndStarts TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+}
+
+NPCMotionPattern PetSneakSlow < uid=B0EA4E5363CFA9260000926CD357C671 >
+{
+	myMovementStyle Sneak
+	myCruiseSpeed 1.1
+	myMaxAcceleration 4.0
+	myTurnRate 540.0
+	myWaitForAnimStateTransitions FALSE
+	myPathMergeLookAheadDistance 0.5
+	myPathMergeMaxDistanceBasedTurnSpeed 10000.0
+	myPathMergeStopDistanceToReserve 0.2
+	myDisableStopAndStarts TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+}
+
+NPCMotionPattern PetSneak < uid=16DEADE6603E044A0000004CC01E0720 >
+{
+	myMovementStyle Sneak
+	myCruiseSpeed 2.2
+	myMaxAcceleration 4.0
+	myTurnRate 540.0
+	myWaitForAnimStateTransitions FALSE
+	myPathMergeLookAheadDistance 0.5
+	myPathMergeMaxDistanceBasedTurnSpeed 10000.0
+	myPathMergeStopDistanceToReserve 0.2
+	myDisableStopAndStarts TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+}
+
+NPCMotionPattern PetSneakFast < uid=16DEADE660C9229300002D6E1F29D08E >
+{
+	myMovementStyle Sneak
+	myCruiseSpeed 12.0
+	myMaxAcceleration 12.0
+	myTurnRate 720.0
+	myWaitForAnimStateTransitions FALSE
+	myPathMergeLookAheadDistance 0.5
+	myPathMergeMaxDistanceBasedTurnSpeed 10000.0
+	myPathMergeStopDistanceToReserve 0.2
+	myDisableStopAndStarts TRUE
+}
+
+NPCMotionPattern PetWalkSlow < uid=B0EA4E5363D3ED69000098014916483D >
+{
+	myMovementStyle Casual
+	myCruiseSpeed 1.0
+	myMaxAcceleration 2.0
+	myTurnRate 720.0
+	myWaitForAnimStateTransitions FALSE
+	myPathMergeLookAheadDistance 0.2
+	myPathMergeMaxDistanceBasedTurnSpeed 10000.0
+	myPathMergeStopDistanceToReserve 0.2
+	myDisableStopAndStarts TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+}
+
+NPCMotionPattern PetWalk < uid=16DEADE6603E0511000000578FD9B13D >
+{
+	myMovementStyle Casual
+	myCruiseSpeed 1.4
+	myMaxAcceleration 4.0
+	myTurnRate 720.0
+	myWaitForAnimStateTransitions FALSE
+	myPathMergeLookAheadDistance 0.2
+	myPathMergeMaxDistanceBasedTurnSpeed 10000.0
+	myPathMergeStopDistanceToReserve 0.2
+	myDisableStopAndStarts TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+}
+
+NPCMotionPattern ProbeDroidPatrol < uid=16C7D1FB60D9D51F00045EBAB1139A4A >
+{
+	myMovementStyle Patrol
+	myCruiseSpeed 2.5
+	myMaxAcceleration 4.0
+	myPathMergeLookAheadDistance 1.0
+}
+
+NPCMotionPattern ProbeDroidStrafe < uid=16C7D1FB60DC86DD0008AB03CC4B4E4B >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 3.0
+	myMaxAcceleration 5.0
+	myCanStrafe TRUE
+}
+
+NPCMotionPattern TempVehicleSubstitute < uid=595E8DFF601C019D000000571499F494 >
+{
+	myMovementStyle Casual
+	myCruiseSpeed 35.0
+	myMaxAcceleration 10.0
+	myTurnRate 360.0
+}
+
+NPCMotionPattern TieFighterSlow < uid=16DEADE6605D0BDB00000441167C0161 >
+{
+	myCruiseSpeed 200.0
+	myMaxAcceleration 100.0
+	myTurnRate 360.0
+}
+
+NPCMotionPattern WildlifeCharge < uid=16DEADE660B54A3B000088BBC15AEAC5 >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 15.0
+	myMaxAcceleration 8.0
+	myTurnRate 180.0
+}
+
+NPCMotionPattern WildlifeFlee < uid=16DEADE660B54A33000088BA50F12BEA >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 15.0
+	myMaxAcceleration 6.0
+	myTurnRate 720.0
+}
+
+NPCMotionPattern WildlifeRun < uid=16DEADE660B0E4700000698F3344437E >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 10.0
+	myMaxAcceleration 5.0
+	myTurnRate 360.0
+}
+
+NPCMotionPattern WildlifeWalk < uid=16DEADE660B0E4690000698EA0A0BAE4 >
+{
+	myCruiseSpeed 2.0
+	myMaxAcceleration 2.0
+	myTurnRate 360.0
+}
+
+NPCMotionPattern ScurrierWalk < uid=E9DD8F6062182D9700002A522CAAE7D3 >
+{
+	myCruiseSpeed 1.0
+	myMaxAcceleration 4.0
+	myTurnSmootherNavMeshExpand 0.2
+	myTurnSmootherArcLength 1.0
+	myTurnSmootherFixed 1.0
+}
+
+NPCMotionPattern ScurrierJog < uid=E9DD8F6062182DAC00002A539AA34965 >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 2.0
+	myMaxAcceleration 6.0
+	myTurnSmootherNavMeshExpand 0.2
+	myTurnSmootherArcLength 1.0
+	myTurnSmootherFixed 1.0
+}
+
+NPCMotionPattern ScurrierRun < uid=E9DD8F606232CB7B000029220B3A3F55 >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 4.3
+	myMaxAcceleration 8.0
+	myTurnSmootherNavMeshExpand 0.2
+	myTurnSmootherArcLength 1.0
+	myTurnSmootherFixed 1.0
+}
+
+NPCMotionPattern ScurrierSprint < uid=E9DD8F6062182DB500002A54103DA530 >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 4.3
+	myMaxAcceleration 8.0
+	myTurnSmootherNavMeshExpand 0.2
+	myTurnSmootherArcLength 1.0
+	myTurnSmootherFixed 1.0
+}
+
+NPCMotionPattern DeerWalk < uid=E9DD8F606232CB9C000029231D63738A >
+{
+	myCruiseSpeed 0.91
+	myMaxAcceleration 0.91
+}
+
+NPCMotionPattern DeerJog < uid=E9DD8F606232CBC7000029243F34077F >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 2.18
+	myMaxAcceleration 1.1
+}
+
+NPCMotionPattern DeerRun < uid=E9DD8F606232CBEA000029255F36F586 >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 5.26
+	myMaxAcceleration 2.6
+}
+
+NPCMotionPattern DeerSprint < uid=E9DD8F606232CC2200002926852CA9A2 >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 8.85
+	myMaxAcceleration 4.5
+}
+
+NPCMotionPattern MassiffWalk < uid=E9DD8F60626B821000024A8859BCC6ED >
+{
+	myCruiseSpeed 0.77
+	myMaxAcceleration 4.0
+	myTurnRate 180.0
+	myTurnSmootherNavMeshExpand 0.05
+	myTurnSmootherArcLength 1.0
+	myTurnSmootherFixed 1.0
+}
+
+NPCMotionPattern MassiffJog < uid=E9DD8F60626B82AF00024A8965E046D2 >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 2.6
+	myMaxAcceleration 6.0
+	myTurnRate 630.0
+	myTurnSmootherNavMeshExpand 0.05
+	myTurnSmootherArcLength 1.0
+	myTurnSmootherFixed 1.0
+}
+
+NPCMotionPattern MassiffRun < uid=E9DD8F60626B82E500024A8ABCE4364A >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 4.5
+	myMaxAcceleration 8.0
+	myTurnRate 690.0
+	myTurnSmootherNavMeshExpand 0.05
+	myTurnSmootherArcLength 1.0
+	myTurnSmootherFixed 1.0
+	myDisableSlowDownUponArrival TRUE
+}
+
+NPCMotionPattern MassiffSprint < uid=E9DD8F60626B831700024A8B3C12C936 >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 6.5
+	myMaxAcceleration 8.0
+	myTurnRate 1080.0
+	myTurnSmootherNavMeshExpand 0.05
+	myTurnSmootherArcLength 1.0
+	myTurnSmootherFixed 1.0
+	myDisableSlowDownUponArrival TRUE
+}
+
+NPCMotionPattern MassiffInvestigation < uid=E9DD8F60636C6E4400024F18D9D71D47 >
+{
+	myCruiseSpeed 1.2
+	myMaxAcceleration 4.0
+	myTurnRate 180.0
+	myTurnSmootherNavMeshExpand 0.05
+	myTurnSmootherArcLength 1.0
+	myTurnSmootherFixed 1.0
+}
+
+NPCMotionPattern MassiffFollowPatrol < uid=290EB60C643CF29A0004267D395534C6 >
+{
+	myCruiseSpeed 1.0
+	myMaxAcceleration 4.0
+	myTurnRate 180.0
+	myTurnSmootherNavMeshExpand 0.05
+	myTurnSmootherArcLength 1.0
+	myTurnSmootherFixed 1.0
+}
+
+NPCMotionPattern DefaultMeleeChase < uid=5C421F5C628B3D840002825D41E3B437 >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 6.0
+	myMaxAcceleration 6.0
+	myTurnRate 1080.0
+	myDesiredTurnRadius 0.6
+	myTurnSmootherFixed 0.25
+	myCanStrafe TRUE
+	myDisableStopAndStarts TRUE
+}
+
+NPCMotionPattern Melee1v1Strafe < uid=5C421F5C628B579200015BEAD01C38D4 >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 4.0
+	myMaxAcceleration 2.0
+	myTurnRate 360.0
+	myDesiredTurnRadius 0.6
+	myTurnSmootherArcLength 0.5
+	myDisableSlowDownUponArrival FALSE
+	myWaitForAnimStateTransitions FALSE
+	myPathMergeLookAheadDistance 0.5
+	myPathMergeStopDistanceToReserve 0.5
+	myRespectStartDirectionOnStopAndStart TRUE
+	myCanStrafe TRUE
+	myPrioritizeFocusOnPath FALSE
+	myPathFocusLookAheadTime 0.0
+	myDisableStopAndStarts TRUE
+}
+
+NPCMotionPattern NoFocusRun < uid=2736B36562B413D100007AD632E6F340 > : DefaultRun
+{
+	myPathMergeMaxDistanceBasedTurnSpeed 100000.0
+	myPrioritizeFocusOnPath TRUE
+}
+
+NPCMotionPattern NoFocusInvestigation < uid=2736B36562B4140700008552E8D3A620 > : DefaultInvestigation
+{
+	myPrioritizeFocusOnPath TRUE
+}
+
+NPCMotionPattern NoFocusWalk < uid=2736B36562B414230000855380988866 > : DefaultWalk
+{
+	myPrioritizeFocusOnPath TRUE
+}
+
+NPCMotionPattern NoFocusPatrol < uid=2736B36562B414B50000855A3968A8E1 > : DefaultPatrol
+{
+}
+
+NPCMotionPattern NoFocusJog < uid=91DC5D3C634FA8A8000098D0B156F3E9 > : DefaultJog
+{
+	myPrioritizeFocusOnPath TRUE
+}
+
+NPCMotionPattern BanthaWalk < uid=E9DD8F60630597830000456DD238ECCA >
+{
+	myMovementStyle Casual
+	myCruiseSpeed 0.67
+	myMaxAcceleration 3.0
+	myTurnRate 360.0
+	myDesiredTurnRadius 0.6
+	myTurnSmootherNavMeshExpand 2.0
+	myTurnSmootherArcLength 5.0
+	myTurnSmootherFixed 5.0
+	myDisableSlowDownUponArrival FALSE
+	myPathMergeLookAheadDistance 5.0
+	myPathMergeMaxDistanceBasedTurnSpeed 60.0
+	myPathMergeStopDistanceToReserve 1.0
+	myRespectStartDirectionOnStopAndStart FALSE
+	myCanStrafe FALSE
+	myPrioritizeFocusOnPath FALSE
+	myCanPerformStaticTurn TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+}
+
+NPCMotionPattern BanthaJog < uid=E9DD8F606305BC6700010B135E5CBA11 >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 2.26
+	myMaxAcceleration 4.0
+	myTurnRate 360.0
+	myDesiredTurnRadius 0.6
+	myTurnSmootherNavMeshExpand 2.0
+	myTurnSmootherArcLength 5.0
+	myTurnSmootherFixed 5.0
+	myDisableSlowDownUponArrival FALSE
+	myPathMergeLookAheadDistance 5.0
+	myPathMergeMaxDistanceBasedTurnSpeed 60.0
+	myPathMergeStopDistanceToReserve 1.0
+	myRespectStartDirectionOnStopAndStart FALSE
+	myCanStrafe FALSE
+	myPrioritizeFocusOnPath FALSE
+	myCanPerformStaticTurn TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+}
+
+NPCMotionPattern BanthaRun < uid=E9DD8F60630597830000456E6530D37C >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 3.76
+	myMaxAcceleration 6.0
+	myTurnRate 360.0
+	myDesiredTurnRadius 0.6
+	myTurnSmootherNavMeshExpand 2.0
+	myTurnSmootherArcLength 5.0
+	myTurnSmootherFixed 5.0
+	myDisableSlowDownUponArrival FALSE
+	myPathMergeLookAheadDistance 5.0
+	myPathMergeMaxDistanceBasedTurnSpeed 30.0
+	myPathMergeStopDistanceToReserve 1.0
+	myRespectStartDirectionOnStopAndStart FALSE
+	myCanStrafe FALSE
+	myPrioritizeFocusOnPath FALSE
+	myCanPerformStaticTurn TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+}
+
+NPCMotionPattern BanthaSprint < uid=E9DD8F60630597830000456FDFC8DE00 >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 6.0
+	myMaxCruiseSpeedAdjustment 0.7
+	myMaxAcceleration 8.0
+	myTurnRate 360.0
+	myDesiredTurnRadius 0.6
+	myTurnSmootherNavMeshExpand 2.0
+	myTurnSmootherArcLength 5.0
+	myTurnSmootherFixed 5.0
+	myDisableSlowDownUponArrival FALSE
+	myPathMergeLookAheadDistance 5.0
+	myPathMergeMaxDistanceBasedTurnSpeed 30.0
+	myPathMergeStopDistanceToReserve 1.0
+	myRespectStartDirectionOnStopAndStart FALSE
+	myCanStrafe FALSE
+	myPrioritizeFocusOnPath FALSE
+	myCanPerformStaticTurn TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+}
+
+NPCMotionPattern DefaultMoveAway < uid=2736B3656318ADCE0006F1F359B7B8C1 >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 3.8
+	myMaxAcceleration 5.0
+	myTurnRate 180.0
+	myDisableSlowDownUponArrival TRUE
+	myWaitForAnimStateTransitions FALSE
+	myPathMergeLookAheadDistance 1.0
+	myCanStrafe TRUE
+	myCanPerformStaticTurn TRUE
+	myDisableStopAndStarts TRUE
+}
+
+NPCMotionPattern FlyerPatrol < uid=2AA3EE5D63204FD90000C5A6D8677173 >
+{
+	myMovementStyle Patrol
+	myCruiseSpeed 5.7
+	myMaxAcceleration 5.0
+	myTurnRate 360.0
+	myDesiredTurnRadius 0.6
+	myTurnSmootherArcLength 0.5
+	myTurnSmootherFixed 0.25
+	myDisableSlowDownUponArrival TRUE
+	myPathMergeLookAheadDistance 2.0
+	myPathMergeMaxDistanceBasedTurnSpeed 60.0
+	myPathMergeStopDistanceToReserve 1.0
+	myRespectStartDirectionOnStopAndStart FALSE
+	myCanStrafe FALSE
+	myPrioritizeFocusOnPath FALSE
+	myCanPerformStaticTurn TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+}
+
+NPCMotionPattern FlyerDismiss < uid=2AA3EE5D636A054800031F70F756884B >
+{
+	myMovementStyle Patrol
+	myCruiseSpeed 8.0
+	myMaxAcceleration 6.0
+	myTurnRate 360.0
+	myDesiredTurnRadius 0.6
+	myTurnSmootherArcLength 0.5
+	myTurnSmootherFixed 0.25
+	myDisableSlowDownUponArrival TRUE
+	myPathMergeLookAheadDistance 2.0
+	myPathMergeMaxDistanceBasedTurnSpeed 60.0
+	myPathMergeStopDistanceToReserve 1.0
+	myRespectStartDirectionOnStopAndStart FALSE
+	myCanStrafe FALSE
+	myPrioritizeFocusOnPath TRUE
+	myCanPerformStaticTurn TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+}
+
+NPCMotionPattern NgombaWalk < uid=E9DD8F606333EE2800004A83EF478949 >
+{
+	myMovementStyle Casual
+	myCruiseSpeed 0.9
+	myMaxAcceleration 5.0
+	myTurnRate 360.0
+	myDesiredTurnRadius 1.4
+	myTurnSmootherNavMeshExpand 1.5
+	myTurnSmootherArcLength 5.0
+	myTurnSmootherFixed 5.0
+	myDisableSlowDownUponArrival FALSE
+	myPathMergeLookAheadDistance 4.0
+	myPathMergeMaxDistanceBasedTurnSpeed 60.0
+	myPathMergeStopDistanceToReserve 1.0
+	myRespectStartDirectionOnStopAndStart FALSE
+	myCanStrafe FALSE
+	myPrioritizeFocusOnPath FALSE
+	myCanPerformStaticTurn TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+}
+
+NPCMotionPattern NgombaJog < uid=E9DD8F606333EE2800004A84C4C334F0 >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 3.0
+	myMaxAcceleration 6.0
+	myTurnRate 360.0
+	myDesiredTurnRadius 1.4
+	myTurnSmootherNavMeshExpand 1.5
+	myTurnSmootherArcLength 5.0
+	myTurnSmootherFixed 5.0
+	myDisableSlowDownUponArrival FALSE
+	myPathMergeLookAheadDistance 4.0
+	myPathMergeMaxDistanceBasedTurnSpeed 60.0
+	myPathMergeStopDistanceToReserve 1.0
+	myRespectStartDirectionOnStopAndStart FALSE
+	myCanStrafe FALSE
+	myPrioritizeFocusOnPath FALSE
+	myCanPerformStaticTurn TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+}
+
+NPCMotionPattern NgombaRun < uid=E9DD8F606333EE2800004A85C880F440 >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 5.8
+	myMaxAcceleration 6.0
+	myTurnRate 360.0
+	myDesiredTurnRadius 2.0
+	myTurnSmootherNavMeshExpand 1.5
+	myTurnSmootherArcLength 5.0
+	myTurnSmootherFixed 5.0
+	myDisableSlowDownUponArrival TRUE
+	myPathMergeLookAheadDistance 4.0
+	myPathMergeMaxDistanceBasedTurnSpeed 60.0
+	myPathMergeStopDistanceToReserve 1.0
+	myRespectStartDirectionOnStopAndStart FALSE
+	myCanStrafe FALSE
+	myPrioritizeFocusOnPath FALSE
+	myCanPerformStaticTurn TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+}
+
+NPCMotionPattern NgombaSprint < uid=E9DD8F606333EE2800004A868B25C815 >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 7.0
+	myMaxAcceleration 6.0
+	myTurnRate 360.0
+	myDesiredTurnRadius 2.0
+	myTurnSmootherNavMeshExpand 1.5
+	myTurnSmootherArcLength 5.0
+	myTurnSmootherFixed 5.0
+	myDisableSlowDownUponArrival TRUE
+	myPathMergeLookAheadDistance 4.0
+	myPathMergeMaxDistanceBasedTurnSpeed 60.0
+	myPathMergeStopDistanceToReserve 1.0
+	myRespectStartDirectionOnStopAndStart FALSE
+	myCanStrafe FALSE
+	myPrioritizeFocusOnPath FALSE
+	myCanPerformStaticTurn TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+}
+
+NPCMotionPattern GushiroWalk < uid=E9DD8F6063686D160000ABDFB93DE00B >
+{
+	myMovementStyle Casual
+	myCruiseSpeed 0.9
+	myMaxAcceleration 2.0
+	myTurnRate 180.0
+	myDesiredTurnRadius 0.5
+	myTurnSmootherNavMeshExpand 0.1
+	myTurnSmootherArcLength 1.0
+	myTurnSmootherFixed 1.0
+	myDisableSlowDownUponArrival FALSE
+	myPathMergeLookAheadDistance 2.0
+	myPathMergeMaxDistanceBasedTurnSpeed 60.0
+	myPathMergeStopDistanceToReserve 1.0
+	myRespectStartDirectionOnStopAndStart FALSE
+	myCanStrafe FALSE
+	myPrioritizeFocusOnPath FALSE
+	myCanPerformStaticTurn TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+}
+
+NPCMotionPattern GushiroJog < uid=E9DD8F6063686D160000ABE0F6C7884D >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 3.0
+	myMaxAcceleration 3.5
+	myTurnRate 630.0
+	myDesiredTurnRadius 0.8
+	myTurnSmootherNavMeshExpand 0.1
+	myTurnSmootherArcLength 1.0
+	myTurnSmootherFixed 1.0
+	myDisableSlowDownUponArrival FALSE
+	myPathMergeLookAheadDistance 2.0
+	myPathMergeMaxDistanceBasedTurnSpeed 60.0
+	myPathMergeStopDistanceToReserve 1.0
+	myRespectStartDirectionOnStopAndStart FALSE
+	myCanStrafe FALSE
+	myPrioritizeFocusOnPath FALSE
+	myCanPerformStaticTurn TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+}
+
+NPCMotionPattern GushiroRun < uid=E9DD8F6063686D160000ABE140869F4E >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 6.8
+	myMaxAcceleration 4.5
+	myTurnRate 690.0
+	myDesiredTurnRadius 1.0
+	myTurnSmootherNavMeshExpand 0.1
+	myTurnSmootherArcLength 1.0
+	myTurnSmootherFixed 1.0
+	myDisableSlowDownUponArrival TRUE
+	myPathMergeLookAheadDistance 2.0
+	myPathMergeMaxDistanceBasedTurnSpeed 60.0
+	myPathMergeStopDistanceToReserve 1.0
+	myRespectStartDirectionOnStopAndStart FALSE
+	myCanStrafe FALSE
+	myPrioritizeFocusOnPath FALSE
+	myCanPerformStaticTurn TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+}
+
+NPCMotionPattern GushiroSprint < uid=E9DD8F6063686D160000ABE2A2CB7431 >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 9.5
+	myMaxAcceleration 6.0
+	myTurnRate 1080.0
+	myDesiredTurnRadius 1.0
+	myTurnSmootherNavMeshExpand 0.1
+	myTurnSmootherArcLength 1.0
+	myTurnSmootherFixed 1.0
+	myDisableSlowDownUponArrival TRUE
+	myPathMergeLookAheadDistance 2.0
+	myPathMergeMaxDistanceBasedTurnSpeed 60.0
+	myPathMergeStopDistanceToReserve 1.0
+	myRespectStartDirectionOnStopAndStart FALSE
+	myCanStrafe FALSE
+	myPrioritizeFocusOnPath FALSE
+	myCanPerformStaticTurn TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+}
+
+NPCMotionPattern ATSTDefault < uid=2736B36563B2FDEB0001BF3783367D4E >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 6.0
+	myMaxAcceleration 1.5
+	myTurnRate 45.0
+	myDesiredTurnRadius 3.0
+	myTurnSmootherArcLength 1.2
+	myTurnSmootherFixed 0.2
+	myDisableSlowDownUponArrival FALSE
+	myPathMergeLookAheadDistance 2.0
+	myPathMergeMaxDistanceBasedTurnSpeed 100000.0
+	myPathMergeStopDistanceToReserve 1.86
+	myRespectStartDirectionOnStopAndStart TRUE
+	myCanStrafe FALSE
+	myCanPerformStaticTurn TRUE
+}
+
+NPCMotionPattern ATSTDefaultNoFocus < uid=4171A7E165A56489001AFE13B8FEB920 > : ATSTDefault
+{
+	myPrioritizeFocusOnPath TRUE
+	myPathFocusLookAheadTime 3.0
+}
+
+NPCMotionPattern ATSTStrafe < uid=2736B36563B433BA00059D70A82774DF >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 2.5
+	myMaxAcceleration 2.0
+	myTurnRate 30.0
+	myDesiredTurnRadius 2.0
+	myDisableSlowDownUponArrival TRUE
+	myPathMergeStopDistanceToReserve 1.86
+	myRespectStartDirectionOnStopAndStart TRUE
+	myCanStrafe TRUE
+	myCanPerformStaticTurn FALSE
+}
+
+NPCMotionPattern DewbackWalk < uid=E9DD8F6063B66AEE00005889C1D9988D > : NgombaWalk
+{
+}
+
+NPCMotionPattern DewbackJog < uid=E9DD8F6063B66B100000588AF2C87CF2 > : NgombaJog
+{
+}
+
+NPCMotionPattern DewbackRun < uid=E9DD8F6063B66B300000588B299CF3DA > : NgombaRun
+{
+}
+
+NPCMotionPattern DewbackSprint < uid=E9DD8F6063B66B440000588CC02A58BD > : NgombaSprint
+{
+}
+
+NPCMotionPattern HutGuardRush < uid=2736B36563D255A8000362A18FBF58F5 >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 6.0
+	myMaxCruiseSpeedAdjustment 6.0
+	myMaxAcceleration 12.0
+	myTurnRate 60.0
+	myDisableSlowDownUponArrival TRUE
+	myPathMergeLookAheadDistance 1.5
+	myPathMergeMaxDistanceBasedTurnSpeed 60.0
+	myPrioritizeFocusOnPath TRUE
+	myCanPerformStaticTurn FALSE
+	myDisableStopAndStarts TRUE
+}
+
+NPCMotionPattern KuWalk < uid=E9DD8F6063EB55E0000294090B552344 > : BanthaWalk
+{
+}
+
+NPCMotionPattern KuJog < uid=E9DD8F6063EB55FE0002940A10DE4218 > : BanthaJog
+{
+}
+
+NPCMotionPattern KuRun < uid=E9DD8F6063EB56070002940B506660E7 > : BanthaRun
+{
+}
+
+NPCMotionPattern KuSprint < uid=E9DD8F6063EB56140002940CBF6E007A > : BanthaSprint
+{
+}
+
+NPCMotionPattern PykeSentinelShieldWalk < uid=85F4BAC263FF10230001AD2AC2306308 > : DefaultWalk
+{
+	myMovementStyle Combat
+	myCruiseSpeed 1.5
+	myMaxCruiseSpeedAdjustment 0.0
+	myMaxAcceleration 1.0
+	myPathMergeLookAheadDistance 0.5
+	myPathMergeStopDistanceToReserve 0.5
+	myCanStrafe TRUE
+}
+
+NPCMotionPattern PykeSentinelShieldFastWalk < uid=3C2FA92B66339D680001287888376512 > : DefaultWalk
+{
+	myMovementStyle Combat
+	myCruiseSpeed 2.0
+	myMaxCruiseSpeedAdjustment 1.0
+	myMaxAcceleration 1.0
+	myPathMergeLookAheadDistance 0.5
+	myPathMergeStopDistanceToReserve 0.5
+	myCanStrafe TRUE
+}
+
+NPCMotionPattern PykeSentinelStrafe < uid=85F4BAC263FF10AB0001BC9048A3ACCD > : DefaultWalk
+{
+	myWaitForAnimStateTransitions FALSE
+	myPathMergeLookAheadDistance 0.5
+	myPathMergeStopDistanceToReserve 0.5
+	myCanStrafe TRUE
+	myPathFocusLookAheadTime 0.0
+}
+
+NPCMotionPattern RancorWalk < uid=91DC5D3C6401F2DF0001562D46DD64CE >
+{
+	myCruiseSpeed 6.0
+	myMaxAcceleration 5.0
+	myTurnRate 240.0
+	myMaxStartDistance 7.0
+	myMaxStopDistance 7.0
+	myDesiredTurnRadius 1.5
+	myPathMergeLookAheadDistance 5.0
+	myCanStrafe FALSE
+	myCanPerformStaticTurn TRUE
+}
+
+NPCMotionPattern RancorJog < uid=416E63E46553953D0004038280FE1A6D > : RancorWalk
+{
+	myCruiseSpeed 10.0
+	myMaxAcceleration 6.0
+}
+
+NPCMotionPattern RancorCharge < uid=91DC5D3C6401F2E50001562E1FB29042 >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 12.0
+	myMaxAcceleration 10.0
+	myTurnRate 360.0
+	myMaxStartDistance 7.0
+	myMaxStopDistance 7.0
+	myDisableSlowDownUponArrival TRUE
+	myCanPerformStaticTurn TRUE
+}
+
+NPCMotionPattern RancorInvestigate < uid=416E63E464AEB50300022DAE3B444469 >
+{
+	myMovementStyle Investigation
+	myCruiseSpeed 1.0
+	myTurnRate 45.0
+	myMaxStartDistance 7.0
+	myMaxStopDistance 7.0
+	myDesiredTurnRadius 1.0
+	myTurnSmootherNavMeshExpand 2.0
+	myTurnSmootherArcLength 3.0
+	myTurnSmootherFixed 2.0
+	myPathMergeLookAheadDistance 5.0
+	myPathMergeMaxDistanceBasedTurnSpeed 10.0
+}
+
+NPCMotionPattern AstromechDefault < uid=EBE060C2640740020001053C287DCBF0 >
+{
+	myCruiseSpeed 2.0
+	myMaxAcceleration 0.4
+	myDesiredTurnRadius 1.0
+}
+
+NPCMotionPattern AstromechFast < uid=EBE060C26437FA410000A0B071FEA604 > : AstromechDefault
+{
+	myCruiseSpeed 4.0
+	myMaxAcceleration 2.5
+	myDesiredTurnRadius 0.5
+	myPathMergeLookAheadDistance 4.0
+	myPathMergeMaxDistanceBasedTurnSpeed 180.0
+}
+
+NPCMotionPattern SweeperDroidDefault < uid=EBE060C2640760B900128B0D29C1AD86 >
+{
+	myCruiseSpeed 0.6
+	myMaxAcceleration 0.4
+	myDesiredTurnRadius 0.3
+}
+
+NPCMotionPattern EliteRun < uid=5C421F5C640EF55D0004033EC2145B75 > : DefaultRun
+{
+	myCruiseSpeed 6.0
+	myMaxAcceleration 6.25
+	myTurnRate 450.0
+	myDisableSlowDownUponArrival TRUE
+	myWaitForAnimStateTransitions FALSE
+}
+
+NPCMotionPattern EliteJog < uid=5C421F5C640EF5610004052B85465EC4 > : DefaultJog
+{
+	myCruiseSpeed 4.5
+	myMaxAcceleration 2.5
+	myTurnRate 450.0
+	myDisableSlowDownUponArrival TRUE
+	myWaitForAnimStateTransitions FALSE
+}
+
+NPCMotionPattern EliteNoFocusJog < uid=5C421F5C640EF565000407217ACAE098 > : EliteJog
+{
+	myPrioritizeFocusOnPath TRUE
+}
+
+NPCMotionPattern EliteNoFocusRun < uid=5C421F5C640EF56E00040AF9AF9ADEA6 > : EliteRun
+{
+	myPrioritizeFocusOnPath TRUE
+}
+
+NPCMotionPattern EliteStrafe < uid=5C421F5C640EF59400041C860411C2BE > : DefaultStrafe
+{
+	myCruiseSpeed 2.5
+	myMaxAcceleration 3.75
+	myTurnRate 225.0
+	myDisableSlowDownUponArrival TRUE
+	myWaitForAnimStateTransitions FALSE
+}
+
+NPCMotionPattern TshikaraWalk < uid=E9DD8F606419161700001D9AB097602A >
+{
+	myCruiseSpeed 1.15
+	myMaxAcceleration 4.0
+	myTurnRate 180.0
+	myTurnSmootherNavMeshExpand 2.0
+	myTurnSmootherArcLength 5.0
+	myTurnSmootherFixed 5.0
+}
+
+NPCMotionPattern TshikaraRun < uid=E9DD8F606419161700001D9CF39F520D >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 9.0
+	myMaxAcceleration 8.0
+	myTurnRate 690.0
+	myTurnSmootherNavMeshExpand 2.0
+	myTurnSmootherArcLength 5.0
+	myTurnSmootherFixed 5.0
+	myDisableSlowDownUponArrival TRUE
+}
+
+NPCMotionPattern TshikaraJog < uid=E9DD8F606419161700001D9B11814A37 >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 4.8
+	myMaxCruiseSpeedAdjustment 1.0
+	myMaxAcceleration 6.0
+	myTurnRate 630.0
+	myTurnSmootherNavMeshExpand 2.0
+	myTurnSmootherArcLength 5.0
+	myTurnSmootherFixed 5.0
+}
+
+NPCMotionPattern TshikaraSprint < uid=E9DD8F606419161700001D9D7CBA87E1 >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 12.0
+	myMaxAcceleration 10.0
+	myTurnRate 1080.0
+	myTurnSmootherNavMeshExpand 2.0
+	myTurnSmootherArcLength 5.0
+	myTurnSmootherFixed 5.0
+	myDisableSlowDownUponArrival TRUE
+}
+
+NPCMotionPattern TshikaraInvestigation < uid=E9DD8F606419161700001D9E77272E6C >
+{
+	myCruiseSpeed 1.3
+	myMaxCruiseSpeedAdjustment 1.0
+	myMaxAcceleration 4.0
+	myTurnRate 180.0
+	myTurnSmootherNavMeshExpand 2.0
+	myTurnSmootherArcLength 5.0
+	myTurnSmootherFixed 5.0
+}
+
+NPCMotionPattern AssassinRun < uid=416E63E4642C2BF40002C6A5DF882FCC > : DefaultRun
+{
+	myMaxAcceleration 6.5
+	myTurnRate 450.0
+	myDisableSlowDownUponArrival TRUE
+	myWaitForAnimStateTransitions FALSE
+}
+
+NPCMotionPattern AssassinJog < uid=416E63E4642C2C010002C6A62EAC6575 > : DefaultJog
+{
+	myMaxAcceleration 5.0
+	myTurnRate 450.0
+	myDisableSlowDownUponArrival TRUE
+	myWaitForAnimStateTransitions FALSE
+}
+
+NPCMotionPattern AssassinNoFocusRun < uid=416E63E4642C2C2B0002C6A82CA39B17 > : AssassinRun
+{
+	myMaxAcceleration 8.0
+	myMaxStartDistance 8.0
+	myPrioritizeFocusOnPath TRUE
+}
+
+NPCMotionPattern AssassinNoFocusJog < uid=416E63E4642C2C140002C6A7837FA33D > : AssassinJog
+{
+	myPrioritizeFocusOnPath TRUE
+}
+
+NPCMotionPattern AssassinStrafe < uid=416E63E4642C2C350002C6A9B2CB2700 > : DefaultStrafe
+{
+	myCruiseSpeed 2.95
+	myMaxAcceleration 6.0
+	myTurnRate 450.0
+	myMaxStartDistance 1.0
+	myMaxStopDistance 2.0
+	myDisableSlowDownUponArrival TRUE
+	myWaitForAnimStateTransitions FALSE
+	myPathMergeLookAheadDistance 3.0
+	myPathMergeStopDistanceToReserve 1.5
+	myRespectStartDirectionOnStopAndStart FALSE
+}
+
+NPCMotionPattern SammakhoWalk < uid=E9DD8F60644B42180001B931E1E897C3 > : MassiffWalk
+{
+}
+
+NPCMotionPattern SammakhoJog < uid=E9DD8F60644B42230001B93248723EBB > : MassiffJog
+{
+}
+
+NPCMotionPattern SammakhoRun < uid=E9DD8F60644B42260001B93343F111AD > : MassiffRun
+{
+	myCruiseSpeed 4.8
+}
+
+NPCMotionPattern SammakhoSprint < uid=E9DD8F60644B42280001B934D45BCA5F > : MassiffSprint
+{
+}
+
+NPCMotionPattern SammakhoInvestigation < uid=E9DD8F60644B422A0001B93571A80998 > : MassiffInvestigation
+{
+}
+
+NPCMotionPattern ZerND5Sprint < uid=5C421F5C648AE5450004BE778E531A27 > : EliteRun
+{
+	myCruiseSpeed 6.0
+	myMaxAcceleration 6.0
+}
+
+NPCMotionPattern ZerND5Jog < uid=5C421F5C648AE5620004BE7830826517 > : EliteJog
+{
+	myCruiseSpeed 4.5
+	myMaxAcceleration 4.5
+}
+
+NPCMotionPattern MSEDroid < uid=2893451664C0F01E000433CE3BE8E6D4 >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 5.0
+	myMaxAcceleration 4.0
+	myDisableSlowDownUponArrival TRUE
+	myWaitForAnimStateTransitions FALSE
+	myPathMergeLookAheadDistance 1.0
+	myRespectStartDirectionOnStopAndStart TRUE
+}
+
+NPCMotionPattern CompanionRunMatchPlayer < uid=91DC5D3C64C38DDF000998EE5DAC7AD4 > : DefaultRun
+{
+	myMovementStyle Combat
+	myCruiseSpeed 4.3
+	myMaxCruiseSpeedAdjustment 1.0
+	myMaxAcceleration 2.5
+}
+
+NPCMotionPattern KraytDragonSprint < uid=E9DD8F6064D33AF20000A3993DB46C48 >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 40.0
+	myMaxAcceleration 10.0
+	myTurnRate 360.0
+	myTurnSmootherNavMeshExpand 2.0
+	myTurnSmootherArcLength 5.0
+	myTurnSmootherFixed 5.0
+	myDisableSlowDownUponArrival TRUE
+	myPathMergeLookAheadDistance 10.0
+}
+
+NPCMotionPattern DropShipDefault < uid=06F3F6E464EC69C3000085A6B76A2A78 >
+{
+	myCruiseSpeed 32.0
+	myMaxAcceleration 8.0
+	myPathMergeLookAheadDistance 5.0
+}
+
+NPCMotionPattern MeleeRun < uid=3C2FA92B64F72853001B27F6BFF701B3 >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 5.0
+	myMaxAcceleration 5.0
+	myTurnSmootherArcLength 0.5
+	myTurnSmootherFixed 0.25
+	myDisableSlowDownUponArrival FALSE
+	myWaitForAnimStateTransitions TRUE
+	myPathMergeLookAheadDistance 2.5
+	myPathMergeMaxDistanceBasedTurnSpeed 90.0
+	myPathMergeStopDistanceToReserve 1.5
+	myRespectStartDirectionOnStopAndStart TRUE
+	myCanStrafe FALSE
+	myCanPerformStaticTurn FALSE
+}
+
+NPCMotionPattern DroidWalk < uid=2893451664F873BF0001275C33C66077 >
+{
+	myMovementStyle Casual
+	myCruiseSpeed 2.0
+	myMaxAcceleration 1.0
+	myTurnRate 360.0
+	myPathMergeLookAheadDistance 1.0
+	myRespectStartDirectionOnStopAndStart TRUE
+	myMaxTravelAndTalkSpeed 2.0
+}
+
+NPCMotionPattern DroidJog < uid=2893451664F873BF0001275DBFCB5DB8 >
+{
+	myMovementStyle Casual
+	myCruiseSpeed 4.0
+	myMaxAcceleration 1.0
+	myTurnRate 360.0
+	myDesiredTurnRadius 0.6
+	myTurnSmootherArcLength 0.5
+	myTurnSmootherFixed 0.25
+	myPathMergeLookAheadDistance 1.0
+	myRespectStartDirectionOnStopAndStart TRUE
+	myCanStrafe FALSE
+	myCanPerformStaticTurn TRUE
+	myOffscreenMotionPatternUID 00000000000000000000000000000000
+}
+
+NPCMotionPattern DroidInvestigation < uid=2893451664F87412000127AC0D17F9EA >
+{
+	myMovementStyle Investigation
+	myPathMergeLookAheadDistance 1.0
+	myRespectStartDirectionOnStopAndStart TRUE
+	myCanPerformStaticTurn TRUE
+}
+
+NPCMotionPattern DroidPatrol < uid=2893451664F875A30001282CFC8222B5 >
+{
+	myMovementStyle Patrol
+	myRespectStartDirectionOnStopAndStart TRUE
+	myCanPerformStaticTurn TRUE
+}
+
+NPCMotionPattern SkittererWalk < uid=2893451664F9997D00049476AC57F0B4 >
+{
+	myCruiseSpeed 1.0
+	myMaxAcceleration 4.0
+	myTurnSmootherNavMeshExpand 0.2
+	myTurnSmootherArcLength 1.0
+	myTurnSmootherFixed 1.0
+}
+
+NPCMotionPattern SkittererJog < uid=2893451664F9997D00049477D5D23C9F >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 2.0
+	myMaxAcceleration 6.0
+	myTurnSmootherNavMeshExpand 0.2
+	myTurnSmootherArcLength 1.0
+	myTurnSmootherFixed 1.0
+}
+
+NPCMotionPattern SkittererRun < uid=2893451664F9997D0004947890A9BF4B >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 4.3
+	myMaxAcceleration 8.0
+	myTurnSmootherNavMeshExpand 0.2
+	myTurnSmootherArcLength 1.0
+	myTurnSmootherFixed 1.0
+}
+
+NPCMotionPattern SkittererSprint < uid=2893451664F9997D00049479EFC61806 >
+{
+	myMovementStyle Combat
+	myCruiseSpeed 4.3
+	myMaxAcceleration 8.0
+	myTurnSmootherNavMeshExpand 0.2
+	myTurnSmootherArcLength 1.0
+	myTurnSmootherFixed 1.0
+}
+
+NPCMotionPattern AssaultStrafe < uid=4171A7E1654B883B0002BB1FF37F04EA > : DefaultStrafe
+{
+	myCruiseSpeed 1.8
+}
+
+NPCMotionPattern QuestNPCSlowWalk < uid=91DC5D3C651AC28C001AA7E4765FA1A2 > : SlowWalk
+{
+	myCruiseSpeed 1.4
+}
+
+NPCMotionPattern HeavyTrooperSprint < uid=4171A7E1654E462A00035A7F129C3C8B > : NoFocusRun
+{
+	myCruiseSpeed 2.5
+}
+
+NPCMotionPattern FloatingChestFollow < uid=91DC5D3C6570910D002D2B4ECC835D9C >
+{
+	myCruiseSpeed 4.0
+	myTurnRate 90.0
+	myCanPerformStaticTurn FALSE
+}
+
+NPCMotionPattern FloatingChestSprint < uid=91DC5D3C65782199000FCD0C858285A8 > : FloatingChestFollow
+{
+	myCruiseSpeed 5.0
+	myMaxAcceleration 3.0
+	myTurnRate 360.0
+	myCanPerformStaticTurn TRUE
+}
+
+NPCMotionPattern KraytDragonSrpintEQ080 < uid=E9DD8F6065B34D640001E4BFDF6CC49D > : KraytDragonSprint
+{
+	myCruiseSpeed 35.0
+}
+
+NPCMotionPattern ShiftyTraderLanding < uid=2AE2EC8565BB696D000268D775639498 >
+{
+	myCruiseSpeed 35.0
+	myMaxAcceleration 50.0
+	myDesiredTurnRadius 1.0
+	myTurnSmootherArcLength 1.0
+	myPathMergeLookAheadDistance 5.0
+	myPrioritizeFocusOnPath TRUE
+}
+
+NPCMotionPattern HostileND5Jog < uid=289345166655E80A000C4BBCE99500B8 > : DefaultJog
+{
+	myCruiseSpeed 3.75
+	myMaxAcceleration 4.0
+}
+
+NPCMotionPattern C_MQ_040_AstromechExtraFast < uid=38252D2167B5D94A000F2C63932F8073 > : AstromechFast
+{
+	myCruiseSpeed 6.5
+	myMaxAcceleration 5.5
+	myTurnSmootherNavMeshExpand 0.0
+}
+

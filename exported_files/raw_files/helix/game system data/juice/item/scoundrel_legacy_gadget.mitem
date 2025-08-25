@@ -1,0 +1,126 @@
+include "helix/game system data/fruit/item/item_includes.fruit"
+include "helix/game system data/juice/equipment/aimconfig/scoundrel_legacy_gadget_aimconfig.maimconfig"
+include "helix/game system data/juice/intel/intel_a_sl.mintel"
+include "helix/game system data/juice/item/equipmentholding/holding_kays_scoundrel_legacy.mequipmentholdingconfig"
+include "helix/game system data/juice/playerrestrictions/holoreadercompass.mplayerrestriction"
+include "helix/game system data/juice/playerrestrictions/holoreaderprojection.mplayerrestriction"
+include "helix/game system data/juice/sound/stimuli/stim_id_main.mstimulusidentifier"
+include "helix/game system data/juice/tutorials/scoundrel_legacy_tutorialhints.mtutorial"
+
+HoloReaderEquipmentItem scoundrel_legacy_gadget < uid=CC6CF61E639AE52200009ADCDF622639 >
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Scoundrel Legacy Gadget Name\", enabled = true, guid = #CC6CF61E639AE52200009ADBAD3CDDE3, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 10284, text = \"Holotracker\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"Description of the Scoundrel Legacy Gadget\", enabled = true, guid = #E259BC2165AE859E000949EB49245A74, lineVersion = 13, maxLength = 0, productId = -1, sectionId = 10284, text = \"Tracker crafted by the Miyuki Trade League to retrieve their stash. Jet Kordo added a holoprojector to indicate locations where the tracker can find again the Miyuki vaults that he seized.\", type = \"MenuLine\""
+	myGameplayDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"Gameply effect description of the Holotracker.\", enabled = true, guid = #E259BC21661D2CFD000006E9EF07D797, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10284, text = \"Device capable of reading holodiscs which contain a holomap. It also emits signals leading to hidden Miuyki vaults and smuggler caches.\", type = \"MenuLine\""
+	myWhereToFind "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWantedByVendor "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myIcon "mySpriteId = -2129219103, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_item_icons_04.spritesheet\""
+	myThumbnail helix/baked/ui/loose_images/gear/tool/gear_tool_holotracker_gameready.dds
+	myHighresImage helix/baked/ui/loose_images/gear/tool/gear_tool_holotracker_gameready_fullsize.dds
+	myGraphObject "helix/graph objects/gameplayobject/scoundrel legacy cache gadget gameplayobject 01.mgraphobject"
+	myTier Big
+	myInventoryPouch ToolsAndGadgets
+	myCanBeSold FALSE
+	myAimConfig < uid=CC6CF61E639AE68B00009AE4F429BACA > = scoundrel_legacy_gadget_aimconfig CC6CF61E639AE58100009ADF19E4978A
+	myHoldingConfig < uid=CC6CF61E639AE68B00009AE539789DCF > = holding_kays_scoundrel_legacy CC6CF61E639AE68500009AE2D760316B
+	myDefaultSlotGroup HoloReader
+	myCompassModeRestrictions < uid=2277160F6523B85500009926A70C6CF4 > = HoloReaderCompass 2277160F6523B7BC00008CD3E6E9B07B
+	myProjectionModeRestrictions < uid=2277160F6523B855000099279D8E890B > = HoloReaderProjection 2277160F6523BB7F00006B016BFBC884
+	myLandscapeModeRestrictions < uid=2277160F6523B85500009928A359A15D > = HoloReaderProjection 2277160F6523BB7F00006B016BFBC884
+	myDistanceToTargetRumble 8E25811B653BA7E800006C3FC1BAD085
+	myEnterTargetZoneSound
+	{
+		myGuid 4C948349EB781EC294A68EE60DE60495
+	}
+	myExitTargetZoneSound
+	{
+		myGuid 488DE3DD9BB160F894859EF20BA414B3
+	}
+	myEnterTargetZoneSmugglerCrateSound
+	{
+		myGuid 47D49AE7B9C2404E87ABEEF2B72AEDBB
+	}
+	myExitTargetZoneSmugglerCrateSound
+	{
+		myGuid 488DE3DD9BB160F894859EF20BA414B3
+	}
+	myOnHologramOpen E259BC2165EB38130006F2EFFA0DBF2B
+	myOnHologramClose E259BC2165EB390F0006F322A14AA28C
+	myOnRotateHolomap E259BC2165EB3AF00006F5A210EDB678
+	myTriggerEffect helix/trigger_effects/gadgets_holotracker_rotate.mtriggereffect
+	myTargetPingSound
+	{
+		myGuid 4162FCFBD4FE6FB0800588DBE93E01A2
+	}
+	myStartUsingGadgetSound
+	{
+		myGuid 432E2C1B8F98C60503BB7A7F33400B9E
+	}
+	myEndUsingGadgetSound
+	{
+		myGuid 49467A013E7561E3EE7B0986AFBDBE92
+	}
+	myStartUsingGadgetSoundOnSpeeder
+	{
+		myGuid 4B71858276F2F1587D05524C61712BAE
+	}
+	myEndUsingGadgetSoundOnSpeeder
+	{
+		myGuid 46F3F187020CB78E94641BBF721F4C94
+	}
+	myStartTurnHoloSound
+	{
+		myGuid 425F456C93DEF2B103DB727B6641AFB0
+	}
+	myEndTurnHoloSound
+	{
+		myGuid 4927F4734B005930E5C9CE856B552C8E
+	}
+	myAngleToTargetRtpc
+	{
+		myGuid 44FEFA43CAE6C5B216E5DC604617F6B3
+	}
+	myDistanceToTargetRtpc
+	{
+		myGuid 41F1B4734B50E95FAC3109F954FA64A2
+	}
+	myFindDiskOnThisPlanetMessage < uid=E259BC21661D3BC60012E5FD227FF361 > = scoundrel_legacy_hints_find_holodisc E259BC216530E3910003D324037F57D7
+	myFindDiskOnAnotherPlanetMessage < uid=E259BC21661D3BC60012E5FE7C1485D0 > = scoundrel_legacy_hints_search_other_planets E259BC216530DDDE0000EB412DE37E1D
+	myActiveDiskOnAnotherPlanetMessage < uid=E259BC21661D3BC60012E5FF7529FA25 > = scoundrel_legacy_hints_travel_another_planet E259BC216530DBB60000EB3A6964C5ED
+	myAllDisksCompletedMessage < uid=E259BC21661D3BC60012E6005A5F95DA > = scoundrel_legacy_hints_complete E259BC21661937400002930E7DE528F1
+	myNoDiskMessage < uid=E259BC216530DF6000038A004C44EA00 > = scoundrel_legacy_hints_find_holodisc E259BC216530E3910003D324037F57D7
+	myInitialDiskIsOnAnotherPlanetMessage < uid=E259BC21662BC68E0002D33B3BF4435E > = scoundrel_legacy_hints_go_to_toshara 224FE633662688FF0002271498FDB52D
+	myEnterSearchAreaCacheVO < uid=DA5615DD6570BDE20004996E42E98ABD > = S_KAY_ScoundrelCaches_UnholsterHoloreader DA5615DD64490A91001CED104ACF8DF1
+	myExitSearchAreaCacheVO < uid=DA5615DD656F5B65002EC2196F485334 > = S_KAY_ScoundrelCaches_HolsterHoloreader DA5615DD64490ACD001CED115B4C52C2
+	myManualHolsterCrateVO < uid=DA5615DD656F5B9D002EC21EEDA1BC51 > = S_KAY_ScoundrelCrates_HolsterHoloreader DA5615DD653F8DC40001D887723F492A
+	myManualUnholsterCrateVO < uid=DA5615DD65704E27001534D6300A0668 > = S_KAY_ScoundrelCrates_UnholsterHoloreader DA5615DD653F8DC40001D886D730B606
+	myGadgetLightOnTime 0.1
+	myInnerAngleThresholdAtMinDistance 30.0
+	myInnerAngleThresholdAtMaxDistance 60.0
+	myOuterAngleThresholdAtMinDistance 80.0
+	myOuterAngleThresholdAtMaxDistance 180.0
+	myMinDistanceForRumble 4.0
+	myMaxDistanceForRumble 150.0
+	myHoloReaderHotAndColdFeedbackType IntensityBasedOnDistance
+	myRumbleCooldownCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.79733729 -0.0052701235, }, outTangents = { 0.33333334 0, 0 0, }, properties = { 3, 1299, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+	myOrientationAngleFeedbackCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -28 1.8626451e-09, }, outTangents = { 15 0, 0 0, }, properties = { 2323, 1299, }, values = { 15 0.25, 60 -1.8626451e-09, }, }, numKeys = 2, }"
+	myDistanceIntensityFeedbackCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -69.008873 0.0041884631, -316.66669 0, }, outTangents = { 80.54734 -0.0010470748, 0 0, 0 0, }, properties = { 275, 1299, 2051, }, values = { 0 1, 150 0.2, 1100 0.2, }, }, numKeys = 3, }"
+	myMinDistanceRumbleCooldown 0.2
+	myMaxDistanceRumbleCooldown 1.0
+	myMinAngleRumbleCooldown 0.5
+	myMaxAngleRumbleCooldown 1.2
+	myMouseSpeedToStickValueRemap "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.39792901 -0.0052355658, }, outTangents = { 0.40088755 -0.0026178062, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+	myIsHologramAttachedToTheGadget TRUE
+	myDistanceFromCamera 0.346
+	myVerticalOffset 1.229
+	myHorizontalOffset 0.0
+	myMinRotationSpeed 50.0
+	myMaxRotationSpeed 130.0
+	myConePositionOffset -0.029074;0.132726;0.0
+	myConeAngle 55.0
+	myProjectionModeTransitionTime 1.2
+	myCompassModeTransitionTime 0.2
+	myRestrictMoveInFocus TRUE
+}
+

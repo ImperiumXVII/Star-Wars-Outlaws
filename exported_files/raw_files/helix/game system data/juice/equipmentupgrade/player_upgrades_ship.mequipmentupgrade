@@ -1,0 +1,792 @@
+include "helix/game system data/fruit/equipmentupgrade/equipmentupgrade.fruit"
+include "helix/game system data/juice/equipmentupgrade/ship_upgrades_categories.mequipmentupgradecategory"
+include "helix/game system data/juice/item/craftingmaterials.mitem"
+include "helix/game system data/juice/item/currencies.mitem"
+include "helix/game system data/juice/item/items_dom_skill.mitem"
+include "helix/game system data/juice/item/keyitems.mitem"
+include "helix/game system data/juice/item/questitems.mitem"
+include "helix/game system data/juice/item/ship_gear.mitem"
+include "helix/game system data/juice/item/trailblazer_turret_mount_test_item.mitem"
+
+EquipmentUpgrade player_upgrades_ship_engines < uid=BFAAA1FC64A6C17B0000AB92E7A7D99C >
+{
+	myEquipmentUpgradeTiers
+	{
+		UpgradeTier Base
+		{
+			myEquipmentItem < uid=BFAAA1FC64A82BE70000FBA7CF77310A > = ship_gear_engine_a B4FBE430642A916A00000BE3AE8DC2D1
+			myUnlockConditions
+			{
+				AbilityItemUnlockRequirement FuelInjectors
+				{
+					myItem < uid=5D372D3765BA21E80008F1862DB79B80 > = qitem_MQ_040_FuelInjectors E42FA10C6214C004000026BE043D0A98
+				}
+			}
+		}
+		UpgradeTier "Upgrade 1"
+		{
+			myEquipmentItem < uid=BFAAA1FC64A82BE70000FBA88086E76A > = ship_gear_engine_b B4FBE430642A916A00000BE5EB4184F8
+			myUnlockConditions
+			{
+				GameConditionPlayerHasItem ship_gear_engine_a
+				{
+					myItem < uid=BFAAA1FC64A82BE70000FBA9838956FC > = ship_gear_engine_a B4FBE430642A916A00000BE3AE8DC2D1
+				}
+				GameConditionPlayerHasItem Credits
+				{
+					myItem < uid=BFAAA1FC64A82BE70000FBAA9C6CEF60 > = Credits 83E36AE360487E88000000375F5EDD50
+					myAmount 750
+				}
+				GameConditionPlayerHasItem CRAW07
+				{
+					myItem < uid=F4D8AE2664AD550B00009F93D3FE0621 > = Mat_Ship_Common_01 F4D8AE2664F5E9FB0003700F4DFB0712
+					myAmount 10
+				}
+				GameConditionPlayerHasItem R_LargeMechanical_01
+				{
+					myItem < uid=F4D8AE26650067F30000C49AE89D2249 > = Mat_Ship_Common_04 E42FA10C62B445CB000035FCF11008B7
+					myAmount 4
+				}
+			}
+		}
+		UpgradeTier "Upgrade 2"
+		{
+			myEquipmentItem < uid=BFAAA1FC64A82C410000FBABEAE56286 > = ship_gear_engine_c B4FBE430642A916A00000BE772EDBB15
+			myUnlockConditions
+			{
+				GameConditionPlayerHasItem ship_gear_engine_b
+				{
+					myItem < uid=BFAAA1FC64A82C410000FBAC5DEF7507 > = ship_gear_engine_b B4FBE430642A916A00000BE5EB4184F8
+				}
+				GameConditionPlayerHasItem Credits
+				{
+					myItem < uid=BFAAA1FC64A82C410000FBAD9418F6F0 > = Credits 83E36AE360487E88000000375F5EDD50
+					myAmount 2000
+				}
+				GameConditionPlayerHasItem "Superior Material"
+				{
+					myItem < uid=F4D8AE2664AD550B00009F951E21048B > = Mat_Ship_Rare_01 E42FA10C60CB5B9B0001574F215E3F5E
+					myAmount 1
+				}
+				GameConditionPlayerHasItem CRAW07
+				{
+					myItem < uid=F4D8AE2664AD550B00009F94B0FF4B7E > = Mat_Ship_Common_01 F4D8AE2664F5E9FB0003700F4DFB0712
+					myAmount 20
+				}
+				GameConditionPlayerHasItem R_LargeMechanical_01
+				{
+					myItem < uid=F4D8AE26650067F30000C49CC2087BF1 > = Mat_Ship_Common_04 E42FA10C62B445CB000035FCF11008B7
+					myAmount 8
+				}
+			}
+		}
+	}
+	myCategory < uid=BFAAA1FC64AD64D20000A701CE1AF151 > = ship_upgrades_categories_engines BFAAA1FC64E5FCCD0007550EDB6FE3B3
+}
+
+EquipmentUpgrade player_upgrades_ship_shields < uid=BFAAA1FC64A6C1AF0000AB93701A518E >
+{
+	myEquipmentUpgradeTiers
+	{
+		UpgradeTier Base
+		{
+			myEquipmentItem < uid=BFAAA1FC64A82CD60000FBAE6FF41CFC > = ship_gear_shield_a B4FBE430642A93A000000C0653A014B2
+			myRequiresManualUnlock FALSE
+		}
+		UpgradeTier "Upgrade 1"
+		{
+			myEquipmentItem < uid=BFAAA1FC64A82CD60000FBAFAEC4B2D6 > = ship_gear_shield_b B4FBE430642A93A000000C080A00986F
+			myUnlockConditions
+			{
+				GameConditionPlayerHasItem ship_gear_shield_a
+				{
+					myItem < uid=BFAAA1FC64A82CD60000FBB088A5AD44 > = ship_gear_shield_a B4FBE430642A93A000000C0653A014B2
+				}
+				GameConditionPlayerHasItem Credits
+				{
+					myItem < uid=BFAAA1FC64A82CD60000FBB1DB5965D6 > = Credits 83E36AE360487E88000000375F5EDD50
+					myAmount 500
+				}
+				GameConditionPlayerHasItem CRAW03
+				{
+					myItem < uid=F4D8AE2664AD55B500009F96A4C67C87 > = Mat_General_Common_03 F4D8AE2664F5E8DC00036FA58305736D
+					myAmount 5
+				}
+				GameConditionPlayerHasItem R_Electronics_04
+				{
+					myItem < uid=F4D8AE26650069870000C4A4927F2F83 > = Mat_Ship_Common_03 F4D8AE2664F5EC0F00037076D0726351
+					myAmount 2
+				}
+			}
+		}
+		UpgradeTier "Upgrade 2"
+		{
+			myEquipmentItem < uid=BFAAA1FC64A82D2D0000FBB2148591BD > = ship_gear_shield_c B4FBE430642A93A000000C0AB1AEFC7F
+			myUnlockConditions
+			{
+				GameConditionPlayerHasItem ship_gear_shield_b
+				{
+					myItem < uid=BFAAA1FC64A82D2D0000FBB39F5CC3F9 > = ship_gear_shield_b B4FBE430642A93A000000C080A00986F
+				}
+				GameConditionPlayerHasItem Credits
+				{
+					myItem < uid=BFAAA1FC64A82D2D0000FBB43A3692DB > = Credits 83E36AE360487E88000000375F5EDD50
+					myAmount 1500
+				}
+				GameConditionPlayerHasItem "Superior Material"
+				{
+					myItem < uid=F4D8AE26650069870000C4A5744233BA > = Mat_Ship_Rare_01 E42FA10C60CB5B9B0001574F215E3F5E
+				}
+				GameConditionPlayerHasItem CRAW07
+				{
+					myItem < uid=F4D8AE2664AD55EC00009F97872AA930 > = Mat_Ship_Common_01 F4D8AE2664F5E9FB0003700F4DFB0712
+					myAmount 15
+				}
+				GameConditionPlayerHasItem R_Electronics_02
+				{
+					myItem < uid=F4D8AE26650069870000C4A6B02341CB > = Mat_Ship_Common_02 F4D8AE2664F5EC0F0003707067208139
+					myAmount 7
+				}
+			}
+		}
+	}
+	myCategory < uid=BFAAA1FC64AD64FC0000A70237E9CEAD > = ship_upgrades_categories_shields BFAAA1FC64E5FC9A0007550A92C17F31
+}
+
+EquipmentUpgrade player_upgrades_ship_hull < uid=BFAAA1FC64A6C1CC0000AB9439AB0825 >
+{
+	myEquipmentUpgradeTiers
+	{
+		UpgradeTier Base
+		{
+			myEquipmentItem < uid=BFAAA1FC64A82DA70000FBB52A51379E > = ship_gear_hull_a B4FBE430642A916A00000BE9E5F8A9FD
+			myRequiresManualUnlock FALSE
+		}
+		UpgradeTier "Upgrade 1"
+		{
+			myEquipmentItem < uid=BFAAA1FC64A82DA70000FBB612614310 > = ship_gear_hull_b B4FBE430642A916A00000BEBFB8363B5
+			myUnlockConditions
+			{
+				GameConditionPlayerHasItem ship_gear_hull_a
+				{
+					myItem < uid=BFAAA1FC64A82DA70000FBB76B5B09AE > = ship_gear_hull_a B4FBE430642A916A00000BE9E5F8A9FD
+				}
+				GameConditionPlayerHasItem Credits
+				{
+					myItem < uid=BFAAA1FC64A82DA70000FBB8E575EE54 > = Credits 83E36AE360487E88000000375F5EDD50
+					myAmount 500
+				}
+				GameConditionPlayerHasItem CRAW07
+				{
+					myItem < uid=F4D8AE26650068E30000C49D1AD3C8DA > = Mat_Ship_Common_01 F4D8AE2664F5E9FB0003700F4DFB0712
+					myAmount 5
+				}
+				GameConditionPlayerHasItem R_LargeMechanical_01
+				{
+					myItem < uid=F4D8AE26650068E30000C49F55F17449 > = Mat_Ship_Common_04 E42FA10C62B445CB000035FCF11008B7
+					myAmount 2
+				}
+			}
+		}
+		UpgradeTier "Upgrade 2"
+		{
+			myEquipmentItem < uid=BFAAA1FC64A82DE70000FBB9463BD8A3 > = ship_gear_hull_c B4FBE430642A916A00000BED15FB5621
+			myUnlockConditions
+			{
+				GameConditionPlayerHasItem ship_gear_hull_b
+				{
+					myItem < uid=BFAAA1FC64A82DE70000FBBA5E5A6AB7 > = ship_gear_hull_b B4FBE430642A916A00000BEBFB8363B5
+				}
+				GameConditionPlayerHasItem Credits
+				{
+					myItem < uid=BFAAA1FC64A82DE70000FBBBEDFF0EAB > = Credits 83E36AE360487E88000000375F5EDD50
+					myAmount 1500
+				}
+				GameConditionPlayerHasItem "Superior Material"
+				{
+					myItem < uid=F4D8AE26650068E30000C4A0D4A75AF5 > = Mat_Ship_Rare_01 E42FA10C60CB5B9B0001574F215E3F5E
+				}
+				GameConditionPlayerHasItem CRAW07
+				{
+					myItem < uid=F4D8AE2664AD566500009F99DBD7E67F > = Mat_Ship_Common_01 F4D8AE2664F5E9FB0003700F4DFB0712
+					myAmount 15
+				}
+				GameConditionPlayerHasItem R_LargeMechanical_01
+				{
+					myItem < uid=F4D8AE26650068E30000C4A150B6CDA3 > = Mat_Ship_Common_04 E42FA10C62B445CB000035FCF11008B7
+					myAmount 7
+				}
+			}
+		}
+	}
+	myCategory < uid=BFAAA1FC64AD64FC0000A70351737B44 > = ship_upgrades_categories_hulls BFAAA1FC64E5FCB10007550CC2D748FA
+}
+
+EquipmentUpgrade player_upgrades_ship_cannons_a < uid=BFAAA1FC64A67C2500009BFA8A745F5C >
+{
+	myEquipmentUpgradeTiers
+	{
+		UpgradeTier Base
+		{
+			myEquipmentItem < uid=BFAAA1FC64A6D8D60000AB96344CE0B5 > = ship_gear_laser_cannons_a B4FBE430642A8E4200000BB2EC003F6B
+			myRequiresManualUnlock FALSE
+		}
+		UpgradeTier "Upgrade 1"
+		{
+			myEquipmentItem < uid=BFAAA1FC64A680640000AB82CF203CDB > = ship_gear_laser_cannons_b B4FBE430642A8E4200000BB472403398
+			myUnlockConditions
+			{
+				GameConditionPlayerHasItem ship_gear_laser_cannons_a
+				{
+					myItem < uid=BFAAA1FC64A680640000AB83B8FFFF2D > = ship_gear_laser_cannons_a B4FBE430642A8E4200000BB2EC003F6B
+				}
+				GameConditionPlayerHasItem Credits
+				{
+					myItem < uid=BFAAA1FC64A7D3E70000FB8528ADC764 > = Credits 83E36AE360487E88000000375F5EDD50
+					myAmount 500
+				}
+				GameConditionPlayerHasItem CRAW03
+				{
+					myItem < uid=F4D8AE2664AD58FF00009F9A4C629BC6 > = Mat_General_Common_03 F4D8AE2664F5E8DC00036FA58305736D
+					myAmount 5
+				}
+				GameConditionPlayerHasItem R_Electronics_02
+				{
+					myItem < uid=F4D8AE26650063090000C47312F219A8 > = Mat_Ship_Common_02 F4D8AE2664F5EC0F0003707067208139
+					myAmount 2
+				}
+			}
+		}
+		UpgradeTier "Upgrade 2"
+		{
+			myEquipmentItem < uid=BFAAA1FC64A680640000AB846B3E355A > = ship_gear_laser_cannons_c B4FBE430642A8E4200000BB6AF800E02
+			myUnlockConditions
+			{
+				GameConditionPlayerHasItem ship_gear_laser_cannons_b
+				{
+					myItem < uid=BFAAA1FC64A7D2760000FB803546FA03 > = ship_gear_laser_cannons_b B4FBE430642A8E4200000BB472403398
+				}
+				GameConditionPlayerHasItem Credits
+				{
+					myItem < uid=BFAAA1FC64A7D3FD0000FB86D4BD4ED5 > = Credits 83E36AE360487E88000000375F5EDD50
+					myAmount 1500
+				}
+				GameConditionPlayerHasItem "Superior Material"
+				{
+					myItem < uid=F4D8AE2664C0D59C0000B28D20F55934 > = Mat_Ship_Rare_01 E42FA10C60CB5B9B0001574F215E3F5E
+				}
+				GameConditionPlayerHasItem craw07
+				{
+					myItem < uid=F4D8AE2664C0D59C0000B28CE7A7E0DA > = Mat_Ship_Common_01 F4D8AE2664F5E9FB0003700F4DFB0712
+					myAmount 15
+				}
+				GameConditionPlayerHasItem R_LargeMechanical_01
+				{
+					myItem < uid=F4D8AE26650063090000C4749A081C17 > = Mat_Ship_Common_04 E42FA10C62B445CB000035FCF11008B7
+					myAmount 7
+				}
+			}
+		}
+	}
+	myCategory < uid=BFAAA1FC64AD64FC0000A704EB7C3C72 > = ship_upgrades_cateogires_cannons BFAAA1FC64E5F18C00039ACA32CAFC2B
+}
+
+EquipmentUpgrade player_upgrades_ship_cannons_b < uid=BFAAA1FC64A68CCB0000AB88DD61539E >
+{
+	myEquipmentUpgradeTiers
+	{
+		UpgradeTier Base
+		{
+			myEquipmentItem < uid=BFAAA1FC64A7D2CE0000FB812B914C68 > = ship_gear_rapid_fire_cannons_a B4FBE43064A6CD730000A7D34477533C
+			myUnlockConditions
+			{
+				GameConditionPlayerHasItem Credits
+				{
+					myItem < uid=BFAAA1FC64A81EDC0000FB8875A4E867 > = Credits 83E36AE360487E88000000375F5EDD50
+					myAmount 750
+				}
+				GameConditionPlayerHasItem CRAW07
+				{
+					myItem < uid=F4D8AE2664AD58FF00009F9B9ED3D853 > = Mat_Ship_Common_01 F4D8AE2664F5E9FB0003700F4DFB0712
+					myAmount 10
+				}
+				GameConditionPlayerHasItem RLMECH01
+				{
+					myItem < uid=F4D8AE26650063FA0000C47620ABFB72 > = Mat_Ship_Common_04 E42FA10C62B445CB000035FCF11008B7
+					myAmount 4
+				}
+			}
+		}
+		UpgradeTier "Upgrade 1"
+		{
+			myEquipmentItem < uid=BFAAA1FC64A7D2CE0000FB82AEEA40C4 > = ship_gear_rapid_fire_cannons_b B4FBE43064A6CDBF0000A7EC6891C256
+			myUnlockConditions
+			{
+				GameConditionPlayerHasItem ship_gear_rapid_fire_cannons_a
+				{
+					myItem < uid=BFAAA1FC64A7D2CE0000FB838B6A4DB3 > = ship_gear_rapid_fire_cannons_a B4FBE43064A6CD730000A7D34477533C
+				}
+				GameConditionPlayerHasItem Credits
+				{
+					myItem < uid=BFAAA1FC64A81E630000FB870D638624 > = Credits 83E36AE360487E88000000375F5EDD50
+					myAmount 2000
+				}
+				GameConditionPlayerHasItem "Superior Material"
+				{
+					myItem < uid=F4D8AE26650063FA0000C477A2169996 > = Mat_Ship_Rare_01 E42FA10C60CB5B9B0001574F215E3F5E
+				}
+				GameConditionPlayerHasItem CRAW07
+				{
+					myItem < uid=F4D8AE26650063FA0000C4787824C167 > = Mat_Ship_Common_01 F4D8AE2664F5E9FB0003700F4DFB0712
+					myAmount 20
+				}
+				GameConditionPlayerHasItem R_Electronics_02
+				{
+					myItem < uid=F4D8AE26650063FA0000C479E2F6EE08 > = Mat_Ship_Common_02 F4D8AE2664F5EC0F0003707067208139
+					myAmount 8
+				}
+			}
+		}
+	}
+	myDiscoveryConditions
+	{
+	}
+	myCategory < uid=BFAAA1FC64AD64FC0000A705F2F5C835 > = ship_upgrades_cateogires_cannons BFAAA1FC64E5F18C00039ACA32CAFC2B
+}
+
+EquipmentUpgrade player_upgrades_ship_cannons_c < uid=BFAAA1FC64A6907B0000AB8927B9AA7A >
+{
+	myEquipmentUpgradeTiers
+	{
+		UpgradeTier Base
+		{
+			myEquipmentItem < uid=F4D8AE266500646F0000C47A9DF9E94F > = ship_gear_plasburst_cannons_a B4FBE43064A6CDBF0000A7EF8E999F09
+			myUnlockConditions
+			{
+				GameConditionPlayerHasItem Credits
+				{
+					myItem < uid=F4D8AE266500646F0000C47B8B35094F > = Credits 83E36AE360487E88000000375F5EDD50
+					myAmount 750
+				}
+				GameConditionPlayerHasItem CRAW07
+				{
+					myItem < uid=F4D8AE266500646F0000C47CD544CEB7 > = Mat_Ship_Common_01 F4D8AE2664F5E9FB0003700F4DFB0712
+					myAmount 10
+				}
+				GameConditionPlayerHasItem R_Electronics_04
+				{
+					myItem < uid=F4D8AE266500646F0000C47ED276CE75 > = Mat_Ship_Common_03 F4D8AE2664F5EC0F00037076D0726351
+					myAmount 4
+				}
+			}
+		}
+		UpgradeTier "Upgrade 1"
+		{
+			myEquipmentItem < uid=F4D8AE266500646F0000C47FF12ADA05 > = ship_gear_plasburst_cannons_b B4FBE43064A6CDBF0000A7F2812DE98C
+			myUnlockConditions
+			{
+				GameConditionPlayerHasItem ship_gear_plasburst_cannons_a
+				{
+					myItem < uid=F4D8AE266500646F0000C48002E883E1 > = ship_gear_plasburst_cannons_a B4FBE43064A6CDBF0000A7EF8E999F09
+				}
+				GameConditionPlayerHasItem Credits
+				{
+					myItem < uid=F4D8AE266500646F0000C4813DA5C531 > = Credits 83E36AE360487E88000000375F5EDD50
+					myAmount 2000
+				}
+				GameConditionPlayerHasItem "Superior Material"
+				{
+					myItem < uid=F4D8AE266500646F0000C48259C4A196 > = Mat_Ship_Rare_01 E42FA10C60CB5B9B0001574F215E3F5E
+				}
+				GameConditionPlayerHasItem CRAW07
+				{
+					myItem < uid=F4D8AE266500646F0000C483FE99A259 > = Mat_Ship_Common_01 F4D8AE2664F5E9FB0003700F4DFB0712
+					myAmount 20
+				}
+				GameConditionPlayerHasItem RELEC04
+				{
+					myItem < uid=F4D8AE266500646F0000C485ABB71799 > = Mat_Ship_Common_02 F4D8AE2664F5EC0F0003707067208139
+					myAmount 8
+				}
+			}
+		}
+	}
+	myCategory < uid=BFAAA1FC64AD64FC0000A7068B10EC60 > = ship_upgrades_cateogires_cannons BFAAA1FC64E5F18C00039ACA32CAFC2B
+}
+
+EquipmentUpgrade player_upgrades_ship_launcher_a < uid=BFAAA1FC64A691510000AB8A523978DD >
+{
+	myEquipmentUpgradeTiers
+	{
+		UpgradeTier Base
+		{
+			myEquipmentItem < uid=F4D8AE26650065B60000C486D703DB68 > = ship_gear_launcher_concussion_a B4FBE430642A8E4200000BB870658DB6
+			myUnlockConditions
+			{
+			}
+			myRequiresManualUnlock FALSE
+		}
+		UpgradeTier "Upgrade 1"
+		{
+			myEquipmentItem < uid=BFAAA1FC64AD62F80000A6F21BE7E075 > = ship_gear_launcher_concussion_b B4FBE430642A8E4200000BBA2988435A
+			myUnlockConditions
+			{
+				GameConditionPlayerHasItem ship_gear_launcher_concussion_a
+				{
+					myItem < uid=BFAAA1FC64A826DA0000FB8FD7CA22C2 > = ship_gear_launcher_concussion_a B4FBE430642A8E4200000BB870658DB6
+				}
+				GameConditionPlayerHasItem Credits
+				{
+					myItem < uid=BFAAA1FC64A826DA0000FB9022A05AD6 > = Credits 83E36AE360487E88000000375F5EDD50
+					myAmount 750
+				}
+				GameConditionPlayerHasItem CRAW03
+				{
+					myItem < uid=F4D8AE2664C0DAA30000B2938C0C0413 > = Mat_General_Common_03 F4D8AE2664F5E8DC00036FA58305736D
+					myAmount 10
+				}
+				GameConditionPlayerHasItem R_Electronics_04
+				{
+					myItem < uid=F4D8AE26650065B60000C48CF1560E97 > = Mat_Ship_Common_03 F4D8AE2664F5EC0F00037076D0726351
+					myAmount 4
+				}
+			}
+		}
+		UpgradeTier "Upgrade 2"
+		{
+			myEquipmentItem < uid=B4FBE430655339B600016C36170B7893 > = ship_gear_launcher_concussion_c B4FBE43064F98E2C0003E4D6D3111134
+			myUnlockConditions
+			{
+				GameConditionPlayerHasItem ship_gear_launcher_concussion_b
+				{
+					myItem < uid=2AE2EC8565CF5F70000000FB2213A455 > = ship_gear_launcher_concussion_b B4FBE430642A8E4200000BBA2988435A
+				}
+				GameConditionPlayerHasItem Credits
+				{
+					myItem < uid=2AE2EC8565CF5F70000000FCC1A6D4A3 > = Credits 83E36AE360487E88000000375F5EDD50
+					myAmount 2000
+				}
+				GameConditionPlayerHasItem "Superior Material"
+				{
+					myItem < uid=2AE2EC8565CF5F70000000FD781D9D24 > = Mat_Ship_Rare_01 E42FA10C60CB5B9B0001574F215E3F5E
+				}
+				GameConditionPlayerHasItem CRAW07
+				{
+					myItem < uid=2AE2EC8565CF5F70000000FEB90E75F1 > = Mat_Ship_Common_01 F4D8AE2664F5E9FB0003700F4DFB0712
+					myAmount 20
+				}
+				GameConditionPlayerHasItem R_LargeMechanical_01
+				{
+					myItem < uid=2AE2EC8565CF5F7000000100F1749036 > = Mat_Ship_Common_04 E42FA10C62B445CB000035FCF11008B7
+					myAmount 8
+				}
+			}
+		}
+	}
+	myCategory < uid=BFAAA1FC64AD64FC0000A70741730F1D > = ship_upgrades_categories_launchers BFAAA1FC64A67C7600009BFEECCA1C41
+}
+
+EquipmentUpgrade player_upgrades_ship_launcher_b < uid=BFAAA1FC64A6C0A10000AB8F54D87E58 >
+{
+	myEquipmentUpgradeTiers
+	{
+		UpgradeTier Base
+		{
+			myEquipmentItem < uid=BFAAA1FC64A8274C0000FB918E4E797E > = ship_gear_launcher_torpedo_a B4FBE430642A8E4200000BBE73AC414E
+			myUnlockConditions
+			{
+				GameConditionPlayerHasItem Credits
+				{
+					myItem < uid=F4D8AE26650065E60000C48D289D378F > = Credits 83E36AE360487E88000000375F5EDD50
+					myAmount 1000
+				}
+				GameConditionPlayerHasItem CRAW07
+				{
+					myItem < uid=F4D8AE26650065E60000C48EB212B0D0 > = Mat_Ship_Common_01 F4D8AE2664F5E9FB0003700F4DFB0712
+					myAmount 15
+				}
+				GameConditionPlayerHasItem R_Electronics_02
+				{
+					myItem < uid=F4D8AE26650065E60000C4904EA8EE66 > = Mat_Ship_Common_02 F4D8AE2664F5EC0F0003707067208139
+					myAmount 7
+				}
+			}
+		}
+		UpgradeTier "Upgrade 1"
+		{
+			myEquipmentItem < uid=BFAAA1FC64A8274C0000FB93A9E1FCFE > = ship_gear_launcher_torpedo_b B4FBE430642A8E4200000BC08ED6AAB2
+			myUnlockConditions
+			{
+				GameConditionPlayerHasItem ship_gear_launcher_torpedo_a
+				{
+					myItem < uid=BFAAA1FC64A8274C0000FB9489B775FE > = ship_gear_launcher_torpedo_a B4FBE430642A8E4200000BBE73AC414E
+				}
+				GameConditionPlayerHasItem Credits
+				{
+					myItem < uid=BFAAA1FC64A8274C0000FB9574CF683F > = Credits 83E36AE360487E88000000375F5EDD50
+					myAmount 2500
+				}
+				GameConditionPlayerHasItem "Superior Material"
+				{
+					myItem < uid=F4D8AE2664C0DAEA0000B298F8C2C617 > = Mat_Ship_Rare_01 E42FA10C60CB5B9B0001574F215E3F5E
+				}
+				GameConditionPlayerHasItem CRAW07
+				{
+					myItem < uid=F4D8AE2664C0DAEA0000B29748E244C4 > = Mat_Ship_Common_01 F4D8AE2664F5E9FB0003700F4DFB0712
+					myAmount 25
+				}
+				GameConditionPlayerHasItem R_LargeMechanical_01
+				{
+					myItem < uid=F4D8AE26650066C90000C492A8FB3C7A > = Mat_Ship_Common_04 E42FA10C62B445CB000035FCF11008B7
+					myAmount 12
+				}
+			}
+		}
+	}
+	myCategory < uid=BFAAA1FC64AD64FC0000A7084BE634ED > = ship_upgrades_categories_launchers BFAAA1FC64A67C7600009BFEECCA1C41
+}
+
+EquipmentUpgrade player_upgrades_ship_launcher_c < uid=BFAAA1FC64A6C0A10000AB904D409707 >
+{
+	myEquipmentUpgradeTiers
+	{
+		UpgradeTier Base
+		{
+			myEquipmentItem < uid=BFAAA1FC64A827DB0000FB96833CBD80 > = ship_gear_launcher_ion_a B4FBE43064A6CE6D0000A80F4304F3A4
+			myUnlockConditions
+			{
+				GameConditionPlayerHasItem Credits
+				{
+					myItem < uid=F4D8AE26650066C90000C493FCB9B450 > = Credits 83E36AE360487E88000000375F5EDD50
+					myAmount 1000
+				}
+				GameConditionPlayerHasItem CRAW07
+				{
+					myItem < uid=F4D8AE26650066C90000C494F56BAE7F > = Mat_Ship_Common_01 F4D8AE2664F5E9FB0003700F4DFB0712
+					myAmount 15
+				}
+				GameConditionPlayerHasItem R_Electronics_02
+				{
+					myItem < uid=F4D8AE26650066C90000C4964FCA51F2 > = Mat_Ship_Common_02 F4D8AE2664F5EC0F0003707067208139
+					myAmount 7
+				}
+			}
+		}
+		UpgradeTier "Upgrade 1"
+		{
+			myEquipmentItem < uid=BFAAA1FC64A827DB0000FB9817B63EDD > = ship_gear_launcher_ion_b B4FBE43064A6CE6D0000A8120B6229DF
+			myUnlockConditions
+			{
+				GameConditionPlayerHasItem ship_gear_launcher_ion_a
+				{
+					myItem < uid=BFAAA1FC64A827DB0000FB9918372284 > = ship_gear_launcher_ion_a B4FBE43064A6CE6D0000A80F4304F3A4
+				}
+				GameConditionPlayerHasItem Credits
+				{
+					myItem < uid=BFAAA1FC64A827DB0000FB9A7E814CBF > = Credits 83E36AE360487E88000000375F5EDD50
+					myAmount 2500
+				}
+				GameConditionPlayerHasItem "Superior Material"
+				{
+					myItem < uid=F4D8AE2664C0DB5D0000B29C6A4FABAA > = Mat_Ship_Rare_01 E42FA10C60CB5B9B0001574F215E3F5E
+				}
+				GameConditionPlayerHasItem CRAW07
+				{
+					myItem < uid=F4D8AE2664C0DB5D0000B29B84533749 > = Mat_Ship_Common_01 F4D8AE2664F5E9FB0003700F4DFB0712
+					myAmount 25
+				}
+				GameConditionPlayerHasItem R_Electronics_04
+				{
+					myItem < uid=F4D8AE26650067510000C498D650369A > = Mat_Ship_Common_03 F4D8AE2664F5EC0F00037076D0726351
+					myAmount 12
+				}
+			}
+		}
+	}
+	myCategory < uid=BFAAA1FC64AD64FC0000A709170EE9C4 > = ship_upgrades_categories_launchers BFAAA1FC64A67C7600009BFEECCA1C41
+}
+
+EquipmentUpgrade player_upgrades_ship_turret_laser < uid=BFAAA1FC64A6C1070000AB91BA0DD19E >
+{
+	myEquipmentUpgradeTiers
+	{
+		UpgradeTier Base
+		{
+			myEquipmentItem < uid=BFAAA1FC64A828E50000FB9BBEE5E875 > = ship_gear_turret_laser_a C107E9E964EF5E860004802728372A65
+			myUnlockConditions
+			{
+			}
+			myRequiresManualUnlock FALSE
+			myAutoEquipOnUnlock TRUE
+		}
+		UpgradeTier "Upgrade 1"
+		{
+			myEquipmentItem < uid=BFAAA1FC64A828E50000FB9DB9814B24 > = ship_gear_turret_laser_b C107E9E964EF5E860004802ABE28CFC3
+			myUnlockConditions
+			{
+				GameConditionPlayerHasItem turretLaserA
+				{
+					myItem < uid=F4D8AE2664C0D2F70000B288292F15DE > = ship_gear_turret_laser_a C107E9E964EF5E860004802728372A65
+				}
+				GameConditionPlayerHasItem Credits
+				{
+					myItem < uid=F4D8AE2664C0D2F70000B2896494602A > = Credits 83E36AE360487E88000000375F5EDD50
+					myAmount 2500
+				}
+				GameConditionPlayerHasItem "Superior Material"
+				{
+					myItem < uid=F4D8AE2665006A270000C4A8AACBE835 > = Mat_Ship_Rare_01 E42FA10C60CB5B9B0001574F215E3F5E
+				}
+				GameConditionPlayerHasItem CRAW07
+				{
+					myItem < uid=F4D8AE2664C0D2F70000B28AFA6C8EDD > = Mat_Ship_Common_01 F4D8AE2664F5E9FB0003700F4DFB0712
+					myAmount 30
+				}
+				GameConditionPlayerHasItem R_Electronics_02
+				{
+					myItem < uid=F4D8AE2665006A270000C4A7C1A3C4B5 > = Mat_Ship_Common_02 F4D8AE2664F5EC0F0003707067208139
+					myAmount 15
+				}
+			}
+		}
+	}
+	myDiscoveryConditions
+	{
+		GameConditionPlayerHasItem TurretExpertSA
+		{
+			myItem < uid=F4D8AE2664C0D1FF0000B2834C4245B7 > = DoM_item_ShipTurret F4D8AE2664C0D1850000B27F0E2F4836
+		}
+	}
+	myCategory < uid=BFAAA1FC64AD64FC0000A70A1B7174A9 > = ship_upgrades_categories_turrets BFAAA1FC64E5F34A0005B9CBC8E19462
+}
+
+EquipmentUpgrade player_upgrades_ship_turret_ion < uid=BFAAA1FC64A82A390000FBA3C2E5F303 >
+{
+	myEquipmentUpgradeTiers
+	{
+		UpgradeTier Base
+		{
+			myEquipmentItem < uid=BFAAA1FC64A82B180000FBA4C3F189FF > = ship_gear_turret_ion C107E9E964EF5F450004E7B3342F010B
+			myUnlockConditions
+			{
+				GameConditionPlayerHasItem Credits
+				{
+					myItem < uid=F4D8AE2664C0D2B10000B2856C043E57 > = Credits 83E36AE360487E88000000375F5EDD50
+					myAmount 2500
+				}
+				GameConditionPlayerHasItem "Superior Material"
+				{
+					myItem < uid=F4D8AE2665006AC10000C4A9CF71C135 > = Mat_Ship_Rare_01 E42FA10C60CB5B9B0001574F215E3F5E
+				}
+				GameConditionPlayerHasItem CRAW07
+				{
+					myItem < uid=F4D8AE2664C0D2B10000B28692018CE1 > = Mat_Ship_Common_01 F4D8AE2664F5E9FB0003700F4DFB0712
+					myAmount 30
+				}
+				GameConditionPlayerHasItem R_Electronics_04
+				{
+					myItem < uid=F4D8AE2665006AC10000C4AA65F6EC09 > = Mat_Ship_Common_03 F4D8AE2664F5EC0F00037076D0726351
+					myAmount 15
+				}
+			}
+		}
+	}
+	myDiscoveryConditions
+	{
+		GameConditionPlayerHasItem TurretExpertSA
+		{
+			myItem < uid=F4D8AE2664C0D1FF0000B284A068B249 > = DoM_item_ShipTurret F4D8AE2664C0D1850000B27F0E2F4836
+		}
+	}
+	myCategory < uid=BFAAA1FC64AD64FC0000A70BC2A39B3D > = ship_upgrades_categories_turrets BFAAA1FC64E5F34A0005B9CBC8E19462
+}
+
+EquipmentUpgrade player_upgrades_ship_aux_a_countermeasure < uid=BFAAA1FC64A6D5D30000AB95EDFEAFAF >
+{
+	myEquipmentUpgradeTiers
+	{
+		UpgradeTier Base
+		{
+			myEquipmentItem < uid=BFAAA1FC64AD62F80000A6F343725CF1 > = ship_gear_aux_countermeasure C10161EF64A2881200003E63CAC2B33E
+			myUnlockConditions
+			{
+			}
+			myRequiresManualUnlock FALSE
+			myAutoEquipOnUnlock TRUE
+		}
+	}
+	myDiscoveryConditions
+	{
+		GameConditionPlayerHasItem itself
+		{
+			myItem < uid=5D372D37665055D4000D7419C5C1E70B > = ship_gear_aux_countermeasure C10161EF64A2881200003E63CAC2B33E
+		}
+	}
+	myCategory < uid=BFAAA1FC64AD64FC0000A70CB8989ED8 > = ship_upgrades_categories_aux BFAAA1FC64E5FCE10007551085ACC23B
+}
+
+EquipmentUpgrade player_upgrades_ship_aux_b_repair < uid=BFAAA1FC64A6DA7E0000AB9ABC72DFCF >
+{
+	myEquipmentUpgradeTiers
+	{
+		UpgradeTier Base
+		{
+			myEquipmentItem < uid=BFAAA1FC64AD62F80000A6F5A2D7F101 > = ship_gear_aux_repair_kit C10161EF64A287D3000030FADB30302C
+			myUnlockConditions
+			{
+			}
+		}
+	}
+	myCategory < uid=BFAAA1FC64AD64FC0000A70DD8B800C6 > = ship_upgrades_categories_aux BFAAA1FC64E5FCE10007551085ACC23B
+}
+
+EquipmentUpgrade player_upgrades_ship_aux_c_sensor_jammer < uid=BFAAA1FC64A6DA7E0000AB9BE8D2F51B >
+{
+	myEquipmentUpgradeTiers
+	{
+		UpgradeTier Base
+		{
+			myEquipmentItem < uid=BFAAA1FC64AD62F80000A6F757531881 > = ship_gear_aux_sensor_jammer B4FBE430642A93A000000C028EB0C1C0
+			myUnlockConditions
+			{
+			}
+			myRequiresManualUnlock FALSE
+			myAutoEquipOnUnlock TRUE
+		}
+	}
+	myDiscoveryConditions
+	{
+		GameConditionPlayerHasItem itself
+		{
+			myItem < uid=5D372D37665055D4000D741AD5603934 > = ship_gear_aux_sensor_jammer B4FBE430642A93A000000C028EB0C1C0
+			myAmount 1
+		}
+	}
+	myCategory < uid=BFAAA1FC64AD64FC0000A70E48FCF344 > = ship_upgrades_categories_aux BFAAA1FC64E5FCE10007551085ACC23B
+}
+
+EquipmentUpgrade player_upgrades_ship_aux_d_weapon_overdrive < uid=BFAAA1FC64A6DA7E0000AB9C83001019 >
+{
+	myEquipmentUpgradeTiers
+	{
+		UpgradeTier Base
+		{
+			myEquipmentItem < uid=BFAAA1FC64AD62F80000A6F9A24D49FB > = ship_gear_aux_weapon_overdrive B4FBE430642A93A000000C04065D67DA
+			myUnlockConditions
+			{
+			}
+			myRequiresManualUnlock FALSE
+			myAutoEquipOnUnlock TRUE
+		}
+	}
+	myDiscoveryConditions
+	{
+		GameConditionPlayerHasItem itself
+		{
+			myItem < uid=5D372D37665055D4000D741BAA7B6EAA > = ship_gear_aux_weapon_overdrive B4FBE430642A93A000000C04065D67DA
+			myAmount 1
+		}
+	}
+	myCategory < uid=BFAAA1FC64AD64FC0000A70F9658F315 > = ship_upgrades_categories_aux BFAAA1FC64E5FCE10007551085ACC23B
+}
+

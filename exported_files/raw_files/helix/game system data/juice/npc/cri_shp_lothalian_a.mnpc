@@ -1,0 +1,41 @@
+include "helix/game system data/juice/ai/cri_lothalian_attached_npc_set.mnpconnpcattachmentset"
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/loottable/loot_global.mloottable"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/cri_shp_base.mnpc"
+include "helix/game system data/juice/npc/hut_shp_base.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC cri_shp_lothalian_a < uid=F95CD8F364836205000018ACE243F6D8 > : cri_shp_base
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Manta/Lothalian - Crimson Dawn faction\", enabled = true, guid = #6AE6EE0D657833DD0002669C57E2A04F, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10726, text = \"SRX-T Manta\", type = \"MenuLine\""
+	myCharacterVisuals < uid=F95CD8F364836205000018AD245B0030 > = character_visuals_npc_shp_Lothalian_Corvette F95CD8F362ECDC030000E9D3A03BC13F
+	myNPCComponentSetType Spaceship
+	mySpaceshipType LothalianCrimsonDawn
+	myMaxHealth 3000
+	myHealthFormula 1500*SpaceHealthWarshipDifficultyModifier
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A12912164EE17260003C565C420DB4E > = Agent_Archetype_Pilot 3A12912163EF7B9500005053123CF383
+		RBTagsTag "New RBTagsTag (0)" < uid=3A12912164EE17260003C566ED866E04 > = Agent_ShipType_CruiserTag 3A12912164DCDD0A00011358B889F2D0
+		RBTagsTag "New RBTagsTag (1)" < uid=3A12912164EE17260003C56723569F1C > = Agent_Faction_CrimsonDawnTag 16DEADE6620AE18B000020CB8EDA8070
+	}
+	myLodType Spaceship_Cruiser
+	myVisionProfile < uid=F95CD8F364836205000018AF35E1DC1D > = visionProfile_cri_ship_Warship 6B0E1DE964B7A45D0000AD697BF53B89
+	myHearingProfile < uid=F95CD8F364836205000018B0C8E9194F > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=F95CD8F364836205000018B1344FDAE2 > = detectionProfile_cri_ship_Warship 6B0E1DE964B6644F0003C72C95679D42
+	}
+	myThreatProfile < uid=F95CD8F3653FC48900004D8FB699440B > = warshipnpcthreatprofiles F95CD8F3653F5C6800009CA56C0B9313
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "Lothalian weapon loadout" < uid=7EE64634651BCE30000050AA16CE60EF > = weaponloadout_cri_shp_lothalian 7EE64634651BF74400014694598B2579
+	}
+	myAttachedNPCsSet < uid=6EA79625650AE58C00011633D7EC8FD7 > = cri_lothalian_attached_npc_set 6EA79625650AE5150001161DFBA1D641
+	myLootTable < uid=2AE2EC85654CB8380001096F1746C00F > = loot_OnKill_Ship 2AE2EC85654CB4920001094584D7F698
+	myCombatRole Warship
+}
+

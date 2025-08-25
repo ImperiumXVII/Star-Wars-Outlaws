@@ -1,0 +1,265 @@
+include "helix/game system data/fruit/camera/camerapreset.fruit"
+include "helix/game system data/fruit/faction/faction.fruit"
+include "helix/game system data/fruit/sound/audiocomponentparameters.fruit"
+include "helix/game system data/fruit/character/charactervisuals.fruit"
+include "helix/game system data/fruit/camera/cameramodifier.fruit"
+include "helix/game system data/fruit/camera/vehiclecamerasettings.fruit"
+include "helix/game system data/fruit/input/rumble.fruit"
+include "helix/game system data/fruit/impact/impact.fruit"
+include "helix/game system data/fruit/vehicle/groundvehicleresistanceprofile.fruit"
+include "helix/game system data/fruit/vehicle/groundvehicleupgrade.fruit"
+include "helix/game system data/fruit/rumble/rumble.fruit"
+include "helix/game system data/fruit/settings/healthsettings.fruit"
+include "helix/game system data/fruit/ai/pathfinding/navigation_capabilities.fruit"
+include "helix/game system data/fruit/ai/pathfinding/navmesh_layer_type.fruit"
+include "helix/game system data/fruit/ai/groundvehicleaimovementprofile.fruit"
+include "helix/game system data/fruit/ai/npconnpcattachment.fruit"
+include "snowdrop/modules/core/physics/collisionmaterials.fruit"
+
+enum HC_VehicleAnimationType
+{
+	Player
+	NPC
+}
+
+enum NPCVehicleMountPointLocation
+{
+	NotSet
+	LeftFront
+	LeftMiddle
+	LeftRear
+	RightFront
+	RightMiddle
+	RightRear
+}
+
+class VehicleTerrainRumbleEntry
+{
+	CollisionMaterial* myTerrainMaterial
+	uid myRumble < bhv="constantData" constantDataType="rumble" tooltip="The rumble that is player for the specified terrain material">
+}
+
+list VehicleTerrainRumbleList
+{
+	VehicleTerrainRumbleEntry
+}
+
+class VehicleTraversalRumbles
+{
+	uid myDefaultRumble < bhv="constantData" constantDataType="rumble" tooltip="If there is no specific rumble for the Terrain and the vehicle is not in water, we play this rumble" >
+	uid myInWaterRumble < bhv="constantData" constantDataType="rumble" tooltip="If the vehicle is in water without the water traversal upgrade, we play this rumble">
+	uid myInWaterWithUpgradeRumble < bhv="constantData" constantDataType="rumble" tooltip="If the vehicle is in water and we have the upgrade, we play this rumble">
+	VehicleTerrainRumbleList myTerrainRumbles
+}
+
+class VehicleLeftRightRumbles
+{
+	float myMinAngle 0.01 < tooltip="The steering angle needs to be above this for one of the rumbles to trigger" >
+	float myMinIntensity 0.0 < tooltip="The minimum intensity of the rumble" >
+	bool myIntensityByAngle TRUE < tooltip="If TRUE, the intensity is affected by the steering angle" >
+	bool myIntensityBySpeed false < tooltip="If TRUE, the intensity is affected by the speed (percentage against max speed)" >
+	uid myCenterRumble < bhv="constantData" constantDataType="rumble" tooltip="This rumble will play in a loop if the turning angle is less than MinAngle. Its intensity is not affect by IntensityByAngle flag">
+	uid myLeftRumble < bhv="constantData" constantDataType="rumble" >
+	uid myRightRumble < bhv="constantData" constantDataType="rumble" >
+	file myCenterTriggerEffect < bhv="asset" constantDataType="trigger effect" >
+	file myLeftTriggerEffect < bhv="asset" constantDataType="trigger effect" >
+	file myRightTriggerEffect < bhv="asset" constantDataType="trigger effect" >
+}
+
+class VehicleWindTunnelRumbles
+{
+	uid myEnterBoostRumble < bhv="constantData" constantDataType="rumble">
+	uid myEnterNoBoostRumble < bhv="constantData" constantDataType="rumble">
+	uid myInTunnelLoopRumble < bhv="constantData" constantDataType="rumble" >
+	uid myExitRumble < bhv="constantData" constantDataType="rumble" >
+}
+
+class VehicleRumbleSettings < uid=auto >
+{
+	RumbleCategory mySpeederRumbleCategory
+	float myAdrenalineRushStrengthDamping 0.5 < tooltip="Needs to be greater than 0 and maximum 1. When in Adrenaline Shot, all speeder rumble intensities are multiplied by this value">
+	uid myIdleRumble < bhv="constantData" constantDataType="rumble" >
+	VehicleLeftRightRumbles myTurningRumbles
+	uid myAccelerationRumble < bhv="constantData" constantDataType="rumble" >
+	float myMinimumThrottleThreshold 0.75
+	uid myBrakeRumble < bhv="constantData" constantDataType="rumble" >
+	uid myBoostRumble < bhv="constantData" constantDataType="rumble" >
+	uid myJumpChargeRumble < bhv="constantData" constantDataType="rumble" >
+	uid myJumpReleaseRumble < bhv="constantData" constantDataType="rumble" >
+	uid myCollisionRumble < bhv="constantData" constantDataType="rumble" >
+	float myCollisionScale 20.0
+	uid myDamageCombatRumble < bhv="constantData" constantDataType="rumble" >
+	uid myDodgeLeftRumble < bhv="constantData" constantDataType="rumble" >
+	uid myDodgeRightRumble < bhv="constantData" constantDataType="rumble" >
+	uid myTurnOnEngineRumble < bhv="constantData" constantDataType="rumble" >
+	uid myWheelSpinStartRumble < bhv="constantData" constantDataType="rumble" >
+	VehicleLeftRightRumbles myWheelSpinRumbles
+	uid myPowerSlideStartRumble < bhv="constantData" constantDataType="rumble" >
+	uid myPowerSlideBoostReadyRumble < bhv="constantData" constantDataType="rumble" >
+	uid myPowerSlideBoostRumble < bhv="constantData" constantDataType="rumble" >
+	VehicleLeftRightRumbles myPowerSlideRumbles
+	uid myDisabledRumble < bhv="constantData" constantDataType="rumble" >
+	uid myThrownRumble < bhv="constantData" constantDataType="rumble" >
+	uid myHeavyPerfectLandingRumble < bhv="constantData" constantDataType="rumble" >
+	uid myHeavyGoodLandingRumble < bhv="constantData" constantDataType="rumble" >
+	uid myHeavyBadLandingRumble < bhv="constantData" constantDataType="rumble" >
+	uid myPerfectLandingRumble < bhv="constantData" constantDataType="rumble" >
+	uid myGoodLandingRumble < bhv="constantData" constantDataType="rumble" >
+	uid myBadLandingRumble < bhv="constantData" constantDataType="rumble" >
+	VehicleWindTunnelRumbles myAgainstWindTunnelRumbles < tooltip="These rumbles trigger when the speeder is going against the Wind Tunnel direction">
+	VehicleWindTunnelRumbles myWithWindTunnelRumbles < tooltip="These rumbles trigger when the speeder is going with the Wind Tunnel direction">
+	VehicleTraversalRumbles myTraversalRumbles
+	float myVehicleToVehicleCollisionRumbleMultiplier 10.0 < tooltip="Multiplier to rumble intensity for vehicle to vehicle collisions as the standard collision rumble calculation is very weak in these cases" >
+	float myVehicleToVehicleCollisionMinRumbleIntensity 0.25 < tooltip="Minimum rumble intensity that calculated rumble force is clamped to for vehicle to vehicle contact" >
+	float myVehicleToVehicleCollisionMaxRumbleIntensity 1.0 < tooltip="Maximum rumble intensity that calculated rumble force is clamped to for vehicle to vehicle contact" >
+}
+
+class VehicleTriggerEffectSettings < uid=auto >
+{
+	file myTraversalTriggerEffect < bhv="asset" constantDataType="trigger effect" tooltip="This must be a MultiPositionFeedback" >
+	file myBrakeTriggerEffect < bhv="asset" constantDataType="trigger effect" tooltip="This must be a MultiPositionFeedback" >
+	file myGrindingTriggerEffect < bhv="asset" constantDataType="trigger effect" >
+	file myHeavyLandingTriggerEffect < bhv="asset" constantDataType="trigger effect" >
+	float myHeavyLandingTriggerEffectDuration 1.0
+	file myInWaterTriggerEffect < bhv="asset" constantDataType="trigger effect" >
+	file myDisabledTriggerEffect < bhv="asset" constantDataType="trigger effect" >
+}
+
+class VehicleSafetyBeltSettings
+{
+	float myPercentageHealthRemainingAfterSafetyBelt 0.2f < tooltip="Percentage of current health" >
+	float myPercentageHealthRemainingAfterSafetyBeltRandom 0.1f < tooltip="Randomized between min and max percentage of current health" >
+	float myCooldown 30.f < tooltip="seconds" >
+	float myImmunityDuration 3.f < tooltip="seconds, once the safety belt is activated, agent will be invulnerable for this amount" >
+	
+	float myAccumulatedDamageTakenToActivate 0.3f < tooltip="Damage required to receive before safetybelt activates - percentage of max hp" >	
+	float myDamageReductionPerSecond 0.1f < tooltip="Damage drained from accumulated buffer per second - percentage of max hp" >	
+}
+
+class VehicleDismountSettings
+{
+	float myVehicleDismountOffsetLeft 1.0
+	float myVehicleDismountOffsetRight 1.0
+	float myVehicleDismountOffsetFront 1.0
+	float myVehicleDismountOffsetBack 1.0
+}
+
+class VehicleDisableWobbleSettings
+{
+	float myMaxWobbleVelocity 500.0
+	float myMaxWobbleTorque 2.5
+	float myMinWobbleTimer 0.05
+	float myMaxWobbleTimer 0.2
+}
+
+class VehicleFallDamageSettings
+{
+	float myMinFallHeightToCauseDamage 9.5
+	float myMaxFallHeightBeforeFatal 50.0
+	float myFallDamageSegmentHeight 5.0 < min=0.1 >
+	float myDamagePerSegment 2.0 < tooltip="damage per height segment, cumulative so if speeder falls through 3 segments damage = 3 * damagePerSegment, etc" >
+	int myMaxNumberOfSegments 10
+	bool myUseContinuousDamageInsteadOfSegments false < tooltip="if true damage will be calculated continuously over the height of the fall instead of in segments" >
+	float myDamagePerMeterContinuous 0.4 < tooltip="damage per meter if using continuous calculation" >
+	float myBadLandingThreshold 0.4 < tooltip="landing is given a rating up to 1.0 for flawless landing, this is the threshold below which counts as a particularly bad landing" >
+	float myGoodLandingThreshold 0.9 < tooltip="landing is given a rating up to 1.0 for flawless landing, this is the threshold above which counts as a particularly good landing" >
+	float myPerfectLandingThreshold 0.95 < tooltip="landing is given a rating up to 1.0 for flawless landing, this is the threshold above which counts as a perfect landing" >
+	float myBadLandingMultiplier 1.5 < tooltip="amount landing damage is multiplied by for a bad landing" >
+	float myGoodLandingMultiplier 0.5 < tooltip="amount landing damage is multiplied by for a good landing" >
+	float myPerfectLandingMultiplier 0.2 < tooltip="amount landing damage is multiplied by for a perfect landing" >
+	float myPerfectLandingBoostTime 1.0 < tooltip="length of time to apply speed boost on perfect landing" >
+	float myPerfectLandingBoostAmount 10.0 < tooltip="boost amount multiplier on perfect landing" >
+}
+
+class VehicleKnockbackSettings
+{
+	float myKnockbackForce 100.0
+	float myKnockbackDuration 0.1
+	float myMinDamageForKnockbackToThrowRider 2.0
+}
+
+class Vehicle < uid=auto >
+{
+	CharacterVisualsBase* myCharacterVisuals
+	NPConNPCAttachmentSet* myAttachedNPCsSet
+	Faction* myFaction
+	PlayerCameraMode myCameraMode < tooltip="The camera preset which is active when you are controlling the vehicle" >
+	AudioParameters myAudioParameters < tooltip="The parameters for setting up this agent's audio component" >
+	float myMinimumHeightToBeConsideredAirborne 2.0f < tooltip="The minimum height off a ground surface to be considered airborne" >
+	float myMinimumCollisionForceForDamage 10.0f < tooltip="The minimum impact force required for environmental collisions to damage the vehicle" >
+	float myCollisionDamageMultiplier 1.0f < tooltip="Multiplier for the collision damage (low values mean tougher vehicle and higher values more fragile)" >
+	float myFrontalDamageMultiplier 1.0f < tooltip="Multiplier for frontal collision damage" >
+	float myLateralDamageMultiplier 1.0f < tooltip="Multiplier for lateral collision damage" >
+	float myMinFrontalDamageToThrowDriver 1.0f < tooltip="minimum amount of damage from frontal collision required to throw driver off" >
+	float myMinMoveSpeedToThrowDriverFromBlast 3.0f < tooltip="minimum speed vehicle should be going for driver to be thrown by explosion damage" >
+	float myDamagePercentToRequireRepair 0.5f < tooltip="Amount of damage to required to make repair compulsory" >
+	
+	float myMouseControlDeadzoneRadius 0.05f < tooltip="Radius of mouse control deadzone as a percentage of screen height" >
+	float myMouseControlMaxRadius 0.4f < tooltip="Radius of mouse control area to reach vector length of 1 as a percentage of screen height" >
+	float myMouseInactivityTime 1.f < tooltip="Amount of time inactive before mouse control gets re-centered" >
+	float myMouseRecenterTime 1.f < tooltip="Amount of time it takes for mouse control to return to center once inactivity timeout has occurred" >
+	float myMouseSensitivity 0.5f < tooltip="Sensitivity multiplier for speeder mouse control (is multiplied with the user option setting value)" >
+	string myMouseInputCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.79832089 -2.7807119, -17.526897 -24.96526, -36.536285 -2.0069637, -14.314453 8.9807281, }, outTangents = { 1.984055 10.16193, 28.232582 98.339752, 19.52533 27.811821, 41.277721 2.2674141, 0 0, }, properties = { 275, 1299, 6419, 3347, 5395, }, values = { 0.0049052238 0.50632489, 3.2695312 11.287262, 49.124702 125.74115, 160.48059 378.96603, 257.46368 358.83649, }, }, numKeys = , }" < bhv=inputgraph >
+	float myWindLandingDamageImmunityTime 5.f < tooltip="Amount of time that speeder is immune to heavy landing damage after being affected by a wind volume" >
+	float myYawAngleRestrictionEquipment 360 < bhv=degree_angle min=0 max=360 tooltip="Yaw max angle with respect to the vehicle forward direction when an equipment is used" >
+
+	bool myShouldCrashBeforeDeath false
+	bool myUseDriveController false
+	float myDismountSpeedThreshold 0.0f < min=0 tooltip="Only allow dismounting if we are below this speed - if 0, it is always allowed" >
+	string myUIIcon < bhv="sprite" >
+	
+	uid myEquipmentSet < bhv="constantData" constantDataType="equipmentset" >
+	
+	GroundVehicleUpgrade* myGroundVehicleUpgradeModules
+	
+	float myTimeBeforeEngineOn 0.5f < tooltip="Time in seconds before engine is switched on when mounting the vehicle" >
+	float myMountAnimationTime 1.5f < tooltip="Time in seconds that it takes to complete mounting the vehicle and enable controls" >
+	float myDismountAnimationTime 1.5f < tooltip="Time in seconds that it takes to complete dismounting the vehicle (this functions as a backup if the animation breakout channel event doesn't work)" >
+	
+	VehicleCameraSettings* myVehicleCameraSettings	
+	ShakeCameraModifier* myInitialAccelCameraShake
+	ShakeCameraModifier* myBoostCameraShake
+	ShakeCameraModifier* myHardDecelCameraShake
+	ShakeCameraModifier* myJumpChargeCameraShake
+	ShakeCameraModifier* myJumpReleaseCameraShake
+	ShakeCameraModifier* myCollisionCameraShake
+	ShakeCameraModifier* myHitDetectionCameraShake
+	ShakeCameraModifier* myHeavyPerfectLandingCameraShake
+	ShakeCameraModifier* myHeavyGoodLandingCameraShake
+	ShakeCameraModifier* myHeavyBadLandingCameraShake
+	ShakeCameraModifier* myPerfectLandingCameraShake
+	ShakeCameraModifier* myGoodLandingCameraShake
+	ShakeCameraModifier* myBadLandingCameraShake
+	ShakeCameraModifier* myDodgeLeftCameraShake
+	ShakeCameraModifier* myDodgeRightCameraShake
+	
+	VehicleRumbleSettings myVehicleRumbleSettings
+	VehicleTriggerEffectSettings myVehicleTriggerEffectSettings
+	HealthSettings myVehicleHealthSettings
+	VehicleDismountSettings myVehicleDismountSettings
+	VehicleDisableWobbleSettings myVehicleDisableWobbleSettings
+	
+	AI_NavMeshLayerEnumType myNavigationLayerType Large
+	NavigationCapability* myNavigationCapability < tooltip="What Navmesh Type and User Edge the Vehicle can use/ should avoid" >
+	GroundVehicleAIMovementProfile* myAIMovementProfile
+	
+	GroundVehicleResistanceProfile* myGroundVehicleResistanceProfile
+	
+	VehicleFallDamageSettings myVehicleFallDamageSettings
+	VehicleKnockbackSettings myVehicleKnockbackSettings
+	
+	HC_VehicleAnimationType myVehicleAnimationType NPC
+	
+	ImpactRealization* myPassThroughImpact
+	bool myIsIgnoredDuringAbandonedVehicleDespawnTests false
+}
+
+class VehiclePick
+{
+	Vehicle* myVehicle
+}
+
+list VehiclePickList
+{
+	VehiclePick
+}

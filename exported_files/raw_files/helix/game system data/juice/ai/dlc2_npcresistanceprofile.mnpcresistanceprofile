@@ -1,0 +1,76 @@
+include "helix/game system data/fruit/ai/npcresistanceprofile.fruit"
+include "helix/game system data/juice/ai/npcresistanceprofile.mnpcresistanceprofile"
+include "helix/game system data/juice/npc/pir_hiredgundroid.mnpc"
+
+NPCResistanceProfile KhepiDroidResistanceProfile < uid=91DC5D3C6704F4530007DCD54BF55219 > : HumanoidResistanceProfile
+{
+	myMaxTagsFromAdrenalineRushFormula 1
+	myDamageResistances
+	{
+		DamageResistance Ion_Explosion
+		{
+			myDamageType
+			{
+				DamageType Ion Ion
+			}
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Explosion
+			}
+			myConditions
+			{
+				myConditions
+				{
+				}
+			}
+			myDamageMultiplier 2.5
+			myForceFlinchAnimationOnHit TRUE
+		}
+		DamageResistance Blaster
+		{
+			myDamageType
+			{
+				DamageType Physical Physical
+			}
+			myDamageMultiplier 0.0
+			myForceFlinchAnimationOnHit TRUE
+		}
+		DamageResistance Stun
+		{
+			myDamageType
+			{
+				DamageType StunBlast StunBlast
+			}
+			myDamageSourceType
+			{
+				DamageSourceType Projectile Projectile
+			}
+			myDamageMultiplier 0.000001
+			myForceFlinchAnimationOnHit TRUE
+		}
+		DamageResistance Ion
+		{
+			myDamageType
+			{
+				DamageType Ion Ion
+			}
+			myDamageMultiplier 1.0
+			myForceFlinchAnimationOnHit TRUE
+		}
+	}
+	myStatusEffectResistanceList
+	{
+		NPCStatusEffectResistance StunOnShield
+		{
+			myStatusEffect Stunned
+			myBodyPart None
+			myIsImmune TRUE
+		}
+	}
+}
+
+NPCResistanceProfile RokanaRaiderHeavyResistanceProfile < uid=616F459667ADE602000D15D15AEB93C8 > : HumanoidResistanceProfile
+{
+	myMaxTagsFromAdrenalineRushFormula 2
+}
+

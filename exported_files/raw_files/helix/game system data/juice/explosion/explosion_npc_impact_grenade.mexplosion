@@ -1,0 +1,120 @@
+include "helix/game system data/fruit/effects/effects.fruit"
+include "helix/game system data/fruit/explosion/explosion.fruit"
+include "helix/game system data/juice/collisionmaterials/collisionmaterials.juice"
+include "helix/game system data/juice/explosion/explosion_template.mexplosion"
+include snowdrop/modules/core/physics/collisionmaterials.fruit
+
+Explosion explosion_npc_impact_grenade < uid=4171A7E16525605D002175D097F27024 > : explosion_template
+{
+	myDefaultRadius 4.0
+	myDetonation
+	{
+		myPropagationSpeed 150.0
+		myStartTime 2.5
+		myBaseEffect "helix/particles/vfx exp impact grenade 01.mparticles"
+		myImpactEffect
+		{
+			myEffects
+			{
+				myList
+				{
+					EffectOnMaterial Dirt
+					{
+						myMaterial < uid=4171A7E1652579EF0000A399D6FFB5D0 > = Dirt 6F860DB5506C75BF00000E15D8BBCF79
+						myEffect helix/particles/vfx_exp_dirt_small_01.mparticles
+					}
+					EffectOnMaterial Grass
+					{
+						myMaterial < uid=4171A7E1652579EF0000A39AE23C8FB1 > = Grass 6F860DB5506C75BF00000E114D6A4808
+						myEffect helix/particles/vfx_exp_dirt_small_01.mparticles
+					}
+					EffectOnMaterial Gravel
+					{
+						myMaterial < uid=4171A7E1652579EF0000A39B99E497D4 > = Gravel 6F860DB5506C75BF00000E1729209934
+						myEffect helix/particles/vfx_exp_dirt_small_01.mparticles
+					}
+					EffectOnMaterial Sand
+					{
+						myMaterial < uid=4171A7E1652579EF0000A39CF65A1C7F > = Sand 6F860DB5506C75BF00000E16E163F30E
+						myEffect helix/particles/vfx_exp_sand_small_01.mparticles
+					}
+					EffectOnMaterial "Snow Heavy"
+					{
+						myMaterial < uid=4171A7E1652579EF0000A39DDD206651 > = SnowHeavy 6F860DB5506C75BF00000E0DAADEA0B9
+						myEffect helix/particles/vfx_exp_snow_small_01.mparticles
+					}
+					EffectOnMaterial "Snow Light"
+					{
+						myMaterial < uid=4171A7E1652579EF0000A39EDB673B43 > = SnowLight 6F860DB5506C75BF00000E0CA6A2A340
+						myEffect helix/particles/vfx_exp_snow_small_01.mparticles
+					}
+					EffectOnMaterial Water
+					{
+						myMaterial < uid=4171A7E1652579EF0000A39F66804DCC > = Water 0182810B643FDF4A00008FACFC870ECC
+						myEffect helix/particles/vfx_exp_water_small_01.mparticles
+					}
+					EffectOnMaterial "Water Deep"
+					{
+						myMaterial < uid=4171A7E1652579EF0000A3A0401F1C87 > = WaterDeep 6F860DB5506C75BF00000E0FCDA956A7
+						myEffect helix/particles/vfx_exp_water_small_01.mparticles
+					}
+					EffectOnMaterial "Water Shallow"
+					{
+						myMaterial < uid=4171A7E1652579EF0000A3A19ED3E83B > = WaterShallow 6F860DB5506C75BF00000E0E9C4CF120
+						myEffect helix/particles/vfx_exp_water_small_01.mparticles
+					}
+				}
+				myEffectsByConditions
+				{
+				}
+			}
+			myCastForImpactGroundDistance 1.0
+		}
+		myAudioSection
+		{
+			myDetonationEvent
+			{
+				myGuid 4281E9DC28399045ACEE40EABE813388
+			}
+			myUnderWaterDetonationEvent
+			{
+				myGuid 4CC48285F80CC5398ED62BEE1D0C31BD
+			}
+			myEmitterSphereRadius 5.0
+		}
+	}
+}
+
+Explosion explosion_npc_impact_grenade_PetSkilledAttack < uid=75B1D5B365B29170000EF88EF0ABF1E5 > : explosion_npc_impact_grenade
+{
+	myDetonation
+	{
+		myStartTime 1.5
+		myGameplayDamageSection
+		{
+			myDamageFormula 10
+		}
+		myAIEvents
+		{
+			ExplosionAIEvent Explosion
+			{
+				myType Explosion
+				mySize 2.5
+				myLifetime 1.0
+			}
+			ExplosionAIEvent Heard
+			{
+				myType HeardThreateningSound
+				mySize 5.0
+				myLifetime 1.0
+			}
+			ExplosionAIEvent "Pet Grenade Explosion"
+			{
+				myType PetGrenadeExplosion
+				mySize 5.0
+				myLifetime 1.0
+			}
+		}
+	}
+}
+

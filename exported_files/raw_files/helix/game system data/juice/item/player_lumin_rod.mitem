@@ -1,0 +1,174 @@
+include "helix/game system data/juice/equipment/aimconfig/grenade_aimconfig.maimconfig"
+include "helix/game system data/juice/equipment/aimconfig/weapon_aimconfig_base.maimconfig"
+include "helix/game system data/juice/equipment/throwableconfig/lumin_rod_throwable_config.mequipmentthrowableconfig"
+include "helix/game system data/juice/item/consumables.mitem"
+include "helix/game system data/juice/item/equipmentholding/holding_kays_lumin_rod.mequipmentholdingconfig"
+include "helix/game system data/juice/item/equipmentholding/holding_kays_throwable_base.mequipmentholdingconfig"
+include "helix/game system data/juice/projectile/projectile_lumin_rod.mprojectile"
+
+LuminRodEquipmentItem player_lumin_rod < uid=CC69B22163F34A2200007E61234E9C14 >
+{
+	myName "aurabesh = false, contextComment = \"The name of the glow stick gadget.\", enabled = true, guid = #CC69B22163F34A2200007E5FB6A07777, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 3614, text = \"Lumin Rod \", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"The description of the glow stick gadget.\", enabled = true, guid = #CC69B22163F34A2200007E60EA0909E0, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 3614, text = \"A portable source of light.\", type = \"MenuLine\""
+	myGameplayDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"Gameplay Description for the Lumin Rod. Used in item player_lumin_rod\", enabled = true, guid = #2AE2EC856622232D000000D86495D7E1, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10284, text = \"A portable sources of light that automatically turns on in dark areas.\", type = \"MenuLine\""
+	myWhereToFind "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWantedByVendor "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myIcon "mySpriteId = -1560698903, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_generic_03.spritesheet\""
+	myThumbnail helix/baked/ui/loose_images/gear/tool/gear_tool_luminrod_gameready.dds
+	myHighresImage helix/baked/ui/loose_images/gear/tool/gear_tool_luminrod_gameready_fullsize.dds
+	myGraphObject "helix/graph objects/gameplayobject/wpn_lumin_rod_player.mgraphobject"
+	myInventoryPouch ToolsAndGadgets
+	myAgentInventoryCapacity ""
+	myLootGraphObject ""
+	myCooldown
+	{
+		myDuration 0.0
+	}
+	myHoldingConfig < uid=CC69B22163F34A2200007E637F8E60FB > = holding_kays_lumin_rod CC69B221653294800000A1AF5FB09EDF
+	myAlwaysAim FALSE
+	myUI
+	{
+		myDefaultUIGraph helix/ui/graphs/hud_equipment_trajectory.muigraph
+	}
+	myDefaultSlotGroup Gadgets
+	myThrowableModule
+	{
+	}
+	myIsDisabledByDefault TRUE
+	myLightLifeTime 0.0
+	myMaxNumberOfActiveRods 4
+	myAutoUnholsterStates
+	{
+		PlayerAgentState Hanging Hanging
+		PlayerAgentState Traversing Traversing
+		PlayerAgentState Ladder IsOnLadder
+		PlayerAgentState Interact Interacting
+	}
+	myHolsterFromBeltToPouchSequence
+	{
+		myDuration 2.33
+		myTracks
+		{
+			myCustomTracks
+			{
+				HoldEquipmentTrack HoldEquipmentTrack
+				{
+					myStartCyclePos 0.2
+					myEndCyclePos 0.7
+				}
+			}
+		}
+	}
+	mySwitchLightPresetBlendingTime 0.1
+	myLightPresetsByConditions
+	{
+		LuminRodLightPresetsByConditions Climbing
+		{
+			myConditions
+			{
+				myOperator And
+				myConditions
+				{
+					GameConditionGroup "Climbing or Ledge"
+					{
+						myOperator Or
+						myConditions
+						{
+							GameConditionPlayerIsInMovementState Climbing
+							{
+								myState Climbing
+							}
+							GameConditionPlayerIsInMovementState Ledge
+							{
+								myState Ledge
+							}
+						}
+					}
+					GameConditionPlayerHoldsEquipmentType "Not holding lumin rod"
+					{
+						myIsNegated TRUE
+						myEquipmentType LuminRod
+						myCheckHolsteringUnholstering TRUE
+					}
+				}
+			}
+			myLightAnchorBone Neck
+			myLightPositionOffset 0.0;0.0;-0.1
+			myShadowStartDistance 0.01
+			myEnableLightLookAt TRUE
+			myLightConeAngleCameraAlignedToPlayerFacing 150.0
+			myConsideredAlignedMaximumAngle 70.0
+			myLightConeAngleCameraNotAlignedToPlayerFacing 90.0
+			myConsideredNotAlignedMinimalAngle 70.0
+			myDisableNixShadows TRUE
+		}
+		LuminRodLightPresetsByConditions Held
+		{
+			myConditions
+			{
+				myOperator And
+				myConditions
+				{
+					GameConditionPlayerHoldsEquipmentType "Holding Lumin Rod"
+					{
+						myEquipmentType LuminRod
+						myCheckHolsteringUnholstering TRUE
+					}
+				}
+			}
+			myLightAnchorBone RightHand
+			myLightPositionOffset 0.0;0.0;0.0
+			myShadowStartDistance 0.01
+			myConsideredAlignedMaximumAngle 70.0
+			myConsideredNotAlignedMinimalAngle 70.0
+		}
+		LuminRodLightPresetsByConditions ADS
+		{
+			myConditions
+			{
+				myOperator And
+				myConditions
+				{
+					GameConditionPlayerIsInAimMode ADS
+					{
+						myAimModeType ADS
+					}
+				}
+			}
+			myLightAnchorBone Neck
+			myShadowStartDistance 0.01
+			myConsideredAlignedMaximumAngle 70.0
+			myConsideredNotAlignedMinimalAngle 70.0
+		}
+		LuminRodLightPresetsByConditions Default
+		{
+			myConditions
+			{
+				myConditions
+				{
+				}
+			}
+			myLightAnchorBone Hips
+			myLightPositionOffset 0.0;0.0;0.0
+			myShadowStartDistance 0.01
+			myConsideredAlignedMaximumAngle 70.0
+			myConsideredNotAlignedMinimalAngle 70.0
+		}
+	}
+	myUnholsterFromPouchSequence
+	{
+		myDuration 1.5
+		myTracks
+		{
+			myCustomTracks
+			{
+				HoldEquipmentTrack HoldEquipmentTrack
+				{
+					myStartCyclePos 0.33
+				}
+			}
+		}
+	}
+}
+

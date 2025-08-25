@@ -1,0 +1,75 @@
+include "helix/game system data/fruit/gamestatistics/gamestatistics.fruit"
+include "helix/game system data/juice/faction/factions.mfaction"
+
+GameStatistic gs_ship_destroyed_by_player_ship_collision < uid=634C312367234201000000E4B45EB23F >
+{
+	myGameValue < uid=634C312367234201000000E5529CA0B3 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Agent killed by player"
+		{
+			myGameTriggerType AgentKilledByAgent
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextAgentIsSpaceship "Target agent is spaceship"
+				{
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentKilledByDamageSourceType "Target agent has been killed by contact collision"
+				{
+					myDamageSourceType ContactCollision
+				}
+				GameConditionContextTargetOrSourceAgentHasTakenDamageFromPlayerWhileInCombat "Target agent has taken damage from the player"
+				{
+				}
+				GameConditionContextAgentHasFaction "Source agent is the player"
+				{
+					myFaction < uid=634C312367234314000000E81475D16C > = Player 6994C4B6534699A60000001372FEB686
+				}
+				GameConditionContextAgentIsAlive "Source agent is alive"
+				{
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_ship_destroyed_by_non_player_collision < uid=634C312367234314000000E9A35B7269 >
+{
+	myGameValue < uid=634C312367234314000000EA1F351604 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Agent killed by non player"
+		{
+			myGameTriggerType AgentKilledByAgent
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextAgentIsSpaceship "Target agent is spaceship"
+				{
+					myAgentContextType TargetAgent
+				}
+				GameConditionContextAgentKilledByDamageSourceType "Target agent has been killed by contact collision"
+				{
+					myDamageSourceType ContactCollision
+				}
+				GameConditionContextTargetOrSourceAgentHasTakenDamageFromPlayerWhileInCombat "Target agent has taken damage from the player"
+				{
+				}
+				GameConditionContextAgentHasFaction "Source agent is not the player"
+				{
+					myIsNegated TRUE
+					myFaction < uid=634C31236723435E000000EB90B4752A > = Player 6994C4B6534699A60000001372FEB686
+				}
+			}
+		}
+	}
+	myUIDescription "branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+

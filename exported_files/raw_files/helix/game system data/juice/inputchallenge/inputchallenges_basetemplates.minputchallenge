@@ -1,0 +1,485 @@
+include "helix/game system data/fruit/inputchallenge/inputchallenge.fruit"
+include "helix/game system data/juice/inputchallenge/audio/input_challenge_button_base_audio.minputchallengeaudio"
+include "helix/game system data/juice/inputchallenge/audio/input_challenge_challenge_base_audio.minputchallengeaudio"
+include "helix/game system data/juice/inputchallenge/rumble/inputchallenges_rumble_events.minputchallengerumble"
+include "helix/game system data/juice/inputchallenge/rumble/inputchallenges_rumble_exotic.minputchallengerumble"
+include "helix/game system data/juice/settings/inputchallengesettings.juice"
+
+ButtonsSequenceInputChallenge "[Sequence] Base Template" < uid=C6B18B0863F5F5A0000016DFA51D01EA >
+{
+	myChallengeType ButtonSequence
+	myUIGraph helix/ui/graphs/hud_input_challenge_button_sequence_single_button_display.muigraph
+	myUIAnchorPoint 0.5;0.2;0.0
+	myUIElementsSpacing 5.0
+	myMaxiumInputDelay 2.0
+	myWaitForPlayerInput FALSE
+	myEndStateDuration 0.0
+	myChallengeAudio < uid=C6B18B08643910DC000072692CC9FFD2 > = "[Sequence] Challenge base audio" C6B18B0864390E1E00007254B513BE27
+	myButtonsAudio < uid=C6B18B08643D639E0000750387505E4D > = "[Sequence] Button base audio" C6B18B0864390F4500007264E3A80469
+	myCanBeDisabledByPlayerPrefernces TRUE
+	myRumblePreset < uid=E259BC2165C4D7870000A6B472533BFD > = "Buttons Sequence Rumble Events" E259BC2165C3A2B2000A296E2D2760F6
+	myButtonOnScreenTimer 0.4
+}
+
+ButtonsMashingInputChallenge "[Mashing] Base Template" < uid=C6B18B0863F5F5A0000016E068C5E30D >
+{
+	myChallengeType ButtonMashing
+	myUIGraph helix/ui/graphs/hud_input_challenge_button_mash.muigraph
+	myUIAnchorPoint 0.5;0.2;0.0
+	myUIElementsSpacing 5.0
+	myMaxiumInputDelay 0.0
+	myChallengeAudio < uid=C6B18B08643910DC0000726A97B2F386 > = "[Mashing] Challenge base audio" C6B18B0864390EC10000725CF4A5BDDA
+	myButtonsAudio < uid=C6B18B08643D639E0000750433A79013 > = "[Mashing] Button base audio" C6B18B0864390F4500007265FDF71D54
+	myRumblePreset < uid=E259BC2165CB4C450005DF4693196437 > = "Button Mashing Rumble Events" E259BC2165CB4C340005DF45DB7DF881
+	myProgressEvaluationMode < uid=C6B18B08659E6FF50000A4977BF58779 >
+	{
+		myType Curve
+		myProgressCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.89953268 -0.90247023, }, outTangents = { 0 0.30945587, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+	}
+	myProgressReductionMode SteppedReduction
+	myConsumeProgressDelay 0.25
+	myProgressReductionStep 0.1
+	myConsumeProgressRate 0.5
+}
+
+ButtonsMashingInputChallenge "[Parallel] Base Template" < uid=C6B18B0863F5F5A0000016E15AFDB877 >
+{
+	myChallengeType ButtonMashing
+	myUIGraph helix/ui/graphs/hud_input_challenge_button_mash.muigraph
+	myUIAnchorPoint 0.5;0.2;0.0
+	myUIElementsSpacing 60.0
+	myMaxiumInputDelay 0.0
+	myChallengeAudio < uid=C6B18B08643910DC0000726B916E6F5F > = "[Parallel] Challenge base audio" C6B18B0864390EC10000725D3175A51F
+	myButtonsAudio < uid=C6B18B08643D639E0000750502CA1105 > = "[Parallel] Button left base audio" C6B18B0864390F4500007267CAB98C7B
+	myRumblePreset < uid=E259BC2165CB39270004DF342AEAAD4B > = "Parallel Buttons Rumble Events" E259BC2165CB228B000454A4E9BB763C
+	myProgressEvaluationMode < uid=C6B18B08659E6F6D0000A494ACF313C3 >
+	{
+		myType Curve
+		myProgressCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.89953268 -0.90247023, }, outTangents = { 0 0.39395231, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+	}
+	myProgressReductionMode SteppedReduction
+	myConsumeProgressDelay 0.25
+	myProgressReductionStep 0.1
+	myConsumeProgressRate 0.5
+}
+
+ButtonHoldInputChallenge "[Hold] Base Template" < uid=1E33B998643539280000F913B99D9CF8 >
+{
+	myChallengeType ButtonHold
+	myUIGraph helix/ui/graphs/hud_input_challenge_button_hold.muigraph
+	myUIAnchorPoint 0.5;0.2;0.0
+	myMaxiumInputDelay 0.0
+	myShouldFailOnWrongInput FALSE
+	myChallengeAudio < uid=C6B18B08643910DC0000726C728C6661 > = "[Hold] Challenge base audio" C6B18B0864390EC10000725E37D16338
+	myButtonsAudio < uid=C6B18B08643D639E00007506F299A7CC > = "[Hold] Button base audio" C6B18B0864390F450000726869915209
+	myRumblePreset < uid=E259BC2165CA45E400035372D755E91C > = "Hold Buttons Rumble Events" E259BC2165CA49C30003D550F2CF0C47
+	myProgressEvaluationMode < uid=C6B18B08659E6F6D0000A495CAEED880 >
+	{
+		myType Curve
+		myProgressCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.89953268 -0.90247023, }, outTangents = { 0 0.39395231, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+	}
+	myHoldDuration 2.0
+	myConsumeProgressRate 0.75
+	myConsumeProgressDelay 0.15
+}
+
+DecoyButtonInputChallenge "[Decoy] Base Template" < uid=C6B18B086490722D0000DB02AAD33723 >
+{
+	myChallengeType DecoyButtons
+	myUIGraph helix/ui/graphs/hud_input_challenge_decoy_button_sequence.muigraph
+	myUIAnchorPoint 0.5;0.45;0.0
+	myPlayerAlertRemainingPercentage 0.0
+	myUIElements
+	{
+		InputChallengeUIElement "Down - Decoy"
+		{
+			myButtonAnchorPoint < uid=E259BC21654DF4410010F1AC993F57D6 > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction InputChallengeDPadDown
+			myBehaviour Decoy
+		}
+		InputChallengeUIElement "Down - Valid"
+		{
+			myButtonAnchorPoint < uid=E259BC2164ABF88E000202AEBF784552 > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction InputChallengeDPadDown
+		}
+		InputChallengeUIElement "Left - Decoy"
+		{
+			myButtonAnchorPoint < uid=E259BC21654DF4410010F1AD4955A877 > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction InputChallengeDPadLeft
+			myBehaviour Decoy
+		}
+		InputChallengeUIElement "Left - Valid"
+		{
+			myButtonAnchorPoint < uid=E259BC2164ABF88E000202AF18B8755A > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction InputChallengeDPadLeft
+		}
+		InputChallengeUIElement "Right - Decoy"
+		{
+			myButtonAnchorPoint < uid=E259BC2164ABF8A1000202B088CFDC6B > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction InputChallengeDPadRight
+			myBehaviour Decoy
+		}
+		InputChallengeUIElement "Right - Valid"
+		{
+			myButtonAnchorPoint < uid=E259BC21654DF3960010EE2C2B4FFECE > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction InputChallengeDPadRight
+		}
+		InputChallengeUIElement "Up - Decoy"
+		{
+			myButtonAnchorPoint < uid=E259BC21654DF3960010EE2D30107D07 > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction InputChallengeDPadUp
+			myBehaviour Decoy
+		}
+		InputChallengeUIElement "Up - Valid"
+		{
+			myButtonAnchorPoint < uid=E259BC2164ABF8CF000202B153AEF400 > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction InputChallengeDPadUp
+		}
+		InputChallengeUIElement "A - Decoy"
+		{
+			myButtonAnchorPoint < uid=E259BC2164ABFAB70002C30756682277 > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction InputChallengeFaceButtonDown
+			myBehaviour Decoy
+		}
+		InputChallengeUIElement "A - Valid"
+		{
+			myButtonAnchorPoint < uid=E259BC21654DF2ED0010EA75E51BDD67 > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction InputChallengeFaceButtonDown
+			myBehaviour Default
+		}
+		InputChallengeUIElement "B - Decoy"
+		{
+			myButtonAnchorPoint < uid=E259BC2164ABF923000202B22E8179F2 > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction InputChallengeFaceButtonRight
+			myBehaviour Decoy
+		}
+		InputChallengeUIElement "B - Valid"
+		{
+			myButtonAnchorPoint < uid=E259BC21654DF2ED0010EA760DC6560C > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction InputChallengeFaceButtonRight
+			myBehaviour Default
+		}
+		InputChallengeUIElement "X - Decoy"
+		{
+			myButtonAnchorPoint < uid=E259BC2164ABF948000202B3F548CBDD > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction InputChallengeFaceButtonLeft
+			myBehaviour Decoy
+		}
+		InputChallengeUIElement "X - Valid"
+		{
+			myButtonAnchorPoint < uid=E259BC21654DF2B90010E9330B56AE51 > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction InputChallengeFaceButtonLeft
+			myBehaviour Default
+		}
+		InputChallengeUIElement "Y - Decoy"
+		{
+			myButtonAnchorPoint < uid=E259BC2164ABF964000202B403927D9B > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction InputChallengeFaceButtonUp
+			myBehaviour Decoy
+		}
+		InputChallengeUIElement "Y - Valid"
+		{
+			myButtonAnchorPoint < uid=E259BC21654D0EB3000C8291D6085FB0 > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction InputChallengeFaceButtonUp
+			myBehaviour Default
+		}
+		InputChallengeUIElement "LB - Decoy"
+		{
+			myButtonAnchorPoint < uid=E259BC216580747600002D732FD6A350 > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction InputChallengeShoulderLeft
+			myBehaviour Decoy
+		}
+		InputChallengeUIElement "LB - Valid"
+		{
+			myButtonAnchorPoint < uid=E259BC216580748800002D740B37E4ED > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction InputChallengeShoulderLeft
+			myBehaviour Default
+		}
+		InputChallengeUIElement "LT - Decoy"
+		{
+			myButtonAnchorPoint < uid=E259BC21658074AA00002D7591593E20 > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction InputChallengeTriggerLeft
+			myBehaviour Decoy
+		}
+		InputChallengeUIElement "LT - Valid"
+		{
+			myButtonAnchorPoint < uid=E259BC21658074B800002D76801B0A9F > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction InputChallengeTriggerLeft
+			myBehaviour Default
+		}
+		InputChallengeUIElement "RB - Decoy"
+		{
+			myButtonAnchorPoint < uid=E259BC216580754500002D771A4DF5EF > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction InputChallengeShoulderRight
+			myBehaviour Decoy
+		}
+		InputChallengeUIElement "RB - Valid"
+		{
+			myButtonAnchorPoint < uid=E259BC216580754500002D78AEE96AC7 > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction InputChallengeShoulderRight
+		}
+		InputChallengeUIElement "RT - Decoy"
+		{
+			myButtonAnchorPoint < uid=E259BC21658075D900002D79F619E904 > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction InputChallengeTriggerRight
+			myBehaviour Decoy
+		}
+		InputChallengeUIElement "RT - Valid"
+		{
+			myButtonAnchorPoint < uid=E259BC21658075F200002D7AAE0E4AAA > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction InputChallengeTriggerRight
+			myBehaviour Default
+		}
+	}
+	myMinimumInputDelay 1.25
+	myMaxiumInputDelay 1.5
+	myWaitForPlayerInput FALSE
+	myShouldFailOnWrongInput TRUE
+	myChallengeAudio < uid=C6B18B086490757A0000DB0793C4A2B7 > = "[Decoy] Challenge base audio" 1530855F6583077200020A659E4CB6BD
+	myButtonsAudio < uid=C6B18B086490757A0000DB08C6E62B0B > = "[Sequence] Button base audio" C6B18B0864390F4500007264E3A80469
+	myRumblePreset < uid=E259BC2165CB7A3D00066CA6AD1F84A2 > = "Decoy Buttons Rumble Events" E259BC2165CB77CD0005E03B404DB26F
+	myButtonOnScreenTimer 0.0
+	myNumberForSuccess 3
+	myPercentageOfDecoyCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.0034132004 -0.10000002, -0.11000001 0, }, outTangents = { 0.33333334 0.16666667, 0.0034132004 -0.10000002, 0 0, }, properties = { 331, 1363, 2051, }, values = { 0 0.40000001, 0.33000001 0.5, 0.66000003 0.60000002, }, }, numKeys = 3, }"
+	myMaxSequenceOfDecoy 4
+	myMaxSequenceOfValid 2
+	myLossForFailure 1
+	myEnableFailOnDecoyPress FALSE
+	myEnableDecoyPromptRotation TRUE
+}
+
+TimedButtonInputChallenge "[TimedButtons] Base Template" < uid=C6B18B08649C00880001716FE29A6A50 >
+{
+	myChallengeType TimedButtons
+	myUIGraph helix/ui/graphs/hud_input_challenge_button_timedbutton.muigraph
+	myWaitForPlayerInput FALSE
+	myEndStateDuration 0.0
+	myChallengeAudio < uid=C6B18B08649C014300017170C09867D4 > = "[TimedButton] Challenge base audio" 1530855F6583074900020A6304EC1E9F
+	myButtonsAudio < uid=C6B18B08649C01430001717138A6B344 > = "[Sequence] Button base audio" C6B18B0864390F4500007264E3A80469
+	myRumblePreset < uid=E259BC2165CB84EF000890E325BC03BF > = "Timed Button Rumble Evemts" E259BC2165CB84C90008882877D1DA56
+	myTimeWindows
+	{
+		InputChallengeTimeWindow Success
+		{
+		}
+	}
+}
+
+TimedButtonInputChallenge "[RandomizedTimedButtons] Base Template" < uid=75B1D5B365574232000149D0F811BD83 >
+{
+	myChallengeType TimedButtons
+	myUIGraph helix/ui/graphs/hud_input_challenge_button_timedbutton.muigraph
+	myUIAnchorPoint 0.5;0.4;0.0
+	myUIElements
+	{
+		InputChallengeUIElement Prompt
+		{
+			myButtonAnchorPoint < uid=75B1D5B3655F666900017DBB785FFDBD > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction InputChallengeFaceButtonUp
+		}
+	}
+	myWaitForPlayerInput FALSE
+	myEndStateDuration 1.0
+	myChallengeAudio < uid=75B1D5B365574232000149D166B5F485 > = "[Sequence] Challenge base audio" C6B18B0864390E1E00007254B513BE27
+	myButtonsAudio < uid=75B1D5B365574232000149D27135940A > = "[Sequence] Button base audio" C6B18B0864390F4500007264E3A80469
+	myUseRandomizedWindowsSet TRUE
+	myTimeWindows
+	{
+		InputChallengeTimeWindow Success
+		{
+		}
+	}
+	myTimeRandomizedWindows
+	{
+		InputChallengeTimeRandomizedWindow Good
+		{
+		}
+		InputChallengeTimeRandomizedWindow Average
+		{
+			myWindowResult Avarage
+			myAttachPositionToOtherWindow TRUE
+		}
+		InputChallengeTimeRandomizedWindow Bad
+		{
+			myWindowResult Bad
+			mySize 1.0
+		}
+	}
+}
+
+ButtonHoldInputChallenge "[ButtonsCombination] Base Template" < uid=E259BC2164B00E7D000C139F7ADF20BB > : "[Hold] Base Template"
+{
+	myChallengeType ButtonCombination
+	myUIGraph helix/ui/graphs/hud_input_challenge_button_combination.muigraph
+	myChallengeAudio < uid=C6B18B0866753F77000326455996F7D3 > = "[ButtonsCombination] Challenge base audio" C6B18B0866753E90000326367BE9B4A8
+	myRumblePreset < uid=E259BC2165CA4351000245B54929198C > = "Buttons Combination Rumble Events" E259BC2165CA428F00023BAD37C56C59
+}
+
+TimedButtonInputChallenge "[TimedSlider] Base Template" < uid=D00CF65464C117230001FEC9845CB6A3 >
+{
+	myChallengeType TimedSlider
+	myUIGraph helix/ui/graphs/hud_input_challenge_button_timedslider.muigraph
+	myUIAnchorPoint 0.5;0.2;0.0
+	myUIElements
+	{
+		InputChallengeUIElement LT
+		{
+			myButtonAnchorPoint < uid=D00CF65464C2A0450000C1A0232548FC > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction InputChallengeTriggerLeft
+		}
+	}
+	myMaxiumInputDelay 1.2
+	myWaitForPlayerInput FALSE
+	myShouldFailOnWrongInput FALSE
+	myChallengeAudio < uid=D00CF65464C117230001FECA66FD0528 > = "[TimedSlider] Challenge base audio" 1530855F65719E17001035A605BA5E46
+	myButtonsAudio < uid=D00CF65464C117230001FECB56BA3A23 > = "[TimedSlider]  Button base audio" 1530855F65719DA9001035A549AAD71D
+	myRumblePreset < uid=E259BC2165CB812B000818187E2C0AED > = "Timed Slider Rumble Events" E259BC2165CB808C0008181768FE5CDA
+	myTimeWindows
+	{
+		InputChallengeTimeWindow Bad_01
+		{
+			myTimeWindowPercentage 0.0;0.4
+			myWindowResult Bad
+		}
+		InputChallengeTimeWindow Success
+		{
+			myTimeWindowPercentage 0.4;0.6
+		}
+		InputChallengeTimeWindow Bad_02
+		{
+			myTimeWindowPercentage 0.6;1.0
+			myWindowResult Bad
+		}
+	}
+	myLoopingMode PingPong
+	myForceGoodMode TRUE
+	myShouldGoToPreviousStepOnError TRUE
+	myShouldPauseOnProgress TRUE
+}
+
+TimedButtonInputChallenge "[RandomizedTimedSlider] Base Template" < uid=75B1D5B365574232000149D374B8B2E5 >
+{
+	myChallengeType TimedSlider
+	myUIGraph helix/ui/graphs/hud_input_challenge_button_timedslider.muigraph
+	myUIAnchorPoint 0.5;0.2;0.0
+	myUIElements
+	{
+		InputChallengeUIElement Prompt
+		{
+			myButtonAnchorPoint < uid=75B1D5B365574232000149D40130E454 > = "Middle Center" C6B18B0864240D34000009CB06D52F0E
+			myGameAction InputChallengeFaceButtonDown
+		}
+	}
+	myMaxiumInputDelay 1.2
+	myWaitForPlayerInput FALSE
+	myShouldFailOnWrongInput FALSE
+	myChallengeTimeoutTime 5.0
+	myEndStateDuration 1.0
+	myChallengeAudio < uid=75B1D5B365574232000149D5C8E8292B > = "[TimedSlider] Challenge base audio" 1530855F65719E17001035A605BA5E46
+	myButtonsAudio < uid=75B1D5B365574232000149D615A061F8 > = "[TimedSlider]  Button base audio" 1530855F65719DA9001035A549AAD71D
+	myUseRandomizedWindowsSet TRUE
+	myTimeWindows
+	{
+		InputChallengeTimeWindow Bad_01
+		{
+			myTimeWindowPercentage 0.0;0.4
+			myWindowResult Bad
+		}
+		InputChallengeTimeWindow Success
+		{
+			myTimeWindowPercentage 0.4;0.6
+		}
+		InputChallengeTimeWindow Bad_02
+		{
+			myTimeWindowPercentage 0.6;1.0
+			myWindowResult Bad
+		}
+	}
+	myTimeRandomizedWindows
+	{
+		InputChallengeTimeRandomizedWindow Good
+		{
+		}
+		InputChallengeTimeRandomizedWindow Average
+		{
+			myWindowResult Avarage
+			myAttachPositionToOtherWindow TRUE
+		}
+		InputChallengeTimeRandomizedWindow Bad
+		{
+			myWindowResult Bad
+			mySize 1.0
+		}
+	}
+	myLoopingMode PingPong
+	myForceGoodMode FALSE
+	myShouldPauseGameOnNotHandledInput FALSE
+}
+
+ButtonHoldInputChallenge "[HoldingStick] Base Template" < uid=C6B18B086509B6FA00075759C368B6BB > : "[Hold] Base Template"
+{
+	myChallengeType MovingStick
+	myUIGraph helix/ui/graphs/hud_input_challenge_button_moving_stick.muigraph
+	myShouldUpdateMouse TRUE
+	myRumblePreset < uid=E259BC2165CA4ABE0003D5529FAD5178 > = "Holding Sticks Rumble Events" E259BC2165CB95600009D4154A582269
+	myHoldDuration 0.5
+}
+
+OscillatingStickInputChallenge "[OscillatingStick] Base Template" < uid=C6B18B086509B749000757C061E7E22C >
+{
+	myChallengeType OscillatingStick
+	myUIGraph helix/ui/graphs/hud_input_challenge_button_oscillating_stick.muigraph
+	myUIAnchorPoint 0.5;0.2;0.0
+	myUIElementsSpacing 5.0
+	myShouldUpdateMouse TRUE
+	myMaxiumInputDelay 0.0
+	myChallengeAudio < uid=C6B18B086509B7DB00075805AB058865 > = "[Mashing] Challenge base audio" C6B18B0864390EC10000725CF4A5BDDA
+	myButtonsAudio < uid=C6B18B086509B7DB00075806115D9EE2 > = "[Mashing] Button base audio" C6B18B0864390F4500007265FDF71D54
+	myRumblePreset < uid=E259BC2165CB973E0009D4260C3F25F6 > = "Oscillating Sticks Rumble Events" E259BC2165CB96150009D42196257CD2
+	myProgressEvaluationMode < uid=C6B18B08659E6FA10000A496862E2832 >
+	{
+		myType Curve
+		myProgressCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.094854064 -0.077903487, -0.42012507 -0.39633811, }, outTangents = { 0.033123642 0.062673405, 0.85848916 0.70507568, 0 0, }, properties = { 203, 2323, 1299, }, values = { 0.0012594461 0.0086206794, 0.10063037 0.19664088, 1 1, }, }, numKeys = 3, }"
+	}
+	myChallengeSteps 10
+	myProgressReductionMode SteppedReduction
+	myConsumeProgressDelay 0.5
+	myProgressReductionStep 0.1
+	myConsumeProgressRate 0.5
+}
+
+AimingStickInputChallenge "[RandomizedAimingStick] Base template" < uid=75B1D5B365573F11000149CF5ACBE869 >
+{
+	myMaxiumInputDelay 6.0
+	myWaitForPlayerInput FALSE
+	myEndStateDuration 1.0
+	myCursorStartPositionMin -0.4;-0.25
+	myCursorStartPositionMax 0.4;0.25
+	myCursorMoveMinSpeed 0.55
+	myCursorRandomDirectionMinSpeed 0.25
+	myIntervalDurationBetweenDirectionChanges 2.0
+	myCursorBorderRepulsionAngleMaxVariation 90.0
+	myCursorBorderRepulsionNoInputDuration 0.2
+	myCursorNoRandomDirectionDurationBeforeEnd 2.0
+	myWindowsSetup
+	{
+		AimingStickWindow Good
+		{
+			myResult Good
+			mySize 0.0;0.0
+			myAttachPositionToOtherWindow FALSE
+		}
+		AimingStickWindow Average
+		{
+			myResult Avarage
+			mySize 0.0;0.0
+			myAttachPositionToOtherWindow TRUE
+		}
+		AimingStickWindow Bad
+		{
+			myResult Bad
+			mySize 1.0;1.0
+		}
+	}
+}
+

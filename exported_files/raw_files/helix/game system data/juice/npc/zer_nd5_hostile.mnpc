@@ -1,0 +1,39 @@
+include "helix/game system data/juice/melee/alwaysblockmeleedefense.mnpcmeleedefenseprofile"
+include "helix/game system data/juice/npc/nd5.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npc/zer_hiredgunlight.mnpc"
+include "helix/game system data/juice/takedown/humanoid_takedown_config.mnpctakedownconfig"
+
+NPC zer_ND5_hostile < uid=91DC5D3C64818C47000200E1175B4233 > : nd5
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Character name\", enabled = true, guid = #2893451666054E120000F01F1265CD7C, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 2073, text = \"ND-5\", type = \"MenuLine\""
+	myCharacterVisuals < uid=4171A7E166B4DCE0000234F6C9775942 > = character_visuals_1_gold_nd5 8AC9ADE461FBF69700001C73123D90BC
+	myBehavior helix/behaviors/base_hiredgundroid.mbehavior
+	myNamedNPC ND5
+	myIsInvulnerable TRUE
+	myFaction < uid=4171A7E1648978FD0000BE72A56C97E7 > = "Zerek Besh" 2736B36562BC1F8C0000C38818DFFEBC
+	myVisionProfile < uid=91DC5D3C648191A900020254C8295EC8 > = ND5HostileVisionProfile 91DC5D3C64818E6D0002016AF0E7DD31
+	myHearingProfile < uid=E8092143648AD520000244C209B90288 > = ND5HostileHearingProfile 91DC5D3C64818FED000201A3A405459B
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=91DC5D3C64818D490002014156115115 > = ND5DetectionProfile 91DC5D3C64818CC100020105B54B1A7B
+	}
+	myMotionPatternProfile < uid=91DC5D3C648191150002023FAF635BCB > = ND5HostileMotionPatternProfile 91DC5D3C648190D8000201FAB0B954BC
+	myMeleeDefenseProfile < uid=4171A7E166ABB1DF0023BAB5ED6EA7B4 > = AlwaysBlockMeleeDefense 4171A7E1641C65F2000159B0FED5F8D6
+	myTakedownConfig < uid=4171A7E1658300D100125B8AD1E21FD1 > = ND5_Hostile_TakedownConfig 4171A7E16582FDC1000EDF100989B0DF
+	myCombatRole Assault
+	myAgentRBTagsGameConditions
+	{
+		myType Group
+		myIsNegated FALSE
+		myOperator And
+		myCanBeOverridden FALSE
+		myConditions
+		{
+		}
+	}
+	myCondtionalAgentRBTags
+	{
+	}
+}
+

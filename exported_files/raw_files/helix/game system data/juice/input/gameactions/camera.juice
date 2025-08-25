@@ -1,0 +1,257 @@
+include "helix/game system data/fruit/input/gameinput.fruit"
+include "helix/game system data/juice/input/inputactions.juice"
+
+TriggerGameAction "[Camera] Look Up"
+{
+	myConditionalInputActions
+	{
+		ConditionalInputAction "Right Stick Up Analog"
+		{
+			myInputActionType Analog
+			myInputAction = RIGHT_STICK_UP
+		}
+		HardcodedUIInput "[UI-only] Mouse forward"
+		{
+			myButtonName MOUSE_YAXIS
+			myAxisDirection 1
+		}
+	}
+	myGameAction LookUp
+	myActionContexts
+	{
+		UIContext FALSE
+		SequenceContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		WeaponModuleSelectionContext FALSE
+		GadgetSelectionContext FALSE
+		AimScopeContext FALSE
+		AdrenalineRushContext FALSE
+	}
+}
+
+TriggerGameAction "[Camera] Look Down"
+{
+	myConditionalInputActions
+	{
+		ConditionalInputAction "Right Stick Down Analog"
+		{
+			myInputActionType Analog
+			myInputAction = RIGHT_STICK_DOWN
+		}
+		HardcodedUIInput "[UI-only] Mouse backward"
+		{
+			myButtonName MOUSE_YAXIS
+			myAxisDirection -1
+		}
+	}
+	myGameAction LookDown
+	myActionContexts
+	{
+		UIContext FALSE
+		SequenceContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		WeaponModuleSelectionContext FALSE
+		GadgetSelectionContext FALSE
+		AdrenalineRushContext FALSE
+	}
+}
+
+TriggerGameAction "[Camera] Look Left"
+{
+	myConditionalInputActions
+	{
+		ConditionalInputAction "Right Stick Left Analog"
+		{
+			myInputActionType Analog
+			myInputAction = RIGHT_STICK_LEFT
+		}
+		HardcodedUIInput "[UI-only] Mouse left"
+		{
+			myButtonName MOUSE_XAXIS
+			myAxisDirection -1
+		}
+	}
+	myGameAction LookLeft
+	myActionContexts
+	{
+		UIContext FALSE
+		SequenceContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		WeaponModuleSelectionContext FALSE
+		GadgetSelectionContext FALSE
+		AdrenalineRushContext FALSE
+	}
+}
+
+TriggerGameAction "[Camera] Look Right"
+{
+	myConditionalInputActions
+	{
+		ConditionalInputAction "Right Stick Right Analog"
+		{
+			myInputActionType Analog
+			myInputAction = RIGHT_STICK_RIGHT
+		}
+		HardcodedUIInput "[UI-only] Mouse right"
+		{
+			myButtonName MOUSE_XAXIS
+			myAxisDirection 1
+		}
+	}
+	myGameAction LookRight
+	myActionContexts
+	{
+		UIContext FALSE
+		SequenceContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		WeaponModuleSelectionContext FALSE
+		GadgetSelectionContext FALSE
+		AdrenalineRushContext FALSE
+	}
+}
+
+TriggerGameAction "[Camera] Look Horizontal"
+{
+	myConditionalInputActions
+	{
+		ConditionalInputAction "Right Stick Right Analog"
+		{
+			myInputActionType Analog
+			myInputAction = RIGHT_STICK_RIGHT
+		}
+		ConditionalInputAction "Right Stick Left Analog"
+		{
+			myInputActionType Analog
+			myInputAction = RIGHT_STICK_LEFT
+		}
+		HardcodedUIInput "[UI-only] Mouse right"
+		{
+			myButtonName MOUSE_XAXIS
+			myAxisDirection 1
+		}
+		HardcodedUIInput "[UI-only] Mouse left"
+		{
+			myButtonName MOUSE_XAXIS
+			myAxisDirection -1
+		}
+	}
+	myGameAction LookHorizontal
+	myActionContexts
+	{
+		UIContext FALSE
+		SequenceContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		WeaponModuleSelectionContext FALSE
+		GadgetSelectionContext FALSE
+		AdrenalineRushContext FALSE
+	}
+}
+
+TriggerGameAction "[Camera] Look Vertical"
+{
+	myConditionalInputActions
+	{
+		ConditionalInputAction "Right Stick Down Analog"
+		{
+			myInputActionType Analog
+			myInputAction = RIGHT_STICK_DOWN
+		}
+		ConditionalInputAction "Right Stick Up Analog"
+		{
+			myInputActionType Analog
+			myInputAction = RIGHT_STICK_UP
+		}
+		HardcodedUIInput "[UI-only] Mouse backward"
+		{
+			myButtonName MOUSE_YAXIS
+			myAxisDirection -1
+		}
+		HardcodedUIInput "[UI-only] Mouse forward"
+		{
+			myButtonName MOUSE_YAXIS
+			myAxisDirection 1
+		}
+	}
+	myGameAction LookVertical
+	myActionContexts
+	{
+		UIContext FALSE
+		SequenceContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		WeaponModuleSelectionContext FALSE
+		GadgetSelectionContext FALSE
+		AdrenalineRushContext FALSE
+	}
+}
+
+TriggerGameAction "[Camera] Look"
+{
+	myConditionalInputActions
+	{
+		ConditionalInputAction "Right Stick Down Analog"
+		{
+			myInputActionType Analog
+			myInputAction = RIGHT_STICK_DOWN
+		}
+		ConditionalInputAction "Right Stick Up Analog"
+		{
+			myInputActionType Analog
+			myInputAction = RIGHT_STICK_UP
+		}
+		ConditionalInputAction "Right Stick Left Analog"
+		{
+			myInputActionType Analog
+			myInputAction = RIGHT_STICK_LEFT
+		}
+		ConditionalInputAction "Right Stick Right Analog"
+		{
+			myInputActionType Analog
+			myInputAction = RIGHT_STICK_RIGHT
+		}
+		HardcodedUIInput "[UI-only] Mouse backward"
+		{
+			myButtonName MOUSE_YAXIS
+			myAxisDirection -1
+		}
+		HardcodedUIInput "[UI-only] Mouse forward"
+		{
+			myButtonName MOUSE_YAXIS
+			myAxisDirection 1
+		}
+		HardcodedUIInput "[UI-only] Mouse left"
+		{
+			myButtonName MOUSE_XAXIS
+			myAxisDirection -1
+		}
+		HardcodedUIInput "[UI-only] Mouse right"
+		{
+			myButtonName MOUSE_XAXIS
+			myAxisDirection 1
+		}
+	}
+	myGameAction Look
+	myActionContexts
+	{
+		UIContext FALSE
+		SequenceContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		WeaponModuleSelectionContext FALSE
+		GadgetSelectionContext FALSE
+		AdrenalineRushContext FALSE
+	}
+}
+

@@ -1,0 +1,66 @@
+include "helix/game system data/fruit/combat/combat.fruit"
+include "helix/game system data/fruit/explosion/explosion.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+include "helix/game system data/fruit/statuseffect/status_effect.fruit"
+
+enum ProjectileActionTargetType
+{
+	Hit
+	FinalHit
+	PierceHit
+	Bounce
+	Expired
+	Destroyed
+	Spawned
+}
+
+class ProjectileAction < abstract=1 >
+{
+	GameConditionGroup myEnableCondition
+	ProjectileActionTargetType myActionTargetType Hit
+	DamageType myDamageType Physical
+	DamageTargetType myDamageTargetType All
+}
+
+list ProjectileActionList
+{
+	ProjectileAction
+}
+
+class ProjectileActionDamage : ProjectileAction
+{
+	string myDamage 1.0 < bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+}
+
+class ProjectileActionExplosion : ProjectileAction
+{
+	string myDamageFormula 1 < tooltip="Calculating damage for this explosion" bhv=formulaEditor formulaResolveContextType=Explosion >
+	string myRadiusFormula 1 < tooltip="Calculating radius for this explosion" bhv=formulaEditor formulaResolveContextType=Explosion >
+	float myDefaultDamage 1 < tooltip="The default damage used if projectile source is not an agent" >
+	float myDefaultRadius 1 < tooltip="The default radius used if projectile source is not an agent" >
+	bool myDamageSelf true
+	Explosion* myExplosion
+}
+
+class ProjectileActionStatusEffect : ProjectileAction
+{
+	StatusEffectType myStatusEffect NotSet
+	float myDuration 1.0
+}
+
+class ProjectileActionGameScript : ProjectileAction
+{
+	file myGameScript "" < bhv=asset assettype="Game Script/ProjectileHit" >
+	float myGameScriptDuration 0 < min=0.0 tooltip="How long the game script should stay alive. It needs to be tied with delay in the script" >
+	string myDamageFormula 1 < tooltip="Calculating damage for this explosion, only used projectile source is an agent" bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	string myRadiusFormula 1 < tooltip="Calculating radius for this explosion, only used projectile source is an agent" bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	float myDefaultDamage 1 < tooltip="It is up to the game script apply this value or not. The Script will receive it as part of the input pin data." >
+	float myDefaultRadius 1 < tooltip="It is up to the game script apply this value or not. The Script will receive it as part of the input pin data." >
+}
+
+class ProjectileActionIonCharge : ProjectileAction
+{
+	DamageType myDamageType Ion < hidden=1 >
+	string myCharge 1.0 < bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	string myAOERadius 1.0 < bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+}

@@ -1,0 +1,24 @@
+include "helix/game system data/juice/ai/dynamiccapinteractions/wildlifedcap.mnpcdynamiccapinteractionprofile"
+include "helix/game system data/juice/ai/wildlife corpse profile.mnpccorpseprofile"
+include "helix/game system data/juice/ai/wildlifecapevaluatorprofiles.mnpccapinteractionevaluatorprofile"
+include "helix/game system data/juice/ai/wl_ku.mnpcmotionpatternprofile"
+include "helix/game system data/juice/melee/wildlifemeleedefense.mnpcmeleedefenseprofile"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npc/wil_fp_prey.mnpc"
+include "helix/game system data/juice/npc/wl_ku.mnpc"
+include "helix/game system data/juice/quadrupedalgroundaligner/wildlife_ground_aligner_config.mquadalignerconfig"
+
+NPC wl_ku_stationary < uid=290EB60C6620C6F40045FAD445CCCA2C > : wl_ku
+{
+	myCharacterVisuals < uid=290EB60C6620C6F40045FAD5F18C2754 > = character_visuals_wil_ku_stationary 290EB60C6620CA6F0046089DDD4BB305
+	myBehavior helix/behaviors/wildlife_prey_stationary.mbehavior
+	myAnimSystemType Ku_Stationary
+	myInitialNPCControllerContextType Hover
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=290EB60C662213180007444453508F82 > = DefaultRidingWildlifeDetectionProfile 290EB60C6528DB46000581F9C398B78C
+	}
+	myDynamicCAPInteractionProfile < uid=290EB60C6620D15A000083C2B777D831 > = KuStationaryDynamicCAP 4CFBCDBB6673CF430005B6ACA52370F6
+	myCAPInteractionEvaluatorProfile < uid=290EB60C6620D15A000083C387B40632 > = wildlifecapevaluatorprofiles 290EB60C633262C600008C045368B169
+}
+

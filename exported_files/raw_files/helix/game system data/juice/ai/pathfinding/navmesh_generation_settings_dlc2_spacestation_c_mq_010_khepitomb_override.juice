@@ -1,0 +1,125 @@
+include "helix/game system data/fruit/ai/pathfinding/agent_navigation_metrics.fruit"
+include "helix/game system data/fruit/ai/pathfinding/navmesh_generation_settings.fruit"
+include "helix/game system data/juice/ai/pathfinding/agent_navigation_metrics.juice"
+
+NavMeshGenConfig "New NavMeshGenConfig"
+{
+	mySmallLayer
+	{
+		myCellSize 0.06
+		myAgentNavigationMetrics = "myNavMesh Small"
+		myAgentMaxSlope 45.0
+		myLedgeErosionDistanceDefault 0.2
+		myEdgeMaxSimplificationError 0.25
+		myWaterConfig
+		{
+			myShoreDepth 0.0
+			myShallowDepth 0.0
+			myDeepDepth 0.0
+		}
+		myAgentHeightCategories
+		{
+			float height 2.0
+		}
+		myRegionGenerationSettings
+		{
+			myRegionBuilderType TILE_BASED
+			myMaxRegionAreaSqM 200.0
+		}
+	}
+	myMediumLayer
+	{
+		myGenerateNavLinks TRUE
+		myCellSize 0.06
+		myCellHeight 0.03
+		myAgentNavigationMetrics = "myNavMesh Medium"
+		myAgentMaxSlope 45.0
+		myLedgeErosionDistanceDefault 0.2
+		myEdgeMaxSimplificationError 0.25
+		myJumpLinkOffsetForVerticalJump 0.5
+		myJumpLinkMaxDistanceForVerticalJump 1.0
+		myWaterConfig
+		{
+			myShoreDepth 0.05
+			myShallowDepth 0.15
+			myDeepDepth 1.5
+		}
+		myAgentHeightCategories
+		{
+			float height 2.0
+		}
+		myRegionGenerationSettings
+		{
+			myRegionBuilderType TILE_BASED
+			myMaxRegionAreaSqM 200.0
+		}
+	}
+	myLargeLayer
+	{
+		myGenerateNavLinks TRUE
+		myCellHeight 0.1
+		myAgentNavigationMetrics = "myNavMesh Large"
+		myAgentMaxSlope 45.0
+		myLedgeErosionDistanceDefault 2.5
+		myEdgeMaxSimplificationError 1.5
+		myEdgeMaxSimplificationErrorHeight 0.8
+		myJumpLinkOffsetForVerticalJump 3.0
+		myJumpLinkMaxDistanceForVerticalJump 5.0
+		myWaterConfig
+		{
+			myShoreDepth 0.05
+			myShallowDepth 0.33
+			myDeepDepth 1.8
+		}
+		myAgentHeightCategories
+		{
+			float height 4.0
+		}
+		myRegionGenerationSettings
+		{
+			myRegionBuilderType TILE_BASED
+			myMaxRegionAreaSqM 200.0
+		}
+	}
+	myHugeLayer
+	{
+		myAgentNavigationMetrics = "myNavMesh Huge"
+		myAgentMaxClimb 1.0
+		myAgentMaxSlope 31.0
+		myLedgeErosionDistanceDefault 2.5
+		myEdgeMaxSimplificationError 3.0
+		myEdgeMaxSimplificationErrorHeight 1.0
+		myAgentHeightCategories
+		{
+			float height 5.5
+		}
+		myRegionGenerationSettings
+		{
+			myRegionBuilderType TILE_BASED
+			myMaxRegionAreaSqM 200.0
+		}
+	}
+	myGiganticLayer
+	{
+		myCellSize 1.0
+		myCellHeight 1.0
+		myAgentNavigationMetrics = "myNavMesh Gigantic"
+		myAgentMaxClimb 3.0
+		myAgentMaxSlope 60.0
+		myMaximumGapWitdhToFill 3.0
+		myLedgeErosionDistanceDefault 20.0
+		myEdgeMaxSimplificationError 10.0
+		myEdgeMaxSimplificationErrorHeight 6.0
+		myAgentHeightCategories
+		{
+			float height 5.5
+		}
+	}
+	myNavLinkNPCs
+	{
+		file "New file" ""
+	}
+	myOverrideDataPrefetchPoolSize TRUE
+	myDataPrefetchPoolSize 12
+}
+

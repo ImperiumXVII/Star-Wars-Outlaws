@@ -1,0 +1,58 @@
+include "helix/game system data/juice/equipment/weaponfiremode/trailblazer_firemode_template.mweaponfiremode"
+include "helix/game system data/juice/projectile/ship_missile_projectile.mprojectile"
+include "helix/game system data/juice/sound/stimuli/stim_id_main.mstimulusidentifier"
+include "helix/game system data/juice/sound/weapons/player_audioweapon_traiblazer_m1.maudioweapon"
+
+WeaponFireMode trailblazer_firemode_test_missile < uid=A207755D62C2E9CE00003759B7418112 > : trailblazer_firemode_template
+{
+	myProjectile < uid=A207755D62C2EA0A0000375AC5039C79 > = projectile_tb_missile_concussion 6B0E1DE964AFFA3B000DF29B257090D8
+	myCooldown
+	{
+		myStartType OnBeginUse
+		myDuration 2.0
+		myFinalCooldownFormula "Equipment.BaseCooldown * TrailblazerEquipmentCooldownModifier"
+	}
+	myDamage
+	{
+		myDamage
+		{
+			myVariation 5.0
+			myDamageType Physical
+		}
+	}
+	myLockOn
+	{
+		myIsLockOnEnabled TRUE
+		myIsLockOnRequired TRUE
+	}
+	myAudioData < uid=A207755D62C2EA6C0000375B087C1B0E > = player_audioweapon_traiblazer_M1 9DB1BD4A6274E02A00002ACB0E151418
+	myStimulusIdentifier < uid=3A129121634FE2840000DF2E485589D8 > = S_KAY_Space_TrailblazerMissileLaunched 3A1291216308B3ED0001C5D5BE255F62
+}
+
+WeaponFireMode trailblazer_firemode_test_missile_multishot < uid=AE04054764AC14260000634D5208CB51 > : trailblazer_firemode_template
+{
+	myProjectile < uid=AE04054764AC14260000634EA8503EDB > = projectile_ship_missile_base B005013562723C5100002CF6C1C5C41B
+	myCooldown
+	{
+		myStartType OnBeginUse
+		myDuration 0.0
+		myFinalCooldownFormula "Equipment.BaseCooldown * TrailblazerEquipmentCooldownModifier"
+	}
+	myDamage
+	{
+		myDamage
+		{
+			myVariation 5.0
+			myDamageType Physical
+		}
+	}
+	myLockOn
+	{
+		myIsLockOnEnabled TRUE
+		myIsLockOnRequired TRUE
+		myLockOnDurationSeconds 0.75
+	}
+	myAudioData < uid=AE04054764AC14260000634FBF75104F > = player_audioweapon_traiblazer_M1 9DB1BD4A6274E02A00002ACB0E151418
+	myStimulusIdentifier < uid=AE04054764AC1426000063501DF495B1 > = S_KAY_Space_TrailblazerMissileLaunched 3A1291216308B3ED0001C5D5BE255F62
+}
+

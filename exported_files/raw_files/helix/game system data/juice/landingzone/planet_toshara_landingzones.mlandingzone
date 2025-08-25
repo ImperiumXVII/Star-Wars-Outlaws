@@ -1,0 +1,178 @@
+include "helix/game system data/fruit/landingzone/landingzone.fruit"
+include "helix/game system data/juice/faction/factions.mfaction"
+include "helix/game system data/juice/mapref/mapref_landingzone.mmapref"
+
+LandingZone "Planet Toshara: Mirogana Main" < uid=9D0EE20B6073F5F4000010D6D710D5C6 >
+{
+	myName "aurabesh = false, contextComment = \"The lower landing zone in Mirogana. Used to be called main.\", enabled = true, guid = #5348798C607949300001C4AE73B6BCD3, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 423, text = \"Mirogana City Entrance\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+	myMapRef < uid=5348798C60795A990001C4E667353895 > = mapref_landingzone_ground 5348798C60795A450001C4E5F3151D56
+	myUnlockedStateGameValue < uid=5348798C60784D2C00000040854CAE1F >
+	{
+		myDefaultValue 1
+	}
+	myLandingZoneLandingCountGameValue < uid=E711F097651BD4F200007A360BF3B7EF >
+	{
+		myDefaultValue 0
+	}
+	myUnlockConditions
+	{
+	}
+	myLandingSequence helix/sequence/transition_system_landing_toshara_miroganamain_01.msequence
+	myTakeOffSequence helix/sequence/transition_system_takeoff_toshara_miroganamain_02.msequence
+	mySpaceLocation 488.721985;210.906998;15827.700195
+}
+
+LandingZone "Planet Toshara: Mirogana Secondary" < uid=AE8B160162F0C8C4000335A66D506C0D >
+{
+	myName "aurabesh = false, contextComment = \"The higher landing zone in Mirogana. Used to be called secondary.\", enabled = true, guid = #AE8B160162F0C86B000335A562778295, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 423, text = \"Mirogana Spaceport \", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+	myMapRef < uid=AE8B160162F0C8C4000335A754554A43 > = mapref_landingzone_ground 5348798C60795A450001C4E5F3151D56
+	myUnlockedStateGameValue < uid=AE8B160162F0C8C4000335A92C565349 >
+	{
+		myDefaultValue 0
+	}
+	myLandingZoneLandingCountGameValue < uid=E711F097651BD4F200007A3721B67F97 >
+	{
+	}
+	myUnlockConditions
+	{
+		GameConditionQuestState "Is MQ_050 Not Active"
+		{
+			myQuest BFA41A0261B360F8000004066BC62BAC
+			myQuestState Started
+			myOperator NotEqual
+		}
+	}
+	myTakeOffSequence helix/sequence/A_GEN_REA666_TB_Diagonal_Takeoff_seq.msequence
+	mySpaceLocation -467.93399;-2.2022;15033.799805
+}
+
+LandingZone "Planet Toshara: Settlement Shrublands" < uid=9D0EE20B6073F61A000010D71D7A61B9 >
+{
+	myName "aurabesh = false, contextComment = \"Jaunta's Hope LZ.\", enabled = true, guid = #5348798C607949250001C4AC2C3DB790, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 423, text = \"Jaunta's Hope \", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+	myMapRef < uid=5348798C60795A990001C4E7FE724BB6 > = mapref_landingzone_ground 5348798C60795A450001C4E5F3151D56
+	myUnlockedStateGameValue < uid=5348798C60784D2C00000041EE468EC8 >
+	{
+		myDefaultValue 1
+	}
+	myLandingZoneLandingCountGameValue < uid=E711F097651BD4F200007A3830C1EA44 >
+	{
+	}
+	myUnlockConditions
+	{
+		GameConditionQuestBeatState "Is Beat Active FQ_PSY_010 QB04_2B"
+		{
+			myQuestBeat 8FD81D5165E840940004A7C64DB61425
+			myQuestBeatState Started
+			myOperator NotEqual
+		}
+		GameConditionQuestState "Is MQ_050 Not Active"
+		{
+			myType QuestState
+			myIsNegated FALSE
+			myQuest BFA41A0261B360F8000004066BC62BAC
+			myQuestState Started
+			myOperator NotEqual
+		}
+	}
+	myLandingSequence helix/sequence/transition_system_landing_toshara_jauntashope_01.msequence
+	myTakeOffSequence helix/sequence/transition_system_takeoff_toshara_jauntashope_02.msequence
+	myCallShipSequence helix/sequence/a_gen_tb_playercall_generic.msequence
+	mySpaceLocation -782.372986;-104.981003;14633.599609
+}
+
+LandingZone "Planet Toshara Pyke Faction Territory" < uid=1EAB3B406374ACB80000A5E5F5184E6C >
+{
+	myName "aurabesh = false, contextComment = \"^^ Pyke Faction Territory LZ. Only avail if player has good or excellent reputation.\", enabled = true, guid = #1EAB3B406374AC560000A5E4FB180AE9, lineVersion = 13, maxLength = 0, productId = -1, sectionId = 3614, text = \"Pyke Poaching Station\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+	myMapRef < uid=1EAB3B406374ACB80000A5E68D5A8218 > = mapref_landingzone_ground 5348798C60795A450001C4E5F3151D56
+	myUnlockedStateGameValue < uid=1EAB3B406374ACB80000A5E7BDCB2E2B >
+	{
+		myDefaultValue 1
+	}
+	myLandingZoneLandingCountGameValue < uid=E711F097651BD4F200007A3979BF09FA >
+	{
+	}
+	myUnlockConditions
+	{
+		GameConditionPlayerHasReputation "Has Reputation"
+		{
+			myFaction < uid=F8252D3C66704C540000B9C54F737812 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+			myReputationTier Good
+		}
+		GameConditionQuestState "Has Finished MQ_060"
+		{
+			myQuest BFA41A0261B36172000004093607CD4A
+			myQuestState Completed
+			myOperator Equal
+		}
+		GameConditionQuestBeatState "Is Beat Active FQ_PSY_010 QB04_2B"
+		{
+			myQuestBeat 8FD81D5165E840940004A7C64DB61425
+			myQuestBeatState Started
+			myOperator NotEqual
+		}
+	}
+	myLandingSequence helix/sequence/transition_system_landing_toshara_pykefaction_01.msequence
+	myTakeOffSequence helix/sequence/transition_system_takeoff_toshara_pykefaction_02.msequence
+	myCallShipSequence helix/sequence/A_GEN_TB_Playercall_Generic_Cam02.msequence
+	mySpaceLocation -897.729004;-553.981995;14472.0
+	myIsDiscoveredByDefault FALSE
+}
+
+LandingZone "Planet Toshara Crash Site" < uid=06F73AE1650C3E410002B0AF847775CB >
+{
+	myName "aurabesh = false, contextComment = \"the name of the crash site landing site in mq 030\", enabled = true, guid = #06F73AE1650C3E410002B0B0B9DC4674, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 1671, text = \"Crash Site Name\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"Description of the crash site landing site in mq 030\", enabled = true, guid = #06F73AE1650C3E410002B0B12CA7BB6F, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 1671, text = \"Ship crashed here\", type = \"MenuLine\""
+	myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+	myMapRef < uid=06F73AE1650C3E8A0002B0B49CAE10A7 > = mapref_landingzone_ground 5348798C60795A450001C4E5F3151D56
+	myUnlockedStateGameValue < uid=06F73AE1650C3E8A0002B0B58DC3BC9E >
+	{
+		myDefaultValue 1
+	}
+	myLandingZoneLandingCountGameValue < uid=E711F097651BD4F200007A3AEF6585ED >
+	{
+	}
+	myUnlockConditions
+	{
+		GameConditionQuestState "Is MQ_050 Not Active"
+		{
+			myQuest BFA41A0261B360F8000004066BC62BAC
+			myQuestState Started
+			myOperator NotEqual
+		}
+	}
+	myIsDiscoveredByDefault FALSE
+	myIsHiddenLandingZone TRUE
+}
+
+LandingZone "Planet Toshara Hidden Landing Zone" < uid=06F73AE16639DD72000000D4DF20B2F0 >
+{
+	myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+	myMapRef < uid=06F73AE16639E8C1000E86FDE74530A7 > = mapref_landingzone_ground 5348798C60795A450001C4E5F3151D56
+	myUnlockedStateGameValue < uid=06F73AE16639DDE1000000D94DDA2B47 >
+	{
+	}
+	myLandingZoneLandingCountGameValue < uid=06F73AE16639DDE1000000DA9F1B3D60 >
+	{
+	}
+	myUnlockConditions
+	{
+		GameConditionQuestState "Is MQ_050 Not Active"
+		{
+			myQuest BFA41A0261B360F8000004066BC62BAC
+			myQuestState Started
+			myOperator NotEqual
+		}
+	}
+	myIsHiddenLandingZone TRUE
+}
+

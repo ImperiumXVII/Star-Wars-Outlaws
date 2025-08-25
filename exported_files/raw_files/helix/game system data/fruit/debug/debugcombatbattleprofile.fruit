@@ -1,0 +1,28 @@
+include "helix/game system data/fruit/npc/npc.fruit"
+
+
+class NPCUnitSettings
+{
+	NPC* myNPCConstantData
+	int myUnitsCount 1
+}
+
+list NPCUnitSettingsList
+{
+	NPCUnitSettings
+}
+
+class NPCGroupSettings
+{
+	NPCUnitSettingsList myUnitSettings
+}
+
+list NPCGroupSettingsList
+{
+	NPCGroupSettings
+}
+
+class DebugBattlePreset < uid=auto >
+{
+	NPCGroupSettingsList myGroupSettings false
+}

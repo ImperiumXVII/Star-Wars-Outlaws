@@ -1,0 +1,396 @@
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+include "helix/game system data/juice/intel/intel_toshara.mintel"
+include "helix/game system data/juice/item/items_contracts.mitem"
+
+LivingWorldContent TEMPLATE < uid=D4F6307964FC4CF900049E435DF25A85 >
+{
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType "Block Ambient" Ambient
+	}
+	myBlockingRadius 1.0
+	myActivationGameConditions
+	{
+		GameConditionQuestState "MQ_050 is Completed"
+		{
+			myQuest BFA41A0261B360F8000004066BC62BAC
+			myQuestState Completed
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance +125"
+		{
+			myDistance 125.0
+		}
+	}
+}
+
+LivingWorldContent A_TOS_Contract_JauntasHope_Verrick_Hutt < uid=D4F6307964FC4D0900049E445E4412F0 > : TEMPLATE
+{
+	myCompletedGameValue < uid=D4F6307965BB590C000F359E5C7EB94F >
+	{
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType "Block Ambient" Ambient
+	}
+	myLayerType MicroStory
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 50"
+		{
+			myDistance 50.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestState "MQ_050 is Completed"
+		{
+			myQuest BFA41A0261B360F8000004066BC62BAC
+			myQuestState Completed
+		}
+		GameConditionQuestBeatState "HTC_010 B04 Completed"
+		{
+			myQuestBeat C7AA9ADA62DEB3E4000103BAB92A5731
+			myQuestBeatState Completed
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance +75"
+		{
+			myDistance 75.0
+		}
+	}
+}
+
+LivingWorldContent A_TOS_Contract_Mirogana_Danka_Unaffiliated < uid=D4F6307964FC4DA000049E51FD557BDE > : TEMPLATE
+{
+	myCompletedGameValue < uid=D4F6307965BB590C000F359F498BDC37 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionQuestState "MQ_050 is Completed"
+		{
+			myQuest BFA41A0261B360F8000004066BC62BAC
+			myQuestState Completed
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionLivingWorldFormula "gv_A_MQ_060_DankaDespawn = 0"
+		{
+			myFormula "gv_A_MQ_060_DankaDespawn = 0"
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance +125"
+				{
+					myDistance 125.0
+				}
+				GameConditionQuestBeatState "ASH_010 B07 Active"
+				{
+					myQuestBeat 9128788863D3FE6C0000458B2B70C957
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "ASH_010 B09 Active"
+				{
+					myQuestBeat 91287888652D0028001224A8FB97108F
+					myQuestBeatState Started
+				}
+				GameConditionLivingWorldFormula "gv_A_MQ_060_DankaDespawn = 1"
+				{
+					myFormula "gv_A_MQ_060_DankaDespawn = 1"
+				}
+				LivingWorldGameConditionGroup "Group AND"
+				{
+					myConditions
+					{
+						GameConditionQuestBeatState "ASH_010 B09 Completed"
+						{
+							myQuestBeat 91287888652D0028001224A8FB97108F
+							myQuestBeatState Completed
+						}
+						GameConditionLivingWorldFormula "GV_MS137_DankaContract_PostASH010 = 0"
+						{
+							myFormula "GV_MS137_DankaContract_PostASH010 = 0"
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent A_TOS_Contract_Mirogana_Eleera_CrimsondDawn < uid=D4F6307964FC4DC300049E52FCDC5BC6 > : TEMPLATE
+{
+	myCompletedGameValue < uid=D4F6307965BB590C000F35A06F3B50EF >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance -40"
+		{
+			myDistance 40.0
+			myOperator LessThan
+		}
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestState "MQ_050 is Completed"
+				{
+					myQuest BFA41A0261B360F8000004066BC62BAC
+					myQuestState Completed
+				}
+				GameConditionPlayerHasIntel "Intel MS005 P2 Active"
+				{
+					myIntel < uid=ACAEF5AB66549B690081BF2045D7AEAB > = A_TOS_MS005_ITL018_Secrets_P2 AE8B160163FCD4D800011CD43FB18FB5
+				}
+				GameConditionPlayerHasIntel "Intel MS011 P3 Active"
+				{
+					myIntel < uid=ACAEF5AB66549B9F0081BF3CADED7D76 > = A_TOS_MS011_ITL070_CounterfeitCredits_P4_CRI F12EE1F964A55289001035386A6AD0B5
+				}
+				GameConditionPlayerHasIntel "Intel MS028 P2 Active"
+				{
+					myIntel < uid=ACAEF5AB66549B690081BF21FBEF9F79 > = A_TOS_MS028_ITL027_ImpressingGorak_P2_Eleera D4F6307964FEFE73000900A3AED910C5
+				}
+			}
+		}
+		GameConditionQuestBeatState "MQ_050 B08 Is Not Active"
+		{
+			myQuestBeat 8FD81D516318B31500040D08138C5683
+			myQuestBeatState Started
+			myOperator NotEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance +60"
+				{
+					myDistance 60.0
+				}
+				GameConditionQuestBeatState "MQ_050 B08 Is Active"
+				{
+					myQuestBeat 8FD81D516318B31500040D08138C5683
+					myQuestBeatState Started
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent A_TAT_Contract_MosEisley_Zyssyk_Ashiga < uid=D4F63079652E44BD001278E7AE2261F9 > : TEMPLATE
+{
+	myCompletedGameValue < uid=D4F6307965BB590C000F35A1A924D901 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionQuestState "FQ_ASH_040 is Completed"
+		{
+			myQuest 913C1076642A9E9A0002986397C3751C
+			myQuestState Completed
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+	}
+}
+
+LivingWorldContent A_TAT_Contract_Bestine_Eezok_CrimsonDawn < uid=D4F630796538C57000072E3106BD86B0 > : TEMPLATE
+{
+	myCompletedGameValue < uid=D4F6307965BB590C000F35A20039B9AB >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionQuestState "MQ_050 is Completed"
+		{
+			myQuest BFA41A0261B360F8000004066BC62BAC
+			myQuestState Completed
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestState "FQ_CRM_020 Completed"
+		{
+			myQuest C5B8DCF6651420800000F6EB218F45E2
+			myQuestState Completed
+		}
+	}
+}
+
+LivingWorldContent A_TAT_Contract_JabbasPalace_BibFortuna_Hutt < uid=D4F630796549F9EF0003DA1B40E988ED > : TEMPLATE
+{
+	myCompletedGameValue < uid=D4F630796549F9EF0003DA1C4BB0CFF9 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionQuestState "MQ_050 is Completed"
+		{
+			myQuest BFA41A0261B360F8000004066BC62BAC
+			myQuestState Completed
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestState "FQ_HTC_030 Completed"
+		{
+			myQuest C5B8DCF664A2A0760001A5991526EDDE
+			myQuestState Completed
+		}
+		GameConditionQuestBeatState "Not During CRM_020 Beat 11"
+		{
+			myQuestBeat 0EA96C6A651D5B89000D54CD2A5D0E92
+			myQuestBeatState Started
+			myOperator NotEqual
+		}
+		GameConditionQuestBeatState "SQ_010 B11 Not Started"
+		{
+			myQuestBeat 0EA96C6A651D5B89000D54CD2A5D0E92
+			myQuestBeatState Started
+			myOperator NotEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance +125"
+				{
+					myDistance 125.0
+				}
+				GameConditionQuestBeatState "SQ_010 B11 Started"
+				{
+					myQuestBeat 0EA96C6A651D5B89000D54CD2A5D0E92
+					myQuestBeatState Started
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent A_KIJ_Contract_KijimiCity_Mayiu_Ashiga < uid=FB6AE4D56540DC9F00034481F8AAEBC8 > : TEMPLATE
+{
+	myCompletedGameValue < uid=D4F6307965BB590C000F35A31744B7FF >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionQuestState "FQ_ASH_020 is Completed"
+		{
+			myQuest CC6CF61E64E4E2C300009E71DD57080C
+			myQuestState Completed
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+	}
+}
+
+LivingWorldContent A_KIJ_Contract_KijimiCity_DartSubterra_CrimsonDawn < uid=FB6AE4D56540E8A4000BA36A97142BDB > : TEMPLATE
+{
+	myCompletedGameValue < uid=D4F6307965BB590C000F35A4A24D21D0 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionQuestState "FQ_CRM_010  is Completed"
+		{
+			myQuest E1B84E3A64F057DB0001A2F8F3CC5499
+			myQuestState Completed
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+	}
+}
+
+LivingWorldContent A_AKI_Contract_Myrra_Norana < uid=FB6AE4D565AF64C70006602D12A95FBF > : TEMPLATE
+{
+	myCompletedGameValue < uid=D4F6307965BB590C000F35A52D2E0849 >
+	{
+	}
+}
+
+LivingWorldContent DEBUG_ContractSpawn < uid=D4F6307965C0A13F0007FA14B34D6151 >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer Distance
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+	}
+}
+
+LivingWorldContent A_HK_Contract_Reese_Passik_Miyuki < uid=616F4596672DCDAB000000D47D8508E4 > : TEMPLATE
+{
+	myCompletedGameValue < uid=616F459667B5CAD7000687A55A642567 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myActivationGameConditions
+	{
+		GameConditionQuestState "MQ_140 is Completed"
+		{
+			myQuest BFA41A0261C2FC4A00004D0F65DCABC9
+			myQuestState Completed
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestState "C_MQ_030 is Completed"
+		{
+			myQuest 253B686766E29D0B00000C3B47ABDF14
+			myQuestState Completed
+		}
+	}
+}
+

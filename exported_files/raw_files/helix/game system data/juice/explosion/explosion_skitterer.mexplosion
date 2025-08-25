@@ -1,0 +1,60 @@
+include "helix/game system data/fruit/explosion/explosion.fruit"
+include "helix/game system data/juice/explosion/explosion_default.mexplosion"
+
+Explosion explosion_skitterer < uid=2893451664FB172C0000C9C82D777306 > : explosion_default
+{
+	myDefaultRadius 2.0
+	myDetonation
+	{
+		myBaseEffect "helix/particles/vfx npc skitterer 01.mparticles"
+		myImpactEffect
+		{
+			myEffects
+			{
+				myDefaultEffect ""
+				myList
+				{
+				}
+			}
+		}
+		myRumbleSection
+		{
+			mySize 2.0
+			myCreationRumble
+			{
+				myRumble 8E25811B65FD55960003523467295996
+				myOuterRadiusMultiplier 0.4
+			}
+			myImpactRumble
+			{
+			}
+		}
+		myGameplayDamageSection
+		{
+			mySize 1.0
+			myBlockerType ShieldAndStatic
+			myDamageType Physical
+			myDamageTargetType All
+			myDamageFormula 1.5
+			myDefaultDamage 1.0
+			myDamageMultiplierByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.12309647 0.63877118, }, outTangents = { 0.75 0, 0 -0, }, properties = { 275, 1299, }, values = { 0 1, 1 0.1, }, }, numKeys = 2, }"
+			myStaggerDamageOverrideEnabled FALSE
+			myStaggerDamageOverride 1.0
+			myStaggerDamageOverrideMultiplierByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0.0, 0 0, }, properties = { -749, -749, }, values = { 0 1, 1 0.1, }, }, numKeys = 2, }"
+			myDamageSelf TRUE
+			myFriendlyFireEnabled TRUE
+		}
+		myFlinchSection
+		{
+			mySize 1.5
+		}
+		myAudioSection
+		{
+			myDetonationEvent
+			{
+				myGuid 482278425BEEBFE02C4707FDCCD7FDAC
+			}
+		}
+	}
+}
+

@@ -1,0 +1,30 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npc/pyk_shp_base.mnpc"
+
+NPC pyk_shp_vwing_a < uid=F95CD8F3648363AB00008896CB0ED11A > : pyk_shp_base
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"name of ship - V-92 Tine Hunter / Vwing - Pyke faction\", enabled = true, guid = #6AE6EE0D657876D3000266D1A357A1EF, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10726, text = \"V-92 Tine Hunter\", type = \"MenuLine\""
+	myCharacterVisuals < uid=F95CD8F3648363AB00008897FB3BAEC8 > = character_visuals_npc_shp_VWing F95CD8F362ECDB180000E9CDAA60D460
+	myNPCComponentSetType Spaceship
+	mySpaceshipType VWingPyke
+	myMaxHealth 60
+	myHealthFormula 30*SpaceHealthDifficultyModifier
+	myLodType Spaceship_Small
+	myVisionProfile < uid=F95CD8F3648363AB000088982585A755 > = visionProfile_pyk_ship_Interceptor 6B0E1DE964B7A45D0000AD6CB1DE60DD
+	myHearingProfile < uid=F95CD8F3648363AB00008899174C09CD > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=F95CD8F3648363AB0000889AAA778C3F > = detectionProfile_pyk_ship_Interceptor 6B0E1DE964B663E20003C72528E65AC3
+	}
+	myThreatProfile < uid=F95CD8F36540CFB70000658A27500B97 > = Spaceshipthreatprofile F95CD8F3653F81EE00057BF796B8AD1A
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "vwing weapon loadout" < uid=F95CD8F3648363AB0000889C84AB9B8E > = weaponloadout_pyk_shp_vwing 6AF0BA04649BFC9400074B220E5CDCB3
+	}
+	myCombatRole Interceptor
+}
+

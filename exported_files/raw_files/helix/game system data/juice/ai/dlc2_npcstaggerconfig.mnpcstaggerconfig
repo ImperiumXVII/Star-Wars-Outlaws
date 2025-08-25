@@ -1,0 +1,61 @@
+include "helix/game system data/fruit/ai/npcstagger.fruit"
+include "helix/game system data/juice/ai/npcstaggerconfigs.mnpcstaggerconfig"
+
+NPCStaggerConfig KhepiDroid < uid=91DC5D3C671F51C4000220BA7BCCDDA7 > : NPC_Elite
+{
+	myStaggerDamageModifiers
+	{
+		NPCStaggerDamageModifier Explosion
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Explosion
+			}
+			myValue 8.0
+		}
+		NPCStaggerDamageModifier "Ion Explosion"
+		{
+			myDamageType
+			{
+				DamageType "New DamageType" Ion
+			}
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Explosion
+			}
+		}
+		NPCStaggerDamageModifier Stun
+		{
+			myDamageType
+			{
+				DamageType "New DamageType" StunBlast
+			}
+			myValue 6.0
+		}
+		NPCStaggerDamageModifier Melee
+		{
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Melee
+			}
+		}
+		NPCStaggerDamageModifier Blaster
+		{
+			myDamageType
+			{
+				DamageType "New DamageType" Physical
+			}
+			myDamageSourceType
+			{
+				DamageSourceType "New DamageSourceType" Projectile
+			}
+		}
+	}
+	myDazedGaugeMaxValue 11
+	myDazedGaugeTreshold 11
+	myDazedRecoveryRate 1
+	myDazedDurationBeforeRecoveryStart 2
+	myDazedDuration "(6.0 + NPCDazedDifficultyModifier) * StaggerDazedDurationModifier * StaggerOrganicDazedDurationMultiplier"
+	myCanUseStaggerAsDazedIntro FALSE
+}
+

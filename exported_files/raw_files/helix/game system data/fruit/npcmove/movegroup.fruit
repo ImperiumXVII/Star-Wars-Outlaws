@@ -1,0 +1,244 @@
+include "helix/game system data/fruit/ai/detection.fruit"
+include "helix/game system data/fruit/ai/npcactionintentions.fruit"
+include "helix/game system data/fruit/npcmove/moveevaluation.fruit"
+include "helix/game system data/fruit/npcmove/movesetting.fruit"
+include "helix/game system data/fruit/npc/npcenums.fruit"
+
+
+// For each non-abstract class, you need to register a type here.
+// Also, must match enum HC_NPCMoveGroupType in code/helix/HClient/HC_NPCMoveEnum.h
+enum NPCMoveGroupType
+{
+	Invalid
+	WildlifeIdle
+	WildlifeAware
+	WildlifeCombat
+	WildlifePacing
+	WildlifePet
+	WildlifeReaction
+	WildlifeBeg
+	WildlifeEnclosure
+}
+
+enum NPCPostPettingBehaviorType
+{
+	None
+	Follow
+	PlayCAP
+}
+
+class NPCMoveGroup < abstract=1 >
+{
+	NPCMoveGroupType myMoveGroupType Invalid < hidden = 1 >
+}
+
+class WildlifeTrajectoryWavingParams
+{
+	bool myEnableTrajectoryWaving true
+	NPCMoveEvaluationConfig* myMoveEvaluationConfig
+	float myMinWavingAngle 10.0
+	float myMaxWavingAngle 30.0
+	float myWavingOffsetDistance 10.0
+	float myMinWavingTimeout 0.5
+	float myMaxWavingTimeout 0.8
+	float myMinGoBackTimeout 0.5
+	float myMaxGoBackTimeout 0.8
+}
+
+class WildlifeComboPrecondition
+{
+	NPCBehaviorState myPreviousBehaviorState
+}
+
+list WildlifeComboPreconditionList
+{
+	WildlifeComboPrecondition
+}
+
+class WildlifeIndividualCombo
+{
+	NPCBehaviorState myBehaviorState
+	NPCMoveEvaluationConfig* myOverrideMoveEvaluationConfig
+	WildlifeComboPreconditionList myPreconditions
+}
+
+list WildlifeIndividualComboList
+{
+	WildlifeIndividualCombo
+}
+
+class WildlifeComboPhase
+{
+	int myPhase 0
+	WildlifeIndividualComboList myCombos
+}
+
+list WildlifeComboPhaseList
+{
+	WildlifeComboPhase
+}
+
+class WildlifeComboParams
+{
+	float myTriggerHealthPercentage 0.0
+	int myMinPhase 1 < hiddenFromFruitParser = 1 >
+	int myMaxPhase 2 < hiddenFromFruitParser = 1 >
+	WildlifeComboPhaseList myPhases < hiddenFromFruitParser = 1 >
+}
+
+class WildlifeFeintAttackParams
+{
+	bool myEnableFeintAttack false
+	float myMinFeintAttackTriggerSpeed 0.0f
+	float myMaxFeintAttackTriggerSpeed 0.0f
+	float myOffscreenFeintAttackOffset 0.0f
+	float myMinFeintAttackDeviationAngle 0.0f
+	float myMaxFeintAttackDeviationAngle 0.0f
+	int myMinFeintAttackBudget 0 < min=0 >
+	int myMaxFeintAttackBudget 0
+	bool myResetFeintAttackOnBackToIdle false
+}
+
+class NPCMoveGroupWildlifeIdle : NPCMoveGroup
+{
+	NPCMoveGroupType myMoveGroupType WildlifeIdle < hidden = 1 >
+	
+	float myMinDelayBeforeCap 1.0
+	float myMaxDelayBeforeCap 3.0
+	float myMinDelayWhenEnterIdle 1.0
+	float myMaxDelayWhenEnterIdle 3.0
+	float myMaxWanderTime 20.0 < tooltip="In seconds" >
+	
+	NPCMotionPatternType myWanderMotionPatternType Walk
+}
+
+class NPCMoveGroupWildlifeAware : NPCMoveGroup
+{
+	NPCMoveGroupType myMoveGroupType WildlifeAware < hidden = 1 >
+	
+	bool myHaveStressedBehabvior false
+	float myAwareAnimationDuration 1.0
+	bool myHaveStalkingBehabvior false
+	NPCDetectionProfile* myStalkingDetectionProfile < tooltip="Switch to this profle when the player face off NPC" >
+	float myIgnoreTargetDuration 0.0 < tooltip="After returning to Idle from Aware, we may need to ignore the target for a while to prevent ping-pong " >
+
+	NPCMoveSettingWildlifeAwareList myAwareMoveSettings < hiddenFromFruitParser = 1 >
+}
+
+class NPCMoveGroupWildlifeCombat : NPCMoveGroup
+{
+	NPCMoveGroupType myMoveGroupType WildlifeCombat < hidden = 1 >
+
+	int myMinAttackTimesToWildlife 1
+	int myMaxAttackTimesToWildlife 1
+	int myMinAttackTimesToNPC 1
+	int myMaxAttackTimesToNPC 2
+
+	bool myForcePacingAfterAttack false < tooltip="exclusive feature for the esteemed krayt dragon" >
+	bool myEnterPacingOnSuccessfullyHit true
+	bool myGetCloserWithPackMemberTacticalMove false
+	bool myAllowSupportAttack false < tooltip="If true, when wildlife cannot claim a melee ticket, it will claim a support attack ticket and perform a range attack." >
+
+	float myMaxMeleeHeight 1.5 < tooltip="the maximum height the wildlife can attack when the player is traversing" >
+
+	bool myImmediateFleeInUnreachable FALSE < tooltip="Immediate Flee without get to cloest point and walking around behaviour\nExclusive feature for the esteemed krayt dragon" >
+
+	NPCMotionPatternType myGetCloserToPlayerMotionPatternType Jog
+	NPCMotionPatternType myGetCloserToNPCMotionPatternType Jog
+	NPCMotionPatternType myGetCloserToWildlifeMotionPatternType Jog
+
+	bool myOnSpotAttackOnUnreachable FALSE < tooltip="Unreachable when hostile target is too far away from navmesh border." >
+	float myUnreachableAttackDistance 0.0f < tooltip="Attack distance. Target beyond this distance will be considered as unreachable." >
+	float myUnreachableVerticalAttackDistance 0.0 < tooltip="Vertical attack distance. Target beyond this distance will be considered as unreachable." >
+
+	bool myHasAttackActionIntention false
+	NPCActionIntentionType myAttackActionIntentionType
+
+	bool myHasEngageBark true < tooltip="If fasle, don't play combat bark animation when engaging" >
+
+	bool myEnableGetCloserWithSuccessDistance true
+	float myGetCloserSuccessDistanceToPlayer 0.0
+	float myGetCloserSuccessOffsetToNPC 0.0 < tooltip="The distance will be NPC claim size + this offset" >
+	float myGetCloserOffsetToSpeeder 0.0
+	float myForceMoveAwayFromVehicleDistance 0.0 < tooltip="move away if less than this distance to avoid getting too close to vehilce and prevent clip into each other" >
+
+	WildlifeTrajectoryWavingParams myTrajectoryWavingParams
+	WildlifeComboParams myComboParams
+	WildlifeFeintAttackParams myFeintAttackParams
+
+	NPCMoveSettingWildlifeCombatList myMeleeMoveSettings < hiddenFromFruitParser = 1 >
+}
+
+class NPCMoveGroupWildlifePacing : NPCMoveGroup
+{
+	NPCMoveGroupType myMoveGroupType WildlifePacing < hidden = 1 >
+
+	float myMinPacingDurationToPlayerAndNPC 2.0
+	float myMaxPacingDurationToPlayerAndNPC 2.0
+	float myMinPacingDurationToPredator 5.0
+	float myMaxPacingDurationToPredator 5.0
+
+	float myMinHitPacingDurationToPlayerAndNPC 4.0
+	float myMaxHitPacingDurationToPlayerAndNPC 4.0
+	float myMinHitPacingDurationToPredator 7.0
+	float myMaxHitPacingDurationToPredator 7.0
+
+	bool myEnableResting false < tooltip="exclusive feature for the esteemed krayt dragon" >
+	int myMinRestingPacingLoopTimes < min=0 tooltip="exclusive feature for the esteemed krayt dragon">
+	int myMaxRestingPacingLoopTimes < min=0 tooltip="exclusive feature for the esteemed krayt dragon">
+	int myMinRestingDuration < min=0 tooltip="exclusive feature for the esteemed krayt dragon">
+	int myMaxRestingDuration < min=0 tooltip="exclusive feature for the esteemed krayt dragon">
+
+	NPCMoveSettingWildlifePacingList myPacingMoveSettings < hiddenFromFruitParser = 1 >
+}
+
+class NPCMoveGroupWildlifePet : NPCMoveGroup
+{
+	NPCMoveGroupType myMoveGroupType WildlifePet < hidden = 1 >
+	
+	NPCPostPettingBehaviorType myPostPettingBehavior None
+	float myMinPostPettingFollowDuration 10.0
+	float myMaxPostPettingFollowDuration 15.0
+	
+	bool mySendFireteamMemberFleeBeforePetting false
+	float myFleeEventRadius 5.0
+	float myDistractionEventRadius 10.0
+	float myDistractionEventDelay 2.0
+}
+
+class NPCMoveGroupWildlifeReaction : NPCMoveGroup
+{
+	NPCMoveGroupType myMoveGroupType WildlifeReaction < hidden = 1 >
+	
+	NPCMoveSettingWildlifeReactionList myReactionMoveSettings < hiddenFromFruitParser = 1 >
+}
+
+class NPCMoveGroupWildlifeBeg : NPCMoveGroup
+{
+	NPCMoveGroupType myMoveGroupType WildlifeBeg < hidden = 1 >
+	
+	float myOutOfRadius 10.0
+	float myMinDuration 3.0
+	float myMaxDuration 10.0
+	float myMinApproachTime 5.0
+	float myMaxApproachTime 10.0
+	float myCooldownTime 10.0
+	float myMinBegRadius 1.0
+	float myMaxBegRadius 3.0
+	float myInterruptRadius 3.3 < tooltip="Should greater than myMaxBegRadius, if the distance is greater than the interrupt radius, it will forcibly interrupt the current beg action." >
+	float myApproachProbability 0.3
+	float myMaxSlopeAngle 25
+}
+
+class NPCMoveGroupWildlifeEnclosure : NPCMoveGroup
+{
+	NPCMoveGroupType myMoveGroupType WildlifeEnclosure < hidden = 1 >
+
+	float myMaxEncloreDuration 10.0
+	NPCDetectionProfile* myEnclosureDetectionProfile < tooltip="Switch to this profle when in enclosure" >
+}
+
+list MoveGroupList
+{
+	NPCMoveGroup
+}

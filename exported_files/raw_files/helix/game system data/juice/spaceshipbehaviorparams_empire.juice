@@ -1,0 +1,2177 @@
+include "helix/game system data/fruit/ai/spaceshipsettings.fruit"
+include "helix/game system data/juice/ai/npcshootpatterns.mnpcshootpattern"
+include "helix/game system data/juice/ai/spaceshipcombatprofiles.mspaceshipcombatprofile"
+include "helix/game system data/juice/ai/spaceshipformationprofiles.mspaceshipformationprofile"
+include "helix/game system data/juice/ai/spaceshipspawnprofiles.mspaceshipspawnprofile"
+include "helix/game system data/juice/ai/spaceshipspeedprofiles.mspaceshipspeedprofile"
+include "helix/game system data/juice/ai/spaceshiptrajectories.mspaceshiptrajectoryprofile"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_arc170.juice"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_bff1.juice"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_bowbreaker.juice"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_darius.juice"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_default.juice"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_duros.juice"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_fang.juice"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_gozanti.juice"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_gozantiarmed.juice"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_lambda.juice"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_lothalian.juice"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_porax.juice"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_raider.juice"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_rz1.juice"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_sentinel.juice"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_tiefighter.juice"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_tieinterceptor.juice"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_tiereaper.juice"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_utilipede.juice"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_vandor.juice"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_vwing.juice"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_wtk85.juice"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_xwing.juice"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_z95headhunter.juice"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_zh40.juice"
+
+SpaceshipBehaviorParameterList b_TieFighter
+{
+	SpaceshipBehaviorParameter EvasiveStartCurrentManeuverMinElapsedTime : tiefighterEvasiveStartCurrentManeuverMinElapsedTime
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveStartMinDistance : tiefighterEvasiveStartMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveMinDistance : tiefighterEvasiveMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveDurationRandomMin : tiefighterEvasiveDurationRandomMin
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveDurationRandomMax : tiefighterEvasiveDurationRandomMax
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveConeAngle : tiefighterEvasiveConeAngle
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveStartAngleFromHostile : tiefighterEvasiveStartAngleFromHostile
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveSpiralProbability : tiefighterEvasiveSpiralProbability
+	{
+	}
+	SpaceshipBehaviorParameter EvasivePauseBetweenPatternsMin : tiefighterEvasivePauseBetweenPatternsMin
+	{
+	}
+	SpaceshipBehaviorParameter EvasivePauseBetweenPatternsMax : tiefighterEvasivePauseBetweenPatternsMax
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveBreakProbability : tiefighterEvasiveBreakProbability
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveScaleWidth : tiefighterEvasiveScaleWidth
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveScaleHeight : tiefighterEvasiveScaleHeight
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveScaleLength : tiefighterEvasiveScaleLength
+	{
+	}
+	SpaceshipBehaviorParameter TimeToStartEvasiveIfStillInFrontOfHostile : tiefighterTimeToStartEvasiveIfStillInFrontOfHostile
+	{
+	}
+	SpaceshipBehaviorParameter BreakStartCurrentManeuverMinElapsedTime : tiefighterBreakStartCurrentManeuverMinElapsedTime
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDurationRandomMin : tiefighterChaseDurationRandomMin
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDurationRandomMax : tiefighterChaseDurationRandomMax
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDistanceMin : tiefighterChaseDistanceMin
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDistanceMax : tiefighterChaseDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter ChaseConeAngle : tiefighterChaseConeAngle
+	{
+	}
+	SpaceshipBehaviorParameter ChaseChanceToBreakOnHostileDodgePercent : tiefighterChaseChanceToBreakOnHostileDodgePercent
+	{
+	}
+	SpaceshipBehaviorParameter ChaseBreakProbabilityOverPass : tiefighterChaseBreakProbabilityOverPass
+	{
+	}
+	SpaceshipBehaviorParameter OvershootMaxAngle : tiefighterOvershootMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter InterceptConeAngle : tiefighterInterceptConeAngle
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDistanceIdeal : tiefighterInterceptDistanceIdeal
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDistanceMin : tiefighterInterceptDistanceMin
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDistanceMax : tiefighterInterceptDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDurationMin : tiefighterInterceptDurationMin
+	{
+		myValue 3.0
+	}
+	SpaceshipBehaviorParameter InterceptDurationMax : tiefighterInterceptDurationMax
+	{
+		myValue 10.0
+	}
+	SpaceshipBehaviorParameter JoustingProbability : tiefighterJoustingProbability
+	{
+	}
+	SpaceshipBehaviorParameter JoustingMaxDurationPrepare : tiefighterJoustingMaxDurationPrepare
+	{
+	}
+	SpaceshipBehaviorParameter JoustingMaxDuration : tiefighterJoustingMaxDuration
+	{
+	}
+	SpaceshipBehaviorParameter JoustingDistanceTurn : tiefighterJoustingDistanceTurn
+	{
+	}
+	SpaceshipBehaviorParameter JoustingEndDistance : tiefighterJoustingEndDistance
+	{
+	}
+	SpaceshipBehaviorParameter JoustingAngle : tiefighterJoustingAngle
+	{
+	}
+	SpaceshipBehaviorParameter JoustingMaxAngle : tiefighterJoustingMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter JoustingEndBreakProbabilityOverPass : tiefighterJoustingEndBreakProbabilityOverPass
+	{
+	}
+	SpaceshipBehaviorParameter JoustingPositionMaxHeight : tiefighterJoustingPositionMaxHeight
+	{
+	}
+	SpaceshipBehaviorParameter AlignMinDistance : tiefighterAlignMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter AlignMaxDistance : tiefighterAlignMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter LeashingMinDistance : tiefighterLeashingMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter LeashingMaxDistance : tiefighterLeashingMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter LeashingToVolumeMaxDistance : tiefighterLeashingToVolumeMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter ShootMaxDistance : tiefighterShootMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter ShootMaxAngle : tiefighterShootMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter BarkPositionDistanceMax : tiefighterBarkPositionDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter BroadcastRangeEnterCombat : tiefighterBroadcastRangeEnterCombat
+	{
+	}
+	SpaceshipBehaviorParameter EscortDistance : tiefighterEscortDistance
+	{
+	}
+	SpaceshipBehaviorParameter LowProhibitedActionAttackDelay : tiefighterLowProhibitedActionAttackDelay
+	{
+	}
+	SpaceshipBehaviorParameter AccurateShootingProbability : tiefighterAccurateShootingProbability
+	{
+	}
+	SpaceshipBehaviorParameter RangeForSecondaryWeapon : tiefighterRangeForSecondaryWeapon
+	{
+	}
+	SpaceshipBehaviorParameter UndetectedTimeBeforeExitingCombat : tiefighterUndetectedTimeBeforeExitingCombat
+	{
+	}
+	SpaceshipBehaviorParameter UndetectedTimeBeforeExitingAware : tiefighterUndetectedTimeBeforeExitingAware
+	{
+	}
+	SpaceshipBehaviorParameter ReinforcementsCallProbabilityPercent : tiefighterReinforcementsCallProbabilityPercent
+	{
+	}
+	SpaceshipBehaviorParameter ReinforcementsCallDuration : tiefighterReinforcementsCallDuration
+	{
+	}
+	SpaceshipBehaviorParameter IdleDefaultSplineSizeHorizontal : tiefighterIdleDefaultSplineSizeHorizontal
+	{
+	}
+	SpaceshipBehaviorParameter IdleDefaultSplineSizeVertical : tiefighterIdleDefaultSplineSizeVertical
+	{
+	}
+	SpaceshipBehaviorParameter CooldownDuration : tiefighterCooldownDuration
+	{
+	}
+	SpaceshipBehaviorParameter CooldownMaxDistance : tiefighterCooldownMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMaxEngagementDistance : tiefighterSpaceshipMaxEngagementDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMaxAngle : tiefighterSpaceshipPrimaryMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMaxDistance : tiefighterSpaceshipPrimaryMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMinDistance : tiefighterSpaceshipPrimaryMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMaxHealth : tiefighterSpaceshipPrimaryMaxHealth
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMaxAngle : tiefighterSpaceshipSecondaryMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMaxDistance : tiefighterSpaceshipSecondaryMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMinDistance : tiefighterSpaceshipSecondaryMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMaxHealth : tiefighterSpaceshipSecondaryMaxHealth
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMaxAngle : tiefighterSpaceshipMissileMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMaxDistance : tiefighterSpaceshipMissileMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMinDistance : tiefighterSpaceshipMissileMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMaxHealth : tiefighterSpaceshipMissileMaxHealth
+	{
+	}
+	SpaceshipBehaviorParameter CombatLeashingToPlayer : tiefighterCombatLeashingToPlayer
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyRadiusMax : tiefighterSpaceshipAccuracyRadiusMax
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyRadiusMin : tiefighterSpaceshipAccuracyRadiusMin
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyDistanceMax : tiefighterSpaceshipAccuracyDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyDistanceMin : tiefighterSpaceshipAccuracyDistanceMin
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipShotSpreadPercentage : tiefighterSpaceshipShotSpreadPercentage
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileLockOnTime : tiefighterSpaceshipMissileLockOnTime
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentChance : tiefighterHarassmentChance
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentDuration : tiefighterHarassmentDuration
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaSizeMin : tiefighterHarassmentAreaSizeMin
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaSizeMax : tiefighterHarassmentAreaSizeMax
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaHeightMin : tiefighterHarassmentAreaHeightMin
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaHeightMax : tiefighterHarassmentAreaHeightMax
+	{
+	}
+}
+
+SpaceshipBehaviorParameterList b_Gozanti
+{
+	SpaceshipBehaviorParameter EvasiveStartCurrentManeuverMinElapsedTime : gozantiEvasiveStartCurrentManeuverMinElapsedTime
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveStartMinDistance : gozantiEvasiveStartMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveMinDistance : gozantiEvasiveMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveDurationRandomMin : gozantiEvasiveDurationRandomMin
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveDurationRandomMax : gozantiEvasiveDurationRandomMax
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveConeAngle : gozantiEvasiveConeAngle
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveStartAngleFromHostile : gozantiEvasiveStartAngleFromHostile
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveSpiralProbability : gozantiEvasiveSpiralProbability
+	{
+	}
+	SpaceshipBehaviorParameter EvasivePauseBetweenPatternsMin : gozantiEvasivePauseBetweenPatternsMin
+	{
+	}
+	SpaceshipBehaviorParameter EvasivePauseBetweenPatternsMax : gozantiEvasivePauseBetweenPatternsMax
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveBreakProbability : gozantiEvasiveBreakProbability
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveScaleWidth : gozantiEvasiveScaleWidth
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveScaleHeight : gozantiEvasiveScaleHeight
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveScaleLength : gozantiEvasiveScaleLength
+	{
+	}
+	SpaceshipBehaviorParameter TimeToStartEvasiveIfStillInFrontOfHostile : gozantiTimeToStartEvasiveIfStillInFrontOfHostile
+	{
+	}
+	SpaceshipBehaviorParameter BreakStartCurrentManeuverMinElapsedTime : gozantiBreakStartCurrentManeuverMinElapsedTime
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDurationRandomMin : gozantiChaseDurationRandomMin
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDurationRandomMax : gozantiChaseDurationRandomMax
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDistanceMin : gozantiChaseDistanceMin
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDistanceMax : gozantiChaseDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter ChaseConeAngle : gozantiChaseConeAngle
+	{
+	}
+	SpaceshipBehaviorParameter ChaseChanceToBreakOnHostileDodgePercent : gozantiChaseChanceToBreakOnHostileDodgePercent
+	{
+	}
+	SpaceshipBehaviorParameter ChaseBreakProbabilityOverPass : gozantiChaseBreakProbabilityOverPass
+	{
+	}
+	SpaceshipBehaviorParameter OvershootMaxAngle : gozantiOvershootMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter InterceptConeAngle : gozantiInterceptConeAngle
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDistanceIdeal : gozantiInterceptDistanceIdeal
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDistanceMin : gozantiInterceptDistanceMin
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDistanceMax : gozantiInterceptDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDurationMin : gozantiInterceptDurationMin
+	{
+		myValue 3.0
+	}
+	SpaceshipBehaviorParameter InterceptDurationMax : gozantiInterceptDurationMax
+	{
+		myValue 10.0
+	}
+	SpaceshipBehaviorParameter JoustingProbability : gozantiJoustingProbability
+	{
+	}
+	SpaceshipBehaviorParameter JoustingMaxDurationPrepare : gozantiJoustingMaxDurationPrepare
+	{
+	}
+	SpaceshipBehaviorParameter JoustingMaxDuration : gozantiJoustingMaxDuration
+	{
+	}
+	SpaceshipBehaviorParameter JoustingDistanceTurn : gozantiJoustingDistanceTurn
+	{
+	}
+	SpaceshipBehaviorParameter JoustingEndDistance : gozantiJoustingEndDistance
+	{
+	}
+	SpaceshipBehaviorParameter JoustingAngle : gozantiJoustingAngle
+	{
+	}
+	SpaceshipBehaviorParameter JoustingMaxAngle : gozantiJoustingMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter JoustingEndBreakProbabilityOverPass : gozantiJoustingEndBreakProbabilityOverPass
+	{
+	}
+	SpaceshipBehaviorParameter JoustingPositionMaxHeight : gozantiJoustingPositionMaxHeight
+	{
+	}
+	SpaceshipBehaviorParameter AlignMinDistance : gozantiAlignMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter AlignMaxDistance : gozantiAlignMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter LeashingMinDistance : gozantiLeashingMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter LeashingMaxDistance : gozantiLeashingMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter LeashingToVolumeMaxDistance : gozantiLeashingToVolumeMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter ShootMaxDistance : gozantiShootMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter ShootMaxAngle : gozantiShootMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter BarkPositionDistanceMax : gozantiBarkPositionDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter BroadcastRangeEnterCombat : gozantiBroadcastRangeEnterCombat
+	{
+	}
+	SpaceshipBehaviorParameter EscortDistance : gozantiEscortDistance
+	{
+	}
+	SpaceshipBehaviorParameter LowProhibitedActionAttackDelay : gozantiLowProhibitedActionAttackDelay
+	{
+	}
+	SpaceshipBehaviorParameter AccurateShootingProbability : gozantiAccurateShootingProbability
+	{
+	}
+	SpaceshipBehaviorParameter RangeForSecondaryWeapon : gozantiRangeForSecondaryWeapon
+	{
+	}
+	SpaceshipBehaviorParameter UndetectedTimeBeforeExitingCombat : gozantiUndetectedTimeBeforeExitingCombat
+	{
+	}
+	SpaceshipBehaviorParameter UndetectedTimeBeforeExitingAware : gozantiUndetectedTimeBeforeExitingAware
+	{
+	}
+	SpaceshipBehaviorParameter ReinforcementsCallProbabilityPercent : gozantiReinforcementsCallProbabilityPercent
+	{
+	}
+	SpaceshipBehaviorParameter ReinforcementsCallDuration : gozantiReinforcementsCallDuration
+	{
+	}
+	SpaceshipBehaviorParameter IdleDefaultSplineSizeHorizontal : gozantiIdleDefaultSplineSizeHorizontal
+	{
+	}
+	SpaceshipBehaviorParameter IdleDefaultSplineSizeVertical : gozantiIdleDefaultSplineSizeVertical
+	{
+	}
+	SpaceshipBehaviorParameter CooldownDuration : gozantiCooldownDuration
+	{
+	}
+	SpaceshipBehaviorParameter CooldownMaxDistance : gozantiCooldownMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMaxEngagementDistance : gozantiSpaceshipMaxEngagementDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMaxAngle : gozantiSpaceshipPrimaryMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMaxDistance : gozantiSpaceshipPrimaryMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMinDistance : gozantiSpaceshipPrimaryMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMaxHealth : gozantiSpaceshipPrimaryMaxHealth
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMaxAngle : gozantiSpaceshipSecondaryMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMaxDistance : gozantiSpaceshipSecondaryMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMinDistance : gozantiSpaceshipSecondaryMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMaxHealth : gozantiSpaceshipSecondaryMaxHealth
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMaxAngle : gozantiSpaceshipMissileMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMaxDistance : gozantiSpaceshipMissileMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMinDistance : gozantiSpaceshipMissileMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMaxHealth : gozantiSpaceshipMissileMaxHealth
+	{
+	}
+	SpaceshipBehaviorParameter CombatLeashingToPlayer : gozantiCombatLeashingToPlayer
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyRadiusMax : gozantiSpaceshipAccuracyRadiusMax
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyRadiusMin : gozantiSpaceshipAccuracyRadiusMin
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyDistanceMax : gozantiSpaceshipAccuracyDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyDistanceMin : gozantiSpaceshipAccuracyDistanceMin
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipShotSpreadPercentage : gozantiSpaceshipShotSpreadPercentage
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileLockOnTime : gozantiSpaceshipMissileLockOnTime
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentChance : gozantiHarassmentChance
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentDuration : gozantiHarassmentDuration
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaSizeMin : gozantiHarassmentAreaSizeMin
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaSizeMax : gozantiHarassmentAreaSizeMax
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaHeightMin : gozantiHarassmentAreaHeightMin
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaHeightMax : gozantiHarassmentAreaHeightMax
+	{
+	}
+}
+
+SpaceshipBehaviorParameterList b_TieInterceptor
+{
+	SpaceshipBehaviorParameter EvasiveStartCurrentManeuverMinElapsedTime : tieinterceptorEvasiveStartCurrentManeuverMinElapsedTime
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveStartMinDistance : tieinterceptorEvasiveStartMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveMinDistance : tieinterceptorEvasiveMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveDurationRandomMin : tieinterceptorEvasiveDurationRandomMin
+	{
+		myValue 2.0
+	}
+	SpaceshipBehaviorParameter EvasiveDurationRandomMax : tieinterceptorEvasiveDurationRandomMax
+	{
+		myValue 4.0
+	}
+	SpaceshipBehaviorParameter EvasiveConeAngle : tieinterceptorEvasiveConeAngle
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveStartAngleFromHostile : tieinterceptorEvasiveStartAngleFromHostile
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveSpiralProbability : tieinterceptorEvasiveSpiralProbability
+	{
+	}
+	SpaceshipBehaviorParameter EvasivePauseBetweenPatternsMin : tieinterceptorEvasivePauseBetweenPatternsMin
+	{
+	}
+	SpaceshipBehaviorParameter EvasivePauseBetweenPatternsMax : tieinterceptorEvasivePauseBetweenPatternsMax
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveBreakProbability : tieinterceptorEvasiveBreakProbability
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveScaleWidth : tieinterceptorEvasiveScaleWidth
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveScaleHeight : tieinterceptorEvasiveScaleHeight
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveScaleLength : tieinterceptorEvasiveScaleLength
+	{
+	}
+	SpaceshipBehaviorParameter TimeToStartEvasiveIfStillInFrontOfHostile : tieinterceptorTimeToStartEvasiveIfStillInFrontOfHostile
+	{
+		myValue 6.0
+	}
+	SpaceshipBehaviorParameter BreakStartCurrentManeuverMinElapsedTime : tieinterceptorBreakStartCurrentManeuverMinElapsedTime
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDurationRandomMin : tieinterceptorChaseDurationRandomMin
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDurationRandomMax : tieinterceptorChaseDurationRandomMax
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDistanceMin : tieinterceptorChaseDistanceMin
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDistanceMax : tieinterceptorChaseDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter ChaseConeAngle : tieinterceptorChaseConeAngle
+	{
+	}
+	SpaceshipBehaviorParameter ChaseChanceToBreakOnHostileDodgePercent : tieinterceptorChaseChanceToBreakOnHostileDodgePercent
+	{
+	}
+	SpaceshipBehaviorParameter ChaseBreakProbabilityOverPass : tieinterceptorChaseBreakProbabilityOverPass
+	{
+	}
+	SpaceshipBehaviorParameter OvershootMaxAngle : tieinterceptorOvershootMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter InterceptConeAngle : tieinterceptorInterceptConeAngle
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDistanceIdeal : tieinterceptorInterceptDistanceIdeal
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDistanceMin : tieinterceptorInterceptDistanceMin
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDistanceMax : tieinterceptorInterceptDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDurationMin : tieinterceptorInterceptDurationMin
+	{
+		myValue 3.0
+	}
+	SpaceshipBehaviorParameter InterceptDurationMax : tieinterceptorInterceptDurationMax
+	{
+		myValue 10.0
+	}
+	SpaceshipBehaviorParameter JoustingProbability : tieinterceptorJoustingProbability
+	{
+	}
+	SpaceshipBehaviorParameter JoustingMaxDurationPrepare : tieinterceptorJoustingMaxDurationPrepare
+	{
+	}
+	SpaceshipBehaviorParameter JoustingMaxDuration : tieinterceptorJoustingMaxDuration
+	{
+	}
+	SpaceshipBehaviorParameter JoustingDistanceTurn : tieinterceptorJoustingDistanceTurn
+	{
+	}
+	SpaceshipBehaviorParameter JoustingEndDistance : tieinterceptorJoustingEndDistance
+	{
+	}
+	SpaceshipBehaviorParameter JoustingAngle : tieinterceptorJoustingAngle
+	{
+	}
+	SpaceshipBehaviorParameter JoustingMaxAngle : tieinterceptorJoustingMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter JoustingEndBreakProbabilityOverPass : tieinterceptorJoustingEndBreakProbabilityOverPass
+	{
+	}
+	SpaceshipBehaviorParameter JoustingPositionMaxHeight : tieinterceptorJoustingPositionMaxHeight
+	{
+	}
+	SpaceshipBehaviorParameter AlignMinDistance : tieinterceptorAlignMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter AlignMaxDistance : tieinterceptorAlignMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter LeashingMinDistance : tieinterceptorLeashingMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter LeashingMaxDistance : tieinterceptorLeashingMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter LeashingToVolumeMaxDistance : tieinterceptorLeashingToVolumeMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter ShootMaxDistance : tieinterceptorShootMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter ShootMaxAngle : tieinterceptorShootMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter BarkPositionDistanceMax : tieinterceptorBarkPositionDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter BroadcastRangeEnterCombat : tieinterceptorBroadcastRangeEnterCombat
+	{
+	}
+	SpaceshipBehaviorParameter EscortDistance : tieinterceptorEscortDistance
+	{
+	}
+	SpaceshipBehaviorParameter LowProhibitedActionAttackDelay : tieinterceptorLowProhibitedActionAttackDelay
+	{
+	}
+	SpaceshipBehaviorParameter AccurateShootingProbability : tieinterceptorAccurateShootingProbability
+	{
+	}
+	SpaceshipBehaviorParameter RangeForSecondaryWeapon : tieinterceptorRangeForSecondaryWeapon
+	{
+	}
+	SpaceshipBehaviorParameter UndetectedTimeBeforeExitingCombat : tieinterceptorUndetectedTimeBeforeExitingCombat
+	{
+	}
+	SpaceshipBehaviorParameter UndetectedTimeBeforeExitingAware : tieinterceptorUndetectedTimeBeforeExitingAware
+	{
+	}
+	SpaceshipBehaviorParameter ReinforcementsCallProbabilityPercent : tieinterceptorReinforcementsCallProbabilityPercent
+	{
+	}
+	SpaceshipBehaviorParameter ReinforcementsCallDuration : tieinterceptorReinforcementsCallDuration
+	{
+	}
+	SpaceshipBehaviorParameter IdleDefaultSplineSizeHorizontal : tieinterceptorIdleDefaultSplineSizeHorizontal
+	{
+	}
+	SpaceshipBehaviorParameter IdleDefaultSplineSizeVertical : tieinterceptorIdleDefaultSplineSizeVertical
+	{
+	}
+	SpaceshipBehaviorParameter CooldownDuration : tieinterceptorCooldownDuration
+	{
+		myValue 0.0
+	}
+	SpaceshipBehaviorParameter CooldownMaxDistance : tieinterceptorCooldownMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMaxEngagementDistance : tieinterceptorSpaceshipMaxEngagementDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMaxAngle : tieinterceptorSpaceshipPrimaryMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMaxDistance : tieinterceptorSpaceshipPrimaryMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMinDistance : tieinterceptorSpaceshipPrimaryMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMaxHealth : tieinterceptorSpaceshipPrimaryMaxHealth
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMaxAngle : tieinterceptorSpaceshipSecondaryMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMaxDistance : tieinterceptorSpaceshipSecondaryMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMinDistance : tieinterceptorSpaceshipSecondaryMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMaxHealth : tieinterceptorSpaceshipSecondaryMaxHealth
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMaxAngle : tieinterceptorSpaceshipMissileMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMaxDistance : tieinterceptorSpaceshipMissileMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMinDistance : tieinterceptorSpaceshipMissileMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMaxHealth : tieinterceptorSpaceshipMissileMaxHealth
+	{
+	}
+	SpaceshipBehaviorParameter CombatLeashingToPlayer : tieinterceptorCombatLeashingToPlayer
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyRadiusMax : tieinterceptorSpaceshipAccuracyRadiusMax
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyRadiusMin : tieinterceptorSpaceshipAccuracyRadiusMin
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyDistanceMax : tieinterceptorSpaceshipAccuracyDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyDistanceMin : tieinterceptorSpaceshipAccuracyDistanceMin
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipShotSpreadPercentage : tieinterceptorSpaceshipShotSpreadPercentage
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileLockOnTime : tieinterceptorSpaceshipMissileLockOnTime
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentChance : tieinterceptorHarassmentChance
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentDuration : tieinterceptorHarassmentDuration
+	{
+		myValue 0.0
+	}
+	SpaceshipBehaviorParameter HarassmentAreaSizeMin : tieinterceptorHarassmentAreaSizeMin
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaSizeMax : tieinterceptorHarassmentAreaSizeMax
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaHeightMin : tieinterceptorHarassmentAreaHeightMin
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaHeightMax : tieinterceptorHarassmentAreaHeightMax
+	{
+	}
+}
+
+SpaceshipBehaviorParameterList b_Raider
+{
+	SpaceshipBehaviorParameter EvasiveStartCurrentManeuverMinElapsedTime : raiderEvasiveStartCurrentManeuverMinElapsedTime
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveStartMinDistance : raiderEvasiveStartMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveMinDistance : raiderEvasiveMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveDurationRandomMin : raiderEvasiveDurationRandomMin
+	{
+		myValue 2.0
+	}
+	SpaceshipBehaviorParameter EvasiveDurationRandomMax : raiderEvasiveDurationRandomMax
+	{
+		myValue 5.0
+	}
+	SpaceshipBehaviorParameter EvasiveConeAngle : raiderEvasiveConeAngle
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveStartAngleFromHostile : raiderEvasiveStartAngleFromHostile
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveSpiralProbability : raiderEvasiveSpiralProbability
+	{
+	}
+	SpaceshipBehaviorParameter EvasivePauseBetweenPatternsMin : raiderEvasivePauseBetweenPatternsMin
+	{
+	}
+	SpaceshipBehaviorParameter EvasivePauseBetweenPatternsMax : raiderEvasivePauseBetweenPatternsMax
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveBreakProbability : raiderEvasiveBreakProbability
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveScaleWidth : raiderEvasiveScaleWidth
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveScaleHeight : raiderEvasiveScaleHeight
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveScaleLength : raiderEvasiveScaleLength
+	{
+	}
+	SpaceshipBehaviorParameter TimeToStartEvasiveIfStillInFrontOfHostile : raiderTimeToStartEvasiveIfStillInFrontOfHostile
+	{
+	}
+	SpaceshipBehaviorParameter BreakStartCurrentManeuverMinElapsedTime : raiderBreakStartCurrentManeuverMinElapsedTime
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDurationRandomMin : raiderChaseDurationRandomMin
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDurationRandomMax : raiderChaseDurationRandomMax
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDistanceMin : raiderChaseDistanceMin
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDistanceMax : raiderChaseDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter ChaseConeAngle : raiderChaseConeAngle
+	{
+	}
+	SpaceshipBehaviorParameter ChaseChanceToBreakOnHostileDodgePercent : raiderChaseChanceToBreakOnHostileDodgePercent
+	{
+	}
+	SpaceshipBehaviorParameter ChaseBreakProbabilityOverPass : raiderChaseBreakProbabilityOverPass
+	{
+	}
+	SpaceshipBehaviorParameter OvershootMaxAngle : raiderOvershootMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter InterceptConeAngle : raiderInterceptConeAngle
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDistanceIdeal : raiderInterceptDistanceIdeal
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDistanceMin : raiderInterceptDistanceMin
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDistanceMax : raiderInterceptDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDurationMin : raiderInterceptDurationMin
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDurationMax : raiderInterceptDurationMax
+	{
+	}
+	SpaceshipBehaviorParameter JoustingProbability : raiderJoustingProbability
+	{
+	}
+	SpaceshipBehaviorParameter JoustingMaxDurationPrepare : raiderJoustingMaxDurationPrepare
+	{
+	}
+	SpaceshipBehaviorParameter JoustingMaxDuration : raiderJoustingMaxDuration
+	{
+	}
+	SpaceshipBehaviorParameter JoustingDistanceTurn : raiderJoustingDistanceTurn
+	{
+	}
+	SpaceshipBehaviorParameter JoustingEndDistance : raiderJoustingEndDistance
+	{
+	}
+	SpaceshipBehaviorParameter JoustingAngle : raiderJoustingAngle
+	{
+	}
+	SpaceshipBehaviorParameter JoustingMaxAngle : raiderJoustingMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter JoustingEndBreakProbabilityOverPass : raiderJoustingEndBreakProbabilityOverPass
+	{
+	}
+	SpaceshipBehaviorParameter JoustingPositionMaxHeight : raiderJoustingPositionMaxHeight
+	{
+	}
+	SpaceshipBehaviorParameter AlignMinDistance : raiderAlignMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter AlignMaxDistance : raiderAlignMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter LeashingMinDistance : raiderLeashingMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter LeashingMaxDistance : raiderLeashingMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter LeashingToVolumeMaxDistance : raiderLeashingToVolumeMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter ShootMaxDistance : raiderShootMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter ShootMaxAngle : raiderShootMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter BarkPositionDistanceMax : raiderBarkPositionDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter BroadcastRangeEnterCombat : raiderBroadcastRangeEnterCombat
+	{
+	}
+	SpaceshipBehaviorParameter EscortDistance : raiderEscortDistance
+	{
+	}
+	SpaceshipBehaviorParameter LowProhibitedActionAttackDelay : raiderLowProhibitedActionAttackDelay
+	{
+	}
+	SpaceshipBehaviorParameter AccurateShootingProbability : raiderAccurateShootingProbability
+	{
+	}
+	SpaceshipBehaviorParameter RangeForSecondaryWeapon : raiderRangeForSecondaryWeapon
+	{
+	}
+	SpaceshipBehaviorParameter UndetectedTimeBeforeExitingCombat : raiderUndetectedTimeBeforeExitingCombat
+	{
+		myValue 35000.0
+	}
+	SpaceshipBehaviorParameter UndetectedTimeBeforeExitingAware : raiderUndetectedTimeBeforeExitingAware
+	{
+		myValue 35000.0
+	}
+	SpaceshipBehaviorParameter ReinforcementsCallProbabilityPercent : raiderReinforcementsCallProbabilityPercent
+	{
+	}
+	SpaceshipBehaviorParameter ReinforcementsCallDuration : raiderReinforcementsCallDuration
+	{
+	}
+	SpaceshipBehaviorParameter IdleDefaultSplineSizeHorizontal : raiderIdleDefaultSplineSizeHorizontal
+	{
+	}
+	SpaceshipBehaviorParameter IdleDefaultSplineSizeVertical : raiderIdleDefaultSplineSizeVertical
+	{
+	}
+	SpaceshipBehaviorParameter CooldownDuration : raiderCooldownDuration
+	{
+	}
+	SpaceshipBehaviorParameter CooldownMaxDistance : raiderCooldownMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMaxEngagementDistance : raiderSpaceshipMaxEngagementDistance
+	{
+		myValue 1300.0
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMaxAngle : raiderSpaceshipPrimaryMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMaxDistance : raiderSpaceshipPrimaryMaxDistance
+	{
+		myValue 1300.0
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMinDistance : raiderSpaceshipPrimaryMinDistance
+	{
+		myValue 50.0
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMaxHealth : raiderSpaceshipPrimaryMaxHealth
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMaxAngle : raiderSpaceshipSecondaryMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMaxDistance : raiderSpaceshipSecondaryMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMinDistance : raiderSpaceshipSecondaryMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMaxHealth : raiderSpaceshipSecondaryMaxHealth
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMaxAngle : raiderSpaceshipMissileMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMaxDistance : raiderSpaceshipMissileMaxDistance
+	{
+		myValue 1800.0
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMinDistance : raiderSpaceshipMissileMinDistance
+	{
+		myValue 100.0
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMaxHealth : raiderSpaceshipMissileMaxHealth
+	{
+	}
+	SpaceshipBehaviorParameter CombatLeashingToPlayer : raiderCombatLeashingToPlayer
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyRadiusMax : raiderSpaceshipAccuracyRadiusMax
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyRadiusMin : raiderSpaceshipAccuracyRadiusMin
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyDistanceMax : raiderSpaceshipAccuracyDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyDistanceMin : raiderSpaceshipAccuracyDistanceMin
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipShotSpreadPercentage : raiderSpaceshipShotSpreadPercentage
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileLockOnTime : raiderSpaceshipMissileLockOnTime
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentChance : raiderHarassmentChance
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentDuration : raiderHarassmentDuration
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaSizeMin : raiderHarassmentAreaSizeMin
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaSizeMax : raiderHarassmentAreaSizeMax
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaHeightMin : raiderHarassmentAreaHeightMin
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaHeightMax : raiderHarassmentAreaHeightMax
+	{
+	}
+}
+
+SpaceshipBehaviorParameterList b_TieReaper
+{
+	SpaceshipBehaviorParameter EvasiveStartCurrentManeuverMinElapsedTime : tiereaperEvasiveStartCurrentManeuverMinElapsedTime
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveStartMinDistance : tiereaperEvasiveStartMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveMinDistance : tiereaperEvasiveMinDistance
+	{
+		myType EvasiveMinDistance
+		myValue 500.0
+	}
+	SpaceshipBehaviorParameter EvasiveDurationRandomMin : tiereaperEvasiveDurationRandomMin
+	{
+		myValue 2.0
+	}
+	SpaceshipBehaviorParameter EvasiveDurationRandomMax : tiereaperEvasiveDurationRandomMax
+	{
+		myValue 4.0
+	}
+	SpaceshipBehaviorParameter EvasiveConeAngle : tiereaperEvasiveConeAngle
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveStartAngleFromHostile : tiereaperEvasiveStartAngleFromHostile
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveSpiralProbability : tiereaperEvasiveSpiralProbability
+	{
+	}
+	SpaceshipBehaviorParameter EvasivePauseBetweenPatternsMin : tiereaperEvasivePauseBetweenPatternsMin
+	{
+		myValue 2.0
+	}
+	SpaceshipBehaviorParameter EvasivePauseBetweenPatternsMax : tiereaperEvasivePauseBetweenPatternsMax
+	{
+		myValue 3.0
+	}
+	SpaceshipBehaviorParameter EvasiveBreakProbability : tiereaperEvasiveBreakProbability
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveScaleWidth : tiereaperEvasiveScaleWidth
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveScaleHeight : tiereaperEvasiveScaleHeight
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveScaleLength : tiereaperEvasiveScaleLength
+	{
+	}
+	SpaceshipBehaviorParameter TimeToStartEvasiveIfStillInFrontOfHostile : tiereaperTimeToStartEvasiveIfStillInFrontOfHostile
+	{
+		myValue 6.0
+	}
+	SpaceshipBehaviorParameter BreakStartCurrentManeuverMinElapsedTime : tiereaperBreakStartCurrentManeuverMinElapsedTime
+	{
+		myValue 6.0
+	}
+	SpaceshipBehaviorParameter ChaseDurationRandomMin : tiereaperChaseDurationRandomMin
+	{
+		myValue 6.0
+	}
+	SpaceshipBehaviorParameter ChaseDurationRandomMax : tiereaperChaseDurationRandomMax
+	{
+		myValue 10.0
+	}
+	SpaceshipBehaviorParameter ChaseDistanceMin : tiereaperChaseDistanceMin
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDistanceMax : tiereaperChaseDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter ChaseConeAngle : tiereaperChaseConeAngle
+	{
+		myValue 40.0
+	}
+	SpaceshipBehaviorParameter ChaseChanceToBreakOnHostileDodgePercent : tiereaperChaseChanceToBreakOnHostileDodgePercent
+	{
+		myValue 30.0
+	}
+	SpaceshipBehaviorParameter ChaseBreakProbabilityOverPass : tiereaperChaseBreakProbabilityOverPass
+	{
+	}
+	SpaceshipBehaviorParameter OvershootMaxAngle : tiereaperOvershootMaxAngle
+	{
+		myValue 45.0
+	}
+	SpaceshipBehaviorParameter InterceptConeAngle : tiereaperInterceptConeAngle
+	{
+		myValue 25.0
+	}
+	SpaceshipBehaviorParameter InterceptDistanceIdeal : tiereaperInterceptDistanceIdeal
+	{
+		myValue 600.0
+	}
+	SpaceshipBehaviorParameter InterceptDistanceMin : tiereaperInterceptDistanceMin
+	{
+		myValue 100.0
+	}
+	SpaceshipBehaviorParameter InterceptDistanceMax : tiereaperInterceptDistanceMax
+	{
+		myValue 1000.0
+	}
+	SpaceshipBehaviorParameter InterceptDurationMin : tiereaperInterceptDurationMin
+	{
+		myValue 3.0
+	}
+	SpaceshipBehaviorParameter InterceptDurationMax : tiereaperInterceptDurationMax
+	{
+		myValue 10.0
+	}
+	SpaceshipBehaviorParameter JoustingProbability : tiereaperJoustingProbability
+	{
+	}
+	SpaceshipBehaviorParameter JoustingMaxDurationPrepare : tiereaperJoustingMaxDurationPrepare
+	{
+	}
+	SpaceshipBehaviorParameter JoustingMaxDuration : tiereaperJoustingMaxDuration
+	{
+	}
+	SpaceshipBehaviorParameter JoustingDistanceTurn : tiereaperJoustingDistanceTurn
+	{
+		myValue 1200.0
+	}
+	SpaceshipBehaviorParameter JoustingEndDistance : tiereaperJoustingEndDistance
+	{
+		myValue 100.0
+	}
+	SpaceshipBehaviorParameter JoustingAngle : tiereaperJoustingAngle
+	{
+		myValue 30.0
+	}
+	SpaceshipBehaviorParameter JoustingMaxAngle : tiereaperJoustingMaxAngle
+	{
+		myValue 100.0
+	}
+	SpaceshipBehaviorParameter JoustingEndBreakProbabilityOverPass : tiereaperJoustingEndBreakProbabilityOverPass
+	{
+	}
+	SpaceshipBehaviorParameter JoustingPositionMaxHeight : tiereaperJoustingPositionMaxHeight
+	{
+	}
+	SpaceshipBehaviorParameter AlignMinDistance : tiereaperAlignMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter AlignMaxDistance : tiereaperAlignMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter LeashingMinDistance : tiereaperLeashingMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter LeashingMaxDistance : tiereaperLeashingMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter LeashingToVolumeMaxDistance : tiereaperLeashingToVolumeMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter ShootMaxDistance : tiereaperShootMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter ShootMaxAngle : tiereaperShootMaxAngle
+	{
+		myValue 15.0
+	}
+	SpaceshipBehaviorParameter BarkPositionDistanceMax : tiereaperBarkPositionDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter BroadcastRangeEnterCombat : tiereaperBroadcastRangeEnterCombat
+	{
+	}
+	SpaceshipBehaviorParameter EscortDistance : tiereaperEscortDistance
+	{
+	}
+	SpaceshipBehaviorParameter LowProhibitedActionAttackDelay : tiereaperLowProhibitedActionAttackDelay
+	{
+	}
+	SpaceshipBehaviorParameter AccurateShootingProbability : tiereaperAccurateShootingProbability
+	{
+	}
+	SpaceshipBehaviorParameter RangeForSecondaryWeapon : tiereaperRangeForSecondaryWeapon
+	{
+	}
+	SpaceshipBehaviorParameter UndetectedTimeBeforeExitingCombat : tiereaperUndetectedTimeBeforeExitingCombat
+	{
+	}
+	SpaceshipBehaviorParameter UndetectedTimeBeforeExitingAware : tiereaperUndetectedTimeBeforeExitingAware
+	{
+	}
+	SpaceshipBehaviorParameter ReinforcementsCallProbabilityPercent : tiereaperReinforcementsCallProbabilityPercent
+	{
+	}
+	SpaceshipBehaviorParameter ReinforcementsCallDuration : tiereaperReinforcementsCallDuration
+	{
+	}
+	SpaceshipBehaviorParameter IdleDefaultSplineSizeHorizontal : tiereaperIdleDefaultSplineSizeHorizontal
+	{
+	}
+	SpaceshipBehaviorParameter IdleDefaultSplineSizeVertical : tiereaperIdleDefaultSplineSizeVertical
+	{
+	}
+	SpaceshipBehaviorParameter CooldownDuration : tiereaperCooldownDuration
+	{
+		myValue 1.0
+	}
+	SpaceshipBehaviorParameter CooldownMaxDistance : tiereaperCooldownMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMaxEngagementDistance : tiereaperSpaceshipMaxEngagementDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMaxAngle : tiereaperSpaceshipPrimaryMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMaxDistance : tiereaperSpaceshipPrimaryMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMinDistance : tiereaperSpaceshipPrimaryMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMaxHealth : tiereaperSpaceshipPrimaryMaxHealth
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMaxAngle : tiereaperSpaceshipSecondaryMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMaxDistance : tiereaperSpaceshipSecondaryMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMinDistance : tiereaperSpaceshipSecondaryMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMaxHealth : tiereaperSpaceshipSecondaryMaxHealth
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMaxAngle : tiereaperSpaceshipMissileMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMaxDistance : tiereaperSpaceshipMissileMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMinDistance : tiereaperSpaceshipMissileMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMaxHealth : tiereaperSpaceshipMissileMaxHealth
+	{
+	}
+	SpaceshipBehaviorParameter CombatLeashingToPlayer : tiereaperCombatLeashingToPlayer
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyRadiusMax : tiereaperSpaceshipAccuracyRadiusMax
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyRadiusMin : tiereaperSpaceshipAccuracyRadiusMin
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyDistanceMax : tiereaperSpaceshipAccuracyDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyDistanceMin : tiereaperSpaceshipAccuracyDistanceMin
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipShotSpreadPercentage : tiereaperSpaceshipShotSpreadPercentage
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileLockOnTime : tiereaperSpaceshipMissileLockOnTime
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentChance : tiereaperHarassmentChance
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentDuration : tiereaperHarassmentDuration
+	{
+		myValue 0.0
+	}
+	SpaceshipBehaviorParameter HarassmentAreaSizeMin : tiereaperHarassmentAreaSizeMin
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaSizeMax : tiereaperHarassmentAreaSizeMax
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaHeightMin : tiereaperHarassmentAreaHeightMin
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaHeightMax : tiereaperHarassmentAreaHeightMax
+	{
+	}
+}
+
+SpaceshipBehaviorParameterList b_Sentinel
+{
+	SpaceshipBehaviorParameter EvasiveStartCurrentManeuverMinElapsedTime : sentinelEvasiveStartCurrentManeuverMinElapsedTime
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveStartMinDistance : sentinelEvasiveStartMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveMinDistance : sentinelEvasiveMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveDurationRandomMin : sentinelEvasiveDurationRandomMin
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveDurationRandomMax : sentinelEvasiveDurationRandomMax
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveConeAngle : sentinelEvasiveConeAngle
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveStartAngleFromHostile : sentinelEvasiveStartAngleFromHostile
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveSpiralProbability : sentinelEvasiveSpiralProbability
+	{
+	}
+	SpaceshipBehaviorParameter EvasivePauseBetweenPatternsMin : sentinelEvasivePauseBetweenPatternsMin
+	{
+	}
+	SpaceshipBehaviorParameter EvasivePauseBetweenPatternsMax : sentinelEvasivePauseBetweenPatternsMax
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveBreakProbability : sentinelEvasiveBreakProbability
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveScaleWidth : sentinelEvasiveScaleWidth
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveScaleHeight : sentinelEvasiveScaleHeight
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveScaleLength : sentinelEvasiveScaleLength
+	{
+	}
+	SpaceshipBehaviorParameter TimeToStartEvasiveIfStillInFrontOfHostile : sentinelTimeToStartEvasiveIfStillInFrontOfHostile
+	{
+	}
+	SpaceshipBehaviorParameter BreakStartCurrentManeuverMinElapsedTime : sentinelBreakStartCurrentManeuverMinElapsedTime
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDurationRandomMin : sentinelChaseDurationRandomMin
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDurationRandomMax : sentinelChaseDurationRandomMax
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDistanceMin : sentinelChaseDistanceMin
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDistanceMax : sentinelChaseDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter ChaseConeAngle : sentinelChaseConeAngle
+	{
+	}
+	SpaceshipBehaviorParameter ChaseChanceToBreakOnHostileDodgePercent : sentinelChaseChanceToBreakOnHostileDodgePercent
+	{
+	}
+	SpaceshipBehaviorParameter ChaseBreakProbabilityOverPass : sentinelChaseBreakProbabilityOverPass
+	{
+	}
+	SpaceshipBehaviorParameter OvershootMaxAngle : sentinelOvershootMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter InterceptConeAngle : sentinelInterceptConeAngle
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDistanceIdeal : sentinelInterceptDistanceIdeal
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDistanceMin : sentinelInterceptDistanceMin
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDistanceMax : sentinelInterceptDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDurationMin : sentinelInterceptDurationMin
+	{
+		myValue 3.0
+	}
+	SpaceshipBehaviorParameter InterceptDurationMax : sentinelInterceptDurationMax
+	{
+		myValue 10.0
+	}
+	SpaceshipBehaviorParameter JoustingProbability : sentinelJoustingProbability
+	{
+	}
+	SpaceshipBehaviorParameter JoustingMaxDurationPrepare : sentinelJoustingMaxDurationPrepare
+	{
+	}
+	SpaceshipBehaviorParameter JoustingMaxDuration : sentinelJoustingMaxDuration
+	{
+	}
+	SpaceshipBehaviorParameter JoustingDistanceTurn : sentinelJoustingDistanceTurn
+	{
+	}
+	SpaceshipBehaviorParameter JoustingEndDistance : sentinelJoustingEndDistance
+	{
+	}
+	SpaceshipBehaviorParameter JoustingAngle : sentinelJoustingAngle
+	{
+	}
+	SpaceshipBehaviorParameter JoustingMaxAngle : sentinelJoustingMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter JoustingEndBreakProbabilityOverPass : sentinelJoustingEndBreakProbabilityOverPass
+	{
+	}
+	SpaceshipBehaviorParameter JoustingPositionMaxHeight : sentinelJoustingPositionMaxHeight
+	{
+	}
+	SpaceshipBehaviorParameter AlignMinDistance : sentinelAlignMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter AlignMaxDistance : sentinelAlignMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter LeashingMinDistance : sentinelLeashingMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter LeashingMaxDistance : sentinelLeashingMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter LeashingToVolumeMaxDistance : sentinelLeashingToVolumeMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter ShootMaxDistance : sentinelShootMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter ShootMaxAngle : sentinelShootMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter BarkPositionDistanceMax : sentinelBarkPositionDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter BroadcastRangeEnterCombat : sentinelBroadcastRangeEnterCombat
+	{
+	}
+	SpaceshipBehaviorParameter EscortDistance : sentinelEscortDistance
+	{
+	}
+	SpaceshipBehaviorParameter LowProhibitedActionAttackDelay : sentinelLowProhibitedActionAttackDelay
+	{
+	}
+	SpaceshipBehaviorParameter AccurateShootingProbability : sentinelAccurateShootingProbability
+	{
+	}
+	SpaceshipBehaviorParameter RangeForSecondaryWeapon : sentinelRangeForSecondaryWeapon
+	{
+	}
+	SpaceshipBehaviorParameter UndetectedTimeBeforeExitingCombat : sentinelUndetectedTimeBeforeExitingCombat
+	{
+	}
+	SpaceshipBehaviorParameter UndetectedTimeBeforeExitingAware : sentinelUndetectedTimeBeforeExitingAware
+	{
+	}
+	SpaceshipBehaviorParameter ReinforcementsCallProbabilityPercent : sentinelReinforcementsCallProbabilityPercent
+	{
+	}
+	SpaceshipBehaviorParameter ReinforcementsCallDuration : sentinelReinforcementsCallDuration
+	{
+	}
+	SpaceshipBehaviorParameter IdleDefaultSplineSizeHorizontal : sentinelIdleDefaultSplineSizeHorizontal
+	{
+	}
+	SpaceshipBehaviorParameter IdleDefaultSplineSizeVertical : sentinelIdleDefaultSplineSizeVertical
+	{
+	}
+	SpaceshipBehaviorParameter CooldownDuration : sentinelCooldownDuration
+	{
+	}
+	SpaceshipBehaviorParameter CooldownMaxDistance : sentinelCooldownMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMaxEngagementDistance : sentinelSpaceshipMaxEngagementDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMaxAngle : sentinelSpaceshipPrimaryMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMaxDistance : sentinelSpaceshipPrimaryMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMinDistance : sentinelSpaceshipPrimaryMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMaxHealth : sentinelSpaceshipPrimaryMaxHealth
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMaxAngle : sentinelSpaceshipSecondaryMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMaxDistance : sentinelSpaceshipSecondaryMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMinDistance : sentinelSpaceshipSecondaryMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMaxHealth : sentinelSpaceshipSecondaryMaxHealth
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMaxAngle : sentinelSpaceshipMissileMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMaxDistance : sentinelSpaceshipMissileMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMinDistance : sentinelSpaceshipMissileMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMaxHealth : sentinelSpaceshipMissileMaxHealth
+	{
+	}
+	SpaceshipBehaviorParameter CombatLeashingToPlayer : sentinelCombatLeashingToPlayer
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyRadiusMax : sentinelSpaceshipAccuracyRadiusMax
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyRadiusMin : sentinelSpaceshipAccuracyRadiusMin
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyDistanceMax : sentinelSpaceshipAccuracyDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyDistanceMin : sentinelSpaceshipAccuracyDistanceMin
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipShotSpreadPercentage : sentinelSpaceshipShotSpreadPercentage
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileLockOnTime : sentinelSpaceshipMissileLockOnTime
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentChance : sentinelHarassmentChance
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentDuration : sentinelHarassmentDuration
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaSizeMin : sentinelHarassmentAreaSizeMin
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaSizeMax : sentinelHarassmentAreaSizeMax
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaHeightMin : sentinelHarassmentAreaHeightMin
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaHeightMax : sentinelHarassmentAreaHeightMax
+	{
+	}
+}
+
+SpaceshipBehaviorParameterList b_BFF1Empire
+{
+	SpaceshipBehaviorParameter EvasiveStartCurrentManeuverMinElapsedTime : bff1EvasiveStartCurrentManeuverMinElapsedTime
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveStartMinDistance : bff1EvasiveStartMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveMinDistance : bff1EvasiveMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveDurationRandomMin : bff1EvasiveDurationRandomMin
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveDurationRandomMax : bff1EvasiveDurationRandomMax
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveConeAngle : bff1EvasiveConeAngle
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveStartAngleFromHostile : bff1EvasiveStartAngleFromHostile
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveSpiralProbability : bff1EvasiveSpiralProbability
+	{
+	}
+	SpaceshipBehaviorParameter EvasivePauseBetweenPatternsMin : bff1EvasivePauseBetweenPatternsMin
+	{
+	}
+	SpaceshipBehaviorParameter EvasivePauseBetweenPatternsMax : bff1EvasivePauseBetweenPatternsMax
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveBreakProbability : bff1EvasiveBreakProbability
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveScaleWidth : bff1EvasiveScaleWidth
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveScaleHeight : bff1EvasiveScaleHeight
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveScaleLength : bff1EvasiveScaleLength
+	{
+	}
+	SpaceshipBehaviorParameter TimeToStartEvasiveIfStillInFrontOfHostile : bff1TimeToStartEvasiveIfStillInFrontOfHostile
+	{
+	}
+	SpaceshipBehaviorParameter BreakStartCurrentManeuverMinElapsedTime : bff1BreakStartCurrentManeuverMinElapsedTime
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDurationRandomMin : bff1ChaseDurationRandomMin
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDurationRandomMax : bff1ChaseDurationRandomMax
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDistanceMin : bff1ChaseDistanceMin
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDistanceMax : bff1ChaseDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter ChaseConeAngle : bff1ChaseConeAngle
+	{
+	}
+	SpaceshipBehaviorParameter ChaseChanceToBreakOnHostileDodgePercent : bff1ChaseChanceToBreakOnHostileDodgePercent
+	{
+	}
+	SpaceshipBehaviorParameter ChaseBreakProbabilityOverPass : bff1ChaseBreakProbabilityOverPass
+	{
+	}
+	SpaceshipBehaviorParameter OvershootMaxAngle : bff1OvershootMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter InterceptConeAngle : bff1InterceptConeAngle
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDistanceIdeal : bff1InterceptDistanceIdeal
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDistanceMin : bff1InterceptDistanceMin
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDistanceMax : bff1InterceptDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDurationMin : bff1InterceptDurationMin
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDurationMax : bff1InterceptDurationMax
+	{
+	}
+	SpaceshipBehaviorParameter JoustingProbability : bff1JoustingProbability
+	{
+	}
+	SpaceshipBehaviorParameter JoustingMaxDurationPrepare : bff1JoustingMaxDurationPrepare
+	{
+	}
+	SpaceshipBehaviorParameter JoustingMaxDuration : bff1JoustingMaxDuration
+	{
+	}
+	SpaceshipBehaviorParameter JoustingDistanceTurn : bff1JoustingDistanceTurn
+	{
+	}
+	SpaceshipBehaviorParameter JoustingEndDistance : bff1JoustingEndDistance
+	{
+	}
+	SpaceshipBehaviorParameter JoustingAngle : bff1JoustingAngle
+	{
+	}
+	SpaceshipBehaviorParameter JoustingMaxAngle : bff1JoustingMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter JoustingEndBreakProbabilityOverPass : bff1JoustingEndBreakProbabilityOverPass
+	{
+	}
+	SpaceshipBehaviorParameter JoustingPositionMaxHeight : bff1JoustingPositionMaxHeight
+	{
+	}
+	SpaceshipBehaviorParameter AlignMinDistance : bff1AlignMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter AlignMaxDistance : bff1AlignMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter LeashingMinDistance : bff1LeashingMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter LeashingMaxDistance : bff1LeashingMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter LeashingToVolumeMaxDistance : bff1LeashingToVolumeMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter ShootMaxDistance : bff1ShootMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter ShootMaxAngle : bff1ShootMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter BarkPositionDistanceMax : bff1BarkPositionDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter BroadcastRangeEnterCombat : bff1BroadcastRangeEnterCombat
+	{
+	}
+	SpaceshipBehaviorParameter EscortDistance : bff1EscortDistance
+	{
+	}
+	SpaceshipBehaviorParameter LowProhibitedActionAttackDelay : bff1LowProhibitedActionAttackDelay
+	{
+	}
+	SpaceshipBehaviorParameter AccurateShootingProbability : bff1AccurateShootingProbability
+	{
+	}
+	SpaceshipBehaviorParameter RangeForSecondaryWeapon : bff1RangeForSecondaryWeapon
+	{
+	}
+	SpaceshipBehaviorParameter UndetectedTimeBeforeExitingCombat : bff1UndetectedTimeBeforeExitingCombat
+	{
+	}
+	SpaceshipBehaviorParameter UndetectedTimeBeforeExitingAware : bff1UndetectedTimeBeforeExitingAware
+	{
+	}
+	SpaceshipBehaviorParameter ReinforcementsCallProbabilityPercent : bff1ReinforcementsCallProbabilityPercent
+	{
+	}
+	SpaceshipBehaviorParameter ReinforcementsCallDuration : bff1ReinforcementsCallDuration
+	{
+	}
+	SpaceshipBehaviorParameter IdleDefaultSplineSizeHorizontal : bff1IdleDefaultSplineSizeHorizontal
+	{
+	}
+	SpaceshipBehaviorParameter IdleDefaultSplineSizeVertical : bff1IdleDefaultSplineSizeVertical
+	{
+	}
+	SpaceshipBehaviorParameter CooldownDuration : bff1CooldownDuration
+	{
+	}
+	SpaceshipBehaviorParameter CooldownMaxDistance : bff1CooldownMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMaxEngagementDistance : bff1SpaceshipMaxEngagementDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMaxAngle : bff1SpaceshipPrimaryMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMaxDistance : bff1SpaceshipPrimaryMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMinDistance : bff1SpaceshipPrimaryMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMaxHealth : bff1SpaceshipPrimaryMaxHealth
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMaxAngle : bff1SpaceshipSecondaryMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMaxDistance : bff1SpaceshipSecondaryMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMinDistance : bff1SpaceshipSecondaryMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMaxHealth : bff1SpaceshipSecondaryMaxHealth
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMaxAngle : bff1SpaceshipMissileMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMaxDistance : bff1SpaceshipMissileMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMinDistance : bff1SpaceshipMissileMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMaxHealth : bff1SpaceshipMissileMaxHealth
+	{
+	}
+	SpaceshipBehaviorParameter CombatLeashingToPlayer : bff1CombatLeashingToPlayer
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyRadiusMax : bff1SpaceshipAccuracyRadiusMax
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyRadiusMin : bff1SpaceshipAccuracyRadiusMin
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyDistanceMax : bff1SpaceshipAccuracyDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyDistanceMin : bff1SpaceshipAccuracyDistanceMin
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipShotSpreadPercentage : bff1SpaceshipShotSpreadPercentage
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileLockOnTime : bff1SpaceshipMissileLockOnTime
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentChance : bff1HarassmentChance
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentDuration : bff1HarassmentDuration
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaSizeMin : bff1HarassmentAreaSizeMin
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaSizeMax : bff1HarassmentAreaSizeMax
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaHeightMin : bff1HarassmentAreaHeightMin
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaHeightMax : bff1HarassmentAreaHeightMax
+	{
+	}
+}
+
+SpaceshipBehaviorParameterList b_Lambda
+{
+	SpaceshipBehaviorParameter EvasiveStartCurrentManeuverMinElapsedTime : lambdaEvasiveStartCurrentManeuverMinElapsedTime
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveStartMinDistance : lambdaEvasiveStartMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveMinDistance : lambdaEvasiveMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveDurationRandomMin : lambdaEvasiveDurationRandomMin
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveDurationRandomMax : lambdaEvasiveDurationRandomMax
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveConeAngle : lambdaEvasiveConeAngle
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveStartAngleFromHostile : lambdaEvasiveStartAngleFromHostile
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveSpiralProbability : lambdaEvasiveSpiralProbability
+	{
+	}
+	SpaceshipBehaviorParameter EvasivePauseBetweenPatternsMin : lambdaEvasivePauseBetweenPatternsMin
+	{
+	}
+	SpaceshipBehaviorParameter EvasivePauseBetweenPatternsMax : lambdaEvasivePauseBetweenPatternsMax
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveBreakProbability : lambdaEvasiveBreakProbability
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveScaleWidth : lambdaEvasiveScaleWidth
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveScaleHeight : lambdaEvasiveScaleHeight
+	{
+	}
+	SpaceshipBehaviorParameter EvasiveScaleLength : lambdaEvasiveScaleLength
+	{
+	}
+	SpaceshipBehaviorParameter TimeToStartEvasiveIfStillInFrontOfHostile : lambdaTimeToStartEvasiveIfStillInFrontOfHostile
+	{
+	}
+	SpaceshipBehaviorParameter BreakStartCurrentManeuverMinElapsedTime : lambdaBreakStartCurrentManeuverMinElapsedTime
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDurationRandomMin : lambdaChaseDurationRandomMin
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDurationRandomMax : lambdaChaseDurationRandomMax
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDistanceMin : lambdaChaseDistanceMin
+	{
+	}
+	SpaceshipBehaviorParameter ChaseDistanceMax : lambdaChaseDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter ChaseConeAngle : lambdaChaseConeAngle
+	{
+	}
+	SpaceshipBehaviorParameter ChaseChanceToBreakOnHostileDodgePercent : lambdaChaseChanceToBreakOnHostileDodgePercent
+	{
+	}
+	SpaceshipBehaviorParameter ChaseBreakProbabilityOverPass : lambdaChaseBreakProbabilityOverPass
+	{
+	}
+	SpaceshipBehaviorParameter OvershootMaxAngle : lambdaOvershootMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter InterceptConeAngle : lambdaInterceptConeAngle
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDistanceIdeal : lambdaInterceptDistanceIdeal
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDistanceMin : lambdaInterceptDistanceMin
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDistanceMax : lambdaInterceptDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDurationMin : lambdaInterceptDurationMin
+	{
+	}
+	SpaceshipBehaviorParameter InterceptDurationMax : lambdaInterceptDurationMax
+	{
+	}
+	SpaceshipBehaviorParameter JoustingProbability : lambdaJoustingProbability
+	{
+	}
+	SpaceshipBehaviorParameter JoustingMaxDurationPrepare : lambdaJoustingMaxDurationPrepare
+	{
+	}
+	SpaceshipBehaviorParameter JoustingMaxDuration : lambdaJoustingMaxDuration
+	{
+	}
+	SpaceshipBehaviorParameter JoustingDistanceTurn : lambdaJoustingDistanceTurn
+	{
+	}
+	SpaceshipBehaviorParameter JoustingEndDistance : lambdaJoustingEndDistance
+	{
+	}
+	SpaceshipBehaviorParameter JoustingAngle : lambdaJoustingAngle
+	{
+	}
+	SpaceshipBehaviorParameter JoustingMaxAngle : lambdaJoustingMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter JoustingEndBreakProbabilityOverPass : lambdaJoustingEndBreakProbabilityOverPass
+	{
+	}
+	SpaceshipBehaviorParameter JoustingPositionMaxHeight : lambdaJoustingPositionMaxHeight
+	{
+	}
+	SpaceshipBehaviorParameter AlignMinDistance : lambdaAlignMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter AlignMaxDistance : lambdaAlignMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter LeashingMinDistance : lambdaLeashingMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter LeashingMaxDistance : lambdaLeashingMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter LeashingToVolumeMaxDistance : lambdaLeashingToVolumeMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter ShootMaxDistance : lambdaShootMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter ShootMaxAngle : lambdaShootMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter BarkPositionDistanceMax : lambdaBarkPositionDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter BroadcastRangeEnterCombat : lambdaBroadcastRangeEnterCombat
+	{
+	}
+	SpaceshipBehaviorParameter EscortDistance : lambdaEscortDistance
+	{
+	}
+	SpaceshipBehaviorParameter LowProhibitedActionAttackDelay : lambdaLowProhibitedActionAttackDelay
+	{
+	}
+	SpaceshipBehaviorParameter AccurateShootingProbability : lambdaAccurateShootingProbability
+	{
+	}
+	SpaceshipBehaviorParameter RangeForSecondaryWeapon : lambdaRangeForSecondaryWeapon
+	{
+	}
+	SpaceshipBehaviorParameter UndetectedTimeBeforeExitingCombat : lambdaUndetectedTimeBeforeExitingCombat
+	{
+	}
+	SpaceshipBehaviorParameter UndetectedTimeBeforeExitingAware : lambdaUndetectedTimeBeforeExitingAware
+	{
+	}
+	SpaceshipBehaviorParameter ReinforcementsCallProbabilityPercent : lambdaReinforcementsCallProbabilityPercent
+	{
+	}
+	SpaceshipBehaviorParameter ReinforcementsCallDuration : lambdaReinforcementsCallDuration
+	{
+	}
+	SpaceshipBehaviorParameter IdleDefaultSplineSizeHorizontal : lambdaIdleDefaultSplineSizeHorizontal
+	{
+	}
+	SpaceshipBehaviorParameter IdleDefaultSplineSizeVertical : lambdaIdleDefaultSplineSizeVertical
+	{
+	}
+	SpaceshipBehaviorParameter CooldownDuration : lambdaCooldownDuration
+	{
+	}
+	SpaceshipBehaviorParameter CooldownMaxDistance : lambdaCooldownMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMaxEngagementDistance : lambdaSpaceshipMaxEngagementDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMaxAngle : lambdaSpaceshipPrimaryMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMaxDistance : lambdaSpaceshipPrimaryMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMinDistance : lambdaSpaceshipPrimaryMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipPrimaryMaxHealth : lambdaSpaceshipPrimaryMaxHealth
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMaxAngle : lambdaSpaceshipSecondaryMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMaxDistance : lambdaSpaceshipSecondaryMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMinDistance : lambdaSpaceshipSecondaryMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipSecondaryMaxHealth : lambdaSpaceshipSecondaryMaxHealth
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMaxAngle : lambdaSpaceshipMissileMaxAngle
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMaxDistance : lambdaSpaceshipMissileMaxDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMinDistance : lambdaSpaceshipMissileMinDistance
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileMaxHealth : lambdaSpaceshipMissileMaxHealth
+	{
+	}
+	SpaceshipBehaviorParameter CombatLeashingToPlayer : lambdaCombatLeashingToPlayer
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyRadiusMax : lambdaSpaceshipAccuracyRadiusMax
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyRadiusMin : lambdaSpaceshipAccuracyRadiusMin
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyDistanceMax : lambdaSpaceshipAccuracyDistanceMax
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipAccuracyDistanceMin : lambdaSpaceshipAccuracyDistanceMin
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipShotSpreadPercentage : lambdaSpaceshipShotSpreadPercentage
+	{
+	}
+	SpaceshipBehaviorParameter SpaceshipMissileLockOnTime : lambdaSpaceshipMissileLockOnTime
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentChance : lambdaHarassmentChance
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentDuration : lambdaHarassmentDuration
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaSizeMin : lambdaHarassmentAreaSizeMin
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaSizeMax : lambdaHarassmentAreaSizeMax
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaHeightMin : lambdaHarassmentAreaHeightMin
+	{
+	}
+	SpaceshipBehaviorParameter HarassmentAreaHeightMax : lambdaHarassmentAreaHeightMax
+	{
+	}
+}
+

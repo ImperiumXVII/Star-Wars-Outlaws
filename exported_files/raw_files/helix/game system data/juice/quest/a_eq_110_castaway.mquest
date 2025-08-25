@@ -1,0 +1,144 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/intel/intel_akiva_quest.mintel"
+include "helix/game system data/juice/mapref/mapref_quest_expert.mmapref"
+include "helix/game system data/juice/reward/quest_completion_reward.mreward"
+include "helix/game system data/juice/reward/quest_reward.mreward"
+
+Quest A_EQ_110_Castaway < uid=E1B84E3A64BE576500040943E2F4DA3A >
+{
+	myName "aurabesh = false, contextComment = \"This is the name for the mission. Expert Quest 110 Castaway and its displayed in the UI\", enabled = true, guid = #E1B84E3A64BE576900040945A2CFD1F2, lineVersion = 9, maxLength = 0, productId = 6, sectionId = 2499, text = \"A_EQ_110_Castaway\", type = \"MenuLine\""
+	myIntroDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"This is the desciption for the mission. Expert Quest 110 Castaway and its displayed in the UI\", enabled = true, guid = #C9E2299265709BFD0029A45906BBE921, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2499, text = \"Encrypted Transmissions have lead Kay to MT-7, a broken Droid who believes that the clone wars are still going on. It's now in Kay hands to finish MT-7's mission. (TO BE WRITTEN)\", type = \"MenuLine\""
+	myType Expert
+	myCompletionReward < uid=C9E2299265B7A8070006CB05F2541092 > = A_EQ_110_questcomplete_reward 2AE2EC85644A93B30000B312CF510EBF
+	myMapRefConstantData < uid=E1B84E3A64BE9FCC0020449B6CF6D729 > = mapref_quest_expert B581CAC8622868DC0000278530C21E1D
+	myBeats
+	{
+		QuestBeat "BEAT 01 - Find Intel about the Droids" < uid=C9E22992655221130006C3863BEC817A >
+		{
+			myScript helix/scripts/scr_a_eq_110_aki_pln_b01_intel_firstreport00.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_EQ_110_B01  This is the name of the BEAT 01  for EQ 110 Castway. Displayed in UI.\", enabled = true, guid = #C9E229926552234300070BC9644F5861, lineVersion = 8, maxLength = 0, productId = 6, sectionId = 3614, text = \"Find clues about the seperatist units\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E6B0000001B224713F01
+			myDebugPlayLandingZone E1B84E3A64D0AC600009F6A08D6E1F90
+			myObjectives
+			{
+				QuestObjectiveCustom "Find Intel about the Seperatist Units" < uid=C9E229926552239800070BCA7F6FFFC1 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_EQ_110_B01 Name of the objective, displayed in UI.\", enabled = true, guid = #C9E229926552239800070BCBD57B50B1, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 9258, text = \"Find clues about the MT-7's units\", type = \"MenuLine\"}"
+				}
+				QuestObjectiveCustom Hint < uid=C9E229926573178E00251E80C7DD15FE >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"A_EQ_110_B01 hint, displayed in UI.\", enabled = true, guid = #C9E229926573178E00251E81667C9ACD, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9258, text = \"Recharge the 3 capacitors with ion\", type = \"MenuLine\""
+					myIsHint TRUE
+				}
+				QuestObjectiveCustom MarkerForDataPad < uid=C9E229926581B60F0000F48DE326C5BD >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+			}
+			myQuestBeatStateGameValue < uid=C9E22992655221F00006C397A73DE688 >
+			{
+			}
+		}
+		QuestBeat "BEAT 02 - Southern Droid Report" < uid=C9E229926552214D0006C389F2C16778 >
+		{
+			myScript helix/scripts/scr_a_eq_110_aki_pln_b01_intel_secondreport01.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_EQ_110_B02 This is the name of the BEAT 02  for EQ 110 Castway. Displayed in UI.\", enabled = true, guid = #C9E22992655248C20000B84FFCC95C91, lineVersion = 9, maxLength = 0, productId = 6, sectionId = 3614, text = \"Find the southern seperatist base\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E6B0000001B224713F01
+			myDebugPlayLandingZone E1B84E3A64D0AC600009F6A08D6E1F90
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Go to Southern Base" < uid=C9E2299265548AA2000379B00E4559EE >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_EQ_110_B02 Name of the objective, displayed in UI.\", enabled = true, guid = #C9E2299265548AB6000379BC54A25593, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 9260, text = \"Find the southern seperatist base\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD FALSE
+				}
+				QuestObjectiveGetItem "Southern Unit Report" < uid=C9E22992655248DD0000B85056D9B4F7 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_EQ_110_B02 Name of the objective, displayed in UI.\", enabled = true, guid = #C9E22992655248DE0000B851518CAAA7, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 9259, text = \"Search for the southern unit\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=C9E22992655221F00006C3983213AA7A >
+			{
+			}
+		}
+		QuestBeat "BEAT 03 - Nothern Droid Report" < uid=C9E229926552218C0006C38D8C1853B8 >
+		{
+			myScript helix/scripts/scr_a_eq_110_aki_pln_b01_intel_thirdreport01.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_EQ_110_B03 This is the name of the BEAT 03  for EQ 110 Castway. Displayed in UI.\", enabled = true, guid = #C9E229926552543D0007547D497265FF, lineVersion = 13, maxLength = 0, productId = 6, sectionId = 3614, text = \"Find the northern seperatist base\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E6B0000001B224713F01
+			myDebugPlayLandingZone E1B84E3A64D0AC600009F6A08D6E1F90
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Go to Nothern Base" < uid=C9E2299265548B27000399B20C9645B1 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_EQ_110_B03 Name of the objective, displayed in UI.\", enabled = true, guid = #C9E2299265548B1200037F8FDD76D4DA, lineVersion = 10, maxLength = 0, productId = 6, sectionId = 9260, text = \"Find the northern seperatist base\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+				}
+				QuestObjectiveGetItem "Nothern Unit Report" < uid=C9E22992655254430007547EFC233727 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_EQ_110_B03 Name of the objective, displayed in UI.\", enabled = true, guid = #C9E22992655254430007547F6681DCA4, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 9260, text = \"Search for the northern unit\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=C9E22992655221F00006C3993B903506 >
+			{
+			}
+		}
+		QuestBeat "BEAT 04 - Restore the Signal" < uid=C9E2299264C7D8A50000B3D7A2118FB0 >
+		{
+			myScript helix/scripts/scr_a_eq_110_aki_spc_b02_restoresignal.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_EQ_110_B04 This is the name of the BEAT 04 for EQ 110 Castway. Displayed in UI.\", enabled = true, guid = #C9E2299264C7DB5C0000B3E9FEA3C766, lineVersion = 13, maxLength = 0, productId = 6, sectionId = 3614, text = \"Restore the CIS satellite signal\", type = \"MenuLine\""
+			myAutostartQuestGoal < uid=C9E2299265B3874D0031A48168FFDD02 >
+			{
+				myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_EQ_110_B04 This is the name of the objective shown to the player when outside of the area for EQ 110 Castway. Displayed in UI.\", enabled = true, guid = #C9E2299265B386E60031A410B0B87F0B, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9261, text = \"Reach the CIS satellite\", type = \"MenuLine\""
+			}
+			myLevelInfo 9C4B6A046012DFB0000001032A60B086
+			myObjectives
+			{
+				QuestObjectiveCounter "Destroy Jammers (Custom)" < uid=C9E2299264C7DC1A0000B3EEAD34749B >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_EQ_110_B04 Name of the objective, displayed in UI.\", enabled = true, guid = #C9E2299264C7DC1A0000B3EF2AD45256, lineVersion = 11, maxLength = 0, productId = 6, sectionId = 9261, text = \"Destroy the jammers\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+					myMaxCount 5
+				}
+				QuestObjectiveCustom "First Jammer" < uid=C9E229926568902E000A8490C52993ED >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD FALSE
+				}
+			}
+			myQuestBeatStateGameValue < uid=C9E2299264C7DD040000B3F622BE4705 >
+			{
+			}
+		}
+		QuestBeat "BEAT 05 - Report to Droid" < uid=C9E2299264C7D8A90000B3D91E46BD65 >
+		{
+			myScript helix/scripts/scr_a_eq_110_aki_pln_b03_reporttodroid.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_EQ_110_B05 This is the name of the BEAT 05 for EQ 110 Castway. Displayed in UI.\", enabled = true, guid = #C9E2299264C7D8A90000B3DA86AFEE34, lineVersion = 16, maxLength = 0, productId = 6, sectionId = 3614, text = \"Talk to MT-7\", type = \"MenuLine\""
+			myAutostartQuestGoal < uid=C9E2299265AFA3950008C638BAA84DE3 >
+			{
+				myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_EQ_110_B05 Name of the objective when player is not in the area, displayed in UI.\", enabled = true, guid = #C9E2299265AFA2C70008C637A984593E, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9262, text = \"Reach the seperatist landing pad\", type = \"MenuLine\""
+			}
+			myLevelInfo 9C4B6A046012E6B0000001B224713F01
+			myDebugPlayLandingZone E1B84E3A64D0AC600009F6A08D6E1F90
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Talk to Droid" < uid=C9E2299264C7DCC70000B3F207A4C669 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_EQ_110_B05 Name of the objective, displayed in UI.\", enabled = true, guid = #C9E2299264C7DCCD0000B3F38F6A6229, lineVersion = 10, maxLength = 0, productId = 6, sectionId = 9262, text = \"Talk to MT-7\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=C9E2299264C7DD040000B3F7FE191251 >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=E1B84E3A64BE576500040944DAE7C6D6 >
+	{
+	}
+}
+

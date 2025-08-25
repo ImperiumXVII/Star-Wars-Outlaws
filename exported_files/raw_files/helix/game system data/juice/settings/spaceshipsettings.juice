@@ -1,0 +1,527 @@
+include "helix/game system data/fruit/ai/spaceshipsettings.fruit"
+include "helix/game system data/juice/ai/npcshootpatterns.mnpcshootpattern"
+include "helix/game system data/juice/ai/spaceshipcombatprofiles.mspaceshipcombatprofile"
+include "helix/game system data/juice/ai/spaceshipformationprofiles.mspaceshipformationprofile"
+include "helix/game system data/juice/ai/spaceshipspawnprofiles.mspaceshipspawnprofile"
+include "helix/game system data/juice/ai/spaceshipspeedprofiles.mspaceshipspeedprofile"
+include "helix/game system data/juice/ai/spaceshiptrajectories.mspaceshiptrajectoryprofile"
+include "helix/game system data/juice/spaceshipsettings_ashiga.juice"
+include "helix/game system data/juice/spaceshipsettings_crimsondawn.juice"
+include "helix/game system data/juice/spaceshipsettings_empire.juice"
+include "helix/game system data/juice/spaceshipsettings_hutt.juice"
+include "helix/game system data/juice/spaceshipsettings_pirates.juice"
+include "helix/game system data/juice/spaceshipsettings_pykes.juice"
+include "helix/game system data/juice/spaceshipsettings_rebels.juice"
+
+SpaceshipSettingsListClass SpaceshipSettingsList < uid=B1CE795661FA93E400001C00FF3318C0 >
+{
+	mySpaceshipSettings
+	{
+		SpaceshipSetting Default < uid=B1CE795661FA93E400001C0138D200DE >
+		{
+			mySpaceshipType Default
+			myMaximumSpeed 70.0
+			myIonCollectorData
+			{
+				myDisabledDuration "10 * TrailblazerIonDisabledDurationModifier"
+			}
+			myUISpaceshipParameters < uid=C107E9E9653264900002ECAB668E71A6 >
+			{
+				myMinimumWorldMarkedDisplayDistance 30.0
+			}
+		}
+		SpaceshipSetting Dummy < uid=6EA7962564A4023B000023A54470052F >
+		{
+			mySpaceshipType Dummy
+			mySpaceshipArchetype Default
+			myMaximumSpeed 0.0
+			myMinimumSpeed 0.0
+			myPitchSpeed 0.0
+			myYawSpeed 0.0
+			myRollSpeed 0.0
+			myAcceleration 0.0
+			myPitchAcceleration 0.0
+			myYawAcceleration 0.0
+			myRollAcceleration 0.0
+			myMaximumPitchUp 0.0
+			myMaximumPitchDown 0.0
+			myDrag 0.0
+			myMinDistanceToTarget 0.0
+			myFormationDistanceScale 0.0
+			myHuntingRadius 0.0
+			myTranslationSettings
+			{
+				myLateralSpeed 0.0
+				myVerticalSpeed 0.0
+				myLateralAcceleration 0.0
+				myVerticalAcceleration 0.0
+			}
+			myAISpaceshipControlParameters
+			{
+				myCombatProfile < uid=6EA7962564A4023B000023A69E63AA19 > = Fighter_CombatProfile 82D16ABE62B47AA700002A78F8160B8E
+				mySpaceshipBehaviorParameters
+				{
+					SpaceshipBehaviorParameter EvasiveMinDistance
+					{
+						myType EvasiveMinDistance
+						myValue 150.0
+					}
+					SpaceshipBehaviorParameter EvasiveStartAngleFromHostile
+					{
+						myType EvasiveStartAngleFromHostile
+						myValue 60.0
+					}
+					SpaceshipBehaviorParameter EvasiveDurationRandomMax
+					{
+						myType EvasiveDurationRandomMax
+						myValue 8.0
+					}
+					SpaceshipBehaviorParameter ShootMaxDistance
+					{
+						myType ShootMaxDistance
+						myValue 900.0
+					}
+					SpaceshipBehaviorParameter ShootMaxAngle
+					{
+						myType ShootMaxAngle
+						myValue 30.0
+					}
+					SpaceshipBehaviorParameter LeashingMaxDistance
+					{
+						myType LeashingMaxDistance
+						myValue 6000.0
+					}
+					SpaceshipBehaviorParameter InterceptDistanceIdeal
+					{
+						myType InterceptDistanceIdeal
+						myValue 400.0
+					}
+					SpaceshipBehaviorParameter InterceptDistanceMin
+					{
+						myType InterceptDistanceMin
+						myValue 300.0
+					}
+					SpaceshipBehaviorParameter InterceptDistanceMax
+					{
+						myType InterceptDistanceMax
+						myValue 600.0
+					}
+					SpaceshipBehaviorParameter InterceptConeAngle
+					{
+						myType InterceptConeAngle
+						myValue 25.0
+					}
+					SpaceshipBehaviorParameter BreakStartCurrentManeuverMinElapsedTime
+					{
+						myType BreakStartCurrentManeuverMinElapsedTime
+						myValue 4.0
+					}
+					SpaceshipBehaviorParameter ChaseConeAngle
+					{
+						myType ChaseConeAngle
+						myValue 60.0
+					}
+					SpaceshipBehaviorParameter ChaseDurationMin
+					{
+						myType ChaseDurationRandomMin
+						myValue 80.0
+					}
+					SpaceshipBehaviorParameter ChaseDurationMax
+					{
+						myType ChaseDurationRandomMax
+						myValue 180.0
+					}
+					SpaceshipBehaviorParameter ChaseDistanceMin
+					{
+						myType ChaseDistanceMin
+						myValue 100.0
+					}
+					SpaceshipBehaviorParameter TimeToStartEvasiveIfInFrontOfHostile
+					{
+						myType TimeToStartEvasiveIfStillInFrontOfHostile
+						myValue 4.0
+					}
+					SpaceshipBehaviorParameter AccurateShootingProbability
+					{
+						myType AccurateShootingProbability
+						myValue 100.0
+					}
+					SpaceshipBehaviorParameter JoustingEndBreakProbabilityOverPass
+					{
+						myType JoustingEndBreakProbabilityOverPass
+						myValue 80.0
+					}
+					SpaceshipBehaviorParameter JoustingEndDistance
+					{
+						myType JoustingEndDistance
+						myValue 50.0
+					}
+					SpaceshipBehaviorParameter JoustingAngle
+					{
+						myType JoustingAngle
+						myValue 80.0
+					}
+					SpaceshipBehaviorParameter ReinforcementsCallProbabilityPercent
+					{
+						myType ReinforcementsCallProbabilityPercent
+					}
+				}
+				myLateralAttractorThresholdDistance 10.0
+				myLateralAttractorInput 1.0
+				mySplineLookAheadMinimum 25.0
+				mySplineLookAheadMaximum 100.0
+				mySplineLookAheadSpeedRatio 0.4
+			}
+			mySpeedProfile < uid=6EA7962564A4023B000023A75443BB09 > = speedProfile_reb_shp_xwing F95CD8F364D627840000D90DBC1AC487
+			myTrajectoryProfile < uid=6EA7962564A4023B000023A806AD4E1E > = Fighter_TrajectoryProfile 82D16ABE628DF25A000025051D8485CD
+			myIonCollectorData
+			{
+				myDisabledDuration "10 * TrailblazerIonDisabledDurationModifier"
+				mySlowDownPercentage 0.5
+			}
+			myShieldData
+			{
+				EnergyShieldData ShieldData
+				{
+					myMaxValue 5
+					myRegenerationCooldown 8.0
+					myCanRegenerateWhenDepleted TRUE
+				}
+			}
+			myShootPatternAccurate < uid=6EA7962564A4023B000023A9C2306A99 > = NULLREFERENCE
+			myShootPatternInaccurate < uid=6EA7962564A4023B000023AA418023A4 > = NULLREFERENCE
+			myShootTicketAccurate SpaceEmpireShooting
+			myShootTicketInaccurate SpaceEmpireInaccurateShooting
+			myDeathSequenceSettings
+			{
+				myCollisionDamageThreshold 1.0
+				myDeathSequenceDuration 7.0
+				myShouldTumble TRUE
+				myTumbleMaxDuration 2.5
+			}
+			mySpaceshipFormationProfile < uid=6EA7962564A4023B000023AB0852436E > = TIEFighter_FormationProfile F97070E1635FACEA00004E4AF198C12F
+		}
+		SpaceshipSetting Trailblazer < uid=82D16ABE622F2401000015C4AE15C9FE >
+		{
+			mySpaceshipType PlayerSpaceship
+			mySpaceshipArchetype PlayerSpaceship
+			myMaximumSpeed 125.0
+			myMinimumSpeed 0.0
+			myPitchSpeed 70.0
+			myYawSpeed 95.0
+			myRollSpeed 120.0
+			myPitchAcceleration 450.0
+			myYawAcceleration 450.0
+			myRollAcceleration 120.0
+			myMass 1.0
+			myAISpaceshipControlParameters
+			{
+				myCombatProfile < uid=82D16ABE62B57BE4000035C246AB0512 > = Warship_CombatProfile 82D16ABE62B47B94000035C4E5843E4D
+				mySplineLookAheadMinimum 30.0
+				mySplineLookAheadMaximum 100.0
+				mySplineLookAheadDistanceRatio 0.2
+			}
+			mySpawnProfile < uid=F97070E164A583440002FE340D30C1B9 > = Trailblazer F97070E164D254F800010A16E4F3C486
+			mySpeedProfile < uid=B005013563738B920000E60555302C5C > = speedProfile_Trailblazer 6AF0BA0464A2BCB10000B3812ED8B2C4
+			myIonCollectorData
+			{
+				myMaxCharge 70.0
+				myDisabledDuration "5 * TrailblazerIonDisabledDurationModifier"
+				myTimeUntilRecovery 10.0
+				myRecoveryRate 5.0
+				myResistanceDuration 3.0
+				mySlowDownPercentage 0.5
+			}
+			myShieldData
+			{
+				EnergyShieldData ShieldData
+				{
+					myMaxValue "30 + TrailblazerShieldBonus + ShieldTest"
+					myRegenerationCooldown "4.0 - TrailblazerShieldRegenDelayBonus + ShieldCooldownTest"
+					myRegenerationRate "6 + TrailblazerShieldRegenBonus + ShieldRegenTest"
+					myShieldPerSegmentFormula 30
+					myEMInterferenceRegenerationModifier 0.3
+					myShieldType Mono
+					myCanRegenerateWhenDepleted TRUE
+					myShieldInvulnerabilityDuration 0.8
+				}
+			}
+			myDimensions
+			{
+				myLength 40.5
+				myWidth 24.4
+				myHeight 8.5
+			}
+			myPhysicsParams
+			{
+				myCollisionDamageToBreakablesMultiplier 20.0
+				myCollisionDamageFromSameEntityCooldown 1.0
+			}
+			myDeathSequenceSettings
+			{
+				myEndExplosionFilename helix/particles/vfx_exp_vh_trailblazer_01.mparticles
+				myDeathSequenceDuration 4.0
+				myAfterDeathSequenceDelay 1.0
+				myTumbleMaxDuration 6.0
+				myTumbleFindTargetAngle 40.0
+				myTumbleFallingCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -2.5187988 890.08618, }, outTangents = { 1804.7859 -10.775879, 0 -0, }, properties = { 275, 1299, }, values = { 0 0, 2000 -2000, }, }, numKeys = 2, }"
+			}
+			mySpaceshipFormationProfile < uid=F97070E1635FA4A500001FBEECC66F31 > = PlayerSpaceship_FormationProfile F97070E1635B8EAA000049BE3B96704C
+		}
+		SpaceshipSetting Tiefighter < uid=B1CE795661FB89EF000005802E247013 > = s_TieFighter 6AF0BA0464EC4B06000055636CEE845A
+		SpaceshipSetting "Tie Interceptor" < uid=B1CE795662CD2FF4000007867FD5249E > = s_TieInterceptor 6AF0BA0464EC4B06000055640CB688E1
+		SpaceshipSetting Gozanti < uid=B1CE795662B3132900003C2B1A0353D4 > = s_Gozanti 6AF0BA0464EC4B0600005566FF4E90C3
+		SpaceshipSetting "TIE Reaper" < uid=4F59E8F06409F06700017332F61110D6 > = s_TieReaper 6AF0BA0464EC4B06000055650FD7F25A
+		SpaceshipSetting Lambda < uid=4F59E8F06452531E000116B126AF96CA > = s_Lambda 6AF0BA0464EC4B06000055685FD37AB6
+		SpaceshipSetting Sentinel < uid=4F59E8F06419DDD90000630F1A39B951 > = s_Sentinel 6AF0BA0464EC4B0600005569EF261634
+		SpaceshipSetting Raider < uid=4F59E8F063D7923C00004346EA9BBB6D > = s_Raider 6AF0BA0464EC4B0600005567E79A1724
+		SpaceshipSetting BFF1_Empire < uid=6AF0BA0464F0B432000CA0C3B865B8B0 > = s_BFF1Empire 6AF0BA0464EC4B060000556A64654B9B
+		SpaceshipSetting Fang < uid=F95CD8F3641037F30000098657EEFB55 > = s_Fang 6AF0BA0464EC6FA900008E3DCAAADDFC
+		SpaceshipSetting Fang_CrimsonDawn < uid=7EE6463464E72174000ED6FF81A8C801 > = s_FangCrimsonDawn 6AF0BA0464EC65E20004592AA6C61D02
+		SpaceshipSetting Fang_Hutt < uid=6AF0BA0464F0B432000CA0C495650973 > = s_FangHutt 6AF0BA0464EC766100008E641A0CBBB4
+		SpaceshipSetting Fang_Pirate < uid=6AF0BA0464F0B432000CA0DD2ED65A04 > = s_FangPirate 6AF0BA0464EC67E50004596BC40BF8CD
+		SpaceshipSetting Fang_Pyke < uid=6AF0BA0464F0B577000CA0E9B151B1ED > = s_FangPyke 6AF0BA0464EC777300008E69F00A12A8
+		SpaceshipSetting Duros < uid=4F59E8F063C9626F0000811E8BA18102 > = s_Duros 6AF0BA0464EC6FA900008E3FBD5E1DC8
+		SpaceshipSetting Duros_CrimsonDawn < uid=7EE6463464EDA10300029AC5042ECD90 > = s_DurosCrimsonDawn 6AF0BA0464EC65E20004592C12698981
+		SpaceshipSetting Duros_Ashiga < uid=6AF0BA0464F0B432000CA0C5033C3223 > = s_DurosAshiga 6AF0BA0464EC67240004595ED540480F
+		SpaceshipSetting Duros_Hutt < uid=6AF0BA0464F0B432000CA0C64DE84657 > = s_DurosHutt 6AF0BA0464EC766100008E654DD78108
+		SpaceshipSetting Duros_Pirate < uid=6AF0BA0464F0B432000CA0DE057D182E > = s_DurosPirate 6AF0BA0464EC72B000008E4EE9B91B65
+		SpaceshipSetting Duros_Pirate_B < uid=6AF0BA04656EE5A70000CC9B5B99C3AA > = s_DurosPirate_b 6AF0BA04656EDE4F00003301A8D8B1B9
+		SpaceshipSetting Duros_Pyke < uid=6AF0BA0464F0B577000CA0EA314D95D7 > = s_DurosPyke 6AF0BA0464EC77EF00008E722F94CE6E
+		SpaceshipSetting "Arc 170" < uid=4F59E8F063C7BC1A00009C480B041067 > = s_Arc170 6AF0BA0464EC737000008E57E182CCD4
+		SpaceshipSetting "Arc 170_Ashiga" < uid=6AF0BA0464F0B432000CA0C7D8DDD762 > = s_Arc170Ashiga 6AF0BA0464EC7A5C00008E823A94DB13
+		SpaceshipSetting "Arc 170_Hutt" < uid=6AF0BA0464F0B432000CA0C8654E739B > = s_Arc170Hutt 6AF0BA0464EC75EE00008E5CCE47B9E7
+		SpaceshipSetting Porax < uid=4F59E8F063CA5CBA000025B395435B37 > = s_Porax 6AF0BA0464EC735D00008E569BFBA059
+		SpaceshipSetting Porax_Pyke < uid=6AF0BA0464F0B577000CA0EBAF477E27 > = s_PoraxPyke 6AF0BA0464EC77EF00008E73404B677E
+		SpaceshipSetting "V Wing" < uid=4F59E8F063C948910000D46D3768FBFA > = s_VWing 6AF0BA0464EC6FA900008E4308F1EB5D
+		SpaceshipSetting "V Wing_Ashiga" < uid=6AF0BA0464F0B432000CA0C98701F83B > = s_VWingAshiga 6AF0BA0464EC7A5C00008E83FF27517C
+		SpaceshipSetting "V Wing_CrimsonDawn" < uid=6AF0BA0464F0B432000CA0CA88D4CC72 > = s_VWingCrimsonDawn 6AF0BA0464EC65E200045930201EC68D
+		SpaceshipSetting "V Wing_Pyke" < uid=6AF0BA0464F0B577000CA0ECB6107B9D > = s_VWingPyke 6AF0BA0464EC77EF00008E74B6F42AAC
+		SpaceshipSetting "Z95 Headhunter" < uid=B1CE795662CD2FF400000787E9782B49 > = s_Z95Headhunter 6AF0BA0464EC6ABB000459779BEF3908
+		SpaceshipSetting "Z95 Headhunter_Ashiga" < uid=6AF0BA0464F0B432000CA0CBBE847CCD > = s_Z95HeadhunterAshiga 6AF0BA0464EC7A5C00008E8486A8F842
+		SpaceshipSetting RZ1 < uid=4F59E8F0644A1A4F0001939B5D5728B7 > = s_RZ1 6AF0BA0464EF4CFD00038F6B22F823ED
+		SpaceshipSetting X-Wing < uid=F95CD8F3648315490004C7686CFEF50D > = s_Xwing 6AF0BA0464EF4CE300038F69470124A7
+		SpaceshipSetting "Gozanti Armed" < uid=4F59E8F063CA97ED00009DC4E3755C58 > = s_GozantiArmed 6AF0BA0464EC73AC00008E5A69A61C9F
+		SpaceshipSetting "Gozanti Armed_Hutt" < uid=6AF0BA0464F0B432000CA0CCA840122D > = s_GozantiArmedHutt 6AF0BA0464EC75EE00008E5D2DFF1B82
+		SpaceshipSetting Vandor < uid=4F59E8F06435618D00008832BC27EE80 > = s_Vandor 6AF0BA0464EC6FA900008E411D51FDF4
+		SpaceshipSetting Vandor_CrimsonDawn < uid=6AF0BA0464F0B432000CA0CD2008E73E > = s_VandorCrimsonDawn 6AF0BA0464EC65E20004592E99548C6F
+		SpaceshipSetting "WTK 85" < uid=4F59E8F06422865C0000704C8DCE2BBA > = s_WTK85 6AF0BA0464EC73AC00008E5B9EB59913
+		SpaceshipSetting "WTK 85_Hutt" < uid=6AF0BA0464F0B432000CA0CE0E910811 > = s_WTK85Hutt 6AF0BA0464EC75EE00008E5E74E4B846
+		SpaceshipSetting "WTK 85_Pyke" < uid=6AF0BA0464F0B577000CA0ED8AF26A6B > = s_WTK85Pyke 6AF0BA0464EC77EF00008E75C27DDD25
+		SpaceshipSetting "ZH 40" < uid=4F59E8F0642BD8B800007985244667F2 > = s_ZH40 6AF0BA0464EC6FA900008E455F3885F9
+		SpaceshipSetting "ZH 40_Ashiga" < uid=6AF0BA0464F0B432000CA0CF936E7F1A > = s_ZH40Ashiga 6AF0BA0464EC7A5C00008E850A1F5093
+		SpaceshipSetting "ZH 40_CrimsonDawn" < uid=6AF0BA0464F0B432000CA0D03B17C620 > = s_ZH40CrimsonDawn 6AF0BA0464EC65E20004593277E6D693
+		SpaceshipSetting "Bow Breaker" < uid=4F59E8F063D27E3A00009D35D1B5DCED > = s_Bowbreaker 6AF0BA0464EC72CE00008E5342670C8E
+		SpaceshipSetting "Bow Breaker_Ashiga" < uid=6AF0BA0464F0B432000CA0D15C41E76B > = s_BowBreakerAshiga 6AF0BA0464EC7A5C00008E8696CF5E80
+		SpaceshipSetting "Bow Breaker_Pirate" < uid=6AF0BA0464F0B432000CA0DFCD9519B8 > = s_BowbreakerPirate 6AF0BA0464EC72B000008E4F8805FEFE
+		SpaceshipSetting "Bow Breaker_Pyke" < uid=7EE64634651D392D0006034EBE394CF1 > = s_BowBreakerPyke 6AF0BA0464EC77EF00008E764B139CBA
+		SpaceshipSetting Lothalian < uid=F95CD8F36480A7D200088B6AD5834EE8 > = s_Lothalian 6AF0BA0464EC6FA900008E47FD4E1023
+		SpaceshipSetting Lothalian_CrimsonDawn < uid=6AF0BA0464F0B432000CA0D2DA16BD72 > = s_LothalianCrimsonDawn 6AF0BA0464EC65E200045934F440323F
+		SpaceshipSetting Lothalian_Hutt < uid=6AF0BA0464F0B432000CA0D33A609F85 > = s_LothalianHutt 6AF0BA0464EC766100008E66F6812277
+		SpaceshipSetting Lothalian_Pirate < uid=6AF0BA0464F0B432000CA0E08757A5DB > = s_LothalianPirate 6AF0BA0464EC72B000008E50C3042989
+		SpaceshipSetting BFF1 < uid=4F59E8F0641DAC8800005AAB7DA3AEFA > = s_BFF1 6AF0BA0464EC6ABB0004597B1CAB825B
+		SpaceshipSetting BFF1_Ashiga < uid=6AF0BA0464F0B432000CA0D4BFC3782F > = s_BFF1Ashiga 6AF0BA0464EC7A5C00008E8753A65194
+		SpaceshipSetting BFF1_CrimsonDawn < uid=6AF0BA0464F0B432000CA0D5ECEAAA03 > = s_BFF1CrimsonDawn 6AF0BA0464EC65E200045935DE649656
+		SpaceshipSetting BFF1_Hutt < uid=6AF0BA0464F0B432000CA0D6837867C1 > = s_BFF1Hutt 6AF0BA0464EC7B1A00008E8BEFFA3B71
+		SpaceshipSetting BFF1_Pyke < uid=6AF0BA0464F0B577000CA0EED74CB5CF > = s_BFF1Pyke 6AF0BA0464EC77EF00008E7750787231
+		SpaceshipSetting Darius < uid=4F59E8F063E0BC740000294E070830D4 > = s_Darius 6AF0BA0464EC6ABB0004597DFFBD2154
+		SpaceshipSetting Darius_Ashiga < uid=6AF0BA0464F0B432000CA0D7BDDA5C9C > = s_DariusAshiga 6AF0BA0464EC7A5C00008E88920DD94A
+		SpaceshipSetting Darius_CrimsonDawn < uid=6AF0BA0464F0B432000CA0D8197C4908 > = s_DariusCrimsonDawn 6AF0BA0464EC65E2000459369F779147
+		SpaceshipSetting Darius_Hutt < uid=6AF0BA0464F0B432000CA0D9A07F4296 > = s_DariusHutt 6AF0BA0464EC766100008E677E8AC93B
+		SpaceshipSetting Darius_Pyke < uid=6AF0BA0464F0B577000CA0EF436E5F47 > = s_DariusPyke 6AF0BA0464EC77EF00008E7847CE93D8
+		SpaceshipSetting Utilipede < uid=F97070E1633466690000DD3819CCD394 > = s_Utilipede 6AF0BA0464EC6ABB0004597F37BD5956
+		SpaceshipSetting Utilipede_Ashiga < uid=6AF0BA0464F0B432000CA0DAE0797F37 > = s_UtilipedeAshiga 6AF0BA0464EC7A5C00008E8962669850
+		SpaceshipSetting Utilipede_CrimsonDawn < uid=6AF0BA0464F0B432000CA0DB8F28E118 > = s_UtilipedeCrimsonDawn 6AF0BA0464EC65E200045937589E4608
+		SpaceshipSetting Utilipede_Hutt < uid=6AF0BA0464F0B432000CA0DC74E7CDFC > = s_UtilipedeHutt 6AF0BA0464EC766100008E6801240C45
+		SpaceshipSetting Utilipede_Pyke < uid=6AF0BA0464F0B577000CA0F076970824 > = s_UtilipedePyke 6AF0BA0464EC77EF00008E796B76FAF1
+		SpaceshipSetting "[DEPRECATED] Shuttle Six" < uid=4F59E8F0640B344000005AE4703D30D6 >
+		{
+			mySpaceshipType ShuttleSix
+			mySpaceshipArchetype Starfighter
+			myHuntingRadius 1500.0
+			mySpawnProfile < uid=F97070E164A40CFB0001301D6C58ABDC > = Fighter_Hyperjump F97070E164A4034400005ED3AB7AC7B0
+			mySpeedProfile < uid=4F59E8F0640B34FF00005AE5763A2151 > = speedProfile_emp_shp_tieinterceptor 6AF0BA0464A2BCB10000B36AD35C2D50
+			myTrajectoryProfile < uid=4F59E8F0640B34FF00005AE6C4A61EE6 > = Fighter_TrajectoryProfile 82D16ABE628DF25A000025051D8485CD
+			myIonCollectorData
+			{
+				myDisabledDuration "10 * TrailblazerIonDisabledDurationModifier"
+				mySlowDownPercentage 0.5
+			}
+			myShieldData
+			{
+				EnergyShieldData ShieldData
+				{
+					myCanRegenerateWhenDepleted TRUE
+				}
+			}
+			myShootPatternAccurate < uid=4F59E8F0640B34FF00005AE7D3DD2E39 > = NULLREFERENCE
+			myShootPatternInaccurate < uid=4F59E8F0640B34FF00005AE84AFF0F14 > = NULLREFERENCE
+			myShootTicketAccurate SpaceEmpireShooting
+			myShootTicketInaccurate SpaceEmpireInaccurateShooting
+			myDeathSequenceSettings
+			{
+				myCollisionDamageThreshold 1.0
+				myDeathSequenceDuration 7.0
+				myShouldTumble TRUE
+				myTumbleMaxDuration 2.5
+			}
+		}
+		SpaceshipSetting "[DEPRECATED] E3Tiefighter" < uid=F95CD8F3642ADDEE0001639E10948F9A >
+		{
+			mySpaceshipType E3Tiefighter
+			mySpaceshipArchetype Fighter
+			myMaximumSpeed 150.0
+			myMinimumSpeed 0.0
+			myPitchSpeed 100.0
+			myYawSpeed 100.0
+			myRollSpeed 200.0
+			myAcceleration 200.0
+			myPitchAcceleration 250.0
+			myYawAcceleration 250.0
+			myRollAcceleration 360.0
+			myMaximumPitchUp 90.0
+			myMaximumPitchDown 90.0
+			myFormationDistanceScale 10.0
+			myTranslationSettings
+			{
+				myLateralSpeed 10.0
+				myVerticalSpeed 10.0
+				myLateralAcceleration 20.0
+				myVerticalAcceleration 20.0
+			}
+			myAISpaceshipControlParameters
+			{
+				myCombatProfile < uid=F95CD8F3642ADDEE0001639FA7F007A3 > = Fighter_CombatProfile 82D16ABE62B47AA700002A78F8160B8E
+				mySpaceshipBehaviorParameters
+				{
+					SpaceshipBehaviorParameter EvasiveMinDistance
+					{
+						myType EvasiveMinDistance
+						myValue 150.0
+					}
+					SpaceshipBehaviorParameter EvasiveStartAngleFromHostile
+					{
+						myType EvasiveStartAngleFromHostile
+						myValue 60.0
+					}
+					SpaceshipBehaviorParameter EvasiveDurationRandomMax
+					{
+						myType EvasiveDurationRandomMax
+						myValue 8.0
+					}
+					SpaceshipBehaviorParameter ShootMaxDistance
+					{
+						myType ShootMaxDistance
+						myValue 900.0
+					}
+					SpaceshipBehaviorParameter ShootMaxAngle
+					{
+						myType ShootMaxAngle
+						myValue 30.0
+					}
+					SpaceshipBehaviorParameter LeashingMaxDistance
+					{
+						myType LeashingMaxDistance
+						myValue 6000.0
+					}
+					SpaceshipBehaviorParameter InterceptDistanceIdeal
+					{
+						myType InterceptDistanceIdeal
+						myValue 400.0
+					}
+					SpaceshipBehaviorParameter InterceptDistanceMin
+					{
+						myType InterceptDistanceMin
+						myValue 300.0
+					}
+					SpaceshipBehaviorParameter InterceptDistanceMax
+					{
+						myType InterceptDistanceMax
+						myValue 600.0
+					}
+					SpaceshipBehaviorParameter InterceptConeAngle
+					{
+						myType InterceptConeAngle
+						myValue 25.0
+					}
+					SpaceshipBehaviorParameter BreakStartCurrentManeuverMinElapsedTime
+					{
+						myType BreakStartCurrentManeuverMinElapsedTime
+						myValue 4.0
+					}
+					SpaceshipBehaviorParameter ChaseConeAngle
+					{
+						myType ChaseConeAngle
+						myValue 60.0
+					}
+					SpaceshipBehaviorParameter ChaseDurationMin
+					{
+						myType ChaseDurationRandomMin
+						myValue 80.0
+					}
+					SpaceshipBehaviorParameter ChaseDurationMax
+					{
+						myType ChaseDurationRandomMax
+						myValue 180.0
+					}
+					SpaceshipBehaviorParameter ChaseDistanceMin
+					{
+						myType ChaseDistanceMin
+						myValue 100.0
+					}
+					SpaceshipBehaviorParameter TimeToStartEvasiveIfInFrontOfHostile
+					{
+						myType TimeToStartEvasiveIfStillInFrontOfHostile
+						myValue 4.0
+					}
+				}
+				myLateralAttractorThresholdDistance 10.0
+				myLateralAttractorInput 1.0
+				mySplineLookAheadMinimum 25.0
+				mySplineLookAheadMaximum 100.0
+				mySplineLookAheadSpeedRatio 0.4
+			}
+			mySpawnProfile < uid=F97070E164A40CFB0001302217D0E6CC > = Fighter_NoHyperjump F97070E164A4034300005ED28565A972
+			mySpeedProfile < uid=F95CD8F3642ADDEE000163A0B9EA4CBE > = speedProfile_emp_shp_tiefighter 6AF0BA0464A2B2150000B335BF2EEFA6
+			myTrajectoryProfile < uid=F95CD8F3642ADDEE000163A1FB2E111F > = Fighter_TrajectoryProfile 82D16ABE628DF25A000025051D8485CD
+			myIonCollectorData
+			{
+				myDisabledDuration "10 * TrailblazerIonDisabledDurationModifier"
+				mySlowDownPercentage 0.5
+			}
+			myShootPatternAccurate < uid=F95CD8F3642ADDEE000163A24F72B9BF > = NULLREFERENCE
+			myShootPatternInaccurate < uid=F95CD8F3642ADDEE000163A3689862ED > = NULLREFERENCE
+			myShootTicketAccurate SpaceEmpireShooting
+			myShootTicketInaccurate SpaceEmpireInaccurateShooting
+			myDeathSequenceSettings
+			{
+				myCollisionDamageThreshold 1.0
+				myDeathSequenceDuration 7.0
+				myShouldTumble TRUE
+				myTumbleMaxDuration 2.5
+			}
+			mySpaceshipFormationProfile < uid=F95CD8F3642ADDEE000163A483FC5CFC > = TIEFighter_FormationProfile F97070E1635FACEA00004E4AF198C12F
+		}
+		SpaceshipSetting BFF1_Ashiga_Defend < uid=6AF0BA04656F2C6D0000A958F579243C > = s_BFF1Ashiga_Defend 6AF0BA04656F164C0000330224442071
+		SpaceshipSetting BFF1_CrimsonDawn_Defend < uid=6AF0BA04656F518100078CCD9A45D32B > = s_BFF1CrimsonDawn_Defend 6AF0BA04656F176500003306D2D32582
+		SpaceshipSetting BFF1_Hutt_Defend < uid=6AF0BA04656F519800078CCE58135D8A > = s_BFF1Hutt_Defend 6AF0BA04656F1B9B0000330C2D5333E8
+		SpaceshipSetting BFF1_Pyke_Defend < uid=6AF0BA04656F51AC00078CCF67428262 > = s_BFF1Pyke_Defend 6AF0BA04656F1F3E0000331118D4F1DE
+		SpaceshipSetting BFF1_Empire_Defend < uid=6AF0BA04656F51D500078CD1AFE532F7 > = s_BFF1Empire_Defend 6AF0BA04656F1A62000033096B647AE0
+		SpaceshipSetting Darius_Ashiga_Defend < uid=6AF0BA04656F51C000078CD01B8D6626 > = s_DariusAshiga_Defend 6AF0BA04656F164C00003303BE72D308
+		SpaceshipSetting Darius_CrimsonDawn_Defend < uid=6AF0BA04656F51EA00078CD26DD8D58C > = s_DariusCrimsonDawn_Defend 6AF0BA04656F176500003307FA114643
+		SpaceshipSetting Darius_Hutt_Defend < uid=6AF0BA04656F51FC00078CD31EFA1BC7 > = s_DariusHutt_Defend 6AF0BA04656F1B9B0000330D65A8FFD8
+		SpaceshipSetting Darius_Pyke_Defend < uid=6AF0BA04656F520B00078CD46E36F268 > = s_DariusPyke_Defend 6AF0BA04656F1F3E000033127DFC88C0
+		SpaceshipSetting Lambda_Dropship < uid=B1CE795665B90B500011E6D347FC5539 > = s_Lambda_Dropship B1CE795665B90AE90011E6D2F2FA3E06
+		SpaceshipSetting Bowbreaker_Ashiga_Defend < uid=F95CD8F365CE21860005449A8E4E1AE8 > = s_BowBreakerAshiga_Defend F95CD8F365CA387A000661950C8997C0
+		SpaceshipSetting Bowbreaker_Pyke_Defend < uid=F95CD8F365CE2B1D0006519456D96A57 > = s_BowBreakerPyke_Defend F95CD8F365CB228A000000F3C77FF828
+		SpaceshipSetting Bowbreaker_Pirate_Defend < uid=F95CD8F365CE2B8D000651951D1FD125 > = s_BowbreakerPirate_Defend F95CD8F365CA3EB8000662377EFA3AA5
+		SpaceshipSetting Lothalian_Hutt_Defend < uid=F95CD8F365CE2C2B000651964A21739E > = s_LothalianHutt_Defend F95CD8F365CA3E6C00066201E0AF1C50
+		SpaceshipSetting Lothalian_CrimsonDawn_Defend < uid=F95CD8F365CE2C53000651972A07AC03 > = s_LothalianCrimsonDawn_Defend F95CD8F365CA3E3B000661CB9B7EB177
+		SpaceshipSetting Lothalian_Pirate_Defend < uid=F95CD8F365CE2D2A00065198B711F0C6 > = s_LothalianPirate_Defend F95CD8F365CA41320006623D0A093D50
+		SpaceshipSetting BFF1_Defend < uid=F95CD8F365E1D0EF0000077A1C8021E7 > = s_BFF1Civilian_Defend F95CD8F365E1D22C0000077C881784F1
+		SpaceshipSetting Darius_Defend < uid=F95CD8F365E1D370000007804B726F28 > = s_DariusCivilian_Defend F95CD8F365E1D2CC0000077E8BC96FCE
+		SpaceshipSetting Gozanti_mq220 < uid=6EA7962565FABC71000000D05CA4667D > = s_Gozanti_mq220 6EA7962565FAB9B5000000D0B7C09D16
+		SpaceshipSetting TieReaper_Dropship < uid=06F3F6E4661276700004BB8CF2B9F7CC > = s_Tiereaper_Dropship 06F3F6E465FC0B490008367E5C0751A4
+	}
+}
+

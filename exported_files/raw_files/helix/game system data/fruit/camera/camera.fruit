@@ -1,0 +1,27 @@
+include "snowdrop/modules/core/input/input.fruit"
+include "helix/game system data/fruit/camera/camerapreset.fruit"
+include "helix/game system data/fruit/camera/camerashakes.fruit"
+include "helix/game system data/fruit/camera/camerablendtransitions.fruit"
+
+list CameraShakeList
+{
+	CameraShake
+}
+
+class CameraShakeDirectional
+{
+	float mySwingArmAngle < bhv=angle tooltip="Max angle for the displacement curve when a swing arm shake is active." >
+	float mySwingArmLength < tooltip="The distance between the camera and its pivot point." >
+	float myPitchAngle < bhv=angle tooltip="Max angle for the displacement curve when a pitch shake is active." >
+	float myDuration < tooltip="The total duration (in seconds) of a shake." >
+	float myCooldown < tooltip="The cooldown (in seconds) until another shake can take effect." >
+	string myDisplacement 0.0 < bhv=inputgraph tooltip="Pitch and swing arm angle scaling over time. X = scalar. Y = scalar" >
+	string myVariantRatio 0.0 < bhv=inputgraph tooltip="The ratio of swing arm shake versus pitch shake. X = degrees between camera and source (0-90). Y = scalar." >
+	string myFOVScale 0.0 < bhv=inputgraph tooltip="How much shake that should be applied at different FOV values. X = degrees. Y = scalar." >
+}
+
+class CameraShakeConfig
+{
+	CameraShakeDirectional myDirectionalShake
+	CameraShakeList myPresetsList
+}

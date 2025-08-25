@@ -1,0 +1,65 @@
+include "helix/game system data/juice/ai/dynamiccapinteractions/wildlifedcap.mnpcdynamiccapinteractionprofile"
+include "helix/game system data/juice/ai/wildlife corpse profile.mnpccorpseprofile"
+include "helix/game system data/juice/ai/wildlifecapevaluatorprofiles.mnpccapinteractionevaluatorprofile"
+include "helix/game system data/juice/ai/wl_bantha.mnpcmotionpatternprofile"
+include "helix/game system data/juice/melee/wildlifemeleedefense.mnpcmeleedefenseprofile"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npc/wil_fp_prey.mnpc"
+include "helix/game system data/juice/quadrupedalgroundaligner/wildlife_ground_aligner_config.mquadalignerconfig"
+
+NPC wl_bantha < uid=E9DD8F6063058FCC00008AB2E34861F8 > : wil_fp_prey
+{
+	myName "branch = \"TU1\", contextComment = \"The name of the yak-like creature\", enabled = true, guid = #E9DD8F606684AF3D001EBCD0BA337062, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10572, text = \"Bantha\", type = \"MenuLine\""
+	myCharacterVisuals < uid=E9DD8F606305900400008AB96DAE0403 > = character_visuals_wil_bantha E9DD8F6062E3A4CD00001D26AC169672
+	myAnimSystemType Bantha
+	myHealthFormula 5+5
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=290EB60C63FDA3A8000125CECED3C7DC > = Agent_Wildlife_BanthaTag 290EB60C6305DF92000044220A6A08FF
+	}
+	myPositionReservationSize 2.25
+	myNavigationLayerType Large
+	myNavigationCapability < uid=290EB60C64D446970000E234B69BF02D > = DefaultWildlifeNavigationCapability 290EB60C64D1A5C50000CA29617570E5
+	myLodProfile < uid=E8E55FD866860FB200038973AB209922 > = Wildlife_Big_Physic E8E55FD86746B6F8000AB2DA525D57D3
+	myVisionProfile < uid=290EB60C630ED08F000053470E060C1E > = BanthaVisionProfile 290EB60C630EFCDE0001390D49D0A422
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=16C7D1FB6311C69A0000A8B399FDCCD4 > = BanthaDetectionProfile 290EB60C630F231D000047FB5EDCEA2F
+	}
+	myAgitationProfile < uid=E9DD8F6063EDC6A900026DAD161E89C0 > = "Bantha Agitation Profile" E9DD8F6063ED9F4900023679334DBC48
+	myDynamicCAPInteractionProfile < uid=290EB60C6305DBEE00004443F4EA0CA2 > = BanthaDynamicCAP 290EB60C63467ECC00046050299EA6DD
+	myCAPInteractionEvaluatorProfile < uid=290EB60C633267EC00008ECF397615E0 > = wildlifecapevaluatorprofiles 290EB60C633262C600008C045368B169
+	myMotionPatternProfile < uid=E9DD8F606305914300008DD3A22DD4C0 > = BanthaMotionPatternProfile E9DD8F60630597ED0000457298F53F98
+	myMotionPlanFollowProfile < uid=EBEEDF3F678E23D50004DF6020D3E00F > = BanthaMotionPlanFollowProfile EBEEDF3F678E220A000473E3C3859C28
+	myMoveTurnCapabilitiesProfile < uid=290B720F6470645F0001673672226E02 > = bantha_NPCMoveTurnCapabilitiesProfile 290B720F64705DA80002DEBA0D35ED2A
+	mySteeringProfile < uid=290EB60C6461E5CA000921A28B89626F > = BanthaSteeringProfile EBEEDF3F662634EF0003C334D11222FE
+	myFleeProfile < uid=E9DD8F60630595510000356454CFF2ED > = BanthaFleeProfile E9DD8F6063059E7200004478493EF0B5
+	myFootStepProfile < uid=E9DD8F606463434A00006D8A0CA22262 > = BanthaFootstep E9DD8F606459B4A100016E8D045817A1
+	myPackProfile < uid=E9DD8F60630595510000356567EFE7B8 > = BanthaPackProfile E9DD8F606305962500004508F8567A64
+	myAudioParameters
+	{
+		myEmitterName "WL Bantha"
+		mySwitches
+		{
+			AudioSwitch "Bantha Switch"
+			{
+				myGuid 431DDB8E1EC8E4126A10E757CF8BDBA9
+			}
+		}
+	}
+	myMeleeDefenseProfile < uid=E9DD8F6064ACEFBC00016EE86C951003 > = LargePreyMeleeDefense E9DD8F6064ACCF1900016EB1623B90CE
+	myStaggerConfig < uid=E9DD8F6063ED8C4800006C323C017509 > = WildlifeBantha E9DD8F6063ED8B2300006C2A30CC4620
+	myPhysicsProfile < uid=290EB60C63E9D41D0000DF604A1E362F > = Bantha 290EB60C63E9D3FB0000DF5C1CA52566
+	myQuadrupedalGroundAlignerConfig < uid=4999D94C63CA03B60000A597BBB3BF77 > = "Bantha Aligner Config" 4999D94C63CA02FD0000A543B67FF496
+	myMoveConfig < uid=E9DD8F6063EF2FC600001D98E75EC186 > = bantha_move_config E9DD8F6063EF2F0500001D937A3A830B
+	myCorpseProfile < uid=290EB60C63FED536000032B9140D6531 > = "Bantha Corpse" 290EB60C63FED571000032C9C52E4760
+	myVisualEffectFootstep < uid=D8550C14650164D300007247D346C083 >
+	{
+		myFootstepEffects = Big_wildlife
+		myLeftHandBoneAliasName LeftHand
+		myRightHandBoneAliasName RightHand
+		myReuseFootstepEffect TRUE
+	}
+	myFootstepVFXRange 70.0
+}
+

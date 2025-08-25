@@ -1,0 +1,21 @@
+include "helix/game system data/fruit/melee/melee_move.fruit"
+include "helix/game system data/juice/melee/kay_meleemove_base.mmeleemove"
+
+MeleeMove kay_meleemove_airpunch < uid=A207755D6243239B00002BA10AEEB990 > : kay_meleemove_base
+{
+	myStartConditions
+	{
+		myTargetInRange
+		{
+			myEnabled TRUE
+		}
+		myGameCondition
+		{
+			GameConditionMeleeAttackerIsInMovementState Air
+			{
+				myState Air
+			}
+		}
+	}
+}
+

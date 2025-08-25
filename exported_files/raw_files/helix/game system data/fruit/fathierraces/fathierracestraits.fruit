@@ -1,0 +1,32 @@
+class FathierTrait < uid=auto >
+{
+	varmap myName < bhv="localization" >
+	float myGrade < min=0.0 max=1.0 tooltip="The proportion between 0 and 1 of the gauge displayed near the trait in the fathier panel of the betting menu." >
+}
+
+list FathierTraits
+{
+	FathierTrait*
+}
+
+class RankingRange
+{
+	int myMinimumRanking 0 < min = 0 >
+	int myMaximumRanking 0 < min = 0 >
+}
+
+list RankingRangeList
+{
+	RankingRange
+}
+
+class FathierTraitPreset  < uid=auto >
+{
+	RankingRange myRankingRange < tooltip = "A trait will be selected in this preset if the fathier has a ranking between the minimum and maximum rankings (included).">
+	FathierTraits myFathierTraits
+}
+
+list FathierTraitPresets
+{
+	FathierTraitPreset*
+}

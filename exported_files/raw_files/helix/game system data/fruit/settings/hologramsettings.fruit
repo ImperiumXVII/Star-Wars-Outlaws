@@ -1,0 +1,32 @@
+list HologramPositions
+{ 
+    vec3f 
+}
+
+class HologramLevelPositions
+{
+    string myLevelName ""
+    HologramPositions myPlacementPositions
+}
+
+list HologramLevelPositionsArray
+{
+    HologramLevelPositions
+}
+
+class HologramSettings < uid = auto >
+{
+    file myBlackBoxGraphPath "" < tooltip="Path to .mgraphobject used for black box" >
+	vec3f myBoxToBoxDisplacement 201;0;0 < tooltip="Displacement between the center of black boxes" >
+	vec3f myDefaultBoxPosition 0;-500;0 < tooltip="Default black box placement if the level is not in the position array" >
+	vec2f myDefaultFadeBeginEnd 80;100
+    HologramLevelPositionsArray myLevelPlacementPositions
+	file myHologramShaderPath ""
+	file myHologramPatchMotionVectorsShaderPath ""
+    file myHologramReprojectShaderPath ""
+    file myHologramReprojectDilateShaderPath ""
+	int myHalfRateMaxFullRateHolos 1 < min 0 tooltip="Maximum number of on screen hologram that are rendered in full rate instead of every other frame" >
+	float myHalfRateCoverageScoreMultiplier 1 < tooltip="Multiplier for the score pertaining to screen coverage. Used to determine which holograms are rendered at half rate (every other frame). Use Helix.Hologram.HalfRateRendering.debug for debugging." >
+	float myHalfRateCenterScoreMultiplier 1 < tooltip="Multiplier for the score pertaining to on-screen distance from the center of the screen. Used to determine which holograms are rendered at half rate (every other frame). Use Helix.Hologram.HalfRateRendering.debug for debugging." >
+	float myHalfRateDistanceThreshold 25 < tooltip="Threshold for the score pertaining to world space distance of the hologram from the camera. Distances greater than this threshold will generate negative scores, thus lowering a hologram's priority. Used to determine which holograms are rendered at half rate (every other frame). Use Helix.Hologram.HalfRateRendering.debug for debugging." >
+}

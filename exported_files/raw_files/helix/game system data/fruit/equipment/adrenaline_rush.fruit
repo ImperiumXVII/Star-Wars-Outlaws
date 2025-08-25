@@ -1,0 +1,229 @@
+include "helix/game system data/fruit/camera/animatedcameradata.fruit"
+include "helix/game system data/fruit/camera/cameralookatpreset.fruit"
+include "helix/game system data/fruit/camera/cameramodifier.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+include "helix/game system data/fruit/input/rumble.fruit"
+
+list UnlockCondition < size=1 >
+{
+    GameConditionPlayerHasItem
+}
+
+class CrackShotAngleValue
+{
+   string myMaxValueScale "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.2 0.001, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+   float myMaxValue 1.f < tooltip="The curve will scale with this value" >
+}
+
+class CrackShotCameraPresetSettings
+{
+    CrackShotAngleValue myPivotX < tooltip="Pivot X scaling based on new target angle" >
+	CrackShotAngleValue myPivotY < tooltip="Pivot Y scaling based on new target angle" >
+	CrackShotAngleValue myPivotZ  < tooltip="Pivot Z scaling based on new target angle" >
+	CrackShotAngleValue myFOV  < tooltip="FOV scaling based on new target angle" >
+	CrackShotAngleValue myDistance  < tooltip="Distance to anchor scaling based on new target angle" >
+	CrackShotAngleValue myCameraBlend < tooltip="Time or distance to blend fully into the new camera based on new target angle" >
+	
+	string myCameraBlendCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.2 0.001, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+	
+	float myMaxAngle 90 < tooltip="The curves in the AngleValues will scale on this angle" >
+    float myIgnoreChangeAngle 20 < tooltip="If the next target is below this angle difference, ignore the change" >
+	
+	bool myUseDistanceCameraBlend false < tooltip="Instead of time to blend into the camera, we will blend when rotating." >
+}
+
+class AdrenalineSlowdownTimeline
+{
+    string myIntroCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.2 0.001, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+	string myOutroCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.2 0.001, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+	
+	float mySlowValue 1.f
+	float myBlendTimeIn 1.f
+	float myStayTime 1.f 
+	float myBlendTimeOut 1.f
+}
+
+class AdrenalineRushTierData
+{
+    string myCost 100 < bhv=formulaEditor formulaResolveContextType=AgentAttributes tooltip="The effective cost" ui_info=0 >
+    string myAmountToTrigger < bhv=formulaEditor formulaResolveContextType=AgentAttributes tooltip="The amount of adrenaline needed to trigger (greater or equal to cost)" ui_info=0 >
+	string myMaxNumTargetsPanicShot 1 < bhv=formulaEditor formulaResolveContextType=AgentAttributes tooltip="The maximum number of target" ui_info=0 >
+	string myMaxNumTargetsCrackShot 1 < bhv=formulaEditor formulaResolveContextType=AgentAttributes tooltip="The maximum number of target" ui_info=0 >
+}
+
+list AdrenalineRushTierList
+{
+     AdrenalineRushTierData
+}
+
+class AdrenalineRushPanicShotData
+{
+    SensitivityCameraModifier* myCameraSensitivityModifier < tooltip="While PanicShot is active, this modifier will be applied!" >
+    CameraLookAtPreset* myCameraLookAtPreset < tooltip="When PanicShot starts, keep looking where you started. Use this preset for that." >
+
+    AdrenalineSlowdownTimeline myFinalShotSlow < tooltip="Per target, the final shot will trigger this slow" >
+	
+    vec2f myFindTargetOnScreenSize 0.4;0.3 < tooltip="There will be a 2D box on screen based on window size, if the targets are within this box, they will be valid. it scales from 0 to 1 in height and width of the window" >
+    vec2f myFindTargetOnScreenOffset 0.0;0.0 < tooltip="This is an offset to the box on screen to see if a target is valid or not. The box will be in the center by default, with this value added on top. Keep in mind, Y is in reverse (negative value is up, positive is down)" >
+	string myFindTargetOnScreenSizeHorizontalMultiplier 1 < bhv=formulaEditor formulaResolveContextType=AgentAttributes tooltip="The horizontal component of FindTargetOnScreenSize will be multiplied by this value" ui_info=0 >
+	string myFindTargetOnScreenSizeVerticalMultiplier 1 < bhv=formulaEditor formulaResolveContextType=AgentAttributes tooltip="The vertical component of FindTargetOnScreenSize will be multiplied by this value" ui_info=0 >
+
+    string mySlowdownCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.1 -0.1, }, outTangents = { 0.1 0.1, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+	float mySlowdownTransitionTime 0.1f
+	float mySlowdownStartPercentage 0.6f < min=0.0 max=1.0 >
+	float mySlowdownEndPercentage 1.f < min=0.0 max=1.0 >
+	float mySlowdownAmount 0.9f < min=0.0 max=1.0 >
+	
+	string myMaxFindTargetDistance 40 < bhv=formulaEditor formulaResolveContextType=AgentAttributes ui_info=0 >
+	float myFindTargetAimWeight 0.6f < min=0.0 max=1.0 >
+	string myMaxFindTargetHeightDifference 10 < bhv=formulaEditor formulaResolveContextType=AgentAttributes ui_info=0 >
+	
+	float myWantToShootTime 0.1f < min=0.0 tooltip="Kay will start shooting after this time has passed. Resets per target" >
+    float myForceExitTime 2.f < min=0.0 tooltip="When shooting, if it takes longer than this time, we will exit despite not having finished" >
+	
+    int myMinNumShotsPerTarget 1 < min=1 tooltip="The minimum amount of shots that we will take at our target" >
+	int myMaxNumShotsPerTarget 5 < min=1 tooltip="The maximum amount of shots that we will take at our target" >
+}
+
+class FinalCameraShotSettings
+{
+    ShakeCameraModifier* myCameraShake < tooltip="This shake will be played for the final camera, make sure the shake is not cyclic!" >
+	bool myShouldFinishShakeOnEnd false < tooltip="If this is true, we will start blending out the shake once the final camera shot is done" >
+	
+	AdrenalineSlowdownTimeline mySlow < tooltip="This slow will be initiated when the finalshot camera is active" >
+	
+	CameraTransition myCameraTransitionIn < tooltip="When final camera frame is created, this will be the blending into it" >
+	CameraTransition myCameraTransitionOut < tooltip="When shooting has finished and we're gonna blend back, this will be the transition used" >
+	vec3f myCameraOffset 1.5;0.0;-1.5
+	float myFOV 90.f
+    float myDuration 2.5f < tooltip="How long the camera will linger one the final shot" >
+}
+
+class ExecutionPhaseSettings
+{
+    FOVCameraModifier* myFinalTargetFOVModifier < tooltip="When shooting at the last target, apply this FOV modifier" >
+    SensitivityCameraModifier* myCameraSensitivityModifier < tooltip="While you're shooting, this modifier will be applied to alter input sensitivity" >
+	ShakeCameraModifier* myCameraShake < tooltip="This shake will be playing during the execution phase" >
+	
+	AdrenalineSlowdownTimeline myFinalShotSlow < tooltip="Per target, the final shot will trigger this slow" >
+	AdrenalineSlowdownTimeline mySlowOnBatchSwitch < tooltip="When switching batch, this slow will be played" >
+	AdrenalineSlowdownTimeline mySlowOnBatchHit < tooltip="When the last target on a batch has been hit, this slow will be played" >
+	AdrenalineSlowdownTimeline mySlowOnLastTargetFiredShot < tooltip="When the last shot has been fired on the last target for the whole shooting sequence, play this slow" >
+	AdrenalineSlowdownTimeline mySlowOnLastTargetHit < tooltip="When the last shot has hit the last target for the whole shooting sequence, play this slow" >
+	
+	CrackShotCameraPresetSettings myPresetSettings < tooltip="This will decide how to frame the camera based on initial angle to new target" >
+	
+	float myMaxRotationSpeed 30.f < min=0.f tooltip="When switching target, this is the max speed in degrees that the camera will have on switching targets" >
+	float myRotationCurveMaxAngle 60.f < min=1.f max=180.f tooltip="The curve will scale based on this value in degrees, the angle is between where the camera is looking, and where the next target is" >
+	string mySpeedTransitionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.1 -0.1, }, outTangents = { 0.1 0.1, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph tooltip="When transitioning camera rotation speed, use this curve" >
+	string myRotationSpeedCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.1 -0.1, }, outTangents = { 0.1 0.1, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph tooltip="Based on angle, the rotation speed will scale according to this curve" >
+	
+	float myAnchorHeight 1.5f < min=0.f tooltip="When doing CrackShot, we will have an AnchorPoint to calculate the angle to the target, it will start at the agent feet and then have this height applied to it" >
+	
+	float myAngleTimeSlowSpringConstant 100.f < min=1.f tooltip="When setting the slow from angle, use this spring strength to reach that value" >
+	float myAngleTimeSlowDampingRatio 1.f < min=1.f tooltip="When setting the slow from the angle, use this damping ratio on the spring when reaching it" >
+	
+	float myTimeCurveMaxAngle 20.f < min=1.f max=180.f tooltip="The curve will scale on this angle in degrees, the angle is between the camera forward and the target" >
+	string myTimeSlowdownCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.1 -0.1, }, outTangents = { 0.1 0.1, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph tooltip="Based on angle, the time slowdown will scale according to this curve" >
+	
+	float myPlayerAngleTimeSlowSpringConstant 100.f < min=1.f tooltip="When setting the slow from angle, use this spring strength to reach that value" >
+	float myPlayerAngleTimeSlowDampingRatio 1.f < min=1.f tooltip="When setting the slow from the angle, use this damping ratio on the spring when reaching it" >
+	float myPlayerTimeMaxAngle 20.f < min=1.f max=180.f tooltip="The curve will scale on this angle in degrees, the angle is between the camera forward and the target" >
+	string myPlayerTimeSlowdownCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.1 -0.1, }, outTangents = { 0.1 0.1, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph tooltip="Based on angle, the time slowdown for the player will scale according to this curve" >
+	
+	float myAngleToSwitchShoulder 5.f < min=1.f max=180.f tooltip="If the angle is smaller than this (degrees), we will not switch shoulder based on next target direction" >
+	float myShoulderSwitchSpringConstant 10.f < min=1.f tooltip="When switching shoulder, this value will control how fast" >
+	
+	float myAngleToIgnoreWaitTime 20.f < min=0.f max=180.f tooltip="If the angle is smaller than this to the next target, we will not wait the set time." >
+	float myStayTimeAfterDefeat 1.f < min=0.f tooltip="When a target has been defeated, wait this time before moving on to the next" >
+	float myWaitBeforeShootTime 0.1f < min=0.f tooltip="When a target has been defeated, wait this time before being allowed to shoot" >
+	float mySpeedTransitionTime 0.1f < min=0.f tooltip="When transitioning camera rotation speed, do it in this time (seconds)" >
+	
+	float myShootAngle 10.f < min=0.f max=180.f tooltip="When the angle from where the camera is looking to the target is smaller than this, Kay will attempt to shoot" > 
+    float myFinishTargetAngle 5.f < min=0.f max=180.f tooltip="When the angle from where the camera is looking to the target is smaller than this, Kay will finish the target with one shot" >
+    
+	float myBatchAngle 20.f < min=0.f max=180.f tooltip="When selecting a target, if other targets are within this angle of that one (degrees), add them as targets that you will fire at without moving the camera" >
+	float myBatchFinishWaitTime 0.2f < min=0.f tooltip="When a batch has been finished, and we're switching target. Wait this time before selecting a new target." >
+	
+	float myForceExitTime 7.f < min=0.0 tooltip="When shooting, if it takes longer than this time, we will exit despite not having finished" >
+	
+    int myMinNumShotsPerTarget 1 < min=1 tooltip="The minimum amount of shots that we will take at our target" >
+	int myMaxNumShotsPerTarget 5 < min=1 tooltip="The maximum amount of shots that we will take at our target" >
+
+    bool myShouldUseFinishAngle true < tooltip="If this is true, Kay will one-shot her target at a certain angle" >
+}
+
+class TaggingPhaseSettings
+{
+    ShakeCameraModifier* myTagCameraShake < tooltip="When tagging a target with CrackShot/SaddleShot, this shake will be played" >
+
+	PlayerRestriction* myActionsToRestrictWhileTagging < tooltip="The actions prevented during tagging phase" >
+
+    string mySlowBlendInCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.2 0.001, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+	string mySlowBlendOutCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.2 0.001, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+	float mySlowAmount 0.05f
+	float mySlowBlendInTime 1.5f
+	float mySlowBlendOutTime 1.5f
+	
+	float myRefundPercentage 0.5f < min=0.f max=1.f tooltip="If CrackShot is cancelled without triggering, refund this percentage of the cost." >
+	
+	float myMaxTagDistance 40.f < min=0.f tooltip="The furthest distance away from the camera to the target when tagging">
+    string myMinimumGivenTagTimeFormula 8.0 < bhv=formulaEditor formulaResolveContextType=Global tooltip="The tagging time you will have during CrackShot" >
+    float myFullRefundTime 0.5f < min=0.f tooltip="If this time has not passed while selecting targets, you will get a full refund if it gets cancelled" >
+
+    float myAutoSelectSpeederTargetsRadius 60.f < min=0.f tooltip="The radius in which we will find speeder targets around us" >
+	bool myAllowAutoSelectSpeederTargets false < tooltip="Decides if we'll auto select speeder targets around us when initiating AdrenalineRush (must have unlocked DoM Drivers Aim upgrade)" >
+}
+
+class AdrenalineRushCrackShotData
+{
+    FinalCameraShotSettings myFinalCameraShotSettings
+	ExecutionPhaseSettings myExecutionPhaseSettings
+    TaggingPhaseSettings myTaggingPhaseSettings
+}
+
+class AdrenalineRushBaseData
+{
+    PlayerRestriction* myActionsToRestrict < tooltip="The actions prevented during adrenaline rush" >
+	
+	string myDamagePerTagCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.1 -0.1, }, outTangents = { 0.1 0.1, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph tooltip="If you haven't tagged the target maximum amount of times, damage will scale in percentage per shot with this curve" >
+	
+	float myHolsterDelay 0.5f < min=0.f tooltip="The time we will wait before we start holstering" >
+    float myFinishTime 0.5f < min=0.f tooltip="The max time we will wait in the finishing state after AdrenalineRush has finished" >
+    float myDamageModifierStayTime 2.5f < min=0.f tooltip="While doing AdrenalineRush, the player will take reduced damage, this is how long it lasts after it finishes." >
+    float myDamageModifierScale 0.1f < min=0.f tooltip="This is how much damage will scale on the player during AdrenalineRush, 1 means full, 0 means no damage" >
+	
+	AdrenalineRushTierList myTiers
+	
+	AnimatedCameraData* myAnimatedCameraTransitions < tooltip="These are the transitions the animated camera will have" >
+	
+	file myShootingSequencePath "" < tooltip="Path to the sequence that should be played during the shooting section." >
+}
+
+class AdrenalineRushUnlockConditions
+{
+    UnlockCondition myCritShotCondition < tooltip="To multi-tag in CrackShot, this condition needs to be true" >
+	UnlockCondition myDriversAimCondition < tooltip="To allow autoselection on speeder targets when initiating AdrenalineRush, this condition needs to be true" >
+    UnlockCondition myEnvironmentTargettingCondition < tooltip="To select environmental targets, this condition needs to be true" >
+}
+
+class AdrenalineRushRumbleData
+{
+	uid myReadyToUseRumble < bhv="constantData" constantDataType="rumble" tooltip="This rumble is played when rush is ready to use." >
+	uid myValidTargetAimRumble < bhv="constantData" constantDataType="rumble" tooltip="This rumble is played when hovering over a taggable target." >
+	uid myTargetTaggedRumble < bhv="constantData" constantDataType="rumble" tooltip="This rumble is played when tagging a target." >
+}
+
+class SaddleShotContextData
+{
+	int myMinCurrentTargetsToKeepContext 2 < min=0 tooltip="If the number of current targets is less than this, then we'll start transitioning to normal driving context" >
+    int myMinOriginalTargetsToStartContext 2 < min=0 tooltip="If the original number of targets is smaller than this, don't trigger the special adrenalinerush camera" >
+}
+
+class AdrenalineRushData
+{
+    AdrenalineRushPanicShotData myPanicShotData
+	AdrenalineRushCrackShotData myCrackShotData
+	AdrenalineRushBaseData myBaseData
+	AdrenalineRushRumbleData myRumbleData
+}

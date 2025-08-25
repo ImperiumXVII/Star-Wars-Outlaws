@@ -1,0 +1,252 @@
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+
+LivingWorldContent "KIJ Kay VO BASE" < uid=D4F6307964BF8A23000442FC8621A215 >
+{
+	myCompletedGameValue < uid=D4F6307964BF8E9800009F43DBE16DA9 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance -150"
+		{
+			myDistance 200.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance +205"
+		{
+			myDistance 205.0
+		}
+	}
+}
+
+LivingWorldContent KIJ_KijimiCity_DiscoverTheCity < uid=FB6AE4D56567586B00027B59D58DF24C > : "KIJ Kay VO BASE"
+{
+	myCompletedGameValue < uid=FB6AE4D5656758A800027B5A2BBA8807 >
+	{
+	}
+}
+
+LivingWorldContent KIJ_KijimiCity_AshigaFactionDistrict < uid=56CC059666309EFB000611B8F567CF07 > : "KIJ Kay VO BASE"
+{
+	myCompletedGameValue < uid=56CC059666309EFB000611B922C9111E >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance -150"
+		{
+			myDistance 200.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestBeatState "QuestBeat Condition"
+		{
+			myQuestBeat 4984AD6862A98875000050746FB8430E
+			myQuestBeatState Started
+		}
+	}
+}
+
+LivingWorldContent KIJ_KijimiCity_Cantina < uid=56CC05966630A0CE0001B30F876D8611 > : "KIJ Kay VO BASE"
+{
+	myCompletedGameValue < uid=56CC05966630A0CE0001B3100F6B02BD >
+	{
+	}
+}
+
+LivingWorldContent KIJ_KijimiCity_CentralSquare < uid=56CC05966630A0CE0001B31113AE0013 > : "KIJ Kay VO BASE"
+{
+	myCompletedGameValue < uid=56CC05966630A0CE0001B312FF1D90BC >
+	{
+	}
+}
+
+LivingWorldContent KIJ_KijimiCity_CrimsonDawnFactionDistrict < uid=56CC05966630A3B40001B32251B65D5C > : "KIJ Kay VO BASE"
+{
+	myCompletedGameValue < uid=56CC05966630A3B40001B32361794223 >
+	{
+	}
+}
+
+LivingWorldContent KIJ_KijimiCity_LandingPad < uid=56CC05966630A0CE0001B31314ABDC40 > : "KIJ Kay VO BASE"
+{
+	myCompletedGameValue < uid=56CC05966630A0CE0001B31443824A82 >
+	{
+	}
+}
+
+LivingWorldContent KIJ_KijimiCity_MonkGate < uid=56CC05966630A0CE0001B315204F7479 > : "KIJ Kay VO BASE"
+{
+	myCompletedGameValue < uid=56CC05966630A0CE0001B31633C498BC >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 50"
+		{
+			myDistance 50.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestBeatState "MQ_070 Is Not Completed"
+		{
+			myQuestBeat 4984AD6862A98875000050746FB8430E
+			myQuestBeatState Completed
+			myOperator NotEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+				{
+				}
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance 250"
+				{
+					myDistance 250.0
+				}
+				GameConditionQuestBeatState "MQ_070 B06 Started"
+				{
+					myQuestBeat 4984AD6862A98875000050746FB8430E
+					myQuestBeatState Started
+				}
+				GameConditionQuestIsCompleted "MQ_070 Completed"
+				{
+					myQuest BFA41A0261B36AA20000042AC0DF379C
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent KIJ_KijimiCity_QueensStatue < uid=56CC05966630A0CE0001B31779C70B58 > : "KIJ Kay VO BASE"
+{
+	myCompletedGameValue < uid=56CC05966630A0CE0001B318284088B8 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 50"
+		{
+			myDistance 50.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestBeatState "Has Player Seen Queen"
+		{
+			myQuestBeat 4984AD6862A98875000050746FB8430E
+			myQuestBeatState Completed
+		}
+	}
+}
+
+LivingWorldContent KIJ_KijimiCity_RidgeTerrace < uid=56CC05966630A0CE0001B31973F7DD75 > : "KIJ Kay VO BASE"
+{
+	myCompletedGameValue < uid=56CC05966630A0CE0001B31A64E1AACF >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance -150"
+		{
+			myDistance 200.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestIsCompleted "New GameConditionQuestIsCompleted"
+		{
+			myQuest BFA41A0261B36AA20000042AC0DF379C
+		}
+	}
+}
+
+LivingWorldContent KIJ_KijimiCity_SpeederGate < uid=56CC05966630A0CE0001B31B253DF0C0 > : "KIJ Kay VO BASE"
+{
+	myCompletedGameValue < uid=56CC05966630A0CE0001B31C0914B997 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 50"
+		{
+			myDistance 50.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestState QuestState_NotStarted
+		{
+			myQuest BFA41A0261B36C290000043A28FDDE56
+			myQuestState Started
+			myOperator NotEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+				{
+					myType ContextLivingWorldContentLocationContentHasBeenCompleted
+				}
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance 250"
+				{
+					myDistance 250.0
+				}
+				GameConditionQuestState QuestState_IsStarted
+				{
+					myQuest BFA41A0261B36C290000043A28FDDE56
+					myQuestState Started
+				}
+				GameConditionQuestState QuestState_IsCompleted
+				{
+					myQuest BFA41A0261B36C290000043A28FDDE56
+					myQuestState Completed
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent KIJ_KijimiCity_ThiefQuarter < uid=56CC05966630A0CE0001B31DC4C5D1B5 > : "KIJ Kay VO BASE"
+{
+	myCompletedGameValue < uid=56CC05966630A0CE0001B31EAD1BAC30 >
+	{
+	}
+}
+
+LivingWorldContent KIJ_KijimiCity_WeaponsFactory < uid=56CC05966630A0CE0001B31F676AF2A3 > : "KIJ Kay VO BASE"
+{
+	myCompletedGameValue < uid=56CC05966630A0CE0001B320CB1E27D8 >
+	{
+	}
+}
+

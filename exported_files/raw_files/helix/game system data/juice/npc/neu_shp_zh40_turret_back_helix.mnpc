@@ -1,0 +1,55 @@
+include helix/audio/emitterlabels.juice
+include "helix/game system data/juice/ai/arc170_attached_npc_set.mnpconnpcattachmentset"
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/spaceshipnpcthreatprofiles.mnpcthreatprofile"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC neu_shp_zh40_turret_back_helix < uid=ADBA7BC366854F8C0001DCBBCFB84815 >
+{
+	myName "branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myCharacterVisuals < uid=ADBA7BC366854F8C0001DCBC21225CBF > = character_visuals_npc_shp_zh40_turret_back 4F59E8F0642AE5280000730F27DBF3CA
+	myBehavior helix/behaviors/spaceship_turret_behavior.mbehavior
+	myNPCComponentSetType Turret
+	myIsInvulnerable TRUE
+	myShouldRedirectDamageToHost TRUE
+	mySpaceshipType Default
+	myMaxHealth 10
+	myHealthFormula 10
+	myFaction < uid=ADBA7BC366854F8C0001DCBD9101E766 > = RandomNeutral 4171A7E164A5383F000298A746760814
+	myLodType Spaceship_Small
+	myVisionProfile < uid=ADBA7BC366854F8C0001DCBE40240BE6 > = visionProfile_npc_turret_zh40_back_ashiga 6B0E1DE9651A8E22000284E729D479EF
+	myHearingProfile < uid=ADBA7BC366854F8C0001DCBF4DD11B17 > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=ADBA7BC366854F8C0001DCC07E2571B6 > = detectionProfile_ash_ship_LightFreighter 6B0E1DE964B6622B0003C716575AE22B
+	}
+	myThreatProfile < uid=ADBA7BC366854F8C0001DCC1E08193C3 > = lightturretnpcthreatprofiles F95CD8F3653F803800057BF4FD52599F
+	myAimProfile < uid=ADBA7BC366854F8C0001DCC2809ACF0E > = NULLREFERENCE
+	myReducedAimProfile < uid=ADBA7BC366854F8C0001DCC3455675A9 > = NULLREFERENCE
+	myMainWeapon < uid=ADBA7BC366854F8C0001DCC410AB1474 > = NULLREFERENCE
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "zh40 turret back weapon loadout" < uid=ADBA7BC366854F8C0001DCC5FC588229 > = weaponloadout_ash_shp_zh40_turret_back 6AF0BA04649BFC9400074AF030ADB8AF
+	}
+	myAudioParameters
+	{
+		myEmitters
+		{
+			AgentEmitter Default
+			{
+				myEmitterLabel < uid=ADBA7BC366854F8C0001DCC6AAECC013 > = Root 3A1C5D1863906F050000AB6FBD984CC4
+				myEmitterPrefab "emitterLayerName = \"ship_npc\", enableDoppler = false, enablePropagation = true, enableReflections = false, sphereRadius = 1, stopOnDestroy = true"
+			}
+			AgentEmitter Weapon
+			{
+				myEmitterLabel < uid=ADBA7BC366854F8C0001DCC75CE113DA > = Hand 3A1C5D1863906F180000AB718F1E9EFD
+				myEmitterPrefab "emitterLayerName = \"weapons_npc\", enableDoppler = false, enablePropagation = true, sphereRadius = 50, stopOnDestroy = true"
+				myAttachToAnyEquipmentSlots TRUE
+			}
+		}
+	}
+	myCombatRole SpaceTurret
+}
+

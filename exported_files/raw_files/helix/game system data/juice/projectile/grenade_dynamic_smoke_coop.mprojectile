@@ -1,0 +1,19 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/projectile/grenade_dynamic_smoke.mprojectile"
+
+BallisticProjectile grenade_dynamic_smoke_coop < uid=7EE646346336F9E1000052EDDE317685 > : grenade_dynamic_smoke
+{
+	myActions
+	{
+		ProjectileActionGameScript HitDetonation
+		{
+			myActionTargetType FinalHit
+			myGameScript "helix/game scripts/gs_coop_smokegrenade_detonation.mgamescript"
+			myDamageFormula 0
+			myRadiusFormula 5
+			myDefaultDamage 0.0
+			myDefaultRadius 5.0
+		}
+	}
+}
+

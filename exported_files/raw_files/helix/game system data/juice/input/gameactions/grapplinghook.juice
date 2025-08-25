@@ -1,0 +1,218 @@
+include "helix/game system data/fruit/input/gameinput.fruit"
+include "helix/game system data/juice/input/inputactions.juice"
+
+TriggerGameAction "[GrapplingHook] ShortenRope"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Controller_RB
+				{
+					myOperator Or
+					myConditionalInputActions
+					{
+						ConditionalInputAction ControllerRB
+						{
+							myInputActionType Analog
+							myInputAction = RIGHT_TRIGGER_R2
+						}
+					}
+				}
+				ConditionalActionGroup Keyboard_Action
+				{
+					myOperator Or
+					myConditionalInputActions
+					{
+						ConditionalInputAction KB_Action
+						{
+							myInputActionType HoldDown
+							myTimer 0
+							myInputAction = KB_GRAPPLINGHOOK_SHORTEN_PULL_ROPE
+						}
+					}
+				}
+			}
+		}
+	}
+	myGameAction ShortenRope
+	myActionContexts
+	{
+		DefaultContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		GrapplingContext FALSE
+		SpaceshipContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[GrapplingHook] ExtendRope"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Controller_LB
+				{
+					myOperator Or
+					myConditionalInputActions
+					{
+						ConditionalInputAction ControllerLB
+						{
+							myInputActionType Analog
+							myInputAction = LEFT_TRIGGER_L2
+						}
+					}
+				}
+				ConditionalActionGroup Keyboard_Action
+				{
+					myOperator Or
+					myConditionalInputActions
+					{
+						ConditionalInputAction KB_Q
+						{
+							myInputActionType HoldDown
+							myTimer 0
+							myInputAction = KB_EXTEND_ROPE
+						}
+					}
+				}
+			}
+		}
+	}
+	myGameAction ExtendRope
+	myActionContexts
+	{
+		DefaultContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		GrapplingContext FALSE
+		SpaceshipContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[GrapplingHook] Interact"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "X-Square Pressed"
+				{
+					myInputActionType HoldDown
+					myForceDisplayAsTapInUI TRUE
+					myInputAction = RIGHT_STICK_BUTTON
+				}
+				ConditionalInputAction "KB Pressed"
+				{
+					myInputActionType HoldDown
+					myForceDisplayAsTapInUI TRUE
+					myInputAction = KB_INTERACT
+				}
+			}
+		}
+	}
+	myGameAction GrapplingHookInteract
+	myExcludeInActionContexts
+	{
+		AimScopeContext TRUE
+		GrapplingContext TRUE
+	}
+}
+
+TriggerGameAction "[GrapplingHook] PullRope"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "Right Trigger Hold Down"
+				{
+					myInputActionType HoldDownAfterTime
+					myTimer 100
+					myInputAction = RIGHT_BUMPER_R1
+				}
+				ConditionalInputAction "KB Skill PressedAfterTime 100"
+				{
+					myInputActionType HoldDownAfterTime
+					myTimer 100
+					myInputAction = KB_GRAPPLINGHOOK_SHORTEN_PULL_ROPE
+				}
+			}
+		}
+	}
+	myGameAction PullRope
+	myActionContexts
+	{
+		DefaultContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		SpaceshipContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[GrapplingHook] Release"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup ConditionalActionGroup
+		{
+			myConditionalInputActions
+			{
+				ConditionalGameActionState IsBoundToGrappleOrRappel
+				{
+					myNegate TRUE
+					myGameActionState IsBoundToGrappleOrRappel
+				}
+				ConditionalActionGroup "Input Actions"
+				{
+					myOperator Or
+					myConditionalInputActions
+					{
+						ConditionalInputAction "X-Square Pressed"
+						{
+							myInputActionType Pressed
+							myInputAction = B_CIRCLE
+						}
+						ConditionalInputAction "KB Pressed"
+						{
+							myInputActionType Pressed
+							myInputAction = KB_GRAPPLINGHOOK_RELEASE
+						}
+					}
+				}
+			}
+		}
+	}
+	myGameAction Release
+	myActionContexts
+	{
+		DefaultContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		GrapplingContext FALSE
+		SpaceshipContext TRUE
+		UIContext TRUE
+		VehicleContext TRUE
+	}
+}
+

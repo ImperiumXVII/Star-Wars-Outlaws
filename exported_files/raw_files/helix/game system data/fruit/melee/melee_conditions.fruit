@@ -1,0 +1,252 @@
+include "helix/game system data/fruit/dynamicnpcgear/dynamicnpcgearenums.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+include "helix/game system data/fruit/npc/npc.fruit"
+include "helix/game system data/fruit/takedown/takedown_aerialconstraints.fruit"
+include "helix/game system data/fruit/takedown/takedown_coverconstraints.fruit"
+include "helix/game system data/fruit/melee/npcmeleedefense.fruit"
+
+// Melee conditions
+class MeleeCondition < abstract=1 >
+{
+	bool myEnabled false
+}
+
+class MeleeConditionTargetInRange : MeleeCondition
+{
+	float myDistance 10.0f
+}
+
+// Game conditions
+class GameConditionMelee < abstract=1 > : GameCondition
+{
+
+}
+
+list GameConditionMeleeList
+{
+	GameConditionMelee
+	GameConditionRandom
+	GameConditionPetIsInLockState
+	GameConditionPlayerAgentState
+	GameConditionPlayerIsHoldingEquipment
+	GameConditionPlayerIsInCombatWithNPCs
+	GameConditionPlayerHasItem
+}
+
+class GameConditionMeleeGroup : GameConditionMelee
+{
+	GameConditionType myType MeleeGroup < hidden=1 >
+	
+	GameConditionGroupOperator myOperator And
+	GameConditionMeleeList myConditions
+}
+
+class GameConditionMeleeTargetIsNPCType : GameConditionMelee
+{
+	GameConditionType myType MeleeTargetIsNPCType < hidden=1 >
+
+	NPC* myNPC
+}
+
+class GameConditionMeleeTargetIsValid : GameConditionMelee
+{
+	GameConditionType myType MeleeTargetIsValid < hidden=1 >
+}
+
+class GameConditionMeleeTargetNumPunchesToDie : GameConditionMelee
+{
+	GameConditionType myType MeleeTargetNumPunchesToDie < hidden=1 >
+	
+	int myNumPunchesToDie 1
+	GameConditionOperator myOperator GreaterThanOrEqual
+}
+
+class GameConditionMeleeTargetPreferredAttack : GameConditionMelee
+{
+	GameConditionType myType MeleeTargetPreferredAttack < hidden=1 >
+	
+	MeleePlayerPreferredAttackType myPreferredAttack Normal
+}
+
+class GameConditionMeleeAttackerIsInMovementState : GameConditionMelee
+{
+	GameConditionType myType MeleeAttackerIsInMovementState < hidden=1 >
+	
+	PlayerMovementStateType myState Ground
+}
+
+// Keep it sync with FocusCondition in HC_GameConditionMeleeTypes.h
+enum FocusCondition
+{
+	MustBeFocussed
+	MustNotBeFocussed
+	None
+}
+
+class GameConditionMeleeTargetNPCFocusState : GameConditionMelee
+{
+	GameConditionType myType MeleeTargetNPCFocusState < hidden=1 >
+	FocusCondition myAttackerFocusCondition None < tooltip="Set the focus condition toward the current attacker" >
+}
+
+class GameConditionMeleeTargetHeightDelta : GameConditionMelee
+{
+	GameConditionType myType MeleeTargetHeightDelta < hidden=1 >
+	
+	float myHeightDelta 0.0 < tooltip="If positive, the target is below the attacker" >
+	GameConditionOperator myOperator GreaterThanOrEqual
+	bool myUseEyePositionAsReference true < tooltip="When enabled, consider the height delta between the entities' eye positions instead of the agent's transform" >
+}
+
+class GameConditionMeleeTargetHasStatusEffect : GameConditionMelee
+{
+	GameConditionType myType MeleeTargetHasStatusEffect < hidden=1 >
+
+	StatusEffectType myStatusEffect NotSet
+}
+
+class GameConditionMeleePetAidIsAvailable : GameConditionMelee
+{
+	GameConditionType myType MeleePetAidIsAvailable < hidden=1 >
+}
+
+class GameConditionMeleeTargetHasPetInRange : GameConditionMelee
+{
+	GameConditionType myType MeleeTargetHasPetInRange < hidden=1 >
+
+	float myDistanceToPet 3.0
+	GameConditionOperator myOperator LessThanOrEqual
+}
+
+class GameConditionMeleeHasLanded : GameConditionMelee
+{
+	GameConditionType myType MeleeHasLanded < hidden=1 >
+	
+	float myTimeSinceLanded 1.0
+	GameConditionOperator myOperator LessThanOrEqual
+}
+
+class GameConditionMeleeIsBlockedByEnviroment : GameConditionMelee
+{
+	GameConditionType myType MeleeIsBlockedByEnviroment < hidden=1 >
+}
+
+class GameConditionMeleeIsFirstConsecutiveMove : GameConditionMelee
+{
+	GameConditionType myType MeleeIsFirstConsecutiveMove < hidden=1 >
+}
+
+class GameConditionMeleeIsFirstMoveInTheContext : GameConditionMelee
+{
+	GameConditionType myType MeleeIsFirstMoveInTheContext < hidden=1 >
+}
+
+class GameConditionMeleeIsPerfectMove : GameConditionMelee
+{
+	GameConditionType myType MeleeIsPerfectMove < hidden=1 >
+}
+
+class GameConditionMeleeAttackerSpeed : GameConditionMelee
+{
+	GameConditionType myType MeleeAttackerSpeed < hidden=1 >
+	
+	bool mySpeed3D true < tooltip="If negative, instead of 3D speed, the value will be relative to speed on the 2D world plane (X,Z)" >
+	float myTargetSpeed 0.0
+	GameConditionOperator myOperator GreaterThanOrEqual
+	
+	bool myIsNegated FALSE < hidden=1 >
+}
+
+class GameConditionMeleeTargetDistance : GameConditionMelee
+{
+	GameConditionType myType MeleeTargetDistance < hidden=1 >
+	
+	bool myIs3D true < tooltip="If negative, instead of 3D, the value will be relative on the 2D world plane (X,Z)" >
+	float myDistance 1.0
+	GameConditionOperator myOperator GreaterThanOrEqual
+	
+	bool myIsNegated FALSE < hidden=1 >
+}
+
+class GameConditionMeleeIsInConcealmentVolume : GameConditionMelee
+{
+	GameConditionType myType MeleeIsInConcealmentVolume < hidden=1 >
+}
+
+// Keep it sync with FocusCondition in HC_GameConditionMeleeTypes.h
+enum TakedownExecutionConstraintObstacleCheckType
+{
+	Full
+	IgnoreHorizontal
+	IgnoreVertical
+	None
+}
+
+class GameConditionTakedownExecutionConstraints : GameConditionMelee
+{
+	GameConditionType myType TakedownConstraints < hidden=1 >
+	float myMaxDistanceFromTakedownInteractionPoint 3.0 < min=0.0 tooltip="Set the maximum distance from the player and the takedown interaction point" >		
+	float myMaxTargetFacingAngle 180.0 < min=0.0 max=180.0 tooltip="Set the maximum angle between the target's facing and the target to player direction" >
+	float myMinTargetFacingAngle 0.0 < min=0.0 max=180.0 tooltip="Set the minimum angle between the target's facing and the target to player direction" >
+	TakedownExecutionConstraintObstacleCheckType myObstacleCheckType Full
+	GameConditionTakedownAerialConstraints myAerialConstraints
+	GameConditionTakedownCoverConstraints myCoverConstraints
+}
+
+class GameConditionTakedownIsUnsafe : GameConditionMelee
+{
+	GameConditionType myType TakedownIsUnsafe < hidden=1 >
+	bool myOverrideGroundClearAreaCheck false < tooltip="If enabled, the condition will perform a new clear area check overriding the default one" >
+	vec3f myOverrideClearAreaOffset < default=0.0;0.0;0.0 tooltip="Offset to the overridden clear area check, centered on the target's position and relative to the direction from the player" >
+	float myOverrideClearAreaRadius 0.0 < min=0.0 tooltip="Radius for the overridden clear area check performed on the navmesh" >
+	float myOverrideClearAreaHeight 0.0 < min=0.0 tooltip="Height for the overridden clear area check performed on the navmesh" >
+}
+
+class GameConditionTakedownIsUsingItem : GameConditionMelee
+{
+	GameConditionType myType TakedownIsUsingItem < hidden=1 >
+}
+
+class GameConditionMeleeAttackerNumAliveEnemiesInRange : GameConditionMelee
+{
+	GameConditionType myType MeleeAttackerNumAliveEnemiesInRange < hidden=1 >
+	
+	int myNumEntities 1 < min=0 tooltip="Set the value of entities needed, will be checked with the following operator" >
+	GameConditionOperator myOperator GreaterThanOrEqual
+	float myRadius 30.0 < min=0.0 tooltip="Defines the entity search radius around the player" >
+}
+
+class GameConditionTargetIsDazed : GameConditionMelee
+{
+	GameConditionType myType MeleeTargetIsDazed < hidden=1 >
+}
+
+class GameConditionTargetIsShielded : GameConditionMelee
+{
+	GameConditionType myType MeleeTargetIsShielded < hidden=1 >
+	
+	DynamicNPCGearSlot myNPCGearSlot
+}
+
+class GameConditionTakedownHasWallInBetween : GameConditionMelee
+{
+	GameConditionType myType TakedownHasWallInBetween < hidden=1 >
+	float myMaxAngleFromWallNormal 25.0 < min=0.0 max=180.0 tooltip="Max angle threshold between the cover hit normal and direction to target" >
+	float myMaxTargetHorDistanceFromWall 3.0 < min=0.0 tooltip="Maximum horizontal distance threshold from the cover to the target" >
+	float myMaxDistanceFromWall 1.0 < min=0.0 tooltip="Maximum distance threshold from the cover" >
+	float myMinWallHeight 0.0 < min=0.0 tooltip="Minimum height threshold to validate the wall between player and target" >
+	float myMaxWallHeight 1.0 < min=0.0 tooltip="Maximum height threshold to validate the wall between player and target" >
+	float myMinWallDepth 0.0 < min=0.0 tooltip="Minimum depth threshold to validate the wall between player and target" >
+	float myMaxWallDepth 0.3 < min=0.0 tooltip="Maximum depth threshold to validate the wall between player and target" >
+}
+
+list GameConditionMeleeValue < size=1 >
+{
+	GameConditionMelee
+}
+
+class MeleeConditions
+{
+	MeleeConditionTargetInRange myTargetInRange
+	GameConditionMeleeValue myGameCondition
+}

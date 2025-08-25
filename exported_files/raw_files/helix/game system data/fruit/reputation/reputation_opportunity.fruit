@@ -1,0 +1,22 @@
+include "helix/game system data/fruit/reputation/reputation.fruit"
+include "helix/game system data/fruit/domainsofmastery/domainofmastery.fruit"
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/fruit/npc/npc.fruit"
+
+class ReputationOpportunity < uid=auto abstract=1 >
+{
+	ReputationTier myRequiredReputationTier
+	bool myIsRequirementGreaterThanOrEqual true < tooltip="If set to false you the requirement is less than or equal to the required reputation tier." >
+	ReputationDefinition* myReputation	
+	NPC* myNPC
+}
+
+class ReputationOpportunityQuest : ReputationOpportunity
+{
+	Quest* myQuest
+}
+
+class ReputationOpportunityExpert : ReputationOpportunity
+{
+	DomainOfMasteryExpertSet* myExpertSet	
+}

@@ -1,0 +1,57 @@
+include snowdrop/rumble/rumble.fruit
+
+enum RumbleCategory
+{
+	Uncategorized
+	Weapons
+	Melee
+	Traversal
+	Pet
+	Speeder
+	Abilities_&_Equipment
+	LDIs
+	Space
+	Combat
+	Minigames
+	Environmental
+	UI
+	Narrative
+	Test
+}
+
+list RumbleDataList
+{
+	RumbleData
+}
+
+class RumbleDataCollection < uid=auto >
+{
+	RumbleDataList myRumbleDataList
+	RumbleCategory myCategory
+}
+
+// keep synced with HC_RumbleFalloffCurves
+enum RumbleFalloffCurves
+{
+	Flat
+	Linear
+	Logarithmic
+	Inverse
+	LogReverse
+	Parabolic
+	Custom
+}
+
+class Rumble
+{
+	uid myRumble < bhv="constantData" constantDataType="rumble" tooltip="This rumble is played once when the detonation is created" >
+	bool myIsPositional false < tooltip="If true, the rumble will play in spatial" >
+	bool myIsRotational false < tooltip="If true, the rumble will play according to the camera orientation" >
+	bool myIsLoop false < tooltip="If true, the rumble will loop" >
+	float myIntensity 1.0f < tooltip="The base rumble intensity" >
+	float myRadius 1.0f < tooltip="The radius of the rumble" >
+	float myInnerRadiusMultiplier 0.0f < tooltip="[0 - 1] Multiplier applied to the overall radius. Inside this, the rumble plays at full Intensity, ignoring positional falloff" >
+	float myOuterRadiusMultiplier 1.0f < tooltip="[0 - 1] Multiplier applied to the overall radiusOutside of this radius, the rumble will not play." >
+	RumbleFalloffCurves myFalloffCurves
+	string myCustomFalloffCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0.0, 0 0, }, properties = { -749, -749, }, values = { 0 1, 1 0, }, }, numKeys = 2, }" < bhv=inputgraph >
+}

@@ -1,0 +1,48 @@
+include "helix/game system data/fruit/npc/npc.fruit"
+include "helix/game system data/fruit/npc/npctagslists.fruit"
+include "helix/game system data/fruit/faction/faction.fruit"
+include "helix/game system data/fruit/legend/legendrank.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+
+class NPCSynergyWeightedLoadout
+{
+	NPCWeaponLoadout* myLoadout
+	float myWeight
+}
+
+list NPCSynergyPossibleLoadouts
+{
+	NPCSynergyWeightedLoadout
+}
+
+class NPCSynergyMember
+{
+	NPCSynergyPossibleLoadouts myPossibleLoadouts
+	NPC* myNPC
+	bool myAlwaysAdd
+	float myWeight
+}
+
+list NPCSynergyMemberList
+{
+	NPCSynergyMember
+}
+
+list SynergyUnlockConditionList
+{
+	GameConditionQuestIsCompleted
+}
+
+
+class NPCSynergy < uid = auto >
+{
+	NPCSynergyMemberList myCoreMembers
+	NPCSynergyMember myFillerMember
+	int myMaxAmount
+	uid myFaction < bhv="constantData" constantDataType="faction" >
+	uid myLevelInfo < bhv="constantData" constantDataType="levelinfo" >
+	LegendRank* myMinLegendRank
+	LegendRank* myMaxLegendRank
+	SynergyUnlockConditionList myUnlockCondition
+	NPCSynergyTagsList myTags
+}

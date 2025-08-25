@@ -1,0 +1,39 @@
+include "helix/game system data/fruit/player/impactfeedback.fruit"
+include "helix/game system data/juice/camera/modifiers/player_damage_hit_blaster_default.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/player_hitreaction_base.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/player_hitreaction_base_ads.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/player_hitreaction_large.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/player_hitreaction_large_ads.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/player_near_miss.mcameramodifier"
+
+PlayerImpactFeedbackConfig PlayerImpactFeedbackConfig
+{
+	myBaseFeedback
+	{
+		myDefaultCameraShake < uid=ACB8C1A2673765B7000355FFB0F3FE52 > = player_hitreaction_base 1C021E956385CDDA0000860B377979EC
+		myCameraShakesByPlayerState
+		{
+			CameraShakeByPlayerState Aiming
+			{
+				myCameraShake < uid=ACB8C1A26737689100035593F19D20D6 > = player_hitreaction_base_ads 4C1DFD4E67407EA80009A9BDAC659079
+				myPlayerAgentState Aiming
+			}
+		}
+		myRumble 8E25811B657082BC0000C248C0340C4B
+	}
+	myLargeDamageFeedback
+	{
+		myDefaultCameraShake < uid=ACB8C1A2673765B7000356007A95338A > = player_hitreaction_large 1C021E956385CDE60000860C231A926C
+		myCameraShakesByPlayerState
+		{
+			CameraShakeByPlayerState Aiming
+			{
+				myCameraShake < uid=ACB8C1A267376C5D0005E8EF3D78BE5F > = player_hitreaction_large_ads 4C1DFD4E67407EE30009B3BC8D89EA1F
+				myPlayerAgentState Aiming
+			}
+		}
+		myRumble 8E25811B657082D90000C2AA0B931D76
+	}
+	myTime 0.4
+}
+

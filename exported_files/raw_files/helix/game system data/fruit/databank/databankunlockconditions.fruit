@@ -1,0 +1,97 @@
+include "helix/game system data/fruit/alienstreetfood/alienstreetfood.fruit"
+include "helix/game system data/fruit/arcadegame/arcadegame.fruit"
+include "helix/game system data/fruit/item/item.fruit"
+include "helix/game system data/fruit/sabacc/sabaccgamerules.fruit"
+include "helix/game system data/fruit/cantinaminigame/cantinaminigame.fruit"
+include "helix/game system data/fruit/gamevalues/gamevalues.fruit"
+
+enum DatabankUnlockConditionGroupOperator
+{
+	And
+	Or
+}
+
+class DatabankUnlockCondition < abstract=1 uid=auto >
+{
+}
+
+class ItemDatabankUnlockCondition : DatabankUnlockCondition
+{
+	Item* myItem < tooltip="The item that unlocks this entry in the databank." >
+}
+
+class SabaccGameDatabankUnlockCondition : DatabankUnlockCondition
+{
+	SabaccGameRules* myActivity < tooltip="The sabacc game that unlocks this entry in the databank. Leave it empty if the entry can be unlock by any sabacc game." >
+	bool myWhenWinning false < tooltip="If true, the condition is true when the player wins the table. If false, it's when entering." >
+}
+
+class ArcadeGameDatabankUnlockCondition : DatabankUnlockCondition
+{
+	ArcadeGame* myActivity < tooltip="The arcade game that unlocks this entry in the databank at the end of the activity. Leave it empty if the entry can be unlock by any arcade game." >
+}
+
+class AlienStreetFoodDatabankUnlockCondition : DatabankUnlockCondition
+{
+	AlienStreetFood* myActivity < tooltip="The alien street food that unlocks this entry in the databank at the end of the activity. Leave it empty if the entry can be unlock by any alien street food." >
+}
+
+class CantinaMinigameDatabankUnlockCondition : DatabankUnlockCondition
+{
+	CantinaMinigame* myActivity < tooltip="The cantina minigame that unlocks this entry in the databank at the end of the activity. Leave it empty if the entry can be unlock by any cantina minigame." >
+}
+
+class FathierRacesDatabankUnlockCondition : DatabankUnlockCondition
+{
+}
+
+class QuestDatabankUnlockCondition : DatabankUnlockCondition
+{
+	uid myQuest < bhv="constantData" constantDataType="quest" tooltip="The quest that unlocks this entry in the databank when it's completed." >
+}
+
+class GalaxyLocationDatabankUnlockCondition : DatabankUnlockCondition
+{
+	uid myGalaxyLocation < bhv="constantData" constantDataType="galaxylocation" >
+}
+
+class LevelDatabankUnlockCondition : DatabankUnlockCondition
+{
+	uid myLevelInfo < bhv="constantData" constantDataType="levelinfo" >
+}
+
+class BooleanGameValueUnlockCondition : DatabankUnlockCondition
+{
+	uid myGameValueUnlock < bhv="constantData" constantDataType="gamevalue" >
+}
+
+list BooleanGameValueUnlockConditions
+{
+	BooleanGameValueUnlockCondition
+}
+
+class DatabankHideConditions
+{
+	DatabankUnlockConditionGroupOperator myHideOperator < tooltip = "Operator used to evaluate the hide conditions">
+	BooleanGameValueUnlockConditions myHideConditions < tooltip="Hide the entry when the conditions are true." >
+}
+
+list DatabankUnlockConditions
+{
+	ItemDatabankUnlockCondition
+	SabaccGameDatabankUnlockCondition
+	ArcadeGameDatabankUnlockCondition
+	AlienStreetFoodDatabankUnlockCondition
+	CantinaMinigameDatabankUnlockCondition
+	FathierRacesDatabankUnlockCondition
+	QuestDatabankUnlockCondition
+	GalaxyLocationDatabankUnlockCondition
+	LevelDatabankUnlockCondition
+	DatabankUnlockCondition
+}
+
+class DatabankUnlockConditionGroup : DatabankUnlockCondition
+{
+	DatabankUnlockConditionGroupOperator myOperator And
+	DatabankUnlockConditions myUnlockConditionGroup
+}

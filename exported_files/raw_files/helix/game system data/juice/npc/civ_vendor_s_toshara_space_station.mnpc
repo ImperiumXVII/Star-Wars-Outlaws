@@ -1,0 +1,26 @@
+include "helix/game system data/juice/npc/base_civ_vendor.mnpc"
+include "helix/game system data/juice/npc/base_civ_vendor_ship.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC civ_vendor_s_toshara_space_station < uid=91DC5D3C6508455A00165F4DA2DABBED > : base_civ_vendor_ship
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Ship Mechanic's sub-name\", enabled = true, guid = #09AEDAAA65C49F220000C7A94AAD39D2, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10653, text = \"Ship Mechanic (TO BE WRITTEN)\", type = \"MenuLine\"}"
+	myCharacterVisuals < uid=91DC5D3C65D32635000807313A012C3C > = character_visuals_2_silver_vendor_tos_space_station_vendor E4123D2764A7CE9B00005F6B2CA9B73B
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D276698009600056CB13865CDC6 > = Agent_Gender_FeminineTag 16DEADE6626D20EA00002E5277B65AD4
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F256509A0870000FB7DC83A5A66 > = Agent_Archetype_VendorShipMechanic E4123D2762A88B870002A4F4CFBFD1AE
+	}
+	myDialogueCharacters
+	{
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=1EC89F256509A0E30001229639430DA7 >
+		{
+			myDialogueCharacter < uid=1EC89F256509A17800012298E943F774 > = AI_VENDOR_MECHANIC_F06 1EC89F25633E91A1000049D49A75F663
+		}
+	}
+	myVendorConfig < uid=F4D8AE2665328BB7000862E6B60B872B > = VendorConfig_TOS_Space_Neutral_Ship 2AE2EC85645515320000B5CE924812FC
+}
+

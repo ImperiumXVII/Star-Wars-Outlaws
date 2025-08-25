@@ -1,0 +1,109 @@
+include "helix/game system data/fruit/equipment/equipment_set.fruit"
+include "helix/game system data/juice/equipmentset/player_equipmentset_kay.mequipmentset"
+include "helix/game system data/juice/item/player_gear_coop.mitem"
+include "helix/game system data/juice/item/player_scan_ability_equipment.mitem"
+include "helix/game system data/juice/item/player_throwable_gadget_coop.mitem"
+include "helix/game system data/juice/item/player_weapon_blaster_charge.mitem"
+include "helix/game system data/juice/item/player_weapon_blaster_repeater.mitem"
+include "helix/game system data/juice/item/player_weapon_blaster_scatter.mitem"
+include "helix/game system data/juice/item/player_weapon_coop.mitem"
+
+EquipmentSet player_equipmentset_coop_thief < uid=7EE6463462ED084B0000B6EB6C9B24E9 > : player_equipmentset_kay
+{
+	mySlotList
+	{
+		EquipmentSlot "Main Weapon"
+		{
+			myGroup Weapons
+			myTag Main
+			myIsHidden FALSE
+			myIsAutoSlotEnabled TRUE
+			myAttachment
+			{
+				mySlot HolsterWeaponWestern
+			}
+			myDefault < uid=7EE646346335B7820001BDEDC6AD37E8 > = player_weapon_coop_pistol_a280-cfe 7EE646346426D6700000B0FFFA72F34A
+		}
+		EquipmentSlot "Secondary Weapon"
+		{
+			myGroup Weapons
+			myTag Secondary
+			myIsHidden FALSE
+		}
+		EquipmentSlot "Pickable Weapon"
+		{
+			myGroup Weapons
+			myTag Pickable
+		}
+		EquipmentSlot "Blast Charge"
+		{
+			myGroup Throwables
+			myDefault < uid=7EE646346336FAEB000052F7D6088B05 > = player_blast_charge_coop 7EE64634642BFCE900029A2A234F083D
+		}
+		EquipmentSlot Binoculars
+		{
+			myGroup Binoculars
+			myTag Main
+			myIsConst TRUE
+			myAttachment
+			{
+				mySlot HolsterMedkit
+			}
+		}
+		EquipmentSlot Medkit
+		{
+			myGroup Medkit
+			myIsConst TRUE
+		}
+		EquipmentSlot GrapplingHook
+		{
+			myGroup GrapplingHook
+			myIsConst FALSE
+			myIsAutoSlotEnabled TRUE
+			myAttachment
+			{
+				mySlot HolsterGrapplingHook
+			}
+			myDefault < uid=7EE646346335B7820001BDEE454312D7 > = player_grapplinghook_gadget 83E36AE36048D5E7000000305524668F
+		}
+		EquipmentSlot Skill
+		{
+			myGroup Skills
+			myDefault < uid=4F6D80DE648724340000ABFBCE18D3A3 > = player_scan_ability_equipment 4F6D80DE646E295F0000357C3F10BB23
+		}
+		EquipmentSlot Chest
+		{
+			myGroup Chest
+			myIsHidden FALSE
+			myDefault < uid=7EE646346335B7820001BDEF284D8613 > = player_gear_coop_chest_thief 7EE646346335B2380001BC112319B6DB
+		}
+		EquipmentSlot Waist
+		{
+			myGroup Waist
+			myIsHidden FALSE
+			myDefault < uid=7EE646346335B7820001BDF0022317A9 > = player_gear_coop_waist_thief 7EE646346335B4500001BD7CB1FAFF11
+		}
+		EquipmentSlot Legs
+		{
+			myGroup Legs
+			myIsHidden FALSE
+			myDefault < uid=7EE646346335B7820001BDF1AD9E7272 > = player_gear_coop_legs_thief 7EE646346335B3670001BC19D70A9EC1
+		}
+		EquipmentSlot "Standard Weapon Module"
+		{
+			myGroup WeaponModules
+			myIsConst TRUE
+			myAttachment
+			{
+				mySlot HolsterWeaponModule1
+			}
+			myDefault < uid=7EE646346335B7820001BDF2F01618BC > = player_weaponmodule_coop_pistol_a280-cfe 7EE646346426D7100000B102B8E57B19
+		}
+		EquipmentSlot HeistTarget
+		{
+			myGroup HeistTarget
+			myTag Pickable
+		}
+	}
+}
+

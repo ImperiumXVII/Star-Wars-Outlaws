@@ -1,0 +1,390 @@
+include "helix/game system data/fruit/reward/reward.fruit"
+include "helix/game system data/juice/item/dlc2_items_materials_valuables_and_key_parts.mitem"
+include "helix/game system data/juice/reward/contract_reward.mreward"
+
+RewardItem Contraband_Contract_Credits_Base < uid=2AE2EC8567CAB3FC0000014E16138BCA >
+{
+	myItem < uid=2AE2EC8567CAB3FC0000014F7D083F87 > = Credits 83E36AE360487E88000000375F5EDD50
+	myAmount 375
+}
+
+RewardItem Contraband_Contract_Credits_01 < uid=2AE2EC8567CAB2F300000139E4AA267A > : Contraband_Contract_Credits_Base
+{
+	myAmount 25
+}
+
+RewardItem Contraband_Contract_Credits_02 < uid=2AE2EC8567CAB349000001406A5AB261 > : Contraband_Contract_Credits_Base
+{
+	myAmount 75
+}
+
+RewardItem Contraband_Contract_Credits_03 < uid=2AE2EC8567CAB349000001419286CBA5 > : Contraband_Contract_Credits_Base
+{
+	myAmount 175
+}
+
+RewardItem Contraband_Contract_Credits_01_Preferred < uid=2AE2EC8567CAB349000001429AFD015D > : Contraband_Contract_Credits_Base
+{
+	myAmount 50
+}
+
+RewardItem Contraband_Contract_Credits_02_Preferred < uid=2AE2EC8567CAB349000001431A70F544 > : Contraband_Contract_Credits_Base
+{
+	myAmount 150
+}
+
+RewardItem Contraband_Contract_Credits_03_Preferred < uid=2AE2EC8567CAB34900000144A50685D1 > : Contraband_Contract_Credits_Base
+{
+	myAmount 350
+}
+
+RewardItem Contraband_Contract_Dlc2_Material_Base < uid=2AE2EC8567CAB3FC000001503BB41271 >
+{
+	myItem < uid=2AE2EC8567CAB3FC0000015157F540F4 > = Mat_Ship_DLC2_01 2AE2EC85670CE2A3000000D59EC7ADFB
+	myAmount 4
+}
+
+RewardItem Contraband_Contract_Dlc2_Material_01 < uid=2AE2EC8567CAB3FC00000152DD32DC1B > : Contraband_Contract_Dlc2_Material_Base
+{
+	myAmount 1
+}
+
+RewardItem Contraband_Contract_Dlc2_Material_02 < uid=2AE2EC8567CAB3FC00000153E1FA343D > : Contraband_Contract_Dlc2_Material_Base
+{
+	myAmount 2
+}
+
+RewardItem Contraband_Contract_Dlc2_Material_03 < uid=2AE2EC8567CAB4990000015D37373A63 > : Contraband_Contract_Dlc2_Material_Base
+{
+	myAmount 4
+}
+
+RewardItem Contraband_Contract_Dlc2_Material_01_Preferred < uid=2AE2EC8567CAB4990000015E152F16AD > : Contraband_Contract_Dlc2_Material_Base
+{
+	myAmount 2
+}
+
+RewardItem Contraband_Contract_Dlc2_Material_02_Preferred < uid=2AE2EC8567CAB4990000015F40BAF7B0 > : Contraband_Contract_Dlc2_Material_Base
+{
+	myAmount 4
+}
+
+RewardItem Contraband_Contract_Dlc2_Material_03_Preferred < uid=2AE2EC8567CAB49900000160E7CC8743 > : Contraband_Contract_Dlc2_Material_Base
+{
+	myAmount 8
+}
+
+RewardReputation Contraband_Contract_Reputation_Base < uid=2AE2EC8567CAB4A80000016693C1C451 > : rep_contract_gain_tiny
+{
+}
+
+RewardReputation Contraband_Contract_Reputation_01 < uid=2AE2EC8567CAB58700000171FAA0D6FF > : Contraband_Contract_Reputation_Base
+{
+	myValueFormula 1
+}
+
+RewardReputation Contraband_Contract_Reputation_02 < uid=2AE2EC8567CAB58700000172E10ACDEF > : Contraband_Contract_Reputation_Base
+{
+	myValueFormula 1
+}
+
+RewardReputation Contraband_Contract_Reputation_03 < uid=2AE2EC8567CAB58700000173176D2313 > : Contraband_Contract_Reputation_Base
+{
+	myValueFormula 5
+}
+
+RewardReputation Contraband_Contract_Reputation_01_Preferred < uid=2AE2EC8567CAB58700000174EAA7294A > : Contraband_Contract_Reputation_Base
+{
+	myValueFormula 15
+}
+
+RewardReputation Contraband_Contract_Reputation_02_Preferred < uid=2AE2EC8567CAB58700000175164C0DCF > : Contraband_Contract_Reputation_Base
+{
+	myValueFormula 30
+}
+
+RewardReputation Contraband_Contract_Reputation_03_Preferred < uid=2AE2EC8567CAB58700000176A19EDF5C > : Contraband_Contract_Reputation_Base
+{
+	myValueFormula 50
+}
+
+RewardGroup Contraband_Contract_Reward_Base < uid=2AE2EC8567585C73000AF7FBB0378463 >
+{
+	myRewardReferences
+	{
+		RewardItem Credits < uid=2AE2EC8567585C89000AF7FC0648ECF7 > = Contraband_Contract_Credits_Base 2AE2EC8567CAB3FC0000014E16138BCA
+		RewardItem "Cargo Upgrade Material" < uid=2AE2EC8567585CA4000AF7FD288F2FB7 > = Contraband_Contract_Dlc2_Material_Base 2AE2EC8567CAB3FC000001503BB41271
+		RewardReputation Reputation < uid=2AE2EC8567CAB676000001845A000B56 > = Contraband_Contract_Reputation_Base 2AE2EC8567CAB4A80000016693C1C451
+	}
+}
+
+RewardGroup Contraband_Contract_Reward_Volatile_Cargo_01 < uid=2AE2EC8567581328000000D8EE34E233 >
+{
+	myRewardReferences
+	{
+		RewardItem Credits < uid=2AE2EC8567CAB6C7000001850AAB41AA > = Contraband_Contract_Credits_01 2AE2EC8567CAB2F300000139E4AA267A
+		RewardItem "Cargo Upgrade Material" < uid=2AE2EC8567CAB6C7000001868E31CA42 > = Contraband_Contract_Dlc2_Material_01 2AE2EC8567CAB3FC00000152DD32DC1B
+	}
+}
+
+RewardGroup Contraband_Contract_Reward_Volatile_Cargo_02 < uid=2AE2EC856758193B000000F5D72354A0 >
+{
+	myRewardReferences
+	{
+		RewardItem Credits < uid=2AE2EC8567CAB6C7000001889DF48EA2 > = Contraband_Contract_Credits_02 2AE2EC8567CAB349000001406A5AB261
+		RewardItem "Cargo Upgrade Material" < uid=2AE2EC8567CAB6C700000189CD022AA7 > = Contraband_Contract_Dlc2_Material_02 2AE2EC8567CAB3FC00000153E1FA343D
+	}
+}
+
+RewardGroup Contraband_Contract_Reward_Volatile_Cargo_03 < uid=2AE2EC856758193B000000F60E6E5AB6 >
+{
+	myRewardReferences
+	{
+		RewardItem Credits < uid=2AE2EC8567CAB6C70000018BA94C257D > = Contraband_Contract_Credits_03 2AE2EC8567CAB349000001419286CBA5
+		RewardItem "Cargo Upgrade Material" < uid=2AE2EC8567CAB6C70000018C90F42F68 > = Contraband_Contract_Dlc2_Material_03 2AE2EC8567CAB4990000015D37373A63
+		RewardReputation Reputation < uid=2AE2EC8567CAB6C70000018D4C7F78C3 > = Contraband_Contract_Reputation_03 2AE2EC8567CAB58700000173176D2313
+	}
+}
+
+RewardGroup Contraband_Contract_Reward_Ionized_Cargo_01 < uid=2AE2EC856758193B000000FA8734880C > : Contraband_Contract_Reward_Volatile_Cargo_01
+{
+}
+
+RewardGroup Contraband_Contract_Reward_Ionized_Cargo_02 < uid=2AE2EC856758193B000000FB02E4E909 > : Contraband_Contract_Reward_Volatile_Cargo_02
+{
+}
+
+RewardGroup Contraband_Contract_Reward_Ionized_Cargo_03 < uid=2AE2EC856758193B000000FCF43ABB22 > : Contraband_Contract_Reward_Volatile_Cargo_03
+{
+}
+
+RewardGroup Contraband_Contract_Reward_Timed_Cargo_01 < uid=2AE2EC856758193B000000FD919DD13D > : Contraband_Contract_Reward_Volatile_Cargo_01
+{
+}
+
+RewardGroup Contraband_Contract_Reward_Timed_Cargo_02 < uid=2AE2EC856758193B000000FEB2CA5FEA > : Contraband_Contract_Reward_Volatile_Cargo_02
+{
+}
+
+RewardGroup Contraband_Contract_Reward_Timed_Cargo_03 < uid=2AE2EC856758193B000000FF9743441B > : Contraband_Contract_Reward_Volatile_Cargo_03
+{
+}
+
+RewardGroup Contraband_Contract_Reward_Suspicious_Cargo_01 < uid=2AE2EC856758193B00000100B6811E7A > : Contraband_Contract_Reward_Volatile_Cargo_01
+{
+}
+
+RewardGroup Contraband_Contract_Reward_Suspicious_Cargo_02 < uid=2AE2EC856758193B00000101C9EA25AE > : Contraband_Contract_Reward_Volatile_Cargo_02
+{
+}
+
+RewardGroup Contraband_Contract_Reward_Suspicious_Cargo_03 < uid=2AE2EC856758193B00000102293F0676 > : Contraband_Contract_Reward_Volatile_Cargo_03
+{
+}
+
+RewardGroup Contraband_Contract_Reward_Volatile_Cargo_01_Preferred < uid=2AE2EC8567CAB0BF000000F9C4558385 >
+{
+	myRewardReferences
+	{
+		RewardItem Credits < uid=2AE2EC8567CAB70E0000019245248DA0 > = Contraband_Contract_Credits_01_Preferred 2AE2EC8567CAB349000001429AFD015D
+		RewardItem "Cargo Upgrade Material" < uid=2AE2EC8567CAB70E00000193749A6503 > = Contraband_Contract_Dlc2_Material_01_Preferred 2AE2EC8567CAB4990000015E152F16AD
+		RewardReputation Reputation < uid=2AE2EC8567CAB70E00000194C394B233 > = Contraband_Contract_Reputation_01_Preferred 2AE2EC8567CAB58700000174EAA7294A
+	}
+}
+
+RewardGroup Contraband_Contract_Reward_Volatile_Cargo_02_Preferred < uid=2AE2EC8567CAB15F00000113CC497232 >
+{
+	myRewardReferences
+	{
+		RewardItem Credits < uid=2AE2EC8567CAB70E00000195177EAADE > = Contraband_Contract_Credits_02_Preferred 2AE2EC8567CAB349000001431A70F544
+		RewardItem "Cargo Upgrade Material" < uid=2AE2EC8567CAB70E0000019676566C1C > = Contraband_Contract_Dlc2_Material_02_Preferred 2AE2EC8567CAB4990000015F40BAF7B0
+		RewardReputation Reputation < uid=2AE2EC8567CAB70E00000197D143ADA8 > = Contraband_Contract_Reputation_02_Preferred 2AE2EC8567CAB58700000175164C0DCF
+	}
+}
+
+RewardGroup Contraband_Contract_Reward_Volatile_Cargo_03_Preferred < uid=2AE2EC8567CAB15F0000011404CAFADD >
+{
+	myRewardReferences
+	{
+		RewardItem Credits < uid=2AE2EC8567CAB70E00000198B7209899 > = Contraband_Contract_Credits_03_Preferred 2AE2EC8567CAB34900000144A50685D1
+		RewardItem "Cargo Upgrade Material" < uid=2AE2EC8567CAB70E0000019955EAFCF9 > = Contraband_Contract_Dlc2_Material_03_Preferred 2AE2EC8567CAB49900000160E7CC8743
+		RewardReputation Reputation < uid=2AE2EC8567CAB70E0000019A90194CD4 > = Contraband_Contract_Reputation_03_Preferred 2AE2EC8567CAB58700000176A19EDF5C
+	}
+}
+
+RewardGroup Contraband_Contract_Reward_Ionized_Cargo_01_Preferred < uid=2AE2EC8567CAB15F000001151A1FE951 > : Contraband_Contract_Reward_Volatile_Cargo_01_Preferred
+{
+}
+
+RewardGroup Contraband_Contract_Reward_Ionized_Cargo_02_Preferred < uid=2AE2EC8567CAB15F0000011633225466 > : Contraband_Contract_Reward_Volatile_Cargo_02_Preferred
+{
+}
+
+RewardGroup Contraband_Contract_Reward_Ionized_Cargo_03_Preferred < uid=2AE2EC8567CAB15F00000117B47D68D2 > : Contraband_Contract_Reward_Volatile_Cargo_03_Preferred
+{
+}
+
+RewardGroup Contraband_Contract_Reward_Timed_Cargo_01_Preferred < uid=2AE2EC8567CAB15F00000118E7327092 > : Contraband_Contract_Reward_Volatile_Cargo_01_Preferred
+{
+}
+
+RewardGroup Contraband_Contract_Reward_Timed_Cargo_02_Preferred < uid=2AE2EC8567CAB15F0000011902825844 > : Contraband_Contract_Reward_Volatile_Cargo_02_Preferred
+{
+}
+
+RewardGroup Contraband_Contract_Reward_Timed_Cargo_03_Preferred < uid=2AE2EC8567CAB15F0000011A2322BD16 > : Contraband_Contract_Reward_Volatile_Cargo_03_Preferred
+{
+}
+
+RewardGroup Contraband_Contract_Reward_Suspicious_Cargo_01_Preferred < uid=2AE2EC8567CAB15F0000011B7C467A58 > : Contraband_Contract_Reward_Volatile_Cargo_01_Preferred
+{
+}
+
+RewardGroup Contraband_Contract_Reward_Suspicious_Cargo_02_Preferred < uid=2AE2EC8567CAB15F0000011C088423A2 > : Contraband_Contract_Reward_Volatile_Cargo_02_Preferred
+{
+}
+
+RewardGroup Contraband_Contract_Reward_Suspicious_Cargo_03_Preferred < uid=2AE2EC8567CAB15F0000011D18D41A8E > : Contraband_Contract_Reward_Volatile_Cargo_03_Preferred
+{
+}
+
+RewardReputation Contraband_Contract_Reputation_Base_Ashiga < uid=2AE2EC8567CEB113000484FADBE09564 > : Contraband_Contract_Reputation_Base
+{
+	myReputation < uid=2AE2EC8567CEB18800048518915CF584 > = Reputation_AshigaClan 83E36AE36025542F000000656F036A88
+}
+
+RewardReputation Contraband_Contract_Reputation_Base_CrimsonDawn < uid=2AE2EC8567CEB113000484FB2851DAF6 > : Contraband_Contract_Reputation_Base
+{
+	myReputation < uid=2AE2EC8567CEB1D2000485200B872575 > = Reputation_CrimsonDawn 83E36AE36025543700000066EDF88DD8
+}
+
+RewardReputation Contraband_Contract_Reputation_Base_Hutt < uid=2AE2EC8567CEB113000484FC9CDCE3C3 > : Contraband_Contract_Reputation_Base
+{
+	myReputation < uid=2AE2EC8567CEB1F100048528087720EC > = Reputation_HuttClan 83E36AE3602A3F7B00000066B9DD3283
+}
+
+RewardReputation Contraband_Contract_Reputation_Base_Pyke < uid=2AE2EC8567CEB113000484FD9E69FAE9 > : Contraband_Contract_Reputation_Base
+{
+	myReputation < uid=2AE2EC8567CEB22A00048530856E4386 > = Reputation_PykeSyndicate 4728ADF9603373280000002E707BAB62
+}
+
+RewardReputation Contraband_Contract_Reputation_01_Ashiga < uid=2AE2EC8567CEB113000484FE41FD17F5 > : Contraband_Contract_Reputation_01
+{
+	myReputation < uid=2AE2EC8567CEB18800048519FA3A4934 > = Reputation_AshigaClan 83E36AE36025542F000000656F036A88
+}
+
+RewardReputation Contraband_Contract_Reputation_01_CrimsonDawn < uid=2AE2EC8567CEB113000484FFE7DDF356 > : Contraband_Contract_Reputation_01
+{
+	myReputation < uid=2AE2EC8567CEB1D200048521F006A7A9 > = Reputation_CrimsonDawn 83E36AE36025543700000066EDF88DD8
+}
+
+RewardReputation Contraband_Contract_Reputation_01_Hutt < uid=2AE2EC8567CEB113000485009C64D695 > : Contraband_Contract_Reputation_01
+{
+	myReputation < uid=2AE2EC8567CEB1F100048529C5184699 > = Reputation_HuttClan 83E36AE3602A3F7B00000066B9DD3283
+}
+
+RewardReputation Contraband_Contract_Reputation_01_Pyke < uid=2AE2EC8567CEB113000485014D0BC942 > : Contraband_Contract_Reputation_01
+{
+	myReputation < uid=2AE2EC8567CEB22A00048531F0A32877 > = Reputation_PykeSyndicate 4728ADF9603373280000002E707BAB62
+}
+
+RewardReputation Contraband_Contract_Reputation_02_Ashiga < uid=2AE2EC8567CEB11300048502E4E03DA9 > : Contraband_Contract_Reputation_02
+{
+	myReputation < uid=2AE2EC8567CEB1880004851ADE8BEA19 > = Reputation_AshigaClan 83E36AE36025542F000000656F036A88
+}
+
+RewardReputation Contraband_Contract_Reputation_02_CrimsonDawn < uid=2AE2EC8567CEB11300048503ECAF2520 > : Contraband_Contract_Reputation_02
+{
+	myReputation < uid=2AE2EC8567CEB1D2000485221033D718 > = Reputation_CrimsonDawn 83E36AE36025543700000066EDF88DD8
+}
+
+RewardReputation Contraband_Contract_Reputation_02_Hutt < uid=2AE2EC8567CEB1130004850456C5965E > : Contraband_Contract_Reputation_02
+{
+	myReputation < uid=2AE2EC8567CEB1F10004852ABA59FA24 > = Reputation_HuttClan 83E36AE3602A3F7B00000066B9DD3283
+}
+
+RewardReputation Contraband_Contract_Reputation_02_Pyke < uid=2AE2EC8567CEB113000485054597041D > : Contraband_Contract_Reputation_02
+{
+	myReputation < uid=2AE2EC8567CEB22A00048532B0D75D93 > = Reputation_PykeSyndicate 4728ADF9603373280000002E707BAB62
+}
+
+RewardReputation Contraband_Contract_Reputation_03_Ashiga < uid=2AE2EC8567CEB11300048506A07F7473 > : Contraband_Contract_Reputation_03
+{
+	myReputation < uid=2AE2EC8567CEB1880004851BF70ACF4B > = Reputation_AshigaClan 83E36AE36025542F000000656F036A88
+}
+
+RewardReputation Contraband_Contract_Reputation_03_CrimsonDawn < uid=2AE2EC8567CEB11300048507356CC379 > : Contraband_Contract_Reputation_03
+{
+	myReputation < uid=2AE2EC8567CEB1D200048523CFAEA4C3 > = Reputation_CrimsonDawn 83E36AE36025543700000066EDF88DD8
+}
+
+RewardReputation Contraband_Contract_Reputation_03_Hutt < uid=2AE2EC8567CEB113000485084F61D4EC > : Contraband_Contract_Reputation_03
+{
+	myReputation < uid=2AE2EC8567CEB1F10004852B551EF77B > = Reputation_HuttClan 83E36AE3602A3F7B00000066B9DD3283
+}
+
+RewardReputation Contraband_Contract_Reputation_03_Pyke < uid=2AE2EC8567CEB11300048509B22B86F1 > : Contraband_Contract_Reputation_03
+{
+	myReputation < uid=2AE2EC8567CEB22A00048533D4D3122C > = Reputation_PykeSyndicate 4728ADF9603373280000002E707BAB62
+}
+
+RewardReputation Contraband_Contract_Reputation_01_Preferred_Ashiga < uid=2AE2EC8567CEB1130004850AE9ACA02B > : Contraband_Contract_Reputation_01_Preferred
+{
+	myReputation < uid=2AE2EC8567CEB1880004851C818CF4FB > = Reputation_AshigaClan 83E36AE36025542F000000656F036A88
+}
+
+RewardReputation Contraband_Contract_Reputation_01_Preferred_CrimsonDawn < uid=2AE2EC8567CEB1130004850BBA88C16C > : Contraband_Contract_Reputation_01_Preferred
+{
+	myReputation < uid=2AE2EC8567CEB1D200048524FD309CCE > = Reputation_CrimsonDawn 83E36AE36025543700000066EDF88DD8
+}
+
+RewardReputation Contraband_Contract_Reputation_01_Preferred_Hutt < uid=2AE2EC8567CEB1130004850CFB0FA465 > : Contraband_Contract_Reputation_01_Preferred
+{
+	myReputation < uid=2AE2EC8567CEB1F10004852CE4DFCD74 > = Reputation_HuttClan 83E36AE3602A3F7B00000066B9DD3283
+}
+
+RewardReputation Contraband_Contract_Reputation_01_Preferred_Pyke < uid=2AE2EC8567CEB1130004850D15FDA9FB > : Contraband_Contract_Reputation_01_Preferred
+{
+	myReputation < uid=2AE2EC8567CEB22A0004853423560943 > = Reputation_PykeSyndicate 4728ADF9603373280000002E707BAB62
+}
+
+RewardReputation Contraband_Contract_Reputation_02_Preferred_Ashiga < uid=2AE2EC8567CEB1130004850E99DCFE97 > : Contraband_Contract_Reputation_02_Preferred
+{
+	myReputation < uid=2AE2EC8567CEB1880004851DA9D77E17 > = Reputation_AshigaClan 83E36AE36025542F000000656F036A88
+}
+
+RewardReputation Contraband_Contract_Reputation_02_Preferred_CrimsonDawn < uid=2AE2EC8567CEB1130004850F65A3CF61 > : Contraband_Contract_Reputation_02_Preferred
+{
+	myReputation < uid=2AE2EC8567CEB1D20004852538CE572E > = Reputation_CrimsonDawn 83E36AE36025543700000066EDF88DD8
+}
+
+RewardReputation Contraband_Contract_Reputation_02_Preferred_Hutt < uid=2AE2EC8567CEB11300048510E309633C > : Contraband_Contract_Reputation_02_Preferred
+{
+	myReputation < uid=2AE2EC8567CEB1F10004852DE3F473F8 > = Reputation_HuttClan 83E36AE3602A3F7B00000066B9DD3283
+}
+
+RewardReputation Contraband_Contract_Reputation_02_Preferred_Pyke < uid=2AE2EC8567CEB113000485111B43BCD7 > : Contraband_Contract_Reputation_02_Preferred
+{
+	myReputation < uid=2AE2EC8567CEB22A00048535CA5F7DCE > = Reputation_PykeSyndicate 4728ADF9603373280000002E707BAB62
+}
+
+RewardReputation Contraband_Contract_Reputation_03_Preferred_Ashiga < uid=2AE2EC8567CEB113000485126515D16E > : Contraband_Contract_Reputation_03_Preferred
+{
+	myReputation < uid=2AE2EC8567CEB1880004851E288D9216 > = Reputation_AshigaClan 83E36AE36025542F000000656F036A88
+}
+
+RewardReputation Contraband_Contract_Reputation_03_Preferred_CrimsonDawn < uid=2AE2EC8567CEB113000485131EB6C26A > : Contraband_Contract_Reputation_03_Preferred
+{
+	myReputation < uid=2AE2EC8567CEB1D200048526B6CBCC38 > = Reputation_CrimsonDawn 83E36AE36025543700000066EDF88DD8
+}
+
+RewardReputation Contraband_Contract_Reputation_03_Preferred_Hutt < uid=2AE2EC8567CEB11300048514B60E5203 > : Contraband_Contract_Reputation_03_Preferred
+{
+	myReputation < uid=2AE2EC8567CEB1F10004852E96093D78 > = Reputation_HuttClan 83E36AE3602A3F7B00000066B9DD3283
+}
+
+RewardReputation Contraband_Contract_Reputation_03_Preferred_Pyke < uid=2AE2EC8567CEB11300048515B0ADE511 > : Contraband_Contract_Reputation_03_Preferred
+{
+	myReputation < uid=2AE2EC8567CEB22A00048536C06E9AD3 > = Reputation_PykeSyndicate 4728ADF9603373280000002E707BAB62
+}
+

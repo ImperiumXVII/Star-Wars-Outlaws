@@ -1,0 +1,17 @@
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npc/wl_massiff.mnpc"
+
+NPC wl_massiff_companion < uid=E9DD8F6064190B3F00001D25B90B77D0 > : wl_massiff
+{
+	myCharacterVisuals < uid=E9DD8F60654073C00000CC28DE027A21 > = character_visuals_wil_massiff_companion E9DD8F60654064740003410E2702B972
+	myHealthFormula min(7,5+2*WildlifeHealthDifficultyModifier)/2
+	myVisionProfile < uid=E9DD8F60641921D000001D356E87D76C > = MassiffCompanionVisionProfile 290EB60C63DCABAA00003893DA04B03B
+	mySmellProfile < uid=E9DD8F60641921D000001D36B615184D > = MassiffCompanionSmellProfile 290EB60C63DCACFF00003897D2B65A29
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=E9DD8F60641921D000001D3737584FF3 > = DefaultNPCCompanionDetectionProfile 2AA3EE5D63D9E57C000216E0C4522C67
+	}
+	myDynamicCAPInteractionProfile < uid=E9DD8F606419224300001D3AAC54D2C9 > = CompanionMassiffDynamicCAP 290EB60C63E4B58900047A6072CF1AB4
+	myFleeProfile < uid=E9DD8F6065434AF900045C7CB30DDB11 > = MassiffCompanionFleeProfile E9DD8F6065434AAF00045C6B31FCA396
+}
+

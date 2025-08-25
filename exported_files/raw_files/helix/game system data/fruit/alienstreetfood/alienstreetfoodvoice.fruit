@@ -1,0 +1,59 @@
+include "helix/game system data/fruit/audio/stimulus.fruit"
+
+enum AlienStreetFoodVoiceEmitter
+{
+	Nix
+	Kay
+	Droid
+}
+
+class AlienStreetFoodVoice
+{
+	StimulusIdentifier* myStimulusIdentifier
+	AlienStreetFoodVoiceEmitter myEmitter
+}
+
+list AlienStreetFoodVoices
+{
+	AlienStreetFoodVoice
+}
+
+class AlienStreetFoodVoiceMarker 
+{
+	AlienStreetFoodVoice myVoice
+	string myStimulusMarker
+	bool myIsOneShot
+}
+
+list AlienStreetFoodVoicesMarkers
+{
+	AlienStreetFoodVoiceMarker
+}
+
+class AlienStreetFoodDialogue
+{
+	file myDialogueFile "" < bhv = asset assettype = "Dialogue Graph" tooltip = "The file path for the dialogue graph that is the audio log for this journal" >
+}
+
+list AlienStreetFoodDialogues
+{
+	AlienStreetFoodDialogue
+}
+
+class AlienStreetFoodDialogueMarker
+{
+	AlienStreetFoodDialogue myDialogue
+	string myDialogueMarker
+	bool myIsOneShot
+}
+
+list AlienStreetFoodDialogueMarkers
+{ 
+	AlienStreetFoodDialogueMarker
+}
+
+class AlienStreetFoodVoiceSetting < uid=auto >
+{
+	AlienStreetFoodVoicesMarkers myMarkersVoiceBindings
+	AlienStreetFoodDialogueMarkers myMarkersDialogueBindings
+}

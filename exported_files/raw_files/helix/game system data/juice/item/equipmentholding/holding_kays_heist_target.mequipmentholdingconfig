@@ -1,0 +1,89 @@
+include "helix/game system data/fruit/equipment/equipment_holding.fruit"
+include "helix/game system data/juice/item/equipmentholding/holding_kays_base.mequipmentholdingconfig"
+include "helix/game system data/juice/playermovementconfig/player_movement_heist_target.mplayermovementconfig"
+
+EquipmentHoldingConfig holding_kays_heist_target < uid=0B13141562E2BACB000002ABE03000C5 > : holding_kays_base
+{
+	myHandlingMode TwoHands
+	myAlwaysHold TRUE
+	myAlwaysRaise TRUE
+	mySequences
+	{
+		myHolster
+		{
+			myDuration 1.0
+		}
+		myUnHolster
+		{
+			myDuration 1.0
+		}
+		myUnHolsterAndUse
+		{
+			myDuration 1.0
+			myTracks
+			{
+				myGenericTracks
+				{
+				}
+				myCustomTracks
+				{
+					HoldEquipmentUseTrack Use
+					{
+						myStartCyclePos 0.8
+					}
+				}
+			}
+		}
+		myUnHolsterAndAim
+		{
+			myDuration 1.0
+		}
+		myThrowAway
+		{
+			myDuration 1.0
+			myTracks
+			{
+				myGenericTracks
+				{
+				}
+				myCustomTracks
+				{
+				}
+			}
+		}
+		myPick
+		{
+			myDuration 1.0
+			myTracks
+			{
+				myGenericTracks
+				{
+				}
+				myCustomTracks
+				{
+				}
+			}
+		}
+	}
+	myRaiseConfig
+	{
+		myUseRaiseEquipment TRUE
+	}
+	myMovement
+	{
+		myTurnWhileUsingIfNoMovementEnabled TRUE
+		myMovementConfig < uid=0B13141562E2BB5A000015FC73C36147 > = player_movement_heist_target 0B13141562E2BB29000005E79FBC3814
+	}
+	myHeldIfEquipmentNotReadyEnabled TRUE
+	myPlayerStateBehavior
+	{
+		myMelee StateAllowedButRestricted
+		myTraversal StateAllowedButRestricted
+		myOverHeat StateAllowedButRestricted
+		myRoll StateAllowedButRestricted
+		myCrouch StateAllowedButRestricted
+		mySprint StateAllowedButRestricted
+		myJump StateAllowedButRestricted
+	}
+}
+

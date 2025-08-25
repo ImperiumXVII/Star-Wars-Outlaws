@@ -1,0 +1,95 @@
+include "helix/game system data/juice/camera/modifiers/weapon_recoil_kays_blaster.mcameramodifier"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_blaster_streak_seeker.mweaponfiremode"
+include "helix/game system data/juice/item/player_weapon_blaster_template.mitem"
+
+WeaponItem player_weapon_blaster_scatter < uid=1C021E9562BC33C30000687A1371B590 > : Player_Weapon_Blaster_Template
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = true, guid = #1C021E9562BC33C300006876A8373826, lineVersion = 4, maxLength = 0, productId = -1, sectionId = -1, text = \"Scattergun\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = true, guid = #1C021E9562BC33C30000687751BE0CCD, lineVersion = 4, maxLength = 0, productId = -1, sectionId = -1, text = \"The scattergun\", type = \"MenuLine\""
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=A207755D62C3E5680000374B554F8143 > = player_firemode_blaster_streak_seeker A207755D62C3E3F700003749A7988275
+		}
+		WeaponFireModeSlot Secondary
+		{
+			mySlotTag Secondary
+			myFireMode < uid=A207755D62C3E5680000374C97EDCD69 > = player_firemode_blaster_streak_seeker A207755D62C3E3F700003749A7988275
+		}
+		WeaponFireModeSlot TrickShot
+		{
+			mySlotTag TrickShot
+			myFireMode < uid=A207755D62C3E5680000374DF4057ECB > = player_firemode_blaster_trickshot_default A207755D62C2F37200003756781302DE
+		}
+	}
+}
+
+WeaponItem player_weapon_blaster_scatter_T2 < uid=1C021E9562BC33C300006882B33EFD2B > : player_weapon_blaster_scatter
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = true, guid = #1C021E9562BC33C3000068782BC6A1B7, lineVersion = 4, maxLength = 0, productId = -1, sectionId = -1, text = \"VM-19 Special\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = true, guid = #1C021E9562BC33C30000687902964BEC, lineVersion = 5, maxLength = 0, productId = -1, sectionId = -1, text = \"Kay’s blaster is a VM-19 heavy blaster pistol made by the Merr-Sonn Munitions corporation.Upgraded to allow its bolts to ricochet.\", type = \"MenuLine\""
+	myIcon "mySpriteId = 1243021025, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_weapon_icons_01.spritesheet\""
+	myCategory Weapon
+	myQuality Premium
+	myInventoryPouch Weapon
+	myAgentInventoryCapacity ""
+	mySpeederInventoryCapacity ""
+	mySpaceshipInventoryCapacity ""
+	myPetInventoryCapacity ""
+	myDefaultInventory Agent
+	myShowInventoryNotifications TRUE
+	myLootGraphObject ""
+	myAllowUsingLootGraphObjectWithAnyAmount TRUE
+	myBlockedLootBehavior Default
+	myIsAutoLoot FALSE
+	myBuyPrice 1995
+	myCanBeSold TRUE
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+	myAmount < uid=1C021E9562BC33C300006883FA23F56B >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory Item
+		myParentLevelsToUseInInstanceName 1
+	}
+	myCooldown
+	{
+		myStartType OnEndUse
+		myDuration 0.0
+	}
+	myAlwaysAim FALSE
+	myUI
+	{
+		myDefaultUIGraph helix/ui/Graphs/crosshair_blaster.muigraph
+	}
+	myDefaultSlotGroup Weapons
+	myIsPickable FALSE
+	myTalents
+	{
+	}
+	myGearSets
+	{
+	}
+	myGraphObject "helix/graph objects/weapon/wpn_kay_blaster_001.mgraphobject"
+	myChangeFireModeSequence
+	{
+		myDuration 0.87
+		myTracks
+		{
+			myGenericTracks
+			{
+			}
+			myCustomTracks
+			{
+			}
+		}
+	}
+}
+

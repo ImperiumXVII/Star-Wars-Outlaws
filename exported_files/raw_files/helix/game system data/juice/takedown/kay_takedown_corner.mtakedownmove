@@ -1,0 +1,713 @@
+include "helix/game system data/fruit/takedown/takedown_move.fruit"
+include "helix/game system data/juice/camera/animatedcameradata/takedown_corner_animatedcameradata.manimatedcameradata"
+include "helix/game system data/juice/camera/blendtransitions/takedown_corner_left_h0_nowallcontact_outcamerablend.mcamerablendtransition"
+include "helix/game system data/juice/camera/blendtransitions/takedown_corner_left_h180_nowallcontact_outcamerablend.mcamerablendtransition"
+include "helix/game system data/juice/camera/blendtransitions/takedown_corner_left_h180_wallcontact_outcamerablend.mcamerablendtransition"
+include "helix/game system data/juice/camera/blendtransitions/takedown_corner_left_h90_outcamerablend.mcamerablendtransition"
+include "helix/game system data/juice/camera/blendtransitions/takedown_corner_right_h0_nowallcontact_outcamerablend.mcamerablendtransition"
+include "helix/game system data/juice/takedown/kay_takedown_base.mtakedownmove"
+
+TakedownMove kay_takedown_corner < uid=FCD8086C64D49D4A0003392144EBB3B9 > : kay_takedown_base
+{
+	myOverrideTargetAlignmentSettings
+	{
+		myIsEnabled TRUE
+		myBoneAliasID ""
+		myDurationOverDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.016666668 -0.033333335, }, outTangents = { 0.016666668 0.033333335, 0 0, }, properties = { 203, 1227, }, values = { 0 0, 0.050000001 0.1, }, }, numKeys = 2, }"
+	}
+	myAnimationEntryType Corner
+	myAlignments
+	{
+		TakedownAlignment "LeftCorner 0"
+		{
+			myMode CornerTargetFront
+			myCoverReference CornerLeft
+			myAngle 0
+			mySequenceDuration 6.2
+			myEnableOverrideCameraSafetySettings TRUE
+			myOverrideCameraSafetySettings
+			{
+				mySafetyAreaShapeType Box
+				mySafetyAreaPositioningRatio 1.0
+				mySafetyAreaCheckOffset 0.0;0.9;-1.6
+				mySafetyAreaCheckSize 2.8;0.7;1.0
+				myUseClosestWallHitAsTargetReference TRUE
+			}
+			myOverrideCameraReturnTransitionIn < uid=34BDFEB0660544F300020DD6BE255B7E > = takedown_corner_left_h0_nowallcontact_outcamerablend 34BDFEB0660544AA00020D8B7500B515
+			myEnableOverrideAnimatedCameraEndPercentage TRUE
+			myOverrideAnimatedCameraEndPercentage 0.42
+			myAlignmentPosDuration 0.1
+			myAlignmentRotDuration 0.1
+			myAlignmentRotProgressionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 1, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 0, }, outTangents = { 0.33333334 0, 0 0, }, properties = { 71, 1227, }, values = { 0 1, 1 1, }, }, numKeys = 2, }"
+			myOptimalRotAngleOffset 90.0
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.0
+			myOptimalOffset -0.51;0.0;-0.58
+			myTriggerPostTakedownShakeHandClip TRUE
+		}
+		TakedownAlignment "LeftCorner 180"
+		{
+			myMode CornerTargetBack
+			myCoverReference CornerLeft
+			myAngle 180
+			mySequenceDuration 6.2
+			myEnableOverrideCameraSafetySettings TRUE
+			myOverrideCameraSafetySettings
+			{
+				mySafetyAreaShapeType Box
+				mySafetyAreaPositioningRatio 1.0
+				mySafetyAreaCheckOffset 0.4;1.0;-2.1
+				mySafetyAreaCheckSize 3.9;0.8;1.3
+				myUseClosestWallHitAsTargetReference TRUE
+			}
+			myOverrideCameraReturnTransitionIn < uid=34BDFEB066053B870001FD79571C5F3C > = takedown_corner_left_h180_nowallcontact_outcamerablend 34BDFEB066053B2E0001FD32C4DF7B17
+			myEnableOverrideAnimatedCameraEndPercentage TRUE
+			myOverrideAnimatedCameraEndPercentage 0.66
+			myAlignmentPosDuration 0.1
+			myAlignmentRotDuration 0.1
+			myAlignmentRotProgressionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 0, }, outTangents = { 0.33333334 0, 0 0, }, properties = { 203, 1227, }, values = { 0 1, 1 1, }, }, numKeys = 2, }"
+			myOptimalRotAngleOffset 90.0
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.0
+			myOptimalOffset -0.54;0.0;-0.62
+			myTriggerPostTakedownShakeHandClip TRUE
+		}
+		TakedownAlignment "LeftCorner -90"
+		{
+			myMode CornerTargetLeft
+			myCoverReference CornerLeft
+			myAngle -90
+			mySequenceDuration 6.2
+			myEnableOverrideCameraSafetySettings TRUE
+			myOverrideCameraSafetySettings
+			{
+				mySafetyAreaShapeType Box
+				mySafetyAreaPositioningRatio 1.0
+				mySafetyAreaCheckOffset 0.15;0.7;-1.8
+				mySafetyAreaCheckSize 2.7;0.8;1.7
+				myUseClosestWallHitAsTargetReference TRUE
+			}
+			myEnableOverrideAnimatedCameraEndPercentage TRUE
+			myOverrideAnimatedCameraEndPercentage 0.6
+			myAlignmentPosDuration 0.1
+			myAlignmentRotDuration 0.1
+			myAlignmentRotProgressionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 1, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 0, }, outTangents = { 0.33333334 0, 0 0, }, properties = { 71, 1227, }, values = { 0 1, 1 1, }, }, numKeys = 2, }"
+			myOptimalRotAngleOffset 90.0
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.0
+			myOptimalOffset -0.43;0.0;-0.68
+			myTriggerPostTakedownShakeHandClip FALSE
+		}
+		TakedownAlignment "LeftCorner 90"
+		{
+			myMode CornerTargetRight
+			myCoverReference CornerLeft
+			myAngle 90
+			mySequenceDuration 6.2
+			myEnableOverrideCameraSafetySettings TRUE
+			myOverrideCameraSafetySettings
+			{
+				mySafetyAreaShapeType Box
+				mySafetyAreaPositioningRatio 1.0
+				mySafetyAreaCheckOffset 0.7;0.9;-1.4
+				mySafetyAreaCheckSize 2.7;0.8;1.2
+				myUseClosestWallHitAsTargetReference TRUE
+			}
+			myOverrideCameraReturnTransitionIn < uid=34BDFEB0660536F50001EA3141A352CA > = takedown_corner_left_h90_outcamerablend 34BDFEB0660536600001EA1997A1ED65
+			myEnableOverrideAnimatedCameraEndPercentage TRUE
+			myOverrideAnimatedCameraEndPercentage 0.66
+			myAlignmentPosDuration 0.1
+			myAlignmentRotDuration 0.1
+			myAlignmentRotProgressionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 1, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 0, }, outTangents = { 0.33333334 0, 0 0, }, properties = { 71, 1227, }, values = { 0 1, 1 1, }, }, numKeys = 2, }"
+			myOptimalRotAngleOffset 90.0
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.0
+			myOptimalOffset -0.31;0.0;-0.47
+		}
+		TakedownAlignment "RightCorner 0"
+		{
+			myMode CornerTargetFront
+			myCoverReference CornerRight
+			myAngle 0
+			mySequenceDuration 6.2
+			myEnableOverrideCameraSafetySettings TRUE
+			myOverrideCameraSafetySettings
+			{
+				mySafetyAreaShapeType Box
+				mySafetyAreaPositioningRatio 1.0
+				mySafetyAreaCheckOffset 0.24;0.7;-1.72
+				mySafetyAreaCheckSize 1.7;1.2;2.7
+				myUseClosestWallHitAsTargetReference TRUE
+			}
+			myOverrideCameraReturnTransitionIn < uid=34BDFEB0660545F1000211BCD01A6A75 > = takedown_corner_right_h0_nowallcontact_outcamerablend 34BDFEB0660545AA0002116F92F20B83
+			myEnableOverrideAnimatedCameraEndPercentage TRUE
+			myOverrideAnimatedCameraEndPercentage 0.59
+			myAlignmentPosDuration 0.1
+			myAlignmentRotDuration 0.1
+			myAlignmentRotProgressionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 1, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 0, }, outTangents = { 0.33333334 0, 0 0, }, properties = { 71, 1227, }, values = { 0 1, 1 1, }, }, numKeys = 2, }"
+			myOptimalRotAngleOffset -90.100006
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.0
+			myOptimalOffset 0.85;0.0;-0.77
+		}
+		TakedownAlignment "RightCorner 180"
+		{
+			myMode CornerTargetBack
+			myCoverReference CornerRight
+			myAngle 180
+			mySequenceDuration 6.2
+			myEnableOverrideCameraSafetySettings TRUE
+			myOverrideCameraSafetySettings
+			{
+				mySafetyAreaShapeType Box
+				mySafetyAreaPositioningRatio 1.0
+				mySafetyAreaCheckOffset 0.1;0.5;-2.35
+				mySafetyAreaCheckSize 3.7;1.3;1.5
+				myUseClosestWallHitAsTargetReference TRUE
+			}
+			myEnableOverrideAnimatedCameraEndPercentage TRUE
+			myOverrideAnimatedCameraEndPercentage 0.68
+			myAlignmentPosDuration 0.1
+			myAlignmentRotDuration 0.1
+			myAlignmentRotProgressionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 1, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.26572329 -0, -0.06761007 0, }, outTangents = { 0.26572329 0, 0.06761007 0, 0 0, }, properties = { 71, 2051, 1227, }, values = { 0 1, 0.7971698 1, 1 1, }, }, numKeys = 3, }"
+			myOptimalRotAngleOffset -90.0
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.0
+			myOptimalOffset 0.77;0.0;-0.62
+		}
+		TakedownAlignment "RightCorner -90"
+		{
+			myMode CornerTargetLeft
+			myCoverReference CornerRight
+			myAngle -90
+			mySequenceDuration 6.2
+			myEnableOverrideCameraSafetySettings TRUE
+			myOverrideCameraSafetySettings
+			{
+				mySafetyAreaShapeType Box
+				mySafetyAreaPositioningRatio 1.0
+				mySafetyAreaCheckOffset 0.3;0.3;-2.17
+				mySafetyAreaCheckSize 2.38;1.3;1.4
+				myUseClosestWallHitAsTargetReference TRUE
+			}
+			myOverrideCameraReturnTransitionIn < uid=34BDFEB066054E59000222A3E22E835C > = takedown_corner_left_h90_outcamerablend 34BDFEB0660536600001EA1997A1ED65
+			myEnableOverrideAnimatedCameraEndPercentage TRUE
+			myOverrideAnimatedCameraEndPercentage 0.75
+			myAlignmentPosDuration 0.1
+			myAlignmentRotDuration 0.1
+			myAlignmentRotProgressionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 1, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 0, }, outTangents = { 0.33333334 0, 0 0, }, properties = { 71, 1227, }, values = { 0 1, 1 1, }, }, numKeys = 2, }"
+			myOptimalRotAngleOffset -90.0
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.0
+			myOptimalOffset 0.85;0.0;-0.77
+			myTriggerPostTakedownShakeHandClip TRUE
+		}
+		TakedownAlignment "RightCorner 90"
+		{
+			myMode CornerTargetRight
+			myCoverReference CornerRight
+			myAngle 90
+			mySequenceDuration 5.73
+			myEnableOverrideCameraSafetySettings TRUE
+			myOverrideCameraSafetySettings
+			{
+				mySafetyAreaShapeType Box
+				mySafetyAreaPositioningRatio 1.0
+				mySafetyAreaCheckOffset 0.5;0.5;-2.4
+				mySafetyAreaCheckSize 1.0;1.0;1.7
+				myUseClosestWallHitAsTargetReference TRUE
+			}
+			myOverrideCameraReturnTransitionIn < uid=34BDFEB066054FE200022C1DCF752718 > = takedown_corner_left_h90_outcamerablend 34BDFEB0660536600001EA1997A1ED65
+			myEnableOverrideAnimatedCameraEndPercentage TRUE
+			myOverrideAnimatedCameraEndPercentage 0.66
+			myAlignmentPosDuration 0.1
+			myAlignmentRotDuration 0.1
+			myAlignmentRotProgressionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 1, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.16666667 -0, -0.16666667 0, }, outTangents = { 0.16666667 0, 0.16666667 0, 0 0, }, properties = { 71, 2051, 1227, }, values = { 0 1, 0.5 1, 1 1, }, }, numKeys = 3, }"
+			myOptimalRotAngleOffset -90.0
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.0
+			myOptimalOffset 0.86;0.0;-0.77
+		}
+		TakedownAlignment "LeftCorner 0 WallContact"
+		{
+			myMode CornerTargetFrontWall
+			myCoverReference CornerLeft
+			myAngle 0
+			mySequenceDuration 6.2
+			myEnableOverrideCameraSafetySettings TRUE
+			myOverrideCameraSafetySettings
+			{
+				mySafetyAreaShapeType Box
+				mySafetyAreaPositioningRatio 1.0
+				mySafetyAreaCheckOffset 0.7;0.75;-1.5
+				mySafetyAreaCheckSize 3.3;1.2;1.3
+				myUseClosestWallHitAsTargetReference TRUE
+			}
+			myEnableOverrideAnimatedCameraEndPercentage TRUE
+			myOverrideAnimatedCameraEndPercentage 0.45
+			myAlignmentPosDuration 0.1
+			myAlignmentRotDuration 0.1
+			myAlignmentRotProgressionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 1, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 0, }, outTangents = { 0.33333334 0, 0 0, }, properties = { 71, 1227, }, values = { 0 1, 1 1, }, }, numKeys = 2, }"
+			myOptimalRotAngleOffset 90.0
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.0
+			myOptimalOffset -0.39;0.0;-0.64
+		}
+		TakedownAlignment "LeftCorner 180 WallContact"
+		{
+			myMode CornerTargetBackWall
+			myCoverReference CornerLeft
+			myAngle 180
+			mySequenceDuration 6.2
+			myEnableOverrideCameraSafetySettings TRUE
+			myOverrideCameraSafetySettings
+			{
+				mySafetyAreaShapeType Box
+				mySafetyAreaPositioningRatio 1.0
+				mySafetyAreaCheckOffset 1.1;0.7;-1.1
+				mySafetyAreaCheckSize 2.5;1.3;1.6
+				myUseClosestWallHitAsTargetReference TRUE
+			}
+			myOverrideCameraReturnTransitionIn < uid=34BDFEB065F84C220001A225A592EA57 > = takedown_corner_left_h180_wallcontact_outcamerablend 34BDFEB065F84A3E00014627FC4F80BA
+			myEnableOverrideAnimatedCameraEndPercentage TRUE
+			myOverrideAnimatedCameraEndPercentage 0.54
+			myAlignmentPosDuration 0.1
+			myAlignmentRotDuration 0.1
+			myAlignmentRotProgressionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 1, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 0, }, outTangents = { 0.33333334 0, 0 0, }, properties = { 71, 1227, }, values = { 0 1, 1 1, }, }, numKeys = 2, }"
+			myOptimalRotAngleOffset 90.0
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.0
+			myOptimalOffset -0.17;0.0;-0.69
+		}
+		TakedownAlignment "LeftCorner -90 WallContact"
+		{
+			myMode CornerTargetLeftWall
+			myCoverReference CornerLeft
+			myAngle -90
+			mySequenceDuration 6.2
+			myEnableOverrideCameraSafetySettings TRUE
+			myOverrideCameraSafetySettings
+			{
+				mySafetyAreaShapeType Box
+				mySafetyAreaPositioningRatio 1.0
+				mySafetyAreaCheckOffset 0.15;0.7;-1.8
+				mySafetyAreaCheckSize 2.7;0.8;1.7
+				myUseClosestWallHitAsTargetReference TRUE
+			}
+			myEnableOverrideAnimatedCameraEndPercentage TRUE
+			myOverrideAnimatedCameraEndPercentage 0.6
+			myAlignmentPosDuration 0.1
+			myAlignmentRotDuration 0.1
+			myAlignmentRotProgressionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 1, isRefinedSampling = true, keys2 = { inTangents = { 0 0.69117647, -0 0, -0.2673384 0, }, outTangents = { 0 0, 0.2673384 0, 0 0, }, properties = { 2067, 71, 1227, }, values = { -0.0020151138 1, -0.0020151138 1, 0.80000001 1, }, }, numKeys = 3, }"
+			myOptimalRotAngleOffset 90.0
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.0
+			myOptimalOffset -0.43;0.0;-0.68
+		}
+		TakedownAlignment "LeftCorner 90 WallContact"
+		{
+			myMode CornerTargetRightWall
+			myCoverReference CornerLeft
+			myAngle 90
+			mySequenceDuration 6.2
+			myEnableOverrideCameraSafetySettings TRUE
+			myOverrideCameraSafetySettings
+			{
+				mySafetyAreaShapeType Box
+				mySafetyAreaPositioningRatio 1.0
+				mySafetyAreaCheckOffset 0.7;0.9;-1.4
+				mySafetyAreaCheckSize 2.7;0.8;1.2
+				myUseClosestWallHitAsTargetReference TRUE
+			}
+			myOverrideCameraReturnTransitionIn < uid=34BDFEB0660536F50001EA32F1DCD903 > = takedown_corner_left_h90_outcamerablend 34BDFEB0660536600001EA1997A1ED65
+			myEnableOverrideAnimatedCameraEndPercentage TRUE
+			myOverrideAnimatedCameraEndPercentage 0.66
+			myAlignmentPosDuration 0.1
+			myAlignmentRotDuration 0.1
+			myAlignmentRotProgressionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 1, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 0, }, outTangents = { 0.33333334 0, 0 0, }, properties = { 71, 1227, }, values = { 0 1, 1 1, }, }, numKeys = 2, }"
+			myOptimalRotAngleOffset 90.0
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.0
+			myOptimalOffset -0.37;0.0;-0.69
+		}
+		TakedownAlignment "RightCorner 0 WallContact"
+		{
+			myMode CornerTargetFrontWall
+			myCoverReference CornerRight
+			myAngle 0
+			mySequenceDuration 6.2
+			myEnableOverrideCameraSafetySettings TRUE
+			myOverrideCameraSafetySettings
+			{
+				mySafetyAreaShapeType Box
+				mySafetyAreaPositioningRatio 1.0
+				mySafetyAreaCheckOffset 0.34;0.7;-1.72
+				mySafetyAreaCheckSize 1.7;1.2;2.7
+				myUseClosestWallHitAsTargetReference TRUE
+			}
+			myOverrideCameraReturnTransitionIn < uid=34BDFEB0660545F1000211BD5AC122B3 > = takedown_corner_right_h0_nowallcontact_outcamerablend 34BDFEB0660545AA0002116F92F20B83
+			myEnableOverrideAnimatedCameraEndPercentage TRUE
+			myOverrideAnimatedCameraEndPercentage 0.59
+			myAlignmentPosDuration 0.1
+			myAlignmentRotDuration 0.1
+			myAlignmentRotProgressionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 1, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 0, }, outTangents = { 0.33333334 0, 0 0, }, properties = { 71, 1227, }, values = { 0 1, 1 1, }, }, numKeys = 2, }"
+			myOptimalRotAngleOffset -90.0
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.0
+			myOptimalOffset 0.85;0.0;-0.77
+		}
+		TakedownAlignment "RightCorner 180 WallContact"
+		{
+			myMode CornerTargetBackWall
+			myCoverReference CornerRight
+			myAngle 180
+			mySequenceDuration 6.2
+			myEnableOverrideCameraSafetySettings TRUE
+			myOverrideCameraSafetySettings
+			{
+				mySafetyAreaShapeType Box
+				mySafetyAreaPositioningRatio 1.0
+				mySafetyAreaCheckOffset -1.0;0.3;-1.6
+				mySafetyAreaCheckSize 3.5;1.5;2.1
+				myUseClosestWallHitAsTargetReference TRUE
+			}
+			myEnableOverrideAnimatedCameraEndPercentage TRUE
+			myOverrideAnimatedCameraEndPercentage 0.68
+			myAlignmentPosDuration 0.1
+			myAlignmentRotDuration 0.1
+			myAlignmentRotProgressionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 1, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 0, }, outTangents = { 0.33333334 0, 0 0, }, properties = { 71, 1227, }, values = { 0 1, 1 1, }, }, numKeys = 2, }"
+			myOptimalRotAngleOffset -90.0
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.0
+			myOptimalOffset 0.95;0.0;-0.51
+		}
+		TakedownAlignment "RightCorner -90 WallContact"
+		{
+			myMode CornerTargetLeftWall
+			myCoverReference CornerRight
+			myAngle -90
+			mySequenceDuration 6.2
+			myEnableOverrideCameraSafetySettings TRUE
+			myOverrideCameraSafetySettings
+			{
+				mySafetyAreaShapeType Box
+				mySafetyAreaPositioningRatio 1.0
+				mySafetyAreaCheckOffset 0.3;0.3;-2.17
+				mySafetyAreaCheckSize 2.38;1.3;1.4
+				myUseClosestWallHitAsTargetReference TRUE
+			}
+			myOverrideCameraReturnTransitionIn < uid=34BDFEB066054E59000222A4BCF776BC > = takedown_corner_left_h90_outcamerablend 34BDFEB0660536600001EA1997A1ED65
+			myEnableOverrideAnimatedCameraEndPercentage TRUE
+			myOverrideAnimatedCameraEndPercentage 0.75
+			myAlignmentPosDuration 0.1
+			myAlignmentVerticalPosProgressionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 -0.33333334, }, outTangents = { 0.33333334 0.33333334, 0 0, }, properties = { 203, 1227, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+			myAlignmentRotDuration 0.1
+			myAlignmentRotProgressionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 1, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 0, }, outTangents = { 0.33333334 0, 0 0, }, properties = { 71, 1227, }, values = { 0 1, 1 1, }, }, numKeys = 2, }"
+			myOptimalRotAngleOffset -90.0
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.0
+			myOptimalOffset -0.85;0.0;-0.58
+			myTriggerPostTakedownShakeHandClip TRUE
+		}
+		TakedownAlignment "RightCorner 90 WallContact"
+		{
+			myMode CornerTargetRightWall
+			myCoverReference CornerRight
+			myAngle 90
+			mySequenceDuration 6.2
+			myEnableOverrideCameraSafetySettings TRUE
+			myOverrideCameraSafetySettings
+			{
+				mySafetyAreaShapeType Box
+				mySafetyAreaPositioningRatio 1.0
+				mySafetyAreaCheckOffset -0.7;0.3;-2.0
+				mySafetyAreaCheckSize 3.2;1.5;1.0
+				myUseClosestWallHitAsTargetReference TRUE
+			}
+			myEnableOverrideAnimatedCameraEndPercentage TRUE
+			myOverrideAnimatedCameraEndPercentage 0.7
+			myAlignmentPosDuration 0.1
+			myAlignmentRotDuration 0.1
+			myAlignmentRotProgressionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 1, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.06666667 0, }, outTangents = { 0.06666667 0, 0 0, }, properties = { 71, 1227, }, values = { 0 1, 0.2 1, }, }, numKeys = 2, }"
+			myOptimalRotAngleOffset -90.0
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.0
+			myOptimalOffset 0.73;0.0;-0.61
+		}
+	}
+	myStartConditions
+	{
+		myGameCondition
+		{
+			GameConditionMeleeGroup Group
+			{
+				myConditions
+				{
+					GameConditionMeleeAttackerIsInMovementState Ground
+					{
+					}
+					GameConditionTakedownExecutionConstraints TakedownExecutionConstraints
+					{
+						myMaxDistanceFromTakedownInteractionPoint 4.0
+						myObstacleCheckType None
+						myCoverConstraints
+						{
+							myEnableCoverConstraints TRUE
+							myRequireTargetBehindCoverWallSegment FALSE
+							myMinCoverHeight 0.0
+							myMaxPlayerDistanceFromCoverWall 1.5
+							myMaxTargetDistanceFromCoverWall 1.5
+							myTakedownCoverModeSettings
+							{
+								myModeConditionsList
+								{
+									TakedownCoverModeCondition CornerLeftTargetFront
+									{
+										myMode CornerTargetFront
+										myCoverReference CornerLeft
+										myAlignmentReference Corner
+										myMaxTargetFacingAngleWithPlayerCoverHitNormal 45.0
+										myMinTargetFacingAngleWithPlayerCoverHitNormal -45.0
+										myAreTargetFacingAngleWithPlayerCoverHitNormalAbsoluteValues FALSE
+										myRequireTargetCloseToCoverWall FALSE
+										myMaxAngleBetweenTargetAndPlayerHitNormals 100.0
+										myMinAngleBetweenTargetAndPlayerHitNormals 80.0
+										myMaxTargetWallDistanceTolerance 1.0
+										myMaxTargetWallDistance 1.5
+										myMinTargetWallHeight 0.0
+										myMaxTargetWallDepth 1.0
+									}
+									TakedownCoverModeCondition CornerLeftTargetFrontWall
+									{
+										myMode CornerTargetFrontWall
+										myCoverReference CornerLeft
+										myAlignmentReference Corner
+										myPriority 1
+										myMaxTargetFacingAngleWithPlayerCoverHitNormal 45.0
+										myMinTargetFacingAngleWithPlayerCoverHitNormal -45.0
+										myRequireTargetCloseToCoverWall TRUE
+										myMaxAngleBetweenTargetAndPlayerHitNormals 100.0
+										myMinAngleBetweenTargetAndPlayerHitNormals 80.0
+										myMaxTargetWallDistanceTolerance 0.1
+										myMaxTargetWallDistance 1.0
+										myMinTargetWallHeight 0.0
+									}
+									TakedownCoverModeCondition CornerLeftTargetBack
+									{
+										myMode CornerTargetBack
+										myCoverReference CornerLeft
+										myAlignmentReference Corner
+										myMaxTargetFacingAngleWithPlayerCoverHitNormal 180.0
+										myMinTargetFacingAngleWithPlayerCoverHitNormal 135.0
+										myAreTargetFacingAngleWithPlayerCoverHitNormalAbsoluteValues TRUE
+										myRequireTargetCloseToCoverWall FALSE
+										myMaxAngleBetweenTargetAndPlayerHitNormals 100.0
+										myMinAngleBetweenTargetAndPlayerHitNormals 80.0
+										myMaxTargetWallDistanceTolerance 1.0
+										myMaxTargetWallDistance 1.5
+										myMinTargetWallDistance 0.0
+										myMinTargetWallHeight 0.0
+									}
+									TakedownCoverModeCondition CornerLeftTargetBackWallContact
+									{
+										myMode CornerTargetBackWall
+										myCoverReference CornerLeft
+										myAlignmentReference Corner
+										myPriority 1
+										myMinTargetFacingAngleWithPlayerCoverHitNormal 135.0
+										myAreTargetFacingAngleWithPlayerCoverHitNormalAbsoluteValues TRUE
+										myRequireTargetCloseToCoverWall TRUE
+										myMaxAngleBetweenTargetAndPlayerHitNormals 100.0
+										myMinAngleBetweenTargetAndPlayerHitNormals 80.0
+										myMaxTargetWallDistance 1.0
+										myMinTargetWallHeight 0.0
+									}
+									TakedownCoverModeCondition CornerLeftTargetLeft
+									{
+										myMode CornerTargetLeft
+										myCoverReference CornerLeft
+										myAlignmentReference Corner
+										myMaxTargetFacingAngleWithPlayerCoverHitNormal 135.0
+										myMinTargetFacingAngleWithPlayerCoverHitNormal 45.0
+										myRequireTargetCloseToCoverWall FALSE
+										myMaxAngleBetweenTargetAndPlayerHitNormals 100.0
+										myMinAngleBetweenTargetAndPlayerHitNormals 80.0
+										myMaxTargetWallDistance 1.5
+										myMinTargetWallHeight 0.0
+									}
+									TakedownCoverModeCondition CornerLeftTargetLeftWallContact
+									{
+										myMode CornerTargetLeftWall
+										myCoverReference CornerLeft
+										myAlignmentReference Corner
+										myPriority 1
+										myMaxTargetFacingAngleWithPlayerCoverHitNormal 45.0
+										myMinTargetFacingAngleWithPlayerCoverHitNormal 135.0
+										myRequireTargetCloseToCoverWall TRUE
+										myMaxAngleBetweenTargetAndPlayerHitNormals 100.0
+										myMinAngleBetweenTargetAndPlayerHitNormals 80.0
+										myMaxTargetWallDistance 1.5
+										myMinTargetWallHeight 0.0
+									}
+									TakedownCoverModeCondition CornerLeftTargetRight
+									{
+										myMode CornerTargetRight
+										myCoverReference CornerLeft
+										myAlignmentReference Corner
+										myMaxTargetFacingAngleWithPlayerCoverHitNormal -45.0
+										myMinTargetFacingAngleWithPlayerCoverHitNormal -135.0
+										myRequireTargetCloseToCoverWall FALSE
+										myMaxAngleBetweenTargetAndPlayerHitNormals 100.0
+										myMinAngleBetweenTargetAndPlayerHitNormals 80.0
+										myMaxTargetWallDistanceTolerance 1.0
+										myMaxTargetWallDistance 1.5
+										myMinTargetWallHeight 0.0
+									}
+									TakedownCoverModeCondition CornerLeftTargetRightWallContact
+									{
+										myMode CornerTargetRightWall
+										myCoverReference CornerLeft
+										myAlignmentReference Corner
+										myPriority 1
+										myMaxTargetFacingAngleWithPlayerCoverHitNormal -45.0
+										myMinTargetFacingAngleWithPlayerCoverHitNormal -135.0
+										myRequireTargetCloseToCoverWall TRUE
+										myMaxAngleBetweenTargetAndPlayerHitNormals 100.0
+										myMinAngleBetweenTargetAndPlayerHitNormals 80.0
+										myMaxTargetWallDistance 1.0
+										myMinTargetWallHeight 0.0
+									}
+									TakedownCoverModeCondition CornerRightTargetFront
+									{
+										myMode CornerTargetFront
+										myCoverReference CornerRight
+										myAlignmentReference Corner
+										myMaxTargetFacingAngleWithPlayerCoverHitNormal 45.0
+										myMinTargetFacingAngleWithPlayerCoverHitNormal -45.0
+										myRequireTargetCloseToCoverWall FALSE
+										myMaxAngleBetweenTargetAndPlayerHitNormals 100.0
+										myMinAngleBetweenTargetAndPlayerHitNormals 80.0
+										myMaxTargetWallDistanceTolerance 1.0
+										myMaxTargetWallDistance 1.5
+										myMinTargetWallHeight 0.0
+									}
+									TakedownCoverModeCondition CornerRightTargetFrontWallContact
+									{
+										myMode CornerTargetFrontWall
+										myCoverReference CornerRight
+										myAlignmentReference Corner
+										myPriority 1
+										myMaxTargetFacingAngleWithPlayerCoverHitNormal 45.0
+										myMinTargetFacingAngleWithPlayerCoverHitNormal -45.0
+										myRequireTargetCloseToCoverWall TRUE
+										myMaxAngleBetweenTargetAndPlayerHitNormals 100.0
+										myMinAngleBetweenTargetAndPlayerHitNormals 80.0
+										myMaxTargetWallDistanceTolerance 0.1
+										myMaxTargetWallDistance 1.0
+										myMinTargetWallHeight 0.0
+									}
+									TakedownCoverModeCondition CornerRightTargetBack
+									{
+										myMode CornerTargetBack
+										myCoverReference CornerRight
+										myAlignmentReference Corner
+										myMaxTargetFacingAngleWithPlayerCoverHitNormal 180.0
+										myMinTargetFacingAngleWithPlayerCoverHitNormal 135.0
+										myAreTargetFacingAngleWithPlayerCoverHitNormalAbsoluteValues TRUE
+										myRequireTargetCloseToCoverWall FALSE
+										myMaxAngleBetweenTargetAndPlayerHitNormals 100.0
+										myMinAngleBetweenTargetAndPlayerHitNormals 80.0
+										myMaxTargetWallDistanceTolerance 1.0
+										myMaxTargetWallDistance 1.5
+										myMinTargetWallHeight 0.0
+									}
+									TakedownCoverModeCondition CornerRightTargetBackWallContact
+									{
+										myMode CornerTargetBackWall
+										myCoverReference CornerRight
+										myAlignmentReference Corner
+										myPriority 1
+										myMinTargetFacingAngleWithPlayerCoverHitNormal 135.0
+										myAreTargetFacingAngleWithPlayerCoverHitNormalAbsoluteValues TRUE
+										myRequireTargetCloseToCoverWall TRUE
+										myMaxAngleBetweenTargetAndPlayerHitNormals 100.0
+										myMinAngleBetweenTargetAndPlayerHitNormals 80.0
+										myMaxTargetWallDistance 1.0
+										myMinTargetWallHeight 0.0
+										myMaxTargetWallDepth 1.0
+									}
+									TakedownCoverModeCondition CornerRightTargetLeft
+									{
+										myMode CornerTargetLeft
+										myCoverReference CornerRight
+										myAlignmentReference Corner
+										myMaxTargetFacingAngleWithPlayerCoverHitNormal 135.0
+										myMinTargetFacingAngleWithPlayerCoverHitNormal 45.0
+										myRequireTargetCloseToCoverWall FALSE
+										myMaxAngleBetweenTargetAndPlayerHitNormals 80.0
+										myMinAngleBetweenTargetAndPlayerHitNormals 100.0
+										myMaxTargetWallDistanceTolerance 1.0
+										myMaxTargetWallDistance 1.5
+										myMinTargetWallHeight 0.0
+									}
+									TakedownCoverModeCondition CornerRightTargetLeftWallContact
+									{
+										myMode CornerTargetLeftWall
+										myCoverReference CornerRight
+										myAlignmentReference Corner
+										myPriority 1
+										myMaxTargetFacingAngleWithPlayerCoverHitNormal 135.0
+										myMinTargetFacingAngleWithPlayerCoverHitNormal 45.0
+										myRequireTargetCloseToCoverWall TRUE
+										myMaxAngleBetweenTargetAndPlayerHitNormals 80.0
+										myMaxTargetWallDistance 1.0
+										myMinTargetWallHeight 0.0
+									}
+									TakedownCoverModeCondition CornerRightTargetRight
+									{
+										myMode CornerTargetRight
+										myCoverReference CornerRight
+										myAlignmentReference Corner
+										myMaxTargetFacingAngleWithPlayerCoverHitNormal -45.0
+										myMinTargetFacingAngleWithPlayerCoverHitNormal -135.0
+										myAreTargetFacingAngleWithPlayerCoverHitNormalAbsoluteValues FALSE
+										myRequireTargetCloseToCoverWall FALSE
+										myMaxAngleBetweenTargetAndPlayerHitNormals 100.0
+										myMinAngleBetweenTargetAndPlayerHitNormals 80.0
+										myMaxTargetWallDistance 1.5
+										myMinTargetWallHeight 0.0
+									}
+									TakedownCoverModeCondition CornerRightTargetRightWallContact
+									{
+										myMode CornerTargetRightWall
+										myCoverReference CornerRight
+										myAlignmentReference Corner
+										myPriority 1
+										myMaxTargetFacingAngleWithPlayerCoverHitNormal -45.0
+										myMinTargetFacingAngleWithPlayerCoverHitNormal -135.0
+										myRequireTargetCloseToCoverWall TRUE
+										myMaxAngleBetweenTargetAndPlayerHitNormals 100.0
+										myMinAngleBetweenTargetAndPlayerHitNormals 80.0
+										myMaxTargetWallDistance 1.5
+										myMinTargetWallHeight 0.0
+									}
+								}
+							}
+							myRequireFreeCorner TRUE
+							myMaxPlayerDistanceFromCoverCorner 1.0
+							myMaxTargetDistanceFromCoverCorner 1.5
+						}
+					}
+					GameConditionMeleeTargetHeightDelta GameConditionMeleeTargetHeightDelta
+					{
+						myHeightDelta 0.8
+						myOperator LessThan
+					}
+				}
+			}
+		}
+	}
+	myAnimatedCameraData < uid=34BDFEB065F8440E000000183BD6FC18 > = takedown_corner_animatedcameradata 34BDFEB065F84258000198D5264C5268
+	myPriority 2
+}
+

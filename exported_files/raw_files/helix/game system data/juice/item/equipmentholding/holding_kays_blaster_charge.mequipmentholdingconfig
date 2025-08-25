@@ -1,0 +1,127 @@
+include "helix/game system data/fruit/equipment/equipment_holding.fruit"
+include "helix/game system data/juice/item/equipmentholding/holding_kays_weapon_base.mequipmentholdingconfig"
+
+EquipmentHoldingConfig holding_kays_blaster_charge < uid=A207755D6215F49900002C5F4F84C0D9 > : holding_kays_weapon_base
+{
+	mySkipPreviousHolstering TRUE
+	mySequences
+	{
+		myUnHolsterAndUse
+		{
+			myDuration 0.3
+			myTracks
+			{
+				myCustomTracks
+				{
+					HoldEquipmentUseTrack Use
+					{
+						myStartCyclePos 0.6
+					}
+				}
+			}
+		}
+		myFromIdleToHip
+		{
+			myDuration 0.3
+			myTracks
+			{
+				myCustomTracks
+				{
+					HoldEquipmentRaiseUseAllowedTrack UseAllowed
+					{
+						myStartCyclePos 0.6
+					}
+				}
+			}
+		}
+		myFromQuickHipFireToHipFire
+		{
+			myDuration 0.75
+			myTracks
+			{
+				myCustomTracks
+				{
+					HoldEquipmentRaiseUseAllowedTrack UseAllowed
+					{
+						myStartCyclePos 0.2
+					}
+				}
+			}
+		}
+		myFromIdleToADS
+		{
+			myDuration 0.4
+			myTracks
+			{
+				myCustomTracks
+				{
+					HoldEquipmentRaiseUseAllowedTrack UseAllowed
+					{
+						myStartCyclePos 0.3
+					}
+				}
+			}
+		}
+		myFromHipFireToADS
+		{
+			myDuration 0.4
+			myTracks
+			{
+				myCustomTracks
+				{
+					HoldEquipmentRaiseUseAllowedTrack UseAllowed
+					{
+						myStartCyclePos 0.3
+					}
+				}
+			}
+		}
+		myFromQuickHipFireToADS
+		{
+			myDuration 0.4
+			myTracks
+			{
+				myCustomTracks
+				{
+					HoldEquipmentRaiseUseAllowedTrack UseAllowed
+					{
+						myStartCyclePos 0.3
+					}
+				}
+			}
+		}
+		myFromADSToHipFire
+		{
+			myDuration 0.4
+			myTracks
+			{
+				myCustomTracks
+				{
+					HoldEquipmentRaiseUseAllowedTrack UseAllowed
+					{
+						myStartCyclePos 0.3
+					}
+				}
+			}
+		}
+	}
+	myRaiseConfig
+	{
+		myRaiseMinTime 0.25
+		myRaiseAfterLastUse
+		{
+			myEnabled FALSE
+		}
+		myRaiseAfterHipFireUse
+		{
+			myEnabled TRUE
+			myTime 2.0
+		}
+		myRaiseAfterDraw
+		{
+			myEnabled FALSE
+		}
+		myChangeRaiseFromQuickHipFireToHipFireTime 0.75
+	}
+}
+

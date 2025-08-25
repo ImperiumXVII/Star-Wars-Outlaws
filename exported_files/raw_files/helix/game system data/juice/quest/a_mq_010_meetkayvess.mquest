@@ -1,0 +1,201 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/intel/intel_a_can.mintel"
+include "helix/game system data/juice/mapref/mapref_quest_main.mmapref"
+include "helix/game system data/juice/rbtags/quest.mrbtagstags"
+include "helix/game system data/juice/reward/hairpin_player_reward.mreward"
+include "helix/game system data/juice/reward/quest_completion_reward.mreward"
+
+Quest A_MQ_010_MeetKayVess < uid=C5645856628B81B10000B4A8BCA85E04 >
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Quest name\", enabled = true, guid = #C5645856628B81B10000B49A0362EA6C, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9029, text = \"Beginnings\", type = \"MenuLine\""
+	myIntroDescription "aurabesh = false, contextComment = \"Intro description text\", enabled = true, guid = #93D30865651EB0560002DD56C15B4FDD, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9029, text = \"Intro description placeholder\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"Quest description\", enabled = true, guid = #C5645856630F16470000CFB5E0E40886, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 9029, text = \"A thief named Kay Vess has run out of credits and chances in Canto Bight. In desperation, she tries to steal the most valuable forged scandocs from the powerful local gang, the Sixth Kin\", type = \"MenuLine\""
+	myImage helix/baked/ui/loose_images/quest_bilboard/journal_billboard_mq_010.dds
+	myToastUIDisplayMode None
+	myCompletionReward < uid=2AE2EC85644BDD040029E373A0925409 > = A_MQ_010_questcomplete_reward 2AE2EC85644A92060000B29E062A99F0
+	myMapRefConstantData < uid=C5645856628B81B10000B4A904E254C1 > = NULLREFERENCE
+	myIntroBeat < uid=C5645856628B81B10000B4AAB4371172 >
+	{
+		myScript helix/scripts/scr_A_MQ_010_CAN_PLN_B01_TheCantina.mscript
+		myName "aurabesh = false, contextComment = \"Beat text\", enabled = true, guid = #C5645856628B81B10000B49B50FAE0D8, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9408, text = \"Prepare for the break in\", type = \"MenuLine\""
+		myLevelInfo 9C4B6A046012E3C00000018C095D3075
+		myMood Focused
+		myObjectives
+		{
+			QuestObjectiveCustom "Obj 01 Get food for Nix" < uid=C564585662AB3F720000EF4232E812AE >
+			{
+				myName "aurabesh = false, contextComment = \"Quest Objective text\", enabled = true, guid = #C564585662AB3F860000EF43887DE0BE, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9408, text = \"Get food for Nix\", type = \"MenuLine\""
+				myIsHiddenInTracker FALSE
+				myIsHiddenInHUD TRUE
+			}
+			QuestObjectiveGoToLocation "Obj 02 Leave the cantina" < uid=93D30865652D2C6B000341C8F6C8894D >
+			{
+				myName "aurabesh = false, contextComment = \"Quest objective text\", enabled = true, guid = #93D30865652D2C6B000341C92E3E7931, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9416, text = \"Leave the cantina\", type = \"MenuLine\""
+				myIsHiddenInHUD TRUE
+			}
+		}
+		myQuestBeatStateGameValue < uid=C5645856628B81B10000B4AE01F30C4D >
+		{
+		}
+		myQuestBeatAudioState
+		{
+			myGuid 48ADBA340BFA3D6A286CDDE3247F8291
+		}
+		myQuestBeatAudioStateOnReset
+		{
+			myGuid 00000000000000000000000000000000
+		}
+	}
+	myBeats
+	{
+		QuestBeat "Beat 02 A Way In" < uid=C564585662FF3D11000122801F914F84 >
+		{
+			myScript helix/scripts/scr_a_mq_010_can_pln_b02_awayin.mscript
+			myName "aurabesh = false, contextComment = \"Beat text\", enabled = true, guid = #C564585662FF3D2100012282FBA44154, lineVersion = 13, maxLength = 0, productId = -1, sectionId = 9417, text = \"Break in the Sixth Kin Club\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E3C00000018C095D3075
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom "Obj 01 Repair data spike at Preeban's" < uid=C564585663EDE68F0000AE46A577D19C >
+				{
+					myName "aurabesh = false, contextComment = \"Quest Objective text\", enabled = true, guid = #C564585663EDE6A70000AE57A87FEE0A, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 9417, text = \"Repair the data spike at Preeban's shop\", type = \"MenuLine\"}"
+					myIsHiddenInHUD FALSE
+				}
+				QuestObjectiveGetItem "Obj 02 Get credits" < uid=93D30865651D6C260001D4E91D0C99AE >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"Quest objective text\", enabled = true, guid = #93D30865651D6C260001D4EA6090275E, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9417, text = \"Acquire 200 credits to pay Preeban\", type = \"MenuLine\""
+				}
+				QuestObjectiveGoToLocation "Obj 03 Return to Preeban" < uid=93D3086565280BA700027EEAD3890CAA >
+				{
+					myName "aurabesh = false, contextComment = \"Quest Objective text\", enabled = true, guid = #93D3086565280B8600027EE979D934D9, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 9417, text = \"Return to Preeban with the credits\", type = \"MenuLine\""
+				}
+				QuestObjectiveGoToLocation "[NONVISIBLE] Marker around the fountain" < uid=93D30865657ACFAB000ABE1D10927C0E >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+				QuestObjectiveCustom "[NONVISIBLE] Marker in the droid shop" < uid=93D3086565EAE0FB00030E0159E8E699 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+			}
+			myQuestBeatStateGameValue < uid=C564585662FF3D880001228D9F000D19 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 495FEE3A75834140ED10407CCBE522BB
+			}
+			myDebugPlayOnlyCompletionReward < uid=1C021E956650810F00031819A4C067CC > = Hairpin_Player_Reward 93D30865651FC86C00029697A9714D50
+			myDebugPlayOnlyIsCompletionRewardUnique TRUE
+			myDebugPlayOnlyEquipItem TRUE
+		}
+		QuestBeat "Beat 03 The Sixth Kin Club" < uid=C564585663F33004000166D7DEE9FC69 >
+		{
+			myScript helix/scripts/scr_a_mq_010_can_pln_b03_thesixthkinclub.mscript
+			myName "aurabesh = false, contextComment = \"Beat text\", enabled = true, guid = #C564585663F33066000166D8D0E892F0, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9418, text = \"Steal from the Sixth Kin Club\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E3C00000018C095D3075
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom "Obj 01 Find a way into Club Tarsus" < uid=C564585663F3318A0001E5D9495950A8 >
+				{
+					myName "aurabesh = false, contextComment = \"Quest Objective text\", enabled = true, guid = #C564585663F3319A0001E5DA7E602E6C, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 9418, text = \"Find a way into Club Tarsus\", type = \"MenuLine\""
+					myIsHiddenInHUD FALSE
+					myQuestObjectiveAudioState
+					{
+						myGuid 00000000000000000000000000000000
+					}
+					myChildObjectives
+					{
+						QuestObjectiveInteract "Nix Interact marker" < uid=93D30865655CC06A000E4BCC0999411F >
+						{
+							myIsHiddenInTracker TRUE
+						}
+						QuestObjectiveGoToLocation "Club Door marker" < uid=93D30865655CC07B000E4BCECD718234 >
+						{
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD FALSE
+						}
+					}
+				}
+				QuestObjectiveCustom "Obj 02 Steal the forged scan docs" < uid=93D30865651EDA590002CC1DF2EE1112 >
+				{
+					myName "aurabesh = false, contextComment = \"Quest objective text\", enabled = true, guid = #93D30865651EDA590002CC1EA07321C9, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9418, text = \"Steal the forged identicard in the office\", type = \"MenuLine\""
+				}
+				QuestObjectiveCustom "[INVISIBLE] Marker in the middle of the office" < uid=93D3086565E6F6E700020AC3A5762C5A >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+				QuestObjectiveCustom "[INVISBLE] Marker on the identidocs" < uid=93D3086565E6F70D00020AC694852D8E >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD FALSE
+				}
+				QuestObjectiveCustom "Obj 03 Return to the cantina" < uid=C564585663F643CA0000A479897FF5BD >
+				{
+					myName "aurabesh = false, contextComment = \"Quest Objective text\", enabled = true, guid = #C564585663F7389F000336FF47C790F7, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 9418, text = \"Escape from Club Tarsus\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myQuestObjectiveAudioState
+					{
+						myGuid 00000000000000000000000000000000
+					}
+				}
+			}
+			myScriptInputs
+			{
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=C564585663F331500001E5C7058A012E >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4B65B1E03EDC7B9B1E645AE443CF0BB2
+			}
+		}
+		QuestBeat "Beat 04 Back to the Cantina" < uid=C5645856628B81B10000B4AF5C900B6F >
+		{
+			myScript helix/scripts/scr_A_MQ_010_CAN_PLN_B02_GettingReady.mscript
+			myName "aurabesh = false, contextComment = \"Beat text\", enabled = true, guid = #C5645856628B81B10000B49F1A5F87CD, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9419, text = \"Hide in the Cantina\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E3C00000018C095D3075
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Obj 01 Go back to the Cantina" < uid=C5645856632C534900006689E1AE5904 >
+				{
+					myName "aurabesh = false, contextComment = \"Quest Objective text\", enabled = true, guid = #C5645856632C535A0000668A766D4FDF, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 9419, text = \"Go back home\", type = \"MenuLine\""
+				}
+				QuestObjectiveCustom "Obj 02 Go to Kay's room" < uid=C5645856632C53820000668D08C27311 >
+				{
+					myName "aurabesh = false, contextComment = \"Quest Objective text\", enabled = true, guid = #C5645856633EE88F0000C6FF6973FA21, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 9419, text = \"Go Kay's room\", type = \"MenuLine\"}"
+					myIsHiddenInHUD FALSE
+				}
+			}
+			myQuestBeatStateGameValue < uid=C5645856628B81B10000B4BAE91BF1CC >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 400DAC6B362F70FA38759CCD34767EAB
+			}
+		}
+	}
+	myQuestStateGameValue < uid=C5645856628B81B10000B4BB6FE43125 >
+	{
+	}
+	myQuestAudioState
+	{
+		myGuid 42834900737B65D3E642417FA47E10AB
+	}
+	myQuestStartedRBTag < uid=DA5615DD64B4F9380000AB79E56FBBFF > = World_Quest_MQ010_Started DA5615DD64A3DBD10000AC25A7BEABDD
+	myQuestCompletedRBTag < uid=DA5615DD64B4F9380000AB7ACF4FE183 > = World_Quest_MQ010_Completed DA5615DD64A3E0710000AC283167F1E2
+}
+

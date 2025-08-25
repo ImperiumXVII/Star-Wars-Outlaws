@@ -1,0 +1,645 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/intel/intel_toshara.mintel"
+include "helix/game system data/juice/rbtags/quest.mrbtagstags"
+include "helix/game system data/juice/reward/quest_completion_reward.mreward"
+include "helix/game system data/juice/reward/quest_reward.mreward"
+
+Quest A_MQ_040_IntoTheUnderworld < uid=B567AAE061F3F13300001B173A8B0CF2 >
+{
+	myName "aurabesh = false, contextComment = \"A_MQ_040 Quest name\", enabled = true, guid = #B567AAE061FD194E00001DCCCA14DCC9, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 9098, text = \"Into The Underworld\", type = \"MenuLine\""
+	myIntroDescription "aurabesh = false, contextComment = \"A_MQ_040 Quest Intro description\", enabled = true, guid = #8FD81D51652D52B1000374ADCE72D29E, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9098, text = \"Quest Description Placeholder\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"A_MQ_040 Quest description\", enabled = true, guid = #8FD81D516536805C0006F2011D4F35EC, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9098, text = \"Quest Description Placeholder\", type = \"MenuLine\""
+	myImage helix/baked/ui/loose_images/quest_bilboard/journal_billboard_mq_040.dds
+	myToastUIDisplayMode OnlyFinish
+	myCompletionReward < uid=71108214644698440001AA11448F0EBA > = A_MQ_040_questcomplete_reward 2AE2EC85644A934E0000B2AA21CC3E9B
+	myDebugPlayOnlyCompletionReward < uid=8FD81D5165C252D600021FA3BEA24DA2 > = reward_quest_MQ_045_FuelInjectors_add 4728ADF96218D17E000028F94D973388
+	myGoals
+	{
+		QuestGoal InfiltrateGoraksBase < uid=8FD81D5164188A520005F08850BDE93A >
+		{
+			myGoalText "aurabesh = false, contextComment = \"A_MQ_040_B02 Goal Text - Player must reach the Pyke Stronghold\", enabled = true, guid = #8FD81D5164188A650005F09A4509BF74, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 9423, text = \"Infiltrate Gorak's base\", type = \"MenuLine\"}"
+		}
+		QuestGoal BreakIntoTheTower < uid=8FD81D51642584C20001884AD0D068DD >
+		{
+			myGoalText "aurabesh = false, contextComment = \"A_MQ_040_B03 Goal Text - Player must break into the Pyke Tower\", enabled = true, guid = #8FD81D51642584CA0001884B938B742F, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9424, text = \"Break into the tower\", type = \"MenuLine\""
+		}
+		QuestGoal EscapeTheBase < uid=8FD81D51653FC631001879D235D38408 >
+		{
+			myGoalText "aurabesh = false, contextComment = \"A_MQ_040_B04 Goal Text - Player must break into the Pyke Tower\", enabled = true, guid = #8FD81D51653FC5DB001879D164F55A33, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 9425, text = \"Escape the base\", type = \"MenuLine\""
+		}
+	}
+	myIntroBeat < uid=B567AAE06245592B0001D92CD377E6BC >
+	{
+		myScript helix/scripts/scr_a_mq_040_tos_pln_b01_entermirogana.mscript
+		myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+		myMood Focused
+		myObjectives
+		{
+			QuestObjectiveCustom B01_010_GoToTheMiroganaCantina < uid=8FD81D5163FF72EB0000F21625732DB9 >
+			{
+				myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #8FD81D5163FF72C20000F215332A235D, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 9421, text = \"Go to the Mirogana cantina\", type = \"MenuLine\""
+				myIsOptional FALSE
+				myIsHiddenInTracker FALSE
+				myIsHiddenInHUD FALSE
+				myChildObjectives
+				{
+				}
+			}
+			QuestObjectiveGoToLocation B01_005_GoToMirogana_Outskrits < uid=8FD81D5165F4428E00242C1746E0F191 >
+			{
+				myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myIsOptional FALSE
+				myIsHiddenInTracker TRUE
+				myIsHiddenInHUD FALSE
+			}
+			QuestObjectiveGoToLocation B01_005_GoToMirogana < uid=8FD81D5165D4EF2B0037185293B4E42C >
+			{
+				myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myIsOptional FALSE
+				myIsHiddenInTracker TRUE
+				myIsHiddenInHUD FALSE
+			}
+			QuestObjectiveGoToLocation B01_010_GoToTheMiroganaCantina < uid=8FD81D5165D4EF2B0037185356FB1EC3 >
+			{
+				myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myIsOptional FALSE
+				myIsHiddenInTracker TRUE
+				myIsHiddenInHUD FALSE
+			}
+			QuestObjectiveCustom B01_010_GoToTheMiroganaCantina_Makals < uid=8FD81D51661F8A830001C5368A539A1E >
+			{
+				myName "aurabesh = false, branch = \"\", contextComment = \"Objective text\", enabled = true, guid = #8FD81D51661F8A240001C4B412F5DABF, lineVersion = 15, maxLength = 0, productId = -1, sectionId = 9421, text = \"Reach Makal's cantina\", type = \"MenuLine\"}"
+				myIsOptional FALSE
+				myIsHiddenInTracker FALSE
+				myIsHiddenInHUD FALSE
+				myChildObjectives
+				{
+				}
+			}
+		}
+		myQuestBeatStateGameValue < uid=B567AAE06245592B0001D92F16AC16F3 >
+		{
+		}
+	}
+	myBeats
+	{
+		QuestBeat "QB01A Gambling Parlor" < uid=B567AAE061F3F15700001B1FAA84EDBE >
+		{
+			myScript helix/scripts/scr_A_MQ_040_TOS_PLN_B02_FindGorak.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom B01_010_FindAWayToAccessTheElevator < uid=B567AAE061F40D8800004936934C794E >
+				{
+					myName "aurabesh = false, contextComment = \"A_MQ_050_B01 Objective Text - Player must find a way to access the elevator\", enabled = true, guid = #B567AAE061F40E6E00004937FD1476EF, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 9422, text = \"Find a way into Gorak's suite\", type = \"MenuLine\"}"
+					myIntel
+					{
+					}
+					myChildObjectives
+					{
+					}
+				}
+				QuestObjectiveTalkTo B01_010_A1_TalkToGuard_01 < uid=8FD81D5163D2A063000BF4FADFCD79CA >
+				{
+					myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveInteract B01_010_A2_SliceElevatorControls_01 < uid=8FD81D5163D29EF8000BF4A587364DE2 >
+				{
+					myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveInteract B01_010_B_Enter_ElevatorMaintenanceHatch < uid=8FD81D5163D29F3C000BF4B9B15F0776 >
+				{
+					myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveTalkTo B01_010_C_TalkToBartender < uid=8FD81D5163FF78090005614C648A54BC >
+				{
+					myName "aurabesh = false, contextComment = \"A_MQ_050_B01 Objective Text - Player can choose to talk to bartender\", enabled = true, guid = #8FD81D5163FF7CD20007CAFCA564A778, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9422, text = \"Talk to the bartender\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD FALSE
+				}
+				QuestObjectiveInteract B01_020_MeetGorak < uid=B567AAE06218DC2100009BD48DD13343 >
+				{
+					myName "aurabesh = false, contextComment = \"A_MQ_050_B01 Objective Text - Player must meet Gorak\", enabled = true, guid = #B567AAE06218DC2100009BD398557A1F, lineVersion = 14, maxLength = 0, productId = -1, sectionId = 9422, text = \"Find a way into Gorak's suite\", type = \"MenuLine\"}"
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+					myIntel
+					{
+					}
+					myQuestObjectiveAudioState
+					{
+						myGuid 00000000000000000000000000000000
+					}
+					myChildObjectives
+					{
+					}
+				}
+			}
+			myQuestBeatStateGameValue < uid=B567AAE062175DCF00004505975284F2 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 00000000000000000000000000000000
+			}
+		}
+		QuestBeat "QB01B Danka Cinematic" < uid=8FD81D5163D284AB0006BF63B19A062A >
+		{
+			myScript helix/scripts/scr_a_mq_040_tos_pln_b01b_leavethecantina.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+			}
+			myQuestBeatStateGameValue < uid=8FD81D5163D284AB0006BF6549F28170 >
+			{
+			}
+		}
+		QuestBeat "QB02 Infiltrate Goraks Base - District" < uid=B567AAE061F3F16000001B200DF14D61 >
+		{
+			myScript helix/scripts/scr_A_MQ_040_TOS_PLN_B03_TheGrapplingHook.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveLeaveArea B02_005_LeaveTheCantina < uid=8FD81D5164D4D3350004C98D699B5B1C >
+				{
+					myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+					myInVolumeText "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myNotInVolumeInCombatText "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				}
+				QuestObjectiveGoToLocation B02_006_ReachTheStairs < uid=8FD81D5166335041000E26499470542D >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+					myChildObjectives
+					{
+						QuestObjectiveGoToLocation B02_010_ReachThePykeDistrict < uid=8FD81D516633505B000E268301DD6554 >
+						{
+							myName "aurabesh = false, branch = \"MAIN\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+						}
+					}
+				}
+				QuestObjectiveCustom B02_006_ReachTheVent_Custom < uid=8FD81D51663355430012DA6388AB62E5 >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD FALSE
+					myChildObjectives
+					{
+						QuestObjectiveGoToLocation B02_010_ReachThePykeDistrict < uid=8FD81D51663355470012DA64FE530739 >
+						{
+							myName "aurabesh = false, branch = \"MAIN\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+						}
+					}
+				}
+				QuestObjectiveGoToLocation B02_006_ReachTheVent < uid=8FD81D51663355FD0012F3F53E3540E3 >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+					myChildObjectives
+					{
+						QuestObjectiveGoToLocation B02_010_ReachThePykeDistrict < uid=8FD81D51663356020012F3F6FF33F0AA >
+						{
+							myName "aurabesh = false, branch = \"MAIN\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+						}
+					}
+				}
+				QuestObjectiveCustom B02_010_ReachThePykeDistrict_Custom < uid=8FD81D51653FAC55000905421EC2BC79 >
+				{
+					myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myChildObjectives
+					{
+					}
+				}
+				QuestObjectiveGoToLocation B02_010_ReachThePykeDistrict < uid=8FD81D51653FAB070005B2023D52974A >
+				{
+					myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveInteract B02_011_ReachTheMaintenanceDoor < uid=8FD81D5163DA560E00051B37172FF3F8 >
+				{
+					myName "aurabesh = false, contextComment = \"A_MQ_050_B02 Objective Text - Player must reach a maintenance door atop a balcony\", enabled = true, guid = #8FD81D5163D8E99C000350FC79F013B7, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 9423, text = \"Reach the maintenance door\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveCustom B02_012_BreadCrumb < uid=8FD81D5165D37DC9001F85413EB99D38 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+				QuestObjectiveGoToLocation B02_020_ReachThePykeStronghold < uid=B567AAE061F418D5000097F3031198F2 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveCustom B02_006_ReachTheVentEnd < uid=8FD81D5166336176002AF8E6A177C94D >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD FALSE
+					myChildObjectives
+					{
+						QuestObjectiveGoToLocation B02_010_ReachThePykeDistrict < uid=8FD81D5166336176002AF8E7C3E4DA8A >
+						{
+							myName "aurabesh = false, branch = \"MAIN\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+						}
+					}
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=B567AAE062175DCF00004506E9C90940 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 00000000000000000000000000000000
+			}
+		}
+		QuestBeat "QB03A Pyke Stronghold Infiltrate" < uid=B567AAE061F3F16B00001B21B4C6FF2E >
+		{
+			myScript helix/scripts/scr_A_MQ_040_TOS_PLN_B04_StealTheData.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom B03_010_DisableTheenergyBarrier < uid=8FD81D516267A02900003393C8EFCE7C >
+				{
+					myName "aurabesh = false, contextComment = \"A_MQ_050_B02 Objective Text - Player must break into Pyke tower\", enabled = true, guid = #8FD81D516267A033000033943D2AECBB, lineVersion = 16, maxLength = 0, productId = -1, sectionId = 9424, text = \"Disable the energy barrier\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myIsHighPrio TRUE
+					myIsImmediate FALSE
+					myChildObjectives
+					{
+					}
+				}
+				QuestObjectiveCustom B03_010_ForceField_01 < uid=8FD81D516538C7A50001B2411BD100DA >
+				{
+					myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD FALSE
+					myChildObjectives
+					{
+						QuestObjectiveInteract B03_010_ForceField_Shoot < uid=8FD81D516538C7E10001B2454A73EDB4 >
+						{
+							myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+							myIsHint FALSE
+						}
+						QuestObjectiveInteract B03_010_ForceField_Interact < uid=8FD81D516538C7E10001B246A498B9B5 >
+						{
+							myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+							myIsHint FALSE
+						}
+					}
+				}
+				QuestObjectiveCustom B03_010_ForceField_02 < uid=8FD81D516538C8BB0001B2B1D2A9827A >
+				{
+					myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD FALSE
+					myChildObjectives
+					{
+						QuestObjectiveInteract B03_011_ForceField_Shoot < uid=8FD81D5163D147E0000E5EFD56922992 >
+						{
+							myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+							myIsHint FALSE
+						}
+						QuestObjectiveInteract B03_010_ForceField_Interact < uid=8FD81D516538C8BB0001B2B2DC6B862B >
+						{
+							myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+							myIsHint FALSE
+						}
+					}
+				}
+				QuestObjectiveGoToLocation B03_020_EnterLobby < uid=8FD81D51627D13D9000308E23B1B399D >
+				{
+					myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsOptional FALSE
+					myIsExternal FALSE
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD FALSE
+					myIsHint FALSE
+					myIntel
+					{
+					}
+					myAutoResolveIntel TRUE
+					myChildObjectives
+					{
+					}
+				}
+				QuestObjectiveInteract B03_030_AccessTheElevator < uid=B567AAE0620B77B200004C12D06F4D31 >
+				{
+					myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD FALSE
+				}
+				QuestObjectiveCustom BinocularCustomObj < uid=8FD81D5165CBC15B000743F49A953FEA >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+					myChildObjectives
+					{
+						QuestObjectiveBinocular BinocObjective01 < uid=8FD81D5165CBC1700007442BBC69D12A >
+						{
+							myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+						}
+						QuestObjectiveBinocular BinocObjective02 < uid=8FD81D5165CBC22D00074697CA2CC7BC >
+						{
+							myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+						}
+					}
+				}
+				QuestObjectiveCounter "New QuestObjectiveCounter" < uid=8FD81D5165F2B5CF002847656A1C181D >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"A_MQ_040_B03 Objective Text - Player must disable power cores\", enabled = true, guid = #8FD81D5165F2B5CF0028476635DAA64E, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9424, text = \"Power cores disabled\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+					myMaxCount 2
+				}
+			}
+			myHasInitFromPreviousBeatPin FALSE
+			myQuestBeatStateGameValue < uid=B567AAE062175DCF000045076733A76A >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 409D1AB28829EF7A752F56AD30F24CB7
+			}
+		}
+		QuestBeat "QB03B Pyke Stronghold Elevator" < uid=8FD81D5163C7EF0700062AD4EB93AE31 >
+		{
+			myScript helix/scripts/scr_a_mq_040_tos_pln_b03b_pykestrongholdelevator.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom B03_030_AccessTheElevator < uid=8FD81D5163C7EF0700062AE025FF4E38 >
+				{
+					myName "aurabesh = false, contextComment = \"A_MQ_050_B03 Objective Text - Player must reach the boardroom\", enabled = true, guid = #8FD81D5163C7EEF300062AD35EF00013, lineVersion = 15, maxLength = 0, productId = -1, sectionId = 9424, text = \"Break into the tower \", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD FALSE
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=8FD81D5163C7EF0700062AE1DB742DF4 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 409D1AB28829EF7A752F56AD30F24CB7
+			}
+		}
+		QuestBeat "QB04A Boardroom Slice" < uid=B567AAE061F3F17500001B22191B486C >
+		{
+			myScript helix/scripts/scr_a_mq_040_tos_pln_b05_sliceandhide.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom B04_010_FindGoraksTerminal < uid=B567AAE0620B73E20000457D6ADB3C8C >
+				{
+					myName "aurabesh = false, contextComment = \"A_MQ_050_B04 Objective Text - Player must slice a Pyke boardroom terminal\", enabled = true, guid = #B567AAE0620B73EC0000457E0722AF9A, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9425, text = \"Find Gorak's terminal\", type = \"MenuLine\"}"
+					myQuestObjectiveAudioState
+					{
+						myGuid 00000000000000000000000000000000
+					}
+				}
+				QuestObjectiveInteract B04_010_FindGoraksTerminal_Interact < uid=8FD81D51664469FF0003C0BCC7AD84C4 >
+				{
+					myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+					myQuestObjectiveAudioState
+					{
+						myGuid 00000000000000000000000000000000
+					}
+				}
+			}
+			myQuestBeatStateGameValue < uid=B567AAE062175DCF000045086DA9D853 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 409D1AB28829EF7A752F56AD30F24CB7
+			}
+		}
+		QuestBeat "QB04B Boardroom Combat" < uid=8FD81D5163C7B50C00036E97961A77C7 >
+		{
+			myScript helix/scripts/scr_a_mq_040_tos_pln_b04b_boardroom_combat.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveKillFireteam "B04B_010_Defeat Pykes" < uid=8FD81D5163C7B76C000375FD8D660BAF >
+				{
+					myName "aurabesh = false, contextComment = \"A_MQ_050_B04 Objective Text - Player must defend themselves from Pyke assailants\", enabled = true, guid = #8FD81D5163C7B774000375FE9B473908, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9425, text = \"Defeat the Pykes\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputFireteam "New QuestBeatScriptInputFireteam" < uid=8FD81D51644134F100027C2762DA07C6 >
+				{
+				}
+			}
+			myHasInitFromPreviousBeatPin FALSE
+			myQuestBeatStateGameValue < uid=8FD81D5163C7B50C00036E9A088CB189 >
+			{
+			}
+			myWaitForInitCompletedOnInBeatVolume TRUE
+			myQuestBeatAudioState
+			{
+				myGuid 409D1AB28829EF7A752F56AD30F24CB7
+			}
+		}
+		QuestBeat "QB04C Boardroom Climb" < uid=8FD81D5163C94363000C49399A6C9410 >
+		{
+			myScript helix/scripts/scr_a_mq_040_tos_pln_b04b_boardroom_climb.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myAutostartQuestGoal < uid=8FD81D5165B3A5F7003DDC9ED128D92B >
+			{
+				myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_MQ_040_B04 Beat Text - Escape the stronghold\", enabled = true, guid = #8FD81D5165B3A5EF003DDC999906AA28, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9425, text = \"Escape the base\", type = \"MenuLine\""
+			}
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveInteract B04C_010_ElevatorPanel < uid=8FD81D5163C94610000C8B0ADE5CB214 >
+				{
+					myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+				QuestObjectiveInteract B04C_015_ElevatorDoor < uid=8FD81D5163E2276D0001C661C0F7D228 >
+				{
+					myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveGoToLocation B04C_020_Escape < uid=8FD81D5163C94363000C493A30A36411 >
+				{
+					myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=8FD81D5163C94363000C493B323D922C >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 409D1AB28829EF7A752F56AD30F24CB7
+			}
+		}
+		QuestBeat "QB05A Penthouse" < uid=B567AAE061F3F17A00001B23947FBFEC >
+		{
+			myScript helix/scripts/scr_a_mq_040_tos_pln_b06.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myAutostartQuestGoal < uid=8FD81D5165B3A61D003DDCA37A7D5807 >
+			{
+				myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_MQ_040_B04 Beat Text - Escape the stronghold\", enabled = true, guid = #8FD81D5165B3A5FE003DDCA04B2555D0, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9426, text = \"Escape the base\", type = \"MenuLine\""
+			}
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveInteract B05_010_FloorHatch < uid=B567AAE0620B97A90000BC8494FAAD1F >
+				{
+					myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveGoToLocation "B05_020_Escape the stronghold" < uid=8FD81D5163E22CE30002FA90B1560A56 >
+				{
+					myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+			}
+			myHasInitFromPreviousBeatPin FALSE
+			myQuestBeatStateGameValue < uid=B567AAE062175DCF000045096EDFB400 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4823BD258930AE5EF10E053864346AAC
+			}
+		}
+		QuestBeat "QB05B Escape" < uid=8FD81D5163E22B3E0002B18F32FEEA8E >
+		{
+			myScript helix/scripts/scr_a_mq_040_tos_pln_b05b_escape.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "B05_010_Escape the stronghold" < uid=8FD81D5163E22B3E0002B19001687E37 >
+				{
+					myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveGoToLocation B05_020_Leave < uid=8FD81D5163E22B3E0002B191320288B9 >
+				{
+					myName "aurabesh = false, contextComment = \"A_MQ_050_B04 Objective Text - Player must return to Mirogana\", enabled = true, guid = #8FD81D5163E22B1F0002B15E2F3FB806, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9426, text = \"Return to the city\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+			}
+			myQuestBeatStateGameValue < uid=8FD81D5163E22B3E0002B19277861BCF >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 447AA821BDEE99D62C0F4D3F2D8F7085
+			}
+		}
+		QuestBeat "QB06 ReturnToDanka" < uid=B567AAE06203CFDB0002037058EBEF40 >
+		{
+			myScript helix/scripts/scr_a_mq_040_tos_pln_b07_returntoeleera.mscript
+			myName "aurabesh = false, contextComment = \"A_MQ_040_B06 Beat Text - Return to Danka\", enabled = true, guid = #B567AAE06203D4F80007C44D02FE7A1B, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 9640, text = \"Return to Danka\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveTalkTo B06_010_ReturnToDanka < uid=B567AAE06203D4F80007C44C4D997851 >
+				{
+					myName "aurabesh = false, contextComment = \"A_MQ_050_B06 Objective Text - Player must go back to the gambling parlor and talk to Danka\", enabled = true, guid = #B567AAE06203D5000007C44E107E312F, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 9640, text = \"Return to Danka\", type = \"MenuLine\""
+				}
+				QuestObjectiveInteract B06_020_TalkToGorak < uid=8FD81D51641D7ADC000141E028A59934 >
+				{
+					myName "aurabesh = false, contextComment = \"A_MQ_050_B06 Objective Text - Player must talk to Gorak\", enabled = true, guid = #8FD81D51641D7AE9000141E1A7BA67C0, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9640, text = \"Talk to Gorak\", type = \"MenuLine\""
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=B567AAE062175DCF0000450ACFFD3392 >
+			{
+			}
+		}
+	}
+	myOutroBeat
+	{
+	}
+	myQuestStateGameValue < uid=B567AAE062175DCF0000450B350FD5F0 >
+	{
+	}
+	myQuestAudioState
+	{
+		myGuid 49C63AD9A16838D83DFF05F15A19BB88
+	}
+	myQuestStartedRBTag < uid=DA5615DD64B4FA9B0000AB83C1F371B5 > = World_Quest_MQ040_Started DA5615DD64A3E0CA0000AC2B5562FF00
+	myQuestCompletedRBTag < uid=DA5615DD64B4FA9B0000AB8416B3EC61 > = World_Quest_MQ040_Completed DA5615DD64A3E1670000AC406335239B
+}
+

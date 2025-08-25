@@ -1,0 +1,375 @@
+include "helix/game system data/fruit/ai/spaceshipsettings.fruit"
+include "helix/game system data/juice/ai/npcshootpatterns.mnpcshootpattern"
+include "helix/game system data/juice/ai/spaceshipcombatprofiles.mspaceshipcombatprofile"
+include "helix/game system data/juice/ai/spaceshipformationprofiles.mspaceshipformationprofile"
+include "helix/game system data/juice/ai/spaceshipspawnprofiles.mspaceshipspawnprofile"
+include "helix/game system data/juice/ai/spaceshipspeedprofiles.mspaceshipspeedprofile"
+include "helix/game system data/juice/ai/spaceshiptrajectories.mspaceshiptrajectoryprofile"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_default.juice"
+
+SpaceshipBehaviorParameter zh40EvasiveStartCurrentManeuverMinElapsedTime : EvasiveStartCurrentManeuverMinElapsedTime
+{
+}
+
+SpaceshipBehaviorParameter zh40EvasiveStartMinDistance : EvasiveStartMinDistance
+{
+}
+
+SpaceshipBehaviorParameter zh40EvasiveMinDistance : EvasiveMinDistance
+{
+	myValue 250.0
+}
+
+SpaceshipBehaviorParameter zh40EvasiveDurationRandomMin : EvasiveDurationRandomMin
+{
+	myValue 5.0
+}
+
+SpaceshipBehaviorParameter zh40EvasiveDurationRandomMax : EvasiveDurationRandomMax
+{
+	myValue 10.0
+}
+
+SpaceshipBehaviorParameter zh40EvasiveConeAngle : EvasiveConeAngle
+{
+}
+
+SpaceshipBehaviorParameter zh40EvasiveStartAngleFromHostile : EvasiveStartAngleFromHostile
+{
+}
+
+SpaceshipBehaviorParameter zh40EvasiveSpiralProbability : EvasiveSpiralProbability
+{
+}
+
+SpaceshipBehaviorParameter zh40EvasivePauseBetweenPatternsMin : EvasivePauseBetweenPatternsMin
+{
+	myValue 1.0
+}
+
+SpaceshipBehaviorParameter zh40EvasivePauseBetweenPatternsMax : EvasivePauseBetweenPatternsMax
+{
+	myValue 1.5
+}
+
+SpaceshipBehaviorParameter zh40EvasiveBreakProbability : EvasiveBreakProbability
+{
+}
+
+SpaceshipBehaviorParameter zh40EvasiveScaleWidth : EvasiveScaleWidth
+{
+}
+
+SpaceshipBehaviorParameter zh40EvasiveScaleHeight : EvasiveScaleHeight
+{
+}
+
+SpaceshipBehaviorParameter zh40EvasiveScaleLength : EvasiveScaleLength
+{
+}
+
+SpaceshipBehaviorParameter zh40TimeToStartEvasiveIfStillInFrontOfHostile : TimeToStartEvasiveIfStillInFrontOfHostile
+{
+	myValue 5.0
+}
+
+SpaceshipBehaviorParameter zh40BreakStartCurrentManeuverMinElapsedTime : BreakStartCurrentManeuverMinElapsedTime
+{
+}
+
+SpaceshipBehaviorParameter zh40ChaseDurationRandomMin : ChaseDurationRandomMin
+{
+}
+
+SpaceshipBehaviorParameter zh40ChaseDurationRandomMax : ChaseDurationRandomMax
+{
+}
+
+SpaceshipBehaviorParameter zh40ChaseDistanceMin : ChaseDistanceMin
+{
+}
+
+SpaceshipBehaviorParameter zh40ChaseDistanceMax : ChaseDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter zh40ChaseConeAngle : ChaseConeAngle
+{
+	myValue 90.0
+}
+
+SpaceshipBehaviorParameter zh40ChaseChanceToBreakOnHostileDodgePercent : ChaseChanceToBreakOnHostileDodgePercent
+{
+	myValue 0.0
+}
+
+SpaceshipBehaviorParameter zh40ChaseBreakProbabilityOverPass : ChaseBreakProbabilityOverPass
+{
+	myValue 0.0
+}
+
+SpaceshipBehaviorParameter zh40OvershootMaxAngle : OvershootMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter zh40InterceptConeAngle : InterceptConeAngle
+{
+	myValue 90.0
+}
+
+SpaceshipBehaviorParameter zh40InterceptDistanceIdeal : InterceptDistanceIdeal
+{
+}
+
+SpaceshipBehaviorParameter zh40InterceptDistanceMin : InterceptDistanceMin
+{
+	myValue 200.0
+}
+
+SpaceshipBehaviorParameter zh40InterceptDistanceMax : InterceptDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter zh40InterceptDurationMin : InterceptDurationMin
+{
+}
+
+SpaceshipBehaviorParameter zh40InterceptDurationMax : InterceptDurationMax
+{
+}
+
+SpaceshipBehaviorParameter zh40JoustingProbability : JoustingProbability
+{
+}
+
+SpaceshipBehaviorParameter zh40JoustingMaxDurationPrepare : JoustingMaxDurationPrepare
+{
+}
+
+SpaceshipBehaviorParameter zh40JoustingMaxDuration : JoustingMaxDuration
+{
+}
+
+SpaceshipBehaviorParameter zh40JoustingDistanceTurn : JoustingDistanceTurn
+{
+	myValue 600.0
+}
+
+SpaceshipBehaviorParameter zh40JoustingEndDistance : JoustingEndDistance
+{
+	myValue 200.0
+}
+
+SpaceshipBehaviorParameter zh40JoustingAngle : JoustingAngle
+{
+	myValue 45.0
+}
+
+SpaceshipBehaviorParameter zh40JoustingMaxAngle : JoustingMaxAngle
+{
+	myValue 90.0
+}
+
+SpaceshipBehaviorParameter zh40JoustingEndBreakProbabilityOverPass : JoustingEndBreakProbabilityOverPass
+{
+}
+
+SpaceshipBehaviorParameter zh40JoustingPositionMaxHeight : JoustingPositionMaxHeight
+{
+	myValue 300.0
+}
+
+SpaceshipBehaviorParameter zh40AlignMinDistance : AlignMinDistance
+{
+}
+
+SpaceshipBehaviorParameter zh40AlignMaxDistance : AlignMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter zh40LeashingMinDistance : LeashingMinDistance
+{
+}
+
+SpaceshipBehaviorParameter zh40LeashingMaxDistance : LeashingMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter zh40LeashingToVolumeMaxDistance : LeashingToVolumeMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter zh40ShootMaxDistance : ShootMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter zh40ShootMaxAngle : ShootMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter zh40BarkPositionDistanceMax : BarkPositionDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter zh40BroadcastRangeEnterCombat : BroadcastRangeEnterCombat
+{
+}
+
+SpaceshipBehaviorParameter zh40EscortDistance : EscortDistance
+{
+}
+
+SpaceshipBehaviorParameter zh40LowProhibitedActionAttackDelay : LowProhibitedActionAttackDelay
+{
+}
+
+SpaceshipBehaviorParameter zh40AccurateShootingProbability : AccurateShootingProbability
+{
+}
+
+SpaceshipBehaviorParameter zh40RangeForSecondaryWeapon : RangeForSecondaryWeapon
+{
+}
+
+SpaceshipBehaviorParameter zh40UndetectedTimeBeforeExitingCombat : UndetectedTimeBeforeExitingCombat
+{
+}
+
+SpaceshipBehaviorParameter zh40UndetectedTimeBeforeExitingAware : UndetectedTimeBeforeExitingAware
+{
+}
+
+SpaceshipBehaviorParameter zh40ReinforcementsCallProbabilityPercent : ReinforcementsCallProbabilityPercent
+{
+}
+
+SpaceshipBehaviorParameter zh40ReinforcementsCallDuration : ReinforcementsCallDuration
+{
+}
+
+SpaceshipBehaviorParameter zh40IdleDefaultSplineSizeHorizontal : IdleDefaultSplineSizeHorizontal
+{
+}
+
+SpaceshipBehaviorParameter zh40IdleDefaultSplineSizeVertical : IdleDefaultSplineSizeVertical
+{
+}
+
+SpaceshipBehaviorParameter zh40CooldownDuration : CooldownDuration
+{
+}
+
+SpaceshipBehaviorParameter zh40CooldownMaxDistance : CooldownMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter zh40SpaceshipMaxEngagementDistance : SpaceshipMaxEngagementDistance
+{
+}
+
+SpaceshipBehaviorParameter zh40SpaceshipPrimaryMaxAngle : SpaceshipPrimaryMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter zh40SpaceshipPrimaryMaxDistance : SpaceshipPrimaryMaxDistance
+{
+	myValue 1200.0
+}
+
+SpaceshipBehaviorParameter zh40SpaceshipPrimaryMinDistance : SpaceshipPrimaryMinDistance
+{
+	myValue 100.0
+}
+
+SpaceshipBehaviorParameter zh40SpaceshipPrimaryMaxHealth : SpaceshipPrimaryMaxHealth
+{
+}
+
+SpaceshipBehaviorParameter zh40SpaceshipSecondaryMaxAngle : SpaceshipSecondaryMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter zh40SpaceshipSecondaryMaxDistance : SpaceshipSecondaryMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter zh40SpaceshipSecondaryMinDistance : SpaceshipSecondaryMinDistance
+{
+}
+
+SpaceshipBehaviorParameter zh40SpaceshipSecondaryMaxHealth : SpaceshipSecondaryMaxHealth
+{
+}
+
+SpaceshipBehaviorParameter zh40SpaceshipMissileMaxAngle : SpaceshipMissileMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter zh40SpaceshipMissileMaxDistance : SpaceshipMissileMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter zh40SpaceshipMissileMinDistance : SpaceshipMissileMinDistance
+{
+}
+
+SpaceshipBehaviorParameter zh40SpaceshipMissileMaxHealth : SpaceshipMissileMaxHealth
+{
+}
+
+SpaceshipBehaviorParameter zh40CombatLeashingToPlayer : CombatLeashingToPlayer
+{
+}
+
+SpaceshipBehaviorParameter zh40SpaceshipAccuracyRadiusMax : SpaceshipAccuracyRadiusMax
+{
+}
+
+SpaceshipBehaviorParameter zh40SpaceshipAccuracyRadiusMin : SpaceshipAccuracyRadiusMin
+{
+	myValue 2.0
+}
+
+SpaceshipBehaviorParameter zh40SpaceshipAccuracyDistanceMax : SpaceshipAccuracyDistanceMax
+{
+	myValue 1000.0
+}
+
+SpaceshipBehaviorParameter zh40SpaceshipAccuracyDistanceMin : SpaceshipAccuracyDistanceMin
+{
+	myValue 400.0
+}
+
+SpaceshipBehaviorParameter zh40SpaceshipShotSpreadPercentage : SpaceshipShotSpreadPercentage
+{
+	myValue 20.0
+}
+
+SpaceshipBehaviorParameter zh40SpaceshipMissileLockOnTime : SpaceshipMissileLockOnTime
+{
+}
+
+SpaceshipBehaviorParameter zh40HarassmentChance : HarassmentChance
+{
+}
+
+SpaceshipBehaviorParameter zh40HarassmentDuration : HarassmentDuration
+{
+}
+
+SpaceshipBehaviorParameter zh40HarassmentAreaSizeMin : HarassmentAreaSizeMin
+{
+}
+
+SpaceshipBehaviorParameter zh40HarassmentAreaSizeMax : HarassmentAreaSizeMax
+{
+}
+
+SpaceshipBehaviorParameter zh40HarassmentAreaHeightMin : HarassmentAreaHeightMin
+{
+}
+
+SpaceshipBehaviorParameter zh40HarassmentAreaHeightMax : HarassmentAreaHeightMax
+{
+}
+

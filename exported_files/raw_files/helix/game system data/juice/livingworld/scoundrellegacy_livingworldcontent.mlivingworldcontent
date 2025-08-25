@@ -1,0 +1,909 @@
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+include "helix/game system data/juice/intel/intel_a_sl.mintel"
+include "helix/game system data/juice/item/items_holodiscs.mitem"
+
+LivingWorldContent MS_2000_SL_TB_WrongPlanet < uid=1657B1AA65BA43720015CBEE7B19B2A3 >
+{
+	myActivationGameConditions
+	{
+		GameConditionQuestBeatState SL_B01_Started
+		{
+			myQuestBeat 1657B1AA654CDE5F0048E138BCB3EA51
+			myQuestBeatState Started
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Player Distance is less than 100m"
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		GameConditionContextLivingWorldContentLocation_IsSpaceshipOnMyLandingZone IsSpaceshipOnMyLandingZone
+		{
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR - Is Completed or Not IsSpaeshipOnMyLandingZone"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted HasBeenCompleted
+				{
+				}
+				GameConditionContextLivingWorldContentLocation_IsSpaceshipOnMyLandingZone "Not IsSpaceshipOnMyLandingZone"
+				{
+					myIsNegated TRUE
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS_2002_SL_TAT_01_Desert_P1_MosEisley < uid=1657B1AA651FD1D0000608D008BA3948 >
+{
+	myActivationGameConditions
+	{
+		GameConditionQuestBeatState "SL_01_Beat02 FindAllCaches is Started"
+		{
+			myQuestBeat CC6CF61E64215E560000710309244A91
+			myQuestBeatState Started
+		}
+		GameConditionQuestBeatState "MQ_110_B02 is Completed"
+		{
+			myQuestBeat 9D01D2176295FF210000763737437774
+			myQuestBeatState Completed
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is less than 70m"
+		{
+			myDistance 70.0
+			myOperator LessThan
+		}
+		GameConditionPlayerHasIntel "Intel 01b is NOT Active"
+		{
+			myIsNegated TRUE
+			myIntel < uid=91803AE166696B5D000B8639F24DDDC7 > = intel_a_sl_TAT_Cache_01_Intel_01_b_Region 225CF627643C69B50003C792B50FD00D
+		}
+		LivingWorldGameConditionGroup "Intel02Complete is NOT Active Resolved or Disabled"
+		{
+			myIsNegated TRUE
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel Has_Region
+				{
+					myIntel < uid=1657B1AA66227B9000060C6BE157C378 > = intel_a_sl_TAT_Cache_01_Intel_02_Complete 225CF627643C69B50003C79547FAD66F
+				}
+				GameConditionPlayerHasIntel Finished_Region
+				{
+					myIntel < uid=1657B1AA66227B9000060C6C54AC87D9 > = intel_a_sl_TAT_Cache_01_Intel_02_Complete 225CF627643C69B50003C79547FAD66F
+					myIntelState Resolved
+				}
+				GameConditionPlayerHasIntel Disabled_Region
+				{
+					myIntel < uid=1657B1AA66227B9000060C6D467D772B > = intel_a_sl_TAT_Cache_01_Intel_02_Complete 225CF627643C69B50003C79547FAD66F
+					myIntelState Disabled
+				}
+			}
+		}
+		LivingWorldGameConditionGroup "Any intels of TAT02 are not Active"
+		{
+			myIsNegated TRUE
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel Has_AnotherCache
+				{
+					myIsNegated FALSE
+					myIntel < uid=1657B1AA6627C04600499C1900767DCF > = intel_a_sl_TAT_Cache_02_Intel_002_Intel_AnotherCache 1657B1AA652512C8000A3808EC110421
+				}
+				GameConditionPlayerHasIntel Has_HostileSettlement
+				{
+					myIntel < uid=1657B1AA6627C04600499C1A6A1B032B > = intel_a_sl_TAT_Cache_02_Intel_01_HostileSettlement CC6CF61E643FF56900059C8AC669EDCD
+				}
+				GameConditionPlayerHasIntel Has_BrokenDatacard
+				{
+					myIntel < uid=1657B1AA6627C04600499C1BEFD214CF > = intel_a_sl_TAT_Cache_02_Intel_02_BrokenDatacard CC6CF61E643FF56900059C8DCCD03E41
+				}
+				GameConditionPlayerHasIntel Has_Triangulate
+				{
+					myIntel < uid=1657B1AA6627C04600499C1C8FDEB588 > = intel_a_sl_TAT_Cache_02_Intel_03_Triangulate CC6CF61E643FF56900059C93D9A48F4D
+				}
+				GameConditionPlayerHasIntel Has_Final
+				{
+					myIntel < uid=1657B1AA6627C04600499C1D3CF539B9 > = intel_a_sl_TAT_Cache_02_Intel_Final_Cache CC6CF61E6422A13E0000712280F97D1C
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is more than 150m"
+		{
+			myDistance 150.0
+			myOperator GreaterThan
+		}
+	}
+}
+
+LivingWorldContent MS_2002_SL_TAT_01_Desert_P1_Wayfar < uid=1657B1AA6596D919001F1BE08F0CCE19 >
+{
+	myLayerType Base
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is less than 70m"
+		{
+			myDistance 70.0
+			myOperator LessThan
+		}
+		GameConditionQuestBeatState "SL_01_Beat02 FindAllCaches is Started"
+		{
+			myQuestBeat CC6CF61E64215E560000710309244A91
+			myQuestBeatState Started
+		}
+		GameConditionQuestBeatState "MQ_110_B02 is Completed"
+		{
+			myQuestBeat 9D01D2176295FF210000763737437774
+			myQuestBeatState Completed
+		}
+		GameConditionPlayerHasIntel "Intel 01a is NOT Active"
+		{
+			myIsNegated TRUE
+			myIntel < uid=91803AE1666976D2003923A891D10C02 > = intel_a_sl_TAT_Cache_01_Intel_01_a_Landmark 7C12810B63EE013900063F724A6E2305
+		}
+		LivingWorldGameConditionGroup "Intel02Complete is NOT Active Resolved or Disabled"
+		{
+			myIsNegated TRUE
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel Has_Landmark
+				{
+					myIntel < uid=1657B1AA66227BF100060C6EF8FF7D0B > = intel_a_sl_TAT_Cache_01_Intel_02_Complete 225CF627643C69B50003C79547FAD66F
+				}
+				GameConditionPlayerHasIntel Finished_Landmark
+				{
+					myIntel < uid=1657B1AA66227BF100060C6FDF72E5E6 > = intel_a_sl_TAT_Cache_01_Intel_02_Complete 225CF627643C69B50003C79547FAD66F
+					myIntelState Resolved
+				}
+				GameConditionPlayerHasIntel Disabled_Landmark
+				{
+					myIntel < uid=1657B1AA66227BF100060C705BD50FA0 > = intel_a_sl_TAT_Cache_01_Intel_02_Complete 225CF627643C69B50003C79547FAD66F
+					myIntelState Disabled
+				}
+			}
+		}
+		LivingWorldGameConditionGroup "Any intels of TAT02 are not Active"
+		{
+			myIsNegated TRUE
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel Has_AnotherCache
+				{
+					myIsNegated FALSE
+					myIntel < uid=1657B1AA6627C04600499C1E8E456757 > = intel_a_sl_TAT_Cache_02_Intel_002_Intel_AnotherCache 1657B1AA652512C8000A3808EC110421
+				}
+				GameConditionPlayerHasIntel Has_HostileSettlement
+				{
+					myIntel < uid=1657B1AA6627C04600499C1FF14E6E3C > = intel_a_sl_TAT_Cache_02_Intel_01_HostileSettlement CC6CF61E643FF56900059C8AC669EDCD
+				}
+				GameConditionPlayerHasIntel Has_BrokenDatacard
+				{
+					myIntel < uid=1657B1AA6627C04600499C208B46F768 > = intel_a_sl_TAT_Cache_02_Intel_02_BrokenDatacard CC6CF61E643FF56900059C8DCCD03E41
+				}
+				GameConditionPlayerHasIntel Has_Triangulate
+				{
+					myIntel < uid=1657B1AA6627C04600499C211EEB2F48 > = intel_a_sl_TAT_Cache_02_Intel_03_Triangulate CC6CF61E643FF56900059C93D9A48F4D
+				}
+				GameConditionPlayerHasIntel Has_Final
+				{
+					myIntel < uid=1657B1AA6627C04600499C22BB318C1D > = intel_a_sl_TAT_Cache_02_Intel_Final_Cache CC6CF61E6422A13E0000712280F97D1C
+				}
+			}
+		}
+		LivingWorldGameConditionGroup "Group OR - EQ_090 is NOT Active"
+		{
+			myIsNegated TRUE
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState "EQ_090 Beat 01 is Started"
+				{
+					myQuestBeat 9D01D21765153557000D3624619945B3
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "EQ_090 Beat 02a is Started"
+				{
+					myQuestBeat 253B6867655E0FF10006C1518C351D4C
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "EQ_090 Beat 02b is Started"
+				{
+					myQuestBeat 253B6867655E11500006C15633A28A6C
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "EQ_090 Beat 02c is Started"
+				{
+					myQuestBeat 9D01D21764CCFEB400207021E9BBD667
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "EQ_090 Beat 03 is Started"
+				{
+					myQuestBeat 9D01D21764CD12330027ECAD196A9D75
+					myQuestBeatState Started
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR - Distance is more than 100m or EQ_90 is Active"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is more than 100m"
+				{
+					myDistance 100.0
+					myOperator GreaterThan
+				}
+				LivingWorldGameConditionGroup "Group OR - EQ_90 is Active"
+				{
+					myOperator Or
+					myConditions
+					{
+						GameConditionQuestBeatState "EQ_090 Beat 01 is Started"
+						{
+							myQuestBeat 9D01D21765153557000D3624619945B3
+							myQuestBeatState Started
+						}
+						GameConditionQuestBeatState "EQ_090 Beat 02a is Started"
+						{
+							myQuestBeat 253B6867655E0FF10006C1518C351D4C
+							myQuestBeatState Started
+						}
+						GameConditionQuestBeatState "EQ_090 Beat 02b is Started"
+						{
+							myQuestBeat 253B6867655E11500006C15633A28A6C
+							myQuestBeatState Started
+						}
+						GameConditionQuestBeatState "EQ_090 Beat 02c is Started"
+						{
+							myQuestBeat 9D01D21764CCFEB400207021E9BBD667
+							myQuestBeatState Started
+						}
+						GameConditionQuestBeatState "EQ_090 Beat 03 is Started"
+						{
+							myQuestBeat 9D01D21764CD12330027ECAD196A9D75
+							myQuestBeatState Started
+						}
+					}
+				}
+			}
+		}
+	}
+	myBasePriority 0.0
+}
+
+LivingWorldContent MS_2003_SL_TAT_01_Desert_P1_5 < uid=1657B1AA651FD612000608D791C1BC72 >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is less than 100m"
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		LivingWorldGameConditionGroup "Intel 01a or 01b or 02 are Active"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel "Intel 01a is Active"
+				{
+					myIntel < uid=1657B1AA65256B8300458A20C6CF4CE7 > = intel_a_sl_TAT_Cache_01_Intel_01_a_Landmark 7C12810B63EE013900063F724A6E2305
+				}
+				GameConditionPlayerHasIntel "Intel 01b is Active"
+				{
+					myIntel < uid=1657B1AA65256B8300458A21B51AA691 > = intel_a_sl_TAT_Cache_01_Intel_01_b_Region 225CF627643C69B50003C792B50FD00D
+				}
+				GameConditionPlayerHasIntel "Intel 02_Complete is Active"
+				{
+					myIntel < uid=1657B1AA65256B8300458A22CB0F8E86 > = intel_a_sl_TAT_Cache_01_Intel_02_Complete 225CF627643C69B50003C79547FAD66F
+					myIntelState Active
+				}
+				GameConditionPlayerHasIntel "Intel 03_Trail is Active"
+				{
+					myIntel < uid=91803AE1667166E1002B31F63B28AE14 > = intel_a_sl_TAT_Cache_01_Intel_03_Trail 7C12810B63EE013B00063F73D30C2DFB
+				}
+				GameConditionPlayerHasIntel "Intel 04_Holodisk is Active"
+				{
+					myIntel < uid=91803AE1667166E1002B31F74C05B6C7 > = intel_a_sl_TAT_Cache_01_Intel_04_Holodisk CC6CF61E63B7003D000045309578FBA1
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is bigger than 120m"
+		{
+			myDistance 120.0
+		}
+	}
+}
+
+LivingWorldContent MS_2004_SL_TAT_02_Canyon_P1 < uid=1657B1AA65258473000267861323774C >
+{
+	myActivationGameConditions
+	{
+		GameConditionQuestBeatState "Quest SL_01 QuestBeat02 is Active"
+		{
+			myQuestBeat CC6CF61E64215E560000710309244A91
+			myQuestBeatState Started
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance less than 65m"
+		{
+			myDistance 65.0
+			myOperator LessThan
+		}
+		GameConditionQuestBeatState "MQ_110_B02 si Completed"
+		{
+			myQuestBeat 9D01D2176295FF210000763737437774
+			myQuestBeatState Completed
+		}
+		LivingWorldGameConditionGroup "Any Intel of SL_TAT01 is not Active"
+		{
+			myIsNegated TRUE
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel Has_AnotherCache
+				{
+					myIsNegated FALSE
+					myIntel < uid=1657B1AA6627C04600499C23398C2AC9 > = intel_a_sl_TAT_Cache_01_Intel_002_Intel_AnotherCache 1657B1AA652510D8000A37E71E055AB4
+				}
+				GameConditionPlayerHasIntel Has_Landmark
+				{
+					myIntel < uid=1657B1AA6627C04600499C2485CD6727 > = intel_a_sl_TAT_Cache_01_Intel_01_a_Landmark 7C12810B63EE013900063F724A6E2305
+				}
+				GameConditionPlayerHasIntel Has_Region
+				{
+					myIntel < uid=1657B1AA6627C04600499C25C21B89B9 > = intel_a_sl_TAT_Cache_01_Intel_01_b_Region 225CF627643C69B50003C792B50FD00D
+				}
+				GameConditionPlayerHasIntel Has_Complete
+				{
+					myIntel < uid=1657B1AA6627C04600499C26F57DA483 > = intel_a_sl_TAT_Cache_01_Intel_02_Complete 225CF627643C69B50003C79547FAD66F
+				}
+				GameConditionPlayerHasIntel Has_Trail
+				{
+					myIntel < uid=1657B1AA6627C04600499C27ADFF0287 > = intel_a_sl_TAT_Cache_01_Intel_03_Trail 7C12810B63EE013B00063F73D30C2DFB
+				}
+				GameConditionPlayerHasIntel Has_Datacard
+				{
+					myIntel < uid=1657B1AA6627C04600499C2843E5BC40 > = intel_a_sl_TAT_Cache_01_Intel_04_Holodisk CC6CF61E63B7003D000045309578FBA1
+				}
+				GameConditionPlayerHasIntel Has_Triangulate
+				{
+					myIntel < uid=1657B1AA6627C04600499C295DADA3C4 > = intel_a_sl_TAT_Cache_01_Intel_05_Triangulate CC6CF61E644005070002A23626A31649
+				}
+				GameConditionPlayerHasIntel Has_Final
+				{
+					myIntel < uid=1657B1AA6627C04600499C2A45EC4D4E > = intel_a_sl_TAT_Cache_01_Intel_Final 7C12810B63EE013C00063F745077F8C6
+				}
+			}
+		}
+		LivingWorldGameConditionGroup "Intel_02_BrokenDatacard is not Active or Resolved"
+		{
+			myIsNegated TRUE
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel Has_BrokenDC
+				{
+					myIsNegated FALSE
+					myIntel < uid=91803AE166EBF4340005EBE58D6F5D7B > = intel_a_sl_TAT_Cache_02_Intel_02_BrokenDatacard CC6CF61E643FF56900059C8DCCD03E41
+				}
+				GameConditionPlayerHasIntel Resolved_BrokenDC
+				{
+					myIsNegated FALSE
+					myIntel < uid=91803AE166EBF4340005EBE64B26DB3C > = intel_a_sl_TAT_Cache_02_Intel_02_BrokenDatacard CC6CF61E643FF56900059C8DCCD03E41
+					myIntelState Resolved
+				}
+			}
+		}
+		LivingWorldGameConditionGroup "Intel_01 is not Active or Resolved"
+		{
+			myIsNegated TRUE
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel "Intel_01 is Active"
+				{
+					myIntel < uid=91803AE166EBF4340005EBE7B271D93C > = intel_a_sl_TAT_Cache_02_Intel_01_HostileSettlement CC6CF61E643FF56900059C8AC669EDCD
+				}
+				GameConditionPlayerHasIntel "Intel_01 is Resolved"
+				{
+					myIntel < uid=91803AE166EBF4340005EBE82ACDEE33 > = intel_a_sl_TAT_Cache_02_Intel_01_HostileSettlement CC6CF61E643FF56900059C8AC669EDCD
+					myIntelState Resolved
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is more than 75m"
+		{
+			myDistance 75.0
+		}
+	}
+}
+
+LivingWorldContent MS_2004_SL_TAT_02_Canyon_P2 < uid=91803AE166EC1C910038D4A0F90ECEA5 >
+{
+	myActivationGameConditions
+	{
+		GameConditionQuestBeatState "Quest SL_01 QuestBeat02 is Active"
+		{
+			myQuestBeat CC6CF61E64215E560000710309244A91
+			myQuestBeatState Started
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance less than 65m"
+		{
+			myDistance 65.0
+			myOperator LessThan
+		}
+		GameConditionQuestBeatState "MQ_110_B02 si Completed"
+		{
+			myQuestBeat 9D01D2176295FF210000763737437774
+			myQuestBeatState Completed
+		}
+		LivingWorldGameConditionGroup "Any Intel of SL_TAT01 is not Active"
+		{
+			myIsNegated TRUE
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel Has_AnotherCache
+				{
+					myIsNegated FALSE
+					myIntel < uid=91803AE166EC1CC80038D4A1026943F1 > = intel_a_sl_TAT_Cache_01_Intel_002_Intel_AnotherCache 1657B1AA652510D8000A37E71E055AB4
+				}
+				GameConditionPlayerHasIntel Has_Landmark
+				{
+					myIntel < uid=91803AE166EC1CC80038D4A2C49761DF > = intel_a_sl_TAT_Cache_01_Intel_01_a_Landmark 7C12810B63EE013900063F724A6E2305
+				}
+				GameConditionPlayerHasIntel Has_Region
+				{
+					myIntel < uid=91803AE166EC1CC80038D4A3DA055490 > = intel_a_sl_TAT_Cache_01_Intel_01_b_Region 225CF627643C69B50003C792B50FD00D
+				}
+				GameConditionPlayerHasIntel Has_Complete
+				{
+					myIntel < uid=91803AE166EC1CC80038D4A4D6EC1C9B > = intel_a_sl_TAT_Cache_01_Intel_02_Complete 225CF627643C69B50003C79547FAD66F
+				}
+				GameConditionPlayerHasIntel Has_Trail
+				{
+					myIntel < uid=91803AE166EC1CC80038D4A59ED2BB7C > = intel_a_sl_TAT_Cache_01_Intel_03_Trail 7C12810B63EE013B00063F73D30C2DFB
+				}
+				GameConditionPlayerHasIntel Has_Datacard
+				{
+					myIntel < uid=91803AE166EC1CC80038D4A6E134A8E0 > = intel_a_sl_TAT_Cache_01_Intel_04_Holodisk CC6CF61E63B7003D000045309578FBA1
+				}
+				GameConditionPlayerHasIntel Has_Triangulate
+				{
+					myIntel < uid=91803AE166EC1CC80038D4A71165C182 > = intel_a_sl_TAT_Cache_01_Intel_05_Triangulate CC6CF61E644005070002A23626A31649
+				}
+				GameConditionPlayerHasIntel Has_Final
+				{
+					myIntel < uid=91803AE166EC1CC80038D4A8A7DB0FF1 > = intel_a_sl_TAT_Cache_01_Intel_Final 7C12810B63EE013C00063F745077F8C6
+				}
+			}
+		}
+		LivingWorldGameConditionGroup "Intel_02_BrokenDatacard is not Active or Resolved"
+		{
+			myIsNegated TRUE
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel Has_BrokenDC
+				{
+					myIsNegated FALSE
+					myIntel < uid=91803AE166EC1CC80038D4A9ACD9492D > = intel_a_sl_TAT_Cache_02_Intel_02_BrokenDatacard CC6CF61E643FF56900059C8DCCD03E41
+				}
+				GameConditionPlayerHasIntel Resolved_BrokenDC
+				{
+					myIsNegated FALSE
+					myIntel < uid=91803AE166EC1CC80038D4AAE8EE87FE > = intel_a_sl_TAT_Cache_02_Intel_02_BrokenDatacard CC6CF61E643FF56900059C8DCCD03E41
+					myIntelState Resolved
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is more than 75m"
+		{
+			myDistance 75.0
+		}
+	}
+}
+
+LivingWorldContent MS_2014_SL_KIJ_OHC_KordosRetreat_P0 < uid=1657B1AA64F9B9E50004EF2EEBFD0387 >
+{
+	myActivationGameConditions
+	{
+		GameConditionQuestBeatState "SL_01 QuestBeat02 FindAllCache is Started"
+		{
+			myQuestBeat CC6CF61E64215E560000710309244A91
+			myQuestBeatState Started
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is less than 60m"
+		{
+			myDistance 60.0
+			myOperator LessThan
+		}
+		LivingWorldGameConditionGroup "Intel Intro is NOT Active and  NOT Resolved and NOT Disabled"
+		{
+			myOperator And
+			myConditions
+			{
+				GameConditionPlayerHasIntel "Intel_00_Intro NOT resolved"
+				{
+					myIsNegated TRUE
+					myIntel < uid=1657B1AA65CA1F75000878EB8D4A52A7 > = intel_a_sl_KIJ_Cache_01_Intel_00_Intro 7C12810B63EDFA37000548D9F312E283
+					myIntelState Resolved
+				}
+				GameConditionPlayerHasIntel "Intel_00_Intro NOT Active"
+				{
+					myIsNegated TRUE
+					myIntel < uid=1657B1AA65CA1F75000878ECF3BB4E97 > = intel_a_sl_KIJ_Cache_01_Intel_00_Intro 7C12810B63EDFA37000548D9F312E283
+				}
+				GameConditionPlayerHasIntel "Intel_00_Intro NOT Disabled"
+				{
+					myIsNegated TRUE
+					myIntel < uid=91803AE166703D91004D2413FE61A6A7 > = intel_a_sl_KIJ_Cache_01_Intel_00_Intro 7C12810B63EDFA37000548D9F312E283
+					myIntelState Disabled
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is more than 70m"
+		{
+			myDistance 70.0
+			myOperator GreaterThan
+		}
+	}
+}
+
+LivingWorldContent MS_2015_SL_KIJ_OHC_KordosRetreat_P1 < uid=1657B1AA64F9BFFE0004EF2FDBF27E24 >
+{
+	myActivationGameConditions
+	{
+		GameConditionQuestBeatState "SL_01 QuestBeat 02 FindAllCache is Started"
+		{
+			myQuestBeat CC6CF61E64215E560000710309244A91
+			myQuestBeatState Started
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance less than 60m"
+		{
+			myDistance 60.0
+			myOperator LessThan
+		}
+		LivingWorldGameConditionGroup Intel_00_OR_01_isActive
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel "Intel_00_Intro is Active"
+				{
+					myIntel < uid=1657B1AA66A202510003A0E6F1BFDDA6 > = intel_a_sl_KIJ_Cache_01_Intel_00_Intro 7C12810B63EDFA37000548D9F312E283
+				}
+				GameConditionPlayerHasIntel "Intel_01 is Active"
+				{
+					myIntel < uid=1657B1AA66A202510003A0E799582A84 > = intel_a_sl_KIJ_Cache_01_Intel_01_GambledDatacard 7C12810B63EE00E900063F6BF2EE4154
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR - Distance is more than 70m OR Intel_02_Datacard is Active"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is more than 70m"
+				{
+					myDistance 70.0
+					myOperator GreaterThan
+				}
+				GameConditionPlayerHasIntel "Intel_02_DatacardWon is Active (because the sabacc table is close)"
+				{
+					myIntel < uid=91803AE1667046F900551409EB857853 > = intel_a_sl_KIJ_Cache_01_Intel_02_DatacardWon 7C12810B63EE00EE00063F6CCC603EE9
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS_2018_SL_AKI_01_AhiaKoTower_P1 < uid=1657B1AA650AF4450018CF14BB6855CF >
+{
+	myActivationGameConditions
+	{
+		GameConditionQuestBeatState Has_FindAllCache
+		{
+			myQuestBeat CC6CF61E64215E560000710309244A91
+			myQuestBeatState Started
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance less than 90"
+		{
+			myDistance 90.0
+			myOperator LessThan
+		}
+		LivingWorldGameConditionGroup "Intel 01 is not Started Resolved or Done"
+		{
+			myIsNegated TRUE
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel "intel 01 is active"
+				{
+					myIntel < uid=1657B1AA662271F600041D6927BA5DE0 > = intel_a_sl_AKI_Cache_01_Intel_01_VendorLocation 7C12810B63ED11350000F69FB990E727
+					myIntelState Active
+				}
+				GameConditionPlayerHasIntel "intel 01 is Resolved"
+				{
+					myIntel < uid=1657B1AA662271F600041D6A7883BE09 > = intel_a_sl_AKI_Cache_01_Intel_01_VendorLocation 7C12810B63ED11350000F69FB990E727
+					myIntelState Resolved
+				}
+				GameConditionPlayerHasIntel "intel 01 is Disabled"
+				{
+					myIntel < uid=1657B1AA662271F600041D6BAFB930DC > = intel_a_sl_AKI_Cache_01_Intel_01_VendorLocation 7C12810B63ED11350000F69FB990E727
+					myIntelState Disabled
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR - Distance is more than 100m or Intel 02_Datacard is Active"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is more than 100m"
+				{
+					myDistance 100.0
+				}
+				GameConditionPlayerHasIntel "Intel 02_Datacard is Active"
+				{
+					myIntel < uid=91803AE16672FF0A00362B2ABFBCDF18 > = intel_a_sl_AKI_Cache_01_Intel_02_DatacardBought 7C12810B63ED115C0000F6A0887D1F64
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS_2019_SL_AKI_01_AhiaKoTower_P2 < uid=1657B1AA650C7285000FC2956688AFE0 >
+{
+	myCompletedGameValue < uid=1657B1AA650C7313000FC296DC8F6C6C >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionQuestBeatState "SL QB02_FindAllCaches is Active"
+		{
+			myQuestBeat CC6CF61E64215E560000710309244A91
+			myQuestBeatState Started
+		}
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "This Content is not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Player Distance is less than 50m"
+		{
+			myDistance 50.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance more than 60"
+		{
+			myDistance 60.0
+		}
+	}
+}
+
+LivingWorldContent MS_2020_SL_AKI_02_Bridge_P1 < uid=1657B1AA650AF4540018CF157490DEB7 >
+{
+	myCompletedGameValue < uid=1657B1AA650D863B001C63A637D5D4B7 >
+	{
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType ambient Ambient
+	}
+	myLayerType MicroStory
+	myBlockingRadius 3.0
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasIntel "Intel Cache_02_Intel_01 is Active"
+		{
+			myIntel < uid=1657B1AA650D82C20011CE69B5E0CBEC > = intel_a_sl_AKI_Cache_02_Intel_01_Friend 7C12810B63ED11760000F6A274A5ED60
+		}
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "This content is not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance less than 80m"
+		{
+			myDistance 80.0
+			myOperator LessThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is more than 100m"
+		{
+			myDistance 100.0
+		}
+	}
+}
+
+LivingWorldContent MS_2021_SL_AKI_02_Bridge_P2 < uid=1657B1AA650D65B3000AE9051E9E49E9 >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance less than 100m"
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		LivingWorldGameConditionGroup "Group OR - Intel Cache_02_Intel01 or Cache_02_Intel02 are Active"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel "Intel Cache_02_Intel_01 is Active"
+				{
+					myIntel < uid=91803AE16686796C0019C298E13B118D > = intel_a_sl_AKI_Cache_02_Intel_01_Friend 7C12810B63ED11760000F6A274A5ED60
+					myIntelState Active
+				}
+				GameConditionPlayerHasIntel "Intel Cache_02_Intel_02 is Active"
+				{
+					myIntel < uid=91803AE1668679A30019C299656A3D58 > = intel_a_sl_AKI_Cache_02_Intel_02_HuttOfficerLocation 225CF627649054150001349F3163AE7B
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance more than 120"
+		{
+			myDistance 120.0
+		}
+	}
+}
+
+LivingWorldContent MS_2023_SL_AKI_02_Bridge_Chest_Closed < uid=1657B1AA651D6AE90014ADB388BF64FF >
+{
+	myCompletedGameValue < uid=1657B1AA651D6B9E0014ADC71C436588 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasIntel "Intel Cache_02_Intel_Final is Active"
+		{
+			myIntel < uid=1657B1AA651D6B2F0014ADB58C4A5861 > = intel_a_sl_AKI_Cache_02_Intel_Final_Cache CC6CF61E63B700320000452FAF482320
+		}
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "This Content is not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Player Distance is less than 100m"
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR - Content Completed or Player Distance more than 120m"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "This content is Completed"
+				{
+				}
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Player Distance more than 120m"
+				{
+					myDistance 120.0
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS_2024_SL_AKI_02_Bridge_Chest_Open < uid=1657B1AA651D6B0D0014ADB4CD84FC59 >
+{
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasIntel "Intel Cache_02_Intel_Final is Active"
+		{
+			myIntel < uid=1657B1AA651D6B9E0014ADC85886D852 > = intel_a_sl_AKI_Cache_02_Intel_Final_Cache CC6CF61E63B700320000452FAF482320
+		}
+		GameConditionLivingWorldContent_HasBeenCompleted "LWC AKI_02_Bridge_Chest_Closed is Completed"
+		{
+			myLivingWorldContent 1657B1AA651D6AE90014ADB388BF64FF
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Player Distance is less than 100m"
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Player distance is more than 120m"
+		{
+			myDistance 120.0
+		}
+	}
+}
+
+LivingWorldContent MS_2026_SL_AKI_02_TurretDeactivation < uid=03BE13BA66388E7A000547737025C81E >
+{
+	myLayerType Encounter
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasIntel "Intel Cache_02_Intel_Final is Active"
+		{
+			myIsNegated TRUE
+			myIntel < uid=03BE13BA66388F1E000547743921A293 > = intel_a_sl_AKI_Cache_02_Intel_Final_Cache CC6CF61E63B700320000452FAF482320
+			myIntelState Active
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Player Distance is less than 50m"
+		{
+			myDistance 50.0
+			myOperator LessThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Player Distance is more than 70m"
+		{
+			myDistance 70.0
+			myOperator GreaterThan
+		}
+	}
+}
+
+LivingWorldContent MS_2025_TOS_MiyukiCaches < uid=1657B1AA652E5CDF000498E6CEB86D7B >
+{
+	myCompletedGameValue < uid=91803AE16686A13A001E7B1BDB5F5BEF >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "This Content is not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Player Distance is less than 80m"
+		{
+			myDistance 80.0
+			myOperator LessThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Player Distance is more than 100m"
+		{
+			myDistance 100.0
+		}
+	}
+}
+

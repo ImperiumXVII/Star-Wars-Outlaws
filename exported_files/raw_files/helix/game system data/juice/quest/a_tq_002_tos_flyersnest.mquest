@@ -1,0 +1,38 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/rbtags/quest.mrbtagstags"
+
+Quest A_TQ_002_TOS_FlyersNest < uid=CC6CF61E63C16B17000B1152DE165864 >
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"TQ_TOS_02 description quest name\", enabled = true, guid = #CC6CF61E63C16B17000B114EBBA96C89, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 10478, text = \"Droid Eye\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"TQ_TOS_02 description\", enabled = true, guid = #CC6CF61E63C16B17000B114F4DF309DC, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10478, text = \"Nix has found something in the Flyers Nest.\", type = \"MenuLine\""
+	myType PetTrail
+	myToastUIDisplayMode None
+	myBeats
+	{
+		QuestBeat QB01_Start < uid=CC6CF61E63C16B17000B11530B7E1793 >
+		{
+			myScript helix/scripts/scr_a_tq_002_tos_pln_b01_start_v2.mscript
+			myName "aurabesh = false, contextComment = \"TQ 002 Beat 01 text\", enabled = true, guid = #CC6CF61E63C16B17000B11506EF319CE, lineVersion = 13, maxLength = 0, productId = -1, sectionId = 1603, text = \"Follow nix in the flyers nest\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myObjectives
+			{
+				QuestObjectiveCustom QB01_FollowNix < uid=CC6CF61E63C16B17000B1154FDB5425B >
+				{
+					myName "aurabesh = false, contextComment = \"TQ_TOS_02 Beat 01 Objective 01 Text\", enabled = true, guid = #CC6CF61E63C16B17000B11512E2BB40C, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 1603, text = \"Follow Nix to the top of the nest\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+			}
+			myQuestBeatStateGameValue < uid=CC6CF61E63C16B17000B11558E4D0235 >
+			{
+			}
+			myDeactivateContentLocationOnComplete TRUE
+		}
+	}
+	myQuestStateGameValue < uid=CC6CF61E63C16B17000B1156E2F4BEE0 >
+	{
+	}
+	myQuestStartedRBTag < uid=DA5615DD64B559E10000C6755086CBEE > = World_Quest_TQTOS020_Started DA5615DD64A44161000165DA3EA4DA80
+	myQuestCompletedRBTag < uid=DA5615DD64B559E10000C676385F8240 > = World_Quest_TQTOS020_Completed DA5615DD64A44174000165DC942C2946
+}
+

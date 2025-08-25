@@ -1,0 +1,351 @@
+include "helix/game system data/fruit/npcmove/moveevaluation.fruit"
+include "helix/game system data/fruit/ai/motion/motionpatternprofile.fruit"
+include "helix/game system data/fruit/bodypart/bodypart.fruit"
+include "helix/game system data/fruit/melee/combatmeleetype.fruit"
+include "helix/game system data/fruit/melee/npcmelee.fruit"
+
+// For each non-abstract class, you need to register a type here.
+// Also, Must match enum HC_NPCMoveType in code/helix/HClient/HC_NPCMoveEnum.h
+enum NPCMoveType
+{
+	Invalid
+	WildlifeOnSpotAttack
+	WildlifeJumpAttack
+	WildlifePounceAttack
+	WildlifeTakedown
+	WildlifeRangeAttack
+	WildlifeGrabAttack
+	WildlifeTaunt
+	WildlifeMoveAway
+	WildlifeDodgeLeft
+	WildlifeDodgeRight
+	WildlifeDodgeBack
+	WildlifeBackOff
+	WildlifeFlank
+	WildlifeTailRegen
+	WildlifeReactToDistraction
+	WildlifeStalkingDodgeLeft
+	WildlifeStalkingDodgeRight
+	WildlifeStalkingDodgeBack
+	WildlifeStalkingHeavyGrowl
+	WildlifeStalkingTaunt
+	WildlifeStalkingGrowl
+	WildlifeStalkingIdle
+	WildlifeLongRangeAttack
+	WildlifeCollidingAttack
+	WildlifeJumpAttackPrepare
+}
+
+// Move Settings
+class NPCMoveSetting < abstract=1 >
+{
+	NPCMoveType myMoveType Invalid
+}
+
+list NPCMoveSettingList
+{
+	NPCMoveSetting
+}
+
+// NPCMoveSettingWildlife
+class NPCMoveSettingWildlife < abstract=1 > : NPCMoveSetting
+{
+	NPCMoveEvaluationConfig* myMoveEvaluationConfig
+	NPCMoveEvaluationConfig* myMoveEvaluationToVehicleConfig
+	float myWeight 10
+	float mySuccessCooldown 1
+	float myFailCooldown 1
+}
+
+// NPCMoveSettingWildlifeCombat
+class NPCMoveSettingWildlifeCombat < abstract=1 > : NPCMoveSettingWildlife
+{
+
+}
+
+list NPCMoveSettingWildlifeCombatList
+{
+	NPCMoveSettingWildlifeCombat
+}
+
+list NPCMoveSettingWildlifeAwareList
+{
+	NPCMoveSettingWildlifeStalking
+}
+
+class WildlifeMeleeAimingParams
+{
+	BodyPartType myBodyPartType < tooltip="Hitbox body part. Will be used to determine aim position." >
+	MeleePositionType myAimingPositionType < tooltip="Multiple hit boxes could have same body part. If they are all selected, this parameter determine how to calculate the final position." >
+	float myMinHighAttackHeight < tooltip="Will always use low attack if aim height is smaller than this value." >
+	float myMaxLowAttackHeight < tooltip="Will always use high attack if aim height is larger than this value." >
+	float myLowAttackChanceWhenBothAvaliable < tooltip="If aim hight is between above two values, will randomly choose low/high attack, This is the chance for low attack." >
+}
+
+class NPCMoveSettingWildlifeMelee < abstract=1 > : NPCMoveSettingWildlifeCombat
+{
+	float myDamageToNPCAndPlayer 1
+	float myDamageToWildlife 4
+	WildlifeMeleeAimingParams myAimingParams
+	CombatMeleeType myMeleeType Hit < tooltip="NPC can stagger back further for heavy melee" >
+	float myMeleeIntensity 1.0f < tooltip="NPC can fly higher with higher intensity of melee type CrushHit" >
+	float myMeleeIntensityToVehicle 1.0f < tooltip="vehicle can fly higher with higher intensity of melee type CrushHit" >
+	bool myIgnoreAllClaimsWhenAttack false < tooltip="Ignore all claims when playing attack animation." >
+	bool myAttackPathAgentCheck true
+	float myAttackPathAgentCheckRadius 1.0f < min=0.0f max=20.0f tooltip="Radius to search agent to check if agent OBB overlap melee attack path" >
+}
+
+class NPCMoveSettingWildlifeMeleeWithPredict < abstract=1 > : NPCMoveSettingWildlifeMelee
+{
+	bool myEnableTargetPositionPredict true
+	bool myUseTargetPositionForEvaluation false < tooltip="When enable, the move evaluation will use target position instead of predict position. exclusive feature for the esteemed krayt dragon" >
+	float myDurationToPredictTargetPosition 0.25 < tooltip="Predict duration. Will be multiplied with target's velocity." >
+	float myAttackAnimationDistanceCorrectionToPlayer -0.5 < tooltip="Adjust the final attack position for [player]. 0 is the target original position. Positive number means attack position will offset using self to target vector and vice versa." >
+	float myAttackAnimationDistanceCorrectionToSmallTarget 0.0 < tooltip="Adjust the final attack position for [humanoid NPC] and [small prey]. 0 is the target original position. Positive number means attack position will offset using self to target vector and vice versa." >
+	float myAttackAnimationDistanceCorrectionToLargeTarget 0.0 < tooltip="Adjust the final attack position for [large prey]. 0 is the target original position. Positive number means attack position will offset using self to target vector and vice versa." >
+	float myDurationToPredictTargetPositionToVehicle 0.25 < tooltip="Predict duration for VEHICLE. Will be multiplied with target's velocity." >
+	float myAttackAnimationDistanceCorrectionToVehicle -0.5 < tooltip="Adjust the final attack position for VEHICLE. 0 is the target original position. Positive number means attack position will offset using self to target vector and vice versa." >
+	float myShortDistanceAttackRange 4.0 < tooltip="Will use short attack(short jump attack, short pounce attack, etc.) if distance to target is lower than this value." >
+	bool myIgnoreLOSCheck false < hidden=1 >
+	float mySnapToNavMeshTolerance 0.5 < tooltip="exclusive feature for the esteemed krayt dragon" >
+	float myMaxAttackAngle 0.0f < min=0.0f tooltip="0 means no limit. The max attack angle range.\nIf exceed this range, the direction will be clampped to the max angle" >
+	float myClearanceCheckRadius 1.0f
+	float myClearanceCheckHeight 1.0f
+}
+
+class NPCMoveSettingWildlifeOnSpotAttack : NPCMoveSettingWildlifeMelee
+{
+	NPCMoveType myMoveType WildlifeOnSpotAttack < hidden=1 >
+}
+
+class NPCMoveSettingWildlifeJumpAttack : NPCMoveSettingWildlifeMeleeWithPredict
+{
+	NPCMoveType myMoveType WildlifeJumpAttack < hidden=1 >
+	bool myIgnoreLOSCheck false < hidden=0 tooltip="exclusive feature for the esteemed krayt dragon" >
+}
+
+class NPCMoveSettingWildlifePounceAttack : NPCMoveSettingWildlifeMeleeWithPredict
+{
+	NPCMoveType myMoveType WildlifePounceAttack < hidden=1 >
+}
+
+class NPCMoveSettingWildlifeCollidingAttack : NPCMoveSettingWildlifeMeleeWithPredict
+{
+	NPCMoveType myMoveType WildlifeCollidingAttack < hidden=1 >
+}
+
+class NPCMoveSettingWildlifeJumpAttackPrepare : NPCMoveSettingWildlifeMeleeWithPredict
+{
+	NPCMoveType myMoveType WildlifeJumpAttackPrepare < hidden=1 >
+}
+
+// NPCMoveSettingWildlifeTakedown
+class NPCMoveSettingWildlifeTakedown : NPCMoveSettingWildlifeCombat
+{
+	NPCMoveType myMoveType WildlifeTakedown < hidden=1 >
+	float myChaseTargetDuration 3.0
+	float myChaseSuccessDistance 2.0
+}
+
+// Keep sync in enum NPCRangeAttackType in code/helix/HClient/HC_NPCMoveEnum.h
+enum NPCRangeAttackType
+{
+	Tshikara
+	SammakhoMediumRange
+	SammakhoLongRange
+	MonkeyLizard
+}
+
+// NPCMoveSettingWildlifeRangeAttack
+class NPCMoveSettingWildlifeRangeAttack : NPCMoveSettingWildlifeMeleeWithPredict
+{
+	NPCMoveType myMoveType WildlifeRangeAttack < hidden=1 >
+	bool myShouldCheckLOS true < tooltip="If true, wildlife will check LOS to target before perform range attack." >
+	int myProjectileCount 5
+	float myAngleOffset 10
+	float myShootInterval 0.02
+	float myMaxPitchAngle 20.0
+	float myUnreachableRepositionMinDistance 15.0
+	float myUnreachableRepositionMaxDistance 30.0
+	NPCRangeAttackType myRangeAttackType Tshikara
+}
+
+// NPCMoveSettingWildlifeRangeAttack
+class NPCMoveSettingWildlifeLongRangeAttack : NPCMoveSettingWildlifeRangeAttack
+{
+	NPCMoveType myMoveType WildlifeLongRangeAttack < hidden=1 >
+}
+
+class NPCMoveSettingWildlifeGrabAttack : NPCMoveSettingWildlifeMeleeWithPredict
+{
+	NPCMoveType myMoveType WildlifeGrabAttack < hidden=1 >
+	NPCMoveEvaluationConfig* myGrabAttackEvaluationConfig
+	int myGrabCount 1
+	float myMaxGrabDistance 4.0
+}
+
+class WildlifePacingDynamicWeightParams
+{
+	float myCloseRangeDistance 4.0
+	float myMediumRangeDistance 8.0
+	float myLongRangeDistance 30.0
+	float myLowHealthThreshold < min=0.0 max=1.0 >
+	float myCloseRangeBonus 0.0
+	float myMediumRangeBonus 0.0
+	float myLongRangeBonus 0.0
+	float myPlayerAimBonus 0.0
+	float myLowHealthBonus 0.0
+	float myPackBonus 0.0
+	float myHurtBonus 0.0
+}
+
+// NPCMoveSettingWildlifePacing
+class NPCMoveSettingWildlifePacing < abstract=1 > : NPCMoveSettingWildlife
+{
+	WildlifePacingDynamicWeightParams myDynamicWeightParams
+	bool myInterruptAnimationOnAbort FALSE
+}
+
+list NPCMoveSettingWildlifePacingList
+{
+	NPCMoveSettingWildlifePacing
+}
+
+class NPCMoveSettingWildlifeTaunt : NPCMoveSettingWildlifePacing
+{
+	NPCMoveType myMoveType WildlifeTaunt < hidden=1 >
+}
+
+class NPCMoveSettingWildlifeMoveAway : NPCMoveSettingWildlifePacing
+{
+	NPCMoveType myMoveType WildlifeMoveAway < hidden=1 >
+	float myMinDistanceFromSearchPositionLOSRequired 0.0
+	float myMaxDistanceFromSearchPositionLOSRequired 20.0
+	float myMinDistanceFromSearchAgentLOSRequired 8.0
+	float myMaxDistanceFromSearchAgentLOSRequired 20.0
+	float myMinDistanceFromTargetLOSRequired 5.0
+	float myMaxDistanceFromTargetLOSRequired 10.0
+	float myOptimalDistanceFromTargetLOSRequired 0.0
+	float myMinDistanceFromSearchPosition 0.0
+	float myMaxDistanceFromSearchPosition 20.0
+	float myMinDistanceFromSearchAgent 8.0
+	float myMaxDistanceFromSearchAgent 20.0
+	float myMinDistanceFromTarget 5.0
+	float myMaxDistanceFromTarget 10.0
+	float myOptimalDistanceFromTarget 0.0
+	NPCMotionPatternType myMotionPatternType Jog
+}
+
+class NPCMoveSettingWildlifeDodgeLeft : NPCMoveSettingWildlifePacing
+{
+	NPCMoveType myMoveType WildlifeDodgeLeft < hidden=1 >
+}
+
+class NPCMoveSettingWildlifeDodgeRight : NPCMoveSettingWildlifePacing
+{
+	NPCMoveType myMoveType WildlifeDodgeRight < hidden=1 >
+}
+
+class NPCMoveSettingWildlifeDodgeBack : NPCMoveSettingWildlifePacing
+{
+	NPCMoveType myMoveType WildlifeDodgeBack < hidden=1 >
+}
+
+class NPCMoveSettingWildlifeBackOff : NPCMoveSettingWildlifePacing
+{
+	NPCMoveType myMoveType WildlifeBackOff < hidden=1 >
+}
+
+class NPCMoveSettingWildlifeFlank : NPCMoveSettingWildlifePacing
+{
+	NPCMoveType myMoveType WildlifeFlank < hidden=1 >
+	
+	NPCMotionPatternType myMotionPatternType Walk
+	float myMinFlankRadius 3.0
+	float myMaxFlankRadius 15.0
+	float myFlankRotateAngle 45.0
+	float myMinFlankDuration 5.0
+	float myMaxFlankDuration 8.0
+	float myFlankPositionTolerance 1.0
+}
+
+class NPCMoveSettingWildlifeTailRegen : NPCMoveSettingWildlifePacing
+{
+	NPCMoveType myMoveType WildlifeTailRegen < hidden=1 >
+}
+
+class NPCMoveSettingWildlifeStalking < abstract=1 > : NPCMoveSettingWildlifePacing
+{
+	float mySkipPossibilityOnSuccess 1.0 < min=0.0 max=1.0 tooltip="Possibility to skip playing animation when predicate is successful and the action go into successful cooldown.\nIt can be used to play animation in random interval cooldown" >
+}
+
+class NPCMoveSettingWildlifeStalkingDodgeLeft : NPCMoveSettingWildlifeStalking
+{
+	NPCMoveType myMoveType WildlifeStalkingDodgeLeft < hidden=1 >
+}
+
+class NPCMoveSettingWildlifeStalkingDodgeRight : NPCMoveSettingWildlifeStalking
+{
+	NPCMoveType myMoveType WildlifeStalkingDodgeRight < hidden=1 >
+}
+
+class NPCMoveSettingWildlifeStalkingDodgeBack : NPCMoveSettingWildlifeStalking
+{
+	NPCMoveType myMoveType WildlifeStalkingDodgeBack < hidden=1 >
+}
+
+class NPCMoveSettingWildlifeStalkingHeavyGrowl : NPCMoveSettingWildlifeStalking
+{
+	NPCMoveType myMoveType WildlifeStalkingHeavyGrowl < hidden=1 >
+}
+
+class NPCMoveSettingWildlifeStalkingTaunt : NPCMoveSettingWildlifeStalking
+{
+	NPCMoveType myMoveType WildlifeStalkingTaunt < hidden=1 >
+}
+
+class NPCMoveSettingWildlifeStalkingGrowl : NPCMoveSettingWildlifeStalking
+{
+	NPCMoveType myMoveType WildlifeStalkingGrowl < hidden=1 >
+}
+
+class NPCMoveSettingWildlifeStalkingIdle : NPCMoveSettingWildlifeStalking
+{
+	NPCMoveType myMoveType WildlifeStalkingIdle < hidden=1 >
+}
+
+// NPCMoveSettingReaction
+class NPCMoveSettingReaction < abstract=1 > : NPCMoveSetting
+{
+	bool myEnabled true
+	float myCooldown 5.0
+}
+
+list NPCMoveSettingWildlifeReactionList
+{
+	NPCMoveSettingReaction
+}
+
+class NPCMoveSettingReactToDistraction : NPCMoveSettingReaction
+{
+	NPCMoveType myMoveType WildlifeReactToDistraction < hidden=1 >
+	bool myRequireLOS false < tooltip="Indicate if this reaction need LOS to trigger." >
+	
+	float myWaitingTimeDuringCooldown 2.0
+	
+	bool myEnableTooCloseBehavior true
+	float myTooCloseBehaviorTriggerDistance 5.0 < tooltip="Wildlife will perform too close behavior and distance to distraction agent is within this range." >
+	float myWaitingTimeAfterTooCloseBehavior 2.0 < tooltip="Waiting time before exit distraction reaction once too close behavior finished. During this watiing time wildlife is likely to focus on target." >
+	
+	bool myEnableInvestigation true
+	float myInvestigationTriggerDistance 15.0 < tooltip="Wildlife will perform investigation behavior and distance to distraction position is within this range." >
+	float myInvestigationTimeout 10.0 < tooltip="Maximum investigation time." >
+	NPCMotionPatternType myInvestigationMotionPatternType Investigate
+	
+	bool myEnableOnSpotBehavior true
+	bool myTurnToTargetPositionBeforeOnSpotBehavior true
+	float myOnSpotBehaviorTriggerDistance 30.0 < tooltip="Wildlife will perform on spot behavior and distance to distraction position is within this range." >
+	float myMinWaitingTimeAfterOnSpotAnimation 1.0 < tooltip="Min waiting time before exit distraction reaction once on spot behavior finished." >
+	float myMaxWaitingTimeAfterOnSpotAnimation 3.0 < tooltip="Max waiting time before exit distraction reaction once on spot behavior finished." >
+	
+}

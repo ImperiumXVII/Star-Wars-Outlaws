@@ -1,0 +1,33 @@
+include "helix/game system data/fruit/intel/intel.fruit"
+
+enum ParallelIntelGroupType
+{
+	Any
+	All	
+}
+
+list ParallelIntelList
+{
+	Intel*
+	IntelList
+}
+
+class ParallelIntelGroup
+{
+	ParallelIntelGroupType myResolvedIntelNeededToActivateNext
+	ParallelIntelList myParallelIntel
+}
+
+list ChainedIntelList
+{
+	Intel*
+	ParallelIntelGroup
+}
+
+class IntelChain < uid=auto >
+{
+	varmap myName < bhv="localization" ui_info=1 >
+	varmap myDescription < bhv="localization" ui_info=1 >
+	string myIcon < bhv=sprite ui_info=1 >
+	ChainedIntelList myChainedIntel
+}

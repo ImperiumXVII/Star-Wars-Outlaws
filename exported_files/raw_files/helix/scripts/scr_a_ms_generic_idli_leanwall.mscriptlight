@@ -1,0 +1,306 @@
+{
+	connectionsById = {
+		9 0 8 0,
+		81 0 14 0,
+		83 0 82 0,
+		1 113 86 0,
+		1 114 87 0,
+		5 151 94 0,
+		5 152 93 0,
+		35 0 14 1,
+		92 0 93 1,
+		95 0 94 1,
+		1 109 80 1,
+		1 111 5 1,
+		1 113 92 1,
+		1 114 95 1,
+		53 100 80 2,
+		1 107 53 3,
+		1 112 14 3,
+		93 2 86 25,
+		94 2 87 25,
+		80 4 82 25,
+		82 75 14 25,
+		4 -101 5 50,
+		73 0 5 54,
+		84 0 82 101,
+		5 100 7 101,
+		14 100 4 101,
+		5 151 7 102,
+		5 10600 7 103,
+		8 -1 5 10000,
+		4 -102 5 10200,
+	},
+	lastNodeId = 97,
+	layers = {},
+	locComp = {},
+	nodesById = {
+		[1] = {
+			defaults = {
+				connectionsById = {
+					55 0 40 107,
+					64 0 40 109,
+					71 0 40 111,
+					72 0 40 112,
+					90 0 40 113,
+					91 0 40 114,
+				},
+				layers = {},
+				nodesById = {
+					[40] = {
+						type = "internal:CompoundDefaults",
+					},
+					[55] = {
+						type = "native:Constant",
+						value = {
+							#00000000000000000000000000000000,
+						},
+						valueType = "Living World Content Constant Data",
+					},
+					[64] = {
+						type = "native:Constant",
+						value = {
+							#&00000000000000000000000000000000,
+						},
+						valueType = "HC_Prop",
+					},
+					[71] = {
+						type = "native:Constant",
+						value = {
+							#&00000000000000000000000000000000,
+						},
+						valueType = "HC_Sequence",
+					},
+					[72] = {
+						type = "native:Constant",
+						value = {
+							#&711082146537ECEF00013D33431BC597,
+						},
+						valueType = "Interaction Point Constant Data",
+					},
+					[90] = {
+						type = "native:Constant",
+						value = {
+							#00000000000000000000000000000000,
+						},
+						valueType = "Stimulus Identifier Constant Data",
+					},
+					[91] = {
+						type = "native:Constant",
+						value = {
+							#00000000000000000000000000000000,
+						},
+						valueType = "Stimulus Identifier Constant Data",
+					},
+				},
+			},
+			lastId = 114,
+			pins = {
+				{
+					id = 107,
+				},
+				{
+					id = 109,
+					name = "Prop",
+				},
+				{
+					id = 111,
+					name = "Sequence",
+				},
+				{
+					id = 112,
+				},
+				{
+					id = 113,
+					name = "Kay Bark Enter (optional)",
+				},
+				{
+					id = 114,
+					name = "Kay Bark Exit (optional)",
+				},
+			},
+			type = "Script:Inputs",
+		},
+		{
+			lastId = -100,
+			pins = {},
+			type = "Script:Outputs",
+		},
+		[4] = {
+			filename = "helix/nodes/compounds/idle_interaction_sequence_wants_exit_listener.mcompoundnode",
+			name = "idle_interaction_sequence_wants_exit_listener",
+			type = "internal:Compound",
+		},
+		{
+			DoesNotNeedSequenceToResolvePinTypes = true,
+			mySequenceFile = "helix/sequence/idleinteraction_leanwall_seq.msequence",
+			pins = {
+				extResources = {
+					{
+						extResID = {
+							name = "Kay",
+							typename = "helix:agent",
+							uid = #7110821464E5C97200013781431026AF,
+						},
+						pinId = 10000,
+					},
+				},
+				interruptedStates = {},
+				jumpToMarkers = {
+					{
+						markerID = {
+							name = "leaveStart",
+							uid = #7110821464E5F824000A2B5D94628A99,
+						},
+						pinId = 10200,
+					},
+				},
+				jumpedToMarker = {},
+				reachedMarkers = {
+					{
+						markerID = {
+							name = "IdleInteractionLoopStart",
+							uid = #7110821464E5C9720001377D6206CDEE,
+						},
+						pinId = 10600,
+					},
+				},
+			},
+			type = "HC_ScriptCutscenePlayerNode",
+		},
+		[7] = {
+			filename = "helix/nodes/compounds/idle_interaction_sequence_flag_handler.mcompoundnode",
+			name = "idle_interaction_sequence_flag_handler",
+			type = "internal:Compound",
+		},
+		{
+			type = "HC_LocalPlayerNode_GetPlayer",
+		},
+		{
+			type = "native:Constant",
+			value = "Agent",
+			valueType = "Player Type",
+		},
+		[11, 12, 13, 14] = {
+			type = "HC_ScriptInteractionListenerNode",
+		},
+		[35] = {
+			type = "native:Constant",
+			value = true,
+			valueType = "bool",
+		},
+		[53] = {
+			constantDataUID = #&00000000000000000000000000000000,
+			type = "HC_ScriptLivingWorldInitNode",
+		},
+		[73] = {
+			type = "native:Constant",
+			value = {
+				{},
+			},
+			valueType = "HC_PlayerTransitionToSequenceSettings",
+		},
+		[80] = {
+			accessTypeEnum = "ImpulseSet",
+			type = "internal:VariableNode",
+			varId = #&D4F630796579C4970000C78BC5D450D4,
+		},
+		[81] = {
+			accessTypeEnum = "Get",
+			type = "internal:VariableNode",
+			varId = #&D4F630796579C4970000C78BC5D450D4,
+		},
+		[82] = {
+			filename = "helix/graph objects/prop/idleinteractions_interaction_point_invisible.mgraphobject",
+			pinState = {
+				[1, 2, 3] = {
+					id = 101,
+					input = true,
+					optional = true,
+					type = "bool",
+				},
+				{
+					id = 102,
+					input = true,
+					optional = true,
+					type = "bool",
+				},
+				{
+					id = 103,
+					input = true,
+					optional = true,
+					type = "Interaction Point Constant Data",
+				},
+				{
+					id = 105,
+					input = true,
+					optional = true,
+					type = "integer",
+				},
+				{
+					id = 107,
+					input = true,
+					optional = true,
+					type = "bool",
+				},
+			},
+			shouldReset = true,
+			type = "HC_ScriptPropModifierNode",
+		},
+		[83] = {
+			accessTypeEnum = "Get",
+			type = "internal:VariableNode",
+			varId = #&D4F630796579C4970000C78BC5D450D4,
+		},
+		[84] = {
+			type = "native:Constant",
+			value = true,
+			valueType = "bool",
+		},
+		[86] = {
+			type = "HC_ScriptKayBarkNode",
+		},
+		[87] = {
+			type = "HC_ScriptKayBarkNode",
+		},
+		[92] = {
+			label = "Constant Data/Is Valid",
+			type = "internal:TypeSelectByLabel",
+		},
+		[93] = {
+			type = "native:ImpulseSelect",
+		},
+		[94] = {
+			type = "native:ImpulseSelect",
+		},
+		[95] = {
+			label = "Constant Data/Is Valid",
+			type = "internal:TypeSelectByLabel",
+		},
+	},
+	savecount = 53,
+	variableMetaData = {
+		[#D4F630796579C4970000C78BC5D450D4] = {
+			comment = "",
+			path = "Prop",
+			subType = "None",
+		},
+	},
+	variables = {
+		{
+			arraysupport = "None",
+			data = {
+				{
+					#&00000000000000000000000000000000,
+				},
+			},
+			includeInWatchSummary = false,
+			modification = "None",
+			name = "Prop",
+			sharing = "Local",
+			storage = "None",
+			typeName = "HC_Prop",
+			varId = #&D4F630796579C4970000C78BC5D450D4,
+		},
+	},
+}

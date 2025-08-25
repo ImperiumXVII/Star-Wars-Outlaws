@@ -1,0 +1,167 @@
+include "helix/game system data/fruit/equipment/weapon/weapon_fire_mode.fruit"
+include "helix/game system data/juice/ai/npcdetectionsoundevent_weapons.mnpcdetectionsoundevent"
+include "helix/game system data/juice/camera/modifiers/weapon_recoil_kays_blaster.mcameramodifier"
+include "helix/game system data/juice/equipment/aimconfig/weapon_aimconfig_freeaim.maimconfig"
+include "helix/game system data/juice/equipment/weaponanimationconfig/weapon_anim_hay_blaster.mweaponanimationconfig"
+include "helix/game system data/juice/equipment/weaponanimationconfig/weapon_anim_kay_blaster.mweaponanimationconfig"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_small.mprojectile"
+include "helix/game system data/juice/sound/weapons/player_audioweapon_kays_blaster.maudioweapon"
+
+WeaponFireMode player_firemode_blaster_template < uid=A207755D62C2ECAE0000374E0F612794 >
+{
+	myFireEvent
+	{
+		FullAutoFireEvent FullAutoFireEvent
+		{
+			myRPM
+			{
+				myRPM 280
+			}
+			myPatterns
+			{
+				myShootPatterns
+				{
+				}
+			}
+		}
+	}
+	myBaseProperties
+	{
+		myAnimation < uid=A207755D65167D330000708653C9F57A > = weapon_anim_kays_blaster 1C021E95652CFEAD00043663605B96E6
+		myRecoil < uid=A207755D65159D4000014E3BC0BA0DA5 > = weapon_recoil_kays_blaster 346395BC60263508000000604041BBAB
+		myInputController
+		{
+			myFireRumble 8E25811B656064FF000687630B1F6115
+			myFireVibrationTriggerEffectEnabled TRUE
+			myFireVibrationTriggerEffect
+			{
+				myAmplitude 0.5
+				myPosition 6
+			}
+			myFireAimVibrationTriggerEffectEnabled TRUE
+			myFireAimVibrationTriggerEffect
+			{
+				myAmplitude "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.21079046 0.0097759999, -0.47365129 0.030911714, }, outTangents = { 0.29015058 0.23635232, 0.1218828 -0.0056526577, 0 -0, }, properties = { 275, 2323, 1299, }, values = { 0 0.1, 0.5 0.5, 1 0.2, }, }, numKeys = 3, }"
+				myFrequency "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.10000001 0.0044912221, -0.5 0, }, outTangents = { 0.213927 0.0042132139, 0.24171361 -0.010855895, 0 0, }, properties = { 275, 2051, 1299, }, values = { -0.025140703 0.076041348, 0.27485931 0.15000001, 1 0.029999999, }, }, numKeys = 3, }"
+				myDuration 0.35
+			}
+			myHardPressTriggerEffect helix/trigger_effects/triggereffect_blaster_default.mtriggereffect
+			myFireTriggerThresholdEnabled TRUE
+			myFireTriggerThreshold 0.6
+		}
+	}
+	myAimConfig < uid=A207755D62C2EE800000374134FB5898 > = weapon_aimconfig_freeaim A207755D61F1667100001B105CDB4181
+	myProjectile < uid=A207755D62C2EE8000003742862A419C > = weapon_projectile_blaster_small 346395BC6023B00D0000A471A2B165D5
+	myOverHeat
+	{
+		myHeatingMode PerUse
+		myMaxHeatFormula "100.0 * MaxHeatModifier + PlayerOverheatBonus"
+		myHeatPerUseFormula 9.0
+		myHeatOverTimeFormula 5.0
+		myCoolingOverTimeFormula 20.0
+		myCoolingTimeToStartFormula 1.3
+		myOverHeatCoolingTimeToStartFormula 0.9
+		myOverHeatCoolingTime 0.5
+		myOverHeatCoolingOvertimeTime 50.0
+		myOverHeatReactionTime 1.0
+		myActiveCooling
+		{
+			mySections
+			{
+				EquipmentOverHeatActiveCoolingSection Success
+				{
+					myStartOfSection "0.2 * FastReloadSectionStartModifier"
+					myLengthOfSection "0.3 * FastReloadSectionSizeModifier"
+					mySuperChargeBonusTime "5 * SuperChargeFastBonusTimeModifier"
+				}
+				EquipmentOverHeatActiveCoolingSection Success_Perfect
+				{
+					myStartOfSection "0.33 * PerfectReloadSectionStartModifier"
+					myLengthOfSection "0.05 * PerfectReloadSectionSizeModifier"
+					mySuperChargeBonusTime "5 * SuperChargePerfectBonusTimeModifier"
+					myIsPerfect TRUE
+				}
+			}
+			mySuccessReactionTime 0.1
+		}
+		myAudioData
+		{
+			myOverHeatAudioEvent
+			{
+				myGuid 40FCC17801A306EAABC14FEAD2E034B7
+			}
+			myActiveCoolingPerfectSuccessAudioEvent
+			{
+				myGuid 4B96D301D601B73906BCA1BDE19E3F8C
+			}
+			myActiveCoolingSuccessAudioEvent
+			{
+				myGuid 482229C09F23166F3003122E34855A9D
+			}
+			myActiveCoolingFailedAudioEvent
+			{
+				myGuid 40C22B823B3E55F726A07F73E04DC48D
+			}
+			myActiveCoolingTimeOutAudioEvent
+			{
+				myGuid 468776AD1E97B9A2364231E8310FC290
+			}
+		}
+		myAllowPerfectCoolingAttributeUID 3A19191B648731C900003382F4EAA428
+		myRumbleData
+		{
+			myHeatingUpRumble 7113C611663A2AF900056F4B7449A292
+			myOverHeatRumble 7113C611663A2D0F0000F2AA71EA7C76
+			myEnterCoolingSectionRumble 7113C611663A2ECD0004BB100C164274
+			myEnterPerfectCoolingSectionRumble 7113C611663A2F270005361BB46EBBE7
+		}
+	}
+	myDamage
+	{
+		myDamage
+		{
+			myVariation 0.0
+		}
+	}
+	mySpread
+	{
+		mySpreadValues
+		{
+			mySpread
+			{
+				myMin 0.5
+				myMax 1.0
+			}
+		}
+		myAimModifierData
+		{
+			myADSFormula 1.0
+			myHipFireFormula "1.0 * HipFireSpreadAngleModifier"
+		}
+	}
+	myUI
+	{
+		myDefaultUIGraph helix/ui/graphs/crosshair_pistol_blaster_overheat.muigraph
+		myUIGraphByConditions
+		{
+			EquipmentUIByConditions Accesibility
+			{
+				myConditions
+				{
+					myConditions
+					{
+						GameConditionAccessibilitySimplifiedCrosshair AccessibilitySimplifiedCrosshair
+						{
+							myMode 2
+						}
+					}
+				}
+				myUIGraph helix/ui/graphs/crosshair_grenadelauncher_ammunition.muigraph
+			}
+		}
+	}
+	myAudioData < uid=A207755D62C2ED170000375108139AFA > = player_audioweapon_kays_sig B341CDEB6107E06F0000083D68BABBFC
+	myNPCDetectionSoundEvent < uid=A207755D63593B8A0000885338B66A0C > = WeaponTrigger_Default 16C7D1FB63497FBD000004FA01B55DE5
+	myMuzzleEffect helix/particles/vfx_wpn_blaster_muzzleflash_02.mparticles
+}
+

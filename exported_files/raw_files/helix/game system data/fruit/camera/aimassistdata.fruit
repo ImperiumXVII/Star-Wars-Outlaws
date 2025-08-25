@@ -1,0 +1,42 @@
+
+class AimAssistFade
+{
+	string myTimeCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.7 -0.0, }, outTangents = { 0.4 0.0, 0 0, }, properties = { 275, 1299, }, values = { 0 0.0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph  tooltip="The fade multiplier over time (x=1 is myAimAssistFadeTime)">
+	string myDistanceCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.3 -0.0, }, outTangents = { 0.5 0.0, 0 0, }, properties = { 275, 1299, }, values = { 0 0.0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph  tooltip="The fade multiplier between the outer and inner attractor">
+	float myFadeTime 2.0 < tooltip="The time the aim assist lingers after a target dies or disappears" >
+}
+
+class AimAssistSnap
+{
+	bool mySnapEnabled true
+	
+	float myOffsetLimit 0.55 < tooltip="The height % of the box within which the pitch is maintained when snapping." >
+	float myAttractorStrength 0.9 < tooltip="The strength of snapping" >
+	float myDuration 1.0 < tooltip="For how long is snap applied" >
+	string mySnapCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.06495 0.000302, -0.689434 0.022612, }, outTangents = { 0.272497 0, 0.584549 0, 0 0, }, properties = { 275, 2323, 1299, }, values = { 0 1, 0.2 1, 1 0, }, }, numKeys = 3, }" < bhv=inputgraph tooltip="Snapping multiplier over time (x=1 is mySnapDuration)">
+	float myKillSnapInputLength 0.95 < tooltip="At what input length is aim snap always immediately canceled" >
+	float myGrippyness 1.0 < tooltip="To what extent is input canceling of small imputs applied at the beginning of the snap (0 = none)" >
+	
+	bool mySnapWhenAimModeBecomesActiveEnabled true < tooltip="If true, snap will be triggered when this game mode becomes active" >
+	bool mySnapAfterUseEnabled false < tooltip="If true snap can start when we use/intent to use the equiupment (i.e. when we shot the weapon)" >
+}
+
+class AimAssistValues
+{
+	AimAssistSnap mySnap
+	
+	float myAimAttractorStrength 0.80 < tooltip="The maximum part of the aim input removed by aim assist" >
+	float myAimAccelerationAccAttractorStrength 1.0 < tooltip="The maximum part of the accumulated speed added by aim acceleration removed by aim assist" >
+	float myAimAccelerationAddAttractorStrength 1.0 < tooltip="The maximum part of the speed added per second by aim acceleration removed by aim assist" >
+	float myMovementAttractorStrength 0.75 < tooltip="How big a part of the angle change to target caused by moving the player character is removed? 1.0 = lock on if not actively aiming and target not moving" >
+	
+	float myAimAttractorAdditionInZoom 0.0 < tooltip="How does the strength of the aim attractor change when zoomed in?" >
+	float myCatchupHelpStrength 0.0 < tooltip="How far towards the center can the inner attractor edge be moved to help correct movements in reaching the target? 1.0 = to the center" >
+	
+	float myDistance 0.0 < tooltip="At what distance are these settings authorotative (used to blend between settings)" >
+}
+
+list AimAssistValuesList
+{
+	AimAssistValues
+}

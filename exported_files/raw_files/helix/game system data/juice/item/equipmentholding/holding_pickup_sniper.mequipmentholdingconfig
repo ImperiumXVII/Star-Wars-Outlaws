@@ -1,0 +1,27 @@
+include "helix/game system data/fruit/equipment/equipment_holding.fruit"
+include "helix/game system data/juice/item/equipmentholding/holding_pickup_base.mequipmentholdingconfig"
+include "helix/game system data/juice/playermovementconfig/player_movement_pickup_sniper.mplayermovementconfig"
+include "helix/game system data/juice/playermovementconfig/player_movement_pickup_sniper_scoped.mplayermovementconfig"
+
+EquipmentHoldingConfig holding_pickup_sniper < uid=4C1DFD4E636BB5A300005DCBB6F186CF > : holding_pickup_base
+{
+	myRaiseConfig
+	{
+		myRaiseAfterLastUse
+		{
+			myEnabled FALSE
+			myTime 5.0
+		}
+		myRaiseAfterHipFireUse
+		{
+			myEnabled TRUE
+			myTime 1.0
+		}
+	}
+	myMovement
+	{
+		myMovementConfig < uid=4C1DFD4E636BBEE200005E0F90883395 > = player_movement_pickup_sniper 4C1DFD4E636BB74D00005DE53BE8BB81
+		myScopeAimMovementConfig < uid=4C1DFD4E654509C600105F334B7AFB4C > = player_movement_pickup_sniper_scoped 4C1DFD4E6545099E00105E3976DBBF15
+	}
+}
+

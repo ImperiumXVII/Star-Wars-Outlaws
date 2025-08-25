@@ -1,0 +1,167 @@
+include "helix/game system data/fruit/npc/npcsynergy.fruit"
+include "helix/game system data/juice/legend/legendranks.mlegendrank"
+include "helix/game system data/juice/npc/pyk_shp_bff_freighter_a.mnpc"
+include "helix/game system data/juice/npc/pyk_shp_bowbreaker_a.mnpc"
+include "helix/game system data/juice/npc/pyk_shp_dariusg_a.mnpc"
+include "helix/game system data/juice/npc/pyk_shp_duros_a.mnpc"
+include "helix/game system data/juice/npc/pyk_shp_fang_a.mnpc"
+include "helix/game system data/juice/npc/pyk_shp_porax42_a.mnpc"
+include "helix/game system data/juice/npc/pyk_shp_utilipede_a.mnpc"
+include "helix/game system data/juice/npc/pyk_shp_vwing_a.mnpc"
+include "helix/game system data/juice/npc/pyk_shp_wtk85_a.mnpc"
+include "helix/game system data/juice/rbtags/living_world_activities_binary_tags.mrbtagsbinarytags"
+
+NPCSynergy space_pyke_npc_synergy < uid=05B06D7D66FE3E47000000F027A8D5CB >
+{
+	myCoreMembers
+	{
+		NPCSynergyMember "50 Percent Duros"
+		{
+			myNPC < uid=2AE2EC856740876D0000099999A249F7 > = pyk_shp_duros_a F95CD8F3648364120000A207F3DEE8B7
+			myAlwaysAdd FALSE
+			myWeight 0.5
+		}
+	}
+	myFillerMember
+	{
+		myPossibleLoadouts
+		{
+		}
+		myNPC < uid=05B06D7D66FE3E47000000F25FD80780 > = pyk_shp_fang_a F95CD8F36483645A0000AACFD9702B82
+		myWeight 1.0
+	}
+	myMaxAmount 10
+	myFaction 16DEADE65F7DDB52000000D22C63D964
+	myMinLegendRank < uid=05B06D7D66FE3E47000000F34169DAE5 > = NULLREFERENCE
+	myMaxLegendRank < uid=05B06D7D66FE3E47000000F4200E598E > = "Rank 20" 7110821464E310E10001275686AD600A
+	myUnlockCondition
+	{
+	}
+	myTags
+	{
+	}
+}
+
+NPCSynergy pyke_small_skirmish < uid=05B06D7D66FE557200049A1B433B1DD8 > : space_pyke_npc_synergy
+{
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=05B06D7D6704E1E00004A32F845DF6A7 > = lwen_SpaceSkirmishTag 05B06D7D66FE46B100000043DF062E81
+		RBTagsTag "New RBTagsTag_0" < uid=05B06D7D6704E1E20004A3300F99F211 > = lwen_SpaceFireteamSmallTag 05B06D7D6704D8A40004A044000B27C9
+	}
+}
+
+NPCSynergy pyke_medium_skirmish < uid=05B06D7D66FE557700049A1CFB0DA55B > : space_pyke_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember "New NPCSynergyMember"
+		{
+			myNPC < uid=05B06D7D6704E2180004A33569608615 > = pyk_shp_duros_a F95CD8F3648364120000A207F3DEE8B7
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "New NPCSynergyMember_0"
+		{
+			myNPC < uid=05B06D7D6704E2180004A3369F74B8C9 > = pyk_shp_duros_a F95CD8F3648364120000A207F3DEE8B7
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myFillerMember
+	{
+		myNPC < uid=05B06D7D6704E2180004A3371B0AD3E8 > = pyk_shp_vwing_a F95CD8F3648363AB00008896CB0ED11A
+	}
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=05B06D7D6704E1EE0004A33120895C46 > = lwen_SpaceSkirmishTag 05B06D7D66FE46B100000043DF062E81
+		RBTagsTag "New RBTagsTag_0" < uid=05B06D7D6704E1EF0004A332A82BD921 > = lwen_SpaceFireteamMediumTag 05B06D7D6704D8AC0004A0454853D772
+	}
+}
+
+NPCSynergy pyke_large_skirmish < uid=05B06D7D66FE557C00049A1D1287B83B > : space_pyke_npc_synergy
+{
+	myFillerMember
+	{
+		myNPC < uid=05B06D7D6704E2180004A338146EA2C3 > = pyk_shp_porax42_a F95CD8F364526AB00000B2FBBBADAFE8
+	}
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=05B06D7D6704E23F0004A35309E8A3CA > = lwen_SpaceSkirmishTag 05B06D7D66FE46B100000043DF062E81
+		RBTagsTag "New RBTagsTag_0" < uid=05B06D7D6704E2410004A354578EEEB4 > = lwen_SpaceFireteamLargeTag 05B06D7D6704D8B50004A046A63F1E27
+	}
+}
+
+NPCSynergy pyke_ambush < uid=05B06D7D66FE558300049A1E4BCFDFD2 > : space_pyke_npc_synergy
+{
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=05B06D7D6704EF24000917C2062B6659 > = lwen_SpaceAmbushTag 05B06D7D66FE50A5000498D070A37B5B
+	}
+}
+
+NPCSynergy pyke_small_patrol < uid=05B06D7D66FE558B00049A1FD081DEAE > : space_pyke_npc_synergy
+{
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=05B06D7D6704FEE500021A9D4FBC61C3 > = lwen_SpacePatrolTag 05B06D7D66FE4B2E000498CB6478A74B
+		RBTagsTag "New RBTagsTag_0" < uid=05B06D7D6704FEE700021A9E4F8F3598 > = lwen_SpaceFireteamSmallTag 05B06D7D6704D8A40004A044000B27C9
+	}
+}
+
+NPCSynergy pyke_large_patrol < uid=05B06D7D66FE559200049A2046309E98 > : space_pyke_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember "New NPCSynergyMember"
+		{
+			myNPC < uid=05B06D7D6704FF1500021AA2A4257B9D > = pyk_shp_bowbreaker_a F95CD8F36483633A00006A12F3E2F673
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=05B06D7D6704FF0600021A9F2478F9C3 > = lwen_SpacePatrolTag 05B06D7D66FE4B2E000498CB6478A74B
+		RBTagsTag "New RBTagsTag_0" < uid=05B06D7D6704FF0600021AA03E2E73C9 > = lwen_SpaceFireteamLargeTag 05B06D7D6704D8B50004A046A63F1E27
+	}
+}
+
+NPCSynergy pyke_shipwreckage < uid=05B06D7D66FE559800049A216959B005 > : space_pyke_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember "Duros 20 percent"
+		{
+			myNPC < uid=05B06D7D6705199B0004B1AA01C04C6F > = pyk_shp_duros_a F95CD8F3648364120000A207F3DEE8B7
+			myWeight 0.2
+		}
+		NPCSynergyMember "Porax 40 percent"
+		{
+			myNPC < uid=05B06D7D6705199B0004B1ACADC8435A > = pyk_shp_porax42_a F95CD8F364526AB00000B2FBBBADAFE8
+			myWeight 0.4
+		}
+		NPCSynergyMember "V wing 40 percent"
+		{
+			myNPC < uid=05B06D7D6705199B0004B1AD94D1B6A2 > = pyk_shp_vwing_a F95CD8F3648363AB00008896CB0ED11A
+			myWeight 0.4
+		}
+	}
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=05B06D7D670519950004B1A91F64C881 > = lwen_SpaceWreckage 05B06D7D670516320004B024B465FA6C
+	}
+}
+
+NPCSynergy pyke_bff1 < uid=05B06D7D66FE559E00049A225C5DC3B3 > : space_pyke_npc_synergy
+{
+}
+
+NPCSynergy pyke_space_fallback < uid=05B06D7D66FE55EB00049A2382F71238 > : space_pyke_npc_synergy
+{
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=05B06D7D67051FD30004B3F3F6B3994A > = lwen_SpaceFallback 05B06D7D67051F080004B33147508CAD
+	}
+}
+

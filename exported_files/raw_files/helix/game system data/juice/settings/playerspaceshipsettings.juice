@@ -1,0 +1,45 @@
+include "helix/game system data/fruit/settings/playerspaceshipsettings.fruit"
+include "helix/game system data/juice/ai/trailblazer_attached_npc_set.mnpconnpcattachmentset"
+include "helix/game system data/juice/camera/modifiers/speederbike_boostability.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/trailblazer_boost_begin_shake.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/trailblazer_damage_shake.mcameramodifier"
+include "helix/game system data/juice/camera/presets/spaceship.mcamerapreset"
+include "helix/game system data/juice/playerrestrictions/equipment_overheat_space.mplayerrestriction"
+include "helix/game system data/juice/playerrestrictions/freelook.mplayerrestriction"
+include "helix/game system data/juice/playerrestrictions/ion_disable.mplayerrestriction"
+include "helix/game system data/juice/playerrestrictions/lookback.mplayerrestriction"
+include "helix/game system data/juice/playerrestrictions/maneuvers.mplayerrestriction"
+include "helix/game system data/juice/playerrestrictions/out_of_bounds.mplayerrestriction"
+include "helix/game system data/juice/playerrestrictions/sequence_restrictions.mplayerrestriction"
+include "helix/game system data/juice/playerrestrictions/speedboost.mplayerrestriction"
+include "helix/game system data/juice/sound/stimuli/stim_id_main.mstimulusidentifier"
+include "helix/game system data/juice/vehicle/test_vehicle.mvehicle"
+include "helix/game system data/juice/vehicle/trailblazer_vehicle.mvehicle"
+
+SpaceshipCameraShakeSettings mySpaceshipCameraShakeSettingsBase < uid=6AEA320A64381D0C00001C318959AC8C >
+{
+	myIncreaseSpeedLevelCameraShake < uid=6AF0BA0463E10B160003A4BB07BD78A0 > = NULLREFERENCE
+	myDecreaseSpeedLevelCameraShake < uid=6AF0BA0463EBB3E00000182270F545C7 > = NULLREFERENCE
+	myHullLittleDamageCameraShake < uid=F8D3681862EA6A0900000163201E4184 > = trailblazer_hull_little_damage_shake F8D3681862DFD4F800004EBA864101E1
+	myHullLargeDamageCameraShake < uid=F8D3681862EA6A0900000164BD26D7E8 > = trailblazer_hull_large_damage_shake F8D3681862DFFE01000048EA6950B530
+	myShieldLittleDamageCameraShake < uid=F8D3681862EA6A09000001655D22CC92 > = trailblazer_shield_little_damage_shake F8D3681862E91B4000003FFAE0EF98B7
+	myShieldLargeDamageCameraShake < uid=F8D3681862EA6A090000016687452F6D > = trailblazer_shield_large_damage_shake F8D3681862E91B4000003FF9E5A82FEF
+	myEngineDischargeDamageCameraShake < uid=05B06D7D655F530C0004B953E69689A3 > = engine_discharge_damage 05B06D7D655F1E69000A10FA94ED1253
+	myCollisionCameraShake < uid=6AF0BA04642AB0BD000249FDA21D53A2 > = trailblazer_hull_large_damage_shake F8D3681862DFFE01000048EA6950B530
+}
+
+SpaceshipRumbleSettings mySpaceshipRumbleSettingsBase < uid=6AEA320A64381D2200001C32FA06E2EB >
+{
+	myShieldLittleDamageRumble 8E25811B653BA5B600006C36F7CB9753
+	myShieldLargeDamageRumble 8E25811B653BA46500006C314803FE1D
+	myHullLittleDamageRumble 8E25811B653BA4D000006C325A12E87D
+	myHullLargeDamageRumble 8E25811B653BA46500006C314803FE1D
+	myEngineDischargeDamageRumble 05B06D7D6542492900006C67547A5D01
+	myIonReenablingRumble 8E25811B653BA52400006C33E5B4A632
+	myIonReenabledRumble 8E25811B653BA52400006C33E5B4A632
+	myDecreaseSpeedLevelRumble 8E25811B653BA6CB00006C3CD0E464AD
+	myDeathRumble 8E25811B653BA16B00006C28D54F0D67
+	myTurretRumble 8E25811B653BA70500006C3DEB6EDA76
+	myCollisionRumble 8E25811B653BA10000006C27E7084AEF
+}
+

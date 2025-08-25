@@ -1,0 +1,83 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/explosion/explosion_generic.mexplosion"
+include "helix/game system data/juice/explosion/explosion_mpl.mexplosion"
+include "helix/game system data/juice/explosion/explosion_mpl_rocket.mexplosion"
+include "helix/game system data/juice/projectile/realization/rocket mpl.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/rocket.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/ship_missile.mprojectilerealization"
+
+BallisticProjectile weapon_projectile_mpl_rocket < uid=7113C61164E5D12F00033577033E38CF >
+{
+	myObject
+	{
+		myMaterialType Kinetic
+		myMass 0.01
+		myTravelLifeTime 5.0
+		myAfterFinalImpactLifeTime 0.2
+		myMainShape
+		{
+			myShapeType Point
+			myShapeRadius 0.5
+			myShapeHeight 0.6
+		}
+	}
+	myRealization < uid=7113C61164E5D12F00033578B823656C > = "Rocket MPL" 8FC7C960653FBCC10000CF2445F2F9B0
+	myActions
+	{
+		ProjectileActionExplosion Explosion
+		{
+			myActionTargetType FinalHit
+			myDamageType Blast
+			myDamageFormula "10 * AllExplosionDamageModifier"
+			myRadiusFormula "2 * AllExplosionRadiusModifier"
+			myDefaultDamage 0.0
+			myDefaultRadius 0.0
+			myExplosion < uid=7113C61164E5D12F000335792B79C3B6 > = explosion_mpl_rocket DADB4E0465AE69A0000033417B99EB0D
+		}
+		ProjectileActionExplosion "Missiles Life Time"
+		{
+			myActionTargetType Expired
+			myDamageType Blast
+			myDamageFormula 10
+			myRadiusFormula 7
+			myDefaultDamage 0.0
+			myDefaultRadius 0.0
+			myExplosion < uid=7113C61164E5D12F0003357AFF2F837F > = explosion_mpl_rocket DADB4E0465AE69A0000033417B99EB0D
+		}
+	}
+	myInitialSpeed 10.0
+	myAccelerationType Curve
+	myAccelerationConstant 0.0
+	myAccelerationCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -1.0803572 2.064209, }, outTangents = { 0.48511904 -81.880737, 0 -0, }, properties = { 275, 4371, }, values = { 0 0, 1 300, }, }, numKeys = 2, }"
+	myBounceEnabled TRUE
+	myBounceVsDynamicEnabled TRUE
+	myBounceFriendlyFireEnabled FALSE
+	myAvoidPlayerWhenBouncing TRUE
+	myCanBounceConditions
+	{
+		myOperator Or
+		myConditions
+		{
+			GameConditionContextAgentIsSpecificNPC HitRancor
+			{
+				myAgentContextType TargetAgent
+				myNPCConstantData 2736B36563D140850001DF8C793B440D
+			}
+			GameConditionContextAgentIsSpecificNPC HitATST
+			{
+				myAgentContextType TargetAgent
+				myNPCConstantData 16DEADE661F0807B00001B62A29CB56F
+			}
+		}
+	}
+	myBounceSpeedRestitution 0.6
+	myBounceMaxBounces 1
+	mySeekerEnabled TRUE
+	mySeekerTurnRate 20.0
+	mySeekerActivationDelayFormula 1
+	mySeekerTurnRateModifierCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 1, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -1.5 0, }, outTangents = { 0.5 -0.12027764, 0 0, }, properties = { 275, 1299, }, values = { 0 1, 3 0.30000001, }, }, numKeys = 2, }"
+	mySeekerMissActionEnabled TRUE
+	mySeekerMaxDistanceToConsiderMiss 10.0
+	mySeekerTargetMissAction AbandonTarget
+}
+

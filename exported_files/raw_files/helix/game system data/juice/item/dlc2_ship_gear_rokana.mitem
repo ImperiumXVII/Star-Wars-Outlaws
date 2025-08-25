@@ -1,0 +1,326 @@
+include "helix/game system data/fruit/camera/aimassistdata.fruit"
+include "helix/game system data/fruit/camera/cameramodifier.fruit"
+include "helix/game system data/fruit/camera/camerapreset.fruit"
+include "helix/game system data/fruit/camerainput/camerainput.fruit"
+include "helix/game system data/fruit/effects/effects.fruit"
+include "helix/game system data/fruit/equipment/aiming.fruit"
+include "helix/game system data/fruit/equipment/equipment.fruit"
+include "helix/game system data/fruit/equipment/equipment_cooldown.fruit"
+include "helix/game system data/fruit/equipment/equipment_holding.fruit"
+include "helix/game system data/fruit/equipment/equipment_overheat.fruit"
+include "helix/game system data/fruit/equipment/equipment_slot_types.fruit"
+include "helix/game system data/fruit/equipment/equipment_throwable.fruit"
+include "helix/game system data/fruit/gamevalues/gamevalues.fruit"
+include "helix/game system data/fruit/gearset/gearset.fruit"
+include "helix/game system data/fruit/impact/impact.fruit"
+include "helix/game system data/fruit/input/rumble.fruit"
+include "helix/game system data/fruit/item/item.fruit"
+include "helix/game system data/fruit/item/item_includes.fruit"
+include "helix/game system data/fruit/player/movement.fruit"
+include "helix/game system data/fruit/projectile/npcsensoryprojectiletype.fruit"
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/fruit/projectile/projectile_actions.fruit"
+include "helix/game system data/fruit/projectile/projectile_object.fruit"
+include "helix/game system data/fruit/projectile/projectile_realization.fruit"
+include "helix/game system data/fruit/sound/audioprojectile.fruit"
+include "helix/game system data/fruit/timesequence/time_sequence.fruit"
+include "helix/game system data/fruit/utils/ramp_up_and_down.fruit"
+include "helix/game system data/juice/equipment/weaponfiremode/dlc2_rokana_laser_firemodes.mweaponfiremode"
+include "helix/game system data/juice/equipment/weaponfiremode/dlc2_rokana_missile_firemode.mweaponfiremode"
+include "helix/game system data/juice/equipment/weaponfiremode/trailblazer_laser_firemodes.mweaponfiremode"
+include "helix/game system data/juice/equipment/weaponfiremode/trailblazer_missile_firemodes.mweaponfiremode"
+include "helix/game system data/juice/item/consumables.mitem"
+include "helix/game system data/juice/sound/stimuli/stim_id_main.mstimulusidentifier"
+include "helix/game system data/juice/talent/dlc2_ship_gear_talents_helix.mtalent"
+include "helix/game system data/juice/talent/ship_gear_talents.mtalent"
+include snowdrop/modules/core/audio/audio.fruit
+include snowdrop/modules/core/input/input.fruit
+
+GearItem dlc2_ship_gear_rokana < uid=B4FBE4306716466900024EC326A6B7EA >
+{
+	myName "aurabesh = false, branch = \"DLC2\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"DLC2\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "aurabesh = false, branch = \"DLC2\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWhereToFind "branch = \"DLC2\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "aurabesh = false, branch = \"DLC2\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWantedByVendor "branch = \"DLC2\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myIcon "mySpriteId = 1941254340, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_generic_03.spritesheet\""
+	myCategory ShipGear
+	myTier Big
+	myInventoryPouch Ship
+	myDefaultInventory RokanaSpaceship
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+}
+
+GearItem dlc2_ship_gear_rokana_engine < uid=B4FBE4306716466900024EC471FEAA68 > : dlc2_ship_gear_rokana
+{
+	myName "branch = \"DLC2\", contextComment = \"Name of dlc2_ship_gear_rokana_engine \", enabled = true, guid = #B4FBE430675C51730005C50A40931A82, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 12361, text = \"T-57B Light Engines (TO BE WRITTEN)\", type = \"MenuLine\""
+	myDescription "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"DLC2\", contextComment = \"Gameplay Description for Engine \", enabled = true, guid = #B4FBE430675C52180005C50B441D907F, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 12361, text = \"Versatile propulsion engine that offers high maneuverability of the ship while in Recon Mode and trades it for weaponry power while in Assault Mode. (TO BE WRITTEN)\", type = \"MenuLine\""
+	myIcon "mySpriteId = -935314324, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_systems.spritesheet\""
+	myGraphObject ""
+	myInventoryPouch ShipEngine
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+	myAmount < uid=B4FBE4306716466900024EC57EA900C2 >
+	{
+	}
+	myDefaultSlotGroup Engine
+	myTalents
+	{
+		Talent ship_maneuver_rokana_180 < uid=C5349EF767A217DC00060C967472C47D > = ship_maneuver_180 AE040547657B0F9D0001F08CDFB59B26
+		Talent ship_maneuver_rokana_360 < uid=C5349EF767A217ED00060C97752D0037 > = ship_maneuver_360 AE040547657B0FEA0001F09A4EEC3154
+	}
+}
+
+GearItem dlc2_ship_gear_rokana_hull < uid=B4FBE4306716466900024ECD1D8AAC04 > : dlc2_ship_gear_rokana
+{
+	myName "branch = \"DLC2\", contextComment = \"Name of dlc2_ship_gear_rokana_hull\", enabled = true, guid = #B4FBE430675C52260005C50C67EEEE35, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 12361, text = \"Hull Name (TO BE WRITTEN)\", type = \"MenuLine\""
+	myDescription "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"DLC2\", contextComment = \"Gameplay Description for Hull\", enabled = true, guid = #B4FBE430675C52310005C50EFDCFE546, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 12361, text = \"A standard hull that provides an auto-repair function during combat. (TO BE WRITTEN)\", type = \"MenuLine\""
+	myIcon "mySpriteId = 1700523804, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_systems.spritesheet\""
+	myInventoryPouch ShipHull
+	myAmount < uid=B4FBE4306716466900024ECE87F8AA0D >
+	{
+	}
+	myDefaultSlotGroup Hull
+	myTalents
+	{
+		Talent dlc2_ship_gear_rokana_hull < uid=B4FBE43067372357000018523987F5EA > = dlc2_hull_rokana B4FBE4306737206D000018367E9CFA51
+	}
+}
+
+GearItem dlc2_ship_gear_rokana_shield < uid=B4FBE4306716466900024ED640838B6B > : dlc2_ship_gear_rokana
+{
+	myName "branch = \"DLC2\", contextComment = \"Name of the deflector shield.\", enabled = true, guid = #C5349EF767D96FC10006624F254F8753, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 12361, text = \"FE-3 Energy Shield (TO BE WRITTEN)\", type = \"MenuLine\""
+	myDescription "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"DLC2\", contextComment = \"Gameplay description for energy shield.\", enabled = true, guid = #C5349EF767D96F8F0006624E2D7B9531, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 12361, text = \"Versatile shield system that changes according to flight mode. (TO BE WRITTEN)\", type = \"MenuLine\""
+	myIcon "mySpriteId = -1784015144, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_systems.spritesheet\""
+	myInventoryPouch ShipShield
+	myBuyPrice 18000
+	myAmount < uid=B4FBE4306716466900024ED758D7AD70 >
+	{
+	}
+	myDefaultSlotGroup Shield
+	myTalents
+	{
+	}
+}
+
+GearItem dlc2_ship_gear_rokana_ion_shield < uid=B4FBE43067347A3300025DB42DB9BDEB > : dlc2_ship_gear_rokana_shield
+{
+	myName "branch = \"DLC2\", contextComment = \"Name of dlc2_ship_gear_rokana_ion_shield\", enabled = true, guid = #B4FBE430675C56BB0005C6121EFB6EEF, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 12361, text = \"Ion Shield Name (TO BE WRITTEN)\", type = \"MenuLine\""
+	myDescription "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"DLC2\", contextComment = \"Gameplay Description for Ion Shield \", enabled = true, guid = #B4FBE430675C56C40005C614D1B24B02, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 12361, text = \"An ion shield used to protect the spaceship from ion build-up.(TO BE WRITTEN)\", type = \"MenuLine\""
+	myIcon "mySpriteId = 176159202, mySpritesheet = F\"helix/ui/spritesheets/dlc2_ui_ion_shield_icons.spritesheet\""
+	myInventoryPouch ShipShieldGenerator
+	myBuyPrice 0
+	myAmount < uid=B4FBE43067347DE70004B850FD34B2DA >
+	{
+	}
+	myDefaultSlotGroup ShieldGenerator
+	myTalents
+	{
+	}
+}
+
+WeaponItem dlc2_ship_gear_rokana_small_laser_cannons < uid=B4FBE4306716466900024EDF8E570998 >
+{
+	myName "branch = \"DLC2\", contextComment = \"Name of dlc2_ship_gear_rokana_small_laser_cannons\", enabled = true, guid = #B4FBE430675C52580005C5126782444D, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 12361, text = \"Modified L-13 Cannons (TO BE WRITTEN)\", type = \"MenuLine\""
+	myDescription "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"DLC2\", contextComment = \"Gameplay Description for Small Lasers \", enabled = true, guid = #B4FBE430675C52580005C513FA819A19, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 12361, text = \"Rapid fire plasma bolts used to quickly eliminate light opponents. (TO BE WRITTEN)\", type = \"MenuLine\""
+	myWhereToFind "branch = \"DLC2\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "branch = \"DLC2\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWantedByVendor "branch = \"DLC2\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myIcon "mySpriteId = 2133013213, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_weapons.spritesheet\""
+	myGraphObject "helix/graph objects/weapon/dlc2_wpn_rokana_player_primary.mgraphobject"
+	myCategory Weapon
+	myTier Big
+	myInventoryPouch Gear
+	myDefaultInventory RokanaSpaceship
+	myShowInventoryAddNotifications FALSE
+	myShowInventoryRemoveNotifications FALSE
+	myShouldAutoSave TRUE
+	myAmount < uid=B4FBE4306716466900024EE060B73633 >
+	{
+	}
+	myDefaultSlotGroup Weapons
+	myTalents
+	{
+		Talent "New Talent" < uid=C5349EF767E4143E0004748330F0826A > = dlc2_rokana_heat_reset_script C5349EF767E41449000474B87585C1E9
+	}
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=B4FBE4306716466900024EE2F6316B6C > = dlc2_rokana_firemode_small_laser_cannons B4FBE4306716517A0000028939F25BD5
+		}
+	}
+}
+
+WeaponItem dlc2_ship_gear_rokana_medium_laser_cannons < uid=B4FBE4306716466900024EE3C01CA7FB > : dlc2_ship_gear_rokana_small_laser_cannons
+{
+	myName "branch = \"DLC2\", contextComment = \"Name of dlc2_ship_gear_rokana_medium_medium_cannons\", enabled = true, guid = #B4FBE430675C59040005C61562425417, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 12361, text = \"Modified M-19 Cannons (TO BE WRITTEN)\", type = \"MenuLine\""
+	myDescription "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myIcon "mySpriteId = 1747530720, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_weapons.spritesheet\""
+	myGraphObject "helix/graph objects/weapon/dlc2_wpn_rokana_player_secondary.mgraphobject"
+	myCategory Weapon
+	myInventoryPouch Weapons
+	myDefaultInventory RokanaSpaceship
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+	myAmount < uid=B4FBE4306716466900024EE419C31765 >
+	{
+	}
+	myDefaultSlotGroup Weapons
+	myTalents
+	{
+	}
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=B4FBE4306716466900024EE67B0F2A8C > = dlc2_rokana_firemode_medium_laser_cannons B4FBE4306716529F000002AE9B573961
+		}
+	}
+}
+
+WeaponItem dlc2_ship_gear_rokana_ion_torpedo < uid=B4FBE4306716466900024EFD648FBF7D >
+{
+	myName "branch = \"DLC2\", contextComment = \"Name of Ion Torpedoes\", enabled = true, guid = #B4FBE430675C526B0005C515C7952AB7, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 12361, text = \"Ion Torpedoes Name (TO BE WRITTEN)\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"DLC2\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWhereToFind "branch = \"DLC2\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "branch = \"DLC2\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWantedByVendor "branch = \"DLC2\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myIcon "mySpriteId = 1028753559, mySpritesheet = F\"helix/ui/spritesheets/dlc2_ui_ion_shield_upgrade_icons.spritesheet\""
+	myGraphObject "helix/graph objects/weapon/dlc2_wpn_rokana_player_tertiary.mgraphobject"
+	myCategory ShipGear
+	myTier Big
+	myInventoryPouch ShipLauncher
+	myDefaultInventory RokanaSpaceship
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+	myAmount < uid=B4FBE430671646C100024F475DA6A115 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory Item
+		myParentLevelsToUseInInstanceName 1
+	}
+	myConsumedItem < uid=B4FBE430671646C100024F48D5C89DA9 > = DLC2_con_IonTorpedoProjectile C10161EF678926D60007F9C3A8EC3D4F
+	myConsumedItemConfig
+	{
+		myShouldRefill TRUE
+		myFullRefillOnEquip TRUE
+		myCanRefillDuringCombat TRUE
+		myRefillOnlyWhenEmpty FALSE
+		myRefillStepByStep TRUE
+		myRefillStepFormula 1
+		myRefillDurationFormula 15
+	}
+	myDefaultSlotGroup Missiles
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=B4FBE430671646C100024F4A4F699E52 > = dlc2_rokana_ion_torpedo_firemode B4FBE430671654A6000002CF9C1CD141
+		}
+	}
+}
+
+RepairkitEquipmentItem dlc2_ship_gear_rokana_repair_kit < uid=B4FBE430671A4A110001879A657CBA15 >
+{
+	myName "branch = \"DLC2\", contextComment = \"Name of Repair Kit\", enabled = true, guid = #B4FBE430671A4AA7000187B40FBD3640, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = \"RK-250 Repair Kit (TO BE WRITTEN)\", type = \"MenuLine\""
+	myDescription "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"DLC2\", contextComment = \"Gameplay Description for Repair Kit\", enabled = true, guid = #B4FBE430671A4AA7000187B67B530EA8, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10300, text = \"A device that recharges the shield and repairs the hull over time. (TO BE WRITTEN)\", type = \"MenuLine\""
+	myWhereToFind "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWantedByVendor "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myIcon "mySpriteId = -2099462857, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_systems.spritesheet\""
+	myCategory ShipGear
+	myTier Big
+	myInventoryPouch ShipAux
+	mySpaceshipInventoryCapacity 1
+	myDefaultInventory RokanaSpaceship
+	myShouldAutoSave TRUE
+	myCooldown
+	{
+		myDuration 100.0
+		myKeepCooldownOnSwitch TRUE
+	}
+	myActivationBark < uid=B4FBE430671A4BF7000187BE24650532 > = S_KAY_Space_TrailblazerShieldRepair 3A129121634813190000ED821DC1507C
+	myHealSequence
+	{
+		myDuration 1.0
+		myTracks
+		{
+			myGenericTracks
+			{
+				ShieldRepairTrack ShieldRepair
+				{
+					myRegeneration "100.0 * NebulaRepairKit"
+				}
+				HealTrack HealTrack
+				{
+					myHealthAmountFormula 0.5
+					myIsMaxHealthPercentage TRUE
+					myIsImmediate FALSE
+					myKeepActiveIfHealthFull FALSE
+					myDamageInterruptsHealing FALSE
+				}
+			}
+		}
+	}
+}
+
+WeaponItem dlc2_ship_gear_rokana_small_laser_cannons_recon < uid=B4FBE4306765897800000685D50FF95A > : dlc2_ship_gear_rokana_small_laser_cannons
+{
+	myInventoryPouch Weapons
+	myAmount < uid=B4FBE430676589B400000693A88EDF2F >
+	{
+	}
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=B4FBE430676589B400000694DA2DD2EE > = dlc2_rokana_firemode_small_laser_cannons_recon B4FBE430676588B00000065BA4D3C01E
+		}
+	}
+}
+
+GearItem dlc2_ship_gear_rokana_assault_mode < uid=C5349EF7678FC3A100050C8182237770 >
+{
+	myName "branch = \"DLC2\", contextComment = \"Name of dlc2_ship_gear_rokana_assault_mode\", enabled = true, guid = #C5349EF7678FC3A100050C825B81AD46, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 12361, text = \"Flight Mode System (TO BE WRITTEN)\", type = \"MenuLine\""
+	myDescription "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"DLC2\", contextComment = \"Gameplay Description for Flight Mode switch\", enabled = true, guid = #C5349EF7678FC3A100050C84F6F6972D, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 12361, text = \"Folds the Refractor's wing after a short delay to change between nimble Recon Mode and powerful Assault Mode (TO BE WRITTEN)\", type = \"MenuLine\"}"
+	myWhereToFind "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWantedByVendor "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myIcon "mySpriteId = -2070895681, mySpritesheet = F\"helix/ui/spritesheets/dlc2_ui_rokana_icons.spritesheet\""
+	myCategory ShipGear
+	myInventoryPouch ShipAux
+	myDefaultInventory RokanaSpaceship
+}
+
+GearItem dlc2_ship_gear_rokana_flight_system < uid=C5349EF7679763630000032066BE75D8 > : dlc2_ship_gear_rokana
+{
+	myName "branch = \"DLC2\", contextComment = \"Name of dlc2_ship_gear_rokana_flight_system\", enabled = true, guid = #C5349EF767975D530000031F7B9B22AE, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 12361, text = \"NA-7 Flight Systems (TO BE WRITTEN)\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"DLC2\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"DLC2\", contextComment = \"Gameplay Description for Flight System\", enabled = true, guid = #C5349EF767975D520000031EA79EBA39, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 12361, text = \"Versatile handling system that changes according to Flight Mode (TO BE WRITTEN)\", type = \"MenuLine\""
+	myIcon "mySpriteId = -364102434, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_systems_02.spritesheet\""
+	myInventoryPouch ShipEngine
+}
+
+GearItem dlc2_ship_gear_rokana_hyperdrive < uid=C5349EF7679765AE0000032AD43F7C5B > : dlc2_ship_gear_rokana
+{
+	myName "branch = \"DLC2\", contextComment = \"Name of dlc2_ship_gear_rokana_hyperdrive\", enabled = true, guid = #C5349EF76797752100000333115997C6, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 12361, text = \"Hyperdrive (TO BE WRITTEN)\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"DLC2\", contextComment = \"Gameplay Description for Hyperdrive\", enabled = true, guid = #C5349EF76797752300000334FAD2730E, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 12361, text = \"Allows for lightspeed travel between star systems (TO BE WRITTEN)\", type = \"MenuLine\""
+	myIcon "mySpriteId = 982266306, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_systems_02.spritesheet\""
+	myInventoryPouch ShipEngine
+}
+

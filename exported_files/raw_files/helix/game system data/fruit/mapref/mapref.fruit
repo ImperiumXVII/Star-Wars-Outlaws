@@ -1,0 +1,30 @@
+include "helix/game system data/fruit/ui/uienums.fruit"
+include "helix/game system data/fruit/settings/uisettings.fruit"
+
+class MapRef < uid=auto >
+{
+	varmap myTypeName < bhv=localization ui_info=1 referenced_by_code=1 >
+	string myIcon < bhv=sprite ui_info=1 referenced_by_code=1 >
+	string myAlternativeIcon < bhv=sprite >
+	uid myPresetColor < bhv=presetcolor ui_info=1 referenced_by_code=1 >
+	uid myAlternativePresetColor < bhv=presetcolor >
+	UIMapObjectType myMapObjectType MapRefBottom
+	float myInWorldThreshold 0.0 < tooltip="Show in-world marker when player is within this distance. 0 disables the marker" >
+	float myCompassThreshold 100.0 < tooltip="Show compass marker when player is within this distance. 0 disables the marker" >
+	float myInSpaceThreshold 0.0 < tooltip="Show in-space marker when player is within this distance. 0 disables the marker" >
+	float myRadarThreshold 100.0 < tooltip="Show radar marker when player is within this distance. 0 disables the marker" >
+	float myDetectionRadius 20.0 < tooltip="Detect (show it, but don't tell what it is) when player gets within this radius. 0 auto-activates" >
+	float myDiscoveryRadius 10.0 < tooltip="Discover (tell what it is, if it's already detected) when player gets within this radius. 0 auto-discovers" >
+	float myPreDiscoveryCompassThreshold -1.0 < tooltip="While detected, but not yet discovered, when should the '?' show in the compass. Negative numbers = use the normal CompassThreshold. 0 = disable the marker" >
+	bool myShowInTracker true
+	bool myShowOnMap true
+	bool myShowInOpportunityTracker false
+	bool myIgnoreFogOfWar false < tooltip="Allow the map ref to show through the Fog of War on the map." >
+	bool myShouldGlowOnMap false < tooltip="Allow the map ref to glow when showing on the map." >
+	bool myCanBeTracked true < tooltip="Allow the map ref to be pinned to the compass" >
+	bool myIsImportant false < tooltip="Allow the map ref to be breadcrumbed to across galaxy locations, e.g. main quests and tracked map refs." >
+	bool myHideWhileInsideVolume true < tooltip="If there's a volume connected to this map ref, hide the map ref marker while inside the volume." >
+	bool myHideWhenCompleted true
+	bool myPostEventOnDiscovery false
+	bool myPostEventOnCompletion false
+}

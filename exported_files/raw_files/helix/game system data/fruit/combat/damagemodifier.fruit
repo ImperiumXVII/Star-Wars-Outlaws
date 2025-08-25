@@ -1,0 +1,37 @@
+include "helix/game system data/fruit/combat/combat.fruit"
+include "helix/game system data/fruit/melee/combatmeleetype.fruit"
+
+//Keep in sync with HC_DamageModifierType
+enum DamageModifierType
+{
+	Multiplier
+	Flat
+}
+
+//Keep in sync with HC_DamageModifierDealerMode
+enum DamageModifierDealerMode
+{
+	Whitelist
+	Blacklist
+}
+
+list DamageMeleeTypeAllowList
+{
+	CombatMeleeType
+}
+
+class DamageModifier
+{
+	bool myHasDamageSource false
+	DamageSourceType myDamageSource Unknown
+	bool myHasDamageType false
+	DamageType myDamageType Physical
+	bool myHasDamageTargetType false
+	DamageTargetType myDamageTargetType All
+	bool myHasDamageMeleeTypeList false
+	DamageMeleeTypeAllowList myDamageMeleeTypeList
+	bool myDependsOnCurrentAgentAsDealer < tooltip="If true, when the current agent is the damage dealer, the damage modifier will apply or not based on the damage dealer mode chosen" >
+	DamageModifierDealerMode myCurrentAgentDamageDealerMode Blacklist
+	DamageModifierType myValueType Multiplier
+	string myValue 1.f < bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+}

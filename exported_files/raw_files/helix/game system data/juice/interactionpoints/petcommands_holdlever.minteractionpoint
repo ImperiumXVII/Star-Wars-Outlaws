@@ -1,0 +1,43 @@
+include "helix/game system data/fruit/interactionpoints/interactionpoints.fruit"
+include "helix/game system data/juice/interactionpoints/petcommands.minteractionpoint"
+
+InteractionPoint PetHoldLever_Base < uid=989363C164AD9954000138658982A0E8 > : PetCommandBase
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"Command to send the pet to hold something like a lever ingame\", enabled = true, guid = #989363C164AD9954000138649BBF9851, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 417, text = \"Hold\", type = \"MenuLine\""
+	}
+}
+
+InteractionPoint PetHoldLever_1s < uid=989363C164AD99540001386659D238CC > : PetHoldLever_Base
+{
+	myHoldDuration 1.0
+}
+
+InteractionPoint PetHoldLever_3s < uid=989363C164AD995400013867A7DDC903 > : PetHoldLever_Base
+{
+	myHoldDuration 3.0
+}
+
+InteractionPoint PetHoldLever_5s < uid=989363C164AD995400013868C0C7B0B9 > : PetHoldLever_Base
+{
+	myHoldDuration 5.0
+}
+
+InteractionPoint PetHoldLever_6s_CombatDisabled < uid=989363C164AD9954000138695CDECDA9 > : PetHoldLever_Base
+{
+	myRestrictions
+	{
+		GameConditionPlayerIsInCombatWithNPCs "New GameConditionPlayerIsInCombatWithNPCs"
+		{
+			myOperator LessThan
+		}
+	}
+	myHoldDuration 6.0
+}
+
+InteractionPoint PetHoldLever_15s_MQ45 < uid=6F5419E765F83600001E46227CF29886 > : PetHoldLever_5s
+{
+	myHoldDuration 15.0
+}
+

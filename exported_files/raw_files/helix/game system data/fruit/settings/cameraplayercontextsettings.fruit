@@ -1,0 +1,304 @@
+include "helix/game system data/fruit/camera/animatedcameradata.fruit"
+include "helix/game system data/fruit/camera/camerablendtransitions.fruit"
+include "helix/game system data/fruit/camera/cameralookatpreset.fruit"
+include "helix/game system data/fruit/camera/cameramodifier.fruit"
+include "helix/game system data/fruit/camera/camerasoftedgedata.fruit"
+include "helix/game system data/fruit/npc/npc.fruit"
+
+class GeneralClimbCameraData < uid=auto >
+{
+    CameraSoftEdgeData myYawSoftEdge < tooltip="While climbing with a restricted camera, use this to soften the edges" >
+    CameraModifierTransition myFacingChangeTransitionOnClimbOver < tooltip="When the player's facing has changed during a climbover, rotate the camera with this transition" >
+    CameraModifierTransition myFacingChangeTransition < tooltip="When the player's facing has changed, rotate the camera with this transition" >
+	CameraModifierTransition myLookAtTransitionAbove < tooltip="The transition for the camera to look toward the thing you are climbing if you climb from above" >
+	CameraModifierTransition myLookAtTransitionBelow < tooltip="The transition for the camera to look toward the thing you are climbing if you climb from below" >
+    bool myUseLookAtAbove true < tooltip="If this is active, then the camera will look toward whatever you're climbing if you initiate a climb from above" >
+	bool myUseLookAtBelow false < tooltip="If this is active, then the camera will look toward whatever you're clmkibing if you initiate a climb from below" >
+    bool myUseFacingChangeTransition true < tooltip="If this is true, the camera will rotate with the player as their facing changes" >
+}
+
+class ClimbPivotOffsetData < uid=auto >
+{
+   LazinessCameraModifier* myLazinessCameraModifier
+
+   float myMaxOrientationOffset 1.f < tooltip="This is the maximum amount on how much the camera will move based on the rotation of camera" >
+   float myMaxReverseLazinessOffset 0.3f < tooltip="This is the maximum amount the camera will move based on the direction you're climbing" >
+   float myMaxHeightOffsetDistance 4.0f < tooltip="This is the maximum amount the camera will move out based on the height of your climbing volume" >
+   float myReverseLazinessSpeed 0.4f < tooltip="If you are using the velocity of the agent based on the bool below, then this value will be multiplied with the current target velocity, otherwise this value will be the velocity in the direction you are climbing" >
+   float myAddedPresetDistanceMultiplier 3.0f < tooltip="If added camera distance is true, then the camera will move out based on ReverseLaziness amount and this multiplier" >
+   float myOrientationBasedAddedPresetDistance 0.4f < tooltip="The is the maximum amount the camera will increase its distance from anchor based on its rotation" >
+   float myReverseLazinessSpringStrength 50.f < min=1.f tooltip="When the camera is moving toward desired point, it will use this spring" >
+   float myTargetVelocitySpringStrength 100.f < min=1.f tooltip="If we are using a spring to smoothen out the velocity, this will be the strength used. The higher the value, the faster it will adapt." >
+   
+   CameraModifierInOutTransitions myRotatedCameraTransitions
+   float myRotatedCameraDistance 2.f < min=0.f tooltip="When climbing, the camera will rotate toward wherever you're climbing" >
+   float myRotatedCameraSpringStrength 10.f < min=1.f tooltip="Spring when rotating camera" >
+   float myRotatedCameraSpringDampingRatio 1.f < min=1.f tooltip="Damping ratio when rotating camera" >
+   float myInitialRotatedCameraNoInputTime 1.f < min=0.f tooltip="When we initiate a climb, this is the time before we start rotating the camera automatically" >
+   float myRotatedCameraNoInputTime 2.f < min=0.f tooltip="How long without rotation input before we start rotating the camera automatically" >
+   float myRotatedCameraRequiredInputTime 0.5f < min=0.f tooltip="If movement input hasn't been active in more than this time, then don't rotate camera" >
+   bool myRotatedCameraRestrictedInOneDirection true < tooltip="If this is true and the camera was rotated manually recently, it will require the camera to look in the general direction of climbing to retrigger again" >
+   bool myUseRotatedCamera true < tooltip="Whether or not we'll use the camera rotating toward where you're climbing behavior" >
+   
+   bool myUseReverseLaziness true < tooltip="If this is true, then the camera will move in the direction you are climbing, or at least if you are using positive ReverseLaziness values" >
+   bool myReverseLazinessResets false < tooltip="If this is true, then the offset from reverselaziness will undo itself once you stop moving" >
+   bool myUseVelocityForReverseLaziness false < tooltip="If this is true, then use velocity from agent who is climbing. If false, instead base on float ReverseLazinessSpeed from above" >
+   
+   bool myUseAddedCameraDistance false < tooltip="If this is true, the camera will move back based on amount of ReverseLaziness" >
+   
+   bool myUseOrientationOffset true < tooltip="If this is true, then the camera will offset itself based on how the camera is rotated" >
+   bool myUseProjectionOnWall true < tooltip="If this is true, the camera will offset along the wall based on where you are looking" >
+   bool myUseOrientationDistance true < tooltip="If this is true, then the camera will move closer or further away from anchor based on where you are looking" >
+   bool myUseSpringOnTargetVelocity true < tooltip="If this is true, then the target velocity when calculating ReverseLaziness will be a sprung value, which will smoothen it out if the movement is sudden." >
+   
+   bool myUseHeightIncreasesDistance false < tooltip="If this is true, the camera will move out based on the height of whatever you are climbing, only works on climbing volumes." >
+   
+   bool myIsActive false
+}
+
+class ClimbLedgeCameraData < uid=auto >
+{
+    float myMaxMoveDistance 0.3f < min=0 tooltip="If the distance between the ledge you want to jump to and where the agent is now is larger than this, then the distance will clamp to this value" >
+	float myLookAtMultiplier 2.f < tooltip="The distance between the ledge you want and the ledge you're on will be multiplied with this value to decide a point to make the camera look at" >
+    float myMoveSpringStrength 120.f < min=1.f tooltip="When the camera moves toward the desired jump point, use this spring strength" >
+	
+    CameraModifierTransition myLazinessTransition < tooltip="When jumping to desired ledge, the camera will use this blend to move back to target" >
+	float myLazinessAliveTime 0.5f < min=0 tooltip="This is how long the laziness will stay in place once it's created" >
+}
+
+class LedgeCameraData < uid=auto >
+{
+    string myClimbUpRotateTransitionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.2 0, }, outTangents = { 0.00155663 0.285549, 0 0, }, properties = { 275, 1299, }, values = { 0 0.00321889, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+    float myClimbUpRotateTransitionTime 1.f < min=0.f tooltip="If the LookAhead camera is currently active, use this time when climbing up a ledge to make the camera look forward" >
+	float myClimbUpRotationOffset 10.f < tooltip="If the LookAhead camera is currently active, this offset will be applied in degrees from looking straight, to decide where the camera should end up" >
+    float myUpwardMovement 0.5f < tooltip="This is the amount that the camera will move upwards when peeking on a ledge" >
+	float myForwardMovement 0.3f < tooltip="This is the amount that the camera will move forward when peeking on a ledge" >
+	float mySpringStrengthWhenPeeking 120.f < min=1.f tooltip="When peeking from below a ledge, this will be the camera spring strength" >
+	float mySpringStrengthWhenRotating 40.f < min=1.f tooltip="When climbing around corners, this will be the spring strength of the camera restriction offset" >
+}
+
+class GrapplingHookCameraData < uid=auto >
+{
+	string myLookAtCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.2 0, }, outTangents = { 0.00155663 0.285549, 0 0, }, properties = { 275, 1299, }, values = { 0 0.00321889, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+    float myDifferenceInHeightMultiplier 0.5f < min=-1 max=1 tooltip="This is how much of the difference in heigt in comparison to the hookpoint and player. 0 = look directly at hookpoint while 1 = look in the direction without height" >
+	float myDirectionDotValue 0.3f < min=-1 max=1 tooltip="Decides how far away you're allowed to look from the hookpoint, and still trigger the LookAt effect" >
+	float myInputAmountToBreak 0.2f < min=0 tooltip="This is the amount of input the user has to do to break the LookAt early" >
+	float myLookAtTime 2.5f < min=0 tooltip="This will affect the base duration of the transition to look at the hookpoint" >
+	float myAddedLookAtTime 0.f < tooltip="This is added time to have the camera look at the point. This does not affect the speed at which the camera looks at the hookpoint" >
+	bool myUseCurve false 
+}
+
+class RappelCameraData < uid=auto >
+{
+    LazinessCameraModifier* myLazinessCameraModifier
+    CameraSoftEdgeData myYawSoftEdge < tooltip="While climbing with a restricted camera, use this to soften the edges" >
+    CameraModifierTransition myFacingChangeTransition < tooltip="When the player's facing has changed, rotate the camera with this transition" >
+	CameraModifierTransition myLookAtTransitionAbove < tooltip="The transition for the camera to look toward the thing you are climbing if you climb from above" >
+	CameraModifierTransition myLookAtTransitionBelow < tooltip="The transition for the camera to look toward the thing you are climbing if you climb from below" >
+	bool myUseLookAtAbove true < tooltip="If this is active, then the camera will look toward whatever you're climbing if you initiate a climb from above" >
+	bool myUseLookAtBelow false < tooltip="If this is active, then the camera will look toward whatever you're clmkibing if you initiate a climb from below" >
+    bool myUseFacingChangeTransition true < tooltip="If this is true, the camera will rotate with the player as their facing changes" >
+	CameraModifierTransition myAnchorOffsetTransitionIn < tooltip="The transition for the camera to move the pivot in the offset direction" >
+	CameraModifierTransition myAnchorOffsetTransitionOut < tooltip="The transition for the camera to restore the pivot to its original position" >
+	vec3f myAnchorDesiredOffsetLS 0.0;0.0;0.0 < tooltip="This is the amount the camera collision pivot gets offset" >
+}
+
+class CoverCameraCornerLookThresholdData < uid=auto >
+{
+	float myCornerAngleThresholdHighNarrowCover 0.f < tooltip="Angle thresholds define corner aim arc, angles are measured along the wall X/right vector, 0 degrees = max right, 180 degrees = max left" min=0.f max=180.f >
+	float myCornerAngleThresholdHighWideCover 0.f < tooltip="Angle thresholds define corner aim arc, angles are measured along the wall X/right vector, 0 degrees = max right, 180 degrees = max left" min=0.f max=180.f >
+		
+	float myCornerAngleThresholdLowNarrowCover 0.f < tooltip="Angle thresholds define corner aim arc, angles are measured along the wall X/right vector, 0 degrees = max right, 180 degrees = max left" min=0.f max=180.f >
+	float myCornerAngleThresholdLowWideCover 0.f < tooltip="Angle thresholds define corner aim arc, angles are measured along the wall X/right vector, 0 degrees = max right, 180 degrees = max left" min=0.f max=180.f >
+	
+	float myCornerAngleThresholdADSLowCover 90.f < tooltip="Angle threshold for switching to aim-over when ADSing, angles are measured along the wall X/right vector, 0 degrees = max right, 180 degrees = max left" min=0.f max=180.f >
+	
+	float myADSLowCoverHysteresis 7.5f < tooltip="Low Cover Angular hysteresis to change between Corner and AimOver" >
+	float myADSHighCoverHysteresis 7.5f < tooltip="High Cover Angular hysteresis to change between Corner and Front" >
+	
+	bool myUseADSCornerSpecificBehaviour true < tooltip="Switch to tell if we want to use the specific angles behavior for ADS" >
+}
+
+class CoverCameraOffsetAimModeBlendingData < uid=auto >
+{
+	float mySpringConstant 140.f < tooltip="This is the spring constant for the offset when going towards it">
+
+	string myPivotOffsetXBlendCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.2 0, }, outTangents = { 0 0.5, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+	string myPivotOffsetYBlendCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.2 0, }, outTangents = { 0 0.5, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+	string myPivotOffsetZBlendCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.5 0, }, outTangents = { 0.5 0, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+	float myPivotOffsetCurveBlendThreshold 0.05f < tooltip="Threshold to determine if two desired offsets are different enough to warrant restarting a curve blend" >
+	float myPivotOffsetCurveBlendDuration 0.f < tooltip="Time to blend, using the curves, from a desired pivot offset to another" >
+}
+
+class CoverCameraOffsetBlendingData < uid=auto >
+{
+	CoverCameraOffsetAimModeBlendingData myAimingBlendingData < tooltip="Set of blending values when blending offset while in ADS" >
+	CoverCameraOffsetAimModeBlendingData myNonAimingBlendingData < tooltip="Set of blending values when blending offset while NOT in ADS" >
+}
+
+class CoverCameraAimPointRetention < uid=auto >
+{
+	float myPivotOffsetThreshold 0.01f < tooltip="How much Pivot offset difference there must be for Aim Point Retention to trigger" >
+	float myDurationAfterTransition 0.4f < tooltip="We need that timer as camera blending may get us where Current Offest == Desired Offset for like a frame, invalidatig the retention for no reason" >
+	float myPlayerMoveToDeactivate 0.85f < tooltip="Amount of strafing player movement (in stick value) after which we deactivate aim point retention" >
+	float myAzimuthToZenithRetentionPadThreshold 0.1f < tooltip="Amount of stick difference between both axes to switch Retention from moving only on the vertical axis to only on the horizontal axis" >
+	float myZenithToAzimuthRetentionPadThreshold 0.3f < tooltip="Amount of stick difference between both axes to switch Retention from moving only on the horizontal axis to only on the vertical axis" >
+	float myMouseInputToDeactivate 0.f < tooltip="Amount of mouse input after which we deactivate aim point retention" >
+	float myMinimumDistance2DBetweenPointAndPlayer 2.75f < tooltip="Minimum distance between aimed at point and Kay for retention to happen" >
+}
+
+class CoverCameraOffsets < uid=auto >
+{
+	vec3f myAimingOffset 0.0;0.0;0.0 < tooltip="This is the amount the camera gets offset when the player is actively aiming" >
+	vec3f myHipFireOffset 0.0;0.0;0.0 < tooltip="This is the amount the camera gets offset when the player is hip firing" >
+	vec3f myIdleOffset 0.0;0.0;0.0 < tooltip="This is the amount the camera gets offset when the player is idle/chilling" >
+}
+
+class CoverCameraVerticalOffsets < uid=auto >
+{
+	bool myUseDifferentiatedCurves false < tooltip="TRUE means we'll use the 3 different curves below instead of the procedural offest calculated represented as the default curve (at the bottom here)" >
+
+	string myAimingAdditionalCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.26666668 0, -0.19999999 -0.20000002, }, outTangents = { 0.26666668 0, 0.2 0.2, 0 0, }, properties = { 203, 1227, 2251, }, values = { 0 0, 0.8 0, 1.4 0.60, }, }, numKeys = 3, }" < bhv=inputgraph >
+	string myHipFireAdditionalCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.26666668 0, -0.19999999 -0.20000002, }, outTangents = { 0.26666668 0, 0.2 0.2, 0 0, }, properties = { 203, 1227, 2251, }, values = { 0 0, 0.8 0, 1.4 0.60, }, }, numKeys = 3, }" < bhv=inputgraph >
+	string myIdleAdditionalCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.26666668 0, -0.19999999 -0.20000002, }, outTangents = { 0.26666668 0, 0.2 0.2, 0 0, }, properties = { 203, 1227, 2251, }, values = { 0 0, 0.8 0, 1.4 0.60, }, }, numKeys = 3, }" < bhv=inputgraph >
+	
+	string myDefaultCurveFromProcedural "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.26666668 0, -0.19999999 -0.20000002, }, outTangents = { 0.26666668 0, 0.2 0.2, 0 0, }, properties = { 203, 1227, 2251, }, values = { 0 0, 0.8 0, 1.3 0.50, }, }, numKeys = 3, }" < bhv=inputgraph >
+}
+
+class CoverCameraAimOverData < uid=auto >
+{
+	string myOffsetPerCoverDistanceCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.20000002 0, }, outTangents = { 0.20000002 0, 0 0, }, properties = { 3, 2051, }, values = { 0.40000001 0.60000002, 1 0, }, }, numKeys = 2, }" < bhv=inputgraph >
+	string myAdditionalOffsetBlendCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -23.333334 0, }, outTangents = { 23.333334 0, 0 0, }, properties = { 1027, 2051, }, values = { 10 0, 80 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+}
+
+class CoverCameraData < uid=auto >
+{
+    string myVelocityScalingCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.2 0.001, 0 0, }, properties = { 275, 1299, }, values = { 0 1, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+	float myMaxVelocity 3.0f < min=0.1f tooltip="If movement velocity from the agent is greater than this value, then the camera position won't be affected. If it's between 0 and this value, the camera offset will scale based on myVelocityScalingCurve.">
+
+	CoverCameraOffsets myLowCoverFrontOffset < tooltip="Series of offsets when the player is in front of low cover and not in corner" >
+	CoverCameraVerticalOffsets myLowCoverFrontAdditionalVerticalOffset < tooltip="Series of offsets, according to the cover height, when the player is in front of low cover and not in corner" > 
+	CoverCameraOffsets myLowCoverLeftCornerOffset < tooltip="Series of offsets when the player is in low cover and left corner" >
+	CoverCameraOffsets myLowCoverRightCornerOffset < tooltip="Series of offsets when the player is in low cover and right corner" >
+	CoverCameraOffsets myLowCoverBackOffset < tooltip="Series of offsets when the player is back to a low cover and not in corner" >
+	CoverCameraOffsets myHighCoverStandingLeftCornerOffset < tooltip="Series of offsets when the player is standing in high cover and left corner" >
+	CoverCameraOffsets myHighCoverStandingRightCornerOffset < tooltip="Series of offsets when the player is standing in high cover and right corner" >
+	CoverCameraOffsets myHighCoverCrouchingLeftCornerOffset < tooltip="Series of offsets when the player is crouching in high cover and left corner" >
+	CoverCameraOffsets myHighCoverCrouchingRightCornerOffset < tooltip="Series of offsets when the player is crouching in high cover and right corner" >
+	
+    float myLeftShoulderExitAngle 90.f < tooltip="This is the angle the camera should be pointed away from the left corner to switch back to the right shoulder (should generally be same or higher than LeftShoulderEnterAngle)" >
+	float myLeftShoulderEnterAngle 0.f < tooltip="This is the angle the camera should be pointed away from the left corner to switch from right shoulder to left (should generally be same or lower than LeftShoulderExitAngle)" >
+	float myExtraLeanLeftHipFire 0.25f < tooltip="This is a little extra distance the camera moves to the left in left corner cover to compensate for the leaning animation blocking the view" >
+	float myOffsetMirrorCameraCornerDistanceThreshold 0.75f < tooltip="Max distance from corner to trigger offset mirroring (right/left shoulder swap) when not specifically looking around corner" >
+	float myAlongWallAimShoulderSwapAngle 5.f < tooltip="Angle at which camera will swap to left shoulder when pointing left along wall cover" >
+	float myAlongWallAimShoulderSwapExitAngle 0.f < tooltip="Angle at which camera will swap back to right shoulder when pointing left along wall cover" >
+	float myMaxDistForAlongWallShoulderSwap 0.75f < tooltip="Maximum distance from nearest cover that the along wall shoulder swap can occur at" >
+	
+	bool myUseMirrorPivot true < tooltip="This will make it so that pivot gets mirroed when in leftcorner of cover, should be on if you want this to work">
+	bool myUseAddedMovement true < tooltip="This will make it so that extra camera movement will be added based on distance to corner. Without this- the preset will only flip">
+	float myAddedCoverMovement 0.0f < tooltip="This will amount will be added to camera movement based on corner">
+	
+	float myCornerLeanAimArcFalloff 72.5f < tooltip="Determines rate that lean camera blends back to normal when aiming out of the lean out animation area, high values fall off quickly while low ones fall off slowly, tune to match animation blend out of lean" max=80.f min=0.f >
+	float myCoverEndOfCornerArc 15.f < tooltip="When at corner, on wide cover, determines the minimum angle (along the wall) looking outside of the cover we allow for corner to be kept" >
+	float myLeftCornerLeanCheckThreshold 0.8f < tooltip="Dot threshold for when corner lean camera should blend back to standard offset" min=-1.f max=1.f >
+	float myRightCornerLeanCheckThreshold 0.9f < tooltip="Dot threshold for when corner lean camera should blend back to standard offset" min=-1.f max=1.f >
+
+	float myCornerChangeInputEpsilonAimOver 0.1f < tooltip="The amount of left/right camera input above which can trigger corner changing while in aim over low cover" >
+	float myCornerChangeInputEpsilon 0.05f < tooltip="The amount of left/right camera input above which can trigger corner changing outside of aim over low context" >
+	
+	CoverCameraCornerLookThresholdData myLeftThresholdData < tooltip="Angle thresholds for left corner look, Max numbers should be set higher than Min numbers (0 = look all the way right, 180 = look all the way left)" >
+	CoverCameraCornerLookThresholdData myRightThresholdData < tooltip="Angle thresholds for right corner look, Max numbers should be set lower than Min numbers (0 = look all the way right, 180 = look all the way left)" >
+	
+	CoverCameraOffsetBlendingData myLeftOffsetBlendData < tooltip="Blending data for Left Pivot Offset blending" >
+	CoverCameraOffsetBlendingData myRightOffsetBlendData < tooltip="Blending data for Right Pivot Offset blending" >
+	CoverCameraOffsetBlendingData myMirrorOffsetBlendData < tooltip="Blending data for Mirror Pivot Offset blending" >
+	CoverCameraOffsetBlendingData myAlongWallMirrorOffsetBlendData < tooltip="Blending data for Mirror Pivot Offset blending when aiming along wall" >
+
+	CoverCameraAimPointRetention myAimPointRetentionData < tooltip="Aim Point Retention settings" >
+	CoverCameraAimOverData myLowCoverAimOverData < tooltip="Low cover Aim Over settings" >
+}
+
+class ShoulderOffsetData
+{
+   float myInactiveSpringConstant 50.f < tooltip="If the offset is no longer desired, this is the springconstant it will have to return to normal.">
+   float myInactiveDampingRatio 1.f < tooltip="If the offset is no longer desired, this is the damping ratio it will have to return to normal.">
+   
+   float myActiveSpringConstant 10.f < tooltip="This is the springconstant for trying to achieve the desired offset.">
+   float myActiveDampingRatio 1.f < tooltip="This is the damping ratio for trying to achieve the desired offset.">
+   
+   float myMaxOffsetLeft 0.3f < tooltip="This is the maximum offset for the camera on the left side.">
+   float myMaxOffsetRight 0.3f < tooltip="This is the maximum offset for the camera on the right side.">
+   
+   bool myResetWhenStill true < tooltip="If you are standing still, reset the offset.">
+   bool myIsActive true < tooltip="Turns on or off this feature.">
+}
+
+class AnimatedBaseData
+{
+   AnimatedCameraData* myAnimatedCameraData
+   bool myIsActive true
+}
+
+class DeathCameraShotData < uid=auto >
+{
+	float myHeight 0.0f
+	float myZenith 0.1f < min=0.1f max=90.0f tooltip="The camera will move backward along this angle." >
+	float myAzimuth 0.0f < min=0.0f >
+	TargetTransformOverrideModifier* myTargetTransformOverrideModifier
+	CameraLookAtPreset* myLookAtModifier
+}
+
+list DeathCameraShotList
+{
+	DeathCameraShotData
+}
+
+list DeathCameraKillerList
+{
+	NPC*
+}
+
+class DeathCameraData
+{
+	DeathCameraShotList myDeathCameraShotList
+	DeathCameraKillerList myEnableOnKillerList
+}
+
+class VentCameraData
+{
+   CameraModifierTransition myOrientationRestrictionBlend < tooltip="When entering a vent with a restricted pitch angle, use this blend if the camera is outside allowed range" >
+   CameraTransition* myCameraBlendIn < tooltip="When the vent transition is successful, use this camera blend to get into position (should be set to the same as usual vent camera blend)" >
+   CameraModifierTransition myCameraBlendOut < tooltip="If exiting the vent before the transition has finished, use this blend to come back" >
+   float myMaxAngleToTriggerTransitionDegrees 100.f < min=0.f max=180.f tooltip="When entering a vent, if the angle between current direction and the direction toward the vent entrance is larger than this, then skip camera transition" >
+   float myAdditionalBlendDistance 0.1f < tooltip="When we are blending the camera into the vent, push out the blending pivot by this amount, if you want to give the camera some more space" >
+   float myMinDistanceToTrigger 0.4f < tooltip="If the distance from the camera to its anchor is smaller than this, ignore the special vent camera transition" >
+}
+
+class VaultCameraData
+{
+   string myOffsetBlendOutCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.2 0.001, 0 0, }, properties = { 275, 1299, }, values = { 0 1, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >	
+   float myOffsetBlendOutTime 0.25f < tooltip="When we are blending the camera into the vent, push out the blending pivot by this amount, if you want to give the camera some more space" >
+   
+   string myUnevenHeightBlendCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.2 0.001, 0 0, }, properties = { 275, 1299, }, values = { 0 1, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+   float myUnevenHeightBlendTime 0.5f < tooltip="If the distance from the camera to its anchor is smaller than this, ignore the special vent camera transition" >
+}
+
+class CameraPlayerContextSettings < uid=auto >
+{
+    GeneralClimbCameraData myGeneralClimbCameraData
+	ClimbPivotOffsetData myClimbVolumePivotOffsetData
+	ClimbPivotOffsetData myClimbLedgePivotOffsetData
+	ClimbPivotOffsetData myLadderPivotOffsetData
+    ClimbLedgeCameraData myClimbLedgeCameraData
+    LedgeCameraData myLedgeCameraData
+	GrapplingHookCameraData myGrapplingHookCameraData
+	RappelCameraData myRappelCameraData
+	CoverCameraData myCoverCameraData
+	ShoulderOffsetData myShoulderOffsetData
+	AnimatedBaseData myAnimatedBaseData
+    DeathCameraData myDevourDeathCameraData
+    DeathCameraData myCrushHitDeathCameraData
+    DeathCameraData myFollowRagdollDeathCameraData
+	VentCameraData myVentCameraData
+	VaultCameraData myVaultCameraData
+}

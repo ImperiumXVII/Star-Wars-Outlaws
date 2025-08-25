@@ -1,0 +1,53 @@
+include "helix/game system data/fruit/settings/momentofopportunitysettings.fruit"
+include "helix/game system data/juice/camera/blendtransitions/blabbermouthactivationrotationblend.mcamerablendtransition"
+include "helix/game system data/juice/camera/blendtransitions/blabbermouthinitiationtransition.mcamerablendtransition"
+include "helix/game system data/juice/camera/lookatpresets/arrest.mcameralookatpreset"
+include "helix/game system data/juice/camera/lookatpresets/arrestorbit.mcameralookatpreset"
+include "helix/game system data/juice/interactionpoints/blabbermouth.minteractionpoint"
+include "helix/game system data/juice/playermovementconfig/player_movement_blabbermouth.mplayermovementconfig"
+include "helix/game system data/juice/playermovementconfig/player_movement_prearrest.mplayermovementconfig"
+include "helix/game system data/juice/playermovementconfig/player_movement_strafing.mplayermovementconfig"
+include "helix/game system data/juice/playerrestrictions/blabbermouth.mplayerrestriction"
+include "helix/game system data/juice/playerrestrictions/blabbermouth_interaction.mplayerrestriction"
+include "helix/game system data/juice/playerrestrictions/playerarrest.mplayerrestriction"
+
+MomentOfOpportunity MomentOfOpportunity < uid=C0D149F862A0673D0000335E4C4DD14B >
+{
+	myBlabbermouthInteractionPoint < uid=3A19191B62A1C27000002F45134D313F > = Blabbermouth E41F4D1B62A09C1B00003360F701F640
+	myBlabbermouthMovementConfig < uid=3A19191B62C7EE93000039FF9EA509B9 > = player_movement_blabbermouth 3A19191B62C82E53000039FFCF295CA4
+	myBlabbermouthRestrictions < uid=3A19191B63F8D072000009C4961E1EFC > = blabbermouth 3A19191B62A9CE2B0000351EACD24007
+	myBlabbermouthInteractionRestrictions < uid=3A19191B63FF669E000008C8C8E6F440 > = blabbermouth_interaction 3A19191B63FF5CF8000008C96F9048A6
+	myBlabbermouthCameraTransitionIn < uid=3A19191B63F8D072000009C533D10C4F > = blabbermouthactivationrotationblend 384291066630B0920006F84A6BD8A2CB
+	myBlabbermouthSlowdownTransitiontime 1.0
+	myBlabbermouthPromptLifetime 3.0
+	myPreBlabbermouthPromptMaxWaitingTime 1.0
+	myBlabbermouthCameraRestrictionX 1.0
+	myBlabbermouthCameraRestrictionY 0.2
+	myNearbyBlabbermouthInnerRadius 2.0
+	myNearbyBlabbermouthOuterRadius 3.0
+	myBlabbermouthLifetime 10.0
+	myBlabbermouthCooldownTime 20.0
+	myScoutObjectiveDuration 3.0
+	myOrbitCameraStartTime 1.0
+	myArrestCameraParameters
+	{
+		myLookAtPreset < uid=616C0199652016EB000126ABE9C180FC > = arrest 616C019965201484000126A8FFCD82C7
+		myLookAtOffset 0.0;0.0;0.0
+	}
+	myArrestOrbitCameraParameters
+	{
+		myLookAtPreset < uid=616C0199652016EB000126ACD287F029 > = arrestorbit 616C019965201668000126AA026BA7A9
+		myLookAtOffset 0.0;0.0;0.0
+		myOrbitTransition
+		{
+			myDuration 1.5
+		}
+		myOrbitRotationAngle -90.0
+		myOrbitCenterOffset 0.0;0.25;0.0
+	}
+	myBlabbermouthReadyLoopRumble 7113C61166476165000BC0456F9C558B
+	myBlabbermouthActivatedRumble 7113C61166446D8A000925896762442D
+	myArrestInProgressLoopRumble 7113C61166476D3D0009D78F2B1E315E
+	myArrestedRumble 7113C6116647669B000DF0C25D23013C
+}
+

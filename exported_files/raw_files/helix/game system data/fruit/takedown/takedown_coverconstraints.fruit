@@ -1,0 +1,57 @@
+include "helix/game system data/fruit/takedown/takedown_enums.fruit"
+
+class TakedownBoxCastShapeSettings
+{
+	float myBoxWidth 0.3 < min=0.1 tooltip="Set the width of the box cast" >
+	float myBoxGroundOffset 0.3 < min=0.0 tooltip="Set a vertical offset of the box base from the ground" >
+	float myBoxHeadOffset 0.0 < min=0.0 tooltip="Set a downward vertical offset of the box top surface from the player's head" >
+}
+
+class TakedownCoverModeCondition
+{
+	TakedownMode myMode Default < tooltip="Set the takedown mode for which this sub condition is referred" >
+	TakedownCoverReference myCoverReference < tooltip="Specify the cover geometric reference for which this mode is referred." >
+	TakedownAlignmentReference myAlignmentReference < tooltip="Specify which ingredient should be used as reference for calculating the alignment position" >
+	int myPriority 0 < min=0 tooltip="Set the mode priority in case more modes are conditions satisfied" >
+	float myMaxTargetFacingAngleWithPlayerCoverHitNormal 180.0 < min=-180.0 max=180.0 tooltip="It's the maximum angle allowed between the target facing and the player's cover hit normal" >
+	float myMinTargetFacingAngleWithPlayerCoverHitNormal 0.0 < min=-180.0 max=180.0 tooltip="It's the minimum angle allowed between the target facing and the player's cover hit normal" >
+	bool myAreTargetFacingAngleWithPlayerCoverHitNormalAbsoluteValues false < tooltip="If true, the Max/MinTargetFacingAngleWithPlayerCoverHitNormal are considered as absolute values, thus, their sign is neglected and their difference is considered for both positive and negative intervals" >
+	bool myRequireTargetCloseToCoverWall false < tooltip="If true, the target must be close to a wall to allow this take down sub condition" >
+	float myMaxAngleBetweenTargetAndPlayerHitNormals 80.0 < min=0.0 tooltip="The maximum angle allow between the target's and the player's wall cast hit normal. Ignore this field if RequireTargetCloseToWall is false" >
+	float myMinAngleBetweenTargetAndPlayerHitNormals 100.0 < min=0.0 tooltip="The minimum angle allow between the target's and the player's wall cast hit normal. Ignore this field if RequireTargetCloseToWall is false" >
+	float myMaxTargetWallDistanceTolerance 0.1 < min=0.05 tooltip="Set the 2D distance tolerance of the box cast hit compared to the orthogonal target distance from the current player cover wall corner" >
+	float myMaxTargetWallDistance 1.0 < min=0.0 tooltip="Set the maximum distance from the target and its wall" >
+	float myMinTargetWallDistance 0.0 < min=0.0 tooltip="Set the maximum distance from the target and its wall" >
+	float myMinTargetWallHeight 1.5 < min=0.0 tooltip="It's the minimum target wall height required for this mode" >
+	float myMaxTargetWallDepth 1.0 < min=0.0 tooltip="It's the maximum target wall depth required for this mode" >
+	float myMinTargetWallDepth 0.0 < min=0.0 tooltip="It's the minimum target wall depth required for this mode" >
+}
+
+list TakedownCoverModeConditionsList
+{
+	TakedownCoverModeCondition
+}
+
+class TakedownCoverModeSettings
+{
+	TakedownCoverModeConditionsList myModeConditionsList < tooltip="If not empty, at least one mode conditions must be satisfied to allow the takedown move" >
+ 	TakedownBoxCastShapeSettings myTargetCoverWallCheckSettings < tooltip="Set the parameters of the box cast used to retrieve the target closest lateral wall according to the current player's cover wall direction. If any mode condition is set or requires the target to be close to a wall, no boxcast is executed" >
+}
+
+class GameConditionTakedownCoverConstraints
+{
+	bool myEnableCoverConstraints false < tooltip="If true, the cover constraints will be considered in the game condition check" >
+	bool myRequireTargetBehindCoverWallSegment false < tooltip="If true, the target must be behind the current cover wall segment" >
+	float myMaxCoverToTargetAngle 90.0 < min=0.0 tooltip="It's the maximum allowed angle within the cover hit normal and the vector from the closest cover hit point to the target. Angles are expressed in degrees" >
+	float myMaxCoverHeight 10.0 < min=0.0 tooltip="It's the maximum cover height threshold the current cover must satisfy" >
+	float myMinCoverHeight 0.0 < min=0.0 tooltip="It's the minimum cover height threshold the current cover must satisfy" >
+	float myMinCoverLength 0.0 < min=0.0 tooltip="It's the minimum cover length threshold the current cover must satisfy" >
+	float myMaxPlayerDistanceFromCoverWall 0.8 < min=0.0 tooltip="It's the maximum distance from the player and the cover wall. The distance is considered orthogonal to the cover wall hit normal" >
+	float myMaxTargetDistanceFromCoverWall 10.0 < min=0.0 tooltip="It's the maximum distance from the player and the cover wall. The distance is considered orthogonal to the cover wall hit normal" >
+	TakedownCoverModeSettings myTakedownCoverModeSettings
+	bool myRequireFreeCorner false < tooltip="If true, check if the corner made by the player position, the projection of the target positon on the cover wall and the target position itself is free from obstacles" >
+	bool myRequireFreePathToCover < tooltip="If true, check if there are no obstacles between the player and the used cover wall" >
+	TakedownBoxCastShapeSettings myFreePathToCoverBoxCastShapeSettings < tooltip="Set the box cast shape settings for the free cover validation" >
+	float myMaxPlayerDistanceFromCoverCorner 0.8 < tooltip="It's the distance between the player and the player's cover wall corner. The distance is considered orthogonal to the player's cover wall hit normal" >
+	float myMaxTargetDistanceFromCoverCorner 0.8 < tooltip="It's the distance between the target and the player's cover wall corner. The distance is considered orthogonal to the player's cover wall hit normal" >
+ }

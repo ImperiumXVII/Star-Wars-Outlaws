@@ -1,0 +1,51 @@
+include "snowdrop/modules/core/audio/audio.fruit"
+
+enum GearTalentFeedbackType
+{
+	Unknown
+	AdrenalineGainBonus
+	SmokeBombHealthRestore
+	NearDeathInvulnerability
+	NearDeathInvulnerabilityCooldownFinished
+	TakedownFinisherGrenadeLoot
+	StunBlastCooldownReset
+	BlasterInfiniteHeat
+	BlasterDamageIncrease
+	HealthRestored
+	GrenadeNotConsumed
+	BactaVialNotConsumed
+	LuckEvent
+	SmokeGrenadeCooldownReset
+	PickUpWeaponAmmoRegen
+}
+
+enum GearTalentFeedbackScreenPosition
+{
+	Middle
+	BottomRight
+}
+
+//Keep in sync with HC_GearTalentFeedbackTimerType in code\helix\HClient\HC_GearTalentFeedbackConstantData.h
+enum GearTalentFeedbackTimerType
+{
+	Conditional
+	Cooldown
+	Duration
+	Proc
+	ConditionalDuration
+}
+
+class GearTalentFeedback < uid=auto ui_info=1 >
+{
+	varmap myName < bhv="localization" >
+	AudioEvent mySFX < displayName="Start SFX" >
+	AudioEvent myEndSFX < displayName="End SFX" >
+	string myIcon < bhv="sprite" >
+	float myDuration 2 < min=0 tooltip="in seconds" >
+	float myDelay < min=0 tooltip="in seconds" >
+	bool myIsPersistent FALSE
+	color myColor 0xFF000000
+	GearTalentFeedbackType myFeedbackType
+	GearTalentFeedbackScreenPosition myScreenPosition Middle
+	GearTalentFeedbackTimerType myTimerType Duration < referenced_by_code=1 >
+}

@@ -1,0 +1,71 @@
+include "helix/game system data/fruit/talent/talent.fruit"
+
+
+// keep in sync with HC_ContractContrabandCargoType in HC_ContractType.h
+enum ContractContrabandCargoType
+{
+	Ionized
+	Volatile
+	Timed
+	Suspicious
+}
+
+// keep in sync with HC_ContractContrabandCargoTier in HC_ContractType.h
+enum ContractContrabandCargoTier
+{
+	Tier1
+	Tier2
+	Tier3
+}
+
+// Keep in sync with ContractType in HC_ContractType.h
+enum ContractType
+{
+	Cargo_Transport
+	Normal_Delivery
+	Express_Delivery
+	Hot_Cargo
+	Pick_Up_Trouble
+	Defend
+	Raid
+	Burglary
+	Pickpocket
+	Slicing
+	Surveillance
+	DLC1_ContractType
+	Contraband
+	DLC2_ContractType
+}
+
+list ContractTypeList
+{
+	ContractType
+}
+
+class ContractTypeGroup < ui_info=1 >
+{
+	varmap myName < bhv="localization" >
+	string myPlanetIcon < bhv="sprite" tooltip="The icon used when a contract in this group takes place on a planet." referenced_by_code=1 >
+	string mySpaceIcon < bhv="sprite" tooltip="The icon used when a contract in this group takes place in space." referenced_by_code=1 >
+	ContractTypeList myContractTypes < ui_info=0 >
+}
+
+list ContractTypeGroupList
+{
+	ContractTypeGroup
+}
+
+list ContractTypes
+{
+	ContractType
+}
+
+class ContractTypeGroupConfig < uid=auto >
+{
+	ContractTypeGroupList myContractTypeGroups
+}
+
+list ContractTypeGroupConfigList
+{
+	ContractTypeGroupConfig*
+}

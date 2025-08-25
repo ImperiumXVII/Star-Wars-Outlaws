@@ -1,0 +1,3888 @@
+include "helix/game system data/fruit/npcmove/moveconfig.fruit"
+include "helix/game system data/juice/ai/npcdetectionprofiles.mnpcdetectionprofile"
+include "helix/game system data/juice/npcmove/krayt_dragon_move_evaluation.mnpcmoveevaluationconfig"
+include "helix/game system data/juice/npcmove/massiff_move_evaluation.mnpcmoveevaluationconfig"
+include "helix/game system data/juice/npcmove/monkey_lizard_move_evaluation.mnpcmoveevaluationconfig"
+include "helix/game system data/juice/npcmove/sammakho_move_evaluation.mnpcmoveevaluationconfig"
+include "helix/game system data/juice/npcmove/tshikara_move_evaluation.mnpcmoveevaluationconfig"
+
+NPCMoveConfig massiff_move_config < uid=D85A768462C4FFFE00007E54D2FF0D86 >
+{
+	myMoveGroups
+	{
+		NPCMoveGroupWildlifeCombat "Combat Settings"
+		{
+			myMinAttackTimesToWildlife 1
+			myMinAttackTimesToNPC 1
+			myGetCloserToPlayerMotionPatternType Sprint
+			myGetCloserToNPCMotionPatternType Sprint
+			myGetCloserToWildlifeMotionPatternType Sprint
+			myGetCloserSuccessDistanceToPlayer 1.3
+			myGetCloserSuccessOffsetToNPC 1.0
+			myGetCloserOffsetToSpeeder 1.45
+			myForceMoveAwayFromVehicleDistance 1.0
+			myTrajectoryWavingParams
+			{
+				myMoveEvaluationConfig < uid=D85A7684647E8A48000172A7AB9075C1 > = massiff_trajectory_waving D85A76846476A47D00008F09D9ACFE66
+				myMinWavingAngle 15.0
+				myWavingOffsetDistance 15.0
+				myMinWavingTimeout 1.0
+				myMaxWavingTimeout 1.2
+				myMinGoBackTimeout 0.8
+				myMaxGoBackTimeout 1.0
+			}
+			myMeleeMoveSettings
+			{
+				NPCMoveSettingWildlifeOnSpotAttack "On Spot Attack"
+				{
+					myMoveEvaluationConfig < uid=D85A768462C4FFFE00007E55A173766E > = massiff_on_spot_attack D85A768462C5275200007D590404A006
+					myWeight 10.0
+					mySuccessCooldown 0.0
+					myFailCooldown 0.0
+					myDamageToNPCAndPlayer 1.0
+					myAimingParams
+					{
+						myBodyPartType Body
+						myAimingPositionType Lowest
+						myMinHighAttackHeight 0.7
+						myMaxLowAttackHeight 1.1
+						myLowAttackChanceWhenBothAvaliable 0.5
+					}
+				}
+				NPCMoveSettingWildlifeJumpAttack "Jump Attack"
+				{
+					myMoveEvaluationConfig < uid=D85A768462C4FFFE00007E56658251E0 > = massiff_jump_attack D85A768462C5004300008BE661D2D955
+					myWeight 10.0
+					mySuccessCooldown 1.0
+					myFailCooldown 1.0
+					myAimingParams
+					{
+						myBodyPartType Body
+						myAimingPositionType Lowest
+						myMinHighAttackHeight 0.7
+						myMaxLowAttackHeight 1.1
+						myLowAttackChanceWhenBothAvaliable 0.5
+					}
+					myAttackPathAgentCheckRadius 8.0
+					myDurationToPredictTargetPosition 0.75
+					myAttackAnimationDistanceCorrectionToPlayer 0.5
+					myAttackAnimationDistanceCorrectionToSmallTarget 0.0
+					myAttackAnimationDistanceCorrectionToLargeTarget 0.3
+					myShortDistanceAttackRange 2.95
+					myClearanceCheckRadius 1.5
+				}
+				NPCMoveSettingWildlifePounceAttack "Pounce Attack"
+				{
+					myMoveEvaluationConfig < uid=D85A768462C4FFFE00007E57F074AF49 > = massiff_pounce_attack D85A768462C528C500007D5AEFCC7C28
+					myWeight 10.0
+					mySuccessCooldown 1.0
+					myFailCooldown 1.0
+					myAimingParams
+					{
+						myBodyPartType Body
+						myAimingPositionType Lowest
+						myMinHighAttackHeight 0.7
+						myMaxLowAttackHeight 1.1
+						myLowAttackChanceWhenBothAvaliable 0.5
+					}
+					myAttackPathAgentCheckRadius 8.0
+					myDurationToPredictTargetPosition 0.75
+					myAttackAnimationDistanceCorrectionToPlayer 0.5
+					myAttackAnimationDistanceCorrectionToSmallTarget 0.0
+					myAttackAnimationDistanceCorrectionToLargeTarget 0.3
+					myShortDistanceAttackRange 2.95
+					myClearanceCheckRadius 1.5
+				}
+				NPCMoveSettingWildlifeTakedown Takedown
+				{
+					myMoveEvaluationConfig < uid=D85A768462C4FFFE00007E58DACD1FFC > = massiff_takedown D85A768462C528C500007D5B2ACD9E12
+					myWeight 10.0
+					mySuccessCooldown 1.0
+					myFailCooldown 1.0
+					myChaseSuccessDistance 1.5
+				}
+				NPCMoveSettingWildlifeGrabAttack "Grab Attack"
+				{
+					myMoveEvaluationConfig < uid=D85A768464C223D70004FCBB30B6ACFC > = massiff_grab_prepare D85A7684649B92140001AA8A310641C5
+					myWeight 10.0
+					mySuccessCooldown 20.0
+					myAttackPathAgentCheckRadius 6.0
+					myDurationToPredictTargetPosition 0.4
+					myAttackAnimationDistanceCorrectionToPlayer 1.5
+					myClearanceCheckRadius 1.5
+					myGrabAttackEvaluationConfig < uid=D85A768464C223D70004FCBC81459572 > = massiff_grab_attack D85A7684649B923C0001AAAE76AEB74B
+					myGrabCount 1
+					myMaxGrabDistance 6.5
+				}
+			}
+		}
+		NPCMoveGroupWildlifePacing "Pacing Settings"
+		{
+			myMinPacingDurationToPlayerAndNPC 1.0
+			myMaxPacingDurationToPlayerAndNPC 1.0
+			myMinPacingDurationToPredator 1.0
+			myMaxPacingDurationToPredator 3.0
+			myMinHitPacingDurationToPlayerAndNPC 2.0
+			myMaxHitPacingDurationToPlayerAndNPC 5.0
+			myMinHitPacingDurationToPredator 2.0
+			myMaxHitPacingDurationToPredator 4.0
+			myPacingMoveSettings
+			{
+				NPCMoveSettingWildlifeTaunt Taunt
+				{
+					myMoveEvaluationConfig < uid=D85A768462C4FFFE00007E59E037C2CD > = massiff_taunt D85A768462C5299B00007D5DF9924C40
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6E660004DC2F6C5E7A3A > = massiff_taunt_for_vehicle 2E5ACA7E667A6DEF0004D7B11C50A3D3
+					myWeight 5.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 2.5
+						myMediumRangeDistance 10.0
+						myCloseRangeBonus 10.0
+						myMediumRangeBonus 20.0
+						myLongRangeBonus 30.0
+						myPackBonus 30.0
+						myHurtBonus 50.0
+					}
+				}
+				NPCMoveSettingWildlifeMoveAway MoveAway
+				{
+					myMoveEvaluationConfig < uid=D85A768462C4FFFE00007E5A974D827A > = massiff_move_away D85A768462C529E200007D61CFF1975F
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6E660004DC30502539EC > = massiff_move_away_for_vehicle 2E5ACA7E667A6DEF0004D7B2AB942927
+					myWeight 5.0
+					mySuccessCooldown 4.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 2.5
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.0
+						myCloseRangeBonus 30.0
+						myMediumRangeBonus 0.0
+						myLongRangeBonus 0.0
+						myPlayerAimBonus 0.0
+						myLowHealthBonus 0.0
+						myPackBonus 30.0
+					}
+					myMinDistanceFromSearchPositionLOSRequired 5.0
+					myMaxDistanceFromSearchPositionLOSRequired 10.0
+					myMinDistanceFromSearchAgentLOSRequired 5.0
+					myMaxDistanceFromSearchAgentLOSRequired 10.0
+					myMinDistanceFromTargetLOSRequired 6.0
+					myMaxDistanceFromTargetLOSRequired 8.0
+					myMinDistanceFromSearchPosition 5.0
+					myMaxDistanceFromSearchPosition 10.0
+					myMinDistanceFromSearchAgent 5.0
+					myMaxDistanceFromSearchAgent 10.0
+					myMinDistanceFromTarget 6.0
+					myMaxDistanceFromTarget 8.0
+					myMotionPatternType Run
+				}
+				NPCMoveSettingWildlifeDodgeLeft "Dodge Left"
+				{
+					myMoveEvaluationConfig < uid=D85A768462C4FFFE00007E5BC216793D > = massiff_dodge_side D85A768462C529E200007D62203EDCB5
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6E660004DC31E93A29EF > = massiff_dodge_side_for_vehicle 2E5ACA7E667A6DEF0004D7B3436B359B
+					myWeight 0.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myMediumRangeBonus 5.0
+						myLongRangeBonus 5.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeDodgeRight "Dodge Right"
+				{
+					myMoveEvaluationConfig < uid=D85A768462C4FFFE00007E5C7096AC7C > = massiff_dodge_side D85A768462C529E200007D62203EDCB5
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6E660004DC32A95FE2C2 > = massiff_dodge_side_for_vehicle 2E5ACA7E667A6DEF0004D7B3436B359B
+					myWeight 0.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myMediumRangeBonus 5.0
+						myLongRangeBonus 5.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeDodgeBack "Dodge Back"
+				{
+					myMoveEvaluationConfig < uid=D85A768462C4FFFE00007E5D2EE92909 > = massiff_dodge_back D85A768462C529E200007D6350F8F1F1
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6E660004DC33364FD279 > = massiff_dodge_back_for_vehicle 2E5ACA7E667A6DEF0004D7B4D0EDCB47
+					myWeight 5.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 2.5
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 30.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeBackOff Backoff
+				{
+					myMoveEvaluationConfig < uid=D85A768462C69E6400007F1655C6CE70 > = massiff_back_off D85A768462C529F800007D65E691907C
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6E660004DC344FDC6705 > = massiff_back_off_for_vehicle 2E5ACA7E667A6DEF0004D7B5493AA4B2
+					myWeight 0.0
+					mySuccessCooldown 3.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 2.5
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 0.0
+						myPlayerAimBonus 90.0
+						myLowHealthBonus 15.0
+					}
+				}
+				NPCMoveSettingWildlifeFlank Flank
+				{
+					myMoveEvaluationConfig < uid=D85A768463EC321B00002A96A91373A1 > = massiff_flank D85A768463EC317200002A9439DE0B99
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6E660004DC3577914A40 > = massiff_flank_for_vehicle 2E5ACA7E667A6DEF0004D7B643ED61A3
+					myWeight 10.0
+					mySuccessCooldown 5.0
+					myFailCooldown 5.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 3.0
+						myMediumRangeDistance 10.0
+						myMediumRangeBonus 50.0
+						myLongRangeBonus 30.0
+						myPackBonus 30.0
+					}
+					myMinFlankDuration 2.0
+					myMaxFlankDuration 3.0
+					myFlankPositionTolerance 0.4
+				}
+			}
+		}
+		NPCMoveGroupWildlifeIdle "Idle Settings"
+		{
+			myMinDelayBeforeCap 0.0
+			myMaxDelayBeforeCap 0.0
+			myMinDelayWhenEnterIdle 0.0
+			myMaxDelayWhenEnterIdle 1.0
+		}
+		NPCMoveGroupWildlifeReaction "Reaction Settings"
+		{
+			myReactionMoveSettings
+			{
+				NPCMoveSettingReactToDistraction ReactToDistraction
+				{
+					myTooCloseBehaviorTriggerDistance 5.0
+				}
+			}
+		}
+		NPCMoveGroupWildlifeAware "Aware Settings"
+		{
+			myIgnoreTargetDuration 60.0
+		}
+	}
+}
+
+NPCMoveConfig small_prey_move_config < uid=290EB60C637B344E00008BC729F7C9FE >
+{
+	myMoveGroups
+	{
+		NPCMoveGroupWildlifeIdle Idle
+		{
+			myMinDelayBeforeCap 0.0
+			myMaxDelayBeforeCap 0.0
+			myMinDelayWhenEnterIdle 0.0
+			myMaxDelayWhenEnterIdle 1.0
+		}
+		NPCMoveGroupWildlifeReaction "Reaction Settings"
+		{
+			myReactionMoveSettings
+			{
+				NPCMoveSettingReactToDistraction ReactToDistraction
+				{
+					myEnableTooCloseBehavior TRUE
+					myTooCloseBehaviorTriggerDistance 2.0
+				}
+			}
+		}
+	}
+}
+
+NPCMoveConfig large_prey_move_config < uid=D85A76846359D3930000DD1A0B13408C >
+{
+	myMoveGroups
+	{
+		NPCMoveGroupWildlifeAware Aware
+		{
+			myHaveStressedBehabvior TRUE
+		}
+		NPCMoveGroupWildlifeIdle Idle
+		{
+			myMinDelayBeforeCap 0.0
+			myMaxDelayBeforeCap 0.0
+			myMinDelayWhenEnterIdle 0.0
+			myMaxDelayWhenEnterIdle 2.0
+			myMaxWanderTime 30.0
+		}
+		NPCMoveGroupWildlifeReaction "Reaction Settings"
+		{
+			myReactionMoveSettings
+			{
+				NPCMoveSettingReactToDistraction ReactToDistraction
+				{
+					myCooldown 5.0
+					myRequireLOS TRUE
+					myWaitingTimeDuringCooldown 5.0
+					myEnableTooCloseBehavior FALSE
+					myWaitingTimeAfterTooCloseBehavior 5.0
+					myEnableInvestigation FALSE
+					myTurnToTargetPositionBeforeOnSpotBehavior FALSE
+				}
+			}
+		}
+	}
+}
+
+NPCMoveConfig ngomba_move_config < uid=D85A76846359D3A60000DD1B426C1FF0 > : large_prey_move_config
+{
+	myMoveGroups
+	{
+		NPCMoveGroupWildlifeAware Aware
+		{
+			myHaveStressedBehabvior TRUE
+		}
+		NPCMoveGroupWildlifeIdle Idle
+		{
+			myMinDelayBeforeCap 0.0
+			myMaxDelayBeforeCap 0.0
+			myMinDelayWhenEnterIdle 0.0
+			myMaxDelayWhenEnterIdle 2.0
+		}
+		NPCMoveGroupWildlifeReaction "Reaction Settings"
+		{
+			myReactionMoveSettings
+			{
+				NPCMoveSettingReactToDistraction ReactToDistraction
+				{
+					myCooldown 5.0
+					myRequireLOS TRUE
+					myWaitingTimeDuringCooldown 5.0
+					myEnableTooCloseBehavior FALSE
+					myWaitingTimeAfterTooCloseBehavior 5.0
+					myEnableInvestigation FALSE
+					myTurnToTargetPositionBeforeOnSpotBehavior FALSE
+				}
+			}
+		}
+		NPCMoveGroupWildlifePet Post-petting
+		{
+			myPostPettingBehavior PlayCAP
+		}
+		NPCMoveGroupWildlifeEnclosure Enclosure
+		{
+		}
+	}
+}
+
+NPCMoveConfig gushiro_move_config < uid=D85A7684637B3BCE00000FC6142EE300 > : small_prey_move_config
+{
+	myMoveGroups
+	{
+		NPCMoveGroupWildlifeIdle Idle
+		{
+			myMinDelayBeforeCap 0.0
+			myMaxDelayBeforeCap 0.0
+			myMinDelayWhenEnterIdle 0.0
+			myMaxDelayWhenEnterIdle 1.0
+			myWanderMotionPatternType Jog
+		}
+		NPCMoveGroupWildlifeReaction "Reaction Settings"
+		{
+			myReactionMoveSettings
+			{
+				NPCMoveSettingReactToDistraction ReactToDistraction
+				{
+					myEnableTooCloseBehavior TRUE
+					myTooCloseBehaviorTriggerDistance 2.0
+					myEnableInvestigation TRUE
+				}
+			}
+		}
+		NPCMoveGroupWildlifeBeg Beg
+		{
+			myOutOfRadius 20.0
+			myMinDuration 8.0
+			myMaxDuration 10.0
+			myMinApproachTime 10.0
+			myMaxApproachTime 20.0
+			myCooldownTime 30.0
+			myMinBegRadius 2.0
+			myMaxBegRadius 5.0
+			myInterruptRadius 5.3
+			myApproachProbability 0.3
+			myMaxSlopeAngle 35.0
+		}
+		NPCMoveGroupWildlifePet Post-petting
+		{
+			myPostPettingBehavior Follow
+			myMinPostPettingFollowDuration 60.0
+			myMaxPostPettingFollowDuration 75.0
+			mySendFireteamMemberFleeBeforePetting TRUE
+			myFleeEventRadius 3.5
+			myDistractionEventRadius 7.5
+		}
+	}
+}
+
+NPCMoveConfig dewback_move_config < uid=E9DD8F6063B67A380000F938016E8779 > : ngomba_move_config
+{
+}
+
+NPCMoveConfig scurrier_move_config < uid=290EB60C63E073C20000294867511767 > : small_prey_move_config
+{
+	myMoveGroups
+	{
+		NPCMoveGroupWildlifeIdle Idle
+		{
+			myMinDelayBeforeCap 0.0
+			myMaxDelayBeforeCap 0.0
+			myMinDelayWhenEnterIdle 0.0
+			myMaxDelayWhenEnterIdle 1.0
+		}
+		NPCMoveGroupWildlifePet Post-petting
+		{
+			myPostPettingBehavior Follow
+			myMinPostPettingFollowDuration 60.0
+			myMaxPostPettingFollowDuration 75.0
+			mySendFireteamMemberFleeBeforePetting TRUE
+			myFleeEventRadius 1.0
+			myDistractionEventRadius 5.0
+		}
+		NPCMoveGroupWildlifeReaction "Reaction Settings"
+		{
+			myReactionMoveSettings
+			{
+				NPCMoveSettingReactToDistraction ReactToDistraction
+				{
+					myEnableTooCloseBehavior TRUE
+					myTooCloseBehaviorTriggerDistance 2.0
+				}
+			}
+		}
+	}
+}
+
+NPCMoveConfig bantha_move_config < uid=E9DD8F6063EF2F0500001D937A3A830B > : large_prey_move_config
+{
+	myMoveGroups
+	{
+		NPCMoveGroupWildlifeAware Aware
+		{
+			myHaveStressedBehabvior TRUE
+		}
+		NPCMoveGroupWildlifeIdle Idle
+		{
+			myMinDelayBeforeCap 0.0
+			myMaxDelayBeforeCap 0.0
+			myMinDelayWhenEnterIdle 0.0
+			myMaxDelayWhenEnterIdle 2.0
+		}
+		NPCMoveGroupWildlifeReaction "Reaction Settings"
+		{
+			myReactionMoveSettings
+			{
+				NPCMoveSettingReactToDistraction ReactToDistraction
+				{
+					myCooldown 5.0
+					myRequireLOS TRUE
+					myWaitingTimeDuringCooldown 5.0
+					myEnableTooCloseBehavior FALSE
+					myWaitingTimeAfterTooCloseBehavior 5.0
+					myEnableInvestigation FALSE
+					myTurnToTargetPositionBeforeOnSpotBehavior FALSE
+				}
+			}
+		}
+		NPCMoveGroupWildlifePet Post-petting
+		{
+			myPostPettingBehavior PlayCAP
+		}
+		NPCMoveGroupWildlifeEnclosure Enclosure
+		{
+		}
+	}
+}
+
+NPCMoveConfig ku_move_config < uid=E9DD8F6063EF2F2600001D943889136D > : bantha_move_config
+{
+}
+
+NPCMoveConfig tshikara_move_config < uid=E9DD8F6064196AB70002FD2CDAE6D275 >
+{
+	myMoveGroups
+	{
+		NPCMoveGroupWildlifeCombat "Combat Settings"
+		{
+			myMinAttackTimesToWildlife 1
+			myMaxAttackTimesToWildlife 1
+			myMinAttackTimesToNPC 1
+			myMaxAttackTimesToNPC 1
+			myEnterPacingOnSuccessfullyHit FALSE
+			myGetCloserToPlayerMotionPatternType Sprint
+			myGetCloserToNPCMotionPatternType Sprint
+			myGetCloserToWildlifeMotionPatternType Sprint
+			myGetCloserSuccessDistanceToPlayer 2.0
+			myGetCloserSuccessOffsetToNPC 2.15
+			myGetCloserOffsetToSpeeder 1.9
+			myForceMoveAwayFromVehicleDistance 1.8
+			myTrajectoryWavingParams
+			{
+				myMoveEvaluationConfig < uid=D85A7684647E8A48000172A8A84FD55B > = tshikara_trajectory_waving D85A7684647834A800013B3EAA2D8D75
+				myMinWavingAngle 15.0
+				myWavingOffsetDistance 28.0
+				myMinWavingTimeout 1.2
+				myMaxWavingTimeout 1.4
+				myMinGoBackTimeout 0.8
+				myMaxGoBackTimeout 1.2
+			}
+			myComboParams
+			{
+				myTriggerHealthPercentage 0.8
+				myMinPhase 2
+				myPhases
+				{
+					WildlifeComboPhase "Phase 0"
+					{
+						myCombos
+						{
+							WildlifeIndividualCombo OnSpotAttack
+							{
+								myBehaviorState OnSpotAttack
+							}
+							WildlifeIndividualCombo Jump
+							{
+								myBehaviorState JumpAttack
+							}
+							WildlifeIndividualCombo Pounce
+							{
+								myBehaviorState PounceAttack
+							}
+							WildlifeIndividualCombo Range
+							{
+								myBehaviorState RangeAttack
+							}
+						}
+					}
+					WildlifeComboPhase "Phase 1"
+					{
+						myPhase 1
+						myCombos
+						{
+							WildlifeIndividualCombo OnSpot
+							{
+								myBehaviorState OnSpotAttack
+								myPreconditions
+								{
+									WildlifeComboPrecondition OnSpot
+									{
+										myPreviousBehaviorState OnSpotAttack
+									}
+									WildlifeComboPrecondition Jump
+									{
+										myPreviousBehaviorState JumpAttack
+									}
+									WildlifeComboPrecondition Pounce
+									{
+										myPreviousBehaviorState PounceAttack
+									}
+								}
+							}
+							WildlifeIndividualCombo Pounce
+							{
+								myBehaviorState PounceAttack
+								myOverrideMoveEvaluationConfig < uid=E9DD8F6064D485290000834D6F2787A9 > = tshikara_combo_pounce_attack E9DD8F6064D4891B00044F77FBFE4CE4
+								myPreconditions
+								{
+									WildlifeComboPrecondition OnSpot
+									{
+										myPreviousBehaviorState OnSpotAttack
+									}
+									WildlifeComboPrecondition Pounce
+									{
+										myPreviousBehaviorState PounceAttack
+									}
+									WildlifeComboPrecondition Jump
+									{
+										myPreviousBehaviorState JumpAttack
+									}
+								}
+							}
+							WildlifeIndividualCombo Range
+							{
+								myBehaviorState RangeAttack
+								myOverrideMoveEvaluationConfig < uid=D85A768464C9CB8500019B737B3CCF34 > = tshikara_combo_always_success D85A768464D04334000286361D99A487
+								myPreconditions
+								{
+									WildlifeComboPrecondition OnSpot
+									{
+										myPreviousBehaviorState OnSpotAttack
+									}
+									WildlifeComboPrecondition Jump
+									{
+										myPreviousBehaviorState JumpAttack
+									}
+									WildlifeComboPrecondition Pounce
+									{
+										myPreviousBehaviorState PounceAttack
+									}
+									WildlifeComboPrecondition Range
+									{
+										myPreviousBehaviorState RangeAttack
+									}
+								}
+							}
+						}
+					}
+					WildlifeComboPhase "Phase 2"
+					{
+						myPhase 2
+						myCombos
+						{
+							WildlifeIndividualCombo Range
+							{
+								myBehaviorState RangeAttack
+								myOverrideMoveEvaluationConfig < uid=D85A76846501130C0000591E2DF6E9B8 > = tshikara_combo_range_attack E9DD8F6064D4894600044F7EECF5048E
+								myPreconditions
+								{
+									WildlifeComboPrecondition Pounce
+									{
+										myPreviousBehaviorState PounceAttack
+									}
+									WildlifeComboPrecondition Range
+									{
+										myPreviousBehaviorState RangeAttack
+									}
+								}
+							}
+							WildlifeIndividualCombo Pounce
+							{
+								myBehaviorState PounceAttack
+								myOverrideMoveEvaluationConfig < uid=E9DD8F6064D4857900009144F399101E > = tshikara_combo_pounce_attack E9DD8F6064D4891B00044F77FBFE4CE4
+								myPreconditions
+								{
+									WildlifeComboPrecondition OnSpot
+									{
+										myPreviousBehaviorState OnSpotAttack
+									}
+									WildlifeComboPrecondition Pounce
+									{
+										myPreviousBehaviorState PounceAttack
+									}
+									WildlifeComboPrecondition Range
+									{
+										myPreviousBehaviorState RangeAttack
+									}
+								}
+							}
+							WildlifeIndividualCombo OnSpot
+							{
+								myBehaviorState OnSpotAttack
+								myPreconditions
+								{
+									WildlifeComboPrecondition OnSpot
+									{
+										myPreviousBehaviorState OnSpotAttack
+									}
+									WildlifeComboPrecondition Pounce
+									{
+										myPreviousBehaviorState PounceAttack
+									}
+									WildlifeComboPrecondition Range
+									{
+										myPreviousBehaviorState RangeAttack
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			myMeleeMoveSettings
+			{
+				NPCMoveSettingWildlifeOnSpotAttack "On Spot Attack"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064196AB70002FD2D73858EC1 > = tshikara_on_spot_attack E9DD8F60641966BC0002FD1733A7119A
+					myWeight 10.0
+					mySuccessCooldown 0.0
+					myFailCooldown 0.0
+					myDamageToNPCAndPlayer 2.0
+					myAimingParams
+					{
+						myBodyPartType Body
+						myAimingPositionType Lowest
+						myMinHighAttackHeight 0.7
+						myMaxLowAttackHeight 1.2
+						myLowAttackChanceWhenBothAvaliable 0.5
+					}
+				}
+				NPCMoveSettingWildlifeJumpAttack "Jump Attack"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064196AB70002FD2E0CBA8A91 > = tshikara_jump_attack E9DD8F60641966750002FD15A8566E4A
+					myWeight 10.0
+					mySuccessCooldown 1.0
+					myFailCooldown 1.0
+					myDamageToNPCAndPlayer 2.0
+					myAimingParams
+					{
+						myBodyPartType Body
+						myAimingPositionType Lowest
+						myMinHighAttackHeight 0.7
+						myMaxLowAttackHeight 1.2
+						myLowAttackChanceWhenBothAvaliable 0.5
+					}
+					myMeleeType HeavyHit
+					myAttackPathAgentCheckRadius 12.0
+					myDurationToPredictTargetPosition 0.8
+					myAttackAnimationDistanceCorrectionToPlayer 1.0
+					myAttackAnimationDistanceCorrectionToSmallTarget -0.5
+					myAttackAnimationDistanceCorrectionToLargeTarget 0.5
+					myShortDistanceAttackRange 6.0
+					myClearanceCheckRadius 1.5
+				}
+				NPCMoveSettingWildlifePounceAttack "Pounce Attack"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064196AB70002FD2F7BC25DF1 > = tshikara_pounce_attack E9DD8F60641966E50002FD1944B28C5E
+					myWeight 10.0
+					mySuccessCooldown 1.0
+					myFailCooldown 1.0
+					myDamageToNPCAndPlayer 2.0
+					myAimingParams
+					{
+						myBodyPartType Body
+						myAimingPositionType Lowest
+						myMinHighAttackHeight 0.7
+						myMaxLowAttackHeight 1.2
+						myLowAttackChanceWhenBothAvaliable 0.5
+					}
+					myMeleeType HeavyHit
+					myAttackPathAgentCheckRadius 12.0
+					myDurationToPredictTargetPosition 0.8
+					myAttackAnimationDistanceCorrectionToPlayer 1.0
+					myAttackAnimationDistanceCorrectionToSmallTarget -0.5
+					myAttackAnimationDistanceCorrectionToLargeTarget 0.5
+					myShortDistanceAttackRange 6.0
+					myClearanceCheckRadius 1.5
+				}
+				NPCMoveSettingWildlifeTakedown Takedown
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064196AB70002FD30975B5D86 > = tshikara_takedown E9DD8F60641968D30002FD1BA8B37DC6
+					myWeight 10.0
+					mySuccessCooldown 1.0
+					myFailCooldown 1.0
+					myChaseSuccessDistance 2.65
+				}
+				NPCMoveSettingWildlifeRangeAttack "Range Attack"
+				{
+					myMoveEvaluationConfig < uid=D85A7684643CA046000128101DA818B3 > = tshikara_range_attack D85A76846436062F0000113EB35BC88C
+					mySuccessCooldown 10.0
+					myDamageToWildlife 2.0
+					myAimingParams
+					{
+						myBodyPartType Body
+					}
+					myDurationToPredictTargetPosition 0.4
+					myAttackAnimationDistanceCorrectionToPlayer 0.0
+					myProjectileCount 9
+					myAngleOffset 5.0
+					myMaxPitchAngle 60.0
+					myUnreachableRepositionMinDistance 3.0
+					myUnreachableRepositionMaxDistance 100.0
+				}
+				NPCMoveSettingWildlifeGrabAttack "Grab Attack"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F606538DCA600042E409039D92E > = tshikara_grab_prepare E9DD8F606539C3FF0000B7CCA6B1223D
+					myWeight 50.0
+					mySuccessCooldown 20.0
+					myAttackPathAgentCheckRadius 10.0
+					myDurationToPredictTargetPosition 0.4
+					myAttackAnimationDistanceCorrectionToPlayer 3.0
+					myClearanceCheckRadius 1.5
+					myGrabAttackEvaluationConfig < uid=E9DD8F606538DCA600042E4168F1B835 > = tshikara_grab_attack E9DD8F606539C3FF0000B7CB1077428B
+					myGrabCount 1
+					myMaxGrabDistance 13.0
+				}
+			}
+		}
+		NPCMoveGroupWildlifePacing "Pacing Settings"
+		{
+			myMinPacingDurationToPlayerAndNPC 0.5
+			myMaxPacingDurationToPlayerAndNPC 0.5
+			myMinPacingDurationToPredator 2.0
+			myMaxPacingDurationToPredator 3.0
+			myMinHitPacingDurationToPlayerAndNPC 0.5
+			myMaxHitPacingDurationToPlayerAndNPC 0.5
+			myMinHitPacingDurationToPredator 2.0
+			myMaxHitPacingDurationToPredator 3.0
+			myPacingMoveSettings
+			{
+				NPCMoveSettingWildlifeTaunt Taunt
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064196AB70002FD31C8F73A2A > = tshikara_taunt E9DD8F60641969280002FD1D4BE3F110
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6739000482154D3E28E4 > = tshikara_taunt_for_vehicle 2E5ACA7E667A69A30004A221F1C3FC4A
+					myWeight 5.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 15.0
+						myLongRangeDistance 40.0
+						myCloseRangeBonus 10.0
+						myMediumRangeBonus 20.0
+						myLongRangeBonus 30.0
+						myPackBonus 30.0
+						myHurtBonus 50.0
+					}
+				}
+				NPCMoveSettingWildlifeMoveAway MoveAway
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064196AB70002FD3210C1CFA7 > = tshikara_move_away E9DD8F6064196A0C0002FD23D1CCA246
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A673900048216594C4F20 > = tshikara_move_away_for_vehicle 2E5ACA7E667A6C8E0004C6EF7AE85E33
+					myWeight 5.0
+					mySuccessCooldown 4.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 15.0
+						myLongRangeDistance 40.0
+						myLowHealthThreshold 0.0
+						myCloseRangeBonus 30.0
+						myMediumRangeBonus 0.0
+						myLongRangeBonus 0.0
+						myPlayerAimBonus 0.0
+						myLowHealthBonus 0.0
+						myPackBonus 30.0
+					}
+					myMinDistanceFromSearchPositionLOSRequired 8.0
+					myMaxDistanceFromSearchPositionLOSRequired 15.0
+					myMinDistanceFromSearchAgentLOSRequired 8.0
+					myMaxDistanceFromSearchAgentLOSRequired 15.0
+					myMinDistanceFromTargetLOSRequired 8.0
+					myMaxDistanceFromTargetLOSRequired 12.0
+					myMinDistanceFromSearchPosition 8.0
+					myMaxDistanceFromSearchPosition 15.0
+					myMinDistanceFromSearchAgent 8.0
+					myMaxDistanceFromSearchAgent 15.0
+					myMinDistanceFromTarget 8.0
+					myMaxDistanceFromTarget 12.0
+					myMotionPatternType Run
+				}
+				NPCMoveSettingWildlifeDodgeLeft "Dodge Left"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064196AB70002FD337985359B > = tshikara_dodge_side E9DD8F6064196A0C0002FD2466E267D7
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A69C00004A37679E13977 > = tshikara_dodge_side_for_vehicle 2E5ACA7E667A69A30004A2223988FA84
+					myWeight 0.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 8.0
+						myMediumRangeDistance 15.0
+						myLongRangeDistance 40.0
+						myLowHealthThreshold 0.3
+						myMediumRangeBonus 5.0
+						myLongRangeBonus 5.0
+						myPlayerAimBonus 70.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeDodgeRight "Dodge Right"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064196AB70002FD34347FE040 > = tshikara_dodge_side E9DD8F6064196A0C0002FD2466E267D7
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A69C00004A377BC0BE8B6 > = tshikara_dodge_side_for_vehicle 2E5ACA7E667A69A30004A2223988FA84
+					myWeight 0.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 8.0
+						myMediumRangeDistance 15.0
+						myLongRangeDistance 40.0
+						myLowHealthThreshold 0.3
+						myMediumRangeBonus 5.0
+						myLongRangeBonus 5.0
+						myPlayerAimBonus 70.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeDodgeBack "Dodge Back"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064196AB70002FD354528AA8F > = tshikara_dodge_back E9DD8F6064196A0C0002FD257D4ABC25
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A69C00004A3780C04AE5E > = tshikara_dodge_back_for_vehicle 2E5ACA7E667A69A30004A2239F43908B
+					myWeight 5.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 15.0
+						myLongRangeDistance 40.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 30.0
+						myPlayerAimBonus 70.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeBackOff Backoff
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064196AB70002FD365B8AE97A > = tshikara_back_off E9DD8F6064196A0C0002FD264DA1D209
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A69C00004A379947075C0 > = tshikara_back_off_for_vehicle 2E5ACA7E667A69A30004A224B7FEC39F
+					myWeight 5.0
+					mySuccessCooldown 3.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 15.0
+						myLongRangeDistance 40.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 0.0
+						myMediumRangeBonus 15.0
+						myPlayerAimBonus 90.0
+						myLowHealthBonus 15.0
+					}
+				}
+				NPCMoveSettingWildlifeFlank Flank
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064196AB70002FD370BF3267D > = tshikara_flank E9DD8F6064196A320002FD29A4E1A565
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A69C00004A37AE42ACCB8 > = tshikara_flank_for_vehicle 2E5ACA7E667A69A30004A22559315886
+					myWeight 10.0
+					mySuccessCooldown 2.0
+					myFailCooldown 2.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 15.0
+						myLongRangeDistance 40.0
+						myMediumRangeBonus 40.0
+						myLongRangeBonus 30.0
+						myPlayerAimBonus 100.0
+						myPackBonus 30.0
+					}
+					myMotionPatternType Run
+					myMinFlankRadius 5.0
+					myMaxFlankRadius 40.0
+					myFlankRotateAngle 90.0
+					myMinFlankDuration 1.0
+					myMaxFlankDuration 1.0
+					myFlankPositionTolerance 1.0
+				}
+				NPCMoveSettingWildlifeTailRegen "Tail Regen"
+				{
+					myMoveEvaluationConfig < uid=D85A7684643CA069000128113273CE0F > = tshikara_tail_regen D85A76846436085D00001140CDC14CBC
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A69C00004A37B0787C6D3 > = tshikara_tail_regen_for_vehicle 2E5ACA7E667A69A30004A2262713D5FE
+					myDynamicWeightParams
+					{
+						myMediumRangeBonus 100.0
+						myLongRangeBonus 200.0
+					}
+				}
+			}
+		}
+		NPCMoveGroupWildlifeIdle "Idle Settings"
+		{
+			myMinDelayBeforeCap 0.0
+			myMaxDelayBeforeCap 0.0
+			myMinDelayWhenEnterIdle 0.0
+			myMaxDelayWhenEnterIdle 2.0
+		}
+		NPCMoveGroupWildlifeReaction "Reaction Settings"
+		{
+			myReactionMoveSettings
+			{
+				NPCMoveSettingReactToDistraction ReactToDistraction
+				{
+					myTooCloseBehaviorTriggerDistance 5.0
+					myInvestigationMotionPatternType Investigate
+				}
+			}
+		}
+		NPCMoveGroupWildlifeAware "Aware Settings"
+		{
+			myHaveStalkingBehabvior TRUE
+			myStalkingDetectionProfile < uid=2E5ACA7E6454B5230000C35B3FDA0565 > = TshikaraStalkingDetectionProfile 2E5ACA7E6448CAC70000848E1E29F8B3
+			myIgnoreTargetDuration 60.0
+			myAwareMoveSettings
+			{
+				NPCMoveSettingWildlifeStalkingDodgeLeft "Special Wildlife Intimidation Dodge Left"
+				{
+					myMoveEvaluationConfig < uid=2E5ACA7E6440EE5E000084F07376F321 > = tshikara_dodge_side E9DD8F6064196A0C0002FD2466E267D7
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 8.0
+						myMediumRangeDistance 15.0
+						myLongRangeDistance 40.0
+						myLowHealthThreshold 0.3
+						myMediumRangeBonus 5.0
+						myLongRangeBonus 5.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myHurtBonus 100.0
+					}
+					mySkipPossibilityOnSuccess 0.5
+				}
+				NPCMoveSettingWildlifeStalkingDodgeRight "Special Wildlife Intimidation Dodge Right"
+				{
+					myMoveEvaluationConfig < uid=2E5ACA7E6454C52800015E4C3935D8C1 > = tshikara_dodge_side E9DD8F6064196A0C0002FD2466E267D7
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 8.0
+						myMediumRangeDistance 15.0
+						myLongRangeDistance 40.0
+						myLowHealthThreshold 0.3
+						myMediumRangeBonus 5.0
+						myLongRangeBonus 5.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myHurtBonus 100.0
+					}
+					mySkipPossibilityOnSuccess 0.5
+				}
+				NPCMoveSettingWildlifeStalkingDodgeBack "Special Wildlife Intimidation Dodge Back"
+				{
+					myMoveEvaluationConfig < uid=2E5ACA7E6440EEE1000085A0CCF46B13 > = tshikara_dodge_back E9DD8F6064196A0C0002FD257D4ABC25
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 15.0
+						myLongRangeDistance 40.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 30.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myHurtBonus 100.0
+					}
+					mySkipPossibilityOnSuccess 0.5
+				}
+				NPCMoveSettingWildlifeStalkingHeavyGrowl "Special Intimidation Heavy Growl"
+				{
+					mySuccessCooldown 3.0
+					myFailCooldown 0.0
+					mySkipPossibilityOnSuccess 0.5
+				}
+				NPCMoveSettingWildlifeStalkingTaunt "Special Intimidation Taunt"
+				{
+					myMoveEvaluationConfig < uid=2E5ACA7E6454C2B800019884C44019E5 > = tshikara_stalking_taunt 2E5ACA7E6454C2AA0001987257C8C280
+					mySuccessCooldown 3.0
+					myFailCooldown 0.0
+					mySkipPossibilityOnSuccess 0.5
+				}
+				NPCMoveSettingWildlifeStalkingGrowl "Intimidation Growl"
+				{
+					mySuccessCooldown 2.0
+					mySkipPossibilityOnSuccess 0.8
+				}
+				NPCMoveSettingWildlifeStalkingIdle "Intimidation Idle"
+				{
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					mySkipPossibilityOnSuccess 0.8
+				}
+			}
+		}
+	}
+}
+
+NPCMoveConfig E3_gushiro_move_config < uid=290EB60C64224CDA00000FEAD7BDBC88 > : gushiro_move_config
+{
+	myMoveGroups
+	{
+		NPCMoveGroupWildlifeIdle Idle
+		{
+			myMinDelayBeforeCap 0.0
+			myMaxDelayBeforeCap 0.0
+			myMinDelayWhenEnterIdle 0.0
+			myMaxDelayWhenEnterIdle 0.0
+			myWanderMotionPatternType Jog
+		}
+		NPCMoveGroupWildlifeReaction "Reaction Settings"
+		{
+			myReactionMoveSettings
+			{
+				NPCMoveSettingReactToDistraction ReactToDistraction
+				{
+					myEnableTooCloseBehavior TRUE
+					myTooCloseBehaviorTriggerDistance 2.0
+					myEnableInvestigation TRUE
+				}
+			}
+		}
+		NPCMoveGroupWildlifeBeg Beg
+		{
+			myOutOfRadius 20.0
+			myMinDuration 8.0
+			myMaxDuration 10.0
+			myMinApproachTime 10.0
+			myMaxApproachTime 20.0
+			myMinBegRadius 10.0
+			myMaxBegRadius 20.0
+			myApproachProbability 0.0
+		}
+	}
+}
+
+NPCMoveConfig sammakho_move_config < uid=E9DD8F60644B63520001B9B6E6CE2846 >
+{
+	myMoveGroups
+	{
+		NPCMoveGroupWildlifeCombat "Combat Settings"
+		{
+			myMinAttackTimesToWildlife 1
+			myMinAttackTimesToNPC 1
+			myMaxAttackTimesToNPC 1
+			myGetCloserToPlayerMotionPatternType Sprint
+			myGetCloserToNPCMotionPatternType Sprint
+			myGetCloserToWildlifeMotionPatternType Sprint
+			myGetCloserSuccessDistanceToPlayer 1.3
+			myGetCloserSuccessOffsetToNPC 1.0
+			myGetCloserOffsetToSpeeder 1.45
+			myForceMoveAwayFromVehicleDistance 1.0
+			myTrajectoryWavingParams
+			{
+				myEnableTrajectoryWaving FALSE
+				myMoveEvaluationConfig < uid=D85A7684647E8A48000172A9DACE8369 > = sammakho_trajectory_waving D85A76846478350800013BB88E9BB226
+				myMinWavingAngle 15.0
+				myWavingOffsetDistance 15.0
+				myMinWavingTimeout 1.0
+				myMaxWavingTimeout 1.2
+				myMinGoBackTimeout 0.8
+				myMaxGoBackTimeout 1.0
+			}
+			myComboParams
+			{
+				myTriggerHealthPercentage 0.5
+				myMinPhase 2
+				myMaxPhase 2
+				myPhases
+				{
+					WildlifeComboPhase "Phase 0"
+					{
+						myCombos
+						{
+							WildlifeIndividualCombo "On Spot Attack"
+							{
+								myBehaviorState OnSpotAttack
+							}
+							WildlifeIndividualCombo "Range Attack"
+							{
+								myBehaviorState RangeAttack
+							}
+							WildlifeIndividualCombo "Long Range Attack"
+							{
+								myBehaviorState LongRangeAttack
+							}
+						}
+					}
+					WildlifeComboPhase "Phase 1"
+					{
+						myPhase 1
+						myCombos
+						{
+							WildlifeIndividualCombo "Long Range Attack"
+							{
+								myBehaviorState LongRangeAttack
+								myOverrideMoveEvaluationConfig < uid=E9DD8F6064E5A8F900118F783FF0262B > = sammakho_combo_always_success E9DD8F6064E5A8C600118F724D836ECD
+								myPreconditions
+								{
+									WildlifeComboPrecondition "Previous One Is Long Range Attack"
+									{
+										myPreviousBehaviorState LongRangeAttack
+									}
+								}
+							}
+							WildlifeIndividualCombo "Range Attack"
+							{
+								myBehaviorState RangeAttack
+								myOverrideMoveEvaluationConfig < uid=E9DD8F60654097B50001B79BF5D625DC > = sammakho_combo_always_success E9DD8F6064E5A8C600118F724D836ECD
+								myPreconditions
+								{
+									WildlifeComboPrecondition "Previous One Is Range Attack"
+									{
+										myPreviousBehaviorState RangeAttack
+									}
+								}
+							}
+						}
+					}
+					WildlifeComboPhase "Phase 2"
+					{
+						myPhase 2
+						myCombos
+						{
+							WildlifeIndividualCombo "Long Range Attack"
+							{
+								myBehaviorState LongRangeAttack
+								myOverrideMoveEvaluationConfig < uid=E9DD8F6064E5A8F900118F797B20A594 > = sammakho_combo_always_success E9DD8F6064E5A8C600118F724D836ECD
+								myPreconditions
+								{
+									WildlifeComboPrecondition "Previous One Is Long Range Attack"
+									{
+										myPreviousBehaviorState LongRangeAttack
+									}
+								}
+							}
+							WildlifeIndividualCombo "Range Attack"
+							{
+								myBehaviorState RangeAttack
+								myOverrideMoveEvaluationConfig < uid=E9DD8F60654097B50001B79C5D68A286 > = sammakho_combo_always_success E9DD8F6064E5A8C600118F724D836ECD
+								myPreconditions
+								{
+									WildlifeComboPrecondition "Previous One Is Range Attack"
+									{
+										myPreviousBehaviorState RangeAttack
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			myMeleeMoveSettings
+			{
+				NPCMoveSettingWildlifeOnSpotAttack "On Spot Attack"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F60644B63520001B9B70418C4C6 > = sammakho_on_spot_attack E9DD8F60644B62140001B9A2FFA96652
+					myWeight 10.0
+					myDamageToNPCAndPlayer 1.0
+					myAimingParams
+					{
+						myBodyPartType Body
+						myAimingPositionType Lowest
+						myMinHighAttackHeight 0.7
+						myMaxLowAttackHeight 1.2
+						myLowAttackChanceWhenBothAvaliable 0.5
+					}
+				}
+				NPCMoveSettingWildlifeTakedown Takedown
+				{
+					myMoveEvaluationConfig < uid=E9DD8F606577C6D70008D1E48848C283 > = sammakho_takedown E9DD8F606577C6AF0008D1BB38FDEE82
+					myWeight 10.0
+					mySuccessCooldown 1.0
+					myFailCooldown 1.0
+					myChaseSuccessDistance 1.5
+				}
+				NPCMoveSettingWildlifeRangeAttack "Range Attack"
+				{
+					myMoveEvaluationConfig < uid=2E5ACA7E64DB1CFF00039A7563BB97CC > = sammakho_range_attack 2E5ACA7E64B8DBF10000F63D0CABF041
+					myAimingParams
+					{
+						myBodyPartType Legs
+						myAimingPositionType Lowest
+					}
+					myDurationToPredictTargetPosition 0.95
+					myAttackAnimationDistanceCorrectionToPlayer 1.0
+					myShootInterval 0.005
+					myMaxPitchAngle 60.0
+					myUnreachableRepositionMinDistance 3.0
+					myUnreachableRepositionMaxDistance 100.0
+					myRangeAttackType SammakhoMediumRange
+				}
+				NPCMoveSettingWildlifeLongRangeAttack "Long Range Attack"
+				{
+					myMoveEvaluationConfig < uid=2E5ACA7E64DB1CFF00039A76CAE45CA5 > = sammakho_long_range_attack 2E5ACA7E64C8CECB0000D453894A7B7A
+					myAimingParams
+					{
+						myBodyPartType Body
+					}
+					myDurationToPredictTargetPosition 0.95
+					myAttackAnimationDistanceCorrectionToPlayer 1.0
+					myProjectileCount 1
+					myShootInterval 0.0
+					myMaxPitchAngle 60.0
+					myUnreachableRepositionMinDistance 3.0
+					myUnreachableRepositionMaxDistance 100.0
+					myRangeAttackType SammakhoLongRange
+				}
+				NPCMoveSettingWildlifeGrabAttack "Grab Attack"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F60655C5B49000708225EC8E610 > = sammakho_grab_prepare E9DD8F60655C5A0600033863ED4FA5AD
+					myWeight 50.0
+					mySuccessCooldown 20.0
+					myAttackPathAgentCheckRadius 8.0
+					myDurationToPredictTargetPosition 0.4
+					myAttackAnimationDistanceCorrectionToPlayer 1.5
+					myClearanceCheckRadius 1.5
+					myGrabAttackEvaluationConfig < uid=E9DD8F60655C5B49000708232F88FF34 > = sammakho_grab_attack E9DD8F60655C5A4200049A2276C031CC
+					myGrabCount 1
+					myMaxGrabDistance 10.0
+				}
+			}
+		}
+		NPCMoveGroupWildlifePacing "Pacing Settings"
+		{
+			myMinPacingDurationToPlayerAndNPC 1.0
+			myMaxPacingDurationToPlayerAndNPC 3.0
+			myMinPacingDurationToPredator 1.0
+			myMaxPacingDurationToPredator 3.0
+			myMinHitPacingDurationToPlayerAndNPC 2.0
+			myMaxHitPacingDurationToPlayerAndNPC 3.0
+			myMinHitPacingDurationToPredator 2.0
+			myMaxHitPacingDurationToPredator 3.0
+			myPacingMoveSettings
+			{
+				NPCMoveSettingWildlifeTaunt Taunt
+				{
+					myMoveEvaluationConfig < uid=E9DD8F60644B63520001B9BBBA8185CA > = sammakho_taunt E9DD8F60644B62AF0001B9A69E40DE87
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6C640004C510E991959A > = sammakho_taunt_for_vehicle 2E5ACA7E667A6AE70004B245D61E0A10
+					myWeight 5.0
+					mySuccessCooldown 1.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 10.0
+						myCloseRangeBonus 20.0
+						myMediumRangeBonus 30.0
+						myLongRangeBonus 30.0
+						myPackBonus 100.0
+						myHurtBonus 50.0
+					}
+				}
+				NPCMoveSettingWildlifeDodgeLeft "Dodge Left"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F60644B63520001B9BD46FF8219 > = sammakho_dodge_side E9DD8F60644B63280001B9AE3FED1547
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6C640004C5119525AA01 > = sammakho_dodge_side_for_vehicle 2E5ACA7E667A6AE70004B247F646D087
+					myWeight 0.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 20.0
+						myMediumRangeBonus 40.0
+						myLongRangeBonus 40.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeDodgeRight "Dodge Right"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F60644B63520001B9BED41708C9 > = sammakho_dodge_side E9DD8F60644B63280001B9AE3FED1547
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6C640004C51286A41089 > = sammakho_dodge_side_for_vehicle 2E5ACA7E667A6AE70004B247F646D087
+					myWeight 0.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 20.0
+						myMediumRangeBonus 40.0
+						myLongRangeBonus 40.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeDodgeBack "Dodge Back"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F60644B63520001B9BF620E6854 > = sammakho_dodge_back E9DD8F60644B63280001B9AFC658492F
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6C640004C513162BDEBE > = sammakho_dodge_back_for_vehicle 2E5ACA7E667A6AE70004B248F092D303
+					myWeight 5.0
+					mySuccessCooldown 1.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 2.5
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 30.0
+						myMediumRangeBonus 40.0
+						myLongRangeBonus 40.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeBackOff Backoff
+				{
+					myMoveEvaluationConfig < uid=E9DD8F60644B63520001B9C0AF2B30F5 > = sammakho_back_off E9DD8F60644B63280001B9B03B0D4CA4
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6C640004C5147373A4A4 > = sammakho_back_off_for_vehicle 2E5ACA7E667A6AE70004B249D6FA098B
+					myWeight 5.0
+					mySuccessCooldown 1.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 2.5
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 30.0
+						myMediumRangeBonus 40.0
+						myLongRangeBonus 40.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeMoveAway MoveAway
+				{
+					myMoveEvaluationConfig < uid=E9DD8F60668BB7E9000AFE4CAF546001 > = sammakho_move_away E9DD8F60644B63280001B9ADBE76A4BA
+					myMoveEvaluationToVehicleConfig < uid=E9DD8F60668BB7E9000AFE4DBCA65E96 > = sammakho_move_away_for_vehicle 2E5ACA7E667A6AE70004B2464F25C0B3
+					myWeight 5.0
+					mySuccessCooldown 4.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 2.5
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.0
+						myCloseRangeBonus 30.0
+						myMediumRangeBonus 20.0
+						myLongRangeBonus 10.0
+						myPlayerAimBonus 0.0
+						myLowHealthBonus 0.0
+						myPackBonus 30.0
+					}
+					myMinDistanceFromSearchPositionLOSRequired 5.0
+					myMaxDistanceFromSearchPositionLOSRequired 10.0
+					myMinDistanceFromSearchAgentLOSRequired 5.0
+					myMaxDistanceFromSearchAgentLOSRequired 10.0
+					myMinDistanceFromTargetLOSRequired 6.0
+					myMaxDistanceFromTargetLOSRequired 8.0
+					myMinDistanceFromSearchPosition 5.0
+					myMaxDistanceFromSearchPosition 10.0
+					myMinDistanceFromSearchAgent 5.0
+					myMaxDistanceFromSearchAgent 10.0
+					myMinDistanceFromTarget 6.0
+					myMaxDistanceFromTarget 8.0
+					myMotionPatternType Run
+				}
+				NPCMoveSettingWildlifeFlank Flank
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064BF65E90006A270D0A42EE1 > = sammakho_flank E9DD8F60644B63350001B9B26745006B
+					myWeight 0.0
+					mySuccessCooldown 5.0
+					myFailCooldown 5.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 3.0
+						myMediumRangeDistance 10.0
+						myMediumRangeBonus 0.0
+						myLongRangeBonus 0.0
+						myPackBonus 0.0
+					}
+					myMinFlankDuration 4.0
+					myMaxFlankDuration 6.0
+					myFlankPositionTolerance 0.4
+				}
+			}
+		}
+		NPCMoveGroupWildlifeIdle "Idle Settings"
+		{
+			myMinDelayBeforeCap 0.0
+			myMaxDelayBeforeCap 0.0
+			myMinDelayWhenEnterIdle 0.0
+			myMaxDelayWhenEnterIdle 1.0
+		}
+		NPCMoveGroupWildlifeReaction "Reaction Settings"
+		{
+			myReactionMoveSettings
+			{
+				NPCMoveSettingReactToDistraction ReactToDistraction
+				{
+					myTooCloseBehaviorTriggerDistance 5.0
+				}
+			}
+		}
+		NPCMoveGroupWildlifeAware "Aware Settings"
+		{
+			myIgnoreTargetDuration 60.0
+		}
+	}
+}
+
+NPCMoveConfig krayt_dragon_move_config < uid=E9DD8F6064D34EED0000A6D18A5D270D >
+{
+	myMoveGroups
+	{
+		NPCMoveGroupWildlifeCombat "Combat Settings"
+		{
+			myMinAttackTimesToWildlife 2
+			myMaxAttackTimesToWildlife 3
+			myMinAttackTimesToNPC 2
+			myMaxAttackTimesToNPC 3
+			myForcePacingAfterAttack FALSE
+			myEnterPacingOnSuccessfullyHit FALSE
+			myGetCloserWithPackMemberTacticalMove FALSE
+			myImmediateFleeInUnreachable TRUE
+			myGetCloserToPlayerMotionPatternType Sprint
+			myGetCloserToNPCMotionPatternType Sprint
+			myGetCloserToWildlifeMotionPatternType Sprint
+			myOnSpotAttackOnUnreachable TRUE
+			myUnreachableAttackDistance 10.0
+			myUnreachableVerticalAttackDistance 5.0
+			myHasAttackActionIntention TRUE
+			myAttackActionIntentionType KraytDragonAttack
+			myEnableGetCloserWithSuccessDistance FALSE
+			myTrajectoryWavingParams
+			{
+				myEnableTrajectoryWaving FALSE
+			}
+			myFeintAttackParams
+			{
+				myEnableFeintAttack TRUE
+				myMinFeintAttackTriggerSpeed 15.0
+				myMaxFeintAttackTriggerSpeed 30.0
+				myOffscreenFeintAttackOffset 40.0
+				myMinFeintAttackDeviationAngle 7.5
+				myMaxFeintAttackDeviationAngle 14.0
+				myMinFeintAttackBudget 1
+				myMaxFeintAttackBudget 2
+			}
+			myMeleeMoveSettings
+			{
+				NPCMoveSettingWildlifeOnSpotAttack "On Spot Attack"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F60659653B900286160D62EE66C > = krayt_dragon_on_spot_attack E9DD8F6065964CF90028615CF5B6EA33
+					myMoveEvaluationToVehicleConfig < uid=E9DD8F60659653B90028616112A88928 > = krayt_dragon_on_spot_attack E9DD8F6065964CF90028615CF5B6EA33
+					myWeight 10.0
+					mySuccessCooldown 3.0
+					myFailCooldown 0.0
+					myDamageToNPCAndPlayer 6000.0
+					myDamageToWildlife 6000.0
+					myAimingParams
+					{
+						myBodyPartType Body
+						myAimingPositionType Lowest
+						myMinHighAttackHeight 0.7
+						myMaxLowAttackHeight 1.2
+						myLowAttackChanceWhenBothAvaliable 0.5
+					}
+					myMeleeType Devour
+					myIgnoreAllClaimsWhenAttack TRUE
+					myAttackPathAgentCheck FALSE
+				}
+				NPCMoveSettingWildlifeJumpAttackPrepare "Jump Attack Prepare"
+				{
+					myMoveEvaluationConfig < uid=2E5ACA7E654B2B810001145F41F24A7C > = krayt_dragon_jump_attack_prepare 2E5ACA7E654B2D2200011463152905EB
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E654B2B81000114606E518B2A > = krayt_dragon_jump_attack_prepare_to_vehicle 2E5ACA7E654B2D2200011464F7C3D4BF
+					myWeight 1000.0
+					mySuccessCooldown 3.0
+					myFailCooldown 0.0
+					myDamageToNPCAndPlayer 1000.0
+					myDamageToWildlife 1000.0
+					myAimingParams
+					{
+						myBodyPartType Body
+						myAimingPositionType Lowest
+						myMinHighAttackHeight 0.7
+						myMaxLowAttackHeight 1.2
+						myLowAttackChanceWhenBothAvaliable 0.5
+					}
+					myMeleeType Devour
+					myIgnoreAllClaimsWhenAttack TRUE
+					myAttackPathAgentCheck FALSE
+					myEnableTargetPositionPredict FALSE
+					myUseTargetPositionForEvaluation TRUE
+					myDurationToPredictTargetPosition 2.0
+					myAttackAnimationDistanceCorrectionToPlayer 0.0
+					myDurationToPredictTargetPositionToVehicle 6.0
+					myAttackAnimationDistanceCorrectionToVehicle 0.0
+					myShortDistanceAttackRange 55.0
+					myClearanceCheckRadius 0.0
+					myClearanceCheckHeight 0.0
+				}
+				NPCMoveSettingWildlifeJumpAttack "Jump Attack"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064D34FA60000A6EA6FA170D7 > = krayt_dragon_jump_attack E9DD8F6064D348670000A3E7FFB806D3
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E65001488000288AA68349F21 > = krayt_dragon_jump_attack_to_vehicle 2E5ACA7E6500146200028865CD5803E5
+					myWeight 1000.0
+					mySuccessCooldown 3.0
+					myFailCooldown 0.0
+					myDamageToNPCAndPlayer 1000.0
+					myDamageToWildlife 1000.0
+					myAimingParams
+					{
+						myBodyPartType Body
+						myAimingPositionType Lowest
+						myMinHighAttackHeight 0.7
+						myMaxLowAttackHeight 1.2
+						myLowAttackChanceWhenBothAvaliable 0.5
+					}
+					myMeleeType Devour
+					myIgnoreAllClaimsWhenAttack TRUE
+					myAttackPathAgentCheck FALSE
+					myUseTargetPositionForEvaluation TRUE
+					myDurationToPredictTargetPosition 1.0
+					myAttackAnimationDistanceCorrectionToPlayer 45.0
+					myAttackAnimationDistanceCorrectionToSmallTarget 45.0
+					myAttackAnimationDistanceCorrectionToLargeTarget 45.0
+					myDurationToPredictTargetPositionToVehicle 4.5
+					myAttackAnimationDistanceCorrectionToVehicle 45.0
+					myShortDistanceAttackRange 100.0
+					myIgnoreLOSCheck TRUE
+					mySnapToNavMeshTolerance 50.0
+					myMaxAttackAngle 75.0
+					myClearanceCheckRadius 0.0
+					myClearanceCheckHeight 0.0
+				}
+				NPCMoveSettingWildlifePounceAttack "Pounce Attack"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F60659653B90028616263527817 > = krayt_dragon_pounce_attack E9DD8F6065964D330028615D387F87B6
+					myMoveEvaluationToVehicleConfig < uid=E9DD8F60659653B900286163AC1B7340 > = krayt_dragon_pounce_attack E9DD8F6065964D330028615D387F87B6
+					myWeight 10.0
+					mySuccessCooldown 3.0
+					myFailCooldown 0.0
+					myDamageToNPCAndPlayer 5000.0
+					myDamageToWildlife 5000.0
+					myAimingParams
+					{
+						myBodyPartType Body
+						myAimingPositionType Lowest
+						myMinHighAttackHeight 0.7
+						myMaxLowAttackHeight 1.2
+						myLowAttackChanceWhenBothAvaliable 0.5
+					}
+					myMeleeType Devour
+					myIgnoreAllClaimsWhenAttack TRUE
+					myAttackPathAgentCheck FALSE
+					myUseTargetPositionForEvaluation TRUE
+					myDurationToPredictTargetPosition 0.0
+					myAttackAnimationDistanceCorrectionToPlayer 25.0
+					myAttackAnimationDistanceCorrectionToSmallTarget 25.0
+					myAttackAnimationDistanceCorrectionToLargeTarget 25.0
+					myDurationToPredictTargetPositionToVehicle 0.0
+					myAttackAnimationDistanceCorrectionToVehicle 25.0
+					myShortDistanceAttackRange 100.0
+					mySnapToNavMeshTolerance 50.0
+					myMaxAttackAngle 75.0
+					myClearanceCheckRadius 0.0
+					myClearanceCheckHeight 0.0
+				}
+				NPCMoveSettingWildlifeTakedown Takedown
+				{
+					myWeight 0.0
+					mySuccessCooldown 20.0
+					myFailCooldown 1.0
+				}
+				NPCMoveSettingWildlifeCollidingAttack "Colliding Attack"
+				{
+					myDamageToNPCAndPlayer 99999.0
+					myDamageToWildlife 99999.0
+					myMeleeType HeavyCrushHit
+					myMeleeIntensity 200.0
+					myMeleeIntensityToVehicle 2200.0
+					myAttackPathAgentCheck FALSE
+				}
+			}
+		}
+		NPCMoveGroupWildlifePacing "Pacing Settings"
+		{
+			myMinPacingDurationToPlayerAndNPC 3.0
+			myMaxPacingDurationToPlayerAndNPC 4.0
+			myMinPacingDurationToPredator 3.0
+			myMaxPacingDurationToPredator 4.0
+			myMinHitPacingDurationToPlayerAndNPC 3.0
+			myMaxHitPacingDurationToPlayerAndNPC 4.0
+			myMinHitPacingDurationToPredator 3.0
+			myMaxHitPacingDurationToPredator 4.0
+			myEnableResting TRUE
+			myMinRestingPacingLoopTimes 2
+			myMaxRestingPacingLoopTimes 3
+			myMinRestingDuration 50
+			myMaxRestingDuration 60
+			myPacingMoveSettings
+			{
+				NPCMoveSettingWildlifeTaunt Taunt
+				{
+					myWeight 5.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 10.0
+						myCloseRangeBonus 30.0
+						myMediumRangeBonus 50.0
+						myLongRangeBonus 50.0
+						myPackBonus 30.0
+						myHurtBonus 50.0
+					}
+				}
+				NPCMoveSettingWildlifeDodgeLeft "Dodge Left"
+				{
+					myWeight 0.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 20.0
+						myMediumRangeBonus 40.0
+						myLongRangeBonus 40.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeDodgeRight "Dodge Right"
+				{
+					myWeight 0.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 20.0
+						myMediumRangeBonus 40.0
+						myLongRangeBonus 40.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeDodgeBack "Dodge Back"
+				{
+					myWeight 5.0
+					mySuccessCooldown 1.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 2.5
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 30.0
+						myMediumRangeBonus 40.0
+						myLongRangeBonus 40.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeBackOff Backoff
+				{
+					myWeight 5.0
+					mySuccessCooldown 1.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 2.5
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 30.0
+						myMediumRangeBonus 40.0
+						myLongRangeBonus 40.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeMoveAway MoveAway
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064DDB8A500038DA5B7976460 > = krayt_dragon_move_away E9DD8F6064DDB80400038DA44E80CB27
+					myWeight 5.0
+					mySuccessCooldown 4.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 15.0
+						myLongRangeDistance 40.0
+						myLowHealthThreshold 0.0
+						myCloseRangeBonus 30.0
+						myMediumRangeBonus 0.0
+						myLongRangeBonus 0.0
+						myPlayerAimBonus 0.0
+						myLowHealthBonus 0.0
+						myPackBonus 30.0
+					}
+					myMinDistanceFromSearchPositionLOSRequired 100.0
+					myMaxDistanceFromSearchPositionLOSRequired 150.0
+					myMinDistanceFromSearchAgentLOSRequired 100.0
+					myMaxDistanceFromSearchAgentLOSRequired 150.0
+					myMinDistanceFromTargetLOSRequired 100.0
+					myMaxDistanceFromTargetLOSRequired 150.0
+					myOptimalDistanceFromTargetLOSRequired 125.0
+					myMinDistanceFromSearchPosition 100.0
+					myMaxDistanceFromSearchPosition 150.0
+					myMinDistanceFromSearchAgent 100.0
+					myMaxDistanceFromSearchAgent 150.0
+					myMinDistanceFromTarget 100.0
+					myMaxDistanceFromTarget 200.0
+					myOptimalDistanceFromTarget 125.0
+					myMotionPatternType Sprint
+				}
+				NPCMoveSettingWildlifeFlank Flank
+				{
+					myWeight 0.0
+					mySuccessCooldown 5.0
+					myFailCooldown 5.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 3.0
+						myMediumRangeDistance 10.0
+						myMediumRangeBonus 0.0
+						myLongRangeBonus 0.0
+						myPackBonus 0.0
+					}
+					myMinFlankDuration 4.0
+					myMaxFlankDuration 6.0
+					myFlankPositionTolerance 0.4
+				}
+			}
+		}
+	}
+}
+
+NPCMoveConfig sammakho_melee_only_MQ180_move_config < uid=E9DD8F6064E6B7560000369ED1F940FD > : sammakho_move_config
+{
+	myMoveGroups
+	{
+		NPCMoveGroupWildlifeCombat "Combat Settings"
+		{
+			myMinAttackTimesToWildlife 1
+			myMinAttackTimesToNPC 1
+			myGetCloserToPlayerMotionPatternType Sprint
+			myGetCloserToNPCMotionPatternType Sprint
+			myGetCloserToWildlifeMotionPatternType Sprint
+			myGetCloserSuccessDistanceToPlayer 1.3
+			myGetCloserSuccessOffsetToNPC 1.0
+			myGetCloserOffsetToSpeeder 1.45
+			myForceMoveAwayFromVehicleDistance 1.0
+			myTrajectoryWavingParams
+			{
+				myEnableTrajectoryWaving FALSE
+				myMoveEvaluationConfig < uid=E9DD8F6064E6B7CE00004E534F40DD24 > = sammakho_trajectory_waving D85A76846478350800013BB88E9BB226
+				myMinWavingAngle 15.0
+				myWavingOffsetDistance 15.0
+				myMinWavingTimeout 1.0
+				myMaxWavingTimeout 1.2
+				myMinGoBackTimeout 0.8
+				myMaxGoBackTimeout 1.0
+			}
+			myComboParams
+			{
+				myTriggerHealthPercentage 1.0
+				myMinPhase 2
+				myMaxPhase 2
+				myPhases
+				{
+					WildlifeComboPhase "Phase 0"
+					{
+						myCombos
+						{
+							WildlifeIndividualCombo "On Spot Attack"
+							{
+								myBehaviorState OnSpotAttack
+							}
+							WildlifeIndividualCombo "Range Attack"
+							{
+								myBehaviorState RangeAttack
+							}
+							WildlifeIndividualCombo "Long Range Attack"
+							{
+								myBehaviorState LongRangeAttack
+							}
+						}
+					}
+					WildlifeComboPhase "Phase 1"
+					{
+						myPhase 1
+						myCombos
+						{
+							WildlifeIndividualCombo "Long Range Attack"
+							{
+								myBehaviorState LongRangeAttack
+								myOverrideMoveEvaluationConfig < uid=E9DD8F6064E6B7CE00004E5487C7A618 > = sammakho_combo_always_success E9DD8F6064E5A8C600118F724D836ECD
+								myPreconditions
+								{
+									WildlifeComboPrecondition "Previous One Is Long Range Attack"
+									{
+										myPreviousBehaviorState LongRangeAttack
+									}
+								}
+							}
+						}
+					}
+					WildlifeComboPhase "Phase 2"
+					{
+						myPhase 2
+						myCombos
+						{
+							WildlifeIndividualCombo "Long Range Attack"
+							{
+								myBehaviorState LongRangeAttack
+								myOverrideMoveEvaluationConfig < uid=E9DD8F6064E6B7CE00004E55DBCAC4D8 > = sammakho_combo_always_success E9DD8F6064E5A8C600118F724D836ECD
+								myPreconditions
+								{
+									WildlifeComboPrecondition "Previous One Is Long Range Attack"
+									{
+										myPreviousBehaviorState LongRangeAttack
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			myMeleeMoveSettings
+			{
+				NPCMoveSettingWildlifeOnSpotAttack "On Spot Attack"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064E6B7CE00004E56C02F89F4 > = sammakho_on_spot_attack E9DD8F60644B62140001B9A2FFA96652
+					myWeight 10.0
+					myDamageToNPCAndPlayer 1.0
+					myAimingParams
+					{
+						myBodyPartType Body
+						myAimingPositionType Lowest
+						myMinHighAttackHeight 0.7
+						myMaxLowAttackHeight 1.2
+						myLowAttackChanceWhenBothAvaliable 0.5
+					}
+				}
+				NPCMoveSettingWildlifeTakedown Takedown
+				{
+					myWeight 10.0
+					mySuccessCooldown 20.0
+					myFailCooldown 1.0
+					myChaseSuccessDistance 1.5
+				}
+				NPCMoveSettingWildlifeGrabAttack "Grab Attack"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6065BA0F5B001339AD842681EC > = sammakho_grab_prepare E9DD8F60655C5A0600033863ED4FA5AD
+					myWeight 50.0
+					mySuccessCooldown 20.0
+					myDurationToPredictTargetPosition 0.4
+					myAttackAnimationDistanceCorrectionToPlayer 1.5
+					myClearanceCheckRadius 1.5
+					myGrabAttackEvaluationConfig < uid=E9DD8F6065BA0F5B001339AE2C4FF866 > = sammakho_grab_attack E9DD8F60655C5A4200049A2276C031CC
+					myGrabCount 1
+					myMaxGrabDistance 10.0
+				}
+			}
+		}
+		NPCMoveGroupWildlifePacing "Pacing Settings"
+		{
+			myMinPacingDurationToPlayerAndNPC 1.0
+			myMaxPacingDurationToPlayerAndNPC 3.0
+			myMinPacingDurationToPredator 1.0
+			myMaxPacingDurationToPredator 3.0
+			myMinHitPacingDurationToPlayerAndNPC 2.0
+			myMaxHitPacingDurationToPlayerAndNPC 3.0
+			myMinHitPacingDurationToPredator 2.0
+			myMaxHitPacingDurationToPredator 3.0
+			myPacingMoveSettings
+			{
+				NPCMoveSettingWildlifeTaunt Taunt
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064E6B7CE00004E5789CFC528 > = sammakho_taunt E9DD8F60644B62AF0001B9A69E40DE87
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6CF80004CBEFF4734320 > = sammakho_taunt_for_vehicle 2E5ACA7E667A6AE70004B245D61E0A10
+					myWeight 5.0
+					mySuccessCooldown 1.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 10.0
+						myCloseRangeBonus 30.0
+						myMediumRangeBonus 50.0
+						myLongRangeBonus 50.0
+						myPackBonus 100.0
+						myHurtBonus 50.0
+					}
+				}
+				NPCMoveSettingWildlifeDodgeLeft "Dodge Left"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064E6B7CE00004E583382456F > = sammakho_dodge_side E9DD8F60644B63280001B9AE3FED1547
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6CF80004CBF0E7BD1FF1 > = sammakho_dodge_side_for_vehicle 2E5ACA7E667A6AE70004B247F646D087
+					myWeight 0.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 20.0
+						myMediumRangeBonus 40.0
+						myLongRangeBonus 40.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeDodgeRight "Dodge Right"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064E6B7CE00004E59BEE3ABC3 > = sammakho_dodge_side E9DD8F60644B63280001B9AE3FED1547
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6CF80004CBF16E22C3F3 > = sammakho_dodge_side_for_vehicle 2E5ACA7E667A6AE70004B247F646D087
+					myWeight 0.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 20.0
+						myMediumRangeBonus 40.0
+						myLongRangeBonus 40.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeDodgeBack "Dodge Back"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064E6B7CE00004E5A023FF5C2 > = sammakho_dodge_back E9DD8F60644B63280001B9AFC658492F
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6CF80004CBF27B93231D > = sammakho_dodge_back_for_vehicle 2E5ACA7E667A6AE70004B248F092D303
+					myWeight 5.0
+					mySuccessCooldown 1.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 2.5
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 30.0
+						myMediumRangeBonus 40.0
+						myLongRangeBonus 40.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeBackOff Backoff
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064E6B7CE00004E5BF52E9628 > = sammakho_back_off E9DD8F60644B63280001B9B03B0D4CA4
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6CF80004CBF31597050C > = sammakho_back_off_for_vehicle 2E5ACA7E667A6AE70004B249D6FA098B
+					myWeight 5.0
+					mySuccessCooldown 1.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 2.5
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 30.0
+						myMediumRangeBonus 40.0
+						myLongRangeBonus 40.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeMoveAway MoveAway
+				{
+					myMoveEvaluationConfig < uid=E9DD8F60668CE88D000B8CA8D880EC6D > = sammakho_move_away E9DD8F60644B63280001B9ADBE76A4BA
+					myMoveEvaluationToVehicleConfig < uid=E9DD8F60668CE88D000B8CA9BCC1452C > = sammakho_move_away_for_vehicle 2E5ACA7E667A6AE70004B2464F25C0B3
+					myWeight 5.0
+					mySuccessCooldown 4.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 2.5
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.0
+						myCloseRangeBonus 30.0
+						myMediumRangeBonus 20.0
+						myLongRangeBonus 10.0
+						myPlayerAimBonus 0.0
+						myLowHealthBonus 0.0
+						myPackBonus 30.0
+					}
+					myMinDistanceFromSearchPositionLOSRequired 5.0
+					myMaxDistanceFromSearchPositionLOSRequired 10.0
+					myMinDistanceFromSearchAgentLOSRequired 5.0
+					myMaxDistanceFromSearchAgentLOSRequired 10.0
+					myMinDistanceFromTargetLOSRequired 6.0
+					myMaxDistanceFromTargetLOSRequired 8.0
+					myMinDistanceFromSearchPosition 5.0
+					myMaxDistanceFromSearchPosition 10.0
+					myMinDistanceFromSearchAgent 5.0
+					myMaxDistanceFromSearchAgent 10.0
+					myMinDistanceFromTarget 6.0
+					myMaxDistanceFromTarget 8.0
+					myMotionPatternType Run
+				}
+				NPCMoveSettingWildlifeFlank Flank
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064E6B7CE00004E5D77B8083B > = sammakho_flank E9DD8F60644B63350001B9B26745006B
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6CF80004CBF5629FB72B > = sammakho_flank_for_vehicle 2E5ACA7E667A6AE70004B24AB7BB6BBF
+					myWeight 0.0
+					mySuccessCooldown 5.0
+					myFailCooldown 5.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 3.0
+						myMediumRangeDistance 10.0
+						myMediumRangeBonus 0.0
+						myLongRangeBonus 0.0
+						myPackBonus 0.0
+					}
+					myMinFlankDuration 4.0
+					myMaxFlankDuration 6.0
+					myFlankPositionTolerance 0.4
+				}
+			}
+		}
+		NPCMoveGroupWildlifeIdle "Idle Settings"
+		{
+		}
+		NPCMoveGroupWildlifeReaction "Reaction Settings"
+		{
+			myReactionMoveSettings
+			{
+				NPCMoveSettingReactToDistraction ReactToDistraction
+				{
+					myTooCloseBehaviorTriggerDistance 5.0
+				}
+			}
+		}
+	}
+}
+
+NPCMoveConfig sammakho_range_only_MQ180_move_config < uid=E9DD8F6064E6B7E800005B2E8AD472EB > : sammakho_move_config
+{
+	myMoveGroups
+	{
+		NPCMoveGroupWildlifeCombat "Combat Settings"
+		{
+			myMinAttackTimesToWildlife 1
+			myMinAttackTimesToNPC 1
+			myMaxAttackTimesToNPC 1
+			myGetCloserToPlayerMotionPatternType Sprint
+			myGetCloserToNPCMotionPatternType Sprint
+			myGetCloserToWildlifeMotionPatternType Sprint
+			myGetCloserSuccessDistanceToPlayer 1.31
+			myGetCloserSuccessOffsetToNPC 1.0
+			myGetCloserOffsetToSpeeder 1.45
+			myForceMoveAwayFromVehicleDistance 1.0
+			myTrajectoryWavingParams
+			{
+				myEnableTrajectoryWaving FALSE
+				myMoveEvaluationConfig < uid=E9DD8F6064E6B87400007145714AD9CE > = sammakho_trajectory_waving D85A76846478350800013BB88E9BB226
+				myMinWavingAngle 15.0
+				myWavingOffsetDistance 15.0
+				myMinWavingTimeout 1.0
+				myMaxWavingTimeout 1.2
+				myMinGoBackTimeout 0.8
+				myMaxGoBackTimeout 1.0
+			}
+			myComboParams
+			{
+				myTriggerHealthPercentage 0.5
+				myMinPhase 2
+				myMaxPhase 2
+				myPhases
+				{
+					WildlifeComboPhase "Phase 0"
+					{
+						myCombos
+						{
+							WildlifeIndividualCombo "On Spot Attack"
+							{
+								myBehaviorState OnSpotAttack
+							}
+							WildlifeIndividualCombo "Range Attack"
+							{
+								myBehaviorState RangeAttack
+							}
+							WildlifeIndividualCombo "Long Range Attack"
+							{
+								myBehaviorState LongRangeAttack
+							}
+						}
+					}
+					WildlifeComboPhase "Phase 1"
+					{
+						myPhase 1
+						myCombos
+						{
+							WildlifeIndividualCombo "Long Range Attack"
+							{
+								myBehaviorState LongRangeAttack
+								myOverrideMoveEvaluationConfig < uid=E9DD8F60654097CF0001B79DC0572E61 > = sammakho_combo_always_success E9DD8F6064E5A8C600118F724D836ECD
+								myPreconditions
+								{
+									WildlifeComboPrecondition "Previous One Is Long Range Attack"
+									{
+										myPreviousBehaviorState LongRangeAttack
+									}
+								}
+							}
+							WildlifeIndividualCombo "Range Attack"
+							{
+								myBehaviorState RangeAttack
+								myOverrideMoveEvaluationConfig < uid=E9DD8F60654097CF0001B79ECCFB0903 > = sammakho_combo_always_success E9DD8F6064E5A8C600118F724D836ECD
+								myPreconditions
+								{
+									WildlifeComboPrecondition "Previous One Is Range Attack"
+									{
+										myPreviousBehaviorState RangeAttack
+									}
+								}
+							}
+						}
+					}
+					WildlifeComboPhase "Phase 2"
+					{
+						myPhase 2
+						myCombos
+						{
+							WildlifeIndividualCombo "Long Range Attack"
+							{
+								myBehaviorState LongRangeAttack
+								myOverrideMoveEvaluationConfig < uid=E9DD8F60654097CF0001B79F88472D85 > = sammakho_combo_always_success E9DD8F6064E5A8C600118F724D836ECD
+								myPreconditions
+								{
+									WildlifeComboPrecondition "Previous One Is Long Range Attack"
+									{
+										myPreviousBehaviorState LongRangeAttack
+									}
+								}
+							}
+							WildlifeIndividualCombo "Range Attack"
+							{
+								myBehaviorState RangeAttack
+								myOverrideMoveEvaluationConfig < uid=E9DD8F60654097CF0001B7A09023D299 > = sammakho_combo_always_success E9DD8F6064E5A8C600118F724D836ECD
+								myPreconditions
+								{
+									WildlifeComboPrecondition "Previous One Is Range Attack"
+									{
+										myPreviousBehaviorState RangeAttack
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			myMeleeMoveSettings
+			{
+				NPCMoveSettingWildlifeOnSpotAttack "On Spot Attack"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064E6B87400007148EDA0E489 > = sammakho_on_spot_attack E9DD8F60644B62140001B9A2FFA96652
+					myWeight 10.0
+					myDamageToNPCAndPlayer 1.0
+					myAimingParams
+					{
+						myBodyPartType Body
+						myAimingPositionType Lowest
+						myMinHighAttackHeight 0.7
+						myMaxLowAttackHeight 1.2
+						myLowAttackChanceWhenBothAvaliable 0.5
+					}
+				}
+				NPCMoveSettingWildlifeTakedown Takedown
+				{
+					myWeight 10.0
+					mySuccessCooldown 20.0
+					myFailCooldown 1.0
+					myChaseSuccessDistance 1.5
+				}
+				NPCMoveSettingWildlifeRangeAttack "Range Attack"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064E6B87400007149CA03D45A > = sammakho_range_attack_MQ180 E9DD8F6064E6BD7A0002A258B13DA009
+					myAimingParams
+					{
+						myBodyPartType Head
+						myAimingPositionType Lowest
+					}
+					myDurationToPredictTargetPosition 0.95
+					myAttackAnimationDistanceCorrectionToPlayer 1.0
+					myShootInterval 0.005
+					myMaxPitchAngle 90.0
+					myUnreachableRepositionMinDistance 3.0
+					myUnreachableRepositionMaxDistance 100.0
+					myRangeAttackType SammakhoMediumRange
+				}
+			}
+		}
+		NPCMoveGroupWildlifePacing "Pacing Settings"
+		{
+			myMinPacingDurationToPlayerAndNPC 1.0
+			myMaxPacingDurationToPlayerAndNPC 3.0
+			myMinPacingDurationToPredator 1.0
+			myMaxPacingDurationToPredator 3.0
+			myMinHitPacingDurationToPlayerAndNPC 2.0
+			myMaxHitPacingDurationToPlayerAndNPC 3.0
+			myMinHitPacingDurationToPredator 2.0
+			myMaxHitPacingDurationToPredator 3.0
+			myPacingMoveSettings
+			{
+				NPCMoveSettingWildlifeTaunt Taunt
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064E6B8740000714B3EDEDC8C > = sammakho_taunt E9DD8F60644B62AF0001B9A69E40DE87
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6D530004D04A782F3270 > = sammakho_taunt_for_vehicle 2E5ACA7E667A6AE70004B245D61E0A10
+					myWeight 5.0
+					mySuccessCooldown 1.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 10.0
+						myCloseRangeBonus 30.0
+						myMediumRangeBonus 50.0
+						myLongRangeBonus 50.0
+						myPackBonus 100.0
+						myHurtBonus 50.0
+					}
+				}
+				NPCMoveSettingWildlifeDodgeLeft "Dodge Left"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064E6B8740000714CD4B0F372 > = sammakho_dodge_side E9DD8F60644B63280001B9AE3FED1547
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6D530004D04B21ADEEF1 > = sammakho_dodge_side_for_vehicle 2E5ACA7E667A6AE70004B247F646D087
+					myWeight 0.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 20.0
+						myMediumRangeBonus 40.0
+						myLongRangeBonus 40.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeDodgeRight "Dodge Right"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064E6B8740000714D00C54CBA > = sammakho_dodge_side E9DD8F60644B63280001B9AE3FED1547
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6D530004D04CE67FA5EC > = sammakho_dodge_side_for_vehicle 2E5ACA7E667A6AE70004B247F646D087
+					myWeight 0.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 20.0
+						myMediumRangeBonus 40.0
+						myLongRangeBonus 40.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeDodgeBack "Dodge Back"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064E6B8740000714EDA297580 > = sammakho_dodge_back E9DD8F60644B63280001B9AFC658492F
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6D530004D04D51D59B41 > = sammakho_dodge_back_for_vehicle 2E5ACA7E667A6AE70004B248F092D303
+					myWeight 5.0
+					mySuccessCooldown 1.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 2.5
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 30.0
+						myMediumRangeBonus 40.0
+						myLongRangeBonus 40.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeBackOff Backoff
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064E6B8740000714F12DBE8F5 > = sammakho_back_off E9DD8F60644B63280001B9B03B0D4CA4
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6D530004D04E50689FB9 > = sammakho_back_off_for_vehicle 2E5ACA7E667A6AE70004B249D6FA098B
+					myWeight 5.0
+					mySuccessCooldown 1.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 2.5
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 30.0
+						myMediumRangeBonus 40.0
+						myLongRangeBonus 40.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeMoveAway MoveAway
+				{
+					myMoveEvaluationConfig < uid=E9DD8F60668CE88D000B8CAAC7C610B6 > = sammakho_move_away E9DD8F60644B63280001B9ADBE76A4BA
+					myMoveEvaluationToVehicleConfig < uid=E9DD8F60668CE88D000B8CABEEF340B2 > = sammakho_move_away_for_vehicle 2E5ACA7E667A6AE70004B2464F25C0B3
+					myWeight 5.0
+					mySuccessCooldown 4.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 2.5
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.0
+						myCloseRangeBonus 30.0
+						myMediumRangeBonus 20.0
+						myLongRangeBonus 10.0
+						myPlayerAimBonus 0.0
+						myLowHealthBonus 0.0
+						myPackBonus 30.0
+					}
+					myMinDistanceFromSearchPositionLOSRequired 5.0
+					myMaxDistanceFromSearchPositionLOSRequired 10.0
+					myMinDistanceFromSearchAgentLOSRequired 5.0
+					myMaxDistanceFromSearchAgentLOSRequired 10.0
+					myMinDistanceFromTargetLOSRequired 6.0
+					myMaxDistanceFromTargetLOSRequired 8.0
+					myMinDistanceFromSearchPosition 5.0
+					myMaxDistanceFromSearchPosition 10.0
+					myMinDistanceFromSearchAgent 5.0
+					myMaxDistanceFromSearchAgent 10.0
+					myMinDistanceFromTarget 6.0
+					myMaxDistanceFromTarget 8.0
+					myMotionPatternType Run
+				}
+				NPCMoveSettingWildlifeFlank Flank
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6064E6B874000071516B2996AD > = sammakho_flank E9DD8F60644B63350001B9B26745006B
+					myWeight 0.0
+					mySuccessCooldown 5.0
+					myFailCooldown 5.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 3.0
+						myMediumRangeDistance 10.0
+						myMediumRangeBonus 0.0
+						myLongRangeBonus 0.0
+						myPackBonus 0.0
+					}
+					myMinFlankDuration 4.0
+					myMaxFlankDuration 6.0
+					myFlankPositionTolerance 0.4
+				}
+			}
+		}
+		NPCMoveGroupWildlifeIdle "Idle Settings"
+		{
+		}
+		NPCMoveGroupWildlifeReaction "Reaction Settings"
+		{
+			myReactionMoveSettings
+			{
+				NPCMoveSettingReactToDistraction ReactToDistraction
+				{
+					myTooCloseBehaviorTriggerDistance 5.0
+				}
+			}
+		}
+	}
+}
+
+NPCMoveConfig monkey_lizard_move_config < uid=E9DD8F606510EC630000968A90287C83 >
+{
+	myMoveGroups
+	{
+		NPCMoveGroupWildlifeCombat "Combat Settings"
+		{
+			myMaxAttackTimesToNPC 1
+			myTrajectoryWavingParams
+			{
+				myEnableTrajectoryWaving FALSE
+			}
+			myMeleeMoveSettings
+			{
+				NPCMoveSettingWildlifeRangeAttack "Range Attack"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F606510F12300009AA03683A14E > = monkey_lizard_range_attack E9DD8F606510F0B700009A9509DAB377
+					mySuccessCooldown 0.01
+					myFailCooldown 0.01
+					myDamageToWildlife 2.0
+					myAimingParams
+					{
+						myBodyPartType Body
+					}
+					myDurationToPredictTargetPosition 0.25
+					myAttackAnimationDistanceCorrectionToPlayer 0.0
+					myMaxAttackAngle 90.0
+					myProjectileCount 9
+					myAngleOffset 5.0
+					myMaxPitchAngle 90.0
+					myRangeAttackType MonkeyLizard
+				}
+			}
+		}
+		NPCMoveGroupWildlifeIdle "Idle Settings"
+		{
+		}
+	}
+}
+
+NPCMoveConfig monkey_lizard_no_attack_move_config < uid=290EB60C655EBB36000B1EB8253375D4 > : monkey_lizard_move_config
+{
+	myMoveGroups
+	{
+		NPCMoveGroupWildlifeCombat "Combat Settings"
+		{
+			myMaxAttackTimesToNPC 1
+			myTrajectoryWavingParams
+			{
+				myEnableTrajectoryWaving FALSE
+			}
+			myMeleeMoveSettings
+			{
+			}
+		}
+		NPCMoveGroupWildlifeIdle "Idle Settings"
+		{
+		}
+	}
+}
+
+NPCMoveConfig bantha_riding_move_config < uid=290EB60C6639CB8D0009BE40E7337AB7 > : bantha_move_config
+{
+	myMoveGroups
+	{
+		NPCMoveGroupWildlifeAware Aware
+		{
+			myHaveStressedBehabvior TRUE
+		}
+		NPCMoveGroupWildlifeIdle Idle
+		{
+			myMinDelayBeforeCap 0.0
+			myMaxDelayBeforeCap 2.0
+			myMinDelayWhenEnterIdle 0.0
+			myMaxDelayWhenEnterIdle 3.0
+		}
+		NPCMoveGroupWildlifeReaction "Reaction Settings"
+		{
+			myReactionMoveSettings
+			{
+				NPCMoveSettingReactToDistraction ReactToDistraction
+				{
+					myEnabled FALSE
+					myCooldown 5.0
+					myRequireLOS TRUE
+					myWaitingTimeDuringCooldown 5.0
+					myEnableTooCloseBehavior FALSE
+					myWaitingTimeAfterTooCloseBehavior 5.0
+					myEnableInvestigation FALSE
+					myTurnToTargetPositionBeforeOnSpotBehavior FALSE
+				}
+			}
+		}
+		NPCMoveGroupWildlifePet Post-petting
+		{
+			myPostPettingBehavior PlayCAP
+		}
+		NPCMoveGroupWildlifeEnclosure Enclosure
+		{
+		}
+	}
+}
+
+NPCMoveConfig dewback_riding_move_config < uid=290EB60C6639CD4A000DF2F4FFDB6EA0 > : dewback_move_config
+{
+	myMoveGroups
+	{
+		NPCMoveGroupWildlifeAware Aware
+		{
+			myHaveStressedBehabvior TRUE
+		}
+		NPCMoveGroupWildlifeIdle Idle
+		{
+			myMinDelayBeforeCap 0.0
+			myMaxDelayBeforeCap 2.0
+			myMinDelayWhenEnterIdle 0.0
+			myMaxDelayWhenEnterIdle 3.0
+		}
+		NPCMoveGroupWildlifeReaction "Reaction Settings"
+		{
+			myReactionMoveSettings
+			{
+				NPCMoveSettingReactToDistraction ReactToDistraction
+				{
+					myEnabled FALSE
+					myCooldown 5.0
+					myRequireLOS TRUE
+					myWaitingTimeDuringCooldown 5.0
+					myEnableTooCloseBehavior FALSE
+					myWaitingTimeAfterTooCloseBehavior 5.0
+					myEnableInvestigation FALSE
+					myTurnToTargetPositionBeforeOnSpotBehavior FALSE
+				}
+			}
+		}
+		NPCMoveGroupWildlifePet Post-petting
+		{
+			myPostPettingBehavior PlayCAP
+		}
+		NPCMoveGroupWildlifeEnclosure Enclosure
+		{
+		}
+	}
+}
+
+NPCMoveConfig ku_riding_move_config < uid=290EB60C6639CE50000E0DF584EA1608 > : ku_move_config
+{
+	myMoveGroups
+	{
+		NPCMoveGroupWildlifeAware Aware
+		{
+			myHaveStressedBehabvior TRUE
+		}
+		NPCMoveGroupWildlifeIdle Idle
+		{
+			myMinDelayBeforeCap 0.0
+			myMaxDelayBeforeCap 2.0
+			myMinDelayWhenEnterIdle 0.0
+			myMaxDelayWhenEnterIdle 3.0
+		}
+		NPCMoveGroupWildlifeReaction "Reaction Settings"
+		{
+			myReactionMoveSettings
+			{
+				NPCMoveSettingReactToDistraction ReactToDistraction
+				{
+					myEnabled FALSE
+					myCooldown 5.0
+					myRequireLOS TRUE
+					myWaitingTimeDuringCooldown 5.0
+					myEnableTooCloseBehavior FALSE
+					myWaitingTimeAfterTooCloseBehavior 5.0
+					myEnableInvestigation FALSE
+					myTurnToTargetPositionBeforeOnSpotBehavior FALSE
+				}
+			}
+		}
+		NPCMoveGroupWildlifePet Post-petting
+		{
+			myPostPettingBehavior PlayCAP
+		}
+		NPCMoveGroupWildlifeEnclosure Enclosure
+		{
+		}
+	}
+}
+
+NPCMoveConfig massiff_mq130_move_config < uid=E9DD8F60667286EF000304F48A82F544 > : massiff_move_config
+{
+	myMoveGroups
+	{
+		NPCMoveGroupWildlifeCombat "Combat Settings"
+		{
+			myMinAttackTimesToWildlife 1
+			myMinAttackTimesToNPC 1
+			myGetCloserToPlayerMotionPatternType Sprint
+			myGetCloserToNPCMotionPatternType Sprint
+			myGetCloserToWildlifeMotionPatternType Sprint
+			myHasEngageBark FALSE
+			myGetCloserSuccessDistanceToPlayer 1.3
+			myGetCloserSuccessOffsetToNPC 1.0
+			myGetCloserOffsetToSpeeder 1.45
+			myForceMoveAwayFromVehicleDistance 1.0
+			myTrajectoryWavingParams
+			{
+				myMoveEvaluationConfig < uid=E9DD8F60667287A00005C21C552DF0A6 > = massiff_trajectory_waving D85A76846476A47D00008F09D9ACFE66
+				myMinWavingAngle 15.0
+				myWavingOffsetDistance 15.0
+				myMinWavingTimeout 1.0
+				myMaxWavingTimeout 1.2
+				myMinGoBackTimeout 0.8
+				myMaxGoBackTimeout 1.0
+			}
+			myMeleeMoveSettings
+			{
+				NPCMoveSettingWildlifeOnSpotAttack "On Spot Attack"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F60667287A00005C21D147CB4FC > = massiff_on_spot_attack D85A768462C5275200007D590404A006
+					myWeight 10.0
+					mySuccessCooldown 0.0
+					myFailCooldown 0.0
+					myDamageToNPCAndPlayer 1.0
+					myAimingParams
+					{
+						myBodyPartType Body
+						myAimingPositionType Lowest
+						myMinHighAttackHeight 0.7
+						myMaxLowAttackHeight 1.1
+						myLowAttackChanceWhenBothAvaliable 0.5
+					}
+				}
+				NPCMoveSettingWildlifeJumpAttack "Jump Attack"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F60667287A00005C21ED7A2395E > = massiff_jump_attack D85A768462C5004300008BE661D2D955
+					myWeight 10.0
+					mySuccessCooldown 1.0
+					myFailCooldown 1.0
+					myAimingParams
+					{
+						myBodyPartType Body
+						myAimingPositionType Lowest
+						myMinHighAttackHeight 0.7
+						myMaxLowAttackHeight 1.1
+						myLowAttackChanceWhenBothAvaliable 0.5
+					}
+					myDurationToPredictTargetPosition 0.75
+					myAttackAnimationDistanceCorrectionToPlayer 0.5
+					myShortDistanceAttackRange 2.95
+					myClearanceCheckRadius 1.5
+				}
+				NPCMoveSettingWildlifePounceAttack "Pounce Attack"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F60667287A00005C21FEF245E32 > = massiff_pounce_attack D85A768462C528C500007D5AEFCC7C28
+					myWeight 10.0
+					mySuccessCooldown 1.0
+					myFailCooldown 1.0
+					myAimingParams
+					{
+						myBodyPartType Body
+						myAimingPositionType Lowest
+						myMinHighAttackHeight 0.7
+						myMaxLowAttackHeight 1.1
+						myLowAttackChanceWhenBothAvaliable 0.5
+					}
+					myDurationToPredictTargetPosition 0.75
+					myAttackAnimationDistanceCorrectionToPlayer 0.5
+					myShortDistanceAttackRange 2.95
+					myClearanceCheckRadius 1.5
+				}
+				NPCMoveSettingWildlifeTakedown Takedown
+				{
+					myMoveEvaluationConfig < uid=E9DD8F60667287A00005C220D5B62BB0 > = massiff_takedown D85A768462C528C500007D5B2ACD9E12
+					myWeight 10.0
+					mySuccessCooldown 1.0
+					myFailCooldown 1.0
+					myChaseSuccessDistance 1.5
+				}
+				NPCMoveSettingWildlifeGrabAttack "Grab Attack"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F60667287A00005C221249CBEAE > = massiff_grab_prepare D85A7684649B92140001AA8A310641C5
+					myWeight 10.0
+					mySuccessCooldown 20.0
+					myDurationToPredictTargetPosition 0.4
+					myAttackAnimationDistanceCorrectionToPlayer 1.5
+					myClearanceCheckRadius 1.5
+					myGrabAttackEvaluationConfig < uid=E9DD8F60667287A00005C222E2321BAA > = massiff_grab_attack D85A7684649B923C0001AAAE76AEB74B
+					myGrabCount 1
+					myMaxGrabDistance 6.5
+				}
+			}
+		}
+		NPCMoveGroupWildlifePacing "Pacing Settings"
+		{
+			myMinPacingDurationToPlayerAndNPC 1.0
+			myMaxPacingDurationToPlayerAndNPC 1.0
+			myMinPacingDurationToPredator 1.0
+			myMaxPacingDurationToPredator 3.0
+			myMinHitPacingDurationToPlayerAndNPC 2.0
+			myMaxHitPacingDurationToPlayerAndNPC 5.0
+			myMinHitPacingDurationToPredator 2.0
+			myMaxHitPacingDurationToPredator 4.0
+			myPacingMoveSettings
+			{
+				NPCMoveSettingWildlifeTaunt Taunt
+				{
+					myMoveEvaluationConfig < uid=E9DD8F60667287A00005C2232F2A1C10 > = massiff_taunt D85A768462C5299B00007D5DF9924C40
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6EEF0004E290929A7A49 > = massiff_taunt_for_vehicle 2E5ACA7E667A6DEF0004D7B11C50A3D3
+					myWeight 5.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 2.5
+						myMediumRangeDistance 10.0
+						myCloseRangeBonus 10.0
+						myMediumRangeBonus 20.0
+						myLongRangeBonus 30.0
+						myPackBonus 30.0
+						myHurtBonus 50.0
+					}
+				}
+				NPCMoveSettingWildlifeMoveAway MoveAway
+				{
+					myMoveEvaluationConfig < uid=E9DD8F60667287A00005C2244BA559EE > = massiff_move_away D85A768462C529E200007D61CFF1975F
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6EEF0004E291B135A25F > = massiff_move_away_for_vehicle 2E5ACA7E667A6DEF0004D7B2AB942927
+					myWeight 5.0
+					mySuccessCooldown 4.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 2.5
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.0
+						myCloseRangeBonus 30.0
+						myMediumRangeBonus 0.0
+						myLongRangeBonus 0.0
+						myPlayerAimBonus 0.0
+						myLowHealthBonus 0.0
+						myPackBonus 30.0
+					}
+					myMinDistanceFromSearchPositionLOSRequired 5.0
+					myMaxDistanceFromSearchPositionLOSRequired 10.0
+					myMinDistanceFromSearchAgentLOSRequired 5.0
+					myMaxDistanceFromSearchAgentLOSRequired 10.0
+					myMinDistanceFromTargetLOSRequired 6.0
+					myMaxDistanceFromTargetLOSRequired 8.0
+					myMinDistanceFromSearchPosition 5.0
+					myMaxDistanceFromSearchPosition 10.0
+					myMinDistanceFromSearchAgent 5.0
+					myMaxDistanceFromSearchAgent 10.0
+					myMinDistanceFromTarget 6.0
+					myMaxDistanceFromTarget 8.0
+					myMotionPatternType Run
+				}
+				NPCMoveSettingWildlifeDodgeLeft "Dodge Left"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F60667287A00005C2258A0DF7FA > = massiff_dodge_side D85A768462C529E200007D62203EDCB5
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6EEF0004E2926C5A92F3 > = massiff_dodge_side_for_vehicle 2E5ACA7E667A6DEF0004D7B3436B359B
+					myWeight 0.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myMediumRangeBonus 5.0
+						myLongRangeBonus 5.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeDodgeRight "Dodge Right"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F60667287A00005C226F890425A > = massiff_dodge_side D85A768462C529E200007D62203EDCB5
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6EEF0004E2936FDDA4C1 > = massiff_dodge_side_for_vehicle 2E5ACA7E667A6DEF0004D7B3436B359B
+					myWeight 0.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myMediumRangeBonus 5.0
+						myLongRangeBonus 5.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeDodgeBack "Dodge Back"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F60667287A00005C22787250BC4 > = massiff_dodge_back D85A768462C529E200007D6350F8F1F1
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6EEF0004E2942ED4D341 > = massiff_dodge_back_for_vehicle 2E5ACA7E667A6DEF0004D7B4D0EDCB47
+					myWeight 5.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 2.5
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 30.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeBackOff Backoff
+				{
+					myMoveEvaluationConfig < uid=E9DD8F60667287A00005C228E62E58E7 > = massiff_back_off D85A768462C529F800007D65E691907C
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6EEF0004E29532EFAB9E > = massiff_back_off_for_vehicle 2E5ACA7E667A6DEF0004D7B5493AA4B2
+					myWeight 0.0
+					mySuccessCooldown 3.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 2.5
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 0.0
+						myPlayerAimBonus 90.0
+						myLowHealthBonus 15.0
+					}
+				}
+				NPCMoveSettingWildlifeFlank Flank
+				{
+					myMoveEvaluationConfig < uid=E9DD8F60667287A00005C2290379D1FF > = massiff_flank D85A768463EC317200002A9439DE0B99
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E667A6EEF0004E2968A9A6A3A > = massiff_flank_for_vehicle 2E5ACA7E667A6DEF0004D7B643ED61A3
+					myWeight 10.0
+					mySuccessCooldown 5.0
+					myFailCooldown 5.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 3.0
+						myMediumRangeDistance 10.0
+						myMediumRangeBonus 50.0
+						myLongRangeBonus 30.0
+						myPackBonus 30.0
+					}
+					myMinFlankDuration 2.0
+					myMaxFlankDuration 3.0
+					myFlankPositionTolerance 0.4
+				}
+			}
+		}
+		NPCMoveGroupWildlifeIdle "Idle Settings"
+		{
+		}
+		NPCMoveGroupWildlifeReaction "Reaction Settings"
+		{
+			myReactionMoveSettings
+			{
+				NPCMoveSettingReactToDistraction ReactToDistraction
+				{
+					myTooCloseBehaviorTriggerDistance 5.0
+				}
+			}
+		}
+		NPCMoveGroupWildlifeAware "Aware Settings"
+		{
+			myIgnoreTargetDuration 60.0
+		}
+	}
+}
+
+NPCMoveConfig varaki_mq020_move_config < uid=E9DD8F6067593ABF001933CCE616034F > : tshikara_move_config
+{
+	myMoveGroups
+	{
+		NPCMoveGroupWildlifeCombat "Combat Settings"
+		{
+			myMinAttackTimesToWildlife 1
+			myMaxAttackTimesToWildlife 1
+			myMinAttackTimesToNPC 1
+			myMaxAttackTimesToNPC 1
+			myEnterPacingOnSuccessfullyHit FALSE
+			myAllowSupportAttack TRUE
+			myGetCloserToPlayerMotionPatternType Sprint
+			myGetCloserToNPCMotionPatternType Sprint
+			myGetCloserToWildlifeMotionPatternType Sprint
+			myOnSpotAttackOnUnreachable TRUE
+			myUnreachableAttackDistance 1.5
+			myGetCloserSuccessDistanceToPlayer 2.0
+			myGetCloserSuccessOffsetToNPC 2.15
+			myGetCloserOffsetToSpeeder 1.9
+			myForceMoveAwayFromVehicleDistance 1.8
+			myTrajectoryWavingParams
+			{
+				myMoveEvaluationConfig < uid=E9DD8F6067593C62001934B722D01A99 > = tshikara_trajectory_waving D85A7684647834A800013B3EAA2D8D75
+				myMinWavingAngle 15.0
+				myWavingOffsetDistance 28.0
+				myMinWavingTimeout 1.2
+				myMaxWavingTimeout 1.4
+				myMinGoBackTimeout 0.8
+				myMaxGoBackTimeout 1.2
+			}
+			myComboParams
+			{
+				myTriggerHealthPercentage 1.0
+				myMinPhase 2
+				myPhases
+				{
+					WildlifeComboPhase "Phase 0"
+					{
+						myCombos
+						{
+							WildlifeIndividualCombo OnSpotAttack
+							{
+								myBehaviorState OnSpotAttack
+							}
+							WildlifeIndividualCombo Jump
+							{
+								myBehaviorState JumpAttack
+							}
+							WildlifeIndividualCombo Pounce
+							{
+								myBehaviorState PounceAttack
+							}
+							WildlifeIndividualCombo Range
+							{
+								myBehaviorState RangeAttack
+								myOverrideMoveEvaluationConfig < uid=E9DD8F60675BC50F0007ABCE8FEB7202 > = tshikara_combo_always_success D85A768464D04334000286361D99A487
+							}
+						}
+					}
+					WildlifeComboPhase "Phase 1"
+					{
+						myPhase 1
+						myCombos
+						{
+							WildlifeIndividualCombo OnSpot
+							{
+								myBehaviorState OnSpotAttack
+								myPreconditions
+								{
+									WildlifeComboPrecondition OnSpot
+									{
+										myPreviousBehaviorState OnSpotAttack
+									}
+									WildlifeComboPrecondition Jump
+									{
+										myPreviousBehaviorState JumpAttack
+									}
+									WildlifeComboPrecondition Pounce
+									{
+										myPreviousBehaviorState PounceAttack
+									}
+								}
+							}
+							WildlifeIndividualCombo Pounce
+							{
+								myBehaviorState PounceAttack
+								myOverrideMoveEvaluationConfig < uid=E9DD8F6067593C62001934B8950E57A1 > = tshikara_combo_pounce_attack E9DD8F6064D4891B00044F77FBFE4CE4
+								myPreconditions
+								{
+									WildlifeComboPrecondition OnSpot
+									{
+										myPreviousBehaviorState OnSpotAttack
+									}
+									WildlifeComboPrecondition Pounce
+									{
+										myPreviousBehaviorState PounceAttack
+									}
+									WildlifeComboPrecondition Jump
+									{
+										myPreviousBehaviorState JumpAttack
+									}
+								}
+							}
+							WildlifeIndividualCombo Range
+							{
+								myBehaviorState RangeAttack
+								myOverrideMoveEvaluationConfig < uid=E9DD8F6067593C62001934B955F2050B > = tshikara_combo_always_success D85A768464D04334000286361D99A487
+								myPreconditions
+								{
+									WildlifeComboPrecondition OnSpot
+									{
+										myPreviousBehaviorState OnSpotAttack
+									}
+									WildlifeComboPrecondition Jump
+									{
+										myPreviousBehaviorState JumpAttack
+									}
+									WildlifeComboPrecondition Pounce
+									{
+										myPreviousBehaviorState PounceAttack
+									}
+									WildlifeComboPrecondition Range
+									{
+										myPreviousBehaviorState RangeAttack
+									}
+								}
+							}
+						}
+					}
+					WildlifeComboPhase "Phase 2"
+					{
+						myPhase 2
+						myCombos
+						{
+							WildlifeIndividualCombo Range
+							{
+								myBehaviorState RangeAttack
+								myOverrideMoveEvaluationConfig < uid=E9DD8F6067593C62001934BA17DF91B6 > = tshikara_combo_always_success D85A768464D04334000286361D99A487
+								myPreconditions
+								{
+									WildlifeComboPrecondition Pounce
+									{
+										myPreviousBehaviorState PounceAttack
+									}
+									WildlifeComboPrecondition Range
+									{
+										myPreviousBehaviorState RangeAttack
+									}
+								}
+							}
+							WildlifeIndividualCombo Pounce
+							{
+								myBehaviorState PounceAttack
+								myOverrideMoveEvaluationConfig < uid=E9DD8F6067593C62001934BBB5794506 > = tshikara_combo_pounce_attack E9DD8F6064D4891B00044F77FBFE4CE4
+								myPreconditions
+								{
+									WildlifeComboPrecondition OnSpot
+									{
+										myPreviousBehaviorState OnSpotAttack
+									}
+									WildlifeComboPrecondition Pounce
+									{
+										myPreviousBehaviorState PounceAttack
+									}
+									WildlifeComboPrecondition Range
+									{
+										myPreviousBehaviorState RangeAttack
+									}
+								}
+							}
+							WildlifeIndividualCombo OnSpot
+							{
+								myBehaviorState OnSpotAttack
+								myPreconditions
+								{
+									WildlifeComboPrecondition OnSpot
+									{
+										myPreviousBehaviorState OnSpotAttack
+									}
+									WildlifeComboPrecondition Pounce
+									{
+										myPreviousBehaviorState PounceAttack
+									}
+									WildlifeComboPrecondition Range
+									{
+										myPreviousBehaviorState RangeAttack
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			myMeleeMoveSettings
+			{
+				NPCMoveSettingWildlifeOnSpotAttack "On Spot Attack"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067593C62001934BC522DBF57 > = tshikara_on_spot_attack E9DD8F60641966BC0002FD1733A7119A
+					myWeight 15.0
+					mySuccessCooldown 0.0
+					myFailCooldown 0.0
+					myDamageToNPCAndPlayer 2.0
+					myAimingParams
+					{
+						myBodyPartType Body
+						myAimingPositionType Lowest
+						myMinHighAttackHeight 0.7
+						myMaxLowAttackHeight 1.2
+						myLowAttackChanceWhenBothAvaliable 0.5
+					}
+				}
+				NPCMoveSettingWildlifeJumpAttack "Jump Attack"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067593C62001934BD97323244 > = tshikara_jump_attack E9DD8F60641966750002FD15A8566E4A
+					myWeight 15.0
+					mySuccessCooldown 1.0
+					myFailCooldown 1.0
+					myDamageToNPCAndPlayer 2.0
+					myAimingParams
+					{
+						myBodyPartType Body
+						myAimingPositionType Lowest
+						myMinHighAttackHeight 0.7
+						myMaxLowAttackHeight 1.2
+						myLowAttackChanceWhenBothAvaliable 0.5
+					}
+					myMeleeType HeavyHit
+					myAttackPathAgentCheckRadius 12.0
+					myDurationToPredictTargetPosition 0.8
+					myAttackAnimationDistanceCorrectionToPlayer 1.0
+					myAttackAnimationDistanceCorrectionToSmallTarget -0.5
+					myAttackAnimationDistanceCorrectionToLargeTarget 0.5
+					myShortDistanceAttackRange 6.0
+					myClearanceCheckRadius 1.5
+				}
+				NPCMoveSettingWildlifePounceAttack "Pounce Attack"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067593C62001934BE7C8B5335 > = tshikara_pounce_attack E9DD8F60641966E50002FD1944B28C5E
+					myWeight 15.0
+					mySuccessCooldown 1.0
+					myFailCooldown 1.0
+					myDamageToNPCAndPlayer 2.0
+					myAimingParams
+					{
+						myBodyPartType Body
+						myAimingPositionType Lowest
+						myMinHighAttackHeight 0.7
+						myMaxLowAttackHeight 1.2
+						myLowAttackChanceWhenBothAvaliable 0.5
+					}
+					myMeleeType HeavyHit
+					myAttackPathAgentCheckRadius 12.0
+					myDurationToPredictTargetPosition 0.8
+					myAttackAnimationDistanceCorrectionToPlayer 1.0
+					myAttackAnimationDistanceCorrectionToSmallTarget -0.5
+					myAttackAnimationDistanceCorrectionToLargeTarget 0.5
+					myShortDistanceAttackRange 6.0
+					myClearanceCheckRadius 1.5
+				}
+				NPCMoveSettingWildlifeTakedown Takedown
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067593C62001934BF03A578D7 > = tshikara_takedown E9DD8F60641968D30002FD1BA8B37DC6
+					myWeight 10.0
+					mySuccessCooldown 1.0
+					myFailCooldown 1.0
+					myChaseSuccessDistance 2.65
+				}
+				NPCMoveSettingWildlifeRangeAttack "Range Attack"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F60675BC50F0007ABCFA9D3236F > = tshikara_combo_always_success D85A768464D04334000286361D99A487
+					mySuccessCooldown 20.0
+					myDamageToNPCAndPlayer 2.0
+					myDamageToWildlife 2.0
+					myAimingParams
+					{
+						myBodyPartType Body
+					}
+					myDurationToPredictTargetPosition 0.4
+					myAttackAnimationDistanceCorrectionToPlayer 0.0
+					myShouldCheckLOS FALSE
+					myProjectileCount 9
+					myAngleOffset 5.0
+					myMaxPitchAngle 60.0
+					myUnreachableRepositionMinDistance 3.0
+					myUnreachableRepositionMaxDistance 100.0
+				}
+				NPCMoveSettingWildlifeGrabAttack "Grab Attack"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067593C62001934C13AEB1D2C > = tshikara_grab_prepare E9DD8F606539C3FF0000B7CCA6B1223D
+					myWeight 200.0
+					mySuccessCooldown 20.0
+					myAttackPathAgentCheckRadius 10.0
+					myDurationToPredictTargetPosition 0.4
+					myAttackAnimationDistanceCorrectionToPlayer 3.0
+					myClearanceCheckRadius 1.0
+					myGrabAttackEvaluationConfig < uid=E9DD8F6067593C62001934C21CDFF3BF > = tshikara_grab_attack E9DD8F606539C3FF0000B7CB1077428B
+					myGrabCount 1
+					myMaxGrabDistance 13.0
+				}
+			}
+		}
+		NPCMoveGroupWildlifePacing "Pacing Settings"
+		{
+			myMinPacingDurationToPlayerAndNPC 0.5
+			myMaxPacingDurationToPlayerAndNPC 0.5
+			myMinPacingDurationToPredator 2.0
+			myMaxPacingDurationToPredator 3.0
+			myMinHitPacingDurationToPlayerAndNPC 0.5
+			myMaxHitPacingDurationToPlayerAndNPC 0.5
+			myMinHitPacingDurationToPredator 2.0
+			myMaxHitPacingDurationToPredator 3.0
+			myPacingMoveSettings
+			{
+				NPCMoveSettingWildlifeTaunt Taunt
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067593C62001934C334945333 > = tshikara_taunt E9DD8F60641969280002FD1D4BE3F110
+					myMoveEvaluationToVehicleConfig < uid=E9DD8F6067593C62001934C465CF6F62 > = tshikara_taunt_for_vehicle 2E5ACA7E667A69A30004A221F1C3FC4A
+					myWeight 5.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 15.0
+						myLongRangeDistance 40.0
+						myCloseRangeBonus 10.0
+						myMediumRangeBonus 20.0
+						myLongRangeBonus 30.0
+						myPackBonus 30.0
+						myHurtBonus 50.0
+					}
+				}
+				NPCMoveSettingWildlifeMoveAway MoveAway
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067593C62001934C507AF1C8A > = tshikara_move_away E9DD8F6064196A0C0002FD23D1CCA246
+					myMoveEvaluationToVehicleConfig < uid=E9DD8F6067593C62001934C6E40E55CB > = tshikara_move_away_for_vehicle 2E5ACA7E667A6C8E0004C6EF7AE85E33
+					myWeight 40.0
+					mySuccessCooldown 0.0
+					myFailCooldown 0.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 15.0
+						myLongRangeDistance 40.0
+						myLowHealthThreshold 0.0
+						myCloseRangeBonus 30.0
+						myMediumRangeBonus 30.0
+						myLongRangeBonus 40.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 0.0
+						myPackBonus 30.0
+					}
+					myMinDistanceFromSearchPositionLOSRequired 10.0
+					myMaxDistanceFromSearchPositionLOSRequired 50.0
+					myMinDistanceFromSearchAgentLOSRequired 10.0
+					myMaxDistanceFromSearchAgentLOSRequired 50.0
+					myMinDistanceFromTargetLOSRequired 10.0
+					myMaxDistanceFromTargetLOSRequired 50.0
+					myMinDistanceFromSearchPosition 10.0
+					myMaxDistanceFromSearchPosition 50.0
+					myMinDistanceFromSearchAgent 10.0
+					myMaxDistanceFromSearchAgent 50.0
+					myMinDistanceFromTarget 10.0
+					myMaxDistanceFromTarget 50.0
+					myOptimalDistanceFromTarget 20.0
+					myMotionPatternType Run
+				}
+				NPCMoveSettingWildlifeDodgeLeft "Dodge Left"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067593C62001934C772958FB2 > = tshikara_dodge_side E9DD8F6064196A0C0002FD2466E267D7
+					myMoveEvaluationToVehicleConfig < uid=E9DD8F6067593C62001934C86C3F4AFD > = tshikara_dodge_side_for_vehicle 2E5ACA7E667A69A30004A2223988FA84
+					myWeight 5.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 8.0
+						myMediumRangeDistance 20.0
+						myLongRangeDistance 40.0
+						myLowHealthThreshold 0.3
+						myMediumRangeBonus 30.0
+						myLongRangeBonus 40.0
+						myPlayerAimBonus 20.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+					myInterruptAnimationOnAbort TRUE
+				}
+				NPCMoveSettingWildlifeDodgeRight "Dodge Right"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067593C62001934C9130B40BC > = tshikara_dodge_side E9DD8F6064196A0C0002FD2466E267D7
+					myMoveEvaluationToVehicleConfig < uid=E9DD8F6067593C62001934CA853DEF1B > = tshikara_dodge_side_for_vehicle 2E5ACA7E667A69A30004A2223988FA84
+					myWeight 5.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 8.0
+						myMediumRangeDistance 20.0
+						myLongRangeDistance 40.0
+						myLowHealthThreshold 0.3
+						myMediumRangeBonus 30.0
+						myLongRangeBonus 40.0
+						myPlayerAimBonus 20.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+					myInterruptAnimationOnAbort TRUE
+				}
+				NPCMoveSettingWildlifeDodgeBack "Dodge Back"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067593C62001934CB5B0B0811 > = tshikara_dodge_back E9DD8F6064196A0C0002FD257D4ABC25
+					myMoveEvaluationToVehicleConfig < uid=E9DD8F6067593C62001934CCCDF5C92F > = tshikara_dodge_back_for_vehicle 2E5ACA7E667A69A30004A2239F43908B
+					myWeight 5.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 15.0
+						myLongRangeDistance 40.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 30.0
+						myPlayerAimBonus 20.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+					myInterruptAnimationOnAbort TRUE
+				}
+				NPCMoveSettingWildlifeBackOff Backoff
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067593C62001934CD84B27E8D > = tshikara_back_off E9DD8F6064196A0C0002FD264DA1D209
+					myMoveEvaluationToVehicleConfig < uid=E9DD8F6067593C62001934CEEE9D1C37 > = tshikara_back_off_for_vehicle 2E5ACA7E667A69A30004A224B7FEC39F
+					myWeight 5.0
+					mySuccessCooldown 3.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 15.0
+						myLongRangeDistance 40.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 0.0
+						myMediumRangeBonus 15.0
+						myPlayerAimBonus 20.0
+						myLowHealthBonus 15.0
+					}
+					myInterruptAnimationOnAbort TRUE
+				}
+				NPCMoveSettingWildlifeFlank Flank
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067593C62001934CFEDD5CA75 > = tshikara_flank E9DD8F6064196A320002FD29A4E1A565
+					myMoveEvaluationToVehicleConfig < uid=E9DD8F6067593C62001934D08E0ADA51 > = tshikara_flank_for_vehicle 2E5ACA7E667A69A30004A22559315886
+					myWeight 0.0
+					mySuccessCooldown 2.0
+					myFailCooldown 2.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 15.0
+						myLongRangeDistance 40.0
+						myMediumRangeBonus 0.0
+						myLongRangeBonus 0.0
+						myPlayerAimBonus 0.0
+						myPackBonus 0.0
+					}
+					myMotionPatternType Run
+					myMinFlankRadius 5.0
+					myMaxFlankRadius 40.0
+					myFlankRotateAngle 90.0
+					myMinFlankDuration 1.0
+					myMaxFlankDuration 1.0
+					myFlankPositionTolerance 1.0
+				}
+				NPCMoveSettingWildlifeTailRegen "Tail Regen"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067593C62001934D1995B9B0B > = tshikara_tail_regen D85A76846436085D00001140CDC14CBC
+					myMoveEvaluationToVehicleConfig < uid=E9DD8F6067593C62001934D29F2150B3 > = tshikara_tail_regen_for_vehicle 2E5ACA7E667A69A30004A2262713D5FE
+					myDynamicWeightParams
+					{
+						myMediumRangeBonus 100.0
+						myLongRangeBonus 200.0
+					}
+				}
+			}
+		}
+		NPCMoveGroupWildlifeIdle "Idle Settings"
+		{
+			myMinDelayBeforeCap 0.0
+			myMaxDelayBeforeCap 0.0
+			myMinDelayWhenEnterIdle 0.0
+			myMaxDelayWhenEnterIdle 2.0
+		}
+		NPCMoveGroupWildlifeReaction "Reaction Settings"
+		{
+			myReactionMoveSettings
+			{
+				NPCMoveSettingReactToDistraction ReactToDistraction
+				{
+					myTooCloseBehaviorTriggerDistance 5.0
+					myInvestigationMotionPatternType Investigate
+				}
+			}
+		}
+		NPCMoveGroupWildlifeAware "Aware Settings"
+		{
+			myHaveStalkingBehabvior TRUE
+			myStalkingDetectionProfile < uid=E9DD8F6067593C62001934D3DCE4A740 > = TshikaraStalkingDetectionProfile 2E5ACA7E6448CAC70000848E1E29F8B3
+			myIgnoreTargetDuration 60.0
+			myAwareMoveSettings
+			{
+				NPCMoveSettingWildlifeStalkingDodgeLeft "Special Wildlife Intimidation Dodge Left"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067593C62001934D404E436DF > = tshikara_dodge_side E9DD8F6064196A0C0002FD2466E267D7
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 8.0
+						myMediumRangeDistance 15.0
+						myLongRangeDistance 40.0
+						myLowHealthThreshold 0.3
+						myMediumRangeBonus 5.0
+						myLongRangeBonus 5.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myHurtBonus 100.0
+					}
+					mySkipPossibilityOnSuccess 0.5
+				}
+				NPCMoveSettingWildlifeStalkingDodgeRight "Special Wildlife Intimidation Dodge Right"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067593C62001934D54122768B > = tshikara_dodge_side E9DD8F6064196A0C0002FD2466E267D7
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 8.0
+						myMediumRangeDistance 15.0
+						myLongRangeDistance 40.0
+						myLowHealthThreshold 0.3
+						myMediumRangeBonus 5.0
+						myLongRangeBonus 5.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myHurtBonus 100.0
+					}
+					mySkipPossibilityOnSuccess 0.5
+				}
+				NPCMoveSettingWildlifeStalkingDodgeBack "Special Wildlife Intimidation Dodge Back"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067593C62001934D6D41312D4 > = tshikara_dodge_back E9DD8F6064196A0C0002FD257D4ABC25
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 15.0
+						myLongRangeDistance 40.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 30.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myHurtBonus 100.0
+					}
+					mySkipPossibilityOnSuccess 0.5
+				}
+				NPCMoveSettingWildlifeStalkingHeavyGrowl "Special Intimidation Heavy Growl"
+				{
+					mySuccessCooldown 3.0
+					myFailCooldown 0.0
+					mySkipPossibilityOnSuccess 0.5
+				}
+				NPCMoveSettingWildlifeStalkingTaunt "Special Intimidation Taunt"
+				{
+					myMoveEvaluationConfig < uid=E9DD8F6067593C62001934D72D3471B1 > = tshikara_stalking_taunt 2E5ACA7E6454C2AA0001987257C8C280
+					mySuccessCooldown 3.0
+					myFailCooldown 0.0
+					mySkipPossibilityOnSuccess 0.5
+				}
+				NPCMoveSettingWildlifeStalkingGrowl "Intimidation Growl"
+				{
+					mySuccessCooldown 2.0
+					mySkipPossibilityOnSuccess 0.8
+				}
+				NPCMoveSettingWildlifeStalkingIdle "Intimidation Idle"
+				{
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					mySkipPossibilityOnSuccess 0.8
+				}
+			}
+		}
+	}
+}
+
+NPCMoveConfig massiff_mq020_move_config < uid=2E5ACA7E67B2EDB600072E1D87759F9A > : massiff_move_config
+{
+	myMoveGroups
+	{
+		NPCMoveGroupWildlifeCombat "Combat Settings"
+		{
+			myMinAttackTimesToWildlife 1
+			myMinAttackTimesToNPC 1
+			myGetCloserToPlayerMotionPatternType Sprint
+			myGetCloserToNPCMotionPatternType Sprint
+			myGetCloserToWildlifeMotionPatternType Sprint
+			myOnSpotAttackOnUnreachable TRUE
+			myUnreachableAttackDistance 1.5
+			myGetCloserSuccessDistanceToPlayer 1.3
+			myGetCloserSuccessOffsetToNPC 1.0
+			myGetCloserOffsetToSpeeder 1.45
+			myForceMoveAwayFromVehicleDistance 1.0
+			myTrajectoryWavingParams
+			{
+				myMoveEvaluationConfig < uid=2E5ACA7E67B2EE1E00072E52ACE3F3FB > = massiff_trajectory_waving D85A76846476A47D00008F09D9ACFE66
+				myMinWavingAngle 15.0
+				myWavingOffsetDistance 15.0
+				myMinWavingTimeout 1.0
+				myMaxWavingTimeout 1.2
+				myMinGoBackTimeout 0.8
+				myMaxGoBackTimeout 1.0
+			}
+			myMeleeMoveSettings
+			{
+				NPCMoveSettingWildlifeOnSpotAttack "On Spot Attack"
+				{
+					myMoveEvaluationConfig < uid=2E5ACA7E67B2EE1E00072E535F343C16 > = massiff_on_spot_attack D85A768462C5275200007D590404A006
+					myWeight 10.0
+					mySuccessCooldown 0.0
+					myFailCooldown 0.0
+					myDamageToNPCAndPlayer 1.0
+					myAimingParams
+					{
+						myBodyPartType Body
+						myAimingPositionType Lowest
+						myMinHighAttackHeight 0.7
+						myMaxLowAttackHeight 1.1
+						myLowAttackChanceWhenBothAvaliable 0.5
+					}
+				}
+				NPCMoveSettingWildlifeJumpAttack "Jump Attack"
+				{
+					myMoveEvaluationConfig < uid=2E5ACA7E67B2EE1E00072E54F1A1D3D9 > = massiff_jump_attack D85A768462C5004300008BE661D2D955
+					myWeight 10.0
+					mySuccessCooldown 1.0
+					myFailCooldown 1.0
+					myAimingParams
+					{
+						myBodyPartType Body
+						myAimingPositionType Lowest
+						myMinHighAttackHeight 0.7
+						myMaxLowAttackHeight 1.1
+						myLowAttackChanceWhenBothAvaliable 0.5
+					}
+					myAttackPathAgentCheckRadius 8.0
+					myDurationToPredictTargetPosition 0.75
+					myAttackAnimationDistanceCorrectionToPlayer 0.5
+					myAttackAnimationDistanceCorrectionToSmallTarget 0.0
+					myAttackAnimationDistanceCorrectionToLargeTarget 0.3
+					myShortDistanceAttackRange 2.95
+					myClearanceCheckRadius 1.5
+				}
+				NPCMoveSettingWildlifePounceAttack "Pounce Attack"
+				{
+					myMoveEvaluationConfig < uid=2E5ACA7E67B2EE1E00072E555CF2D16B > = massiff_pounce_attack D85A768462C528C500007D5AEFCC7C28
+					myWeight 10.0
+					mySuccessCooldown 1.0
+					myFailCooldown 1.0
+					myAimingParams
+					{
+						myBodyPartType Body
+						myAimingPositionType Lowest
+						myMinHighAttackHeight 0.7
+						myMaxLowAttackHeight 1.1
+						myLowAttackChanceWhenBothAvaliable 0.5
+					}
+					myAttackPathAgentCheckRadius 8.0
+					myDurationToPredictTargetPosition 0.75
+					myAttackAnimationDistanceCorrectionToPlayer 0.5
+					myAttackAnimationDistanceCorrectionToSmallTarget 0.0
+					myAttackAnimationDistanceCorrectionToLargeTarget 0.3
+					myShortDistanceAttackRange 2.95
+					myClearanceCheckRadius 1.5
+				}
+				NPCMoveSettingWildlifeTakedown Takedown
+				{
+					myMoveEvaluationConfig < uid=2E5ACA7E67B2EE1E00072E56EF3D8D25 > = massiff_takedown D85A768462C528C500007D5B2ACD9E12
+					myWeight 10.0
+					mySuccessCooldown 1.0
+					myFailCooldown 1.0
+					myChaseSuccessDistance 1.5
+				}
+				NPCMoveSettingWildlifeGrabAttack "Grab Attack"
+				{
+					myMoveEvaluationConfig < uid=2E5ACA7E67B2EE1E00072E571117C858 > = massiff_grab_prepare D85A7684649B92140001AA8A310641C5
+					myWeight 10.0
+					mySuccessCooldown 20.0
+					myAttackPathAgentCheckRadius 6.0
+					myDurationToPredictTargetPosition 0.4
+					myAttackAnimationDistanceCorrectionToPlayer 1.5
+					myClearanceCheckRadius 1.5
+					myGrabAttackEvaluationConfig < uid=2E5ACA7E67B2EE1E00072E58EED7EEB8 > = massiff_grab_attack D85A7684649B923C0001AAAE76AEB74B
+					myGrabCount 1
+					myMaxGrabDistance 6.5
+				}
+			}
+		}
+		NPCMoveGroupWildlifePacing "Pacing Settings"
+		{
+			myMinPacingDurationToPlayerAndNPC 1.0
+			myMaxPacingDurationToPlayerAndNPC 1.0
+			myMinPacingDurationToPredator 1.0
+			myMaxPacingDurationToPredator 3.0
+			myMinHitPacingDurationToPlayerAndNPC 2.0
+			myMaxHitPacingDurationToPlayerAndNPC 5.0
+			myMinHitPacingDurationToPredator 2.0
+			myMaxHitPacingDurationToPredator 4.0
+			myPacingMoveSettings
+			{
+				NPCMoveSettingWildlifeTaunt Taunt
+				{
+					myMoveEvaluationConfig < uid=2E5ACA7E67B2EE1E00072E5924640380 > = massiff_taunt D85A768462C5299B00007D5DF9924C40
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E67B2EE1E00072E5A2733F68C > = massiff_taunt_for_vehicle 2E5ACA7E667A6DEF0004D7B11C50A3D3
+					myWeight 5.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 2.5
+						myMediumRangeDistance 10.0
+						myCloseRangeBonus 10.0
+						myMediumRangeBonus 20.0
+						myLongRangeBonus 30.0
+						myPackBonus 30.0
+						myHurtBonus 50.0
+					}
+				}
+				NPCMoveSettingWildlifeMoveAway MoveAway
+				{
+					myMoveEvaluationConfig < uid=2E5ACA7E67B2EE1E00072E5B88C9AF3A > = massiff_move_away D85A768462C529E200007D61CFF1975F
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E67B2EE1E00072E5CD93A32B5 > = massiff_move_away_for_vehicle 2E5ACA7E667A6DEF0004D7B2AB942927
+					myWeight 5.0
+					mySuccessCooldown 4.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 2.5
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.0
+						myCloseRangeBonus 30.0
+						myMediumRangeBonus 0.0
+						myLongRangeBonus 0.0
+						myPlayerAimBonus 0.0
+						myLowHealthBonus 0.0
+						myPackBonus 30.0
+					}
+					myMinDistanceFromSearchPositionLOSRequired 5.0
+					myMaxDistanceFromSearchPositionLOSRequired 10.0
+					myMinDistanceFromSearchAgentLOSRequired 5.0
+					myMaxDistanceFromSearchAgentLOSRequired 10.0
+					myMinDistanceFromTargetLOSRequired 6.0
+					myMaxDistanceFromTargetLOSRequired 8.0
+					myMinDistanceFromSearchPosition 5.0
+					myMaxDistanceFromSearchPosition 10.0
+					myMinDistanceFromSearchAgent 5.0
+					myMaxDistanceFromSearchAgent 10.0
+					myMinDistanceFromTarget 6.0
+					myMaxDistanceFromTarget 8.0
+					myMotionPatternType Run
+				}
+				NPCMoveSettingWildlifeDodgeLeft "Dodge Left"
+				{
+					myMoveEvaluationConfig < uid=2E5ACA7E67B2EE1E00072E5DDD465211 > = massiff_dodge_side D85A768462C529E200007D62203EDCB5
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E67B2EE1E00072E5E657958A3 > = massiff_dodge_side_for_vehicle 2E5ACA7E667A6DEF0004D7B3436B359B
+					myWeight 0.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myMediumRangeBonus 5.0
+						myLongRangeBonus 5.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeDodgeRight "Dodge Right"
+				{
+					myMoveEvaluationConfig < uid=2E5ACA7E67B2EE1E00072E5FA00C9B49 > = massiff_dodge_side D85A768462C529E200007D62203EDCB5
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E67B2EE1E00072E60A8ABBA67 > = massiff_dodge_side_for_vehicle 2E5ACA7E667A6DEF0004D7B3436B359B
+					myWeight 0.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 5.0
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myMediumRangeBonus 5.0
+						myLongRangeBonus 5.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeDodgeBack "Dodge Back"
+				{
+					myMoveEvaluationConfig < uid=2E5ACA7E67B2EE1E00072E614792A3B9 > = massiff_dodge_back D85A768462C529E200007D6350F8F1F1
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E67B2EE1E00072E62E88157A8 > = massiff_dodge_back_for_vehicle 2E5ACA7E667A6DEF0004D7B4D0EDCB47
+					myWeight 5.0
+					mySuccessCooldown 2.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 2.5
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 30.0
+						myPlayerAimBonus 100.0
+						myLowHealthBonus 15.0
+						myPackBonus 0.0
+						myHurtBonus 100.0
+					}
+				}
+				NPCMoveSettingWildlifeBackOff Backoff
+				{
+					myMoveEvaluationConfig < uid=2E5ACA7E67B2EE1E00072E632C934F22 > = massiff_back_off D85A768462C529F800007D65E691907C
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E67B2EE1E00072E64D91EB055 > = massiff_back_off_for_vehicle 2E5ACA7E667A6DEF0004D7B5493AA4B2
+					myWeight 0.0
+					mySuccessCooldown 3.0
+					myFailCooldown 1.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 2.5
+						myMediumRangeDistance 10.0
+						myLowHealthThreshold 0.3
+						myCloseRangeBonus 0.0
+						myPlayerAimBonus 90.0
+						myLowHealthBonus 15.0
+					}
+				}
+				NPCMoveSettingWildlifeFlank Flank
+				{
+					myMoveEvaluationConfig < uid=2E5ACA7E67B2EE1E00072E650B434FA4 > = massiff_flank D85A768463EC317200002A9439DE0B99
+					myMoveEvaluationToVehicleConfig < uid=2E5ACA7E67B2EE1E00072E66E99D6573 > = massiff_flank_for_vehicle 2E5ACA7E667A6DEF0004D7B643ED61A3
+					myWeight 10.0
+					mySuccessCooldown 5.0
+					myFailCooldown 5.0
+					myDynamicWeightParams
+					{
+						myCloseRangeDistance 3.0
+						myMediumRangeDistance 10.0
+						myMediumRangeBonus 50.0
+						myLongRangeBonus 30.0
+						myPackBonus 30.0
+					}
+					myMinFlankDuration 2.0
+					myMaxFlankDuration 3.0
+					myFlankPositionTolerance 0.4
+				}
+			}
+		}
+		NPCMoveGroupWildlifeIdle "Idle Settings"
+		{
+			myMinDelayBeforeCap 0.0
+			myMaxDelayBeforeCap 0.0
+			myMinDelayWhenEnterIdle 0.0
+			myMaxDelayWhenEnterIdle 1.0
+		}
+		NPCMoveGroupWildlifeReaction "Reaction Settings"
+		{
+			myReactionMoveSettings
+			{
+				NPCMoveSettingReactToDistraction ReactToDistraction
+				{
+					myTooCloseBehaviorTriggerDistance 5.0
+				}
+			}
+		}
+		NPCMoveGroupWildlifeAware "Aware Settings"
+		{
+			myIgnoreTargetDuration 60.0
+		}
+	}
+}
+

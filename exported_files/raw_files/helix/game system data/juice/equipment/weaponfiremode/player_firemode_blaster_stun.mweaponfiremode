@@ -1,0 +1,124 @@
+include "helix/game system data/juice/camera/modifiers/weapon_recoil_module_stun.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_shake_kays_blaster.mcameramodifier"
+include "helix/game system data/juice/equipment/aimconfig/weapon_aimconfig_freeaim_stun.maimconfig"
+include "helix/game system data/juice/equipment/weaponanimationconfig/weapon_anim_kay_blaster_stun.mweaponanimationconfig"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_blaster_template.mweaponfiremode"
+include "helix/game system data/juice/projectile/weapon_projectile_stun_ring.mprojectile"
+include "helix/game system data/juice/sound/weapons/player_audioweapon_stunblaster.maudioweapon"
+
+WeaponFireMode player_firemode_blaster_stun < uid=A207755D62C2F1FF0000374DFD4FC4D9 > : player_firemode_blaster_template
+{
+	myFireEvent
+	{
+		SemiAutoFireEvent "SemiAuto Fire Event"
+		{
+			myRPM
+			{
+				myRPM 260
+			}
+		}
+	}
+	myBaseProperties
+	{
+		myAnimation < uid=7113C611651FC91B000389A48CB29F3B > = weapon_anim_kay_blaster_stun 7113C611651FC8E0000389A1EF2F5798
+		myRecoil < uid=A207755D6515A0FD00014E4481D6F6F6 > = weapon_recoil_module_stun 7113C611631EE88C00004A0A61DF1A4E
+		myInputController
+		{
+			myFireRumble 8E25811B6560725900104815EB1724E2
+			myFireAimVibrationTriggerEffect
+			{
+				myDuration 0.8
+			}
+		}
+	}
+	mySpecializations
+	{
+		WeaponFireModeSpecialization WeaponAnim
+		{
+			myAimMode ADS
+			myProperties
+			{
+				myAnimation < uid=7113C6116527B8110003FA399A0ADA1A > = weapon_anim_kay_blaster_stun_ads 7113C6116527B62D0003F0C538A92B51
+			}
+		}
+	}
+	myAimConfig < uid=7113C61165F005040000B96A60C37B2F > = weapon_aimconfig_freeaim_stun 7113C61165F004B10000B963D0C50927
+	myProjectile < uid=A207755D62C2F2870000375289921BA4 > = weapon_projectile_stun_ring A207755D62220B1900002E4D3B074031
+	myHasIndependentCooldown TRUE
+	myCooldown
+	{
+		myDuration 120.0
+		myFinalCooldownFormula "Equipment.BaseCooldown * StunShotCooldownPercentage"
+	}
+	myOverHeat
+	{
+		myHeatingMode Disabled
+		myHeatPerUseFormula 0
+		myActiveCooling
+		{
+			mySections
+			{
+				EquipmentOverHeatActiveCoolingSection Success
+				{
+					myStartOfSection "0.25* FastReloadSectionStartModifier"
+					myLengthOfSection "0.2* FastReloadSectionSizeModifier"
+					mySuperChargeBonusTime "3 * SuperChargeFastBonusTimeModifier"
+				}
+				EquipmentOverHeatActiveCoolingSection Success_Perfect
+				{
+					myStartOfSection 0.44
+					myLengthOfSection 0.05
+					mySuperChargeBonusTime "3 * SuperChargePerfectBonusTimeModifier"
+					myIsPerfect TRUE
+				}
+			}
+		}
+	}
+	myDamage
+	{
+		myDamage
+		{
+			myDamageType StunBlast
+		}
+	}
+	mySpread
+	{
+		mySpreadValues
+		{
+			mySpread
+			{
+				myMin 0.6
+				myMax 1.3
+			}
+		}
+		myTimeToMinAccuracy 0.1
+		myTimeToMaxAccuracy 0.2
+		mySpreadIncreaseSpeed 1.0
+		myMovementModifier 1.0
+		myAimModifierData
+		{
+			myADSFormula 0.85
+		}
+	}
+	myFireShake < uid=A207755D62C2F1FF0000374F90150A29 > = weapon_shake_kays_blaster 346395BC6026351000000061F06D3A0E
+	myUI
+	{
+		myDefaultUIGraph helix/ui/Graphs/crosshair_stun.muigraph
+	}
+	myUIInfo
+	{
+		myName "aurabesh = false, contextComment = \"Player blaster fire mode.\", enabled = true, guid = #92D7D0C16438FCB700011ACEA57844A4, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 2132, text = \"Stun\", type = \"MenuLine\""
+		myDescription "branch = \"MAIN\", contextComment = \"This is the description text for the stun fire mode.\", enabled = true, guid = #92D7D0C165648EEA00036C9A2242E88E, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10692, text = 'Use Stun Shot for a silent, non-lethal takedown against humanoids (ineffective against droids).\n\nActivate or deactivate Stun Shot mode with <gameaction src=\"ToggleStun\">.', type = \"MenuLine\""
+		myDescriptionController "branch = \"TU1\", contextComment = \"This is the description text for the stun fire mode.\", enabled = true, guid = #09AEDAAA668CF001000169A67984AD31, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10692, text = 'Use Stun Shot for a silent, non-lethal takedown against humanoids (ineffective against droids).\n\nActivate or deactivate Stun Shot mode with <gameaction src=\"FireStun\">.', type = \"MenuLine\""
+		myIcon "mySpriteId = -968858497, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_blaster_modules.spritesheet\""
+		myVideo helix/baked/ui/videos/blaster/blaster_stun_module.webm
+	}
+	myAudioData < uid=B341CDEB62D007EF00003C4D5078E8B7 > = player_audioweapon_StunBlaster 1B6B9DC6627B9D7C00002D1834EC4245
+	myNPCDetectionSoundEvent < uid=A207755D63593BCF0000ABCE3E66779A > = WeaponTrigger_StunGun 16C7D1FB634978CE000045AB5B630721
+	myConfig
+	{
+		myReplaceIfCooldown TRUE
+		myStartToReplaceTime 0.15
+	}
+}
+

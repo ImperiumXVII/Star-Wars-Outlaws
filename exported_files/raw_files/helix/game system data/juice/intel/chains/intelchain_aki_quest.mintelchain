@@ -1,0 +1,56 @@
+include "helix/game system data/fruit/intel/intelchain.fruit"
+include "helix/game system data/juice/intel/intel_akiva.mintel"
+include "helix/game system data/juice/intel/intel_akiva_quest.mintel"
+
+IntelChain ITLC_AKI_A_EQ_100_Temmin < uid=7C12810B64CBDE8B0003699F4FA82285 >
+{
+	myName "aurabesh = false, contextComment = \"EQ_100 Intel Chain Title\", enabled = true, guid = #7C12810B64CCAE2800042F049C713BEE, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 2498, text = \"THE SPEEDER MECHANIC 2\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"EQ_100 Intel Chain Description\", enabled = true, guid = #7C12810B64CCAE2800042F05464F0BD6, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 2498, text = \"Every scoundrel knows that the right mod can make all the difference when the Empire's on your tail.\", type = \"MenuLine\"}"
+	myChainedIntel
+	{
+		Intel A_EQ_100_Intel_WaterSpeeder < uid=7C12810B650B17D70001828595AD4E28 > = Intel_A_EQ_100_01_WaterSpeeder 7C12810B64EF12C1001870F81625E6A5
+		Intel A_EQ_100_Intel_TheJunker < uid=7C12810B64CCB6E7000D7E3BB719B075 > = Intel_A_EQ_100_02_TheJunker 7C12810B64EF13EE001871431F5882C6
+	}
+}
+
+IntelChain ITLC_AKI_A_EQ_110_Transmissions < uid=91908ED2652FC9E60000C0EB65D8EDED >
+{
+	myName "aurabesh = false, contextComment = \"ITLC_AKI_A_EQ_110_Transmissions intel chain name. Displayed in UI.\", enabled = true, guid = #91908ED2652FC9E60000C0EC4AFDFACF, lineVersion = 8, maxLength = 0, productId = 6, sectionId = 9257, text = \"Space mysteries\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"ITLC_AKI_A_EQ_110_Transmissions description displayed in UI\", enabled = true, guid = #91908ED2652FC9E60000C0ED07E54ABA, lineVersion = 12, maxLength = 0, productId = 6, sectionId = 9257, text = \"The space is full with mysteries, Kay wonders what she we will find.\", type = \"MenuLine\""
+	myChainedIntel
+	{
+		ParallelIntelGroup "New ParallelIntelGroup"
+		{
+			myResolvedIntelNeededToActivateNext All
+			myParallelIntel
+			{
+				Intel "New Intel (0)" < uid=91908ED2652FD7E100018F574D2FDAB6 > = A_EQ_110_Intel_Transmissions_01 91908ED2652FD07000018EEF5A1B6995
+				Intel "New Intel" < uid=25319C7067471FA40008CB9EFDF3CBF3 > = A_EQ_110_Intel_Transmissions_01_B C9E2299266F563B30001D30317BCAE9C
+			}
+		}
+		Intel "New Intel (1)" < uid=91908ED2652FD7E200018F58790E321E > = A_EQ_110_Intel_Transmissions_02 91908ED2652FD16100018F3D9AC19595
+	}
+}
+
+IntelChain ITLC_AKI_A_EQ_120_Lando < uid=225CF627651C60C50009EC50FCD38B56 >
+{
+	myName "aurabesh = false, contextComment = \"EQ_120 Intel Chain Title\", enabled = true, guid = #225CF627651C5E5A0009EC1828C979BC, lineVersion = 13, maxLength = 0, productId = 6, sectionId = 9268, text = \"The Highroller\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"EQ_100 Intel Chain Description\", enabled = true, guid = #225CF627651C5E5A0009EC1900684EAE, lineVersion = 6, maxLength = 0, productId = 6, sectionId = 2498, text = \"I can find someone to teach me new tricks to play sabacc.\", type = \"MenuLine\""
+	myChainedIntel
+	{
+		Intel A_EQ_120_intel_01 < uid=225CF627651C60C50009EC513EA1E1C3 > = A_EQ_120_Intel_FindTheHighroller_01 225CF627651C60D80009EC65F0378F19
+		Intel A_EQ_120_intel_02 < uid=225CF62765539F56001134FBC4F6D6C4 > = A_EQ_120_Intel_FindTheHighroller_02 225CF62765539E920011344C9F757BD5
+	}
+}
+
+IntelChain ITLC_AKI_A_EQ_110_GearRoom < uid=C9E2299265660C780013B97791762F7A >
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"ITLC_AKI_A_EQ_110_GearRoom intel chain name. Displayed in UI.\", enabled = true, guid = #C9E2299265660C550013B97588446B32, lineVersion = 11, maxLength = 0, productId = 6, sectionId = 9257, text = \"Droids bane\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"ITLC_AKI_A_EQ_110_GearRoom description displayed in UI\", enabled = true, guid = #C9E2299265660C550013B9767185BD6E, lineVersion = 12, maxLength = 0, productId = 6, sectionId = 9257, text = \"With the Decryptor, Kay can finally read the transmissions sent by MT-7. There might be more to those than Kay initially thought.\", type = \"MenuLine\""
+	myChainedIntel
+	{
+		Intel "New Intel" < uid=C9E2299265660C780013B9789A0D874F > = A_EQ_110_Intel_GearRoom_00 C9E229926564A1A300012FB3537CCDB0
+		Intel "New Intel (0)" < uid=C9E2299265660C780013B97931BB72C7 > = A_EQ_110_Intel_GearRoom_01 C9E229926564A1A300012FB5B5EA8DBD
+	}
+}
+

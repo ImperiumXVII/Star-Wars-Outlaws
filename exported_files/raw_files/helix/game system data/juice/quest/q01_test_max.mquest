@@ -1,0 +1,44 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/rbtags/quest.mrbtagstags"
+
+Quest "A_EQ_010 - Hot Pursuit" < uid=9D01D21761657EBC00001A1DEF7D7BF7 >
+{
+	myName "contextComment = \"A_EQ_010\", enabled = true, guid = #9D01D21761657EBC00001A1A4D8780F2, lineVersion = 7, maxLength = 0, productId = -1, sectionId = -1, text = \"Hot Pursuit\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"Quest Title\", enabled = true, guid = #DA5615DD64B517020000ABDD4FA9FCAA, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2495, text = \"Hot Pursuit\", type = \"MenuLine\""
+	myBeats
+	{
+		QuestBeat "Beat 01" < uid=9D01D21761657EBC00001A1E9E8CF6FA >
+		{
+			myScript helix/scripts/Test_Max_Script.mscript
+			myName "aurabesh = false, contextComment = \"Beat 01\", enabled = true, guid = #9D01D21761657EBC00001A1BA6D55618, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 2103, text = \"Find Fixer\", type = \"MenuLine\""
+			myObjectives
+			{
+				QuestObjectiveCustom "Get Intel on Fixer" < uid=9D01D21761659B0D0000722291DC411C >
+				{
+					myName "aurabesh = false, contextComment = \"Objective\", enabled = true, guid = #9D01D21761659B10000072238000ED05, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 2103, text = \"Speak with Strider\", type = \"MenuLine\""
+					myChildObjectives
+					{
+						QuestObjectiveCustom "New QuestObjectiveCustom (0)" < uid=9D01D2176166CB1D00004011C0BD5400 >
+						{
+							myName "aurabesh = false, contextComment = \"Objective\", enabled = true, guid = #9D01D2176166CB2900004012D6D4DD88, lineVersion = 2, maxLength = 0, productId = -1, sectionId = 2103, text = \"He is in the cantina\", type = \"MenuLine\""
+							myIsOptional TRUE
+						}
+					}
+				}
+				QuestObjectiveInteract "Speak with Fixer" < uid=9D01D2176168151D00004311B620F0FD >
+				{
+					myName "aurabesh = false, contextComment = \"Objective\", enabled = true, guid = #9D01D2176168155300004312B6702CA2, lineVersion = 2, maxLength = 0, productId = -1, sectionId = 2103, text = \"Speak with Fixer\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=6F2AF91962175DD0000033BFCB0F857E >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=6F2AF91962175DD0000033C0A3981C8B >
+	{
+	}
+	myQuestStartedRBTag < uid=DA5615DD64B517500000ABDE6067FC14 > = World_Quest_EQ010_Started DA5615DD64A3EF6B0000AC8090AD83B5
+	myQuestCompletedRBTag < uid=DA5615DD64B517500000ABDF8C7FADD7 > = World_Quest_EQ010_Completed DA5615DD64A3EF8E0000AC82AABC4861
+}
+

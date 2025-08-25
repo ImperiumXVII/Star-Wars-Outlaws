@@ -1,0 +1,28 @@
+include "helix/game system data/juice/npc/civ_toshara_waka.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC civ_toshara_waka_vendor < uid=8FD81D5165A68F10000141CC664C542D > : civ_toshara_waka
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Merchant's sub-name, for Waka\", enabled = true, guid = #09AEDAAA65C371F3000000E39DF8FACA, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10653, text = \"Ship Mechanic (TO BE WRITTEN)\", type = \"MenuLine\"}"
+	myAdditionalGearGraphs 09AEDAAA65B3C71F000061E55BDBADF7
+	myDetectionProfiles
+	{
+		myNonCombatAreaProfile < uid=41240B246657292C0043AD49080A7546 > = EmptyDetectionProfile 16DEADE65F0385DF0000001442E46AB7
+	}
+	myVendorConfig < uid=8FD81D5165A68F7F00014254B494277E > = VendorConfig_TOS_Bespoke_Ship_Waka F4D8AE2665201C900000ABEA8C40891F
+	myHideMapRefGameConditions
+	{
+		myType Group
+		myIsNegated FALSE
+		myOperator And
+		myCanBeOverridden FALSE
+		myConditions
+		{
+			GameConditionContextAgentIsAlive "New GameConditionContextAgentIsAlive"
+			{
+				myIsNegated TRUE
+			}
+		}
+	}
+}
+

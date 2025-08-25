@@ -1,0 +1,55 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC space_empire_star_destroyer_turbolaser < uid=6EA796256499580100003375C3219BB8 >
+{
+	myCharacterVisuals < uid=6EA79625649958010000337654F37628 > = character_visual_npc_star_destroyer_turbolaser 6EA79625649947090000D36DAF21AFA5
+	myBehavior helix/behaviors/emp_turbolaser_turret.mbehavior
+	myNPCComponentSetType Turret
+	mySpaceshipType Default
+	myMaxHealth 50
+	myHealthFormula 50
+	myFaction < uid=6EA7962564995801000033775BF50D70 > = Empire 16DEADE65F21E5AB000000B35532A71B
+	myNavigationCapability < uid=B5AC84E7649C1EF9000DADE0845E91CE > = NULLREFERENCE
+	myInitialNPCControllerContextType Ground
+	myLodType Spaceship_Medium
+	mySensoryProfile < uid=B5AC84E7649C1FCD000E5EEEFAF711BC > = NULLREFERENCE
+	myVisionProfile < uid=6EA7962564995801000033786AE84BAD > = NULLREFERENCE
+	myHearingProfile < uid=6EA796256499580100003379A5DBE113 > = NULLREFERENCE
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=6EA79625649958010000337A6A5681B6 > = detectionProfile_emp_turret_turbolaser 7EE64634657AC7DF0002663166797FBF
+	}
+	myTacticalPositionFinderProfile < uid=B5AC84E7649C1FCD000E5EEFD05817AB > = NULLREFERENCE
+	myThreatProfile < uid=6EA79625649958010000337B993B9F01 > = NULLREFERENCE
+	myAimProfile < uid=6EA79625649958010000337CB1A61AA8 > = NULLREFERENCE
+	myReducedAimProfile < uid=6EA79625649958010000337DCB0FA6F6 > = NULLREFERENCE
+	myMainWeapon < uid=6EA79625649958010000337E158AD510 > = NULLREFERENCE
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout NPCWeaponLoadout < uid=6EA796256499582A00003DFF6770941B > = weaponloadout_emp_star_destroyer_turbolaser 6EA796256499567300035D5DFDFFDF07
+	}
+	myMotionPatternProfile < uid=B5AC84E7649C063F0015F7E913849E26 > = NULLREFERENCE
+	mySteeringProfile < uid=B5AC84E7649C063F0015F7EA22A1AF03 > = NULLREFERENCE
+	myFocusProfile < uid=B5AC84E7649BFDB9001493538420E7FF > = CombatFocusProfile 91DC5D3C63FC700F0001A02A36DCA307
+	myAudioParameters
+	{
+		myEmitterName "Star Destroyer Turbolaser Hand Emitter"
+		myEmitters
+		{
+			AgentEmitter Default
+			{
+				myEmitterLabel < uid=3A1C5D18655348970000B55D0240299C > = Root 3A1C5D1863906F050000AB6FBD984CC4
+			}
+			AgentEmitter Weapon
+			{
+				myEmitterLabel < uid=3A1C5D18655348970000B55EA641610C > = Hand 3A1C5D1863906F180000AB718F1E9EFD
+				myEmitterPrefab "emitterLayerName = \"weapons_npc_ambient\", enableDoppler = false, enablePropagation = false, sphereRadius = 100, stopOnDestroy = true"
+			}
+		}
+	}
+	myCanBeDetectedByPetSenses FALSE
+	myOnAgentKilledGameScript "helix/game scripts/gs_npc_on_explosion_turbolaser.mgamescript"
+}
+

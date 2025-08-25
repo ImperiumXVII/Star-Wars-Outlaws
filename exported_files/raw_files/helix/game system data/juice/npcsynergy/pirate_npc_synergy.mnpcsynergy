@@ -1,0 +1,838 @@
+include "helix/game system data/fruit/npc/npcsynergy.fruit"
+include "helix/game system data/juice/legend/legendranks.mlegendrank"
+include "helix/game system data/juice/npc/ash_hiredgundroid.mnpc"
+include "helix/game system data/juice/npc/ash_ms613_ashigahenchman.mnpc"
+include "helix/game system data/juice/npc/ash_myrmite.mnpc"
+include "helix/game system data/juice/npc/ash_myrmitrix.mnpc"
+include "helix/game system data/juice/npc/civ_combatant.mnpc"
+include "helix/game system data/juice/npc/cri_commando.mnpc"
+include "helix/game system data/juice/npc/cri_enforcer.mnpc"
+include "helix/game system data/juice/npc/cri_hiredgundroid.mnpc"
+include "helix/game system data/juice/npc/cri_hiredgunlight.mnpc"
+include "helix/game system data/juice/npc/emp_deathtrooper.mnpc"
+include "helix/game system data/juice/npc/emp_heavytrooper.mnpc"
+include "helix/game system data/juice/npc/emp_officer.mnpc"
+include "helix/game system data/juice/npc/emp_probedroid.mnpc"
+include "helix/game system data/juice/npc/emp_scouttrooper_commander.mnpc"
+include "helix/game system data/juice/npc/emp_scouttrooper_no_speeder.mnpc"
+include "helix/game system data/juice/npc/emp_stormtrooper.mnpc"
+include "helix/game system data/juice/npc/emp_stormtrooper_commander.mnpc"
+include "helix/game system data/juice/npc/hut_beastmaster.mnpc"
+include "helix/game system data/juice/npc/hut_enforcer.mnpc"
+include "helix/game system data/juice/npc/hut_hiredgundroid.mnpc"
+include "helix/game system data/juice/npc/hut_hiredgunlight.mnpc"
+include "helix/game system data/juice/npc/pir_hiredgundroid.mnpc"
+include "helix/game system data/juice/npc/pir_hiredgunheavy.mnpc"
+include "helix/game system data/juice/npc/pir_hiredgunlight.mnpc"
+include "helix/game system data/juice/npc/pir_hiredgunlight_on_vehicle.mnpc"
+include "helix/game system data/juice/npc/pyk_assault.mnpc"
+include "helix/game system data/juice/npc/pyk_hiredgundroid.mnpc"
+include "helix/game system data/juice/npc/pyk_hiredgunheavy.mnpc"
+include "helix/game system data/juice/npc/pyk_hiredgunlight.mnpc"
+include "helix/game system data/juice/npc/pyk_leader.mnpc"
+include "helix/game system data/juice/npc/pyk_ms005_pykehenchman.mnpc"
+include "helix/game system data/juice/npc/pyk_ms307_injuredpyke.mnpc"
+include "helix/game system data/juice/npc/pyk_sentinel.mnpc"
+include "helix/game system data/juice/npc/wl_massiff.mnpc"
+include "helix/game system data/juice/npc/wl_sammakho.mnpc"
+include "helix/game system data/juice/npc/wl_tshikara.mnpc"
+include "helix/game system data/juice/npc/zer_hiredgundroid.mnpc"
+include "helix/game system data/juice/rbtags/living_world_activities_binary_tags.mrbtagsbinarytags"
+
+NPCSynergy pirate_npc_synergy < uid=5C148C4665DF0826000001169EF2CE06 >
+{
+	myCoreMembers
+	{
+	}
+	myFillerMember
+	{
+		myPossibleLoadouts
+		{
+			NPCSynergyWeightedLoadout pistols
+			{
+				myLoadout < uid=5C148C4665DF28FE0009BE719B186825 > = HiredGun_Light_Pistol_Standard 4171A7E16523FB4C00010E15851176BF
+				myWeight 1.0
+			}
+		}
+		myNPC < uid=5C148C4665DF08260000011AAD9D018B > = pir_hiredgunlight 4171A7E1647DE85D00176C5B3AE4FAEA
+		myWeight 1.0
+	}
+	myMaxAmount 10
+	myFaction 16DEADE65F7DDA76000000C9CB7D6D62
+	myMinLegendRank < uid=5C148C4665E0922F00013A4F7458D9D2 > = NULLREFERENCE
+	myMaxLegendRank < uid=5C148C4665E0922F00013A5074B5EF13 > = "Rank 7" 7110821464E3108000012749233D5F7A
+	myTags
+	{
+	}
+}
+
+NPCSynergy pirate_assault_light < uid=5C148C4665DF082600000166FB0B2A7E > : pirate_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember pirate_light
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout pistol_burst
+				{
+					myLoadout < uid=5C148C4665DF2AFD0009BE8106D9DC48 > = HiredGun_Light_Pistol_Burst 4171A7E16523FBD800005C850FF94E02
+					myWeight 1.0
+				}
+				NPCSynergyWeightedLoadout "pistol standard"
+				{
+					myLoadout < uid=5C148C4665DF550A0001612A683A24F7 > = HiredGun_Light_Pistol_Standard 4171A7E16523FB4C00010E15851176BF
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DF2AFD0009BE82AE3562A3 > = pir_hiredgunlight 4171A7E1647DE85D00176C5B3AE4FAEA
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myMaxLegendRank < uid=5C148C4665E0928100013A7253137E07 > = "Rank 3" 6F2AF91960A4B4370000002F74175A33
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=5C148C4665E0922F00013A51EAC37891 > = Faction_DynamicFireteam 616F4596656718720004B92DC03BB4A4
+		RBTagsTag "lwen patrol" < uid=5C148C4665E0922F00013A5283D2C444 > = lwen_PatrolTag 2AE2EC8565733841000E925634831E68
+		RBTagsTag "lwen skirmish" < uid=5C148C4665E0922F00013A5331F60BA5 > = lwen_SkirmishTag 2AE2EC85657338C0000E925A62874336
+		RBTagsTag "lwen guard" < uid=5C148C4665E0922F00013A54EAE0B7FF > = lwen_GuardTag 2AE2EC85657338EC000E925C2351F401
+		RBTagsTag "lwen ambush" < uid=5C148C4665E0922F00013A551B165DC2 > = lwen_AmbushTag 2AE2EC8565733900000E925EEEFFCA0E
+		RBTagsTag "lwen npc in danger" < uid=5C148C4665E0922F00013A560EF34A00 > = lwen_NpcInDangerTag 2AE2EC8565733917000E9260991B289F
+		RBTagsTag "lwen smuggler pod" < uid=5C148C4665E0922F00013A586069C213 > = lwev_SmugglerPodTag 2AE2EC8565734188000E926E1BAEF93E
+		RBTagsTag EmpireRaid < uid=2AE2EC85662BC3F3000C810894B22D2A > = lwev_EmpireRaidTag 2AE2EC856573414B000E926AB46DAA37
+	}
+}
+
+NPCSynergy pirate_assault_default < uid=5C148C4665DF28FE0009BE72DE34CBEF > : pirate_assault_light
+{
+	myCoreMembers
+	{
+		NPCSynergyMember pirate_light
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout Rifle
+				{
+					myLoadout < uid=5C148C4665DF2AFD0009BE8302767061 > = HiredGun_Light_Rifle 2736B365635FFEE10003D5FB83ED4064
+					myWeight 1.0
+				}
+				NPCSynergyWeightedLoadout pistol
+				{
+					myLoadout < uid=5C148C4665DF2AFD0009BE84C4C2EB2D > = HiredGun_Light_Pistol_Burst 4171A7E16523FBD800005C850FF94E02
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DF2AFD0009BE850C315461 > = pir_hiredgunlight 4171A7E1647DE85D00176C5B3AE4FAEA
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myMinLegendRank < uid=5C148C4665E092A700013A73D205B156 > = "Rank 3" 6F2AF91960A4B4370000002F74175A33
+	myMaxLegendRank < uid=5C148C4665E092A700013A74B881BA2A > = "Rank 7" 7110821464E3108000012749233D5F7A
+}
+
+NPCSynergy pirate_assault_extd < uid=5C148C4665DF0D740007BD015DAC2C24 > : pirate_assault_default
+{
+	myFillerMember
+	{
+		myPossibleLoadouts
+		{
+			NPCSynergyWeightedLoadout pistols
+			{
+				myLoadout < uid=5C148C4665DF48010009BEA2576ABBCF > = HiredGun_Light_Pistol_Standard 4171A7E16523FB4C00010E15851176BF
+				myWeight 1.0
+			}
+			NPCSynergyWeightedLoadout rifle
+			{
+				myLoadout < uid=5C148C4665DF48010009BEA321226DB0 > = HiredGun_Light_Rifle 2736B365635FFEE10003D5FB83ED4064
+				myWeight 1.0
+			}
+		}
+		myNPC < uid=5C148C4665DF48010009BEA44C617D47 > = pir_hiredgunlight 4171A7E1647DE85D00176C5B3AE4FAEA
+		myAlwaysAdd FALSE
+		myWeight 1.0
+	}
+	myMinLegendRank < uid=5C148C4665E092A700013A75C4D70DEA > = "Rank 7" 7110821464E3108000012749233D5F7A
+	myMaxLegendRank < uid=5C148C4665E092A700013A760CFCB031 > = "Rank 15" 7110821464E310CC000127514565BDA3
+}
+
+NPCSynergy pirate_assault_assault < uid=5C148C4665DF10D300085C32F1B52416 > : pirate_assault_default
+{
+	myCoreMembers
+	{
+		NPCSynergyMember pirate_light
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout Rifle
+				{
+					myLoadout < uid=5C148C4665DF2BD10009BE8609140F3E > = HiredGun_Light_Rifle 2736B365635FFEE10003D5FB83ED4064
+					myWeight 0.5
+				}
+				NPCSynergyWeightedLoadout pistol
+				{
+					myLoadout < uid=5C148C4665DF2BD10009BE87B8508305 > = HiredGun_Light_Pistol_Burst 4171A7E16523FBD800005C850FF94E02
+					myWeight 0.5
+				}
+			}
+			myNPC < uid=5C148C4665DF2BD10009BE886B188CA1 > = pir_hiredgunlight 4171A7E1647DE85D00176C5B3AE4FAEA
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember pirate_light
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout Rifle
+				{
+					myLoadout < uid=5C148C4665DF2BD10009BE89ED0C4FFF > = HiredGun_Light_Rifle 2736B365635FFEE10003D5FB83ED4064
+					myWeight 0.5
+				}
+				NPCSynergyWeightedLoadout pistol
+				{
+					myLoadout < uid=5C148C4665DF2BD10009BE8A44C8C09F > = HiredGun_Light_Pistol_Burst 4171A7E16523FBD800005C850FF94E02
+					myWeight 0.5
+				}
+			}
+			myNPC < uid=5C148C4665DF2BD10009BE8B78BC2BA8 > = pir_hiredgunlight 4171A7E1647DE85D00176C5B3AE4FAEA
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myFillerMember
+	{
+		myPossibleLoadouts
+		{
+			NPCSynergyWeightedLoadout Rifle
+			{
+				myLoadout < uid=5C148C4665DF49D60009BEAC900E244F > = HiredGun_Light_Rifle 2736B365635FFEE10003D5FB83ED4064
+				myWeight 1.0
+			}
+		}
+	}
+	myMinLegendRank < uid=5C148C4665E0937500013A77F38C3FF9 > = "Rank 15" 7110821464E310CC000127514565BDA3
+	myMaxLegendRank < uid=5C148C4665E0937500013A7846699B48 > = "Rank 20" 7110821464E310E10001275686AD600A
+}
+
+NPCSynergy pirate_sentry_default < uid=5C148C4665DF10EC0008662CCFDF6344 > : pirate_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember "Heavy pirate"
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout GrenadeLauncher
+				{
+					myLoadout < uid=5C148C4665DF2D170009BE8CD76EDD9A > = HiredGun_Heavy_GrenadeLauncher 2736B365635FFEEB0003D604B4757FDC
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DF2D170009BE8D5892033F > = pir_hiredgunheavy 4171A7E1647DE89500176C670DEC63C2
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myMinLegendRank < uid=5C148C4665E0937500013A793AAD7632 > = "Rank 3" 6F2AF91960A4B4370000002F74175A33
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=5C148C4665E0922F00013A5C32DA60DE > = Faction_DynamicFireteam 616F4596656718720004B92DC03BB4A4
+		RBTagsTag "lwen patrol" < uid=5C148C4665E0922F00013A5D383471E7 > = lwen_PatrolTag 2AE2EC8565733841000E925634831E68
+		RBTagsTag "lwen skirmish" < uid=5C148C4665E0922F00013A5E19454D76 > = lwen_SkirmishTag 2AE2EC85657338C0000E925A62874336
+		RBTagsTag "lwen guard" < uid=5C148C4665E0922F00013A5F6FBEB328 > = lwen_GuardTag 2AE2EC85657338EC000E925C2351F401
+		RBTagsTag "lwen ambush" < uid=5C148C4665E0922F00013A608E83F291 > = lwen_AmbushTag 2AE2EC8565733900000E925EEEFFCA0E
+		RBTagsTag "lwen npc in danger" < uid=5C148C4665E0922F00013A6115A311EF > = lwen_NpcInDangerTag 2AE2EC8565733917000E9260991B289F
+		RBTagsTag "lwen wandering vendor escort" < uid=5C148C4665E0922F00013A6226BEC0D0 > = lwen_WanderingVendorEscortTag 2AE2EC856573393F000E9262F26E528F
+		RBTagsTag "lwen smuggler pod" < uid=5C148C4665E0922F00013A63BC0310DC > = lwev_SmugglerPodTag 2AE2EC8565734188000E926E1BAEF93E
+		RBTagsTag "lwen Borderguard" < uid=5C148C4665E0922F00013A66F0CCD605 > = lwev_BorderGuardTag 2AE2EC8565DDFAF200069FF9002BD6A7
+	}
+}
+
+NPCSynergy pirate_sentry_extd < uid=5C148C4665DF28230009BE6CD4B74B42 > : pirate_sentry_default
+{
+	myFillerMember
+	{
+		myPossibleLoadouts
+		{
+			NPCSynergyWeightedLoadout pistols
+			{
+				myLoadout < uid=5C148C4665DF49000009BEA5771BBF61 > = HiredGun_Light_Pistol_Standard 4171A7E16523FB4C00010E15851176BF
+				myWeight 1.0
+			}
+			NPCSynergyWeightedLoadout rifle
+			{
+				myLoadout < uid=5C148C4665DF49000009BEA675ADC68E > = HiredGun_Light_Rifle 2736B365635FFEE10003D5FB83ED4064
+				myWeight 1.0
+			}
+		}
+	}
+	myMinLegendRank < uid=5C148C4665E0937500013A7AD339346E > = "Rank 7" 7110821464E3108000012749233D5F7A
+	myMaxLegendRank < uid=5C148C4665E0937500013A7B41D8AA07 > = "Rank 15" 7110821464E310CC000127514565BDA3
+}
+
+NPCSynergy pirate_sentry_pusher < uid=5C148C4665DF28500009BE6E57A25970 > : pirate_sentry_default
+{
+	myCoreMembers
+	{
+		NPCSynergyMember "Heavy pirate"
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout GrenadeLauncher
+				{
+					myLoadout < uid=5C148C4665DF2D170009BE8E5A5CFC8A > = HiredGun_Heavy_GrenadeLauncher 2736B365635FFEEB0003D604B4757FDC
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DF2D170009BE8FC3247D02 > = pir_hiredgunheavy 4171A7E1647DE89500176C670DEC63C2
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember Droid
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout "Rifle + Shield"
+				{
+					myLoadout < uid=5C148C4665DF2D170009BE906207EAF1 > = HiredGun_Droid_Rifle_Shield 85F4BAC2657335D4000DE18C54C71E8D
+					myWeight 1.0
+				}
+				NPCSynergyWeightedLoadout Shotgun
+				{
+					myLoadout < uid=5C148C4665DF2D170009BE91AA449675 > = HiredGun_Droid_Shotgun 4171A7E1656893F600006A3B89B4DE2A
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DF2D170009BE921741971B > = pir_hiredgundroid 4171A7E1647DE87D00176C65A0E78D8F
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myFillerMember
+	{
+		myPossibleLoadouts
+		{
+			NPCSynergyWeightedLoadout Rifle
+			{
+				myLoadout < uid=5C148C4665DF497F0009BEA9AA56FB4B > = HiredGun_Light_Rifle 2736B365635FFEE10003D5FB83ED4064
+				myWeight 1.0
+			}
+		}
+	}
+	myMinLegendRank < uid=5C148C4665E0937500013A7C4B61CAAF > = "Rank 15" 7110821464E310CC000127514565BDA3
+	myMaxLegendRank < uid=5C148C4665E0937500013A7D1A2C3917 > = "Rank 20" 7110821464E310E10001275686AD600A
+}
+
+NPCSynergy pirate_sentry_sentry < uid=5C148C4665DF28590009BE6F7A869F95 > : pirate_sentry_default
+{
+	myCoreMembers
+	{
+		NPCSynergyMember "Heavy pirate"
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout GrenadeLauncher
+				{
+					myLoadout < uid=5C148C4665DF2E130009BE93F76D349C > = HiredGun_Heavy_GrenadeLauncher 2736B365635FFEEB0003D604B4757FDC
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DF2E130009BE94AA6018E2 > = pir_hiredgunheavy 4171A7E1647DE89500176C670DEC63C2
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "Heavy pirate"
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout GrenadeLauncher
+				{
+					myLoadout < uid=5C148C4665DF2E130009BE952419C4E5 > = HiredGun_Heavy_GrenadeLauncher 2736B365635FFEEB0003D604B4757FDC
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DF2E130009BE963FFB7632 > = pir_hiredgunheavy 4171A7E1647DE89500176C670DEC63C2
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myFillerMember
+	{
+		myPossibleLoadouts
+		{
+			NPCSynergyWeightedLoadout Rifle
+			{
+				myLoadout < uid=5C148C4665DF499E0009BEAB75930E3F > = HiredGun_Light_Rifle 2736B365635FFEE10003D5FB83ED4064
+				myWeight 1.0
+			}
+		}
+	}
+	myMinLegendRank < uid=5C148C4665E0937500013A7E00ACE478 > = "Rank 15" 7110821464E310CC000127514565BDA3
+	myMaxLegendRank < uid=5C148C4665E0937500013A7F84A0FEF8 > = "Rank 20" 7110821464E310E10001275686AD600A
+}
+
+NPCSynergy pirate_pusher_default < uid=5C148C4665DF117E00089CE634E64880 > : pirate_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Pusher
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout Rifle
+				{
+					myLoadout < uid=5C148C4665DF39030009BE980BA1D75A > = HiredGun_Droid_Rifle 2736B365635FFEFF0003D606704FA761
+					myWeight 1.0
+				}
+				NPCSynergyWeightedLoadout Shotgun
+				{
+					myLoadout < uid=5C148C4665DF39030009BE99E1750427 > = HiredGun_Droid_Shotgun 4171A7E1656893F600006A3B89B4DE2A
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DF2E960009BE97A1AC6C85 > = pir_hiredgundroid 4171A7E1647DE87D00176C65A0E78D8F
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myMinLegendRank < uid=5C148C4665E0937500013A80C1D16871 > = "Rank 3" 6F2AF91960A4B4370000002F74175A33
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=5C148C4665E0922F00013A6754EDBD30 > = Faction_DynamicFireteam 616F4596656718720004B92DC03BB4A4
+		RBTagsTag "lwen patrol" < uid=5C148C4665E0922F00013A68523BB5C8 > = lwen_PatrolTag 2AE2EC8565733841000E925634831E68
+		RBTagsTag "lwen skirmish" < uid=5C148C4665E0922F00013A6953CA6D2C > = lwen_SkirmishTag 2AE2EC85657338C0000E925A62874336
+		RBTagsTag "lwen guard" < uid=5C148C4665E0922F00013A6AC520E5AE > = lwen_GuardTag 2AE2EC85657338EC000E925C2351F401
+		RBTagsTag "lwen ambush" < uid=5C148C4665E0922F00013A6BFC1DC407 > = lwen_AmbushTag 2AE2EC8565733900000E925EEEFFCA0E
+		RBTagsTag "lwen npc in danger" < uid=5C148C4665E0922F00013A6C7307BBB9 > = lwen_NpcInDangerTag 2AE2EC8565733917000E9260991B289F
+		RBTagsTag "lwen wandering vendor escort" < uid=5C148C4665E0922F00013A6D73A41BF8 > = lwen_WanderingVendorEscortTag 2AE2EC856573393F000E9262F26E528F
+		RBTagsTag "lwen smuggler pod" < uid=5C148C4665E0922F00013A6EB16B8DB7 > = lwev_SmugglerPodTag 2AE2EC8565734188000E926E1BAEF93E
+		RBTagsTag "lwen Borderguard" < uid=5C148C4665E0922F00013A71BEF85A5A > = lwev_BorderGuardTag 2AE2EC8565DDFAF200069FF9002BD6A7
+	}
+}
+
+NPCSynergy pirate_pusher_extd < uid=5C148C4665DF28330009BE6DB0A7E6A7 > : pirate_pusher_default
+{
+	myFillerMember
+	{
+		myPossibleLoadouts
+		{
+			NPCSynergyWeightedLoadout pistols
+			{
+				myLoadout < uid=5C148C4665DF492C0009BEA747D06A66 > = HiredGun_Light_Pistol_Standard 4171A7E16523FB4C00010E15851176BF
+				myWeight 1.0
+			}
+			NPCSynergyWeightedLoadout Rifle
+			{
+				myLoadout < uid=5C148C4665DF492C0009BEA8001CAC9E > = HiredGun_Light_Rifle 2736B365635FFEE10003D5FB83ED4064
+				myWeight 1.0
+			}
+		}
+	}
+	myMinLegendRank < uid=5C148C4665E0937500013A81BA4E15DD > = "Rank 7" 7110821464E3108000012749233D5F7A
+	myMaxLegendRank < uid=5C148C4665E0937500013A82DDA6A9C8 > = "Rank 15" 7110821464E310CC000127514565BDA3
+}
+
+NPCSynergy pirate_pusher_pusher < uid=5C148C4665DF28620009BE70140526DC > : pirate_pusher_default
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Pusher
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout Rifle+Shield
+				{
+					myLoadout < uid=5C148C4665DF3B7C0009BE9A05DBB4DD > = HiredGun_Droid_Rifle_Shield 85F4BAC2657335D4000DE18C54C71E8D
+					myWeight 1.0
+				}
+				NPCSynergyWeightedLoadout Shotgun
+				{
+					myLoadout < uid=5C148C4665DF3B7C0009BE9BC7D138A7 > = HiredGun_Droid_Shotgun 4171A7E1656893F600006A3B89B4DE2A
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DF3B7C0009BE9CC2CF3C00 > = pir_hiredgundroid 4171A7E1647DE87D00176C65A0E78D8F
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember Pusher
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout Rifle+Shield
+				{
+					myLoadout < uid=5C148C4665DF3B7C0009BE9D8BD24C42 > = HiredGun_Droid_Rifle_Shield 85F4BAC2657335D4000DE18C54C71E8D
+					myWeight 1.0
+				}
+				NPCSynergyWeightedLoadout Shotgun
+				{
+					myLoadout < uid=5C148C4665DF3B7C0009BE9E53777CB9 > = HiredGun_Droid_Shotgun 4171A7E1656893F600006A3B89B4DE2A
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DF3B7C0009BE9F1D2D6270 > = pir_hiredgundroid 4171A7E1647DE87D00176C65A0E78D8F
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myFillerMember
+	{
+		myPossibleLoadouts
+		{
+			NPCSynergyWeightedLoadout Rifle
+			{
+				myLoadout < uid=5C148C4665DF497F0009BEAAB1D4C139 > = HiredGun_Light_Rifle 2736B365635FFEE10003D5FB83ED4064
+				myWeight 1.0
+			}
+		}
+	}
+	myMinLegendRank < uid=5C148C4665E0937500013A835E72DBBA > = "Rank 15" 7110821464E310CC000127514565BDA3
+	myMaxLegendRank < uid=5C148C4665E0937500013A8414AAA2E5 > = "Rank 20" 7110821464E310E10001275686AD600A
+}
+
+NPCSynergy pirate_Fallback < uid=5C148C4665DF082600000124E3B2B5A1 > : pirate_assault_extd
+{
+	myMinLegendRank < uid=5C148C4665E0937500013A85DE80BD50 > = NULLREFERENCE
+	myMaxLegendRank < uid=5C148C4665E0937500013A863680A7A1 > = NULLREFERENCE
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=5C148C4665E085E700092CEABE06AAD2 > = Faction_DynamicFireteam 616F4596656718720004B92DC03BB4A4
+		RBTagsTag "lwen Fallback" < uid=5C148C4665E085E700092CEB66745D52 > = lwev_FallbackTag 2AE2EC8565A7EBB8000642D39BA283AE
+	}
+}
+
+NPCSynergy Pirate_BorderGuards < uid=5C148C4665DF082600000175DDF45505 > : pirate_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Pirate_light
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout pistol
+				{
+					myLoadout < uid=5C148C4665DF3C1A0009BEA0A6B972E9 > = HiredGun_Light_Pistol_Burst 4171A7E16523FBD800005C850FF94E02
+				}
+			}
+			myNPC < uid=5C148C4665DF3C1A0009BEA1BF108A20 > = pir_hiredgunlight 4171A7E1647DE85D00176C5B3AE4FAEA
+		}
+	}
+	myMaxLegendRank < uid=5C148C4665E0937E00013A87FEE705C0 > = "Rank 20" 7110821464E310E10001275686AD600A
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=5C148C4665E085E700092CECD2C04250 > = Faction_DynamicFireteam 616F4596656718720004B92DC03BB4A4
+		RBTagsTag "lwen Borderguard" < uid=5C148C4665E085E700092CED50C6D890 > = lwev_BorderGuardTag 2AE2EC8565DDFAF200069FF9002BD6A7
+	}
+}
+
+NPCSynergy Pirate_Defend_Civ_Small_OnFoot < uid=616F4596661D3B7D005B09641C433AF5 > : pirate_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember "New NPCSynergyMember_1"
+		{
+			myNPC < uid=616F4596661D463D005B0B39462F9DEE > = pir_hiredgunlight 4171A7E1647DE85D00176C5B3AE4FAEA
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "New NPCSynergyMember_2"
+		{
+			myNPC < uid=616F459666291D980003132821727907 > = pir_hiredgunlight 4171A7E1647DE85D00176C5B3AE4FAEA
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myFillerMember
+	{
+		myNPC < uid=616F4596661E402C00345DA411C1A454 > = pir_hiredgunlight 4171A7E1647DE85D00176C5B3AE4FAEA
+	}
+	myMaxAmount 2
+	myMaxLegendRank < uid=616F4596661D3CDA005B099EF4AFEDD3 > = "Rank 20" 7110821464E310E10001275686AD600A
+}
+
+NPCSynergy Pirate_Defend_Civ_Medium_OnFoot < uid=616F4596661D3BA2005B0965C413AC84 > : pirate_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember "New NPCSynergyMember_1"
+		{
+			myNPC < uid=616F4596661D463D005B0B3A7A082A57 > = pir_hiredgunlight 4171A7E1647DE85D00176C5B3AE4FAEA
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "New NPCSynergyMember_2"
+		{
+			myNPC < uid=616F459666291D9800031329281CB369 > = pir_hiredgunlight 4171A7E1647DE85D00176C5B3AE4FAEA
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "New NPCSynergyMember_3"
+		{
+			myNPC < uid=616F459666291D980003132AC0C02058 > = pir_hiredgunlight 4171A7E1647DE85D00176C5B3AE4FAEA
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "New NPCSynergyMember_4"
+		{
+			myNPC < uid=616F459666291D980003132BC921B7F0 > = pir_hiredgunlight 4171A7E1647DE85D00176C5B3AE4FAEA
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myFillerMember
+	{
+		myNPC < uid=616F4596661E402C00345DA520CAD6D5 > = pir_hiredgunlight 4171A7E1647DE85D00176C5B3AE4FAEA
+	}
+	myMaxAmount 4
+	myMaxLegendRank < uid=616F4596661D3CDA005B099F29B90F03 > = "Rank 20" 7110821464E310E10001275686AD600A
+}
+
+NPCSynergy Pirate_Defend_Civ_Large_OnFoot < uid=616F4596661D3BB1005B0966BBF4F153 > : pirate_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember "New NPCSynergyMember_1"
+		{
+			myNPC < uid=616F4596661D463D005B0B3BB8EC17ED > = pir_hiredgunlight 4171A7E1647DE85D00176C5B3AE4FAEA
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "New NPCSynergyMember_2"
+		{
+			myNPC < uid=616F459666291DFE000313514B31F654 > = pir_hiredgunlight 4171A7E1647DE85D00176C5B3AE4FAEA
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "New NPCSynergyMember_3"
+		{
+			myNPC < uid=616F459666291DFE000313529E5ADA56 > = pir_hiredgunlight 4171A7E1647DE85D00176C5B3AE4FAEA
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "New NPCSynergyMember_4"
+		{
+			myNPC < uid=616F459666291DFE0003135328A5B12F > = pir_hiredgunlight 4171A7E1647DE85D00176C5B3AE4FAEA
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "New NPCSynergyMember_5"
+		{
+			myNPC < uid=616F459666291DFE00031354C24BC80C > = pir_hiredgunlight 4171A7E1647DE85D00176C5B3AE4FAEA
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "New NPCSynergyMember_6"
+		{
+			myNPC < uid=616F459666291DFE00031355060C0547 > = pir_hiredgunlight 4171A7E1647DE85D00176C5B3AE4FAEA
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myFillerMember
+	{
+		myNPC < uid=616F4596661E617700149974A47B5DFE > = pir_hiredgunlight 4171A7E1647DE85D00176C5B3AE4FAEA
+	}
+	myMaxAmount 6
+	myMaxLegendRank < uid=616F4596661D3CDA005B09A0F50BE557 > = "Rank 20" 7110821464E310E10001275686AD600A
+}
+
+NPCSynergy Pirate_Defend_Civ_Small_OnSpeeder < uid=616F4596661D3BF2005B099B58F0A772 > : pirate_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember "New NPCSynergyMember_1"
+		{
+			myNPC < uid=616F4596661D468E005B0B5640EBC26A > = pir_hiredgunlight_on_vehicle 91DC5D3C6480456A00013A7E7AC940E8
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "New NPCSynergyMember_2"
+		{
+			myNPC < uid=616F459666291D980003132C7B295592 > = pir_hiredgunlight_on_vehicle 91DC5D3C6480456A00013A7E7AC940E8
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myFillerMember
+	{
+		myNPC < uid=616F4596661E617700149975E5BE1C20 > = pir_hiredgunlight_on_vehicle 91DC5D3C6480456A00013A7E7AC940E8
+	}
+	myMaxAmount 2
+	myMaxLegendRank < uid=616F4596661D3CDA005B09A14887548E > = "Rank 20" 7110821464E310E10001275686AD600A
+}
+
+NPCSynergy Pirate_Defend_Civ_Medium_OnSpeeder < uid=616F4596661D3C02005B099CD0E191E2 > : pirate_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember "New NPCSynergyMember_1"
+		{
+			myNPC < uid=616F4596661D468E005B0B57B6D32F70 > = pir_hiredgunlight_on_vehicle 91DC5D3C6480456A00013A7E7AC940E8
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "New NPCSynergyMember_2"
+		{
+			myNPC < uid=616F459666291D980003132DB6632665 > = pir_hiredgunlight_on_vehicle 91DC5D3C6480456A00013A7E7AC940E8
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "New NPCSynergyMember_3"
+		{
+			myNPC < uid=616F459666291D980003132E77601211 > = pir_hiredgunlight_on_vehicle 91DC5D3C6480456A00013A7E7AC940E8
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "New NPCSynergyMember_4"
+		{
+			myNPC < uid=616F459666291D980003132FB33AB53A > = pir_hiredgunlight_on_vehicle 91DC5D3C6480456A00013A7E7AC940E8
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myFillerMember
+	{
+		myNPC < uid=616F4596661E6177001499767F3286D0 > = pir_hiredgunlight_on_vehicle 91DC5D3C6480456A00013A7E7AC940E8
+	}
+	myMaxAmount 4
+	myMaxLegendRank < uid=616F4596661D3CDA005B09A2C3CDE938 > = "Rank 20" 7110821464E310E10001275686AD600A
+}
+
+NPCSynergy Pirate_Defend_Civ_Large_OnSpeeder < uid=616F4596661D3C12005B099D8846AEE6 > : pirate_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember "New NPCSynergyMember_1"
+		{
+			myNPC < uid=616F4596661D468E005B0B58C4BEEB5B > = pir_hiredgunlight_on_vehicle 91DC5D3C6480456A00013A7E7AC940E8
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "New NPCSynergyMember_2"
+		{
+			myNPC < uid=616F459666291D9800031330828EE30A > = pir_hiredgunlight 4171A7E1647DE85D00176C5B3AE4FAEA
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "New NPCSynergyMember_3"
+		{
+			myNPC < uid=616F459666291D98000313312D71AD30 > = pir_hiredgunlight_on_vehicle 91DC5D3C6480456A00013A7E7AC940E8
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "New NPCSynergyMember_4"
+		{
+			myNPC < uid=616F459666291D98000313325AF6C215 > = pir_hiredgunlight_on_vehicle 91DC5D3C6480456A00013A7E7AC940E8
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "New NPCSynergyMember_5"
+		{
+			myNPC < uid=616F459666291D98000313333C033F14 > = pir_hiredgunlight_on_vehicle 91DC5D3C6480456A00013A7E7AC940E8
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "New NPCSynergyMember_6"
+		{
+			myNPC < uid=616F459666291D9800031334C9601D2D > = pir_hiredgunlight_on_vehicle 91DC5D3C6480456A00013A7E7AC940E8
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myFillerMember
+	{
+		myNPC < uid=616F4596661E6177001499771AC9F86C > = pir_hiredgunlight_on_vehicle 91DC5D3C6480456A00013A7E7AC940E8
+	}
+	myMaxAmount 6
+	myMaxLegendRank < uid=616F4596661D3CDA005B09A322ED2755 > = "Rank 20" 7110821464E310E10001275686AD600A
+}
+
+NPCSynergy Pirate_FactionRaid_Legend_0_To_15 < uid=2AE2EC856634CFF3000BB2619534E641 > : pirate_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Droid
+		{
+			myNPC < uid=2AE2EC856634D11F000BB2963EC4D5AA > = pir_hiredgundroid 4171A7E1647DE87D00176C65A0E78D8F
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember Heavy
+		{
+			myNPC < uid=2AE2EC856634D11F000BB2978BDB75D8 > = pir_hiredgunheavy 4171A7E1647DE89500176C670DEC63C2
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember Droid
+		{
+			myNPC < uid=2AE2EC856634D11F000BB298E6D9BB26 > = pir_hiredgundroid 4171A7E1647DE87D00176C65A0E78D8F
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember Heavy
+		{
+			myNPC < uid=2AE2EC856634D11F000BB2999AC0990D > = pir_hiredgunheavy 4171A7E1647DE89500176C670DEC63C2
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myFillerMember
+	{
+		myPossibleLoadouts
+		{
+		}
+		myNPC < uid=5C148C4665DF08260000011AAD9D018B > = pir_assault 16DEADE660577A580000008663843CE8
+		myWeight 1.0
+	}
+	myMaxLegendRank < uid=2AE2EC856634D11F000BB29CF9BF27BE > = "Rank 15" 7110821464E310CC000127514565BDA3
+	myTags
+	{
+		RBTagsTag "Faction Raid" < uid=2AE2EC856634D357000000CB176ACA21 > = lwev_FactionAttackTag 2AE2EC8565734166000E926C72372B71
+	}
+}
+
+NPCSynergy Pirate_FactionRaid_Legend_15_Plus < uid=2AE2EC856634D33F000000C96C06F371 > : Pirate_FactionRaid_Legend_0_To_15
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Droid
+		{
+			myNPC < uid=2AE2EC856634D11F000BB2963EC4D5AA > = pir_hiredgundroid 4171A7E1647DE87D00176C65A0E78D8F
+			myAlwaysAdd TRUE
+		}
+		NPCSynergyMember Heavy
+		{
+			myNPC < uid=2AE2EC856634D11F000BB2978BDB75D8 > = pir_hiredgunheavy 4171A7E1647DE89500176C670DEC63C2
+			myAlwaysAdd TRUE
+		}
+		NPCSynergyMember Droid
+		{
+			myNPC < uid=2AE2EC856634D11F000BB298E6D9BB26 > = pir_hiredgundroid 4171A7E1647DE87D00176C65A0E78D8F
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember Heavy
+		{
+			myNPC < uid=2AE2EC856634D11F000BB2999AC0990D > = pir_hiredgunheavy 4171A7E1647DE89500176C670DEC63C2
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "Heavy 50% chance"
+		{
+			myNPC < uid=2AE2EC856634D11F000BB29A82B1667A > = pir_hiredgunheavy 4171A7E1647DE89500176C670DEC63C2
+			myWeight 0.5
+		}
+	}
+	myFillerMember
+	{
+		myPossibleLoadouts
+		{
+		}
+		myNPC < uid=5C148C4665DF08260000011AAD9D018B > = pir_assault 16DEADE660577A580000008663843CE8
+		myWeight 1.0
+	}
+	myMinLegendRank < uid=2AE2EC856634D393000000CC5CE2CFA0 > = "Rank 15" 7110821464E310CC000127514565BDA3
+	myMaxLegendRank < uid=2AE2EC856634D393000000CD07242236 > = "Rank 20" 7110821464E310E10001275686AD600A
+}
+

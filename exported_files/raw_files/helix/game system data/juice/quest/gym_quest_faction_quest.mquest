@@ -1,0 +1,51 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/mapref/mapref_quest_faction.mmapref"
+
+Quest gym_quest_faction_quest < uid=83E36AE3629735150000563272C6CA7F >
+{
+	myName "aurabesh = false, contextComment = \"Quest Name\", enabled = true, guid = #83E36AE36297351500005630EA155956, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"Faction Quest\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"Quest Description\", enabled = true, guid = #83E36AE362973515000056316A30AF97, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"Used to test how to start a faction quest with a reputation requirement\", type = \"MenuLine\""
+	myType Faction
+	myMapRefConstantData < uid=83E36AE36297354D0000563904E9B928 > = mapref_quest_faction B581CAC862286A5500002779A0BF92D4
+	myIntroBeat < uid=83E36AE36297354D0000563ACF50CC22 >
+	{
+		myScript helix/scripts/gym_quest_faction_quest_intro_beat.mscript
+		myName "aurabesh = false, contextComment = \"Intro beat name\", enabled = true, guid = #83E36AE36297352600005634143C66A9, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 93, text = \"Quest Giver: Bartender\", type = \"MenuLine\""
+		myLevelInfo 5B075E3E5FFEC6FC0000003496B4E530
+		myObjectives
+		{
+			QuestObjectiveTalkTo "Talk To" < uid=83E36AE3629856920000335E91EAB57A >
+			{
+				myName "aurabesh = false, contextComment = \"Quest Objective\", enabled = true, guid = #83E36AE3629856930000335F023534BD, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 93, text = \"Talk To Civilian\", type = \"MenuLine\""
+			}
+		}
+		myQuestBeatStateGameValue < uid=83E36AE36297354D0000563B8306EA5C >
+		{
+		}
+		myIsHiddenInHUD TRUE
+		myIsHiddenInTracker TRUE
+	}
+	myBeats
+	{
+		QuestBeat "Beat 1" < uid=83E36AE36297356F0000563EC974BA72 >
+		{
+			myScript helix/scripts/gym_quest_faction_quest_beat_1.mscript
+			myName "aurabesh = false, contextComment = \"Quest Beat\", enabled = true, guid = #83E36AE3629735710000563F7D94FD0A, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 93, text = \"Faction Quest Beat\", type = \"MenuLine\""
+			myLevelInfo 5B075E3E5FFEC6FC0000003496B4E530
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Go To Location" < uid=83E36AE3629735AD000056417AFDA768 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective\", enabled = true, guid = #83E36AE3629735AF000056421636256F, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"Go To Location\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=83E36AE3629735C20000564429044D80 >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=83E36AE3629735150000563354A35A82 >
+	{
+	}
+}
+

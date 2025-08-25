@@ -1,0 +1,2356 @@
+include "helix/game system data/fruit/ai/npcplayerawareness.fruit"
+include "helix/game system data/juice/sound/stimuli/stim_id_civilian.mstimulusidentifier"
+include "helix/game system data/juice/sound/stimuli/stim_id_combat_npc.mstimulusidentifier"
+include "helix/game system data/juice/sound/stimuli/stim_id_dlc2_main.mstimulusidentifier"
+include "helix/game system data/juice/sound/stimuli/stim_id_e3.mstimulusidentifier"
+include "helix/game system data/juice/sound/stimuli/stim_id_encounter.mstimulusidentifier"
+include "helix/game system data/juice/sound/stimuli/stim_id_gamblers.mstimulusidentifier"
+include "helix/game system data/juice/sound/stimuli/stim_id_main_companions.mstimulusidentifier"
+include "helix/game system data/juice/sound/stimuli/stim_id_main_events.mstimulusidentifier"
+include "helix/game system data/juice/sound/stimuli/stim_id_quest.mstimulusidentifier"
+include "helix/game system data/juice/sound/stimuli/stim_id_space.mstimulusidentifier"
+include "helix/game system data/juice/sound/stimuli/stim_id_vendor.mstimulusidentifier"
+include "helix/game system data/juice/sound/stimuli/stimulusidentifiers.mstimulusidentifier"
+
+NPCPlayerAwarenessProfile VendorDefaultPlayerAwarenessProfile < uid=6F1DE9255AA2527C0000682F44295676 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState PlayerClose
+		{
+			myActivationRange 10.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=16DEADE6629D2A96000079724929B99A > = NULLREFERENCE
+				myIdleBarkStimulus < uid=16DEADE6629D2A960000797319C27CE3 > = NULLREFERENCE
+				myIdleBarkCooldown 13.0
+			}
+		}
+		NPCPlayerAwarenessState PlayerFar
+		{
+			myActivationRange 50.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=16DEADE6629D2A960000797417563EDA > = NULLREFERENCE
+				myIdleBarkStimulus < uid=16DEADE6629D2A960000797562A94398 > = NULLREFERENCE
+				myIdleBarkCooldown 7.0
+			}
+		}
+	}
+	myOnInteractStart
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myBarkStimulus < uid=16DEADE6629D2A96000079766648C33E > = NULLREFERENCE
+		}
+	}
+	myOnInteractEnd
+	{
+		myIsEnabled FALSE
+		myNonBehaviorConfig
+		{
+		}
+		myTimeUntilAttentionLost 10.0
+	}
+}
+
+NPCPlayerAwarenessProfile VendorInteriorPlayerAwarenessProfile < uid=E4123D27611B7407000018ACF257725A >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState PlayerClose
+		{
+			myActivationRange 6.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=16DEADE6629D2A96000079776C678E70 > = NULLREFERENCE
+				myIdleBarkStimulus < uid=16DEADE6629D2A9600007978CA61CDC8 > = NULLREFERENCE
+				myIdleBarkCooldown 27.0
+			}
+		}
+		NPCPlayerAwarenessState PlayerFar
+		{
+			myActivationRange 30.0
+		}
+	}
+	myOnInteractStart
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myBarkStimulus < uid=16DEADE6629D2A9600007979E2FCE29F > = NULLREFERENCE
+		}
+	}
+	myOnInteractEnd
+	{
+		myIsEnabled FALSE
+		myNonBehaviorConfig
+		{
+		}
+		myTimeUntilAttentionLost 10.0
+	}
+}
+
+NPCPlayerAwarenessProfile ContractGiverDefaultPlayerAwarenessProfile < uid=E4123D27611B6B9C0001DD4990743A3F >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState PlayerClose
+		{
+			myActivationRange 7.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=16DEADE6629D2A960000797AC28D9CCD > = NULLREFERENCE
+				myIdleBarkStimulus < uid=16DEADE6629D2A960000797B92C99EE2 > = NULLREFERENCE
+				myIdleBarkCooldown 37.0
+			}
+		}
+		NPCPlayerAwarenessState PlayerFar
+		{
+			myActivationRange 30.0
+		}
+	}
+	myOnInteractStart
+	{
+		myIsEnabled FALSE
+		myNonBehaviorConfig
+		{
+			myIdleBarkCooldown 31.0
+		}
+	}
+	myOnInteractEnd
+	{
+		myIsEnabled FALSE
+		myTimeUntilAttentionLost 10.0
+	}
+}
+
+NPCPlayerAwarenessProfile NPCDefaultPlayerAwarenessProfile < uid=E4123D27611B7807000008134A994FB8 >
+{
+}
+
+NPCPlayerAwarenessProfile Ambient_NPC < uid=E4123D276231E809000028BA21F1729C >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState PlayerClose
+		{
+			myActivationRange 5.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=16DEADE6629D2A960000797C56020EFE > = S_CIV_IdleIncidentalClose E4123D2762A7A5E700007B5245045C02
+				myIdleBarkStimulus < uid=16DEADE6629D2A960000797D53EFF6BB > = NULLREFERENCE
+				myIdleBarkCooldown 7.0
+			}
+			myAddPlayerAsNPCFocusPoint TRUE
+		}
+		NPCPlayerAwarenessState PlayerFar
+		{
+			myActivationRange 15.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=16DEADE6629D2A960000797EFD2A63FF > = S_CIV_IdleIncidentalDistant E4123D2762A7A62C00007B552C1A3C10
+				myIdleBarkStimulus < uid=16DEADE6629D2A960000797F23CACC36 > = NULLREFERENCE
+				myIdleBarkCooldown 7.0
+			}
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+	myOnInteractStart
+	{
+		myIsEnabled FALSE
+		myNonBehaviorConfig
+		{
+			myBarkStimulus < uid=16DEADE6629D2A960000798065F9434F > = NULLREFERENCE
+		}
+	}
+	myOnInteractEnd
+	{
+		myIsEnabled FALSE
+		myNonBehaviorConfig
+		{
+		}
+		myTimeUntilAttentionLost 10.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+}
+
+NPCPlayerAwarenessProfile AmbientDroid_NPC < uid=EBE060C264C92CBC00081DDA1B75F836 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState PlayerClose
+		{
+			myActivationRange 4.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D27659967A400023A5988E447E6 > = S_CIV_DroidIdleClose E4123D27659966BA00023A1AABD8D5DD
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState PlayerFar
+		{
+			myActivationRange 16.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D27659967A400023A5A63EEF9D5 > = S_CIV_DroidIdleDistant E4123D27659967BE00023A7A7EBC33C8
+				myIdleBarkStimulus < uid=E4123D27659967A400023A5B6BB3CD0B > = S_CIV_DroidIdleDistant E4123D27659967BE00023A7A7EBC33C8
+				myIdleBarkCooldown 7.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+	myOnInteractStart
+	{
+		myIsEnabled FALSE
+		myNonBehaviorConfig
+		{
+			myBarkStimulus < uid=EBE060C264C92CBC00081DDBAD9C5354 > = NULLREFERENCE
+		}
+	}
+	myOnInteractEnd
+	{
+		myIsEnabled FALSE
+		myNonBehaviorConfig
+		{
+		}
+		myTimeUntilAttentionLost 10.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityWhenNotInIdle FALSE
+}
+
+NPCPlayerAwarenessProfile Ambient_NPC_Jawa < uid=E4123D2765E1ADA10009F857F996991D >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState PlayerClose
+		{
+			myActivationRange 30.0
+			myBehavior ""
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2765E1ADA10009F85942D6FC70 > = S_CIV_IdleIncidentalClose E4123D2762A7A5E700007B5245045C02
+				myIdleBarkStimulus < uid=E4123D2765E1ADA10009F85AB31FCABD > = S_CIV_IdleIncidentalClose E4123D2762A7A5E700007B5245045C02
+				myIdleBarkCooldown 13.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+			mySetCameraLookAt FALSE
+		}
+		NPCPlayerAwarenessState PlayerFar
+		{
+			myActivationRange 80.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2765E1ADA10009F85D37AEC6A8 > = S_CIV_IdleIncidentalDistant E4123D2762A7A62C00007B552C1A3C10
+				myIdleBarkStimulus < uid=E4123D2765E1ADA10009F85E7AA9A8C2 > = S_CIV_IdleIncidentalDistant E4123D2762A7A62C00007B552C1A3C10
+				myIdleBarkCooldown 11.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+	myOnInteractStart
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myBarkStimulus < uid=E4123D2765E1ADA10009F85FE3A15546 > = NULLREFERENCE
+			myIdleBarkCooldown 60.0
+		}
+	}
+	myOnInteractEnd
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myBarkStimulus < uid=E4123D2765E1ADA10009F86055C64704 > = NULLREFERENCE
+			myIdleBarkCooldown 60.0
+		}
+		myTimeUntilAttentionLost 10.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityBarksAfterInteraction FALSE
+}
+
+NPCPlayerAwarenessProfile Companion_NPC < uid=F457223265E898490000CF4517B3FF9A >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState MisbehaviourRadius
+		{
+			myActivationRange 0.5
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=F457223265EA35AC0009CBC37ADF0F67 > = S_NPC_StoodTooCloseReactionLow E4123D276304E6380006E711B473D15C
+				myIdleBarkStimulus < uid=F457223265EA35AC0009CBC4F186016E > = S_NPC_StoodTooCloseReactionLow E4123D276304E6380006E711B473D15C
+				myIdleBarkCooldown 7.0
+			}
+		}
+		NPCPlayerAwarenessState ProximityTriggerProximityWarning
+		{
+			myActivationRange 7.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=F457223265E898490000CF48D71F68EA > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkStimulus < uid=F457223265E898490000CF495FD812BC > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 10.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerCombatAreaNear
+		{
+			myActivationRange 20.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=F457223265E898490000CF4AB720BB6E > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkStimulus < uid=F457223265E898490000CF4B40B090E3 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 13.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerEngagementDist
+		{
+			myActivationRange 50.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=F457223265E898490000CF4E415F6436 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkStimulus < uid=F457223265E898490000CF4F85ACD376 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 17.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerSearchDist
+		{
+			myActivationRange 100.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=F457223265E898490000CF50CEE20624 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkStimulus < uid=F457223265E898490000CF518FE29CCB > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 23.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityWhenNotInIdle FALSE
+}
+
+NPCPlayerAwarenessProfile Companion_NPC_Vail_RancorFight < uid=F457223266C3B1190009C794F2A9B34A >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState MisbehaviourRadius
+		{
+			myActivationRange 0.5
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=F457223266C3B1190009C795D59223E1 > = S_NPC_StoodTooCloseReactionLow E4123D276304E6380006E711B473D15C
+				myIdleBarkStimulus < uid=F457223266C3B1190009C7966E77C7ED > = S_NPC_StoodTooCloseReactionLow E4123D276304E6380006E711B473D15C
+				myIdleBarkCooldown 7.0
+			}
+		}
+		NPCPlayerAwarenessState ProximityTriggerProximityWarning
+		{
+			myActivationRange 7.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=F457223266C3B1190009C797DD06950F > = S_Companion_ProximityTrigger_Vail_RancorFight F457223266C3B0F10009C793CB6F15B1
+				myIdleBarkStimulus < uid=F457223266C3B1190009C798628A5E06 > = S_Companion_ProximityTrigger_Vail_RancorFight F457223266C3B0F10009C793CB6F15B1
+				myIdleBarkCooldown 12.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerCombatAreaNear
+		{
+			myActivationRange 20.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=F457223266C3B1190009C7992643F49D > = S_Companion_ProximityTrigger_Vail_RancorFight F457223266C3B0F10009C793CB6F15B1
+				myIdleBarkStimulus < uid=F457223266C3B1190009C79AF6DB1717 > = S_Companion_ProximityTrigger_Vail_RancorFight F457223266C3B0F10009C793CB6F15B1
+				myIdleBarkCooldown 17.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerEngagementDist
+		{
+			myActivationRange 50.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=F457223266C3B1190009C79B1F9C4A2E > = S_Companion_ProximityTrigger_Vail_RancorFight F457223266C3B0F10009C793CB6F15B1
+				myIdleBarkStimulus < uid=F457223266C3B1190009C79C2FD65DB5 > = S_Companion_ProximityTrigger_Vail_RancorFight F457223266C3B0F10009C793CB6F15B1
+				myIdleBarkCooldown 23.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerSearchDist
+		{
+			myActivationRange 100.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=F457223266C3B1190009C79D1608A3CE > = S_Companion_ProximityTrigger_Vail_RancorFight F457223266C3B0F10009C793CB6F15B1
+				myIdleBarkStimulus < uid=F457223266C3B1190009C79E38456DB7 > = S_Companion_ProximityTrigger_Vail_RancorFight F457223266C3B0F10009C793CB6F15B1
+				myIdleBarkCooldown 28.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityWhenNotInIdle FALSE
+}
+
+NPCPlayerAwarenessProfile Combat_NPC < uid=E4123D2762A747F300008BB6C03F31D6 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState ProximityTriggerVeryClose
+		{
+			myActivationRange 4.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D27660824C400019DC654EFF190 > = NULLREFERENCE
+				myIdleBarkStimulus < uid=E4123D27660824C400019DC7ED85D3D1 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 11.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState VeryCloseLookAt
+		{
+			myActivationRange 7.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=91DC5D3C637F286E0000F0188330081C > = S_NPC_NoticePlayerFactionReputation E4123D2764E5D412000614CCFD997D2F
+				myIdleBarkStimulus < uid=91DC5D3C637F286E0000F019C2A3C7D6 > = NULLREFERENCE
+				myIdleBarkCooldown 60.0
+			}
+		}
+		NPCPlayerAwarenessState ProximityTriggerProximityWarning
+		{
+			myActivationRange 8.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D27645CCB94000361D1D94172D1 > = S_NPC_ProximityTriggerWarning E4123D27645CCC12000361D8CE198787
+				myIdleBarkStimulus < uid=E4123D27645CCB94000361D2DC94A95C > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 11.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerCombatAreaNear
+		{
+			myActivationRange 17.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2764564787000333B39F4CBD8C > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkStimulus < uid=E4123D2764564787000333B48E7DF224 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 9.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerNonCombatAreas
+		{
+			myActivationRange 18.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D276407763400005A9C174287DB > = S_NPC_ProximityTriggerCityIdle E4123D276453D49100032B1E8BFC7AAB
+				myIdleBarkStimulus < uid=E4123D276407763400005A9DE8BBC145 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 7.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerEngagementClose
+		{
+			myActivationRange 24.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2766167CAB0001A50AEA4DDA4C > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkStimulus < uid=E4123D2766167CAB0001A50B1DBBF31C > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 7.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerSpeederEngagementRange
+		{
+			myActivationRange 25.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2766167C260001A49317A35B15 > = S_NPC_SpeederEnterCombat E4123D2766167C4A0001A4B5F6B0C541
+				myIdleBarkStimulus < uid=E4123D2766167C260001A494ADD6255B > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 4.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerEngagementDist
+		{
+			myActivationRange 40.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D276407764E00005AAEB76493FE > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkStimulus < uid=E4123D276407764E00005AAF10A8DF8A > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 7.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerSearchDist
+		{
+			myActivationRange 75.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D27645527A8000FEE0BC56D2138 > = S_NPC_ProximityTriggerDistant E4123D2765D896480002DD1EF0D4300E
+				myIdleBarkStimulus < uid=E4123D27645527A8000FEE0C64513BC3 > = S_NPC_ProximityTriggerDistant E4123D2765D896480002DD1EF0D4300E
+				myIdleBarkCooldown 5.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityWhenNotInIdle FALSE
+}
+
+NPCPlayerAwarenessProfile Combat_NPC_ProximityBarksDisabled < uid=E4123D2765E05AB40003220ADBC538A2 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState VeryCloseLookAt
+		{
+			myActivationRange 5.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2765E05AB40003220BC8EA42C5 > = NULLREFERENCE
+				myIdleBarkStimulus < uid=E4123D2765E05AB40003220C71B64198 > = NULLREFERENCE
+				myIdleBarkCooldown 7.0
+			}
+		}
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityWhenNotInIdle FALSE
+}
+
+NPCPlayerAwarenessProfile Combat_NPC_OpenWorld < uid=E4123D27655B90CD0002C19FB53C2536 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState VeryCloseLookAt
+		{
+			myActivationRange 5.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D27655B90CD0002C1A0962DA819 > = S_NPC_NoticePlayerFactionReputation E4123D2764E5D412000614CCFD997D2F
+				myIdleBarkStimulus < uid=E4123D27655B90CD0002C1A1DFA61F8E > = NULLREFERENCE
+				myIdleBarkCooldown 7.0
+			}
+		}
+		NPCPlayerAwarenessState ProximityTriggerProximityWarning
+		{
+			myActivationRange 7.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D27655B90CD0002C1A2D7E9489B > = S_NPC_ProximityTriggerWarning E4123D27645CCC12000361D8CE198787
+				myIdleBarkStimulus < uid=E4123D27655B90CD0002C1A383A8D2C5 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 17.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerCombatAreaNear
+		{
+			myActivationRange 20.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D27655B90CD0002C1A4783ECFC9 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkStimulus < uid=E4123D27655B90CD0002C1A5978BF52F > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 13.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerEngagementDist
+		{
+			myActivationRange 40.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D27655B90CD0002C1A60ABBDAD5 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkStimulus < uid=E4123D27655B90CD0002C1A7CF401FBD > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 17.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerSearchDist
+		{
+			myActivationRange 75.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D27655B90CD0002C1A8418EC11B > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkStimulus < uid=E4123D27655B90CD0002C1A989646688 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 23.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityWhenNotInIdle FALSE
+}
+
+NPCPlayerAwarenessProfile Combat_NPC_NonCombatArea < uid=E4123D27655B90CD0002C1AA5DDD6803 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState VeryCloseLookAt
+		{
+			myActivationRange 5.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D27655B90CD0002C1AB92AF29F2 > = S_NPC_NoticePlayerFactionReputation E4123D2764E5D412000614CCFD997D2F
+				myIdleBarkStimulus < uid=E4123D27655B90CD0002C1ACA51EA4A5 > = NULLREFERENCE
+				myIdleBarkCooldown 7.0
+			}
+		}
+		NPCPlayerAwarenessState ProximityTriggerNonCombatAreas
+		{
+			myActivationRange 21.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D27655B90CD0002C1AD0FE4C6A8 > = S_NPC_ProximityTriggerCityIdle E4123D276453D49100032B1E8BFC7AAB
+				myIdleBarkStimulus < uid=E4123D27655B90CD0002C1AEB9CF2A27 > = NULLREFERENCE
+				myIdleBarkCooldown 17.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityWhenNotInIdle FALSE
+}
+
+NPCPlayerAwarenessProfile Combat_NPC_NonCombatAreaGameplay < uid=E4123D27655B90CD0002C1AF52C46455 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState VeryCloseLookAt
+		{
+			myActivationRange 5.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D27655B90CD0002C1B002AFD924 > = S_NPC_NoticePlayerFactionReputation E4123D2764E5D412000614CCFD997D2F
+				myIdleBarkStimulus < uid=E4123D27655B90CD0002C1B12B578E5F > = NULLREFERENCE
+				myIdleBarkCooldown 7.0
+			}
+		}
+		NPCPlayerAwarenessState ProximityTriggerProximityWarning
+		{
+			myActivationRange 7.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D27655B90CD0002C1B2EB090700 > = S_NPC_ProximityTriggerWarning E4123D27645CCC12000361D8CE198787
+				myIdleBarkStimulus < uid=E4123D27655B90CD0002C1B39A9E30F8 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 17.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerCombatAreaNear
+		{
+			myActivationRange 20.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D27655B90CD0002C1B4E684BC76 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkStimulus < uid=E4123D27655B90CD0002C1B57136F38F > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 13.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerEngagementDist
+		{
+			myActivationRange 40.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D27655B90CD0002C1B6D2A4CBAE > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkStimulus < uid=E4123D27655B90CD0002C1B7B9D638F2 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 17.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityWhenNotInIdle FALSE
+}
+
+NPCPlayerAwarenessProfile Combat_NPC_NonCombatAreaWanted < uid=E4123D27655B90CD0002C1B87A7244B2 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState VeryCloseLookAt
+		{
+			myActivationRange 5.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D27655B90CD0002C1B9BC1E6AF8 > = S_NPC_NoticePlayerFactionReputation E4123D2764E5D412000614CCFD997D2F
+				myIdleBarkStimulus < uid=E4123D27655B90CD0002C1BA48133F6E > = NULLREFERENCE
+				myIdleBarkCooldown 7.0
+			}
+		}
+		NPCPlayerAwarenessState ProximityTriggerProximityWarning
+		{
+			myActivationRange 7.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D27655B90CD0002C1BB400A8F36 > = S_NPC_ProximityTriggerWarning E4123D27645CCC12000361D8CE198787
+				myIdleBarkStimulus < uid=E4123D27655B90CD0002C1BCA8B50451 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 17.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerCombatAreaNear
+		{
+			myActivationRange 20.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D27655B90CD0002C1BDE7B3F215 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkStimulus < uid=E4123D27655B90CD0002C1BE368A49C2 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 13.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerEngagementDist
+		{
+			myActivationRange 40.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D27655B90CD0002C1BF22ED031A > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkStimulus < uid=E4123D27655B90CD0002C1C0227A1C9A > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 17.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityWhenNotInIdle FALSE
+}
+
+NPCPlayerAwarenessProfile Combat_NPC_ProbeDroid < uid=E4123D2765A29F580002410DC7FC9081 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState ProximityTriggerProximityWarning
+		{
+			myActivationRange 7.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2765A29F580002411026A37755 > = S_NPC_ProbeDroidIncidental E4123D2765A1653F0005E84E47C357FB
+				myIdleBarkStimulus < uid=E4123D2765A29F580002411105F89398 > = S_NPC_ProbeDroidIncidental E4123D2765A1653F0005E84E47C357FB
+				myIdleBarkCooldown 17.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerCombatAreaNear
+		{
+			myActivationRange 20.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2765A29F580002411232863EBE > = S_NPC_ProbeDroidIncidental E4123D2765A1653F0005E84E47C357FB
+				myIdleBarkStimulus < uid=E4123D2765A29F5800024113B053BDE5 > = S_NPC_ProbeDroidIncidental E4123D2765A1653F0005E84E47C357FB
+				myIdleBarkCooldown 13.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerEngagementDist
+		{
+			myActivationRange 40.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2765A29F58000241148D776D65 > = S_NPC_ProbeDroidIncidental E4123D2765A1653F0005E84E47C357FB
+				myIdleBarkStimulus < uid=E4123D2765A29F58000241154CD24B00 > = S_NPC_ProbeDroidIncidental E4123D2765A1653F0005E84E47C357FB
+				myIdleBarkCooldown 17.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerSearchDist
+		{
+			myActivationRange 75.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2765A29F58000241164FA2FFEA > = S_NPC_ProbeDroidIncidental E4123D2765A1653F0005E84E47C357FB
+				myIdleBarkStimulus < uid=E4123D2765A29F58000241176233DF6E > = S_NPC_ProbeDroidIncidental E4123D2765A1653F0005E84E47C357FB
+				myIdleBarkCooldown 23.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityWhenNotInIdle FALSE
+}
+
+NPCPlayerAwarenessProfile Combat_NPC_Bouncer < uid=E4123D2765D4986A000D06F3C3881964 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState VeryCloseLookAt
+		{
+			myActivationRange 8.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2765E1F2C8000E7868886BE278 > = S_NPC_NoticePlayerFactionTerritoryCanEnter E4123D27633EC13900011984C749EB95
+				myIdleBarkStimulus < uid=E4123D2765D4986A000D06F4A67CEB7D > = NULLREFERENCE
+				myIdleBarkCooldown 7.0
+			}
+		}
+		NPCPlayerAwarenessState ProximityTriggerNonCombatAreas
+		{
+			myActivationRange 21.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2765D4986A000D06F54BCE1B07 > = S_NPC_ProximityTriggerCityIdle E4123D276453D49100032B1E8BFC7AAB
+				myIdleBarkStimulus < uid=E4123D2765D4986A000D06F654B7527F > = NULLREFERENCE
+				myIdleBarkCooldown 17.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityWhenNotInIdle FALSE
+}
+
+NPCPlayerAwarenessProfile Combat_NPC_Speeder < uid=E4123D2765D602DE00016363728CCBE8 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState ProximityTriggerProximityWarning
+		{
+			myActivationRange 7.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2765D602DE000163640CBF39A3 > = S_NPC_ProximityTriggerWarning E4123D27645CCC12000361D8CE198787
+				myIdleBarkStimulus < uid=E4123D2765D602DE000163657012448A > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 17.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerEngagementDist
+		{
+			myActivationRange 40.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2765D602DE00016366918D2176 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkStimulus < uid=E4123D2765D602DE00016367854A6B24 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 13.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerSearchDist
+		{
+			myActivationRange 75.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2765D602DE0001636870CD280F > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkStimulus < uid=E4123D2765D602DE0001636992190488 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 23.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityWhenNotInIdle FALSE
+}
+
+NPCPlayerAwarenessProfile TrafficDriver_NPC < uid=E4123D27637DFB600000AA867D05FCCA >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState PlayerClose
+		{
+			myActivationRange 8.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D27637DFB600000AA872A070387 > = S_CIV_TrafficDriverProximityClose E4123D27637DFB0D0000AA820219EDB7
+				myIdleBarkStimulus < uid=E4123D27637DFB600000AA88DC388B60 > = NULLREFERENCE
+				myIdleBarkCooldown 7.0
+			}
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState PlayerFar
+		{
+			myActivationRange 16.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D27637DFB600000AA898A8B46EB > = S_CIV_TrafficDriverProximityDistant E4123D27637DFB100000AA83A87FE548
+				myIdleBarkStimulus < uid=E4123D27637DFB600000AA8AD83A18DC > = NULLREFERENCE
+				myIdleBarkCooldown 7.0
+			}
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+	myOnInteractStart
+	{
+		myIsEnabled FALSE
+		myNonBehaviorConfig
+		{
+			myBarkStimulus < uid=E4123D27637DFB600000AA8BCA332367 > = NULLREFERENCE
+		}
+	}
+	myOnInteractEnd
+	{
+		myIsEnabled FALSE
+		myNonBehaviorConfig
+		{
+		}
+		myTimeUntilAttentionLost 10.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityWhenNotInIdle FALSE
+}
+
+NPCPlayerAwarenessProfile Vendor_Market < uid=E4123D2762A464BB0001F8D0A673FC18 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState NoticePlayer
+		{
+			myActivationRange 6.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2762A464BB0001F8D1C0E02B57 > = S_VENDOR_NoticePlayer E4123D2762A462730000DA3C706A8D7D
+				myIdleBarkStimulus < uid=E4123D2762A464BB0001F8D245D5A033 > = NULLREFERENCE
+				myIdleBarkCooldown 50.0
+			}
+		}
+		NPCPlayerAwarenessState PlayerClose
+		{
+			myActivationRange 20.0
+			myBehavior ""
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2762B3601E0002AFF6FBA95D0D > = S_VENDOR_Idle E4123D2762A461550000B5D1EB86D503
+				myIdleBarkStimulus < uid=E4123D2762B3601E0002AFF73D0CBB60 > = S_VENDOR_Idle E4123D2762A461550000B5D1EB86D503
+				myIdleBarkCooldown 60.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+			mySetCameraLookAt FALSE
+		}
+		NPCPlayerAwarenessState PlayerMid
+		{
+			myActivationRange 40.0
+			myBehavior ""
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2762A818950000DF2E833A136D > = S_VENDOR_Idle E4123D2762A461550000B5D1EB86D503
+				myIdleBarkStimulus < uid=E4123D2762A818950000DF2FD92AC242 > = S_VENDOR_Idle E4123D2762A461550000B5D1EB86D503
+				myIdleBarkCooldown 13.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+			mySetCameraLookAt FALSE
+		}
+		NPCPlayerAwarenessState PlayerFar
+		{
+			myActivationRange 30.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2762A464BB0001F8D3A2354D17 > = S_VENDOR_Idle E4123D2762A461550000B5D1EB86D503
+				myIdleBarkStimulus < uid=E4123D2762A464BB0001F8D49B9FF675 > = S_VENDOR_Idle E4123D2762A461550000B5D1EB86D503
+				myIdleBarkCooldown 11.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+	myOnInteractStart
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myBarkStimulus < uid=E4123D2762A821180001B1D062E9654B > = NULLREFERENCE
+			myIdleBarkCooldown 60.0
+		}
+	}
+	myOnInteractEnd
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myBarkStimulus < uid=E4123D2762A821180001B1D1F13596E2 > = NULLREFERENCE
+			myIdleBarkCooldown 60.0
+		}
+		myTimeUntilAttentionLost 10.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityBarksAfterInteraction FALSE
+}
+
+NPCPlayerAwarenessProfile Vendor_Market_Quiet < uid=E4123D2762A8261900024DA994F2F25A >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState NoticePlayer
+		{
+			myActivationRange 10.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2762A8261900024DAA949FF0F5 > = S_VENDOR_NoticePlayer E4123D2762A462730000DA3C706A8D7D
+				myIdleBarkStimulus < uid=E4123D2762A8261900024DAB3495DCD3 > = NULLREFERENCE
+				myIdleBarkCooldown 23.0
+			}
+		}
+	}
+	myOnInteractStart
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myIdleBarkCooldown 60.0
+		}
+	}
+	myOnInteractEnd
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myIdleBarkCooldown 60.0
+		}
+		myTimeUntilAttentionLost 10.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityBarksAfterInteraction FALSE
+}
+
+NPCPlayerAwarenessProfile Vendor_Contract < uid=E4123D2762A82B2F00033CEFC2D827CA >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState PlayerClose
+		{
+			myActivationRange 4.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=1EC89F2563FC778B000009D89048458F > = NULLREFERENCE
+				myIdleBarkStimulus < uid=E4123D2762A82B2F00033CF13C24C2ED > = NULLREFERENCE
+				myIdleBarkCooldown 30.0
+			}
+		}
+	}
+	myOnInteractStart
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myBarkStimulus < uid=E4123D2762A82B2F00033CF277BB428B > = NULLREFERENCE
+			myIdleBarkCooldown 31.0
+		}
+	}
+	myOnInteractEnd
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myBarkStimulus < uid=E4123D2762A82B2F00033CF3745EDDC1 > = NULLREFERENCE
+			myIdleBarkCooldown 60.0
+		}
+		myTimeUntilAttentionLost 10.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityBarksAfterInteraction FALSE
+}
+
+NPCPlayerAwarenessProfile Vendor_Mechanic < uid=E4123D2762A8878B00017F8B479815F6 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState NoticePlayer
+		{
+			myActivationRange 10.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2762A8878B00017F8C854DA5AB > = S_VENDOR_NoticePlayer E4123D2762A462730000DA3C706A8D7D
+				myIdleBarkStimulus < uid=E4123D2762A8878B00017F8D5684826E > = NULLREFERENCE
+				myIdleBarkCooldown 23.0
+			}
+		}
+	}
+	myOnInteractStart
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myIdleBarkCooldown 60.0
+		}
+	}
+	myOnInteractEnd
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myIdleBarkCooldown 60.0
+		}
+		myTimeUntilAttentionLost 10.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityBarksAfterInteraction FALSE
+}
+
+NPCPlayerAwarenessProfile Vendor_IdleOnly < uid=1EC89F25652E966C000166E0B931EAD4 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState PlayerClose
+		{
+			myActivationRange 6.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=1EC89F25652E96A8000166E46BCC63EC > = S_VENDOR_Idle E4123D2762A461550000B5D1EB86D503
+				myIdleBarkStimulus < uid=1EC89F25652E96A8000166E5D91A216E > = S_VENDOR_Idle E4123D2762A461550000B5D1EB86D503
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+}
+
+NPCPlayerAwarenessProfile Vendor_FactionDistrict < uid=1EC89F2563FC780A000009DB30653512 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState NoticePlayer
+		{
+			myActivationRange 5.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=1EC89F2563FC780A000009DCE2D36AAC > = S_VENDOR_NoticePlayerFactionTerritory 1EC89F2563FC7574000009D28A408DD6
+				myIdleBarkCooldown 0.0
+			}
+		}
+		NPCPlayerAwarenessState "Idle Player Close"
+		{
+			myActivationRange 15.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=1EC89F256405B3AE00002FA9C00AD166 > = S_VENDOR_Idle E4123D2762A461550000B5D1EB86D503
+				myIdleBarkStimulus < uid=1EC89F256405B3AE00002FAAC7F992AA > = S_VENDOR_Idle E4123D2762A461550000B5D1EB86D503
+				myIdleBarkCooldown 15.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+	myOnInteractStart
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myBarkStimulus < uid=1EC89F2563FC780A000009DE46EA107C > = NULLREFERENCE
+			myIdleBarkCooldown 31.0
+		}
+	}
+	myOnInteractEnd
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myBarkStimulus < uid=1EC89F2563FC780A000009DF5F3E7016 > = NULLREFERENCE
+			myIdleBarkCooldown 60.0
+		}
+		myTimeUntilAttentionLost 10.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityBarksAfterInteraction FALSE
+}
+
+NPCPlayerAwarenessProfile Vendor_Black_Market < uid=E4123D2762A88A87000231659F70D269 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState PlayerClose
+		{
+			myActivationRange 10.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2762A88A87000231661181CA22 > = S_VENDOR_NoticePlayer E4123D2762A462730000DA3C706A8D7D
+				myIdleBarkStimulus < uid=E4123D2762A88A8700023167AD6A61CA > = NULLREFERENCE
+				myIdleBarkCooldown 23.0
+			}
+		}
+	}
+	myOnInteractStart
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myIdleBarkCooldown 60.0
+		}
+	}
+	myOnInteractEnd
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myIdleBarkCooldown 60.0
+		}
+		myTimeUntilAttentionLost 10.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityBarksAfterInteraction FALSE
+}
+
+NPCPlayerAwarenessProfile Vendor_Shop < uid=E4123D2762A8B04F00038D6FBD781B1D >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState NoticePlayer
+		{
+			myActivationRange 6.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2762A8B04F00038D70F4654C2D > = S_VENDOR_NoticePlayer E4123D2762A462730000DA3C706A8D7D
+				myIdleBarkStimulus < uid=E4123D2762A8B04F00038D714C09AB19 > = NULLREFERENCE
+				myIdleBarkCooldown 30.0
+			}
+		}
+	}
+	myOnInteractStart
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myIdleBarkCooldown 60.0
+		}
+	}
+	myOnInteractEnd
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myIdleBarkCooldown 60.0
+		}
+		myTimeUntilAttentionLost 10.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityBarksAfterInteraction FALSE
+}
+
+NPCPlayerAwarenessProfile Vendor_Unique < uid=1EC89F256405BFED000071FE3D9DA31E >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState NoticePlayer
+		{
+			myActivationRange 15.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=1EC89F256405BFED000071FFEC9838ED > = S_VENDOR_NoticePlayer E4123D2762A462730000DA3C706A8D7D
+				myIdleBarkCooldown 0.0
+			}
+		}
+	}
+	myOnInteractStart
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myBarkStimulus < uid=1EC89F256405BFED000072004155E725 > = NULLREFERENCE
+			myIdleBarkCooldown 31.0
+		}
+	}
+	myOnInteractEnd
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myBarkStimulus < uid=1EC89F256405BFED00007201E4065663 > = NULLREFERENCE
+			myIdleBarkCooldown 60.0
+		}
+		myTimeUntilAttentionLost 10.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityBarksAfterInteraction FALSE
+}
+
+NPCPlayerAwarenessProfile Vendor_WantedReset < uid=1EC89F25633A997B00008B91A164EB8F >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState PlayerClose
+		{
+			myActivationRange 5.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=1EC89F25633A997B00008B9268742AC5 > = S_VENDOR_NoticePlayer E4123D2762A462730000DA3C706A8D7D
+				myIdleBarkStimulus < uid=1EC89F25633A997B00008B93B0CF705B > = NULLREFERENCE
+				myIdleBarkCooldown 50.0
+			}
+		}
+	}
+	myOnInteractStart
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myBarkStimulus < uid=1EC89F25633A997B00008B94E6BAC665 > = S_VENDOR_Greeting E4123D2762A4616C0000B5D21FFD13A7
+			myIdleBarkCooldown 31.0
+		}
+	}
+	myOnInteractEnd
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myBarkStimulus < uid=1EC89F25633A997B00008B95600471AE > = S_VENDOR_FarewellAcquiredSomething E4123D2762A461FD0000DA38004E7CF6
+			myIdleBarkCooldown 60.0
+		}
+		myTimeUntilAttentionLost 10.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityBarksAfterInteraction TRUE
+}
+
+NPCPlayerAwarenessProfile Vendor_Food < uid=E4123D2762A8B19C00038DE3FA81354B >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState PlayerClose
+		{
+			myActivationRange 7.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2762A8B19C00038DE4248295EC > = S_VENDOR_NoticePlayer E4123D2762A462730000DA3C706A8D7D
+				myIdleBarkStimulus < uid=E4123D2762A8B19C00038DE5FFC71441 > = NULLREFERENCE
+				myIdleBarkCooldown 23.0
+			}
+		}
+		NPCPlayerAwarenessState PlayerMid
+		{
+			myActivationRange 30.0
+			myBehavior ""
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2762A8B19C00038DE65068CEAF > = S_VENDOR_Idle E4123D2762A461550000B5D1EB86D503
+				myIdleBarkStimulus < uid=E4123D2762A8B19C00038DE7A3B08284 > = S_VENDOR_Idle E4123D2762A461550000B5D1EB86D503
+				myIdleBarkCooldown 17.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+			mySetCameraLookAt FALSE
+		}
+		NPCPlayerAwarenessState PlayerFar
+		{
+			myActivationRange 50.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2762A8B19C00038DE893AD4EEB > = S_VENDOR_Idle E4123D2762A461550000B5D1EB86D503
+				myIdleBarkStimulus < uid=E4123D2762A8B19C00038DE9540F25C3 > = S_VENDOR_Idle E4123D2762A461550000B5D1EB86D503
+				myIdleBarkCooldown 11.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+	myOnInteractStart
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myIdleBarkCooldown 60.0
+		}
+	}
+	myOnInteractEnd
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myIdleBarkCooldown 60.0
+		}
+		myTimeUntilAttentionLost 10.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityBarksAfterInteraction FALSE
+}
+
+NPCPlayerAwarenessProfile Vendor_MiyukiTrader < uid=E4123D2766754FEC000563CED3E0D43E >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState VeryCloseLookAt
+		{
+			myActivationRange 7.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2766754FEC000563CFAF8F8C19 > = S_VENDOR_NoticePlayer E4123D2762A462730000DA3C706A8D7D
+				myIdleBarkStimulus < uid=E4123D2766754FEC000563D06EB1C2F1 > = NULLREFERENCE
+				myIdleBarkCooldown 7.0
+			}
+		}
+		NPCPlayerAwarenessState ProximityTriggerCombatAreaNear
+		{
+			myActivationRange 17.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2766754FEC000563D1DC7F2E29 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkStimulus < uid=E4123D2766754FEC000563D209EB50BC > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 9.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerNonCombatAreas
+		{
+			myActivationRange 18.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2766754FEC000563D3DAD7FADC > = S_NPC_ProximityTriggerCityIdle E4123D276453D49100032B1E8BFC7AAB
+				myIdleBarkStimulus < uid=E4123D2766754FEC000563D43A910D3D > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 7.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerEngagementClose
+		{
+			myActivationRange 24.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2766754FEC000563D51FBA6220 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkStimulus < uid=E4123D2766754FEC000563D64C87BFDB > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 7.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerSpeederEngagementRange
+		{
+			myActivationRange 25.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2766754FEC000563D729E3AD8D > = S_NPC_SpeederEnterCombat E4123D2766167C4A0001A4B5F6B0C541
+				myIdleBarkStimulus < uid=E4123D2766754FEC000563D89BA9B569 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 4.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerEngagementDist
+		{
+			myActivationRange 40.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2766754FEC000563D957CE6F5E > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkStimulus < uid=E4123D2766754FEC000563DA26C67B1B > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 7.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerSearchDist
+		{
+			myActivationRange 75.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2766754FEC000563DB127D358B > = S_NPC_ProximityTriggerDistant E4123D2765D896480002DD1EF0D4300E
+				myIdleBarkStimulus < uid=E4123D2766754FEC000563DCC4A9C850 > = S_NPC_ProximityTriggerDistant E4123D2765D896480002DD1EF0D4300E
+				myIdleBarkCooldown 5.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityWhenNotInIdle FALSE
+}
+
+NPCPlayerAwarenessProfile Encounter_SpeederRacer < uid=E4123D2765E091B40009D5E98BB6FF45 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState PlayerClose
+		{
+			myActivationRange 8.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2765E091B40009D5EA73B3CA6A > = S_ENC_SpeederRacerNoticePlayer E4123D2765E0919A0009D5E2C904700D
+				myIdleBarkStimulus < uid=E4123D2765E091B40009D5EB63A8EAE3 > = NULLREFERENCE
+				myIdleBarkCooldown 37.0
+			}
+		}
+	}
+	myOnInteractStart
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myBarkStimulus < uid=E4123D2765E091B40009D5EC89C67A83 > = S_VENDOR_Greeting E4123D2762A4616C0000B5D21FFD13A7
+			myIdleBarkCooldown 31.0
+		}
+	}
+	myOnInteractEnd
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myBarkStimulus < uid=E4123D2765E091B40009D5EDB5B6F029 > = S_VENDOR_FarewellAcquiredSomething E4123D2762A461FD0000DA38004E7CF6
+			myIdleBarkCooldown 60.0
+		}
+		myTimeUntilAttentionLost 10.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityBarksAfterInteraction TRUE
+}
+
+NPCPlayerAwarenessProfile Quest_NPC < uid=71108214632C7ED50001812999F73006 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState Notice
+		{
+			myActivationRange 6.0
+			mySetCameraLookAt FALSE
+		}
+	}
+	myOnInteractEnd
+	{
+		myTimeUntilAttentionLost 1.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+}
+
+NPCPlayerAwarenessProfile Quest_NPC_Beckon_Close < uid=E4123D2763629C8900005D0D23520BC8 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState LookFirst
+		{
+			myActivationRange 7.0
+		}
+		NPCPlayerAwarenessState BeckonSecond
+		{
+			myActivationRange 4.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D276362A16D0001B939DE32804D > = S_QUEST_Default_Beckon E4123D27636279180020850613D5882A
+			}
+			mySetCameraLookAt FALSE
+		}
+	}
+	myOnInteractEnd
+	{
+		myTimeUntilAttentionLost 1.0
+	}
+}
+
+NPCPlayerAwarenessProfile Quest_NPC_Beckon_Mid < uid=E4123D276362A1520001B93773194EF0 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState LookFirst
+		{
+			myActivationRange 10.0
+		}
+		NPCPlayerAwarenessState BeckonSecond
+		{
+			myActivationRange 7.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D276362A16D0001B93A6C439066 > = S_QUEST_Default_Beckon E4123D27636279180020850613D5882A
+			}
+			mySetCameraLookAt FALSE
+		}
+	}
+	myOnInteractEnd
+	{
+		myTimeUntilAttentionLost 1.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+}
+
+NPCPlayerAwarenessProfile Quest_NPC_Beckon_Far < uid=E4123D276362A19B0001B93DD8DE8391 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState LookFirst
+		{
+			myActivationRange 18.0
+		}
+		NPCPlayerAwarenessState BeckonSecond
+		{
+			myActivationRange 13.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D276362A19B0001B93EA86EF84C > = S_QUEST_Default_Beckon E4123D27636279180020850613D5882A
+			}
+			mySetCameraLookAt FALSE
+		}
+	}
+	myOnInteractEnd
+	{
+		myTimeUntilAttentionLost 1.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+}
+
+NPCPlayerAwarenessProfile Quest_NPC_BeckonFamiliar_Close < uid=E4123D276362AF93000C0CCB9857CCEA >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState LookFirst
+		{
+			myActivationRange 7.0
+		}
+		NPCPlayerAwarenessState BeckonSecond
+		{
+			myActivationRange 4.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D276362AF93000C0CCC0E9347D4 > = S_QUEST_Default_BeckonFamiliar E4123D276362AFB0000C0D2D96F4E225
+			}
+			mySetCameraLookAt FALSE
+		}
+	}
+	myOnInteractEnd
+	{
+		myTimeUntilAttentionLost 1.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+}
+
+NPCPlayerAwarenessProfile Quest_NPC_BeckonFamiliar_Mid < uid=E4123D276362AF93000C0CCDC2AD8BC9 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState LookFirst
+		{
+			myActivationRange 10.0
+		}
+		NPCPlayerAwarenessState BeckonSecond
+		{
+			myActivationRange 7.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D276362AF93000C0CCE3B813AD4 > = S_QUEST_Default_BeckonFamiliar E4123D276362AFB0000C0D2D96F4E225
+			}
+			mySetCameraLookAt FALSE
+		}
+	}
+	myOnInteractEnd
+	{
+		myTimeUntilAttentionLost 1.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+}
+
+NPCPlayerAwarenessProfile Quest_NPC_BeckonFamiliar_Far < uid=E4123D276362AF93000C0CCF1D9791D2 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState LookFirst
+		{
+			myActivationRange 18.0
+		}
+		NPCPlayerAwarenessState BeckonSecond
+		{
+			myActivationRange 13.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D276362AF93000C0CD089AED853 > = S_QUEST_Default_BeckonFamiliar E4123D276362AFB0000C0D2D96F4E225
+			}
+			mySetCameraLookAt FALSE
+		}
+	}
+	myOnInteractEnd
+	{
+		myTimeUntilAttentionLost 1.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+}
+
+NPCPlayerAwarenessProfile Quest_Danka_Beckon < uid=DA5615DD65B7CBB600002B12AB63E023 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState LookFirst
+		{
+			myActivationRange 7.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=DA5615DD65B7CC4800002B1AB6A0641E > = NULLREFERENCE
+			}
+		}
+		NPCPlayerAwarenessState BeckonSecond
+		{
+			myActivationRange 4.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=DA5615DD65B7CC4800002B1B0276E811 > = S_QUEST_Danka_Beckon DA5615DD65B7BBEC001A1AA55900DC87
+			}
+		}
+	}
+}
+
+NPCPlayerAwarenessProfile TEMP_E3_Speeder_Enter_Combat < uid=E4123D27641C446B001A6F0DA1753BD5 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState EnterCombatWithinRange
+		{
+			myActivationRange 30.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=3A1291216422D8A9001751E2C414DBA3 > = E3_SpeederChase_NPC_EnterCombat_BLANK E4123D2764369DF900088B006AEE1B00
+				myIdleBarkCooldown 3.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+	myOnInteractStart
+	{
+		myIsEnabled FALSE
+		myNonBehaviorConfig
+		{
+			myBarkStimulus < uid=E4123D27641C446B001A6F12591A9FEF > = NULLREFERENCE
+		}
+	}
+	myOnInteractEnd
+	{
+		myIsEnabled FALSE
+		myNonBehaviorConfig
+		{
+		}
+		myTimeUntilAttentionLost 10.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityWhenNotInIdle FALSE
+}
+
+NPCPlayerAwarenessProfile TEMP_E3_Ambient_NPC_LookAtPlayer < uid=E4123D27641B58B70000DB93B4159ACF > : Ambient_NPC
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState PlayerClose
+		{
+			myActivationRange 3.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=EB2A3F2464367E6A00001135907B9FA4 > = NULLREFERENCE
+				myIdleBarkStimulus < uid=EB2A3F2464367E6A0000113635CF97C6 > = NULLREFERENCE
+				myIdleBarkCooldown 7.0
+			}
+			myAddPlayerAsNPCFocusPoint TRUE
+		}
+		NPCPlayerAwarenessState PlayerFar
+		{
+			myActivationRange 15.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=EB2A3F2464367E6A0000113782591B12 > = NULLREFERENCE
+				myIdleBarkStimulus < uid=EB2A3F2464367E6A00001138A551DC02 > = NULLREFERENCE
+				myIdleBarkCooldown 7.0
+			}
+			myAddPlayerAsNPCFocusPoint TRUE
+		}
+	}
+}
+
+NPCPlayerAwarenessProfile TEMP_E3_Combat_NPC < uid=E4123D27641F5D4000005F4ADCC7711E >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState EnterCombatWithinRange
+		{
+			myActivationRange 30.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D27641F5D4000005F4B26CC6722 > = E3_SpeederChase_NPC_EnterCombat E4123D276411D22B0009E0991644B2DA
+				myIdleBarkStimulus < uid=E4123D27641F5D4000005F4C015E1A4B > = E3_SpeederChase_NPC_EnterCombat E4123D276411D22B0009E0991644B2DA
+				myIdleBarkCooldown 3.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+	myOnInteractStart
+	{
+		myIsEnabled FALSE
+		myNonBehaviorConfig
+		{
+			myBarkStimulus < uid=E4123D27641F5D4000005F4DE49ECE0D > = NULLREFERENCE
+		}
+	}
+	myOnInteractEnd
+	{
+		myIsEnabled FALSE
+		myNonBehaviorConfig
+		{
+		}
+		myTimeUntilAttentionLost 10.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+}
+
+NPCPlayerAwarenessProfile TEMP_E3_ND5_CockpitBeckon < uid=E4123D27643AC00C002DEF3C580CC4FA >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState EnterCombatWithinRange
+		{
+			myActivationRange 8.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D27643AC00C002DEF3DA3B1976C > = E3_JauntasHope_ND5_TrailblazerSitDown 3A129121640F53B6001A56C70262B2D8
+				myIdleBarkCooldown 3.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+	myOnInteractStart
+	{
+		myIsEnabled FALSE
+		myNonBehaviorConfig
+		{
+			myBarkStimulus < uid=E4123D27643AC00C002DEF3EB0D47835 > = NULLREFERENCE
+		}
+	}
+	myOnInteractEnd
+	{
+		myIsEnabled FALSE
+		myNonBehaviorConfig
+		{
+		}
+		myTimeUntilAttentionLost 10.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityWhenNotInIdle FALSE
+}
+
+NPCPlayerAwarenessProfile NPC_OpenWorld < uid=91DC5D3C6333100A000088551FD83CF0 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState NoticePlayerFromFarAway
+		{
+			myActivationRange 10.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=91DC5D3C6333121D0000888384644A7A > = S_CIV_IdleIncidentalDistant E4123D2762A7A62C00007B552C1A3C10
+			}
+			myRequirePlayerIsVisible TRUE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+	myOverrideDefaultNPCBehavior FALSE
+}
+
+NPCPlayerAwarenessProfile NPC_Standard < uid=91DC5D3C6333102D0000885612E401E3 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState LookAtPlayerWhenClose
+		{
+			myActivationRange 6.0
+		}
+	}
+	myOverrideDefaultNPCBehavior FALSE
+}
+
+NPCPlayerAwarenessProfile NPC_Busy < uid=91DC5D3C6333103200008857DE6FFF5C >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState LookAtPlayerWhenTooClose
+		{
+			myActivationRange 2.0
+		}
+	}
+	myOverrideDefaultNPCBehavior FALSE
+}
+
+NPCPlayerAwarenessProfile NPC_VeryBusy < uid=91DC5D3C63331038000088581AE1EA86 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState DontLookAtPlayer
+		{
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+	myOverrideDefaultNPCBehavior FALSE
+}
+
+NPCPlayerAwarenessProfile PetPlayerAwarenessProfile < uid=B0EA4E5363874B8B0000D7294A09A1EC >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState Near
+		{
+			myActivationRange 5.0
+		}
+	}
+}
+
+NPCPlayerAwarenessProfile NPC_COOP < uid=7EE6463463E3A0F300017A7B4D515214 > : Combat_NPC
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState VeryCloseLookAt
+		{
+			myActivationRange 0.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2764077B4A0004D0E079885A01 > = NULLREFERENCE
+				myIdleBarkStimulus < uid=E4123D2764077B4A0004D0E102866040 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 7.0
+			}
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerClose
+		{
+			myActivationRange 15.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2764077B4A0004D0E22CCCEF14 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkStimulus < uid=E4123D2764077B4A0004D0E38CBE66E0 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 5.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerMid
+		{
+			myActivationRange 30.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2764077B4A0004D0E4B7DD7D24 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkStimulus < uid=E4123D2764077B4A0004D0E586688FFF > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 11.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerFar
+		{
+			myActivationRange 60.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D2764077B4A0004D0E6CD976469 > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkStimulus < uid=E4123D2764077B4A0004D0E7B261925D > = S_NPC_ProximityTrigger E4123D276299FFC100003365532B6B68
+				myIdleBarkCooldown 17.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+}
+
+NPCPlayerAwarenessProfile SPACE_CombatNPC < uid=3A129121647DDDD40001888490E9E7A2 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState "Player Close"
+		{
+			myActivationRange 1000.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=3A129121647DDEB4000188E509482657 > = S_SPACE_Blank_SpotShip 3A129121647DDE6F0001889BFBC96F89
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+}
+
+NPCPlayerAwarenessProfile NPC_TrailblazerCrew < uid=3A1291216565EB65000945F53159CFDA >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState "Greeting Kay"
+		{
+			myActivationRange 3.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=3A1291216565EC0500094682AE6B5CA7 > = S_Companion_GreetKayInitiate 3A1291216564B1E600066C2C087403B6
+			}
+			myRequirePlayerIsVisible TRUE
+			myAddPlayerAsNPCFocusPoint TRUE
+		}
+		NPCPlayerAwarenessState Notice
+		{
+			myActivationRange 6.0
+		}
+		NPCPlayerAwarenessState "Greeting Nix"
+		{
+			myActivationRange 5.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=3A1291216566373D000493EB54B40BBD > = S_Companion_GreetNix 3A129121656636B200047A8205942DF9
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+	myOnInteractEnd
+	{
+		myTimeUntilAttentionLost 1.0
+	}
+}
+
+NPCPlayerAwarenessProfile Quest_NPC_Ank_Beckon_MQ_090_LongDistance < uid=842ECCE4665EDAB300063DF9CB223D9D >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState "New NPCPlayerAwarenessState"
+		{
+			myActivationRange 50.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=842ECCE4665EDAB300063DFA6ACBB443 > = S_QUEST_MQ090_AnkBeckon 1EC89F25663B3E0D000000CAA39AA9CE
+				myIdleBarkStimulus < uid=842ECCE4665EDAB300063DFBAD28ECF4 > = S_QUEST_MQ090_AnkBeckon 1EC89F25663B3E0D000000CAA39AA9CE
+				myIdleBarkCooldown 25.0
+			}
+			myRequirePlayerIsVisible FALSE
+		}
+	}
+}
+
+NPCPlayerAwarenessProfile NPC_TrailblazerCrew_GreetsDisabled < uid=F457223266CF78E0000478B3FA0445EE >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState "Greeting Kay"
+		{
+			myActivationRange 3.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=F457223266CF78E0000478B42A2D3D0F > = NULLREFERENCE
+			}
+			myRequirePlayerIsVisible TRUE
+			myAddPlayerAsNPCFocusPoint TRUE
+		}
+		NPCPlayerAwarenessState Notice
+		{
+			myActivationRange 6.0
+		}
+		NPCPlayerAwarenessState "Greeting Nix"
+		{
+			myActivationRange 5.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=F457223266CF78E0000478B5D04BC414 > = NULLREFERENCE
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+	myOnInteractEnd
+	{
+		myTimeUntilAttentionLost 1.0
+	}
+}
+
+NPCPlayerAwarenessProfile Quest_NPC_Bram_Beckon_MQ010 < uid=DA5615DD65F8603600015339191485CE >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState "New NPCPlayerAwarenessState"
+		{
+			myActivationRange 5.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=DA5615DD65F860BE000153464EAD77FE > = S_QUEST_MQ010_BramGreeting DA5615DD65F81437000C309CA3A2AF51
+			}
+			myAddPlayerAsNPCFocusPoint TRUE
+		}
+	}
+}
+
+NPCPlayerAwarenessProfile Quest_NPC_Ank_Beckon_MQ_090 < uid=8DEDF4C9664C672E000416713E818BE7 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState "New NPCPlayerAwarenessState"
+		{
+			myActivationRange 15.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=8DEDF4C9664C677900041672C5E57F61 > = S_QUEST_MQ090_AnkBeckon 1EC89F25663B3E0D000000CAA39AA9CE
+				myIdleBarkStimulus < uid=8DEDF4C9664C67790004167386BF1BE9 > = S_QUEST_MQ090_AnkBeckon 1EC89F25663B3E0D000000CAA39AA9CE
+				myIdleBarkCooldown 45.0
+			}
+			myRequirePlayerIsVisible FALSE
+		}
+	}
+}
+
+NPCPlayerAwarenessProfile SpeederRacer < uid=3A129121667E87F0001C341E21A34A64 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState NoticePlayer
+		{
+			myActivationRange 15.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=3A129121667E87F0001C341FDC87E85B > = S_NPC_Events_SpeederRace_NoticePlayer 3A129121667E87AD001C33F3AE7004F0
+				myIdleBarkCooldown 0.0
+			}
+		}
+	}
+	myOnInteractStart
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myBarkStimulus < uid=3A129121667E87F0001C342099700394 > = NULLREFERENCE
+			myIdleBarkCooldown 31.0
+		}
+	}
+	myOnInteractEnd
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myBarkStimulus < uid=3A129121667E87F0001C3421B88419E2 > = NULLREFERENCE
+			myIdleBarkCooldown 60.0
+		}
+		myTimeUntilAttentionLost 10.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityBarksAfterInteraction FALSE
+}
+
+NPCPlayerAwarenessProfile SpeederRacer_Familiar < uid=3A129121667E8830001C352179DA178A >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState NoticePlayer
+		{
+			myActivationRange 15.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=3A129121667E8830001C35224F724541 > = S_NPC_Events_SpeederRace_NoticePlayerFamiliar 3A129121667E87B6001C33F4861EAE92
+				myIdleBarkCooldown 0.0
+			}
+		}
+	}
+	myOnInteractStart
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myBarkStimulus < uid=3A129121667E8830001C35233F029A61 > = NULLREFERENCE
+			myIdleBarkCooldown 31.0
+		}
+	}
+	myOnInteractEnd
+	{
+		myIsEnabled TRUE
+		myNonBehaviorConfig
+		{
+			myBarkStimulus < uid=3A129121667E8830001C3524BD697E79 > = NULLREFERENCE
+			myIdleBarkCooldown 60.0
+		}
+		myTimeUntilAttentionLost 10.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityBarksAfterInteraction FALSE
+}
+
+NPCPlayerAwarenessProfile Quest_NPC_Verrick_BeckonFamiliar_HTC_010 < uid=F4572232669033DF000552337D44BAF3 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState LookFirst
+		{
+			myActivationRange 10.0
+		}
+		NPCPlayerAwarenessState BeckonSecond
+		{
+			myActivationRange 6.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=F4572232669033DF00055234FB550D79 > = S_QUEST_HTC010_Verrick_BeckonFamiliar F4572232669034950005538D3D0023AB
+				myIdleBarkStimulus < uid=F457223266CE269C0016CCDA56C980E2 > = S_QUEST_HTC010_Verrick_BeckonFamiliar F4572232669034950005538D3D0023AB
+				myIdleBarkCooldown 15.0
+			}
+			mySetCameraLookAt FALSE
+		}
+	}
+	myOnInteractEnd
+	{
+		myTimeUntilAttentionLost 1.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+}
+
+NPCPlayerAwarenessProfile Quest_NPC_JabbaBib < uid=E4123D27669950F8000152AAA764EC18 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState Notice
+		{
+			myActivationRange 6.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=E4123D27669950F8000152ABCA891C7E > = S_QUEST_NoticePlayerJabbaBib E4123D2766994F97000152928B494173
+			}
+			mySetCameraLookAt FALSE
+		}
+	}
+	myOnInteractEnd
+	{
+		myTimeUntilAttentionLost 1.0
+	}
+	myOverrideDefaultNPCBehavior FALSE
+}
+
+NPCPlayerAwarenessProfile DQ010_StormtrooperGuard < uid=DA5615DD671BA623000E279941F73147 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState "New NPCPlayerAwarenessState"
+		{
+			myActivationRange 5.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=DA5615DD6720F114000903FFD1147918 > = S_NPC_DQ010_StormtrooperRejectsKay DA5615DD671BA6AA000E279BDD030C49
+			}
+		}
+	}
+}
+
+NPCPlayerAwarenessProfile DLC2_Combat_NPC_StingerTash < uid=F4572232678158D700024A64147B7F61 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState MisbehaviourRadius
+		{
+			myActivationRange 0.5
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=F4572232678158D700024A651EAF578A > = S_NPC_StoodTooCloseReactionLow E4123D276304E6380006E711B473D15C
+				myIdleBarkStimulus < uid=F4572232678158D700024A66D360CD50 > = S_NPC_StoodTooCloseReactionLow E4123D276304E6380006E711B473D15C
+				myIdleBarkCooldown 7.0
+			}
+		}
+		NPCPlayerAwarenessState ProximityTriggerProximityWarning
+		{
+			myActivationRange 7.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=F4572232678158D700024A6731CDA972 > = S_NPC_DLC2_StingerTash_CombatIncidental F457223267803EA80007CC7CB20738FE
+				myIdleBarkStimulus < uid=F4572232678158D700024A68FE82585D > = S_NPC_DLC2_StingerTash_CombatIncidental F457223267803EA80007CC7CB20738FE
+				myIdleBarkCooldown 10.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerCombatAreaNear
+		{
+			myActivationRange 20.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=F4572232678158D700024A699AF55300 > = S_NPC_DLC2_StingerTash_CombatIncidental F457223267803EA80007CC7CB20738FE
+				myIdleBarkStimulus < uid=F4572232678158D700024A6A4F2A0743 > = S_NPC_DLC2_StingerTash_CombatIncidental F457223267803EA80007CC7CB20738FE
+				myIdleBarkCooldown 13.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerEngagementDist
+		{
+			myActivationRange 50.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=F4572232678158D700024A6B13F0B1ED > = S_NPC_DLC2_StingerTash_CombatIncidental F457223267803EA80007CC7CB20738FE
+				myIdleBarkStimulus < uid=F4572232678158D700024A6CFF5C437E > = S_NPC_DLC2_StingerTash_CombatIncidental F457223267803EA80007CC7CB20738FE
+				myIdleBarkCooldown 17.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+		NPCPlayerAwarenessState ProximityTriggerSearchDist
+		{
+			myActivationRange 100.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=F4572232678158D700024A6DCF0162C6 > = S_NPC_DLC2_StingerTash_CombatIncidental F457223267803EA80007CC7CB20738FE
+				myIdleBarkStimulus < uid=F4572232678158D700024A6ED00E747A > = S_NPC_DLC2_StingerTash_CombatIncidental F457223267803EA80007CC7CB20738FE
+				myIdleBarkCooldown 23.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+	myOverrideDefaultNPCBehavior FALSE
+	myDisableProximityWhenNotInIdle FALSE
+}
+
+NPCPlayerAwarenessProfile DLC2_Combat_KhepiAncientDroids < uid=F3B0A07067AB262B00001069EBBEA8D9 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState ProximityTriggerProximityWarning
+		{
+			myActivationRange 19.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=F3B0A07067AB282C0000107F3E53979C > = S_NPC_DLC2_KhepiDroid_Proximity F3B0A07067AB26B000001072886C3A10
+				myIdleBarkStimulus < uid=F3B0A07067AB282C00001080A23ECE4B > = NULLREFERENCE
+				myIdleBarkCooldown 7.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint TRUE
+			mySetCameraLookAt FALSE
+		}
+	}
+	myDisableProximityWhenNotInIdle FALSE
+}
+
+NPCPlayerAwarenessProfile DLC2_NPC_R5P8 < uid=F3B0A07067B33786000000CD8B1A3195 >
+{
+	myPlayerAwarenessStates
+	{
+		NPCPlayerAwarenessState NoticePlayer
+		{
+			myActivationRange 18.0
+			myNonBehaviorConfig
+			{
+				myBarkStimulus < uid=F3B0A07067B3416F0006ABED4DF770B8 > = S_NPC_DLC2_R5P8_NoticeKay F3B0A07067B33D28000482FEF314DEC7
+				myIdleBarkStimulus < uid=F3B0A07067B3416F0006ABEEDA2EED13 > = S_NPC_DLC2_R5P8_Idle F3B0A07067A3EB7D00054F001E14F57A
+				myIdleBarkCooldown 5.0
+			}
+			myRequirePlayerIsVisible FALSE
+			myAddPlayerAsNPCFocusPoint FALSE
+		}
+	}
+}
+

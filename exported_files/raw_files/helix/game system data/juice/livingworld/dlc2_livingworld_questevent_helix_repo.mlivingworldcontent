@@ -1,0 +1,101 @@
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+
+LivingWorldContent DLC2_C_MQ_020_SpeederAmbush < uid=2AE2EC8567DABC8C001039855E97ED4F >
+{
+	myTicket < uid=2AE2EC8567DABC8C0010398616FEF293 >
+	{
+	}
+	myTicketMax < uid=2AE2EC8567DABC8C001039876382D284 >
+	{
+		myDefaultValue 10
+	}
+	myCompletedGameValue < uid=2AE2EC8567DABC8C00103988F395221B >
+	{
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType encounter Encounter
+	}
+	myBlockingRadius 200.0
+	myActivationGameConditions
+	{
+		GameConditionQuestBeatState "C_MQ_020_Beat000 is started"
+		{
+			myQuestBeat 253B686767233CB1000000D64F1ABE30
+			myQuestBeatState Started
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to player is less that 1000 meters"
+		{
+			myDistance 1000.0
+			myOperator LessThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "OR Group"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState "C_MQ_020_Beat000 is completed"
+				{
+					myQuestBeat 253B686767233CB1000000D64F1ABE30
+					myQuestBeatState Completed
+				}
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distamce to player is more than 1100 meters"
+				{
+					myDistance 1100.0
+				}
+			}
+		}
+	}
+	myBasePriority 150.0
+	myIsScannable FALSE
+}
+
+LivingWorldContent DLC2_C_MQ_020_Sunset < uid=56C8C19967E420080003EBB548ADF0C5 >
+{
+	myActivationGameConditions
+	{
+		GameConditionQuestBeatState "DefeatBeastsBeat050 Completed"
+		{
+			myQuestBeat 253B686766D1B059000495A5398F8236
+			myQuestBeatState Completed
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionQuestIsCompleted "MQ_020 Completed"
+		{
+			myQuest 253B686766D0613D000493887ED69063
+		}
+	}
+}
+
+LivingWorldContent DLC2_C_MQ_010_B00_StarMap < uid=381EA52767E52D8D000556F03BB490E7 >
+{
+	myCompletedGameValue < uid=381EA52767E56868001402F6038F08BC >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionQuestBeatState "New GameConditionQuestBeatState"
+		{
+			myQuestBeat 8FD81D5166E055E400021629C9A959BA
+			myQuestBeatState Completed
+		}
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "New GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionQuestBeatState "New GameConditionQuestBeatState"
+		{
+			myQuestBeat 8FD81D5166E17A0D0002203A910CC90C
+			myQuestBeatState Completed
+		}
+	}
+}
+

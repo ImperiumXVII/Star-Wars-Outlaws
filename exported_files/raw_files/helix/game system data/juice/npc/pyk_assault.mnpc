@@ -1,0 +1,40 @@
+include "helix/game system data/juice/item/player_weapon_pickup_rifle_a300.mitem"
+include "helix/game system data/juice/melee/npc_melee_config.mnpcmeleeconfig"
+include "helix/game system data/juice/npc/base_pyk.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC pyk_assault < uid=16DEADE660577A830000008D19AFA2DA > : base_pyk
+{
+	myName "aurabesh = false, contextComment = \"The name of the standard Pyke Assault Unit and its archetype (assault)\", enabled = true, guid = #91DC5D3C654E4F3D00053A2BBD57EFB6, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10572, text = \"Pyke Fighter\nAssault\", type = \"MenuLine\""
+	myCharacterVisuals < uid=B0EA4E5362150DA80000391B557692AA > = character_visuals_2_silver_pyke_syndicate_assault 616C0199634E7554000144C8294E42E4
+	myAdditionalGearGraphs 91DC5D3C65368A870006DA70006A3EEC
+	myBehavior helix/behaviors/pyk_assault.mbehavior
+	myVehicleDriverBehavior helix/behaviors/base_default_vehicledriver.mbehavior
+	myMaxHealth 15
+	myHealthFormula max(1,1+NPCFinalHealth)
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag (1)" < uid=E4123D2762AF10C80000356862A744FD > = Agent_Faction_PykeSyndicateTag 16DEADE6620AE18B000020D1381248A0
+		RBTagsTag "New RBTagsTag (2)" < uid=E4123D2762AF10DD000035699AF871D9 > = Agent_Archetype_LightTag 16DEADE6626D213900002E666FED23C5
+		RBTagsTag "New RBTagsTag (2)" < uid=E4123D2762AF116D0000357C8C374FB4 > = Agent_Weapon_Rifle2H_Tag EBE060C262A31390000155F83D20E483
+		RBTagsTag "New RBTagsTag" < uid=E4123D276303673E00089F33B5E2F98F > = Agent_BarksFamily_PykeDefault E4123D2762F4CA3A00048CB0EF7F9A5E
+	}
+	myTacticalPositionFinderProfile < uid=5C421F5C64A588D50004C64563E210A7 > = "Assault Tactical Position Finder Profile" 5C421F5C64A5764C000057F0C65A6821
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout LoadoutA < uid=2736B365635FFCC00002E108F943688B > = pyk_Assault_Rifle 2736B365635FFC820002E0FC12581AAB
+	}
+	myPatrolFormationProfile < uid=5C421F5C64A6821A0002EBC4D6A0CD82 > = DefaultPatrolFormation C0D149F862D6BC3C00003CE020A2DB0B
+	myPickpocketableLootTable < uid=4171A7E164B64855000311D0909544FC > = loot_pickpocket_grenades 2AE2EC8564AE78F2000253450FCB272B
+	myMotionPatternProfile < uid=4171A7E1654B8B0400030847D65E462E > = AssaultMotionPatternProfile 4171A7E16543D25F000722E2FBD78BFE
+	myPackProfile < uid=91DC5D3C63F61E15000064E303FBFD8D > = VehicleChasePackProfile 91DC5D3C63F61E9400008FAEB6509FFC
+	myAudioNPCDangerWeight 2.0
+	myMeleeConfig < uid=5C421F5C62613F3600002A2AA44927D9 > = npc_melee_config BCDE37F162445830000053EBBBF07CF3
+	myStaggerConfig < uid=5C421F5C637E3C3E0000A751240B12B2 > = NPCStaggerConfig_Humanoid_Medium_MeleeTier3 3C2FA92B651582BD0004A41755AB8CD4
+	myCombatRole Assault
+	myDataStorageItemsInitializationList
+	{
+		myInitialValues "{ [\"0\"] = { { myId = 1, myValue = 1, }, { myId = 4, myValue = true, }, myDataStorageClassUID = #5C421F5C64B50BDB00030E7EB22CBAC1, }, }"
+	}
+}
+

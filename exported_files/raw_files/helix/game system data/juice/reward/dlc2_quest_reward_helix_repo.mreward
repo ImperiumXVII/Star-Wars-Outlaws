@@ -1,0 +1,57 @@
+include "helix/game system data/fruit/gamevalues/gamevalues.fruit"
+include "helix/game system data/fruit/intel/intel.fruit"
+include "helix/game system data/fruit/mapref/mapref.fruit"
+include "helix/game system data/fruit/reward/reward.fruit"
+include "helix/game system data/fruit/ui/uienums.fruit"
+include "helix/game system data/juice/item/dlc2_items_quests_helix.mitem"
+include "helix/game system data/juice/item/dlc2_player_gear_charm_major_14_helix.mitem"
+include "helix/game system data/juice/reward/currency_reward.mreward"
+include "helix/game system data/juice/reward/quest_reward.mreward"
+
+RewardGroup reward_quest_C_MQ_030_B00C_ContractReward < uid=2AE2EC85677FDC55000000D6C294E06F >
+{
+	myRewardReferences
+	{
+		RewardItem Credits < uid=2AE2EC856785391F000000F2000C2DC2 > = cur_credits_gain_high+250 F4D8AE26638DB9B80000B508AE21CCAA
+		RewardReputation "Pyke reputation" < uid=2AE2EC856785391F000000F3F3073187 > = rep_crimsondawn_gain_large F4D8AE2662AC322300007DEBA108722E
+	}
+}
+
+RewardGroup reward_quest_C_MQ_030_B00C_ContractReward_ExtraCredits < uid=2AE2EC856793C3540003BF363D1B2B23 >
+{
+	myRewardReferences
+	{
+		RewardItem Credits < uid=2AE2EC856793C3540003BF37952EE1C5 > = cur_credits_gain_veryhigh+500 E42FA10C62163E84000026F9B4191E69
+		RewardReputation "Pyke reputation" < uid=2AE2EC856793C3540003BF382A4B47B4 > = rep_crimsondawn_gain_large F4D8AE2662AC322300007DEBA108722E
+	}
+}
+
+RewardItem C_MQ_005_Major_Charm < uid=2AE2EC8567B4982A0072D9982F504B99 >
+{
+	myItem < uid=2AE2EC8567B498B50072DAD1F7CA4B16 > = dlc2_player_gear_charm_major_14_helix 25524452674DCC9E000000E95BB3A7F4
+	myAmount 1
+}
+
+RewardItem C_MQ_005_Pirate_Map_Quest_Item < uid=2AE2EC8567B498330072D99901985FA0 >
+{
+	myItem < uid=2AE2EC8567B498B50072DAD2D47619C1 > = dlc2_C_MQ_005_PirateMap 2AE2EC8567B34D0A003143E6DF786F70
+	myAmount 1
+}
+
+RewardGroup C_MQ_005_B03_Grave_Opening < uid=2AE2EC8567B4983D0072D99AC480EF84 >
+{
+	myRewardReferences
+	{
+		RewardItem Starmap < uid=2AE2EC8567B4988B0072DACEEB454CFF > = C_MQ_005_Pirate_Map_Quest_Item 2AE2EC8567B498330072D99901985FA0
+		RewardItem "Major Charm" < uid=2AE2EC8567B498910072DACF8E285EC8 > = C_MQ_005_Major_Charm 2AE2EC8567B4982A0072D9982F504B99
+	}
+}
+
+RewardGroup CompletionReward_C_MQ_005 < uid=2AE2EC8567B498490072D99BADF881DF >
+{
+	myRewardReferences
+	{
+		RewardGroup "Grave opening" < uid=2AE2EC8567B498AD0072DAD0CB53CCB8 > = C_MQ_005_B03_Grave_Opening 2AE2EC8567B4983D0072D99AC480EF84
+	}
+}
+

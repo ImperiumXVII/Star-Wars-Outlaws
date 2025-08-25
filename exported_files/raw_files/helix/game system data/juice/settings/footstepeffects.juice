@@ -1,0 +1,635 @@
+include "helix/game system data/fruit/settings/playersettings.fruit"
+include "helix/game system data/juice/collisionmaterials/collisionmaterials.juice"
+
+EffectsByMaterials PlayerFootstepEffects
+{
+	myDefaultDecal "helix/graph objects/gameplayobject/footstep_decal.mgraphobject"
+	myDefaultEffect ""
+	myList
+	{
+		EffectOnMaterial Glass
+		{
+			myEffect helix/particles/vfx_loc_ch_glass_footstep.mparticles
+		}
+		EffectOnMaterial Sand
+		{
+			myMaterial < uid=A207755D62823EB900002FD138ED56C3 > = Sand 6F860DB5506C75BF00000E16E163F30E
+			myEffect helix/particles/vfx_loc_ch_sand_footstep.mparticles
+			myDecal "helix/graph objects/gameplayobject/footstep_decal.mgraphobject"
+		}
+		EffectOnMaterial Dirt
+		{
+			myMaterial < uid=F8181D48632D9DC90000B0FFB43DCC95 > = Dirt 6F860DB5506C75BF00000E15D8BBCF79
+			myEffect helix/particles/vfx_loc_ch_dirt_footstep.mparticles
+			myDecal "helix/graph objects/gameplayobject/footstep_decal.mgraphobject"
+		}
+		EffectOnMaterial Rock
+		{
+			myMaterial < uid=F8181D486441545E00523F9FD44DBE17 > = Rock 71B756D45F4FB1CA00000078405C761E
+			myEffect helix/particles/vfx_loc_ch_dust_footstep_01.mparticles
+		}
+		EffectOnMaterial Stone
+		{
+			myMaterial < uid=F8181D486441545E00523FA0B962B6D0 > = Stone 6F860DB5506C75BF00000E14508A97DB
+			myEffect helix/particles/vfx_loc_ch_dust_footstep_01.mparticles
+		}
+		EffectOnMaterial Gravel
+		{
+			myMaterial < uid=F8181D486441536F004DC4FF1F9E8042 > = Gravel 6F860DB5506C75BF00000E1729209934
+			myEffect helix/particles/vfx_loc_ch_dirt_footstep.mparticles
+			myDecal "helix/graph objects/gameplayobject/footstep_decal.mgraphobject"
+		}
+		EffectOnMaterial Grass
+		{
+			myMaterial < uid=F8181D48632DA63D0000D5F4CA8EB6CE > = Grass 6F860DB5506C75BF00000E114D6A4808
+			myEffect ""
+		}
+		EffectOnMaterial "Snow Heavy"
+		{
+			myMaterial < uid=F8181D48632D9DC90000B1001E61542E > = SnowHeavy 6F860DB5506C75BF00000E0DAADEA0B9
+			myEffect helix/particles/vfx_loc_ch_snow_footstep.mparticles
+			myDecal "helix/graph objects/gameplayobject/footstep_decal.mgraphobject"
+		}
+		EffectOnMaterial "Snow Light"
+		{
+			myMaterial < uid=F8181D48632D9DC90000B1013F476137 > = SnowLight 6F860DB5506C75BF00000E0CA6A2A340
+			myEffect helix/particles/vfx_loc_ch_snow_footstep.mparticles
+			myDecal "helix/graph objects/gameplayobject/footstep_decal.mgraphobject"
+		}
+		EffectOnMaterial Mud
+		{
+			myMaterial < uid=F8181D48632D9DC90000B102CE892E30 > = Mud 6F860DB5506C75BF00000E1A31723630
+			myEffect helix/particles/vfx_loc_ch_mud_footstep.mparticles
+			myDecal "helix/graph objects/gameplayobject/footstep_decal.mgraphobject"
+		}
+		EffectOnMaterial "Water Deep"
+		{
+			myMaterial < uid=F8181D48632D9DC90000B103948A0A10 > = WaterDeep 6F860DB5506C75BF00000E0FCDA956A7
+			myEffect helix/particles/vfx_loc_ch_water_footstep.mparticles
+		}
+		EffectOnMaterial "Water Shallow"
+		{
+			myMaterial < uid=F8181D48632D9DC90000B104805EFC8B > = WaterShallow 6F860DB5506C75BF00000E0E9C4CF120
+			myEffect helix/particles/vfx_loc_ch_puddle_footstep_01.mparticles
+		}
+		EffectOnMaterial Concrete
+		{
+			myMaterial < uid=F8181D4864416257001B61976EA95798 > = Concrete 84B8EF744FFE8DAC000000048239FD54
+			myEffect helix/particles/vfx_loc_ch_dust_footstep_01.mparticles
+		}
+		EffectOnMaterial "Concrete Rough"
+		{
+			myMaterial < uid=F8181D4864416257001B619889AA2CD5 > = ConcreteRough 4ADBE9C459DB6EE40000D92AE2533A78
+			myEffect helix/particles/vfx_loc_ch_dust_footstep_01.mparticles
+		}
+		EffectOnMaterial "Fluffy Sand"
+		{
+			myMaterial < uid=F8181D4865BBF00D0016FC4D8ED7EB2C > = FluffySand 0BACD8E1657B0B5F0009A09459382C24
+			myEffect helix/particles/vfx_loc_ch_sand_footstep.mparticles
+			myDecal "helix/graph objects/gameplayobject/footstep_decal.mgraphobject"
+		}
+		EffectOnMaterial "Fluffy Snow"
+		{
+			myMaterial < uid=F8181D4865BBF00D0016FC4E9CDC4C4E > = FluffySnow 0BACD8E1657B0B5F0009A0959F762115
+			myEffect helix/particles/vfx_loc_ch_snow_fluffy_footstep_01.mparticles
+			myDecal "helix/graph objects/gameplayobject/footstep_decal.mgraphobject"
+		}
+	}
+	myEffectsByConditions
+	{
+		VisualEffectByConditions water
+		{
+			myConditions
+			{
+				myOperator And
+				myConditions
+				{
+					GameConditionImpactWaterDepth "New GameConditionImpactWaterDepth"
+					{
+						myDepth 0.1
+					}
+				}
+			}
+			myEffect helix/particles/vfx_loc_ch_water_footstep.mparticles
+		}
+	}
+}
+
+EffectsByMaterials NPCHumanoidFootstepEffects
+{
+	myDefaultDecal "helix/graph objects/gameplayobject/footstep_decal.mgraphobject"
+	myDefaultEffect ""
+	myList
+	{
+		EffectOnMaterial Glass
+		{
+			myEffect helix/particles/vfx_loc_ch_glass_footstep.mparticles
+		}
+		EffectOnMaterial Sand
+		{
+			myMaterial < uid=C0D149F8644BAF4A00008C680349B32D > = Sand 6F860DB5506C75BF00000E16E163F30E
+			myEffect helix/particles/vfx_loc_ch_sand_footstep.mparticles
+			myDecal "helix/graph objects/gameplayobject/footstep_decal.mgraphobject"
+		}
+		EffectOnMaterial Dirt
+		{
+			myMaterial < uid=C0D149F8644BAF4A00008C6910A22399 > = Dirt 6F860DB5506C75BF00000E15D8BBCF79
+			myEffect helix/particles/vfx_loc_ch_dirt_footstep.mparticles
+			myDecal "helix/graph objects/gameplayobject/footstep_decal.mgraphobject"
+		}
+		EffectOnMaterial Rock
+		{
+			myMaterial < uid=C0D149F8644BAF4A00008C6A18A3225E > = Rock 71B756D45F4FB1CA00000078405C761E
+			myEffect helix/particles/vfx_loc_ch_dust_footstep_01.mparticles
+		}
+		EffectOnMaterial Stone
+		{
+			myMaterial < uid=C0D149F8644BAF4A00008C6B384EBA63 > = Stone 6F860DB5506C75BF00000E14508A97DB
+			myEffect helix/particles/vfx_loc_ch_dust_footstep_01.mparticles
+		}
+		EffectOnMaterial Gravel
+		{
+			myMaterial < uid=C0D149F8644BAF4A00008C6C76D0B69C > = Gravel 6F860DB5506C75BF00000E1729209934
+			myEffect helix/particles/vfx_loc_ch_dirt_footstep.mparticles
+			myDecal "helix/graph objects/gameplayobject/footstep_decal.mgraphobject"
+		}
+		EffectOnMaterial Grass
+		{
+			myMaterial < uid=C0D149F8644BAF4A00008C6D776FED34 > = Grass 6F860DB5506C75BF00000E114D6A4808
+			myEffect ""
+		}
+		EffectOnMaterial "Snow Heavy"
+		{
+			myMaterial < uid=C0D149F8644BAF4A00008C6E76DF8055 > = SnowHeavy 6F860DB5506C75BF00000E0DAADEA0B9
+			myEffect helix/particles/vfx_loc_ch_snow_footstep.mparticles
+			myDecal "helix/graph objects/gameplayobject/footstep_decal.mgraphobject"
+		}
+		EffectOnMaterial "Snow Light"
+		{
+			myMaterial < uid=C0D149F8644BAF4A00008C6F3B0FB14F > = SnowLight 6F860DB5506C75BF00000E0CA6A2A340
+			myEffect helix/particles/vfx_loc_ch_snow_footstep.mparticles
+			myDecal "helix/graph objects/gameplayobject/footstep_decal.mgraphobject"
+		}
+		EffectOnMaterial Mud
+		{
+			myMaterial < uid=C0D149F8644BAF4A00008C70C89884E4 > = Mud 6F860DB5506C75BF00000E1A31723630
+			myEffect helix/particles/vfx_loc_ch_mud_footstep.mparticles
+			myDecal "helix/graph objects/gameplayobject/footstep_decal.mgraphobject"
+		}
+		EffectOnMaterial "Water Deep"
+		{
+			myMaterial < uid=C0D149F8644BAF4A00008C71C096D68E > = WaterDeep 6F860DB5506C75BF00000E0FCDA956A7
+			myEffect helix/particles/vfx_loc_ch_water_footstep.mparticles
+		}
+		EffectOnMaterial "Water Shallow"
+		{
+			myMaterial < uid=C0D149F8644BAF4A00008C724AC13BE1 > = WaterShallow 6F860DB5506C75BF00000E0E9C4CF120
+			myEffect helix/particles/vfx_loc_ch_puddle_footstep_01.mparticles
+		}
+		EffectOnMaterial Concrete
+		{
+			myMaterial < uid=C0D149F8644BAF4A00008C730C027E3F > = Concrete 84B8EF744FFE8DAC000000048239FD54
+			myEffect helix/particles/vfx_loc_ch_dust_footstep_01.mparticles
+		}
+		EffectOnMaterial "Concrete Rough"
+		{
+			myMaterial < uid=C0D149F8644BAF4A00008C7400B164FF > = ConcreteRough 4ADBE9C459DB6EE40000D92AE2533A78
+			myEffect helix/particles/vfx_loc_ch_dust_footstep_01.mparticles
+		}
+		EffectOnMaterial "Fluffy Sand"
+		{
+			myMaterial < uid=061AC046667BD6990002AB3224ABE1FE > = FluffySand 0BACD8E1657B0B5F0009A09459382C24
+			myEffect helix/particles/vfx_loc_ch_sand_footstep.mparticles
+			myDecal "helix/graph objects/gameplayobject/footstep_decal.mgraphobject"
+		}
+	}
+	myEffectsByConditions
+	{
+		VisualEffectByConditions "Is Rancor"
+		{
+			myConditions
+			{
+				myOperator Or
+				myConditions
+				{
+					GameConditionContextAgentIsSpecificNPC "NPC Is Rancor"
+					{
+						myNPCConstantData 2736B36563D140850001DF8C793B440D
+					}
+				}
+			}
+			myEffect helix/particles/vfx_loc_ch_sand_footstep_rancor_01.mparticles
+		}
+	}
+}
+
+EffectsByMaterials PetFootstepEffects
+{
+	myDefaultDecal "helix/graph objects/gameplayobject/nix footstep decal.mgraphobject"
+	myList
+	{
+		EffectOnMaterial Sand
+		{
+			myMaterial < uid=F8181D4864E7455400034A1A37228366 > = Sand 6F860DB5506C75BF00000E16E163F30E
+			myEffect helix/particles/vfx_loc_ch_sand_footstep_02.mparticles
+			myDecal "helix/graph objects/gameplayobject/nix footstep decal.mgraphobject"
+		}
+		EffectOnMaterial Dirt
+		{
+			myMaterial < uid=F8181D4864E7455400034A1BD9A6ED1D > = Dirt 6F860DB5506C75BF00000E15D8BBCF79
+			myEffect helix/particles/vfx_loc_ch_dirt_footstep_02.mparticles
+			myDecal "helix/graph objects/gameplayobject/nix footstep decal.mgraphobject"
+		}
+		EffectOnMaterial Rock
+		{
+			myMaterial < uid=F8181D4864E7455400034A1C2062CC2B > = Rock 71B756D45F4FB1CA00000078405C761E
+			myEffect helix/particles/vfx_loc_ch_dust_footstep_02.mparticles
+		}
+		EffectOnMaterial Stone
+		{
+			myMaterial < uid=F8181D4864E7455400034A1DCBE57ABA > = Stone 6F860DB5506C75BF00000E14508A97DB
+			myEffect helix/particles/vfx_loc_ch_dust_footstep_02.mparticles
+		}
+		EffectOnMaterial Gravel
+		{
+			myMaterial < uid=F8181D4864E7455400034A1EE8FFE913 > = Gravel 6F860DB5506C75BF00000E1729209934
+			myEffect helix/particles/vfx_loc_ch_dirt_footstep_02.mparticles
+		}
+		EffectOnMaterial "Snow Heavy"
+		{
+			myMaterial < uid=F8181D4864E7455400034A1F06DF3F14 > = SnowHeavy 6F860DB5506C75BF00000E0DAADEA0B9
+			myEffect helix/particles/vfx_loc_ch_snow_footstep_02.mparticles
+			myDecal "helix/graph objects/gameplayobject/nix footstep decal.mgraphobject"
+		}
+		EffectOnMaterial "Snow Light"
+		{
+			myMaterial < uid=F8181D4864E7455400034A2030EAA870 > = SnowLight 6F860DB5506C75BF00000E0CA6A2A340
+			myEffect helix/particles/vfx_loc_ch_snow_footstep_02.mparticles
+			myDecal "helix/graph objects/gameplayobject/nix footstep decal.mgraphobject"
+		}
+		EffectOnMaterial Mud
+		{
+			myMaterial < uid=F8181D4864E7455400034A21D03A347D > = Mud 6F860DB5506C75BF00000E1A31723630
+			myEffect helix/particles/vfx_loc_ch_mud_footstep_02.mparticles
+			myDecal "helix/graph objects/gameplayobject/nix footstep decal.mgraphobject"
+		}
+		EffectOnMaterial "Water Deep"
+		{
+			myMaterial < uid=F8181D4864E7455400034A22C79AE818 > = WaterDeep 6F860DB5506C75BF00000E0FCDA956A7
+			myEffect helix/particles/vfx_loc_ch_water_footstep_02.mparticles
+		}
+		EffectOnMaterial "Water Shallow"
+		{
+			myMaterial < uid=F8181D4864E7455400034A2338424860 > = WaterShallow 6F860DB5506C75BF00000E0E9C4CF120
+			myEffect helix/particles/vfx_loc_vh_puddle_footstep_02.mparticles
+		}
+		EffectOnMaterial Concrete
+		{
+			myMaterial < uid=F8181D4864E7455400034A245D8ECE30 > = Concrete 84B8EF744FFE8DAC000000048239FD54
+			myEffect helix/particles/vfx_loc_ch_dust_footstep_02.mparticles
+		}
+		EffectOnMaterial "Concrete Rough"
+		{
+			myMaterial < uid=F8181D4864E7455400034A255C168020 > = ConcreteRough 4ADBE9C459DB6EE40000D92AE2533A78
+			myEffect helix/particles/vfx_loc_ch_dust_footstep_02.mparticles
+		}
+		EffectOnMaterial "Fluffy Sand"
+		{
+			myMaterial < uid=061AC046667BD6990002AB33800C02F9 > = FluffySand 0BACD8E1657B0B5F0009A09459382C24
+			myEffect helix/particles/vfx_loc_ch_sand_footstep_02.mparticles
+			myDecal "helix/graph objects/gameplayobject/nix footstep decal.mgraphobject"
+		}
+	}
+}
+
+EffectsByMaterials Big_wildlife
+{
+	myDefaultEffect helix/particles/vfx_wl_footstep_big_grass.mparticles
+	myList
+	{
+		EffectOnMaterial Sand
+		{
+			myMaterial < uid=D8550C146501647B00006481794DC32D > = Sand 6F860DB5506C75BF00000E16E163F30E
+			myEffect helix/particles/vfx_wl_footstep_big_sand.mparticles
+		}
+		EffectOnMaterial Dirt
+		{
+			myMaterial < uid=D8550C146501647B000064824E90359F > = Dirt 6F860DB5506C75BF00000E15D8BBCF79
+			myEffect helix/particles/vfx_wl_footstep_big_stone.mparticles
+		}
+		EffectOnMaterial Rock
+		{
+			myMaterial < uid=D8550C146501647B00006483EC76CE3E > = Rock 71B756D45F4FB1CA00000078405C761E
+			myEffect helix/particles/vfx_wl_footstep_big_stone.mparticles
+		}
+		EffectOnMaterial Stone
+		{
+			myMaterial < uid=D8550C146501647B000064841A538E25 > = Stone 6F860DB5506C75BF00000E14508A97DB
+			myEffect helix/particles/vfx_wl_footstep_big_stone.mparticles
+		}
+		EffectOnMaterial Gravel
+		{
+			myMaterial < uid=D8550C146501647B000064850D1072E9 > = Gravel 6F860DB5506C75BF00000E1729209934
+			myEffect helix/particles/vfx_wl_footstep_big_stone.mparticles
+		}
+		EffectOnMaterial "Snow Heavy"
+		{
+			myMaterial < uid=D8550C146501647B00006486C2E38219 > = SnowHeavy 6F860DB5506C75BF00000E0DAADEA0B9
+			myEffect helix/particles/vfx_wl_footstep_big_snow.mparticles
+		}
+		EffectOnMaterial "Snow Light"
+		{
+			myMaterial < uid=D8550C146501647B0000648798BEA345 > = SnowLight 6F860DB5506C75BF00000E0CA6A2A340
+			myEffect helix/particles/vfx_wl_footstep_big_snow.mparticles
+		}
+		EffectOnMaterial Mud
+		{
+			myMaterial < uid=D8550C146501647B000064881E1A34D1 > = Mud 6F860DB5506C75BF00000E1A31723630
+			myEffect helix/particles/vfx_wl_footstep_big_mud.mparticles
+		}
+		EffectOnMaterial "Water Deep"
+		{
+			myMaterial < uid=D8550C146501647B0000648990138AC1 > = WaterDeep 6F860DB5506C75BF00000E0FCDA956A7
+			myEffect helix/particles/vfx_wl_footstep_big_water.mparticles
+		}
+		EffectOnMaterial "Water Shallow"
+		{
+			myMaterial < uid=D8550C146501647B0000648A4E3E2190 > = WaterShallow 6F860DB5506C75BF00000E0E9C4CF120
+			myEffect helix/particles/vfx_wl_footstep_big_water.mparticles
+		}
+		EffectOnMaterial Concrete
+		{
+			myMaterial < uid=D8550C146501647B0000648B23F70799 > = Concrete 84B8EF744FFE8DAC000000048239FD54
+			myEffect helix/particles/vfx_wl_footstep_big_stone.mparticles
+		}
+		EffectOnMaterial "Concrete Rough"
+		{
+			myMaterial < uid=D8550C146501647B0000648CEC84038A > = ConcreteRough 4ADBE9C459DB6EE40000D92AE2533A78
+			myEffect helix/particles/vfx_wl_footstep_big_stone.mparticles
+		}
+		EffectOnMaterial grass
+		{
+			myMaterial < uid=D8550C146501746B0005F2F6FDC34202 > = Grass 6F860DB5506C75BF00000E114D6A4808
+			myEffect helix/particles/vfx_wl_footstep_big_grass.mparticles
+		}
+	}
+	myEffectsByConditions
+	{
+	}
+}
+
+NPCVisualEffectFootstep "New NPCVisualEffectFootstep" < uid=F8181D486512F4C200017F57024ABE60 >
+{
+}
+
+EffectsByMaterials Rancor
+{
+	myDefaultEffect helix/particles/vfx_loc_ch_sand_footstep_rancor_01.mparticles
+}
+
+EffectsByMaterials AT-ST
+{
+	myDefaultEffect helix/particles/vfx_ch_atst_footstep_sand_01.mparticles
+	myList
+	{
+		EffectOnMaterial MetalSolid
+		{
+			myMaterial < uid=4195C0EB6716508900040F8C5DD5E186 > = MetalSolid 6F860DB5506C75BF00000E0BB2E0801B
+			myEffect helix/particles/vfx_ch_at-st_footstep_metal_01.mparticles
+		}
+		EffectOnMaterial Amber
+		{
+			myMaterial < uid=4195C0EB6716508900040F8DA74D7CE2 > = Amber 9C4B6A04615D9ACE000018D48FA4AA98
+			myEffect helix/particles/vfx_ch_at-st_footstep_metal_01.mparticles
+		}
+	}
+}
+
+EffectsByMaterials Mid_wildlife
+{
+	myDefaultEffect helix/particles/vfx_wl_footstep_mid_grass.mparticles
+	myList
+	{
+		EffectOnMaterial Sand
+		{
+			myMaterial < uid=D8550C146551FDCC00075EAEF401BEAF > = Sand 6F860DB5506C75BF00000E16E163F30E
+			myEffect helix/particles/vfx_wl_footstep_sand1.mparticles
+		}
+		EffectOnMaterial Dirt
+		{
+			myMaterial < uid=D8550C146551FDCC00075EAFD964889F > = Dirt 6F860DB5506C75BF00000E15D8BBCF79
+			myEffect helix/particles/vfx_wl_footstep_mid_stone.mparticles
+		}
+		EffectOnMaterial Rock
+		{
+			myMaterial < uid=D8550C146551FDCC00075EB0D9F45BB5 > = Rock 71B756D45F4FB1CA00000078405C761E
+			myEffect helix/particles/vfx_wl_footstep_mid_stone.mparticles
+		}
+		EffectOnMaterial Stone
+		{
+			myMaterial < uid=D8550C146551FDCC00075EB145D56D67 > = Stone 6F860DB5506C75BF00000E14508A97DB
+			myEffect helix/particles/vfx_wl_footstep_mid_stone.mparticles
+		}
+		EffectOnMaterial Gravel
+		{
+			myMaterial < uid=D8550C146551FDCC00075EB2BCD857B4 > = Gravel 6F860DB5506C75BF00000E1729209934
+			myEffect helix/particles/vfx_wl_footstep_mid_stone.mparticles
+		}
+		EffectOnMaterial "Snow Heavy"
+		{
+			myMaterial < uid=D8550C146551FDCC00075EB3410510C0 > = SnowHeavy 6F860DB5506C75BF00000E0DAADEA0B9
+			myEffect helix/particles/vfx_wl_footstep_mid_snow.mparticles
+		}
+		EffectOnMaterial "Snow Light"
+		{
+			myMaterial < uid=D8550C146551FDCC00075EB43A57C2A6 > = SnowLight 6F860DB5506C75BF00000E0CA6A2A340
+			myEffect helix/particles/vfx_wl_footstep_mid_snow.mparticles
+		}
+		EffectOnMaterial Mud
+		{
+			myMaterial < uid=D8550C146551FDCC00075EB5D4072EDE > = Mud 6F860DB5506C75BF00000E1A31723630
+			myEffect helix/particles/vfx_wl_footstep_mid_mud.mparticles
+		}
+		EffectOnMaterial "Water Deep"
+		{
+			myMaterial < uid=D8550C146551FDCC00075EB6AA1CA61D > = WaterDeep 6F860DB5506C75BF00000E0FCDA956A7
+			myEffect helix/particles/vfx_wl_footstep_big_water.mparticles
+		}
+		EffectOnMaterial "Water Shallow"
+		{
+			myMaterial < uid=D8550C146551FDCC00075EB7C3F6208E > = WaterShallow 6F860DB5506C75BF00000E0E9C4CF120
+			myEffect helix/particles/vfx_wl_footstep_big_water.mparticles
+		}
+		EffectOnMaterial Concrete
+		{
+			myMaterial < uid=D8550C146551FDCC00075EB8473088A4 > = Concrete 84B8EF744FFE8DAC000000048239FD54
+			myEffect helix/particles/vfx_wl_footstep_mid_stone.mparticles
+		}
+		EffectOnMaterial "Concrete Rough"
+		{
+			myMaterial < uid=D8550C146551FDCC00075EB9AAAC2F42 > = ConcreteRough 4ADBE9C459DB6EE40000D92AE2533A78
+			myEffect helix/particles/vfx_wl_footstep_mid_stone.mparticles
+		}
+		EffectOnMaterial grass
+		{
+			myMaterial < uid=D8550C146551FDCC00075EBAE5CF5844 > = Grass 6F860DB5506C75BF00000E114D6A4808
+			myEffect helix/particles/vfx_wl_footstep_mid_grass.mparticles
+		}
+	}
+	myEffectsByConditions
+	{
+	}
+}
+
+EffectsByMaterials Small_wildlife
+{
+	myDefaultEffect helix/particles/vfx_wl_footstep_small_sand.mparticles
+	myList
+	{
+		EffectOnMaterial Sand
+		{
+			myMaterial < uid=D8550C14655B229A0011FC8B0E51AA63 > = Sand 6F860DB5506C75BF00000E16E163F30E
+			myEffect helix/particles/vfx_wl_footstep_small_sand.mparticles
+		}
+		EffectOnMaterial Dirt
+		{
+			myMaterial < uid=D8550C14655B229A0011FC8CBAB3EEA8 > = Dirt 6F860DB5506C75BF00000E15D8BBCF79
+			myEffect helix/particles/vfx_wl_footstep_small_stone.mparticles
+		}
+		EffectOnMaterial Rock
+		{
+			myMaterial < uid=D8550C14655B229A0011FC8DA8B71793 > = Rock 71B756D45F4FB1CA00000078405C761E
+			myEffect helix/particles/vfx_wl_footstep_small_stone.mparticles
+		}
+		EffectOnMaterial Stone
+		{
+			myMaterial < uid=D8550C14655B229A0011FC8EF2FBB9D6 > = Stone 6F860DB5506C75BF00000E14508A97DB
+			myEffect helix/particles/vfx_wl_footstep_small_stone.mparticles
+		}
+		EffectOnMaterial Gravel
+		{
+			myMaterial < uid=D8550C14655B229A0011FC8F717A1758 > = Gravel 6F860DB5506C75BF00000E1729209934
+			myEffect helix/particles/vfx_wl_footstep_small_stone.mparticles
+		}
+		EffectOnMaterial "Snow Heavy"
+		{
+			myMaterial < uid=D8550C14655B229A0011FC9054997171 > = SnowHeavy 6F860DB5506C75BF00000E0DAADEA0B9
+			myEffect helix/particles/vfx_wl_footstep_small_snow.mparticles
+		}
+		EffectOnMaterial "Snow Light"
+		{
+			myMaterial < uid=D8550C14655B229A0011FC914482FFFE > = SnowLight 6F860DB5506C75BF00000E0CA6A2A340
+			myEffect helix/particles/vfx_wl_footstep_small_snow.mparticles
+		}
+		EffectOnMaterial Mud
+		{
+			myMaterial < uid=D8550C14655B229A0011FC926B98CBB1 > = Mud 6F860DB5506C75BF00000E1A31723630
+			myEffect helix/particles/vfx_wl_footstep_small_mud.mparticles
+		}
+		EffectOnMaterial "Water Deep"
+		{
+			myMaterial < uid=D8550C14655B229A0011FC93CAF9D14D > = WaterDeep 6F860DB5506C75BF00000E0FCDA956A7
+			myEffect helix/particles/vfx_wl_footstep_big_water.mparticles
+		}
+		EffectOnMaterial "Water Shallow"
+		{
+			myMaterial < uid=D8550C14655B229A0011FC945574239A > = WaterShallow 6F860DB5506C75BF00000E0E9C4CF120
+			myEffect helix/particles/vfx_wl_footstep_big_water.mparticles
+		}
+		EffectOnMaterial Concrete
+		{
+			myMaterial < uid=D8550C14655B229A0011FC95065A5BC5 > = Concrete 84B8EF744FFE8DAC000000048239FD54
+			myEffect helix/particles/vfx_wl_footstep_small_stone.mparticles
+		}
+		EffectOnMaterial "Concrete Rough"
+		{
+			myMaterial < uid=D8550C14655B229A0011FC96AB32DDFC > = ConcreteRough 4ADBE9C459DB6EE40000D92AE2533A78
+			myEffect helix/particles/vfx_wl_footstep_small_stone.mparticles
+		}
+		EffectOnMaterial grass
+		{
+			myMaterial < uid=D8550C14655B229A0011FC97AF45026E > = Grass 6F860DB5506C75BF00000E114D6A4808
+			myEffect helix/particles/vfx_wl_footstep_small_grass.mparticles
+		}
+	}
+	myEffectsByConditions
+	{
+	}
+}
+
+EffectsByMaterials Smallest_wildlife
+{
+	myDefaultEffect helix/particles/vfx_wl_footstep_smallest_sand.mparticles
+	myList
+	{
+		EffectOnMaterial Sand
+		{
+			myMaterial < uid=D8550C1466138F930000FD60D1D5DAC4 > = Sand 6F860DB5506C75BF00000E16E163F30E
+			myEffect helix/particles/vfx_wl_footstep_smallest_sand.mparticles
+		}
+		EffectOnMaterial Dirt
+		{
+			myMaterial < uid=D8550C1466138F930000FD610DD1E80B > = Dirt 6F860DB5506C75BF00000E15D8BBCF79
+			myEffect helix/particles/vfx_wl_footstep_smallest_stone.mparticles
+		}
+		EffectOnMaterial Rock
+		{
+			myMaterial < uid=D8550C1466138F930000FD6262D47626 > = Rock 71B756D45F4FB1CA00000078405C761E
+			myEffect helix/particles/vfx_wl_footstep_smallest_stone.mparticles
+		}
+		EffectOnMaterial Stone
+		{
+			myMaterial < uid=D8550C1466138F930000FD6352CF452A > = Stone 6F860DB5506C75BF00000E14508A97DB
+			myEffect helix/particles/vfx_wl_footstep_smallest_stone.mparticles
+		}
+		EffectOnMaterial Gravel
+		{
+			myMaterial < uid=D8550C1466138F930000FD642DB3B64D > = Gravel 6F860DB5506C75BF00000E1729209934
+			myEffect helix/particles/vfx_wl_footstep_smallest_stone.mparticles
+		}
+		EffectOnMaterial "Snow Heavy"
+		{
+			myMaterial < uid=D8550C1466138F930000FD65AFA09240 > = SnowHeavy 6F860DB5506C75BF00000E0DAADEA0B9
+			myEffect helix/particles/vfx_wl_footstep_smallest_snow.mparticles
+		}
+		EffectOnMaterial "Snow Light"
+		{
+			myMaterial < uid=D8550C1466138F930000FD666E04A4D4 > = SnowLight 6F860DB5506C75BF00000E0CA6A2A340
+			myEffect helix/particles/vfx_wl_footstep_smallest_snow.mparticles
+		}
+		EffectOnMaterial Mud
+		{
+			myMaterial < uid=D8550C1466138F930000FD6746CA5A2B > = Mud 6F860DB5506C75BF00000E1A31723630
+			myEffect helix/particles/vfx_wl_footstep_smallest_mud.mparticles
+		}
+		EffectOnMaterial "Water Deep"
+		{
+			myMaterial < uid=D8550C1466138F930000FD68F67B8D61 > = WaterDeep 6F860DB5506C75BF00000E0FCDA956A7
+			myEffect ""
+		}
+		EffectOnMaterial "Water Shallow"
+		{
+			myMaterial < uid=D8550C1466138F930000FD695DE2337C > = WaterShallow 6F860DB5506C75BF00000E0E9C4CF120
+			myEffect ""
+		}
+		EffectOnMaterial Concrete
+		{
+			myMaterial < uid=D8550C1466138F930000FD6A168B1E10 > = Concrete 84B8EF744FFE8DAC000000048239FD54
+			myEffect helix/particles/vfx_wl_footstep_smallest_stone.mparticles
+		}
+		EffectOnMaterial "Concrete Rough"
+		{
+			myMaterial < uid=D8550C1466138F930000FD6B028405E8 > = ConcreteRough 4ADBE9C459DB6EE40000D92AE2533A78
+			myEffect helix/particles/vfx_wl_footstep_smallest_stone.mparticles
+		}
+		EffectOnMaterial grass
+		{
+			myMaterial < uid=D8550C1466138F930000FD6C28BE905C > = Grass 6F860DB5506C75BF00000E114D6A4808
+			myEffect helix/particles/vfx_wl_footstep_smallest_grass.mparticles
+		}
+	}
+	myEffectsByConditions
+	{
+	}
+}
+

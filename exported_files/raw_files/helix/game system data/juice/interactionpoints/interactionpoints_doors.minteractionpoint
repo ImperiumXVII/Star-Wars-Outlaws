@@ -1,0 +1,332 @@
+include "helix/game system data/fruit/interactionpoints/interactionpoints.fruit"
+include "helix/game system data/juice/interactionpoints/interactionpoints.minteractionpoint"
+include "helix/game system data/juice/item/player_fusion_cutter.mitem"
+include "helix/game system data/juice/item/player_gear_plasma_cutter.mitem"
+include "helix/game system data/juice/playerrestrictions/duringinteraction_fusioncutter.mplayerrestriction"
+
+InteractionPoint OpenDoor(Session) < uid=E42FA10C611B9C26000007FD5D7D2EB8 > : interaction_once_base
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, branch = \"\", contextComment = \"Open door prompt\", enabled = true, guid = #0F7E059861555F710000187DD6CFA5BD, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10727, text = \"Open\", type = \"MenuLine\""
+		myStep 1
+	}
+	myExtraStepsSetupList
+	{
+		InteractionPointSetup Close
+		{
+			myLabel "aurabesh = false, branch = \"\", contextComment = \"Close door prompt\", enabled = true, guid = #596859F662737FF000011FCE0478AF65, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10722, text = \"Close\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myStep 1
+		}
+		InteractionPointSetup Jammed
+		{
+			myLabel "aurabesh = false, branch = \"\", contextComment = \"Jammed door pry open prompt\", enabled = true, guid = #346395BC62AC30EC0000CBE936311156, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10722, text = \"Pry Open\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myStep 0
+		}
+	}
+	myDefaultInteractionRadius 0.0
+	myDefaultInteractionAngleDegree 360.0
+	myDefaultVisibilityRadius 0.0
+	myDefaultVisibilityAngleDegree 360.0
+	myUnarmedAimingInsideNonCombatAreaVisibilityProfile
+	{
+		myIsVisible FALSE
+	}
+	myPersistenceType Session
+	myCoopPersistenceType SaveGame
+	myEditorMenuStructure Door
+}
+
+InteractionPoint OpenDoor(SaveGame) < uid=9D0EE20B640608100000731795656EFF > : OpenDoor(Session)
+{
+	myPersistenceType SaveGame
+}
+
+InteractionPoint OpenDoor < uid=9D0EE20B6405E07F00008303E950E1C9 > : OpenDoor(Session)
+{
+	myPersistenceType None
+}
+
+InteractionPoint DoorPanel(Session) < uid=596859F6625FFFE100003D9A112863E1 > : interaction_once_base
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, branch = \"\", contextComment = \"Open door prompt\", enabled = true, guid = #596859F6625FFFF400003D9B92DF821A, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 10727, text = \"Open\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "aurabesh = false, branch = \"MAIN\", contextComment = \"Open door forbidden prompt\", enabled = true, guid = #06F73AE166292606000473688EE28679, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10727, text = \"Open\", type = \"MenuLine\""
+		myIcon ""
+		myShouldWaitForGestureAnimation TRUE
+		myStep 1
+	}
+	myExtraStepsSetupList
+	{
+		InteractionPointSetup Close
+		{
+			myLabel "aurabesh = false, branch = \"\", contextComment = \"Close door prompt\", enabled = true, guid = #596859F66260001C00003DC4DA0957B9, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 10727, text = \"Close\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, branch = \"MAIN\", contextComment = \"Close door forbidden prompt\", enabled = true, guid = #06F73AE16629263C00047F066ACB1DC5, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10727, text = \"Close\", type = \"MenuLine\""
+			myStep -1
+		}
+		InteractionPointSetup Locked
+		{
+			myLabel "aurabesh = false, branch = \"\", contextComment = \"Open door prompt\", enabled = true, guid = #9D0EE20B630F86D30007681B563A51F3, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10722, text = \"Locked\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myStep 0
+		}
+		InteractionPointSetup "Disabled Locked"
+		{
+			myLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myStep 0
+		}
+		InteractionPointSetup "Disabled Unlocked"
+		{
+			myLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myStep 0
+		}
+		InteractionPointSetup "Opened By NPC"
+		{
+			myLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myStep 0
+		}
+		InteractionPointSetup AutoOpen
+		{
+			myLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myStep 0
+		}
+	}
+	myDefaultInteractionRadius 2.3
+	myDefaultInteractionAngleDegree 180.0
+	myDefaultCameraAngleDegree 90.0
+	myDefaultMaxInteractionHeightOffset 2.0
+	myDefaultVisibilityAngleDegree 180.0
+	myInteractionGestureAnimationType Push_Button
+	myPersistenceType Session
+	myStartAtStep 0
+	myCooldownDuration 0.65
+}
+
+InteractionPoint DoorPanel(SaveGame) < uid=9D0EE20B6406053500006F5AF1071409 > : DoorPanel(Session)
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, branch = \"MAIN\", contextComment = \"Open door prompt\", enabled = true, guid = #AD4698A765B7BCFE00019F84089C5711, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10727, text = \"Open\", type = \"MenuLine\""
+	}
+	myPersistenceType SaveGame
+}
+
+InteractionPoint DoorPanel < uid=9D0EE20B6405ADCD000059E08F205F3B > : DoorPanel(Session)
+{
+}
+
+InteractionPoint DoorPanelForbidden < uid=06F73AE16628F3F00003F55F829135B0 > : DoorPanel
+{
+	myIsForbiddenConditions
+	{
+		GameConditionFlag Always
+		{
+		}
+	}
+	myForbiddenInteractionProhibitedActionType PlayerTrespassedLowSecurityArea
+}
+
+InteractionPoint DoorPanelUseDataSpike < uid=9D0EE20B632C797C000095ACAE12B9DE > : UseDataSpike
+{
+	myExtraStepsSetupList
+	{
+		InteractionPointSetup Hidden
+		{
+			myLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myStep -1
+		}
+		InteractionPointSetup Locked
+		{
+			myLabel "aurabesh = false, branch = \"\", contextComment = \"Interaction label\", enabled = true, guid = #9D0EE20B630F644800050FF217217FD4, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10722, text = \"Use Data Spike\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, branch = \"MAIN\", contextComment = \"Use data spike forbidden label\", enabled = true, guid = #06F73AE16629266300048FD1E561A918, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10727, text = \"Use data spike\", type = \"MenuLine\""
+			myStep -1
+		}
+		InteractionPointSetup Hidden
+		{
+			myLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		}
+		InteractionPointSetup Hidden
+		{
+			myLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		}
+		InteractionPointSetup Hidden
+		{
+			myLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		}
+		InteractionPointSetup Hidden
+		{
+			myLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		}
+	}
+	myDefaultMinInteractionHeightOffset -0.5
+	myDefaultMaxInteractionHeightOffset 2.0
+	myRequiredMinigame
+	{
+		myDifficulty Easy
+	}
+	myPersistenceType Session
+	myCoopPersistenceType SaveGame
+	myStartAtStep 2
+}
+
+InteractionPoint DoorPanelUseDataSpikeForbidden < uid=06F73AE16628F4040003F5607EA27DE7 > : DoorPanelUseDataSpike
+{
+	myIsForbiddenConditions
+	{
+		GameConditionFlag Always
+		{
+		}
+	}
+	myForbiddenInteractionProhibitedActionType PlayerTrespassedLowSecurityArea
+}
+
+InteractionPoint Investigate < uid=AE8B1601636A7C470001F1D3CDBC114F > : TalkDefault_Interior
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, branch = \"\", contextComment = \"Investigate door prompt\", enabled = true, guid = #AE8B1601636A7C320001F1B4630B1371, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10722, text = \"Investigate\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myIcon ""
+		myStep 1
+	}
+	myDefaultInteractionAngleDegree 180.0
+	myDefaultCameraAngleDegree 180.0
+	myCoopPersistenceType SaveGame
+	myEditorMenuStructure Door
+}
+
+InteractionPoint coop_DoorOnly_Default < uid=5BB0C17763F633340000753766660D4C > : OpenDoor(Session)
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "aurabesh = false, branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	}
+	myRestrictions
+	{
+		GameConditionPlayerHasItem Enforcer
+		{
+			myItem < uid=6B0E1DE96421855F000247AAD3A9BFA8 > = trink_coop_Enforcer 6B0E1DE963F4D9770000AECA76F1BEB9
+		}
+	}
+}
+
+InteractionPoint PryOpen < uid=06F73AE164F73362000CF025504AA620 >
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, branch = \"\", contextComment = \"Jammed door pry open prompt\", enabled = true, guid = #06F73AE164F73370000CF02621B27BE7, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10722, text = \"Pry Open\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	}
+	myEditorMenuStructure Door
+}
+
+InteractionPoint Scoundrel_Cache_DoorPanel(SaveGame) < uid=CC6CF61E6516D1BE0009023792FC7604 > : DoorPanel(SaveGame)
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, branch = \"\", contextComment = \"Open door prompt\", enabled = true, guid = #CC6CF61E6516D15200090236CF0E3932, lineVersion = 6, maxLength = 0, productId = 6, sectionId = 10722, text = \"Insert Datacard\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myIcon ""
+		myStep 1
+	}
+	myInteractionGestureAnimationType None
+	myPersistenceType SaveGame
+	myPlayerEquipmentSettings
+	{
+		myHolsterOnClaimed TRUE
+		myHolsterOnClaimedSkipSequence TRUE
+	}
+}
+
+InteractionPoint "Scoundrel_Cache_DoorPanel Wrong datacard" < uid=CC6CF61E6527AA320010B5391179E556 > : Scoundrel_Cache_DoorPanel(SaveGame)
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, branch = \"\", contextComment = \"Open door prompt\", enabled = true, guid = #CC6CF61E6527A9FB0010B537747B4ADD, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 10722, text = \"Wrong Datacard\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myIcon ""
+		myStep 1
+	}
+	myRestrictions
+	{
+		GameConditionFlag "FALSE - Should always be false"
+		{
+			myFlag FALSE
+		}
+	}
+	myPersistenceType None
+}
+
+InteractionPoint OpenFusionCutDoor(None) < uid=912BBC85642407050000A05B5A2DC5C5 > : OpenDoor(SaveGame)
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, branch = \"MAIN\", contextComment = 'Use the \"Fusion Cutter\" gadget to cut open a section of a wall to make a passage', enabled = true, guid = #6F5419E7659FFDEC00010114AA0F39A2, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10727, text = \"Cut opening\", type = \"MenuLine\""
+	}
+	myDefaultInteractionRadius 3.0
+	myDefaultInteractionAngleDegree 180.0
+	myDefaultVisibilityRadius 8.0
+	myRestrictions
+	{
+		GameConditionPlayerHasItem HasPlasmaCutter
+		{
+			myItem < uid=6F5419E76453AE7C0002048D77FE16B2 > = player_fusion_cutter CC69B22165364BA800008F1094DE1A26
+		}
+	}
+	myGameAction Interact
+	myPersistenceType None
+	myPossibleInterruptionSources
+	{
+		InteractionInterruptionSourceType Damaged PlayerDamaged
+		InteractionInterruptionSourceType Arrested PlayerArrested
+	}
+	myPlayerRestrictionsDuringInteraction < uid=CC69B221664F56AD000464D453891302 > = duringinteraction_fusioncutter CC69B221664F5EEE00020ABFC02A5FE8
+}
+
+InteractionPoint OpenFusionCutDoor(Sesion) < uid=06F73AE1667BD54C000A94AC1DFF19FB > : OpenFusionCutDoor(None)
+{
+	myPersistenceType Session
+}
+
+InteractionPoint OpenFusionCutDoor(SaveGame) < uid=06F73AE1667BD568000A94C723CDAB3F > : OpenFusionCutDoor(None)
+{
+	myPersistenceType SaveGame
+}
+
+InteractionPoint DoorPanel_UnavailableInCombat < uid=ACAEF5AB67979545000DF79A835602FC > : DoorPanel(Session)
+{
+	myRestrictions
+	{
+		GameConditionPlayerIsInCombatWithNPCs "New GameConditionPlayerIsInCombatWithNPCs"
+		{
+			myNumberOfNPCs 0
+			myOperator Equal
+		}
+	}
+}
+
+InteractionPoint DoorPanel_BlockedInCombat < uid=ACAEF5AB67D40BB8000000D8EAD4942B > : DoorPanel(Session)
+{
+	myConditions
+	{
+		GameConditionPlayerIsInCombatWithNPCs "New GameConditionPlayerIsInCombatWithNPCs"
+		{
+			myNumberOfNPCs 0
+			myOperator Equal
+		}
+	}
+}
+

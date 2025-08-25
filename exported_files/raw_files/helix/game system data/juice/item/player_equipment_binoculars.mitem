@@ -1,0 +1,39 @@
+include "helix/game system data/fruit/item/item_includes.fruit"
+include "helix/game system data/juice/equipment/aimconfig/binoculars_aimconfig.maimconfig"
+include "helix/game system data/juice/item/equipmentholding/holding_kays_binoculars.mequipmentholdingconfig"
+include "helix/game system data/juice/playerrestrictions/binoculars.mplayerrestriction"
+
+BinocularsEquipmentItem player_equipment_binoculars < uid=A207755D61F15F8000001B0DF92CDBB9 >
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"This is the name of the Electrobinoculars\", enabled = true, guid = #A207755D61F15F8E00001B1180CD0B80, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10284, text = \"Electrobinoculars\", type = \"MenuLine\""
+	myDescription "branch = \"MAIN\", contextComment = \"The description of the Macrobinoculars/Electrobinoculars that Kay carries\", enabled = true, guid = #1C021E9565AA738A0006D7E6F8A738D9, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10284, text = \"An optical device that provides their user with visual information over long distances using advanced sensor and imaging technologies.\", type = \"MenuLine\""
+	myGameplayDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"Gameplay description for electrobinoculars. Used by player_equipment_binoculars\", enabled = true, guid = #2AE2EC8566212BD30002EFCA4D16BDDE, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10284, text = \"A scouting tool used to survey her surounding and detect life forms.\", type = \"MenuLine\""
+	myWhereToFind "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWantedByVendor "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDisplayAmountInLog FALSE
+	myIcon "mySpriteId = -1891538216, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_item_icons_01.spritesheet\""
+	myThumbnail helix/baked/ui/loose_images/gear/tool/gear_tool_binoculars_gameready.dds
+	myHighresImage helix/baked/ui/loose_images/gear/tool/gear_tool_binoculars_gameready_fullsize.dds
+	myGraphObject "helix/graph objects/gameplayobject/gpo_kay_binocular.mgraphobject"
+	myTier Big
+	myInventoryPouch ToolsAndGadgets
+	myShowInventoryAddNotifications FALSE
+	myAimConfig < uid=A207755D61F168EC00001B2230F9CF73 > = binoculars_aimconfig A207755D61F1686000001B1EFB375628
+	myHoldingConfig < uid=A207755D61F15FB400001B15BE913D11 > = holding_kays_binoculars A207755D61F1551C00001B1C509907BC
+	myAlwaysAim TRUE
+	myUI
+	{
+		myDefaultUIGraph helix/ui/Graphs/hud_binoculars.muigraph
+		myUIStates
+		{
+			myFrontend FALSE
+			mySpace TRUE
+			mySystemMenu TRUE
+			myGameMenu TRUE
+			myCinematic TRUE
+		}
+	}
+	myRestrictedActions < uid=CC69B22166ED380E00051014E1F339D0 > = binoculars CC69B22166ED37F1000510131841424D
+}
+

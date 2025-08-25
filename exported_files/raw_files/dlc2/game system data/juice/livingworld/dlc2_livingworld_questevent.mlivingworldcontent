@@ -1,0 +1,958 @@
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+
+LivingWorldContent DLC2_MQ_010_Loud_Consequence_Mutex < uid=56CC05966756FE5F0024F57FA3F9B4ED >
+{
+	myActivationGameConditions
+	{
+		GameConditionLivingWorldFormula "GV_DLC2_MQ_010_PlayerStyle_WentLoud = 1"
+		{
+			myFormula "GV_DLC2_MQ_010_PlayerStyle_WentLoud = 1"
+		}
+		GameConditionQuestBeatState Started_GameConditionQuestBeatState
+		{
+			myQuestBeat 8FD81D5166E942520001DC1A4D25B939
+			myQuestBeatState Started
+		}
+	}
+	myDeactivationGameConditions
+	{
+	}
+}
+
+LivingWorldContent DLC2_MQ_030_B00 < uid=466625AB67813B06001A19CFFA388A06 >
+{
+	myActivationGameConditions
+	{
+		GameConditionQuestBeatState "New GameConditionQuestBeatState"
+		{
+			myQuestBeat 253B686766E29E1500000C43D44D305D
+			myQuestBeatState Started
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionQuestBeatState "New GameConditionQuestBeatState"
+		{
+			myQuestBeat 466625AB67584A270002AFAC08115A5A
+			myQuestBeatState Completed
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent DLC2_MQ_030_B00A_Hutt_Territory < uid=913C10766786743C0022982E46482ADD >
+{
+	myActivationGameConditions
+	{
+		GameConditionQuestBeatState "B00A Started"
+		{
+			myQuestBeat 466625AB675846610002AFA777CC2EEE
+			myQuestBeatState Started
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionQuestBeatState "B00 Completed"
+		{
+			myQuestBeat 466625AB67584A270002AFAC08115A5A
+			myQuestBeatState Completed
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "DLC2_MQ_030_B00A SR02_SGI02 Container" < uid=913C107667AA11F80002C428075F6A87 >
+{
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "C_MQ_030 Not Started or Completed"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState "Beat 00 Not Started"
+				{
+					myQuestBeat 466625AB675846610002AFA777CC2EEE
+					myQuestBeatState Started
+					myOperator LessThan
+				}
+				GameConditionQuestBeatState "Beat 00 Complete"
+				{
+					myQuestBeat 466625AB678685B600162A81559FD1A9
+					myQuestBeatState Completed
+					myOperator Equal
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Beat 00 Started"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState "Beat 00A Started"
+				{
+					myQuestBeat 466625AB675846610002AFA777CC2EEE
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "Beat 00AC Started"
+				{
+					myQuestBeat 466625AB678685B600162A81559FD1A9
+					myQuestBeatState Started
+				}
+			}
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent DLC2_MQ_030_B00B < uid=466625AB675C518A0010C38F9FEF0928 >
+{
+	myActivateGameCondition
+	{
+		myFormula ""
+	}
+	myActivationGameConditions
+	{
+		GameConditionQuestBeatState "New GameConditionQuestBeatState"
+		{
+			myQuestBeat 466625AB67584A270002AFAC08115A5A
+			myQuestBeatState Started
+		}
+	}
+	myDeactivateGameCondition
+	{
+		myFormula ""
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionQuestBeatState "New GameConditionQuestBeatState"
+		{
+			myQuestBeat 466625AB67584AA90002AFB1C438779D
+			myQuestBeatState Completed
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "DLC2_MQ_030_B00D and B01_LW" < uid=913C10766790C65E0010BA0CC262304A >
+{
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Beat 00D or 01A-C Started"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState "Beat 00D Started"
+				{
+					myQuestBeat 466625AB67584AA90002AFB1C438779D
+					myQuestBeatState Started
+					myOperator Equal
+				}
+				GameConditionQuestBeatState "Beat 01A Started"
+				{
+					myQuestBeat 466625AB673C644600082ECC0FC7C623
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "Beat 01B Started"
+				{
+					myQuestBeat 466625AB673C65D200082F0566E3E28C
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "Beat 01C Started"
+				{
+					myQuestBeat 253B686766E2A7D9000495FDE900C391
+					myQuestBeatState Started
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Beat 00D Not Started or B01C Complete"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState "B00D Not Started"
+				{
+					myQuestBeat 466625AB67584AA90002AFB1C438779D
+					myQuestBeatState Started
+					myOperator LessThan
+				}
+				GameConditionQuestBeatState "B01C Complete"
+				{
+					myQuestBeat 253B686766E2A7D9000495FDE900C391
+					myQuestBeatState Completed
+				}
+			}
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent DLC2_MQ_030_B01_ImperialTurrets < uid=913C107667E562B40004C35A41C8F3D5 >
+{
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Beat 00D or 01A-C Started"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState "Beat 00D Started"
+				{
+					myQuestBeat 466625AB67584AA90002AFB1C438779D
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "Beat 01A Started"
+				{
+					myQuestBeat 466625AB673C644600082ECC0FC7C623
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "Beat 01B Started"
+				{
+					myQuestBeat 466625AB673C65D200082F0566E3E28C
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "Beat 01C Started"
+				{
+					myQuestBeat 253B686766E2A7D9000495FDE900C391
+					myQuestBeatState Started
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Beat 00D Not Started or B01C Complete"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState "B00D Not Started"
+				{
+					myQuestBeat 466625AB67584AA90002AFB1C438779D
+					myQuestBeatState Started
+					myOperator LessThan
+				}
+				GameConditionQuestBeatState "B01C Complete"
+				{
+					myQuestBeat 253B686766E2A7D9000495FDE900C391
+					myQuestBeatState Completed
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent DLC2_MQ_030_B01C < uid=466625AB6746F67E00028DB03028C9A1 >
+{
+	myCompletedGameValue < uid=466625AB6746FA2400028DB1D28C684C >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionQuestBeatState C_MQ_030_B01B_started
+		{
+			myQuestBeat 466625AB673C65D200082F0566E3E28C
+			myQuestBeatState Started
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionQuestBeatState C_MQ_030_B01B_completed
+		{
+			myQuestBeat 253B686766E2A7D9000495FDE900C391
+			myQuestBeatState Completed
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent DLC2_MQ_030_B03_CrateLoaded < uid=466625AB675176A300071806597E8DF0 >
+{
+	myActivateGameCondition
+	{
+		myFormula "GV_DLC2_MQ_030__CrateLoaded = 1"
+	}
+	myDeactivateGameCondition
+	{
+		myFormula "GV_DLC2_MQ_030__CrateLoaded = 0"
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent DLC2_MQ_030_B03_CargoLoaded < uid=913C107667E1155B000424BB78BD6345 >
+{
+	myActivateGameCondition
+	{
+		myFormula "GV_DLC2_MQ_030_CargoLoaded = 1"
+	}
+	myDeactivateGameCondition
+	{
+		myFormula "GV_DLC2_MQ_030_CargoLoaded = 0"
+	}
+}
+
+LivingWorldContent DLC2_MQ_030_SR02_LDI_ON < uid=913C107667320C75000155F2AD96D6CD >
+{
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "B04 Not Started or B06 Complete"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState "Beat 04 Not Started"
+				{
+					myQuestBeat 253B686766E2D51B000499CCACB3F713
+					myQuestBeatState Started
+					myOperator LessThan
+				}
+				GameConditionQuestBeatState "B06 Complete"
+				{
+					myQuestBeat 253B686766E2EAF300049B0C5A6C7183
+					myQuestBeatState Completed
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Beat 04-06 Started"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState "Beat04 Started"
+				{
+					myQuestBeat 253B686766E2D51B000499CCACB3F713
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "Beat05 Started"
+				{
+					myQuestBeat 253B686766E2E5EF00049A9EE8315A07
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "Beat06 Started"
+				{
+					myQuestBeat 253B686766E2EAF300049B0C5A6C7183
+					myQuestBeatState Started
+				}
+			}
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent DLC2_MQ_030_SR02_LDI_OFF < uid=913C10766731F64E001DE40FF1C4D5AC >
+{
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Beat 04-06 Started"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState "Beat04 Started"
+				{
+					myQuestBeat 253B686766E2D51B000499CCACB3F713
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "Beat05 Started"
+				{
+					myQuestBeat 253B686766E2E5EF00049A9EE8315A07
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "Beat06 Started"
+				{
+					myQuestBeat 253B686766E2EAF300049B0C5A6C7183
+					myQuestBeatState Started
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionQuestBeatState "Beat06 Complete"
+		{
+			myQuestBeat 253B686766E2EAF300049B0C5A6C7183
+			myQuestBeatState Completed
+			myOperator Equal
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent DLC2_MQ_040_B02_B03_AmbientLifeEscort < uid=9128788867489197001A7675665E7404 >
+{
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "02 and 03"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState "beat 02"
+				{
+					myQuestBeat 9128788866E1BD30000663A1DC2752C1
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "beat 03"
+				{
+					myQuestBeat 9128788866EA97560003F3FECD700B64
+					myQuestBeatState Started
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "02 and 03"
+		{
+			myIsNegated FALSE
+			myOperator And
+			myConditions
+			{
+				GameConditionQuestBeatState "beat 02"
+				{
+					myQuestBeat 9128788866E1BD30000663A1DC2752C1
+					myQuestBeatState Completed
+				}
+				GameConditionQuestBeatState "beat 03"
+				{
+					myQuestBeat 9128788866EA97560003F3FECD700B64
+					myQuestBeatState Completed
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent DLC2_MQ_040_DroidEnding_Mutex_After < uid=ACAEF5AB66CEF07800053219B6FCBBC7 >
+{
+	myActivationGameConditions
+	{
+		GameConditionLivingWorldFormula "GV_DLC2_MQ_040_DroidEnding = 1"
+		{
+			myFormula "GV_DLC2_MQ_040_DroidEnding = 1"
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionLivingWorldFormula "GV_DLC2_MQ_040_DroidEnding = 0"
+		{
+			myFormula "GV_DLC2_MQ_040_DroidEnding = 0"
+		}
+	}
+}
+
+LivingWorldContent DLC2_MQ_040_DroidEnding_Mutex_Before < uid=ACAEF5AB676195F30010CD4545433A7E >
+{
+	myActivationGameConditions
+	{
+		GameConditionQuestIsCompleted "C_MQ_010 is Completed"
+		{
+			myQuest 8FD81D5166E055E40002162611A74F72
+		}
+		GameConditionQuestBeatState "C_MQ_040 B06 is Not Completed"
+		{
+			myQuestBeat 9128788866F55479000A150EE120C4A2
+			myQuestBeatState Completed
+			myOperator NotEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionQuestBeatState "C_MQ_040 B06 is Completed"
+		{
+			myQuestBeat 9128788866F55479000A150EE120C4A2
+			myQuestBeatState Completed
+		}
+	}
+}
+
+LivingWorldContent DLC2_MQ_040_NebulaEnding_Mutex < uid=ACAEF5AB66D5A54400038DC4992FEDF9 >
+{
+	myActivationGameConditions
+	{
+		GameConditionLivingWorldFormula "GV_DLC2_MQ_040_NebulaEnding = 1"
+		{
+			myFormula "GV_DLC2_MQ_040_NebulaEnding = 1"
+		}
+	}
+	myDeactivationGameConditions
+	{
+	}
+}
+
+LivingWorldContent DLC2_MainMutex_MQ_010 < uid=ACAEF5AB67178AA90016847DA4FB6F45 >
+{
+	myActivationGameConditions
+	{
+		GameConditionQuestBeatState "New GameConditionQuestBeatState"
+		{
+			myQuestBeat 8FD81D5166EA9C8E00056073DAC04BE0
+			myQuestBeatState Completed
+			myOperator NotEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionQuestBeatState "New GameConditionQuestBeatState"
+		{
+			myQuestBeat 8FD81D5166EA9C8E00056073DAC04BE0
+			myQuestBeatState Completed
+		}
+	}
+}
+
+LivingWorldContent DLC2_MainMutex_MQ_040 < uid=ACAEF5AB67178B32001684B3BC9EC742 >
+{
+	myActivationGameConditions
+	{
+		GameConditionQuestBeatState "MQ_040 B07 Is Not Completed"
+		{
+			myQuestBeat 9128788866F5A07D000369EE19EEC184
+			myQuestBeatState Completed
+			myOperator NotEqual
+		}
+		GameConditionQuestIsCompleted "MQ_010 Completed"
+		{
+			myQuest 8FD81D5166E055E40002162611A74F72
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionQuestBeatState "MQ_040 B07 Completed"
+		{
+			myQuestBeat 9128788866F5A07D000369EE19EEC184
+			myQuestBeatState Completed
+		}
+	}
+}
+
+LivingWorldContent DLC2_MQ_030_B00D_KayNoticesImp < uid=466625AB6793AFE2000B78720C6931F7 >
+{
+	myCompletedGameValue < uid=466625AB6793B3F4000B7BE283FBD80A >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Is Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "distance -6100"
+		{
+			myDistance 6100.0
+			myOperator LessThanOrEqual
+		}
+		LivingWorldGameConditionGroup "Beat0D or Beat01A-B has started"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState "Beat00D has started"
+				{
+					myQuestBeat 466625AB67584AA90002AFB1C438779D
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "Beat01A has started"
+				{
+					myQuestBeat 466625AB673C644600082ECC0FC7C623
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "Beat01B has started"
+				{
+					myQuestBeat 466625AB673C65D200082F0566E3E28C
+					myQuestBeatState Started
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "distance + 6105"
+		{
+			myDistance 6105.0
+		}
+		LivingWorldGameConditionGroup "Beat00D not started or B01B completed"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState "Beat00D has not started"
+				{
+					myQuestBeat 466625AB67584AA90002AFB1C438779D
+					myQuestBeatState Started
+					myOperator LessThan
+				}
+				GameConditionQuestBeatState "Beat01B is completed"
+				{
+					myQuestBeat 466625AB673C65D200082F0566E3E28C
+					myQuestBeatState Completed
+				}
+			}
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent DLC2_MainMutex_MQ005_Cave < uid=49CE584F67A9C20E0008D830FDB0FCB2 >
+{
+	myActivationGameConditions
+	{
+		GameConditionQuestBeatState "New GameConditionQuestBeatState"
+		{
+			myQuestBeat 8FD81D51675714BB000AD0D4D9748DFA
+			myQuestBeatState Completed
+			myOperator GreaterThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+	}
+}
+
+LivingWorldContent DLC2_MQ_020_B07_Mutex < uid=56C8C19967B89ABF000F3064097418B2 >
+{
+	myActivationGameConditions
+	{
+		GameConditionQuestBeatState "New GameConditionQuestBeatState"
+		{
+			myQuestBeat 253B686766D1B6FA000496FA173126E0
+			myQuestBeatState Started
+		}
+	}
+}
+
+LivingWorldContent DLC2_C_MQ_040_TheFinale_NotDuringQuest_or_Intro_Outro < uid=1B6515CC67C6C27000034A9DAF42E42D >
+{
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Quest is Started OR Intro OR Outro"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestState "Quest is Not Started"
+				{
+					myQuest 9128788866E010350000AE0A4AFF641B
+					myQuestState Started
+					myOperator NotEqual
+				}
+				GameConditionQuestState "Quest is Not Intro"
+				{
+					myQuest 9128788866E010350000AE0A4AFF641B
+					myQuestState Intro
+					myOperator NotEqual
+				}
+				GameConditionQuestState "Quest is Not Outro"
+				{
+					myQuest 9128788866E010350000AE0A4AFF641B
+					myQuestState Outro
+					myOperator NotEqual
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Quest is Started OR Intro OR Outro"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestState "Quest is Started"
+				{
+					myQuest 9128788866E010350000AE0A4AFF641B
+					myQuestState Started
+					myOperator Equal
+				}
+				GameConditionQuestState "Quest is Intro"
+				{
+					myQuest 9128788866E010350000AE0A4AFF641B
+					myQuestState Intro
+					myOperator Equal
+				}
+				GameConditionQuestState "Quest is Outro"
+				{
+					myQuest 9128788866E010350000AE0A4AFF641B
+					myQuestState Outro
+					myOperator Equal
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent DLC2_MQ_030_IonCloud < uid=466625AB67C8295B0006EE1FCB3D271E >
+{
+	myCompletedGameValue < uid=466625AB67CAFC1400062E51BCB9823E >
+	{
+		myVariableAttributeName ""
+	}
+	myActivateGameCondition
+	{
+		myFormula ""
+	}
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Second part of MQ030 is active"
+		{
+			myConditions
+			{
+				GameConditionQuestBeatState "Beat01C complete"
+				{
+					myQuestBeat 253B686766E2A7D9000495FDE900C391
+					myQuestBeatState Completed
+				}
+				GameConditionQuestBeatState "Beat06B not complete"
+				{
+					myQuestBeat 466625AB67B7203B00086C63F31383BD
+					myQuestBeatState Completed
+					myOperator LessThan
+				}
+			}
+		}
+		GameConditionLivingWorldContent_HasBeenCompleted "New GameConditionLivingWorldContent_HasBeenCompleted"
+		{
+			myIsNegated TRUE
+			myLivingWorldContent 466625AB67C8295B0006EE1FCB3D271E
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionQuestBeatState "C_MQ_030 complete"
+		{
+			myQuestBeat 466625AB67B7203B00086C63F31383BD
+			myQuestBeatState Completed
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent DLC2_MQ_030_MissionComplete < uid=466625AB67CEB4270007B5C81FB85367 >
+{
+	myCompletedGameValue < uid=466625AB67CEB7E20007B5C92FA0DF09 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionQuestBeatState "Beat00D is active"
+		{
+			myQuestBeat 466625AB67584AA90002AFB1C438779D
+			myQuestBeatState Started
+		}
+		GameConditionLivingWorldContent_HasBeenCompleted "Not played yet"
+		{
+			myIsNegated TRUE
+			myLivingWorldContent 466625AB67CEB4270007B5C81FB85367
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionQuestBeatState "Beat00D is completed"
+		{
+			myQuestBeat 466625AB67584AA90002AFB1C438779D
+			myQuestBeatState Completed
+			myOperator GreaterThanOrEqual
+		}
+		GameConditionLivingWorldContent_HasBeenCompleted "Already played"
+		{
+			myLivingWorldContent 466625AB67CEB4270007B5C81FB85367
+		}
+	}
+	myBasePriority -0.1
+	myIsScannable FALSE
+}
+
+LivingWorldContent DLC2_MQ_040_PickpocketDroid < uid=38252D2167D05A6900061BB967E4878F >
+{
+	myCompletedGameValue < uid=38252D2167D05C8F00061C462A36D090 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionLivingWorldContent_HasBeenCompleted IsNotCompleted
+		{
+			myIsNegated TRUE
+			myLivingWorldContent 38252D2167D05A6900061BB967E4878F
+		}
+		GameConditionQuestBeatState "MQ040 Active"
+		{
+			myQuestBeat 9128788866F5A96C0006742DD2D1F2A1
+			myQuestBeatState Completed
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer 50m
+		{
+			myDistance 50.0
+			myOperator LessThan
+		}
+	}
+}
+
+LivingWorldContent DLC2_MQ_040_PickpocketDroid_Pt2 < uid=38252D2167D05FF9000864234E822B5F >
+{
+	myCompletedGameValue < uid=38252D2167D060220008642453D6305F >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionLivingWorldContent_HasBeenCompleted "Self Not Completed"
+		{
+			myIsNegated TRUE
+			myLivingWorldContent 38252D2167D05FF9000864234E822B5F
+		}
+		GameConditionQuestBeatState "C MQ 040"
+		{
+			myQuestBeat 9128788866F5A96C0006742DD2D1F2A1
+			myQuestBeatState Completed
+		}
+	}
+}
+
+LivingWorldContent DLC2_C_MQ_040_TheFinale_DuringQuest < uid=BAB09C5867D4342D00040717A4FD3AB4 >
+{
+	myActivationGameConditions
+	{
+		GameConditionQuestState "Quest is Started"
+		{
+			myQuest 9128788866E010350000AE0A4AFF641B
+			myQuestState Started
+			myOperator Equal
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionQuestState "Quest is Not Started"
+		{
+			myQuest 9128788866E010350000AE0A4AFF641B
+			myQuestState Started
+			myOperator NotEqual
+		}
+	}
+}
+
+LivingWorldContent DLC2_MQ_020_SunsetCondition < uid=56C8C19967E3FE0700107777F882C0A9 >
+{
+	myTicket < uid=56C8C19967E3FE07001077786F56ABFB >
+	{
+	}
+	myTicketMax < uid=56C8C19967E3FE0700107779727B5801 >
+	{
+	}
+	myCompletedGameValue < uid=56C8C19967E3FE070010777AF78EC333 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionQuestBeatState EscapeBeatStarted
+		{
+			myQuestBeat 253B686766D1B2EA000496854479DFC9
+			myQuestBeatState Started
+			myOperator Equal
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionQuestIsCompleted MQ020Completed
+		{
+			myQuest 253B686766D0613D000493887ED69063
+		}
+	}
+}
+
+LivingWorldContent DLC2_MQ_030_HondoInCantina < uid=466625AB67E6A27D00115B7EF126816B >
+{
+	myActivationGameConditions
+	{
+		GameConditionQuestBeatState "Intro beat completed"
+		{
+			myQuestBeat 253B686766E29E1500000C43D44D305D
+			myQuestBeatState Completed
+			myOperator GreaterThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionQuestBeatState "Beat00C is completed"
+		{
+			myQuestBeat 466625AB67584A270002AFAC08115A5A
+			myQuestBeatState Completed
+			myOperator GreaterThanOrEqual
+		}
+	}
+}
+
+LivingWorldContent DLC2_C_MQ_040_IntroActiveMutex < uid=9128788867EE9B4000099DD52A37989D >
+{
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup OR
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState "MQ_040 B07 Is Not Completed"
+				{
+					myQuestBeat 9128788866F66C0600049B2535FF694E
+					myQuestBeatState Started
+					myOperator Equal
+				}
+				GameConditionQuestBeatState "MQ_040 B07 Is Not Completed_0"
+				{
+					myQuestBeat 9128788866F5A96C0006742DD2D1F2A1
+					myQuestBeatState Started
+					myOperator Equal
+				}
+				GameConditionQuestBeatState "MQ_040 B07 Is Not Completed_1"
+				{
+					myQuestBeat 9128788866F6697E000002E6CC328EA7
+					myQuestBeatState Started
+					myOperator Equal
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionQuestBeatState "MQ_040 B07 Completed"
+		{
+			myQuestBeat 9128788866E1BD30000663A1DC2752C1
+			myQuestBeatState Started
+			myOperator Equal
+		}
+	}
+}
+
+LivingWorldContent "DLC2_C_MQ_010/QB03B ReachTrailblazer_Keep_Mutex" < uid=06F73AE167EFE79D000825DCF745A633 >
+{
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup LivingWorldGameConditionGroup
+		{
+			myConditions
+			{
+				GameConditionQuestBeatState "C_MQ_010 B03B Completed"
+				{
+					myQuestBeat 8FD81D5166E942520001DC1A4D25B939
+					myQuestBeatState Started
+					myOperator GreaterThan
+				}
+				GameConditionQuestState C_MQ_010
+				{
+					myQuest 8FD81D5166E055E40002162611A74F72
+					myQuestState Completed
+					myOperator LessThan
+				}
+			}
+		}
+	}
+}
+

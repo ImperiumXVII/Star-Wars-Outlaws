@@ -1,0 +1,21 @@
+include "helix/game system data/fruit/reward/reward.fruit"
+include "helix/game system data/fruit/rewardpreview/rewardpreview.fruit"
+include "helix/game system data/fruit/rbtags/rbtags.fruit"
+
+class ChapterInfo
+{
+	int myChapter
+	bool mySendRewardsToMailbox true
+	Reward* myReward
+	RewardPreview* myRewardPreview < tooltip="To preview rewards that can't be resolved from the actual reward." >
+	RBTagsTag* myRBTag
+}
+list ChapterInfos
+{
+	ChapterInfo
+}
+class ChapterSettings < uid=auto >
+{
+	file myUILooseGraph < bhv="asset" assettype="GUI" tooltip="UI Loose graph to spawn when chapter completions are consumed" >
+	ChapterInfos myChapterInfos
+}

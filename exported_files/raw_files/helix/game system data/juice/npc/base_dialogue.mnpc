@@ -1,0 +1,43 @@
+include helix/audio/emitterlabels.juice
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/melee/alwaysmissmeleedefense.mnpcmeleedefenseprofile"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC base_dialogue < uid=16DEADE6620BBCF00000871F9E11F68C >
+{
+	myCharacterVisuals < uid=16DEADE6620BBD9E0000872ED256CBA4 > = character_visuals_3_bronze_civ_generic_m EBE060C2634D836300046B54BFEE2A3C
+	myAdditionalGearGraphs 91DC5D3C653665D000014B22AE3E4CB4
+	myBehavior helix/behaviors/base_dialog_remove_on_final_npc.mbehavior
+	myAnimSystemType Human
+	myIsInvulnerable TRUE
+	myHealthFormula 5
+	myFaction < uid=16DEADE6620BBD440000872502674DF2 > = RandomHostile 6994C4B6534699A600000015C6598B9A
+	myNavigationCapability < uid=16DEADE6620BBD4D00008728B80C6C25 > = DefaultNavigationCapability 595E8DFF619FA354000019D62F689CC6
+	myInitialNPCControllerContextType Ground
+	myLodType Civilian
+	myVisionProfile < uid=16DEADE6620BC440000020B5CE725272 > = NULLREFERENCE
+	myHearingProfile < uid=16DEADE6620BC440000020B64BEFE009 > = NULLREFERENCE
+	myAudioParameters
+	{
+		myEmitterName "Scripted Dialogue NPC"
+		myEmitters
+		{
+			AgentEmitter Default
+			{
+				myEmitterLabel < uid=3A1C5D18655345960000B51F32E4EE9F > = Root 3A1C5D1863906F050000AB6FBD984CC4
+			}
+			AgentEmitter Dialogue
+			{
+				myEmitterLabel < uid=3A1C5D18655345960000B520575F1552 > = Mouth 3A1C5D1863906F120000AB70A206E385
+			}
+			AgentEmitter Weapon
+			{
+				myEmitterLabel < uid=3A1C5D18655345960000B5211D5AF5D7 > = Hand 3A1C5D1863906F180000AB718F1E9EFD
+			}
+		}
+	}
+	myCanBeDetectedByPetSenses FALSE
+	myCanBeDetectedByProximitySenses FALSE
+	myMeleeDefenseProfile < uid=4171A7E1641C823A0007A756C73EF425 > = AlwaysMissMeleeDefense 4171A7E1641C67630001C50A5F5286E1
+}
+

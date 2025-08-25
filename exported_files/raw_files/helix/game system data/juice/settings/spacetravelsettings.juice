@@ -1,0 +1,115 @@
+include "helix/game system data/fruit/settings/spacetravelsettings.fruit"
+
+SpaceTravelSettings SpaceTravelSettings < uid=3A296D0C62BF1881000003D81235664B >
+{
+	mySpaceTravelDisabledConditions
+	{
+		SpaceTravelDisabledGameConditionGroup "Any of these"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState "mq_050 Intro not completed"
+				{
+					myQuestBeat 8FD81D5162A7380100010F72AF4028B3
+					myQuestBeatState Completed
+					myOperator LessThan
+				}
+				SpaceTravelDisabledGameConditionGroup "between mq_130 B06 to mq_140 B06"
+				{
+					myConditions
+					{
+						GameConditionQuestBeatState "mq 130 talk to jabba completed"
+						{
+							myQuestBeat 9D01D2176440F1BD0002DF5A0D494E96
+							myQuestBeatState Completed
+						}
+						GameConditionQuestBeatState "mq 140 trailblazer cin not completed"
+						{
+							myQuestBeat 9D01D21763DCFBF30000D1C9241B5B6D
+							myQuestBeatState Completed
+							myOperator LessThan
+						}
+					}
+				}
+				SpaceTravelDisabledGameConditionGroup mq_075
+				{
+					myConditions
+					{
+						GameConditionQuestBeatState "mq 075 intro completed"
+						{
+							myQuestBeat 8FD81D516548C3520004CCFBA77B860B
+							myQuestBeatState Completed
+						}
+						GameConditionQuestBeatState "mq 075 reach trailblazer not completed"
+						{
+							myQuestBeat 8FD81D516548C3520004CCFEA84A0468
+							myQuestBeatState Completed
+							myOperator LessThan
+						}
+					}
+				}
+				SpaceTravelDisabledGameConditionGroup mq_050
+				{
+					myConditions
+					{
+						GameConditionQuestBeatState "lose wanted completed"
+						{
+							myQuestBeat 8FD81D51655E2218001E01BAD7A52035
+							myQuestBeatState Completed
+						}
+						GameConditionQuestState "mq_050 not completed"
+						{
+							myQuest BFA41A0261B360F8000004066BC62BAC
+							myQuestState Completed
+							myOperator LessThan
+						}
+					}
+				}
+				SpaceTravelDisabledGameConditionGroup rokana
+				{
+					myConditions
+					{
+						GameConditionPlayerIsRokanaSpaceShip IsPlayingRokana
+						{
+						}
+						GameConditionQuestBeatState DidRequiredHyperjump
+						{
+							myQuestBeat 9128788866F66C0600049B2535FF694E
+							myQuestBeatState Completed
+						}
+					}
+				}
+			}
+		}
+	}
+	myHyperspaceCalculationBaseDuration 5.0
+	myHyperspaceShipDamageDurationPenalty 2.5
+	myHyperspaceShipDamageCancelThreshold -1.0
+	myHyperspaceCylinderCastLength 15000.0
+	myHyperspaceCylinderCastRadius 40.0
+	myHyperspaceSphereCastRadius 150.0
+	myCanShipDamageCancelReadiedHyperspaceJump TRUE
+	myHyperjumpApplyMultiplierMarkerName HyperStreamOut
+	myHyperjumpRevertMultiplierMarkerName HyperStreamRestore
+	myHyperjumpDitherFadeOutMarkerName HyperDitherOut
+	myHyperjumpDitherFadeRestoreMarkerName HyperDitherRestore
+	myHyperjumpDitherFadeDuration 0.2
+	mySmall0 1.0
+	mySmall1 1.0
+	mySmall2 1.0
+	myMedium 1.0
+	myLargeAndScripts 1.0
+	myVeryLarge 1.0
+	myIndoorOutdoorBorder 1.0
+	myIndoorDeep 1.0
+	myIndoorDeepB 1.0
+	myLastLODSmall 1.0
+	myLastLODMedium 1.0
+	myLastLODLarge 1.0
+	myLastLODIndoorDeep 1.0
+	myAudioLongDistance 1.0
+	myProxyMeshSmall 1.0
+	myProxyMeshLarge 0.0
+}
+

@@ -1,0 +1,898 @@
+include "helix/game system data/fruit/input/gameinput.fruit"
+include "helix/game system data/fruit/tutorials/tutorial.fruit"
+include "helix/game system data/juice/tutorials/tutorial hints.mtutorial"
+
+TutorialHint "Lorem Ipsum" < uid=ADF6F5536511C3D8000309EFA248494E >
+{
+	myTitle "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myText "branch = \"\", contextComment = \"Test-string. Do not localize.\", enabled = true, guid = #ADF6F5536511C3F000030BC946F1E2FD, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 3614, text = \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec..\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Donec..\", type = \"MenuLine\""
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Default Prompt" < uid=ADF6F5536515316600009432261D75C4 >
+{
+	myText "branch = \"\", contextComment = \"Dev-string only. Will not be used in real game.\", enabled = true, guid = #ADF6F5536515315100009285A27A861E, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 3614, text = \"Default tutorial prompt text.\", type = \"MenuLine\""
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Move & Camera" < uid=ADF6F553651093A500038F5F06AA377D >
+{
+	myText "branch = \"\", contextComment = \"Tutorial Text\", enabled = true, guid = #ADF6F553651093A500038F608E9A4C84, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 9631, text = \"Press {0} to move Kay and {1} to move the camera.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 Move
+		GameAction 1 Look
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Show Objective" < uid=ADF6F5536511439C0003D893CBD747B3 >
+{
+	myText "branch = \"\", contextComment = \"Tutorial Text\", enabled = true, guid = #ADF6F5536511439C0003D894A1EB4CD1, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 9631, text = \"Press {0} to display the objective location.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 UIShowQuestTracker
+	}
+	myKeyboardText "branch = \"MAIN\", contextComment = \"Alternative M&K tutorial for showing objective location - {0} is the button do not modify\", enabled = true, guid = #5EA540EF65E8879A000000F7B7678327, lineVersion = 7, maxLength = 0, productId = 149, sectionId = 9631, text = \"Hold {0} to display the objective location.\", type = \"MenuLine\""
+	myKeyboardGameActions
+	{
+		GameAction 0 UIShowQuestTracker
+	}
+	myTTS "branch = \"TU3\", contextComment = \"TTS- do not translate\", enabled = true, guid = #09B4388266DEA4A90001EBB79C680E3A, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 3614, text = \"{0} to display the objective location.\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"TU3\", contextComment = \"TTS- do not translate\", enabled = true, guid = #09B4388266DEA4E60001F9EEE394E843, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 3614, text = \"{0} to display the objective location.\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Shoot" < uid=ADF6F5536511442D0003EED84E1D5AE4 >
+{
+	myText "branch = \"\", contextComment = \"Tutorial Text\", enabled = true, guid = #ADF6F5536511442D0003EED91F5F4AA9, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9631, text = \"Press {0} to aim and press {1} to shoot.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 Aim
+		GameAction 1 Shoot
+		GameAction 2 ShoulderSwap
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Climb" < uid=ADF6F553651146CB0003F2AA9B23AD25 >
+{
+	myText "branch = \"\", contextComment = \"Tutorial Text\", enabled = true, guid = #ADF6F553651146CB0003F2AB0C71021F, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9631, text = \"Press {0} to start climbing.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 Traversal
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Crouch" < uid=ADF6F553651147330003F2F385F28577 >
+{
+	myText "branch = \"\", contextComment = \"Tutorial Text for crouch  {x} is for displaying the button (do not modify)\", enabled = true, guid = #ADF6F553651147330003F2F4EC50B923, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9631, text = \"Press {0} to crouch.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 Crouch
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Drop" < uid=ADF6F553651147EE0003F36443D43A59 >
+{
+	myText "branch = \"\", contextComment = \"Tutorial Text\", enabled = true, guid = #ADF6F553651147EE0003F36592122D23, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9631, text = \"Press {0} to drop from a ledge.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 HangDrop
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Jump" < uid=ADF6F553651148350003F3AF1AF020DB >
+{
+	myText "branch = \"\", contextComment = \"Tutorial Text\", enabled = true, guid = #ADF6F553651148350003F3B0AA938378, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9631, text = \"Press {0} to jump.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 Jump
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Lockpicking" < uid=ADF6F553651148800003F3EE4436D816 >
+{
+	myText "branch = \"\", contextComment = \"Tutorial Text\", enabled = true, guid = #ADF6F553651148800003F3EF2A0ABAE1, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9631, text = \"Press {0} to start a lockpicking attempt. \nListen and press {2} at the correct times to complete the pattern.\", type = \"MenuLine\""
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Healing" < uid=ADF6F55365114A300003F56DE855F400 >
+{
+	myText "branch = \"\", contextComment = \"Tutorial Text\", enabled = true, guid = #ADF6F55365114A300003F56E3E97B289, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9631, text = \"Press {0} to heal yourself.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 MedkitUse
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Climbing Walls" < uid=ADF6F55365114C720003F718B95E012D >
+{
+	myText "branch = \"\", contextComment = \"Tutorial Text\", enabled = true, guid = #ADF6F55365114C720003F719D3477BDF, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 5133, text = \"Some walls can be climbed. Move {0} to face a wall and press {1} to climb.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 MoveForward
+		GameAction 1 Jump
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Grappling" < uid=ADF6F55365114CCD0003F7A87790F2BB >
+{
+	myTitle "aurabesh = false, contextComment = \"Grapple hook hint title\", enabled = true, guid = #5EA540EF6527FAC40000C45DFDD29ABB, lineVersion = 2, maxLength = 0, productId = -1, sectionId = -1, text = \"Grapple hook\", type = \"MenuLine\""
+	myText "branch = \"\", contextComment = \"Tutorial Text\", enabled = true, guid = #ADF6F55365114CCD0003F7A9CB19A576, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 5133, text = \"Press {0} near a hook point to use your grappling hook.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 GrapplingHookInteract
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Rappel" < uid=ADF6F55365114D1B0003F7FA80E31212 >
+{
+	myText "branch = \"\", contextComment = \"Tutorial text\", enabled = true, guid = #ADF6F55365114D1B0003F7FBA2A4B236, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 5133, text = \"Press {0} near an overhead hook point to ascend.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 GrapplingHookInteract
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint Grappling Points" < uid=5EA540EF6527FB670000C4623D34D487 >
+{
+	myTitle "branch = \"\", contextComment = \"Grappling hook Points hint title\", enabled = true, guid = #5EA540EF6527FB670000C463E3205538, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 5133, text = \"Grappling hook points\", type = \"MenuLine\""
+	myText "branch = \"\", contextComment = \"Grappling hook Points hint description (please make an English proofreading)\", enabled = true, guid = #5EA540EF6527FB670000C46417FB4539, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 5133, text = \"Press {0} near a grappling hook point to use your grappling hook.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction Grapple GrapplingHookInteract
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint CCTV camera" < uid=ADF6F55365114DD70003F89304F370EE >
+{
+	myTitle "branch = \"\", contextComment = \"Surveillance camera hint title\", enabled = true, guid = #5EA540EF6527F10B0000C44FC04EB41D, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 5133, text = \"Security cameras\", type = \"MenuLine\""
+	myText "branch = \"\", contextComment = \"Tutorial text (please make an English proofreading)\", enabled = true, guid = #ADF6F55365114DD70003F894A7D5C9CC, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 5133, text = \"Shooting at or getting spotted by cameras will reveal your position and trigger an alarm.\", type = \"MenuLine\""
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint Crouch Stealth" < uid=ADF6F55365116CCD0004049DF642B103 >
+{
+	myTitle "branch = \"\", contextComment = \"Tutorial Hint title for stealth\", enabled = true, guid = #5EA540EF651E63DD0000760AA6752077, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 5133, text = \"Stealth and Nix\", type = \"MenuLine\""
+	myText "branch = \"\", contextComment = \"Tutorial Text\", enabled = true, guid = #ADF6F55365116CCD0004049EBD97906B, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 5133, text = \"Crouching with {0} makes it harder for enemies to detect you.\nUse Nix's senses {1}+{2} to reveal nearby enemies .\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 Crouch
+		GameAction 1 HoldPetMode
+		GameAction 2 TriggerPetPulse
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint Alarm Panels" < uid=ADF6F55365116D1C000404E1C58EE2BD >
+{
+	myTitle "branch = \"\", contextComment = \"Tutorial Hint title for alarm panel\", enabled = true, guid = #5EA540EF651E6400000079DE646D8FF3, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 5133, text = \"Alarm panel\", type = \"MenuLine\""
+	myText "branch = \"\", contextComment = \"Alarm panel Tutorial Text (please make an English proofreading)\", enabled = true, guid = #ADF6F55365116D1C000404E29935F95B, lineVersion = 13, maxLength = 0, productId = -1, sectionId = 9631, text = \"Disable alarm panels to prevent guards from calling reinforcements.\nYou can use Nix to sabotage them as well.\", type = \"MenuLine\""
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Open Holotracker" < uid=ADF6F553651172A6000B22C6E97ED445 >
+{
+	myText "branch = \"\", contextComment = \"scoundrel legacy Tutorial 01\", enabled = true, guid = #ADF6F553651172A6000B22C7BDD002AD, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 9631, text = \"Hold {0} and press {1} to use the holotracker.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 GadgetWheelOpen
+		GameAction 1 HoloReaderHold
+	}
+	myKeyboardText "branch = \"MAIN\", contextComment = \"Pc controls version of Holoreader tutorials (console oasis id :198198 )\", enabled = true, guid = #5EA540EF65E88082000000D3CF923D1C, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9631, text = \"Press {0} to use the Holotracker.\", type = \"MenuLine\""
+	myKeyboardGameActions
+	{
+		GameAction 0 HoloReaderHoldQuick
+	}
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Use Holomap" < uid=ADF6F55365117306000B8CD31F8A0E5B >
+{
+	myText "branch = \"\", contextComment = \"scoundrel legacy Tutorial 02\", enabled = true, guid = #ADF6F55365117306000B8CD400B3FFD9, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9631, text = \"You can move and look around.\nPress {0}{1} to rotate the holomap.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 HoloTurnLeft
+		GameAction 1 HoloTurnRight
+		GameAction 2 HoloLandscapeView
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Holotracker Cues" < uid=ADF6F5536511738D000C601F005A602C >
+{
+	myText "branch = \"\", contextComment = \"scoundrel legacy Tutorial 03\", enabled = true, guid = #ADF6F5536511738D000C6020448435A7, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9631, text = \"Follow the holotracker's cues to find the location.\", type = \"MenuLine\""
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Panic Shot" < uid=ADF6F5536511885A00014C889080596F >
+{
+	myText "branch = \"\", contextComment = \"Tutorial Text\", enabled = true, guid = #ADF6F5536511885A00014C895B1732D5, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9631, text = \"Press {0} to perform Adrenaline Rush shots\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 AdrenalineRushUse
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Crack Shot (activate)" < uid=ADF6F553650B61750000CB13E1FE8B21 >
+{
+	myText "branch = \"\", contextComment = \"Tutorial Text\", enabled = true, guid = #ADF6F553650B61750000CB120A5AC1ED, lineVersion = 13, maxLength = 0, productId = 6, sectionId = 9631, text = \"Press {0} to use adrenaline rush.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 AdrenalineRushUse
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Move" < uid=5EA540EF6512D7C2000022B66BBF40ED >
+{
+	myText "branch = \"\", contextComment = \"Tutorial text for moving {x} is for displaying the button (do not modify)\", enabled = true, guid = #5EA540EF6512D7C2000022B7B1A9EBB5, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 5133, text = \"Use {0} to move.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 Move
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Camera" < uid=5EA540EF6512D897000064ED9510D5DE >
+{
+	myText "branch = \"\", contextComment = \"Tutorial text for camera  {x} is for displaying the button (do not modify)\", enabled = true, guid = #5EA540EF6512D897000064EE043957B9, lineVersion = 5, maxLength = 0, productId = 6, sectionId = 5133, text = \"Use {0} to move the camera.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 Look
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Sprint" < uid=5EA540EF6512D996000081402330F6B7 >
+{
+	myText "branch = \"\", contextComment = \"Tutorial text for sprint  {x} is for displaying the button (do not modify)\", enabled = true, guid = #5EA540EF6512D99600008141309D692A, lineVersion = 5, maxLength = 0, productId = 6, sectionId = 5133, text = \"Press {0} to sprint.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 Sprint
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Melee" < uid=ADF6F553651145200003F02174F33DC0 >
+{
+	myText "branch = \"\", contextComment = \"Tutorial text for melee {x} is for displaying the button (do not modify)\", enabled = true, guid = #ADF6F5536511454A0003F04B194F8D3D, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 9631, text = \"Press {0} to punch.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 Melee
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Takedown" < uid=ADF6F553651149580003F48C04AA69F0 >
+{
+	myText "branch = \"\", contextComment = \"Tutorial text for takedown {x} is for displaying the button (do not modify)\", enabled = true, guid = #ADF6F553651149580003F48D4345FA45, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9631, text = \"Press {0} behind an unsuspecting enemy to perform a takedown.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 Takedown
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint hiding spots" < uid=5EA540EF6513E15B0000C087EF0DA1BE >
+{
+	myTitle "branch = \"\", contextComment = \"Tutorial Hint title for hiding spots\", enabled = true, guid = #5EA540EF651E64100000816E1155F241, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 5133, text = \"Hiding spots\", type = \"MenuLine\""
+	myText "branch = \"\", contextComment = \"Tutorial text for hiding spot {x} is for displaying the button (do not modify)(please make an English proofreading)\", enabled = true, guid = #5EA540EF6513E15B0000C088788632E1, lineVersion = 19, maxLength = 0, productId = -1, sectionId = 5133, text = \"While crouching {0} in grass, you remain undetected by enemies.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 Crouch
+		GameAction 1 Whistle
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Ion Blaster module" < uid=5EA540EF6513E34B0000C08AD826046D >
+{
+	myText "branch = \"\", contextComment = \"Tutorial text for ion module  {x} is for displaying the button (do not modify)\", enabled = true, guid = #5EA540EF6513E34B0000C08B5AA44E86, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 5133, text = \"Use {0} to switch to the Ion Module.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 WeaponModuleCycle
+	}
+	myKeyboardText "branch = \"MAIN\", contextComment = \"Pc controls version of ion module tutorial (console oasis id :200108 )\", enabled = true, guid = #5EA540EF65E88137000000D95F9B2624, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9631, text = \"Press {0} to switch to the Ion Module.\", type = \"MenuLine\""
+	myKeyboardGameActions
+	{
+		GameAction 0 WeaponModules_SlotModule2
+	}
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Charged Blaster module" < uid=5EA540EF6513E4740000C08DE1585A22 >
+{
+	myText "branch = \"\", contextComment = \"Tutorial text for charged module  {x} is for displaying the button (do not modify)\", enabled = true, guid = #5EA540EF6513E4740000C08E09B52F08, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 5133, text = \"Hold {0} to select the Power module.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 WeaponModuleHoldSelect
+	}
+	myKeyboardText "branch = \"MAIN\", contextComment = \"Pc controls version of power module tutorial (console oasis id :200109 )\", enabled = true, guid = #5EA540EF65E88187000000DA2796EC5A, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9631, text = \"Press {0} to select the Power Module.\", type = \"MenuLine\""
+	myKeyboardGameActions
+	{
+		GameAction 0 WeaponModules_SlotModule3
+	}
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint Lumin Rod" < uid=5EA540EF6513E98B0000C090816124CA >
+{
+	myTitle "branch = \"\", contextComment = \"Tutorial Hint title for Lumin rod\", enabled = true, guid = #5EA540EF651E641F000094BC8DEFFFA2, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 5133, text = \"Lumin Rod\", type = \"MenuLine\""
+	myText "branch = \"\", contextComment = \"Tutorial text for lumin rod  {x} is for displaying the button (do not modify) (please make an English proofreading)\", enabled = true, guid = #5EA540EF6513E98B0000C091A2CBF78E, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 5133, text = \"Hold {0} to open your pouch and press {1} to take out a lumin rod.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 GadgetWheelOpen
+		GameAction 1 LuminRodUse
+	}
+	myKeyboardText "branch = \"MAIN\", contextComment = \"Pc controls version of Lumin Rod tutorial (console oasis id :200110)\", enabled = true, guid = #5EA540EF65E8823C000000DB2421CCB2, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9631, text = \"Press {0} to take out a Lumin Rod.\", type = \"MenuLine\""
+	myKeyboardGameActions
+	{
+		GameAction 0 LuminRodUse
+	}
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint Module switch" < uid=5EA540EF6527EF050000C443524CD879 >
+{
+	myTitle "branch = \"\", contextComment = \"Blaster module quick switch hint title\", enabled = true, guid = #5EA540EF6527EF050000C444784C45C9, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 5133, text = \"Blaster modules\", type = \"MenuLine\""
+	myText "branch = \"\", contextComment = \"Blaster module quick switch hint description (please make an English proofreading)\", enabled = true, guid = #5EA540EF6527EF050000C4451C766B37, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 5133, text = \"Switch back to blaster module with {0}.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction "Blaster module  switch" WeaponModuleCycle
+	}
+	myKeyboardText "branch = \"MAIN\", contextComment = \"Blaster module switch hint description for mouse and Keyboard\", enabled = true, guid = #5EA540EF66056E2C000000C7B6841BBD, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9631, text = \"Switch back to blaster module with {0}.\", type = \"MenuLine\""
+	myKeyboardGameActions
+	{
+		GameAction 0 WeaponModules_SlotModule1
+	}
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint Power core" < uid=5EA540EF6527F2D60000C4519A9C1689 >
+{
+	myTitle "branch = \"\", contextComment = \"Power core hint title\", enabled = true, guid = #5EA540EF6527F2D60000C4522321FD37, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 5133, text = \"Power cores\", type = \"MenuLine\""
+	myText "branch = \"\", contextComment = \"Power core hint description (please make an English proofreading)\", enabled = true, guid = #5EA540EF6527F2D60000C453967A4B12, lineVersion = 14, maxLength = 0, productId = -1, sectionId = 5133, text = \"Shoot power cores to shut down any connected electronic elements.\", type = \"MenuLine\""
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint Map annotations" < uid=5EA540EF653663BD00003296A886E98A >
+{
+	myTitle "branch = \"\", contextComment = \"Map annotations tuto title\", enabled = true, guid = #5EA540EF653663BF00003297E48C1B75, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 434, text = \"Map marker\", type = \"MenuLine\""
+	myText "branch = \"\", contextComment = \"Map annotations tuto description (please make a English proofreading)\", enabled = true, guid = #5EA540EF653663BF00003298F272DFF6, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 434, text = \"You can keep track of places by marking them on the map.\nOpen the map with {0} and set a marker with {1}.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction Map UIOpenGameMenu
+		GameAction Annotate BinocularsAnnotate
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint grenade" < uid=5EA540EF653674D5000054C0E4159520 >
+{
+	myTitle "branch = \"\", contextComment = \"Thermal detonator hint title\", enabled = true, guid = #5EA540EF653674DF000057E56A4987A6, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 434, text = \"Grenade\", type = \"MenuLine\""
+	myText "branch = \"\", contextComment = \"Thermal detonator hint description (please make a English proofreading)\", enabled = true, guid = #5EA540EF653674DF000057E6B8D14636, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 434, text = \"Select the Grenade with {0} and {1}.\nThrow it with {2}.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 GadgetWheelOpen
+		GameAction 1 GrenadeHold
+		GameAction 2 ThrowableThrowPress
+	}
+	myKeyboardText "branch = \"MAIN\", contextComment = \"Pc controls version of Lumin Rod tutorial (console oasis id :209871)\", enabled = true, guid = #5EA540EF65E8829F000000DFF14753DA, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 9631, text = \"Select the Grenade with {0}.\nThrow it with {1}.\", type = \"MenuLine\""
+	myKeyboardGameActions
+	{
+		GameAction 0 GrenadeHoldQuick
+		GameAction 1 ThrowableThrowPress
+	}
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt ExecutePanicShot" < uid=9128788865378C70001B3316B44FE1AB >
+{
+	myText "branch = \"\", contextComment = \"Tutorial Executing the panic shot when in the panic shot mode\", enabled = true, guid = #9128788865378C71001B33172803D56F, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9631, text = \"Press {0} to trigger Adrenaline Rush.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 CrackShotExecute
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint Whistle" < uid=5EA540EF653A293A0000963745958B08 >
+{
+	myTitle "branch = \"\", contextComment = \"Whistle hint tutorial \", enabled = true, guid = #5EA540EF653A293B00009638AF77076A, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 434, text = \"Whistle\", type = \"MenuLine\""
+	myText "branch = \"\", contextComment = \"Whistle hint tutorial description (please make a english proofreading)\", enabled = true, guid = #5EA540EF653A293B00009639F9E5439C, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 434, text = \"While hidden, you can attract an enemy by whistling {0} and perform a takedown {1} before getting revealed.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 Whistle
+		GameAction 1 Takedown
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint Dom" < uid=5EA540EF653A2D0D0000963ADB6B3EE7 >
+{
+	myTitle "branch = \"\", contextComment = \"Domaine of mastery hint tutorial title\", enabled = true, guid = #5EA540EF653A2D150000963B324F2349, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 434, text = \"Experts\", type = \"MenuLine\""
+	myText "branch = \"\", contextComment = \"maine of mastery hint tutorial description (please make an English proofreading)\", enabled = true, guid = #5EA540EF653A2D150000963C25143E3D, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 434, text = \"Learn new abilities from Experts across the galaxy. Check out Bram's ability with {0}.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 UIOpenGameMenu
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint Shielded" < uid=5EA540EF65573CE10000B82ADD35CDA6 >
+{
+	myTitle "branch = \"MAIN\", contextComment = \"Tutorial for shielded enemies\", enabled = true, guid = #5EA540EF65573CE20000B82B9102D07B, lineVersion = 5, maxLength = 0, productId = 6, sectionId = 434, text = \"Shielded enemies\", type = \"MenuLine\""
+	myText "branch = \"MAIN\", contextComment = \"Description for shielded enemies\", enabled = true, guid = #5EA540EF65576A300000903126BE261B, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 434, text = \"Use the ion blaster module {0} to disable enemy shields.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 WeaponModuleCycle
+	}
+	myKeyboardText "branch = \"MAIN\", contextComment = \"Pc controls version of  shielded enemies  tutorial (console oasis id :217052)\", enabled = true, guid = #5EA540EF65E88345000000E3480C35F6, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9631, text = \"Use the Ion Blaster Module {0} to disable enemy shields.\", type = \"MenuLine\""
+	myKeyboardGameActions
+	{
+		GameAction 0 WeaponModules_SlotModule2
+	}
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint sell" < uid=5EA540EF655C7E5400016EEF3A0D48F8 >
+{
+	myTitle "branch = \"MAIN\", contextComment = \"Selling hint title\", enabled = true, guid = #5EA540EF655C7E5600016EF095B4FC02, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 434, text = \"Selling\", type = \"MenuLine\""
+	myText "branch = \"MAIN\", contextComment = \"Selling hint description\", enabled = true, guid = #5EA540EF655C7E5600016EF1E789F562, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 434, text = \"You can sell components for credits or keep them to craft useful items.\", type = \"MenuLine\""
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Panic shoot adrenaline" < uid=5EA540EF6570792D0001ABD0D569913F >
+{
+	myText "branch = \"MAIN\", contextComment = \"Panic shot adrenaline tutorial\", enabled = true, guid = #5EA540EF6570792E0001ABD1283FE8B1, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 9631, text = \"Under pressure, Kay's Adrenaline meter will fill. Once full, Kay can eliminate 2 enemies.\", type = \"MenuLine\""
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint Dom MQ_045" < uid=5EA540EF6571F7950002360A865E5619 >
+{
+	myTitle "branch = \"MAIN\", contextComment = \"Abilty experts recall tutorial title in MQ_045\", enabled = true, guid = #5EA540EF6571F7960002360BA8A20B77, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9631, text = \"Experts\", type = \"MenuLine\""
+	myText "branch = \"MAIN\", contextComment = \"Abilty experts recall tutorial description in MQ_045 {0} is the button to open menu do not modify\", enabled = true, guid = #5EA540EF6571F7970002360C8927DDC5, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 9631, text = \"There are new experts to find. Check the intel with {0} and try to find them to learn new abilities.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 UIOpenGameMenu
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint Speeder upgrade" < uid=5EA540EF657990D40001E5D7D6DC10CA >
+{
+	myTitle "branch = \"MAIN\", contextComment = \"Tutorial title about speeder upgrade\", enabled = true, guid = #5EA540EF657990D50001E5D812921692, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 434, text = \"Speeder upgrade\", type = \"MenuLine\""
+	myText "branch = \"MAIN\", contextComment = \"Tutorial description about speeder upgrade\", enabled = true, guid = #5EA540EF657990D60001E5D97D7BB3D2, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 434, text = \"Visit a nearby speeder mechanic to upgrade your speeder.\", type = \"MenuLine\""
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint Traiblazer upgrade" < uid=5EA540EF657993CE0001E5DD324EF4AC >
+{
+	myTitle "branch = \"MAIN\", contextComment = \"Tutorial title about traiblazer upgrade\", enabled = true, guid = #5EA540EF657991C50001E5DB10AF821D, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 434, text = \"Trailblazer upgrade\", type = \"MenuLine\""
+	myText "branch = \"MAIN\", contextComment = \"Tutorial description about traiblazer upgrade\", enabled = true, guid = #5EA540EF657991C50001E5DC920B201C, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 434, text = \"Visit a nearby ship mechanic to upgrade your trailblazer.\", type = \"MenuLine\""
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint Contract" < uid=5EA540EF6579BD4C0001E5DA0A07C9D2 >
+{
+	myTitle "branch = \"MAIN\", contextComment = \"Tutorial title about contracts\", enabled = true, guid = #5EA540EF6579BC4F0001E5D88298F4AA, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 434, text = \"Contracts\", type = \"MenuLine\""
+	myText "branch = \"MAIN\", contextComment = \"Tutorial description about contracts\", enabled = true, guid = #5EA540EF6579BC4F0001E5D906EE6072, lineVersion = 13, maxLength = 0, productId = -1, sectionId = 434, text = \"Taking contracts can reward credits and increase syndicate reputation. Some contracts require to have higher reputation.\", type = \"MenuLine\""
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt faction district" < uid=5EA540EF657AFE73000265879F1519FF >
+{
+	myText "branch = \"MAIN\", contextComment = \"Tutorial about faction district rule\", enabled = true, guid = #5EA540EF657AFE9100026589ECE8DF3B, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 9631, text = \"Increase your reputation with contracts to get free access to districts and unlock further opportunities\", type = \"MenuLine\""
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt crackshot (tag & execute)" < uid=5EA540EF657B10FF0001E63113561A1A >
+{
+	myText "branch = \"MAIN\", contextComment = \"Second part of crackshot tutorial that explain how to tag and kill all enemies {x} are button do not modify\", enabled = true, guid = #5EA540EF657B11050001E6324A6D6170, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9631, text = \"Mark {0} the five enemies and blast {1} them all\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 CrackShotTag
+		GameAction 1 AdrenalineRushExecute
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint Delivery crate unlocked" < uid=5EA540EF65A94C9C0003480144E2EA49 >
+{
+	myTitle "branch = \"MAIN\", contextComment = \"Title for the hint about delivery crate unlock\", enabled = true, guid = #5EA540EF65A94C9D00034802F38627A7, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 434, text = \"Delivery Crate unlocked\", type = \"MenuLine\""
+	myText "branch = \"MAIN\", contextComment = \"description for the hint about delivery crate unlock\", enabled = true, guid = #5EA540EF65A94CA100034803219CA1AD, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 434, text = \"The Trailblazer delivery crate has been unlocked. Go to the Trailblazer to get rewards.\", type = \"MenuLine\""
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint Delivery crate" < uid=5EA540EF65A94DB100034804BEE351E2 >
+{
+	myTitle "branch = \"MAIN\", contextComment = \"Title for the hint about delivery crate\", enabled = true, guid = #5EA540EF65A94DBE00034805ED0054D5, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 434, text = \"Delivery Crate\", type = \"MenuLine\""
+	myText "branch = \"MAIN\", contextComment = \"description for the hint about delivery crate\", enabled = true, guid = #5EA540EF65A94DBE000348062F79EDCD, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 434, text = \"There are rewards in the Delivery Crate, found in the back of the Trailblazer.\", type = \"MenuLine\""
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt call speeder" < uid=5EA540EF65B8C7B70000627CDA4E296D >
+{
+	myTitle "branch = \"MAIN\", contextComment = \"Call speeder tutorial title\", enabled = true, guid = #5EA540EF65B8CB0A0000627FF6F511B1, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9631, text = \"Call Speeder\", type = \"MenuLine\""
+	myText "branch = \"MAIN\", contextComment = \"Call speeder tutorial description {0} is the button do not modify\", enabled = true, guid = #5EA540EF65B8C7B80000627D4A5F061F, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9631, text = \"Use {0} to call your speeder.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction "New GameAction" CallVehicle
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint Binocular" < uid=5EA540EF65C62FCA000000E7CD9FDFFB >
+{
+	myTitle "branch = \"MAIN\", contextComment = \"Binocular tutorial title\", enabled = true, guid = #5EA540EF65C62FCE000000E81935102F, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 434, text = \"Electrobinoculars\", type = \"MenuLine\""
+	myText "branch = \"MAIN\", contextComment = \"Binocular tuto description {x} display button do not modify\", enabled = true, guid = #5EA540EF65C62FCE000000E944A91DBC, lineVersion = 16, maxLength = 0, productId = -1, sectionId = 434, text = \"Hold {0} and press {1} to equip Electrobinoculars.\n{2} to Tag.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 GadgetWheelOpen
+		GameAction 1 BinocularsUse
+		GameAction 2 BinocularsTag
+	}
+	myKeyboardText "branch = \"MAIN\", contextComment = \"Pc controls version of binocular  tutorial (console oasis id :225124)\", enabled = true, guid = #5EA540EF65E88509000000E61A5AB977, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9631, text = \"Press {0} to equip Electrobinoculars.\n{1} to Tag.\", type = \"MenuLine\""
+	myKeyboardGameActions
+	{
+		GameAction 0 BinocularsUseQuick
+		GameAction 1 BinocularsTag
+	}
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt select Stun module" < uid=5EA540EF65CF80E1000000EA7ABEDE4C >
+{
+	myText "branch = \"MAIN\", contextComment = \"Tutorial for selecting the stun module {x} are button do not modify\", enabled = true, guid = #5EA540EF65CF80E1000000EBE9B2AD24, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9631, text = \"Use {0} to aim and press {1} to stun enemies.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 Aim
+		GameAction 1 FireStun
+	}
+	myKeyboardText "branch = \"MAIN\", contextComment = \"Pc controls version of Stun module tutorial (console oasis id :225265)\", enabled = true, guid = #5EA540EF65E8858C000000E733D09C4F, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9631, text = \"Activate the Stun Module {0}.\nAim {1} and shoot {2}.\", type = \"MenuLine\""
+	myKeyboardGameActions
+	{
+		GameAction 0 ToggleStun
+		GameAction 1 Aim
+		GameAction 2 Shoot
+	}
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt faction district No contracts" < uid=5C148C4665E32FEE0006ADE357A740A6 >
+{
+	myText "branch = \"MAIN\", contextComment = \"Tutorial about faction district rule - before contracts are available.\", enabled = true, guid = #5C148C4665E32FD20006ADE207AF487F, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 9631, text = \"Search cantinas for ways to increase your Reputation to freely enter Districts and gain access to opportunities.\", type = \"MenuLine\""
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint overheating" < uid=5EA540EF65F4063E000000C23B5BA032 >
+{
+	myTitle "branch = \"MAIN\", contextComment = \"Overheating blaster hint title\", enabled = true, guid = #5EA540EF65F4063F000000C3EA92389A, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9631, text = \"Overheating\", type = \"MenuLine\""
+	myText "branch = \"MAIN\", contextComment = \"Overheating blaster hint description\", enabled = true, guid = #5EA540EF65F40646000000C49589A827, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9631, text = \"Press {0} with good timing to cool down blaster quicker.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 ReloadMinigameAction
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myKeyboardGameActions
+	{
+	}
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt throw grenade" < uid=5EA540EF65F448E800187F1DBB3C4026 >
+{
+	myText "branch = \"MAIN\", contextComment = \"Throw grenade tutorial\", enabled = true, guid = #5EA540EF65F448F200187F1ECC400984, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 434, text = \"Press {0} to throw a grenade or {1} to put it away.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 ThrowableThrowPress
+		GameAction 1 GadgetToggle
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Adrenaline Rush build-up" < uid=5EA540EF6620CFFD0000163036DE3C17 >
+{
+	myText "branch = \"MAIN\", contextComment = \"Tutorial that explain how you build up adrenaline to perform adrenaline rush shoots\", enabled = true, guid = #5EA540EF6620D00400001633DB54A3A2, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9631, text = \"Under pressure, Kay's Adrenaline Meter will fill. Once full, Kay can eliminate enemies.\", type = \"MenuLine\""
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Adrenaline rush all tag & execute" < uid=5EA540EF6620D2F4000016405F61B71C >
+{
+	myText "branch = \"MAIN\", contextComment = \"Adrenaline rush tutorial that explain how to tag and kill enemies {x} are buttons do not modify\", enabled = true, guid = #5EA540EF6620D09A00001637DFF26588, lineVersion = 14, maxLength = 0, productId = -1, sectionId = 9631, text = \"Mark {0} the three enemies and blast {1} them all.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 CrackShotTag
+		GameAction 1 AdrenalineRushExecute
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint Sneaking district" < uid=5EA540EF662A5F4D000111A7F53FF05D >
+{
+	myTitle "branch = \"MAIN\", contextComment = \"Tutorial title about what is allow or not in faction district\", enabled = true, guid = #5EA540EF662A5F4E000111A8EB79A5E7, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9631, text = \"Sneaking in Syndicate District\", type = \"MenuLine\""
+	myText "branch = \"MAIN\", contextComment = \"Tutorial description about what is allow or not in faction district\", enabled = true, guid = #5EA540EF662A5F50000111C33BEF3171, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9631, text = \"If spotted, you will be thrown out. Weapons are restricted but not stealth actions.\", type = \"MenuLine\""
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt hip shoot" < uid=5EA540EF6630FFE0000000D3361053C7 >
+{
+	myText "branch = \"MAIN\", contextComment = \"Tutorial text to tell player they can shoot without aiming\", enabled = true, guid = #5EA540EF6630FFE1000000D4765DC7B4, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9631, text = \"Press {0} to shoot.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction "New GameAction" Shoot
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt aim & shot power code" < uid=5EA540EF6631021C000000D7749E89C6 >
+{
+	myTitle "branch = \"MAIN\", contextComment = \"Aim & shot power core tutorial title\", enabled = true, guid = #5EA540EF6631026D000000DD269ABFC0, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9631, text = \"Power cores\", type = \"MenuLine\""
+	myText "branch = \"MAIN\", contextComment = \"Aim & shot power core tutorial\", enabled = true, guid = #5EA540EF66310254000000DB29C75E8F, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9631, text = \"Press {0} to aim and press {1} to shoot the power core.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 Aim
+		GameAction 1 Shoot
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint end game" < uid=5EA540EF664F4C4A000000CBBECB7F89 >
+{
+	myTitle "branch = \"MAIN\", contextComment = \"Title of hint explaining that you can keep playing after end of the main story\", enabled = true, guid = #5EA540EF664F4C4C000000CCE8BD90F3, lineVersion = 9, maxLength = 0, productId = 149, sectionId = 9631, text = \"UNFINISHED BUSINESS\", type = \"MenuLine\""
+	myText "branch = \"MAIN\", contextComment = \"Description of hint  explaining that you can keep playing after end of the main story\", enabled = true, guid = #5EA540EF664F4C4D000000CDA02E1300, lineVersion = 12, maxLength = 0, productId = 149, sectionId = 9631, text = \"The journey is over – for now. Check the journal for unfinished quests and intel and explore each world to find all their secrets.\", type = \"MenuLine\""
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint Ank gift" < uid=5EA540EF665D808500000037A8248C4D > = "Default Hint" ADF6F5536511C90900057FD81C65B14D
+
+TutorialHint "Prompt hint ND5 gift" < uid=5EA540EF665D85B00000004907F43121 >
+{
+	myTitle "branch = \"TU1\", contextComment = \"Tutorial title for ND-5 giving a gift to player\", enabled = true, guid = #5EA540EF665D84000000003C6CFF9572, lineVersion = 6, maxLength = 0, productId = 149, sectionId = 434, text = \"ND-5's gift\", type = \"MenuLine\""
+	myText "branch = \"TU1\", contextComment = \"Tutorial description for ND-5 giving a gift to player\", enabled = true, guid = #5EA540EF665D84000000003D05849F9E, lineVersion = 8, maxLength = 0, productId = 149, sectionId = 434, text = \"ND-5 has something for you. Talk to him in the Trailblazer.\", type = \"MenuLine\""
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint Gedeek gift" < uid=5EA540EF665D85B00000004A945E20C2 >
+{
+	myTitle "branch = \"TU1\", contextComment = \"Tutorial title for Gedeek giving a gift to player\", enabled = true, guid = #5EA540EF665D84060000003FDCED271C, lineVersion = 6, maxLength = 0, productId = 149, sectionId = 434, text = \"Gedeek's gift\", type = \"MenuLine\""
+	myText "branch = \"TU1\", contextComment = \"Tutorial description for Gedeek giving a gift to player\", enabled = true, guid = #5EA540EF665D8406000000404C296DF6, lineVersion = 8, maxLength = 0, productId = 149, sectionId = 434, text = \"Gedeek has something for you. Talk to him in the Trailblazer.\", type = \"MenuLine\""
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint Asara gift" < uid=5EA540EF665D85B00000004BC6B0A35C >
+{
+	myTitle "branch = \"TU1\", contextComment = \"Tutorial title for Asara giving a gift to player\", enabled = true, guid = #5EA540EF665D85400000004657388035, lineVersion = 8, maxLength = 0, productId = 149, sectionId = 434, text = \"Asara's gift\", type = \"MenuLine\""
+	myText "branch = \"TU1\", contextComment = \"Tutorial description for Asara giving a gift to player\", enabled = true, guid = #5EA540EF665D854000000047FDD5ED38, lineVersion = 10, maxLength = 0, productId = 149, sectionId = 434, text = \"Asara has something for you. Talk to him in the Trailblazer.\", type = \"MenuLine\""
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialHint "Prompt hint LDI" < uid=5EA540EF665D85B90000004CCF68B13D >
+{
+	myTitle "branch = \"TU1\", contextComment = \"Tutorial title when player find a metroivania element that they can't use so far\", enabled = true, guid = #5EA540EF665D85BA0000004D69B3ECC8, lineVersion = 4, maxLength = 0, productId = 149, sectionId = 434, text = \"Missing tool\", type = \"MenuLine\""
+	myText "branch = \"TU1\", contextComment = \"Tutorial description when player find a metroidvania element that they can't use so far - {x} = input button do not modify\", enabled = true, guid = #5EA540EF665D85DE0000004E0C8E890C, lineVersion = 7, maxLength = 0, productId = 149, sectionId = 434, text = \"A specific tool is missing. You can mark the place with {0} and {1} to come back later.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 UIOpenGameMenu
+		GameAction 1 BinocularsAnnotate
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myKeyboardGameActions
+	{
+	}
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt takedown alternative text" < uid=5EA540EF66605E06000000C94C4FEE84 >
+{
+	myText "branch = \"TU1\", contextComment = \"Tutorial to explain what happend when player will press the button in takedown tutorial situation\", enabled = true, guid = #5EA540EF66605E07000000CA5D48333C, lineVersion = 7, maxLength = 0, productId = 149, sectionId = 9631, text = \"Takedown can be performed on unsuspecting enemies.\", type = \"MenuLine\""
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = true, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"|empty|\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Roll" < uid=5C148C466703E90F000000E282C520B0 >
+{
+	myText "branch = \"DLC1\", contextComment = \"Roll Tutorial Text\", enabled = true, guid = #5C148C466703E82C000000D503B9A260, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 9631, text = \"Double tap {0} to roll\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 Dodge
+	}
+	myKeyboardText "branch = \"TU5\", contextComment = \"Roll Tutorial Text Keyboard\", enabled = true, guid = #5C148C466728C6E7000000D43395ABDA, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 9631, text = \"Press {0} to roll\", type = \"MenuLine\""
+	myKeyboardGameActions
+	{
+		GameAction 0 Dodge
+	}
+	myTTS "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Slide" < uid=5C148C466703E943000000E5BFC073A2 >
+{
+	myText "branch = \"DLC1\", contextComment = \"Slide Tutorial Text\", enabled = true, guid = #5C148C466703E927000000E4900FB979, lineVersion = 13, maxLength = 0, productId = -1, sectionId = 9631, text = \"Use {0} to slide while sprinting\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 Powerslide
+	}
+	myKeyboardText "branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myTTS "branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Camera Ionized" < uid=5C148C466703E9EF000000F1EC6578CA >
+{
+	myText "branch = \"DLC1\", contextComment = \"Tutorial text to indicate how to disable camera\", enabled = true, guid = #5C148C466703E994000000E7CBC4B838, lineVersion = 9, maxLength = 0, productId = 6, sectionId = 12360, text = \"Use Ion module to temporarily disable a camera\", type = \"MenuLine\""
+	myGameActions
+	{
+	}
+	myKeyboardText "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myTTS "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Ionized NPCs" < uid=5C148C466703EA2F000000F48BD7D5FF >
+{
+	myText "branch = \"DLC1\", contextComment = \"Tutorial text to explain ionized units can be taken down\", enabled = true, guid = #5C148C466703E9F6000000F350B3D58D, lineVersion = 10, maxLength = 0, productId = 6, sectionId = 12360, text = \"Ionized units can be taken down with a melee action\", type = \"MenuLine\""
+	myGameActions
+	{
+	}
+	myKeyboardText "branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myTTS "branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Stun Heavy" < uid=5C148C466703EA9C00000100B9FF9E40 >
+{
+	myText "branch = \"DLC1\", contextComment = \"Tutorial text to explain stun on heavy units\", enabled = true, guid = #5C148C466703EA77000000FFAA20BE82, lineVersion = 13, maxLength = 0, productId = 6, sectionId = 12360, text = \"Heavy units stunned by stun module can be taken down with melee\", type = \"MenuLine\""
+	myGameActions
+	{
+	}
+	myKeyboardText "branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myTTS "branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myKeyboardTTS "branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+TutorialPrompt "Prompt Evade Melee Strikes" < uid=7113C61167D1AACB000367C19BDDBE77 >
+{
+	myText "branch = \"DLC2\", contextComment = \"New tutorial prompt for C_MQ_040 to evade the Khepi droid melee strikes.\", enabled = true, guid = #7113C61167D1AACB000367C26CC91473, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9631, text = \"Double Tap {0} to evade heavy melee strikes.\", type = \"MenuLine\""
+	myGameActions
+	{
+		GameAction 0 Dodge
+	}
+	myKeyboardText "branch = \"DLC2\", contextComment = \"Keyboard version of new tutorial prompt for C_MQ_040 to evade the Khepi droid melee strikes.\", enabled = true, guid = #7113C61167D1AAF1000367C68E1114DD, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9631, text = \"Use {0} to evade heavy melee strikes.\", type = \"MenuLine\""
+	myKeyboardGameActions
+	{
+		GameAction 0 Dodge
+	}
+}
+

@@ -1,0 +1,30 @@
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+include "helix/game system data/juice/item/consumables.mitem"
+
+LivingWorldContent Grenade_Equipmentunlock < uid=5EA540EF661D35D90006A0133592E677 >
+{
+	myCompletedGameValue < uid=5EA540EF661D35D90006A014C0FFCEFA >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasItem "Player have 1 grenade or more"
+		{
+			myItem < uid=5EA540EF661D36700006A07D55CDB898 > = con_ThermalDetonator CC69B22164639AF700014980A759E72E
+		}
+		GameConditionLivingWorldContent_HasBeenCompleted "LivingWorldContent not Completed"
+		{
+			myIsNegated TRUE
+			myLivingWorldContent 5EA540EF661D35D90006A0133592E677
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionLivingWorldContent_HasBeenCompleted "LivingWorldContent Completed"
+		{
+			myLivingWorldContent 5EA540EF661D35D90006A0133592E677
+		}
+	}
+	myIsScannable FALSE
+}
+

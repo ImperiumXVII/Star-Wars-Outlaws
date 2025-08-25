@@ -1,0 +1,95 @@
+include "helix/game system data/fruit/melee/melee_move.fruit"
+include "helix/game system data/juice/melee/kay_meleemove_base.mmeleemove"
+
+MeleeMove kay_meleemove_notarget_sprint < uid=5CFE16D564DDC19D0002AE917CEFDA33 > : kay_meleemove_base
+{
+	myExecutionDurationMin 1.35
+	myExecutionDurationMax 1.5
+	myRangeExecution 0.1
+	myExecutionSequence
+	{
+		myGenericTracks
+		{
+			CameraShakeTrack BaseCamShake
+			{
+				myCamShake < uid=5CFE16D564DDC19D0002AE925796C10B > = player_melee_punch_base B0ED9250625FD32B0000403767915B64
+			}
+		}
+		myCustomTracks
+		{
+			MeleeHitTrack Hit
+			{
+				myStartCyclePos 0.15
+				myEndCyclePos 0.35
+				myDamage 0.0
+			}
+			MeleeMovingSpeedingUpTrack MovingSpeedingUp
+			{
+				myStartCyclePos 0.0
+				myEndCyclePos 0.0
+			}
+			MeleeMovingTrack Moving
+			{
+				myStartCyclePos 0.0
+				myEndCyclePos 0.7
+			}
+			MeleeBufferingTrack MeleeBuffering
+			{
+				myStartCyclePos 0.2
+				myEndCyclePos 1.0
+			}
+			MeleeStartNextMoveTrack "Start Next Move"
+			{
+				myStartCyclePos 0.76
+				myEndCyclePos 1.0
+			}
+			MeleeUninterruptibleTrack Uninterruptible
+			{
+				myStartCyclePos 0.0
+				myEndCyclePos 0.65
+			}
+			MeleeLocomotionFreeTrack MeleeLocomotionFreeTrack
+			{
+				myStartCyclePos 0.8
+			}
+		}
+	}
+	myMoveNoTargetSpeed 2.75
+	myMoveMaxSpeed 20.0
+	myHit
+	{
+		myDamage 1.0
+		mySlowDownTimeScale "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.32492617 -0.0019296732, -0.048275869 0, }, outTangents = { 0.67740929 0.006862741, 0.055027828 0.00032679958, 0 0, }, properties = { 1299, 275, 2051, }, values = { 0 0, 0.8551724 0.2, 1 0, }, }, numKeys = 3, }"
+		mySlowDownDuration 0.0
+	}
+	myStartConditions
+	{
+		myTargetInRange
+		{
+			myEnabled FALSE
+			myDistance 10.0
+		}
+		myGameCondition
+		{
+			GameConditionMeleeGroup "Multiple Conditions"
+			{
+				myConditions
+				{
+					GameConditionMeleeAttackerIsInMovementState "Is Sprinting"
+					{
+						myState Sprint
+					}
+					GameConditionMeleeAttackerSpeed "Is 3m/s or higher"
+					{
+						myTargetSpeed 3.0
+					}
+					GameConditionMeleeTargetIsValid HasNoTarget
+					{
+						myIsNegated TRUE
+					}
+				}
+			}
+		}
+	}
+}
+

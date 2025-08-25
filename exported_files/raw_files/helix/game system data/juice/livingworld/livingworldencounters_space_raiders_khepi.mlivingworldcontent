@@ -1,0 +1,527 @@
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+include "helix/game system data/juice/livingworld/livingworldencounters_space_raiders.mlivingworldcontent"
+
+LivingWorldContent Encounter_Space_Patrol_Raiders_Small_khepi < uid=2AE2EC85671FAE3500000101A47D983A > : Encounter_Space_Patrol_Raiders_Small
+{
+	myContentCooldown 300.0
+	myTicket < uid=2AE2EC85671FAECA0000010CBCFA20D0 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC85671FAECA0000010DE22E9FA7 >
+	{
+		myDescription ""
+		myDefaultValue 1
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myEngagementRadius -1.0
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "New GameConditionPlayerHasWantedLevel" = "Player is not wanted"
+		LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup" = "Global activation rule Space Medium 750-3000"
+		GameConditionLivingWorldIsContrabandContractActive "Doesnt have an active contraband contract"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 50.0
+	myTags
+	{
+	}
+}
+
+LivingWorldContent Encounter_Space_Ambush_Raiders_khepi < uid=2AE2EC85671FAE3E00000102384DFFB1 > : Encounter_Space_Ambush_Raiders
+{
+	myContentCooldown 300.0
+	myTicket < uid=2AE2EC85671FAECA0000010EC966E90F >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC85671FAECA0000010F6754E7C8 >
+	{
+		myDefaultValue 1
+	}
+	myEngagementRadius 1000.0
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "New GameConditionPlayerHasWantedLevel" = "Player is not wanted"
+		LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup" = "Global activation rule Space Very Near 250 - 750"
+		GameConditionLivingWorldIsContrabandContractActive "Doesnt have an active contraband contract"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myTags
+	{
+		LivingWorldTag Activity < uid=2AE2EC85671FB391000001415EDCC4EC > = LWT_Activity_Space_Ambush 2AE2EC8564B553190000A11301D38704
+		LivingWorldTag "Faction Raider" < uid=2AE2EC85671FB391000001432DA58FFE > = LWT_Faction_Space_Raiders_KhepiSystem 2AE2EC85671FAA2B000000D44F2B2EEE
+	}
+}
+
+LivingWorldContent Encounter_Space_ShipWreckage_Raiders_khepi < uid=2AE2EC85671FAE5B00000104150C81AC > : Encounter_Space_ShipWreckage_Raiders
+{
+	myTicket < uid=2AE2EC85671FAECA000001100AC5B752 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC85671FAECA000001119C80C20A >
+	{
+		myDefaultValue 1
+	}
+	myBlockingRadius 1500.0
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "New GameConditionPlayerHasWantedLevel" = "Player is not wanted"
+		LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup" = "Global activation rule Space Extremely Far 3000 -5000"
+		GameConditionLivingWorldIsContrabandContractActive "Doesnt have an active contraband contract"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myTags
+	{
+		LivingWorldTag Activity < uid=2AE2EC85671FB452000001443CC0395D > = LWT_Activity_Space_Wreckage 2AE2EC8564B553190000A11FE62B3EA5
+		LivingWorldTag "Faction Raider" < uid=2AE2EC85671FB4520000014696C2304B > = LWT_Faction_Space_Raiders_KhepiSystem 2AE2EC85671FAA2B000000D44F2B2EEE
+	}
+}
+
+LivingWorldContent Encounter_Space_ShipWreckage_Raiders_Ambush_khepi < uid=2AE2EC85671FAE75000001060A1FBB06 > : Encounter_Space_ShipWreckage_Raiders_Ambush
+{
+	myTicket < uid=2AE2EC85671FAECA0000011262506E04 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC85671FAECA00000113A2FAAF21 >
+	{
+		myDefaultValue 1
+	}
+	myBlockingRadius 1500.0
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "New GameConditionPlayerHasWantedLevel" = "Player is not wanted"
+		LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup" = "Global activation rule Space Extremely Far 3000 -5000"
+		GameConditionLivingWorldIsContrabandContractActive "Doesnt have an active contraband contract"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myTags
+	{
+		LivingWorldTag Activity < uid=2AE2EC85671FB4520000014797198712 > = LWT_Activity_Space_Wreckage 2AE2EC8564B553190000A11FE62B3EA5
+		LivingWorldTag "Faction Raider" < uid=2AE2EC85671FB45200000149353EDDBC > = LWT_Faction_Space_Raiders_KhepiSystem 2AE2EC85671FAA2B000000D44F2B2EEE
+	}
+}
+
+LivingWorldContent Encounter_Space_Skirmish_Raiders_vs_Empire_khepi < uid=2AE2EC85671FAE8A0000010752B15059 > : Encounter_Space_Skirmish_Raiders_vs_Empire
+{
+	myTicket < uid=2AE2EC85671FAECA0000011485A2E30B >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC85671FAECA000001151FA8F127 >
+	{
+		myDefaultValue 1
+	}
+	myBlockingRadius 1500.0
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "New GameConditionPlayerHasWantedLevel" = "Player is not wanted"
+		LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup" = "Global activation rule Space Very Far 750-5000"
+		GameConditionLivingWorldIsContrabandContractActive "Doesnt have an active contraband contract"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 80.0
+	myTags
+	{
+		LivingWorldTag Activity < uid=2AE2EC85671FB4520000014AB2F9F338 > = LWT_Activity_Space_Skirmish_Khepi 2AE2EC8567B5FAB800062E14C27AD5E9
+		LivingWorldTag "Faction Raider" < uid=2AE2EC85671FB4520000014C31063589 > = LWT_Faction_Space_Raiders_KhepiSystem 2AE2EC85671FAA2B000000D44F2B2EEE
+		LivingWorldTag "Faction Empire" < uid=2AE2EC85671FB4520000014DF216DD28 > = LWT_Faction_Space_Empire 2AE2EC8564B553190000A1284702836E
+	}
+}
+
+LivingWorldContent Encounter_Space_Skirmish_Raiders_vs_Empire_Big_khepi < uid=2AE2EC85671FAE9C0000010823C1BA42 > : Encounter_Space_Skirmish_Raiders_vs_Empire_Big
+{
+	myTicket < uid=2AE2EC85671FAECA00000116FE699C98 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC85671FAECA00000117899DA7D3 >
+	{
+		myDefaultValue 1
+	}
+	myBlockingRadius 1500.0
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "New GameConditionPlayerHasWantedLevel" = "Player is not wanted"
+		LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup" = "Global activation rule Space Very Far 750-5000"
+		GameConditionLivingWorldIsContrabandContractActive "Doesnt have an active contraband contract"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 80.0
+	myTags
+	{
+		LivingWorldTag Activity < uid=2AE2EC85671FB4520000014E8F0B9061 > = LWT_Activity_Space_Skirmish_Khepi 2AE2EC8567B5FAB800062E14C27AD5E9
+		LivingWorldTag "Faction Raider" < uid=2AE2EC85671FB45200000150784E82C9 > = LWT_Faction_Space_Raiders_KhepiSystem 2AE2EC85671FAA2B000000D44F2B2EEE
+		LivingWorldTag "Faction Empire" < uid=2AE2EC85671FB452000001513CF5EF75 > = LWT_Faction_Space_Empire 2AE2EC8564B553190000A1284702836E
+	}
+}
+
+LivingWorldContent Encounter_Space_Skirmish_Raiders_vs_Pirate_khepi < uid=2AE2EC85671FAEA900000109BD1C72CA > : Encounter_Space_Skirmish_Raiders_vs_Pirate
+{
+	myTicket < uid=2AE2EC85671FAECA000001181BB5B750 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC85671FAECA0000011943CC5CC8 >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC85671FAECA0000011AF1F38575 >
+	{
+	}
+	myBlockingRadius 1500.0
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "New GameConditionPlayerHasWantedLevel" = "Player is not wanted"
+		LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup" = "Global activation rule Space Very Far 750-5000"
+		GameConditionLivingWorldIsContrabandContractActive "Doesnt have an active contraband contract"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 80.0
+	myTags
+	{
+		LivingWorldTag Activity < uid=2AE2EC85671FB45200000152EFAEF812 > = LWT_Activity_Space_Skirmish_Khepi 2AE2EC8567B5FAB800062E14C27AD5E9
+		LivingWorldTag "Faction Raider" < uid=2AE2EC85671FB45200000154B995062F > = LWT_Faction_Space_Raiders_KhepiSystem 2AE2EC85671FAA2B000000D44F2B2EEE
+		LivingWorldTag "Faction Pirate" < uid=2AE2EC85671FB452000001552A88D82F > = LWT_Faction_Space_Pirate 2AE2EC8564B553190000A12E1282081A
+	}
+}
+
+LivingWorldContent Encounter_Space_Skirmish_Raiders_vs_Pirate_Big_khepi < uid=2AE2EC85671FAEBB0000010B92C78B60 > : Encounter_Space_Skirmish_Raiders_vs_Pirate_Big
+{
+	myTicket < uid=2AE2EC85671FAECA0000011B953407A7 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC85671FAECA0000011C238D2D66 >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC85671FAECA0000011D02861FC3 >
+	{
+	}
+	myBlockingRadius 1500.0
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "New GameConditionPlayerHasWantedLevel" = "Player is not wanted"
+		LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup" = "Global activation rule Space Very Far 750-5000"
+		GameConditionLivingWorldIsContrabandContractActive "Doesnt have an active contraband contract"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 80.0
+	myTags
+	{
+		LivingWorldTag Activity < uid=2AE2EC85671FB45200000156B27EDB04 > = LWT_Activity_Space_Skirmish_Khepi 2AE2EC8567B5FAB800062E14C27AD5E9
+		LivingWorldTag "Faction Raider" < uid=2AE2EC85671FB452000001581AA7E1CE > = LWT_Faction_Space_Raiders_KhepiSystem 2AE2EC85671FAA2B000000D44F2B2EEE
+		LivingWorldTag "Faction Pirate" < uid=2AE2EC85671FB4520000015976820B15 > = LWT_Faction_Space_Pirate 2AE2EC8564B553190000A12E1282081A
+	}
+}
+
+LivingWorldContent Encounter_Space_Skirmish_Raiders_vs_Ashiga_khepi < uid=2AE2EC85671FB1D10000011E6F33EACB > : Encounter_Space_Skirmish_Raiders_vs_Ashiga
+{
+	myTicket < uid=2AE2EC85671FB24100000126A12E742E >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC85671FB2410000012784A6635D >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC85671FB241000001289FF61612 >
+	{
+	}
+	myBlockingRadius 1500.0
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "New GameConditionPlayerHasWantedLevel" = "Player is not wanted"
+		LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup" = "Global activation rule Space Very Far 750-5000"
+		GameConditionLivingWorldIsContrabandContractActive "Doesnt have an active contraband contract"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 80.0
+	myTags
+	{
+		LivingWorldTag Activity < uid=2AE2EC85671FB4520000015A3260583A > = LWT_Activity_Space_Skirmish_Khepi 2AE2EC8567B5FAB800062E14C27AD5E9
+		LivingWorldTag "Faction Raider" < uid=2AE2EC85671FB4520000015C8DB36401 > = LWT_Faction_Space_Raiders_KhepiSystem 2AE2EC85671FAA2B000000D44F2B2EEE
+		LivingWorldTag "Faction Ashiga" < uid=2AE2EC85671FB4520000015DEB0F0C01 > = LWT_Faction_Space_Ashiga 2AE2EC8564B553190000A122D920F92B
+	}
+}
+
+LivingWorldContent Encounter_Space_Skirmish_Raiders_vs_Ashiga_Big_khepi < uid=2AE2EC85671FB1E00000011F5A0FD1B5 > : Encounter_Space_Skirmish_Raiders_vs_Ashiga_Big
+{
+	myTicket < uid=2AE2EC85671FB24100000129F1309333 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC85671FB2410000012A236D063F >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC85671FB2410000012B94663584 >
+	{
+	}
+	myBlockingRadius 1500.0
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "New GameConditionPlayerHasWantedLevel" = "Player is not wanted"
+		LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup" = "Global activation rule Space Very Far 750-5000"
+		GameConditionLivingWorldIsContrabandContractActive "Doesnt have an active contraband contract"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 80.0
+	myTags
+	{
+		LivingWorldTag Activity < uid=2AE2EC85671FB4520000015EDB9E38D2 > = LWT_Activity_Space_Skirmish_Khepi 2AE2EC8567B5FAB800062E14C27AD5E9
+		LivingWorldTag "Faction Raider" < uid=2AE2EC85671FB452000001609F3C3923 > = LWT_Faction_Space_Raiders_KhepiSystem 2AE2EC85671FAA2B000000D44F2B2EEE
+		LivingWorldTag "Faction Ashiga" < uid=2AE2EC85671FB452000001610CC041C1 > = LWT_Faction_Space_Ashiga 2AE2EC8564B553190000A122D920F92B
+	}
+}
+
+LivingWorldContent Encounter_Space_Skirmish_Raiders_vs_CrimsonDawn_khepi < uid=2AE2EC85671FB1EE0000012010A3218F > : Encounter_Space_Skirmish_Raiders_vs_CrimsonDawn
+{
+	myTicket < uid=2AE2EC85671FB2410000012CBB0FE79C >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC85671FB2410000012DCED352C5 >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC85671FB2410000012E85C4E9DE >
+	{
+	}
+	myBlockingRadius 1500.0
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "New GameConditionPlayerHasWantedLevel" = "Player is not wanted"
+		LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup" = "Global activation rule Space Very Far 750-5000"
+		GameConditionLivingWorldIsContrabandContractActive "Doesnt have an active contraband contract"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 80.0
+	myTags
+	{
+		LivingWorldTag Activity < uid=2AE2EC85671FB4520000016226B2B023 > = LWT_Activity_Space_Skirmish_Khepi 2AE2EC8567B5FAB800062E14C27AD5E9
+		LivingWorldTag "Faction Raider" < uid=2AE2EC85671FB452000001641F7C71AF > = LWT_Faction_Space_Raiders_KhepiSystem 2AE2EC85671FAA2B000000D44F2B2EEE
+		LivingWorldTag "Faction Crimson Dawn" < uid=2AE2EC85671FB4520000016511BCF5C8 > = LWT_Faction_Space_CrimsonDawn 2AE2EC8564B553190000A1253A2069C1
+	}
+}
+
+LivingWorldContent Encounter_Space_Skirmish_Raiders_vs_CrimsonDawn_Big_khepi < uid=2AE2EC85671FB1FF0000012122E95C5F > : Encounter_Space_Skirmish_Raiders_vs_CrimsonDawn_Big
+{
+	myTicket < uid=2AE2EC85671FB2410000012F20AB26F7 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC85671FB24100000130E45C1679 >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC85671FB24100000131B04D354D >
+	{
+	}
+	myBlockingRadius 1500.0
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "New GameConditionPlayerHasWantedLevel" = "Player is not wanted"
+		LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup" = "Global activation rule Space Very Far 750-5000"
+		GameConditionLivingWorldIsContrabandContractActive "Doesnt have an active contraband contract"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 80.0
+	myTags
+	{
+		LivingWorldTag Activity < uid=2AE2EC85671FB45200000166A23C6C74 > = LWT_Activity_Space_Skirmish_Khepi 2AE2EC8567B5FAB800062E14C27AD5E9
+		LivingWorldTag "Faction Raider" < uid=2AE2EC85671FB45200000168825605FC > = LWT_Faction_Space_Raiders_KhepiSystem 2AE2EC85671FAA2B000000D44F2B2EEE
+		LivingWorldTag "Faction Crimson Dawn" < uid=2AE2EC85671FB4520000016974B2B2CB > = LWT_Faction_Space_CrimsonDawn 2AE2EC8564B553190000A1253A2069C1
+	}
+}
+
+LivingWorldContent Encounter_Space_Skirmish_Raiders_vs_Hutt_khepi < uid=2AE2EC85671FB20C00000122D27C8F7B > : Encounter_Space_Skirmish_Raiders_vs_Hutt
+{
+	myTicket < uid=2AE2EC85671FB241000001321265B083 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC85671FB241000001336B80B0A6 >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC85671FB241000001346F6B8C71 >
+	{
+	}
+	myBlockingRadius 1500.0
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "New GameConditionPlayerHasWantedLevel" = "Player is not wanted"
+		LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup" = "Global activation rule Space Very Far 750-5000"
+		GameConditionLivingWorldIsContrabandContractActive "Doesnt have an active contraband contract"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 80.0
+	myTags
+	{
+		LivingWorldTag Activity < uid=2AE2EC85671FB4520000016A35AC2FE5 > = LWT_Activity_Space_Skirmish_Khepi 2AE2EC8567B5FAB800062E14C27AD5E9
+		LivingWorldTag "Faction Raider" < uid=2AE2EC85671FB4520000016CA689123A > = LWT_Faction_Space_Raiders_KhepiSystem 2AE2EC85671FAA2B000000D44F2B2EEE
+		LivingWorldTag "Faction Hutt" < uid=2AE2EC85671FB4520000016D474CC8CA > = LWT_Faction_Space_Hutt 2AE2EC8564B553190000A12BCF888117
+	}
+}
+
+LivingWorldContent Encounter_Space_Skirmish_Raiders_vs_Hutt_Big_khepi < uid=2AE2EC85671FB21900000123F6DA6EF8 > : Encounter_Space_Skirmish_Raiders_vs_Hutt_Big
+{
+	myTicket < uid=2AE2EC85671FB24100000135B6553B8C >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC85671FB24100000136898B646D >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC85671FB24100000137E7E0F07A >
+	{
+	}
+	myBlockingRadius 1500.0
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "New GameConditionPlayerHasWantedLevel" = "Player is not wanted"
+		LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup" = "Global activation rule Space Very Far 750-5000"
+		GameConditionLivingWorldIsContrabandContractActive "Doesnt have an active contraband contract"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 80.0
+	myTags
+	{
+		LivingWorldTag Activity < uid=2AE2EC85671FB4520000016E13CB14C1 > = LWT_Activity_Space_Skirmish_Khepi 2AE2EC8567B5FAB800062E14C27AD5E9
+		LivingWorldTag "Faction Raider" < uid=2AE2EC85671FB452000001707D9ABDD2 > = LWT_Faction_Space_Raiders_KhepiSystem 2AE2EC85671FAA2B000000D44F2B2EEE
+		LivingWorldTag "Faction Hutt" < uid=2AE2EC85671FB452000001715CB12033 > = LWT_Faction_Space_Hutt 2AE2EC8564B553190000A12BCF888117
+	}
+}
+
+LivingWorldContent Encounter_Space_Skirmish_Raiders_vs_Pyke_khepi < uid=2AE2EC85671FB22800000124FF7C86F5 > : Encounter_Space_Skirmish_Raiders_vs_Pyke
+{
+	myTicket < uid=2AE2EC85671FB24100000138D4DBE0F3 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC85671FB24100000139CB4D28BF >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC85671FB2410000013A193795B7 >
+	{
+	}
+	myBlockingRadius 1500.0
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "New GameConditionPlayerHasWantedLevel" = "Player is not wanted"
+		LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup" = "Global activation rule Space Very Far 750-5000"
+		GameConditionLivingWorldIsContrabandContractActive "Doesnt have an active contraband contract"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 80.0
+	myTags
+	{
+		LivingWorldTag Activity < uid=2AE2EC85671FB4520000017217975A78 > = LWT_Activity_Space_Skirmish_Khepi 2AE2EC8567B5FAB800062E14C27AD5E9
+		LivingWorldTag "Faction Raider" < uid=2AE2EC85671FB452000001744F7D968B > = LWT_Faction_Space_Raiders_KhepiSystem 2AE2EC85671FAA2B000000D44F2B2EEE
+		LivingWorldTag "Faction Pyke" < uid=2AE2EC85671FB452000001759A1897EF > = LWT_Faction_Space_Pyke 2AE2EC8564B553190000A1317F531D5E
+	}
+}
+
+LivingWorldContent Encounter_Space_Skirmish_Raiders_vs_Pyke_Big_khepi < uid=2AE2EC85671FB23700000125971F36E1 > : Encounter_Space_Skirmish_Raiders_vs_Pyke_Big
+{
+	myTicket < uid=2AE2EC85671FB2410000013BF9B4D5CB >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC85671FB2410000013CF2636E76 >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC85671FB2410000013D50C9A855 >
+	{
+	}
+	myBlockingRadius 1500.0
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "New GameConditionPlayerHasWantedLevel" = "Player is not wanted"
+		LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup" = "Global activation rule Space Very Far 750-5000"
+		GameConditionLivingWorldIsContrabandContractActive "Doesnt have an active contraband contract"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 80.0
+	myTags
+	{
+		LivingWorldTag Activity < uid=2AE2EC85671FB4520000017637F15A4E > = LWT_Activity_Space_Skirmish_Khepi 2AE2EC8567B5FAB800062E14C27AD5E9
+		LivingWorldTag "Faction Raider" < uid=2AE2EC85671FB452000001787D4FAE62 > = LWT_Faction_Space_Raiders_KhepiSystem 2AE2EC85671FAA2B000000D44F2B2EEE
+		LivingWorldTag "Faction Pyke" < uid=2AE2EC85671FB4520000017923B6E9CB > = LWT_Faction_Space_Pyke 2AE2EC8564B553190000A1317F531D5E
+	}
+}
+
+LivingWorldContent Encounter_Space_Ambush_Rokana_Nebula_Tracks_01 < uid=A20F6E2B6761A125000662789296B3F7 >
+{
+	myCompletedGameValue < uid=A20F6E2B6761A15900066279FC7FB397 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer DistanceToPlayer
+		{
+			myDistance 4000.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionLivingWorldContent_HasBeenCompleted HasBeenCompleted
+		{
+			myIsNegated TRUE
+			myLivingWorldContent A20F6E2B6761A125000662789296B3F7
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer DistanceToPlayer
+		{
+			myDistance 6000.0
+			myOperator GreaterThanOrEqual
+		}
+	}
+}
+

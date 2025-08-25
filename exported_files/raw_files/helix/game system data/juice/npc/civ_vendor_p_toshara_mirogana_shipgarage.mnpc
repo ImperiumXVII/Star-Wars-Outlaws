@@ -1,0 +1,26 @@
+include "helix/game system data/juice/npc/base_civ_vendor.mnpc"
+include "helix/game system data/juice/npc/base_civ_vendor_ship.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC civ_vendor_p_toshara_mirogana_shipgarage < uid=91DC5D3C6336FE6400008BF076A18225 > : base_civ_vendor_ship
+{
+	myName "aurabesh = false, contextComment = \"Character name\", enabled = true, guid = #1EC89F256336FFA40000459C90F1F109, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 440, text = \"Ship Vendor\", type = \"MenuLine\""
+	myCharacterVisuals < uid=91DC5D3C6336FE6400008BF1DB317446 > = character_visuals_silver_toshara_mirogana_vendor_ship E053C1D5653A67B90000CC5BE3EDFAE4
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D276697FFFF00056C63D81FD6DA > = Agent_Gender_FeminineTag 16DEADE6626D20EA00002E5277B65AD4
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F256336FFBA0000459D25B11AD0 > = Agent_Archetype_VendorShipMechanic E4123D2762A88B870002A4F4CFBFD1AE
+	}
+	myDialogueCharacters
+	{
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=2AE2EC85646487EA0007000C412146FE >
+		{
+			myDialogueCharacter < uid=1EC89F25635162820000536B9B233109 > = AI_VENDOR_MECHANIC_F02 1EC89F25631B012300004A89A8A97992
+		}
+	}
+	myVendorConfig < uid=91DC5D3C6336FE6400008BF394E62A5D > = VendorConfig_TOS_City_Neutral_Ship F4D8AE266336EE6E00071EED2C1849F9
+}
+

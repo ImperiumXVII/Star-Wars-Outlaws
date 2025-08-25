@@ -1,0 +1,28 @@
+include "helix/game system data/fruit/item/item_includes.fruit"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_pickup_exotic_reconfigurable_grenadelauncher.mweaponfiremode"
+include "helix/game system data/juice/item/consumables.mitem"
+include "helix/game system data/juice/item/equipmentholding/holding_pickup_rifle.mequipmentholdingconfig"
+include "helix/game system data/juice/item/player_weapon_pickup_exotic.mitem"
+include "helix/game system data/juice/item/player_weapon_pickup_rifle.mitem"
+
+WeaponItem player_weapon_pickup_exotic_reconfigurable_grenadelauncher < uid=4C1DFD4E645CEE2A0001605959C0DC5B > : player_weapon_pickup_rifle
+{
+	myName "aurabesh = false, contextComment = \"Grenade Launcher variant of the Zerek Besh Reconfigurable weapon\", enabled = true, guid = #4C1DFD4E645CEE2A00016057847D409F, lineVersion = 15, maxLength = 0, productId = -1, sectionId = 10330, text = \"BR0-FL Launcher\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"Zerek Besh Hunters should drop this weapon\", enabled = true, guid = #4C1DFD4E645CEE2A00016058993B8A48, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 10330, text = \"Pickup from Zerek Besh\", type = \"MenuLine\""
+	myIcon "mySpriteId = 710037725, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_weapon_icons_02.spritesheet\""
+	myGraphObject "helix/graph objects/gameplayobject/gpo_player_hunter_rifle_modular_grenade.mgraphobject"
+	myLootGraphObject "helix/graph objects/gameplayobject/gpo_player_hunter_rifle_modular_grenade.mgraphobject"
+	myAmount < uid=4C1DFD4E645CEE2A0001605A93CC66B0 >
+	{
+		myDefaultValue 0
+	}
+	myConsumedItem < uid=4C1DFD4E645CEE2A0001605BFDDBB5EE > = con_Ammo_Reconfigurable_GrenadeLauncher 4C1DFD4E645CEFDF0001C8F298DE6495
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=4C1DFD4E645CEE2A0001605CB8F709D7 > = player_firemode_pickup_exotic_reconfigurable_grenadelauncher 4C1DFD4E645CF0C90001CD7F624BE605
+		}
+	}
+}
+

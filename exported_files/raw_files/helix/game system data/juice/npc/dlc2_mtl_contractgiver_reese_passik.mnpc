@@ -1,0 +1,42 @@
+include "dlc2/game system data/juice/contractgiver/a_hk_contractgiver.mcontractgiver"
+include "helix/game system data/juice/dialogue character/databases/dlc2_characters.mdialoguecharacter"
+include "helix/game system data/juice/npc/civ_contractgiver.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC dlc2_mtl_contractgiver_reese_passik < uid=91DC5D3C6722305C0004C787DE3EF776 > : civ_contractgiver
+{
+	myCharacterVisuals < uid=616F4596672DD8C700032C52CCAE178F > = dlc2_character_visuals_C_MQ_030_reese_passik E053C1D5676408CC0003EB9942179BAA
+	myFaction < uid=91DC5D3C6722305C0004C78834773F29 > = TraderGroup 91DC5D3C66FBD9540000004783CAEE04
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2767475BF80006568AB27606D3 > = Agent_Gender_MasculineTag 16DEADE6626D20EA00002E504CE30DE2
+	}
+	myPossibleSpeciesTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2767475BFC0006568B5837E491 > = Agent_Species_TwilekTag 2736B365634D673A0003C288220669A0
+	}
+	myDialogueCharacters
+	{
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=616F4596672CC9C700026010748B4B23 >
+		{
+			myDialogueCharacter < uid=616F4596672CC9D8000260111D18CD0E > = NAMED_DLC2_REESS_PASSIK F3B0A07067113161000000C9ECD5F172
+		}
+	}
+	myContractGiverData < uid=616F4596672B8D7E0002CE540AB2556D > = a_hk_contractgiver_Reese_Passik 616F4596672B72BD001031B0C9942845
+	myHideMapRefGameConditions
+	{
+		myType Group
+		myIsNegated TRUE
+		myOperator And
+		myCanBeOverridden FALSE
+		myConditions
+		{
+			GameConditionQuestIsCompleted "MQ 030 is completed"
+			{
+				myQuest 253B686766E29D0B00000C3B47ABDF14
+			}
+		}
+	}
+	myHologramGraphObject "dlc2/graph objects/prop/pr_msv_2471_a.mgraphobject"
+}
+

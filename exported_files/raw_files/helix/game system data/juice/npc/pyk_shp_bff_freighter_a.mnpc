@@ -1,0 +1,30 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/loottable/loot_global.mloottable"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npc/pyk_shp_base.mnpc"
+
+NPC pyk_shp_bff_freighter_a < uid=4F59E8F0641D95240001354C26E4FB3A > : pyk_shp_base
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Name of Ship - BFF-1 Bulk Freighter - Pyke faction\", enabled = true, guid = #6AE6EE0D65787457000266BC8D7EDC9B, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10726, text = \"BFF-1 Bulk Freighter\", type = \"MenuLine\""
+	myCharacterVisuals < uid=F95CD8F364836FC80001E52666F979DD > = character_visuals_npc_shp_bff_freighter 6EA79625641D4EE80000771E943B444F
+	mySpaceshipType BFF1Pyke
+	myMaxHealth 800
+	myHealthFormula 400*SpaceHealthWarshipDifficultyModifier
+	myFaction < uid=4F59E8F0641D95240001354DCB09F2DA > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A12912164EE15C50003C3D34521079C > = Agent_Archetype_Pilot 3A12912163EF7B9500005053123CF383
+		RBTagsTag "New RBTagsTag (0)" < uid=3A12912164EE15C90003C3D463E09821 > = Agent_ShipType_FreighterTag 3A12912164EE0F180000FFAD5587F6E6
+		RBTagsTag "New RBTagsTag (1)" < uid=3A12912164EE15E30003C3D5C358AC52 > = Agent_Faction_PykeSyndicateTag 16DEADE6620AE18B000020D1381248A0
+	}
+	myLodType Spaceship_Cruiser
+	myVisionProfile < uid=F95CD8F364836FC80001E52769CBA4AB > = visionProfile_pyk_ship_HaulerShuttle 6B0E1DE964B7A45D0000AD6FC752CDEE
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=F95CD8F364836FC80001E528507A5A14 > = detectionProfile_pyk_ship_HaulerShuttle 6B0E1DE964B6644F0003C734356300ED
+	}
+	myLootTable < uid=2AE2EC85654CB8A600010973D14C2310 > = loot_OnKill_Ship 2AE2EC85654CB4920001094584D7F698
+}
+

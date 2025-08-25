@@ -1,0 +1,340 @@
+{
+	connectionsById = {
+		217 -101 6 0,
+		217 -101 111 0,
+		217 -101 148 0,
+		6 50 200 0,
+		111 50 116 0,
+		111 50 198 0,
+		6 100 146 0,
+		111 100 127 0,
+		126 0 196 1,
+		145 0 199 1,
+		196 0 127 1,
+		199 0 146 1,
+		6 50 145 1,
+		6 50 203 1,
+		111 50 126 1,
+		111 50 188 1,
+		116 75 150 1,
+		1 102 70 1,
+		1 103 97 1,
+		198 -1 196 2,
+		200 -1 199 2,
+		190 0 188 2,
+		204 0 203 2,
+		203 76 150 2,
+		143 0 111 3,
+		144 0 6 3,
+		191 0 188 3,
+		205 0 203 3,
+		192 0 188 4,
+		206 0 203 4,
+		118 0 116 11,
+		119 0 116 12,
+		217 -102 111 25,
+		111 75 6 25,
+		188 76 116 25,
+		70 100 188 25,
+		97 100 203 25,
+		70 150 188 26,
+		97 150 203 26,
+		150 0 148 27,
+		127 2 70 50,
+		146 2 97 50,
+		1 104 217 101,
+		155 100 217 102,
+		218 0 217 107,
+		6 50 97 10000,
+		111 50 70 10000,
+		1 101 70 10001,
+		1 101 97 10001,
+	},
+	lastNodeId = 218,
+	layers = {},
+	locComp = {},
+	nodesById = {
+		[1] = {
+			defaults = {
+				connectionsById = {
+					152 0 151 101,
+					153 0 151 102,
+					154 0 151 103,
+					166 0 151 104,
+				},
+				layers = {},
+				nodesById = {
+					[151] = {
+						type = "internal:CompoundDefaults",
+					},
+					[152] = {
+						type = "native:Constant",
+						value = {
+							#&00000000000000000000000000000000,
+						},
+						valueType = "HC_Prop",
+					},
+					[153] = {
+						type = "native:Constant",
+						value = {
+							#&00000000000000000000000000000000,
+						},
+						valueType = "HC_Sequence",
+					},
+					[154] = {
+						type = "native:Constant",
+						value = {
+							#&00000000000000000000000000000000,
+						},
+						valueType = "HC_Sequence",
+					},
+					[166] = {
+						type = "native:Constant",
+						value = {
+							#&00000000000000000000000000000000,
+						},
+						valueType = "HC_Prop",
+					},
+				},
+			},
+			lastId = 104,
+			pins = {
+				{
+					id = 104,
+					name = "VentObject",
+				},
+				{
+					id = 101,
+					name = "Hatch Door",
+				},
+				{
+					id = 102,
+					name = "Enter Sequence",
+				},
+				{
+					id = 103,
+					name = "Exit Sequence",
+				},
+			},
+			type = "Script:Inputs",
+		},
+		{
+			lastId = -100,
+			pins = {},
+			type = "Script:Outputs",
+		},
+		[4, 5, 6] = {
+			type = "HC_ScriptInteractionListenerNode",
+		},
+		[70] = {
+			DoesNotNeedSequenceToResolvePinTypes = true,
+			myMarkerUID = #00000000000000000000000000000000,
+			mySequenceFile = "helix/sequence/test_playerEnterHatch.msequence",
+			pins = {
+				extResources = {
+					{
+						extResID = {
+							name = "Player",
+							typename = "helix:agent",
+							uid = #346395BC6257C28C00002E20C3E67FAD,
+						},
+						pinId = 10000,
+					},
+					{
+						extResID = {
+							name = "Vent Door",
+							typename = "helix:staticprop",
+							uid = #6F5419E765D32C09000164ABBC6F3DC0,
+						},
+						pinId = 10001,
+					},
+				},
+				interruptedStates = {},
+				jumpToMarkers = {},
+				jumpedToMarker = {},
+				reachedMarkers = {
+					{
+						markerID = {
+							name = "TriggerDoorClose",
+							uid = #6F5419E765CF52EE00172EE0212094AC,
+						},
+						pinId = 10600,
+					},
+				},
+			},
+			type = "HC_ScriptSequencePlayerNode",
+		},
+		[97] = {
+			DoesNotNeedSequenceToResolvePinTypes = true,
+			myMarkerUID = #00000000000000000000000000000000,
+			mySequenceFile = "helix/sequence/test_playerExitHatch.msequence",
+			pins = {
+				extResources = {
+					{
+						extResID = {
+							name = "Player",
+							typename = "helix:agent",
+							uid = #346395BC6257E2500001369A3F22F6C3,
+						},
+						pinId = 10000,
+					},
+					{
+						extResID = {
+							name = "Vent",
+							typename = "helix:staticprop",
+							uid = #346395BC6257E2540001369DF1ABC8F2,
+						},
+						pinId = 10001,
+					},
+				},
+				interruptedStates = {},
+				jumpToMarkers = {},
+				jumpedToMarker = {},
+				reachedMarkers = {
+					{
+						markerID = {
+							name = "TriggerDoorClose",
+							uid = #6F5419E765CF5377001731BF058C6BC9,
+						},
+						pinId = 10600,
+					},
+				},
+			},
+			type = "HC_ScriptSequencePlayerNode",
+		},
+		[111] = {
+			type = "HC_ScriptInteractionListenerNode",
+		},
+		[116] = {
+			type = "HC_GameScriptSetPlayerContextStateNode",
+		},
+		[118] = {
+			type = "native:Constant",
+			value = "Crouched",
+			valueType = "Player State",
+		},
+		[119] = {
+			type = "native:Constant",
+			value = 0 0 0,
+			valueType = "float3",
+		},
+		[126] = {
+			type = "HC_AgentIsValid",
+		},
+		[127] = {
+			type = "native:ImpulseSelect",
+		},
+		[143] = {
+			type = "native:Constant",
+			value = {
+				#&346395BC629490E60000C02B5398CC26,
+				#&BAB09C58662FB90F001E7177D3CE6504,
+			},
+			valueType = "Interaction Point Constant Data",
+		},
+		[144] = {
+			type = "native:Constant",
+			value = {
+				#&346395BC629490EF0000C02C326207C7,
+				#&BAB09C58662FB926001E717831E691A4,
+			},
+			valueType = "Interaction Point Constant Data",
+		},
+		[145] = {
+			type = "HC_AgentIsValid",
+		},
+		[146] = {
+			type = "native:ImpulseSelect",
+		},
+		[148] = {
+			type = "HC_ScriptInteractionModifierNode",
+		},
+		[150] = {
+			type = "native:ImpulseAny",
+		},
+		[155] = {
+			type = "HC_StreamingScriptInitNode",
+		},
+		[188] = {
+			type = "HC_ScriptAgentTemporaryInvulnerabilityIfLowHealthWithCooldownNode",
+		},
+		[190] = {
+			type = "native:Constant",
+			value = 0.1,
+			valueType = "float",
+		},
+		[191] = {
+			type = "native:Constant",
+			value = 3,
+			valueType = "float",
+		},
+		[192] = {
+			type = "native:Constant",
+			value = 0,
+			valueType = "float",
+		},
+		[196] = {
+			type = "native:And",
+		},
+		[198] = {
+			type = "HC_AgentNode_IsAlive",
+		},
+		[199] = {
+			type = "native:And",
+		},
+		[200] = {
+			type = "HC_AgentNode_IsAlive",
+		},
+		[203] = {
+			type = "HC_ScriptAgentTemporaryInvulnerabilityIfLowHealthWithCooldownNode",
+		},
+		[204] = {
+			type = "native:Constant",
+			value = 0.1,
+			valueType = "float",
+		},
+		[205] = {
+			type = "native:Constant",
+			value = 3,
+			valueType = "float",
+		},
+		[206] = {
+			type = "native:Constant",
+			value = 0,
+			valueType = "float",
+		},
+		[217] = {
+			filename = "helix/nodes/compounds/safe_get_interaction_points_from_static_prop.mcompoundnode",
+			name = "safe_get_interaction_points_from_static_prop",
+			type = "internal:Compound",
+		},
+		[218] = {
+			type = "native:Constant",
+			value = 2,
+			valueType = "integer",
+		},
+	},
+	savecount = 94,
+	variableMetaData = {
+		[#346395BC6253E314000056007F6CE7EE] = {
+			comment = "",
+			path = "Open?",
+			subType = "None",
+		},
+	},
+	variables = {
+		{
+			arraysupport = "None",
+			data = {
+				false,
+			},
+			includeInWatchSummary = false,
+			modification = "None",
+			name = "Open?",
+			sharing = "Local",
+			storage = "None",
+			typeName = "bool",
+			varId = #&346395BC6253E314000056007F6CE7EE,
+		},
+	},
+}

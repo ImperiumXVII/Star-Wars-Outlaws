@@ -1,0 +1,36 @@
+include "helix/game system data/fruit/equipment/aiming.fruit"
+include "helix/game system data/juice/equipment/aimconfig/weapon_aimconfig_lockon.maimconfig"
+
+AimConfig weapon_aimconfig_autolockon < uid=A207755D61F1673400001B16A84747DC > : weapon_aimconfig_lockon
+{
+	myPassiveAimMode
+	{
+		myCrosshair
+		{
+			myAutoLockCrosshairEnabled TRUE
+		}
+	}
+	myHipFireAimMode
+	{
+		myCrosshair
+		{
+			myAutoLockCrosshairEnabled TRUE
+		}
+	}
+	myLockAimMode
+	{
+		myEnabled FALSE
+		myMaxAimDistance 40.0
+		mySway < uid=544DB908611CF059000012320E372682 > = sway_blaster 1C021E9560ACA6AE00000F3E69A55FA3
+		myDepthOfField
+		{
+			myDOFFStop 4.0
+		}
+		myTransitions
+		{
+			myInDuration 0.25
+		}
+		myUserMovementRestrictionAngles 5.0;5.0
+	}
+}
+

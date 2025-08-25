@@ -1,0 +1,645 @@
+include "helix/game system data/fruit/npcmove/moveevaluation.fruit"
+
+NPCMoveEvaluationConfig sammakho_on_spot_attack < uid=E9DD8F60644B62140001B9A2FFA96652 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 0.4
+			myUpperBound 1.3
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -180.0
+			myUpperBound 180.0
+		}
+		NPCMoveEvaluationEntryRange "Vertical Offset"
+		{
+			myEvaluationTargetType VerticalOffset
+			myLowerBound -1.5
+			myUpperBound 1.5
+		}
+	}
+}
+
+NPCMoveEvaluationConfig sammakho_takedown < uid=E9DD8F606577C6AF0008D1BB38FDEE82 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 6.0
+			myUpperBound 9.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -180.0
+			myUpperBound 180.0
+		}
+		NPCMoveEvaluationEntryRange "Vertical Offset"
+		{
+			myEvaluationTargetType VerticalOffset
+			myLowerBound -1.5
+			myUpperBound 1.5
+		}
+	}
+}
+
+NPCMoveEvaluationConfig sammakho_taunt < uid=E9DD8F60644B62AF0001B9A69E40DE87 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 2.0
+			myUpperBound 30.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -90.0
+			myUpperBound 90.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig sammakho_move_away < uid=E9DD8F60644B63280001B9ADBE76A4BA >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 0.0
+			myUpperBound 20.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -180.0
+			myUpperBound 180.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig sammakho_dodge_side < uid=E9DD8F60644B63280001B9AE3FED1547 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 0.0
+			myUpperBound 20.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -90.0
+			myUpperBound 90.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig sammakho_dodge_back < uid=E9DD8F60644B63280001B9AFC658492F >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 0.0
+			myUpperBound 8.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -90.0
+			myUpperBound 90.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig sammakho_back_off < uid=E9DD8F60644B63280001B9B03B0D4CA4 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 0.0
+			myUpperBound 15.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -90.0
+			myUpperBound 90.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig sammakho_takedown_player < uid=E9DD8F60644B63350001B9B130556C0B >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myUpperBound 2.5
+		}
+		NPCMoveEvaluationEntryRange SelfFacingAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -25.0
+			myUpperBound 25.0
+		}
+		NPCMoveEvaluationEntryRange TargetFacingAngle
+		{
+			myEvaluationTargetType TargetFacingAngle
+			myLowerBound -180.0
+			myUpperBound 180.0
+		}
+		NPCMoveEvaluationEntryRange VertivalOffset
+		{
+			myEvaluationTargetType VerticalOffset
+		}
+		NPCMoveEvaluationEntrySimpleComparison Slope
+		{
+			myEvaluationTargetType TargetSlopeAngle
+			myValueToCompare 30.0
+			myOperatorType LessThanOrEqual
+		}
+	}
+}
+
+NPCMoveEvaluationConfig sammakho_flank < uid=E9DD8F60644B63350001B9B26745006B >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 2.0
+			myUpperBound 17.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig sammakho_trajectory_waving < uid=D85A76846478350800013BB88E9BB226 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 8.0
+			myUpperBound 35.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -45.0
+			myUpperBound 45.0
+		}
+		NPCMoveEvaluationEntryRange TargetFacingAngle
+		{
+			myEvaluationTargetType TargetFacingAngle
+			myLowerBound -60.0
+			myUpperBound 60.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig sammakho_range_attack < uid=2E5ACA7E64B8DBF10000F63D0CABF041 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 3.0
+			myUpperBound 13.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -90.0
+			myUpperBound 90.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig sammakho_long_range_attack < uid=2E5ACA7E64C8CECB0000D453894A7B7A > : sammakho_range_attack
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 8.0
+			myUpperBound 20.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -90.0
+			myUpperBound 90.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig sammakho_combo_always_success < uid=E9DD8F6064E5A8C600118F724D836ECD >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myUpperBound 100.0
+			myInvertRange FALSE
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -90.0
+			myUpperBound 90.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig sammakho_long_range_attack_MQ180 < uid=E9DD8F6064E6B85E00006F5BEF6E8F0D >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 0.4
+			myUpperBound 100.0
+			myInvertRange FALSE
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -90.0
+			myUpperBound 90.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig sammakho_range_attack_MQ180 < uid=E9DD8F6064E6BD7A0002A258B13DA009 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 0.4
+			myUpperBound 20.0
+			myInvertRange FALSE
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -90.0
+			myUpperBound 90.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig sammakho_grab_prepare < uid=E9DD8F60655C5A0600033863ED4FA5AD >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 5.0
+			myUpperBound 7.0
+		}
+		NPCMoveEvaluationEntryRange "Self Angle"
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -45.0
+			myUpperBound 45.0
+		}
+		NPCMoveEvaluationEntrySimpleComparison "Self Speed"
+		{
+			myEvaluationTargetType SelfSpeed
+			myValueToCompare 10.0
+			myOperatorType LessThanOrEqual
+		}
+		NPCMoveEvaluationEntrySimpleComparison Slope
+		{
+			myEvaluationTargetType TargetSlopeAngle
+			myValueToCompare 30.0
+			myOperatorType LessThanOrEqual
+		}
+	}
+}
+
+NPCMoveEvaluationConfig sammakho_grab_attack < uid=E9DD8F60655C5A4200049A2276C031CC >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange "Self Angle"
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -60.0
+			myUpperBound 60.0
+		}
+		NPCMoveEvaluationEntrySimpleComparison Slope
+		{
+			myEvaluationTargetType TargetSlopeAngle
+			myValueToCompare 30.0
+			myOperatorType LessThanOrEqual
+		}
+	}
+}
+
+NPCMoveEvaluationConfig sammakho_takedown_front < uid=E9DD8F606577C827000A35FC110ED0FC >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 3.0
+			myUpperBound 4.0
+		}
+		NPCMoveEvaluationEntryRange TargetFacingAngle
+		{
+			myEvaluationTargetType TargetFacingAngle
+			myLowerBound -45.0
+			myUpperBound 45.0
+		}
+		NPCMoveEvaluationEntryRange SelfFacingAngale
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -15.0
+			myUpperBound 15.0
+		}
+		NPCMoveEvaluationEntryRange VerticalOffset
+		{
+			myEvaluationTargetType VerticalOffset
+			myLowerBound -1.0
+		}
+		NPCMoveEvaluationEntrySimpleComparison TargetSlopeAngle
+		{
+			myEvaluationTargetType TargetSlopeAngle
+			myValueToCompare 21.0
+			myOperatorType LessThanOrEqual
+		}
+		NPCMoveEvaluationEntrySimpleComparison HealthThreshold
+		{
+			myEvaluationTargetType TargetHealth
+			myValueToCompare 5.0
+			myOperatorType LessThanOrEqual
+		}
+	}
+}
+
+NPCMoveEvaluationConfig sammakho_takedown_back < uid=E9DD8F606577C827000A35FDD34B1B36 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 3.0
+			myUpperBound 4.0
+		}
+		NPCMoveEvaluationEntryRange TargetFacingAngle
+		{
+			myEvaluationTargetType TargetFacingAngle
+			myLowerBound -135.0
+			myUpperBound 135.0
+			myInvertRange TRUE
+		}
+		NPCMoveEvaluationEntryRange SelfFacingAngale
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -15.0
+			myUpperBound 15.0
+		}
+		NPCMoveEvaluationEntryRange VerticalOffset
+		{
+			myEvaluationTargetType VerticalOffset
+			myLowerBound -1.0
+		}
+		NPCMoveEvaluationEntrySimpleComparison TargetSlopeAngle
+		{
+			myEvaluationTargetType TargetSlopeAngle
+			myValueToCompare 21.0
+			myOperatorType LessThanOrEqual
+		}
+		NPCMoveEvaluationEntrySimpleComparison HealthThreshold
+		{
+			myEvaluationTargetType TargetHealth
+			myValueToCompare 5.0
+			myOperatorType LessThanOrEqual
+		}
+	}
+}
+
+NPCMoveEvaluationConfig sammakho_takedown_left < uid=E9DD8F606577C827000A35FE880795C1 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 3.0
+			myUpperBound 4.0
+		}
+		NPCMoveEvaluationEntryRange TargetFacingAngle
+		{
+			myEvaluationTargetType TargetFacingAngle
+			myLowerBound -135.0
+			myUpperBound -45.0
+			myInvertRange FALSE
+		}
+		NPCMoveEvaluationEntryRange SelfFacingAngale
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -15.0
+			myUpperBound 15.0
+		}
+		NPCMoveEvaluationEntryRange VerticalOffset
+		{
+			myEvaluationTargetType VerticalOffset
+			myLowerBound -1.0
+		}
+		NPCMoveEvaluationEntrySimpleComparison TargetSlopeAngle
+		{
+			myEvaluationTargetType TargetSlopeAngle
+			myValueToCompare 21.0
+			myOperatorType LessThanOrEqual
+		}
+		NPCMoveEvaluationEntrySimpleComparison HealthThreshold
+		{
+			myEvaluationTargetType TargetHealth
+			myValueToCompare 5.0
+			myOperatorType LessThanOrEqual
+		}
+	}
+}
+
+NPCMoveEvaluationConfig sammakho_takedown_right < uid=E9DD8F606577C827000A35FF31CA8C9E >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 3.0
+			myUpperBound 4.0
+		}
+		NPCMoveEvaluationEntryRange TargetFacingAngle
+		{
+			myEvaluationTargetType TargetFacingAngle
+			myLowerBound 45.0
+			myUpperBound 135.0
+			myInvertRange FALSE
+		}
+		NPCMoveEvaluationEntryRange SelfFacingAngale
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -15.0
+			myUpperBound 15.0
+		}
+		NPCMoveEvaluationEntryRange VerticalOffset
+		{
+			myEvaluationTargetType VerticalOffset
+			myLowerBound -1.0
+		}
+		NPCMoveEvaluationEntrySimpleComparison TargetSlopeAngle
+		{
+			myEvaluationTargetType TargetSlopeAngle
+			myValueToCompare 21.0
+			myOperatorType LessThanOrEqual
+		}
+		NPCMoveEvaluationEntrySimpleComparison HealthThreshold
+		{
+			myEvaluationTargetType TargetHealth
+			myValueToCompare 5.0
+			myOperatorType LessThanOrEqual
+		}
+	}
+}
+
+NPCMoveEvaluationConfig sammakho_taunt_for_vehicle < uid=2E5ACA7E667A6AE70004B245D61E0A10 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 2.0
+			myUpperBound 30.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -90.0
+			myUpperBound 90.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig sammakho_move_away_for_vehicle < uid=2E5ACA7E667A6AE70004B2464F25C0B3 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 0.0
+			myUpperBound 30.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -180.0
+			myUpperBound 180.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig sammakho_dodge_side_for_vehicle < uid=2E5ACA7E667A6AE70004B247F646D087 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 1.31415
+			myUpperBound 20.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -90.0
+			myUpperBound 90.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig sammakho_dodge_back_for_vehicle < uid=2E5ACA7E667A6AE70004B248F092D303 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 1.31415
+			myUpperBound 8.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -90.0
+			myUpperBound 90.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig sammakho_back_off_for_vehicle < uid=2E5ACA7E667A6AE70004B249D6FA098B >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 1.31415
+			myUpperBound 14.700001
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -90.0
+			myUpperBound 90.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig sammakho_flank_for_vehicle < uid=2E5ACA7E667A6AE70004B24AB7BB6BBF >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 2.0
+			myUpperBound 17.0
+		}
+	}
+}
+

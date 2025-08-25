@@ -1,0 +1,43 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+
+Quest testquest_onboarding_lkarlsson < uid=596859F662052FDC0000B150003FFF3D >
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = true, guid = #596859F662052FDC0000B152CB19BFA7, lineVersion = 1, maxLength = 0, productId = -1, sectionId = -1, text = \"Lars Karlsson Excercise Quest\", type = \"MenuLine\""
+	myType Main
+	myBeats
+	{
+		QuestBeat "1. Talk to NPC" < uid=596859F6620530060000B15604897146 >
+		{
+			myScript helix/scripts/scr_testquest_onboarding_lkarlsson_beat01.mscript
+			myObjectives
+			{
+				QuestObjectiveInteract "Talk to Quest Giver" < uid=596859F6620532A700001FCCB55E81A7 >
+				{
+				}
+			}
+			myQuestBeatStateGameValue < uid=6F2AF91962178B05000028BFCD4DD711 >
+			{
+			}
+		}
+		QuestBeat "2. Empire Outpost" < uid=596859F66205300E0000B15835CF87C3 >
+		{
+			myScript helix/scripts/scr_testquest_onboarding_lkarlsson_beat02.mscript
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Find Empire Terminal" < uid=596859F66205363F000021B5F1D5962F >
+				{
+				}
+				QuestObjectiveInteract "Retrieve Prisoner Data" < uid=596859F66205364A000021B609597417 >
+				{
+				}
+			}
+			myQuestBeatStateGameValue < uid=6F2AF91962178B05000028C079DBADFB >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=6F2AF91962178B05000028C1B01DA38A >
+	{
+	}
+}
+

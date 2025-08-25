@@ -1,0 +1,36 @@
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/neu_shp_base.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC dlc2_myi_shp_dariusg < uid=05B06D7D671F4A630004AED2220A09DF > : neu_shp_base
+{
+	myName "aurabesh = false, branch = \"DLC2\", contextComment = \"Name of ship - Darius G-class Freighter - Neutral faction\", enabled = true, guid = #05B06D7D671F4A630004AED119A01D16, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10726, text = \"Darius G-class Freighter\", type = \"MenuLine\""
+	myCharacterVisuals < uid=05B06D7D671F4A630004AED3417FC885 > = character_visuals_npc_shp_DariusG_Freighter F95CD8F362ECDB5B0000E9CFCA726C84
+	myNPCComponentSetType Spaceship
+	mySpaceshipType DariusTrader
+	myMaxHealth 1600
+	myHealthFormula 800*SpaceHealthWarshipDifficultyModifier
+	myFaction < uid=05B06D7D671F4BC50004AFA24D23115C > = TraderGroup 91DC5D3C66FBD9540000004783CAEE04
+	myLodType Spaceship_Cruiser
+	myVisionProfile < uid=05B06D7D671F4A630004AED478D8EBD7 > = visionProfile_neu_ship_HaulerShuttle 6B0E1DE964B7A4080000AD5512E47AD0
+	myHearingProfile < uid=05B06D7D671F4A630004AED561890177 > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=05B06D7D671F4A630004AED613BFB868 > = detectionProfile_neu_ship_HaulerShuttle 6B0E1DE964B68AD90000A151DE59C166
+	}
+	myThreatProfile < uid=05B06D7D671F4A630004AED7AC3B617A > = DefaultThreatProfile 16DEADE6608474380000004E85DD35EB
+	myAudioParameters
+	{
+		myEmitterName DARIUSG
+		myEmitters
+		{
+			AgentEmitter "New AgentEmitter"
+			{
+				myEmitterPrefab "emitterLayerName = \"ship_npc\", enableDoppler = true, enablePropagation = true, sphereRadius = 20, stopOnDestroy = true"
+			}
+		}
+	}
+}
+

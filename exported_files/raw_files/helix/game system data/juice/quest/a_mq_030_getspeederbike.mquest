@@ -1,0 +1,168 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/rbtags/quest.mrbtagstags"
+include "helix/game system data/juice/reward/quest_completion_reward.mreward"
+include "helix/game system data/juice/reward/quest_reward.mreward"
+
+Quest A_MQ_030_Crashed < uid=9D0EE20B61815ADE000019B8490512DE >
+{
+	myName "aurabesh = false, contextComment = \"Quest Name\", enabled = true, guid = #BFA41A0261BC97CC0003E2D74CA558EE, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9033, text = \"Crashed\", type = \"MenuLine\""
+	myIntroDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"MQ 30 quest intro description\", enabled = true, guid = #2538246A6579B82800085D738D9E6403, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9033, text = \"Quest intro description placeholder\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"Quest description\", enabled = true, guid = #F26299E9650162FB0000ECD72AEA0A85, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9033, text = \"Quest description placeholder\", type = \"MenuLine\""
+	myImage helix/baked/ui/loose_images/quest_bilboard/journal_billboard_mq_030.dds
+	myToastUIDisplayMode None
+	myCompletionReward < uid=8FD81D5162A9D3D90002F175CF52C411 > = A_MQ_030_questcomplete_reward 2AE2EC85644A934E0000B2A8BD4F5339
+	myDebugPlayOnlyCompletionReward < uid=3A296D0C65D9B8210000C9656EB7BDDD > = MQ_030_DefaultShipSkin 3A296D0C65D9B7E60000C88D259F116B
+	myDebugPlayOnlyIsCompletionRewardUnique TRUE
+	myDebugPlayOnlyEquipItem TRUE
+	myIntroBeat < uid=91287888647749FC0008B1E94817D43D >
+	{
+		myScript helix/scripts/scr_a_mq_030_tos_pln_b02_fendoffshipjackers.mscript
+		myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_030_IntroBeat Beat Name\", enabled = true, guid = #91287888647749860008B1E6A38863CD, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 3614, text = \"Defeat the bandits\", type = \"MenuLine\""
+		myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+		myDebugPlayLandingZone 06F73AE1650C3E410002B0AF847775CB
+		myMood Focused
+		myObjectives
+		{
+			QuestObjectiveKillFireteam "Defeat the bandits" < uid=91287888647749FC0008B1EAA86140F9 >
+			{
+				myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_030_IntroBeat Objective text\", enabled = true, guid = #B567AAE0623347640000292A225322BA, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9037, text = \"Defeat the bandits\", type = \"MenuLine\""
+				myIsHiddenInTracker FALSE
+				myIsHiddenInHUD TRUE
+				myQuestObjectiveAudioState
+				{
+					myGuid 4732F2C71925C29A25540DA042B1F4AC
+				}
+				myQuestObjectiveAudioStateOnReset
+				{
+					myGuid 46A43267AE41F9241F311DA465D3698A
+				}
+			}
+			QuestObjectiveTalkTo "Talk to Waka" < uid=91287888647749FC0008B1EB6CA779E6 >
+			{
+				myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_030_IntroBeat Objective text\", enabled = true, guid = #9128788863F3A003000CE07990DE0A66, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9037, text = \"Confront the Rodian\", type = \"MenuLine\""
+				myQuestObjectiveAudioState
+				{
+					myGuid 46A43267AE41F9241F311DA465D3698A
+				}
+			}
+		}
+		myScriptInputs
+		{
+		}
+		myHasInitFromPreviousBeatPin FALSE
+		myQuestBeatStateGameValue < uid=912878886477615B000502B8B352C262 >
+		{
+		}
+		myWaitForInitCompletedOnInBeatVolume TRUE
+		myQuestBeatAudioState
+		{
+			myGuid 40B2C0DF2680B99F255CA88742D36BB3
+		}
+		myDebugPlayOnlyCompletionReward < uid=9128788865290EE500031734AE5A8B1D > = MQ_030_Rewardgroup_Jacket_Binoculars_AdrenalineRush 9128788865290BCF00011268B482FC6E
+		myDebugPlayOnlyIsCompletionRewardUnique TRUE
+		myDebugPlayOnlyEquipItem TRUE
+	}
+	myBeats
+	{
+		QuestBeat "Beat00 Take Speeder" < uid=9128788865367B2300038183FE3C6639 >
+		{
+			myScript helix/scripts/scr_a_mq_030_tos_pln_b00_takethespeeder.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_030_B01 Beat Name\", enabled = true, guid = #9128788865367B9900038304DC64E51E, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 3614, text = \"Take the speeder\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Get your Speeder" < uid=9128788865367C570003836A5207CDA4 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_030_B01 Objective text\", enabled = true, guid = #9128788865367C570003836BAB169370, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 9038, text = \"Take the Speeder\", type = \"MenuLine\""
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=9128788865367C3D0003835462F18E8F >
+			{
+			}
+			myWaitForInitCompletedOnInBeatVolume TRUE
+			myQuestBeatAudioState
+			{
+				myGuid 00000000000000000000000000000000
+			}
+			myCompletionReward < uid=9128788865367C3D000383557906EB93 > = MQ_030_Speeder_Unlock 2AE2EC85644BE5960029E9FC6EE3F195
+			myDebugPlayOnlyIsCompletionRewardUnique TRUE
+		}
+		QuestBeat "Beat01 Reach Mirogana" < uid=9128788865312CDA009008D72006ED49 >
+		{
+			myScript helix/scripts/scr_a_mq_030_tos_pln_b01_speedertomirogana.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_030_B02 Beat Name\", enabled = true, guid = #9128788865312CE6009008D9D1732A3A, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 3614, text = \"Reach Mirogana\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom "Speeder to Mirogana" < uid=9128788865312D30009008DB541D33E3 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_030_B02 Objective text\", enabled = true, guid = #9128788865312D37009008DC2D0E883D, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 9039, text = \"Reach Mirogana\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myChildObjectives
+					{
+						QuestObjectiveGoToLocation "Breadcrumb Marker 01" < uid=91287888662662B90015CF2CC4CFFCD2 >
+						{
+							myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsOptional TRUE
+							myIsHiddenInTracker TRUE
+						}
+						QuestObjectiveGoToLocation "Breadcrumb Marker 02" < uid=912878886626630C0015CF33D688A484 >
+						{
+							myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsOptional TRUE
+							myIsHiddenInTracker TRUE
+						}
+						QuestObjectiveGoToLocation "Breadcrumb Marker 03" < uid=912878886626630C0015CF34E50732B8 >
+						{
+							myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsOptional TRUE
+							myIsHiddenInTracker TRUE
+						}
+						QuestObjectiveGoToLocation "Breadcrumb Marker 04" < uid=912878886626630C0015CF3594D9180A >
+						{
+							myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsOptional TRUE
+							myIsHiddenInTracker TRUE
+						}
+						QuestObjectiveGoToLocation "Breadcrumb Marker 05" < uid=912878886626630C0015CF3624905DFA >
+						{
+							myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsOptional TRUE
+							myIsHiddenInTracker TRUE
+						}
+						QuestObjectiveGoToLocation "Breadcrumb Marker 06" < uid=91287888662663520015CF58BD5FD0A9 >
+						{
+							myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsOptional TRUE
+							myIsHiddenInTracker TRUE
+						}
+					}
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=9128788865312D53009008DE11E54679 >
+			{
+			}
+			myDeactivateContentLocationOnComplete TRUE
+			myWaitForInitCompletedOnInBeatVolume TRUE
+		}
+	}
+	myOutroBeat
+	{
+	}
+	myQuestStateGameValue < uid=6F2AF9196217897A000027BC4355BB67 >
+	{
+	}
+	myQuestAudioState
+	{
+		myGuid 4E71D3BD956AFE45C38868F0F7D46589
+	}
+	myQuestStartedRBTag < uid=DA5615DD64B4FA6B0000AB80D100D2F8 > = World_Quest_MQ030_Started DA5615DD64A3E09C0000AC2AB91CE77E
+	myQuestCompletedRBTag < uid=DA5615DD64B4FA6B0000AB8101C4C925 > = World_Quest_MQ030_Completed DA5615DD64A3E15A0000AC3F3C14209E
+}
+

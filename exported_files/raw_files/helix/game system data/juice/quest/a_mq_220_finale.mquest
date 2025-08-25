@@ -1,0 +1,37 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/rbtags/quest.mrbtagstags"
+include "helix/game system data/juice/reward/quest_completion_reward.mreward"
+
+Quest [DEPRECATED]A_MQ_220_Finale < uid=BFA41A0261B37728000004AE7D0C8156 >
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Title of quest 220\", enabled = true, guid = #BFA41A0261D56AE300013E7483A7F05B, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 9162, text = \"Finale\", type = \"MenuLine\""
+	myIntroDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"Desc of Quest 220\", enabled = true, guid = #C5645856656F4DBD0003E15006F3B1D1, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9162, text = \"PLACEHOLDER DESCRIPTION OF QUEST\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myImage helix/baked/ui/loose_images/quest_bilboard/journal_billboard_mq_220.dds
+	myCompletionReward < uid=2AE2EC85644BE3830029E3952A18072D > = A_MQ_220_questcomplete_reward 2AE2EC85644A93860000B2DA782DFCC7
+	myBeats
+	{
+		QuestBeat "QB01 - PressTheButton" < uid=BFA41A0261D56AE500013E76B69F61DF >
+		{
+			myScript helix/scripts/scr_a_mq220_beat01.mscript
+			myName "aurabesh = false, contextComment = \"Beat 01\", enabled = true, guid = #BFA41A0261D56AEF00013E7740A175A1, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 3614, text = \"Final Button: Galaxy Restored\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E3C00000018C095D3075
+			myObjectives
+			{
+				QuestObjectiveInteract "Obj 01 - Red Button" < uid=BFA41A0261D56B1C00013E7CA4323C49 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective\", enabled = true, guid = #BFA41A0261D56B2700013E7D7CCE6D36, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 3614, text = \"Press the button!\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=6F2AF91962178A0B0000280E8C6640C2 >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=6F2AF91962178A0B0000280F560CD325 >
+	{
+	}
+	myQuestStartedRBTag < uid=DA5615DD64B50C650000ABBCF6F6BA66 > = World_Quest_MQ220_Started DA5615DD64A3E1450000AC3DA0659CBE
+	myQuestCompletedRBTag < uid=DA5615DD64B50C590000ABBB3812E45F > = World_Quest_MQ220_Completed DA5615DD64A3E92D0000AC5219C6D153
+}
+

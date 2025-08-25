@@ -1,0 +1,54 @@
+include "helix/game system data/fruit/adminpanel/adminpanel.fruit"
+
+AdminPanel adminpanel_MQ_200_Vault < uid=C564585665159A8C000D4B4D65AB2EA3 >
+{
+	myAdminPanelSetup
+	{
+		myAdminPanelActions
+		{
+			AdminPanelAction "Deactivate Turrets"
+			{
+				mySlicingStateForAvailability
+				{
+					SlicingState "New SlicingState" Success
+					SlicingState "New SlicingState_0" CriticalSuccess
+				}
+				myIcon "mySpriteId = -1888113367, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_slicing_admin_panel_icons.spritesheet\""
+				myText "aurabesh = false, branch = \"\", contextComment = \"Admin Panel option\", enabled = true, guid = #C564585665159AE4000D4B73BE5B9ADC, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 8765, text = \"Turrets\", type = \"MenuLine\""
+				myOnButtonStateText "aurabesh = false, branch = \"MAIN\", contextComment = \"Admin Panel Toggle Text\", enabled = true, guid = #8FD81D5165C3B2570000021A7594E903, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 8765, text = \"Enabled\", type = \"MenuLine\""
+				myOffButtonStateText "aurabesh = false, branch = \"MAIN\", contextComment = \"Admin Panel Toggle Text\", enabled = true, guid = #8FD81D5165C3B2580000021B0D74F07A, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 8765, text = \"Disabled\", type = \"MenuLine\""
+				myActionType Option_1
+			}
+		}
+	}
+}
+
+AdminPanel adminpanel_MQ_200_Hangar < uid=94272D1C65294B85000F9DCE24259BCF >
+{
+	myAdminPanelSetup
+	{
+		myAdminPanelActions
+		{
+			AdminPanelAction Disable_Near_Cameras
+			{
+				myIcon "mySpriteId = 214186245, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_slicing_admin_panel_icons.spritesheet\""
+				myText "aurabesh = false, branch = \"\", contextComment = \"No need to success, the player can disable few cameras around\", enabled = true, guid = #94272D1C65294EBE000FCBBAF95AEF42, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 8765, text = \"Camera control\", type = \"MenuLine\""
+				myOnButtonStateText "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myOffButtonStateText "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myActionType Option_1
+			}
+			AdminPanelAction Open_Door
+			{
+				mySlicingStateForAvailability
+				{
+					SlicingState "New SlicingState" Success
+					SlicingState "New SlicingState (0)" CriticalSuccess
+				}
+				myIcon "mySpriteId = 1295745092, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_slicing_admin_panel_icons.spritesheet\""
+				myText "aurabesh = false, contextComment = \"Success will allow the player to open the door\", enabled = true, guid = #94272D1C65294BE3000F9DD03896F7AE, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 8765, text = \"Door Control\", type = \"MenuLine\""
+				myActionType Option_2
+			}
+		}
+	}
+}
+

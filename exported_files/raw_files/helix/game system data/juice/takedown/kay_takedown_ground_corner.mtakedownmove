@@ -1,0 +1,94 @@
+include "helix/game system data/fruit/takedown/takedown_move.fruit"
+include "helix/game system data/juice/takedown/kay_takedown_base.mtakedownmove"
+
+TakedownMove kay_takedown_ground_corner < uid=8735478764B51AF7000019D26A91315D > : kay_takedown_base
+{
+	myAnimationEntryType Aerial
+	myAlignments
+	{
+		TakedownAlignment 0
+		{
+			myAngle 0
+			mySequenceDuration 2.8
+			myAlignmentPosDuration 0.64
+			myAlignmentRotDuration 0.53
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.7415
+		}
+		TakedownAlignment 180
+		{
+			myAngle 180
+			mySequenceDuration 4.1
+			myAlignmentPosDuration 0.567
+			myAlignmentRotDuration 0.46
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.8
+			myOptimalOffset -0.13;0.0;0.0
+		}
+		TakedownAlignment -180
+		{
+			myAngle -180
+			mySequenceDuration 4.1
+			myAlignmentPosDuration 0.567
+			myAlignmentRotDuration 0.46
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.8
+			myOptimalOffset -0.13;0.0;0.0
+		}
+		TakedownAlignment -90
+		{
+			myAngle -90
+			mySequenceDuration 3.0
+			myAlignmentPosDuration 0.634
+			myAlignmentRotDuration 0.51
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.918
+			myOptimalOffset -0.3;0.0;0.0
+		}
+		TakedownAlignment 90
+		{
+			myAngle 90
+			mySequenceDuration 3.4
+			myAlignmentPosDuration 0.633
+			myAlignmentRotDuration 0.48
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.9
+		}
+	}
+	myStartConditions
+	{
+		myGameCondition
+		{
+			GameConditionMeleeGroup Group
+			{
+				myConditions
+				{
+					GameConditionMeleeAttackerIsInMovementState Ground
+					{
+					}
+					GameConditionTakedownExecutionConstraints GameConditionTakedownExecutionConstraints
+					{
+						myObstacleCheckType None
+						myCoverConstraints
+						{
+							myEnableCoverConstraints TRUE
+							myRequireTargetBehindCoverWallSegment FALSE
+							myMaxCoverToTargetAngle 90.0
+							myMaxCoverHeight 10.0
+							myMinCoverHeight 0.5
+							myMinCoverLength 0.8
+							myRequireFreeCorner TRUE
+						}
+					}
+					GameConditionMeleeTargetHeightDelta GameConditionMeleeTargetHeightDelta
+					{
+						myHeightDelta 0.5
+						myOperator LessThan
+					}
+				}
+			}
+		}
+	}
+	myPriority 1
+}
+

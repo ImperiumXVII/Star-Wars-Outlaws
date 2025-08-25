@@ -1,0 +1,338 @@
+include "dlc1/game system data/juice/intel/dlc1_intel.mintel"
+include "dlc1/game system data/juice/reward/dlc1_quest_completion_reward.mreward"
+include "helix/game system data/fruit/quest/quest.fruit"
+
+Quest DLC1_B_DQ_010_TheDeal < uid=8B0C5159667D31BC0002350C8C4B656A >
+{
+	myName "branch = \"DLC1\", contextComment = \"DLC1 DQ_010 Quest Name from dlc1_b_dq_010_thedeal\", enabled = true, guid = #224FE63366B36B19000000CA9ABA8E4B, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 11580, text = \"Wild Card\", type = \"MenuLine\""
+	myIntroDescription "branch = \"DLC1\", contextComment = \"DQ_010_TheThordenRequest IntroDescription of the dlc1 quest context of DQ_010_TheDealt\", enabled = true, guid = #8B0C5159667D31BC000234ECFC92C0CA, lineVersion = 7, maxLength = 0, productId = 84, sectionId = 11580, text = \"Kay received a tantalizing job offer from a mysterious broker on Renpalli Station.\", type = \"MenuLine\""
+	myDescription "branch = \"DLC1\", contextComment = \"DQ_010_TheThordenRequest Description of the dlc1 quest context of DQ_010_TheThordenRequest\", enabled = true, guid = #8B0C5159667D31BC000234EDADA8058C, lineVersion = 9, maxLength = 0, productId = 84, sectionId = 11580, text = \"With Governor Thorden's blackmail looming over her head, Kay is forced to win a Sabacc tournament on the casino cruiser Morenia. She begins her search for the legendary underworld gambling ship on board Renpalli Station.\", type = \"MenuLine\"}"
+	myImage helix/baked/ui/loose_images/quest_bilboard/dlc1_journal_billboard_dq_010.dds
+	myType Main
+	myCompletionReward < uid=225CF62766B5DA96000F7733812EB3D3 > = DLC1_A_DQ_010_QuestComplete_Reward D00CF65466B4E64900031F86562ED6E8
+	myGoals
+	{
+	}
+	myIntroBeat < uid=8B0C5159667D31BC0002351580D3E50F >
+	{
+		myScript helix/scripts/dlc1_scr_b_dq_010_tos_introbeat.mscript
+		myName "branch = \"DLC1\", contextComment = \"DQ_010_IntroBeat description\", enabled = true, guid = #8B0C5159667D31BC000234F43F02C58D, lineVersion = 12, maxLength = 0, productId = 84, sectionId = 3614, text = \"Meet the mysterious contact\", type = \"MenuLine\""
+		myLevelInfo 1EAB3B406396FD840000E19DA0AC6B3E
+		myDebugPlayLandingZone 9D0EE20B6073F7BA000014BE1C1D0903
+		myMood Focused
+		mySetPlayerInBeatOnStart TRUE
+		myObjectives
+		{
+			QuestObjectiveCustom "DQ_010_IntroBeat01_Meet the broker" < uid=8B0C5159667D31BC00023516551E2C08 >
+			{
+				myName "branch = \"DLC1\", contextComment = \"DQ_010_IntroBeat01_ReachTosharaStation Intro beat objective name\", enabled = true, guid = #8B0C5159667D31BC000234F5D16A603D, lineVersion = 15, maxLength = 0, productId = 84, sectionId = 11581, text = \"Meet with the broker\", type = \"MenuLine\""
+				myQuestObjectiveAudioState
+				{
+					myGuid 43CE6AE9D7FD3C983E33A3BA27BBFEA6
+				}
+			}
+			QuestObjectiveTalkTo "DQ_010_IntroBeat02_Talk to the mysterious contact" < uid=8B0C5159667D31BC000235170BA632B9 >
+			{
+				myName "branch = \"DLC1\", contextComment = \"DQ_010_IntroBeat02_Talk to the Contract Giver Intro beat objective name\", enabled = true, guid = #8B0C5159667D31BC000234F67991EB9F, lineVersion = 8, maxLength = 0, productId = 84, sectionId = 11581, text = \"Talk to the broker\", type = \"MenuLine\""
+				myIsHiddenInTracker TRUE
+				myIsHiddenInHUD TRUE
+				myQuestObjectiveAudioState
+				{
+					myGuid 43CE6AE9D7FD3C983E33A3BA27BBFEA6
+				}
+			}
+			QuestObjectiveFollow "DQ_010_IntroBeat03_Follow the host" < uid=8B0C5159667D31BC000235187F03BD4E >
+			{
+				myName "branch = \"DLC1\", contextComment = \"DQ_010_IntroBeat03_FollowTheHost Intro beat objective name\", enabled = true, guid = #8B0C5159667D31BC000234F7004FCFF8, lineVersion = 12, maxLength = 0, productId = 84, sectionId = 11581, text = \"Follow the broker\", type = \"MenuLine\""
+				myQuestObjectiveAudioState
+				{
+					myGuid 424FCB0AF9B2EFC8CD8F31A4623B4BAC
+				}
+			}
+			QuestObjectiveInteract "DQ_010_IntroBeat04_Enter in the VIP room" < uid=8B0C5159667D31BC0002351960E7D43C >
+			{
+				myName "branch = \"DLC1\", contextComment = \"DQ_010_IntroBeat04_EnterInTheVIProom Intro beat objective name\", enabled = true, guid = #8B0C5159667D31BC000234F829484CD1, lineVersion = 10, maxLength = 0, productId = 84, sectionId = 11581, text = \"Meet with the client\", type = \"MenuLine\""
+				myQuestObjectiveAudioState
+				{
+					myGuid 424FCB0AF9B2EFC8CD8F31A4623B4BAC
+				}
+			}
+		}
+		myQuestBeatStateGameValue < uid=8B0C5159667D31BC0002351AC43DCA44 >
+		{
+		}
+		myQuestBeatAudioState
+		{
+			myGuid 4CF384734C65A6350BBFD969706922A3
+		}
+	}
+	myBeats
+	{
+		QuestBeat "Beat01 - Find info on Morenia's location" < uid=8B0C5159667D31BC0002351BFE341B80 >
+		{
+			myScript helix/scripts/dlc1_scr_b_dq_010_tos_b01_investigation.mscript
+			myName "aurabesh = false, branch = \"DLC1\", contextComment = \"DQ_010_B01 Find info on Morenia's location beat name\", enabled = true, guid = #8B0C5159667D31BC000234F9ABA1AA4D, lineVersion = 7, maxLength = 0, productId = 84, sectionId = 3614, text = \"Find info on Morenia's location\", type = \"MenuLine\""
+			myLevelInfo 1EAB3B406396FD840000E19DA0AC6B3E
+			myDebugPlayLandingZone 9D0EE20B6073F7BA000014BE1C1D0903
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom "Find info on Morenia's location" < uid=8B0C5159667D31BC0002351C9CBF20C5 >
+				{
+					myName "branch = \"DLC1\", contextComment = \"DQ_010_B01 Find info on Morenia's location objective name is displayed in UI\", enabled = true, guid = #8B0C5159667D31BC000234FA5D9A61B5, lineVersion = 7, maxLength = 0, productId = 84, sectionId = 11581, text = \"Find info on the Morenia\", type = \"MenuLine\"}"
+					myIsHiddenInHUD FALSE
+					myIntel
+					{
+						Intel "New Intel_2" < uid=C9E2299266BCD0410008C890003584B8 > = dlc1_dq_10_Intel_A1_Cantina_Rumors C9E2299266B0DC8D0002731F0F9786A3
+						Intel "New Intel_3" < uid=C9E2299266BCD0410008C8914FCDAEC2 > = dlc1_dq_10_Intel_A2_Thordens_Broker C9E2299266B0DC8D000273218B215042
+						Intel "New Intel" < uid=C9E2299266BCD0410008C8920DE8A7A6 > = dlc1_dq_10_Intel_B1_Hangar_Bay_Workers C9E2299266B0DC8D000273239CB0CA94
+						Intel "New Intel_0" < uid=C9E2299266BCD0410008C8936709D7B4 > = dlc1_dq_10_Intel_B2_Engineer C9E2299266B0FC8D000000D968E4D558
+						Intel "New Intel_1" < uid=C9E2299266BCD0410008C894CBB58FA9 > = dlc1_dq_10_Intel_B3_Docking_Bay C9E2299266B100B3000000E67440EEA4
+						Intel "New Intel_4" < uid=C9E2299266C347C70003BD93481BC104 > = dlc1_dq_10_Intel_B4_Found_docking_bay_info C9E2299266B4E767000478C96FF40953
+					}
+					myAutoResolveIntel FALSE
+					myChildObjectives
+					{
+					}
+				}
+				QuestObjectiveCustom "Find the Morenia's droid shuttle" < uid=8B0C5159667D31BC0002351DC2A7415A >
+				{
+					myName "branch = \"DLC1\", contextComment = \"DQ_010_B01 Investigate about the droid objective name is displayed in UI\", enabled = true, guid = #8B0C5159667D31BC000234FB23D455F1, lineVersion = 13, maxLength = 0, productId = 84, sectionId = 11581, text = \"Identify the shuttle\", type = \"MenuLine\""
+					myIsHiddenInHUD FALSE
+					myIntel
+					{
+						Intel "New Intel_2" < uid=C9E2299266BCCE9D00077ABD36B467A1 > = dlc1_dq_10_Intel_A1_Cantina_Rumors C9E2299266B0DC8D0002731F0F9786A3
+						Intel "New Intel_3" < uid=C9E2299266BCCE9F00077ABEB8FF20CA > = dlc1_dq_10_Intel_A2_Thordens_Broker C9E2299266B0DC8D000273218B215042
+						Intel "New Intel" < uid=C9E2299266B0E6E1000273F47307D8C2 > = dlc1_dq_10_Intel_B1_Hangar_Bay_Workers C9E2299266B0DC8D000273239CB0CA94
+						Intel "New Intel_0" < uid=C9E2299266B1E66E000EFF8A79CC0054 > = dlc1_dq_10_Intel_B2_Engineer C9E2299266B0FC8D000000D968E4D558
+						Intel "New Intel_1" < uid=C9E2299266B1E66F000EFF8B9D408528 > = dlc1_dq_10_Intel_B3_Docking_Bay C9E2299266B100B3000000E67440EEA4
+						Intel "New Intel_4" < uid=C9E2299266C347A30003BD928EA4A843 > = dlc1_dq_10_Intel_B4_Found_docking_bay_info C9E2299266B4E767000478C96FF40953
+					}
+					myAutoResolveIntel TRUE
+					myQuestObjectiveAudioState
+					{
+						myGuid 444D15F471DD27B38E2BA5AF03344892
+					}
+					myChildObjectives
+					{
+						QuestObjectiveSteal "Hint - Head engineer has the transponder code with him" < uid=8B0C5159667D31BC00023520D3889520 >
+						{
+							myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIconOverride ""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+							myIsHint FALSE
+							myAutoResolveIntel FALSE
+						}
+					}
+				}
+				QuestObjectiveCustom "Tail the shuttle" < uid=8B0C5159672A26190003EDE152335744 >
+				{
+					myName "branch = \"DLC1\", contextComment = \"DQ_010_B01 Investigate about the droid objective name is displayed in UI\", enabled = true, guid = #8B0C5159672A26190003EDE2210F1A9E, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 11581, text = \"Tail the shuttle\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=8B0C5159667D31BC000235212BDDB39A >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4CF384734C65A6350BBFD969706922A3
+			}
+		}
+		QuestBeat "Beat02 - Find the Morenia's coordinates" < uid=8B0C5159667D31BC00023522D5246D9D >
+		{
+			myScript helix/scripts/dlc1_scr_b_dq_010_tos_b02_findthecoordinates.mscript
+			myName "aurabesh = false, branch = \"DLC1\", contextComment = \"DQ_010_B02 Find the Morenia's coordinates beat name is displayed in UI\", enabled = true, guid = #8B0C5159667D31BC000234FFE1276A90, lineVersion = 12, maxLength = 0, productId = 84, sectionId = 3614, text = \"Find the Morenia's coordinates\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012DDB0000000AEDF387547
+			myMood Focused
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Leave Renpali space station" < uid=8B0C5159667D31BC00023523C2F6B814 >
+				{
+					myName "branch = \"DLC1\", contextComment = \"DQ_010_B02 Leave Toshara space station objective name is displayed in UI\", enabled = true, guid = #8B0C5159667D31BC0002350024AF7061, lineVersion = 10, maxLength = 0, productId = 84, sectionId = 11581, text = \"Tail the shuttle\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveCustom "Check the droid spaceship exit" < uid=8B0C5159667D31BC00023524554014FF >
+				{
+					myName "branch = \"DLC1\", contextComment = \"DQ_010_B02 Check the spaceship exit objective name is displayed in UI\", enabled = true, guid = #8B0C5159667D31BC00023501EEB9336C, lineVersion = 10, maxLength = 0, productId = 84, sectionId = 11581, text = \"Tail the shuttle\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 49F792D3362FEE78673B400C478BB8B2
+					}
+					myChildObjectives
+					{
+						QuestObjectiveGoToLocation "Go to space area 01" < uid=8B0C5159667D31BC0002352593C73CAE >
+						{
+							myName "aurabesh = false, branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+						}
+						QuestObjectiveGoToLocation "Go to space area 02" < uid=8B0C5159667D31BC000235266579E3CE >
+						{
+							myName "aurabesh = false, branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+						}
+						QuestObjectiveGoToLocation "Go to space area 03" < uid=8B0C5159667D31BC000235271238C16D >
+						{
+							myName "aurabesh = false, branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+						}
+					}
+				}
+				QuestObjectiveFollow "Follow Morenia's droid starship" < uid=8B0C5159667D31BC00023528478AC839 >
+				{
+					myName "branch = \"DLC1\", contextComment = \"DQ_010_B02 Follow the pirate spaceship objective name is displayed in UI\", enabled = true, guid = #8B0C5159667D31BC0002350260EF0EE4, lineVersion = 10, maxLength = 0, productId = 84, sectionId = 11581, text = \"Tail the shuttle\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myQuestObjectiveAudioState
+					{
+						myGuid 49F792D3362FEE78673B400C478BB8B2
+					}
+				}
+				QuestObjectiveGoToLocation "Go to the hidden place" < uid=8B0C5159667D31BC00023529ED02AE2A >
+				{
+					myName "branch = \"DLC1\", contextComment = \"DQ_010_B02 Go to the hidden place objective name is displayed in UI\", enabled = true, guid = #8B0C5159667D31BC00023503BA469B83, lineVersion = 8, maxLength = 0, productId = 84, sectionId = 11581, text = \"Tail the shuttle\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 49F792D3362FEE78673B400C478BB8B2
+					}
+				}
+				QuestObjectiveCustom "Wait the droid moving" < uid=8B0C5159667D31BC0002352A47CF47D7 >
+				{
+					myName "branch = \"DLC1\", contextComment = \"DQ_010_B02 Wait the spaceship moving objective name is displayed in UI\", enabled = true, guid = #8B0C5159667D31BC00023504E535D8D2, lineVersion = 10, maxLength = 0, productId = 84, sectionId = 11581, text = \"Tail the shuttle\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 49F792D3362FEE78673B400C478BB8B2
+					}
+				}
+				QuestObjectiveFollow "Chase Morenia's droid starship" < uid=8B0C5159667D31BC0002352B9328D5EA >
+				{
+					myName "branch = \"DLC1\", contextComment = \"DQ_010_B02 Chase the droid spaceship objective name is displayed in UI\", enabled = true, guid = #8B0C5159667D31BC00023505C230B54B, lineVersion = 11, maxLength = 0, productId = 84, sectionId = 11581, text = \"Chase the shuttle\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myQuestObjectiveAudioState
+					{
+						myGuid 430A60C15D70FD45AE759DD47C9029A8
+					}
+				}
+			}
+			myQuestBeatStateGameValue < uid=8B0C5159667D31BC0002352C82F20CB6 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 40AD40E4E1716CE15CBA9B39B137F28C
+			}
+		}
+		QuestBeat "Beat03 - Get the Morenia's coordinates" < uid=8B0C5159667D31BC0002352D7A79913C >
+		{
+			myScript helix/scripts/dlc1_scr_b_dq_010_tos_b03_getmoreniascoordinates.mscript
+			myName "branch = \"DLC1\", contextComment = \"DQ_010_B03 Get the Morenia's coordinates beat name is displayed in UI\", enabled = true, guid = #8B0C5159667D31BC00023506DAB01BC7, lineVersion = 7, maxLength = 0, productId = 84, sectionId = 3614, text = \"Get the Morenia's coordinates\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012DDB0000000AEDF387547
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveInteract "Slice Morenia's coordinates" < uid=8B0C5159667D31BC0002352E47B5905B >
+				{
+					myName "branch = \"DLC1\", contextComment = \"DQ_010_B03 Hack the space beacon objective name is displayed in UI\", enabled = true, guid = #8B0C5159667D31BC0002350754A41991, lineVersion = 13, maxLength = 0, productId = 84, sectionId = 11581, text = \"Slice the beacon\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 4958E2BB16DE95B93B5AACFD69F6FF9A
+					}
+				}
+				QuestObjectiveCustom "Decrypt the beacon broadcast_Start" < uid=8B0C5159667D31BC0002352F92E79AC2 >
+				{
+					myName "branch = \"DLC1\", contextComment = \"DQ_010_B03 Decrypt the beacon broadcast objective name is displayed in UI\", enabled = true, guid = #8B0C5159667D31BC000235081F1CA89F, lineVersion = 17, maxLength = 0, productId = 84, sectionId = 11581, text = \"Decrypt the signal\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 4958E2BB16DE95B93B5AACFD69F6FF9A
+					}
+					myChildObjectives
+					{
+					}
+				}
+				QuestObjectiveKillFireteam "Defeat the security ships [FIRST WAVE]" < uid=8B0C5159667D31BC00023534E68C980E >
+				{
+					myName "branch = \"DLC1\", contextComment = \"DQ_010_B03 Defeat the security ships objective name is displayed in UI\", enabled = true, guid = #8B0C5159667D31BC0002350958C1DCDA, lineVersion = 14, maxLength = 0, productId = 84, sectionId = 11581, text = \"Defeat security vessels\", type = \"MenuLine\""
+					myIsHighPrio TRUE
+					myQuestObjectiveAudioState
+					{
+						myGuid 4958E2BB16DE95B93B5AACFD69F6FF9A
+					}
+				}
+				QuestObjectiveCustom "Decrypt the beacon broadcast_Step2" < uid=8B0C515966869B2000037B074535F44F >
+				{
+					myName "branch = \"DLC1\", contextComment = \"DQ_010_B03 Decrypt the beacon broadcast objective name is displayed in UI\", enabled = true, guid = #8B0C515966869A1500037AFE2140F0E0, lineVersion = 17, maxLength = 0, productId = 84, sectionId = 11581, text = \"Decrypt the signal\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 4958E2BB16DE95B93B5AACFD69F6FF9A
+					}
+					myChildObjectives
+					{
+					}
+				}
+				QuestObjectiveKillFireteam "Defeat the security ships [SECOND WAVE]" < uid=8B0C5159667D31BC00023535F129AC90 >
+				{
+					myName "branch = \"DLC1\", contextComment = \"DQ_010_B03 Defeat the security ships objective name is displayed in UI\", enabled = true, guid = #8B0C5159667D31BC0002350A02F59A26, lineVersion = 14, maxLength = 0, productId = 84, sectionId = 11581, text = \"Defeat security vessels\", type = \"MenuLine\""
+					myIsHighPrio TRUE
+					myQuestObjectiveAudioState
+					{
+						myGuid 4958E2BB16DE95B93B5AACFD69F6FF9A
+					}
+				}
+				QuestObjectiveCustom "Decrypt the beacon broadcast_Step3" < uid=8B0C515966869B2000037B08274D2E88 >
+				{
+					myName "branch = \"DLC1\", contextComment = \"DQ_010_B03 Decrypt the beacon broadcast objective name is displayed in UI\", enabled = true, guid = #8B0C515966869A5000037B00D6A93B75, lineVersion = 17, maxLength = 0, productId = 84, sectionId = 11581, text = \"Decrypt the signal\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 4958E2BB16DE95B93B5AACFD69F6FF9A
+					}
+					myChildObjectives
+					{
+					}
+				}
+				QuestObjectiveKillFireteam "Defeat the Lothalian" < uid=8B0C5159667D31BC00023536EE9649EC >
+				{
+					myName "branch = \"DLC1\", contextComment = \"DQ_010_B03 Defeat the Lothalian objective name is displayed in UI\", enabled = true, guid = #8B0C5159667D31BC0002350B76E96378, lineVersion = 11, maxLength = 0, productId = 84, sectionId = 11581, text = \"Defeat the SRX-T Manta\", type = \"MenuLine\""
+					myIsHighPrio TRUE
+					myQuestObjectiveAudioState
+					{
+						myGuid 40120174343CC4784CD00C744347A9B4
+					}
+				}
+				QuestObjectiveCustom "Decrypt the beacon broadcast_End" < uid=8B0C515966869B2000037B090A9A5DB4 >
+				{
+					myName "branch = \"DLC1\", contextComment = \"DQ_010_B03 Decrypt the beacon broadcast objective name is displayed in UI\", enabled = true, guid = #8B0C515966869AFF00037B06E3F35FD0, lineVersion = 17, maxLength = 0, productId = 84, sectionId = 11581, text = \"Decrypt the signal\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 411F5A199F162753B25976A1FF26949C
+					}
+					myChildObjectives
+					{
+					}
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputAgent "InputAgent ZH40" < uid=8B0C5159667D31BC00023537A2E22F88 >
+				{
+				}
+			}
+			myQuestBeatStateGameValue < uid=8B0C5159667D31BC00023538202C9F32 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4357D0FE98385FF8FAF0429F83658B8D
+			}
+		}
+	}
+	myQuestStateGameValue < uid=8B0C5159667D31BC000235399CDDFA8B >
+	{
+	}
+	myQuestAudioState
+	{
+		myGuid 41E236CCEE4C747BCC75DE88846DEDB1
+	}
+	myRequiredMTXAddonType DLC1
+}
+

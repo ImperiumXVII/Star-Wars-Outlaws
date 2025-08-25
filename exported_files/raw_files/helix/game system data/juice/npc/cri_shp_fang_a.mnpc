@@ -1,0 +1,31 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/cri_shp_base.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC cri_shp_fang_a < uid=F95CD8F364835F7A000AF6D724FC6614 > : cri_shp_base
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Junkros/ Fang - Crimson Dawn faction\", enabled = true, guid = #6AE6EE0D65771E55000236E09E1D405D, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10726, text = 'JLF-19 \"Junkros\" Fighter', type = \"MenuLine\""
+	myCharacterVisuals < uid=F95CD8F364835F7A000AF6D84887C054 > = character_visual_npc_space_pirate_01 6EA796256329BC74000093EC8C1EB181
+	myNPCComponentSetType Spaceship
+	mySpaceshipType FangCrimsonDawn
+	myMaxHealth 40
+	myHealthFormula 20*SpaceHealthDifficultyModifier
+	myLodType Spaceship_Small
+	myVisionProfile < uid=F95CD8F364835F7A000AF6D9A138BE9A > = visionProfile_cri_ship_Fighter 6B0E1DE964B7A45D0000AD66C508485E
+	myHearingProfile < uid=F95CD8F364835F7A000AF6DA1E27CAB4 > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=6B0E1DE964B686550000A117AC047CE7 > = detectionProfile_cri_ship_Fighter 6B0E1DE964B6644F0003C72ABDA4601D
+	}
+	myThreatProfile < uid=F95CD8F3653FC46C00004D8C7D2BF816 > = Spaceshipthreatprofile F95CD8F3653F81EE00057BF796B8AD1A
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "fang weapon loadout" < uid=F95CD8F364835F7A000AF6DCAFDF3DB3 > = weaponloadout_cri_shp_fang 6AF0BA04649BF17D00049A776298F3C4
+	}
+	myPatrolFormationProfile < uid=F95CD8F364835F7A000AF6DDCB778ABC > = TiefighterPatrolFormation F97070E1630617BB000045D00ED770A9
+	myCombatRole Fighter
+}
+

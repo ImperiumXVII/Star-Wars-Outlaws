@@ -1,0 +1,34 @@
+include "helix/game system data/juice/ai/arc170_attached_npc_set.mnpconnpcattachmentset"
+include "helix/game system data/juice/ai/ash_arc170_attached_npc_set.mnpconnpcattachmentset"
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/hut_arc170_attached_npc_set.mnpconnpcattachmentset"
+include "helix/game system data/juice/ai/spaceshipnpcthreatprofiles.mnpcthreatprofile"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/ash_shp_base.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC ash_shp_arc170_a < uid=F95CD8F364AD0A5400013215FD7981E8 > : ash_shp_base
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Wing Cutter / Arc-170 - Ashiga faction\", enabled = true, guid = #6AE6EE0D65783488000266A147D70278, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10726, text = 'Arc-200 \"Wing Cutter\" Fighter', type = \"MenuLine\""
+	myCharacterVisuals < uid=F95CD8F364AD0A5400013216C6FD3E4F > = character_visuals_npc_shp_ARC170 F95CD8F362ECDB440000E9CE92590915
+	myNPCComponentSetType Spaceship
+	mySpaceshipType Arc170Ashiga
+	myMaxHealth 100
+	myHealthFormula 50*SpaceHealthDifficultyModifier
+	myLodType Spaceship_Small
+	myVisionProfile < uid=F95CD8F364AD0A540001321779658B3B > = visionProfile_ash_ship_Fighter 6B0E1DE964B7A45D0000AD6118043BCC
+	myHearingProfile < uid=F95CD8F364AD0A5400013218F58C382B > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=F95CD8F364AD0A5400013219C4CB91B3 > = detectionProfile_ash_ship_Fighter 6B0E1DE964B662190003C715E97DE907
+	}
+	myThreatProfile < uid=F95CD8F3653F860A00057C0434F96554 > = Spaceshipthreatprofile F95CD8F3653F81EE00057BF796B8AD1A
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "arc170 weapon loadout" < uid=F95CD8F364AD0A540001321BBE82B236 > = weaponloadout_ash_shp_arc170 6AF0BA04649BFC9400074B057B83E3A6
+	}
+	myAttachedNPCsSet < uid=F95CD8F364AD0A540001321C2A5B88AD > = ash_arc170_attached_npc_set F95CD8F364AD0AD400013229FFB72F6D
+	myCombatRole Fighter
+}
+

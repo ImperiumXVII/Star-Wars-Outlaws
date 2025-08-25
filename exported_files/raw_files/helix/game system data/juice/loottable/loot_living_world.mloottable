@@ -1,0 +1,551 @@
+include "helix/game system data/fruit/loottable/loottable.fruit"
+include "helix/game system data/juice/item/craftingmaterials.mitem"
+include "helix/game system data/juice/item/currencies.mitem"
+include "helix/game system data/juice/item/items_valuables.mitem"
+include "helix/game system data/juice/item/keyitems.mitem"
+include "helix/game system data/juice/item/player_gear_legs_.mitem"
+include "helix/game system data/juice/item/speeder_trophies.mitem"
+include "helix/game system data/juice/item/trinkets.mitem"
+include "helix/game system data/juice/legend/legendranks.mlegendrank"
+include "helix/game system data/juice/loottable/looseloot_global.mloottable"
+include "helix/game system data/juice/loottable/loot_containers_global.mloottable"
+include "helix/game system data/juice/loottable/loottable_reputationloot.mloottable"
+
+LootTable loot_pickpocket_opportunity < uid=2AE2EC856504223A000080CC03C81102 >
+{
+	myRandomDropTable
+	{
+		myDropTableEntries
+		{
+			DropTableEntryItem Credits
+			{
+				myWeight 3
+				myMinAmount 20
+				myMaxAmount 40
+				myItem < uid=2AE2EC85650422DA000080CD4D43C6F3 > = Credits 83E36AE360487E88000000375F5EDD50
+			}
+			DropTableEntryLootTable Valuable
+			{
+				myLootTable < uid=2AE2EC85650422DA000080CEBED08658 > = loot_global_valuable_common_all 2AE2EC856565A46800036E05228676E3
+			}
+		}
+	}
+}
+
+LootTable loot_pickpocket_opportunity_Cantonica < uid=2AE2EC85651D51AB000102A01981228B >
+{
+	myAlwaysRolls
+	{
+		DropTableEntryItem Credits
+		{
+			myMinAmount 25
+			myMaxAmount 25
+			myItem < uid=2AE2EC85651D5200000102A19CC7C542 > = Credits 83E36AE360487E88000000375F5EDD50
+		}
+	}
+}
+
+LootTable loot_encountner_guard_generic < uid=2AE2EC8565F06012000BCA2A40287F67 > : loot_container_medium_general_generic
+{
+}
+
+LootTable loot_encounter_guard_empire_container < uid=2AE2EC856582A100001BF7485EB28306 > : loot_container_medium_empire_generic
+{
+}
+
+LootTable loot_encounter_guard_pirate_container < uid=2AE2EC856582A1B0001BF74F691CE64E > : loot_container_medium_pirate_generic
+{
+}
+
+LootTable loot_encounter_guard_ashiga_container < uid=2AE2EC85650422DF000080CF1C2341BC > : loot_container_medium_faction_territory_generic
+{
+}
+
+LootTable loot_encounter_guard_CrimsonDawn_container < uid=2AE2EC856582A1B0001BF75007E197D7 > : loot_container_medium_faction_territory_generic
+{
+}
+
+LootTable loot_encounter_guard_Hutt_container < uid=2AE2EC856582A1B0001BF7511D58C2A3 > : loot_container_medium_faction_territory_generic
+{
+}
+
+LootTable loot_encounter_guard_Pyke_container < uid=2AE2EC856582A1B0001BF752959AA775 > : loot_container_medium_faction_territory_generic
+{
+}
+
+LootTable loot_encounter_guard_Wildlife_container < uid=2AE2EC856582A1B0001BF7531B3A0D1E > : loot_container_medium_civilian_generic
+{
+}
+
+LootTable loot_encounter_skirmish_reward < uid=2AE2EC85650C372D0002F75B452E13D9 >
+{
+	myAlwaysRolls
+	{
+		DropTableEntryItem Credits
+		{
+			myMinAmount 75
+			myMaxAmount 125
+			myItem < uid=2AE2EC85650C374C0002F75CC5F6DEDA > = Credits 83E36AE360487E88000000375F5EDD50
+		}
+	}
+}
+
+LootTable loot_encounter_NpcInDanger_reward < uid=2AE2EC85650C37540002F75D8F34F9AE >
+{
+	myAlwaysRolls
+	{
+		DropTableEntryItem Credits
+		{
+			myMinAmount 100
+			myMaxAmount 150
+			myItem < uid=2AE2EC85650C377F0002F75E0B4A0213 > = Credits 83E36AE360487E88000000375F5EDD50
+		}
+	}
+}
+
+LootTable loot_event_ImperialRaid_01 < uid=2AE2EC85650C341B0002F7453F9CE9E7 > : loot_container_medium_empire_compound_generic
+{
+}
+
+LootTable loot_event_ImperialRaid_02 < uid=2AE2EC85650C360C0002F752A725EEA5 > : loot_container_medium_empire_compound_generic
+{
+}
+
+LootTable loot_event_ImperialRaid_03 < uid=2AE2EC85650C360C0002F75342E52626 > : loot_container_medium_empire_compound_generic
+{
+}
+
+LootTable loot_event_ImperialConvoy_ground < uid=2AE2EC85650C351B0002F748CE657B90 > : loot_container_small_generic
+{
+}
+
+LootTable loot_event_ImperialConvoy_space < uid=2AE2EC85650C35330002F749166E606A > : loot_container_small_generic
+{
+}
+
+LootTable loot_event_BikerGang_01 < uid=2AE2EC85650C35470002F74A3B40D953 > : loot_container_small_generic
+{
+}
+
+LootTable loot_event_BikerGang_02 < uid=2AE2EC85650C35530002F74B9E620094 > : loot_container_small_generic
+{
+}
+
+LootTable loot_event_BikerGang_03 < uid=2AE2EC85650C355E0002F74C7B3E5133 > : loot_container_small_generic
+{
+}
+
+LootTable loot_event_CrashedPod_01 < uid=2AE2EC85650C35800002F74D1E36030E > : loot_container_small_generic
+{
+}
+
+LootTable loot_event_CrashedPod_02 < uid=2AE2EC85650C35960002F74E2381CBDA > : loot_container_small_generic
+{
+}
+
+LootTable loot_event_FactionAttackPirate_01 < uid=2AE2EC85650C35AD0002F74FAD69099E > : loot_container_medium_faction_territory_generic
+{
+}
+
+LootTable loot_event_FactionAttackPirate_02 < uid=2AE2EC85650C35BA0002F750245762C9 > : loot_container_medium_faction_territory_generic
+{
+}
+
+LootTable loot_event_FactionAttackPirate_03 < uid=2AE2EC85663392A00001BDBCB20310FF > : loot_container_medium_faction_territory_generic
+{
+}
+
+LootTable loot_event_CatchTheThief < uid=2AE2EC85650C35E80002F7518AD73B3E >
+{
+	myAlwaysRolls
+	{
+		DropTableEntryItem Valuable
+		{
+			myItem < uid=2AE2EC85650C360C0002F754DD3B4599 > = valuable_ALL_Rare_05 F4D8AE2664F999880002767BA5C3161A
+		}
+	}
+}
+
+LootTable loot_event_SpeederRace < uid=2AE2EC85650C36170002F755EE069BCB >
+{
+	myAlwaysRolls
+	{
+		DropTableEntryItem Credits
+		{
+			myMinAmount 200
+			myMaxAmount 300
+			myItem < uid=2AE2EC85650C36B30002F759D0735F7D > = Credits 83E36AE360487E88000000375F5EDD50
+		}
+	}
+}
+
+LootTable loot_event_DefendCivilian_Reward < uid=2AE2EC85650C36920002F7580A71453B >
+{
+	myAlwaysRolls
+	{
+		DropTableEntryItem Credits
+		{
+			myMinAmount 500
+			myMaxAmount 500
+			myItem < uid=2AE2EC85650C36B30002F75A46B8484B > = Credits 83E36AE360487E88000000375F5EDD50
+		}
+	}
+}
+
+LootTable loot_encounter_WanderingVendor_Toshara_Pyke < uid=2AE2EC85651D510E00010269D243AF16 > : loot_container_small_generic
+{
+}
+
+LootTable loot_encounter_WanderingVendor_Tatooine_Hutt < uid=2AE2EC85651D513C0001028CF9246483 > : loot_container_small_generic
+{
+}
+
+LootTable loot_encounter_WanderingVendor_Akiva_Hutt < uid=2AE2EC85651D51510001028D9A3D1C42 > : loot_container_small_generic
+{
+}
+
+LootTable loot_encounter_WanderingVendor_Akiva_Pyke < uid=2AE2EC85651D515E0001028E40E773FA > : loot_container_small_generic
+{
+}
+
+LootTable loot_encounter_ScriptedWildlife_KowakianMonkeyLizard < uid=2AE2EC856525534A0001967E8A3F4954 >
+{
+	myRandomDropTable
+	{
+		myDropTableEntries
+		{
+			DropTableEntryLootTable "Akiva Common Valuable"
+			{
+				myLootTable < uid=2AE2EC8565AE94730002EE0B39CF537D > = LooseLoot_Valuable_Akiva 2AE2EC8564F9FE19000084EC3272C582
+			}
+			DropTableEntryLootTable "Any Common Valuable"
+			{
+				myLootTable < uid=2AE2EC8565AE94D50002EE0CB3A6893E > = loot_global_valuable_common_all 2AE2EC856565A46800036E05228676E3
+			}
+			DropTableEntryLootTable "Any Rare Valuable"
+			{
+				myLootTable < uid=2AE2EC8565AE94D50002EE0D2D98963B > = loot_global_valuable_rare_all 2AE2EC856565A48C00036E0690E3B3FC
+			}
+			DropTableEntryLootTable "Any Common Material"
+			{
+				myLootTable < uid=2AE2EC8565AE94D50002EE0E6CC1CC38 > = loot_global_material_common_all 2AE2EC856565A43E00036DE59C25DE59
+			}
+			DropTableEntryLootTable "Any Rare Material"
+			{
+				myLootTable < uid=2AE2EC8565AE94D50002EE0F2FD62E66 > = loot_global_material_rare_all 2AE2EC856565A45D00036E04BD5A2DB6
+			}
+		}
+	}
+}
+
+LootTable loot_encounter_ScriptedWildlife_TosharanFlier < uid=2AE2EC856525536A0001967FCAC155FB > : LooseLoot_Valuable_Akiva
+{
+}
+
+LootTable loot_encounter_SpaceWreackage_LooseLoot < uid=2AE2EC8565436C220001358EEB118EE9 > : LooseLoot_Space
+{
+}
+
+LootTable loot_encounter_SpaceWreckage_InteractibleContainer < uid=2AE2EC8565F01EAC0000EB1722D7544C > : loot_containers_space_interactible_generic
+{
+}
+
+LootTable loot_encounter_ambush < uid=2AE2EC856555E06100020090D872663E >
+{
+	myAlwaysRolls
+	{
+		DropTableEntryItem Credits
+		{
+			myItem < uid=2AE2EC856555E084000200911FAD0713 > = Credits 83E36AE360487E88000000375F5EDD50
+		}
+	}
+}
+
+LootTable loot_Event_LootGoblinTieReaper < uid=2AE2EC85657725CD000A3E22BB2BE1D1 >
+{
+	myAlwaysRolls
+	{
+		DropTableEntryLootTable "Empire Valuable"
+		{
+			myMinAmount 4
+			myMaxAmount 4
+			myLootTable < uid=2AE2EC856577262E000A3E237BCD0F62 > = loot_global_valuable_empire_all 2AE2EC856565A49700036E0773259422
+		}
+	}
+}
+
+LootTable loot_event_FactionKillSquad < uid=2AE2EC8565AA847B0009C070130E471B >
+{
+	myRandomDropTable
+	{
+		myDropTableEntries
+		{
+			DropTableEntryItem "Toshara Stolen Info 1"
+			{
+				myConditions
+				{
+					GameConditionPlayerIsInLevelInfo "Is in Toshara"
+					{
+						myLevelInfos
+						{
+							uid Toshara 9C4B6A04601178B20000001A1F0FDFCB
+						}
+					}
+				}
+				myItem < uid=2AE2EC856660193400071F5461214482 > = ReputationLoot_Datacard_TOS_StolenInfo_1 711082146501DB7F0000B2DC7F585661
+			}
+			DropTableEntryItem "Toshara Stolen Info 2"
+			{
+				myConditions
+				{
+					GameConditionPlayerIsInLevelInfo "Is in Toshara"
+					{
+						myLevelInfos
+						{
+							uid Toshara 9C4B6A04601178B20000001A1F0FDFCB
+						}
+					}
+				}
+				myItem < uid=2AE2EC856660193400071F5556566D82 > = ReputationLoot_Datacard_TOS_StolenInfo_2 711082146501DB7F0000B2DE284D20F9
+			}
+			DropTableEntryItem "Toshara Stolen Info 3"
+			{
+				myConditions
+				{
+					GameConditionPlayerIsInLevelInfo "Is in Toshara"
+					{
+						myLevelInfos
+						{
+							uid Toshara 9C4B6A04601178B20000001A1F0FDFCB
+						}
+					}
+				}
+				myItem < uid=2AE2EC856660193400071F564189464C > = ReputationLoot_Datacard_TOS_StolenInfo_3 711082146501DB7F0000B2E03CF59B2E
+			}
+			DropTableEntryItem "Toshara Stolen Info 4"
+			{
+				myConditions
+				{
+					GameConditionPlayerIsInLevelInfo "Is in Toshara"
+					{
+						myLevelInfos
+						{
+							uid Toshara 9C4B6A04601178B20000001A1F0FDFCB
+						}
+					}
+				}
+				myItem < uid=2AE2EC856660193400071F5768E45C76 > = ReputationLoot_Datacard_TOS_StolenInfo_4 711082146501DB7F0000B2E29D6BC190
+			}
+			DropTableEntryItem "Toshara Stolen Info 5"
+			{
+				myConditions
+				{
+					GameConditionPlayerIsInLevelInfo "Is in Toshara"
+					{
+						myLevelInfos
+						{
+							uid Toshara 9C4B6A04601178B20000001A1F0FDFCB
+						}
+					}
+				}
+				myItem < uid=2AE2EC856660193400071F58038A00BC > = ReputationLoot_Datacard_TOS_StolenInfo_5 711082146501DB7F0000B2E4951D517F
+			}
+			DropTableEntryItem "Tatooine Stolen Info 1"
+			{
+				myConditions
+				{
+					GameConditionPlayerIsInLevelInfo "Is in Tatooine"
+					{
+						myLevelInfos
+						{
+							uid Toshara 8F2AC097626BDD5C00002F2423EFE372
+						}
+					}
+				}
+				myItem < uid=2AE2EC856660193400071F59E6554732 > = ReputationLoot_Datacard_TAT_StolenInfo_1 7110821465294C810001591FE675F459
+			}
+			DropTableEntryItem "Tatooine Stolen Info 2"
+			{
+				myConditions
+				{
+					GameConditionPlayerIsInLevelInfo "Is in Tatooine"
+					{
+						myLevelInfos
+						{
+							uid Toshara 8F2AC097626BDD5C00002F2423EFE372
+						}
+					}
+				}
+				myItem < uid=2AE2EC856660193400071F5AEDE5C692 > = ReputationLoot_Datacard_TAT_StolenInfo_2 7110821465294CC00001592829C13907
+			}
+			DropTableEntryItem "Tatooine Stolen Info 3"
+			{
+				myConditions
+				{
+					GameConditionPlayerIsInLevelInfo "Is in Tatooine"
+					{
+						myLevelInfos
+						{
+							uid Toshara 8F2AC097626BDD5C00002F2423EFE372
+						}
+					}
+				}
+				myItem < uid=2AE2EC856660193400071F5BA7A830B4 > = ReputationLoot_Datacard_TAT_StolenInfo_3 7110821465294CE40001592D9AC448F0
+			}
+			DropTableEntryItem "Tatooine Stolen Info 4"
+			{
+				myConditions
+				{
+					GameConditionPlayerIsInLevelInfo "Is in Tatooine"
+					{
+						myLevelInfos
+						{
+							uid Toshara 8F2AC097626BDD5C00002F2423EFE372
+						}
+					}
+				}
+				myItem < uid=2AE2EC856660193400071F5CF4744B1D > = ReputationLoot_Datacard_TAT_StolenInfo_4 7110821465294CF200015932DC5E83E9
+			}
+			DropTableEntryItem "Tatooine Stolen Info 5"
+			{
+				myConditions
+				{
+					GameConditionPlayerIsInLevelInfo "Is in Tatooine"
+					{
+						myLevelInfos
+						{
+							uid Toshara 8F2AC097626BDD5C00002F2423EFE372
+						}
+					}
+				}
+				myItem < uid=2AE2EC856660193400071F5DB854EE76 > = ReputationLoot_Datacard_TAT_StolenInfo_5 7110821465294D03000159375976F092
+			}
+			DropTableEntryItem "Aki Stolen Info 1"
+			{
+				myConditions
+				{
+					GameConditionPlayerIsInLevelInfo "Is in Akiva"
+					{
+						myLevelInfos
+						{
+							uid Toshara 9C4B6A046012E6B0000001B224713F01
+						}
+					}
+				}
+				myItem < uid=2AE2EC856660193400071F5E7B467EB8 > = ReputationLoot_Datacard_AKI_StolenInfo_1 7110821465294FF50001595A7CC59538
+			}
+			DropTableEntryItem "Aki Stolen Info 2"
+			{
+				myConditions
+				{
+					GameConditionPlayerIsInLevelInfo "Is in Akiva"
+					{
+						myLevelInfos
+						{
+							uid Toshara 9C4B6A046012E6B0000001B224713F01
+						}
+					}
+				}
+				myItem < uid=2AE2EC856660193400071F5F9D8DCCF4 > = ReputationLoot_Datacard_AKI_StolenInfo_2 711082146529500D0001595F38A21DDF
+			}
+			DropTableEntryItem "Aki Stolen Info 3"
+			{
+				myConditions
+				{
+					GameConditionPlayerIsInLevelInfo "Is in Akiva"
+					{
+						myLevelInfos
+						{
+							uid Toshara 9C4B6A046012E6B0000001B224713F01
+						}
+					}
+				}
+				myItem < uid=2AE2EC856660193400071F60CBF750FB > = ReputationLoot_Datacard_AKI_StolenInfo_3 711082146529501600015964E0034DFF
+			}
+			DropTableEntryItem "Aki Stolen Info 4"
+			{
+				myConditions
+				{
+					GameConditionPlayerIsInLevelInfo "Is in Akiva"
+					{
+						myLevelInfos
+						{
+							uid Toshara 9C4B6A046012E6B0000001B224713F01
+						}
+					}
+				}
+				myItem < uid=2AE2EC856660193400071F61D4CF30AD > = ReputationLoot_Datacard_AKI_StolenInfo_4 711082146529501E00015969B5C470AD
+			}
+			DropTableEntryItem "Aki Stolen Info 5"
+			{
+				myConditions
+				{
+					GameConditionPlayerIsInLevelInfo "Is in Akiva"
+					{
+						myLevelInfos
+						{
+							uid Toshara 9C4B6A046012E6B0000001B224713F01
+						}
+					}
+				}
+				myItem < uid=2AE2EC856660193400071F629C342732 > = ReputationLoot_Datacard_AKI_StolenInfo_5 71108214652950260001596E1BA3307C
+			}
+			DropTableEntryItem "Not in Toshara, Tatooine or Akiva"
+			{
+				myConditions
+				{
+					GameConditionPlayerIsInLevelInfo "Not in Toshara"
+					{
+						myIsNegated TRUE
+						myLevelInfos
+						{
+							uid Toshara 9C4B6A04601178B20000001A1F0FDFCB
+						}
+					}
+					GameConditionPlayerIsInLevelInfo "Not in Tatooine"
+					{
+						myIsNegated TRUE
+						myLevelInfos
+						{
+							uid Tatooine 8F2AC097626BDD5C00002F2423EFE372
+						}
+					}
+					GameConditionPlayerIsInLevelInfo "Not in Akiva"
+					{
+						myIsNegated TRUE
+						myLevelInfos
+						{
+							uid Akiva 9C4B6A046012E6B0000001B224713F01
+						}
+					}
+				}
+				myItem < uid=2AE2EC85667E621D0005EA838F40B7CC > = ReputationLoot_Datacard_TOS_StolenInfo_1 711082146501DB7F0000B2DC7F585661
+			}
+		}
+	}
+}
+
+LootTable loot_event_DeathtrooperConfrontation < uid=2AE2EC8565C495FD000BE1571EFED54A >
+{
+	myAlwaysRolls
+	{
+		DropTableEntryItem "Trophy 19 Deathtrooper Helmet"
+		{
+			myConditions
+			{
+				GameConditionPlayerHasItem "Player does not have trophy"
+				{
+					myItem < uid=2AE2EC8565C4969F000BE158EC352398 > = speeder_trophy_19 BFAAA1FC650181800000C708DA51B207
+					myAmount 1
+					myOperator LessThan
+				}
+			}
+			myItem < uid=2AE2EC8565C4969F000BE159883CED69 > = speeder_trophy_19 BFAAA1FC650181800000C708DA51B207
+		}
+		DropTableEntryLootTable "1000 credits"
+		{
+			myLootTable < uid=2AE2EC8565C49779000BE15A7618EB37 > = loot_credit_enormous_1000 2AE2EC8565491A69000C22F01860F731
+		}
+	}
+}
+

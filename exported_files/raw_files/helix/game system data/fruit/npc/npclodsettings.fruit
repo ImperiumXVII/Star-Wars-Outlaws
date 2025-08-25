@@ -1,0 +1,54 @@
+include "helix/game system data/fruit/npc/npcenums.fruit"
+
+class NPCLodLimits < uid=auto >
+{
+	int myImmediateMaxAgents 3
+	int myFastMaxAgents 8
+	int myResponsiveMaxAgents 12
+	int mySporadicMaxAgents 20
+	int myRarelyMaxAgents 32
+}
+
+class NPCLod < uid=auto >
+{
+    NPCLodType myNPCLodType Default
+
+	float myImmediateDistance 5.0
+	float myImmediateBehaviorUpdateRate 0.0
+	float myImmediateSensorsUpdateRate 0.0
+
+	float myFastDistance 60.0
+	float myFastBehaviorUpdateRate 0.2
+	float myFastSensorsUpdateRate 0.1
+
+	float myResponsiveDistance 100.0
+	float myResponsiveBehaviorUpdateRate 0.5
+	float myResponsiveSensorsUpdateRate 0.3
+
+	float mySporadicDistance 150.0
+	float mySporadicBehaviorUpdateRate 1.0
+	float mySporadicSensorsUpdateRate 0.6
+
+	float myRarelyDistance 300.0
+	float myRarelyBehaviorUpdateRate 3.0
+	float myRarelySensorsUpdateRate 1.2
+
+	float mySuspendedBehaviorUpdateRate 7.0
+	float mySuspendedSensorsUpdateRate 1000000.0
+
+	float myNPCAgentDistanceHighResolution 250.0 < tooltip="Maximum distance for high resolution fireteams" min=0.0 >
+	float myNPCAgentDistanceMediumResolution 400.0 < tooltip="Maximum distance for medium resolution fireteams" min=0.0 >
+	float myNPCAgentResolutionBoundarySize 0.5 < tooltip="Resolution sphere boundary size (used as a hysteresis)" min=0.0 >
+}
+
+list NPCLodList
+{
+	NPCLod
+}
+
+class NPCLodSettingsListClass < uid=auto >
+{
+	NPCLodList myNPCLods
+	NPCLodList myCombatNPCLods
+	NPCLodLimits myLimits
+}

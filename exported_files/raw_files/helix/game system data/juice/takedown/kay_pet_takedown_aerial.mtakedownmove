@@ -1,0 +1,98 @@
+include "helix/game system data/fruit/takedown/takedown_move.fruit"
+include "helix/game system data/juice/takedown/kay_takedown_base.mtakedownmove"
+
+TakedownMove kay_pet_takedown_aerial < uid=B8A5D473624ED70B0000480AB6A9BF44 > : kay_takedown_base
+{
+	myAnimationEntryType Aerial
+	myAlignments
+	{
+		TakedownAlignment 0
+		{
+			myAngle 0
+			mySequenceDuration 3.9
+			myAlignmentPosDuration 1.2
+			myAlignmentRotDuration 0.5
+			myAlignmentStandStillDuration 0.7
+			myOptimalDistance 0.5922
+			myOptimalOffset -0.4214;0.961;0.0
+		}
+		TakedownAlignment 180
+		{
+			myAngle 180
+			mySequenceDuration 3.93
+			myAlignmentPosDuration 1.2
+			myAlignmentRotDuration 0.5
+			myAlignmentStandStillDuration 0.7
+			myOptimalDistance 0.554
+			myOptimalOffset -0.5368;1.0513;0.0
+		}
+		TakedownAlignment -180
+		{
+			myAngle -180
+			mySequenceDuration 3.93
+			myAlignmentPosDuration 1.2
+			myAlignmentRotDuration 0.5
+			myAlignmentStandStillDuration 0.7
+			myOptimalDistance 0.554
+			myOptimalOffset -0.5368;1.0513;0.0
+		}
+		TakedownAlignment -90
+		{
+			myAngle -90
+			mySequenceDuration 4.03
+			myAlignmentPosDuration 1.17
+			myAlignmentRotDuration 0.5
+			myAlignmentStandStillDuration 0.7
+			myOptimalDistance 0.6488
+			myOptimalOffset 0.5075;0.9545;0.0
+		}
+		TakedownAlignment 90
+		{
+			myAngle 90
+			mySequenceDuration 2.67
+			myAlignmentPosDuration 1.17
+			myAlignmentRotDuration 0.5
+			myAlignmentStandStillDuration 0.7
+			myOptimalDistance 0.5133
+			myOptimalOffset -0.4717;1.0;0.0
+		}
+	}
+	myStartConditions
+	{
+		myGameCondition
+		{
+			GameConditionMeleeGroup Group
+			{
+				myConditions
+				{
+					GameConditionMeleeAttackerIsInMovementState Ground
+					{
+					}
+					GameConditionMeleeTargetHeightDelta HeightDelta
+					{
+						myHeightDelta 0.75
+						myUseEyePositionAsReference FALSE
+					}
+					GameConditionMeleePetAidIsAvailable PetAidIsAvailable
+					{
+					}
+					GameConditionMeleeTargetHasPetInRange TargetHasPetInRange
+					{
+					}
+					GameConditionPetIsInLockState PetIsNotLock
+					{
+						myIsLocked FALSE
+					}
+					GameConditionRandom Random
+					{
+						myProbabilityFormula 1
+					}
+					GameConditionTakedownExecutionConstraints TakedownExecutionConstraints
+					{
+					}
+				}
+			}
+		}
+	}
+}
+

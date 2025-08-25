@@ -1,0 +1,118 @@
+include "helix/game system data/fruit/input/gameinput.fruit"
+include "helix/game system data/juice/input/inputactions.juice"
+
+TriggerGameAction "[RokanaShip] Flight Mode Switch"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Circle
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myInputAction = B_CIRCLE_TRAILBLAZER
+				}
+				ConditionalInputAction KB
+				{
+					myInputAction = KB_TRAILBLAZER_TOGGLE_TURRET
+				}
+			}
+		}
+	}
+	myGameAction RokanaPlayerShip_AssaultModeSwitch
+	myIsExclusiveToggle FALSE
+	myActionContexts
+	{
+		BinocularsContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext TRUE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext FALSE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		DeadContext TRUE
+		DefaultContext FALSE
+		FreeCameraContext TRUE
+		GrapplingContext FALSE
+		HyperspaceJumpMenuContext TRUE
+		HyperspacePreparationReadyContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext FALSE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext TRUE
+		VehicleContext FALSE
+	}
+}
+
+TriggerGameAction "[RokanaShip] ShootMainWeapons"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Hold
+				{
+					myOperator And
+					myConditionalInputActions
+					{
+						ConditionalActionGroup "Input Actions"
+						{
+							myOperator Or
+							myConditionalInputActions
+							{
+								ConditionalInputAction "RightTrigger_L2 Pressed"
+								{
+									myInputActionType Analog
+									myInputAction = RIGHT_TRIGGER_R2_TRAILBLAZER
+								}
+								ConditionalInputAction "KB Pressed"
+								{
+									myInputActionType HoldDown
+									myInputAction = KB_TRAILBLAZER_USE_MAIN_EQUIPMENT
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	myGameAction Spaceship_UseTertiaryEquipment
+	myActionContexts
+	{
+		DefaultContext FALSE
+		InputChallengeContext TRUE
+		SpaceshipContext FALSE
+		RokanaContext TRUE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		FreeCameraContext TRUE
+		HoloReaderCompassContext FALSE
+		HoloReaderMapContext FALSE
+		UIContext TRUE
+	}
+}
+

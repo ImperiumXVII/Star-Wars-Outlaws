@@ -1,0 +1,59 @@
+include "dlc1/game system data/juice/character/dlc1_character_visuals_morenia_generator.mcharactervisuals"
+include "dlc1/game system data/juice/character/dlc1_character_visuals_wil_scurrier.mcharactervisuals"
+include "helix/game system data/juice/ai/dynamiccapinteractions/wildlifedcap.mnpcdynamiccapinteractionprofile"
+include "helix/game system data/juice/ai/npcpackprofiles.mnpcpackprofile"
+include "helix/game system data/juice/ai/wildlife corpse profile.mnpccorpseprofile"
+include "helix/game system data/juice/ai/wildlifecapevaluatorprofiles.mnpccapinteractionevaluatorprofile"
+include "helix/game system data/juice/ai/wl_scurrier.mnpcmotionpatternprofile"
+include "helix/game system data/juice/melee/wildlifemeleedefense.mnpcmeleedefenseprofile"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npc/wil_fp_prey.mnpc"
+include "helix/game system data/juice/quadrupedalgroundaligner/wildlife_ground_aligner_config.mquadalignerconfig"
+include "helix/game system data/juice/rbtags/wildlifebinarytags.mrbtagsbinarytags"
+
+NPC dlc1_wl_scurrier < uid=ADCACFB46682B26F00016757086F0EE5 > : wil_fp_prey
+{
+	myCharacterVisuals < uid=ADCACFB46682B26F000167589C916F30 > = dlc1_character_visuals_wil_scurrier ADCACFB46682BD9C00016C1D5782DCBF
+	myBehavior helix/behaviors/wildlife_prey.mbehavior
+	myAnimSystemType Scurrier
+	myHealthFormula "2 + 2"
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag (0)" < uid=ADCACFB46682B26F000167592DB44023 > = Agent_Wildlife_ScurrierTag 290EB60C62344940000028552AE5688B
+	}
+	myPositionReservationSize 0.2
+	myNavigationLayerType Medium
+	myNavigationCapability < uid=ADCACFB46682B26F0001675A2CDB863F > = DefaultWildlifeNavigationCapability 290EB60C64D1A5C50000CA29617570E5
+	myLodProfile < uid=ADCACFB4668FD04E00045BD0B9CC8092 > = Wildlife_Small E8E55FD8667A33EF0004AA52B205A0E7
+	myVisionProfile < uid=ADCACFB46682B26F0001675B5CB3BD67 > = ScurrierVisionProfile 290EB60C621876E000002F780250ADB6
+	myHearingProfile < uid=ADCACFB46682B26F0001675C4B4CB12E > = WildlifeSmallPreyHearingProfile 09E8827864DF168A0006F9E5907EA901
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=ADCACFB46682B26F0001675DC476553C > = ScurrierDetectionProfile 290EB60C63355D37000022669ABD12BB
+	}
+	myAudioTriggerVolumeProfile < uid=ADCACFB46682B26F0001675E346CD9F3 > = wildlife_small_baseradius F45C2A0166267EA500030C0BD587A7B7
+	myDynamicCAPInteractionProfile < uid=ADCACFB46682B26F0001675FF5F5029C > = ScurrierDynamicCAP 290EB60C63467DEF00046038E3CCD454
+	myCAPInteractionEvaluatorProfile < uid=ADCACFB46682B26F00016760DB1E18CD > = wildlifecapevaluatorprofiles 290EB60C633262C600008C045368B169
+	myMotionPatternProfile < uid=ADCACFB46682B26F00016761ADB76927 > = ScurrierMotionPatternProfile E9DD8F606218343700002A5475C516E3
+	myMoveTurnCapabilitiesProfile < uid=ADCACFB46682B26F00016762FF469E23 > = scurrier_NPCMoveTurnCapabilitiesProfile 290B720F647060E60001458F9497A2E6
+	mySteeringProfile < uid=ADCACFB46682B26F00016763A2FA82B5 > = SmallWildlifeSteeringProfile 948DDC1D644A1C2400003C09CCCC1C8B
+	myFleeProfile < uid=ADCACFB46682B26F0001676489093E57 > = ScurrierFleeProfile E9DD8F6062945B230001037F173B1C3D
+	myFollowProfile < uid=ADCACFB46682B26F000167659FE18000 > = ScurrierFollowProfile 290EB60C63F82A54000009D0412657E0
+	myPackProfile < uid=ADCACFB46682B26F00016766549DA259 > = ScurrierPackProfile E9DD8F6062A7F58C00007E01C7798A65
+	myAudioParameters
+	{
+		myEmitterName "WL Scurrier"
+	}
+	myMeleeDefenseProfile < uid=ADCACFB46682B26F0001676722046D55 > = PreyMeleeDefense E9DD8F606501485000004FECAF1760B7
+	myStaggerConfig < uid=ADCACFB46682B26F00016768E23F14C4 > = WildlifeScurrier E9DD8F6063F47C7D0002F61E61E835C8
+	myPhysicsProfile < uid=ADCACFB46682B26F00016769714D6903 > = Scurrier 2AA3EE5D627E067900002FA3348F1C4F
+	myQuadrupedalGroundAlignerConfig < uid=ADCACFB46682B26F0001676AC87B8219 > = "Scurrier Aligner Config" D85A768462945ED2000015C9407DB2D5
+	myMoveConfig < uid=ADCACFB46682B26F0001676BC9143086 > = scurrier_move_config 290EB60C63E073C20000294867511767
+	myCorpseProfile < uid=ADCACFB46682B26F0001676CD3978454 > = "Scurrier Corpse" 290EB60C6418003A0003214D0B7F464C
+	myVisualEffectFootstep < uid=ADCACFB46682B26F0001676DC988EA54 >
+	{
+		myFootstepEffects = Smallest_wildlife
+		myReuseFootstepEffect TRUE
+	}
+}
+

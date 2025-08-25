@@ -1,0 +1,43 @@
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC bh_shp_porax42_a < uid=6EA79625636BACFD00016B16B56217AF > : base_shp
+{
+	myCharacterVisuals < uid=6EA79625636BACFD00016B1765931AC9 > = character_visual_npc_shp_porax42 F95CD8F362ECD19100009980E26C88C0
+	myBehavior helix/behaviors/spaceship_base_behavior.mbehavior
+	myNPCComponentSetType Spaceship
+	mySpaceshipType PoraxPyke
+	myMaxHealth 80
+	myHealthFormula 40*SpaceHealthDifficultyModifier
+	myFaction < uid=6EA79625636BACFD00016B181130308E > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+	myPossibleSpeciesTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A1291216616D5B1001041070D8D9B0C > = Agent_Species_PykesTag FFED0CDA634EC20D0000AD881A50C8B3
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A1291216616D5A400103E411439D6F7 > = Agent_Archetype_Pilot 3A12912163EF7B9500005053123CF383
+	}
+	myDialogueCharactersFromDatabase
+	{
+		DialogueCharacterWithTags Pyke_F01 < uid=3A1291216476153C0002783F60D3CF6F > = Pyke_Pilot_F01 3A12912164760070000163C91A2D3227
+		DialogueCharacterWithTags Pyke_F02 < uid=3A1291216476154A00027840A804A675 > = Pyke_Pilot_F02 3A12912164760082000163E0D89E0307
+		DialogueCharacterWithTags Pyke_M01 < uid=3A129121647615500002784120D38EC2 > = Pyke_Pilot_M01 3A1291216476009B000163F7088B97B6
+		DialogueCharacterWithTags Pyke_M02 < uid=3A12912164761557000278425131A950 > = Pyke_Pilot_M02 3A129121647600A50001640E1ED076EB
+	}
+	myLodType Spaceship_Small
+	myVisionProfile < uid=6EA79625636BACFD00016B190355B7E5 > = TieFighterVisionProfile B4FBE430643FCC3500000B32C8290515
+	myHearingProfile < uid=6EA79625636BACFD00016B1AA62F074F > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myThreatProfile < uid=6EA79625636BACFD00016B1B5B970411 > = spaceshipnpcthreatprofilesdefault F95CD8F364ABB9CB0000B1CE8AEE9E0B
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "porax 42 weapon Loadout" < uid=F95CD8F3640B40AF00000988952F1627 > = weaponloadout_base_shp_porax42 F95CD8F3640B08DD000009850E8F3AD8
+	}
+	myAudioParameters
+	{
+		myEmitterName "Pyke Syndicate Ship"
+	}
+	myCombatRole Fighter
+}
+

@@ -1,0 +1,51 @@
+include "helix/game system data/fruit/melee/npcmeleedefense.fruit"
+
+NPCMeleeDefenseProfile LargePreyMeleeDefense < uid=E9DD8F6064ACCF1900016EB1623B90CE >
+{
+	myReactionType Standard
+	myAttackDistanceBasedOnCollisionCasting TRUE
+	myBlockDamageRatio 0.999
+	myNumberOfMeleeHitsToKill 1000
+	myCanBeWeakAgainstMelee FALSE
+	mySpecializedBodyParts
+	{
+		BodyPartType Head Head
+		BodyPartType Body Body
+		BodyPartType Legs Legs
+	}
+}
+
+NPCMeleeDefenseProfile PreyMeleeDefense < uid=E9DD8F606501485000004FECAF1760B7 >
+{
+	myIsValidMeleeTargetCandidate FALSE
+	myNumberOfMeleeHitsToKill 1000
+	myCanBeWeakAgainstMelee FALSE
+}
+
+NPCMeleeDefenseProfile TshikaraMeleeDefense < uid=E9DD8F6065014887000057A1ECA6A95A >
+{
+	myAttackDistanceBasedOnCollisionCasting FALSE
+	myNumberOfMeleeHitsToKill "10 + NumberOfMeleeHitsToKillBonus"
+	myCanBeWeakAgainstMelee FALSE
+	mySpecializedBodyParts
+	{
+		BodyPartType Head Head
+		BodyPartType Body Body
+		BodyPartType Legs Legs
+	}
+}
+
+NPCMeleeDefenseProfile MassiffMeleeDefense < uid=E9DD8F6065014891000059D21E3FCA3D >
+{
+	myNumberOfMeleeHitsToKill "4 + NumberOfMeleeHitsToKillBonus"
+	myCanBeWeakAgainstMelee FALSE
+	myPlayerPreferredAttack Kick
+}
+
+NPCMeleeDefenseProfile SammakhoMeleeDefense < uid=E9DD8F606501489B00005A21C45F7BE3 >
+{
+	myNumberOfMeleeHitsToKill "3 + NumberOfMeleeHitsToKillBonus"
+	myCanBeWeakAgainstMelee FALSE
+	myPlayerPreferredAttack Kick
+}
+

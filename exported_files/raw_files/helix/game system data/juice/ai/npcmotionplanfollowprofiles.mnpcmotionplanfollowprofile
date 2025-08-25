@@ -1,0 +1,71 @@
+include "helix/game system data/fruit/ai/motion/motionplanfollowprofile.fruit"
+
+NPCMotionPlanFollowProfile DefaultMotionPlanFollowProfile < uid=EBEEDF3F65015C150000AD1AC82B6EB6 >
+{
+}
+
+NPCMotionPlanFollowProfile DefaultWildlifeMotionPlanFollowProfile < uid=09E882786583E0D000002D715D5ED948 >
+{
+	myAdditionalSoftInterruptStopDistance 0.0
+	myAllowPenetrationResolve FALSE
+}
+
+NPCMotionPlanFollowProfile GushiroMotionPlanFollowProfile < uid=EBEEDF3F6502992B000236E9196A68A7 > : DefaultWildlifeMotionPlanFollowProfile
+{
+	myCurvatureDetectDistance 0.3
+	myPenetrationResolveCapsuleRadius 0.14
+	myPenetrationResolveCapsuleDistA -0.2
+	myPenetrationResolveCapsuleDistB 0.35
+}
+
+NPCMotionPlanFollowProfile DewbackMotionPlanFollowProfile < uid=EBEEDF3F65029B13000432C28D975FB5 > : DefaultWildlifeMotionPlanFollowProfile
+{
+	myCurvatureDetectDistance 0.9
+	myAllowPenetrationResolve TRUE
+	myPenetrationResolveCapsuleRadius 1.0
+	myPenetrationResolveCapsuleDistA 1.25
+	myPenetrationResolveCapsuleDistB -1.25
+	myEnablePenetrationResolveSlidingAllowance TRUE
+	myPenetrationResolveSlidingAllowanceSpeedInBodySize 0.25
+	myPenetrationResolveSlidingAllowanceMaxSpeedRatioAlongMoveDir 1.0
+	myPenetrationResolveSlidingAllowanceMinSpeedRatioAlongMoveDir 0.0
+}
+
+NPCMotionPlanFollowProfile MassifMotionPlanFollowProfile < uid=EBEEDF3F65029F9F00072611D4424539 > : DefaultWildlifeMotionPlanFollowProfile
+{
+	myCurvatureDetectDistance 0.5
+	myAllowPenetrationResolve FALSE
+	myPenetrationResolveCapsuleRadius 0.3
+	myPenetrationResolveCapsuleDistA 0.3
+	myPenetrationResolveCapsuleDistB -0.3
+}
+
+NPCMotionPlanFollowProfile DragonMotionPlanFollowProfile < uid=EBEEDF3F661E394000026109B124B450 >
+{
+	myMaxStopMoveAnimationDistance 5.0
+}
+
+NPCMotionPlanFollowProfile BanthaMotionPlanFollowProfile < uid=EBEEDF3F678E220A000473E3C3859C28 > : DefaultWildlifeMotionPlanFollowProfile
+{
+	myAllowPenetrationResolve TRUE
+	myPenetrationResolveCapsuleRadius 1.25
+	myPenetrationResolveCapsuleDistA 1.0
+	myPenetrationResolveCapsuleDistB -0.5
+	myEnablePenetrationResolveSlidingAllowance TRUE
+	myPenetrationResolveSlidingAllowanceSpeedInBodySize 0.25
+	myPenetrationResolveSlidingAllowanceMaxSpeedRatioAlongMoveDir 1.0
+	myPenetrationResolveSlidingAllowanceMinSpeedRatioAlongMoveDir 0.0
+}
+
+NPCMotionPlanFollowProfile MQ020MassifMotionPlanFollowProfile < uid=290EB60C67B81D430000065A73DCA3B0 > : MassifMotionPlanFollowProfile
+{
+	myAllowPenetrationResolve TRUE
+	myPenetrationResolveCapsuleRadius 0.3
+	myPenetrationResolveCapsuleDistA 0.4
+	myPenetrationResolveCapsuleDistB -0.3
+	myEnablePenetrationResolveSlidingAllowance TRUE
+	myPenetrationResolveSlidingAllowanceSpeedInBodySize 0.25
+	myPenetrationResolveSlidingAllowanceMaxSpeedRatioAlongMoveDir 1.0
+	myPenetrationResolveSlidingAllowanceMinSpeedRatioAlongMoveDir 0.0
+}
+

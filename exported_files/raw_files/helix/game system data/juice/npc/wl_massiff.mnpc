@@ -1,0 +1,67 @@
+include "helix/game system data/juice/ai/dynamiccapinteractions/wildlifedcap.mnpcdynamiccapinteractionprofile"
+include "helix/game system data/juice/ai/npcpackprofiles.mnpcpackprofile"
+include "helix/game system data/juice/ai/wildlife corpse profile.mnpccorpseprofile"
+include "helix/game system data/juice/ai/wildlifecapevaluatorprofiles.mnpccapinteractionevaluatorprofile"
+include "helix/game system data/juice/ai/wl_massiff.mnpcmotionpatternprofile"
+include "helix/game system data/juice/melee/wildlifemeleedefense.mnpcmeleedefenseprofile"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npc/wil_fp_predator.mnpc"
+include "helix/game system data/juice/npcmove/wildlife_move_config.mnpcmoveconfig"
+include "helix/game system data/juice/quadrupedalgroundaligner/wildlife_ground_aligner_config.mquadalignerconfig"
+
+NPC wl_massiff < uid=E9DD8F6062284FB600002A5136E43318 > : wil_fp_predator
+{
+	myName "branch = \"TU1\", contextComment = \"The name of the dog-like creature\", enabled = true, guid = #E9DD8F606684AD46001EAD31C14DEB96, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10572, text = \"Massiff\", type = \"MenuLine\""
+	myCharacterVisuals < uid=E9DD8F606228506100002A5C6504F4C5 > = character_visuals_wil_massiff E9DD8F606228555F00002A63E6C58E79
+	myBehavior helix/behaviors/wildlife_predator.mbehavior
+	myAnimSystemType Massiff
+	myHealthFormula min(7,5+2*WildlifeHealthDifficultyModifier)
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag (0)" < uid=290EB60C62BAC6330002F4FA47A99030 > = Agent_Wildlife_MassiffTag 290EB60C62BAC7D10002F500BAFB6A30
+	}
+	myPositionReservationSize 0.3
+	myNavigationLayerType Medium
+	myNavigationCapability < uid=D85A7684641168DC0000D06D16677DFF > = MassiffNavigationCapability D85A76846397E0F80000B772095C07F9
+	myLodProfile < uid=E8E55FD86686107900038979FDBDBF0E > = Wildlife_Small E8E55FD8667A33EF0004AA52B205A0E7
+	myVisionProfile < uid=290EB60C62A2F2D10000DACE5E875F15 > = MassiffVisionProfile 290EB60C62A97C8600003953C06B29C5
+	myHearingProfile < uid=290EB60C63574B8100012BCBF2B86364 > = DefaultWildlifePredatorHearingProfile 290EB60C63574559000079C00F124A84
+	mySmellProfile < uid=290EB60C62A2F2990000DAC7E5174258 > = MassiffSmellProfile 290EB60C62A97CB3000039549626869C
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=16C7D1FB6311C6100000A8AD56CE4692 > = MassiffDetectionProfile 290EB60C62A97DC20000396D83B893B9
+	}
+	myDynamicCAPInteractionProfile < uid=290EB60C62BA762A0000366B59C192BC > = MassiffDynamicCAP 290EB60C63467E8100046043AF86D238
+	myCAPInteractionEvaluatorProfile < uid=290EB60C6332758500009A21C647A1E1 > = wildlifecapevaluatorprofiles 290EB60C633262C600008C045368B169
+	myMotionPatternProfile < uid=E9DD8F6062720712000033697DAA1238 > = MassiffMotionPatternProfile E9DD8F60626B854900024A8E795CD729
+	myMotionPlanFollowProfile < uid=09E882786583E29D00002DC32DD2AB97 > = MassifMotionPlanFollowProfile EBEEDF3F65029F9F00072611D4424539
+	myMoveTurnCapabilitiesProfile < uid=EBEEDF3F636876EC000259C64237FAD5 > = massiff_NPCMoveTurnCapabilitiesProfile EBEEDF3F6333DEC80001050B98C06EC4
+	mySteeringProfile < uid=290EB60C6461E57E000921963F23C3E7 > = MediumWildlifeSteeringProfile 948DDC1D644A1C13000039D66E0E3345
+	myFleeProfile < uid=E9DD8F6063101F81000069473FC0FAB2 > = MassiffFleeProfile E9DD8F606310177C00004874D7CF9196
+	myFootStepProfile < uid=E9DD8F60646343A1000076EE6BD1F064 > = MassiffFootstep E9DD8F606459B1880000E04C8343F1FB
+	myPackProfile < uid=E9DD8F6062A7FF240000A98BAC7A1D40 > = MassiffPackProfile E9DD8F6062B177910000A0046D585E9C
+	myPlayerMeleeDamageModifier 0.5
+	myAudioParameters
+	{
+		myEmitterName "WL Massiff"
+	}
+	myMeleeConfig < uid=E9DD8F606229B444000030E7E88EE0CE > = massiff_melee_config E9DD8F6062B02AF50000BF2655E85E26
+	myMeleeDefenseProfile < uid=E9DD8F6065014B280000A2DBA3CB71B9 > = MassiffMeleeDefense E9DD8F6065014891000059D21E3FCA3D
+	myStaggerConfig < uid=2E5ACA7E63A1769700009B4034D29222 > = WildlifeMassiff 2E5ACA7E63A3FBF90000B287BEC1A117
+	myTakedownConfig < uid=D85A768462F21E2A0000D9E0C4A7013B > = massiff_takedown_config D85A768462CE3BBF000018A341338ADF
+	myPhysicsProfile < uid=4999D94C62AAED360001F1E0C36BD9B1 > = Massiff 290EB60C62BD3ADD00006B990189EC2B
+	myQuadrupedalGroundAlignerConfig < uid=4999D94C62AAED360001F1E140833C44 > = "Massiff Aligner Config" 4999D94C62AAEBEA0001F1D5E5E86C47
+	myMoveConfig < uid=D85A768462C647D700005715D88A5F43 > = massiff_move_config D85A768462C4FFFE00007E54D2FF0D86
+	myCorpseProfile < uid=2E5ACA7E63D768F100004342AAC79783 > = "Massiff Corpse" 2E5ACA7E63EF55A600005A777ED60160
+	myVisualEffectFootstep < uid=D8550C146541BF8E00031FA6276E3F9F >
+	{
+		myFootstepEffects = Small_wildlife
+		myLeftFootBoneAliasName LeftFoot
+		myRightFootBoneAliasName RightFoot
+		myLeftHandBoneAliasName LeftHand
+		myRightHandBoneAliasName RightHand
+		myReuseFootstepEffect TRUE
+	}
+	myFootstepVFXRange 35.0
+}
+

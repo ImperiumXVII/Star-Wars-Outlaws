@@ -1,0 +1,275 @@
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+include "helix/game system data/juice/intel/intel_factionsafe.mintel"
+include "helix/game system data/juice/intel/intel_toshara.mintel"
+
+LivingWorldContent SAFE_TEMPLATE < uid=ACAEF5AB664601840070D0E63237C8BE >
+{
+	myCompletedGameValue < uid=ACAEF5AB664601840070D0E71FEE2B68 >
+	{
+	}
+	myLayerType MicroStory
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance -100"
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance +100"
+				{
+					myDistance 100.0
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS047_ITLC_TOS_CrimsonSafe < uid=71108214652E4E8C000151E69CFDD8D4 > : SAFE_TEMPLATE
+{
+	myCompletedGameValue < uid=71108214652E53DD0001D23682E488B8 >
+	{
+	}
+}
+
+LivingWorldContent MS047_ITLC_TOS_CrimsonSafe_Keys < uid=7110821465B3BF380019C4BACCD0AFB2 >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer Distance
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionLivingWorldFormula VaultNotCompleted
+		{
+			myFormula "SR01_Mirogana_Crimson_Dawn_Faction_Vault_Completed = 0"
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer Distance
+		{
+			myDistance 100.0
+		}
+	}
+}
+
+LivingWorldContent MS049_ITLC_TOS_PykeSafe < uid=71108214652E542D0001D238FC612A9C > : SAFE_TEMPLATE
+{
+	myCompletedGameValue < uid=71108214652E542D0001D23BF6F45784 >
+	{
+	}
+}
+
+LivingWorldContent MS049_ITLC_TOS_PykeSafe_Keys < uid=7110821465B27155001381D1593B5D6E >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer Distance
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		GameConditionLivingWorldFormula VaultNotCompleted
+		{
+			myFormula "SR01_Mirogana_Pykes_Faction_Vault_Completed = 0"
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer Distance
+		{
+			myDistance 100.0
+		}
+	}
+}
+
+LivingWorldContent MS218_ITLC_TAT_HuttSafe < uid=71108214652E55360001D23FCE866239 > : SAFE_TEMPLATE
+{
+	myCompletedGameValue < uid=71108214652E55360001D24068A42933 >
+	{
+	}
+}
+
+LivingWorldContent MS218_ITLC_TAT_HuttSafe_Keys < uid=7110821465B3BF880019C4D9593C5E50 >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer Distance
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		GameConditionLivingWorldFormula VaultNotCompleted
+		{
+			myFormula "TAT_SR02_Mos_Eisley_Hutt_Vault_Completed = 0"
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup DistanceOrCompleted
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer Distance
+				{
+					myDistance 100.0
+				}
+				GameConditionLivingWorldFormula VaultCompleted
+				{
+					myFormula "TAT_SR02_Mos_Eisley_Hutt_Vault_Completed = 1"
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS524_ITLC_AKI_HuttSafe < uid=71108214652E909F000436C8A231CAF6 > : SAFE_TEMPLATE
+{
+	myCompletedGameValue < uid=71108214652E909F000436C99BAF9C56 >
+	{
+	}
+}
+
+LivingWorldContent MS524_ITLC_AKI_HuttSafe_Keys < uid=7110821465B271DB001382CEA22968F0 >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer Distance
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		GameConditionLivingWorldFormula VaultNotCompleted
+		{
+			myFormula "SR01_AKI_Myrra___Hutt_Vault_Completed = 0"
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer Distance
+		{
+			myDistance 100.0
+		}
+	}
+}
+
+LivingWorldContent MS525_ITLC_AKI_PykeSafe < uid=71108214652E90CC000436CB4AAD1B11 > : SAFE_TEMPLATE
+{
+	myCompletedGameValue < uid=71108214652E90CC000436CC66E70EC8 >
+	{
+	}
+}
+
+LivingWorldContent MS525_ITLC_AKI_PykeSafe_Keys < uid=7110821465B3BF070019C49DF662AA63 >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer Distance
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		GameConditionLivingWorldFormula VaultNotCompleted
+		{
+			myFormula "SR01_AKI_Myrra___Pyke_Vault_Completed = 0"
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer Distance
+		{
+			myDistance 100.0
+		}
+	}
+}
+
+LivingWorldContent MS606_ITLC_KIJ_AshigaSafe < uid=71108214652E9127000436CFF029740F > : SAFE_TEMPLATE
+{
+	myCompletedGameValue < uid=71108214652E9127000436D0AEE6B58C >
+	{
+	}
+}
+
+LivingWorldContent MS606_ITLC_KIJ_AshigaSafe_Keys < uid=7110821465B3BF880019C4DAF91A213C >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer Distance
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		GameConditionLivingWorldFormula VaultNotCompleted
+		{
+			myFormula "KIJ_Ashiga_Ditrict_Vault_Opportunity_Completed = 0"
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer Distance
+		{
+			myDistance 100.0
+		}
+	}
+}
+
+LivingWorldContent MS607_ITLC_KIJ_CrimsonSafe < uid=71108214652E9127000436D1445AE52D > : SAFE_TEMPLATE
+{
+	myCompletedGameValue < uid=71108214652E9127000436D262444DFC >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionLivingWorldContent_HasBeenCompleted "Is Not Completed"
+		{
+			myIsNegated TRUE
+			myLivingWorldContent 71108214652E9127000436D1445AE52D
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer Distance
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer Distance
+		{
+			myDistance 100.0
+		}
+	}
+}
+
+LivingWorldContent MS607_ITLC_KIJ_CrimsonSafe_Keys < uid=7110821465B3BF880019C4DBBECEF43E >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer Distance
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		GameConditionLivingWorldFormula VaultNotCompleted
+		{
+			myFormula "KIJ_Crimson_Dawn_Vault_Opportunity_Completed = 0"
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer Distance
+		{
+			myDistance 100.0
+		}
+	}
+}
+

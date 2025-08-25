@@ -1,0 +1,34 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/explosion/explosion_mpl.mexplosion"
+include "helix/game system data/juice/projectile/realization/bryar_k16_charge.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/explosive_laser_red.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/small_laser_red.mprojectilerealization"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_small.mprojectile"
+
+BallisticProjectile weapon_projectile_blaster_explosive_laser < uid=416E63E4644A329D0000BE88E781C737 > : weapon_projectile_blaster_small
+{
+	myRealization < uid=416E63E4644A329D0000BE89BCC8A564 > = explosive_laser_red 416E63E4644A2AEB000252E66064DE81
+	myActions
+	{
+		ProjectileActionGameScript "New ProjectileActionGameScript"
+		{
+			myActionTargetType FinalHit
+			myDamageType Blast
+			myDamageFormula 1.3
+			myRadiusFormula 1.3
+			myDefaultDamage 1.3
+			myDefaultRadius 1.3
+		}
+		ProjectileActionExplosion "Impact Explosion"
+		{
+			myDamageFormula 0
+			myRadiusFormula .25
+			myDefaultDamage 0.0
+			myDefaultRadius 0.25
+			myExplosion < uid=8FC7C96065844E190003CC4ED6F251DC > = explosion_mpl 8FC7C960654501CA000020BF218E6BC6
+		}
+	}
+	myNPCSensoryProjectileType BlasterBolt
+	myInitialSpeed 50.0
+}
+

@@ -1,0 +1,49 @@
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+
+list SpaceTravelDisabledGameConditions
+{
+	SpaceTravelDisabledGameConditionGroup
+	GameConditionPlayerIsRokanaSpaceShip
+	GameConditionQuestBeatState
+	GameConditionQuestState
+}
+
+class SpaceTravelDisabledGameConditionGroup : GameConditionGroupBase
+{
+	SpaceTravelDisabledGameConditions myConditions
+}
+
+class SpaceTravelSettings < uid=auto >
+{
+	SpaceTravelDisabledGameConditions mySpaceTravelDisabledConditions
+	float myHyperspaceCalculationBaseDuration 5.0 < min = 0.0 tooltip="The base duration in seconds that calculating hyperspace jump coordinates will take." >
+	float myHyperspaceShipDamageDurationPenalty 0.5 < min = 0.0 tooltip="How much duration in seconds will be subtracted from the coordinate calculation when the player ship is hit." >
+	float myHyperspaceShipDamageCancelThreshold 300.0 < tooltip="How much damage does the player ship need to take before the hyperspace jump is aborted. A negative number means hyperspace jump can't be cancelled by damage." >
+	float myHyperspaceCylinderCastLength 50.0 < min = 0.0 tooltip="This value is used to define the length of the cylinder cast." >
+	float myHyperspaceCylinderCastRadius 20.0 < min = 0.0 tooltip="This value is used to define the radius of the cylinder cast." >
+	vec3f myHyperspaceCylinderCastOffset 0.0;0.0;0.0 < tooltip="Relative offset to spaceship for the cylinder cast." >
+	float myHyperspaceSphereCastRadius 20.0 < min = 0.0 tooltip="This value is used to define the radius of the sphere cast." >
+	vec3f myHyperspaceSphereCastOffset 0.0;0.0;0.0 < tooltip="Relative offset to spaceship for the sphere cast." >
+	bool myCanShipDamageCancelReadiedHyperspaceJump FALSE < tooltip="If true, hyperspace can be cancelled by ship damage even if it's ready to jump. If false, prevents a readied hyperspace jump from being cancelled by ship damage." >
+	string myHyperjumpApplyMultiplierMarkerName < tooltip="The name of the marker in the hyperjump transition sequences where we apply the streaming atrribute multipliers" >
+	string myHyperjumpRevertMultiplierMarkerName < tooltip="The name of the marker in the hyperjump transition sequences where we revert the streaming atrribute multipliers" >
+	string myHyperjumpDitherFadeOutMarkerName < tooltip="The name of the marker in the hyperjump transition sequences where we force far dither fade out" >
+	string myHyperjumpDitherFadeRestoreMarkerName < tooltip="The name of the marker in the hyperjump transition sequences where we restore objects from being faded out" >
+	float myHyperjumpDitherFadeDuration
+	float mySmall0 1.f
+	float mySmall1 1.f
+	float mySmall2 1.f
+	float myMedium 1.f
+	float myLargeAndScripts 1.f
+	float myVeryLarge 1.f
+	float myIndoorOutdoorBorder 1.f
+	float myIndoorDeep 1.f
+	float myIndoorDeepB 1.f
+	float myLastLODSmall 1.f
+	float myLastLODMedium 1.f
+	float myLastLODLarge 1.f
+	float myLastLODIndoorDeep 1.f
+	float myAudioLongDistance 1.f
+	float myProxyMeshSmall 1.f
+	float myProxyMeshLarge 1.f
+}

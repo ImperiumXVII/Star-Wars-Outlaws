@@ -1,0 +1,65 @@
+include "helix/game system data/fruit/faction/faction.fruit"
+include "helix/game system data/fruit/npc/npc.fruit"
+include "helix/game system data/fruit/reputation/reputation.fruit"
+
+list SpaceReinforcementsNPCList
+{
+	NPC*
+}
+
+class SpaceReinforcementsPool
+{
+	SpaceReinforcementsNPCList myNPCList
+	float myEscalationLevelIncrease 60
+	float myProbability 100
+
+	float myTimeToArrive 2
+	float myDelayBetweenAgentsMin 0.3
+	float myDelayBetweenAgentsMax 0.3
+	float mySpawnDistance 400
+	float mySpawnSeparation 20
+	int myMinWantedLevel 0
+	ReputationTier myReputationTier Excellent
+}
+
+list SpaceReinforcementsPoolList
+{
+	SpaceReinforcementsPool
+}
+
+list SpaceReinforcementsLevelList
+{
+	uid < bhv="constantData" constantDataType="levelinfo" tooltip="The associated level (planet or space) for this list of Reinforcements Data." >
+}
+
+class SpaceshipReinforcementsEscalationMaxValueModifiers
+{
+	float myEscalationLevelMaxValue 100
+	int myMinWantedLevel 0
+	ReputationTier myReputationTier Excellent
+}
+
+list SpaceshipReinforcementsEscalationMaxValueModifiersList
+{
+	SpaceshipReinforcementsEscalationMaxValueModifiers
+}
+
+class SpaceReinforcementsSettings
+{
+	Faction* myEnforcementFaction
+	float myEscalationLevelMaxValue 100
+	SpaceshipReinforcementsEscalationMaxValueModifiersList myEscalationLevelMaxValueModifiers
+	SpaceReinforcementsPoolList myPools
+	SpaceReinforcementsLevelList myLevels
+}
+
+list SpaceReinforcementsSettingsList
+{
+	SpaceReinforcementsSettings
+}
+
+class SpaceReinforcementsSettingsConstantData < uid=auto >
+{
+	SpaceReinforcementsSettingsList mySettingsList
+	float myReduceEscalationPace 2 < min=0.1 tooltip="How many seconds it takes to reduce one escalation point" >
+}

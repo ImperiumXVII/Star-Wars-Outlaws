@@ -1,0 +1,116 @@
+include "helix/game system data/fruit/melee/melee_move.fruit"
+include "helix/game system data/juice/camera/modifiers/player_melee_punch_knockout.mcameramodifier"
+include "helix/game system data/juice/melee/kay_meleemove_base.mmeleemove"
+
+MeleeMove kay_meleemove_normal_KO_sprint < uid=5CFE16D564E8553D00060411234A0B09 > : kay_meleemove_base
+{
+	myApproachingEnabled TRUE
+	myExecutionDurationMin 1.5
+	myExecutionDurationMax 1.5
+	myRangeExecution 6.0
+	myExecutionSequence
+	{
+		myGenericTracks
+		{
+			CameraShakeTrack BaseCamShake
+			{
+				myCamShake < uid=5CFE16D564E8553D00060412264626CF > = player_melee_punch_base B0ED9250625FD32B0000403767915B64
+			}
+		}
+		myCustomTracks
+		{
+			MeleeHitTrack Hit
+			{
+				myStartCyclePos 0.15
+				myEndCyclePos 0.35
+				myDamage 0.0
+			}
+			MeleeMovingSpeedingUpTrack MovingSpeedingUp
+			{
+				myStartCyclePos 0.0
+				myEndCyclePos 0.0
+			}
+			MeleeMovingTrack Moving
+			{
+				myEndCyclePos 0.3
+			}
+			MeleeBufferingTrack MeleeBuffering
+			{
+				myStartCyclePos 0.35
+			}
+			MeleeTurnTrack Turn
+			{
+				myEndCyclePos 1.0
+			}
+			MeleeStartNextMoveTrack "Start Next Move"
+			{
+				myStartCyclePos 0.35
+			}
+			MeleePerfectInputTrack PerfectInput
+			{
+				myStartCyclePos 0.0
+				myEndCyclePos 0.0
+			}
+			MeleePerfectStartNextMoveTrack "Perfect Start Next Move"
+			{
+				myStartCyclePos 0.6
+				myEndCyclePos 0.8
+			}
+			MeleeUninterruptibleTrack Uninterruptible
+			{
+				myStartCyclePos 0.0
+				myEndCyclePos 0.8
+			}
+		}
+	}
+	myMoveNoTargetSpeed 5.0
+	myMoveMaxSpeed 15.0
+	myHit
+	{
+		myCamShake < uid=5CFE16D564E86F9F000B0D90DBE1AD9D > = player_melee_punch_knockout 5CFE16D564E86F7F000AFD1F6F9BD767
+	}
+	myStartConditions
+	{
+		myTargetInRange
+		{
+			myEnabled TRUE
+		}
+		myGameCondition
+		{
+			GameConditionMeleeGroup "Multiple Conditions"
+			{
+				myConditions
+				{
+					GameConditionMeleeTargetIsValid "Has Target"
+					{
+					}
+					GameConditionMeleeTargetNumPunchesToDie "KO attack"
+					{
+						myIsNegated FALSE
+						myOperator Equal
+					}
+					GameConditionMeleeAttackerIsInMovementState "Is Sprinting"
+					{
+						myIsNegated FALSE
+						myState Sprint
+					}
+					GameConditionMeleeTargetDistance "Min Distance to Target"
+					{
+						myIs3D TRUE
+						myDistance 2.0
+					}
+					GameConditionMeleeAttackerSpeed "Is 3m/s or higher"
+					{
+						myTargetSpeed 3.0
+					}
+					GameConditionMeleeTargetPreferredAttack "Not Low Target"
+					{
+						myIsNegated TRUE
+						myPreferredAttack Kick
+					}
+				}
+			}
+		}
+	}
+}
+

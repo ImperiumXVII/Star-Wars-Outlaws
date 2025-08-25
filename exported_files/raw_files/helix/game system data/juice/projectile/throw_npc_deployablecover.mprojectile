@@ -1,0 +1,27 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/projectile/realization/deployable_cover.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/smoke_player.mprojectilerealization"
+
+BallisticProjectile throw_npc_deployablecover < uid=4171A7E164807C360003945CFBABE97A >
+{
+	myObject
+	{
+		myMaterialType Kinetic
+		myMass 1.0
+		myFriction 1.0
+		myIgnoreProjectileCollisionFromOwner TRUE
+	}
+	myRealization < uid=4171A7E164807CF6000463302E3BA1E1 > = deployable_cover 4171A7E164808C280009A72E154B3D31
+	myActions
+	{
+		ProjectileActionGameScript Deploy
+		{
+			myActionTargetType FinalHit
+			myGameScript "helix/game scripts/gs_npc_ability_deployablecover_deploy.mgamescript"
+		}
+	}
+	myNPCSensoryProjectileType Grenade
+	myInitialSpeed 2.0
+	myBounceFriendlyFireEnabled FALSE
+}
+

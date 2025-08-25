@@ -1,0 +1,33 @@
+include "helix/game system data/fruit/input/trigger_effects.fruit"
+include "helix/game system data/fruit/rumble/rumble.fruit"
+
+class WeaponChargeInputController
+{
+	bool myChargingTriggerVibrationEnabled false
+	TriggerEffectVibrationByStrength myChargingTriggerVibration
+	uid myChargingRumble < bhv="constantData" constantDataType="rumble" >
+	
+	bool myOnFullChargeTriggerEffectEnabled false
+	TriggerEffectVibrationOnce myOnFullChargeTriggerEffect
+	uid myOnFullChargeRumble < bhv="constantData" constantDataType="rumble" >
+	
+	bool myFullChargeTriggerVibrationEnabled false
+	TriggerEffectVibration myFullChargeTriggerVibration
+	uid myFullChargeRumble < bhv="constantData" constantDataType="rumble" >
+}
+
+class WeaponInputController
+{
+	uid myFireRumble < bhv="constantData" constantDataType="rumble" >
+	bool myFireVibrationTriggerEffectEnabled false
+	TriggerEffectVibrationOnce myFireVibrationTriggerEffect
+	bool myFireAimVibrationTriggerEffectEnabled false
+	TriggerEffectVibrationOnceExtended myFireAimVibrationTriggerEffect
+	bool myHeatUpAffectsPressTrigger FALSE < tooltip="If true, the Press trigger effect will have its strengths scalled according to the heating up progress. Value given by HeatingUpPressTriggerEffectIntensityCurve" >
+	string myHeatUpPressTriggerEffectIntensityCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0.0, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph tooltip="X[0-1] = HeatUpProgress, Y[0-1] = StrengthModifier. Sets the heating up trigger effect intensity according to the heating up progress" >
+	file myHardPressTriggerEffect < bhv="asset" assettype="trigger effect" >
+	file mySoftPressTriggerEffect < bhv="asset" assettype="trigger effect" >
+	bool myFireTriggerThresholdEnabled < tooltip="Otherwise the threshold will be 0.0" >
+	float myFireTriggerThreshold 0.0 < min=0.0 max=1.0 tooltip="When the trigger has surpassed this threshold, the input will be processed as the player intents to fire" >
+	WeaponChargeInputController myCharge
+}

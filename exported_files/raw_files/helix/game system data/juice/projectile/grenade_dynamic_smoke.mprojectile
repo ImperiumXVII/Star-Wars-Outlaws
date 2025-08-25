@@ -1,0 +1,31 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/projectile/realization/small_grenade.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/smoke_grenade.mprojectilerealization"
+
+BallisticProjectile grenade_dynamic_smoke < uid=5C421F5C624EE3E40000304C8EAC5CB8 >
+{
+	myObject
+	{
+		myMaterialType Kinetic
+		myMass 0.5
+	}
+	myRealization < uid=5C421F5C624EE3E40000304D43C5A60B > = smoke_grenade 2736B36563628CC200019B79D3122755
+	myActions
+	{
+		ProjectileActionGameScript HitDetonation
+		{
+			myActionTargetType FinalHit
+			myGameScript "helix/game scripts/gs_dev_smokeGrenade_detonation.mgamescript"
+			myDamageFormula 5
+			myRadiusFormula 10
+			myDefaultDamage 5.0
+			myDefaultRadius 10.0
+		}
+	}
+	myInitialSpeed 17.0
+	myBounceEnabled TRUE
+	myBounceVsDynamicEnabled TRUE
+	myBounceSpeedRestitution 0.2
+	myBounceGroundSpeedRestitution 0.5
+}
+

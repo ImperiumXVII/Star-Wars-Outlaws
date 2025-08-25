@@ -1,0 +1,575 @@
+include "helix/game system data/fruit/reward/reward.fruit"
+include "helix/game system data/juice/item/craftingmaterials.mitem"
+include "helix/game system data/juice/item/items_blaster_unlocks.mitem"
+include "helix/game system data/juice/item/items_keycards.mitem"
+include "helix/game system data/juice/item/items_livingworld.mitem"
+include "helix/game system data/juice/item/questitems.mitem"
+include "helix/game system data/juice/reward/currency_reward.mreward"
+include "helix/game system data/juice/reward/reputation_reward.mreward"
+
+RewardItem "NPC Transaction Tech01 Cost" < uid=2AE2EC8564412D3B00037537EAF9EE6E >
+{
+	myItem < uid=2AE2EC8564412D3B000375381B23063C > = Mat_Speeder_Common_02 5F6139B460A3DA0300000039098E28C6
+	myAmount -1
+}
+
+RewardItem "A_SNQ_020 Kijimi Nemesis Table Keycard" < uid=1657B1AA64FAD2DC001A1823D8ECCF16 >
+{
+	myItem < uid=1657B1AA64FAD331001A18473DFE2982 > = Keycard_A_KIJ_SNQ_020_LosingPlayer 1657B1AA64FAC8FA001A156981837E40
+	myAmount 1
+}
+
+RewardItem MS613_HelpingHand_BuyBlaster_outcome_BlasterParts < uid=D4F630796527B4C60009DF68A1770726 >
+{
+	myItem < uid=D4F630796527B4F10009DF69B66054E0 > = Mat_Blaster_Common_03 E42FA10C62B2C63E0002016F8D71283C
+	myAmount 4
+}
+
+RewardItem DeathTrooperEvent_RemoveTerminalKey < uid=BAB09C586527E05D001719479C29EC37 >
+{
+	myItem < uid=BAB09C586527E06B00171948A75ED2A4 > = Keycard_A_DeathTrooperConfrontation_TerminalKey BAB09C586527C2E2001286FC97B3B36E
+	myAmount -1
+}
+
+RewardGroup Skirmish_Planet_Civilian_Reward < uid=2AE2EC856529337600010DAFE3DE0667 >
+{
+	myRewardReferences
+	{
+		RewardItem "Credit Gain" < uid=2AE2EC85652933F200010DB18C077255 > = cur_credits_gain_low+50 E42FA10C62163E84000026F749AAE603
+	}
+}
+
+RewardGroup Skirmish_Planet_CrimsonDawn_Reward < uid=2AE2EC856529341E00010DB53EC65709 >
+{
+	myRewardReferences
+	{
+		RewardItem "Credit Gain" < uid=2AE2EC856529341E00010DB60E01B083 > = cur_credits_gain_low+50 E42FA10C62163E84000026F749AAE603
+		RewardReputation "Reputation Reward" < uid=2AE2EC856529342400010DBB557F1CF2 > = rep_crimsondawn_gain_tiny 4728ADF9620BA1660000206CA871BF71
+	}
+}
+
+RewardGroup Skirmish_Planet_Hutt_Reward < uid=2AE2EC856529341E00010DB7DB1E7471 >
+{
+	myRewardReferences
+	{
+		RewardItem "Credit Gain" < uid=2AE2EC856529357F00010DC1D0DA3D35 > = cur_credits_gain_low+50 E42FA10C62163E84000026F749AAE603
+		RewardReputation "Reputation Reward" < uid=2AE2EC856529357F00010DC2EA7CD7B3 > = rep_hutt_gain_tiny 4728ADF9620BA27B000020741240ABDA
+	}
+}
+
+RewardGroup Skirmish_Planet_Pyke_Reward < uid=2AE2EC856529341E00010DB97E6C7024 >
+{
+	myRewardReferences
+	{
+		RewardItem "Credit Gain" < uid=2AE2EC856529357F00010DC3D5AC09E8 > = cur_credits_gain_low+50 E42FA10C62163E84000026F749AAE603
+		RewardReputation "Reputation Reward" < uid=2AE2EC856529357F00010DC4B24D8167 > = rep_pyke_gain_tiny 4728ADF9620BA3AC0000207C2B843624
+	}
+}
+
+RewardGroup Skirmish_Space_Ashiga_Reward < uid=2AE2EC856529348D00010DBF488EEC38 >
+{
+	myRewardReferences
+	{
+		RewardItem "Credit Gain" < uid=2AE2EC856529357F00010DC5B37F318E > = cur_credits_gain_low+50 E42FA10C62163E84000026F749AAE603
+		RewardReputation "Reputation Reward" < uid=2AE2EC856529357F00010DC6BFB2A91D > = rep_ashiga_gain_tiny 4728ADF9620B9B2100002052AEA9E80F
+	}
+}
+
+RewardGroup Skirmish_Space_CrimsonDawn_Reward < uid=2AE2EC856529346400010DBCD71864BB > : Skirmish_Planet_CrimsonDawn_Reward
+{
+}
+
+RewardGroup Skirmish_Space_Hutt_Reward < uid=2AE2EC856529347000010DBDCAE8C32C > : Skirmish_Planet_Hutt_Reward
+{
+}
+
+RewardGroup Skirmish_Space_Pyke_Reward < uid=2AE2EC856529347B00010DBEE5BBE4F1 > : Skirmish_Planet_Pyke_Reward
+{
+}
+
+RewardGroup NpcInDanger_Civilian_reward < uid=2AE2EC856529359700010DC70FCC18E9 > : Skirmish_Planet_Civilian_Reward
+{
+}
+
+RewardGroup NpcInDanger_CrimsonDawn_reward < uid=2AE2EC856529362200010DCB4FF9B18A > : Skirmish_Planet_CrimsonDawn_Reward
+{
+}
+
+RewardGroup NpcInDanger_Hutt_reward < uid=2AE2EC856529362200010DCCD0CC1A7A > : Skirmish_Planet_Hutt_Reward
+{
+}
+
+RewardGroup NpcInDanger_Pyke_reward < uid=2AE2EC856529362200010DCD6B5DFB47 > : Skirmish_Planet_Pyke_Reward
+{
+}
+
+RewardGroup CatchThief_general_reward < uid=06F73AE1652FDAC100019DD10F12EE42 >
+{
+	myRewardReferences
+	{
+		RewardItem "New RewardItem" < uid=06F73AE1652FDAF800019DD3317A5657 > = cur_credits_gain_medium+150 E42FA10C62163E84000026F8795DA062
+	}
+}
+
+RewardItem CatchThief_remove_item_toshara < uid=06F73AE1652FDA2A00019D981E6A581D >
+{
+	myItem < uid=06F73AE1652FDB0400019DD425725439 > = lwitem_catch_thief_toshara_01 06F73AE1652FC352000342F1ADE195E4
+	myAmount -1
+}
+
+RewardItem CatchThief_remove_item_tatooine < uid=06F73AE1652FEB78000BC5151E2176F4 >
+{
+	myItem < uid=06F73AE1652FEDB2000BC52E74EE2EC9 > = lwitem_catch_thief_tatooine_01 06F73AE1652FEB95000BC5161ED2034D
+	myAmount -1
+}
+
+RewardItem CatchThief_remove_item_akiva < uid=06F73AE1652FEC8F000BC52DAFD9C9E6 >
+{
+	myItem < uid=06F73AE1652FEDB2000BC52F9B66B736 > = lwitem_catch_thief_akiva_01 06F73AE1652FEBA9000BC51B824C57CD
+	myAmount -1
+}
+
+RewardItem Sandcrawler_Ion_Blast_Module_reward < uid=06F73AE16537B80E0005314EB1EBCEF7 >
+{
+	myItem < uid=06F73AE16537B85B000531734C81029C > = KP_ConfigUnlockItem_Ion_Blast 2AE2EC85645A6A130000B49337E750B0
+	myAmount 1
+}
+
+RewardItem Encounter_NPC_Transaction_RawMaterial_Reward_1 < uid=7B2EAC6D653A62810000DC52279EA0AE >
+{
+	myItem < uid=7B2EAC6D653A62810000DC53DC63D102 > = Credits 83E36AE360487E88000000375F5EDD50
+	myAmount 50
+}
+
+RewardItem Encounter_NPC_Transaction_RawMaterial_Reward_2 < uid=7B2EAC6D653A62810000DC540A9BA4FD >
+{
+	myItem < uid=7B2EAC6D653A62810000DC558E6F2C0E > = Credits 83E36AE360487E88000000375F5EDD50
+	myAmount 100
+}
+
+RewardItem Encounter_NPC_Transaction_RawMaterial_Reward_3 < uid=7B2EAC6D653A62810000DC565C2676BD >
+{
+	myItem < uid=7B2EAC6D653A62810000DC579E0F57FA > = Credits 83E36AE360487E88000000375F5EDD50
+	myAmount 150
+}
+
+RewardItem Encounter_NPC_Transaction_Rare_SmallMechanical_1_Cost < uid=7B2EAC6D653A65110000DD6F8CA99432 >
+{
+	myItem < uid=7B2EAC6D653A65110000DD7068661BA9 > = Mat_Speeder_Common_01 E42FA10C60D31106000531F90C34F89F
+	myAmount -1
+}
+
+RewardItem Encounter_NPC_Transaction_Rare_SmallMechanical_2_Cost < uid=7B2EAC6D653A65110000DD717DCC0CEA >
+{
+	myItem < uid=7B2EAC6D653A65110000DD72B78995C7 > = Mat_Blaster_Common_01 E42FA10C60D31106000531FBF190AF2C
+	myAmount -1
+}
+
+RewardItem Encounter_NPC_Transaction_Rare_Electronics_1_Cost < uid=7B2EAC6D653A65110000DD7377418F00 >
+{
+	myItem < uid=7B2EAC6D653A65110000DD742FA26912 > = Mat_Speeder_Common_02 5F6139B460A3DA0300000039098E28C6
+	myAmount -1
+}
+
+RewardItem Encounter_NPC_Transaction_Rare_Electronics_2_Cost < uid=7B2EAC6D653A65110000DD7532149B50 >
+{
+	myItem < uid=7B2EAC6D653A65110000DD76C9C81778 > = Mat_Ship_Common_02 F4D8AE2664F5EC0F0003707067208139
+	myAmount -1
+}
+
+RewardItem Encounter_NPC_Transaction_Rare_LargeMechanical_1_Cost < uid=7B2EAC6D653A659F0000DD8D97C0F839 >
+{
+	myItem < uid=7B2EAC6D653A659F0000DD8E1D4F8FB2 > = Mat_Ship_Common_04 E42FA10C62B445CB000035FCF11008B7
+	myAmount -1
+}
+
+RewardItem Encounter_NPC_Transaction_Rare_LargeMechanical_2_Cost < uid=7B2EAC6D653A659F0000DD8FC70F011A >
+{
+	myItem < uid=7B2EAC6D653A659F0000DD900C9C02C0 > = Mat_Speeder_Common_03 F4D8AE2664F5ED26000370F12EE4774B
+	myAmount -1
+}
+
+RewardItem Encounter_NPC_Transaction_Rare_Reward_1 < uid=7B2EAC6D653A65CD0000DDA9628F6D6B >
+{
+	myItem < uid=7B2EAC6D653A65CD0000DDAAE1277D82 > = Credits 83E36AE360487E88000000375F5EDD50
+	myAmount 100
+}
+
+RewardItem Encounter_NPC_Transaction_Rare_Reward_2 < uid=7B2EAC6D653A65CD0000DDAB17C302EB >
+{
+	myItem < uid=7B2EAC6D653A65CD0000DDAC91FDAA9B > = Credits 83E36AE360487E88000000375F5EDD50
+	myAmount 200
+}
+
+RewardItem Encounter_NPC_Transaction_Valuable_Contraband_1_Cost < uid=7B2EAC6D653A66BB0000DDC38A626928 >
+{
+	myItem < uid=7B2EAC6D653A66BB0000DDC4E4E09253 > = Valuable_Contraband_01 2AE2EC856500645E000517DCD9DBD7EE
+	myAmount -1
+}
+
+RewardItem Encounter_NPC_Transaction_Valuable_Contraband_2_Cost < uid=7B2EAC6D653A66BB0000DDC5646AAF58 >
+{
+	myItem < uid=7B2EAC6D653A66BB0000DDC643ED72B8 > = Valuable_Contraband_02 2AE2EC856500645E000517DD99E2F6A0
+	myAmount -1
+}
+
+RewardItem Encounter_NPC_Transaction_Valuable_Contraband_3_Cost < uid=7B2EAC6D653A66BB0000DDC7DA5F78C4 >
+{
+	myItem < uid=7B2EAC6D653A66BB0000DDC83ACD1BD6 > = Valuable_Contraband_03 2AE2EC856500645E000517DE8A4F760C
+	myAmount -1
+}
+
+RewardItem Encounter_NPC_Transaction_Valuable_Contraband_4_Cost < uid=7B2EAC6D653A66BB0000DDC90BEC63B8 >
+{
+	myItem < uid=7B2EAC6D653A66BB0000DDCA23BCA8CF > = Valuable_Contraband_04 2AE2EC856500645E000517DFAE6A7F1B
+	myAmount -1
+}
+
+RewardItem Encounter_NPC_Transaction_Valuable_Reward_SmallMechanical_3 < uid=7B2EAC6D653A67730000DDE41595231E >
+{
+	myItem < uid=7B2EAC6D653A67730000DDE53F1FEAC3 > = Mat_Blaster_Common_02 E42FA10C60D31106000531FE006F9A19
+	myAmount 4
+}
+
+RewardItem Encounter_NPC_Transaction_Valuable_Reward_SmallMechanical_4 < uid=7B2EAC6D653A67730000DDE6FB06706F >
+{
+	myItem < uid=7B2EAC6D653A67730000DDE765F38103 > = Mat_Blaster_Common_03 E42FA10C62B2C63E0002016F8D71283C
+	myAmount 4
+}
+
+RewardItem Encounter_NPC_Transaction_Valuable_Reward_Electronics_3 < uid=7B2EAC6D653A67730000DDE8D9C2D370 >
+{
+	myItem < uid=7B2EAC6D653A67730000DDE9194B7379 > = Mat_Blaster_Common_04 F4D8AE2664F5EC0F00037073902288BC
+	myAmount 4
+}
+
+RewardItem Encounter_NPC_Transaction_Valuable_Reward_Electronics_4 < uid=7B2EAC6D653A67730000DDEAD106FD37 >
+{
+	myItem < uid=7B2EAC6D653A67730000DDEB2804858D > = Mat_Ship_Common_03 F4D8AE2664F5EC0F00037076D0726351
+	myAmount 4
+}
+
+RewardItem Encounter_NPC_Transaction_Valuable_Reward_LargeMechanical_3 < uid=7B2EAC6D653A67730000DDECE7928AAE >
+{
+	myItem < uid=7B2EAC6D653A67730000DDEDA500FD9E > = Mat_Blaster_Common_05 F4D8AE2664F5ED26000370F4CCF846D8
+	myAmount 4
+}
+
+RewardItem Encounter_NPC_Transaction_RawMaterial_1_Cost_1 < uid=7B2EAC6D653A7A3500004D815F0CDB2F >
+{
+	myItem < uid=7B2EAC6D653A7A3500004D821587AF4C > = Mat_General_Common_01 E42FA10C62B4461C0000360F503713F1
+	myAmount -1
+}
+
+RewardItem Encounter_NPC_Transaction_RawMaterial_1_Cost_2 < uid=7B2EAC6D653A7A3500004D83F29EC45C >
+{
+	myItem < uid=7B2EAC6D653A7A3500004D84BCDD35C6 > = Mat_General_Common_01 E42FA10C62B4461C0000360F503713F1
+	myAmount -2
+}
+
+RewardItem Encounter_NPC_Transaction_RawMaterial_1_Cost_3 < uid=7B2EAC6D653A7A3500004D85853154D1 >
+{
+	myItem < uid=7B2EAC6D653A7A3500004D86ADE476F4 > = Mat_General_Common_01 E42FA10C62B4461C0000360F503713F1
+	myAmount -3
+}
+
+RewardItem Encounter_NPC_Transaction_RawMaterial_2_Cost_1 < uid=7B2EAC6D653A7A8B00004D8B33F4A6E8 >
+{
+	myItem < uid=7B2EAC6D653A7A8B00004D8C1B604416 > = Mat_General_Common_02 E42FA10C60D31106000531F700A10DE9
+	myAmount -1
+}
+
+RewardItem Encounter_NPC_Transaction_RawMaterial_2_Cost_2 < uid=7B2EAC6D653A7A8B00004D8DFE05DB3C >
+{
+	myItem < uid=7B2EAC6D653A7A8B00004D8E7905348F > = Mat_General_Common_02 E42FA10C60D31106000531F700A10DE9
+	myAmount -2
+}
+
+RewardItem Encounter_NPC_Transaction_RawMaterial_2_Cost_3 < uid=7B2EAC6D653A7A8B00004D8FEF501EA1 >
+{
+	myItem < uid=7B2EAC6D653A7A8B00004D90F609B7A9 > = Mat_General_Common_02 E42FA10C60D31106000531F700A10DE9
+	myAmount -3
+}
+
+RewardItem Encounter_NPC_Transaction_RawMaterial_3_Cost_1 < uid=7B2EAC6D653A7AF300004D95AE4B066B >
+{
+	myItem < uid=7B2EAC6D653A7AF300004D967D571B09 > = Mat_General_Common_03 F4D8AE2664F5E8DC00036FA58305736D
+	myAmount -1
+}
+
+RewardItem Encounter_NPC_Transaction_RawMaterial_3_Cost_2 < uid=7B2EAC6D653A7AF300004D979450C894 >
+{
+	myItem < uid=7B2EAC6D653A7AF300004D98BCDA8A98 > = Mat_General_Common_03 F4D8AE2664F5E8DC00036FA58305736D
+	myAmount -2
+}
+
+RewardItem Encounter_NPC_Transaction_RawMaterial_3_Cost_3 < uid=7B2EAC6D653A7AF300004D994A54BB36 >
+{
+	myItem < uid=7B2EAC6D653A7AF300004D9A8F1E6E26 > = Mat_General_Common_03 F4D8AE2664F5E8DC00036FA58305736D
+	myAmount -3
+}
+
+RewardItem Encounter_NPC_Transaction_RawMaterial_4_Cost_1 < uid=7B2EAC6D653A7B5E00004DA7AF057365 >
+{
+	myItem < uid=7B2EAC6D653A7B5E00004DA82DFE0636 > = Mat_General_Common_04 F4D8AE2664F5E90B00036FBC8BB3155F
+	myAmount -1
+}
+
+RewardItem Encounter_NPC_Transaction_RawMaterial_4_Cost_2 < uid=7B2EAC6D653A7B5E00004DA966CA8CF8 >
+{
+	myItem < uid=7B2EAC6D653A7B5E00004DAAF6CE64CA > = Mat_General_Common_04 F4D8AE2664F5E90B00036FBC8BB3155F
+	myAmount -2
+}
+
+RewardItem Encounter_NPC_Transaction_RawMaterial_4_Cost_3 < uid=7B2EAC6D653A7B5E00004DAB72D4BF2D >
+{
+	myItem < uid=7B2EAC6D653A7B5E00004DACAFC6C8F7 > = Mat_General_Common_04 F4D8AE2664F5E90B00036FBC8BB3155F
+	myAmount -3
+}
+
+RewardItem Encounter_NPC_Transaction_RawMaterial_5_Cost_1 < uid=7B2EAC6D653A7B5E00004DAD9D593CBB >
+{
+	myItem < uid=7B2EAC6D653A7B5E00004DAE1834F3EE > = Mat_General_Common_05 F4D8AE2664F5E93100036FD3FC5225C4
+	myAmount -1
+}
+
+RewardItem Encounter_NPC_Transaction_RawMaterial_5_Cost_2 < uid=7B2EAC6D653A7B5E00004DAFCFCE0A12 >
+{
+	myItem < uid=7B2EAC6D653A7B5E00004DB056D6E26C > = Mat_General_Common_05 F4D8AE2664F5E93100036FD3FC5225C4
+	myAmount -2
+}
+
+RewardItem Encounter_NPC_Transaction_RawMaterial_5_Cost_3 < uid=7B2EAC6D653A7B5E00004DB1023EB0E9 >
+{
+	myItem < uid=7B2EAC6D653A7B5E00004DB2BD2A98C3 > = Mat_General_Common_05 F4D8AE2664F5E93100036FD3FC5225C4
+	myAmount -3
+}
+
+RewardItem Encounter_NPC_Transaction_RawMaterial_6_Cost_1 < uid=7B2EAC6D653A7B5E00004DB3020B8BEE >
+{
+	myItem < uid=7B2EAC6D653A7B5E00004DB4E32FCC41 > = Mat_General_Common_06 F4D8AE2664F5E98100036FEFC8775E12
+	myAmount -1
+}
+
+RewardItem Encounter_NPC_Transaction_RawMaterial_6_Cost_2 < uid=7B2EAC6D653A7B5E00004DB514619135 >
+{
+	myItem < uid=7B2EAC6D653A7B5E00004DB6FD64FFFA > = Mat_General_Common_06 F4D8AE2664F5E98100036FEFC8775E12
+	myAmount -2
+}
+
+RewardItem Encounter_NPC_Transaction_RawMaterial_6_Cost_3 < uid=7B2EAC6D653A7B5E00004DB7A36E4F43 >
+{
+	myItem < uid=7B2EAC6D653A7B5E00004DB83EBED2AB > = Mat_General_Common_06 F4D8AE2664F5E98100036FEFC8775E12
+	myAmount -3
+}
+
+RewardItem Encounter_NPC_Transaction_Rare_SmallMechanical_1_Cost_1 < uid=7B2EAC6D653A832E0000CF394F22935D >
+{
+	myItem < uid=7B2EAC6D653A832E0000CF3A8EF2CE7B > = Mat_Speeder_Common_01 E42FA10C60D31106000531F90C34F89F
+	myAmount -1
+}
+
+RewardItem Encounter_NPC_Transaction_Rare_SmallMechanical_1_Cost_2 < uid=7B2EAC6D653A832E0000CF3B78F0D01F >
+{
+	myItem < uid=7B2EAC6D653A832E0000CF3CF1022424 > = Mat_Speeder_Common_01 E42FA10C60D31106000531F90C34F89F
+	myAmount -2
+}
+
+RewardItem Encounter_NPC_Transaction_Rare_SmallMechanical_2_Cost_1 < uid=7B2EAC6D653A832E0000CF3DAAE1F922 >
+{
+	myItem < uid=7B2EAC6D653A832E0000CF3EB2787B13 > = Mat_Blaster_Common_01 E42FA10C60D31106000531FBF190AF2C
+	myAmount -1
+}
+
+RewardItem Encounter_NPC_Transaction_Rare_SmallMechanical_2_Cost_2 < uid=7B2EAC6D653A832E0000CF3F4CF6356B >
+{
+	myItem < uid=7B2EAC6D653A832E0000CF40AC351BD5 > = Mat_Blaster_Common_01 E42FA10C60D31106000531FBF190AF2C
+	myAmount -2
+}
+
+RewardItem Encounter_NPC_Transaction_Rare_Electronics_1_Cost_1 < uid=7B2EAC6D653A832E0000CF4109B8CF98 >
+{
+	myItem < uid=7B2EAC6D653A832E0000CF4278698D5F > = Mat_Speeder_Common_02 5F6139B460A3DA0300000039098E28C6
+	myAmount -1
+}
+
+RewardItem Encounter_NPC_Transaction_Rare_Electronics_1_Cost_2 < uid=7B2EAC6D653A832E0000CF4385C9B254 >
+{
+	myItem < uid=7B2EAC6D653A832E0000CF448126FA8B > = Mat_Speeder_Common_02 5F6139B460A3DA0300000039098E28C6
+	myAmount -2
+}
+
+RewardItem Encounter_NPC_Transaction_Rare_Electronics_2_Cost_1 < uid=7B2EAC6D653A832E0000CF454E2D2138 >
+{
+	myItem < uid=7B2EAC6D653A832E0000CF467A1A5ED7 > = Mat_Ship_Common_02 F4D8AE2664F5EC0F0003707067208139
+	myAmount -1
+}
+
+RewardItem Encounter_NPC_Transaction_Rare_Electronics_2_Cost_2 < uid=7B2EAC6D653A832E0000CF47B28918D2 >
+{
+	myItem < uid=7B2EAC6D653A832E0000CF4804CD5EAA > = Mat_Ship_Common_02 F4D8AE2664F5EC0F0003707067208139
+	myAmount -2
+}
+
+RewardItem Encounter_NPC_Transaction_Rare_LargeMechanical_1_Cost_1 < uid=7B2EAC6D653A832E0000CF4923CE9BEA >
+{
+	myItem < uid=7B2EAC6D653A832E0000CF4A8B8A95A2 > = Mat_Ship_Common_04 E42FA10C62B445CB000035FCF11008B7
+	myAmount -1
+}
+
+RewardItem Encounter_NPC_Transaction_Rare_LargeMechanical_1_Cost_2 < uid=7B2EAC6D653A832E0000CF4B713F4389 >
+{
+	myItem < uid=7B2EAC6D653A832E0000CF4C1F697B0A > = Mat_Ship_Common_04 E42FA10C62B445CB000035FCF11008B7
+	myAmount -2
+}
+
+RewardItem Encounter_NPC_Transaction_Rare_LargeMechanical_2_Cost_1 < uid=7B2EAC6D653A832E0000CF4D482FA2C6 >
+{
+	myItem < uid=7B2EAC6D653A832E0000CF4E97D709E4 > = Mat_Speeder_Common_03 F4D8AE2664F5ED26000370F12EE4774B
+	myAmount -1
+}
+
+RewardItem Encounter_NPC_Transaction_Rare_LargeMechanical_2_Cost_2 < uid=7B2EAC6D653A832E0000CF4F1C7F339C >
+{
+	myItem < uid=7B2EAC6D653A832E0000CF50489AAA32 > = Mat_Speeder_Common_03 F4D8AE2664F5ED26000370F12EE4774B
+	myAmount -2
+}
+
+RewardGroup Event_FactionAttackPirateCamp_Ashiga < uid=2AE2EC85655B292C00021910159ECF6E >
+{
+	myRewardReferences
+	{
+		RewardItem Credits < uid=2AE2EC85655B292C00021911DD0F6E81 > = cur_credits_gain_medium+150 E42FA10C62163E84000026F8795DA062
+		RewardReputation Reputation < uid=2AE2EC85655B292C0002191240F4870E > = rep_ashiga_gain_small 4728ADF9620B9B2100002054724480AD
+	}
+}
+
+RewardGroup Event_FactionAttackPirateCamp_CrimsonDawn < uid=2AE2EC85655B276300021901A67BA753 >
+{
+	myRewardReferences
+	{
+		RewardItem Credits < uid=2AE2EC85655B278C000219022422429B > = cur_credits_gain_medium+150 E42FA10C62163E84000026F8795DA062
+		RewardReputation Reputation < uid=2AE2EC85655B27A600021904AADC790B > = rep_crimsondawn_gain_small 4728ADF9620BA1660000206DF016D7C6
+	}
+}
+
+RewardGroup Event_FactionAttackPirateCamp_Hutt < uid=2AE2EC85655B292C00021913266957A0 >
+{
+	myRewardReferences
+	{
+		RewardItem Credits < uid=2AE2EC85655B292C00021914C56F09BC > = cur_credits_gain_medium+150 E42FA10C62163E84000026F8795DA062
+		RewardReputation Reputation < uid=2AE2EC85655B292C0002191563B20CF6 > = rep_hutt_gain_small 4728ADF9620BA27B00002075AA30A794
+	}
+}
+
+RewardGroup Event_FactionAttackPirateCamp_Pyke < uid=2AE2EC85655B292C00021916879A3B79 >
+{
+	myRewardReferences
+	{
+		RewardItem Credits < uid=2AE2EC85655B292C00021917EB22A87D > = cur_credits_gain_medium+150 E42FA10C62163E84000026F8795DA062
+		RewardReputation Reputation < uid=2AE2EC85655B292C0002191856BD7E4C > = rep_pyke_gain_small 4728ADF9620BA3AC0000207D46E45E47
+	}
+}
+
+RewardGroup Event_DefendSpaceCivilian < uid=2AE2EC85655B2BD3000219194D7BC26F >
+{
+	myRewardReferences
+	{
+		RewardItem Credits < uid=2AE2EC85655B2BDF0002191A66562976 > = cur_credits_gain_high+250 F4D8AE26638DB9B80000B508AE21CCAA
+	}
+}
+
+RewardGroup Event_DefendFactionSpaceConvoy_Ashiga < uid=2AE2EC856687A762009A9A648897AE42 >
+{
+	myRewardReferences
+	{
+		RewardItem Credits < uid=2AE2EC856687A762009A9A652AFB2573 > = cur_credits_gain_high+250 F4D8AE26638DB9B80000B508AE21CCAA
+		RewardReputation Reputation < uid=2AE2EC856687A732009A9A633AB00975 > = rep_ashiga_gain_medium 4728ADF9620B9B080000204C4AD1EAEB
+	}
+}
+
+RewardGroup Event_DefendFactionSpaceConvoy_CrimsonDawn < uid=2AE2EC856687A762009A9A66FFE56755 >
+{
+	myRewardReferences
+	{
+		RewardItem Credits < uid=2AE2EC856687A762009A9A6745A4227D > = cur_credits_gain_high+250 F4D8AE26638DB9B80000B508AE21CCAA
+		RewardReputation Reputation < uid=2AE2EC856687A762009A9A6870747135 > = rep_crimsondawn_gain_medium 4728ADF9620BA1660000206E5CAB0435
+	}
+}
+
+RewardGroup Event_DefendFactionSpaceConvoy_Hutt < uid=2AE2EC856687A762009A9A69835712F5 >
+{
+	myRewardReferences
+	{
+		RewardItem Credits < uid=2AE2EC856687A762009A9A6A575C1205 > = cur_credits_gain_high+250 F4D8AE26638DB9B80000B508AE21CCAA
+		RewardReputation Reputation < uid=2AE2EC856687A762009A9A6B338F6559 > = rep_hutt_gain_medium 4728ADF9620BA27B0000207667C1578D
+	}
+}
+
+RewardGroup Event_DefendFactionSpaceConvoy_Pyke < uid=2AE2EC856687A762009A9A6CE0A147C4 >
+{
+	myRewardReferences
+	{
+		RewardItem Credits < uid=2AE2EC856687A762009A9A6DDB5A219F > = cur_credits_gain_high+250 F4D8AE26638DB9B80000B508AE21CCAA
+		RewardReputation Reputation < uid=2AE2EC856687A762009A9A6E6C21CCCB > = rep_pyke_gain_medium 4728ADF9620BA3AC0000207EC4743D7A
+	}
+}
+
+RewardGroup Event_AttackPirateCruiser_Ashiga < uid=2AE2EC85655B28AB0002190CF6F70011 > : Event_DefendFactionSpaceConvoy_Ashiga
+{
+}
+
+RewardGroup Event_AttackPirateCruiser_CrimsonDawn < uid=2AE2EC85655B28C00002190DAE0CCAA6 > : Event_DefendFactionSpaceConvoy_CrimsonDawn
+{
+}
+
+RewardGroup Event_AttackPirateCruiser_Hutt < uid=2AE2EC85655B28CD0002190E874344BA > : Event_DefendFactionSpaceConvoy_Hutt
+{
+}
+
+RewardGroup Event_AttackPirateCruiser_Pyke < uid=2AE2EC85655B28D60002190F5B27BB93 > : Event_DefendFactionSpaceConvoy_Pyke
+{
+}
+
+RewardItem MS602_SmugglersPart2_HandoverDatacard_outcome < uid=D4F63079655C83A8001FF6C322D9A6C6 >
+{
+	myItem < uid=D4F63079655C83A8001FF6C432B48204 > = MS_KIJ_MS602_AshigaDatacard D4F63079655C7BD500153C27E3C40E21
+	myAmount -1
+}
+
+RewardItem MS605_TheRealBlackmarket_outcome < uid=D4F63079655DF77E001365C72A5720A9 >
+{
+	myItem < uid=D4F63079655DF77E001365C8799247DF > = MS_KIJ_MS605_SpiceAmulet D4F63079652517850002BADCE3968FC3
+	myAmount -1
+}
+
+RewardGroup Event_DefendCivilian_Planet_Toshara < uid=2AE2EC856576E54300174C5917FED94C >
+{
+	myRewardReferences
+	{
+		RewardItem Credits < uid=2AE2EC856576E55600174C5AC684403F > = cur_credits_gain_veryhigh+500 E42FA10C62163E84000026F9B4191E69
+	}
+}
+
+RewardGroup Event_DefendCivilian_Planet_Tatooine < uid=2AE2EC856576E58900174C5D835971EA > : Event_DefendCivilian_Planet_Toshara
+{
+	myRewardReferences
+	{
+		RewardItem Credits < uid=2AE2EC856576E58900174C5E67385C06 > = cur_credits_gain_veryhigh+500 E42FA10C62163E84000026F9B4191E69
+	}
+}
+
+RewardGroup Event_DefendCivilian_Planet_Akiva < uid=2AE2EC856576E58900174C5FE63E39E7 > : Event_DefendCivilian_Planet_Toshara
+{
+	myRewardReferences
+	{
+		RewardItem Credits < uid=2AE2EC856576E58900174C60E335ABEE > = cur_credits_gain_veryhigh+500 E42FA10C62163E84000026F9B4191E69
+	}
+}
+
+RewardItem Event_EmpireShuttle_Reward < uid=2AE2EC8565D75618000439E0C3FFF216 >
+{
+	myItem < uid=2AE2EC8565D75632000439E186A9E33D > = Credits 83E36AE360487E88000000375F5EDD50
+	myAmount 2000
+}
+

@@ -1,0 +1,43 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/gozanti_armed_attached_npc_set.mnpconnpcattachmentset"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/hut_shp_base.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC hut_shp_gozantiarmtransport_a < uid=6EA79625636BB5AD0000AEFD8497329D > : hut_shp_base
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Gozanti Armed Transport - Hutt faction\", enabled = true, guid = #6AE6EE0D6578720F000266AC5D674D2D, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10726, text = \"Gozanti Armed Transport\", type = \"MenuLine\""
+	myCharacterVisuals < uid=6EA79625636BB5AD0000AEFE78408A46 > = character_visuals_npc_shp_gozanti_armed_transport F95CD8F362ECDAF40000E9CCF646743A
+	myNPCComponentSetType Spaceship
+	mySpaceshipType GozantiArmedHutt
+	myMaxHealth 500
+	myHealthFormula 250*SpaceHealthDifficultyModifier
+	myFaction < uid=6EA79625636BB5AD0000AEFF12A4F27F > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A12912164EE18E10003C72DDD168708 > = Agent_Archetype_Pilot 3A12912163EF7B9500005053123CF383
+		RBTagsTag "New RBTagsTag (0)" < uid=3A12912164EE18E10003C72E6B2E4D96 > = Agent_Faction_HuttClanTag 16DEADE6620AE18B000020CD6EABF4EA
+		RBTagsTag "New RBTagsTag (1)" < uid=3A12912164EE18E10003C72F586B0E8B > = Agent_ShipType_CruiserTag 3A12912164DCDD0A00011358B889F2D0
+	}
+	myLodType Spaceship_Medium
+	myVisionProfile < uid=6EA79625636BB5AD0000AF008E1F87A3 > = visionProfile_emp_ship_LightFreighter 6B0E1DE964B7A45D0000AD580125C2F4
+	myHearingProfile < uid=6EA79625636BB5AD0000AF01B3214F27 > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=F95CD8F3648349A1000AF0C46E399362 > = detectionProfile_hut_ship_LightFreighter 6B0E1DE964B6644F0003C72F5A21938E
+	}
+	myThreatProfile < uid=F95CD8F36540C6F300024D838B4518F0 > = Spaceshipthreatprofile F95CD8F3653F81EE00057BF796B8AD1A
+	myAimProfile < uid=6EA79625636BB5AD0000AF03FA4DD523 > = NULLREFERENCE
+	myReducedAimProfile < uid=6EA79625636BB5AD0000AF04881D7756 > = NULLREFERENCE
+	myMainWeapon < uid=6EA79625636BB5AD0000AF0531FC4905 > = NULLREFERENCE
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "argozanti weapon loadout" < uid=F95CD8F3640B4669000009A45EF450C8 > = weaponloadout_hut_shp_gozantiarmedtransport 6AF0BA04649BFB1100074AA93408AFA7
+	}
+	myAttachedNPCsSet < uid=4F59E8F063FCBE4400009DA69EACDA27 > = gozanti_armed_attached_npc_set 4F59E8F063FC7ACA0000509DF679FDA4
+	myLootTable < uid=2AE2EC8565E5D6E000054D512491DA16 > = loot_OnKillShip_Cruiser 2AE2EC85654CB4920001094584D7F698
+	myCombatRole LightFreighter
+}
+

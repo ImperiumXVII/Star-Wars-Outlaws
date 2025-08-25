@@ -1,0 +1,158 @@
+include "helix/game system data/fruit/camerainput/camerainput.fruit"
+include "helix/game system data/fruit/camera/camerasoftedgedata.fruit"
+
+// This enum should be kept in sync with the one in HC_CameraData.h
+enum PlayerCameraMode
+{
+	// Normal version of the cameras
+	Climbing
+	Powerslide
+	PowerslideAim
+	Rappel
+	
+	Spaceship
+	Speeder
+	TrickShot
+	Melee
+	Safezone
+	
+	ShoulderAim
+	Default
+	Combat
+	Scope
+	LockAim
+	HipAim
+	PetModeActive
+	ThrowableAim
+	UnarmedAim
+	Crouch
+	CrouchHipAim
+	CrouchShoulderAim
+	HeavyWeaponHipAim
+	CrouchHeavyWeaponHipAim
+	
+	ShoulderAimMirror
+	DefaultMirror
+	CombatMirror
+	ScopeMirror
+	LockAimMirror
+	HipAimMirror
+	PetModeActiveMirror
+	ThrowableAimMirror
+	UnarmedAimMirror
+	CrouchMirror
+	CrouchHipAimMirror
+	CrouchShoulderAimMirror
+	HeavyWeaponHipAimMirror
+	CrouchHeavyWeaponHipAimMirror
+	
+	SpaceshipIndoor
+	SpeederIndoor
+	TrickShotIndoor
+	MeleeIndoor
+	SafezoneIndoor
+	
+	ShoulderAimIndoor
+	DefaultIndoor
+	CombatIndoor
+	ScopeIndoor
+	LockAimIndoor
+	HipAimIndoor
+	PetModeActiveIndoor
+	ThrowableAimIndoor
+	UnarmedAimIndoor
+	CrouchIndoor
+	CrouchHipAimIndoor
+	CrouchShoulderAimIndoor
+	HeavyWeaponHipAimIndoor
+	CrouchHeavyWeaponHipAimIndoor
+	
+	ShoulderAimIndoorMirror
+	DefaultIndoorMirror
+	CombatIndoorMirror
+	ScopeIndoorMirror
+	LockAimIndoorMirror
+	HipAimIndoorMirror
+	PetModeActiveIndoorMirror
+	ThrowableAimIndoorMirror
+	UnarmedAimIndoorMirror
+	CrouchIndoorMirror
+	CrouchHipAimIndoorMirror
+	CrouchShoulderAimIndoorMirror
+	HeavyWeaponHipAimIndoorMirror
+	CrouchHeavyWeaponHipAimIndoorMirror
+}
+
+list PlayerCameraModeList
+{
+	PlayerCameraMode
+}
+
+enum LazinessMode
+{
+    Radius
+	Box
+	Ellipse
+	Curve
+}
+
+class LazinessValues
+{
+    string myRestrictionCurve "{ numKeys = 2, interpolator = 0, defaultValue = 0, defaultLeftSlope = 0, keys = { properties = { -749, -749, }, values = { 0 0, 1 1, }, inTangents = { -0 -0, -0 -0, }, outTangents = { 0 0, 0 0, }, }, defaultRightSlope = 0, }" < bhv=inputgraph >
+    LazinessMode myLazinessMode Box < tooltip="Decides how the restriction for laziness will be applied." >
+	vec2f myMaxDistance 0.2;0.6 < tooltip="The max amount of distance per axis from origin before clamping" >
+	vec2f myOffset 0.0;0.3 < tooltip="This value offsets origin so that you can have a offsetted MaxDistance on an axis" >
+	float mySpringConstant 100.0f < tooltip="Spring constant for the laziness of the camera, meaning how fast it is to move toward the player" >
+	float myDampingRatio 1.0f < tooltip="The damping ratio for the laziness spring- probably want to keep it at 1 unless you want it to jerk back and forth" >
+	bool myUseLaziness false < tooltip="Decides if you should add to camera laziness, thus making the camera move after a delay toward player" >
+}
+
+class HeightCameraDeviationData
+{
+    float myDampingRatio 1.0f < tooltip="Damping ratio for adjusting deviation expectation spring- but should be 1 unless you want back and forth movement" >
+	float myDampingRatioOffset 1.0f < tooltip="Damping ratio for springing toward no offset from expectation deviation. Should be 1 unless you want back and forth movement" >
+	float mySpringConstant 100.0f < tooltip="Spring constant related to how fast the expectation deviation adjusts to current change in height velocity" >
+	float mySpringConstantOffset 100.0f < tooltip="Spring constant for how fast the offset from expectation deviation moves to 0, thus leading to no offset" >
+	float myMaxDistance 0.2f < tooltip="The max amount of deviation in height from the expectation deviation" >
+	bool myIsActive true
+}
+
+class CameraPreset < uid=auto >
+{
+	PlayerCameraMode myMode
+
+	float myFOV	90.0
+	float myMaxAdditionalFOV 50.0 < min=0 tooltip="The maximum additional fov possible for this camera." >
+	float myDistance 3.0
+	
+	float myMinPitch -80.0
+	float myMaxPitch  70.0
+	
+	float myDefaultPitch 0.0
+	float myPitchCollisionAvoidanceMaxDistance 2.35 < tooltip="When looking up, the camera will lerp its current distance from the anchor to this distance, if its current distance is larger than the set value here. The angle is based on general camera settings set in the camerasettings file" >
+	float myDefaultYaw 0.0
+	
+	CameraInput myInput
+	
+	string myCustomFoVToApertureCorrectionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -13.270441 -5, }, outTangents = { 13.270441 5, 0 0, }, properties = { 203, 1227, }, values = { 0 0, 39.811321 15, }, }, numKeys = 2, }" < bhv=inputgraph >
+
+	string myTargetBone < tooltip="If Set it would use the bone position as pivot position" >
+	vec3f myPivot 1.0;1.75;0.0
+	bool myBlendPivotWithMirror FALSE < tooltip="Set this to false to prevent this camera mode from blending its pivot with its mirror mode's pivot." >
+	bool myCanRaiseWhenCloseToTarget TRUE < tooltip="Set this to false to prevent the camera from raising up when the camera is close to the target." >
+	bool myShouldUsePitchCollisionAvoidance TRUE < tooltip="If this is true, the camera will move forward as you're looking up to avoid collision" >
+	bool myHidePlayerOnCameraCollision TRUE < tooltip="If this is true, the player will be hidden when camera collision sphere overlaps with a body part" >
+	float myPivotMirrorSpringStrength 100.0 < tooltip="How smoothly the pivot moves when interpolating. High value means less smooth." >
+	
+	float myOverrideCollisionAnchorY -1.0 < tooltip="Normally the collision anchor is at the pivot height, This overrides it. -1 = no override" >
+
+    LazinessValues myLazinessValues
+	HeightCameraDeviationData myHeightDeviationData
+	CameraSoftEdgeData myPitchSoftEdgeData
+	
+	bool myIsAimCamera false < tooltip="If it's an aimcamera, aimpoint retention will be active" >
+	bool myIsIndoorCamera false < tooltip="If it's an indoor camera, certain indoor functionality will be active" >
+	bool myWantsToUseAimingFOV false < tooltip="If this is set, it will use the user setting Additional aiming FOV (For ADS Cameras)" >
+	bool myAlignToSlope < tooltip="If this is set, will align the camera pitche to the slope. Works when align with horizon option" >
+    bool myShouldOffsetCollisionAnchorX false < tooltip="If this is set, the collision anchor will be offseted on the x-axis within target collision radius" >
+}

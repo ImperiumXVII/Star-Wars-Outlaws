@@ -1,0 +1,823 @@
+include "helix/game system data/fruit/item/item_includes.fruit"
+include "helix/game system data/juice/item/equipmentholding/holding_kays_shockprod.mequipmentholdingconfig"
+include "helix/game system data/juice/talent/adrenaline_rush_talents.mtalent"
+include "helix/game system data/juice/talent/pet_dom_talent.mtalent"
+include "helix/game system data/juice/talent/player_blaster_talents.mtalent"
+include "helix/game system data/juice/talent/player_health_overcome.mtalent"
+include "helix/game system data/juice/talent/player_health_talents.mtalent"
+include "helix/game system data/juice/talent/player_movement_talents.mtalent"
+include "helix/game system data/juice/talent/player_overheat_talents.mtalent"
+include "helix/game system data/juice/talent/player_weaponupgrade_talents.mtalent"
+include "helix/game system data/juice/talent/ship_gear_talents.mtalent"
+
+Item DoM_skill_template < uid=E42FA10C620E47A80000214B568219AA >
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWhereToFind "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWantedByVendor "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myCategory Upgrade
+	myInventoryPouch Hidden
+	myShowInventoryAddNotifications FALSE
+	myShowInventoryRemoveNotifications FALSE
+	myCanBeSold FALSE
+}
+
+Item DoM_skill_SmoothTalk < uid=E42FA10C620E47CF0000215136324BE4 > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"Smooth talker item\", enabled = true, guid = #E41F4D1B6294CD7B00003133691D8B1C, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 438, text = \"Smooth talker\", type = \"MenuLine\""
+}
+
+Item DoM_item_HiddenCompartment < uid=F4D8AE26621647F60000266C957CFA6C > : DoM_skill_template
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Hidden compartment item\", enabled = true, guid = #F4D8AE266216482C000026713C435739, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 11560, text = \"Hidden compartment\", type = \"MenuLine\""
+}
+
+TakedownWeaponEquipmentItem DoM_item_HeavyTakeDown < uid=F4D8AE26621648090000266E270FDC8F > : DoM_skill_template
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"This is this item https://starwars.fandom.com/wiki/Electro-shock_prod\", enabled = true, guid = #D588183D6647216E000000DD3084538E, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10284, text = \"Electro-shock prod\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"The description for the Electro shock prod item. https://starwars.fandom.com/wiki/Electro-shock_prod\", enabled = true, guid = #D588183D66472175000000E0BD0B35FF, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10284, text = \"A handheld device that emits a electric shock on contact, powerful enough to incapacitate resilient enemies that can't be knocked out by hand.\", type = \"MenuLine\""
+	myGameplayDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"Gameplay description for the Electroshok Prod, used by player_shockprod_gadget\", enabled = true, guid = #D588183D6647217C000000E32E3278D5, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10284, text = \"Powerful device used to take down tougher enemies.\", type = \"MenuLine\""
+	myIcon "mySpriteId = -672790812, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_item_icons_05.spritesheet\""
+	myThumbnail helix/baked/ui/loose_images/gear/tool/gear_tool_shock_prod_gameready.dds
+	myHighresImage helix/baked/ui/loose_images/gear/tool/gear_tool_shock_prod_gameready_fullsize.dds
+	myGraphObject "helix/graph objects/weapon/wpn_shockprod.mgraphobject"
+	myInventoryPouch ToolsAndGadgets
+	myHoldingConfig < uid=D588183D664721BC000000EC11E83AD0 > = holding_kays_shockprod D588183D64EDAC8200006965BC535F2A
+}
+
+Item DoM_skill_HardBall < uid=F4D8AE26621648800000267CBA6CAE51 > : DoM_skill_template
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Hard ball item\", enabled = true, guid = #F4D8AE26621648800000267BF2613403, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 11560, text = \"Hard ball\", type = \"MenuLine\""
+}
+
+UpgradeItem DoM_skill_Endurance < uid=D9ED8AD46221CBA9000039F12A7DFA1F > : DoM_skill_template
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of the Armored Undershirt item\", enabled = true, guid = #E41F4D1B6363ACED000037A42F44B15B, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 10693, text = \"Armored Undershirt\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"Armored Undershirt description for the Tool's Menu\", enabled = true, guid = #09AEDAAA65AA4410000AB05AA4C89DE4, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10693, text = \"Medium Health increase.\", type = \"MenuLine\"}"
+	myGameplayDescription "aurabesh = false, branch = \"MAIN\", contextComment = 'Gameplay desscription for the item \"Armored Undershirt\", used by DoM_skill_Endurance', enabled = true, guid = #2AE2EC8566212E2D00030BEB3E1F02F1, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10284, text = \"Strengthened piece of clothing used to increases Kay's health.\", type = \"MenuLine\"}"
+	myIcon "mySpriteId = 428313083, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_skill_icons_02.spritesheet\""
+	myTier Big
+	myInventoryPouch ToolsAndGadgets
+	myTalents
+	{
+		Talent player_health < uid=D9ED8AD46221CC7D000028184942D539 > = player_health_talent D9ED8AD46221CB2E000039E9D845DA17
+	}
+}
+
+UpgradeItem "DoM skill Speed Boost" < uid=F8252D3C6261192900002DE1DFEE6107 > : DoM_skill_template
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Speed Boost Item\", enabled = true, guid = #F8252D3C6261193C00002DE46AB2973D, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 11560, text = \"Speed boost\", type = \"MenuLine\""
+}
+
+UpgradeItem "DoM skill HydroRepulsor" < uid=F8252D3C62611AE500002DEA622E9F0F > : DoM_skill_template
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Landing Repulsor Item\", enabled = true, guid = #F8252D3C62611B0100002DEF3AAE07CE, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 11560, text = \"Landing repulsor\", type = \"MenuLine\""
+}
+
+UpgradeItem "DoM skill Dissipator" < uid=F8252D3C62693BE100002E81179F8F3E > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"Dissipator Item\", enabled = true, guid = #F8252D3C62693BF400002E84D8A8D8CB, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 438, text = \"Dissipator\", type = \"MenuLine\""
+	myTalents
+	{
+		Talent player_overheat < uid=F8252D3C626953FD00002E42C2EFD4C6 > = player_overheat_talent F8252D3C62693BB600002E8065C12632
+	}
+}
+
+UpgradeItem DoM_skill_Lockpick < uid=E41F4D1B6272983900003558D0A38183 > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"Lockpicking Item\", enabled = true, guid = #E41F4D1B62729A0C0000356819C878A1, lineVersion = 2, maxLength = 0, productId = -1, sectionId = -1, text = \"Lockpick\", type = \"MenuLine\""
+	myTalents
+	{
+	}
+}
+
+UpgradeItem Dom_skill_PetCacheDetection < uid=E41F4D1B628630680000792BE46C5123 > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"Item that unlocks Pet Smuggler cache detection\", enabled = true, guid = #E41F4D1B62862F91000079290FE09633, lineVersion = 4, maxLength = 0, productId = -1, sectionId = -1, text = \"Pet Detection\", type = \"MenuLine\""
+	myIcon ""
+	myCategory Upgrade
+	myQuality Standard
+	myInventoryPouch Hidden
+	myAgentInventoryCapacity ""
+	mySpeederInventoryCapacity ""
+	mySpaceshipInventoryCapacity ""
+	myPetInventoryCapacity ""
+	myDefaultInventory Agent
+	myLootGraphObject ""
+	myAllowUsingLootGraphObjectWithAnyAmount TRUE
+	myBlockedLootBehavior Default
+	myIsAutoLoot FALSE
+	myBuyPrice 0
+	myCanBeSold TRUE
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+	myAmount < uid=E41F4D1B628630680000792C86AA1929 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory Item
+		myParentLevelsToUseInInstanceName 1
+	}
+	myTalents
+	{
+	}
+}
+
+UpgradeItem Dom_skill_Blabbermouth < uid=E41F4D1B629A10FC00008D1845DDD90A > : DoM_skill_template
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Item that unlocks the blabbermouth moment of opportunity\", enabled = true, guid = #E41F4D1B629A10B200008D16C3DF5584, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 11560, text = \"Fast-Talk\", type = \"MenuLine\""
+	myIcon ""
+	myCategory Upgrade
+	myQuality Standard
+	myInventoryPouch Hidden
+	myAgentInventoryCapacity ""
+	mySpeederInventoryCapacity ""
+	mySpaceshipInventoryCapacity ""
+	myPetInventoryCapacity ""
+	myDefaultInventory Agent
+	myLootGraphObject ""
+	myAllowUsingLootGraphObjectWithAnyAmount TRUE
+	myBlockedLootBehavior Default
+	myIsAutoLoot FALSE
+	myBuyPrice 0
+	myCanBeSold TRUE
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+	myAmount < uid=E41F4D1B629A10FC00008D193EDFAA63 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory Item
+		myParentLevelsToUseInInstanceName 1
+	}
+	myTalents
+	{
+	}
+}
+
+UpgradeItem Dom_skill_Shoplifting < uid=F8252D3C62B02FF400003558980D81DE > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"Item that unlocks the shoplifting moment of opportunity\", enabled = true, guid = #F8252D3C62B03019000035608148850B, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 459, text = \"Shoplifting\", type = \"MenuLine\""
+}
+
+Item DoM_skill_Improvisator < uid=F4D8AE2662B17D2D000035BAA6D49568 > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"Improvisator item\", enabled = true, guid = #F4D8AE2662B17CE5000035B54A9EC5BC, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 438, text = \"Improvisator\", type = \"MenuLine\""
+	myDescription ""
+	myIcon ""
+	myCategory Upgrade
+	myQuality Standard
+	myInventoryPouch Hidden
+	myAgentInventoryCapacity ""
+	mySpeederInventoryCapacity ""
+	mySpaceshipInventoryCapacity ""
+	myPetInventoryCapacity ""
+	myDefaultInventory Agent
+	myLootGraphObject ""
+	myAllowUsingLootGraphObjectWithAnyAmount TRUE
+	myBlockedLootBehavior Default
+	myIsAutoLoot FALSE
+	myBuyPrice 0
+	myCanBeSold TRUE
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+	myAmount < uid=F4D8AE2662B17D2D000035BB21FEC383 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory Item
+		myParentLevelsToUseInInstanceName 1
+	}
+}
+
+UpgradeItem DoM_skill_Tough < uid=F4D8AE266334130500005E8D7C2E6026 > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myTalents
+	{
+		Talent player_health < uid=F4D8AE266334130500005E8EEA5A76E9 > = player_health_talent_2 F4D8AE266385F9C90000BDFFF4F76F91
+	}
+}
+
+UpgradeItem Dom_skill_LightFeet < uid=E41F4D1B63626AC70000A5D0A444103A > : DoM_skill_template
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Item that grants you the Light feet ability\", enabled = true, guid = #E41F4D1B636396FD000032AFED439AAB, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 438, text = \"Light Feet\", type = \"MenuLine\""
+	myTalents
+	{
+		Talent "New Talent" < uid=09AEDAAA657C16B300051FC0A2508915 > = Lightfooted 09AEDAAA657C15B20002753ACE0C4F59
+	}
+}
+
+UpgradeItem DoM_item_HiddenPouches < uid=F4D8AE26636BA44100018A9D8D5F828E > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myInventoryPouch Hidden
+	myCanBeSold FALSE
+	myAmount < uid=F4D8AE2663736C6C0000AA6D31E297E9 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory Item
+		myParentLevelsToUseInInstanceName 1
+	}
+}
+
+UpgradeItem DoM_skill_SneakShot < uid=F4D8AE266374E8C6000285C71656D614 > : DoM_skill_template
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Item that grants you the Sneak Shot ability\", enabled = true, guid = #F4D8AE266374E885000285C6CCEF6CEE, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 438, text = \"Sneak Shot\", type = \"MenuLine\""
+	myAmount < uid=F4D8AE266374E8C6000285C876013380 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory Item
+		myParentLevelsToUseInInstanceName 1
+	}
+	myTalents
+	{
+		Talent DOM_SneakShot < uid=1C73D33B668419950004A30DF7AB441A > = DOM_SneakShot 1C73D33B668419330004A230093C17C2
+	}
+}
+
+UpgradeItem DoM_skill_Sabotage < uid=F4D8AE26638DFC69000893DA1438D469 > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myAmount < uid=F4D8AE26638DFC69000893DBFAC1E6C9 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory Item
+		myParentLevelsToUseInInstanceName 1
+	}
+	myTalents
+	{
+	}
+}
+
+UpgradeItem DoM_item_ItemCapIncrease1 < uid=F4D8AE266453A7AA0001DBBEB7A68091 > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myInventoryPouch Hidden
+	myCanBeSold FALSE
+	myAmount < uid=F4D8AE266453A7AA0001DBBFB6B1D77B >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory Item
+		myParentLevelsToUseInInstanceName 1
+	}
+}
+
+UpgradeItem DoM_item_ItemCapIncrease2 < uid=F4D8AE266453A7AA0001DBC09FD1B11B > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myInventoryPouch Hidden
+	myCanBeSold FALSE
+	myAmount < uid=F4D8AE266453A7AA0001DBC1B3A07BFC >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory Item
+		myParentLevelsToUseInInstanceName 1
+	}
+}
+
+UpgradeItem "DoM skill SpeederJump" < uid=F4D8AE266454EA450000B3CB44F314CB > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"Landing Repulsor Item\", enabled = true, guid = #F4D8AE266454EA1E0000B3C9AE8399F6, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 438, text = \"Speeder Jump\", type = \"MenuLine\""
+	myAmount < uid=F4D8AE266454EA450000B3CCEFA3CC46 >
+	{
+	}
+}
+
+Item DoM_item_ShipTurret < uid=F4D8AE2664C0D1850000B27F0E2F4836 > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myAmount < uid=F4D8AE2664C0D1850000B280CE84484E >
+	{
+	}
+}
+
+UpgradeItem DoM_item_SonicImploderUpgrade < uid=F4D8AE2664C0E2260000B2A83A00FCBA > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myInventoryPouch Hidden
+	myCanBeSold FALSE
+	myAmount < uid=F4D8AE2664C0E2260000B2A970CB3A31 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory Item
+		myParentLevelsToUseInInstanceName 1
+	}
+}
+
+UpgradeItem DoM_item_AdrenalineRushEnvironmentTarget < uid=B0ED925064E852ED0000A1A36EC3AF14 > : DoM_skill_template
+{
+	myAgentInventoryCapacity 1
+	myTalents
+	{
+		Talent "New Talent" < uid=7113C6116643721D0002D06C02FE3401 > = Adrenaline_Rush_EQ_090 7113C61166436F58000000D44B90E30F
+	}
+}
+
+UpgradeItem DoM_item_AdrenalineRushCritShot < uid=B0ED925064E853FA0000A1A9E43D6843 > : DoM_skill_template
+{
+}
+
+UpgradeItem DoM_item_DriversAim < uid=B0ED925064E8810A0000953D00A1B0C4 > : DoM_skill_template
+{
+}
+
+UpgradeItem DoM_item_AdvancedSlicing < uid=F4D8AE266509C33E00008E8C4D6E9676 > : DoM_skill_template
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Name of the slicing kit tool\", enabled = true, guid = #3B9A06CF661551D8000000CBD707FA74, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10693, text = \"Slicing Kit\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"Description of the slicing kit tool\", enabled = true, guid = #3B9A06CF661551E4000000CD5092D5CD, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10693, text = \"A tool for slicing into certain types of locked doors and containers.\", type = \"MenuLine\""
+	myGameplayDescription "branch = \"MAIN\", contextComment = \"Gameplay description of slicing kit tool\", enabled = true, guid = #BAC43446663A40A5000000C911F3F776, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10284, text = \"A tool for slicing certain types of locked doors.\", type = \"MenuLine\""
+	myIcon "mySpriteId = -1504180926, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_item_icons_05.spritesheet\""
+	myThumbnail helix/baked/ui/loose_images/gear/tool/gear_tool_slicing_kit_gameready.dds
+	myHighresImage helix/baked/ui/loose_images/gear/tool/gear_tool_slicing_kit_gameready_fullsize.dds
+	myInventoryPouch ToolsAndGadgets
+	myCanBeSold FALSE
+	myAmount < uid=F4D8AE266509C33E00008E8D150FDE9F >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory Item
+		myParentLevelsToUseInInstanceName 1
+	}
+}
+
+UpgradeItem DoM_skill_JawaHaggling < uid=F4D8AE26650C3EAD0003EBD5E7F72918 > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myAmount < uid=F4D8AE26650C3EAD0003EBD6A4034419 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory Item
+		myParentLevelsToUseInInstanceName 1
+	}
+	myTalents
+	{
+	}
+}
+
+UpgradeItem DoM_skill_Pet_Perceptive < uid=D00CF654650DB5130008C2766085DD7D > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myAmount < uid=D00CF654650DB5130008C277DC7F688A >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory Item
+		myParentLevelsToUseInInstanceName 1
+	}
+	myTalents
+	{
+		Talent Pet_DoM_Talent_Perceptive < uid=D00CF654650DB5430009E4B9D1FBF4C2 > = Pet_DoM_Talent_Perceptive D00CF654650DB4D20008C23CE8E496B8
+	}
+}
+
+UpgradeItem DoM_skill_Pet_Efficient < uid=75B1D5B3651E73CF00019D92D825B05E > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+UpgradeItem DoM_skill_Sabacc_DoubleDrawCheat < uid=E7561B026527F1F30000EA9E3ABF28DF > : DoM_skill_template
+{
+}
+
+UpgradeItem DoM_skill_Sabacc_DiceCheat < uid=E7561B02652816D40003237BA5649166 > : DoM_skill_template
+{
+}
+
+UpgradeItem DoM_skill_Improvise < uid=F4D8AE2665436DA00001D2E9DA5E5BFC > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myAmount < uid=F4D8AE2665436DA00001D2EAA2AC739F >
+	{
+	}
+	myTalents
+	{
+		Talent player_health < uid=F4D8AE2665436DA00001D2EB5C6AC488 > = player_health_talent_3 F4D8AE2665436D5400013D599081A2AE
+	}
+}
+
+UpgradeItem DoM_skill_Adapt < uid=F4D8AE2665436DFC0002762172E1F768 > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myAmount < uid=F4D8AE2665436DFC00027622DCF99B68 >
+	{
+	}
+	myTalents
+	{
+		Talent "New Talent" < uid=09AEDAAA6572D50C001107A607C2DC00 > = player_health_bactaHealing2 09AEDAAA6571F192000C639E122FBBE9
+	}
+}
+
+UpgradeItem DoM_skill_SilentLockpicking < uid=09AEDAAA654E2B6D0053567AF689E0A4 > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myAmount < uid=09AEDAAA654E2B6D0053567B8DAF9C02 >
+	{
+	}
+}
+
+UpgradeItem DoM_skill_Overcome < uid=09AEDAAA6557397B000496D1F45DCCA0 > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myAmount < uid=09AEDAAA6557397B000496D2008D8C6A >
+	{
+	}
+	myTalents
+	{
+		Talent "New Talent" < uid=09AEDAAA65573971000496CE5935A23B > = player_health_overcome 09AEDAAA655739060004967D5C0EF06C
+	}
+}
+
+UpgradeItem DoM_skill_Survivor < uid=09AEDAAA6560AB19000C39452253D4F1 > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myAmount < uid=09AEDAAA6560AB19000C394657B67EFC >
+	{
+	}
+	myTalents
+	{
+		Talent player_health < uid=09AEDAAA6560AB19000C394735141F83 > = player_health_talent_4 09AEDAAA6560AB42000DBB007B791A37
+	}
+}
+
+UpgradeItem DoM_skill_AssistedScavenging < uid=09AEDAAA6568BF5000002E63649A6A13 > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myAmount < uid=09AEDAAA6568BF5000002E643AA6D8DB >
+	{
+	}
+	myTalents
+	{
+	}
+}
+
+UpgradeItem DoM_skill_SmokeBomb_EM < uid=CC69B221657082F8000166E90B9AC275 > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myAmount < uid=CC69B221657082F8000166EA5AEF9156 >
+	{
+	}
+	myTalents
+	{
+	}
+}
+
+UpgradeItem DoM_skill_SmokeBomb_Concussion < uid=CC69B221657082F8000166ECB357A799 > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myAmount < uid=CC69B221657082F8000166ED6E0352EC >
+	{
+	}
+	myTalents
+	{
+	}
+}
+
+UpgradeItem DoM_skill_BactaUpgrade < uid=09AEDAAA6571E7F40002B5DB7093D727 > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myAmount < uid=09AEDAAA6571E7F40002B5DCA5C3C967 >
+	{
+	}
+	myTalents
+	{
+		Talent "New Talent" < uid=09AEDAAA6572D524001107AB68E1B55E > = player_health_bactaHealing 09AEDAAA6571EFED000C43DC9E8F6EDA
+	}
+}
+
+Item DoM_skill_SneakyTraps < uid=D00CF6546576EA2E0002A6EDEC1B25C7 > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myCategory Upgrade
+	myInventoryPouch Hidden
+	myShowInventoryAddNotifications FALSE
+	myShowInventoryRemoveNotifications FALSE
+	myCanBeSold FALSE
+	myAmount < uid=D00CF6546576EA2E0002A6EEB20588B9 >
+	{
+	}
+}
+
+UpgradeItem DoM_skill_TheMore < uid=09AEDAAA65772644000266C1A56C632C > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myAmount < uid=09AEDAAA65772644000266C23B4F8B1F >
+	{
+	}
+	myTalents
+	{
+		Talent "New Talent" < uid=09AEDAAA65772644000266C330BFF8DF > = crackshot_TheMore_extra_targets 09AEDAAA657726E800064F8F2A385ADE
+	}
+}
+
+Item Dom_Skill_looping_DatabankOnly < uid=5EA540EF65797D0A0002666E838E145B > : DoM_skill_template
+{
+}
+
+Item Dom_Skill_Roll_DatabankOnly < uid=5EA540EF657986EB0001E60BD4F1493A > : DoM_skill_template
+{
+	myAmount < uid=5EA540EF657986EB0001E60CAF16E100 >
+	{
+	}
+}
+
+Item Dom_Skill_TopRoll_DatabankOnly < uid=5EA540EF657986EB0001E60DEECF86FD > : DoM_skill_template
+{
+	myAmount < uid=5EA540EF657986EB0001E60EA70EBF8F >
+	{
+	}
+}
+
+UpgradeItem Dom_Item_TacticalFootwear < uid=09AEDAAA657C2768000602DC464BD40F > : DoM_skill_template
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Item that grants you the Tactical Footwear ability\", enabled = true, guid = #09AEDAAA657C26B6000602D0C083FDEF, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 438, text = \"Scavenger's Footwear\", type = \"MenuLine\"}"
+	myDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"Tool's menu description of Tactical Footwear\", enabled = true, guid = #09AEDAAA65AA3C820002DCB160C83279, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10693, text = \"Increases Kay's speed while crouching.\", type = \"MenuLine\""
+	myGameplayDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"Gameplay description for the item \\"Scavenger's Footwear\\". Used by Dom_Item_TacticalFootwear\", enabled = true, guid = #2AE2EC8566212E7A00030BEC8B75BAF7, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10284, text = \"Improved boots used to increases Kay's speed while crouching.\", type = \"MenuLine\""
+	myIcon "mySpriteId = 1537124102, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_skill_icons_02.spritesheet\""
+	myInventoryPouch ToolsAndGadgets
+	myAmount < uid=09AEDAAA657C2768000602DDFAAA06F6 >
+	{
+	}
+	myTalents
+	{
+		Talent "New Talent" < uid=09AEDAAA657C2768000602DE47B3C435 > = TacticalFootwear 09AEDAAA657C270E000602D5FA0C3220
+	}
+}
+
+UpgradeItem Dom_Item_Sharpshooting < uid=1C73D33B657C3D4100069C652A693770 > : DoM_skill_template
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Gain big Adrenaline bonus when hitting headshots\", enabled = true, guid = #1C73D33B657C3D4600069C66F8E50B4C, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 2379, text = \"Sharp shooting\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myAmount < uid=1C73D33B657C3E2500076A63727A274E >
+	{
+	}
+	myTalents
+	{
+		Talent DOM_SharpShooting < uid=1C73D33B657C4315000B5C98742906A2 > = DOM_SharpShooting 1C73D33B657C3EBE000820C1D7D600F5
+	}
+}
+
+UpgradeItem Dom_Item_CanITryThat < uid=1C73D33B657C787F0000BD4A3F4C0C5A > : DoM_skill_template
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Allows Kay to use the higher tier of pickup weapons\", enabled = true, guid = #1C73D33B657C78840000BD7F80AD2DBC, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 2517, text = \"Can I try that ?\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myIcon "mySpriteId = 536918263, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_generic_01.spritesheet\""
+}
+
+UpgradeItem Dom_Item_PoweredRecharge < uid=1C73D33B6581AC34000A12FD1555A92B > : DoM_skill_template
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Provides adrenaline bonuses on perfect reloads\", enabled = true, guid = #1C73D33B6581ACCF000A130D43097517, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2384, text = \"Perfected Cooling\", type = \"MenuLine\""
+	myGameplayDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myTalents
+	{
+		Talent DOM_PoweredCharge < uid=1C73D33B6581B860000CBA1318E60C96 > = DOM_PoweredRecharge 1C73D33B6581AD18000A13134D96A145
+	}
+}
+
+UpgradeItem Dom_Item_AskLater < uid=1C73D33B6581D62200022715CC9D2ABF > : DoM_skill_template
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Grant small Adrenaline bonuses on hip-fire hits and near misses.\", enabled = true, guid = #1C73D33B6581D6260002274A50279E57, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 2387, text = \"Ask Later\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myGameplayDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myTalents
+	{
+		Talent DOM_AskLater < uid=1C73D33B6581D6C20002E4552AE547F5 > = DOM_AskLater 1C73D33B6581D6DE0002E456633EE69C
+	}
+}
+
+UpgradeItem Dom_Item_ShootFirst < uid=1C73D33B6582D0F10002BCDB12DED8D7 > : DoM_skill_template
+{
+	myGameplayDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myTalents
+	{
+		Talent DOM_ShootFirst < uid=1C73D33B65831B0600045901529553DA > = DOM_ShootFirst 1C73D33B65830CEE00019FBD211B8FD0
+	}
+}
+
+UpgradeItem DoM_skill_JustImprovise < uid=3B9A06CF6582FD1B0004D7BAD755BB08 > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myAmount < uid=3B9A06CF6582FD1B0004D7BB8162F144 >
+	{
+	}
+	myTalents
+	{
+		Talent player_health < uid=3B9A06CF6582FD1B0004D7BCD18CC926 > = DOM_JustImprovise 3B9A06CF6582FD57000593346D57E846
+	}
+}
+
+UpgradeItem Dom_UpgradeItem_ShipUpgradedDodge < uid=AE0405476584129A000796DC0A48753A > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDefaultInventory Spaceship
+	myAmount < uid=AE0405476584129A000796DD80D8379F >
+	{
+	}
+	myTalents
+	{
+		Talent "New Talent" < uid=AE0405476584129A000796DE833460C8 > = ship_upgraded_dodge AE040547657B0F880001F089BB901B6B
+	}
+}
+
+UpgradeItem Dom_UpgradeItem_Ship180Maneuver < uid=AE040547658413DF00089B8951F9EA6D > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDefaultInventory Spaceship
+	myAmount < uid=AE040547658413DF00089B8AF36A6D6D >
+	{
+	}
+	myTalents
+	{
+		Talent "New Talent" < uid=AE040547658413DF00089B8B477D8D0A > = ship_maneuver_180 AE040547657B0F9D0001F08CDFB59B26
+	}
+}
+
+UpgradeItem Dom_UpgradeItem_Ship360Maneuver < uid=AE040547658413DF00089B8C18C7DB20 > : DoM_skill_template
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDefaultInventory Spaceship
+	myAmount < uid=AE040547658413DF00089B8D86F3F0D7 >
+	{
+	}
+	myTalents
+	{
+		Talent "New Talent" < uid=AE040547658413DF00089B8E2652E461 > = ship_maneuver_360 AE040547657B0FEA0001F09A4EEC3154
+	}
+}
+
+UpgradeItem Dom_Item_DecryptorModule < uid=09AEDAAA65AA3C870002DCB273F35F8F > : DoM_skill_template
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Name of the Decryption Module item\", enabled = true, guid = #09AEDAAA65AA3C9F0002E0126FFCC102, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10693, text = \"Decryption Module\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"Tool's Menu description for the Decryption Module\", enabled = true, guid = #09AEDAAA65AA3C6D0002DCAC5213D8A1, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10693, text = \"Grants the ability to decrypt mysterious separatist transmissions.​\", type = \"MenuLine\"}"
+	myGameplayDescription "aurabesh = false, branch = \"MAIN\", contextComment = 'Gameplay Description for the item \"Decryption Module\". Used by Dom_Item_DecryptorModule', enabled = true, guid = #2AE2EC8566212EB500030BED00D64948, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10284, text = \"An outdated tools used to decrypt transmissions from the Clone Wars.\", type = \"MenuLine\""
+	myIcon "mySpriteId = 664907007, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_skill_icons_03.spritesheet\""
+	myInventoryPouch ToolsAndGadgets
+}
+
+UpgradeItem DoM_skill_Pet_EffectivePounce < uid=75B1D5B365B28DEF000B30E33BFF2F0E > : DoM_skill_template
+{
+	myGameplayDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWantedByVendor "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myTalents
+	{
+	}
+}
+
+UpgradeItem DoM_skill_ILikeThisThing < uid=09AEDAAA65B38665000074EA91AC6262 > : DoM_skill_template
+{
+	myGameplayDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myHint "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myWantedByVendor "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myTalents
+	{
+		Talent "New Talent" < uid=09AEDAAA65B3897D0000787287867589 > = WeaponUpgrade_Talent_IncreasedAmmoDoM 09AEDAAA65B388F70000786468D0DCF0
+	}
+}
+
+UpgradeItem DoM_item_SlicingUpgrade1 < uid=09AEDAAA65DDDBA7000000FECF984E23 > : DoM_skill_template
+{
+}
+
+UpgradeItem DoM_item_SlicingUpgrade2 < uid=09AEDAAA65DDDBA7000000FFFE73C9AB > : DoM_skill_template
+{
+}
+
+UpgradeItem DoM_skill_Blabbermouth_Upgrade < uid=85F4BAC265F2D0030003D8ED38ACD3EC > : DoM_skill_template
+{
+}
+
+UpgradeItem DoM_skill_JustImprovise_BreakIntoFactionVault < uid=2AE2EC85660EAA1D001C4526FD7762BF > : DoM_skill_template
+{
+}
+
+UpgradeItem DLC2_Rok_Dom_UpgradeItem_Ship180Maneuver < uid=C10161EF6764538A00094A645F5C570A > : Dom_UpgradeItem_Ship180Maneuver
+{
+	myDefaultInventory RokanaSpaceship
+	myAmount < uid=C10161EF6764538A00094A65EE694BF8 >
+	{
+	}
+}
+
+UpgradeItem DLC2_Rok_Dom_UpgradeItem_Ship360Maneuver < uid=C10161EF677E6ED6000005F8F11FA138 > : Dom_UpgradeItem_Ship360Maneuver
+{
+	myDefaultInventory RokanaSpaceship
+	myAmount < uid=C10161EF677E6ED6000005F98EA6BF8D >
+	{
+	}
+}
+
+UpgradeItem DLC2_Rok_Dom_UpgradeItem_ShipUpgradedDodge < uid=C10161EF677E70AF000006162D932076 > : Dom_UpgradeItem_ShipUpgradedDodge
+{
+	myDefaultInventory RokanaSpaceship
+	myAmount < uid=C10161EF677E70AF0000061748733D6A >
+	{
+	}
+}
+

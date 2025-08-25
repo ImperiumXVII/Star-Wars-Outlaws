@@ -1,0 +1,52 @@
+include "snowdrop/modules/core/physics/collisionmaterials.fruit"
+include "helix/game system data/fruit/explosion/explosion.fruit"
+
+list WaterList
+{
+    CollisionMaterial*
+}
+
+class FluffySettings
+{
+	int myDecalGenericMaxInstances 10 < min=0 >
+	int myDecalImpactsMaxInstances 10 < min=0 >
+	int myDecalExplosionsMaxInstances 10 < min=0 >
+	int myDecalFadeOutMaxInstances 10 < min=0 >
+	float myDecalMaxDistance 100.0 < min=0.0 >
+}
+
+class GameplayDecalSettings
+{
+	int myGenericMaxInstances 10 < min=0 >
+	
+	int myStaticImpactsMaxInstances 50 < min=0 tooltip="Ground or static props" >
+	int myDynamicImpactsMaxInstances 20 < min=0 tooltip="NPCs (Spaceships), dynamic props, etc. Much more expensive than the static ones" >
+	int myDynamicPlayerShipImpactsMaxInstances 20 < min=0 tooltip="Much more expensive than the static ones" >
+	
+	int myExplosionsMaxInstances 10 < min=0 >
+	
+	int myFootstepNPCsMaxInstances 30 < min=0 >
+	int myFootstepPlayerMaxInstances 20 < min=0 >
+	int myFootstepPetMaxInstances 10 < min=0 >
+	
+	int myFadeOutMaxInstances 20 < min=0 >
+	
+	float myGroundMaxDistance 100.0 < min=0.0 >
+	float mySpaceMaxDistance 500.0 < min=0.0 >
+}
+
+class CombatSettings < uid=auto >
+{
+    WaterList myWaterMaterials
+	Explosion* myDefaultExplosion < tooltip="Explosion used on Damage Area code" >
+	float myNearbyDistanceForLocomotionStyle 100.f
+    float myNearbyDistanceForVoiceLevel 100.0f
+    float myNearbyDistanceForMusicType 100.0f
+    float myNearbyDistanceForUI 100.0f
+    float myNearbyDistanceForQuest 100.0f
+	FluffySettings myFluffy
+	GameplayDecalSettings myGameplayDecalsLow
+	GameplayDecalSettings myGameplayDecalsMedium
+	GameplayDecalSettings myGameplayDecalsHigh
+	GameplayDecalSettings myGameplayDecalsUltra
+}

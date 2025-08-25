@@ -1,0 +1,150 @@
+include "helix/game system data/fruit/attribute/attribute_dictionary.fruit"
+
+AttributeDictionary livingworld_dictionary
+{
+	myFormulaResolveContextType LivingWorldContentLocation
+	myAttributeDefinitionCategories
+	{
+		AttributeDefinitionList Conditions
+		{
+			AttributeDefinition SmugglingRoadblock < uid=E42FA10C60BF1A8C0003DCCB97C1189B >
+			{
+				myOriginalFormula "contract05_fp_smugglerun_isactive = 1"
+			}
+			AttributeDefinition RoadblockDefault < uid=E42FA10C60C08721000104810F0154C4 >
+			{
+				myOriginalFormula "Wanted.Level > 0 AND LivingWorldContentLocation.DistanceToPlayer <= ContentLocationDistanceMedium"
+			}
+		}
+		AttributeDefinitionList DistancesDefinition
+		{
+			AttributeDefinition ContentLocationDistanceVeryNear < uid=83E36AE362CE7AE400004E86FA7848D1 >
+			{
+				myOriginalFormula 100
+				myBonusType FlatValue
+				myUIName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			}
+			AttributeDefinition ContentLocationDistanceNear < uid=83E36AE362CE7B4600004E8E6A3927E8 >
+			{
+				myOriginalFormula 250
+				myBonusType FlatValue
+				myUIName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			}
+			AttributeDefinition ContentLocationDistanceMedium < uid=83E36AE362CE7B4600004E8FF5DE5CE1 >
+			{
+				myOriginalFormula 500
+				myBonusType FlatValue
+				myUIName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			}
+			AttributeDefinition ContentLocationDistanceFar < uid=83E36AE362CE7B4600004E90A78D9768 >
+			{
+				myOriginalFormula 750
+				myBonusType FlatValue
+				myUIName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			}
+			AttributeDefinition ContentLocationDistanceVeryFar < uid=83E36AE362CE7B4600004E91445026E8 >
+			{
+				myOriginalFormula 1000
+				myBonusType FlatValue
+				myUIName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			}
+			AttributeDefinition SpaceContentLocationDistanceVeryNear < uid=91CF4D486447D54600020A12AD58A0BA >
+			{
+				myOriginalFormula 750
+				myBonusType FlatValue
+				myUIName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			}
+			AttributeDefinition SpaceContentLocationDistanceNear < uid=91CF4D486447D54600020A137963972A >
+			{
+				myOriginalFormula 1000
+				myBonusType FlatValue
+				myUIName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			}
+			AttributeDefinition SpaceContentLocationDistanceMedium < uid=91CF4D486447D54600020A1467FDA7E2 >
+			{
+				myOriginalFormula 2000
+				myBonusType FlatValue
+				myUIName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			}
+			AttributeDefinition SpaceContentLocationDistanceFar < uid=91CF4D486447D54600020A15AACAF66D >
+			{
+				myOriginalFormula 3000
+				myBonusType FlatValue
+				myUIName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			}
+			AttributeDefinition SpaceContentLocationDistanceVeryFar < uid=91CF4D486447D54600020A16C2FFCEFE >
+			{
+				myOriginalFormula 5000
+				myBonusType FlatValue
+				myUIName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			}
+		}
+		AttributeDefinitionList GenericDistanceConditions
+		{
+			AttributeDefinition isTooCloseFromPlayer < uid=2AE2EC8564133ECC0001DB1EA17CF5DB >
+			{
+				myOriginalFormula "LivingWorldContentLocation.DistanceToPlayer <= 50"
+			}
+			AttributeDefinition isInPlayerNearLazyFrustrum < uid=2AE2EC8564133F2E0001DB21DFCD1BBA >
+			{
+				myOriginalFormula LivingWorldContentLocation.IsInLivingWorldLazyFrustumNear
+			}
+			AttributeDefinition isFarEnoughAndNotVisibleToplayer < uid=2AE2EC8564133FA50001DB24D48C2993 >
+			{
+				myOriginalFormula "NOT (isTooCloseFromPlayer OR isInPlayerNearLazyFrustrum)"
+			}
+		}
+		AttributeDefinitionList AmbientLifeConditions
+		{
+			AttributeDefinition Spawn_ShortRange_DayNight < uid=2AE2EC8564133D250001DB0E2C2BB951 >
+			{
+				myOriginalFormula "LivingWorldContentLocation.DistanceToPlayer < 45"
+			}
+			AttributeDefinition Spawn_ShortRange_Day < uid=2AE2EC8564133D250001DB0F63F55FB8 >
+			{
+				myOriginalFormula "LivingWorldContentLocation.DistanceToPlayer < 45"
+			}
+			AttributeDefinition Spawn_ShortRange_Night < uid=2AE2EC8564133D250001DB10233DE38B >
+			{
+				myOriginalFormula "LivingWorldContentLocation.DistanceToPlayer < 45"
+			}
+			AttributeDefinition Spawn_MediumRange_DayNight < uid=2AE2EC8564133D250001DB114C443B50 >
+			{
+				myOriginalFormula "LivingWorldContentLocation.DistanceToPlayer < 90"
+			}
+			AttributeDefinition Spawn_MediumRange_Day < uid=2AE2EC8564133D250001DB123DD4E2B8 >
+			{
+				myOriginalFormula "LivingWorldContentLocation.DistanceToPlayer < 90"
+			}
+			AttributeDefinition Spawn_MediumRange_Night < uid=2AE2EC8564133D250001DB13F4157225 >
+			{
+				myOriginalFormula "LivingWorldContentLocation.DistanceToPlayer < 90"
+			}
+			AttributeDefinition Despawn_ShortRange_DayNight < uid=2AE2EC8564133D250001DB1438F8F697 >
+			{
+				myOriginalFormula "LivingWorldContentLocation.DistanceToPlayer > 55"
+			}
+			AttributeDefinition Despawn_ShortRange_Day < uid=2AE2EC8564133D250001DB15550BD463 >
+			{
+				myOriginalFormula "LivingWorldContentLocation.DistanceToPlayer > 55"
+			}
+			AttributeDefinition Despawn_ShortRange_Night < uid=2AE2EC8564133D250001DB16CF503D58 >
+			{
+				myOriginalFormula "LivingWorldContentLocation.DistanceToPlayer > 55"
+			}
+			AttributeDefinition Despawn_MediumRange_DayNight < uid=2AE2EC8564133D250001DB17908BFACD >
+			{
+				myOriginalFormula "LivingWorldContentLocation.DistanceToPlayer > 110"
+			}
+			AttributeDefinition Despawn_MediumRange_Day < uid=2AE2EC8564133D250001DB186F38EA05 >
+			{
+				myOriginalFormula "LivingWorldContentLocation.DistanceToPlayer > 110"
+			}
+			AttributeDefinition Despawn_MediumRange_Night < uid=2AE2EC8564133D250001DB19649B834D >
+			{
+				myOriginalFormula "LivingWorldContentLocation.DistanceToPlayer > 110"
+			}
+		}
+	}
+}
+

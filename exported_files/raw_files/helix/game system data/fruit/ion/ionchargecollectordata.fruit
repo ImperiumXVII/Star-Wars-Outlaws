@@ -1,0 +1,16 @@
+class IonChargeCollectorData
+{
+	string myMaxCharge 100	 		< tooltip="How much ion charge it can gather until the disabled effect is started" bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	string myDisabledDuration 10   	< tooltip="How long the disabled effect takes" bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	string myFullyIonizedDuration 2   	< tooltip="How long the ship stays fully ionized after ceasing to get ion damage" bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	float myTimeUntilRecovery 3.f   < tooltip="How long since we've last been damaged by an Ion charge until the ion charge starts dropping" min 0.0f >
+	string myRecoveryRate 1 		< tooltip="How much ion charge we're dropping every second" bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	float myResistanceDuration 5.f	< tooltip="Duration of the resistance state. Resistance state is entered after the disabled state is finished" min 0.0f >
+	string myResistanceValue 0.75	< tooltip="How much of the incoming ion charge is mitigated during resistance state (e.g. for a value of 0.3, we mitigate 30% of damage)" bhv=formulaEditor formulaResolveContextType=AgentAttributes min 0.0f max 1.0f >
+	float mySlowDownPercentage 0.f 	< tooltip="By what percentage is the ship slowed by the ion effect" >
+	bool myHasPermanentImmunity false 	< tooltip="If true, the ship will not get any Ion Charge" >
+	string myBrakingPowerToTime "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { -0 -0, -0.602639 -0.038683, }, outTangents = { 0.307335 0.942354, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+
+	uid myFullyIonizedTalent < bhv="constantData" constantDataType="BaseTalent" tooltip="The talent applied when the player's Ion collector bar is full and is immune to stun" >
+	uid myIonChargeShieldBreakTalent < bhv="constantData" constantDataType="BaseTalent" tooltip="The talent applied when the player's Ion Shield is destroyed" >
+}

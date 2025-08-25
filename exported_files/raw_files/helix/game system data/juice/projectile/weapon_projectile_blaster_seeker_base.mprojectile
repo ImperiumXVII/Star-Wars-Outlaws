@@ -1,0 +1,49 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/projectile/realization/small_laser_red.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/small_scatter_seeker.mprojectilerealization"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_seeker.mprojectile"
+
+BallisticProjectile weapon_projectile_blaster_seeker_base < uid=1C021E9562BC4F460000D51D51BE4345 > : weapon_projectile_blaster_scatter
+{
+	myObject
+	{
+		myMaterialType Energy
+		myMass 0.0
+		myFriction 0.0
+		myTravelLifeTime 0.1
+		myAfterFinalImpactLifeTime 1.0
+		myShapeType Point
+		myShapeRadius 0.1
+		myShapeHeight 0.1
+	}
+	myActions
+	{
+		ProjectileActionGameScript "New ProjectileActionGameScript (0)"
+		{
+			myActionTargetType Expired
+			myGameScript "helix/game scripts/gs_projectile_seeker.mgamescript"
+		}
+	}
+	myBounceEnabled FALSE
+}
+
+BallisticProjectile weapon_projectile_blaster_seeker_seeker < uid=1C021E9562BC4F85000027C7F7393703 > : weapon_projectile_blaster_seeker_base
+{
+	myObject
+	{
+		myMaterialType Energy
+		myMass 0.0
+		myFriction 0.0
+		myTravelLifeTime 2.0
+		myAfterFinalImpactLifeTime 1.0
+		myShapeType Point
+		myShapeRadius 0.1
+		myShapeHeight 0.1
+	}
+	myActions
+	{
+	}
+	myAccelerationConstant 0.1
+	mySeekerEnabled TRUE
+}
+

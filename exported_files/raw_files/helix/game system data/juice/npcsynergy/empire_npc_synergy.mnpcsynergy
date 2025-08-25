@@ -1,0 +1,973 @@
+include "helix/game system data/fruit/npc/npcsynergy.fruit"
+include "helix/game system data/juice/legend/legendranks.mlegendrank"
+include "helix/game system data/juice/npc/ash_hiredgundroid.mnpc"
+include "helix/game system data/juice/npc/ash_ms613_ashigahenchman.mnpc"
+include "helix/game system data/juice/npc/ash_myrmite.mnpc"
+include "helix/game system data/juice/npc/ash_myrmitrix.mnpc"
+include "helix/game system data/juice/npc/civ_combatant.mnpc"
+include "helix/game system data/juice/npc/cri_commando.mnpc"
+include "helix/game system data/juice/npc/cri_enforcer.mnpc"
+include "helix/game system data/juice/npc/cri_hiredgundroid.mnpc"
+include "helix/game system data/juice/npc/cri_hiredgunlight.mnpc"
+include "helix/game system data/juice/npc/emp_deathtrooper.mnpc"
+include "helix/game system data/juice/npc/emp_heavytrooper.mnpc"
+include "helix/game system data/juice/npc/emp_officer.mnpc"
+include "helix/game system data/juice/npc/emp_probedroid.mnpc"
+include "helix/game system data/juice/npc/emp_probedroid_ground.mnpc"
+include "helix/game system data/juice/npc/emp_scouttrooper_commander.mnpc"
+include "helix/game system data/juice/npc/emp_scouttrooper_no_speeder.mnpc"
+include "helix/game system data/juice/npc/emp_stormtrooper.mnpc"
+include "helix/game system data/juice/npc/emp_stormtrooper_commander.mnpc"
+include "helix/game system data/juice/npc/hut_beastmaster.mnpc"
+include "helix/game system data/juice/npc/hut_enforcer.mnpc"
+include "helix/game system data/juice/npc/hut_hiredgundroid.mnpc"
+include "helix/game system data/juice/npc/hut_hiredgunlight.mnpc"
+include "helix/game system data/juice/npc/pir_hiredgunheavy.mnpc"
+include "helix/game system data/juice/npc/pir_hiredgunlight.mnpc"
+include "helix/game system data/juice/npc/pyk_assault.mnpc"
+include "helix/game system data/juice/npc/pyk_hiredgundroid.mnpc"
+include "helix/game system data/juice/npc/pyk_hiredgunheavy.mnpc"
+include "helix/game system data/juice/npc/pyk_hiredgunlight.mnpc"
+include "helix/game system data/juice/npc/pyk_leader.mnpc"
+include "helix/game system data/juice/npc/pyk_ms005_pykehenchman.mnpc"
+include "helix/game system data/juice/npc/pyk_ms307_injuredpyke.mnpc"
+include "helix/game system data/juice/npc/pyk_sentinel.mnpc"
+include "helix/game system data/juice/npc/wl_massiff.mnpc"
+include "helix/game system data/juice/npc/wl_sammakho.mnpc"
+include "helix/game system data/juice/npc/wl_tshikara.mnpc"
+include "helix/game system data/juice/npc/zer_hiredgundroid.mnpc"
+include "helix/game system data/juice/rbtags/living_world_activities_binary_tags.mrbtagsbinarytags"
+
+NPCSynergy empire_npc_synergy < uid=5C148C4665DEE3D9000000F23F5FF0E5 >
+{
+	myCoreMembers
+	{
+	}
+	myFillerMember
+	{
+		myPossibleLoadouts
+		{
+		}
+		myNPC < uid=5C148C4665DEE3D9000000F6D9E9AF5C > = emp_stormtrooper 16DEADE661F07FAF00001B5372282E83
+		myWeight 1.0
+	}
+	myMaxAmount 10
+	myFaction 16DEADE65F21E5AB000000B35532A71B
+	myMinLegendRank < uid=5C148C4665E0901A00013960CD9BF59D > = NULLREFERENCE
+	myMaxLegendRank < uid=5C148C4665E0901A0001396120BEB357 > = "Rank 7" 7110821464E3108000012749233D5F7A
+	myTags
+	{
+	}
+}
+
+NPCSynergy Empire_Assault < uid=5C148C4665DEE3D90000010E1145C715 > : empire_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Stormtrooper_Commander
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout rifle
+				{
+					myLoadout < uid=5C148C4665DEEEEB000002414BCCC83B > = emp_Stormtrooper_Rifle 2736B365635F9FBD00009B7F2C729781
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DEE3D90000010FE422E8A9 > = emp_stormtrooper_commander 16DEADE661F7AEBB00001AE449D1C8B8
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=5C148C4665DEE3D900000111BDC86485 > = Faction_DynamicFireteam 616F4596656718720004B92DC03BB4A4
+		RBTagsTag "lwen patrol" < uid=5C148C4665DEE3D900000112828A6146 > = lwen_PatrolTag 2AE2EC8565733841000E925634831E68
+		RBTagsTag "lwen skirmish" < uid=5C148C4665DEE3D900000113711EB61E > = lwen_SkirmishTag 2AE2EC85657338C0000E925A62874336
+		RBTagsTag "lwen guard" < uid=5C148C4665DEE3D9000001147505B128 > = lwen_GuardTag 2AE2EC85657338EC000E925C2351F401
+		RBTagsTag "lwen ambush" < uid=5C148C4665DEE3D9000001158B171F41 > = lwen_AmbushTag 2AE2EC8565733900000E925EEEFFCA0E
+		RBTagsTag "lwen npc in danger" < uid=5C148C4665DEE3D9000001165A46DF34 > = lwen_NpcInDangerTag 2AE2EC8565733917000E9260991B289F
+		RBTagsTag "lwen imperial road block" < uid=5C148C4665DEE3D900000117DE6C3C24 > = lwen_ImperialRoadBlockTag 2AE2EC85657339A2000E9264B62DF6F2
+		RBTagsTag "lwen wanted activities" < uid=5C148C4665DEE3D90000011886B85A30 > = lwen_WantedActivitiesTag 2AE2EC85657339DF000E92665E357269
+		RBTagsTag "lwev smuggler pod" < uid=5C148C4665DEE3D90000011AD9B56656 > = lwev_SmugglerPodTag 2AE2EC8565734188000E926E1BAEF93E
+		RBTagsTag "lwen searchparty" < uid=5C148C46661E63AE005A3AE0136006C3 > = lwen_SearchParty 5C148C46661E631F005A3A8DEE0C566E
+	}
+}
+
+NPCSynergy Empire_Assault_Extd < uid=5C148C4665DF06DF0000010FFEC51DB5 > : Empire_Assault
+{
+	myMinLegendRank < uid=5C148C4665E0904500013962415D3FBE > = "Rank 7" 7110821464E3108000012749233D5F7A
+	myMaxLegendRank < uid=5C148C4665E0904500013963BC4A1930 > = "Rank 15" 7110821464E310CC000127514565BDA3
+}
+
+NPCSynergy Empire_Assault_Assault < uid=5C148C4665DF1059000842138C7A29A7 > : Empire_Assault
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Stormtrooper_Commander
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout rifle
+				{
+					myLoadout < uid=5C148C4665DF105900084214F9DE76A2 > = emp_Stormtrooper_Rifle 2736B365635F9FBD00009B7F2C729781
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DF1059000842151FCDA26D > = emp_stormtrooper_commander 16DEADE661F7AEBB00001AE449D1C8B8
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember Stormtrooper
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout rifle
+				{
+					myLoadout < uid=5C148C4665DF105900084216D465528F > = emp_Stormtrooper_Rifle 2736B365635F9FBD00009B7F2C729781
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DF105900084217890F6EB5 > = emp_stormtrooper 16DEADE661F07FAF00001B5372282E83
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myMinLegendRank < uid=5C148C4665E0905500013964AE6F2439 > = "Rank 15" 7110821464E310CC000127514565BDA3
+	myMaxLegendRank < uid=5C148C4665E09055000139657B9E1EA8 > = "Rank 20" 7110821464E310E10001275686AD600A
+}
+
+NPCSynergy Empire_Sentry < uid=5C148C4665DEE3D900000105686F854E > : empire_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Scout
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout Sniper
+				{
+					myLoadout < uid=5C148C4665DEED660000023A39BB94AB > = emp_ScoutTrooper_SniperRifle 4171A7E16568733C00077654762C8269
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DEE7640000021AC0CC717D > = emp_scouttrooper_no_speeder 2736B36562CD29650001015149027AB1
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=5C148C4665E08F5800013940BAB21823 > = Faction_DynamicFireteam 616F4596656718720004B92DC03BB4A4
+		RBTagsTag "lwen Patrol" < uid=5C148C4665E08F58000139411B3A384C > = lwen_PatrolTag 2AE2EC8565733841000E925634831E68
+		RBTagsTag "lwen skirmish" < uid=5C148C4665E08F5800013942B1F3270F > = lwen_SkirmishTag 2AE2EC85657338C0000E925A62874336
+		RBTagsTag "lwen guard" < uid=5C148C4665E08F5800013943DEBF727B > = lwen_GuardTag 2AE2EC85657338EC000E925C2351F401
+		RBTagsTag "lwen ambush" < uid=5C148C4665E08F5800013944F4E61A8F > = lwen_AmbushTag 2AE2EC8565733900000E925EEEFFCA0E
+		RBTagsTag "lwen npc in danger" < uid=5C148C4665E08F58000139453ED4A407 > = lwen_NpcInDangerTag 2AE2EC8565733917000E9260991B289F
+		RBTagsTag "lwen smuggler pod" < uid=5C148C4665E08F5800013947333EB39A > = lwev_SmugglerPodTag 2AE2EC8565734188000E926E1BAEF93E
+		RBTagsTag "lwev Faction Attack" < uid=5C148C4665E08F5800013948F7C8E510 > = lwev_FactionAttackTag 2AE2EC8565734166000E926C72372B71
+		RBTagsTag "lwen wanted activities" < uid=5C148C4665E08F58000139496CA79372 > = lwen_WantedActivitiesTag 2AE2EC85657339DF000E92665E357269
+	}
+}
+
+NPCSynergy Empire_Sentry_Extd < uid=5C148C4665DF07B500000113C2914662 > : Empire_Sentry
+{
+	myMinLegendRank < uid=5C148C4665E0906300013966D3967EAA > = "Rank 7" 7110821464E3108000012749233D5F7A
+	myMaxLegendRank < uid=5C148C4665E09063000139673FF97E71 > = "Rank 15" 7110821464E310CC000127514565BDA3
+}
+
+NPCSynergy Empire_Sentry_Sentry < uid=5C148C4665DEFD450000025533DC9D7D > : Empire_Sentry
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Scout
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout Sniper
+				{
+					myLoadout < uid=5C148C4665DEFE330000025833E9FFA9 > = emp_ScoutTrooper_SniperRifle 4171A7E16568733C00077654762C8269
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DEFE3300000259E409BBDC > = emp_scouttrooper_no_speeder 2736B36562CD29650001015149027AB1
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember Scout
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout Sniper
+				{
+					myLoadout < uid=5C148C4665DEFE330000025AE3DF7BDC > = emp_ScoutTrooper_SniperRifle 4171A7E16568733C00077654762C8269
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DEFE330000025BAE76595E > = emp_scouttrooper_no_speeder 2736B36562CD29650001015149027AB1
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myMinLegendRank < uid=5C148C4665E0907700013968E860DB5B > = "Rank 15" 7110821464E310CC000127514565BDA3
+	myMaxLegendRank < uid=5C148C4665E09077000139696380F3A1 > = "Rank 20" 7110821464E310E10001275686AD600A
+}
+
+NPCSynergy Empire_Sentry_ProbDroid < uid=5C148C4665DEFC3100000251111A7C04 > : Empire_Sentry
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Viper_Droid
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout default
+				{
+					myLoadout < uid=5C148C4665DEFD4500000256ECBD6D8C > = emp_Probedroid_Default 2736B365635FF52300019230A2578BD1
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DEFD4500000257E3F5C223 > = emp_probedroid_ground 416E63E464C144C10005F33CEB448BAB
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myFillerMember
+	{
+		myPossibleLoadouts
+		{
+		}
+		myNPC < uid=5C148C4665E1E1E1000C8CDF127694AF > = emp_probedroid_ground 416E63E464C144C10005F33CEB448BAB
+		myAlwaysAdd FALSE
+		myWeight 1.0
+	}
+	myMaxAmount 4
+	myMinLegendRank < uid=5C148C46661E754600443E91FD40F22F > = "Rank 7" 7110821464E3108000012749233D5F7A
+	myMaxLegendRank < uid=5C148C4665E090920001396A0383B255 > = "Rank 15" 7110821464E310CC000127514565BDA3
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=5C148C4665E090B60001396BF77D4EA2 > = Faction_DynamicFireteam 616F4596656718720004B92DC03BB4A4
+		RBTagsTag "lwen Patrol" < uid=5C148C4665E090B60001396C1929E915 > = lwen_PatrolProbeDroidTag 5C148C4666683622000D7A8AAEFEE1DD
+		RBTagsTag "lwen wanted activities" < uid=5C148C4665E090B600013971D5B317BC > = lwen_WantedActivitiesTag 2AE2EC85657339DF000E92665E357269
+	}
+}
+
+NPCSynergy Empire_Sentry_Borderguard < uid=5C148C4665DEECF10000023460B1E378 > : Empire_Sentry
+{
+	myFillerMember
+	{
+		myPossibleLoadouts
+		{
+			NPCSynergyWeightedLoadout Pistol
+			{
+				myLoadout < uid=5C148C4665DEEEA300000240ED0F8A0A > = emp_ScoutTrooper_Pistol 2736B365635FF21B00006567DEFAC3B1
+				myWeight 1.0
+			}
+		}
+		myNPC < uid=5C148C4665DEECF1000002379AE0206B > = emp_scouttrooper_no_speeder 2736B36562CD29650001015149027AB1
+		myAlwaysAdd FALSE
+		myWeight 1.0
+	}
+	myMaxLegendRank < uid=5C148C4665E0910F000139724E3366F5 > = "Rank 20" 7110821464E310E10001275686AD600A
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=5C148C4665DEED0F000002391D784F51 > = Faction_DynamicFireteam 616F4596656718720004B92DC03BB4A4
+		RBTagsTag "New RBTagsTag_0" < uid=5C148C4665DEED020000023875A5BA6C > = lwev_BorderGuardTag 2AE2EC8565DDFAF200069FF9002BD6A7
+	}
+}
+
+NPCSynergy Empire_Pusher < uid=5C148C4665DEE3D90000012848012CBE > : empire_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Stormtrooper_heavy
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout "RotaryCannon - No Shield"
+				{
+					myLoadout < uid=5C148C4665DEEFBF00000245A2B54C76 > = emp_HeavyTrooper_RotaryCannon 4171A7E1656897D000006A5DC5CD4CE6
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DEE83A0000022A5922FFD3 > = emp_heavytrooper 16DEADE661F07FFD00001B598880F582
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=5C148C4665E08F580001394AC3834A34 > = Faction_DynamicFireteam 616F4596656718720004B92DC03BB4A4
+		RBTagsTag "lwen Patrol" < uid=5C148C4665E08F580001394B05E793BD > = lwen_PatrolTag 2AE2EC8565733841000E925634831E68
+		RBTagsTag "lwen skirmish" < uid=5C148C4665E08F580001394CB5B71674 > = lwen_SkirmishTag 2AE2EC85657338C0000E925A62874336
+		RBTagsTag "lwen guard" < uid=5C148C4665E08F580001394DE5DB3FB3 > = lwen_GuardTag 2AE2EC85657338EC000E925C2351F401
+		RBTagsTag "lwen ambush" < uid=5C148C4665E08F580001394E3CD01BD6 > = lwen_AmbushTag 2AE2EC8565733900000E925EEEFFCA0E
+		RBTagsTag "lwen npc in danger" < uid=5C148C4665E08F580001394F05931D8A > = lwen_NpcInDangerTag 2AE2EC8565733917000E9260991B289F
+		RBTagsTag "lwen smuggler pod" < uid=5C148C4665E08F5800013950089AAFFA > = lwev_SmugglerPodTag 2AE2EC8565734188000E926E1BAEF93E
+		RBTagsTag "lwev Faction Attack" < uid=5C148C4665E08F580001395134802FFD > = lwev_FactionAttackTag 2AE2EC8565734166000E926C72372B71
+		RBTagsTag "lwen FallBack" < uid=5C148C4665E08F580001395288328C10 > = lwev_FallbackTag 2AE2EC8565A7EBB8000642D39BA283AE
+		RBTagsTag "lwen wanted activities" < uid=5C148C4665E08F5800013954C8E837EE > = lwen_WantedActivitiesTag 2AE2EC85657339DF000E92665E357269
+		RBTagsTag "lwen ImperialRoadBlocks" < uid=5C148C4665E08F5800013955FD2216C9 > = lwen_ImperialRoadBlockTag 2AE2EC85657339A2000E9264B62DF6F2
+		RBTagsTag "lwen Search Party" < uid=5C148C46661E6403005A3B497350C030 > = lwen_SearchParty 5C148C46661E631F005A3A8DEE0C566E
+		RBTagsTag "wanted road transport" < uid=2AE2EC8566F66AD0000B7836FCB3EC24 > = lwen_WantedRoadTransportTag 2AE2EC8566F66A07000B7784DDA47755
+	}
+}
+
+NPCSynergy Empire_Pusher_Extd < uid=5C148C4665DF07B50000011468E525F7 > : Empire_Pusher
+{
+	myMinLegendRank < uid=5C148C4665E091240001397362C527B9 > = "Rank 7" 7110821464E3108000012749233D5F7A
+	myMaxLegendRank < uid=5C148C4665E0912400013974A197EF31 > = "Rank 15" 7110821464E310CC000127514565BDA3
+}
+
+NPCSynergy Empire_Pusher_Sentry < uid=5C148C4665DF014D000002633E3C2FF4 > : Empire_Pusher
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Stormtrooper_heavy
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout "RotaryCannon -  Shield"
+				{
+					myLoadout < uid=5C148C4665DF02F0000000F21050EA99 > = emp_HeavyTrooper_RotaryCannon_Shield 2736B365635FDF6B0001F99ED4DDB78A
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DF02F0000000F3BCEEC805 > = emp_heavytrooper 16DEADE661F07FFD00001B598880F582
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember Scout
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout Sniper
+				{
+					myLoadout < uid=5C148C4665DF0327000000F493B6C5C6 > = emp_ScoutTrooper_SniperRifle 4171A7E16568733C00077654762C8269
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DF0327000000F51BB8071A > = emp_scouttrooper_no_speeder 2736B36562CD29650001015149027AB1
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myMinLegendRank < uid=5C148C4665E0914800013975ECD40248 > = "Rank 15" 7110821464E310CC000127514565BDA3
+	myMaxLegendRank < uid=5C148C4665E09148000139763905D5E9 > = "Rank 20" 7110821464E310E10001275686AD600A
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=2AE2EC8566F66B20000B7870A9AF4CB2 > = Faction_DynamicFireteam 616F4596656718720004B92DC03BB4A4
+		RBTagsTag "lwen Patrol" < uid=2AE2EC8566F66B20000B7871A5190EAD > = lwen_PatrolTag 2AE2EC8565733841000E925634831E68
+		RBTagsTag "lwen skirmish" < uid=2AE2EC8566F66B20000B7872FFF47AA8 > = lwen_SkirmishTag 2AE2EC85657338C0000E925A62874336
+		RBTagsTag "lwen guard" < uid=2AE2EC8566F66B20000B78732DDB6E75 > = lwen_GuardTag 2AE2EC85657338EC000E925C2351F401
+		RBTagsTag "lwen ambush" < uid=2AE2EC8566F66B20000B7874FEC27DA0 > = lwen_AmbushTag 2AE2EC8565733900000E925EEEFFCA0E
+		RBTagsTag "lwen npc in danger" < uid=2AE2EC8566F66B20000B787593C368B3 > = lwen_NpcInDangerTag 2AE2EC8565733917000E9260991B289F
+		RBTagsTag "lwen smuggler pod" < uid=2AE2EC8566F66B20000B7876CFBE6159 > = lwev_SmugglerPodTag 2AE2EC8565734188000E926E1BAEF93E
+		RBTagsTag "lwev Faction Attack" < uid=2AE2EC8566F66B20000B787739E0161D > = lwev_FactionAttackTag 2AE2EC8565734166000E926C72372B71
+		RBTagsTag "lwen FallBack" < uid=2AE2EC8566F66B20000B7878D42243FC > = lwev_FallbackTag 2AE2EC8565A7EBB8000642D39BA283AE
+		RBTagsTag "lwen wanted activities" < uid=2AE2EC8566F66B20000B78795C2C2F3B > = lwen_WantedActivitiesTag 2AE2EC85657339DF000E92665E357269
+		RBTagsTag "lwen ImperialRoadBlocks" < uid=2AE2EC8566F66B20000B787A60A4394E > = lwen_ImperialRoadBlockTag 2AE2EC85657339A2000E9264B62DF6F2
+		RBTagsTag "lwen Search Party" < uid=2AE2EC8566F66B20000B787B59CD9BB9 > = lwen_SearchParty 5C148C46661E631F005A3A8DEE0C566E
+	}
+}
+
+NPCSynergy Empire_Pusher_Pusher < uid=5C148C4665DF014D00000264943011BF > : Empire_Pusher
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Stormtrooper_heavy
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout "RotaryCannon - Shield"
+				{
+					myLoadout < uid=5C148C4665DF0352000000F68C2B22D6 > = emp_HeavyTrooper_RotaryCannon_Shield 2736B365635FDF6B0001F99ED4DDB78A
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DF0352000000F7464F7DB6 > = emp_heavytrooper 16DEADE661F07FFD00001B598880F582
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember Stormtrooper_heavy
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout "RotaryCannon - Shield"
+				{
+					myLoadout < uid=5C148C4665DF03C3000000F863F2184C > = emp_HeavyTrooper_RotaryCannon_Shield 2736B365635FDF6B0001F99ED4DDB78A
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DF03C3000000F9B8A943FF > = emp_heavytrooper 16DEADE661F07FFD00001B598880F582
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myMinLegendRank < uid=5C148C4665E091580001397772B6C59F > = "Rank 15" 7110821464E310CC000127514565BDA3
+	myMaxLegendRank < uid=5C148C4665E09158000139786C46429F > = "Rank 20" 7110821464E310E10001275686AD600A
+}
+
+NPCSynergy Empire_Revealers < uid=5C148C4665DEE3D90000013565234D03 > : empire_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember "Emp Officer"
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout pistol
+				{
+					myLoadout < uid=5C148C4665DEF00E0000024859A712D8 > = emp_Officer_Pistol 2736B365635FB1B70001022F9FAAB457
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DEE3D900000136F4B31421 > = emp_officer B0EA4E53607599070000005769C3BA47
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=5C148C4665DEE3D9000001383501292D > = Faction_DynamicFireteam 616F4596656718720004B92DC03BB4A4
+		RBTagsTag "lwen patrol" < uid=5C148C4665DEE3D9000001394A3531DB > = lwen_PatrolTag 2AE2EC8565733841000E925634831E68
+		RBTagsTag "lwen skirmish" < uid=5C148C4665DEE3D90000013A264B36A0 > = lwen_SkirmishTag 2AE2EC85657338C0000E925A62874336
+		RBTagsTag "lwen guard" < uid=5C148C4665DEE3D90000013B1CF3A959 > = lwen_GuardTag 2AE2EC85657338EC000E925C2351F401
+		RBTagsTag "lwen ambush" < uid=5C148C4665DEE3D90000013C2087A3AB > = lwen_AmbushTag 2AE2EC8565733900000E925EEEFFCA0E
+		RBTagsTag "lwen npc in danger" < uid=5C148C4665DEE3D90000013DC3DFF589 > = lwen_NpcInDangerTag 2AE2EC8565733917000E9260991B289F
+		RBTagsTag "lwen imperail road block" < uid=5C148C4665DEE3D90000013EBC5E2564 > = lwen_ImperialRoadBlockTag 2AE2EC85657339A2000E9264B62DF6F2
+		RBTagsTag "lwen wanted activities" < uid=5C148C4665DEE3D90000013F3D66EAD7 > = lwen_WantedActivitiesTag 2AE2EC85657339DF000E92665E357269
+		RBTagsTag "lwev empire raid" < uid=5C148C4665DEE3D90000014020E18C2B > = lwev_EmpireRaidTag 2AE2EC856573414B000E926AB46DAA37
+		RBTagsTag "lwen SearchParty" < uid=5C148C46661E6420005A3B6469BF9ACF > = lwen_SearchParty 5C148C46661E631F005A3A8DEE0C566E
+		RBTagsTag WantedRoadTransport < uid=2AE2EC8566F66B59000B78B504D27627 > = lwen_WantedRoadTransportTag 2AE2EC8566F66A07000B7784DDA47755
+	}
+}
+
+NPCSynergy Empire_Revealers_Extd < uid=5C148C4665DF07B500000115F438D1CF > : Empire_Revealers
+{
+	myMinLegendRank < uid=5C148C4665E0918D0001397920CCCB1D > = "Rank 7" 7110821464E3108000012749233D5F7A
+	myMaxLegendRank < uid=5C148C4665E0918D0001397A3771F870 > = "Rank 15" 7110821464E310CC000127514565BDA3
+}
+
+NPCSynergy Empire_Revealers_Sentry < uid=5C148C4665DF014D00000265D243A18D > : Empire_Revealers
+{
+	myCoreMembers
+	{
+		NPCSynergyMember "Emp Officer"
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout pistol
+				{
+					myLoadout < uid=5C148C4665DF042E000000FA6D41FBAE > = emp_Officer_Pistol 2736B365635FB1B70001022F9FAAB457
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DF042E000000FB50DE997D > = emp_officer B0EA4E53607599070000005769C3BA47
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "Emp Sentry"
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout Sniper
+				{
+					myLoadout < uid=5C148C4665DF042E000000FCA31DDB52 > = emp_ScoutTrooper_SniperRifle 4171A7E16568733C00077654762C8269
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DF042E000000FD5159C275 > = emp_scouttrooper_no_speeder 2736B36562CD29650001015149027AB1
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myMinLegendRank < uid=5C148C4665E0918D0001397BF32F593C > = "Rank 15" 7110821464E310CC000127514565BDA3
+	myMaxLegendRank < uid=5C148C4665E0918D0001397CAD23AF7C > = "Rank 20" 7110821464E310E10001275686AD600A
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=2AE2EC8566F66BA3000B78EFA23C7BD2 > = Faction_DynamicFireteam 616F4596656718720004B92DC03BB4A4
+		RBTagsTag "lwen patrol" < uid=2AE2EC8566F66BA3000B78F08C2A45F8 > = lwen_PatrolTag 2AE2EC8565733841000E925634831E68
+		RBTagsTag "lwen skirmish" < uid=2AE2EC8566F66BA3000B78F1BCF018E0 > = lwen_SkirmishTag 2AE2EC85657338C0000E925A62874336
+		RBTagsTag "lwen guard" < uid=2AE2EC8566F66BA3000B78F2F52640C3 > = lwen_GuardTag 2AE2EC85657338EC000E925C2351F401
+		RBTagsTag "lwen ambush" < uid=2AE2EC8566F66BA3000B78F3B485575E > = lwen_AmbushTag 2AE2EC8565733900000E925EEEFFCA0E
+		RBTagsTag "lwen npc in danger" < uid=2AE2EC8566F66BA3000B78F46A5EC1B3 > = lwen_NpcInDangerTag 2AE2EC8565733917000E9260991B289F
+		RBTagsTag "lwen imperail road block" < uid=2AE2EC8566F66BA3000B78F55655E300 > = lwen_ImperialRoadBlockTag 2AE2EC85657339A2000E9264B62DF6F2
+		RBTagsTag "lwen wanted activities" < uid=2AE2EC8566F66BA3000B78F691B29151 > = lwen_WantedActivitiesTag 2AE2EC85657339DF000E92665E357269
+		RBTagsTag "lwev empire raid" < uid=2AE2EC8566F66BA3000B78F70F131B9E > = lwev_EmpireRaidTag 2AE2EC856573414B000E926AB46DAA37
+		RBTagsTag "lwen SearchParty" < uid=2AE2EC8566F66BA3000B78F893DC1096 > = lwen_SearchParty 5C148C46661E631F005A3A8DEE0C566E
+	}
+}
+
+NPCSynergy Empire_Revealers_Pusher < uid=5C148C4665DF014D000002668F4BE327 > : Empire_Revealers
+{
+	myCoreMembers
+	{
+		NPCSynergyMember "Emp Officer"
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout pistol
+				{
+					myLoadout < uid=5C148C4665DF04AC000000FE33A7DF7B > = emp_Officer_Pistol 2736B365635FB1B70001022F9FAAB457
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DF04AC000000FF9716BD03 > = emp_officer B0EA4E53607599070000005769C3BA47
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "Emp Pusher"
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout "Rotary canon - Shield"
+				{
+					myLoadout < uid=5C148C4665DF04AC00000100DA9C23F8 > = emp_HeavyTrooper_RotaryCannon_Shield 2736B365635FDF6B0001F99ED4DDB78A
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DF04AC00000101454918B4 > = emp_heavytrooper 16DEADE661F07FFD00001B598880F582
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myMinLegendRank < uid=5C148C4665E0918D0001397DEBF10DE6 > = "Rank 15" 7110821464E310CC000127514565BDA3
+	myMaxLegendRank < uid=5C148C4665E0918D0001397E53FBDA90 > = "Rank 20" 7110821464E310E10001275686AD600A
+}
+
+NPCSynergy Empire_Revealers_Revealers < uid=5C148C4665DF014D0000026750D73EB5 > : Empire_Revealers
+{
+	myCoreMembers
+	{
+		NPCSynergyMember "Emp Officer"
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout pistol
+				{
+					myLoadout < uid=5C148C4665DF04E80000010248184B61 > = emp_Officer_Pistol 2736B365635FB1B70001022F9FAAB457
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DF04E8000001036AC419C4 > = emp_officer B0EA4E53607599070000005769C3BA47
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember "Emp Officer"
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout pistol
+				{
+					myLoadout < uid=5C148C4665DF04E800000104517C7487 > = emp_Officer_Pistol 2736B365635FB1B70001022F9FAAB457
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DF04E8000001055CFD4AA4 > = emp_officer B0EA4E53607599070000005769C3BA47
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myMinLegendRank < uid=5C148C4665E0919A0001397FDA948F6A > = "Rank 15" 7110821464E310CC000127514565BDA3
+	myMaxLegendRank < uid=5C148C4665E0919A000139806A7C830B > = "Rank 20" 7110821464E310E10001275686AD600A
+}
+
+NPCSynergy Empire_Unique < uid=5C148C4665DEE7640000021B5C7168CF > : empire_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Officer
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout pistol
+				{
+					myLoadout < uid=5C148C4665DEF9960000024E556B20AD > = emp_Officer_Pistol 2736B365635FB1B70001022F9FAAB457
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DEE9B500000232D18CB4F1 > = emp_officer B0EA4E53607599070000005769C3BA47
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myFillerMember
+	{
+		myPossibleLoadouts
+		{
+			NPCSynergyWeightedLoadout rifle
+			{
+				myLoadout < uid=5C148C4665DEF9960000024F5E8001E9 > = emp_DeathTrooper_Rifle 2736B365635FF3940000A806AC9DD2C9
+				myWeight 1.0
+			}
+		}
+		myNPC < uid=5C148C4665DEE7640000021DBF3B6EB7 > = emp_deathtrooper 16DEADE661F0801600001B5E1B0B1745
+		myAlwaysAdd FALSE
+		myWeight 1.0
+	}
+	myMinLegendRank < uid=5C148C4665E091A90001398109812D9F > = "Rank 15" 7110821464E310CC000127514565BDA3
+	myMaxLegendRank < uid=5C148C4665E091A90001398284235965 > = "Rank 20" 7110821464E310E10001275686AD600A
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=5C148C4665E08F5800013956E16C5771 > = Faction_DynamicFireteam 616F4596656718720004B92DC03BB4A4
+	}
+}
+
+NPCSynergy Empire_Unique_Sentry < uid=5C148C4665DF014D00000268447E60F9 > : Empire_Unique
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Officer
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout pistol
+				{
+					myLoadout < uid=5C148C4665DF05AB00000106D6344119 > = emp_Officer_Pistol 2736B365635FB1B70001022F9FAAB457
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DF05AB000001079C746822 > = emp_officer B0EA4E53607599070000005769C3BA47
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember Scout
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout Sniper
+				{
+					myLoadout < uid=5C148C4665DF05AB000001082E1EEF67 > = emp_ScoutTrooper_SniperRifle 4171A7E16568733C00077654762C8269
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DF05AB000001099800286A > = emp_scouttrooper_no_speeder 2736B36562CD29650001015149027AB1
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+}
+
+NPCSynergy Empire_Unique_Pusher < uid=5C148C4665DF014D000002698BFEEE32 > : Empire_Unique
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Officer
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout pistol
+				{
+					myLoadout < uid=5C148C4665DF06260000010AEC488EFA > = emp_Officer_Pistol 2736B365635FB1B70001022F9FAAB457
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DF06260000010BD342DE29 > = emp_officer B0EA4E53607599070000005769C3BA47
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember HeavyStormtrooper
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout "RotaryCanon - Shield"
+				{
+					myLoadout < uid=5C148C4665DF06260000010C0AFE76F1 > = emp_HeavyTrooper_RotaryCannon_Shield 2736B365635FDF6B0001F99ED4DDB78A
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DF06260000010D93244CBC > = emp_heavytrooper 16DEADE661F07FFD00001B598880F582
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+}
+
+NPCSynergy Empire_Fallback < uid=5C148C4665DEE3D9000001007456A5AD > : empire_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Stormtrooper_Commander
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout Rifle
+				{
+					myLoadout < uid=5C148C4665DEEDBB0000023BA2C3088F > = emp_Stormtrooper_Rifle 2736B365635F9FBD00009B7F2C729781
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665DEE5AD00000214F420EB23 > = emp_stormtrooper_commander 16DEADE661F7AEBB00001AE449D1C8B8
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myMaxLegendRank < uid=5C148C4665E091B500013983FAB27954 > = "Rank 20" 7110821464E310E10001275686AD600A
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=5C148C4665DEE68800000218446FE4A7 > = Faction_DynamicFireteam 616F4596656718720004B92DC03BB4A4
+		RBTagsTag "New RBTagsTag_0" < uid=5C148C4665DEE67C00000217B7E5788B > = lwev_FallbackTag 2AE2EC8565A7EBB8000642D39BA283AE
+	}
+}
+
+NPCSynergy Empire_RaidEvent_CommanderOnly_Legend_0_To_7 < uid=2AE2EC85662BBF6F000C80A0F429A4EF > : empire_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Commander
+		{
+			myNPC < uid=2AE2EC85662BC0D3000C80A309735ED1 > = emp_stormtrooper_commander 16DEADE661F7AEBB00001AE449D1C8B8
+			myAlwaysAdd TRUE
+		}
+	}
+	myMaxAmount 15
+	myTags
+	{
+		RBTagsTag EmpireRaid < uid=2AE2EC85662BC003000C80A2FC0A5027 > = lwev_EmpireRaidTag 2AE2EC856573414B000E926AB46DAA37
+	}
+}
+
+NPCSynergy Empire_RaidEvent_OfficerOnly_Legend_0_To_7 < uid=2AE2EC85662BBFDA000C80A1188DE265 > : Empire_RaidEvent_CommanderOnly_Legend_0_To_7
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Officer
+		{
+			myNPC < uid=2AE2EC85662BC0D3000C80A4B0C48DCC > = emp_officer B0EA4E53607599070000005769C3BA47
+			myAlwaysAdd TRUE
+		}
+	}
+}
+
+NPCSynergy Empire_RaidEvent_CommanderHeavy_Legend_7_To_15 < uid=2AE2EC85662BC0D5000C80BFA59E6ED4 > : Empire_RaidEvent_CommanderOnly_Legend_0_To_7
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Commander
+		{
+			myNPC < uid=2AE2EC85662BC2BE000C80C3C7331DE2 > = emp_stormtrooper_commander 16DEADE661F7AEBB00001AE449D1C8B8
+			myAlwaysAdd TRUE
+		}
+		NPCSynergyMember Heavy
+		{
+			myNPC < uid=2AE2EC85662BC2BE000C80C4A9AB90CD > = emp_heavytrooper 16DEADE661F07FFD00001B598880F582
+			myAlwaysAdd TRUE
+		}
+	}
+	myFillerMember
+	{
+		myPossibleLoadouts
+		{
+		}
+		myNPC < uid=2AE2EC85662BC2BE000C80C58AF29F17 > = emp_stormtrooper 16DEADE661F07FAF00001B5372282E83
+		myAlwaysAdd FALSE
+		myWeight 1.0
+	}
+	myMinLegendRank < uid=2AE2EC85662BC2BE000C80C672C92CE1 > = "Rank 7" 7110821464E3108000012749233D5F7A
+	myMaxLegendRank < uid=2AE2EC85662BC2BE000C80C72D4AF357 > = "Rank 15" 7110821464E310CC000127514565BDA3
+}
+
+NPCSynergy Empire_RaidEvent_OfficerHeavy_Legend_7_To_15 < uid=2AE2EC85662BC2BE000C80C8D89223CB > : Empire_RaidEvent_CommanderHeavy_Legend_7_To_15
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Officer
+		{
+			myNPC < uid=2AE2EC85662BC2BE000C80C9C68615E9 > = emp_officer B0EA4E53607599070000005769C3BA47
+			myAlwaysAdd TRUE
+		}
+		NPCSynergyMember Heavy
+		{
+			myNPC < uid=2AE2EC85662BC2BE000C80CAFD1387FC > = emp_heavytrooper 16DEADE661F07FFD00001B598880F582
+			myAlwaysAdd TRUE
+		}
+	}
+}
+
+NPCSynergy Empire_RaidEvent_Commander2Heavy_Legend_15_Plus < uid=2AE2EC85662BC22A000C80C1D3BE188F > : Empire_RaidEvent_CommanderHeavy_Legend_7_To_15
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Commander
+		{
+			myNPC < uid=2AE2EC85662BC2BE000C80CB87B90342 > = emp_stormtrooper_commander 16DEADE661F7AEBB00001AE449D1C8B8
+			myAlwaysAdd TRUE
+		}
+		NPCSynergyMember Heavy
+		{
+			myNPC < uid=2AE2EC85662BC2BE000C80CCCE7CE405 > = emp_heavytrooper 16DEADE661F07FFD00001B598880F582
+			myAlwaysAdd TRUE
+		}
+		NPCSynergyMember Heavy
+		{
+			myNPC < uid=2AE2EC85662BC2BE000C80CD38A3897E > = emp_heavytrooper 16DEADE661F07FFD00001B598880F582
+			myAlwaysAdd TRUE
+		}
+	}
+	myMinLegendRank < uid=2AE2EC85662BC373000C80E8A41870F9 > = "Rank 15" 7110821464E310CC000127514565BDA3
+	myMaxLegendRank < uid=2AE2EC85662BC373000C80E924E7BB8E > = NULLREFERENCE
+}
+
+NPCSynergy Empire_RaidEvent_Officer2Heavy_Legend_15_plus < uid=2AE2EC85662BC248000C80C2918D29C9 > : Empire_RaidEvent_Commander2Heavy_Legend_15_Plus
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Commander
+		{
+			myNPC < uid=2AE2EC85662BC373000C80EAE69E830F > = emp_stormtrooper_commander 16DEADE661F7AEBB00001AE449D1C8B8
+			myAlwaysAdd TRUE
+		}
+		NPCSynergyMember Heavy
+		{
+			myNPC < uid=2AE2EC85662BC373000C80EB49D9532B > = emp_heavytrooper 16DEADE661F07FFD00001B598880F582
+			myAlwaysAdd TRUE
+		}
+		NPCSynergyMember Heavy
+		{
+			myNPC < uid=2AE2EC85662BC373000C80EC2E217D51 > = emp_heavytrooper 16DEADE661F07FFD00001B598880F582
+			myAlwaysAdd TRUE
+		}
+	}
+}
+
+NPCSynergy Empire_WantedLevel6_DeathtrooperOnly_Legend_0_To_7 < uid=2AE2EC8566F407480040CD9B65C1C395 > : empire_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Deathtrooper
+		{
+			myNPC < uid=2AE2EC8566F409420040CDB80EA48C3D > = emp_deathtrooper 16DEADE661F0801600001B5E1B0B1745
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myTags
+	{
+		RBTagsTag WantedLevel6 < uid=2AE2EC8566F408650040CD9CEE54012C > = lwen_WantedLevel6Tag 2AE2EC8566F406050040CCF90B7EF218
+	}
+}
+
+NPCSynergy Empire_WantedLevel6_DeathtrooperOfficer_Legend_0_To_7 < uid=2AE2EC8566F40ACF0040CDD95B900E75 > : Empire_WantedLevel6_DeathtrooperOnly_Legend_0_To_7
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Deathtrooper
+		{
+			myNPC < uid=2AE2EC8566F40DA60040CDF8EDF1C0C9 > = emp_deathtrooper 16DEADE661F0801600001B5E1B0B1745
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember Officer
+		{
+			myNPC < uid=2AE2EC8566F40DA60040CDF96C32C075 > = emp_officer B0EA4E53607599070000005769C3BA47
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+}
+
+NPCSynergy Empire_WantedLevel6_DeathtrooperOnly_Legend_7_To_15 < uid=2AE2EC8566F40A100040CDD5880B78A5 > : Empire_WantedLevel6_DeathtrooperOnly_Legend_0_To_7
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Deathtrooper
+		{
+			myNPC < uid=2AE2EC8566F40DA60040CDFADF613E85 > = emp_deathtrooper 16DEADE661F0801600001B5E1B0B1745
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember Deathtrooper
+		{
+			myNPC < uid=2AE2EC8566F40DA60040CDFB70EBEAB5 > = emp_deathtrooper 16DEADE661F0801600001B5E1B0B1745
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myMinLegendRank < uid=2AE2EC8566F40ACF0040CDDA1A11104E > = "Rank 7" 7110821464E3108000012749233D5F7A
+	myMaxLegendRank < uid=2AE2EC8566F40ACF0040CDDB17F58785 > = "Rank 15" 7110821464E310CC000127514565BDA3
+}
+
+NPCSynergy Empire_WantedLevel6_DeathtrooperOfficer_Legend_7_To_15 < uid=2AE2EC8566F40A130040CDD6206C359C > : Empire_WantedLevel6_DeathtrooperOnly_Legend_7_To_15
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Deathtrooper
+		{
+			myNPC < uid=2AE2EC8566F40DA60040CDFC137F9BE9 > = emp_deathtrooper 16DEADE661F0801600001B5E1B0B1745
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember Deathtrooper
+		{
+			myNPC < uid=2AE2EC8566F40DA60040CDFDE9B4C09B > = emp_deathtrooper 16DEADE661F0801600001B5E1B0B1745
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember Officer
+		{
+			myNPC < uid=2AE2EC8566F40DA60040CDFE3FF75E3E > = emp_officer B0EA4E53607599070000005769C3BA47
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+}
+
+NPCSynergy Empire_WantedLevel6_DeathtrooperOnly_Legend_15_Plus < uid=2AE2EC8566F40A160040CDD73B06DDF4 > : Empire_WantedLevel6_DeathtrooperOnly_Legend_7_To_15
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Deathtrooper
+		{
+			myNPC < uid=2AE2EC8566F40FCC0040CE19E689DD39 > = emp_deathtrooper 16DEADE661F0801600001B5E1B0B1745
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember Deathtrooper
+		{
+			myNPC < uid=2AE2EC8566F40FCC0040CE1A7AEF24CD > = emp_deathtrooper 16DEADE661F0801600001B5E1B0B1745
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember Deathtrooper
+		{
+			myNPC < uid=2AE2EC8566F40FCC0040CE1B8B9B8A46 > = emp_deathtrooper 16DEADE661F0801600001B5E1B0B1745
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myMinLegendRank < uid=2AE2EC8566F40ACF0040CDDCF3900DE3 > = "Rank 15" 7110821464E310CC000127514565BDA3
+	myMaxLegendRank < uid=2AE2EC8566F40ACF0040CDDD28A85642 > = NULLREFERENCE
+}
+
+NPCSynergy Empire_WantedLevel6_DeathtrooperOfficer_Legend_15_Plus < uid=2AE2EC8566F40A1A0040CDD8888D8191 > : Empire_WantedLevel6_DeathtrooperOnly_Legend_15_Plus
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Deathtrooper
+		{
+			myNPC < uid=2AE2EC8566F40FCC0040CE1C572D6B71 > = emp_deathtrooper 16DEADE661F0801600001B5E1B0B1745
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember Deathtrooper
+		{
+			myNPC < uid=2AE2EC8566F40FCC0040CE1DFFE514B8 > = emp_deathtrooper 16DEADE661F0801600001B5E1B0B1745
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember Deathtrooper
+		{
+			myNPC < uid=2AE2EC8566F40FCC0040CE1EFC2F8EC5 > = emp_deathtrooper 16DEADE661F0801600001B5E1B0B1745
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember Officer
+		{
+			myNPC < uid=2AE2EC8566F40FCC0040CE1FABB1E2BC > = emp_officer B0EA4E53607599070000005769C3BA47
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+}
+

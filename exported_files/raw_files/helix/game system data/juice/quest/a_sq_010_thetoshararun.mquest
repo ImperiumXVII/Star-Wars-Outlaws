@@ -1,0 +1,387 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/reward/quest_economy_reward.mreward"
+
+Quest A_SQ_010_TheTosharaRun < uid=0EA96C6A651AD87C0002CEC54C1F6F46 >
+{
+	myName "aurabesh = false, contextComment = \"A_SQ_010 Quest Name\", enabled = true, guid = #0EA96C6A651AD8810002CEC73729603B, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 10122, text = \"The Toshara Run\", type = \"MenuLine\""
+	myIntroDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"A_SQ_010_ Intro Description\", enabled = true, guid = #9128788865AA349E0029F35A7DBE0A2F, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10122, text = \"Quest description only visible during the Intro before Kay has accepted the job.\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"A_SQ_010 Quest Description\", enabled = true, guid = #0EA96C6A651AD8810002CEC9B5CF9D0A, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10122, text = \"ND-5 owes Jabba, and the Hutt always collects.\", type = \"MenuLine\""
+	myType SeasonPassExclusive
+	myGoals
+	{
+		QuestGoal "Esacpe from Toshara" < uid=9128788865AAA2D000143148043142C9 >
+		{
+			myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"[A_SQ_010] Quest Goal, Kay is escaping from Toshara Orbit via Hyperjump\", enabled = true, guid = #9128788865AAA2D000143149AC289F1E, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10134, text = \"Escape from the Toshaal system\", type = \"MenuLine\""
+		}
+	}
+	myRevealBeat < uid=0EA96C6A6581938E0016560B33A71AC7 >
+	{
+		myScript helix/scripts/scr_a_sq_010_b00_tos_pln_0revealbeat.mscript
+		myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+		myDebugPlayLandingZone F7FDFD6063047D0A00013908778A0BF4
+		myMood RelaxedNoSpawnpoints
+		myQuestBeatStateGameValue < uid=0EA96C6A6581938E0016560C796E55BB >
+		{
+		}
+	}
+	myIntroBeat < uid=0EA96C6A651ADD960002CED6A0817697 >
+	{
+		myScript helix/scripts/scr_a_sq_010_b00_tos_pln_meetcontact.mscript
+		myName "aurabesh = false, branch = \"\", contextComment = \"A_SQ_010 Quest Intro Beat\", enabled = true, guid = #0EA96C6A651ADAB20002CED1389D8698, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 3614, text = \"Meet the Hutt contact\", type = \"MenuLine\""
+		myAutostartQuestGoal < uid=9128788865AE9C8E000447182CF80AA4 >
+		{
+			myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_SQ_010 Player goal when outside the beat volume\", enabled = true, guid = #9128788865AE9B910004343E5FBAB50D, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10124, text = \"Meet the Hutt contact\", type = \"MenuLine\""
+		}
+		myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+		myDebugPlayLandingZone 9D0EE20B6073F61A000010D71D7A61B9
+		myMood RelaxedNoSpawnpoints
+		myObjectives
+		{
+			QuestObjectiveTalkTo B00_010_MeetHuttContact < uid=0EA96C6A651ADB110002CED3212393FA >
+			{
+				myName "aurabesh = false, contextComment = \"A_SQ_010 Quest Intro Objective\", enabled = true, guid = #0EA96C6A651ADD650002CED494A5D19E, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 405, text = \"Meet the Hutt contact\", type = \"MenuLine\""
+				myIsHiddenInTracker FALSE
+				myIsHiddenInHUD FALSE
+				myIsHighPrio TRUE
+				myIsImmediate TRUE
+			}
+		}
+		myQuestBeatStateGameValue < uid=0EA96C6A651ADD960002CED79D009D3E >
+		{
+		}
+	}
+	myBeats
+	{
+		QuestBeat QB01_GoToSite < uid=0EA96C6A651ADD9D0002CED9A6ACB08B >
+		{
+			myScript helix/scripts/scr_a_sq_010_b01_tos_pln_reachcrashsite.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myDebugPlayLandingZone 9D0EE20B6073F61A000010D71D7A61B9
+			myMood Focused
+			myObjectives
+			{
+				QuestObjectiveTalkTo B01_010_ReachCrashSite < uid=0EA96C6A651D54E9000D54A3B081AC15 >
+				{
+					myName "aurabesh = false, contextComment = \"A_SQ_010 Quest Beat 01 Objective\", enabled = true, guid = #0EA96C6A651D5504000D54A4D70AB05A, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10124, text = \"Meet ND-5 at the crash site\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=0EA96C6A651ADFBA0002CEEDAFDBC282 >
+			{
+			}
+		}
+		QuestBeat QB02_FindData < uid=0EA96C6A651ADEC80002CEE16CA81C73 >
+		{
+			myScript helix/scripts/scr_a_sq_010_b02_tos_pln_finddata.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myDebugPlayLandingZone 9D0EE20B6073F61A000010D71D7A61B9
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveInteract B02_010_Investigate < uid=0EA96C6A651D555F000D54A67C93C3E3 >
+				{
+					myName "aurabesh = false, contextComment = \"A_SQ_010 Quest Beat 02 Objective\", enabled = true, guid = #0EA96C6A651D555F000D54A7C1CF2960, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10125, text = \"Search for the datapad\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=0EA96C6A651ADFBA0002CEEF98A6DE32 >
+			{
+			}
+		}
+		QuestBeat QB0304_TrustND5 < uid=0EA96C6A651D60E7000D9C8F02F33432 >
+		{
+			myScript helix/scripts/scr_a_sq_010_b03_tos_pln_trustnd5.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myDebugPlayLandingZone 9D0EE20B6073F61A000010D71D7A61B9
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom B03_010_TrustND5 < uid=0EA96C6A651D61AA000D9CA5CE68AF82 >
+				{
+					myName "aurabesh = false, contextComment = \"A_SQ_010 Quest Beat 03 Objective\", enabled = true, guid = #0EA96C6A651D61C2000D9CA6C3593726, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10126, text = \"Follow ND-5's lead\", type = \"MenuLine\""
+					myIsOptional TRUE
+				}
+				QuestObjectiveKillFireteam B04_010_DefeatHiredGuns < uid=0EA96C6A651D5662000D54ACC2BF725D >
+				{
+					myName "aurabesh = false, contextComment = \"A_SQ_010 Quest Beat 04 Objective\", enabled = true, guid = #0EA96C6A651D5662000D54AD45C71BBC, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10128, text = \"Defeat the hired guns\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+				}
+			}
+			myScriptInputs
+			{
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=0EA96C6A651D6154000D9C92E5937393 >
+			{
+			}
+		}
+		QuestBeat QB05_FollowNix < uid=0EA96C6A651D6216000D9CAA6F86DD2D >
+		{
+			myScript helix/scripts/scr_a_sq_010_b05_tos_pln_follownix.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myDebugPlayLandingZone 9D0EE20B6073F61A000010D71D7A61B9
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation B05_005_Return < uid=0EA96C6A6576CFE900182C436A3C8331 >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"A_SQ_010 Quest Beat 05 Objective\", enabled = true, guid = #0EA96C6A6576CFFA00182C45C31B41D6, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10129, text = \"Go back to ND-5\", type = \"MenuLine\""
+				}
+				QuestObjectiveFollow B05_010_FollowNix < uid=0EA96C6A651D56B8000D54AF18DB5FF7 >
+				{
+					myName "aurabesh = false, contextComment = \"A_SQ_010 Quest Beat 05 Objective\", enabled = true, guid = #0EA96C6A651D56B8000D54B021CFEB2B, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10129, text = \"Follow Nix to track the datapad\", type = \"MenuLine\""
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputAgent ND5 < uid=0EA96C6A6537C622000552CD8D8505C8 >
+				{
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=0EA96C6A651D6492000D9CC68CDD393B >
+			{
+			}
+			myWaitForInitCompletedOnInBeatVolume TRUE
+		}
+		QuestBeat QB06_DefeatPykes < uid=0EA96C6A651D625F000D9CAEF0761EB2 >
+		{
+			myScript helix/scripts/scr_a_sq_010_b06_tos_pln_defeatpykes.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myDebugPlayLandingZone 9D0EE20B6073F61A000010D71D7A61B9
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveKillFireteam B06_010_DefeatPykes < uid=0EA96C6A651D56FE000D54B26494906B >
+				{
+					myName "aurabesh = false, contextComment = \"A_SQ_010 Quest Beat 06 Objective\", enabled = true, guid = #0EA96C6A651D56FE000D54B3A6725FE9, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 10130, text = \"Defeat the Pyke ambush\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputFireteam Pykes < uid=0EA96C6A65200D48000326FE1F10B396 >
+				{
+				}
+				QuestBeatScriptInputAgent ND5 < uid=FBB3292A652D232F00543C9B0E0AD298 >
+				{
+				}
+				QuestBeatScriptInputFireteam Pykes_Sentinel < uid=00CEF599658000A1000B29B76C74381C >
+				{
+				}
+			}
+			myQuestBeatStateGameValue < uid=0EA96C6A651D6492000D9CC73F7014C0 >
+			{
+			}
+			myWaitForInitCompletedOnInBeatVolume TRUE
+		}
+		QuestBeat QB07_InspectPikes < uid=0EA96C6A6523BE2E00032495ABBC1552 >
+		{
+			myScript helix/scripts/scr_a_sq_010_b07_tos_pln_inspectpykes.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myDebugPlayLandingZone 9D0EE20B6073F61A000010D71D7A61B9
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveInteract "New QuestObjectiveInteract" < uid=0EA96C6A6523BEC4000324BEC89FA72F >
+				{
+					myName "aurabesh = false, contextComment = \"A_SQ_010 Quest Beat 07 Objective\", enabled = true, guid = #0EA96C6A6523BEC6000324BFF12AB798, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10131, text = \"Search the Pykes' speeder\", type = \"MenuLine\"}"
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputAgent ND-5 < uid=0EA96C6A6537C8D2000553A143404785 >
+				{
+				}
+			}
+			myQuestBeatStateGameValue < uid=0EA96C6A6523BE9000032499E585E353 >
+			{
+			}
+			myWaitForInitCompletedOnInBeatVolume TRUE
+		}
+		QuestBeat QB08_IdentifyShip < uid=0EA96C6A651D62C9000D9CB1362AA124 >
+		{
+			myScript helix/scripts/scr_a_sq_010_b08_tos_pln_idship.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myAutostartQuestGoal < uid=9128788865AE9D93000B81DE003808D9 >
+			{
+				myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_SQ_010 Player goal when outside beat volume\", enabled = true, guid = #9128788865AE9CEB000A2966536849F7, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10132, text = \"Intercept the Crimson Dawn\", type = \"MenuLine\""
+			}
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myDebugPlayLandingZone 9D0EE20B6073F61A000010D71D7A61B9
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation B08_010_IdentifyShip < uid=0EA96C6A651D579E000D54B5E47C0D5B >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_SQ_010 Quest Beat 07 Objective\", enabled = true, guid = #0EA96C6A651D579E000D54B624ABCE77, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10131, text = \"Intercept the Crimson Dawn\", type = \"MenuLine\""
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputAgent ND-5 < uid=0EA96C6A653A2C280016DFD68C8AB809 >
+				{
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=0EA96C6A651D6492000D9CC8F913D473 >
+			{
+			}
+		}
+		QuestBeat QB09_StealData < uid=0EA96C6A651ADF470002CEE7738F9CFE >
+		{
+			myScript helix/scripts/scr_a_sq_010_b09_tos_pln_stealdata.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myDebugPlayLandingZone 9D0EE20B6073F61A000010D71D7A61B9
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveInteract B09_010_StealData < uid=0EA96C6A651D5857000D54B83BF60B37 >
+				{
+					myName "aurabesh = false, contextComment = \"A_SQ_010 Quest Beat 09 Objective\", enabled = true, guid = #0EA96C6A651D5869000D54B93FE4CFC7, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10133, text = \"Recover the datapad\", type = \"MenuLine\""
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputAgent "Steal Target" < uid=0EA96C6A653A2C8E0016E013730E435B >
+				{
+				}
+				QuestBeatScriptInputFireteam criCmd_Fireteam < uid=FBB3292A6579D319006179CBEA7A14FE >
+				{
+				}
+				QuestBeatScriptInputFireteam cri_Fireteam < uid=FBB3292A6579D31B006179CC1EB2555A >
+				{
+				}
+				QuestBeatScriptInputFireteam pyk_Fireteam < uid=FBB3292A6579D31E006179CDA2EE9908 >
+				{
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=0EA96C6A651ADFBA0002CEF1EF1C43A4 >
+			{
+			}
+			myWaitForInitCompletedOnInBeatVolume TRUE
+			myDebugPlayOnlyCompletionReward < uid=91287888668FCF6600475E172D00F92D > = SQ_010_RewardItem_BlackmailData_Add 91287888668FCF7C00475EEE886284EF
+			myDebugPlayOnlyIsCompletionRewardUnique TRUE
+		}
+		QuestBeat QB09a_EscapeToshara < uid=0EA96C6A652801A0003D3E5359A392DD >
+		{
+			myScript helix/scripts/scr_a_sq_010_b09a_tos_pln_escapetoshara.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myAutostartQuestGoal < uid=9128788865AE9D93000B81DF6AF30C28 >
+			{
+				myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_SQ_010 Player goal when outside beat volume\", enabled = true, guid = #9128788865AE9D27000B81DC9253F4D5, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10133, text = \"Escape from Toshara\", type = \"MenuLine\""
+			}
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myDebugPlayLandingZone 9D0EE20B6073F5F4000010D6D710D5C6
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom B09a_010_EscapeToshara < uid=0EA96C6A65280207003D3E57B85B0B29 >
+				{
+					myName "aurabesh = false, contextComment = \"A_SQ_010 Quest Beat 09a Objective\", enabled = true, guid = #0EA96C6A65280225003D3E584E84885E, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10133, text = \"Escape from Toshara\", type = \"MenuLine\""
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=0EA96C6A65280243003D3E5A33B36049 >
+			{
+			}
+		}
+		QuestBeat QB10_TosharaSpace < uid=0EA96C6A651D5A75000D54C1541641D7 >
+		{
+			myScript helix/scripts/scr_a_sq_010_b10_tos_spc_tosharaspace.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012DDB0000000AEDF387547
+			myDebugPlayLandingZone 9D0EE20B6073F7BA000014BE1C1D0903
+			myMood Focused
+			myObjectives
+			{
+				QuestObjectiveGoToLocation B10_010_ImperialInspection < uid=0EA96C6A651D5B06000D54C459A964E4 >
+				{
+					myName "aurabesh = false, contextComment = \"A_SQ_010 Quest Beat 10 Objective\", enabled = true, guid = #0EA96C6A651D5B1B000D54C5BF578EFF, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10134, text = \"Escape from Toshara\", type = \"MenuLine\""
+					myIsOptional FALSE
+				}
+			}
+			myQuestBeatStateGameValue < uid=0EA96C6A651D5B82000D54CB330FFD5D >
+			{
+			}
+			myWaitForInitCompletedOnInBeatVolume FALSE
+		}
+		QuestBeat QB10b_SuccessfullyFled < uid=9128788865AAA2300014310D27ED664F >
+		{
+			myScript helix/scripts/scr_a_sq_010_b10b_any_spc_successfullyfled.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myMood Focused
+			myQuestBeatStateGameValue < uid=9128788865AAA2760014311152DD34C9 >
+			{
+			}
+		}
+		QuestBeat QB11_DeliverData < uid=0EA96C6A651D5B89000D54CD2A5D0E92 >
+		{
+			myScript helix/scripts/scr_a_sq_010_b11_tat_pln_tojabba.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_SQ_010 Quest Beat 11\", enabled = true, guid = #0EA96C6A651D5B89000D54CE30981738, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 3614, text = \"Deliver the datapad to Jabba\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myDebugPlayLandingZone F7FDFD6063047D0A00013908778A0BF4
+			myMood RelaxedNoSpawnpoints
+			myObjectives
+			{
+				QuestObjectiveInteract B11_010_DeliverData < uid=0EA96C6A651D5BAB000D54D00D17BDA6 >
+				{
+					myName "aurabesh = false, contextComment = \"A_SQ_010 Quest Beat 11 Objective\", enabled = true, guid = #0EA96C6A651D5F71000D54D23F2DE418, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10135, text = \"Deliver the datapad to Jabba\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveGoToLocation "Breadcrumb Marker 01" < uid=9128788865B25D5D00340D664C377829 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsOptional TRUE
+					myIsHiddenInTracker TRUE
+				}
+				QuestObjectiveGoToLocation "Breadcrumb Marker 02" < uid=9128788865B25D8400340D6A83295562 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsOptional TRUE
+					myIsHiddenInTracker TRUE
+				}
+			}
+			myQuestBeatStateGameValue < uid=0EA96C6A651D5BDE000D54D1CFFC0B08 >
+			{
+			}
+			myDebugPlayOnlyIsCompletionRewardUnique TRUE
+		}
+	}
+	myOutroBeat
+	{
+		QuestBeat Outro < uid=0EA96C6A655E0F08000D490ED967C125 >
+		{
+			myScript helix/scripts/scr_a_sq_010_b12_tat_pln_outro.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myDebugPlayLandingZone F7FDFD6063047D0A00013908778A0BF4
+			myMood RelaxedNoSpawnpoints
+			myQuestBeatStateGameValue < uid=0EA96C6A655E0F23000D49120FC71C95 >
+			{
+			}
+			myDebugPlayOnlyCompletionReward < uid=9128788865F9A459000000C10096493C > = SQ_010_MTX_KeepSchematics_Economy 2AE2EC8565F982190007DDA330F2DD59
+			myDebugPlayOnlyIsCompletionRewardUnique TRUE
+		}
+	}
+	myQuestStateGameValue < uid=0EA96C6A651AD87C0002CEC619550B29 >
+	{
+	}
+	myRequiredMTXAddonType SeasonPass
+}
+

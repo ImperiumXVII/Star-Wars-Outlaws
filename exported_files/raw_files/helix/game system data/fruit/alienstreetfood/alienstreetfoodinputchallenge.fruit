@@ -1,0 +1,28 @@
+include "helix/game system data/fruit/alienstreetfood/alienstreetfoodevent.fruit"
+
+class JumpDelays
+{   
+    bool myUseDefaultJumpDelays true < tooltip="If true, uses default value set in aliensstreetfoodsettings.juice" >
+    bool myHasSuccessJumpDelay false < hidden=1  tooltip="Enable to add jump delay in case of success" >
+    float mySuccessJumpDelay 0 < min=0 hidden=1 tooltip="Minumum time before a jump is executed after a success. Override the default value set in alienstreetfoodsetting" >
+    bool myHasFailureJumpDelay false < hidden=1 tooltip="Enable to add jump delay in case of failure">
+    float myFailureJumpDelay 0 < min=0 hidden=1 tooltip="Minumum time before a jump is executed after a failure. Override the default value set in alienstreetfoodsetting" >
+    bool myHasChallengeStartDelay false < hidden=1 tooltip="Enable to add delay before a challenge start">
+    float myChallengeStartDelay 0 < min=0 hidden=1 tooltip="Minumum time before the beginning of a challenge after its strat marker is reached. Override the default value set in alienstreetfoodsetting" >
+}
+
+class AlienStreetFoodInputChallenge < uid=auto >
+{
+    uid myInputChallenge < bhv="constantData" constantDataType="inputchallenge" >
+    uid mySimplifiedInputChallenge < bhv="constantData" constantDataType="inputchallenge" >
+    string myStartChallengeMaker 
+    string mySuccessMarker
+    string myFailureMarker
+    JumpDelays myJumpDelays
+    ChallengeEvents myEvents
+}
+
+list AlienStreetFoodInputChallenges
+{
+    AlienStreetFoodInputChallenge
+}

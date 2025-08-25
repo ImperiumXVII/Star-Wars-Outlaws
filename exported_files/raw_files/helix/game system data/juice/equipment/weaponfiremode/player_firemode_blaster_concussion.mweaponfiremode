@@ -1,0 +1,183 @@
+include "helix/game system data/juice/camera/modifiers/gun_charge_fovmodifier.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/gun_charge_shake.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_module_recoil_power.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_shake_kays_blaster_power.mcameramodifier"
+include "helix/game system data/juice/equipment/weaponanimationconfig/weapon_anim_kay_blaster_concussion.mweaponanimationconfig"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_blaster_template.mweaponfiremode"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_concussion.mprojectile"
+include "helix/game system data/juice/sound/weapons/player_aduioweapon_kays_sig_mod_charge.maudioweapon"
+include "helix/game system data/juice/sound/weapons/player_audioweapon_kays_sig_mod_concussion.maudioweapon"
+
+WeaponFireMode player_firemode_blaster_concussion < uid=A207755D62C3004400003748C8C1D9A9 > : player_firemode_blaster_template
+{
+	myFireEvent
+	{
+		ChargedFireEvent ChargedFireEvent
+		{
+			myRPM
+			{
+				myRPM 280
+			}
+			myChargeDurationFormula "1.0 * ChargeUpSpeed"
+			myMinChargeStrength 0.5
+			myDischargeDuration 0.2
+			myAutomaticFireAfterReachFullCharge TRUE
+			myAutomaticFireAfterReachFullChargeTime 0.0
+			myFullChargeFireOnly TRUE
+			myAutomaticResetEnabled FALSE
+			myAutomaticResetInterval 1.0
+			myChargeCameraShake < uid=7113C6116436785700005B010873F6C4 > = gun_charge_shake B0ED92506298C63000003C0DA12A25E1
+			myChargeFOVCameraModifier < uid=7113C6116436785700005B026297D85A > = gun_charge_FoVModifier 4C1DFD4E633AD6820000001B4035D978
+		}
+	}
+	myBaseProperties
+	{
+		myAnimation < uid=7113C611651C0B5F0003630B926C03AE > = weapon_anim_kay_blaster_concussion 7113C611651C0B0B0003630A03863A81
+		myRecoil < uid=A207755D65159CF400014E3A7259D218 > = weapon_module_recoil_power 7113C611631B2EDA000049889291A6BC
+		myInputController
+		{
+			myFireRumble 7113C611663A20E4000BC77479B0B040
+			myHardPressTriggerEffect helix/trigger_effects/triggereffect_blaster_chargeup.mtriggereffect
+			myFireTriggerThreshold 0.8
+			myCharge
+			{
+				myChargingTriggerVibrationEnabled TRUE
+				myChargingTriggerVibration
+				{
+					myAmplitude "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.67939007 0.0050914758, }, outTangents = { 0.75 0, 0.12738562 -0.00095465156, }, properties = { 275, 1299, }, values = { 0 0.30000001, 0.90000004 0.5, }, }, numKeys = 2, }"
+					myFrequency "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0.0, 0 0, }, properties = { -749, -749, }, values = { 0 0.05, 1 0.1, }, }, numKeys = 2, }"
+					myPosition 5
+				}
+				myChargingRumble 7113C61165E349DA001CF97A631F7D1F
+				myOnFullChargeTriggerEffectEnabled FALSE
+				myOnFullChargeTriggerEffect
+				{
+					myAmplitude 0.5
+					myPosition 9
+				}
+				myOnFullChargeRumble 00000000000000000000000000000000
+				myFullChargeTriggerVibrationEnabled FALSE
+				myFullChargeTriggerVibration
+				{
+					myAmplitude 0.5
+					myFrequency 0.5
+					myPosition 0
+				}
+				myFullChargeRumble 00000000000000000000000000000000
+			}
+		}
+	}
+	mySpecializations
+	{
+		WeaponFireModeSpecialization WeaponAnim
+		{
+			myAimMode ADS
+			myProperties
+			{
+				myAnimation < uid=7113C611652792DA0000C06010336E4A > = weapon_anim_kay_blaster_concussion_ads 7113C611652791EE0000C0581C2D7209
+			}
+		}
+	}
+	myProjectile < uid=A207755D62C300D800003749B543E920 > = weapon_projectile_blaster_concussion 1C021E9562B9AA4F0000571000637710
+	myCustomProjectileConfig
+	{
+		myIsCustomInitialSpeedEnabled TRUE
+		myCustomInitialSpeedFormula "45 * BlasterProjectileSpeed"
+	}
+	myOverHeat
+	{
+		myMaxHeatFormula "100.0 + PlayerOverheatBonus"
+		myHeatPerUseFormula "50.0 * MaxHeatModifier * PowerModuleHeatCapacityModifier"
+		myOverHeatCoolingTime 0.0
+		myActiveCooling
+		{
+			mySections
+			{
+				EquipmentOverHeatActiveCoolingSection Success
+				{
+					myStartOfSection "0.45 * FastReloadSectionStartModifier"
+					myLengthOfSection "0.3 * FastReloadSectionSizeModifier"
+					mySuperChargeBonusTime "5 * SuperChargeFastBonusTimeModifier"
+				}
+				EquipmentOverHeatActiveCoolingSection Success_Perfect
+				{
+					myStartOfSection "0.38 * PerfectReloadSectionStartModifier"
+					myLengthOfSection "0.08 * PerfectReloadSectionSizeModifier"
+					mySuperChargeBonusTime "5 * SuperChargePerfectBonusTimeModifier"
+					myIsPerfect TRUE
+				}
+			}
+		}
+	}
+	myDamage
+	{
+		myDamage
+		{
+			myDamageFormula "1 * EnergyModuleDamageModifier"
+			myVariation 0.0
+			myDamageType Blast
+		}
+		myRange
+		{
+			myEnabled FALSE
+			myOptimal 50.0
+			myMax 100.0
+		}
+		myCriticalHitChance 0.0
+		myCriticalHitChanceDistanceMin 0.0
+		myCriticalHitChanceDistanceMax 100.0
+		myCriticalHitDamageModifier 1.0
+		myBodyDamageMultipliers
+		{
+		}
+	}
+	mySpread
+	{
+		mySpreadValues
+		{
+			mySpread
+			{
+				myMin 0.0
+				myMax 0.0
+				myIsUniform FALSE
+			}
+		}
+		myUIMinimumSpread 35.0
+	}
+	myMuzzle
+	{
+		myAngleModifierEnabled TRUE
+		myAngleModifier
+		{
+			myDefaultAngleOffsetCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -4.2769208 0.034050122, -16.801439 2.4080276e-05, }, outTangents = { 1.7706223 0, 17.113396 -0.13624597, 0 -0, }, properties = { 1027, 275, 2323, }, values = { -5.3118668 1, 0 1.5, 15 0.2, }, }, maxValueBounds = 180, minValueBounds = -180, numKeys = 3, }"
+			myAnglesByConditions
+			{
+			}
+		}
+	}
+	myFireShake < uid=7113C611643677A0000054C05477C16C > = weapon_shake_kays_blaster_power 1C021E95634FE5050000C7D8DB862458
+	myUI
+	{
+		myDefaultUIGraph helix/ui/graphs/crosshair_pistol_chargeup_concussion_blast_overheat.muigraph
+		myUIGraphByConditions
+		{
+			EquipmentUIByConditions "Accessibility Crosshair"
+			{
+				myConditions
+				{
+					myConditions
+					{
+						GameConditionAccessibilitySimplifiedCrosshair "Simplified Crosshair"
+						{
+							myMode 2
+						}
+					}
+				}
+				myUIGraph helix/ui/graphs/crosshair_accessibility_charge.muigraph
+			}
+		}
+	}
+	myAudioData < uid=7113C611643677A0000054C1C17705D3 > = Player_audioweapon_kays_sig_mod_concussion DADB4E0465DDA4F1000000E75319C6DD
+	myMuzzleEffect helix/particles/vfx_wpn_blaster_muzzleflash_03.mparticles
+}
+

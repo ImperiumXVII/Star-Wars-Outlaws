@@ -1,0 +1,88 @@
+// Keep in sync with HC_FathierRacesEmotionLevel in HC_FathierRacesEmotions.h
+enum EmotionLevel
+{
+	Calm
+	Emotional
+	VeryEmotional
+}
+
+// Keep in sync with HC_FathierRacesTimeType in HC_FathierRacesEmotions.h
+enum TimeType
+{
+	SecondsAfterStart
+	SecondsUntilEnd
+	RaceProportion
+}
+
+class FathierRaceStep
+{
+	TimeType myTimeType < tooltip="Used to interprets the value set in Time. RaceProportion is between 0 and 1." >
+	float myTime < min=0 tooltip="The moment of the race this step happens." >
+	EmotionLevel myEmotionLevel < tooltip="The level of emotion for the sportcaster. This is used if no specific step type is valid (set in RaceStepTypes)." >
+	float myMaximumDistanceToLeaderForWinBelief < min = 0.0 max = 1.0 tooltip="Spectators who selected a fathier over this distance from the leader will have the might not win belief. The used distance is interpolated from the value of this step and the one in the next step." >
+	bool myRegisterRankingUpdates true < tooltip="If false, emotion events based on ranking updates won't be sent during this step." >
+	bool myCanChangeBeliefToMight true < tooltip="If false, spectators' beliefs can't be changed to MightWin or MightNotWin during this step." >
+}
+
+list FathierRaceSteps
+{
+	FathierRaceStep
+}
+
+class OneFathierIsAhead
+{
+	float myMinimumDistance 0.1 < min=0.0 max=1.0 tooltip="The minimum distance between the first and the second fathier to trigger this race step type" >
+}
+
+class FathiersAreClosed
+{
+	int myFathierCount 2 < min=2 tooltip="The amount of fathiers to test to trigger this race step type" >
+	float myMaximumDistance 0.05 < min=0.0 max=1.0 tooltip="The maximum distance between the first fathiers to trigger this race step type" >
+}
+
+class RaceStepTypes
+{
+	OneFathierIsAhead myOneFathierIsAhead
+	FathiersAreClosed myFathiersAreClosed
+}
+
+// Keep in sync with HC_FathierRacesSpectatorBelief in HC_FathierRacesEmotions.h
+enum Belief
+{
+	MightWin
+	MightNotWin
+	IsWin
+	IsNotWin
+}
+
+class FathierRacesSpectatorEmotionData < uid=auto >
+{
+	uid myNewRankingIsBetterEmotion < bhv="constantData" constantDataType="fathierracesspectatoremotion" tooltip="When the fathier of a spectator with this emotion drops in ranking, an event with this emotion is sent (but spectator's emotion doesn't change)." >
+	uid myNewRankingIsWorseEmotion < bhv="constantData" constantDataType="fathierracesspectatoremotion" tooltip="When the fathier of a spectator with this emotion drops in ranking, an event with this emotion is sent (but spectator's emotion doesn't change)." >
+	float myMinimumTimeBetweenEmotionSelfUpdateEvents < min=0.0 tooltip="If different from 0 and if a spectator stays in this emotion for long enough (between the minimum and the maximum time), a self update event is sent.">
+	float myMaximumTimeBetweenEmotionSelfUpdateEvents < min=0.0 tooltip="If different from 0 and if a spectator stays in this emotion for long enough (between the minimum and the maximum time), a self update event is sent.">
+}
+
+class FathierRacesEmotionTransition
+{
+	Belief myOldBelief
+	Belief myNewBelief
+	FathierRacesSpectatorEmotionData* myEmotion
+}
+
+class FathierRacesStartingEmotion
+{
+	Belief myBelief
+	FathierRacesSpectatorEmotionData* myEmotion
+	bool myIsForKay < tooltip="Can Kay start the race with this emotion and this belief ?" >
+}
+
+list FathierRacesEmotionTransitions
+{
+	FathierRacesEmotionTransition
+}
+
+list FathierRacesStartingEmotions
+{
+	FathierRacesStartingEmotion
+}

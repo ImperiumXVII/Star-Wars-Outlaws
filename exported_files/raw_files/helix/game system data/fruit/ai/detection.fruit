@@ -1,0 +1,129 @@
+include "helix/game system data/fruit/ai/alertlevel.fruit"
+include "helix/game system data/fruit/ai/detectionmodifiers.fruit"
+include "helix/game system data/fruit/ai/aievents.fruit"
+include "helix/game system data/fruit/ai/sensorypropagationpolicy.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+include "helix/game system data/fruit/faction/faction.fruit"
+
+list AIEventDetectionContributionGameConditions
+{
+	GameConditionPlayerIsOnSpeeder
+	GameConditionContextSourceAndTargetAgentsHaveFactionRelation
+	GameConditionContextAgentHasFaction
+	GameConditionContextAgentIsInNPCNonCombatArea
+	GameConditionContextAgentIsOnVehicle
+}
+
+class AIEventDetectionContributionGameConditionGroup : GameConditionGroupBase
+{
+	AIEventDetectionContributionGameConditions myConditions
+}
+
+class AIEventDetectionContribution
+{
+	string myComment // Only used as documentation purpose, doesn't affect gameplay
+	AIEvent myEventType < tooltip="AI event that agent respond to" >
+	string myDistanceToStimulusCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -3.3333335 0, }, outTangents = { 3.3333335 0, 0 0, }, properties = { 3, 1027, }, values = { 10 2, 20 0, }, }, numKeys = 2, }," < bhv=inputgraph >
+	NPCAlertLevel myMaximumAlertLevelCanReach < tooltip="Maximum alert level that this stimulus can reach" >
+	bool myUpdateLastKnownPosition true < tooltip="If true, update the LKP using target agent's position" >
+	AIEventDetectionContributionGameConditionGroup myConditions < tooltip="In the context of these conditions, SourceAgent is the owner of detection profile, TargetAgent is the agent that triggers this detection change" >
+}
+
+list AIEventDetectionContributionList
+{
+	AIEventDetectionContribution
+}
+
+class NPCDetectionProfile < uid=auto >
+{
+	float myAwareThreshold 0.0 < tooltip="Detection Value threshold for the transition from Idle to Aware against NPC" >
+	float myCombatThreshold 0.0 < tooltip="Detection Value threshold for the transition from Investigation to Combat against NPC" >
+	
+	string myPlayerAwareThreshold 0.0 < tooltip="Detection Value threshold for the transition from Idle to Aware against player" bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	string myPlayerCombatThreshold 0.0 < tooltip="Detection Value threshold for the transition from Investigation to Combat against player" bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	
+	string myVisionStimulusDropoffCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -7.3741851 0.00050034933, -20 0, }, outTangents = { 20 0, 0 -0, }, properties = { 1299, 2323, }, values = { 10 1, 40 0.2, }, }, numKeys = 2, }" < bhv=inputgraph tooltip="Maps the target distance to a vision stimulus magnitude between 0.0f and 1.0f" >
+	
+	string myVisibilityStimulusRate 0.0 < tooltip="Base detection value change per second when an entity is visible to the NPC (formula resolved with the target agent's attributes)" bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	string myVisibilityStimulusRateMinimumThreshold 0.0 < tooltip="Minimum threshold for which the stimulus rate per second must be equal to or higher, or the stimulus will be discarded by the NPC (formula resolved with the target agent's attributes)" bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	bool myCanEnterCombatWhenHaveVisionToHostile false < tooltip="Can NPC enter combat when have visibility to hostile target. If not, detection score will not exceed aware threshold." >
+	bool myCanEnterCombatOnDamageReceived true < tooltip="Can NPC enter combat when recieving damage. If not, NPC will stay in his current alert level." >
+	float myExplosionEnterCombatMinLastSeenTime 10 < tooltip="Minimum time in second needed on the current LKP to add an LKP on the explosion when enter combat;" >
+
+	NPCDetectionModifierProfile* myDetectionModifierProfile < tooltip="Modifiers that affect the detection stimulus rate in certain contexts" >
+	int myMaxDetectionRadiusToPlayer 0 < tooltip="Maximum radius in units from the NPC that a player is detectable in" >
+
+	float myProjectileDetectionRadius 0.0 < tooltip="Radius of sphere sized projectile detection hit box" >
+	vec3f myProjectileDetectionCenter < tooltip="Center of projectile detection" >
+	
+	float mySmellStimulusRate 0.0 < tooltip="Base detection value change per second when the NPC smells an entity" >
+	
+	float myDecayStartTime 0.0 < tooltip="Time in seconds before detection value starts decaying">
+	float myDecayRate 0.0 < tooltip="Detection value change per second when the NPC is not receiving any stimulus" >
+	float myBeforeCombatDecayModifier 0.0 < tooltip="Additional decay when out of combat" >
+
+	float myBreadcrumbMinTimeBetweenSamples 4.0 < tooltip="How often (in seconds) do we make a breadcrumb from the player's position after losing line of sight" >
+	float myBreadcrumbMinDistanceMovedBetweenSamples 4.0 < tooltip="Minimum distance moved by the player to make a breadcrumb" >
+	float myBreadcrumbMaxSampleTime 90.0 < tooltip="Total time in seconds after losing sight of target that we make breadcrumbs" >
+	
+	bool myCanDetectProhibitedActions true < tooltip="Decides whether or not the npc should completely ignore player prohibited actions" >
+	NPCSensoryPropagationPolicy myVisionToNonHostilePropagationPolicy ReceiveSameFaction < tooltip="Decides which non-hostile NPCs the NPC may propagate detection information from. Affects combat & being alerted by the player" >
+
+	float myNoticePlayerNudgeDelay -1.0f < tooltip="Defines how long it takes for the NPC to notice the player is nugding them. Negative value means doesn't care at all" >
+	
+	bool myShareLKPOnlyWithVisibleFireteamMembers true < tooltip="Share with visible fire team members or all the members" >
+	
+	float myHostilePlayerSeenAtNewLKPEventMinDistance 0.0f < tooltip="Minimum distance between the LKP and the current position of the player to trigger the HostilePlayerSeenAtNewLKP AIEvent" >
+	float myHostilePlayerSeenAtNewLKPnEventMinAngle 0.0f < tooltip="Minimum angle between the vector agent->LKP and current position of the player to trigger the HostilePlayerSeenAtNewLKP AIEvent" >
+	
+	AIEventDetectionContributionList myAIEventDetectionContributionSetup
+
+	bool myCanPropagateCombat TRUE < tooltip="NPCs wont be able to spread its awarenes to friends" >
+}
+
+class HunterDetectionProfileForReferenceOnly
+{
+	float myReadyThreshold 0.0 < tooltip="Detection Value threshold for the transition from Idle to Ready" >
+	float myInvestigatingThreshold 0.0 < tooltip="Detection Value threshold for the transition from Ready to Investigating" >
+	float myCombatThreshold 0.0 < tooltip="Detection Value threshold for the transition from Investigating to Combat" >
+	float myAddPlayerThreatThreshold 0.0  < tooltip="Individual Detection Value threshold for an NPC to enter into combat with a player. Below this threshold the player won't be added as a threat." >
+	NPCAlertLevel myMinAlertLevelForThreatsTracking COMBAT < tooltip="Min Alert Level required for add Threats and propagate it to fireteam" >
+
+	int myPauseBeforeValueDecay 0 < tooltip="The delay time (milliseconds) before the detection value starts to decay" >
+	float myReadyDecayRate 0.0 < tooltip="Rate of decay of the detection value per second for Ready state" >
+	float myInvestigatingDecayRate 0.0 < tooltip="Rate of decay of the detection value per second for Investigating state" >
+
+	float myVisibilityStimulusRate 0.0 < tooltip="Base detection value change per second when an entity is visible to the NPC" >
+	float myVisibilityStimulusMultiplierForNPCToNPC 1.0 < tooltip="Multiplier for stimulus rate when NPC are seeing NPC" >
+	float myVisibilityStimulusMultiplierForNPCToWildlife 1.0 < tooltip="Multiplier for stimulus rate when NPC are seeing Wildlife" >
+    float mySilentSoundTypeStimulus 0.0 < tooltip="Base detection value change when a Silent sound type event is heard" >
+    float myInterestingSoundTypeStimulus 100.0 < tooltip="Base detection value change when an Interesting sound type event is heard" >
+    float mySuspiciousSoundTypeStimulus 100000.0 < tooltip="Base detection value change when a Suspicious sound type event is heard" >
+    float myThreateningSoundTypeStimulus 450.0 < tooltip="Base detection value change when a Threatening sound type event is heard" >
+
+	float myMaxDetectionDistanceIfNotInSameMission 20.0 < tooltip="Maximum detection range if the noise emitter is in a different mission. eg the Player is in a main mission and the NPC is part of the living world system" >
+
+	float mySoundRangeMultiplierForNPCToNPC 1.0 < tooltip="Multiplier for sound range tests NPCs are hearing other NPCs. This is only applied out of combat and is not applied in missions" >
+
+	bool myIgnoreShotAtStimulus FALSE < tooltip="Ignore if being shot at (detection hitbox)" >
+
+	float myAlertZoneStimulusBonusMultiplier 5.0 < tooltip="Multiplier on the detection value change if the target is within the alert zone" >
+	float myLowCoverStimulusMultiplier 0.5 < tooltip=	"Multiplier on the detection value change if the target is in low cover" >
+	float myPeripheralInvestigationZoneStimulusMultiplier 0.5 < tooltip="Multiplier on the detection value change if the target is within the peripheral investigation zone" >
+	float myVisionStimulusIntensityAtMaxmimumRangeMultiplier 0.0 < tooltip="Intensity of the vision stimulus at maximum visibility range. 1.0 = full stimulus, 0.0 = no stimulus" >
+
+	float myVisionStimulusUpdatesLKPThreshold 10.0 < tooltip="Minimum stimulus value required to update last known position during combat" >
+	float mySoundStimulusUpdatesLKPThreshold 10.0 < tooltip="Minimum stimulus value required to update last known position during combat" >
+
+	float myLastKnownPositionPredictionWindow 0.0 < tooltip="Time window after losing sight of target that we try to predict their position based on last seen velocity" >
+
+	float myLkpPredictionFollowWindow 30.0 < tooltip="Time window after losing sight of target that we follow their positions" >
+	float myLkpPredictionSampleFrequency 0.5 < tooltip="How often do we take a sample of the player's position" >
+	int myLkpPredictionMaxSampleCount 16 < tooltip="How many samples do we store for a player" >
+	float myLkpPredictionMinDistanceMoved 0.5 < tooltip="Minimum distance moved by the player to take a sample" >
+
+	float myMaxDistanceForCivilianOrWildlifeVisibleEvents 35.0 < tooltip="The maximum distance at which we will trigger civilian or wild dog visible ai events" >
+	float myMinimumNPCStimulusVelocity 0.0 < tooltip="If the target's speed is under this threshold, the target remains undetected." >
+	float myMinimumPlayerStimulusVelocity 0.0 < tooltip="If the player's speed is under this threshold, the player remains undetected." >
+}
+

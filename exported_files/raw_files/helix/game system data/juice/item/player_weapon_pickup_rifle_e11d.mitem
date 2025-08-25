@@ -1,0 +1,28 @@
+include "helix/game system data/fruit/item/item_includes.fruit"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_pickup_rifle_e11d.mweaponfiremode"
+include "helix/game system data/juice/item/consumables.mitem"
+include "helix/game system data/juice/item/equipmentholding/holding_pickup_rifle_burst.mequipmentholdingconfig"
+include "helix/game system data/juice/item/player_weapon_pickup_rifle.mitem"
+
+WeaponItem player_weapon_pickup_rifle_e11d < uid=4C1DFD4E643D2E510001E1091626AE51 > : player_weapon_pickup_rifle
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"^^Deadly Blaster Rifle\", enabled = true, guid = #4C1DFD4E643D2E510001E107A334D74F, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 10330, text = \"E-11D Blaster Rifle\", type = \"MenuLine\""
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"^^Empire Death Troopers should drop this weapon\", enabled = true, guid = #4C1DFD4E643D2E510001E1085E709097, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 10330, text = \"Pickup from Imperial death troopers\", type = \"MenuLine\""
+	myIcon "mySpriteId = -506695570, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_weapon_icons_01.spritesheet\""
+	myGraphObject "helix/graph objects/gameplayobject/gpo_player_weapon_e11d.mgraphobject"
+	myLootGraphObject "helix/graph objects/gameplayobject/gpo_player_weapon_e11d.mgraphobject"
+	myAmount < uid=4C1DFD4E643D2E510001E10A03B20654 >
+	{
+		myDefaultValue 0
+	}
+	myHoldingConfig < uid=7113C61165F02C04000000D9ED087BCE > = holding_pickup_rifle_burst 7113C61165F02A6B00069827F3F66DF3
+	myConsumedItem < uid=4C1DFD4E643D2E510001E10B063927C2 > = con_Ammo_E-11D 4C1DFD4E643D308B0001EBAFEB5EE801
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=4C1DFD4E643D2E510001E10CDC17FBBA > = player_firemode_pickup_rifle_e11d 4C1DFD4E643D31C50001F721DDA6033C
+		}
+	}
+}
+

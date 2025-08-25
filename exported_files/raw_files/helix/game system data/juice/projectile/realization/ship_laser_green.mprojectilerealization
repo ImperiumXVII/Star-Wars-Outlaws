@@ -1,0 +1,26 @@
+include "helix/game system data/fruit/projectile/projectile_realization.fruit"
+include "helix/game system data/juice/collisionmaterials/collisionmaterials.juice"
+include "helix/game system data/juice/projectile/realization/small_laser.mprojectilerealization"
+
+ProjectileRealization ship_laser_green < uid=6EA7962562F3A76B000050E8407191A5 > : small_laser
+{
+	myProjectileGraphObject "helix/graph objects/projectile/vfx_wpn_projectile_spaceship_01.mgraphobject"
+	myImpactEffects
+	{
+		myDefault helix/particles/vfx_des_hitfx_generic_trailblazer.mparticles
+		myList
+		{
+			EffectOnMaterial "Asteroid Large"
+			{
+				myMaterial < uid=6EA7962562F3A76B000050E981F55120 > = AsteroidLarge 9C4B6A0462A8425D00007B5A601A5AD9
+				myEffect helix/particles/vfx_des_hitfx_asteroid_large_trailblazer.mparticles
+			}
+			EffectOnMaterial "Asteroid Medium"
+			{
+				myMaterial < uid=6EA7962562F3A76B000050EA4A546608 > = AsteroidMedium 9C4B6A0462A9A03800007B64C608BF30
+			}
+		}
+	}
+	myLaserColor Green
+}
+

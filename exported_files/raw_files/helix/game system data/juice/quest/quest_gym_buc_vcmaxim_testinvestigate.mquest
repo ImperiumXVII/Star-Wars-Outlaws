@@ -1,0 +1,73 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/intel/gym_intel.mintel"
+include "helix/game system data/juice/mapref/mapref_intel_hidden.mmapref"
+include "helix/game system data/juice/mapref/mapref_quest_main.mmapref"
+include "helix/game system data/juice/reward/gym_reward.mreward"
+
+Quest quest_gym_buc_vcmaxim_TestInvestigate < uid=82BA8ED36289F98C00007A2D36AC6290 >
+{
+	myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE\", enabled = true, guid = #82BA8ED3628A17C80001286F84E7C70C, lineVersion = 6, maxLength = 0, productId = 6, sectionId = 653, text = \"Infiltrate in the Empire base\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myType Main
+	myCompletionReward < uid=82BA8ED36289FAB300007A2F969917B7 > = gym_generic_questitem_gain 9D0EE20B616836F1000019E1014643CE
+	myFailureReward < uid=82BA8ED36289FAB300007A30D4C404E3 > = gym_generic_reputation_loss_high E42FA10C618BEDDB000028C0DCC84F67
+	myMapRefConstantData < uid=82BA8ED36289FAB300007A3181294409 > = mapref_quest_main B581CAC86228678D00002783B5F9DADE
+	myBeats
+	{
+		QuestBeat Beat1 < uid=82BA8ED36289FABA00007A3206FC36A8 >
+		{
+			myScript helix/scripts/gym_buc_vcmaxim_quest3.mscript
+			myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE.\", enabled = true, guid = #82BA8ED36289FAC000007A335886BD6F, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 653, text = \"Get Past the Blockade\", type = \"MenuLine\""
+			myLevelInfo 82BA8ED362723163000000BC62929A9D
+			myMood Relaxed
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Eavesdrop (GoToLocation)" < uid=82BA8ED36289FC9500007A9ECDC4E2EC >
+				{
+					myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE.\", enabled = true, guid = #82BA8ED36289FCD500007A9F5BE9F897, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 653, text = \"Eavedrop on the officer\", type = \"MenuLine\""
+					myIsOptional TRUE
+					myIsHint TRUE
+					myIntel
+					{
+						Intel "New Intel (0)" < uid=82BA8ED3628A187A00012872738A35F5 > = gym_msv_intel_prop_target_in_volume 83E36AE3615D53B800001865C8A89046
+					}
+				}
+				QuestObjectiveKillFireteam "Kill The Officer for intel(KillFireteam)" < uid=82BA8ED36289FD1C00007AA1BAC0010F >
+				{
+					myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE.\", enabled = true, guid = #82BA8ED36289FD3F00007AA250F94739, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 653, text = \"Kill the Officer and his guards\", type = \"MenuLine\""
+					myIsOptional TRUE
+					myIsHint TRUE
+					myIntel
+					{
+						Intel "New Intel (0)" < uid=82BA8ED36289FD8400007AA344C020F1 > = gym_msv_intel_npc_target 83E36AE3615D53B8000018678E2E2375
+					}
+					myAutoResolveIntel FALSE
+				}
+				QuestObjectiveInteract "Slice the Officer's terminal(interact with)" < uid=82BA8ED36289FEE300007AA458F5316C >
+				{
+					myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE.\", enabled = true, guid = #82BA8ED36289FF0600007AA5E2878B04, lineVersion = 5, maxLength = 0, productId = 6, sectionId = 653, text = \"Slice the Officer's terminal\", type = \"MenuLine\"}"
+					myIsOptional TRUE
+					myIsHint TRUE
+					myIntel
+					{
+						Intel "New Intel (0)" < uid=82BA8ED3628A1C1300013FD2BABD39DB > = gym_msv_intel_prop_target 83E36AE3615D53B800001869A354275F
+					}
+				}
+				QuestObjectiveGoToLocation "Get Past the blockade(GoToLocation)" < uid=82BA8ED36289FF3500007AA678DDD8E2 >
+				{
+					myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE.\", enabled = true, guid = #82BA8ED36289FF7C00007AA912D1FD03, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 653, text = \"Get Past The Blockade\", type = \"MenuLine\""
+					myIntel
+					{
+					}
+				}
+			}
+			myQuestBeatStateGameValue < uid=82BA8ED36289FB1E00007A34AC914980 >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=82BA8ED36289F98C00007A2E3BD790B4 >
+	{
+	}
+}
+

@@ -1,0 +1,65 @@
+// Keep in sync with the enum names in the `HC_CameraData.h`!
+enum HC_DirectionalCameraShakeTrajectoryType
+{
+	None
+	CodeDirection
+}
+
+// Keep in sync with the enum names in the `HC_CameraData.h`!
+enum HC_CameraShakeMovementType
+{
+	Spherical
+	Cartesian
+}
+
+class CameraShakeBlock
+{
+	bool myIsCyclic FALSE
+	bool myIsOutro FALSE < tooltip="When blending out, this block will play. Transitions OutDuration must have values for this to work" >
+	float myBlendInTime 0.0
+	float myBlendOutTime 0.0
+	float myDuration 0.0
+	float myStartOffset 0.0
+
+	string myPitchMoveCurve "" < bhv=inputgraph tooltip="CameraShakeMovementType - Spherical">
+	string myPitchRotateCurve "" < bhv=inputgraph >
+	string myYawMoveCurve "" < bhv=inputgraph tooltip="CameraShakeMovementType - Spherical">
+	string myYawRotateCurve "" < bhv=inputgraph >
+	string myDistanceCurve "" < bhv=inputgraph tooltip="CameraShakeMovementType - Spherical">
+	string myRollCurve "" < bhv=inputgraph >
+	string myFOVCurve "" < bhv=inputgraph >
+
+	string myXMoveCurve "" < bhv=inputgraph tooltip="CameraShakeMovementType - Cartesian. Camera move on X asix over time. X = time ratio. Y = scalar" >
+	string myYMoveCurve "" < bhv=inputgraph tooltip="CameraShakeMovementType - Cartesian. Camera move on Y asix over time. X = time ratio. Y = scalar" >
+	string myZMoveCurve "" < bhv=inputgraph tooltip="CameraShakeMovementType - Cartesian. Camera move on Z asix over time. X = time ratio. Y = scalar" >
+	
+	string mySwingArmAngleCurve "" < bhv=inputgraph tooltip="Swing arm angle scaling over time. X = time ratio. Y = scalar" >
+	string mySwingArmLengthCurve "" < bhv=inputgraph tooltip="Swing arm length scaling over time. X = time ratio. Y = scalar" >
+	string mySwingArmPitchAngleCurve "" < bhv=inputgraph tooltip="Swing arm pitch angle scaling over time. X = time ratio. Y = scalar" >
+	string mySwingArmVariantRatioCurve "" < bhv=inputgraph tooltip="The ratio of swing arm shake versus pitch shake. X = degrees between camera and source (0-90). Y = scalar." >
+	string mySwingArmAmplitudeFOVScaleCurve "" < bhv=inputgraph tooltip="How much shake that should be applied at different FOV values. X = degrees. Y = scalar." >
+
+	float myPitchMoveAmplitude 0.0
+	float myPitchRotateAmplitude 0.0
+	float myYawMoveAmplitude 0.0
+	float myYawRotateAmplitude 0.0
+	float myDistanceAmplitude 0.0
+	float myRollAmplitude 0.0	
+	float myFOVAmplitude 0.0 < tooltip="Angle added to the camera's field of vision in degrees." >
+	
+	float myXMoveAmplitude 0.0
+	float myYMoveAmplitude 0.0
+	float myZMoveAmplitude 0.0
+	
+	HC_CameraShakeMovementType myMovementStyle Spherical
+	
+	float mySwingArmAngleAmplitude 0.0
+	float mySwingArmLengthAmplitude 0.0
+	float mySwingArmPitchAngleAmplitude 0.0
+	HC_DirectionalCameraShakeTrajectoryType myDirectionCameraShakeTrajectoryType None
+}
+
+list CameraShakeBlockList
+{	
+	CameraShakeBlock
+}

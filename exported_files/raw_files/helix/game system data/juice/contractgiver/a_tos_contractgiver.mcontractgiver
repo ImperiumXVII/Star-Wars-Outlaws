@@ -1,0 +1,180 @@
+include "helix/game system data/fruit/contractgiver/contractgiver.fruit"
+include "helix/game system data/juice/contract/contracts_toshara.mcontract"
+include "helix/game system data/juice/contract/space_tos_contracts.mcontract"
+include "helix/game system data/juice/contract/tos_contracts.mcontract"
+include "helix/game system data/juice/mapref/mapref_contractgiver_template.mmapref"
+include "helix/game system data/juice/rbtags/vendor.mrbtagstags"
+
+ContractGiver A_tos_contractgiver_TEMPLATE_Neutral < uid=AE8B16016334049B0003CD6DF57B8B33 >
+{
+	myGalaxyLocation B581CAC861852906000019AE3ED12F5B
+	myUIInfo
+	{
+		myName "aurabesh = false, branch = \"\", contextComment = \"[DEV] independant contract giver title\", enabled = true, guid = #AE8B16016334064D0003CD7B8722FEBD, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2130, text = \"Independent broker\", type = \"MenuLine\""
+	}
+	myAffiliatedFactions
+	{
+		Faction Pykes < uid=BE60F07F6544A58200011A262AE71206 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+		Faction "Crimson Dawn" < uid=BE60F07F6544A58700011A275EFAD4AD > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+		Faction Hutt < uid=BE60F07F6544A58D00011A28B072C0C2 > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	}
+	myMapRef < uid=AE8B1601633405C10003CD71E2972F79 > = mapref_contractgiver_template B581CAC8611B6CD80000298BBE69C121
+	mySlots
+	{
+		ContractGiverSlot "Slot 1"
+		{
+			myMaxReputationTierForGeneration Bad
+			mySlotCooldown 5400.0
+		}
+		ContractGiverSlot "Slot 2"
+		{
+			myMinReputationTierForGeneration Bad
+			myMaxReputationTierForGeneration Fair
+			mySlotCooldown 5400.0
+		}
+		ContractGiverSlot "Slot 3"
+		{
+			myMinReputationTierForGeneration Bad
+			myMaxReputationTierForGeneration Fair
+			mySlotCooldown 5400.0
+		}
+		ContractGiverSlot "Slot 4"
+		{
+			myMinReputationTierForGeneration Good
+			myMaxReputationTierForGeneration Excellent
+			mySlotCooldown 5400.0
+		}
+	}
+	myGiverOutOfJobsTag < uid=FD1071176579AAA10006F0899A0716E5 > = Agent_Vendor_OutOfJobsTemporarily 1EC89F2563FC746E000009C4B28E8D56
+	myFamiliarTag < uid=ADF6F5536581D66A00002D800CC46DA6 > = Agent_Vendor_TrustedCustomerBarksActive 1EC89F256401B61A0000D58ACE830A78
+	myRecentlyBetrayedTag < uid=FD13B51465D76F43000001066A005D83 > = Agent_Vendor_WasBetrayed 1EC89F2565BB59C3000000D2410D92AB
+	myLowReputationTier Fair
+	myLowReputationTag < uid=FD13B51465D76F430000010727EC0619 > = Agent_Vendor_LowReputationClosedForBusiness 1EC89F2565DDBAFF000A27BBD4679E47
+}
+
+ContractGiver A_tos_contractgiver_neutral_HM42 < uid=755DDF04645E038F0001A8CAA2F92AE5 > : A_tos_contractgiver_TEMPLATE_Neutral
+{
+	myMapRef < uid=755DDF04645E03CA0001A8F191A5E5C3 > = mapref_contractgiver_template B581CAC8611B6CD80000298BBE69C121
+}
+
+ContractGiver A_tos_contractgiver_neutral_Danka < uid=BE60F07F653398090005CE271087415E > : A_tos_contractgiver_TEMPLATE_Neutral
+{
+	myMapRef < uid=BE60F07F653398090005CE2D691D13AF > = mapref_contractgiver_template B581CAC8611B6CD80000298BBE69C121
+	mySlots
+	{
+		ContractGiverSlot "Slot 1"
+		{
+			myInitialContract < uid=5C148C466650496800149E6F2A3DF7C3 > = "TOS - Infiltrator Surveillance 2C - Crimson Dawn FD" BE6ABC766517CFDE00208B56CB603194
+			myMaxReputationTierForGeneration Bad
+			mySlotCooldown 5400.0
+		}
+		ContractGiverSlot "Slot 2"
+		{
+			myInitialContract < uid=5C148C466650483F00149B1DE973ED11 > = "TOS - Smuggler Normal Delivery 20W - MicroPOICamp 10 Well" BE6ABC766512D93E000F0A558D41A69A
+			myMinReputationTierForGeneration Bad
+			myMaxReputationTierForGeneration Fair
+			mySlotCooldown 5400.0
+		}
+		ContractGiverSlot "Slot 3"
+		{
+			myInitialContract < uid=5C148C466650486B00149BDE6E905FE6 > = "TOS - Action Raid 70W - Rockformation 06" BE6ABC7665158FEF000E0DA225230568
+			myMinReputationTierForGeneration Bad
+			myMaxReputationTierForGeneration Fair
+			mySlotCooldown 5400.0
+		}
+		ContractGiverSlot "Slot 4"
+		{
+			myInitialContract < uid=5C148C466650488B00149CD3CD1252A3 > = "TOS - Infiltrator Surveillance 50W - HostileCamp02_shipjackers" BE6ABC76651438AD0015F4C5BA4F6891
+			myMinReputationTierForGeneration Good
+			myMaxReputationTierForGeneration Excellent
+			mySlotCooldown 5400.0
+		}
+	}
+}
+
+ContractGiver A_tos_contractgiver_neutral_WhalutaSkanni < uid=BE60F07F6533984F0005CE3B75FFF4B8 > : A_tos_contractgiver_TEMPLATE_Neutral
+{
+	myMapRef < uid=BE60F07F6533984F0005CE418B179046 > = mapref_contractgiver_template B581CAC8611B6CD80000298BBE69C121
+}
+
+ContractGiver A_tos_contractgiver_TEMPLATE_Faction < uid=BE60F07F6554E5A9000247EE6FCE55B5 >
+{
+	myGalaxyLocation B581CAC861852906000019AE3ED12F5B
+	myUIInfo
+	{
+		myName "aurabesh = false, branch = \"\", contextComment = \"[DEV] faction giver template title\", enabled = true, guid = #BE60F07F6554E542000247EDEC71EFB4, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 415, text = \"TEMPLATE Title\", type = \"MenuLine\""
+	}
+	myAffiliatedFactions
+	{
+		Faction Pykes < uid=BE60F07F6554E5A9000247EF06CED143 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+		Faction "Crimson Dawn" < uid=BE60F07F6554E5A9000247F065A19261 > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+		Faction Hutt < uid=BE60F07F6554E5A9000247F1B5304D3A > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	}
+	myMapRef < uid=BE60F07F6554E5A9000247F2A84EC5D4 > = mapref_contractgiver_template B581CAC8611B6CD80000298BBE69C121
+	mySlots
+	{
+		ContractGiverSlot "Slot 1"
+		{
+			myMinReputationTierForGeneration Good
+			myMaxReputationTierForGeneration Good
+			mySlotCooldown 5400.0
+		}
+		ContractGiverSlot "Slot 2"
+		{
+			myMinReputationTierForGeneration Good
+			myMaxReputationTierForGeneration Good
+			mySlotCooldown 5400.0
+		}
+		ContractGiverSlot "Slot 3"
+		{
+			myMinReputationTierForGeneration Excellent
+			myMaxReputationTierForGeneration Excellent
+			mySlotCooldown 5400.0
+		}
+	}
+	myGiverOutOfJobsTag < uid=FD1071176579AAA10006F08AA40C5C36 > = Agent_Vendor_OutOfJobsTemporarily 1EC89F2563FC746E000009C4B28E8D56
+	myFamiliarTag < uid=ADF6F5536581D66A00002D815D6A69AC > = Agent_Vendor_TrustedCustomerBarksActive 1EC89F256401B61A0000D58ACE830A78
+	myRecentlyBetrayedTag < uid=FD13B51465D76F5100000108863B0E71 > = Agent_Vendor_WasBetrayed 1EC89F2565BB59C3000000D2410D92AB
+	myLowReputationTier Fair
+	myLowReputationTag < uid=FD13B51465D76F5100000109DDCB73C8 > = Agent_Vendor_LowReputationClosedForBusiness 1EC89F2565DDBAFF000A27BBD4679E47
+}
+
+ContractGiver A_tos_contractgiver_pyke_RobaBarev < uid=AE8B1601633404B30003CD6EB88EABD9 > : A_tos_contractgiver_TEMPLATE_Faction
+{
+	myUIInfo
+	{
+		myName "aurabesh = false, branch = \"\", contextComment = \"[DEV] Roba barev pyke  contract giver title\", enabled = true, guid = #BE60F07F6566107D0026D998EA8B089B, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 415, text = \"Pyke Syndicate broker\", type = \"MenuLine\""
+	}
+	myAffiliatedFactions
+	{
+		Faction Faction < uid=BE60F07F6533986B0005CE42BEF84FBF > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+	}
+	myMapRef < uid=AE8B1601633405C10003CD7228CB6028 > = mapref_contractgiver_template B581CAC8611B6CD80000298BBE69C121
+}
+
+ContractGiver A_tos_contractgiver_crimson_Eleera < uid=AE8B1601633404F90003CD6F91858DE8 > : A_tos_contractgiver_TEMPLATE_Faction
+{
+	myUIInfo
+	{
+		myName "aurabesh = false, branch = \"\", contextComment = \"[DEV] eleera crimsonDawn contract giver title\", enabled = true, guid = #AE8B1601633406E500044AFB61A5EB45, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 3614, text = \"Crimson Dawn broker\", type = \"MenuLine\""
+	}
+	myAffiliatedFactions
+	{
+		Faction Faction < uid=BE60F07F6533987C0005CE43827C5A0E > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+	}
+	myMapRef < uid=AE8B1601633405C10003CD73577B20FE > = mapref_contractgiver_template B581CAC8611B6CD80000298BBE69C121
+}
+
+ContractGiver A_tos_contractgiver_hutt_Verrick < uid=BE60F07F6533984F0005CE34EB72B3A0 > : A_tos_contractgiver_TEMPLATE_Faction
+{
+	myUIInfo
+	{
+		myName "aurabesh = false, branch = \"\", contextComment = \"[DEV] Verrick Hutt contract giver title\", enabled = true, guid = #BE60F07F653398160005CE2F7A29944F, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 3614, text = \"Hutt Cartel broker\", type = \"MenuLine\""
+	}
+	myAffiliatedFactions
+	{
+		Faction Faction < uid=BE60F07F6533988E0005CE44D17F4E89 > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	}
+	myMapRef < uid=BE60F07F6533984F0005CE3A9A5F8787 > = mapref_contractgiver_template B581CAC8611B6CD80000298BBE69C121
+}
+

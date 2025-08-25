@@ -1,0 +1,708 @@
+include "snowdrop/modules/core/input/gameactions.fruit"
+include "snowdrop/modules/core/input/min_names.fruit"
+
+enum GameActionContextType
+{
+	DefaultContext
+	UIContext
+	VehicleContext
+	DeadContext
+	FreeCameraContext
+	BinocularsContext
+	TrickShotContext
+	GrapplingContext
+	SequenceContext
+	ThrowableContext
+	HoloReaderMapContext
+	HoloReaderCompassContext
+	GadgetContext
+	TransportSneakingContext
+	PetModeContext
+	PetInAggressiveModeContext
+	SpaceshipContext
+	RokanaContext
+	SpaceshipPursuitModeContext
+	CoopContext
+	TextChatContext
+	WeaponModuleSelectionContext
+	MeleeContext
+	ArcadeGameContext
+	GadgetSelectionContext
+	AimScopeContext
+	HyperspacePreparationReadyContext
+	HyperspaceJumpMenuContext
+	LandingMenuContext
+	AdrenalineRushContext
+	CoopDownedContext
+	InputChallengeContext
+	SabaccContext
+	TutorialPauseContext
+	EquipmentOverheatContext
+	WorkbenchMenuContext
+	ShipUpgradesMenuContext
+	SpeederUpgradesMenuContext
+	LoadoutMenuContext
+	PhotoModeContext
+	CustomAnimationContext
+	RappelContext
+}
+
+class GameActionContexts
+{
+	bool AdrenalineRushContext false
+	bool AimScopeContext false
+	bool ArcadeGameContext false
+	bool BinocularsContext false
+	bool CoopContext false
+	bool CoopDownedContext false
+	bool DeadContext false
+	bool DefaultContext true
+	bool EquipmentOverheatContext false
+	bool FreeCameraContext false
+	bool GadgetContext false
+	bool GadgetSelectionContext false
+	bool GrapplingContext false
+	bool HoloReaderCompassContext false
+	bool HoloReaderMapContext false
+	bool HyperspaceJumpMenuContext false
+	bool HyperspacePreparationReadyContext false
+	bool InputChallengeContext false
+	bool LandingMenuContext false
+	bool MeleeContext false
+	bool PetInAggressiveModeContext false
+	bool PetModeContext false
+	bool SabaccContext false
+	bool SequenceContext false
+	bool SpaceshipContext false
+	bool RokanaContext false
+	bool SpaceshipPursuitModeContext false
+	bool TextChatContext false
+	bool ThrowableContext false
+	bool TransportSneakingContext false
+	bool TrickShotContext false
+	bool TutorialPauseContext false	
+	bool UIContext false
+	bool VehicleContext false
+	bool WeaponModuleSelectionContext false
+	bool WorkbenchMenuContext false
+	bool ShipUpgradesMenuContext false
+	bool SpeederUpgradesMenuContext false
+	bool LoadoutMenuContext false
+	bool PhotoModeContext false
+	bool CustomAnimationContext false
+	bool RappelContext false
+}
+
+class ExcludeGameActionContexts : GameActionContexts
+{
+	bool AdrenalineRushContext true
+	bool DefaultContext false
+	bool GadgetSelectionContext true
+	bool TextChatContext true
+	bool WeaponModuleSelectionContext true
+}
+
+enum GameAction < useCategories=1 >
+{
+	None
+	
+	< startCategory="Weapon/Modules" >
+	WeaponModules_SlotModule1
+	WeaponModules_SlotModule2
+	WeaponModules_SlotModule3
+	WeaponModules_OpenMenu
+	WeaponModules_Stun
+	< endCategory="" >
+
+	< startCategory="Weapon" >
+	Aim
+	AimPress
+	Shoot
+	ZoomIn
+	ZoomOut
+	ZoomNext
+	LockAimChangeTargetL
+	LockAimChangeTargetR
+	Unholster_GamePad
+	Holster_GamePad
+	Unholster_Keyboard
+	Holster_Keyboard
+	Switch
+	ChangeFireMode
+	ChangeWeaponModule
+	Reload
+	ReloadMinigameAction
+	ReloadMinigameActionSecondary
+	WeaponModuleCycle
+	WeaponModuleHoldSelect
+	WeaponModuleStartCycling
+	ToggleStun
+	ShoulderSwap
+	WeaponModuleStartCycling
+	WeaponModuleCycleForwardKeyboard
+	WeaponModuleCycleBackKeyboard
+	WeaponModuleCycleKeyboard
+	Contextual_Zoom
+	PickupWeaponEquip
+	< endCategory="" >
+
+	< startCategory="Abilities" >
+	TrickShotAim
+	TrickShotUse
+	TrickShotShoot
+	TrickShotCancel
+	AdrenalineRushUse
+	AdrenalineRushUseSpeeder
+	AdrenalineRushExecute
+	AdrenalineRushCancel
+	CrackShotTag
+	CrackShotRemoveTag
+	CrackShotExecute
+	CrackShotCancel
+	PanicShotUse
+	CoopTalentAbilityUse
+	FireStun
+	< endCategory="" >
+
+	< startCategory="Movement" >
+	Move
+	MoveForward
+	MoveBackward
+	MoveLeft
+	MoveRight
+	NotMoving
+	Jump
+	Fly
+	Sprint
+	SprintHeld
+	Dash
+	Crouch
+	AirBrake
+	Traversal
+	CancelTraversal
+	Dodge
+	MeleeDodge
+	AutoWalk
+	ForcedWalk
+	IncreaseCrouchSpeed
+	DecreaseCrouchSpeed
+	HeldCrouch
+	HeldCrouchAfterTime
+	CrouchOnRelease
+	TapTraversal
+	HeldTraversal
+	HeldCancelTraversal
+	Powerslide
+	LedgeTransfer
+	HangDrop
+	HangLetGo
+	CancelTraversalAny
+	< endCategory="" >
+
+	< startCategory="Combat" >
+	Melee
+	Takedown
+	TakedownAlternate
+	< endCategory="" >
+
+	< startCategory="Camera" >
+	Look
+	LookHorizontal
+	LookVertical
+	LookUp
+	LookDown
+	LookLeft
+	LookRight
+	< endCategory="" >
+
+	< startCategory="UI" >
+	UIAccept
+	UIAcceptHold
+	UIAcceptLongHold
+	UICancel
+	UICancelHold
+	UIPrimaryInteract
+	UIPrimaryInteractHold
+	UISecondaryInteract
+	UISecondaryInteractHold
+	UITertiaryInteract
+	UITertiaryInteractHold
+	UIQuaternaryInteract
+	UIQuaternaryInteractHold
+	UIMoveLeft
+	UIMoveRight
+	UIMoveUp
+	UIMoveDown
+	UIMoveLeftAnalog
+	UIMoveRightAnalog
+	UIMoveUpAnalog
+	UIMoveDownAnalog
+	UIMoveHorizontal
+	UIMoveVertical
+	UIMoveVerticalTap
+	UITabLeft
+	UITabRight
+	UIZoom
+	UIZoomIn
+	UIZoomOut
+	UIRotate
+	UIRotateLeft
+	UIRotateRight
+	UIRotateUp
+	UIRotateDown
+	UIInventory
+	UIDomains
+	UIMap
+	UIJournal
+	UIMapNotification
+	UIOpenStore
+	UIOpenMainMenu
+	UIOpenGameMenu
+	UICloseAllMenus
+	UITriggerCloseAllMenus
+	UIShowQuestTracker
+	UIShowQuestTrackerSpeeder
+	UIShowQuestTrackerTrailblazer
+	UIShowQuestTrackerHold
+	UIShowQuestTrackerHoldSpeeder
+	UIShowQuestTrackerHoldTrailblazer
+	UISkipCinematic
+	UISkipCinematicPress
+	UISkipDialogue
+	UISkipDialoguePress
+	UISaveLoadout
+	UICompare
+	UIInspect
+	UIPricingDetailsHold
+	UIOpenStoreCredits
+	UIOpenStoreOwnedItems
+	UIToggleCompleted
+	UITrack
+	UIOpenTextChat
+	UICloseTextChat
+	UIDialogueRequirements
+	UIFathierRacesReadIntel
+	UIOpenHelpOverlay
+	UIPrimaryInteractLongHold
+	UIDPadLeft
+	UIDPadRight
+	UIDPadUp
+	UIDPadDown
+	UISlicingSelectGlyph
+	UIMarkAllAsRead
+	UIAccessibilityShortcut
+	< endCategory="" >
+
+	< startCategory="UI Map/Debug" >
+	UIMapDebugTeleport
+	< endCategory="" >
+
+	< startCategory="UI Map" >
+	UIMapZoomIn
+	UIMapZoomOut
+	UIMapPanLeft
+	UIMapPanRight
+	UIMapPanUp
+	UIMapPanDown
+	UIMapReset
+	UIMapSettings
+	UIMapOpenQuestJournal
+	UIMapOpenGalaxyLocationShortcut
+	UIMapCloseGalaxyLocationShortcut
+	UIMapGalaxyView
+	UIMapOpenAbility
+	< endCategory="" >
+
+	< startCategory="Misc" >
+	MiscStart
+	FusionCutterInteract
+	Interact
+	MountSpeeder
+	SinglePressInteract
+	HoldInteract
+	CancelInteraction
+	Cancel
+	UbiVisualNotificationInteract
+	GiveUp
+	Ping
+	PingHold
+	PingSelf
+	BlabbermouthUse
+	DropHeistTarget
+	DropHeistTargetAll
+	LockpickingLockIn
+	Unpin
+	< endCategory="" >
+
+	< startCategory="Vehicle" >
+	Speeder_Thrust
+	Speeder_Brake
+	Speeder_RollLeft
+	Speeder_RollRight
+	Speeder_YawLeft
+	Speeder_YawRight
+	Speeder_PitchUp
+	Speeder_PitchDown
+	CallVehicle
+	CallVehicleFromWheel
+	Boost
+	BoostAlternateHold
+	BoostAlternateTap
+	ExitVehicle
+	Speeder_ExitVehiclePressVariant
+	LookBack
+	Speeder_LookBackPressVariant
+	FreeLookCamera
+	Speeder_CameraYawLeft
+	Speeder_CameraYawRight
+	Speeder_CameraPitchUp
+	Speeder_CameraPitchDown
+	Speeder_DodgeLeft
+	Speeder_DodgeRight
+	Speeder_StrafeLeft
+	Speeder_StrafeRight
+	Speeder_TravelMode
+	Speeder_Shoot
+	Speeder_JumpBoost
+	Speeder_JumpCharge
+	Speeder_JumpPressVariant
+	Speeder_YawHorizontal
+	Speeder_DismountBreakoutShoot
+	Speeder_DismountBreakoutAim
+	Speeder_DismountDirectionForward
+	Speeder_DismountDirectionBackward
+	Speeder_DismountDirectionLeft
+	Speeder_DismountDirectionRight
+	Speeder_DodgeLeftFreeFireEnabled
+	Speeder_DodgeRightFreeFireEnabled
+	Speeder_ReloadMinigameAction
+	< endCategory="" >
+	
+	< startCategory="Spaceship" >
+	Trailblazer_Thrust
+	Trailblazer_Brake
+	Trailblazer_FullThrust
+	Trailblazer_FullBrake
+	Trailblazer_Boost
+	Trailblazer_ToggleBoost
+	Trailblazer_UpgradedBoost
+	Trailblazer_DodgeLeft
+	Trailblazer_DodgeRight
+	Trailblazer_UpgradedDodgeLeft
+	Trailblazer_UpgradedDodgeRight
+	Trailblazer_Tag
+	Trailblazer_RollLeft
+	Trailblazer_RollRight
+	Trailblazer_YawLeft
+	Trailblazer_YawRight
+	Trailblazer_PitchUp
+	Trailblazer_PitchDown
+	Trailblazer_UseMainEquipment
+	Trailblazer_ToggleUseMainEquipment
+	Trailblazer_ReleaseUseMainEquipment
+	Trailblazer_UseSecondaryEquipment
+	Trailblazer_ForceUseSecondaryEquipment
+	Trailblazer_CycleShieldMode
+	Trailblazer_ToggleFrontShield
+	Trailblazer_ToggleBackShield
+	Trailblazer_ToggleTurret
+	Trailblazer_UseAuxiliaryDevice
+	Trailblazer_UseRepairKit
+	Trailblazer_PursuitMode
+	Trailblazer_TogglePursuitMode
+	Trailblazer_180Maneuver
+	Trailblazer_360Maneuver
+	Trailblazer_FreeLookCamera
+	Trailblazer_ShieldOvercharge
+	Trailblazer_InteractHyperspaceJumpMenu
+	Trailblazer_OpenHyperspaceJumpMenu
+	Trailblazer_ExitHyperspaceJumpMenu
+	Trailblazer_MoveUpHyperspaceJumpMenu
+	Trailblazer_MoveDownHyperspaceJumpMenu
+	Trailblazer_SelectHyperspaceJumpDestination
+	Trailblazer_UseHyperspaceJump
+	Trailblazer_CancelHyperspaceJumpPreparation
+	Trailblazer_Scan
+	Trailblazer_NextTarget
+	Trailblazer_PrevTarget
+	Trailblazer_LookBack
+	Trailbalzer_AllMovement
+	Trailblazer_180Maneuver_Tutorial
+	Trailblazer_DodgeLeft_Tutorial
+	Trailblazer_DodgeRight_Tutorial
+	Trailblazer_ScanVariant
+	Trailblazer_OpenLandingMenu
+	Trailblazer_ExitLandingMenu
+	Trailblazer_SelectLandingDestination
+	Trailblazer_LandWithNoMenu
+	Trailblazer_Interact
+	Trailblazer_Hold_Interact
+	Trailblazer_SinglePress_Interact
+	Trailblazer_DumpContraband
+	RokanaPlayerShip_AssaultModeSwitch
+	Spaceship_UseTertiaryEquipment
+	< endCategory="" >
+
+	< startCategory="Equipment" >
+	ThrowableThrowPress
+	ThrowableThrowRelease
+	ThrowableThrowPressWheel
+	GrenadeHold
+	GrenadeHoldQuick
+	GrenadeUnhold
+	SmokeGrenadeUse
+	SmokeGrenadeUseQuick
+	LuminRodUse
+	GadgetWheelOpen
+	GadgetWheelOpenSpeeder
+	GadgetWheelOpenPress
+	GadgetWheelOpenPressSpeeder
+	BinocularsUse
+	BinocularsUseQuick
+	BinocularsCancel
+	BinocularsPlaceMarker
+	BinocularsTrackMarker
+	BinocularsAnnotate
+	BinocularsTag
+	BinocularsZoom
+	MedkitUse
+	MedkitUseSpeeder
+	HoloTurnLeft
+	HoloTurnRight
+	HoloLandscapeView
+	HoloReaderHold
+	HoloReaderHoldQuick
+	HoloReaderCancel
+	HoloReaderCompassCancel
+	EMDisruptorHold
+	ProgressiveZoomIn
+	ProgressiveZoomOut
+	GadgetToggle
+	Whistle
+	PickupWeaponHold
+	PickupWeaponUnhold
+	PickupWeaponThrowAway
+	GadgetWheelWeaponHold
+	GadgetWheelWeaponHoldAlternative
+	GadgetWheelWeaponThrowAway
+	< endCategory="" >
+
+	< startCategory="Debug" >
+	FreeCamToggle
+	FreeCamTeleportToCam
+	FreeCamMoveForward
+	FreeCamMoveBackward
+	FreeCamMoveLeft
+	FreeCamMoveRight
+	FreeCamLookUp
+	FreeCamLookDown
+	FreeCamLookLeft
+	FreeCamLookRight
+	FreeCamSpeedUp
+	FreeCamSlowDown
+	FreeCamMoveUp
+	FreeCamMoveDown
+	FreeCamSpeedUp2x
+	< endCategory="" >
+
+	< startCategory="GrapplingHook" >
+	ShortenRope
+	ExtendRope
+	GrapplingHookInteract
+	PullRope
+	Release
+	< endCategory="" >
+	
+	< startCategory="Pet" >
+	HoldPetMode
+	EnterPetMode
+	ExitPetMode
+	OrderPetCommandMain
+	OrderPetCommandAlternate
+	OrderPetCommandAdvanced
+	OrderPetCommandAdvancedAlternate
+	CancelPetCommand
+	OrderPetMomentOfOpportunity
+	TriggerPrompt
+	EnterPetAggressiveMode
+	ExitPetAggressiveMode
+	TriggerPetPulse
+	TriggerPetPulseSpeeder
+	TriggerPetPulseTap
+	TriggerPetPulseTapSpeeder
+	ActivateInputCombo
+	KeepInputComboAlive
+	< endCategory="" >
+
+	< startCategory="PhotoMode" >
+	PhotoModeCraneUp
+	PhotoModeCraneDown
+	PhotoModeNavLeft
+	PhotoModeNavRight
+	PhotoModeNavUp
+	PhotoModeNavDown
+	PhotoModeResetValue
+	PhotoModeResetAllValues
+	PhotoModeRotateCamera
+	PhotoModeRotateCameraLeft
+	PhotoModeRotateCameraRight
+	PhotoModeRotateCameraUp
+	PhotoModeRotateCameraDown
+	PhotoModeToggleAspectRatio
+	PhotoModeToggleCameraSpeed
+	PhotoModeMoveCamera
+	PhotoModeMoveCameraLeft
+	PhotoModeMoveCameraRight
+	PhotoModeMoveCameraForward
+	PhotoModeMoveCameraBackward
+	< endCategory="" >
+
+	< startCategory="ArcadeGame" >
+	ArcadeGameRacingMoveLeft
+	ArcadeGameRacingMoveRight
+	ArcadeGameRailShooterShoot
+	ArcadeGameRailShooterSuperShoot
+	ArcadeGameRailShooterMoveLeft
+	ArcadeGameRailShooterMoveRight
+	ArcadeGameRailShooterMoveUp
+	ArcadeGameRailShooterMoveDown
+	< endCategory="" >
+
+	< startCategory="InputChallenge" >
+	InputChallengeFaceButtonDown
+	InputChallengeFaceButtonDownHold
+	InputChallengeFaceButtonLeft
+	InputChallengeFaceButtonLeftHold
+	InputChallengeFaceButtonUp
+	InputChallengeFaceButtonUpHold
+	InputChallengeFaceButtonRight
+	InputChallengeFaceButtonRightHold
+	InputChallengeDPadDown
+	InputChallengeDPadDownHold
+	InputChallengeDPadLeft
+	InputChallengeDPadLeftHold
+	InputChallengeDPadUp
+	InputChallengeDPadUpHold
+	InputChallengeDPadRight
+	InputChallengeDPadRightHold
+	InputChallengeShoulderLeft
+	InputChallengeShoulderLeftHold
+	InputChallengeShoulderRight
+	InputChallengeShoulderRightHold
+	InputChallengeTriggerLeft
+	InputChallengeTriggerLeftHold
+	InputChallengeTriggerRight
+	InputChallengeTriggerRightHold
+	InputChallengeLeftStickPress
+	InputChallengeLeftStickHold
+	InputChallengeRightStickPress
+	InputChallengeRightStickHold
+	InputChallengeLeftStickDown
+	InputChallengeLeftStickDownHold
+	InputChallengeLeftStickLeft
+	InputChallengeLeftStickLeftHold
+	InputChallengeLeftStickUp
+	InputChallengeLeftStickUpHold
+	InputChallengeLeftStickRight
+	InputChallengeLeftStickRightHold
+	InputChallengeLeftStickIdentifier
+	InputChallengeRightStickDown
+	InputChallengeRightStickDownHold
+	InputChallengeRightStickLeft
+	InputChallengeRightStickLeftHold
+	InputChallengeRightStickUp
+	InputChallengeRightStickUpHold
+	InputChallengeRightStickRight
+	InputChallengeRightStickRightHold
+	InputChallengeRightStickIdentifier
+	< endCategory="" >
+
+	< startCategory="SabaccGame" >
+	CheatDiceUIAcceptPress
+	DoubleDrawCheatPadMove
+	DoubleDrawCheatMoveUp
+	DoubleDrawCheatMoveDown
+	DoubleDrawCheatMoveLeft
+	DoubleDrawCheatMoveRight
+	DoubleDrawCheatSwapCard
+	CheatSneakPeekUIStart
+	CheatSneakPeekUIStartHold
+	RulesetShortcut
+	SabaccFastMode
+	SabaccSwitchToCardView
+	SabaccSwitchToShiftView
+	SabaccOpenShiftLog
+	SabaccPressLeaveTable
+	SabaccHoldLeaveTable
+	CheatNixScamUIStart
+	CheatNixScamUIStartHold
+	CheatNixScamSelectTargetLeft
+	CheatNixScamSelectTargetRight
+	< endCategory="" >
+
+	< startCategory="FathierRaces" >
+	FathierRacesLookAround
+	FathierRacesChangeFOV
+	FathierRacesHoloLeft
+	FathierRacesHoloRight
+	< endCategory="" >
+	
+	< startCategory="MultiOHC" >
+	MultiOHCListen
+	MultiOHCExit
+	MultiOHCZoom
+	< endCategory="" >
+}
+
+enum GameActionState
+{
+	IsSprinting
+	IsForcedSliding
+	IsAiming
+	IsAimLockControlType_CameraOffset
+	IsAimLockControlType_SimpleRightAndLeft
+	CanForceOverHeat
+	IsAnyPlayerInteractionNearby
+	IsEquipmentOverHeat
+	IsRestricted_ChangeWeaponModule
+	IsBoundToGrappleOrRappel
+	IsHoldingPickableWeapon
+	IsUsingAlternatePreset
+	IsPickableWeaponInHolster
+}
+
+class ConditionalGameActionState : ConditionalGameActionBase
+{
+	GameActionState myGameActionState
+}
+
+class ConditionalGameAction : ConditionalGameActionBase
+{
+	GameAction myGameAction
+}
+
+class HardcodedUIInput
+{
+	MIN_ButtonName myButtonName
+	int myAxisDirection 0 < tooltip = "If an axis was selected, specify which direction to show. Negative, Neutral or Positive." >
+}
+
+list InputActionList
+{
+	ConditionalInputActionBase
+	ConditionalGameActionBase
+	ConditionalActionGroup
+	HardcodedUIInput
+}
+
+class TriggerGameAction
+{
+	InputActionList myConditionalInputActions < tooltip="List of input conditions" >
+	GameAction myGameAction < tooltip="The game action to enable if all conditions are met" >
+	bool myRequireNewInputOnContextChange TRUE < tooltip="Uncheck this if you want held actions to re-evaluate without a repress after context changes." >
+	bool myIsCinematicAction < tooltip="If true, this will only trigger when in Cinematic Mode" >
+	bool myIsExclusiveToggle < tooltip="If true, this will disable any other active GameAction that also has this set to true" >
+	string myConsoleCommand < tooltip="If set, this console command will be run when the action is triggered" >
+	GameActionContexts myActionContexts < tooltip="This action will be triggered in the selected contexts" >
+	ExcludeGameActionContexts myExcludeInActionContexts < tooltip="This action will not be triggered in these contexts" >
+}

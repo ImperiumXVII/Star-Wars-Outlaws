@@ -1,0 +1,42 @@
+class NPCCombatAreaShapeQualityDefinition
+{
+	float myShapeScoreThreshold 10 < min=3 tooltip="A contiguous navmesh area with a shape score greater than or equal to this value matches the quality definition.\nThe final quality of a shape is the lowest quality definition it matches." >
+	string myLabel "Undefined" < tooltip="Debug label of the quality level." >
+	color myDebugColor 0xffd3d3d3 < tooltip="Debug color of the quality level." >
+}
+
+list NPCCombatAreaShapeQualityDefinitions
+{
+	NPCCombatAreaShapeQualityDefinition
+}
+
+class NPCCombatAreaShapeQualitySettings
+{
+	string myUndefinedQualityLabel "Undefined" < tooltip="Debug label to use when a shape does not match any quality level." >
+	color myUndefinedQualityColor 0xffd3d3d3 < tooltip="Debug color to use when a shape does not match any quality level." >
+	NPCCombatAreaShapeQualityDefinitions myQualityDefinitions < tooltip="Additional shape quality level definitions." >
+}
+
+list NPCList
+{
+	NPC*
+}
+
+class NPCCombatAreaSanityCheckProfile
+{
+	NPCList myNPCs
+	float myDefaultSaneArea 2500 < tooltip="Default surface area threshold for a contiguous navmesh area to be considered as qualified.\nSurface area lower than this value will be identified as unqualified." >
+	float myRelaxSaneAreaOverride 0 < tooltip="Alternative threshold that can be used to evaluate the inner volume when an NPC combat area is comprised of dual volumes.\nLeave it zero to use the default threshold." >
+}
+
+list NPCCombatAreaSanityCheckProfiles
+{
+	NPCCombatAreaSanityCheckProfile
+}
+
+class NPCCombatAreaSanityCheckSettings < uid=auto >
+{
+	color myUnqualilfiedDebugColor 0xffff00ff
+	NPCCombatAreaShapeQualitySettings myShapeQualitySettings
+	NPCCombatAreaSanityCheckProfiles myProfiles
+}

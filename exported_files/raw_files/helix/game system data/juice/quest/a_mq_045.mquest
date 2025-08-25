@@ -1,0 +1,321 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/intel/intel_toshara.mintel"
+include "helix/game system data/juice/rbtags/quest.mrbtagstags"
+include "helix/game system data/juice/reward/quest_completion_reward.mreward"
+include "helix/game system data/juice/reward/quest_reward.mreward"
+
+Quest A_MQ_045 < uid=8FD81D5164B984F80000ABD24D2542DC >
+{
+	myName "aurabesh = false, contextComment = \"A_MQ_045 Quest Name\", enabled = true, guid = #8FD81D5164B984F80000ABA394159BFE, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 9166, text = \"[TEMP]Upgrades\", type = \"MenuLine\""
+	myIntroDescription "aurabesh = false, contextComment = \"A_MQ_045 Quest Intro Description\", enabled = true, guid = #8FD81D51652E40560004D5B9F943D34E, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9166, text = \"Quest Intro Description Placeholder\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"A_MQ_045 Quest Description\", enabled = true, guid = #8FD81D51652E40BC0004D5DD0D9926DD, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 9166, text = \"Quest Description Placeholder\", type = \"MenuLine\""
+	myImage helix/baked/ui/loose_images/quest_bilboard/journal_billboard_mq_045.dds
+	myCompletionReward < uid=2AE2EC856511A09B0000441343F8166B > = A_MQ_045_questcomplete_reward 2AE2EC8565119F03000179E2EC3F5C32
+	myDebugPlayOnlyCompletionReward < uid=8FD81D51653A85C00011ECC1F19F6333 > = MQ_045_Rewards_For_Debug 2AE2EC8565E34F5B00042FF419A638A6
+	myDebugPlayOnlyIsCompletionRewardUnique TRUE
+	myDebugPlayOnlyEquipItem TRUE
+	myGoals
+	{
+		QuestGoal "New QuestGoal" < uid=8FD81D5165B282A600010C2D666EC5F3 >
+		{
+			myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_MQ_045 Objective Text - Player must steal an Ion Energy Converter from either of the two Syndicate districts\", enabled = true, guid = #8FD81D5165B282A600010C2E9DB8B732, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9531, text = \"Steal the blaster part from the Pyke or Crimson Dawn district\", type = \"MenuLine\""
+		}
+	}
+	myIntroBeat < uid=8FD81D5164B984F80000ABD6FA8C0522 >
+	{
+		myScript helix/scripts/scr_a_mq_045_tos_pln_b01_talktodanka.mscript
+		myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+		myObjectives
+		{
+			QuestObjectiveTalkTo B00_010_TalkToDanka < uid=8FD81D5164B984F80000ABD7E69B68C7 >
+			{
+				myName "aurabesh = false, contextComment = \"A_MQ_045 Objective Text - Talk to Danka\", enabled = true, guid = #8FD81D5164B984F80000ABA70EB9B1F2, lineVersion = 14, maxLength = 0, productId = -1, sectionId = 9529, text = \"Talk to Danka\", type = \"MenuLine\""
+				myIsOptional FALSE
+				myIsHiddenInTracker FALSE
+				myIsHiddenInHUD FALSE
+			}
+		}
+		myQuestBeatStateGameValue < uid=8FD81D5164B984F80000ABD8CDC09A87 >
+		{
+		}
+	}
+	myBeats
+	{
+		QuestBeat "QB01 Buy WeaponPart" < uid=8FD81D5164B984F80000ABD9947EDB67 >
+		{
+			myScript helix/scripts/scr_a_mq_045_tos_pln_b01_buyweaponpart.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myAutostartQuestGoal < uid=8FD81D5165B254CA0005D2C6AE3BE9AF >
+			{
+				myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_MQ_045 Beat Text - Buy an Ion Casing from the pawn shop\", enabled = true, guid = #8FD81D5165B254B6000532E8D2AFFFF5, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9530, text = \"Buy an ion casing from the pawn shop\", type = \"MenuLine\""
+			}
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myObjectives
+			{
+				QuestObjectiveCustom B01_010_BuyWeaponPart < uid=8FD81D5164B984F80000ABDA0E4179DF >
+				{
+					myName "aurabesh = false, contextComment = \"A_MQ_045 Objective Text - Player must buy a blaster part from a pawn shop\", enabled = true, guid = #8FD81D5164B984F80000ABA979FDAD10, lineVersion = 21, maxLength = 0, productId = -1, sectionId = 9530, text = \"Buy an ion casing from the pawn shop\", type = \"MenuLine\""
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+					myIntel
+					{
+					}
+					myChildObjectives
+					{
+						QuestObjectiveGetItem "New QuestObjectiveGetItem" < uid=8FD81D5164E4848200091B61BA4A2FDD >
+						{
+							myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+						}
+					}
+				}
+				QuestObjectiveLeaveArea "New QuestObjectiveLeaveArea" < uid=8FD81D516658496900038E16CE4CF8AE >
+				{
+					myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+			}
+			myQuestBeatStateGameValue < uid=8FD81D5164B984F80000ABE1F951E143 >
+			{
+			}
+			myDebugPlayOnlyCompletionReward < uid=8FD81D51657331FE0002B7642CC707B9 > = "MQ_045 Ion Blaster Part 01" 8FD81D51657331550002B73EA4B114B8
+			myDebugPlayOnlyIsCompletionRewardUnique TRUE
+		}
+		QuestBeat "QB01B WakaCall" < uid=8FD81D5166585D000023F56415F10B1F >
+		{
+			myScript helix/scripts/scr_a_mq_045_tos_pln_b01a_wakacall.mscript
+			myName "aurabesh = false, branch = \"MAIN\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myObjectives
+			{
+			}
+			myQuestBeatStateGameValue < uid=8FD81D5166585D000023F56589F1DB17 >
+			{
+			}
+			myDebugPlayOnlyCompletionReward < uid=8FD81D5166585D000023F5666CBD6DC6 > = "MQ_045 Ion Blaster Part 01" 8FD81D51657331550002B73EA4B114B8
+			myDebugPlayOnlyIsCompletionRewardUnique TRUE
+		}
+		QuestBeatParallelList "QB02 StealWeaponPart"
+		{
+			QuestBeatParallel "QB02B StealWeaponPart - Pykes" < uid=8FD81D5164B98B8C0000AC227A5B96E5 >
+			{
+				myScript helix/scripts/scr_a_mq_045_tos_pln_b02b_pykesyndicatedistrict.mscript
+				myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+				myMood RelaxedNoSpawnpoints
+				myObjectives
+				{
+					QuestObjectiveGoToLocation B02B_010_EnterDistrict < uid=8FD81D5164F07BE70001E4D4888843B4 >
+					{
+						myName "aurabesh = false, contextComment = \"A_MQ_045 Objective Text - Player must steal an Ion Energy Converter from either of the two Syndicate districts\", enabled = true, guid = #8FD81D5164F07C0A0001E50A196511AC, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 9531, text = \"Steal an ion energy converter\", type = \"MenuLine\""
+						myIsHiddenInTracker TRUE
+						myIsHiddenInHUD TRUE
+						myIsHighPrio TRUE
+						myIsImmediate TRUE
+					}
+					QuestObjectiveCustom B02B_011_EnterDistrict_Main < uid=8FD81D5164F1ADDC0004AD99D9F13F50 >
+					{
+						myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+						myIsHiddenInTracker TRUE
+					}
+					QuestObjectiveGoToLocation B02B_020_ReachSaferoom < uid=8FD81D5164F1AEBA0000DAD4B4343918 >
+					{
+						myName "aurabesh = false, contextComment = \"A_MQ_045 Objective Text - Player must steal an Ion Energy Converter from either of the two Syndicate districts\", enabled = true, guid = #8FD81D5164F1AEB00000D55B48A4A5C0, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 9531, text = \"Steal an ion energy converter\", type = \"MenuLine\""
+						myIsHiddenInTracker TRUE
+						myIsHighPrio TRUE
+						myIsImmediate TRUE
+					}
+					QuestObjectiveGetItem B02B_020_StealWeaponPart < uid=8FD81D5164E4D1E2001B416C4EE196E7 >
+					{
+						myName "aurabesh = false, contextComment = \"A_MQ_045 Objective Text - Player must steal an Ion Energy Converter from either of the two Syndicate districts\", enabled = true, guid = #8FD81D5164B98B690000AC21BCC94C94, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 9531, text = \"Steal an ion energy converter\", type = \"MenuLine\""
+						myIsHiddenInTracker TRUE
+						myIsHighPrio TRUE
+						myIsImmediate TRUE
+					}
+				}
+				myQuestBeatStateGameValue < uid=8FD81D5164E4D1E2001B416DABC21D42 >
+				{
+					myDescription ""
+					myDefaultValue 0
+					myIsPersisted FALSE
+					myVariableAttributeName ""
+					myCanBeEditedFromScript FALSE
+					myCanBeEditedFromUI FALSE
+					myCanBeEditedFromProgressionGraph FALSE
+					myIntendedType QuestBeatState
+					myCategory QuestBeat
+					myParentLevelsToUseInInstanceName -1
+				}
+				myDebugPlayOnlyCompletionReward < uid=8FD81D51657331FE0002B765F55FB202 > = "MQ_045 Ion Blaster Part 02" 8FD81D51657331550002B7405203F60A
+				myDebugPlayOnlyIsCompletionRewardUnique TRUE
+			}
+			QuestBeatParallel "QB02A StealWeaponPart - Crimson Dawn" < uid=8FD81D5164B988330000AC16737682FE >
+			{
+				myScript helix/scripts/scr_a_mq_045_tos_pln_b02a_crimsondawndistrict.mscript
+				myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+				myMood RelaxedNoSpawnpoints
+				myObjectives
+				{
+					QuestObjectiveGoToLocation B02A_010_EnterDistrict < uid=8FD81D5164F0822E0004E35304B41830 >
+					{
+						myName "aurabesh = false, contextComment = \"A_MQ_045 Objective Text - Player must steal an Ion Energy Converter from either of the two Syndicate districts\", enabled = true, guid = #8FD81D5164F082180004E3521267D870, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9531, text = \"Steal an Ion Energy Converter\", type = \"MenuLine\""
+						myIsHiddenInTracker TRUE
+						myIsHiddenInHUD TRUE
+						myIsHighPrio TRUE
+						myIsImmediate TRUE
+					}
+					QuestObjectiveCustom B02A_011_EnterDistrict_Main < uid=8FD81D5164F082550004E366EAA5D4A1 >
+					{
+						myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+						myIsHiddenInTracker TRUE
+					}
+					QuestObjectiveGoToLocation B02A_020_ReachSaferoom < uid=8FD81D5164F07C940001E50BE820FECD >
+					{
+						myName "aurabesh = false, contextComment = \"A_MQ_045 Objective Text - Player must steal an Ion Energy Converter from either of the two Syndicate districts\", enabled = true, guid = #8FD81D5164F07CCE0001E5208D1C9CDA, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9531, text = \"Steal an Ion Energy Converter\", type = \"MenuLine\""
+						myIsHiddenInTracker TRUE
+						myIsHighPrio TRUE
+						myIsImmediate TRUE
+					}
+					QuestObjectiveGetItem B02A_030_StealWeaponPart < uid=8FD81D5164E4D1E2001B416EA04E4D3F >
+					{
+						myName "aurabesh = false, contextComment = \"A_MQ_045 Objective Text - Player must steal an Ion Energy Converter from either of the two Syndicate districts\", enabled = true, guid = #8FD81D5164B98A180000AC1BFF0835CF, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9531, text = \"Steal an Ion Energy Converter\", type = \"MenuLine\""
+						myIsHiddenInTracker TRUE
+						myIsHighPrio TRUE
+						myIsImmediate TRUE
+					}
+				}
+				myHasInitFromPreviousBeatPin FALSE
+				myQuestBeatStateGameValue < uid=8FD81D5164E4D1E2001B416FD44D4C71 >
+				{
+					myDescription ""
+					myDefaultValue 0
+					myIsPersisted FALSE
+					myVariableAttributeName ""
+					myCanBeEditedFromScript FALSE
+					myCanBeEditedFromUI FALSE
+					myCanBeEditedFromProgressionGraph FALSE
+					myIntendedType QuestBeatState
+					myCategory QuestBeat
+					myParentLevelsToUseInInstanceName -1
+				}
+			}
+		}
+		QuestBeat "QB03 ReturnToTrailblazer" < uid=8FD81D5164B984F80000ABE2EC7F5CA3 >
+		{
+			myScript helix/scripts/scr_a_mq_045_tos_pln_b03_trailblazerworkbench.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myAutostartQuestGoal < uid=8FD81D5165B26CEC001755F9BE317BB5 >
+			{
+				myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_MQ_045 Beat Text - Build the Ion Module\", enabled = true, guid = #8FD81D5165B26CD1001755F832EE7BFB, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9532, text = \"Assemble the ion module\", type = \"MenuLine\""
+			}
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myDebugPlayLandingZone 9D0EE20B6073F61A000010D71D7A61B9
+			myObjectives
+			{
+				QuestObjectiveCustom B03_010_UseWorkbench < uid=8FD81D5164B984F80000ABE34A8DFF46 >
+				{
+					myName "aurabesh = false, contextComment = \"A_MQ_045 Beat Text - Player must interact with workbench and build the Ion Module\", enabled = true, guid = #8FD81D5164B984F80000ABB135261586, lineVersion = 17, maxLength = 0, productId = -1, sectionId = 9532, text = \"Assemble the ion module\", type = \"MenuLine\""
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+					myChildObjectives
+					{
+						QuestObjectiveGetItem "New QuestObjectiveGetItem" < uid=8FD81D5165158DA800138C37AF2AC2DC >
+						{
+							myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsExternal FALSE
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+						}
+					}
+				}
+			}
+			myQuestBeatStateGameValue < uid=8FD81D5164B984F80000ABE4A020302A >
+			{
+			}
+			myDebugPlayOnlyCompletionReward < uid=8FD81D516571E219000C746EB9C0305A > = "MQ_045 Ion Blaster" 8FD81D51653A859D0011ECB5D4D6E55C
+			myDebugPlayOnlyIsCompletionRewardUnique TRUE
+			myDebugPlayOnlyEquipItem TRUE
+		}
+		QuestBeat "QB04 HuttCache" < uid=8FD81D5164B984F80000ABE5D60D8694 >
+		{
+			myScript helix/scripts/scr_a_mq_045_tos_pln_b04_pykecache.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myAutostartQuestGoal < uid=8FD81D5165B273F3002A3294D33A9ACA >
+			{
+				myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_MQ_045 Beat Text - Steal the smuggler's cache\", enabled = true, guid = #8FD81D5165B273EC002A3293FCE72AE1, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9533, text = \"Steal the smuggler's cache\", type = \"MenuLine\""
+			}
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myObjectives
+			{
+				QuestObjectiveCustom B04_010_ActivateCapacitor < uid=8FD81D5164B984F80000ABE6C08142B2 >
+				{
+					myName "aurabesh = false, contextComment = \"A_MQ_045 Objective Text - Player must solve a puzzle and find a way inside a small building\", enabled = true, guid = #8FD81D5164B984F80000ABB3B8E8604C, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 9533, text = \"Steal the smuggler's cache\", type = \"MenuLine\"}"
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD FALSE
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+				}
+				QuestObjectiveInteract B04_020_StealItem < uid=8FD81D5164B984F80000ABE7E5D3E22B >
+				{
+					myName "aurabesh = false, contextComment = \"A_MQ_045 Objective Text - Player must enter a small building and pick up some loot\", enabled = true, guid = #8FD81D5164B984F80000ABB41435EE91, lineVersion = 15, maxLength = 0, productId = -1, sectionId = 9533, text = \"Steal the smuggler's cache\", type = \"MenuLine\"}"
+					myIsHiddenInTracker FALSE
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=8FD81D5164B984F80000ABE9FE5028F3 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 00000000000000000000000000000000
+			}
+		}
+		QuestBeat "QB05 ReturnToDanka" < uid=8FD81D516537C661000598A546B95FC7 >
+		{
+			myScript helix/scripts/scr_a_mq_045_tos_pln_b05_jauntashope.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myAutostartQuestGoal < uid=8FD81D5165B2744F002A32B10F8AF524 >
+			{
+				myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_MQ_045 Beat Text - Return to Danka\", enabled = true, guid = #8FD81D5165B2743C002A32B0F4A73BF0, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9534, text = \"Deliver the cache to Danka\", type = \"MenuLine\""
+			}
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myObjectives
+			{
+				QuestObjectiveTalkTo B05_010_TalkToDanka < uid=8FD81D516537C63C000598A467E8D989 >
+				{
+					myName "aurabesh = false, contextComment = \"A_MQ_045 Objective Text - Player must speak to Danka\", enabled = true, guid = #8FD81D516537C5A6000598A2259B189F, lineVersion = 14, maxLength = 0, productId = -1, sectionId = 9534, text = \"Deliver the cache to Danka\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD FALSE
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+				}
+			}
+			myQuestBeatStateGameValue < uid=8FD81D516537C661000598A6BB1BE86F >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 00000000000000000000000000000000
+			}
+		}
+	}
+	myOutroBeat
+	{
+	}
+	myQuestStateGameValue < uid=8FD81D5164B984F80000AC102576A598 >
+	{
+	}
+	myQuestAudioState
+	{
+		myGuid 49C63AD9A16838D83DFF05F15A19BB88
+	}
+	myQuestStartedRBTag < uid=8FD81D5164B984F80000AC11413AA7A0 > = World_Quest_MQ045_Started DA5615DD65B7C7D600002791A500F3AE
+	myQuestCompletedRBTag < uid=8FD81D5164B984F80000AC125E537E66 > = World_Quest_MQ045_Completed DA5615DD65B7C77D0000278F0855750C
+}
+

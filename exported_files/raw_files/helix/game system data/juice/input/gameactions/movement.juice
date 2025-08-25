@@ -1,0 +1,1146 @@
+include "helix/game system data/fruit/input/gameinput.fruit"
+include "helix/game system data/juice/input/inputactions.juice"
+
+TriggerGameAction "[Movement] Move"
+{
+	myConditionalInputActions
+	{
+		ConditionalInputAction "Left Stick Left Analog"
+		{
+			myInputActionType Analog
+			myInputAction = LEFT_STICK_LEFT
+		}
+		ConditionalInputAction "Left Stick Right Analog"
+		{
+			myInputActionType Analog
+			myInputAction = LEFT_STICK_RIGHT
+		}
+		ConditionalInputAction "Left Stick Up Analog"
+		{
+			myInputActionType Analog
+			myInputAction = LEFT_STICK_UP
+		}
+		ConditionalInputAction "Left Stick Down Analog"
+		{
+			myInputActionType Analog
+			myInputAction = LEFT_STICK_DOWN
+		}
+		ConditionalInputAction "UP KB"
+		{
+			myInputActionType Analog
+			myInputAction = KB_MOVE_UP
+		}
+		ConditionalInputAction "Left KB"
+		{
+			myInputActionType Analog
+			myInputAction = KB_MOVE_LEFT
+		}
+		ConditionalInputAction "Down KB"
+		{
+			myInputActionType Analog
+			myInputAction = KB_MOVE_DOWN
+		}
+		ConditionalInputAction "Right KB"
+		{
+			myInputActionType Analog
+			myInputAction = KB_MOVE_RIGHT
+		}
+	}
+	myGameAction Move
+}
+
+TriggerGameAction "[Movement] Move Left"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Left Stick Left Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = LEFT_STICK_UP
+					myBackInputAction = LEFT_STICK_DOWN
+					myLeftInputAction = LEFT_STICK_LEFT
+					myRightInputAction = LEFT_STICK_RIGHT
+					myExpectedInputAction = LEFT_STICK_LEFT
+				}
+				ConditionalRotatedInputAction "Left KB"
+				{
+					myInputActionType Analog
+					myForwardInputAction = KB_MOVE_UP
+					myBackInputAction = KB_MOVE_DOWN
+					myLeftInputAction = KB_MOVE_LEFT
+					myRightInputAction = KB_MOVE_RIGHT
+					myExpectedInputAction = KB_MOVE_LEFT
+				}
+			}
+		}
+	}
+	myGameAction MoveLeft
+	myActionContexts
+	{
+		SequenceContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		GadgetSelectionContext FALSE
+		SpaceshipContext TRUE
+		TrickShotContext TRUE
+		UIContext TRUE
+		VehicleContext TRUE
+		WeaponModuleSelectionContext FALSE
+	}
+}
+
+TriggerGameAction "[Movement] Move Right"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Left Stick Right Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = LEFT_STICK_UP
+					myBackInputAction = LEFT_STICK_DOWN
+					myLeftInputAction = LEFT_STICK_LEFT
+					myRightInputAction = LEFT_STICK_RIGHT
+					myExpectedInputAction = LEFT_STICK_RIGHT
+				}
+				ConditionalRotatedInputAction "Right KB"
+				{
+					myInputActionType Analog
+					myForwardInputAction = KB_MOVE_UP
+					myBackInputAction = KB_MOVE_DOWN
+					myLeftInputAction = KB_MOVE_LEFT
+					myRightInputAction = KB_MOVE_RIGHT
+					myExpectedInputAction = KB_MOVE_RIGHT
+				}
+			}
+		}
+	}
+	myGameAction MoveRight
+	myActionContexts
+	{
+		SequenceContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		GadgetSelectionContext FALSE
+		SpaceshipContext TRUE
+		TrickShotContext TRUE
+		UIContext TRUE
+		VehicleContext TRUE
+		WeaponModuleSelectionContext FALSE
+	}
+}
+
+TriggerGameAction "[Movement] Move Forward"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Left Stick Up Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = LEFT_STICK_UP
+					myBackInputAction = LEFT_STICK_DOWN
+					myLeftInputAction = LEFT_STICK_LEFT
+					myRightInputAction = LEFT_STICK_RIGHT
+					myExpectedInputAction = LEFT_STICK_UP
+				}
+				ConditionalRotatedInputAction "Left KB"
+				{
+					myInputActionType Analog
+					myForwardInputAction = KB_MOVE_UP
+					myBackInputAction = KB_MOVE_DOWN
+					myLeftInputAction = KB_MOVE_LEFT
+					myRightInputAction = KB_MOVE_RIGHT
+					myExpectedInputAction = KB_MOVE_UP
+				}
+			}
+		}
+	}
+	myGameAction MoveForward
+	myActionContexts
+	{
+		SequenceContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		GadgetSelectionContext FALSE
+		SpaceshipContext TRUE
+		TrickShotContext TRUE
+		UIContext TRUE
+		VehicleContext TRUE
+		WeaponModuleSelectionContext FALSE
+	}
+}
+
+TriggerGameAction "[Movement] Move Backward"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Left Stick Down Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = LEFT_STICK_UP
+					myBackInputAction = LEFT_STICK_DOWN
+					myLeftInputAction = LEFT_STICK_LEFT
+					myRightInputAction = LEFT_STICK_RIGHT
+					myExpectedInputAction = LEFT_STICK_DOWN
+				}
+				ConditionalRotatedInputAction "Down KB"
+				{
+					myInputActionType Analog
+					myForwardInputAction = KB_MOVE_UP
+					myBackInputAction = KB_MOVE_DOWN
+					myLeftInputAction = KB_MOVE_LEFT
+					myRightInputAction = KB_MOVE_RIGHT
+					myExpectedInputAction = KB_MOVE_DOWN
+				}
+			}
+		}
+	}
+	myGameAction MoveBackward
+	myActionContexts
+	{
+		SequenceContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		GadgetSelectionContext FALSE
+		SpaceshipContext TRUE
+		TrickShotContext TRUE
+		UIContext TRUE
+		VehicleContext TRUE
+		WeaponModuleSelectionContext FALSE
+	}
+}
+
+TriggerGameAction "[Movement] Jump"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Gamepad
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction "A_Cross Pressed"
+						{
+							myInputActionType Pressed
+							myToggle FALSE
+							myInputAction = A_CROSS
+						}
+					}
+				}
+				ConditionalInputAction "KB Pressed"
+				{
+					myInputActionType Pressed
+					myInputAction = KB_TRAVERSAL
+				}
+			}
+		}
+	}
+	myGameAction Jump
+	myRequireNewInputOnContextChange TRUE
+	myExcludeInActionContexts
+	{
+		BinocularsContext TRUE
+		DeadContext TRUE
+		GadgetSelectionContext TRUE
+		PetModeContext TRUE
+		SpaceshipContext TRUE
+		TrickShotContext TRUE
+		UIContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[Movement] Not Moving"
+{
+	myConditionalInputActions
+	{
+		ConditionalGameAction "Not Moving Left"
+		{
+			myNegate TRUE
+			myGameAction MoveLeft
+		}
+		ConditionalGameAction "Not Moving Right"
+		{
+			myNegate TRUE
+			myGameAction MoveRight
+		}
+		ConditionalGameAction "Not Moving Forward"
+		{
+			myNegate TRUE
+			myGameAction MoveForward
+		}
+		ConditionalGameAction "Not Moving Backward"
+		{
+			myNegate TRUE
+			myGameAction MoveBackward
+		}
+	}
+	myGameAction NotMoving
+	myExcludeInActionContexts
+	{
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Movement] Toggle Sprint"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "Left Stick Pressed"
+				{
+					myInputActionType PressedAfterTime
+					myTimer 50
+					myForceDisplayAsTapInUI TRUE
+					myInputAction = LEFT_STICK_BUTTON
+				}
+				ConditionalInputAction "KB Pressed"
+				{
+					myInputActionType PressedAfterTime
+					myTimer 50
+					myForceDisplayAsTapInUI TRUE
+					myInputAction = KB_SPRINT
+				}
+			}
+		}
+	}
+	myGameAction Sprint
+	myExcludeInActionContexts
+	{
+		BinocularsContext TRUE
+		DeadContext TRUE
+		SpaceshipContext TRUE
+		UIContext TRUE
+		VehicleContext TRUE
+		WeaponModuleSelectionContext FALSE
+	}
+}
+
+TriggerGameAction "[Movement] Held Sprint"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Hold
+				{
+					myOperator And
+					myConditionalInputActions
+					{
+						ConditionalActionGroup "Input Actions"
+						{
+							myOperator Or
+							myConditionalInputActions
+							{
+								ConditionalInputAction "Left Stick Pressed"
+								{
+									myInputActionType HoldDown
+									myInputAction = LEFT_STICK_BUTTON
+								}
+								ConditionalInputAction "KB Pressed"
+								{
+									myInputActionType HoldDown
+									myInputAction = KB_SPRINT
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	myGameAction SprintHeld
+	myExcludeInActionContexts
+	{
+		BinocularsContext TRUE
+		DeadContext TRUE
+		SpaceshipContext TRUE
+		UIContext TRUE
+		VehicleContext TRUE
+		WeaponModuleSelectionContext FALSE
+	}
+}
+
+TriggerGameAction "[Movement] Crouch"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Gamepad
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction Gamepad
+						{
+							myInputActionType Pressed
+							myTimer 0
+							myToggle FALSE
+							myInputAction = B_CIRCLE
+						}
+					}
+				}
+				ConditionalInputAction "KB Pressed"
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myToggle FALSE
+					myInputAction = KB_CROUCH
+				}
+			}
+		}
+	}
+	myGameAction Crouch
+	myIsExclusiveToggle FALSE
+	myActionContexts
+	{
+		HoloReaderMapContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext TRUE
+		DeadContext TRUE
+		GrapplingContext TRUE
+		MeleeContext FALSE
+		PetModeContext TRUE
+		SpaceshipContext TRUE
+		TrickShotContext TRUE
+		TutorialPauseContext TRUE
+		UIContext TRUE
+		VehicleContext TRUE
+		WeaponModuleSelectionContext TRUE
+	}
+}
+
+TriggerGameAction "[Movement] Traversal"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "KB Pressed"
+				{
+					myInputActionType HoldDown
+					myForceDisplayAsTapInUI TRUE
+					myInputAction = KB_TRAVERSAL
+				}
+				ConditionalInputAction "A or +"
+				{
+					myInputActionType HoldDown
+					myForceDisplayAsTapInUI TRUE
+					myInputAction = A_CROSS
+				}
+			}
+		}
+	}
+	myGameAction Traversal
+	myRequireNewInputOnContextChange FALSE
+	myExcludeInActionContexts
+	{
+		BinocularsContext TRUE
+		DeadContext TRUE
+		PetModeContext TRUE
+		SpaceshipContext TRUE
+		TrickShotContext TRUE
+		UIContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[Movement] Dodge"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Gamepad
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction Gamepad
+						{
+							myInputActionType DoublePress
+							myTimer 260
+							myInputAction = B_CIRCLE
+						}
+					}
+				}
+				ConditionalActionGroup "KB Press + Movement"
+				{
+					myOperator And
+					myConditionalInputActions
+					{
+						ConditionalInputAction "KB Press"
+						{
+							myInputActionType HoldDown
+							myTimer 0
+							myInputAction = KB_DODGE
+						}
+					}
+				}
+			}
+		}
+	}
+	myGameAction Dodge
+	myExcludeInActionContexts
+	{
+		BinocularsContext TRUE
+		DeadContext TRUE
+		HoloReaderCompassContext FALSE
+		HoloReaderMapContext TRUE
+		PetModeContext TRUE
+		SpaceshipContext TRUE
+		TrickShotContext TRUE
+		UIContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[Movement] Cancel Traversal"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "KB Press"
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 200
+					myInputAction = KB_CROUCH
+				}
+				ConditionalActionGroup Gamepad
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction Gamepad
+						{
+							myInputActionType ReleaseBeforeTime
+							myTimer 200
+							myInputAction = B_CIRCLE
+						}
+					}
+				}
+			}
+		}
+	}
+	myGameAction CancelTraversal
+	myRequireNewInputOnContextChange TRUE
+	myExcludeInActionContexts
+	{
+		DeadContext TRUE
+		SpaceshipContext TRUE
+		UIContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[Movement] Auto Walk"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "KB Press"
+				{
+					myInputActionType Pressed
+					myInputAction = KB_AUTOWALK
+				}
+			}
+		}
+	}
+	myGameAction AutoWalk
+	myExcludeInActionContexts
+	{
+		BinocularsContext TRUE
+		DeadContext TRUE
+		UIContext TRUE
+		VehicleContext FALSE
+	}
+}
+
+TriggerGameAction "[Movement] Forced Walk"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "KB Press"
+				{
+					myInputActionType Pressed
+					myInputAction = KB_FORCEWALK
+				}
+			}
+		}
+	}
+	myGameAction ForcedWalk
+	myExcludeInActionContexts
+	{
+		DeadContext TRUE
+		UIContext TRUE
+		VehicleContext FALSE
+	}
+}
+
+TriggerGameAction "[Movement] Increase Crouched Speed"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "Mouse Wheel"
+				{
+					myInputAction = M_WHEEL_UP
+				}
+			}
+		}
+	}
+	myGameAction IncreaseCrouchSpeed
+}
+
+TriggerGameAction "[Movement] Decrease Crouched Speed"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "Mouse Wheel"
+				{
+					myInputAction = M_WHEEL_DOWN
+				}
+			}
+		}
+	}
+	myGameAction DecreaseCrouchSpeed
+}
+
+TriggerGameAction "[Movement] Held Crouch After Time"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Gamepad
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction Gamepad
+						{
+							myInputActionType HoldDownAfterTime
+							myTimer 200
+							myToggle FALSE
+							myInputAction = B_CIRCLE
+						}
+					}
+				}
+				ConditionalInputAction "KB Pressed"
+				{
+					myInputActionType HoldDownAfterTime
+					myTimer 200
+					myToggle FALSE
+					myInputAction = KB_CROUCH
+				}
+			}
+		}
+	}
+	myGameAction HeldCrouchAfterTime
+	myIsExclusiveToggle FALSE
+	myExcludeInActionContexts
+	{
+		BinocularsContext TRUE
+		DeadContext TRUE
+		GrapplingContext TRUE
+		SpaceshipContext TRUE
+		TrickShotContext TRUE
+		UIContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[Movement] Tap Traversal"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Gamepad
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction Gamepad
+						{
+							myInputActionType ReleaseBeforeTime
+							myTimer 200
+							myToggle FALSE
+							myInputAction = A_CROSS
+						}
+					}
+				}
+				ConditionalInputAction "KB Pressed"
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 200
+					myToggle FALSE
+					myInputAction = KB_TRAVERSAL
+				}
+			}
+		}
+	}
+	myGameAction TapTraversal
+	myIsExclusiveToggle FALSE
+	myExcludeInActionContexts
+	{
+		BinocularsContext TRUE
+		DeadContext TRUE
+		GrapplingContext TRUE
+		SpaceshipContext TRUE
+		TrickShotContext TRUE
+		UIContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[Movement] Held Traversal"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Gamepad
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction Gamepad
+						{
+							myInputActionType HoldDownAfterTime
+							myTimer 200
+							myToggle FALSE
+							myInputAction = A_CROSS
+						}
+					}
+				}
+				ConditionalInputAction "KB Pressed"
+				{
+					myInputActionType HoldDownAfterTime
+					myTimer 200
+					myToggle FALSE
+					myInputAction = KB_TRAVERSAL
+				}
+			}
+		}
+	}
+	myGameAction HeldTraversal
+	myIsExclusiveToggle FALSE
+	myExcludeInActionContexts
+	{
+		BinocularsContext TRUE
+		DeadContext TRUE
+		GrapplingContext TRUE
+		SpaceshipContext TRUE
+		TrickShotContext TRUE
+		UIContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[Movement] Held Cancel Traversal"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "KB Press"
+				{
+					myInputActionType HoldDownAfterTime
+					myTimer 200
+					myInputAction = KB_CROUCH
+				}
+				ConditionalActionGroup Gamepad
+				{
+					myOperator And
+					myConditionalInputActions
+					{
+						ConditionalInputAction Gamepad
+						{
+							myInputActionType HoldDownAfterTime
+							myTimer 200
+							myToggle FALSE
+							myInputAction = B_CIRCLE
+						}
+					}
+				}
+			}
+		}
+	}
+	myGameAction HeldCancelTraversal
+}
+
+TriggerGameAction "[Movement] Powerslide"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "KB Press"
+				{
+					myInputActionType HoldDown
+					myInputAction = KB_POWERSLIDE
+				}
+				ConditionalActionGroup Gamepad
+				{
+					myOperator And
+					myConditionalInputActions
+					{
+						ConditionalInputAction Gamepad
+						{
+							myInputActionType HoldDown
+							myInputAction = B_CIRCLE
+						}
+					}
+				}
+			}
+		}
+	}
+	myGameAction Powerslide
+	myExcludeInActionContexts
+	{
+		PetModeContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Movement] HeldCrouch"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Gamepad
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction Gamepad
+						{
+							myInputActionType HoldDown
+							myTimer 0
+							myToggle FALSE
+							myInputAction = B_CIRCLE
+						}
+					}
+				}
+				ConditionalInputAction "KB Held"
+				{
+					myInputActionType HoldDown
+					myTimer 0
+					myToggle FALSE
+					myInputAction = KB_CROUCH
+				}
+			}
+		}
+	}
+	myGameAction HeldCrouch
+	myIsExclusiveToggle FALSE
+	myExcludeInActionContexts
+	{
+		BinocularsContext TRUE
+		DeadContext TRUE
+		GrapplingContext TRUE
+		SpaceshipContext TRUE
+		TrickShotContext TRUE
+		UIContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[Movement] CrouchOnRelease"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Gamepad
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction Gamepad
+						{
+							myInputActionType Released
+							myInputAction = B_CIRCLE
+						}
+					}
+				}
+				ConditionalInputAction "KB Held"
+				{
+					myInputActionType Released
+					myInputAction = KB_CROUCH
+				}
+			}
+		}
+	}
+	myGameAction CrouchOnRelease
+	myIsExclusiveToggle FALSE
+	myExcludeInActionContexts
+	{
+		BinocularsContext TRUE
+		DeadContext TRUE
+		GrapplingContext TRUE
+		SpaceshipContext TRUE
+		TrickShotContext TRUE
+		UIContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[Movement] Ledge Transfer"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction KB
+				{
+					myInputActionType Pressed
+					myInputAction = KB_TRAVERSAL
+				}
+				ConditionalActionGroup Gamepad
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction Gamepad
+						{
+							myInputActionType Pressed
+							myInputAction = A_CROSS
+						}
+					}
+				}
+			}
+		}
+	}
+	myGameAction LedgeTransfer
+	myIsExclusiveToggle FALSE
+	myExcludeInActionContexts
+	{
+		DeadContext TRUE
+		GrapplingContext TRUE
+		PetModeContext TRUE
+		SpaceshipContext TRUE
+		ThrowableContext TRUE
+		TransportSneakingContext TRUE
+		TrickShotContext TRUE
+		UIContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[Movement] Ledge Tap Drop"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Gamepad
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction Gamepad
+						{
+							myInputActionType Pressed
+							myTimer 0
+							myInputAction = B_CIRCLE
+						}
+					}
+				}
+				ConditionalInputAction KB
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myInputAction = KB_CROUCH
+				}
+			}
+		}
+	}
+	myGameAction HangDrop
+	myIsExclusiveToggle FALSE
+	myExcludeInActionContexts
+	{
+		DeadContext TRUE
+		GrapplingContext TRUE
+		PetModeContext TRUE
+		SpaceshipContext TRUE
+		ThrowableContext TRUE
+		TransportSneakingContext TRUE
+		TrickShotContext TRUE
+		UIContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[Movement] Ledge Let Go"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Gamepad
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction Gamepad
+						{
+							myInputActionType HoldDownAfterTime
+							myTimer 250
+							myInputAction = B_CIRCLE
+						}
+					}
+				}
+				ConditionalInputAction KB
+				{
+					myInputActionType HoldDownAfterTime
+					myTimer 250
+					myInputAction = KB_CROUCH
+				}
+			}
+		}
+	}
+	myGameAction HangLetGo
+	myIsExclusiveToggle FALSE
+	myExcludeInActionContexts
+	{
+		DeadContext TRUE
+		GrapplingContext TRUE
+		PetModeContext TRUE
+		SpaceshipContext TRUE
+		ThrowableContext TRUE
+		TransportSneakingContext TRUE
+		TrickShotContext TRUE
+		UIContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[Movement] Cancel Traversal Any"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "KB Press"
+				{
+					myInputActionType HoldDown
+					myTimer 0
+					myInputAction = KB_CROUCH
+				}
+				ConditionalActionGroup Gamepad
+				{
+					myOperator And
+					myConditionalInputActions
+					{
+						ConditionalInputAction Gamepad
+						{
+							myInputActionType HoldDown
+							myTimer 0
+							myToggle FALSE
+							myInputAction = B_CIRCLE
+						}
+					}
+				}
+			}
+		}
+	}
+	myGameAction CancelTraversalAny
+}
+

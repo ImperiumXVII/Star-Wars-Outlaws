@@ -1,0 +1,400 @@
+include "helix/game system data/fruit/takedown/takedown_move.fruit"
+include "helix/game system data/juice/item/items_dom_skill.mitem"
+include "helix/game system data/juice/camera/animatedcameradata/takedown_heavy_finisher_animatedcameradata.manimatedcameradata"
+include "helix/game system data/juice/camera/blendtransitions/takedown_heavy_finisher_h-90_outcamerablend.mcamerablendtransition"
+include "helix/game system data/juice/camera/blendtransitions/takedown_heavy_finisher_h0_outcamerablend.mcamerablendtransition"
+include "helix/game system data/juice/camera/blendtransitions/takedown_heavy_finisher_h180_outcamerablend.mcamerablendtransition"
+include "helix/game system data/juice/takedown/kay_heavy_takedown_ground.mtakedownmove"
+include "helix/game system data/juice/takedown/kay_takedown_ground.mtakedownmove"
+
+TakedownMove kay_heavy_finisher_takedown_ground < uid=FCD8086C6530F4F50009AE156B53F695 > : kay_heavy_takedown_ground
+{
+	myInteractionPointTag TakeDown_IsHeavyHumanTarget
+	myOverrideTargetAlignmentSettings
+	{
+		myIsEnabled TRUE
+		myBoneAliasID ""
+		myDurationOverDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.2 0.001, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 1 0.02, }, }, numKeys = 2, }"
+	}
+	myIsFallback FALSE
+	myAnimationEntryType Finisher
+	myAlignments
+	{
+		TakedownAlignment 0
+		{
+			myAngle 0
+			mySequenceDuration 4.33
+			myCameraVariations
+			{
+				TakedownCameraVariation "ID 0"
+				{
+					myMinAngleRange 300.0
+					myMaxAngleRange 10.0
+					myTolerance 10.0
+					myEnableOverrideSafetySettings TRUE
+					myOverrideSafetySettings
+					{
+						mySafetyAreaShapeType Box
+						mySafetyAreaPositioningRatio 1.0
+						mySafetyAreaCheckOffset 1.0;1.3;-2.2
+						mySafetyAreaCheckSize 1.0;0.8;2.0
+					}
+				}
+				TakedownCameraVariation "ID 1"
+				{
+					myMinAngleRange 10.0
+					myMaxAngleRange 180.0
+					myTolerance 10.0
+					myVariationID 1
+					myEnableOverrideSafetySettings TRUE
+					myOverrideSafetySettings
+					{
+						mySafetyAreaShapeType Box
+						mySafetyAreaPositioningRatio 1.0
+						mySafetyAreaCheckOffset -1.2;1.3;-0.9
+						mySafetyAreaCheckSize 1.6;0.7;2.0
+					}
+				}
+				TakedownCameraVariation "ID 2"
+				{
+					myMinAngleRange 180.0
+					myMaxAngleRange 300.0
+					myVariationID 2
+					myEnableOverrideSafetySettings TRUE
+					myOverrideSafetySettings
+					{
+						mySafetyAreaShapeType Box
+						mySafetyAreaPositioningRatio 1.0
+						mySafetyAreaCheckOffset 1.6;1.3;0.7
+						mySafetyAreaCheckSize 1.29;0.4;1.15
+					}
+				}
+			}
+			myEnableOverrideCameraSafetySettings TRUE
+			myOverrideCameraSafetySettings
+			{
+				mySafetyAreaShapeType Box
+				mySafetyAreaPositioningRatio 1.0
+				mySafetyAreaCheckOffset 1.0;1.3;-2.2
+				mySafetyAreaCheckSize 1.0;0.8;2.0
+			}
+			myOverrideCameraReturnTransitionIn < uid=5B524CC465F2FA2300088203215CD5F3 > = takedown_heavy_finisher_h0_outcamerablend 5B524CC465F2F9ED0008820236DD10E5
+			myEnableOverrideAnimatedCameraEndPercentage TRUE
+			myOverrideAnimatedCameraEndPercentage 0.45
+			myAlignmentPosDuration 0.33
+			myAlignmentRotDuration 0.33
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.0
+			myOptimalOffset 0.19;0.0;-1.54
+		}
+		TakedownAlignment 180
+		{
+			myAngle 180
+			mySequenceDuration 5.3
+			myCameraVariations
+			{
+				TakedownCameraVariation "ID 0"
+				{
+					myMinAngleRange 120.0
+					myMaxAngleRange 190.0
+					myTolerance 10.0
+					myEnableOverrideSafetySettings TRUE
+					myOverrideSafetySettings
+					{
+						mySafetyAreaShapeType Box
+						mySafetyAreaPositioningRatio 1.0
+						mySafetyAreaCheckOffset 1.2;0.9;-2.0
+						mySafetyAreaCheckSize 1.5;0.9;2.5
+					}
+				}
+				TakedownCameraVariation "ID 1"
+				{
+					myMinAngleRange 190.0
+					myMaxAngleRange 0.0
+					myTolerance 10.0
+					myVariationID 1
+					myEnableOverrideSafetySettings TRUE
+					myOverrideSafetySettings
+					{
+						mySafetyAreaShapeType Box
+						mySafetyAreaPositioningRatio 1.0
+						mySafetyAreaCheckOffset -1.7;1.2;0.07
+						mySafetyAreaCheckSize 1.0;0.72;2.2
+					}
+				}
+				TakedownCameraVariation "ID 2"
+				{
+					myMinAngleRange 0.0
+					myMaxAngleRange 120.0
+					myVariationID 2
+					myEnableOverrideSafetySettings TRUE
+					myOverrideSafetySettings
+					{
+						mySafetyAreaShapeType Box
+						mySafetyAreaPositioningRatio 1.0
+						mySafetyAreaCheckOffset 1.8;1.0;0.3
+						mySafetyAreaCheckSize 1.0;0.9;2.7
+					}
+				}
+			}
+			myEnableOverrideCameraSafetySettings TRUE
+			myOverrideCameraSafetySettings
+			{
+				mySafetyAreaShapeType Box
+				mySafetyAreaPositioningRatio 1.0
+				mySafetyAreaCheckOffset 3.0;0.9;-0.5
+				mySafetyAreaCheckSize 1.2;0.9;2.5
+			}
+			myOverrideCameraReturnTransitionIn < uid=5B524CC46661D179000408F59F07B1E7 > = takedown_heavy_finisher_h180_outcamerablend 5B524CC46661D752000643432D0CB905
+			myEnableOverrideAnimatedCameraEndPercentage TRUE
+			myOverrideAnimatedCameraEndPercentage 0.44
+			myAlignmentPosDuration 0.53
+			myAlignmentRotDuration 0.53
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.0
+			myOptimalOffset -0.25;0.0;-0.81
+		}
+		TakedownAlignment -180
+		{
+			myAngle -180
+			mySequenceDuration 5.3
+			myCameraVariations
+			{
+				TakedownCameraVariation "ID 0"
+				{
+					myMinAngleRange 120.0
+					myMaxAngleRange 190.0
+					myTolerance 10.0
+					myEnableOverrideSafetySettings TRUE
+					myOverrideSafetySettings
+					{
+						mySafetyAreaShapeType Box
+						mySafetyAreaPositioningRatio 1.0
+						mySafetyAreaCheckOffset 1.2;0.9;-2.0
+						mySafetyAreaCheckSize 1.5;0.9;2.5
+					}
+				}
+				TakedownCameraVariation "ID 1"
+				{
+					myMinAngleRange 190.0
+					myMaxAngleRange 0.0
+					myTolerance 10.0
+					myVariationID 1
+					myEnableOverrideSafetySettings TRUE
+					myOverrideSafetySettings
+					{
+						mySafetyAreaShapeType Box
+						mySafetyAreaPositioningRatio 1.0
+						mySafetyAreaCheckOffset -1.7;1.2;0.07
+						mySafetyAreaCheckSize 1.0;0.72;2.2
+					}
+				}
+				TakedownCameraVariation "ID 2"
+				{
+					myMinAngleRange 0.0
+					myMaxAngleRange 120.0
+					myVariationID 2
+					myEnableOverrideSafetySettings TRUE
+					myOverrideSafetySettings
+					{
+						mySafetyAreaShapeType Box
+						mySafetyAreaPositioningRatio 1.0
+						mySafetyAreaCheckOffset 1.8;1.0;0.3
+						mySafetyAreaCheckSize 1.0;0.9;2.7
+					}
+				}
+			}
+			myEnableOverrideCameraSafetySettings TRUE
+			myOverrideCameraSafetySettings
+			{
+				mySafetyAreaShapeType Box
+				mySafetyAreaPositioningRatio 1.0
+				mySafetyAreaCheckOffset 1.2;0.9;-2.0
+				mySafetyAreaCheckSize 1.5;0.9;2.5
+			}
+			myOverrideCameraReturnTransitionIn < uid=5B524CC46661D37E00040A6A388E07C0 > = takedown_heavy_finisher_h180_outcamerablend 5B524CC46661D752000643432D0CB905
+			myEnableOverrideAnimatedCameraEndPercentage TRUE
+			myOverrideAnimatedCameraEndPercentage 0.44
+			myAlignmentPosDuration 0.53
+			myAlignmentRotDuration 0.53
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.0
+			myOptimalOffset -0.25;0.0;-0.81
+		}
+		TakedownAlignment -90
+		{
+			myAngle -90
+			mySequenceDuration 6.6
+			myCameraVariations
+			{
+				TakedownCameraVariation "ID 0"
+				{
+					myMinAngleRange 210.0
+					myMaxAngleRange 290.0
+					myTolerance 10.0
+					myEnableOverrideSafetySettings TRUE
+					myOverrideSafetySettings
+					{
+						mySafetyAreaShapeType Box
+						mySafetyAreaPositioningRatio 1.0
+						mySafetyAreaCheckOffset 1.1;1.1;-2.0
+						mySafetyAreaCheckSize 1.3;0.8;2.0
+					}
+				}
+				TakedownCameraVariation "ID 1"
+				{
+					myMinAngleRange 290.0
+					myMaxAngleRange 90.0
+					myTolerance 10.0
+					myVariationID 1
+					myEnableOverrideSafetySettings TRUE
+					myOverrideSafetySettings
+					{
+						mySafetyAreaShapeType Box
+						mySafetyAreaPositioningRatio 1.0
+						mySafetyAreaCheckOffset -1.3;0.8;1.2
+						mySafetyAreaCheckSize 1.25;1.39;1.2
+					}
+				}
+				TakedownCameraVariation "ID 2"
+				{
+					myMinAngleRange 90.0
+					myMaxAngleRange 210.0
+					myVariationID 2
+					myEnableOverrideSafetySettings TRUE
+					myOverrideSafetySettings
+					{
+						mySafetyAreaShapeType Box
+						mySafetyAreaPositioningRatio 1.0
+						mySafetyAreaCheckOffset 1.7;1.15;0.3
+						mySafetyAreaCheckSize 1.7;0.8;1.0
+					}
+				}
+			}
+			myEnableOverrideCameraSafetySettings TRUE
+			myOverrideCameraSafetySettings
+			{
+				mySafetyAreaShapeType Box
+				mySafetyAreaPositioningRatio 1.0
+				mySafetyAreaCheckOffset 1.1;1.1;-2.0
+				mySafetyAreaCheckSize 1.3;0.8;2.0
+			}
+			myOverrideCameraReturnTransitionIn < uid=5B524CC465F2FEF400157CAF15171AEB > = takedown_heavy_finisher_h-90_outcamerablend 5B524CC465F2FEDD00157CAE03D20715
+			myEnableOverrideAnimatedCameraEndPercentage TRUE
+			myOverrideAnimatedCameraEndPercentage 0.31
+			myAlignmentPosDuration 0.43
+			myAlignmentRotDuration 0.36
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.0
+			myOptimalOffset 0.16;0.0;-1.21
+		}
+		TakedownAlignment 90
+		{
+			myAngle 90
+			mySequenceDuration 6.1
+			myCameraVariations
+			{
+				TakedownCameraVariation "ID 0"
+				{
+					myMinAngleRange 30.0
+					myMaxAngleRange 100.0
+					myTolerance 10.0
+					myEnableOverrideSafetySettings TRUE
+					myOverrideSafetySettings
+					{
+						mySafetyAreaShapeType Box
+						mySafetyAreaPositioningRatio 1.0
+						mySafetyAreaCheckOffset 1.8;1.1;-2.0
+						mySafetyAreaCheckSize 1.6;0.9;2.1
+					}
+				}
+				TakedownCameraVariation "ID 1"
+				{
+					myMinAngleRange 100.0
+					myMaxAngleRange 270.0
+					myTolerance 10.0
+					myVariationID 1
+					myEnableOverrideSafetySettings TRUE
+					myOverrideSafetySettings
+					{
+						mySafetyAreaShapeType Box
+						mySafetyAreaPositioningRatio 1.0
+						mySafetyAreaCheckOffset -1.2;1.2;-0.8
+						mySafetyAreaCheckSize 1.4;1.0;1.8
+					}
+				}
+				TakedownCameraVariation "ID 2"
+				{
+					myMinAngleRange 270.0
+					myMaxAngleRange 30.0
+					myVariationID 2
+					myEnableOverrideSafetySettings TRUE
+					myOverrideSafetySettings
+					{
+						mySafetyAreaShapeType Box
+						mySafetyAreaPositioningRatio 1.0
+						mySafetyAreaCheckOffset 1.9;1.2;0.7
+						mySafetyAreaCheckSize 1.3;0.7;0.9
+					}
+				}
+			}
+			myEnableOverrideCameraSafetySettings TRUE
+			myOverrideCameraSafetySettings
+			{
+				mySafetyAreaShapeType Box
+				mySafetyAreaPositioningRatio 1.0
+				mySafetyAreaCheckOffset 1.8;1.1;-2.0
+				mySafetyAreaCheckSize 1.6;0.9;2.1
+			}
+			myAlignmentPosDuration 0.46
+			myAlignmentRotDuration 0.46
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.0
+			myOptimalOffset 0.05;0.0;-1.07
+		}
+	}
+	myStartConditions
+	{
+		myTargetInRange
+		{
+			myEnabled TRUE
+			myDistance 3.0
+		}
+		myGameCondition
+		{
+			GameConditionMeleeGroup Group
+			{
+				myConditions
+				{
+					GameConditionMeleeAttackerIsInMovementState Ground
+					{
+					}
+					GameConditionTakedownExecutionConstraints TakedownExecutionConstraints
+					{
+						myMaxTargetFacingAngle 90.0
+					}
+					GameConditionMeleeTargetHeightDelta GameConditionMeleeTargetHeightDelta
+					{
+						myHeightDelta 0.8
+						myOperator LessThan
+					}
+					GameConditionPlayerHasItem ShockProd
+					{
+						myItem < uid=ACB8C1A266F2928D004179FBE86B56DA > = DoM_item_HeavyTakeDown F4D8AE26621648090000266E270FDC8F
+					}
+				}
+			}
+		}
+	}
+	myAnimatedCameraData < uid=5B524CC465F2C4100006CEF8E62D1561 > = Takedown_Heavy_Finisher_AnimatedCameraData 5B524CC465F1C91D0024889B3390B385
+	myEarlyExitCameraTransition < uid=5B524CC46662E1C000102A15C1F15229 > = NULLREFERENCE
+	myObstacleDetectionSettings
+	{
+		myDirectionsToCheck
+		{
+			TakedownDirection Back Back
+			TakedownDirection Left Left
+		}
+	}
+}
+

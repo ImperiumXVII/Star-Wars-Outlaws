@@ -1,0 +1,62 @@
+include "helix/game system data/fruit/camera/cameramodifier.fruit"
+
+AimAssistCameraModifier aimassist_default < uid=544DB9085FCFB72D0000001EEB606904 >
+{
+	myTransitions
+	{
+		myInDuration 0.5
+		myInCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.71683353 0, }, outTangents = { 0.30944932 0.032786876, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+		myOutDuration 1.0
+		myOutCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.39580724 0.10040984, }, outTangents = { 0.59668338 0.0010246262, 0 -0, }, properties = { 275, 1299, }, values = { 0 1, 1 0, }, }, numKeys = 2, }"
+	}
+	myAimAssistValues
+	{
+		AimAssistValues Min
+		{
+			mySnap
+			{
+				myDuration 0.4
+				myGrippyness 0.0
+				mySnapWhenAimModeBecomesActiveEnabled TRUE
+			}
+			myAimAttractorStrength 0.6
+			myMovementAttractorStrength 0.7
+			myAimAttractorAdditionInZoom 0.0
+			myCatchupHelpStrength 0.9
+		}
+		AimAssistValues Mid
+		{
+			mySnap
+			{
+				mySnapEnabled FALSE
+				myDuration 0.4
+				mySnapWhenAimModeBecomesActiveEnabled TRUE
+			}
+			myAimAttractorStrength 0.55
+			myMovementAttractorStrength 0.6
+			myAimAttractorAdditionInZoom 0.0
+			myCatchupHelpStrength 0.6
+			myDistance 80.0
+		}
+		AimAssistValues Max
+		{
+			mySnap
+			{
+				mySnapEnabled FALSE
+				myOffsetLimit 0.3
+				myDuration 0.4
+				mySnapWhenAimModeBecomesActiveEnabled TRUE
+			}
+			myAimAttractorStrength 0.4
+			myMovementAttractorStrength 0.4
+			myCatchupHelpStrength 0.5
+			myDistance 300.0
+		}
+	}
+	myFade
+	{
+		myDistanceCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.19689338 -0.001449277, -0.13643996 -0.33188409, }, outTangents = { 0.5 0, 0.13643996 0.33188409, 0 0, }, properties = { 275, 2251, 1227, }, values = { 0 0, 0.59068012 0.004347831, 1 1, }, }, numKeys = 3, }"
+		myFadeTime 1.0
+	}
+}
+

@@ -1,0 +1,121 @@
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+include "helix/game system data/fruit/livingworld/livingworldtag.fruit"
+include "helix/game system data/fruit/livingworld/livingworldenums.fruit"
+
+class PriorityCondition
+{
+	GameConditionFormula myGameCondition
+	float myValue 0.f
+}
+
+list LivingWorldGameConditions
+{
+	LivingWorldGameConditionGroup
+	GameConditionQuestState
+	GameConditionQuestBeatState
+	GameConditionLivingWorldFormula
+	GameConditionFactionKillSquadIsOnCooldown
+	GameConditionFathierRacesAreFixed
+	GameConditionFathierRacesAreInCooldown
+	GameConditionFathierRacesMicrostoryState
+	GameConditionFathierRacesMicrostoriesOver
+	GameConditionFathierRacesProceduralEnigmasAreInCooldown
+	GameConditionHasEverStartedAContract
+	GameConditionContextAgentIsSpecificSpaceshipType
+	GameConditionContextLivingWorldContentLocation_DistanceToActiveSameContent
+	GameConditionContextLivingWorldContentLocation_DistanceToPlayer
+	GameConditionContextLivingWorldContentLocation_DistanceToPlayerRange
+	GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted
+	GameConditionContextLivingWorldContentLocation_IsCompletedInCurrentActivation
+	GameConditionContextLivingWorldContentLocation_IsInLivingWorldLazyFrustum
+	GameConditionContextLivingWorldContentLocation_IsSpaceshipOnMyLandingZone
+	GameConditionContextLivingWorldContentLocation_WasPreviousLocation
+	GameConditionContextLivingWorldContentLocation_HasActiveLivingWorldLocationInContentZone
+	GameConditionContextLivingWorldContentLocation_HasBeenEngagedWith
+	GameConditionLivingWorldContent_HasBeenCompleted
+	GameConditionLivingWorldContent_IsOnCooldown
+	GameConditionLivingWorldIsLoading
+	GameConditionPlayerHasIntel
+	GameConditionPlayerHasReputation
+	GameConditionPlayerHasWantedLevel
+	GameConditionPlayerHasItem
+	GameConditionPlayerIsOnSpeeder
+	GameConditionPlayerIsRokanaSpaceShip
+	GameConditionPlayerHasHotCargo
+	GameConditionContractTriggerAmbushForFaction
+	GameConditionIsStoreAddonActive
+	GameConditionPlayerIsPlayingQuestBeat
+	GameConditionFlag
+	GameConditionTimeOfDay
+	GameConditionSabaccCheatsResultsCount
+	GameConditionWantedPursuitCanRecruit
+	GameConditionHasReachedSequenceMutexLayerLoadMarker
+	GameConditionLivingWorldIsContrabandContractActive
+	GameConditionIsContrabandCargoPickedUp
+}
+
+class LivingWorldGameConditionGroup : GameConditionOverridableGroupBase
+{
+	LivingWorldGameConditions myConditions
+	
+	bool myCanBeOverridden false < tooltip="If set to true and the living world location using this condition is inside a living world group, this condition group will be overridden " >
+}
+
+list PriorityConditions
+{
+	PriorityCondition
+}
+
+class LivingWorldContentUIInfo < ui_info=1 >
+{
+	varmap myName < bhv="localization" tooltip="Set this if you want the scanner system to display the name of your event" >
+	string myIcon < bhv="sprite" tooltip="Set this if you want the scanner system to display the icon of your event" >
+}
+
+class LivingWorldContentBase < uid=auto abstract=true >
+{
+	float myLocationCooldown 0 < tooltip="Individual cooldown for each location using this content.\nIn seconds, per session." >
+	float mySharedLocationCooldown 0 < tooltip="Cooldown for all locations blocked by location using this content.\nIn seconds, per session. \nNeeds to be lower or equal to the location cooldown." >
+	bool myShouldSaveLocationCooldowns false
+	float myContentCooldown 0 < tooltip="Cooldown for all locations using this content. This cooldown is per ticket and won't work without any tickets set. \nIn seconds, persisted." >
+	LivingWorldContentGameValue myTicket < can_be_set=1 tooltip="[OPTIONAL]: If set, this game value will track the number of active instances \nWill be shared between content locations using the same living world content" >
+	LivingWorldContentGameValue myTicketMax < can_be_set=1 tooltip="[OPTIONAL]: If set, this game value will be the max number of allowed instances active at the same time. \nWill be shared between content locations using the same living world content" >
+	LivingWorldContentCompletedGameValue myCompletedGameValue < can_be_set=1 tooltip="[OPTIONAL]: If set, this game value will be set to true upon completion of a location with this Content." >
+	LivingWorldContentLayerTypeList myLivingWorldLayerBlockers < tooltip="When this Content is active no Living World Content with these types can be activated in the same Content Zone. \nThis Content wont be able to start if anything active in its Content Zone is blocking its layer. \nWill force deactivate if something is activated that blocks its layer type." >
+	LivingWorldContentLayerType myLayerType
+	LivingWorldContentLayerTypeList myAdditionalLayerTypes < tooltip = "Used if we need a living world content to have more than one layer type." >
+	float myBlockingRadius 0 < tooltip="Radius that will be used to create a content zone to block content locations based on the living world layer blockers." >
+	float myEngagementRadius -1 < tooltip="If the player enters this radius while the location is active, the location will count as engaged with. That means cooldowns will start when it deactivates. \nIf it's set to -1 it will always count as engaged with after being activated." >
+	float myActivationMinDistanceToPlayerLoadingOverride -1.0f < tooltip="If this is set to something other than -1 and this content has a min distance to player activation condition, that distance will be overidden by this distance during loading. \nThis is to fix having nothing spawn around the player when teleporting or loading the game. " >
+	GameConditionFormula myActivateGameCondition
+	LivingWorldGameConditions myActivationGameConditions
+	GameConditionFormula myDeactivateGameCondition
+	LivingWorldGameConditions myDeactivationGameConditions
+	float myBasePriority 0.f < tooltip = "Determines the order locations that can be activated the same fram will be activate in." >
+	PriorityConditions myPriorityConditions < tooltip = "If a condition is true it's priority value will be added the the content locations total priority value." >
+	LivingWorldTagList myTags
+	bool myIsWantedReinforcement false < hidden=true >
+	bool myIsRecruitableToWantedPursuit false < tooltip = "If switched off, the fireteams accociated with these locations will not join the wanted pursuit (they'll still engage in combat)" >
+	LivingWorldContentUIInfo myUIInfo
+	bool myIsScannable true < tooltip="If set, it can be identified using the space scanner" >
+	bool myWaitForCooldownAfterLoad false < tooltip="If this is set to true this content can not start right away after load. The cooldown is set in livingworldsettings.juice" >
+}
+
+class LivingWorldContent : LivingWorldContentBase
+{
+}
+
+class LivingWorldContentWantedReinforcement : LivingWorldContentBase
+{
+	bool myIsWantedReinforcement true < hidden=true >
+}
+
+list LivingWorldContentList
+{
+	LivingWorldContentBase*
+}
+
+list LivingWorldContentWantedReinforcementList
+{
+	LivingWorldContentWantedReinforcement*
+}

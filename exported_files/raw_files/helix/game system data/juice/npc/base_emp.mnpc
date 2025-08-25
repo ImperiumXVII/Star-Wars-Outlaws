@@ -1,0 +1,105 @@
+include "helix/game system data/juice/character/character_visuals_2_silver_imperial.mcharactervisuals"
+include "helix/game system data/juice/loottable/loot_global.mloottable"
+include "helix/game system data/juice/melee/npc_melee_config.mnpcmeleeconfig"
+include "helix/game system data/juice/npc/base_humanoid.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC base_emp < uid=B0EA4E53600985070000004AE614BFEB > : base_humanoid
+{
+	myFaction < uid=B0EA4E536009851D0000004D087BE4B1 > = Empire 16DEADE65F21E5AB000000B35532A71B
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2763515EDD0004BBDB19BFF81C > = Agent_Gender_FeminineTag 16DEADE6626D20EA00002E5277B65AD4
+		RBTagsTag "New RBTagsTag" < uid=E4123D2763515EE30004BBDC453CF2E4 > = Agent_Gender_MasculineTag 16DEADE6626D20EA00002E504CE30DE2
+	}
+	myPositionReservationSize 0.5
+	myDialogueCharactersFromDatabase
+	{
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=E4123D2763E245740003BC4231ADD4D2 > = Imperial_StormtrooperF01 E4123D2763E244B90003BC1191C82481
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=E4123D2763E245960003BC927B413AA7 > = Imperial_StormtrooperF02 E4123D2763E244B90003BC1468480C62
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=E4123D2763E2459C0003BC93EABD9925 > = Imperial_StormtrooperF03 E4123D2763E244B90003BC17D60F839C
+		DialogueCharacterWithTags "New DialogueCharacterWithTags (0)" < uid=E4123D2764189EAD0000096D33D120BF > = Imperial_StormtrooperF04 E4123D2763E244B90003BC1A8C63C51C
+		DialogueCharacterWithTags "New DialogueCharacterWithTags (1)" < uid=E4123D2764189EB40000096ED729AA6A > = Imperial_StormtrooperF05 E4123D2763E244B90003BC1D1C2350C1
+		DialogueCharacterWithTags "New DialogueCharacterWithTags (2)" < uid=E4123D2764189EBC0000096FB19B36CB > = Imperial_StormtrooperF06 E4123D2763E244B90003BC2023CB00EC
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=E4123D2763E245A20003BC949A157691 > = Imperial_StormtrooperM01 E4123D2763E244F90003BC2939F05EB6
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=E4123D2763E245A80003BC9515021489 > = Imperial_StormtrooperM02 E4123D2763E244F90003BC2CAD90FF84
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=E4123D2763E245AC0003BC9667E4808C > = Imperial_StormtrooperM03 E4123D2763E244F90003BC2F00463541
+		DialogueCharacterWithTags "New DialogueCharacterWithTags (3)" < uid=E4123D2764189EC2000009708AF41EC9 > = Imperial_StormtrooperM04 E4123D2763E245170003BC35DD4265E3
+		DialogueCharacterWithTags "New DialogueCharacterWithTags (4)" < uid=E4123D2764189EC700000971309A03F0 > = Imperial_StormtrooperM05 E4123D2763E245170003BC38C4E39CBA
+		DialogueCharacterWithTags "New DialogueCharacterWithTags (5)" < uid=E4123D2764189ECC00000972AA7A8573 > = Imperial_StormtrooperM06 E4123D2763E245170003BC3B51E3BEFE
+	}
+	mySensoryProfileOverrides
+	{
+		NPCSensoryProfileOverride DefaultCitySensoryProfile
+		{
+			myVisionProfile < uid=595E8DFF62AB1B62000154820BEAFDA1 > = DefaultCityVisionProfile 595E8DFF62AADB4100007B71ACEA3C59
+			mySensoryEnvironmentType DefaultCity
+		}
+		NPCSensoryProfileOverride OnGroundVehicle
+		{
+			myVisionProfile < uid=91DC5D3C650C65370000D268AC7C9BBA > = OnSpeederDetectionProfile 91DC5D3C650C630B0000E1D8CD9CF016
+			myHearingProfile < uid=91DC5D3C6703F4B8000218BEEF8F467F > = SpeederNPCHearingProfile 91DC5D3C6703F29D00044EB0BC37168D
+			mySensoryEnvironmentType OnGroundVehicle
+			myPriority 10
+		}
+		NPCSensoryProfileOverride Distracted
+		{
+			myVisionProfile < uid=3C2FA92B6633403A000A608041DB8DA6 > = DistractedVisionProfile 3C2FA92B6631043C001169CF5B719AC7
+			mySensoryEnvironmentType Distract
+		}
+	}
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=4171A7E166605C04000471009C0B0F0B > = EmpireDetectionProfile 4171A7E16660597400046AFE313037F9
+		myNonCombatAreaProfile < uid=4171A7E166605C0400047101D867AC42 > = EmpireCityDetectionProfile 4171A7E166605AD700046DAAC789582E
+	}
+	myTacticalPositionFinderProfile < uid=91DC5D3C62EA3C120001273F05CEAF04 > = "Default Empire Tactical Position Finder Profile" 91DC5D3C62EA37E7000085772D35EB6E
+	myWantedProfile < uid=16DEADE660B09E7E00005C30CC07C2BA > = DefaultWantedProfile B0EA4E535FB2A77C000000327EE153A1
+	myAgitationProfile < uid=16C7D1FB626FF7460001A34AD255825C > = "Empire Agitation Profile" 16C7D1FB6274DA4600002E24FB2DBC6D
+	myPatrolFormationProfile < uid=91DC5D3C62E78F6B00010393C0B4982F > = EmpirePatrolFormation 4171A7E166B0E72D0009F4C1E40474A3
+	myLootTable < uid=BFAAA1FC6380E0B500013BC6E5916B18 > = loot_con_OnKill_BactaGrenade BFAAA1FC6389D751000063AB1F48E723
+	myBehaviorUpdateBoostProfile < uid=2736B36563DCEA270000DE645638F1BD > = hostile 2736B36563DCDB14000114E560E4B9A2
+	myAudioParameters
+	{
+		myEmitterName NPC
+		mySwitches
+		{
+			AudioSwitch "NPC Faction Switch"
+			{
+				myGuid 44153832CE2685E5879654E9906A2790
+			}
+		}
+		myAudioSwitchByTags
+		{
+			AudioSwitchByTags StormtrooperFemale
+			{
+				myTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=1EC89F256377613B000063299ADF17D5 > = Agent_Gender_FeminineTag 16DEADE6626D20EA00002E5277B65AD4
+				}
+				mySwitch
+				{
+					myGuid 4BC19FBA04EBACEB7D369AAE8C42BFBD
+				}
+			}
+			AudioSwitchByTags StormtrooperMale
+			{
+				myTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=1EC89F256377614400006485CE575A0C > = Agent_Gender_MasculineTag 16DEADE6626D20EA00002E504CE30DE2
+				}
+				mySwitch
+				{
+					myGuid 4088ADC78759121556701CAF4155AF9C
+				}
+			}
+		}
+	}
+	myMeleeConfig < uid=5C421F5C6278E73C000109871644688B > = npc_melee_config BCDE37F162445830000053EBBBF07CF3
+	myStaggerConfig < uid=5C421F5C6278E73C00010988C2951641 > = NPCStaggerConfig_Default 3C2FA92B6516D6EF000072E705D52753
+	myExlusionTickets
+	{
+		NPCTicketType MovementNoCover MovementNoCover
+	}
+}
+

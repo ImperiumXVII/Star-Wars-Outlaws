@@ -1,0 +1,210 @@
+include "helix/game system data/fruit/input/gameinput.fruit"
+include "helix/game system data/fruit/settings/inputchallengesettings.fruit"
+include "helix/game system data/fruit/inputchallenge/inputchallengeaudio.fruit"
+include "helix/game system data/fruit/inputchallenge/inputchallengerumble.fruit"
+include "helix/game system data/fruit/inputchallenge/inputchallengeenum.fruit"
+include "helix/game system data/fruit/inputchallenge/inputchallengeevaluationmode.fruit"
+
+class InputChallengeUIElement
+{
+	InputChallengeAnchor* myButtonAnchorPoint < tooltip = "Anchor point of for ui element" >
+	bool mySupportAlternativeDisplacement false < tooltip="If set to true, this will allow to set up a different position for 21:9 and fillscreen." >
+	vec3f myDisplacement < tooltip = "(Fill screen) Displacement from the anchor point of the ui element. Values between 0 and 1.">
+	vec3f myAlternativeDisplacement < hidden=1 tooltip = "(21 : 9) Displacement from the anchor point of the ui element. Values between 0 and 1.">
+	GameAction myGameAction < hidden=1 tooltip = "Input associated to the UI element ">
+	InputChallengeStick* myStick < hidden=1 tooltip="Stick associated to the UI Element">
+	float myStickAngle 0 < min=0 max=360 hidden=1 tooltip="Expected stick direction for the UI Element. The angle is computed in a counterclock wise direction starting from the right (0 degrees -> Stick Right, 90 degrees -> Stick Up ...)">
+	float myStickAngleTolerance 20 < min=0 max=360 hidden=1 tooltip="A stick input should be considered as correct if it is in the range StickAngle +/- StickTollerance.">
+	float myStickIntensityThreshold 0.5 < min=0 max=1 hidden=1 tooltip="Minimum intenstiy of the stick push to consider an input to be triggered.">
+	float myButtonIntensityThreshold 0.0 < min=0 max=1 hidden=1 tooltip="Minimum intenstiy to consider a button input as valid (this make sense only if we use stick input as buttons)" >
+	InputChallengeButtonAudioEvents* myOverrideButtonAudio < tooltip = "List of sounds associated with this specific button. It overrides the base button sound of the challenge" >
+	InputChallengeUIElementBehaviour myBehaviour
+}
+
+list UIElements
+{
+	InputChallengeUIElement
+}
+
+class InputChallenge < uid=auto abstract=1 >
+{
+	InputChallengeType myChallengeType Custom < tooltip="Type of the input challenge" >
+	file myUIGraph < hidden=1 bhv="asset" assettype="GUI" tooltip="Input challenge ui graph." >
+	int myVisualVariationIndex 0 < min=0 tooltip="Used in challenges of the same type to describe a different visual in UI, while maintaing the same logic.">
+	vec3f myUIAnchorPoint < tooltip="Anchor point of for the UI graph" >
+	float myUIElementsSpacing 10 < tooltip="Spacing between UI elements in the UI graph" >
+	float myPlayerAlertRemainingPercentage 0.4 < min=0 max=1 tooltip="Use by UI to trigger alert feedback to grab player attention, when the challenge is about to expire." >
+	UIElements myUIElements < tooltip="List of all elements of the ui graph">
+	bool myShouldUpdateMouse false < tooltip="If set to true, the challenge will use mouse axis instead of wasd axis (in French layout, zqsd)." >
+	float myMouseDragDistanceGoalPercentage 0.15 < min=0 max=1 hidden=1 tooltip="Minimum percentage of screen in the desired direction the player has to drag the mouse to validate a mouse drag input." >
+	float myMinimumInputDelay 0 < min=0 tooltip="The minimum time (in seconds) that can pass between one input press and the next one, within the same input challenge. The actual duration is a random between Min and Max input delay. If one of the two entries is set to 0 or if the have the same value, the random will not be applied" >
+	float myMaxiumInputDelay 0.5 < min=0 tooltip="The maximum time (in seconds) that can pass between one input press and the next one, within the same input challenge. The actual duration is a random between Min and Max input delay. If one of the two entries is set to 0 or if the have the same value, the random will not be applied" >
+	bool myWaitForPlayerInput true < tooltip="If set to true, max input delay timer will start only after the player has performed a first input. This flag as an effect only at the beginning of a challenge." >
+	bool myShouldFailOnWrongInput true < tooltip="If set to true, any unexpected input will cause a failure due to wrong button press." >
+	float myChallengeTimeoutTime 0.0 < tooltip="After this amount of time, the challenge will automatically fail due to timeout. A value of 0 is considered as no timeout." >
+	float myEndStateDuration 0.1 < min=0 tooltip="The duration of the end state. A value of 0 is considered as no end time." >
+	uid mySimplifiedChallenge < hidden=1 bhv="constantData" constantDataType="inputchallenge" tooltip="[DEPRECATED] Old system used for Alien Street Food. If you need simplified challenges, your system should implement a logic on its own" >
+	InputChallengeAudioEvents* myChallengeAudio < tooltip="List of sounds associated with this specific button" >
+	InputChallengeButtonAudioEvents* myButtonsAudio < tooltip="List of sounds for buttons in this challenge" >
+	bool myCanBeDisabledByPlayerPrefernces true < tooltip="If this is set to false, the option NoChallenge won't have any effect on this challenge." >
+	InputChallengeRumble* myRumblePreset < tooltip="Set of rumble event associated to this challenge" >
+	file myChallengeTriggerEffect < bhv="asset" assettype="trigger effect" >
+	InputChallengeProgressEvaluationMode myProgressEvaluationMode < tooltip="Describes how the player will see the progress. Internally the progress will be linear." >
+	bool myNeedFailFeedbackUI true < tooltip="if this is false, the HUD should not display any feedback when the player fails to perform the challenge" >
+}
+
+class ButtonSequenceChallengeDelay
+{
+	float myButtonShowDelay < min=0 tooltip="Time before the button is shown on screen">
+	float myButtonPlayDelay < min=0 tooltip="Time before the button is interactable.">
+}
+
+list ButtonSequenceInputChallengeButtonDelay
+{
+	ButtonSequenceChallengeDelay
+}
+
+class ButtonsSequenceInputChallenge : InputChallenge
+{
+	InputChallengeType myChallengeType ButtonSequence
+	float myButtonOnScreenTimer 0.5 < min=0 tooltip="Time the button stays on screen when succeeded, before moving to the next one in the sequence" >
+	ButtonSequenceInputChallengeButtonDelay myButtonChallengeDelays < tooltip="Describe delays linked to a specific button. The delay is matched by index with the UIElements list." >
+}
+
+class ButtonsMashingInputChallenge : InputChallenge
+{
+	InputChallengeType myChallengeType ButtonMashing
+	int myChallengeSteps 10 < min=1 tooltip="Amount of consecutive time the player needs to press a correct input to succeed the challenge (without considering reduction)" >
+	InputChallengeProgressReductionMode myProgressReductionMode < tooltip="The way in which the progrees is reduced during the challenge" >
+	float myConsumeProgressDelay 0.0f < min=0 tooltip="Time in seconds after which the progress reduction starts, if the player doesn't perform any acition." >
+	float myProgressReductionStep 0.1f < min=0 tooltip="The amount of progress lost every ConsumeProgressRate seconds. Stored as a positive number, but it will be subtracted from the current progress." >
+	float myConsumeProgressRate 1.0f < min=0 >
+	float myProgressBoostPercentage 0.0f < min=0 tooltip="Muliplicative boost added to the progress if the player pressed the buttons in the correct order" >
+	int myErrorTolerance 0 < min=0 tooltip="Rapresents the number of wrong button press in a row the player is allowed to make before losing the progress boost." >
+}
+
+class ButtonHoldInputChallenge : InputChallenge
+{
+	InputChallengeType myChallengeType ButtonHold
+	float myHoldDuration 3.f < min=0 tooltip="Amount of time you need to hold every single button to succeed in the challenge." >
+	float myConsumeProgressRate .1f < min=0 tooltip="Amount of progress loss per second." >
+	float myConsumeProgressDelay 1.f < min=0 tooltip="Amount of time before the progress starts to be consumed." >
+}
+
+class DecoyButtonInputChallenge : InputChallenge
+{
+	InputChallengeType myChallengeType DecoyButtons
+	float myButtonOnScreenTimer 0.5 < min = 0 tooltip = "Time the button stays on screen before moving to the next one in the sequence">
+	int myNumberForSuccess 3 < min=0 tooltip="Number of not decoy button to press to succeeed the challenge">
+	string myPercentageOfDecoyCurve "{ numKeys = 2, keys2 = { inTangents = { 0 0, -0.333333343 0, }, outTangents = { 0.333333343 0, 0 0, }, properties = { 3, 1027, }, values = { 0 0.5, 1 1, }, },  }," < bhv = inputgraph >
+	int myMaxSequenceOfDecoy 3 < min=0 tooltip="Maximum amount of decoy button that can be generated in a row. After this amount the system will force the creation of a valid input. 0 is considered as unlimited streak.">
+	int myMaxSequenceOfValid 3 < min=0 tooltip="Maximum amount of valid button that can be generated in a row. After this amount the system will force the creation of a decoy input. 0 is considered as unlimited streak.">
+	int myLossForFailure 1 < tooltip="Number of button pressed lost each time the player fails (press the wrong input or press during a decoy)" >
+	bool myEnableFailOnDecoyPress true < tooltip="If set to true, the challenge will consider pressing on a decoy as a failed input." >
+	bool myEnableDecoyPromptRotation false < tooltip="Enable rotation of the decoy prompts." >
+	float myMinDecoyRotation 20 < min=0 max=180 hidden=1 tooltip="Minimum rotaion of the decoy prompts. The angle is vertically mirrored. 0 Degrees is down, 180 is up." >
+	float myMaxDecoyRotation 180 < min=0 max=180 hidden=1 tooltip="Maximum rotaion of the decoy prompts. The angle is vertically mirrored. 0 Degrees is down, 180 is up" >
+}
+
+class InputChallengeTimeWindow
+{
+	vec2f myTimeWindowPercentage 0;1 < min=0;0 max=1;1 >
+	InputChallengeButtonOutcome myWindowResult
+}
+
+class InputChallengeTimeRandomizedWindow
+{
+	InputChallengeButtonOutcome myWindowResult
+	float mySize < min=0 max=1 tooltip="Size of the window">
+	float mySizeMaxVariation < min=0 max=1 tooltip="Size Max Variation of the window. We set the size with a random value between (Size - SizeMaxVariation) and (Size + SizeMaxVariation)" >
+	float myPosition 0.5f < min=0 max=1 tooltip="Position of the window">
+	float myPositionMaxVariation  < min=0 max=1 tooltip="Position Max Variation of the window. We set the position with a random value between (Position - PositionMaxVariation) and (Position + PositionMaxVariation)" >
+	bool myAttachPositionToOtherWindow < tooltip="If we want to attach the window to an other window" >
+	int myParentPositionWindowIndex < tooltip="If AttachPositionToOtherWindow is true, we will override the window position by an other window position with this index" >
+}
+
+list InputChallengeTimeWindows
+{
+	InputChallengeTimeWindow
+}
+
+list InputChallengeTimeWindowsSetup
+{
+	InputChallengeTimeWindows
+}
+
+list InputChallengeTimeRandomizedWindows
+{
+	InputChallengeTimeRandomizedWindow
+}
+
+list InputChallengeTimeRandomizedWindowsSetup
+{
+	InputChallengeTimeRandomizedWindows
+}
+
+class TimedButtonInputChallenge : InputChallenge
+{
+	InputChallengeType myChallengeType TimedButtons
+	bool myUseSingleTimeWindowsSet true < tooltip="Set this to true if the challenge needs just one windows set (Refresh the juice to see new data)" >
+	bool myUseRandomizedWindowsSet false < tooltip="Set this to true if the challenge needs to be randomized (Refresh the juice to see new data)" >
+	InputChallengeTimeWindowsSetup myTimeWindowsSetup < hidden=1 tooltip="List of all timed windows." >
+	InputChallengeTimeWindows myTimeWindows < hidden=1 tooltip="List of all timed windows." >
+	InputChallengeTimeRandomizedWindowsSetup myTimeRandomizedWindowsSetup < hidden=1 tooltip="List of all timed Randomized windows." >
+	InputChallengeTimeRandomizedWindows myTimeRandomizedWindows < hidden=1 tooltip="List of all timed  Randomized windows." >
+	InputChallengeLoopingMode myLoopingMode
+	bool myForceGoodMode false < tooltip="If this is set to true, the challenge will only progress if the player hits a window with a good result." >
+	bool myShouldGoToPreviousStepOnError false < hidden=1 tooltip="When set to true, it the player fails a step, the challenge goes back to the previous step." >
+	bool myShouldPauseOnProgress false < tooltip="if set to true, the challenge will pause before moving to the next input." >
+	bool myResetTimerOnProgress false < tooltip="if set to true, the time indicator will reset to zero at every step of the challenge." >
+	float myPauseOnPlayerPress 0.1 < min=0 tooltip="The challenge will pause for this amount of time each time the player presses an input." >
+	float myButtonOnScreenTimer 0.5 < hidden=1 min=0 tooltip="Time the button stays on screen before moving to the next one in the challenge.">
+	bool myShouldPauseGameOnNotHandledInput true < tooltip="If set to true, any not handled input will cause to pause the game a very short time." >
+
+	bool myWaitForPlayerInput false < hidden=1 >
+}
+
+class OscillatingStickInputChallenge : InputChallenge
+{
+	InputChallengeType myChallengeType OscillatingStick
+	bool myShouldFailOnWrongInput false
+	int myChallengeSteps 10 < min=1 tooltip="Amount of consecutive time the player needs to press a correct input to succeed the challenge (without considering reduction)" >
+	InputChallengeProgressReductionMode myProgressReductionMode < tooltip="The way in which the progrees is reduced during the challenge" >
+	float myConsumeProgressDelay 0.0f < min=0 tooltip="Time in seconds after which the progress reduction starts, if the player doesn't perform any acition." >
+	float myProgressReductionStep 0.1f < min=0 tooltip="The amount of progress lost every ConsumeProgressRate seconds. Stored as a positive number, but it will be subtracted from the current progress." >
+	float myConsumeProgressRate 1.0f < min=0 >
+	float myProgressBoostPercentage 0.0f < min=0 tooltip="Muliplicative boost added to the progress if the player pressed the buttons in the correct order" >
+	int myErrorTolerance 0 < min=0 tooltip="Rapresents the number of wrong button press in a row the player is allowed to make before losing the progress boost." >
+}
+
+class AimingStickWindow
+{
+	InputChallengeButtonOutcome myResult
+	vec2f mySize < tooltip="Size of the window" >
+	vec2f mySizeMaxVariation < tooltip="Variation of the size. If different from (0, 0), the size will have a random value between (size - maxVariation) and (size + maxVariation)" >
+	vec2f myPosition < tooltip="Position of the window" >
+	vec2f myPositionMaxVariation < tooltip="Variation of the position. If different from (0, 0), the position will have a random value between (position - maxVariation) and (position + maxVariation)" >
+	bool myAttachPositionToOtherWindow false < tooltip="If we want to attach the window to an other window" >
+	int myParentPositionWindowIndex < tooltip="If AttachPositionToOtherWindow is true, we will override the window position by an other window position with this index" >
+}
+
+list AimingStickWindows
+{
+	AimingStickWindow
+}
+
+class AimingStickInputChallenge : InputChallenge
+{
+	InputChallengeType myChallengeType AimingStick
+	vec2f myCursorStartPositionMin < tooltip="Min Start Position of the Cursor" >
+	vec2f myCursorStartPositionMax < tooltip="Max Start Position of the Cursor" >
+	float myCursorMoveMinSpeed 0 < tooltip="Minimum Input Move Speed of the cursor. Value between CursorMoveMinSpeed (if different from 0) and CursorMoveMaxSpeed (if different from 0)" >
+	float myCursorMoveMaxSpeed 0 < tooltip="Maxmimum Input Move Speed of the cursor. Value between CursorMoveMinSpeed (if different from 0) and CursorMoveMaxSpeed (if different from 0)" >
+	float myCursorRandomDirectionMinSpeed 0 < tooltip="Minimum Random Move Speed of the cursor. Value between CursorRandomDirectionMinSpeed (if different from 0) and CursorRandomDirectionMaxSpeed (if different from 0)" >
+	float myCursorRandomDirectionMaxSpeed 0 < tooltip="Maximum Random Move Speed of the cursor. Value between CursorRandomDirectionMinSpeed (if different from 0) and CursorRandomDirectionMaxSpeed (if different from 0)" >
+	float myIntervalDurationBetweenDirectionChanges 0
+	float myCursorBorderRepulsionAngleMaxVariation 0 < min=0 max=360 tooltip="When the cursor is out of bounds, it will have a direction towards the center of the gameplay area. This vector angle can vary from -Angle/2 to Angle/2 ">
+	float myCursorBorderRepulsionNoInputDuration 0 < min=0 tooltip="When the cursor is out of bounds, we deactivate the player input during x seconds.">
+	float myCursorNoRandomDirectionDurationBeforeEnd 0 < min=0 tooltip="Duration before the end of the challenge where the cursor cannot have a different random direction">
+	AimingStickWindows myWindowsSetup
+}

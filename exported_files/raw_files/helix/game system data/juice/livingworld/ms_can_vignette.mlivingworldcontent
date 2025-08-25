@@ -1,0 +1,199 @@
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+include "helix/game system data/juice/item/questitems.mitem"
+
+LivingWorldContent "CAN VI BASE" < uid=93D8B0CA656455EA0002DB62CF139AFD >
+{
+	myCompletedGameValue < uid=93D8B0CA656457380002DB6355157285 >
+	{
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType Ambient Ambient
+	}
+	myLayerType MicroStory
+	myBlockingRadius 2.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 50"
+		{
+			myDistance 50.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 50"
+				{
+					myDistance 55.0
+				}
+				LivingWorldGameConditionGroup "Group AND"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+						{
+						}
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 50"
+						{
+							myDistance 50.0
+						}
+					}
+				}
+				GameConditionQuestBeatState "MQ010_Beat04 Started"
+				{
+					myQuestBeat C5645856628B81B10000B4AF5C900B6F
+					myQuestBeatState Started
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS806_VI_SixthKinProtection < uid=93D8B0CA64799B950000FB905F2E2B3A > : "CAN VI BASE"
+{
+	myCompletedGameValue < uid=93D8B0CA6479A98B0002C20C50E9FF5D >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionQuestBeatState "MQ_020 Beat00 Started"
+		{
+			myQuestBeat C5645856628DDDD4000068F5150C0172
+			myQuestBeatState Started
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group AND"
+		{
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+				{
+					myDistance 100.0
+				}
+				GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted Completed
+				{
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS807_VI_GamblerBegging < uid=93D8B0CA647DAACC0005539BE333B684 > : "CAN VI BASE"
+{
+	myCompletedGameValue < uid=93D8B0CA647DAACC0005539E4F44A876 >
+	{
+	}
+}
+
+LivingWorldContent MS808_VI_SixthKinCaughtSomeone < uid=93D8B0CA647DAACC0005539F31BDB08C > : "CAN VI BASE"
+{
+	myCompletedGameValue < uid=93D8B0CA647DAACC000553A2E5DCE12E >
+	{
+	}
+}
+
+LivingWorldContent MS809_VI_CantoPoliceDeal < uid=93D8B0CA647DAACC000553A3393914C9 > : "CAN VI BASE"
+{
+	myCompletedGameValue < uid=93D8B0CA647DAACC000553A6F5F34B0E >
+	{
+	}
+}
+
+LivingWorldContent MS813_VI_CantoImmigrants < uid=93D8B0CA647DAACC000553B35D50C215 > : "CAN VI BASE"
+{
+	myCompletedGameValue < uid=93D8B0CA647DAACC000553B6FADAFB3F >
+	{
+	}
+}
+
+LivingWorldContent MS816_VI_GamblingMoney < uid=93D8B0CA647DAACC000553BF3AACACB1 > : "CAN VI BASE"
+{
+	myCompletedGameValue < uid=93D8B0CA647DAACC000553C2DB4EE4A2 >
+	{
+	}
+}
+
+LivingWorldContent MS819_VI_SpicesTaxes < uid=93D8B0CA647DAACC000553CB28AD44BC > : "CAN VI BASE"
+{
+	myCompletedGameValue < uid=93D8B0CA647DAACC000553CE10B00B12 >
+	{
+	}
+}
+
+LivingWorldContent MS820_VI_PoudingOnADoor < uid=93D8B0CA647DAACC000553CF527A251C > : "CAN VI BASE"
+{
+	myCompletedGameValue < uid=93D8B0CA647DAACC000553D2051D2B2A >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionQuestBeatState "MQ_020 Beat00 Started"
+		{
+			myQuestBeat C5645856628DDDD4000068F5150C0172
+			myQuestBeatState Started
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group AND"
+		{
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+				{
+					myDistance 100.0
+				}
+				GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted Completed
+				{
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS821_VI_ClubBossOOO < uid=93D8B0CA647DAACC000553D386CCBC50 > : "CAN VI BASE"
+{
+	myCompletedGameValue < uid=93D8B0CA647DAACC000553D62E426281 >
+	{
+	}
+}
+
+LivingWorldContent MS822_VI_AbandonnedArea < uid=93D8B0CA647DAACC000553D7CD8F7525 > : "CAN VI BASE"
+{
+	myCompletedGameValue < uid=93D8B0CA647DAACC000553DA1FC50C64 >
+	{
+	}
+}
+
+LivingWorldContent MS823_VI_CantinaBramRivality < uid=93D8B0CA647DAACC000553DBA95574E4 > : "CAN VI BASE"
+{
+	myCompletedGameValue < uid=93D8B0CA647DAACC000553DEB95A5D17 >
+	{
+	}
+}
+
+LivingWorldContent MS824_VI819_SixthKinGuardsChatting < uid=4B74A51C6580158600031AA6D4594446 > : "CAN VI BASE"
+{
+	myCompletedGameValue < uid=4B74A51C658015B100031AA76672C928 >
+	{
+	}
+}
+
+LivingWorldContent MS825_VI820_SixthKinBribesPolice < uid=4B74A51C6580151500031A8A68EA1584 > : "CAN VI BASE"
+{
+	myCompletedGameValue < uid=4B74A51C6580157A00031A8B09481204 >
+	{
+	}
+}
+

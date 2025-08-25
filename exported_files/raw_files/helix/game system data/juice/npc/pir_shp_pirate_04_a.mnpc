@@ -1,0 +1,43 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/pir_bowbreaker_attached_npc_set.mnpconnpcattachmentset"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/loottable/loot_global.mloottable"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npc/pir_shp_base.mnpc"
+
+NPC pir_shp_pirate_04_a < uid=6EA79625636BB52C000099535A202E64 > : pir_shp_base
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Viper/Bowbreaker - Pirate faction\", enabled = true, guid = #6AE6EE0D65771C5D000236D45B860980, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 10726, text = \"B84-Viper\", type = \"MenuLine\""
+	myCharacterVisuals < uid=6EA79625636BB52C0000995450438445 > = character_visuals_npc_shp_Bowbreaker F95CD8F362ECDB7B0000E9D00F503654
+	myNPCComponentSetType Spaceship
+	mySpaceshipType BowBreakerPirate
+	myMaxHealth 2400
+	myHealthFormula 1160*SpaceHealthWarshipDifficultyModifier
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A12912164EE19750003C82389DA5A87 > = Agent_Archetype_Pilot 3A12912163EF7B9500005053123CF383
+		RBTagsTag "New RBTagsTag (0)" < uid=3A12912164EE19750003C824FE9044CB > = Agent_Faction_PiratesTag 16DEADE6620AE18B000020CFC3D6D96A
+		RBTagsTag "New RBTagsTag (1)" < uid=3A12912164EE19750003C825E6F96C2C > = Agent_ShipType_CruiserTag 3A12912164DCDD0A00011358B889F2D0
+	}
+	myLodType Spaceship_Cruiser
+	myVisionProfile < uid=6EA79625636BB52C000099565C507CCA > = visionProfile_pir_ship_Warship 6B0E1DE964B7A45D0000AD5C72D380B6
+	myHearingProfile < uid=6EA79625636BB52C0000995707582A2A > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=F95CD8F364835781000AF604E54661D0 > = detectionProfile_pir_ship_Warship 6B0E1DE964B663A40003C7240FEF1E7E
+	}
+	myThreatProfile < uid=F95CD8F3653F618900004D7940C23429 > = warshipnpcthreatprofiles F95CD8F3653F5C6800009CA56C0B9313
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "Bowbreaker weapon loadout" < uid=7EE64634651BD150000086C1ED27ABC3 > = weaponloadout_pir_shp_bowbreaker 7EE64634651BF6C7000146912EC9C75E
+	}
+	myAttachedNPCsSet < uid=6EA79625650AA2B4000023944B302219 > = pir_bowbreaker_attached_npc_set 6EA79625650AA0290000FE2265D90232
+	myLootTable < uid=2AE2EC85654CB61B0001095183A5975B > = loot_OnKill_Ship 2AE2EC85654CB4920001094584D7F698
+	myAudioParameters
+	{
+	}
+	myCombatRole Warship
+}
+

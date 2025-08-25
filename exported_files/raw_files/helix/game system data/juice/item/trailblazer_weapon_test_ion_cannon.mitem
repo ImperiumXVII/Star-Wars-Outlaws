@@ -1,0 +1,37 @@
+include "helix/game system data/juice/equipment/aimconfig/test_aimconfig_trailblazer_ship.maimconfig"
+include "helix/game system data/juice/equipment/weaponfiremode/trailblazer_firemode_test_ion_cannon.mweaponfiremode"
+include "helix/game system data/juice/item/trailblazer_weapon_template.mitem"
+include "helix/game system data/juice/projectile/ship_ion_projectile.mprojectile"
+include "helix/game system data/juice/sound/weapons/player_audioweapon_traiblazer_rg9.maudioweapon"
+
+WeaponItem trailblazer_weapon_test_ion_cannon < uid=B005013562BAE4A800003E4F0BC80762 > : trailblazer_weapon_template
+{
+	myName "aurabesh = false, contextComment = \"Test\", enabled = true, guid = #B005013562BAE4A800003E4E1EF9200E, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 93, text = \"IonLaser\n\n\", type = \"MenuLine\""
+	myInventoryPouch Weapons
+	myAimConfig < uid=B005013562BAE4A800003E5057190AD1 > = test_aimconfig_trailblazer_ship 378315CB620134B7000034BA3DF76870
+	myHoldingConfig < uid=B005013562BAE4A800003E51DEA07465 > = holding_kays_weapon_base A207755D61F1556900001B1E28C4CC3A
+	myUI
+	{
+		myDefaultUIGraph helix/ui/Graphs/crosshair_trailblazer_weapon.muigraph
+	}
+	myGraphObject "helix/graph objects/weapon/spaceship_dummy_weapon.mgraphobject"
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=A207755D62C2E50A00003752C2B9CD56 > = trailblazer_firemode_test_ion_cannon A207755D62C2E48200003748B35E34C0
+		}
+	}
+}
+
+WeaponItem trailblazer_weapon_test_ion_cannon_audio < uid=B005013562BAE4A800003E567FFEA56D > : trailblazer_weapon_test_ion_cannon
+{
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=A207755D62C3F8FE00007B011323C961 > = trailblazer_firemode_test_ion_cannon_test_audio A207755D62C3F8DA00007AF9E1DA2D84
+		}
+	}
+}
+

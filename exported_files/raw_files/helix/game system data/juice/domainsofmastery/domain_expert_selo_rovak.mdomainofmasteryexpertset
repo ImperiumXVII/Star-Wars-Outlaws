@@ -1,0 +1,300 @@
+include "helix/game system data/fruit/domainsofmastery/domainofmastery.fruit"
+include "helix/game system data/juice/gamestatistics/gs_dom_skills.mgamestatistic"
+include "helix/game system data/juice/intel/intel_experts.mintel"
+include "helix/game system data/juice/intel/intel_toshara.mintel"
+include "helix/game system data/juice/intel/intel_toshara_quest.mintel"
+include "helix/game system data/juice/item/craftingmaterials.mitem"
+include "helix/game system data/juice/item/food.mitem"
+include "helix/game system data/juice/item/fp_ dom_dummy_ability.mitem"
+include "helix/game system data/juice/item/items_dom_skill.mitem"
+include "helix/game system data/juice/item/keyitems.mitem"
+include "helix/game system data/juice/item/player_grenade_smoke.mitem"
+include "helix/game system data/juice/mapref/mapref_dom_expertlocation.mmapref"
+include "helix/game system data/juice/quest/a_eq_020.mquest"
+include "helix/game system data/juice/rbtags/dom_abilities.mrbtagstags"
+include "helix/game system data/juice/sound/stimuli/stim_id_main.mstimulusidentifier"
+
+DomainOfMasteryExpertSet domain_expert_selo_rovak < uid=F8252D3C62568FFF00002C7582695525 >
+{
+	myUIInfo
+	{
+		myTitle "aurabesh = false, contextComment = \"Domain of mastery expert name\", enabled = true, guid = #E41F4D1B62FF489800004360C85BA412, lineVersion = 14, maxLength = 0, productId = -1, sectionId = 2140, text = \"Expert Mechanic\", type = \"MenuLine\""
+		myIcon "mySpriteId = -1373490672, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_trinkets_icons_01.spritesheet\""
+		myExpertImage helix/baked/ui/loose_images/domainsofmastery/domainofmastery_selorovak_found_gameready.dds
+		myUnknownExpertImage helix/baked/ui/loose_images/domainsofmastery/domainofmastery_selorovak_unknown_gameready.dds
+		myHiddenExpertImage helix/baked/ui/loose_images/domainsofmastery/domainofmastery_selorovak_hidden_gameready.dds
+	}
+	myNames
+	{
+		DomainOfMasteryExpertName "Selo Rovak" < uid=F8252D3C6296230B0000314B9126ACA2 >
+		{
+			myName "aurabesh = false, contextComment = \"Expert Name\", enabled = true, guid = #F8252D3C6296230F0000314C96A40C49, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 389, text = \"Selo Rovak\", type = \"MenuLine\""
+			myIntel < uid=F8252D3C6296234C0000314EE19D27E6 > = A_EQ_020_Intel_BartenderExpertClue F26299E96450FF40000475D8C03CCAAF
+		}
+		DomainOfMasteryExpertName Unknown < uid=F8252D3C629623510000314F457AC4CB >
+		{
+			myName "aurabesh = false, contextComment = \"Expert Name\", enabled = true, guid = #F8252D3C6296235E00003150F30A4E69, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 389, text = \"Unknown\", type = \"MenuLine\""
+			myIntel < uid=F4D8AE26645CA75D00116F5C4C8DC647 > = NULLREFERENCE
+		}
+	}
+	myAbilities
+	{
+		DomainOfMasteryAbilitySkill "Speed Boost" < uid=F8252D3C624D517D000000AFEFF87E41 >
+		{
+			myUIInfo
+			{
+				myName "aurabesh = false, contextComment = \"Ability name\", enabled = true, guid = #4728ADF960DB4165000010A173E53741, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 2140, text = \"Speed Boost\", type = \"MenuLine\""
+				myDescription "aurabesh = false, contextComment = \"Ability description\", enabled = true, guid = #4728ADF960DB4165000010A2B9128307, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 2140, text = \"Allows for a short burst of speed.\", type = \"MenuLine\""
+				myLoreDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"Lore Description for Speed Boost\", enabled = true, guid = #09AEDAAA65B1346F00032685BCB8BBDF, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 2140, text = \"TBD.\", type = \"MenuLine\""
+				myLongDescription "aurabesh = false, branch = \"\", contextComment = \"Long Description\", enabled = true, guid = #F4D8AE266530008F0000EB7C4E9F0872, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 2140, text = '<font preset=\"Light Bodytext\">Enhances the Speeder with a boost engine. Press </font><gameaction src=\"Boost\"><font preset=\"Light Bodytext\"> while on the Speeder for a short-lived burst of speed.</font>  ', type = \"MenuLine\""
+				myUnlockHint "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myIcon "mySpriteId = -1661151301, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_skill_icons_01.spritesheet\""
+				myVideo helix/baked/ui/videos/dom/dom_speeder_boost.webm
+			}
+			myAbilityItem < uid=4728ADF960DB421A000010A7FA6E380B > = "DoM skill Speed Boost" F8252D3C6261192900002DE1DFEE6107
+			myState < uid=F8252D3C624D51C6000000B55A018C90 >
+			{
+			}
+			myRequiresManualUnlock FALSE
+			myDefaultState Locked
+			myAbilityUnlockedTag < uid=3A12912164A3E1E300013AACC8A810CA > = DOM_Ability_SpeedBoost_Unlocked 3A129121649E9DAA0001A3922314B267
+			myUnlockRequirements
+			{
+			}
+		}
+		DomainOfMasteryAbilitySkill SpeederJump < uid=F4D8AE266374EC2800005BB3C1935CFE >
+		{
+			myUIInfo
+			{
+				myName "aurabesh = false, contextComment = \"Ability name\", enabled = true, guid = #F4D8AE266374EC180000427F40E420F3, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 2140, text = \"Speeder Jump\", type = \"MenuLine\""
+				myDescription "aurabesh = false, contextComment = \"Ability description\", enabled = true, guid = #F4D8AE266374EC18000042807F0BD4DC, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 2140, text = \"Allows Kay to hop with the speeder.\", type = \"MenuLine\""
+				myLoreDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"Lore Description for Speeder Jump\", enabled = true, guid = #09AEDAAA65B1346F00032686F602E46E, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2140, text = \"TBD.\", type = \"MenuLine\""
+				myLongDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"Long Description\", enabled = true, guid = #09AEDAAA6582F859001C9C32016B6472, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 2140, text = '<font preset=\"Light Bodytext\">Allows Kay to perform a short upwards jump with the Speeder. Hold and Release </font><gameaction src=\"Speeder_JumpBoost\"><font preset=\"Light Bodytext\"> while on the Speeder to Hop.</font> ', type = \"MenuLine\""
+				myUnlockHint "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myIcon "mySpriteId = 1293251935, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_skill_icons_01.spritesheet\""
+				myVideo helix/baked/ui/videos/dom/dom_speeder_jump.webm
+				myIsNotAvailableForCurrentVersion FALSE
+			}
+			myAbilityItem < uid=F4D8AE266374EC2800005BB44691D333 > = "DoM skill SpeederJump" F4D8AE266454EA450000B3CB44F314CB
+			myState < uid=F4D8AE266374EC2800005BB5271380AA >
+			{
+			}
+			myRequiresManualUnlock TRUE
+			myDefaultState Locked
+			myAbilityUnlockedTag < uid=3A12912164A3E1E300013AAF9B6C0CB2 > = DOM_Ability_SpeederJump_Unlocked 3A129121649E9DD80001A3A9D52A6264
+			myUnlockRequirements
+			{
+				AbilitySkillUnlockRequirement SpeederJump
+				{
+					myGameStatistic < uid=F4D8AE266385F96D0000BD911056F8E0 > = gs_dom_Speeder_Jump_SpeederJump F4D8AE26637503CD000062A7101565B5
+					myTargetValue 60
+					mySettings
+					{
+						myShouldShowProgressNotificationWhenProgressingToZero FALSE
+					}
+				}
+			}
+		}
+		DomainOfMasteryAbilitySkill "Treasure Hunter" < uid=E41F4D1B6299BB2D00003C5B2AD80950 >
+		{
+			myUIInfo
+			{
+				myName "aurabesh = false, contextComment = \"Ability name\", enabled = true, guid = #E41F4D1B62A1B931000037527846A8D5, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2140, text = \"Treasure Hunter\", type = \"MenuLine\""
+				myDescription "aurabesh = false, contextComment = \"Ability Description\", enabled = true, guid = #F4D8AE2662A342F7000035118762C85A, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 2140, text = \"Allows Nix to sense and alert Kay of Containers in the vicinity.\", type = \"MenuLine\""
+				myLoreDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"Lore Description for Treasure Hunter\", enabled = true, guid = #09AEDAAA65B1346F00032687CCD9C510, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 2140, text = \"TBD.\", type = \"MenuLine\""
+				myLongDescription "aurabesh = false, branch = \"\", contextComment = \"Long Description\", enabled = true, guid = #F4D8AE26653000760000EB7A2395650A, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 2140, text = '<font preset=\"Light Bodytext\">Allows Nix to provide audiovisual cues when nearby Containers are present. Additionally, Containers in range will now be highlighted by pressing </font><gameaction src=\"TriggerPetPulse\">', type = \"MenuLine\""
+				myUnlockHint "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myIcon "mySpriteId = 1842681797, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_skill_icons_02.spritesheet\""
+				myVideo helix/baked/ui/videos/dom/dom_treasure_hunter.webm
+			}
+			myAbilityItem < uid=E41F4D1B6299BB5700003C5CD59E2069 > = Dom_skill_PetCacheDetection E41F4D1B628630680000792BE46C5123
+			myState < uid=E41F4D1B6299BB5700003C5DC3C2315A >
+			{
+			}
+			myAbilityUnlockedTag < uid=3A12912164A3E1E300013AADF337211A > = DOM_Ability_NixsAid_Unlocked 3A129121649E9DB70001A394EA7C8E65
+			myUnlockRequirements
+			{
+				AbilitySkillUnlockRequirement "Find Containers"
+				{
+					myGameStatistic < uid=E41F4D1B6299BB5700003C5EF7DDB172 > = gs_dom_TreasureHunter_ContainersFound 09AEDAAA656861520005805D87278ABB
+					myTargetValue 10
+					mySettings
+					{
+						myUIInfo
+						{
+							myUnlockHint "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+						}
+					}
+				}
+				AbilitySkillUnlockRequirement "Make Nix Happy"
+				{
+					myGameStatistic < uid=F4D8AE2662A9D30700003521E5F3E0D4 > = gs_dom_NixAid_MakeNixHappy F4D8AE2662A9D29B0000351D1CDE8717
+					myTargetValue 4
+					mySettings
+					{
+						myOnCompletionPetReactionBarkIdentifier < uid=3A12912166519D2600087540875C6EAD > = S_NIX_DoM_MakeNixHappy 3A1291216545203300013AB24C5E92ED
+						myPlayPetReactionOnAnyProgress FALSE
+						myUIInfo
+						{
+							myUnlockHint "aurabesh = false, branch = \"MAIN\", contextComment = \"Hint Description for Make Nix Happy\", enabled = true, guid = #09AEDAAA656861AD000580B10D4F238D, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2140, text = \"What could this little rascal enjoy?\", type = \"MenuLine\""
+						}
+					}
+				}
+				AbilitySkillUnlockRequirement FetchItem
+				{
+					myGameStatistic < uid=09AEDAAA6568620F000580B26FD70560 > = gs_dom_TreasureHunter_NixFetch F4D8AE266385F75400005226A2E28EFA
+					mySettings
+					{
+						myUIInfo
+						{
+							myUnlockHint "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+						}
+					}
+				}
+			}
+		}
+		DomainOfMasteryAbilityItem SmokeBomb < uid=F4D8AE26650B161A0000B92F7050C48D >
+		{
+			myUIInfo
+			{
+				myName "aurabesh = false, contextComment = \"Ability name\", enabled = true, guid = #F4D8AE26650B15CD0000B927DE8E6AC9, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2140, text = \"Smoke Bomb\", type = \"MenuLine\""
+				myDescription "aurabesh = false, contextComment = \"Ability description\", enabled = true, guid = #F4D8AE26650B15CD0000B928416A8497, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2140, text = \"Allows Kay to create a smoke area.\", type = \"MenuLine\""
+				myLoreDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"Lore Description for Smoke Bomb\", enabled = true, guid = #09AEDAAA65B1346F00032688E1361FC5, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 2140, text = \"TBD.\", type = \"MenuLine\""
+				myLongDescription "aurabesh = false, branch = \"\", contextComment = \"Long Description\", enabled = true, guid = #F4D8AE266530009D0000EB7EA05926F7, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 2140, text = '<font preset=\"Light Bodytext\">Press </font><gameaction src=\"SmokeGrenadeUse\"><font preset=\"Light Bodytext\"> to create a dense smoke area which offuscates vision.</font>', type = \"MenuLine\""
+				myLongDescriptionKeyboard "branch = \"MAIN\", contextComment = \"Domain of mastery  smoke bomb description for M&K - please do not translate/modify anything between <>\", enabled = true, guid = #5EA540EF6655EDFA000000C9531A584D, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 2140, text = '<font preset=\"Light Bodytext\">Press </font><gameaction src=\"SmokeGrenadeUseQuick\"><font preset=\"Light Bodytext\"> to create a dense smoke area which obfuscates vision.</font>', type = \"MenuLine\""
+				myUnlockHint "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myIcon "mySpriteId = -419012240, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_skill_icons_04.spritesheet\""
+				myVideo helix/baked/ui/videos/dom/dom_smoke_bomb.webm
+			}
+			myAbilityItem < uid=F4D8AE26650B161A0000B93048178A51 > = player_grenade_smoke CC69B221640B589E0000099161DA8770
+			myState < uid=F4D8AE26650B161A0000B931A7851F7A >
+			{
+			}
+			myAbilityUnlockedTag < uid=F4D8AE26650B161A0000B932EFEE7382 > = DOM_Ability_SmokeBomb_Unlocked F4D8AE26650B163E0000B93A6CC15456
+			myUnlockRequirements
+			{
+				AbilityItemUnlockRequirement KP
+				{
+					myItem < uid=F4D8AE26650B161A0000B933196CB65E > = KP_DoM_02_SmokeBomb_Selo_03 E42FA10C60CB5B9B00015747287B8A1F
+					mySettings
+					{
+						myUIInfo
+						{
+							myUnlockHint "aurabesh = false, contextComment = \"Hint Description\", enabled = true, guid = #09AEDAAA655398F100005A352542238A, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 2140, text = \"This Key Part can be found in a Hideout at the east of the SubRegion_04 region.\", type = \"MenuLine\""
+						}
+						myIntel < uid=09AEDAAA656DAE7B000224F866FB9E22 > = A_TOS_SeloRovak_SmokeBomb_KeyPart 09AEDAAA656DA7E7000223FE1D7F9637
+					}
+				}
+				AbilityItemUnlockRequirement CRAW02
+				{
+					myItem < uid=F4D8AE26650B161A0000B934EDDDF220 > = Mat_General_Common_02 E42FA10C60D31106000531F700A10DE9
+					myAmount 7
+				}
+				AbilityItemUnlockRequirement CBlaster05
+				{
+					myItem < uid=F4D8AE26650B161A0000B935622C5E2E > = Mat_Blaster_Common_05 F4D8AE2664F5ED26000370F4CCF846D8
+					myAmount 3
+				}
+			}
+		}
+		DomainOfMasteryAbilityItem "Just in case" < uid=F4D8AE2664147FF00000094597ED127A >
+		{
+			myUIInfo
+			{
+				myName "aurabesh = false, contextComment = \"Ability name\", enabled = true, guid = #F4D8AE266414802900000948A9CFE098, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 2140, text = \"Just In Case\", type = \"MenuLine\""
+				myDescription "aurabesh = false, contextComment = \"Ability description\", enabled = true, guid = #F4D8AE26641480340000094B2144766E, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 2140, text = \"Increases the amount of each consumable Kay can carry by 1.\", type = \"MenuLine\""
+				myLoreDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"Lore Description for Just in Case\", enabled = true, guid = #09AEDAAA65B1346F000326899829267F, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 2140, text = \"TBD.\", type = \"MenuLine\""
+				myLongDescription "aurabesh = false, branch = \"\", contextComment = \"Long Description\", enabled = true, guid = #F4D8AE26653000A90000EB80F15AED7A, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 2140, text = '<font preset=\"Light Bodytext\">Increase the amount of </font><font preset=\"Medium Bodytext\">Bacta Vials</font><font preset=\"Light Bodytext\"> and </font><font preset=\"Medium Bodytext\">Thermal Detonators</font><font preset=\"Light Bodytext\"> Kay can carry by 1 each.</font>', type = \"MenuLine\""
+				myUnlockHint "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myIcon "mySpriteId = 364384413, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_skill_icons_01.spritesheet\""
+				myVideo helix/baked/ui/videos/dom/dom_just_in_case.webm
+			}
+			myAbilityItem < uid=F4D8AE26641480920000094EF1C8FC6C > = DoM_item_ItemCapIncrease1 F4D8AE266453A7AA0001DBBEB7A68091
+			myState < uid=F4D8AE26641480920000094FF33D133D >
+			{
+			}
+			myAbilityUnlockedTag < uid=3A12912164A3E1E300013AB013CA7155 > = DOM_Ability_ItemCapIncrease1_Unlocked 3A129121649E9DE50001A3ABF9BA83F6
+			myUnlockRequirements
+			{
+				AbilityItemUnlockRequirement KPTAIL02
+				{
+					myItem < uid=F4D8AE26643FD13F00000849FFB0B665 > = KP_DoM_03_ItemCapIncrease1_Selo_05 E42FA10C60CB5B9B0001575022C2903F
+					mySettings
+					{
+						myUIInfo
+						{
+							myUnlockHint "aurabesh = false, branch = \"\", contextComment = \"Hint Description\", enabled = true, guid = #09AEDAAA6553994900005A364A804B07, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2140, text = \"Can be found in a Pyke Hideout at the *sub-region 06* region\", type = \"MenuLine\""
+						}
+						myIntel < uid=09AEDAAA656DAE7B000224F980B134A7 > = A_TOS_SeloRovak_JustInCase_KeyPart 09AEDAAA656DAD62000224D790CA7C44
+					}
+				}
+				AbilityItemUnlockRequirement CRAW01
+				{
+					myItem < uid=F4D8AE26643FD13F0000084A2CF65C50 > = Mat_General_Common_01 E42FA10C62B4461C0000360F503713F1
+					myAmount 8
+				}
+				AbilityItemUnlockRequirement RTAIL01
+				{
+					myItem < uid=F4D8AE26643FD13F0000084BEC6AD5BE > = Mat_Tailoring_Common_01 5F6139B460A3E24700000344390AB327
+					myAmount 4
+				}
+			}
+		}
+		DomainOfMasteryAbilityItem "You never know" < uid=F4D8AE26641480B300000954218F9350 >
+		{
+			myUIInfo
+			{
+				myName "aurabesh = false, contextComment = \"Ability name\", enabled = true, guid = #F4D8AE26641480A500000952757953B6, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 2140, text = \"You Never Know\", type = \"MenuLine\""
+				myDescription "aurabesh = false, contextComment = \"Ability description\", enabled = true, guid = #F4D8AE26641480A5000009536EC602DF, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 2140, text = \"Increases the amount of each consumable Kay can carry by 1.\", type = \"MenuLine\""
+				myLoreDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"Lore Description for You never know\", enabled = true, guid = #09AEDAAA65B1346F0003268A79E98080, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 2140, text = \"TBD.\", type = \"MenuLine\""
+				myLongDescription "aurabesh = false, branch = \"\", contextComment = \"Long Description\", enabled = true, guid = #F4D8AE26653000B40000EB82D522A5FA, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2140, text = '<font preset=\"Light Bodytext\">Increase the amount of </font><font preset=\"Medium Bodytext\">Bacta Vials</font><font preset=\"Light Bodytext\"> and </font><font preset=\"Medium Bodytext\">Thermal Detonators</font><font preset=\"Light Bodytext\"> Kay can carry by 1 each.</font>', type = \"MenuLine\""
+				myUnlockHint "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myIcon "mySpriteId = 54072030, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_skill_icons_04.spritesheet\""
+				myVideo helix/baked/ui/videos/dom/dom_you_never_know.webm
+			}
+			myAbilityItem < uid=F4D8AE26641480B300000955C56EBE77 > = DoM_item_ItemCapIncrease2 F4D8AE266453A7AA0001DBC09FD1B11B
+			myState < uid=F4D8AE26641480B3000009567A35A18F >
+			{
+			}
+			myAbilityDependencies
+			{
+				uid Ranked F4D8AE2664147FF00000094597ED127A
+			}
+			myAbilityUnlockedTag < uid=3A12912164A3E1E300013AB159BFBDC7 > = DOM_Ability_ItemCapIncrease2_Unlocked 3A129121649E9DF80001A3AD9D6844F0
+			myUnlockRequirements
+			{
+				AbilityItemUnlockRequirement KP
+				{
+					myItem < uid=F4D8AE26643FD1B80000084D131A6C71 > = KP_DoM_04_ItemCapIncrease2_Selo_06 2AE2EC85650980650000BA0BFF12BB64
+					mySettings
+					{
+						myUIInfo
+						{
+							myUnlockHint "aurabesh = false, branch = \"\", contextComment = \"Hint description\", enabled = true, guid = #09AEDAAA655399EB00005A3C30B449BD, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 2140, text = \"Can be found only as contraband.\", type = \"MenuLine\""
+						}
+						myIntel < uid=09AEDAAA656DE31400098218514F1188 > = A_ANY_SeloRovak_YouNeverKnow_KeyPart 09AEDAAA656DE309000981EDC773EE6F
+					}
+				}
+				AbilityItemUnlockRequirement CRAW01
+				{
+					myItem < uid=F4D8AE26643FD2400000085612BCA8F8 > = Mat_General_Common_01 E42FA10C62B4461C0000360F503713F1
+					myAmount 18
+				}
+				AbilityItemUnlockRequirement CRAW02
+				{
+					myItem < uid=F4D8AE26643FD26700000859E2344487 > = Mat_General_Common_02 E42FA10C60D31106000531F700A10DE9
+					myAmount 10
+				}
+			}
+		}
+	}
+	myState < uid=F8252D3C624D483A000000B12AC17CBE >
+	{
+	}
+	myStartingIntel < uid=F8252D3C624D483A000000B280CDFD8A > = A_EQ_020_Intel_BartenderExpertClue F26299E96450FF40000475D8C03CCAAF
+	myAdventure < uid=F8252D3C624D483A000000B3EA684488 > = A_EQ_020_WithTheWind 9D01D21761F7FFB000001D1CC17A3956
+	myMapRef < uid=F8252D3C624D483A000000B4A87DF4EE > = NULLREFERENCE
+	myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+	myDefaultState Undiscovered
+}
+

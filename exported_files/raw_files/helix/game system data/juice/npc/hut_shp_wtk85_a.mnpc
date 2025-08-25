@@ -1,0 +1,33 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/hut_wtk85_attacherd_npc_set.mnpconnpcattachmentset"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/base_hut.mnpc"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/hut_shp_base.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC hut_shp_wtk85_a < uid=4F59E8F0642A8091000072FF169F0DA4 > : hut_shp_base
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"WTK-85A - Hutt faction\", enabled = true, guid = #6AE6EE0D657871A6000266AA6E71D22B, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10726, text = \"WTK-85A Interstellar Transport\", type = \"MenuLine\""
+	myCharacterVisuals < uid=F95CD8F364834529000ACAC89D2509D2 > = character_visuals_npc_shp_wtk85 6EA79625641D7812000072F72C25A9AE
+	mySpaceshipType WTK85Hutt
+	myMaxHealth 300
+	myHealthFormula 150*SpaceHealthDifficultyModifier
+	myLodType Spaceship_Medium
+	mySensoryProfile < uid=F95CD8F364834529000ACAC9D653890D > = DefaultSpaceship 16C7D1FB631F23570000495589B79C85
+	myVisionProfile < uid=F95CD8F364834529000ACACA43F3D9D3 > = visionProfile_hut_ship_LightFreighter 6B0E1DE964B7A45D0000AD5EBEEA1F53
+	myHearingProfile < uid=F95CD8F364834529000ACACBC0BA5F26 > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=F95CD8F364834529000ACACC7564B57A > = detectionProfile_hut_ship_LightFreighter 6B0E1DE964B6644F0003C72F5A21938E
+	}
+	myThreatProfile < uid=F95CD8F36540C82D000065876C2C4DD1 > = Spaceshipthreatprofile F95CD8F3653F81EE00057BF796B8AD1A
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "wtk85 weapon loadout" < uid=F95CD8F364834529000ACACEE2D53A4E > = weaponloadout_hut_shp_wtk85 6AF0BA04649BFB1100074AB67E854008
+	}
+	myAttachedNPCsSet < uid=F95CD8F364834529000ACACFF0840A5D > = hut_wtk85_attached_npc_set F95CD8F3648346BF000AF0B52E122376
+	myCombatRole LightFreighter
+}
+

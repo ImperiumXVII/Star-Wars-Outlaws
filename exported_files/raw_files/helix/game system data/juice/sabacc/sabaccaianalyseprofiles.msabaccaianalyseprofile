@@ -1,0 +1,144 @@
+include "helix/game system data/fruit/sabacc/sabaccaianalyseprofile.fruit"
+
+SabaccAIAnalyseProfileCartesian SabaccAIAnalysisProfile_00_Cartesian_Thrifty < uid=E52E0D43659BDEB5000B7D5843503FA5 >
+{
+	myStandPureSabaccRankThresholdsPerRound
+	{
+		int "1st Turn" 4
+		int "2nd Turn" 5
+		int "3rd Turn" 7
+	}
+	myStandSylopSabaccRankThresholdsPerRound
+	{
+		int "1st Turn" 4
+		int "2nd Turn" 4
+		int "3rd Turn" 5
+	}
+	myCommanderPotentialSabaccRankThreshold 6
+	myLikesDoubleCommanders FALSE
+}
+
+SabaccAIAnalyseProfileCartesian SabaccAIAnalysisProfile_01_Cartesian_Ambitious < uid=E52E0D4365BCB5920001D1082415789F >
+{
+	myStandPureSabaccRankThresholdsPerRound
+	{
+		int "1st Turn" 2
+		int "2nd Turn" 3
+		int "3rd Turn" 7
+	}
+	myStandSylopSabaccRankThresholdsPerRound
+	{
+		int "1st Turn" 2
+		int "2nd Turn" 2
+		int "3rd Turn" 2
+	}
+	myCommanderPotentialSabaccRankThreshold 4
+	myLikesDoubleCommanders TRUE
+}
+
+SabaccAIAnalyseProfileSuperstitious SabaccAIAnalysisProfile_10_Superstitious_Thrifty < uid=E52E0D4365BA65AE000146E957C408E3 > : SabaccAIAnalysisProfile_00_Cartesian_Thrifty
+{
+	myCommanderPotentialSabaccRankThreshold 0
+}
+
+SabaccAIAnalyseProfileSuperstitious SabaccAIAnalysisProfile_11_Superstitious_Ambitious < uid=E52E0D4365BCB7D30001D10BD8EB27DE > : SabaccAIAnalysisProfile_01_Cartesian_Ambitious
+{
+}
+
+SabaccAIAnalyseProfileRiskTaker SabaccAIAnalysisProfile_20_RiskTaker_Opportunist < uid=E52E0D4365BCEFC100025D386EB23DDC >
+{
+	myStandPureSabaccRankThresholdsPerRound
+	{
+		int "1st Turn" 3
+		int "2nd Turn" 4
+		int "3rd Turn" 7
+	}
+	myStandSylopSabaccRankThresholdsPerRound
+	{
+		int "1st Turn" 1
+		int "2nd Turn" 2
+		int "3rd Turn" 2
+	}
+	myCommanderPotentialSabaccRankThreshold 3
+	myLikesDiscardDecks TRUE
+}
+
+SabaccAIAnalyseProfileRiskTaker SabaccAIAnalysisProfile_21_RiskTaker_Ambitious < uid=E52E0D4365BA65B2000146EA1489C33A >
+{
+	myStandPureSabaccRankThresholdsPerRound
+	{
+		int "1st Turn" 2
+		int "2nd Turn" 3
+		int "3rd Turn" 7
+	}
+	myStandSylopSabaccRankThresholdsPerRound
+	{
+		int "1st Turn" 1
+		int "2nd Turn" 2
+		int "3rd Turn" 2
+	}
+	myCommanderPotentialSabaccRankThreshold 3
+	myLikesDoubleCommanders TRUE
+	myLikesDiscardDecks TRUE
+}
+
+SabaccAIAnalyseProfileRiskTaker SabaccAIAnalysisProfile_22_RiskTaker_Dumb < uid=E52E0D4365BBCABE0007BBDA97C39DF5 >
+{
+	myStandPureSabaccRankThresholdsPerRound
+	{
+		int "1st Turn" 2
+		int "2nd Turn" 3
+		int "3rd Turn" 7
+	}
+	myStandSylopSabaccRankThresholdsPerRound
+	{
+		int "1st Turn" 1
+		int "2nd Turn" 1
+		int "3rd Turn" 1
+	}
+	myCommanderPotentialSabaccRankThreshold 2
+	myLikesDoubleCommanders TRUE
+}
+
+SabaccAIAnalyseProfileDoubleDrawer SabaccAIAnalysisProfile_30_DoubleDrawer_Ambitious_StandardLuck < uid=E52E0D4365BA65C8000146EBBED01C08 > : SabaccAIAnalysisProfile_01_Cartesian_Ambitious
+{
+	myProbabilitiesToReplaceCardBySylop
+	{
+		float "1st Turn" 0.0
+		float "2nd Turn" 0.02
+		float "3rd Turn" 0.04
+	}
+	myProbabilitiesToReplaceCardBySylopWhenHasAlreadyASylop
+	{
+		float "1st Turn" 0.0
+		float "2nd Turn" 0.01
+		float "3rd Turn" 0.05
+	}
+}
+
+SabaccAIAnalyseProfileDoubleDrawer SabaccAIAnalysisProfile_31_DoubleDrawer_Ambitious_ExtraLuck < uid=E52E0D4365BA6600000146EDD0FF2F4F > : SabaccAIAnalysisProfile_30_DoubleDrawer_Ambitious_StandardLuck
+{
+	myProbabilitiesToReplaceCardBySylop
+	{
+		float "1st Turn" 0.0
+		float "2nd Turn" 0.04
+		float "3rd Turn" 0.08
+	}
+}
+
+SabaccAIAnalyseProfileDoubleDrawer SabaccAIAnalysisProfile_32_DoubleDrawer_Thrifty_StandardLuck < uid=E52E0D4365C0097900000126C364C123 > : SabaccAIAnalysisProfile_00_Cartesian_Thrifty
+{
+	myProbabilitiesToReplaceCardBySylop
+	{
+		float "1st Turn" 0.03
+		float "2nd Turn" 0.03
+		float "3rd Turn" 0.03
+	}
+	myProbabilitiesToReplaceCardBySylopWhenHasAlreadyASylop
+	{
+		float "1st Turn" 0.0
+		float "2nd Turn" 0.0
+		float "3rd Turn" 0.0
+	}
+}
+

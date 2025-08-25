@@ -1,0 +1,57 @@
+include helix/audio/emitterlabels.juice
+include "helix/game system data/fruit/character/playablecharacterconfig.fruit"
+include "helix/game system data/juice/character/character_visuals_player.mcharactervisuals"
+include "helix/game system data/juice/character/playerhealth_kay.mplayerhealth"
+include "helix/game system data/juice/equipmentset/player_equipmentset_coop_test.mequipmentset"
+include "helix/game system data/juice/equipmentset/player_equipmentset_kay.mequipmentset"
+
+PlayableCharacterConfig PlayableCharacterConfig_Kay < uid=B516041862D977D1000013BE5CE8ED9E >
+{
+	myCharacterVisuals < uid=B516041862D977D1000013BF6D604434 > = character_visuals_player_kay 83E36AE3618E25580000198B273F7A21
+	myEquipmentSet < uid=B516041862D977D1000013C0683F28D5 > = player_equipmentset_kay A207755D61F152B300001B0D69CAA590
+	myDialogueCharacterConstantData < uid=FD10711763D7E07500001D8F489E232B > = NAMED_KAY_VESS 8C0CB9F55A5F2B7900000E446D5B9E4E
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=0E9FA073644BBC0800000346C210EE12 > = Agent_Archetype_PlayerTag 16DEADE6614FC23C00001856B258C57A
+		RBTagsTag "New RBTagsTag (0)" < uid=0E9FA073644BBC1000000A1DBABA6CE2 > = Agent_Gender_FeminineTag 16DEADE6626D20EA00002E5277B65AD4
+		RBTagsTag "New RBTagsTag (1)" < uid=E4123D27645613EC00013BC9D5036301 > = Agent_Name_KayVessTag E4123D276456138F000121D0F6AB9ABD
+	}
+	myPlayerHealthConstantData < uid=FD10711764804F3C0000AD5027EFA040 > = playerhealth_kay FD10711764804CF50000AD4FF9503370
+	myAudioParameters
+	{
+		myEmitterName Kay
+		myPropagated FALSE
+		myEmitters
+		{
+			AgentEmitter Default
+			{
+				myEmitterLabel < uid=3A1C5D1865533E360000FF5C892C32EE > = Root 3A1C5D1863906F050000AB6FBD984CC4
+				myEmitterPrefab "emitterLayerName = \"misc\", enableDoppler = false, enablePropagation = false, sphereRadius = 1, stopOnDestroy = true"
+			}
+			AgentEmitter Dialogue
+			{
+				myEmitterLabel < uid=3A1C5D1865533E360000FF5DDCC65588 > = Mouth 3A1C5D1863906F120000AB70A206E385
+				myEmitterPrefab "emitterLayerName = \"misc\", enableDoppler = false, enablePropagation = false, sphereRadius = 1, stopOnDestroy = true"
+			}
+			AgentEmitter Weapon
+			{
+				myEmitterLabel < uid=3A1C5D1865533E360000FF5E6A62C4F3 > = Hand 3A1C5D1863906F180000AB718F1E9EFD
+				myEmitterPrefab "emitterLayerName = \"misc\", enableDoppler = false, enablePropagation = false, sphereRadius = 1, stopOnDestroy = true"
+				myAttachToAnyEquipmentSlots TRUE
+			}
+		}
+		myFootstepEmitterLabels
+		{
+			FootstepEmitterLabelPair FL
+			{
+				myEmitterLabel < uid=3A1C5D1865326D98001722FB716F8EEA > = Root 3A1C5D1863906F050000AB6FBD984CC4
+			}
+			FootstepEmitterLabelPair FR
+			{
+				myFootstepEventType Type_RightFoot
+				myEmitterLabel < uid=3A1C5D1865326D730016E8A0EDD5952B > = Root 3A1C5D1863906F050000AB6FBD984CC4
+			}
+		}
+	}
+}
+

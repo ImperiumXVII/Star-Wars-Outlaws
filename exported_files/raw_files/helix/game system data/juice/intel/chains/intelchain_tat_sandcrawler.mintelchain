@@ -1,0 +1,23 @@
+include "helix/game system data/fruit/intel/intelchain.fruit"
+include "helix/game system data/juice/intel/intel_tat_sandcrawler.mintel"
+
+IntelChain intelchain_tat_sandcrawler < uid=06F73AE165326E7A0009E2CB991B7069 >
+{
+	myName "aurabesh = false, contextComment = \"Intel chain for the power cell of the jawa's ion blaster\", enabled = true, guid = #06F73AE165326E7B0009E2CC0D4951D6, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2093, text = \"Sandcrawler\", type = \"MenuLine\"}"
+	myDescription "aurabesh = false, contextComment = \"Description for the intel chain for the sandcrawler\", enabled = true, guid = #06F73AE165326E7B0009E2CDE5A91029, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2093, text = \"The Jawa tells Kay he needs parts from the jawa camps around Tatooine, in exchange Kay asks for the power cell of the jawa's ion blaster she could use for her blaster.\", type = \"MenuLine\"}"
+	myChainedIntel
+	{
+		ParallelIntelGroup Camps
+		{
+			myResolvedIntelNeededToActivateNext All
+			myParallelIntel
+			{
+				Intel "Camp 01" < uid=06F73AE1653274920009E398A54F15D1 > = intel_tat_sandcrawler_camp01 06F73AE1653274B90009E39B406E77D8
+				Intel "Camp 02" < uid=06F73AE1653275700009E3E12DCACEDB > = intel_tat_sandcrawler_camp02 06F73AE1653274D30009E3B22A84AD4C
+				Intel "Camp 03" < uid=06F73AE1653275740009E3E22AB71E60 > = intel_tat_sandcrawler_camp03 06F73AE1653274DE0009E3BBEDB3A8C2
+			}
+		}
+		Intel Return < uid=06F73AE16532758E0009E3E39075D5CD > = intel_tat_sandcrawler_return 06F73AE16532753E0009E3C403541007
+	}
+}
+

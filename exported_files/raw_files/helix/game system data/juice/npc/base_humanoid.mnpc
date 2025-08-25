@@ -1,0 +1,94 @@
+include "helix/game system data/juice/ai/npc_base_supression_profile.mnpcsuppressionprofile"
+include "helix/game system data/juice/character/character_visuals_batch_009_story_walkthrough_trailer.mcharactervisuals"
+include "helix/game system data/juice/character/character_visuals_batch_010_story_walkthrough_trailer.mcharactervisuals"
+include "helix/game system data/juice/character/character_visuals_batch_011_story_walkthrough_trailer.mcharactervisuals"
+include "helix/game system data/juice/character/character_visuals_cinematics.mcharactervisuals"
+include "helix/game system data/juice/loottable/loot_pickpocket.mloottable"
+include "helix/game system data/juice/melee/defaultmeleedefense.mnpcmeleedefenseprofile"
+include "helix/game system data/juice/npc/base_npc.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/settings/footstepeffects.juice"
+
+NPC base_humanoid < uid=B0EA4E53600982D900000047DCEF090C > : base_npc
+{
+	myCharacterVisuals < uid=4171A7E16585A0CD000077ECE29D161E > = character_visuals_empty 4171A7E165859F700008244B5EC8E33E
+	myAdditionalGearGraphs 91DC5D3C653665D000014B22AE3E4CB4
+	myVehicleDriverBehavior helix/behaviors/base_default_vehicledriver.mbehavior
+	myVehiclePassengerBehavior helix/behaviors/base_default_vehiclepassenger.mbehavior
+	myAnimSystemType Human
+	myFacialAnimVariableMappingProfile < uid=900FB06765E82AC600014CA2691E4D1F > = DefaultFacialAnimVariableMappingProfile 5CDD6EF365BBEA43000268CF2685715D
+	myMaxHealth 9
+	myHealthFormula "4 + 5"
+	myPositionReservationSize 1.2
+	myNavigationLayerType Medium
+	myLodProfile < uid=900FB0676633A1F6000000CE9CBD3CA7 > = "NPC LOD Profile" 900FB06766339BE60001A35D1A2A264C
+	mySensoryProfileOverrides
+	{
+		NPCSensoryProfileOverride OnGroundVehicle
+		{
+			myVisionProfile < uid=91DC5D3C650C65150000C38387F124C1 > = OnSpeederDetectionProfile 91DC5D3C650C630B0000E1D8CD9CF016
+			myHearingProfile < uid=91DC5D3C6703F342000783871598FB2B > = SpeederNPCHearingProfile 91DC5D3C6703F29D00044EB0BC37168D
+			mySensoryEnvironmentType OnGroundVehicle
+			myPriority 10
+		}
+		NPCSensoryProfileOverride DefaultCitySensoryProfile
+		{
+			myVisionProfile < uid=91DC5D3C650C65930000FC4A6EECF7B4 > = DefaultCityVisionProfile 595E8DFF62AADB4100007B71ACEA3C59
+			mySensoryEnvironmentType DefaultCity
+		}
+		NPCSensoryProfileOverride Distracted
+		{
+			myVisionProfile < uid=3C2FA92B66310478001169D3E30C02BA > = DistractedVisionProfile 3C2FA92B6631043C001169CF5B719AC7
+			mySensoryEnvironmentType Distract
+		}
+	}
+	myHearingProfile < uid=3C2FA92B659696110009890E28FA3E01 > = DefaultNPCHearingProfile 5C421F5C62A1BBF7000B8412886C328B
+	myDetectionProfiles
+	{
+		myNonCombatAreaProfile < uid=91DC5D3C63219B1D000397D44B89F7A3 > = DefaultCityDetectionProfile 91DC5D3C632191250002DC395EC03E17
+	}
+	myAimProfile < uid=B0EA4E5360B67566000009FDB2CECAA6 > = DefaultAimProfile B0EA4E5360B67423000009FAE74842B8
+	myReducedAimProfile < uid=B0EA4E5360C20469000011178D6E4BB8 > = DefaultReducedAimProfile B0EA4E5360C7582F00000D430E754137
+	myMainWeapon < uid=B0EA4E5360A4F18800000061C39FC1CE > = weapon_npc_default B0EA4E5360A3E7BD000000584154C92A
+	myCAPInteractionEvaluatorProfile < uid=EBE060C262E1562D00003EC2EBF3EBBB > = DefaultCAPInteractionEvaluatorProfile EBE060C262E155B000003EBC3B767B35
+	myPlayerAwarenessProfile < uid=E4123D2762B322B60000B42997988588 > = Combat_NPC E4123D2762A747F300008BB6C03F31D6
+	myPackProfile < uid=91DC5D3C653FC236000B148D64A54DD0 > = VehicleChasePackProfile 91DC5D3C63F61E9400008FAEB6509FFC
+	myAudioParameters
+	{
+		myEmitterName NPC
+		myEmitters
+		{
+			AgentEmitter Default
+			{
+				myEmitterLabel < uid=3A1C5D18655344B40000B510E584ED22 > = Root 3A1C5D1863906F050000AB6FBD984CC4
+				myEmitterPrefab "emitterLayerName = \"footsteps\", enableDoppler = false, enablePropagation = true, enableReflections = false, sphereRadius = 1, stopOnDestroy = true"
+				mySetMovementSpeedRTPC TRUE
+			}
+			AgentEmitter Dialogue
+			{
+				myEmitterLabel < uid=3A1C5D18655344B40000B511F7A3CF79 > = Mouth 3A1C5D1863906F120000AB70A206E385
+				myBoneName Head
+			}
+			AgentEmitter Weapon
+			{
+				myEmitterLabel < uid=3A1C5D18655344B40000B51254D783FE > = Hand 3A1C5D1863906F180000AB718F1E9EFD
+				myEmitterPrefab "emitterLayerName = \"weapons_npc\", enableDoppler = false, enablePropagation = true, sphereRadius = 1, stopOnDestroy = true"
+				myBoneName RightHand
+				myAttachToAnyEquipmentSlots TRUE
+			}
+		}
+	}
+	myAudioNPCDangerWeight 1.0
+	myPetAttackTargetType HumanoidMedium
+	myMeleeDefenseProfile < uid=4171A7E1641C81F10007A6FC4E9448BC > = DefaultMeleeDefense 4171A7E1641C75FD0004C9002D69F726
+	myAmbientDutyProfile < uid=EBE060C26304A89900009EC95371829F > = DefaultAmbientDutyProfile EBE060C2630399C8000196420D1F9DFD
+	mySuppressionProfile < uid=5C421F5C642C2DF000007A876AA9F50E > = npc_base_supression_profile 5C421F5C642C2CA000007A5D4A0C9B82
+	myVisualEffectFootstep < uid=C0D149F8644BD2AC0001F8552363A6B7 >
+	{
+		myFootstepEffects = NPCHumanoidFootstepEffects
+		myLeftFootBoneAliasName LeftFoot
+		myRightFootBoneAliasName RightFoot
+	}
+	myFootstepAudioRange 35.0
+}
+

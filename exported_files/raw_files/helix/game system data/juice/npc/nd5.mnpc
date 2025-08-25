@@ -1,0 +1,105 @@
+include "helix/game system data/juice/melee/companionmeleedefense.mnpcmeleedefenseprofile"
+include "helix/game system data/juice/npc/base_npc.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC nd5 < uid=4171A7E16412D8A70000600AA25EDD77 > : base_npc
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Character name\", enabled = true, guid = #289345166605428B0009FFBECDF5BAB3, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 2073, text = \"ND-5\", type = \"MenuLine\""
+	myCharacterVisuals < uid=4171A7E16412D8A70000600BCDC0D992 > = character_visuals_1_gold_nd5_Progress 4171A7E166B48F9C000FDBB4C38E91AF
+	myAdditionalGearGraphs 91DC5D3C653789EF000104BEFCC3E1C9
+	myBehavior helix/behaviors/comp_test_vail.mbehavior
+	myAnimSystemType Droid
+	myNamedNPC ND5
+	myIsInvulnerable TRUE
+	myFaction < uid=4171A7E16412D8A70000600C585B0696 > = Civilian B0EA4E53607561CC0000004DC311CAF9
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D276676CA2B0033F52B146EEF24 > = Agent_Gender_MasculineTag 16DEADE6626D20EA00002E504CE30DE2
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A129121656490B6000F932EAF3E62E0 > = Agent_Name_ND5 3A12912165648F55000E07C1AC07E1A5
+		RBTagsTag "New RBTagsTag_0" < uid=3A1291216654AD7D00133E7BCF6E2529 > = Agent_Binocular_NotVOTarget 3A129121662B9A29000B2B5A42DACF63
+	}
+	myPositionReservationSize 1.2
+	myDialogueCharacters
+	{
+		DialogueCharacterWithTags NAMEDND5 < uid=0E9FA0736421FEF1000044093FCABBC4 >
+		{
+			myDialogueCharacter < uid=0E9FA0736421FEF90000440A4AFEE788 > = NAMED_ND5 F12EE1F9608AA12400000202F53060A7
+		}
+	}
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=06FDC2DB66792C26000138DB14CBFC59 > = CompanionFollowerDetectionProfile 06FDC2DB66792B30000137EA289D3B35
+	}
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout ND5 < uid=4171A7E16482006300009977B8735E29 > = ND5_Pistol 4171A7E16481FC170016C75A16D327A3
+	}
+	myPlayerAwarenessProfile < uid=3A1291216565EBEE00094667467002CB > = NPC_TrailblazerCrew 3A1291216565EB65000945F53159CFDA
+	myAudioParameters
+	{
+		myEmitterName ND5
+		myPropagated TRUE
+		myDoppler FALSE
+		mySwitches
+		{
+			AudioSwitch NPC_Droid_Character
+			{
+				myGuid 4C59BF2C2BFC9C78D979079A94B16AAB
+			}
+			AudioSwitch NPC_Faction_Droid_Build
+			{
+				myGuid 4E2F124939F8DB8D0BF90ABC8F8AB8AB
+			}
+			AudioSwitch VoiceFamilyType
+			{
+				myGuid 49E5235B92BFC011C01D4E295C7B45A5
+			}
+		}
+		myEmitters
+		{
+			AgentEmitter Default
+			{
+				myEmitterLabel < uid=3A1C5D18655346F00000B5387C529C26 > = Root 3A1C5D1863906F050000AB6FBD984CC4
+				myEmitterPrefab "emitterLayerName = \"footsteps\", enableDoppler = false, enablePropagation = true, sphereRadius = 1, stopOnDestroy = true"
+				mySetMovementSpeedRTPC TRUE
+			}
+			AgentEmitter Voice
+			{
+				myEmitterLabel < uid=3A1C5D18655346F00000B539419DE02C > = Mouth 3A1C5D1863906F120000AB70A206E385
+			}
+			AgentEmitter Weapon
+			{
+				myEmitterLabel < uid=DADB4E0465E1A9AD0006456CEE7B0D5F > = Hand 3A1C5D1863906F180000AB718F1E9EFD
+				myEmitterPrefab "emitterLayerName = \"weapons_npc\", enableDoppler = false, enablePropagation = true, sphereRadius = 1, stopOnDestroy = true"
+				myAttachToAnyEquipmentSlots TRUE
+			}
+		}
+		myAudioSwitchByTags
+		{
+		}
+	}
+	myMeleeDefenseProfile < uid=4171A7E166ABB19A0023B4A5EFABE331 > = CompanionMeleeDefense 91DC5D3C64F846B60000B6AE2155DB53
+	myCombatRole Companion
+	myAgentRBTagsGameConditions
+	{
+		myType Group
+		myIsNegated FALSE
+		myOperator And
+		myCanBeOverridden FALSE
+		myConditions
+		{
+			GameConditionQuestIsCompleted "MQ220 Completed"
+			{
+				myQuest 619CD8EA63DB726500025CCFAF315A60
+			}
+		}
+	}
+	myCondtionalAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=4171A7E166B4DB5B00016D9A7397D5F9 > = Agent_Progress_ND5PostCampaign 4171A7E166B384B300182AD0B6BC7A89
+	}
+}
+

@@ -1,0 +1,158 @@
+include "helix/game system data/fruit/environment/environment.fruit"
+
+PlayerEnvironmentReactionSettings PlayerEnvironmentReactionSettings
+{
+	myFreezingReactionSettings
+	{
+		myReactionAnimationDataList
+		{
+			ReactionAnimationData "Freezing 01 Stand"
+			{
+				myMovementStances
+				{
+					MovementStance "New MovementStance" Stand
+				}
+				myDuration 4.8
+				myInterruptReactionOnStanceChange FALSE
+			}
+			ReactionAnimationData "Freezing 02 Stand"
+			{
+				myMovementStances
+				{
+					MovementStance "New MovementStance" Stand
+				}
+				myReactionAnimationID 1
+				myDuration 5.2
+				myInterruptReactionOnStanceChange TRUE
+			}
+			ReactionAnimationData "Freezing 03 Stand"
+			{
+				myMovementStances
+				{
+					MovementStance "New MovementStance" Stand
+				}
+				myReactionAnimationID 2
+				myDuration 5.63
+			}
+		}
+		myBreakIdleTimeInterval 30.0
+		myTriggerReactionImmediately FALSE
+		myOutDoorTimeInterval 10.0
+		myPriority 2
+		myMaxTemperature -5.0
+		myMinTemperature -100.0
+	}
+	myHeatingReactionSettings
+	{
+		myReactionAnimationDataList
+		{
+			ReactionAnimationData "Heating 01 Stand"
+			{
+				myMovementStances
+				{
+					MovementStance "New MovementStance" Stand
+				}
+				myDuration 7.0
+				myInterruptReactionOnStanceChange FALSE
+			}
+			ReactionAnimationData "Heating 02 Stand"
+			{
+				myMovementStances
+				{
+					MovementStance "New MovementStance" Stand
+				}
+				myReactionAnimationID 1
+				myDuration 5.97
+				myInterruptReactionOnStanceChange FALSE
+			}
+			ReactionAnimationData "Heating 03 Stand"
+			{
+				myMovementStances
+				{
+					MovementStance "New MovementStance" Stand
+				}
+				myReactionAnimationID 2
+				myDuration 9.4
+				myInterruptReactionOnStanceChange FALSE
+			}
+		}
+		myBreakIdleTimeInterval 30.0
+		myOutDoorTimeInterval 10.0
+		myMaxTemperature 100.0
+		myMinTemperature 29.0
+	}
+	mySunblindReactionSettings
+	{
+		myReactionAnimationDataList
+		{
+			ReactionAnimationData "Sunblinded 01"
+			{
+				myMovementStances
+				{
+					MovementStance "New MovementStance" Stand
+				}
+				myDuration 3.0
+			}
+		}
+		myBreakIdleTimeInterval 30.0
+		myTriggerReactionImmediately TRUE
+		myShouldReactOutdoorTransition TRUE
+		myOutDoorTimeInterval 10.0
+		myPriority 3
+	}
+	myRainReactionSettings
+	{
+		myReactionAnimationDataList
+		{
+			ReactionAnimationData "Rain 01 Stand"
+			{
+				myMovementStances
+				{
+					MovementStance "New MovementStance" Stand
+				}
+				myDuration 6.0
+			}
+		}
+		myBreakIdleTimeInterval 30.0
+		myOutDoorTimeInterval 10.0
+		myMaxPlayerSpeed 4.0
+		myCheckObstaclesAbovePlayer TRUE
+		myMaxObstaclesDetectionDistance 3.0
+	}
+	myWaterfallWetReactionSettings
+	{
+		myBreakIdleTimeInterval 20.0
+		myTriggerReactionImmediately TRUE
+		myMaxPlayerSpeed 10.0
+		myPriority 10
+	}
+	myWindReactionSettings
+	{
+		myReactionAnimationDataList
+		{
+			ReactionAnimationData "Wind 01 Stand"
+			{
+				myMovementStances
+				{
+					MovementStance "New MovementStance" Stand
+				}
+				myDuration 5.5
+				myInterruptReactionOnStanceChange FALSE
+			}
+		}
+		myBreakIdleTimeInterval 45.0
+		myOutDoorTimeInterval 10.0
+		myPriority 4
+		myMinFacingToWindDirectionAngle 135.0
+		myMinWindStrength 19.5
+	}
+	mySharedBlackListPlayerAgentStates
+	{
+		PlayerAgentState Aim Aiming
+		PlayerAgentState Shoot Shooting
+		PlayerAgentState Combat InCombat
+		PlayerAgentState Crouch Crouching
+		PlayerAgentState GadgetSelection InGadgetSelection
+	}
+}
+

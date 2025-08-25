@@ -1,0 +1,216 @@
+include "dlc2/game system data/juice/sound/weapons/player_audioweapon_pickup_dlc02_rokana_ml40.maudioweapon"
+include "helix/game system data/fruit/camera/cameramodifier.fruit"
+include "helix/game system data/fruit/equipment/weapon/weapon_fire_mode.fruit"
+include "helix/game system data/juice/camera/modifiers/gun_charge_fovmodifier.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/gun_charge_shake.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/rr_rifle_charge_fovmodifier.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_recoil_pickup_rifle_rr_rifle.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_shake_pickup_rr_rifle.mcameramodifier"
+include "helix/game system data/juice/equipment/aimconfig/weapon_aimconfig_pickup_rifle_rr_dlc2.maimconfig"
+include "helix/game system data/juice/equipment/weaponanimationconfig/weapon_anim_pickup_rr_rifle.mweaponanimationconfig"
+include "helix/game system data/juice/equipment/weaponanimationconfig/weapon_anim_pickup_tl50.mweaponanimationconfig"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_pickup_rifle.mweaponfiremode"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_power.mprojectile"
+include "helix/game system data/juice/projectile/weapon_projectile_rr_rifle.mprojectile"
+include "helix/game system data/juice/sound/weapons/player_aduioweapon_kays_sig_mod_charge.maudioweapon"
+
+WeaponFireMode player_firemode_pickup_rifle_rr_rifle < uid=4C1DFD4E6709259B0007CB06133166D6 > : player_firemode_pickup_rifle
+{
+	myFireEvent
+	{
+		ChargedFireEvent "Charged Shot"
+		{
+			myRPM
+			{
+				myRPM 160
+			}
+			myChargeDurationFormula 0.5
+			myAutomaticFireAfterReachFullCharge TRUE
+			myAutomaticFireAfterReachFullChargeTime 0.0
+			myFullChargeFireOnly TRUE
+			myAutomaticResetEnabled FALSE
+			myAutomaticResetInterval 1.2
+			myBurstEnabled TRUE
+			myBurstData
+			{
+				myFullBurstModeEnabled FALSE
+				myBPM
+				{
+					myRPM 200
+				}
+				myAutoBurstEnabled FALSE
+			}
+			myChargeCameraShake < uid=4C1DFD4E672B832B00085173190BA043 > = gun_charge_shake B0ED92506298C63000003C0DA12A25E1
+		}
+	}
+	myBaseProperties
+	{
+		myAnimation < uid=4C1DFD4E6709259B0007CB0724744261 > = weapon_anim_pickup_rr_rifle 4C1DFD4E673B5DD9001BFAC4F41B1676
+		myRecoil < uid=4C1DFD4E6709259B0007CB08F14A4F8A > = weapon_recoil_pickup_rifle_rr_rifle 4C1DFD4E670F85840004F4AD2F3406CD
+		myInputController
+		{
+			myFireRumble 8E25811B65607D9100146C857CBC707B
+			myFireVibrationTriggerEffectEnabled TRUE
+			myFireVibrationTriggerEffect
+			{
+				myAmplitude 1.0
+				myPosition 0
+			}
+			myFireAimVibrationTriggerEffectEnabled TRUE
+			myFireAimVibrationTriggerEffect
+			{
+				myAmplitude "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.21079046 0.0097759999, -0.47365129 0.030911714, }, outTangents = { 0.29015058 0.23635232, 0.1218828 -0.0056526577, 0 0, }, properties = { 275, 2323, 1299, }, values = { 0 0.1, 0.5 0.80000001, 1 0.30000001, }, }, numKeys = 3, }"
+				myFrequency "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0.0, 0 0, }, properties = { -749, -749, }, values = { 0 0.05, 1 0.1, }, }, numKeys = 2, }"
+				myPosition 0
+				myDuration 0.5
+			}
+			myHeatUpAffectsPressTrigger FALSE
+			myHeatUpPressTriggerEffectIntensityCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0.0, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+			myHardPressTriggerEffect helix/trigger_effects/triggereffect_rifle_chargeup.mtriggereffect
+			mySoftPressTriggerEffect ""
+			myFireTriggerThresholdEnabled TRUE
+			myFireTriggerThreshold 0.6
+			myCharge
+			{
+				myChargingTriggerVibrationEnabled TRUE
+				myChargingTriggerVibration
+				{
+					myAmplitude "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0.0, 0 0, }, properties = { -749, -749, }, values = { 0 0.3, 1 0.5, }, }, numKeys = 2, }"
+					myFrequency "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0.0, 0 0, }, properties = { -749, -749, }, values = { 0 0.05, 1 0.1, }, }, numKeys = 2, }"
+					myPosition 0
+				}
+				myChargingRumble 4C1DFD4E679200860001E993F111904F
+				myOnFullChargeTriggerEffectEnabled FALSE
+				myOnFullChargeTriggerEffect
+				{
+					myAmplitude 0.5
+					myPosition 0
+				}
+				myOnFullChargeRumble 00000000000000000000000000000000
+				myFullChargeTriggerVibrationEnabled FALSE
+				myFullChargeTriggerVibration
+				{
+					myAmplitude 0.5
+					myFrequency 0.5
+					myPosition 0
+				}
+				myFullChargeRumble 00000000000000000000000000000000
+			}
+		}
+	}
+	mySpecializations
+	{
+		WeaponFireModeSpecialization ADS
+		{
+			myAimMode ADS
+			myProperties
+			{
+				myAnimation < uid=4C1DFD4E673B3C500001E3AF5314EC0E > = weapon_anim_pickup_rr_rifle_ADS 4C1DFD4E673B5DD9001BFAC5C82BC35A
+				myInputController
+				{
+					myFireVibrationTriggerEffectEnabled TRUE
+					myFireVibrationTriggerEffect
+					{
+						myAmplitude 1.0
+					}
+					myFireAimVibrationTriggerEffectEnabled TRUE
+					myCharge
+					{
+						myChargingTriggerVibrationEnabled TRUE
+						myChargingRumble 4C1DFD4E679200860001E993F111904F
+					}
+				}
+			}
+		}
+	}
+	myAimConfig < uid=4C1DFD4E6709259B0007CB0957215208 > = weapon_aimconfig_pickup_rifle_rr_dlc2 4C1DFD4E67D840400003EFE96D6258D9
+	myProjectile < uid=4C1DFD4E6709259B0007CB0ACFBE89EC > = weapon_projectile_rr_rifle 4C1DFD4E670CB8B10004D3D62F614682
+	myDamage
+	{
+		myDamage
+		{
+			myDamageFormula "1 * PickUpWeaponDamageBonus"
+			myDamageMultiplierFormula 1.0
+			myVariation 0.0
+			myDamageType Physical
+		}
+		myRange
+		{
+			myEnabled FALSE
+			myOptimal 50.0
+			myMax 100.0
+			myMinDamagePercentatge 0.0
+		}
+		myCriticalHitChance 0.0
+		myCriticalHitChanceDistanceMin 0.0
+		myCriticalHitChanceDistanceMax 100.0
+		myCriticalHitDamageModifier 1.0
+		myBodyDamageMultipliers
+		{
+			WeaponDamageBodyMultiplier "Bare Head"
+			{
+				myBodyPart < uid=4C1DFD4E6709259B0007CB0B495FBD30 > = Head B0EA4E5360338D0B0000004BC93A6EA0
+				myMultiplierFormula 2.5
+			}
+			WeaponDamageBodyMultiplier "Light Helmet"
+			{
+				myBodyPart < uid=4C1DFD4E6709259B0007CB0CEACA9D8E > = "Head (Helmet Light)" 1C021E9563876A6D0005D30AC5010080
+				myMultiplierFormula 2
+			}
+			WeaponDamageBodyMultiplier Helmet
+			{
+				myBodyPart < uid=4C1DFD4E6709259B0007CB0DB72623CD > = "Head (Helmet)" 91DC5D3C637F456B0001D16570C1CDF7
+				myMultiplierFormula 1.5
+			}
+		}
+		myFullChargeBonusFormula 0.0
+	}
+	mySpread
+	{
+		mySpreadValues
+		{
+			mySpread
+			{
+				myMin 0.0
+				myMax 2.0
+				myIsUniform FALSE
+			}
+		}
+		mySpreadIncreaseTime 0.2
+		myTimeToMinAccuracy 0.5
+		myTimeToMaxAccuracy 1.0
+		mySpreadIncreaseSpeed 0.1
+		mySpreadReductionSpeed 0.05
+		myMovementModifier 1.5
+		myMovementSpreadThreshold 0.0
+		myMovementSpreadAcceleration 6.0
+		myMovementSpreadDeceleration 6.0
+		myAimChangeModifier 2.0
+		myMovementModifierSpeedCap 3.0
+		myAimChangeSensitivity 1.0
+		myAimChangeAccuracyRecoveryTime 0.5
+		myUIMinimumSpread 0.0
+		myAmountOfAccuracyLockedRounds 0
+		myAmountOfAccuracyLockedRoundsRecoveryTime 0.0
+		myUseAimChangeSpread FALSE
+		myUseReverseSpread FALSE
+		myAimModifierData
+		{
+			myPassiveFormula 1.0
+			myADSFormula 1.0
+			myScopeFormula 1.0
+			myLockFormula 1.0
+			myHipFireFormula 1.0
+			myHoldingRelaxedFormula 1.0
+			mySpaceshipFormula 1.0
+		}
+	}
+	myFireShake < uid=4C1DFD4E670FA4BA0003331608634AC9 > = weapon_shake_pickup_rr_rifle 4C1DFD4E670FA4D400033317339FC3D4
+	myUI
+	{
+		myDefaultUIGraph helix/ui/graphs/crosshair_burst_assault_rifle_rokana_raider_charge_ammunition.muigraph
+	}
+	myAudioData < uid=4C1DFD4E6709259B0007CB0E8CEC2D2C > = player_audioweapon_pickup_dlc02_Rokana_ML40 8DF138C667619C26000000CC3F24AD3C
+	myNPCDetectionSoundEvent < uid=4C1DFD4E6709259B0007CB0F38EEB7BC > = WeaponTrigger_Default 16C7D1FB63497FBD000004FA01B55DE5
+}
+

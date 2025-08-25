@@ -1,0 +1,261 @@
+include "helix/game system data/fruit/contract/contract.fruit"
+include "helix/game system data/juice/faction/factions.mfaction"
+include "helix/game system data/juice/reward/contract_reward.mreward"
+
+Contract aki_contracts_dlc1_F1OW < uid=F462B1FB66A8ED25000000FB02F78EC0 >
+{
+	myGalaxyLocation B581CAC861852906000019BE2DE4D0AF
+	myInitialFaction 16DEADE65F7DDB52000000D22C63D964
+	myPossibleFactions
+	{
+		Faction "New Faction" < uid=F462B1FB66A8EDB6000000FC3BCC14ED > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+		Faction "New Faction_0" < uid=F462B1FB66BB27D000053977B8CDA272 > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+		Faction "New Faction_1" < uid=F462B1FB66BB27D900053978B5288C03 > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+	}
+	myUIName "branch = \"DLC1\", contextComment = \"F1OW Contract title AKI\", enabled = true, guid = #F462B1FB66A8ECA5000000F81705C0EB, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 2099, text = \"Collect stolen cargo\", type = \"MenuLine\""
+	myUIDescription "branch = \"DLC1\", contextComment = \"F1OW Object dectiption AKI\", enabled = true, guid = #F462B1FB66A8ECA5000000F990E9A46D, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 2099, text = \"Collect and deliver the cargo to the Pykes\", type = \"MenuLine\""
+	myNarrativeDescription "branch = \"DLC1\", contextComment = \"F1OW narative description AKI\", enabled = true, guid = #F462B1FB66A8ECA5000000FAEB2D2679, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 2099, text = \"The Pykes need someone to recover stolen cargo and deliver it to their territory.\", type = \"MenuLine\""
+	myCooldown 9000.0
+	myReward < uid=F462B1FB66BB3F6E0005397CD9FE847B > = Contract_Reward_Credit_Small BE60F07F65266CD00000921B65ECEC26
+	myFailReward < uid=F462B1FB66BB3F6E0005397D09BA2953 > = Contract_Fail_Small BE60F07F6526844A0000924A874C2953
+	myBetrayReward < uid=F462B1FB66D6B8BF0025356826543236 > = Contract_Reward_Betrayal_Small BE60F07F652670550000923B61C434E5
+	myParts
+	{
+		ContractPart "AKI_F10W ContractPart1" < uid=F462B1FB66B209F200214B2CDA62E3C2 >
+		{
+			myLevelInfo 9C4B6A046012E6B0000001B224713F01
+			myShouldBlockFastTravel FALSE
+			myHasCompletedPersistentActionGameValue < uid=F462B1FB66B20A2A00214B2E278B465E >
+			{
+			}
+		}
+		ContractPart "AKI_F10W ContractPart2" < uid=F462B1FB66B20A1E00214B2D77888784 >
+		{
+			myLevelInfo 9C4B6A046012E6B0000001B224713F01
+			myShouldBlockFastTravel TRUE
+			myHasCompletedPersistentActionGameValue < uid=F462B1FB66B20A2A00214B2F748966F2 >
+			{
+			}
+		}
+	}
+	myType DLC1_ContractType
+	myRequirements
+	{
+		GameConditionContextPlayerHasReputation "New GameConditionContextPlayerHasReputation"
+		{
+			myReputationTier Fair
+		}
+	}
+	myUnlockRequirements
+	{
+		GameConditionQuestIsCompleted "New GameConditionQuestIsCompleted"
+		{
+			myQuest E1B84E3A64C7B0740000B3419D7C9DF6
+		}
+		GameConditionQuestIsCompleted "New GameConditionQuestIsCompleted_0"
+		{
+			myQuest F3CF7529637CE2360000BF8068E874C2
+		}
+	}
+	myIsHighRiskContract TRUE
+}
+
+Contract aki_contracts_dlc1_F2OW < uid=F462B1FB66A8EE67000000FDE6DB1535 >
+{
+	myGalaxyLocation B581CAC861852906000019BE2DE4D0AF
+	myInitialFaction 16DEADE65F7DDA76000000C847FBD2A1
+	myPossibleFactions
+	{
+		Faction "New Faction" < uid=F462B1FB66A8EEAB00000101BF0429C0 > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	}
+	myUIName "branch = \"DLC1\", contextComment = \"F2OW Contract title AKI\", enabled = true, guid = #F462B1FB66A8EE67000000FE6447F979, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 2099, text = \"Steal Imperial research\", type = \"MenuLine\""
+	myUIDescription "branch = \"DLC1\", contextComment = \"F2OW Object dectiption AKI\", enabled = true, guid = #F462B1FB66A8EE67000000FFDA78FABF, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 2099, text = \"Locate and steal the secret Imperial research project\", type = \"MenuLine\""
+	myNarrativeDescription "branch = \"DLC1\", contextComment = \"F2OW narative description AKI\", enabled = true, guid = #F462B1FB66A8EE67000001008148F661, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2099, text = \"The Hutt Cartel is interested in a new Imperial biotechnology being developed somewhere on Akiva. They need a talented slicer to find the lab and extract the research.\", type = \"MenuLine\""
+	myDifficulty 3
+	myCooldown 9000.0
+	myReward < uid=F462B1FB66BB3FAB0005397ECF750D88 > = Contract_Reward_Credit_And_Reputation_Large_HighRisk 58006D5066F2A7AB0023F64CEA041D3E
+	myFailReward < uid=F462B1FB66BB3FAB0005397F22E6A95B > = Contract_Fail_Large_HighRisk 58006D5066F2BAF30023FB071A2D7F1B
+	myBetrayReward < uid=F462B1FB66BB3FAB000539800F162C20 > = Contract_Reward_Betrayal_Very_Large 58006D5066F2AAAE0023F9181B5CD038
+	myParts
+	{
+		ContractPart AKI_F20W_Slice_Part1 < uid=F462B1FB66AB2F9000208D22A610E86F >
+		{
+			myLevelInfo 9C4B6A046012E6B0000001B224713F01
+			myShouldBlockFastTravel FALSE
+			myHasCompletedPersistentActionGameValue < uid=F462B1FB66AB2FC700208D596665FE5C >
+			{
+			}
+		}
+		ContractPart AKI_F20W_Burglary_Part2 < uid=F462B1FB66AB2FA300208D23DA7B0D0D >
+		{
+			myLevelInfo 9C4B6A046012E6B0000001B224713F01
+			myShouldBlockFastTravel TRUE
+			myHasCompletedPersistentActionGameValue < uid=F462B1FB66AB2FC700208D5AD94790BC >
+			{
+			}
+		}
+		ContractPart AKI_F20W_Deliver_Part3 < uid=F462B1FB66AB2FB000208D2484CC11B4 >
+		{
+			myLevelInfo 9C4B6A046012E6B0000001B224713F01
+			myShouldBlockFastTravel TRUE
+			myHasCompletedPersistentActionGameValue < uid=F462B1FB66AB2FC700208D5B2DC9F4EF >
+			{
+			}
+		}
+	}
+	myType DLC1_ContractType
+	myRequirements
+	{
+		GameConditionContextPlayerHasReputation "New GameConditionContextPlayerHasReputation"
+		{
+			myReputationTier Good
+		}
+	}
+	myUnlockRequirements
+	{
+		GameConditionQuestIsCompleted "New GameConditionQuestIsCompleted"
+		{
+			myQuest E1B84E3A64C7B0740000B3419D7C9DF6
+		}
+		GameConditionQuestIsCompleted "New GameConditionQuestIsCompleted_1"
+		{
+			myQuest F3CF7529637CE2360000BF8068E874C2
+		}
+	}
+	myIsHighRiskContract TRUE
+}
+
+Contract aki_contracts_dlc1_F3OW < uid=F462B1FB66A8EEBA00000102E4D38368 >
+{
+	myGalaxyLocation B581CAC861852906000019BE2DE4D0AF
+	myInitialFaction 16DEADE65F7DDA76000000C74AD19DCA
+	myPossibleFactions
+	{
+		Faction "New Faction" < uid=F462B1FB66A8EEE800000106D93A5164 > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+	}
+	myUIName "branch = \"DLC1\", contextComment = \"F3OW Contract title AKI\", enabled = true, guid = #F462B1FB66A8EEBA00000103F963304F, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 2099, text = \"Spy for Crimson Dawn\", type = \"MenuLine\""
+	myUIDescription "branch = \"DLC1\", contextComment = \"F3OW Object dectiption AKI\", enabled = true, guid = #F462B1FB66A8EEBA000001043F5E2AFC, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 2099, text = \"Steal a datapad from the Pykes and plant a tracker on the Hutts, then return to Myrra.\", type = \"MenuLine\""
+	myNarrativeDescription "branch = \"DLC1\", contextComment = \"F3OW narative description AKI\", enabled = true, guid = #F462B1FB66A8EEBA00000105A18A4EFE, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2099, text = \"Crimson Dawn wants dirt on the competition. They need a thief to steal a sensitive datapad from the Pykes and plant a tracker in Hutt Territory.\", type = \"MenuLine\""
+	myDifficulty 2
+	myCooldown 9000.0
+	myReward < uid=F462B1FB66AB1E5000057D8CF2A6694C > = Contract_Reward_Credit_And_Reputation_Large_HighRisk 58006D5066F2A7AB0023F64CEA041D3E
+	myFailReward < uid=F462B1FB66BB403600053983A7FBE920 > = Contract_Fail_Large_HighRisk 58006D5066F2BAF30023FB071A2D7F1B
+	myBetrayReward < uid=F462B1FB66D99478001321D91847248B > = Contract_Reward_Betrayal_Very_Large 58006D5066F2AAAE0023F9181B5CD038
+	myParts
+	{
+		ContractPart AKI_F30W_Surveillance_Part1 < uid=F462B1FB66AB1E2200057D89CDA03AF0 >
+		{
+			myLevelInfo 9C4B6A046012E6B0000001B224713F01
+			myShouldBlockFastTravel FALSE
+			myHasCompletedPersistentActionGameValue < uid=F462B1FB66AB1E5000057D8D3E1DBA52 >
+			{
+			}
+		}
+		ContractPart AKI_F30W_Pickpocket_Part2 < uid=F462B1FB66AB1E3A00057D8ADBDB663D >
+		{
+			myLevelInfo 9C4B6A046012E6B0000001B224713F01
+			myShouldBlockFastTravel TRUE
+			myHasCompletedPersistentActionGameValue < uid=F462B1FB66AB1E5000057D8E3EF7D922 >
+			{
+			}
+		}
+		ContractPart AKI_F30W_Deliver_Part3 < uid=F462B1FB66AB1E4600057D8B4585F840 >
+		{
+			myLevelInfo 9C4B6A046012E6B0000001B224713F01
+			myShouldBlockFastTravel TRUE
+			myHasCompletedPersistentActionGameValue < uid=F462B1FB66AB1E5000057D8F54DA6144 >
+			{
+			}
+		}
+	}
+	myType DLC1_ContractType
+	myRequirements
+	{
+		GameConditionContextPlayerHasReputation "New GameConditionContextPlayerHasReputation"
+		{
+			myReputationTier Fair
+		}
+	}
+	myUnlockRequirements
+	{
+		GameConditionQuestIsCompleted "New GameConditionQuestIsCompleted"
+		{
+			myQuest F3CF7529637CE2360000BF8068E874C2
+		}
+		GameConditionQuestIsCompleted "New GameConditionQuestIsCompleted_0"
+		{
+			myQuest BFA41A0261B37600000004A4C3D0A4E0
+		}
+		GameConditionQuestIsCompleted "New GameConditionQuestIsCompleted_1"
+		{
+			myQuest CC6CF61E64F05E60000114FEA8F79C51
+		}
+	}
+	myIsHighRiskContract TRUE
+}
+
+Contract aki_contracts_dlc1_F4OW < uid=F462B1FB66D972D5002BF34597120A70 >
+{
+	myGalaxyLocation B581CAC861852906000019BE2DE4D0AF
+	myInitialFaction 16DEADE65F7DDB52000000D22C63D964
+	myPossibleFactions
+	{
+		Faction "New Faction_2" < uid=F462B1FB6703B6630002E13978E5F4C9 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+	}
+	myUIName "branch = \"DLC1\", contextComment = \"CommentF4OW Contract title AKI (TO BE WRITTEN)\", enabled = true, guid = #F462B1FB66D972D5002BF346B143B0BA, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 2099, text = \"Scavenge Rebel Cargo\", type = \"MenuLine\""
+	myUIDescription "branch = \"DLC1\", contextComment = \"comment F4OW Object dectiption AKI (TO BE WRITTEN)\", enabled = true, guid = #F462B1FB66D972D5002BF34732E4F246, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2099, text = \"Collect discarded Rebel cargo for the Pykes\", type = \"MenuLine\""
+	myNarrativeDescription "branch = \"DLC1\", contextComment = \"commentF4OW Object dectiption AKI(TO BE WRITTEN)\", enabled = true, guid = #F462B1FB66D972D5002BF348A79E9C04, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2099, text = \"The Pykes are hiring someone to get some valuable supplies out of a former rebel base that has been taken over by pirates.\", type = \"MenuLine\""
+	myDifficulty 2
+	myCooldown 9000.0
+	myReward < uid=F462B1FB66D9749A002BF34F209D9A66 > = Contract_Reward_Credit_Large_HighRisk 5C148C4666337AA200000135EEB5262A
+	myFailReward < uid=F462B1FB66D9749A002BF3508EE52D4C > = Contract_Fail_Large BE60F07F6526844A0000924EBFF77C3C
+	myBetrayReward < uid=F462B1FB66D995D8001321DB3219CE1A > = Contract_Reward_Betrayal_Large BE60F07F652670550000924107D809A4
+	myParts
+	{
+		ContractPart "F40W ContractPart1" < uid=F462B1FB66D9744B002BF34C4AFC855C >
+		{
+			myLevelInfo 9C4B6A046012E6B0000001B224713F01
+			myShouldBlockFastTravel FALSE
+			myHasCompletedPersistentActionGameValue < uid=F462B1FB66D9749A002BF351555914FA >
+			{
+			}
+		}
+		ContractPart "F40W ContractPart2" < uid=F462B1FB66D97471002BF34D285E6725 >
+		{
+			myLevelInfo 9C4B6A046012E6B0000001B224713F01
+			myShouldBlockFastTravel TRUE
+			myHasCompletedPersistentActionGameValue < uid=F462B1FB66D9749A002BF35228A6CB75 >
+			{
+			}
+		}
+		ContractPart "F40W ContractPart3" < uid=F462B1FB66D97489002BF34EB3F9CF73 >
+		{
+			myLevelInfo 9C4B6A046012E6B0000001B224713F01
+			myShouldBlockFastTravel TRUE
+			myHasCompletedPersistentActionGameValue < uid=F462B1FB66D9749A002BF353E4242AAD >
+			{
+			}
+		}
+	}
+	myType DLC1_ContractType
+	myRequirements
+	{
+		GameConditionContextPlayerHasReputation "New GameConditionPlayerHasReputation"
+		{
+			myReputationTier Good
+		}
+	}
+	myUnlockRequirements
+	{
+		GameConditionQuestIsCompleted "New GameConditionQuestIsCompleted"
+		{
+			myQuest 619CD8EA63DB726500025CCFAF315A60
+		}
+		GameConditionQuestIsCompleted "New GameConditionQuestIsCompleted_0"
+		{
+			myQuest E1B84E3A64C7B0740000B3419D7C9DF6
+		}
+	}
+	myIsHighRiskContract TRUE
+}
+

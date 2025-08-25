@@ -1,0 +1,52 @@
+include "helix/game system data/fruit/equipment/weapon/weapon_animation.fruit"
+
+WeaponAnimationConfig weapon_anim_pickup_phasepulserifle < uid=7113C61165C0D000000E7C7F65D06AED >
+{
+	myRecoil
+	{
+		myInitialShot
+		{
+			myWristRotation 0.2
+			myTorsoPushbackStrength 1.2
+			myTorsoPushbackStartTime 0.02
+			myShoulderPushbackStrength 1.2
+			myShoulderPushbackStartTime 0.01
+			myArmKickupStrength 0.5
+			myArmKickupStartTime 0.02
+			myHorizontalAngleAlignedWithCamera TRUE
+		}
+		myContinuesShot
+		{
+			myWristRotation 0.0
+			myTorsoPushbackStrength 0.4
+			myShoulderPushbackStrength 0.7
+			myArmKickupStrength 0.18
+			myHorizontalAngleAlignedWithCamera TRUE
+		}
+		myFinalBurstShot
+		{
+			myWristRotation 0.0
+			myTorsoPushbackStrength 0.4
+			myShoulderPushbackStrength 0.7
+			myArmKickupStrength 0.18
+		}
+	}
+	myChargeWristShakeStrength "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.49746561 -0.22028685, }, outTangents = { 0.54597658 0.27995634, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 0.40000001 1, }, }, numKeys = 2, }"
+}
+
+WeaponAnimationConfig weapon_anim_pickup_phasepulserifle_ADS < uid=7113C61165C0D000000E7C8096DF61AB > : weapon_anim_pickup_phasepulserifle
+{
+	myRecoil
+	{
+		myInitialShot
+		{
+			myShoulderPushbackStrength 1.0
+			myArmKickupStrength 0.9
+		}
+		myContinuesShot
+		{
+			myArmKickupStrength 0.7
+		}
+	}
+}
+

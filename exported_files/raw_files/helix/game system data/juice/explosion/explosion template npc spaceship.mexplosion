@@ -1,0 +1,47 @@
+include "helix/game system data/fruit/explosion/explosion.fruit"
+include "helix/game system data/juice/camera/modifiers/trailblazer_damage_shake.mcameramodifier"
+
+Explosion "Explosion Template NPC Spaceship" < uid=6EA79625654119AD0002E6DCC57E1230 >
+{
+	myDefaultRadius 100.0
+	myDetonation
+	{
+		myPropagationSpeed 500.0
+		myBaseEffect ""
+		myCameraShakeSection
+		{
+			mySize 5.0
+			myCreationShake < uid=6EA7962565411B960002E709AEC12A57 > = trailblazer_hull_little_damage_shake F8D3681862DFD4F800004EBA864101E1
+		}
+		myRumbleSection
+		{
+			mySize 4.0
+		}
+		myGameplayDamageSection
+		{
+			myDamageType Blast
+		}
+		myPhysicsSection
+		{
+			mySize 1.5
+			myImpactEnergy 350.0
+		}
+		myBendShockwaveSection
+		{
+			mySize 3.0
+			myBendStrength 2.0
+			myWidth 1.5
+		}
+		myWaterWaveEnabled FALSE
+		myFlinchSection
+		{
+			mySize 2.5
+		}
+		myFluffySectionEnabled FALSE
+		myAudioSection
+		{
+			mySize 25.0
+		}
+	}
+}
+

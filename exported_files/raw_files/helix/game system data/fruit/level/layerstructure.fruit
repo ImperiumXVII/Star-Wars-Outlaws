@@ -1,0 +1,110 @@
+include "helix/game system data/fruit/terraindata/terraindata.fruit"
+
+list Parameters
+{
+    TextParameter
+    AssetParameter
+}
+
+class TextParameter
+{
+    string myExampleText "Example"
+    string mySuffixSepparator ""
+}
+
+class AssetParameter
+{
+    string myAssetType "ASSETTYPE_QUEST"
+    string myMemberType "Quest"
+    string mySuffixSepparator ""
+}
+
+list CustomParameters
+{
+    string
+}
+
+list Commands
+{
+    string
+}
+
+list Layers
+{    
+    GroupLayer
+    MutexGroupLayer
+    EntityLayer
+    TerrainDataLayer
+    LayerStructurePresetLayers
+    MiscLayer
+}
+
+list LayerStructurePreset
+{
+    GroupLayer
+    MutexGroupLayer
+    EntityLayer
+    TerrainDataLayer
+    LayerStructurePresetLayers
+    MiscLayer
+}
+
+list GroupLayer
+{
+    GroupLayer
+    MutexGroupLayer
+    EntityLayer
+    TerrainDataLayer
+    LayerStructurePresetLayers
+    MiscLayer
+}
+
+list MutexGroupLayer
+{
+    GroupLayer
+    MutexGroupLayer
+    EntityLayer
+    TerrainDataLayer
+    LayerStructurePresetLayers
+    MiscLayer
+}
+
+class EntityLayer
+{
+    
+}
+
+class TerrainDataLayer
+{
+    TerrainDataDef* myDataType
+}
+
+class MiscLayer
+{
+    string myType "entity"
+    Commands myCmds
+}
+
+class LayerStructurePresetLayers
+{
+    CustomParameters myCustomParameters
+    LayerStructurePreset* myPreset
+}
+
+class LayerStructure
+{
+    string myName ""
+    string myDescription "" < tooltip="Description to display in the tool for the layer structure " >
+    bool myUseSelectedLayerAsParent < tooltip="Whether or not this layer structure generates relative to the selected layer in level editor " >
+    Parameters myParameters
+    Layers myLayers
+}
+
+list LayerStructureCategory
+{
+    LayerStructure
+}
+list LayerStructureCategories
+{
+    LayerStructureCategory
+}

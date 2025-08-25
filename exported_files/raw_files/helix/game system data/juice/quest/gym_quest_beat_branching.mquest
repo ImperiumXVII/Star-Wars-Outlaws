@@ -1,0 +1,104 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+
+Quest gym_quest_beat_branching < uid=6F2AF919630779D50000C6E3E27D9AA0 >
+{
+	myName "aurabesh = false, contextComment = \"quest name\", enabled = true, guid = #6F2AF919630779D50000C6D95332EFFB, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 93, text = \"#Beat Branching test\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"quest desc\", enabled = true, guid = #6F2AF919630779D50000C6DAF14093BB, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 93, text = \"#we want to test beat branching\", type = \"MenuLine\""
+	myBeats
+	{
+		QuestBeat "1 Start" < uid=6F2AF919630779D50000C6E47BCE815A >
+		{
+			myScript helix/scripts/gym_quest_beat_branching_1.mscript
+			myName "aurabesh = false, contextComment = \"beat description\", enabled = true, guid = #6F2AF919630779D50000C6DBA8DEE09F, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 93, text = \"#here the branch is chosen\", type = \"MenuLine\""
+			myLevelInfo 5B075E3E5FFEC6FC0000003496B4E530
+			myObjectives
+			{
+				QuestObjectiveGoToLocation A < uid=6F2AF91963077A390000C6F397A03D06 >
+				{
+					myName "aurabesh = false, contextComment = \"objective description\", enabled = true, guid = #6F2AF919630781CF0000A34491930C39, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 93, text = \"#Go left\", type = \"MenuLine\""
+				}
+				QuestObjectiveGoToLocation B < uid=6F2AF91963077A400000C6F43B66C522 >
+				{
+					myName "aurabesh = false, contextComment = \"objective description\", enabled = true, guid = #6F2AF919630781DE0000A346582F5104, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"#Go right\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=6F2AF919630779D50000C6E7FBE6F9B7 >
+			{
+			}
+		}
+		QuestBeatBranchList "2 First Branch"
+		{
+			QuestBeat A < uid=6F2AF919630781950000A33E0E375D86 >
+			{
+				myScript helix/scripts/gym_quest_beat_branching_2a.mscript
+				myName "aurabesh = false, contextComment = \"beat description\", enabled = true, guid = #6F2AF919630781830000A33DAF320789, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 93, text = \"you went left, time to go back\", type = \"MenuLine\""
+				myLevelInfo 5B075E3E5FFEC6FC0000003496B4E530
+				myMood Relaxed
+				myObjectives
+				{
+					QuestObjectiveGoToLocation "Go back" < uid=6F2AF919630781950000A33F97BE12EC >
+					{
+						myName "aurabesh = false, contextComment = \"objective description\", enabled = true, guid = #6F2AF919630781AA0000A34219B15D4E, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 93, text = \"#time to join branch\", type = \"MenuLine\""
+					}
+				}
+				myScriptInputs
+				{
+				}
+				myQuestBeatStateGameValue < uid=6F2AF919630781950000A341ADDEFE1E >
+				{
+				}
+				myIsHidden FALSE
+			}
+			QuestBeat B < uid=6F2AF9196307899D0000A350C91625C1 >
+			{
+				myScript helix/scripts/gym_quest_beat_branching_2b.mscript
+				myName "aurabesh = false, contextComment = \"beat description\", enabled = true, guid = #6F2AF9196307898E0000A34E14760335, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 93, text = \"you went right, time to go back\", type = \"MenuLine\""
+				myLevelInfo 5B075E3E5FFEC6FC0000003496B4E530
+				myMood Relaxed
+				myObjectives
+				{
+					QuestObjectiveGoToLocation "Go back" < uid=6F2AF9196307899D0000A351DBBF8CDC >
+					{
+						myName "aurabesh = false, contextComment = \"objective description\", enabled = true, guid = #6F2AF9196307898E0000A34FD7A086C9, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 93, text = \"#time to join branch\", type = \"MenuLine\""
+					}
+				}
+				myScriptInputs
+				{
+				}
+				myQuestBeatStateGameValue < uid=6F2AF9196307899D0000A3527F745335 >
+				{
+				}
+				myIsHidden FALSE
+			}
+		}
+		QuestBeat "3 Back to linear" < uid=6F2AF91963085E080000A8D09ADE149A >
+		{
+			myScript helix/scripts/gym_quest_beat_branching_3.mscript
+			myName "aurabesh = false, contextComment = \"beat description\", enabled = true, guid = #6F2AF91963085E030000A8CDDFB3B900, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 93, text = \"#here the branches are joined\", type = \"MenuLine\""
+			myLevelInfo 5B075E3E5FFEC6FC0000003496B4E530
+			myMood Relaxed
+			myObjectives
+			{
+				QuestObjectiveGoToLocation A < uid=6F2AF91963085E080000A8D1D8E7C578 >
+				{
+					myName "aurabesh = false, contextComment = \"objective description\", enabled = true, guid = #6F2AF91963085E030000A8CE72E55845, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"#Go left\", type = \"MenuLine\""
+				}
+				QuestObjectiveGoToLocation B < uid=6F2AF91963085E080000A8D280988951 >
+				{
+					myName "aurabesh = false, contextComment = \"objective description\", enabled = true, guid = #6F2AF91963085E030000A8CFC0CC9B9D, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"#Go right\", type = \"MenuLine\""
+				}
+			}
+			myScriptInputs
+			{
+			}
+			myQuestBeatStateGameValue < uid=6F2AF91963085E080000A8D3242CFAAC >
+			{
+			}
+			myIsHidden FALSE
+		}
+	}
+	myQuestStateGameValue < uid=6F2AF919630779D50000C6F1DB0D3A95 >
+	{
+	}
+}
+

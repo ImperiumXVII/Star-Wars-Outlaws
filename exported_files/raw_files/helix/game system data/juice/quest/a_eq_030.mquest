@@ -1,0 +1,192 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/rbtags/quest.mrbtagstags"
+include "helix/game system data/juice/reward/quest_completion_reward.mreward"
+include "helix/game system data/juice/reward/quest_reward.mreward"
+
+Quest A_EQ_030_TheSlicer < uid=C7AA9ADA63EF725E00010A892001DF68 >
+{
+	myName "aurabesh = false, contextComment = \"Quest name\", enabled = true, guid = #C7AA9ADA63F33AA9000303A093A0D501, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 9178, text = \"The Slicer\", type = \"MenuLine\""
+	myIntroDescription "aurabesh = false, branch = \"\", contextComment = \"Quest intro description\", enabled = true, guid = #C7AA9ADA65367FC7004F3EC1EED32934, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9178, text = \"The legendary slicer Aila Bren has some advanced tech that Kay could use, but she won't even talk about handing it over unless she gets an Imperial code sequencer.\", type = \"MenuLine\"}"
+	myDescription "aurabesh = false, branch = \"\", contextComment = \"Quest description\", enabled = true, guid = #C7AA9ADA63F33AAC000303A1D66913F6, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 9178, text = \"The legendary slicer Aila Bren has some advanced tech that Kay could use, but she won't even talk about handing it over unless she gets an Imperial code sequencer.\", type = \"MenuLine\"}"
+	myType Expert
+	myCompletionReward < uid=C7AA9ADA642E8C150003E66EAA51B982 > = A_EQ_030_questcomplete_reward 2AE2EC85644A93B30000B30654D59BFC
+	myGoals
+	{
+	}
+	myBeats
+	{
+		QuestBeat "Beat01 - StealCodeSequencer" < uid=C7AA9ADA643D4A0400072CCC8937F4B6 >
+		{
+			myScript helix/scripts/scr_a_eq_030_b01_stealcodecylinder.mscript
+			myName "aurabesh = false, contextComment = \"Beat Text\", enabled = true, guid = #C7AA9ADA643D4A2500072CCDE2A5B4B5, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9181, text = \"Steal the code sequencer\", type = \"MenuLine\""
+			myAutostartQuestGoal < uid=381EA52765B12D0E0001D1F199E80145 >
+			{
+				myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_EQ_030 Player facing text when outside beat volume\", enabled = true, guid = #381EA52765B12CCC0001D1F0A088E4B8, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9181, text = \"Steal the code sequencer\", type = \"MenuLine\""
+			}
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myObjectives
+			{
+				QuestObjectiveSteal "Steal the code sequencer" < uid=C7AA9ADA643D4BA9000746CCE2DB0ECB >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"objective text\", enabled = true, guid = #C7AA9ADA643D4BB8000746CD381E7EEB, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 9181, text = \"Steal the code sequencer from a technician\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD FALSE
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+				}
+			}
+			myHasInitFromPreviousBeatPin FALSE
+			myQuestBeatStateGameValue < uid=C7AA9ADA643D4BD5000746CFA8E43770 >
+			{
+			}
+			myWaitForInitCompletedOnInBeatVolume TRUE
+		}
+		QuestBeat "Beat02 - Meet with Aila" < uid=C7AA9ADA63EF877F0001998D62665CCF >
+		{
+			myScript helix/scripts/scr_a_eq_030_tos_pln_b01_reachtheimperialcompound.mscript
+			myName "aurabesh = false, contextComment = \"Beat text\", enabled = true, guid = #C7AA9ADA63F33AFC000303A4FE52B235, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 9182, text = \"Meet with Aila\", type = \"MenuLine\""
+			myAutostartQuestGoal < uid=381EA52765B12FBD0001D300D3829AE6 >
+			{
+				myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_EQ_030 Player facing text when outside beat volume\", enabled = true, guid = #381EA52765B12F9A0001D2FF9E1A880F, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9182, text = \"Meet with Aila\", type = \"MenuLine\""
+			}
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myMood RelaxedNoSpawnpoints
+			myObjectives
+			{
+				QuestObjectiveCustom "Meet with Aila" < uid=C7AA9ADA653FC7890000ADE524EF6458 >
+				{
+					myName "aurabesh = false, contextComment = \"Custom objective text\", enabled = true, guid = #C7AA9ADA653FC7890000ADE64346CFC4, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9181, text = \"Meet with Aila\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD FALSE
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+					myChildObjectives
+					{
+						QuestObjectiveGoToLocation "Meet with Aila" < uid=C7AA9ADA63EF87EA0001998F2C4F3624 >
+						{
+							myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #C7AA9ADA63EF87FC0001999017C79D49, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 9182, text = \"Meet with Aila\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD FALSE
+							myIsHighPrio FALSE
+							myIsImmediate FALSE
+						}
+						QuestObjectiveGoToLocation "Talk to Aila" < uid=C7AA9ADA63F33B9F000303A5603AF8AA >
+						{
+							myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #C7AA9ADA63F33BC8000303A6E2F8AC59, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9182, text = \"Meet with Aila\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD FALSE
+						}
+					}
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=C7AA9ADA63EFAB8D0001CCA12296B68F >
+			{
+			}
+			myWaitForInitCompletedOnInBeatVolume FALSE
+		}
+		QuestBeat "Beat03 - Connect the device" < uid=C7AA9ADA63F605880000777336E6F83E >
+		{
+			myScript helix/scripts/scr_a_eq_030_b02_tos_pln_advancedslicing_tutorial.mscript
+			myName "aurabesh = false, contextComment = \"Beat text\", enabled = true, guid = #C7AA9ADA63F605A8000077747D253202, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9183, text = \"Connect the device\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveInteract "Connect the sequencer to the antenna on the roof" < uid=C7AA9ADA6426D59D00009FD4FD5EAFDA >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"Objective text\", enabled = true, guid = #C7AA9ADA6426D5AC00009FD56EB6F5DC, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9183, text = \"Attach the device to the rooftop antenna\", type = \"MenuLine\""
+				}
+				QuestObjectiveCustom "Disable the anti-air defenses" < uid=C7AA9ADA653FC91A0000ADF54AF3CFEB >
+				{
+					myName "aurabesh = false, contextComment = \"Custom objective text\", enabled = true, guid = #C7AA9ADA653FC91A0000ADF6C69AA9C4, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9182, text = \"Disable the anti-air defenses\", type = \"MenuLine\""
+					myIsHiddenInHUD FALSE
+					myIsHint FALSE
+					myChildObjectives
+					{
+						QuestObjectiveGoToLocation "Reach the control room" < uid=C7AA9ADA641C66C10000766F71E8A00F >
+						{
+							myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #C7AA9ADA641C66D3000076708C5672F6, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9183, text = \"Disable the anti-air defenses\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHint FALSE
+						}
+						QuestObjectiveCustom "Slice the anti-air defenses" < uid=C7AA9ADA63F606370000777654B34249 >
+						{
+							myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #C7AA9ADA63F62BE8000074A002EF7129, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 9183, text = \"Disable the anti-air defenses\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHint FALSE
+						}
+						QuestObjectiveInteract "Interact with terminal" < uid=381EA52766BA0B4F002B12639C7AABBA >
+						{
+							myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+						}
+					}
+				}
+				QuestObjectiveCustom "Sliced turrets will not attack Kay" < uid=381EA52765D8C581000BABD02DAFC688 >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Objective text\", enabled = true, guid = #381EA52765D8C581000BABD13637F595, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9183, text = \"Sliced turrets will not attack Kay\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myIsHint TRUE
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=C7AA9ADA63F6069200007777559567E9 >
+			{
+			}
+		}
+		QuestBeat "Beat04 - Leave the compound" < uid=C7AA9ADA63F34E35000317A7D52E28C0 >
+		{
+			myScript helix/scripts/scr_a_eq_030_b05_tos_pln_escape.mscript
+			myName "aurabesh = false, contextComment = \"Beat text\", enabled = true, guid = #C7AA9ADA63F34F63000317AD90FA5623, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9184, text = \"Leave the area\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myObjectives
+			{
+				QuestObjectiveLeaveArea "Escape the Compound" < uid=C7AA9ADA63F35001000317AF56DBF6B8 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #C7AA9ADA63F3500E000317B08B8D9556, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9184, text = \"Leave the compound\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=C7AA9ADA63F35029000317B59E21F2E3 >
+			{
+			}
+		}
+		QuestBeat "Beat05 - Get the slicing kit from Aila's contact" < uid=C7AA9ADA6426A6A700008991D89A9479 >
+		{
+			myScript helix/scripts/scr_a_eq_030_b05_tos_pln_findslicingkit.mscript
+			myName "aurabesh = false, contextComment = \"Beat text\", enabled = true, guid = #C7AA9ADA6426A6B900008992E8787A3D, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9185, text = \"Get the slicing kit from Aila's contact\", type = \"MenuLine\"}"
+			myAutostartQuestGoal < uid=381EA52765B132D10001D3878930B276 >
+			{
+				myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_EQ_030 Player facing text when outside beat volume\", enabled = true, guid = #381EA52765B132B00001D386A0163F50, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9185, text = \"Get the slicing kit from Aila's contact\", type = \"MenuLine\"}"
+			}
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myObjectives
+			{
+				QuestObjectiveTalkTo "Get the slicing kit from Aila's contact" < uid=C7AA9ADA6426A6C00000899317BEF5E4 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #C7AA9ADA6426A6C90000899414D0B19C, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 9185, text = \"Get the slicing kit from Aila's contact\", type = \"MenuLine\"}"
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=C7AA9ADA6426A72400008997D3962CCD >
+			{
+			}
+			myWaitForInitCompletedOnInBeatVolume TRUE
+		}
+	}
+	myOutroBeat
+	{
+	}
+	myQuestStateGameValue < uid=C7AA9ADA63EF725E00010A8A87F9919E >
+	{
+	}
+	myQuestStartedRBTag < uid=DA5615DD64B517C20000ABE58A5F3B77 > = World_Quest_EQ030_Started DA5615DD64A3F0A50000AC8812168BAC
+	myQuestCompletedRBTag < uid=DA5615DD64B517C20000ABE6AF28C035 > = World_Quest_EQ030_Completed DA5615DD64A3F0C50000AC8AE76F50CA
+}
+

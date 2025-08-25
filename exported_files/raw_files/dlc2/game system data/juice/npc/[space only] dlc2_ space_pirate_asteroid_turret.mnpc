@@ -1,0 +1,51 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/character/character_visuals_npc_spaceships_dlc2.mcharactervisuals"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC "[SPACE ONLY] DLC2_ space_pirate_asteroid_turret" < uid=4C1DFD4E67220CA7000232F950B3D62B >
+{
+	myCharacterVisuals < uid=4C1DFD4E67220CA7000232FAF691633C > = character_visual_npc_space_pirate_asteroid_turret 4C1DFD4E672203CA000F3063C65E9836
+	myBehavior dlc2/behaviors/dlc2_pir_asteroid_turret.mbehavior
+	myNPCComponentSetType Turret
+	mySpaceshipType Default
+	myTurretType FloatingTurret
+	myMaxHealth 10
+	myHealthFormula 10
+	myFaction < uid=4C1DFD4E67220CA7000232FBFDF96C9A > = Pirates 16DEADE65F7DDA76000000C9CB7D6D62
+	myLodType Spaceship_Medium
+	mySensoryProfile < uid=4C1DFD4E67220CA7000232FCCF0D3B00 > = DefaultTurret 06FDC2DB6602CD600000FCA3E06DE992
+	myVisionProfile < uid=4C1DFD4E67220CA7000232FD01C1AE44 > = visionProfile_npc_large_turret_floating 7EE646346572F3E200040DC48553DDB4
+	myHearingProfile < uid=4C1DFD4E67220CA7000232FE7C34A5C3 > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=4C1DFD4E67220CA7000232FF4A9F8B63 > = detectionProfile_emp_turret_floating 7EE64634657ABCC70002661D1F4634A6
+	}
+	myThreatProfile < uid=4C1DFD4E67220CA700023300ECEC6C0B > = DefaultThreatProfile 16DEADE6608474380000004E85DD35EB
+	myAimProfile < uid=4C1DFD4E67220CA700023301E0534C5C > = DefaultShipAimProfile B1CE79566214B8B7000075420B966556
+	myReducedAimProfile < uid=4C1DFD4E67220CA7000233023990F728 > = DefaultShipAimProfile B1CE79566214B8B7000075420B966556
+	myMainWeapon < uid=4C1DFD4E67220CA7000233038FE2A7EA > = NULLREFERENCE
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout NPCWeaponLoadout < uid=4C1DFD4E67220CA70002330400E10E29 > = weaponloadout_emp_shp_floating_turret F95CD8F3640B0ACD0000098858970FC0
+	}
+	myAudioParameters
+	{
+		myEmitters
+		{
+			AgentEmitter Default
+			{
+				myEmitterLabel < uid=4C1DFD4E67220CA7000233057AAA93C5 > = Root 3A1C5D1863906F050000AB6FBD984CC4
+				myEmitterPrefab "emitterLayerName = \"weapons_npc\", enableDoppler = false, enablePropagation = true, sphereRadius = 1, stopOnDestroy = true"
+			}
+			AgentEmitter Weapon
+			{
+				myEmitterLabel < uid=4C1DFD4E67220CA700023306C43D020F > = Hand 3A1C5D1863906F180000AB718F1E9EFD
+				myEmitterPrefab "emitterLayerName = \"weapons_npc\", enableDoppler = false, enablePropagation = true, sphereRadius = 50, stopOnDestroy = true"
+				myAttachToAnyEquipmentSlots TRUE
+			}
+		}
+	}
+}
+

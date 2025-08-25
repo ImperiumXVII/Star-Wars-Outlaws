@@ -1,0 +1,56 @@
+include "helix/game system data/juice/ai/npcexcludedticketlists.juice"
+include "helix/game system data/juice/character/character_visuals_vehicle.mcharactervisuals"
+include "helix/game system data/juice/melee/alwaysmissmeleedefense.mnpcmeleedefenseprofile"
+include "helix/game system data/juice/melee/alwaysmissmeleedefensenotarget.mnpcmeleedefenseprofile"
+include "helix/game system data/juice/npc/emp_mech.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC emp_atst < uid=16DEADE661F0807B00001B62A29CB56F > : emp_mech
+{
+	myName "aurabesh = false, contextComment = \"The name of the huge bipedal droid used by the Empire and its archetype (Tank)\", enabled = true, guid = #91DC5D3C654E404900051C7E6DC7986E, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10572, text = \"AT-ST\nTank\", type = \"MenuLine\""
+	myCharacterVisuals < uid=16DEADE661F0807B00001B63761F9E2A > = character_visuals_Imperial_Walker_AT-ST 3BD5814862B21A6A00007FB8A4FD7CD2
+	myBehavior helix/behaviors/emp_atst.mbehavior
+	myAnimSystemType ATST
+	myIsInvulnerable TRUE
+	myMaxHealth 10000
+	myHealthFormula 10000
+	myUIFeedbackOffset 8.0
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A129121664B49240004B7A725642A1A > = Agent_InvincibleVOTarget 3A1291216634DC1C000439525C698724
+	}
+	myPositionReservationSize 5.0
+	myNavigationLayerType Huge
+	myVisionProfile < uid=16DEADE661F0827000001B7A44C5D386 > = ATSTVisionProfile 2736B36563A32DFE000127DD6F958769
+	myHearingProfile < uid=16DEADE661F0827000001B7B0DA21361 > = DefaultNPCHearingProfile 5C421F5C62A1BBF7000B8412886C328B
+	mySmellProfile < uid=16DEADE661F0827000001B7C5CA931A2 > = NULLREFERENCE
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=4171A7E16453C14900021AC1626AD418 > = ATSTDetectionProfile 4171A7E16453C1EB00021AC5C83D78D6
+		myNonCombatAreaProfile < uid=4171A7E166605DE6000474662C154471 > = ATSTDetectionProfile 4171A7E16453C1EB00021AC5C83D78D6
+	}
+	myThreatProfile < uid=16DEADE661F0827000001B7E8E032AF3 > = DefaultThreatProfile 16DEADE6608474380000004E85DD35EB
+	myWantedProfile < uid=16DEADE661F0827000001B7F93271949 > = DefaultWantedProfile B0EA4E535FB2A77C000000327EE153A1
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout LoadoutA < uid=2736B365635FF6FA000279F4A9E38B04 > = emp_ATST_Default 2736B365635FF6C3000279E8A1BEC8F4
+	}
+	myMotionPatternProfile < uid=2736B36563B4353F0005EEB83B24C2CD > = ATSTMotionPatternProfile 2736B36563B434D00005EE7915231C53
+	mySteeringProfile < uid=4171A7E164C0EA2B00021FAF2EC6FD53 > = ATSTSteeringProfile 4171A7E164C0EA0400021FA175F2D7F2
+	myBehaviorUpdateBoostProfile < uid=4171A7E16606DB13001913DE46F7FDDD > = hostile 2736B36563DCDB14000114E560E4B9A2
+	myFocusProfile < uid=2736B36563A32FBD0001ACA56ED89CEA > = ATSTFocusProfile 2736B36563A32F570001AC3E6B6D3144
+	myAudioNPCDangerWeight 10.0
+	myCanBeDetectedByPetSenses FALSE
+	myCanBeDetectedByProximitySenses FALSE
+	myCanBeDistractedByPet FALSE
+	myMeleeDefenseProfile < uid=4171A7E1641C6BD80002F71AA47ED808 > = alwaysmissmeleedefensenotarget 4171A7E1660BC94A0003754F1B2538D5
+	myPhysicsProfile < uid=2736B36562D58BCB0004175EDA732A5C > = At-St 2736B36562D58B5100041743126FA6A3
+	myCombatRole Mech
+	myResistanceProfile < uid=7113C611661E5874000A060A46229AD8 > = InvulnerableResistanceProfile 7113C611661E6846000A8A64417D761B
+	myVisualEffectFootstep < uid=F8181D486533B900000196C0058E5EBC >
+	{
+		myFootstepEffects = AT-ST
+	}
+	myExlusionTickets = InvestigationTickets 00000000000000000000000000000000
+}
+

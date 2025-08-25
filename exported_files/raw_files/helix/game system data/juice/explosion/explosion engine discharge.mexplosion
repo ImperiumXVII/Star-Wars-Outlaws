@@ -1,0 +1,65 @@
+include "helix/game system data/fruit/explosion/explosion.fruit"
+include "helix/game system data/juice/camera/modifiers/trailblazer_damage_shake.mcameramodifier"
+include "helix/game system data/juice/explosion/explosion_template.mexplosion"
+
+Explosion "explosion engine discharge" < uid=C2B74222656DAC3B00033EACC87EAFD2 > : explosion_template
+{
+	myDetonation
+	{
+		myCameraShakeSection
+		{
+			myCreationShake < uid=05B06D7D656F02230007C312A26A63FC > = engine_discharge_damage 05B06D7D655F1E69000A10FA94ED1253
+		}
+		myRumbleSection
+		{
+			mySize 1.0
+			myCreationRumble
+			{
+				myRumble 00000000000000000000000000000000
+				myIsPositional FALSE
+				myIsRotational FALSE
+				myIsLoop FALSE
+				myIntensity 1.0
+				myInnerRadiusMultiplier 0.0
+				myOuterRadiusMultiplier 1.0
+				myFalloffCurves Flat
+				myCustomFalloffCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0.0, 0 0, }, properties = { -749, -749, }, values = { 0 1, 1 0, }, }, numKeys = 2, }"
+			}
+			myLoopRumble
+			{
+				myRumble 05B06D7D6542492900006C67547A5D01
+				myIsPositional FALSE
+				myIsRotational FALSE
+				myIsLoop FALSE
+				myIntensity 1.0
+				myInnerRadiusMultiplier 0.0
+				myOuterRadiusMultiplier 1.0
+				myFalloffCurves Flat
+				myCustomFalloffCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0.0, 0 0, }, properties = { -749, -749, }, values = { 0 1, 1 0, }, }, numKeys = 2, }"
+			}
+			myImpactRumble
+			{
+				myRumble 00000000000000000000000000000000
+				myIsPositional FALSE
+				myIsRotational FALSE
+				myIsLoop FALSE
+				myIntensity 1.0
+				myInnerRadiusMultiplier 0.0
+				myOuterRadiusMultiplier 1.0
+				myFalloffCurves Flat
+				myCustomFalloffCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0.0, 0 0, }, properties = { -749, -749, }, values = { 0 1, 1 0, }, }, numKeys = 2, }"
+			}
+		}
+		myGameplayDamageSection
+		{
+			myDamageSelf FALSE
+		}
+		myPhysicsSection
+		{
+			mySize 0.5
+			myImpactEnergy 300.0
+			myImpactEnergyMultiplierByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0.0, 0 0, }, properties = { -749, -749, }, values = { 0 1, 1 0, }, }, numKeys = 2, }"
+		}
+	}
+}
+

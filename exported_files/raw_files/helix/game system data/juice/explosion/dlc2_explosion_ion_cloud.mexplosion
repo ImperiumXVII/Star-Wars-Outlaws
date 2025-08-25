@@ -1,0 +1,79 @@
+include "helix/game system data/fruit/explosion/explosion.fruit"
+include "helix/game system data/juice/camera/modifiers/player_hitreaction_large.mcameramodifier"
+include "helix/game system data/juice/explosion/explosion_template.mexplosion"
+include "helix/game system data/juice/faction/factions.mfaction"
+
+Explosion dlc2_explosion_Ion_Cloud < uid=BAB09C58675C2DC7000BC1745DD9679B > : explosion_template
+{
+	myDetonation
+	{
+		myPropagationSpeed 2000.0
+		myCameraShakeSection
+		{
+			mySize 1.0
+			myCreationShake < uid=BAB09C5867DAC81F00034824638D07B5 > = player_hitreaction_large 1C021E956385CDE60000860C231A926C
+			myCreationStrengthByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0.0, 0 0, }, properties = { -749, -749, }, values = { 0 1, 1 0, }, }, numKeys = 2, }"
+			myLoopShake < uid=BAB09C5867DAC81F000348256D242CAC > = Environment_Shake_Continuous_Light 1C021E956531386300039721A060F94D
+			myLoopStrengthByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0.0, 0 0, }, properties = { -749, -749, }, values = { 0 1, 1 0, }, }, numKeys = 2, }"
+			myImpactShake < uid=BAB09C5867DAC81F000348269FA578B5 > = NULLREFERENCE
+			myImpactStrengthByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0.0, 0 0, }, properties = { -749, -749, }, values = { 0 1, 1 0, }, }, numKeys = 2, }"
+		}
+		myRumbleSection
+		{
+			myImpactRumble
+			{
+				myRumble 91CF4D486634FA4D00364E62D035423C
+			}
+		}
+		myGameplayDamageEnabled TRUE
+		myGameplayDamageSection
+		{
+			mySize 1.0
+			myBlockerType ShieldAndStatic
+			myDamageType Ion
+			myDamageTargetType All
+			myDamageFormula 0
+			myDefaultDamage 0.0
+			myDamageMultiplierByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0.0, 0 0, }, properties = { -749, -749, }, values = { 0 1, 1 0.1, }, }, numKeys = 2, }"
+			myStaggerDamageOverrideEnabled FALSE
+			myStaggerDamageOverride 1.0
+			myStaggerDamageOverrideMultiplierByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0.0, 0 0, }, properties = { -749, -749, }, values = { 0 1, 1 0.1, }, }, numKeys = 2, }"
+			myAdditionalStaggerDamageEnabled FALSE
+			myAdditionalStaggerDamage
+			{
+				myStaggerDamage 1.0
+				myStaggerDamageMultiplierByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0.0, 0 0, }, properties = { -749, -749, }, values = { 0 1, 1 0.1, }, }, numKeys = 2, }"
+				myStaggerDamageOverrideDamageType Physical
+			}
+			mySensoryStaggerEnabled FALSE
+			mySensoryStagger
+			{
+				myStaggerDamage 1.0
+				myStaggerDamageMultiplierByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0.0, 0 0, }, properties = { -749, -749, }, values = { 0 1, 1 0.1, }, }, numKeys = 2, }"
+				myStaggerDamageOverrideDamageType Physical
+			}
+			myOverriddenStaggerDurationEnabled FALSE
+			myOverriddenStaggerDuration 0.0
+			myOverrideStaggerDisplacementEnabled FALSE
+			myOverrideStaggerDisplacement 0.0
+			myTargetedDynamicNPCGearSlots
+			{
+			}
+			myDamageSelf TRUE
+			myFriendlyFireEnabled TRUE
+			myPlayerSourceFriendlyFireEnabled FALSE
+		}
+		myFragmentablesSection
+		{
+			myOnlyTargetDestroyables TRUE
+		}
+		myAudioSection
+		{
+			myDetonationEvent
+			{
+				myGuid 00000000000000000000000000000000
+			}
+		}
+	}
+}
+

@@ -1,0 +1,37 @@
+include "helix/game system data/fruit/equipment/aiming.fruit"
+include "helix/game system data/juice/camera/modifiers/aimassist_adrenaline_rush.mcameramodifier"
+
+AimConfig weapon_aimconfig_adrenaline_rush < uid=B0ED925063F33109000009C88CF29E8F >
+{
+	myPassiveAimMode
+	{
+		myAimAssist < uid=B0ED925063F4E62A000042A0D794FDE4 > = aimassist_adrenaline_rush B0ED925063F4E61C0000429F2C00E4E9
+		myMagnetism < uid=B0ED92506426957C000013AB6A2AEEC9 > = NULLREFERENCE
+		myCrosshair
+		{
+			myShape
+			{
+				AimCrosshairShapeCircle2D TaggingAimMode
+				{
+					myRadius 0.15
+					myRadiusMultiplierByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -12.715257 0, -7.0563927 0, }, outTangents = { 0.5 0, 29.668934 0, 0 -0, }, properties = { 275, 1299, 2323, }, values = { 0 1, 10 1, 50 0.64999998, }, }, numKeys = 3, }"
+				}
+			}
+		}
+	}
+	myHipFireAimMode
+	{
+		myEnabled TRUE
+		myCrosshair
+		{
+			myShape
+			{
+				AimCrosshairShapeCircle2D TaggingAimMode
+				{
+					myRadius 0.15
+				}
+			}
+		}
+	}
+}
+

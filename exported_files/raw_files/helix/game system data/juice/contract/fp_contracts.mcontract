@@ -1,0 +1,716 @@
+include "helix/game system data/fruit/contract/contract.fruit"
+include "helix/game system data/juice/legend/legendranks.mlegendrank"
+include "helix/game system data/juice/reward/contract_reward.mreward"
+include "helix/game system data/juice/reward/fp_reward.mreward"
+
+Contract "Contract: Security Detail" < uid=6F2AF91960ACEEE40000034E7B9596A3 >
+{
+	myGalaxyLocation F8252D3C6304E0330000F7E8408257FD
+	myPossibleFactions
+	{
+		Faction f9 < uid=0B09481E64F610C10000F62B95090BC5 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+	}
+	myUIDescription "contextComment = \"contract description\", enabled = true, guid = #6F2AF91960ACED7D0000006830777392, lineVersion = 14, maxLength = 0, productId = 6, sectionId = -1, text = \"There is a deal taking place in Gospa Canyon between the Crimson Dawn and some local bandits. Crimson Dawn need extra firepower to keep a watch over the situation and make sure everything goes smoothly.\", type = \"MenuLine\""
+	myReward < uid=E42FA10C60C74EBB00000D55558FC280 > = fp_contract01_securitydetail_complete E42FA10C60C7492D00000D22DF8E4B9D
+	myFailReward < uid=E42FA10C60D2F67400001246A258F966 > = fp_contract01_securitydetail_fail E42FA10C60D2F39E00000EC6A942F909
+	myType Cargo_Transport
+	myRequirements
+	{
+		GameConditionPlayerHasReputation ReputationReq
+		{
+			myFaction < uid=E42FA10C60D2FA0A00068085D7F8E0EA > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+			myReputationTier Good
+		}
+	}
+	myIsHighRiskContract FALSE
+}
+
+Contract "Contract: Breakout" < uid=9D0EE20B60AE073100000033A934EEC8 >
+{
+	myGalaxyLocation F8252D3C6304E0330000F7E8408257FD
+	myPossibleFactions
+	{
+		Faction f8 < uid=0B09481E64F610B50000F5F7EAAE1EBA > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+	}
+	myUIDescription "aurabesh = false, contextComment = \"contract description\", enabled = true, guid = #9D0EE20B60AE08F200000040D2F42845, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 415, text = \"A group of Pykes captured an Ashiga Clan trader near the Three Peaks. The Ashiga Clan need someone to bust him out before he gives up any incriminating intel that could escalate gang tensions.\", type = \"MenuLine\""
+	myDifficulty 3
+	myReward < uid=E42FA10C60C74EBB00000D56EAFA01E9 > = fp_contract02_breakout_complete E42FA10C60C7496600000D2320A6CEDC
+	myFailReward < uid=E42FA10C60D2F67400001247304D45A3 > = fp_contract02_breakout_fail E42FA10C60D2F3D000000ECC678E6534
+	myType Cargo_Transport
+}
+
+Contract "Contract: Stick It" < uid=9D0EE20B60AE077E0000003703E08B95 >
+{
+	myGalaxyLocation F8252D3C6304E0330000F7E8408257FD
+	myPossibleFactions
+	{
+		Faction f7 < uid=0B09481E64F610AB0000F51B94725DCA > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+	}
+	myUIDescription "contextComment = \"contract description\", enabled = true, guid = #9D0EE20B60AE07AC0000003A923ACAAF, lineVersion = 3, maxLength = 0, productId = -1, sectionId = -1, text = \"A smuggler working for the Pykes has hidden some stolen goods at a pickup point in Gospa Canyon, but the Ashiga Clan has recently established a presence in the area. The Pykes need somebody to pick up the hidden loot and bring it back to them.\", type = \"MenuLine\""
+	myDifficulty 2
+	myReward < uid=E42FA10C60C74EBB00000D57AD7224F7 > = fp_contract03_stickit_complete E42FA10C60C7498D00000D248E54B59D
+	myFailReward < uid=E42FA10C60D2F67400001248919DECFF > = fp_contract03_stickit_fail E42FA10C60D2F40B00000ED3F7103DD8
+	myType Cargo_Transport
+}
+
+Contract "Contract: Moonshine" < uid=9D0EE20B60AE078A0000003827FBD6EF >
+{
+	myGalaxyLocation F8252D3C6304E0330000F7E8408257FD
+	myPossibleFactions
+	{
+		Faction f6 < uid=0B09481E64F610A00000F503B61DE30D > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+	}
+	myUIDescription "contextComment = \"contract description\", enabled = true, guid = #9D0EE20B60AE07B00000003C6C34B7AF, lineVersion = 3, maxLength = 0, productId = -1, sectionId = -1, text = \"Bandits mugged a trader near the Sin Pola River, south of Green Hills. He is willing to pay a high price to anyone willing to steal back his most prized possession – a vintage bottle of chak-root liquor. \", type = \"MenuLine\""
+	myDifficulty 2
+	myReward < uid=E42FA10C60C74EBB00000D5868778FD4 > = fp_contract04_moonshine_complete E42FA10C60C7499900000D25E1F972B4
+	myFailReward < uid=E42FA10C60D2F6740000124945D3D73E > = fp_contract04_moonshine_fail E42FA10C60D2F43A00000EDBABCAF8D7
+	myType Cargo_Transport
+	myRequirements
+	{
+		GameConditionPlayerHasLegendRank LegendRankReq
+		{
+			myLegendRank < uid=E42FA10C60D2F9E60006807AE9406027 > = "Rank 2" 6F2AF91960A4B4370000002E89A38AAD
+		}
+	}
+}
+
+Contract "Contract: Smuggle Run" < uid=9D0EE20B60AE079700000039FCCA1D26 >
+{
+	myGalaxyLocation F8252D3C6304E0330000F7E8408257FD
+	myPossibleFactions
+	{
+		Faction f5 < uid=0B09481E64F6108D0000F467AE9638AD > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+	}
+	myUIDescription "contextComment = \"contract description\", enabled = true, guid = #9D0EE20B60AE07B50000003E84907128, lineVersion = 3, maxLength = 0, productId = -1, sectionId = -1, text = \"A wanted smuggler is lying low in Mirogana, hiding from the Imperials. They need somebody to deliver a shipment of goods to a black market trader from Jonta’s Hope called Chanto.\", type = \"MenuLine\""
+	myDifficulty 1
+	myReward < uid=E42FA10C60C74EBB00000D5943C7DB98 > = fp_contract05_smugglerun_complete E42FA10C60C749A900000D264C861FB5
+	myFailReward < uid=E42FA10C60D2F6740000124A2025852B > = fp_contract05_smugglerun_fail E42FA10C60D2F47B00000EE39D9610C1
+	myType Cargo_Transport
+	myUnlockRequirements
+	{
+	}
+}
+
+Contract "GYM Contract Thief Burglary" < uid=BAB09C5864EF3CCC00007DA828A8A9D7 >
+{
+	myGalaxyLocation FD13B51465BB567B000488C54CFBB15C
+	myInitialFaction 16DEADE65F7DDB52000000D22C63D964
+	myPossibleFactions
+	{
+		Faction f4 < uid=0B09481E64F610850000F46157B59E57 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+		Faction "New Faction" < uid=BAB09C5865046301000031548326D627 > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+		Faction "New Faction (0)" < uid=BAB09C58650AC16F00003C0DC5A5C183 > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	}
+	myUIName "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C586541205F00127B2BDFE8C585, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Thief Burglary\", type = \"MenuLine\""
+	myUIDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C586541207C00127B2CBC1A43AD, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Thief Burglary\", type = \"MenuLine\""
+	myNarrativeDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654120BA00127B47315E1366, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Thief Burglary\", type = \"MenuLine\""
+	myReward < uid=BAB09C5864EF3D2E0000A01C3DE84D15 > = Contract_Reward_Credit_Medium BE60F07F65266D560000921CC07F7861
+	myFailReward < uid=BAB09C5864EF3D2E0000A01DDB134465 > = Contract_Fail_Medium BE60F07F6526844A0000924C84E1D11D
+	myBetrayReward < uid=BAB09C5864EF3D2E0000A01E502218B5 > = Contract_Reward_Betrayal_Medium BE60F07F652670550000923EFA3B799D
+	myParts
+	{
+		ContractPart "GYM Contract Thief Burglary" < uid=BAB09C5864EF3CDE00008E757F4D1EEE >
+		{
+			myLevelInfo BAB09C5864CCF32C0021AA69C2191EB2
+			myHasCompletedPersistentActionGameValue < uid=FD13B5146581A11A0003522958F4C506 >
+			{
+			}
+		}
+	}
+	myType Burglary
+}
+
+Contract "GYM Contract Smuggler Normal Delivery" < uid=BAB09C5864F19D820000FD113A484188 >
+{
+	myGalaxyLocation FD13B51465BB567B000488C54CFBB15C
+	myInitialFaction 16DEADE65F7DDB52000000D22C63D964
+	myPossibleFactions
+	{
+		Faction f3 < uid=0B09481E64F610740000F26291E39467 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+		Faction "New Faction" < uid=BAB09C5865046308000037EAF321EEF1 > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+		Faction "New Faction (0)" < uid=BAB09C58650AC175000045D956401E9C > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	}
+	myUIName "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C586541226C0015E1F0F2A90166, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Smuggler Normal Delivery\", type = \"MenuLine\""
+	myUIDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654122780015E1F1D4F9715E, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Smuggler Normal Delivery\", type = \"MenuLine\""
+	myNarrativeDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C586541227E0015E1F23C576074, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Smuggler Normal Delivery\", type = \"MenuLine\""
+	myReward < uid=BAB09C5864F19DE60000FD1C54BD9B03 > = Contract_Reward_Credit_Medium BE60F07F65266D560000921CC07F7861
+	myFailReward < uid=BAB09C5864F19DE60000FD1D87AE4764 > = Contract_Fail_Medium BE60F07F6526844A0000924C84E1D11D
+	myBetrayReward < uid=BAB09C5864F19DE60000FD1E777AE1CA > = Contract_Reward_Betrayal_Medium BE60F07F652670550000923EFA3B799D
+	myParts
+	{
+		ContractPart "GYM Contract Smuggler Normal Delivery 1" < uid=BAB09C5864F19D9E0000FD180D9391B7 >
+		{
+			myLevelInfo BAB09C5864CCF32C0021AA69C2191EB2
+			myHasCompletedPersistentActionGameValue < uid=FD13B5146581A11A0003522A148F7C03 >
+			{
+			}
+		}
+		ContractPart "GYM Contract Smuggler Normal Delivery 2" < uid=BAB09C5864F19DBF0000FD1BC532B43B >
+		{
+			myLevelInfo BAB09C5864CCF32C0021AA69C2191EB2
+			myHasCompletedPersistentActionGameValue < uid=FD13B5146581A11A0003522B2DDB630B >
+			{
+			}
+		}
+	}
+}
+
+Contract "GYM Contract Infiltration Slicing" < uid=BAB09C5864F1B1790000FE1A62F27272 >
+{
+	myGalaxyLocation FD13B51465BB567B000488C54CFBB15C
+	myInitialFaction 16DEADE65F7DDB52000000D22C63D964
+	myPossibleFactions
+	{
+		Faction f2 < uid=0B09481E64F6105B0000F0031BA4DA4B > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+		Faction "New Faction" < uid=BAB09C586504630E00003A123F1A8270 > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+		Faction "New Faction (0)" < uid=BAB09C58650AC0EF0002ADE167486DE4 > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	}
+	myUIName "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654122870015E1F3E4BA405C, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Infiltration Slicing\", type = \"MenuLine\""
+	myUIDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654122930015E1F45EA2CF9C, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Infiltration Slicing\", type = \"MenuLine\""
+	myNarrativeDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654122990015E1F541CE3697, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Infiltration Slicing\", type = \"MenuLine\""
+	myReward < uid=BAB09C5864F1B1AB0000FE336230F76C > = Contract_Reward_Credit_Medium BE60F07F65266D560000921CC07F7861
+	myFailReward < uid=BAB09C5864F1B1AB0000FE344CB128E7 > = Contract_Fail_Medium BE60F07F6526844A0000924C84E1D11D
+	myBetrayReward < uid=BAB09C5864F1B1AB0000FE35FA127E62 > = Contract_Reward_Betrayal_Medium BE60F07F652670550000923EFA3B799D
+	myParts
+	{
+		ContractPart "GYM Contract Infiltration Slicing" < uid=BAB09C5864F1B1890000FE1DBABF1518 >
+		{
+			myLevelInfo BAB09C5864CCF32C0021AA69C2191EB2
+			myHasCompletedPersistentActionGameValue < uid=FD13B5146581A11A0003522C5D4F0506 >
+			{
+			}
+		}
+	}
+	myType Surveillance
+}
+
+Contract "GYM Contract Action Raid No Allies" < uid=BAB09C5864F1E9C70000FDE478649975 >
+{
+	myGalaxyLocation FD13B51465BB567B000488C54CFBB15C
+	myInitialFaction 16DEADE65F7DDB52000000D22C63D964
+	myPossibleFactions
+	{
+		Faction f1 < uid=0B09481E64F610300000EB7CD0632300 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+		Faction "New Faction" < uid=BAB09C586504631400003BC2E4BB5FD0 > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+		Faction "New Faction (0)" < uid=BAB09C58650AC17F00004C8CF90C1E90 > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	}
+	myUIName "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C586541211100140C299E065882, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Action Raid\", type = \"MenuLine\""
+	myUIDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C586541211F00140C2A6DD4BC4D, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Action Raid\", type = \"MenuLine\""
+	myNarrativeDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C586541212600140C2B00AE5FD1, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Action Raid\", type = \"MenuLine\""
+	myReward < uid=BAB09C5864F1EA070000FE02721E5E04 > = Contract_Reward_Credit_Medium BE60F07F65266D560000921CC07F7861
+	myFailReward < uid=BAB09C5864F1EA070000FE03ACB681B2 > = Contract_Fail_Medium BE60F07F6526844A0000924C84E1D11D
+	myBetrayReward < uid=BAB09C5864F1EA070000FE046623C1BC > = Contract_Reward_Betrayal_Medium BE60F07F652670550000923EFA3B799D
+	myParts
+	{
+		ContractPart "GYM Contract Action Raid No Allies" < uid=BAB09C5864F1EA0B0000FE167F34BDCE >
+		{
+			myLevelInfo BAB09C5864CCF32C0021AA69C2191EB2
+			myHasCompletedPersistentActionGameValue < uid=FD13B5146581A11A0003522DA36D275C >
+			{
+			}
+		}
+	}
+	myType Raid
+}
+
+Contract "GYM Contract Action Raid With Allies" < uid=BAB09C5864F997870004621D926AB6FB >
+{
+	myGalaxyLocation FD13B51465BB567B000488C54CFBB15C
+	myInitialFaction 16DEADE65F7DDB52000000D22C63D964
+	myPossibleFactions
+	{
+		Faction "New Faction" < uid=BAB09C5864F997D9000462295FD80637 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+		Faction "New Faction (0)" < uid=BAB09C586504631C000041CA4DCE5161 > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+		Faction "New Faction (1)" < uid=BAB09C58650AC18600005178183A9B48 > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	}
+	myUIName "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C586541213400140C434FA1E88D, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Action Raid\", type = \"MenuLine\""
+	myUIDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C586541213900140C443FB01B8D, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Action Raid\", type = \"MenuLine\""
+	myNarrativeDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C586541213E00140C459C606F65, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Action Raid\", type = \"MenuLine\""
+	myReward < uid=BAB09C5864F998450004622AD0770E81 > = Contract_Reward_Credit_Medium BE60F07F65266D560000921CC07F7861
+	myFailReward < uid=BAB09C5864F998450004622B314E37FE > = Contract_Fail_Medium BE60F07F6526844A0000924C84E1D11D
+	myBetrayReward < uid=BAB09C5864F998450004622C0A2972F1 > = Contract_Reward_Betrayal_Medium BE60F07F652670550000923EFA3B799D
+	myParts
+	{
+		ContractPart "GYM Contract Action Raid With Allies" < uid=BAB09C5864F997A100046220CD68F76E >
+		{
+			myLevelInfo BAB09C5864CCF32C0021AA69C2191EB2
+			myHasCompletedPersistentActionGameValue < uid=FD13B5146581A11A0003522ECC6D3856 >
+			{
+			}
+		}
+	}
+	myType Raid
+}
+
+Contract "GYM Contract Thief Pickpocket" < uid=BAB09C586504052E00003E400662BBFB >
+{
+	myGalaxyLocation FD13B51465BB567B000488C54CFBB15C
+	myInitialFaction 16DEADE65F7DDB52000000D22C63D964
+	myPossibleFactions
+	{
+		Faction "New Faction" < uid=BAB09C586504054000004A37D7F431EE > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+		Faction "New Faction (0)" < uid=BAB09C586504054500004BCE4BD7ABA2 > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+		Faction "New Faction (1)" < uid=BAB09C58650AC18D000058F82BD6099A > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	}
+	myUIName "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654122A40015E1F6C61DAA1A, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Thief Pickpocket\", type = \"MenuLine\""
+	myUIDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654122AC0015E1F7F093AA25, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Thief Pickpocket\", type = \"MenuLine\""
+	myNarrativeDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654122B00015E1F8B8054584, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Thief Pickpocket\", type = \"MenuLine\""
+	myReward < uid=BAB09C5865040566000071E7CDB748C6 > = Contract_Reward_Credit_Medium BE60F07F65266D560000921CC07F7861
+	myFailReward < uid=BAB09C5865040566000071E84F2F3D36 > = Contract_Fail_Medium BE60F07F6526844A0000924C84E1D11D
+	myBetrayReward < uid=BAB09C5865040566000071E939220E7C > = Contract_Reward_Betrayal_Medium BE60F07F652670550000923EFA3B799D
+	myParts
+	{
+		ContractPart "GYM Contract Thief Pickpocket" < uid=BAB09C586504057500007C48CF5E3841 >
+		{
+			myLevelInfo BAB09C5864CCF32C0021AA69C2191EB2
+			myHasCompletedPersistentActionGameValue < uid=FD13B5146581A11A0003522F3A58D9EB >
+			{
+			}
+		}
+	}
+	myType Cargo_Transport
+}
+
+ContractHotCargo "GYM Contract Smuggler Hot Cargo" < uid=BAB09C58650428A800035B0227EB1A27 >
+{
+	myGalaxyLocation FD13B51465BB567B000488C54CFBB15C
+	myInitialFaction 16DEADE65F7DDB52000000D22C63D964
+	myPossibleFactions
+	{
+		Faction "New Faction" < uid=BAB09C58650428C400035B06CC173B1B > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+		Faction "New Faction (0)" < uid=BAB09C58650428C900035B07C491FE68 > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+		Faction "New Faction (1)" < uid=BAB09C58650AC19400005D22754D3E99 > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	}
+	myUIName "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654122BE0015E2104A9DF30B, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10831, text = \"Smuggler Hot Cargo\", type = \"MenuLine\""
+	myUIDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654122C40015E21182973B83, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Hot Cargo\", type = \"MenuLine\""
+	myNarrativeDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654122C90015E2122FB50302, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Hot Cargo\", type = \"MenuLine\""
+	myReward < uid=BAB09C586504291000035B0E56A4562F > = Contract_Reward_Credit_Medium BE60F07F65266D560000921CC07F7861
+	myFailReward < uid=BAB09C586504291000035B0F662D048F > = Contract_Fail_Medium BE60F07F6526844A0000924C84E1D11D
+	myBetrayReward < uid=BAB09C586504291000035B105944AB55 > = Contract_Reward_Betrayal_Medium BE60F07F652670550000923EFA3B799D
+	myParts
+	{
+		ContractPart "GYM Contract Smuggler Hot Cargo 1" < uid=BAB09C58650428DF00035B0886BDCB3A >
+		{
+			myLevelInfo BAB09C5864CCF32C0021AA69C2191EB2
+			myHasCompletedPersistentActionGameValue < uid=FD13B5146581A11A000352301F1A8C93 >
+			{
+			}
+		}
+		ContractPart "GYM Contract Smuggler Hot Cargo 2" < uid=BAB09C58650428E800035B09A466B70C >
+		{
+			myLevelInfo BAB09C5864CCF32C0021AA69C2191EB2
+			myHasCompletedPersistentActionGameValue < uid=FD13B5146581A11A00035231D5871FEB >
+			{
+			}
+		}
+	}
+	myType Hot_Cargo
+	myAmbushFaction 16DEADE65F7DDA76000000C9CB7D6D62
+}
+
+Contract "GYM Contract Infiltration Surveillance" < uid=BAB09C58650BEFB60000A08E43F9A0C0 >
+{
+	myGalaxyLocation FD13B51465BB567B000488C54CFBB15C
+	myInitialFaction 16DEADE65F7DDB52000000D22C63D964
+	myPossibleFactions
+	{
+		Faction "New Faction" < uid=BAB09C58650BF0270000C1F1777B5552 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+		Faction "New Faction (0)" < uid=BAB09C58650BF0290000C1F282F06383 > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+		Faction "New Faction (1)" < uid=BAB09C58650BF0290000C1F3953CD820 > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	}
+	myUIName "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654122D00015E21391A0B409, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Infiltration Surveillance\", type = \"MenuLine\""
+	myUIDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654122DD0015E2143400089D, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Infiltration Surveillance\", type = \"MenuLine\""
+	myNarrativeDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654122E10015E2150F7066BD, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Infiltration Surveillance\", type = \"MenuLine\""
+	myReward < uid=BAB09C58650BF0930000C22575CF3BB7 > = Contract_Reward_Credit_Medium BE60F07F65266D560000921CC07F7861
+	myFailReward < uid=BAB09C58650BF0930000C226420CF794 > = Contract_Fail_Medium BE60F07F6526844A0000924C84E1D11D
+	myBetrayReward < uid=BAB09C58650BF0930000C22772C94079 > = Contract_Reward_Betrayal_Medium BE60F07F652670550000923EFA3B799D
+	myParts
+	{
+		ContractPart "GYM Contract Infiltration Surveillance" < uid=BAB09C58650BF08C0000C22449C4103C >
+		{
+			myLevelInfo BAB09C5864CCF32C0021AA69C2191EB2
+			myHasCompletedPersistentActionGameValue < uid=FD13B5146581A11A00035232708D2285 >
+			{
+			}
+		}
+	}
+	myType Surveillance
+}
+
+Contract "GYM Contract Smuggler Pickup Troubles" < uid=BAB09C58650C3039000EA932FD58703B >
+{
+	myGalaxyLocation FD13B51465BB567B000488C54CFBB15C
+	myInitialFaction 16DEADE65F7DDB52000000D22C63D964
+	myPossibleFactions
+	{
+		Faction "New Faction" < uid=BAB09C58650C3070000EA948E4EDFE43 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+		Faction "New Faction (0)" < uid=BAB09C58650C3071000EA949AE4894CB > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+		Faction "New Faction (1)" < uid=BAB09C58650C3071000EA94ABF3AD9A8 > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	}
+	myUIName "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654122ED0015E22D81C85FE1, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Smuggler Pickup Troubles\", type = \"MenuLine\""
+	myUIDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654122F80015E22E25BDF00A, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Smuggler Pickup Troubles\", type = \"MenuLine\""
+	myNarrativeDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654122FD0015E22F21CABC02, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Smuggler Pickup Troubles\", type = \"MenuLine\""
+	myReward < uid=BAB09C58650C309C000EA9621CB48870 > = Contract_Reward_Credit_Medium BE60F07F65266D560000921CC07F7861
+	myFailReward < uid=BAB09C58650C309C000EA963F46D37FA > = Contract_Fail_Medium BE60F07F6526844A0000924C84E1D11D
+	myBetrayReward < uid=BAB09C58650C309C000EA9648FAEECAE > = Contract_Reward_Betrayal_Medium BE60F07F652670550000923EFA3B799D
+	myParts
+	{
+		ContractPart "GYM Contract Smuggler Pickup Troubles 1" < uid=BAB09C58650C304E000EA93634232EB2 >
+		{
+			myLevelInfo BAB09C5864CCF32C0021AA69C2191EB2
+			myHasCompletedPersistentActionGameValue < uid=FD13B5146581A11A000352338CE63AFE >
+			{
+			}
+		}
+		ContractPart "GYM Contract Smuggler Pickup Troubles 2" < uid=BAB09C58650C3161000EA976D5D8B1CE >
+		{
+			myLevelInfo BAB09C5864CCF32C0021AA69C2191EB2
+			myHasCompletedPersistentActionGameValue < uid=FD13B5146581A11A00035234475341E5 >
+			{
+			}
+		}
+	}
+	myType Pick_Up_Trouble
+}
+
+Contract "GYM Contract Thief Burglary Space" < uid=BAB09C58651442CA0008C4D9F22A2FFD >
+{
+	myGalaxyLocation FD13B51465BB567B000488C8C8E53E01
+	myInitialFaction 16DEADE65F7DDB52000000D22C63D964
+	myPossibleFactions
+	{
+		Faction "New Faction" < uid=BAB09C58651442E40008C4DDAA48FE55 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+		Faction "New Faction (0)" < uid=BAB09C58651442E80008C4DE41127927 > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+		Faction "New Faction (1)" < uid=BAB09C58651442EB0008C4DFB8C0539D > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	}
+	myUIName "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654123030015E2308CC2A1E3, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Thief Burglary Space\", type = \"MenuLine\""
+	myUIDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C586541230F0015E2314F36D0CD, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Thief Burglary Space\", type = \"MenuLine\""
+	myNarrativeDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654123120015E23285C14481, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Thief Burglary Space\", type = \"MenuLine\""
+	myReward < uid=BAB09C58651443110008C4E7185E0C04 > = Contract_Reward_Credit_Medium BE60F07F65266D560000921CC07F7861
+	myFailReward < uid=BAB09C58651443110008C4E8EC3AC159 > = Contract_Fail_Medium BE60F07F6526844A0000924C84E1D11D
+	myBetrayReward < uid=BAB09C58651443110008C4E9F798A41C > = Contract_Reward_Betrayal_Medium BE60F07F652670550000923EFA3B799D
+	myParts
+	{
+		ContractPart "GYM Contract Thief Burglary Space" < uid=BAB09C58651442FE0008C4E66A8B60BC >
+		{
+			myLevelInfo BAB09C5865143CBB0000A7B9E07A74BB
+			myHasCompletedPersistentActionGameValue < uid=FD13B5146581A11A00035235AAC676A3 >
+			{
+			}
+		}
+	}
+	myType Burglary
+}
+
+Contract "GYM Contract Action Raid Space" < uid=BAB09C586515839100064DB3AC655D04 >
+{
+	myGalaxyLocation FD13B51465BB567B000488C8C8E53E01
+	myInitialFaction 16DEADE65F7DDB52000000D22C63D964
+	myPossibleFactions
+	{
+		Faction "New Faction" < uid=BAB09C58651583B300064DB767486134 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+		Faction "New Faction (0)" < uid=BAB09C58651583B900064DB8D8344205 > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+		Faction "New Faction (1)" < uid=BAB09C58651583BD00064DB906785290 > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	}
+	myUIName "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654123190015E233F19FD297, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Action Raid Space\", type = \"MenuLine\""
+	myUIDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654123200015E23468CBB8FE, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Action Raid Space\", type = \"MenuLine\""
+	myNarrativeDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654123230015E2359182BD92, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Action Raid Space\", type = \"MenuLine\""
+	myReward < uid=BAB09C58651583E400064DC2CAA641B8 > = Contract_Reward_Credit_Medium BE60F07F65266D560000921CC07F7861
+	myFailReward < uid=BAB09C58651583E400064DC3DAC7F2E9 > = Contract_Fail_Medium BE60F07F6526844A0000924C84E1D11D
+	myBetrayReward < uid=BAB09C58651583E400064DC4A4B0D9A7 > = Contract_Reward_Betrayal_Medium BE60F07F652670550000923EFA3B799D
+	myParts
+	{
+		ContractPart "GYM Contract Action Raid Space" < uid=BAB09C58651583D100064DC07C00412F >
+		{
+			myLevelInfo BAB09C5865143CBB0000A7B9E07A74BB
+			myHasCompletedPersistentActionGameValue < uid=FD13B5146581A11A00035236B346F074 >
+			{
+			}
+		}
+	}
+	myType Raid
+}
+
+Contract "GYM Contract Smuggler Normal Delivery Space" < uid=BAB09C58651598280010B23A209BDE4E >
+{
+	myGalaxyLocation FD13B51465BB567B000488C8C8E53E01
+	myInitialFaction 16DEADE65F7DDB52000000D22C63D964
+	myPossibleFactions
+	{
+		Faction "New Faction" < uid=BAB09C58651598400010B23EE83C7539 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+		Faction "New Faction (0)" < uid=BAB09C58651598440010B23FA97C8D8B > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+		Faction "New Faction (1)" < uid=BAB09C58651598480010B2402E6AAF05 > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	}
+	myUIName "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C586541232A0015E2361EE8066F, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Smuggler Normal Delivery Space\", type = \"MenuLine\""
+	myUIDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654123360015E23711EC644F, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Smuggler Normal Delivery Space\", type = \"MenuLine\""
+	myNarrativeDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654123390015E23824D522C4, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Smuggler Normal Delivery Space\", type = \"MenuLine\""
+	myReward < uid=BAB09C58651598730010B2495041751F > = Contract_Reward_Credit_Medium BE60F07F65266D560000921CC07F7861
+	myFailReward < uid=BAB09C58651598730010B24ADEE607DF > = Contract_Fail_Medium BE60F07F6526844A0000924C84E1D11D
+	myBetrayReward < uid=BAB09C58651598730010B24B6D1BC6BA > = Contract_Reward_Betrayal_Medium BE60F07F652670550000923EFA3B799D
+	myParts
+	{
+		ContractPart "GYM Contract Smuggler Normal Delivery Space Pickup" < uid=BAB09C586515985C0010B247CCAFFC2D >
+		{
+			myLevelInfo BAB09C5865143CBB0000A7B9E07A74BB
+			myHasCompletedPersistentActionGameValue < uid=FD13B5146581A11A000352370ECA1D28 >
+			{
+			}
+		}
+		ContractPart "GYM Contract Smuggler Normal Delivery Space Drop" < uid=BAB09C58651598620010B24895343BE2 >
+		{
+			myLevelInfo BAB09C5865143CBB0000A7B9E07A74BB
+			myHasCompletedPersistentActionGameValue < uid=FD13B5146581A11A00035238D34B297D >
+			{
+			}
+		}
+	}
+}
+
+Contract "GYM Contract Smuggler Pickup Troubles Space" < uid=BAB09C58651683D500014F1A0246DFDA >
+{
+	myGalaxyLocation FD13B51465BB567B000488C8C8E53E01
+	myInitialFaction 16DEADE65F7DDB52000000D22C63D964
+	myPossibleFactions
+	{
+		Faction "New Faction" < uid=BAB09C58651683F300014F227EB04ED0 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+		Faction "New Faction (0)" < uid=BAB09C58651683F900014F232C1BD0D4 > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+		Faction "New Faction (1)" < uid=BAB09C58651683FC00014F249E9BFF78 > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	}
+	myUIName "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654123430015E239A03F65E1, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Smuggler Pickup Troubles Space\", type = \"MenuLine\""
+	myUIDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C586541234D0015E23AFEBAD4F7, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Smuggler Pickup Troubles Space\", type = \"MenuLine\""
+	myNarrativeDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654123510015E23B8C061973, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Smuggler Pickup Troubles Space\", type = \"MenuLine\""
+	myReward < uid=BAB09C586516848A00014F2D13B00A76 > = Contract_Reward_Credit_Medium BE60F07F65266D560000921CC07F7861
+	myFailReward < uid=BAB09C586516848A00014F2E8BF2B4AB > = Contract_Fail_Medium BE60F07F6526844A0000924C84E1D11D
+	myBetrayReward < uid=BAB09C586516848A00014F2FE2B546DB > = Contract_Reward_Betrayal_Medium BE60F07F652670550000923EFA3B799D
+	myParts
+	{
+		ContractPart "GYM Contract Smuggler Pickup Troubles Space 1" < uid=BAB09C586516847300014F2B6F80D5C3 >
+		{
+			myLevelInfo BAB09C5865143CBB0000A7B9E07A74BB
+			myHasCompletedPersistentActionGameValue < uid=FD13B5146581A11A000352394AA12ED9 >
+			{
+			}
+		}
+		ContractPart "GYM Contract Smuggler Pickup Troubles Space 2" < uid=BAB09C586516847B00014F2CB3A967F2 >
+		{
+			myLevelInfo BAB09C5865143CBB0000A7B9E07A74BB
+			myHasCompletedPersistentActionGameValue < uid=FD13B5146581A11A0003523ACEE0B2A9 >
+			{
+			}
+		}
+	}
+	myType Pick_Up_Trouble
+}
+
+Contract "GYM Contract Smuggler Express Delivery" < uid=BAB09C58652F8FA10003DE62DD158C24 >
+{
+	myGalaxyLocation FD13B51465BB567B000488C54CFBB15C
+	myInitialFaction 16DEADE65F7DDB52000000D22C63D964
+	myPossibleFactions
+	{
+		Faction "New Faction" < uid=BAB09C58652F8FBF0003DE6601898DC1 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+		Faction "New Faction (0)" < uid=BAB09C58652F8FC00003DE67ABA43988 > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+		Faction "New Faction (1)" < uid=BAB09C58652F8FC10003DE68CF86423B > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	}
+	myUIName "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654123580015E23C0148C935, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Smuggler Express Delivery\", type = \"MenuLine\""
+	myUIDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654123640015E23D5A03B490, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Smuggler Express Delivery\", type = \"MenuLine\""
+	myNarrativeDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654123680015E23E7236CE4B, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Smuggler Express Delivery\", type = \"MenuLine\""
+	myReward < uid=BAB09C58652F90040003DE71A05290B5 > = Contract_Reward_Credit_Medium BE60F07F65266D560000921CC07F7861
+	myFailReward < uid=BAB09C58652F90040003DE7281D57542 > = Contract_Fail_Medium BE60F07F6526844A0000924C84E1D11D
+	myBetrayReward < uid=BAB09C58652F90040003DE73D74E1EF3 > = Contract_Reward_Betrayal_Medium BE60F07F652670550000923EFA3B799D
+	myParts
+	{
+		ContractPart "GYM Contract Smuggler Express Deliver 1" < uid=BAB09C58652F8FDC0003DE6FB43C5E3D >
+		{
+			myLevelInfo BAB09C5864CCF32C0021AA69C2191EB2
+			myHasCompletedPersistentActionGameValue < uid=FD13B5146581A11A0003523B909DD500 >
+			{
+			}
+		}
+		ContractPart "GYM Contract Smuggler Express Deliver 2" < uid=BAB09C58652F8FF40003DE70542B9D60 >
+		{
+			myLevelInfo BAB09C5864CCF32C0021AA69C2191EB2
+			myHasCompletedPersistentActionGameValue < uid=FD13B5146581A11A0003523C1A1706AF >
+			{
+			}
+		}
+	}
+	myType Express_Delivery
+}
+
+Contract "GYM Contract Smuggler Express Delivery Space" < uid=BAB09C586530E01C0001A201B06774AC >
+{
+	myGalaxyLocation FD13B51465BB567B000488C8C8E53E01
+	myInitialFaction 16DEADE65F7DDB52000000D22C63D964
+	myPossibleFactions
+	{
+		Faction "New Faction" < uid=BAB09C586530E0340001A20CB29D45C2 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+		Faction "New Faction (0)" < uid=BAB09C586530E0360001A20D009357BE > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+		Faction "New Faction (1)" < uid=BAB09C586530E0360001A20EB2FF569F > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	}
+	myUIName "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C586541236E0015E23FCE478CFF, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Smuggler Express Delivery Space\", type = \"MenuLine\""
+	myUIDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654123780015E2408901F563, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Smuggler Express Delivery Space\", type = \"MenuLine\""
+	myNarrativeDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C586541237C0015E241CEE177E7, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Smuggler Express Delivery Space\", type = \"MenuLine\""
+	myReward < uid=BAB09C586530E26D000122FB7917D46B > = Contract_Reward_Credit_Medium BE60F07F65266D560000921CC07F7861
+	myFailReward < uid=BAB09C586530E26D000122FC0A076742 > = Contract_Fail_Medium BE60F07F6526844A0000924C84E1D11D
+	myBetrayReward < uid=BAB09C586530E26D000122FD3E1FB91F > = Contract_Reward_Betrayal_Medium BE60F07F652670550000923EFA3B799D
+	myParts
+	{
+		ContractPart "GYM Contract Smuggler Express Delivery Space 1" < uid=BAB09C586530E0480001A21553F7E9EA >
+		{
+			myLevelInfo BAB09C5865143CBB0000A7B9E07A74BB
+			myHasCompletedPersistentActionGameValue < uid=FD13B5146581A11A0003523D598334D2 >
+			{
+			}
+		}
+		ContractPart "GYM Contract Smuggler Express Delivery Space 2" < uid=BAB09C586530E04E0001A216530731BC >
+		{
+			myLevelInfo BAB09C5865143CBB0000A7B9E07A74BB
+			myHasCompletedPersistentActionGameValue < uid=FD13B5146581A11A0003523E923DB0B1 >
+			{
+			}
+		}
+		ContractPart "GYM Contract Smuggler Express Delivery Space 3" < uid=BAB09C5865954D5900077BB1666070AA >
+		{
+			myLevelInfo BAB09C5865143CBB0000A7B9E07A74BB
+			myHasCompletedPersistentActionGameValue < uid=BAB09C5865954D8200077BB26C61525D >
+			{
+			}
+		}
+	}
+	myType Express_Delivery
+}
+
+ContractHotCargo "GYM Contract Smuggler Hot Cargo Space" < uid=BAB09C586533B017001F8FCD27E65236 >
+{
+	myGalaxyLocation FD13B51465BB567B000488C8C8E53E01
+	myInitialFaction 16DEADE65F7DDB52000000D22C63D964
+	myPossibleFactions
+	{
+		Faction "New Faction" < uid=BAB09C586533B04F001F8FD173A5AEA8 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+		Faction "New Faction (0)" < uid=BAB09C586533B050001F8FD20AE69321 > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+		Faction "New Faction (1)" < uid=BAB09C586533B051001F8FD397111C96 > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	}
+	myUIName "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654123820015E2420A61BCE6, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Smuggler Hot Cargo Space\", type = \"MenuLine\""
+	myUIDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654123960015E243F8B3E921, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Smuggler Hot Cargo Space\", type = \"MenuLine\""
+	myNarrativeDescription "aurabesh = false, contextComment = \"Gym contract. Wont be seen by player\", enabled = true, guid = #BAB09C58654123990015E2447E9FB1B9, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10831, text = \"Smuggler Hot Cargo Space\", type = \"MenuLine\""
+	myReward < uid=BAB09C586533B0B1001F8FFE27AC4296 > = Contract_Reward_Credit_Medium BE60F07F65266D560000921CC07F7861
+	myFailReward < uid=BAB09C586533B0B1001F8FFFA743C54A > = Contract_Fail_Medium BE60F07F6526844A0000924C84E1D11D
+	myBetrayReward < uid=BAB09C586533B0B1001F90001907A4A1 > = Contract_Reward_Betrayal_Medium BE60F07F652670550000923EFA3B799D
+	myParts
+	{
+		ContractPart "GYM Contract Smuggler Hot Cargo Space 1" < uid=BAB09C586533B084001F8FDAED93FDD9 >
+		{
+			myLevelInfo BAB09C5865143CBB0000A7B9E07A74BB
+			myHasCompletedPersistentActionGameValue < uid=FD13B5146581A11A0003523FEC764223 >
+			{
+			}
+		}
+		ContractPart "GYM Contract Smuggler Hot Cargo Space 2" < uid=BAB09C586533B08B001F8FDBD54C8122 >
+		{
+			myLevelInfo BAB09C5865143CBB0000A7B9E07A74BB
+			myHasCompletedPersistentActionGameValue < uid=FD13B5146581A11A000352404EF6037C >
+			{
+			}
+		}
+	}
+	myType Hot_Cargo
+	myAmbushFaction 16DEADE65F7DDA76000000C9CB7D6D62
+}
+
+Contract "Gym Contract Contraband Test" < uid=F3C0F461671B824F0002444134F07424 >
+{
+	myGalaxyLocation F3C0F461671F61FC00000240DEF0A065
+	myInitialFaction 91DC5D3C66FBD9540000004783CAEE04
+	myPossibleFactions
+	{
+		Faction "New Faction" < uid=F3C0F461671B87D500034BFF01D541F0 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+		Faction "New Faction_0" < uid=F3C0F461671B87DA00034C007F7B38A3 > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	}
+	myUIName "branch = \"DLC2\", contextComment = \"test\", enabled = true, guid = #F3C0F461671B824F00024442208A6BC7, lineVersion = 4, maxLength = -1, productId = -1, sectionId = 3614, text = \"Gym Contract Contraband Test\", type = \"MenuLine\""
+	myUIDescription "branch = \"DLC2\", contextComment = \"test\", enabled = true, guid = #F3C0F461671B824F00024443FFFEB861, lineVersion = 7, maxLength = -4, productId = -1, sectionId = 3614, text = \"Gym Contract Contraband Test\", type = \"MenuLine\""
+	myNarrativeDescription "branch = \"DLC2\", contextComment = \"test\", enabled = true, guid = #F3C0F461671B8250000244447FF18FB3, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 3614, text = \"Gym Contract Contraband Test\", type = \"MenuLine\""
+	myReward < uid=F3C0F461671B84A60002445442B81F60 > = Contract_Reward_Credit BE60F07F65266C7F0000921885440E54
+	myFailReward < uid=F3C0F461671B84A600024455ABFD8200 > = Contract_Fail_Small BE60F07F6526844A0000924A874C2953
+	myBetrayReward < uid=F3C0F461671B84A6000244561BF7C5B5 > = Contract_Fail_Small BE60F07F6526844A0000924A874C2953
+	myParts
+	{
+		ContractPart "Contraband Part 1" < uid=F3C0F461671B82B7000244526F7BF822 >
+		{
+			myLevelInfo F3C0F461671B8C2A0002623E1BD60633
+			myHasCompletedPersistentActionGameValue < uid=F3C0F461671B84A600024457A5296337 >
+			{
+			}
+		}
+		ContractPart "Contraband part 2" < uid=F3C0F461671B848C00024453F6090D39 >
+		{
+			myLevelInfo F3C0F461671B8C2A0002623E1BD60633
+			myHasCompletedPersistentActionGameValue < uid=F3C0F461671B84A60002445827E82BED >
+			{
+			}
+		}
+	}
+	myType Contraband
+}
+
+Contract "Gym Contract Contraband Drop" < uid=BAB09C58673C6DBC0006DBFDD8113FA5 >
+{
+	myGalaxyLocation FD13B51465BB567B000488C54CFBB15C
+	myInitialFaction 16DEADE65F7DDB52000000D22C63D964
+	myPossibleFactions
+	{
+		Faction "New Faction" < uid=BAB09C58673C811A0001DBF63B000C27 > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+		Faction "New Faction_0" < uid=BAB09C58673C811F0001DBF7CE57E12C > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	}
+	myUIName "branch = \"DLC2\", contextComment = \"Gym line, please ignore\", enabled = true, guid = #BAB09C58673CAD62000000D675406112, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 3614, text = \"Gym Contraband Drop\", type = \"MenuLine\""
+	myUIDescription "branch = \"DLC2\", contextComment = \"Gym line, please ignore\", enabled = true, guid = #BAB09C58673CAD73000000D77FE1B183, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 3614, text = \"Gym Contraband Drop\", type = \"MenuLine\""
+	myNarrativeDescription "branch = \"DLC2\", contextComment = \"Gym line, please ignore\", enabled = true, guid = #BAB09C58673CAD7C000000D85921B1B9, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 3614, text = \"Gym Contraband Drop\", type = \"MenuLine\""
+	myReward < uid=BAB09C58673C6E510006DC1E584815FE > = Contract_Reward_Credit BE60F07F65266C7F0000921885440E54
+	myFailReward < uid=BAB09C58673C6E510006DC1F596AE803 > = Contract_Reward_Credit BE60F07F65266C7F0000921885440E54
+	myBetrayReward < uid=BAB09C58673C6E510006DC2052C42555 > = Contract_Reward_Credit BE60F07F65266C7F0000921885440E54
+	myParts
+	{
+		ContractPart "Gym Contract Contraband Drop" < uid=BAB09C58673C6E200006DC1921D6A66C >
+		{
+			myLevelInfo BAB09C5864CCF32C0021AA69C2191EB2
+			myHasCompletedPersistentActionGameValue < uid=BAB09C58673C6E510006DC2144FDB4DC >
+			{
+			}
+		}
+	}
+	myType Contraband
+}
+
+ContractContraband "Gym Space Contract Contraband" < uid=F3C0F4616749B6D3000F8AEBE8D30EEF >
+{
+	myGalaxyLocation F3C0F4616749B711000F8AEF43476444
+	myInitialFaction 16DEADE65F7DDB52000000D22C63D964
+	myPossibleFactions
+	{
+		Faction "New Faction" < uid=F3C0F4616759AB81000000D4F0BD5E47 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+		Faction "New Faction_0" < uid=F3C0F4616759AB8A000000D585A86BBD > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+		Faction "New Faction_1" < uid=F3C0F4616759AB8B000000D6B28C7FB9 > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+		Faction "New Faction_2" < uid=F3C0F4616759AB8B000000D706B0C817 > = AshigaClan 4728ADF9620B6C2B0000201F5FC5C937
+	}
+	myUIName "branch = \"TU7\", contextComment = \"nothing\", enabled = true, guid = #F3C0F4616749DB690005DD3C0F07275A, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 3614, text = \"Space Contraband Contract Test\", type = \"MenuLine\""
+	myUIDescription "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myNarrativeDescription "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myParts
+	{
+		ContractPart "Space Contract Contraband Test Part 1" < uid=F3C0F4616749B784000F8BB855E890AE >
+		{
+			myLevelInfo F3C0F4616749B08B000000284BF02D49
+			myHasCompletedPersistentActionGameValue < uid=F3C0F4616749B7A9000F8BBAD950DFEA >
+			{
+			}
+		}
+		ContractPart "Space Contract Contraband Test Part 2" < uid=F3C0F4616749B796000F8BB9F4F8E06A >
+		{
+			myLevelInfo F3C0F4616749B08B000000284BF02D49
+			myHasCompletedPersistentActionGameValue < uid=F3C0F4616749B7A9000F8BBBFA097396 >
+			{
+			}
+		}
+	}
+}
+

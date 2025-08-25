@@ -1,0 +1,112 @@
+include "helix/game system data/fruit/settings/leveltransitionsettings.fruit"
+include "helix/game system data/juice/playerrestrictions/level_transition_restrictions.mplayerrestriction"
+
+LevelTransitionSettings LevelTransitionSettings < uid=5B075E3E5E830AA200000014C2BF6D06 >
+{
+	myPlanetToSpaceSequence helix/sequence/transition_system_takeoff_toshara_PykeFaction_01.msequence
+	mySpaceToPlanetSequence helix/sequence/transition_system_landing_toshara_pykefaction_01.msequence
+	mySpaceToSpaceSequence helix/sequence/dev_transition_hyperjump_03.msequence
+	myStartUnloadMarkerName StartUnload
+	myStartLoadMarkerName StartLoad
+	myLoadingLoopStartMarkerName LoadingLoopStart
+	myLoadingLoopBreak1MarkerName LoadingLoopBreak1
+	myLoadingLoopBreak2MarkerName LoadingLoopBreak2
+	myLoadingLoopEndMarkerName LoadingLoopEnd
+	myMutexLayerLoadMarkerName MutexLayerLoad
+	myWeatherBlendStartMarkerName StartWeatherBlend
+	myWeatherBlendWaitForLoadLevelName WeatherBlendWaitForLoadLevel
+	myWeatherBlendWaitForLoopEndMarkerName WeatherBlendWaitForLoopEnd
+	myWeatherBlendStartScatteringLUTUpdateName WeatherBlendStartScatteringLUTUpdate
+	myUnloadSequenceRoomDataMarkerName UnloadRoomData
+	myLoadSequenceRoomDataMarkerName LoadRoomData
+	myExtResPlayerName Player
+	myExtResAnySpaceshipName AnySpaceship
+	myExtResSpaceshipName Spaceship
+	myExtResRokanaName Rokana
+	myExtResPetName Pet
+	myAnimBlockSpaceshipControlBoneName Marker
+	myRequestResetSnowParticlesName ResetSnowParticles
+	myPlayerRestrictions < uid=635C8514667D4438000000CBB8188812 > = level_transition_restrictions 635C8514667D4235000000CAD6283FB3
+	myWeatherPresetList
+	{
+		WeatherPresetPair "Space Akiva"
+		{
+			myLevelUID 9C4B6A046012DFB0000001032A60B086
+			myWeatherBlendSequence helix/sequence/transition_system_envblend_akiva_planet_to_space_01.msequence
+			myWeatherPresetFile "helix/environment/Helix Space Akiva.menvironment"
+		}
+		WeatherPresetPair "Space Cantonica"
+		{
+			myLevelUID 9C4B6A046012DF54000000D88F577A52
+			myWeatherBlendSequence helix/sequence/transition_system_envblend_cantonica_planet_to_space_01.msequence
+			myWeatherPresetFile "helix/environment/Helix Space Cantonica 03.menvironment"
+		}
+		WeatherPresetPair "Space Kijimi"
+		{
+			myLevelUID 9C4B6A046012DE63000000BA154AA5F2
+			myWeatherBlendSequence helix/sequence/transition_system_envblend_kijimi_planet_to_space_01.msequence
+			myWeatherPresetFile "helix/environment/Helix Space Kijimi.menvironment"
+		}
+		WeatherPresetPair "Space Tatooine"
+		{
+			myLevelUID 9C4B6A046012DF06000000C9D0F252B6
+			myWeatherBlendSequence helix/sequence/transition_system_envblend_tatooine_planet_to_space_01.msequence
+			myWeatherPresetFile helix/environment/helix_space_tatooine_01.menvironment
+		}
+		WeatherPresetPair "Space Toshara"
+		{
+			myLevelUID 9C4B6A046012DDB0000000AEDF387547
+			myWeatherBlendSequence helix/sequence/transition_system_envblend_toshara_planet_to_space_01.msequence
+			myWeatherPresetFile helix/environment/helix_space_toshara_01.menvironment
+		}
+		WeatherPresetPair "Planet Akiva"
+		{
+			myLevelUID 9C4B6A046012E6B0000001B224713F01
+			myWeatherBlendSequence helix/sequence/transition_system_envblend_akiva_space_to_planet_01.msequence
+			myWeatherPresetFile helix/environment/helix_akiva_drizzle_01.menvironment
+		}
+		WeatherPresetPair "Planet Cantonica"
+		{
+			myLevelUID 9C4B6A046012E3C00000018C095D3075
+			myWeatherBlendSequence helix/sequence/transition_system_envblend_cantonica_space_to_planet_01.msequence
+			myWeatherPresetFile helix/environment/helix_cantonica_cantobight_v4.menvironment
+		}
+		WeatherPresetPair "Planet Kijimi"
+		{
+			myLevelUID 9C4B6A046012E658000001A6972FA29E
+			myWeatherBlendSequence helix/sequence/transition_system_envblend_kijimi_space_to_planet_01.msequence
+			myWeatherPresetFile helix/environment/helix_kijimi_snow_light_01.menvironment
+		}
+		WeatherPresetPair "Planet Tatooine"
+		{
+			myLevelUID 8F2AC097626BDD5C00002F2423EFE372
+			myWeatherBlendSequence helix/sequence/transition_system_envblend_tatooine_space_to_planet_01.msequence
+			myWeatherPresetFile helix/environment/helix_tatooine_dusty_01_landing.menvironment
+		}
+		WeatherPresetPair "Planet Toshara"
+		{
+			myLevelUID 9C4B6A04601178B20000001A1F0FDFCB
+			myWeatherBlendSequence helix/sequence/transition_system_envblend_toshara_space_to_planet_01.msequence
+			myWeatherPresetFile helix/environment/helix_toshara_clear_01.menvironment
+		}
+	}
+	myOptimizationSettings
+	{
+		myPreloadedGraphObjectsFullDetailTimeOut 1.0
+		myPreloadedGraphObjects
+		{
+			CutscenePreloadedGraphObjectInfo "Trailblazer Cockpit Chair"
+			{
+				myGraphObject "helix/graph objects/prop/pr_msv_1337_a.mgraphobject"
+				myUseFullDetailTextures TRUE
+				myMeshLod 0
+			}
+			CutscenePreloadedGraphObjectInfo "Trailblazer Main Console"
+			{
+				myGraphObject "helix/graph objects/prop/pr_mtp_0109_a.mgraphobject"
+				myUseFullDetailTextures TRUE
+			}
+		}
+	}
+}
+

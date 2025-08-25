@@ -1,0 +1,25 @@
+include "helix/game system data/fruit/npc/npcenums.fruit"
+
+class NPCVisualLodRanges < uid=auto >
+{
+	float myLOD1CloseSizeOnScreen 100.0f
+	float myLOD2MediumSizeOnScreen 100.0f
+	float myLOD3FarSizeOnScreen 100.0f
+	float myLOD4DisabledSizeOnScreen 100.0f
+	
+	float myForceBestLodDistance 0.f
+}
+
+
+class NPCLodProfile < uid=auto >
+{
+	NPCLodType myGameplayLodType Default
+	
+	bool myUseRootBone false
+	bool myIgnoreSizeOffScreen false < tooltip="If true, size on screen will be considerd 0 when the agent leaves the screen" >
+	float mySphereRadius 0.5f
+	float mySphereOffsetY 0.5f
+	
+	NPCVisualLodRanges myAnimContollerLodRanges
+	NPCVisualLodRanges myGraphObjectLodRanges
+}

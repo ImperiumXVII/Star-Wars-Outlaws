@@ -1,0 +1,27 @@
+include "helix/game system data/fruit/item/item_includes.fruit"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_pickup_rifle_rr_rifle.mweaponfiremode"
+include "helix/game system data/juice/item/consumables.mitem"
+include "helix/game system data/juice/item/player_weapon_pickup_rifle.mitem"
+
+WeaponItem player_weapon_pickup_rifle_rr_rifle < uid=4C1DFD4E670914760004A70D665BB539 > : player_weapon_pickup_rifle
+{
+	myName "branch = \"DLC2\", contextComment = \"Weapon dropped by the Rokana Raider enemy types\", enabled = true, guid = #4C1DFD4E6710B7890004EADCAB1BFC53, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 10330, text = \"Rokana Raider Rifle\", type = \"MenuLine\""
+	myDescription "branch = \"DLC2\", contextComment = \"Rokana Raider Heavy  should drop this weapon\", enabled = true, guid = #4C1DFD4E6710B78A0004EAE18464B8FD, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 10330, text = \"Pickup from Rokana Raiders\", type = \"MenuLine\""
+	myIcon "mySpriteId = -866437877, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_weapon_icons_02.spritesheet\""
+	myGraphObject "helix/graph objects/gameplayobject/gpo_player_weapon_rr_rifle.mgraphobject"
+	myLootGraphObject "helix/graph objects/gameplayobject/gpo_player_weapon_rr_rifle.mgraphobject"
+	myAmount < uid=4C1DFD4E670914760004A70E38FA05B7 >
+	{
+		myDefaultValue 0
+	}
+	myHoldingConfig < uid=4C1DFD4E670914760004A70F7F15FF6F > = holding_pickup_rifle 4C1DFD4E636928920000DACF38CAA373
+	myConsumedItem < uid=4C1DFD4E670914760004A7104828A872 > = con_Ammo_RR_Rifle 4C1DFD4E6710BD4B000000D48A2C8384
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=4C1DFD4E670914760004A711F3612E33 > = player_firemode_pickup_rifle_rr_rifle 4C1DFD4E6709259B0007CB06133166D6
+		}
+	}
+}
+

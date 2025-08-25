@@ -1,0 +1,30 @@
+include "helix/game system data/fruit/audio/stimulus.fruit"
+
+class FathierGenerationInfo < uid=auto >
+{
+	varmap myName < bhv="localization" >
+	bool myIsMale
+	int myAge < min = 0 >
+	int myHeight < min = 0 >
+	int myWeight < min = 0 >
+	varmap myOrigin < bhv="localization" >
+	StimulusIdentifier* myBeforeRaceIdentifier < tooltip="The Stimulus Identifier that can be played at the beginning of a race this fathier is in." >
+	StimulusIdentifier* myDuringRaceIdentifier < tooltip="The Stimulus Identifier that can be played during a race this fathier is in." >
+	StimulusIdentifier* myFinishLineIdentifier < tooltip="The Stimulus Identifier that can be played at the end of a race this fathier is in." >
+}
+
+class JockeyInfo < uid=auto >
+{
+	varmap myName < bhv="localization" >
+	varmap myDescription < bhv="localization" >
+}
+
+list FathierGenerationInfoList
+{
+	FathierGenerationInfo*
+}
+
+list JockeyInfoList
+{
+	JockeyInfo
+}

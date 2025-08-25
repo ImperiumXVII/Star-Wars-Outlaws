@@ -1,0 +1,35 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/gozanti_attached_npc_set.mnpconnpcattachmentset"
+include "helix/game system data/juice/ai/gozanti_attached_npc_set_2_tiein.mnpconnpcattachmentset"
+include "helix/game system data/juice/ai/gozanti_attached_npc_set_2_tieln.mnpconnpcattachmentset"
+include "helix/game system data/juice/ai/gozanti_attached_npc_set_4_tiein.mnpconnpcattachmentset"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/emp_shp_base.mnpc"
+include "helix/game system data/juice/npc/emp_shp_gozanti_cruiser_a.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC emp_shp_gozanti_cruiser_e < uid=F95CD8F364ECADB40002BB1B49D78844 > : emp_shp_gozanti_cruiser_a
+{
+	myCharacterVisuals < uid=F95CD8F364ECADB40002BB1CE7BFFDF5 > = character_visuals_npc_shp_gozanti 849AB26562B3240500004DA05B1A7BB3
+	myNPCComponentSetType Spaceship
+	myDialogueCharactersFromDatabase
+	{
+	}
+	myLodType Spaceship_Medium
+	mySensoryProfile < uid=F95CD8F364ECADB40002BB1D52E01D2A > = DefaultSpaceship 16C7D1FB631F23570000495589B79C85
+	myVisionProfile < uid=F95CD8F364ECADB40002BB1E4FE4BC01 > = visionProfile_emp_ship_Warship 6B0E1DE964B7A45D0000AD5AF7C7687B
+	myHearingProfile < uid=F95CD8F364ECADB40002BB1FBA848811 > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=F95CD8F364ECADB40002BB20A2CC9AE1 > = detectionProfile_emp_ship_Warship 6B0E1DE964B6563D0003C71291E5EF8C
+	}
+	myAttachedNPCsSet < uid=F95CD8F364ECADB40002BB21F097CADF > = gozanti_attached_npc_set_2_tiein F95CD8F364ECAD020002BB0273B782D4
+	myAudioParameters
+	{
+		myEmitterName "GOZANTI Cruiser"
+	}
+	myCombatRole Warship
+}
+

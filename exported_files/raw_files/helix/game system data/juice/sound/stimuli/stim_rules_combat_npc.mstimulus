@@ -1,0 +1,373 @@
+include helix/audio/votypes.juice
+include "helix/game system data/fruit/audio/stimulus.fruit"
+include "helix/game system data/juice/barks/cooldown_combat_npc.mbarkscooldown"
+include "helix/game system data/juice/barks/cooldown_main.mbarkscooldown"
+include "helix/game system data/juice/rbtags/allrbtags.juice"
+include "helix/game system data/juice/sound/stimuli/stim_id_combat_npc.mstimulusidentifier"
+include "helix/game system data/juice/sound/stimuli/stim_id_main.mstimulusidentifier"
+
+StimulusElementContainer CombatNPC_OnoOnDamageDefault < uid=E4123D2762A745A90000D8A72C7C1D34 >
+{
+	myIdentifier < uid=E4123D2762A745CD0000D8A9B316E4EA > = S_NPC_OnDamage E4123D2762A7458D0000D879C0A84F2C
+	myVOType < uid=E4123D276353EDB1000055CB7A17D306 > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+	mySubtitlePurpose "id = \"E4123D2764897CFA00061EF54D1BDACA\""
+	myElements
+	{
+		StimulusElement "New StimulusElement (0)"
+		{
+			myElement
+			{
+				myGuid 46E25B1728F4629B1A98CB312309F0B8
+			}
+			myTemplateOverride
+			{
+				myGuid 46954F9C81C2DE06F2363301431E2EB8
+			}
+			myDelay 0.2
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer CombatNPC_OnoOnDeathDefault < uid=E4123D2762A745BA0000D8A88A58D727 >
+{
+	myIdentifier < uid=E4123D2762A745CD0000D8AA01CFBE53 > = S_NPC_OnDeath E4123D2762A745920000D87A4B070CE1
+	myVOType < uid=E4123D276353EDB1000055CC16C22C8A > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+	mySubtitlePurpose "id = \"E4123D2764897CFA00061EF54D1BDACA\""
+	myElements
+	{
+		StimulusElement "New StimulusElement (0)"
+		{
+			myElement
+			{
+				myGuid 4BADBBDCAB7455B868ABE4F329C340A6
+			}
+			myTemplateOverride
+			{
+				myGuid 421558EBCC8FFCB20D365F3B58574B85
+			}
+			myDelay 0.2
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer CombatNPC_ProbeDroid_IdleIncidental < uid=E4123D2765A165AF0005E88C2750EB2F >
+{
+	myIdentifier < uid=E4123D2765A165CC0005E88DC4BF4B72 > = S_NPC_ProbeDroidIncidental E4123D2765A1653F0005E84E47C357FB
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=E4123D2765A166030005E8C7FD101409 > = NPC_Cooldown_ProbeDroid_Default E4123D2765A165FD0005E8AB974CBF6A
+		BarksCooldown "New BarksCooldown_0" < uid=E4123D2765A1660B0005E8C8F1C771A0 > = NPC_Cooldown_ProbeDroid_StateChange E4123D2765A165FD0005E8ACC20DF8CE
+	}
+	myTagScoreModifier 10
+	myMaxDistance 80.0
+	myVOType < uid=E4123D2765A166340005E8C95DC81406 > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+	mySubtitlePurpose "id = \"E4123D2764897CFA00061EF54D1BDACA\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2765A166360005E8E481C34C58 > = Agent_Species_ViperDroid 416E63E4654BBBE20004E4819F508CBB
+		RBTagsTag "New RBTagsTag_0" < uid=E4123D2765A2A0140002F3887F7BA11A > = Agent_BehaviorState_NotCombatSearchTag 16C7D1FB635A97350000A0839E6A904A
+		RBTagsTag "New RBTagsTag_1" < uid=E4123D2765A2A0280002F38946DFC098 > = Agent_BehaviorState_NotArrestingTag 16C7D1FB635A97120000A081210EAAEE
+		RBTagsTag "New RBTagsTag_2" < uid=E4123D2765A2A0330002F38AFA1EDC02 > = Agent_BehaviorState_NotPursueWantedPlayerTag E4123D2763F79E46000050D60AA116E4
+		RBTagsTag "New RBTagsTag_3" < uid=E4123D2765A2A0390002F38B1F5E954E > = Agent_BehaviorState_NotSearchingTag 16C7D1FB635A97420000A0850B5C1C4A
+		RBTagsTag "New RBTagsTag_4" < uid=E4123D2765A2A0410002F38CBD8F94CE > = Agent_BehaviorState_NotSuspiciousTag 16C7D1FB635A97510000A08716A3CC7A
+		RBTagsTag "New RBTagsTag_5" < uid=E4123D2765A2A06E0002F38FE2017A1C > = Agent_NotInCombatTag 16DEADE66143C7F50000185A5B4B20A9
+		RBTagsTag notDead < uid=1EC89F25664F170A0000C6609FA7DE46 > = Agent_Health_NotDeadTag 16DEADE6614FAE8300001853F785F771
+	}
+	myElements
+	{
+		StimulusElement Self
+		{
+			myElement
+			{
+				myGuid 48B75A0DC2D7651185754EACC05BB584
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=E4123D2765A166690005E9199023D5F6 > = NPC_Cooldown_ProbeDroid_Default E4123D2765A165FD0005E8AB974CBF6A
+			}
+			myTemplateOverride
+			{
+				myGuid 4BFB645BEE7F7BFED078888C0242B3BC
+			}
+			myDelay 0.0
+		}
+	}
+}
+
+StimulusElementContainer CombatNPC_ProbeDroid_EnterIdle < uid=E4123D2765A169A2000117AF5FB0F759 >
+{
+	myIdentifier < uid=E4123D2765A169A2000117B01C46DA49 > = S_NPC_ProbeDroidEnterIdle E4123D2765A1654B0005E84F9591DCDF
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=E4123D2765A169A2000117B10F4E011A > = NPC_Cooldown_ProbeDroid_Default E4123D2765A165FD0005E8AB974CBF6A
+	}
+	myTagScoreModifier 10
+	myMaxDistance 80.0
+	myVOType < uid=E4123D2765A169A2000117B233722850 > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+	myVOPriorityOverride 6
+	mySubtitlePurpose "id = \"E4123D2764897CFA00061EF54D1BDACA\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2765A169A2000117B3EBA01B58 > = Agent_Species_ViperDroid 416E63E4654BBBE20004E4819F508CBB
+		RBTagsTag notDead < uid=1EC89F25664F17960000C661C8FBB4B8 > = Agent_Health_NotDeadTag 16DEADE6614FAE8300001853F785F771
+	}
+	myElements
+	{
+		StimulusElement Self
+		{
+			myElement
+			{
+				myGuid 4532471B3F0DA7A6DBA88ACD95FDA39B
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=E4123D2765A169A2000117B4C11E00F7 > = NPC_Cooldown_ProbeDroid_Default E4123D2765A165FD0005E8AB974CBF6A
+			}
+			myTemplateOverride
+			{
+				myGuid 4BFB645BEE7F7BFED078888C0242B3BC
+			}
+			myDelay 0.0
+		}
+	}
+}
+
+StimulusElementContainer CombatNPC_ProbeDroid_EnterAlert < uid=E4123D2765A16A610001E8C809756197 >
+{
+	myIdentifier < uid=E4123D2765A16A610001E8C9361630B8 > = S_NPC_DetectingStart E4123D27629A0A15000079998F4C2D01
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=E4123D2765A16A610001E8CA4D13A0AA > = NPC_Cooldown_ProbeDroid_StateChange E4123D2765A165FD0005E8ACC20DF8CE
+	}
+	myTagScoreModifier 10
+	myMaxDistance 120.0
+	myVOType < uid=E4123D2765A16A610001E8CB7A010672 > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+	myVOPriorityOverride 6
+	mySubtitlePurpose "id = \"E4123D2764897CFA00061EF54D1BDACA\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2765A16A610001E8CCD8DAA97C > = Agent_Species_ViperDroid 416E63E4654BBBE20004E4819F508CBB
+		RBTagsTag notDead < uid=1EC89F25664F17A60000C6622B2775B1 > = Agent_Health_NotDeadTag 16DEADE6614FAE8300001853F785F771
+	}
+	myElements
+	{
+		StimulusElement Self
+		{
+			myElement
+			{
+				myGuid 438AE8472D14BAE828FD4203E1ADA298
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=E4123D2765A16A610001E8CD5FCED12F > = NPC_Cooldown_ProbeDroid_Default E4123D2765A165FD0005E8AB974CBF6A
+				BarksCooldown "New BarksCooldown_0" < uid=E4123D2765A16A120001881FDC7C640D > = NPC_Cooldown_ProbeDroid_StateChange E4123D2765A165FD0005E8ACC20DF8CE
+			}
+			myTemplateOverride
+			{
+				myGuid 47A862F5601DB4A62DD0ADCD836B6AAE
+			}
+		}
+	}
+}
+
+StimulusElementContainer CombatNPC_ProbeDroid_AlertIncidental < uid=E4123D2765A16A610001E8CE8F083C8C >
+{
+	myIdentifier < uid=E4123D2765A16A610001E8CFFD488989 > = S_NPC_ProbeDroidIncidental E4123D2765A1653F0005E84E47C357FB
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=E4123D2765A16A610001E8D0F0D44E15 > = NPC_Cooldown_ProbeDroid_Default E4123D2765A165FD0005E8AB974CBF6A
+		BarksCooldown "New BarksCooldown_0" < uid=E4123D2765A16A390001BA9C823F2838 > = NPC_Cooldown_ProbeDroid_StateChange E4123D2765A165FD0005E8ACC20DF8CE
+	}
+	myTagScoreModifier 10
+	myMaxDistance 120.0
+	myVOType < uid=E4123D2765A16A610001E8D1D9BABE89 > = VOType_Barks_CombatNPCDefault 3A1C5D1862D94CB400003D6FE3B77FB8
+	myVOPriorityOverride 9
+	mySubtitlePurpose "id = \"E4123D2764897CFA00061EF54D1BDACA\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2765A16A610001E8D21798156E > = Agent_Species_ViperDroid 416E63E4654BBBE20004E4819F508CBB
+		RBTagsTag "New RBTagsTag_0" < uid=E4123D2765A2A04F0002F38D05EC58E7 > = Agent_NPCAlertLevel_NotIdleAlertTag 16C7D1FB630747E0000044285D627042
+		RBTagsTag "New RBTagsTag_1" < uid=E4123D2765A2A05A0002F38E091E6A94 > = Agent_NPCAlertLevel_NotIdleRelaxedTag 16C7D1FB630747DE00004427A097256C
+		RBTagsTag notDead < uid=1EC89F25664F17B20000C663D064E803 > = Agent_Health_NotDeadTag 16DEADE6614FAE8300001853F785F771
+	}
+	myElements
+	{
+		StimulusElement Self
+		{
+			myElement
+			{
+				myGuid 4B5CBD480505DE3937647178D32A529B
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=E4123D2765A16A610001E8D3AE25D2D5 > = NPC_Cooldown_ProbeDroid_Default E4123D2765A165FD0005E8AB974CBF6A
+			}
+			myTemplateOverride
+			{
+				myGuid 47A862F5601DB4A62DD0ADCD836B6AAE
+			}
+			myDelay 0.0
+		}
+	}
+}
+
+StimulusElementContainer CombatNPC_ProbeDroid_EnterCombat < uid=E4123D2765A16A610001E8D4FCD385E2 >
+{
+	myIdentifier < uid=E4123D2765A16A610001E8D5F0912207 > = S_NPC_AgentEnterCombat E4123D2766052C7F00009C3E9759C976
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=E4123D2765A16A610001E8D627756A1E > = NPC_Cooldown_ProbeDroid_StateChange E4123D2765A165FD0005E8ACC20DF8CE
+	}
+	myTagScoreModifier 10
+	myMaxDistance 120.0
+	myVOType < uid=E4123D2765A16A610001E8D7A746A75F > = VOType_Barks_CombatNPCStateChange 3A1C5D1862D94CBA00003D70CB09EFE6
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"E4123D2764897CFA00061EF54D1BDACA\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2765A16A610001E8D8C7DADAC0 > = Agent_Species_ViperDroid 416E63E4654BBBE20004E4819F508CBB
+		RBTagsTag notDead < uid=1EC89F25664F17BF0000C664719049A7 > = Agent_Health_NotDeadTag 16DEADE6614FAE8300001853F785F771
+	}
+	myElements
+	{
+		StimulusElement Self
+		{
+			myElement
+			{
+				myGuid 46F3C79760A376A280055BAC799C9A9C
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=E4123D2765A16A610001E8D9BE225926 > = NPC_Cooldown_ProbeDroid_Default E4123D2765A165FD0005E8AB974CBF6A
+				BarksCooldown "New BarksCooldown_0" < uid=E4123D2765A16A4B0001CB61A7720AF0 > = NPC_Cooldown_ProbeDroid_StateChange E4123D2765A165FD0005E8ACC20DF8CE
+			}
+			myTemplateOverride
+			{
+				myGuid 47A862F5601DB4A62DD0ADCD836B6AAE
+			}
+		}
+	}
+}
+
+StimulusElementContainer CombatNPC_ProbeDroid_ReportCrime < uid=E4123D2766557CC30006C483DE0E4373 >
+{
+	myIdentifier < uid=E4123D2766557CC30006C484684E8CD3 > = S_NPC_WantedReportCrime E4123D27637356E90000CCD83B4A9A83
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=E4123D2766557CC30006C485401A21E1 > = NPC_Cooldown_ProbeDroid_StateChange E4123D2765A165FD0005E8ACC20DF8CE
+	}
+	myTagScoreModifier 10
+	myMaxDistance 120.0
+	myVOType < uid=E4123D2766557CC30006C4862AF86409 > = VOType_Barks_CombatNPCStateChange 3A1C5D1862D94CBA00003D70CB09EFE6
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"E4123D2764897CFA00061EF54D1BDACA\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2766557CC30006C4878641AFFE > = Agent_Species_ViperDroid 416E63E4654BBBE20004E4819F508CBB
+		RBTagsTag notDead < uid=E4123D2766557CC30006C4889A7583F1 > = Agent_Health_NotDeadTag 16DEADE6614FAE8300001853F785F771
+	}
+	myElements
+	{
+		StimulusElement Self
+		{
+			myElement
+			{
+				myGuid 4D4EC708907F0200013FF8BA79F4FEA3
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=E4123D2766557CC30006C4890BF1AC77 > = NPC_Cooldown_ProbeDroid_Default E4123D2765A165FD0005E8AB974CBF6A
+				BarksCooldown "New BarksCooldown_0" < uid=E4123D2766557CC30006C48AE2C0592C > = NPC_Cooldown_ProbeDroid_StateChange E4123D2765A165FD0005E8ACC20DF8CE
+			}
+			myTemplateOverride
+			{
+				myGuid 47A862F5601DB4A62DD0ADCD836B6AAE
+			}
+			myDelay 0.0
+			myPendingTime 3.0
+		}
+	}
+}
+
+StimulusElementContainer CombatNPC_ProbeDroid_TriggerAlarm < uid=E4123D27665583B70005692DA079B245 >
+{
+	myIdentifier < uid=E4123D27665583B70005692E47E54E48 > = S_NPC_TriggerAlarmTelegraph E4123D27629A17BF0000337891B96F5F
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=E4123D27665583B70005692F4707DC79 > = NPC_Cooldown_ProbeDroid_StateChange E4123D2765A165FD0005E8ACC20DF8CE
+	}
+	myTagScoreModifier 10
+	myMaxDistance 120.0
+	myVOType < uid=E4123D27665583B70005693007490755 > = VOType_Barks_CombatNPCStateChange 3A1C5D1862D94CBA00003D70CB09EFE6
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"E4123D2764897CFA00061EF54D1BDACA\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D27665583B7000569316ACF7663 > = Agent_Species_ViperDroid 416E63E4654BBBE20004E4819F508CBB
+		RBTagsTag notDead < uid=E4123D27665583B7000569320735E27C > = Agent_Health_NotDeadTag 16DEADE6614FAE8300001853F785F771
+	}
+	myElements
+	{
+		StimulusElement Self
+		{
+			myElement
+			{
+				myGuid 4D4EC708907F0200013FF8BA79F4FEA3
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=E4123D27665583B7000569337EA812F7 > = NPC_Cooldown_ProbeDroid_Default E4123D2765A165FD0005E8AB974CBF6A
+				BarksCooldown "New BarksCooldown_0" < uid=E4123D27665583B7000569343194C1D8 > = NPC_Cooldown_ProbeDroid_StateChange E4123D2765A165FD0005E8ACC20DF8CE
+			}
+			myTemplateOverride
+			{
+				myGuid 47A862F5601DB4A62DD0ADCD836B6AAE
+			}
+			myDelay 0.0
+			myPendingTime 3.0
+		}
+	}
+}
+
+StimulusElementContainer CombatNPC_ProbeDroid_RequestBackup < uid=E4123D27665583CC00056E1212F29037 >
+{
+	myIdentifier < uid=E4123D27665583CC00056E13D21D01D6 > = S_NPC_TelegraphRequestBackup E4123D276468BF110008C4969C073885
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=E4123D27665583CC00056E144D9AEA90 > = NPC_Cooldown_ProbeDroid_StateChange E4123D2765A165FD0005E8ACC20DF8CE
+	}
+	myTagScoreModifier 10
+	myMaxDistance 120.0
+	myVOType < uid=E4123D27665583CC00056E15208B4530 > = VOType_Barks_CombatNPCStateChange 3A1C5D1862D94CBA00003D70CB09EFE6
+	myVOPriorityOverride 5
+	mySubtitlePurpose "id = \"E4123D2764897CFA00061EF54D1BDACA\""
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D27665583CC00056E16A67E1A3E > = Agent_Species_ViperDroid 416E63E4654BBBE20004E4819F508CBB
+		RBTagsTag notDead < uid=E4123D27665583CC00056E179C57AC96 > = Agent_Health_NotDeadTag 16DEADE6614FAE8300001853F785F771
+	}
+	myElements
+	{
+		StimulusElement Self
+		{
+			myElement
+			{
+				myGuid 4D4EC708907F0200013FF8BA79F4FEA3
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=E4123D27665583CC00056E1806031BE6 > = NPC_Cooldown_ProbeDroid_Default E4123D2765A165FD0005E8AB974CBF6A
+				BarksCooldown "New BarksCooldown_0" < uid=E4123D27665583CC00056E197CDB7CD3 > = NPC_Cooldown_ProbeDroid_StateChange E4123D2765A165FD0005E8ACC20DF8CE
+			}
+			myTemplateOverride
+			{
+				myGuid 47A862F5601DB4A62DD0ADCD836B6AAE
+			}
+			myDelay 0.0
+			myPendingTime 3.0
+		}
+	}
+}
+

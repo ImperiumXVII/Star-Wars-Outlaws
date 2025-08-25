@@ -1,0 +1,377 @@
+include "helix/game system data/fruit/ai/spaceshipsettings.fruit"
+include "helix/game system data/juice/ai/npcshootpatterns.mnpcshootpattern"
+include "helix/game system data/juice/ai/spaceshipcombatprofiles.mspaceshipcombatprofile"
+include "helix/game system data/juice/ai/spaceshipformationprofiles.mspaceshipformationprofile"
+include "helix/game system data/juice/ai/spaceshipspawnprofiles.mspaceshipspawnprofile"
+include "helix/game system data/juice/ai/spaceshipspeedprofiles.mspaceshipspeedprofile"
+include "helix/game system data/juice/ai/spaceshiptrajectories.mspaceshiptrajectoryprofile"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_default.juice"
+
+SpaceshipBehaviorParameter tieinterceptorEvasiveStartCurrentManeuverMinElapsedTime : EvasiveStartCurrentManeuverMinElapsedTime
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorEvasiveStartMinDistance : EvasiveStartMinDistance
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorEvasiveMinDistance : EvasiveMinDistance
+{
+	myValue 500.0
+}
+
+SpaceshipBehaviorParameter tieinterceptorEvasiveDurationRandomMin : EvasiveDurationRandomMin
+{
+	myValue 6.0
+}
+
+SpaceshipBehaviorParameter tieinterceptorEvasiveDurationRandomMax : EvasiveDurationRandomMax
+{
+	myValue 10.0
+}
+
+SpaceshipBehaviorParameter tieinterceptorEvasiveConeAngle : EvasiveConeAngle
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorEvasiveStartAngleFromHostile : EvasiveStartAngleFromHostile
+{
+	myValue 30.0
+}
+
+SpaceshipBehaviorParameter tieinterceptorEvasiveSpiralProbability : EvasiveSpiralProbability
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorEvasivePauseBetweenPatternsMin : EvasivePauseBetweenPatternsMin
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorEvasivePauseBetweenPatternsMax : EvasivePauseBetweenPatternsMax
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorEvasiveBreakProbability : EvasiveBreakProbability
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorEvasiveScaleWidth : EvasiveScaleWidth
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorEvasiveScaleHeight : EvasiveScaleHeight
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorEvasiveScaleLength : EvasiveScaleLength
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorTimeToStartEvasiveIfStillInFrontOfHostile : TimeToStartEvasiveIfStillInFrontOfHostile
+{
+	myValue 3.0
+}
+
+SpaceshipBehaviorParameter tieinterceptorBreakStartCurrentManeuverMinElapsedTime : BreakStartCurrentManeuverMinElapsedTime
+{
+	myValue 6.0
+}
+
+SpaceshipBehaviorParameter tieinterceptorChaseDurationRandomMin : ChaseDurationRandomMin
+{
+	myValue 4.0
+}
+
+SpaceshipBehaviorParameter tieinterceptorChaseDurationRandomMax : ChaseDurationRandomMax
+{
+	myValue 8.0
+}
+
+SpaceshipBehaviorParameter tieinterceptorChaseDistanceMin : ChaseDistanceMin
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorChaseDistanceMax : ChaseDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorChaseConeAngle : ChaseConeAngle
+{
+	myValue 35.0
+}
+
+SpaceshipBehaviorParameter tieinterceptorChaseChanceToBreakOnHostileDodgePercent : ChaseChanceToBreakOnHostileDodgePercent
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorChaseBreakProbabilityOverPass : ChaseBreakProbabilityOverPass
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorOvershootMaxAngle : OvershootMaxAngle
+{
+	myValue 60.0
+}
+
+SpaceshipBehaviorParameter tieinterceptorInterceptConeAngle : InterceptConeAngle
+{
+	myValue 25.0
+}
+
+SpaceshipBehaviorParameter tieinterceptorInterceptDistanceIdeal : InterceptDistanceIdeal
+{
+	myValue 400.0
+}
+
+SpaceshipBehaviorParameter tieinterceptorInterceptDistanceMin : InterceptDistanceMin
+{
+	myValue 100.0
+}
+
+SpaceshipBehaviorParameter tieinterceptorInterceptDistanceMax : InterceptDistanceMax
+{
+	myValue 800.0
+}
+
+SpaceshipBehaviorParameter tieinterceptorInterceptDurationMin : InterceptDurationMin
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorInterceptDurationMax : InterceptDurationMax
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorJoustingProbability : JoustingProbability
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorJoustingMaxDurationPrepare : JoustingMaxDurationPrepare
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorJoustingMaxDuration : JoustingMaxDuration
+{
+	myValue 15.0
+}
+
+SpaceshipBehaviorParameter tieinterceptorJoustingDistanceTurn : JoustingDistanceTurn
+{
+	myValue 1000.0
+}
+
+SpaceshipBehaviorParameter tieinterceptorJoustingEndDistance : JoustingEndDistance
+{
+	myValue 100.0
+}
+
+SpaceshipBehaviorParameter tieinterceptorJoustingAngle : JoustingAngle
+{
+	myValue 90.0
+}
+
+SpaceshipBehaviorParameter tieinterceptorJoustingMaxAngle : JoustingMaxAngle
+{
+	myValue 140.0
+}
+
+SpaceshipBehaviorParameter tieinterceptorJoustingEndBreakProbabilityOverPass : JoustingEndBreakProbabilityOverPass
+{
+	myValue 30.0
+}
+
+SpaceshipBehaviorParameter tieinterceptorJoustingPositionMaxHeight : JoustingPositionMaxHeight
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorAlignMinDistance : AlignMinDistance
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorAlignMaxDistance : AlignMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorLeashingMinDistance : LeashingMinDistance
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorLeashingMaxDistance : LeashingMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorLeashingToVolumeMaxDistance : LeashingToVolumeMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorShootMaxDistance : ShootMaxDistance
+{
+	myValue 800.0
+}
+
+SpaceshipBehaviorParameter tieinterceptorShootMaxAngle : ShootMaxAngle
+{
+	myValue 10.0
+}
+
+SpaceshipBehaviorParameter tieinterceptorBarkPositionDistanceMax : BarkPositionDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorBroadcastRangeEnterCombat : BroadcastRangeEnterCombat
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorEscortDistance : EscortDistance
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorLowProhibitedActionAttackDelay : LowProhibitedActionAttackDelay
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorAccurateShootingProbability : AccurateShootingProbability
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorRangeForSecondaryWeapon : RangeForSecondaryWeapon
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorUndetectedTimeBeforeExitingCombat : UndetectedTimeBeforeExitingCombat
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorUndetectedTimeBeforeExitingAware : UndetectedTimeBeforeExitingAware
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorReinforcementsCallProbabilityPercent : ReinforcementsCallProbabilityPercent
+{
+	myValue 0.0
+}
+
+SpaceshipBehaviorParameter tieinterceptorReinforcementsCallDuration : ReinforcementsCallDuration
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorIdleDefaultSplineSizeHorizontal : IdleDefaultSplineSizeHorizontal
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorIdleDefaultSplineSizeVertical : IdleDefaultSplineSizeVertical
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorCooldownDuration : CooldownDuration
+{
+	myValue 2.0
+}
+
+SpaceshipBehaviorParameter tieinterceptorCooldownMaxDistance : CooldownMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorSpaceshipMaxEngagementDistance : SpaceshipMaxEngagementDistance
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorSpaceshipPrimaryMaxAngle : SpaceshipPrimaryMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorSpaceshipPrimaryMaxDistance : SpaceshipPrimaryMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorSpaceshipPrimaryMinDistance : SpaceshipPrimaryMinDistance
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorSpaceshipPrimaryMaxHealth : SpaceshipPrimaryMaxHealth
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorSpaceshipSecondaryMaxAngle : SpaceshipSecondaryMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorSpaceshipSecondaryMaxDistance : SpaceshipSecondaryMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorSpaceshipSecondaryMinDistance : SpaceshipSecondaryMinDistance
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorSpaceshipSecondaryMaxHealth : SpaceshipSecondaryMaxHealth
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorSpaceshipMissileMaxAngle : SpaceshipMissileMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorSpaceshipMissileMaxDistance : SpaceshipMissileMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorSpaceshipMissileMinDistance : SpaceshipMissileMinDistance
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorSpaceshipMissileMaxHealth : SpaceshipMissileMaxHealth
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorCombatLeashingToPlayer : CombatLeashingToPlayer
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorSpaceshipAccuracyRadiusMax : SpaceshipAccuracyRadiusMax
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorSpaceshipAccuracyRadiusMin : SpaceshipAccuracyRadiusMin
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorSpaceshipAccuracyDistanceMax : SpaceshipAccuracyDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorSpaceshipAccuracyDistanceMin : SpaceshipAccuracyDistanceMin
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorSpaceshipShotSpreadPercentage : SpaceshipShotSpreadPercentage
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorSpaceshipMissileLockOnTime : SpaceshipMissileLockOnTime
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorHarassmentChance : HarassmentChance
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorHarassmentDuration : HarassmentDuration
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorHarassmentAreaSizeMin : HarassmentAreaSizeMin
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorHarassmentAreaSizeMax : HarassmentAreaSizeMax
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorHarassmentAreaHeightMin : HarassmentAreaHeightMin
+{
+}
+
+SpaceshipBehaviorParameter tieinterceptorHarassmentAreaHeightMax : HarassmentAreaHeightMax
+{
+}
+

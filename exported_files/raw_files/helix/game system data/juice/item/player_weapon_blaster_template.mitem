@@ -1,0 +1,63 @@
+include "helix/game system data/fruit/item/item_includes.fruit"
+include "helix/game system data/juice/ai/player_shootpattern_kaysblaster.mnpcshootpattern"
+include "helix/game system data/juice/ai/player_shootpattern_kaysblaster_2.mnpcshootpattern"
+include "helix/game system data/juice/equipment/aimconfig/weapon_aimconfig_freeaim.maimconfig"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_blaster_template.mweaponfiremode"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_blaster_trickshot_default.mweaponfiremode"
+include "helix/game system data/juice/item/equipmentholding/holding_kays_blaster.mequipmentholdingconfig"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_small.mprojectile"
+include "helix/game system data/juice/sound/weapons/player_audioweapon_kays_blaster.maudioweapon"
+
+WeaponItem Player_Weapon_Blaster_Template < uid=1C021E9562AC85F800003563D3756505 >
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Not empty\", enabled = true, guid = #1C021E9562AC85F80000356203997B76, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 459, text = \"Blaster Template [Do Not Spawn]\", type = \"MenuLine\""
+	myDescription ""
+	myIcon "mySpriteId = 21091193, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_hud_01.spritesheet\""
+	myThumbnail helix/baked/ui/loose_images/gear/blaster/gear_blaster_generic_gameready.dds
+	myGraphObject "helix/graph objects/weapon/wpn_kay_blaster_001.mgraphobject"
+	myCategory Weapon
+	myQuality Standard
+	myInventoryPouch Weapon
+	myAgentInventoryCapacity ""
+	mySpeederInventoryCapacity ""
+	mySpaceshipInventoryCapacity ""
+	myPetInventoryCapacity ""
+	myDefaultInventory Agent
+	myLootGraphObject ""
+	myAllowUsingLootGraphObjectWithAnyAmount TRUE
+	myBlockedLootBehavior Default
+	myIsAutoLoot FALSE
+	myBuyPrice 0
+	myCanBeSold TRUE
+	myHideAtVendorIfCantBeAddedToInventory FALSE
+	myCooldown
+	{
+		myStartType OnEndUse
+		myDuration 0.0
+	}
+	myAimConfig < uid=1C021E9562AC85F8000035654B2C987B > = weapon_aimconfig_freeaim A207755D61F1667100001B105CDB4181
+	myHoldingConfig < uid=1C021E9562AC85F80000356683A618A3 > = holding_kays_blaster A207755D61F155AC00001B21E39E40D8
+	myAlwaysAim FALSE
+	myDefaultSlotGroup Weapons
+	myIsPickable FALSE
+	myTalents
+	{
+	}
+	myGearSets
+	{
+	}
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=A207755D62C2EEFF00003744863E8413 > = player_firemode_blaster_template A207755D62C2ECAE0000374E0F612794
+		}
+		WeaponFireModeSlot TrickShot
+		{
+			mySlotTag TrickShot
+			myFireMode < uid=A207755D62C2F6540000376DD588712B > = player_firemode_blaster_trickshot_default A207755D62C2F37200003756781302DE
+		}
+	}
+	myQuickHipFireMultiplierFormula BlasterHipFireMultiplier
+}
+

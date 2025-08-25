@@ -1,0 +1,23 @@
+include "helix/game system data/juice/npc/civ_questnpc.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC civ_temmin_wexley_eq100 < uid=91DC5D3C6708E5DB000000D8BDECDDE1 > : civ_questnpc
+{
+	myCharacterVisuals < uid=91DC5D3C6708E5DB000000D9B24A7018 > = character_visuals_2_silver_temmin_wexley 849AB26562A6321B000081DDEDEB4CC3
+	myHideMapRefGameConditions
+	{
+		myType Group
+		myIsNegated FALSE
+		myOperator And
+		myCanBeOverridden FALSE
+		myConditions
+		{
+			GameConditionContextAgentIsAlive "New GameConditionContextAgentIsAlive"
+			{
+				myIsNegated TRUE
+			}
+		}
+	}
+	myAllyForceHighContrastMode TRUE
+}
+

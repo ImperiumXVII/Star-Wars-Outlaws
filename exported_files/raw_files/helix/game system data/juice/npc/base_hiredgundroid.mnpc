@@ -1,0 +1,75 @@
+include "helix/game system data/juice/character/character_visuals_hired_gun_generator_droids.mcharactervisuals"
+include "helix/game system data/juice/character/character_visuals_test_do_not_use.mcharactervisuals"
+include "helix/game system data/juice/melee/alwaysblockmeleedefense.mnpcmeleedefenseprofile"
+include "helix/game system data/juice/melee/npc_melee_config.mnpcmeleeconfig"
+include "helix/game system data/juice/npc/base_hiredgun.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC base_hiredgundroid < uid=2736B36562BB154E0000EC12DE2C6E0C > : base_humanoid
+{
+	myCharacterVisuals < uid=2736B36562BB154E0000EC135543EF47 > = character_visuals_hired_gun_generator_droids 66F572896582F9EE0009E00BE67E781C
+	myAdditionalGearGraphs 91DC5D3C65368E810007F165C30A469F
+	myBehavior helix/behaviors/base_hiredgundroid.mbehavior
+	myAnimSystemType Droid
+	myMaxHealth 15
+	myHealthFormula max(1,3+NPCFinalHealth)
+	myPossibleSpeciesTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=4171A7E164B69A630007603A7C73B520 > = Agent_Species_HiredGunDroidTag 4171A7E164B699C500075F9CBFE1BBA4
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2765159E9A000214F9E0F7A90F > = Agent_BarksFamily_HiredGun E4123D2762F4CA2800048CADB39E55F8
+	}
+	myPositionReservationSize 0.5
+	myDialogueCharacters
+	{
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=E4123D2765159EA2000214FB57E7F5AE >
+		{
+			myDialogueCharacter < uid=E4123D2765159ECF000214FF94A6C771 > = AI_HIRED_GUN_DESIGNED_BINARY_DROID_01 E4123D2763FDD9EE0006EA2FA2BA38E7
+		}
+		DialogueCharacterWithTags "New DialogueCharacterWithTags (0)" < uid=E4123D2765159EAB000214FC29EBF5D3 >
+		{
+			myDialogueCharacter < uid=E4123D2765159ECF00021500E295FD5B > = AI_HIRED_GUN_DESIGNED_BINARY_DROID_02 E4123D2763FDDBE90006EA5E9919BC9F
+		}
+		DialogueCharacterWithTags "New DialogueCharacterWithTags (1)" < uid=E4123D2765159EB0000214FD74099E30 >
+		{
+			myDialogueCharacter < uid=E4123D2765159ECF00021501DA550727 > = AI_HIRED_GUN_DESIGNED_BINARY_DROID_03 E4123D2763FDDC090006EA6CC8052687
+		}
+	}
+	myAgitationProfile < uid=4171A7E166AA36D3001F6C2506125189 > = "Default Agitation Profile" 16DEADE662560BFD00002D1154F6BC6F
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout Rifle < uid=2736B365635FFF760003D65BDEBC68E0 > = HiredGun_Droid_Rifle 2736B365635FFEFF0003D606704FA761
+		NPCWeaponLoadout Shotgun < uid=4171A7E16569E2740000B5339A847494 > = HiredGun_Droid_Shotgun 4171A7E1656893F600006A3B89B4DE2A
+		NPCWeaponLoadout "Rifle Shield" < uid=85F4BAC26573365E000DE2B12FC8E660 > = HiredGun_Droid_Rifle_Shield 85F4BAC2657335D4000DE18C54C71E8D
+	}
+	myMotionPatternProfile < uid=4171A7E1644AA35200091619066F36F8 > = DroidMotionProfile 4171A7E1644AA2F900091608FDDD519E
+	myBehaviorUpdateBoostProfile < uid=2736B36563DCEAC70000DE733848D87B > = hostile 2736B36563DCDB14000114E560E4B9A2
+	myPlayerMeleeDamageModifier 0.0
+	myAudioParameters
+	{
+		mySwitches
+		{
+			AudioSwitch "hired gun"
+			{
+				myGuid 4F2CEF57754C0BADD0D4DD8B6C3AFC85
+			}
+			AudioSwitch NPC_Archetype_Switch
+			{
+				myGuid 4E2F124939F8DB8D0BF90ABC8F8AB8AB
+			}
+			AudioSwitch NPC_Droid_Character
+			{
+				myGuid 4B589E79B1CBE13408652E9357D8DDAA
+			}
+		}
+	}
+	myMeleeConfig < uid=2736B3656308931200009738C3B58B4C > = npc_melee_config BCDE37F162445830000053EBBBF07CF3
+	myMeleeDefenseProfile < uid=4171A7E1641C661E000159D4540FD0E6 > = AlwaysBlockMeleeDefense 4171A7E1641C65F2000159B0FED5F8D6
+	myStaggerConfig < uid=2736B36563089300000097352DF0CB6B > = NPCStaggerConfig_HirdeGunDroids 2893451665C634940004A08823D9ACB1
+	myCombatRole Mech
+	myHitReactionSettings < uid=4171A7E1643E4530000024124069832F > = NULLREFERENCE
+	myResistanceProfile < uid=4171A7E1643E43240000240BDDFE9E19 > = DroidResistance 91DC5D3C64365B3C00009EB016D177AF
+}
+

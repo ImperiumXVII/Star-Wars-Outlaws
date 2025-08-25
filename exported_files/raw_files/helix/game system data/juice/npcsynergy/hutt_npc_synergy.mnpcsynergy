@@ -1,0 +1,594 @@
+include "helix/game system data/fruit/npc/npcsynergy.fruit"
+include "helix/game system data/juice/legend/legendranks.mlegendrank"
+include "helix/game system data/juice/npc/ash_hiredgundroid.mnpc"
+include "helix/game system data/juice/npc/ash_ms613_ashigahenchman.mnpc"
+include "helix/game system data/juice/npc/ash_myrmite.mnpc"
+include "helix/game system data/juice/npc/ash_myrmitrix.mnpc"
+include "helix/game system data/juice/npc/civ_combatant.mnpc"
+include "helix/game system data/juice/npc/cri_commando.mnpc"
+include "helix/game system data/juice/npc/cri_enforcer.mnpc"
+include "helix/game system data/juice/npc/cri_hiredgundroid.mnpc"
+include "helix/game system data/juice/npc/cri_hiredgunlight.mnpc"
+include "helix/game system data/juice/npc/emp_deathtrooper.mnpc"
+include "helix/game system data/juice/npc/emp_heavytrooper.mnpc"
+include "helix/game system data/juice/npc/emp_officer.mnpc"
+include "helix/game system data/juice/npc/emp_probedroid.mnpc"
+include "helix/game system data/juice/npc/emp_scouttrooper_commander.mnpc"
+include "helix/game system data/juice/npc/emp_scouttrooper_no_speeder.mnpc"
+include "helix/game system data/juice/npc/emp_stormtrooper.mnpc"
+include "helix/game system data/juice/npc/emp_stormtrooper_commander.mnpc"
+include "helix/game system data/juice/npc/hut_beastmaster.mnpc"
+include "helix/game system data/juice/npc/hut_enforcer.mnpc"
+include "helix/game system data/juice/npc/hut_enforcer_killsquad.mnpc"
+include "helix/game system data/juice/npc/hut_guard.mnpc"
+include "helix/game system data/juice/npc/hut_hiredgundroid.mnpc"
+include "helix/game system data/juice/npc/hut_hiredgunlight.mnpc"
+include "helix/game system data/juice/npc/hut_massiff_companion.mnpc"
+include "helix/game system data/juice/npc/pir_hiredgundroid.mnpc"
+include "helix/game system data/juice/npc/pir_hiredgunheavy.mnpc"
+include "helix/game system data/juice/npc/pir_hiredgunlight.mnpc"
+include "helix/game system data/juice/npc/pir_hiredgunlight_on_vehicle.mnpc"
+include "helix/game system data/juice/npc/pyk_assault.mnpc"
+include "helix/game system data/juice/npc/pyk_demolitionist.mnpc"
+include "helix/game system data/juice/npc/pyk_hiredgundroid.mnpc"
+include "helix/game system data/juice/npc/pyk_hiredgunheavy.mnpc"
+include "helix/game system data/juice/npc/pyk_hiredgunlight.mnpc"
+include "helix/game system data/juice/npc/pyk_leader.mnpc"
+include "helix/game system data/juice/npc/pyk_ms005_pykehenchman.mnpc"
+include "helix/game system data/juice/npc/pyk_ms307_injuredpyke.mnpc"
+include "helix/game system data/juice/npc/pyk_sentinel.mnpc"
+include "helix/game system data/juice/npc/wl_massiff.mnpc"
+include "helix/game system data/juice/npc/wl_sammakho.mnpc"
+include "helix/game system data/juice/npc/wl_tshikara.mnpc"
+include "helix/game system data/juice/npc/zer_hiredgundroid.mnpc"
+include "helix/game system data/juice/rbtags/living_world_activities_binary_tags.mrbtagsbinarytags"
+
+NPCSynergy hutt_npc_synergy < uid=5C148C4665E04A2B00005611F2E98719 >
+{
+	myCoreMembers
+	{
+	}
+	myFillerMember
+	{
+		myPossibleLoadouts
+		{
+			NPCSynergyWeightedLoadout pistol
+			{
+				myLoadout < uid=5C148C4665E04A2B000056125AAF546E > = HiredGun_Light_Pistol_Burst 4171A7E16523FBD800005C850FF94E02
+				myWeight 1.0
+			}
+			NPCSynergyWeightedLoadout rifle
+			{
+				myLoadout < uid=5C148C4665E058DC0003AE318A0D03C4 > = HiredGun_Light_Rifle 2736B365635FFEE10003D5FB83ED4064
+				myWeight 1.0
+			}
+		}
+		myNPC < uid=5C148C4665E04A2B000056138D78BB0D > = hut_hiredgunlight 2736B36562BC0AB500003A1FBA8A32E3
+		myAlwaysAdd FALSE
+		myWeight 1.0
+	}
+	myMaxAmount 10
+	myFaction 16DEADE65F7DDA76000000C847FBD2A1
+	myMaxLegendRank < uid=5C148C4665E0AC6200013B0595B07B3A > = "Rank 7" 7110821464E3108000012749233D5F7A
+	myTags
+	{
+	}
+}
+
+NPCSynergy hutt_assault < uid=5C148C4665E04A2B00005614CFB95B56 > : hutt_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Assault
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout rifle
+				{
+					myLoadout < uid=5C148C4665E04A2B0000561571D6DCF7 > = HiredGun_Light_Rifle 2736B365635FFEE10003D5FB83ED4064
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665E04A2B0000561651FAFA87 > = hut_hiredgunlight 2736B36562BC0AB500003A1FBA8A32E3
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=5C148C4665E0AC6200013B062A8002FC > = Faction_DynamicFireteam 616F4596656718720004B92DC03BB4A4
+		RBTagsTag "lwen Patrol" < uid=5C148C4665E0AC6200013B071BAABFCB > = lwen_PatrolTag 2AE2EC8565733841000E925634831E68
+		RBTagsTag "lwen skirmish" < uid=5C148C4665E0AC6200013B08E9B26A9D > = lwen_SkirmishTag 2AE2EC85657338C0000E925A62874336
+		RBTagsTag "lwen guard" < uid=5C148C4665E0AC6200013B09FFCDB53A > = lwen_GuardTag 2AE2EC85657338EC000E925C2351F401
+		RBTagsTag "lwen ambush" < uid=5C148C4665E0AC6200013B0AD570DFDD > = lwen_AmbushTag 2AE2EC8565733900000E925EEEFFCA0E
+		RBTagsTag "lwen npc in danger" < uid=5C148C4665E0AC6200013B0B9B6A765F > = lwen_NpcInDangerTag 2AE2EC8565733917000E9260991B289F
+		RBTagsTag "lwen wandering vendor escort" < uid=5C148C4665E0AC6200013B0CE1F6012D > = lwen_WanderingVendorEscortTag 2AE2EC856573393F000E9262F26E528F
+		RBTagsTag "lwev smuggler pod" < uid=5C148C4665E0AC6200013B0D73001C4C > = lwev_SmugglerPodTag 2AE2EC8565734188000E926E1BAEF93E
+	}
+}
+
+NPCSynergy hutt_assault_extd < uid=5C148C4665E04A2B0000561719128366 > : hutt_assault
+{
+	myMinLegendRank < uid=5C148C4665E0AC6200013B0FE8CDF90C > = "Rank 7" 7110821464E3108000012749233D5F7A
+	myMaxLegendRank < uid=5C148C4665E0AC6200013B10B9637251 > = "Rank 15" 7110821464E310CC000127514565BDA3
+}
+
+NPCSynergy hutt_assault_assault < uid=5C148C4665E04A2B000056181C7408F9 > : hutt_assault
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Assault
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout rifle
+				{
+					myLoadout < uid=5C148C4665E04A2B00005619DB825EE4 > = HiredGun_Light_Rifle 2736B365635FFEE10003D5FB83ED4064
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665E04A2B0000561A5D2AA9D1 > = hut_hiredgunlight 2736B36562BC0AB500003A1FBA8A32E3
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember Assault
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout rifle
+				{
+					myLoadout < uid=5C148C4665E04A2B0000561BD0AE18A1 > = HiredGun_Light_Rifle 2736B365635FFEE10003D5FB83ED4064
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665E04A2B0000561C6C21F18D > = hut_hiredgunlight 2736B36562BC0AB500003A1FBA8A32E3
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myMinLegendRank < uid=5C148C4665E0AC6200013B11CAF2FB4D > = "Rank 15" 7110821464E310CC000127514565BDA3
+	myMaxLegendRank < uid=5C148C4665E0AC6200013B1207BCFA4E > = "Rank 20" 7110821464E310E10001275686AD600A
+}
+
+NPCSynergy hutt_sentry < uid=5C148C4665E04A2B0000561DA59DF793 > : hutt_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember sentry
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout Grenade_launcher
+				{
+					myLoadout < uid=5C148C4665E04A2B0000561EADF1A6D0 > = hut_Enforcer_GrenadeLauncher 4171A7E1654E330F001015AD0D78BFD9
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665E04A2B0000561F0D3AC8DF > = hut_enforcer 2736B36562BC09C60000397F2EA1BED7
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=5C148C4665E0AC6200013B13803E662C > = Faction_DynamicFireteam 616F4596656718720004B92DC03BB4A4
+		RBTagsTag "lwen Patrol" < uid=5C148C4665E0AC6200013B14226D7D80 > = lwen_PatrolTag 2AE2EC8565733841000E925634831E68
+		RBTagsTag "lwen skirmish" < uid=5C148C4665E0AC6200013B157F18C213 > = lwen_SkirmishTag 2AE2EC85657338C0000E925A62874336
+		RBTagsTag "lwen guard" < uid=5C148C4665E0AC6200013B169F962934 > = lwen_GuardTag 2AE2EC85657338EC000E925C2351F401
+		RBTagsTag "lwen ambush" < uid=5C148C4665E0AC6200013B17ECEA33EC > = lwen_AmbushTag 2AE2EC8565733900000E925EEEFFCA0E
+		RBTagsTag "lwen npc in danger" < uid=5C148C4665E0AC6200013B18A522D28C > = lwen_NpcInDangerTag 2AE2EC8565733917000E9260991B289F
+		RBTagsTag "lwen wandering vendor escort" < uid=5C148C4665E0AC6200013B191C939461 > = lwen_WanderingVendorEscortTag 2AE2EC856573393F000E9262F26E528F
+		RBTagsTag "lwev smuggler pod" < uid=5C148C4665E0AC6200013B1A3262C14E > = lwev_SmugglerPodTag 2AE2EC8565734188000E926E1BAEF93E
+	}
+}
+
+NPCSynergy hutt_sentry_extd < uid=5C148C4665E04A2B000056206EF4FD6C > : hutt_sentry
+{
+	myMinLegendRank < uid=5C148C4665E0AC6200013B1C3CAFF476 > = "Rank 7" 7110821464E3108000012749233D5F7A
+	myMaxLegendRank < uid=5C148C4665E0AC6200013B1DBC1F5F1E > = "Rank 15" 7110821464E310CC000127514565BDA3
+}
+
+NPCSynergy hutt_sentry_sentry < uid=5C148C4665E04A2B0000562609DA94DF > : hutt_sentry
+{
+	myCoreMembers
+	{
+		NPCSynergyMember sentry
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout grenade_launcher
+				{
+					myLoadout < uid=5C148C4665E04A2B000056272E98BFE0 > = hut_Enforcer_GrenadeLauncher 4171A7E1654E330F001015AD0D78BFD9
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665E04A2B0000562874B947F4 > = hut_enforcer 2736B36562BC09C60000397F2EA1BED7
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember sentry
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout grenade_launcher
+				{
+					myLoadout < uid=5C148C4665E04A2B00005629525AA34C > = hut_Enforcer_GrenadeLauncher 4171A7E1654E330F001015AD0D78BFD9
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665E04A2B0000562A8FFBB9B4 > = hut_enforcer 2736B36562BC09C60000397F2EA1BED7
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myMinLegendRank < uid=5C148C4665E0AC6200013B1E98539162 > = "Rank 15" 7110821464E310CC000127514565BDA3
+	myMaxLegendRank < uid=5C148C4665E0AC6200013B1F402C2CDC > = "Rank 20" 7110821464E310E10001275686AD600A
+}
+
+NPCSynergy hutt_sentry_assault < uid=5C148C4665E04A2B00005621249FBE4E > : hutt_sentry
+{
+	myCoreMembers
+	{
+		NPCSynergyMember sentry
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout Grenade_launcher
+				{
+					myLoadout < uid=5C148C4665E04A2B0000562204785B2B > = hut_Enforcer_GrenadeLauncher 4171A7E1654E330F001015AD0D78BFD9
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665E04A2B00005623DFDF174B > = hut_enforcer 2736B36562BC09C60000397F2EA1BED7
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember assault
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout rifle
+				{
+					myLoadout < uid=5C148C4665E04A2B0000562416098E41 > = HiredGun_Light_Rifle 2736B365635FFEE10003D5FB83ED4064
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665E04A2B00005625CFBD2F00 > = hut_hiredgunlight 2736B36562BC0AB500003A1FBA8A32E3
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+}
+
+NPCSynergy hutt_pusher < uid=5C148C4665E04A2B0000562B64777014 > : hutt_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember pusher
+		{
+			myPossibleLoadouts
+			{
+			}
+			myNPC < uid=5C148C4665E04A2B0000562D5D88854F > = hut_guard 2736B36562BC036600003981C4336A25
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=5C148C4665E0AC6200013B2003636CEB > = Faction_DynamicFireteam 616F4596656718720004B92DC03BB4A4
+		RBTagsTag "lwen Patrol" < uid=5C148C4665E0AC6200013B2145C22436 > = lwen_PatrolTag 2AE2EC8565733841000E925634831E68
+		RBTagsTag "lwen guard" < uid=5C148C4665E0AC6200013B236075FB5E > = lwen_GuardTag 2AE2EC85657338EC000E925C2351F401
+		RBTagsTag "lwen npc in danger" < uid=5C148C4665E0AC6200013B252CDEBF20 > = lwen_NpcInDangerTag 2AE2EC8565733917000E9260991B289F
+		RBTagsTag "lwen wandering vendor escort" < uid=5C148C4665E0AC6200013B269ED912CB > = lwen_WanderingVendorEscortTag 2AE2EC856573393F000E9262F26E528F
+		RBTagsTag "lwev smuggler pod" < uid=5C148C4665E0AC6200013B2751B9A545 > = lwev_SmugglerPodTag 2AE2EC8565734188000E926E1BAEF93E
+	}
+}
+
+NPCSynergy hutt_pusher_extd < uid=5C148C4665E04A2B0000562E0FECA153 > : hutt_pusher
+{
+	myMinLegendRank < uid=5C148C4665E0AC6200013B29BE24D126 > = "Rank 7" 7110821464E3108000012749233D5F7A
+	myMaxLegendRank < uid=5C148C4665E0AC6200013B2AE83DC363 > = "Rank 15" 7110821464E310CC000127514565BDA3
+}
+
+NPCSynergy hutt_pusher_assault < uid=5C148C4665E04A2B0000562FD0C4876A > : hutt_pusher
+{
+	myCoreMembers
+	{
+		NPCSynergyMember pusher
+		{
+			myPossibleLoadouts
+			{
+			}
+			myNPC < uid=5C148C4665E04A2B000056316B7E3A44 > = hut_guard 2736B36562BC036600003981C4336A25
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember assault
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout rifle
+				{
+					myLoadout < uid=5C148C4665E04A2B0000563201F2E841 > = HiredGun_Light_Rifle 2736B365635FFEE10003D5FB83ED4064
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665E04A2B00005633F5F9C0C2 > = hut_hiredgunlight 2736B36562BC0AB500003A1FBA8A32E3
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myMinLegendRank < uid=5C148C4665E0AC6200013B2B7432C0AC > = "Rank 15" 7110821464E310CC000127514565BDA3
+	myMaxLegendRank < uid=5C148C4665E0AC6200013B2CC1776B3D > = "Rank 20" 7110821464E310E10001275686AD600A
+	myUnlockCondition
+	{
+		GameConditionQuestIsCompleted "New GameConditionQuestIsCompleted"
+		{
+			myQuest 00000000000000000000000000000000
+			myOperator GreaterThanOrEqual
+		}
+		GameConditionQuestIsCompleted "New GameConditionQuestIsCompleted_0"
+		{
+		}
+	}
+}
+
+NPCSynergy hutt_pusher_pusher < uid=5C148C4665E04A2B00005634AC385DC8 > : hutt_pusher
+{
+	myCoreMembers
+	{
+		NPCSynergyMember pusher
+		{
+			myPossibleLoadouts
+			{
+			}
+			myNPC < uid=5C148C4665E04A2B00005636A028A871 > = hut_guard 2736B36562BC036600003981C4336A25
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember pusher
+		{
+			myPossibleLoadouts
+			{
+			}
+			myNPC < uid=5C148C4665E04A2B00005638F5544BCE > = hut_guard 2736B36562BC036600003981C4336A25
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myMinLegendRank < uid=5C148C4665E0AC6200013B2D59423FD4 > = "Rank 15" 7110821464E310CC000127514565BDA3
+	myMaxLegendRank < uid=5C148C4665E0AC6200013B2E5F62C944 > = "Rank 20" 7110821464E310E10001275686AD600A
+}
+
+NPCSynergy hutt_pusher_sentry < uid=5C148C4665E04A2B00005639B4EBDD03 > : hutt_pusher
+{
+	myCoreMembers
+	{
+		NPCSynergyMember pusher
+		{
+			myPossibleLoadouts
+			{
+			}
+			myNPC < uid=5C148C4665E04A2B0000563BAEED5E26 > = hut_guard 2736B36562BC036600003981C4336A25
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember sentry
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout Grenade_launcher
+				{
+					myLoadout < uid=5C148C4665E04A2B0000563CF9B07A0E > = hut_Enforcer_GrenadeLauncher 4171A7E1654E330F001015AD0D78BFD9
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665E04A2B0000563D1359A3FE > = hut_enforcer 2736B36562BC09C60000397F2EA1BED7
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myMinLegendRank < uid=5C148C4665E0AC6200013B2FBDB755A4 > = "Rank 15" 7110821464E310CC000127514565BDA3
+	myMaxLegendRank < uid=5C148C4665E0AC6200013B30C7E3EFAC > = "Rank 20" 7110821464E310E10001275686AD600A
+}
+
+NPCSynergy hutt_beastmaster < uid=5C148C4665E059800003ED8F7CC35AB9 > : hutt_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Beastmaster
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout sniper
+				{
+					myLoadout < uid=5C148C4665E05FA00006254D467891B3 > = hut_BeastMaster_SniperRifle 2736B365636242D00006C9398E874F40
+				}
+			}
+			myNPC < uid=5C148C4665E05FA00006254EED267A5C > = hut_beastmaster 2736B36562BC0A6100003A0F175242CE
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember Massif
+		{
+			myNPC < uid=5C148C4665E05FA00006254F4D46F654 > = hut_massiff_companion E9DD8F6063DB12270000A6B564571F14
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember Massif
+		{
+			myNPC < uid=5C148C4665E05FA0000625509FC6B1AD > = hut_massiff_companion E9DD8F6063DB12270000A6B564571F14
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myMinLegendRank < uid=5C148C4665E0AC6200013B318F17D41B > = "Rank 7" 7110821464E3108000012749233D5F7A
+	myMaxLegendRank < uid=5C148C4665E0AC6200013B32C6760454 > = "Rank 15" 7110821464E310CC000127514565BDA3
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=5C148C4665E0AC6200013B33C16B734B > = Faction_DynamicFireteam 616F4596656718720004B92DC03BB4A4
+		RBTagsTag "lwen Patrol" < uid=5C148C4665E0AC6200013B34192D7A45 > = lwen_PatrolTag 2AE2EC8565733841000E925634831E68
+		RBTagsTag "lwen guard" < uid=5C148C4665E0AC6200013B365E893792 > = lwen_GuardTag 2AE2EC85657338EC000E925C2351F401
+		RBTagsTag "lwen ambush" < uid=5C148C4665E0AC6200013B37C4E2E623 > = lwen_AmbushTag 2AE2EC8565733900000E925EEEFFCA0E
+		RBTagsTag "lwen npc in danger" < uid=5C148C4665E0AC6200013B38B66F53A8 > = lwen_NpcInDangerTag 2AE2EC8565733917000E9260991B289F
+	}
+}
+
+NPCSynergy hutt_beastmaster_pusher < uid=5C148C4665E059C5000409A3D0A49C5F > : hutt_beastmaster
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Beastmaster
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout sniper
+				{
+					myLoadout < uid=5C148C4665E05FF9000638C56E6FB113 > = hut_BeastMaster_SniperRifle 2736B365636242D00006C9398E874F40
+				}
+			}
+			myNPC < uid=5C148C4665E05FF9000638C6E3C5B934 > = hut_beastmaster 2736B36562BC0A6100003A0F175242CE
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember Massif
+		{
+			myNPC < uid=5C148C4665E05FF9000638C73EDB81AE > = hut_massiff_companion E9DD8F6063DB12270000A6B564571F14
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember Massif
+		{
+			myNPC < uid=5C148C4665E05FF9000638C8A7D96D03 > = hut_massiff_companion E9DD8F6063DB12270000A6B564571F14
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember pusher
+		{
+			myNPC < uid=2AE2EC856679428000390BF3DDAC5E38 > = hut_guard 2736B36562BC036600003981C4336A25
+			myAlwaysAdd TRUE
+		}
+	}
+	myMinLegendRank < uid=5C148C4665E0AC6200013B3CC8BDDB4F > = "Rank 15" 7110821464E310CC000127514565BDA3
+	myMaxLegendRank < uid=5C148C4665E0AC6200013B3D04EB9FF7 > = "Rank 20" 7110821464E310E10001275686AD600A
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=616F4596669777A30017F4C8E63BCCE6 > = Faction_DynamicFireteam 616F4596656718720004B92DC03BB4A4
+		RBTagsTag "lwen Patrol" < uid=616F4596669777A30017F4C9449B0D02 > = lwen_PatrolTag 2AE2EC8565733841000E925634831E68
+		RBTagsTag "lwen guard" < uid=616F4596669777A30017F4CA89C6BCCA > = lwen_GuardTag 2AE2EC85657338EC000E925C2351F401
+		RBTagsTag "lwen npc in danger" < uid=616F4596669777A30017F4CB439861E0 > = lwen_NpcInDangerTag 2AE2EC8565733917000E9260991B289F
+	}
+}
+
+NPCSynergy hutt_beastmaster_sentry < uid=5C148C4665E059B7000403BF0C6964D2 > : hutt_beastmaster
+{
+	myCoreMembers
+	{
+		NPCSynergyMember Beastmaster
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout sniper
+				{
+					myLoadout < uid=5C148C4665E05FF9000638C9B42DB7C2 > = hut_BeastMaster_SniperRifle 2736B365636242D00006C9398E874F40
+				}
+			}
+			myNPC < uid=5C148C4665E05FF9000638CA7AEFB46A > = hut_beastmaster 2736B36562BC0A6100003A0F175242CE
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember Massif
+		{
+			myNPC < uid=5C148C4665E05FF9000638CB98DB9C68 > = hut_massiff_companion E9DD8F6063DB12270000A6B564571F14
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember Massif
+		{
+			myNPC < uid=5C148C4665E05FF9000638CCF4064B05 > = hut_massiff_companion E9DD8F6063DB12270000A6B564571F14
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+		NPCSynergyMember sentry
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout "grenade launcher"
+				{
+					myLoadout < uid=5C148C4665E06018000642701728BBEF > = hut_Enforcer_GrenadeLauncher 4171A7E1654E330F001015AD0D78BFD9
+				}
+			}
+			myNPC < uid=5C148C4665E06018000642713F304914 > = hut_enforcer 2736B36562BC09C60000397F2EA1BED7
+		}
+	}
+	myMinLegendRank < uid=5C148C4665E0AC6200013B3ECBCD3366 > = "Rank 15" 7110821464E310CC000127514565BDA3
+	myMaxLegendRank < uid=5C148C4665E0AC6200013B3FD6806061 > = "Rank 20" 7110821464E310E10001275686AD600A
+}
+
+NPCSynergy hutt_Fallback < uid=5C148C4665E07C6D0008C75142F9EA24 > : hutt_assault_extd
+{
+	myMinLegendRank < uid=5C148C4665E0AC7400013B40F0C1BE5D > = NULLREFERENCE
+	myMaxLegendRank < uid=5C148C4665E0AC7400013B41A88D9395 > = "Rank 20" 7110821464E310E10001275686AD600A
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=5C148C4665E0868E00092CEEDB1DB860 > = Faction_DynamicFireteam 616F4596656718720004B92DC03BB4A4
+		RBTagsTag "lwen Fallback" < uid=5C148C4665E0868E00092CEF1F47F09C > = lwev_FallbackTag 2AE2EC8565A7EBB8000642D39BA283AE
+	}
+}
+
+NPCSynergy hutt_Borderguard < uid=5C148C4665E07C620008C4BC86A3AC64 > : hutt_npc_synergy
+{
+	myCoreMembers
+	{
+		NPCSynergyMember "Hiredgun Light"
+		{
+			myPossibleLoadouts
+			{
+				NPCSynergyWeightedLoadout pistol
+				{
+					myLoadout < uid=5C148C4665E07DDB00090550A10B445E > = HiredGun_Light_Pistol_Standard 4171A7E16523FB4C00010E15851176BF
+					myWeight 1.0
+				}
+			}
+			myNPC < uid=5C148C4665E07DDB000905514A5D77DC > = hut_hiredgunlight 2736B36562BC0AB500003A1FBA8A32E3
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myMaxLegendRank < uid=5C148C4665E0AC7400013B420A79D3E1 > = "Rank 20" 7110821464E310E10001275686AD600A
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=5C148C4665E0868E00092CF0CF45E3E6 > = Faction_DynamicFireteam 616F4596656718720004B92DC03BB4A4
+		RBTagsTag "lwen borderguard" < uid=5C148C4665E0868E00092CF1A921A0C6 > = lwev_BorderGuardTag 2AE2EC8565DDFAF200069FF9002BD6A7
+	}
+}
+
+NPCSynergy hutt_Killsquad < uid=616F459665F47BC700051D5784F4E1C4 > : hutt_npc_synergy
+{
+	myFillerMember
+	{
+		myNPC < uid=616F459665F47C8B00051D5DC4C6FB05 > = hut_enforcer_kill_squad 616F45966579CA9C00431749BA5342DE
+	}
+	myMaxLegendRank < uid=616F459665F47C8B00051D5E1955F6F2 > = "Rank 20" 7110821464E310E10001275686AD600A
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=616F459665F47C8600051D5C6EB9C262 > = lwev_Killsquad 616F459665F4705B000549F68275B9B3
+	}
+}
+
+NPCSynergy hutt_FactionRaid_Legend_0_To_15 < uid=2AE2EC8566350D1000124A51B4462C49 > : hutt_npc_synergy
+{
+	myMaxLegendRank < uid=2AE2EC8566350DA500124A568C205A70 > = "Rank 15" 7110821464E310CC000127514565BDA3
+	myTags
+	{
+		RBTagsTag "Faction Attack" < uid=2AE2EC8566350D7400124A5456ED04A9 > = lwev_FactionAttackTag 2AE2EC8565734166000E926C72372B71
+	}
+}
+
+NPCSynergy hutt_FactionRaid_Legend_15_Plus < uid=2AE2EC8566350D2D00124A529998D57D > : hutt_FactionRaid_Legend_0_To_15
+{
+	myMinLegendRank < uid=2AE2EC8566350DA500124A571405FDD0 > = "Rank 15" 7110821464E310CC000127514565BDA3
+	myMaxLegendRank < uid=2AE2EC8566350DA500124A582AF37BB5 > = "Rank 20" 7110821464E310E10001275686AD600A
+}
+

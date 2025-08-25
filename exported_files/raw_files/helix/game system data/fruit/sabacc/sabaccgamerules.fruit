@@ -1,0 +1,76 @@
+include "helix\game system data\fruit\faction\faction.fruit"
+include "helix\game system data\fruit\item\collectible.fruit"
+include "helix\game system data\fruit\item\item.fruit"
+include "helix\game system data\fruit\gameconditions\gameconditions.fruit"
+include "helix\game system data\fruit\sabacc\sabaccgametypes.fruit"
+include "helix\game system data\fruit\sabacc\sabaccgamebaserules.fruit"
+include "helix\game system data\fruit\sabacc\sabaccplayer.fruit"
+include "helix\game system data\fruit\sabacc\sabacccheats.fruit"
+include "helix\game system data\fruit\sabacc\sabaccgamescriptedcommands.fruit"
+include "helix\game system data\fruit\sabacc\sabaccconditionalscriptedcommandlist.fruit"
+
+class SabaccGameCardCollection
+{
+	SabaccGameCards myCards
+	SabaccGameCollectionType myType
+}
+
+list SabaccGameCardCollections
+{
+	SabaccGameCardCollection
+}
+
+list SabaccPlayers
+{
+	SabaccPlayer*
+}
+
+list SabaccShiftTokenCollectibleItems
+{
+	SabaccShiftTokenCollectibleItem*
+}
+
+list SabaccConditionalScriptedCommandLists
+{
+	SabaccConditionalScriptedCommandList*
+}
+
+class ConditionalReward
+{
+	GameConditionGroup myGameCondition < tooltip="If the condition is defined and true, the reward can be won" >
+	Reward* myReward
+}
+
+class SabaccGameRewards
+{	
+	Reward* myFirstWinReward
+	Reward* myWinReward
+	Reward* myLoseReward
+	Reward* myCaughtReward
+	ConditionalReward myConditionalWinReward
+}
+
+class SabaccGameRules < uid=auto >
+{
+	SabaccGameBaseRules* mySabaccBaseRules
+
+	varmap myTableName < bhv="localization" >
+	varmap myTableDescription < bhv="localization" >
+
+	SabaccTableTier myTableTier
+	Faction* myFaction
+
+	SabaccConditionalScriptedCommandLists myGameConditionalScripts
+	SabaccConditionalScriptedCommandLists myGameConditionalScriptsChoosenRandom
+
+	Item* myCurrency
+	string myPriceToEnterFormula 0 < tooltip="Formula to compute the price to enter the table" bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	int myChipsCount < min=0 >
+	bool myShouldPlayEndGameNotification true
+
+	SabaccShiftTokenCollectibleItems myWinnableShiftDeck
+	SabaccGameRewards myEndOfGameRewards
+	SabaccPlayers myPlayers
+	SabaccGameCardCollections myCardCollections
+	SabaccCheats* myCheats
+}

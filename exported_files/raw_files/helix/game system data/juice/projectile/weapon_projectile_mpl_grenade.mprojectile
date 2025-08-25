@@ -1,0 +1,65 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/explosion/explosion_generic.mexplosion"
+include "helix/game system data/juice/explosion/explosion_mpl.mexplosion"
+include "helix/game system data/juice/explosion/explosion_mpl_grenade_player.mexplosion"
+include "helix/game system data/juice/projectile/realization/grenade_mpl.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/sonic_imploder_player.mprojectilerealization"
+include "helix/game system data/juice/projectile/weapon_projectile_mpl_rocket.mprojectile"
+
+BallisticProjectile weapon_projectile_MPL_grenade < uid=7113C61164E4A2A2000423EE8C2CF9C1 > : weapon_projectile_mpl_rocket
+{
+	myObject
+	{
+		myMaterialType Kinetic
+		myMass 2.0
+		myFriction 0.5
+		myAfterFinalImpactLifeTime 1.5
+	}
+	myRealization < uid=7113C61164E4A2A2000423EF511C82FA > = grenade_mpl 8FC7C9606544D268000860CFF7E5633D
+	myActions
+	{
+		ProjectileActionExplosion "Impact Explosion"
+		{
+			myActionTargetType FinalHit
+			myDamageType Blast
+			myDamageFormula "4 * AllExplosionDamageModifier"
+			myRadiusFormula "3 * AllExplosionRadiusModifier"
+			myDefaultDamage 4.0
+			myDefaultRadius 2.0
+			myExplosion < uid=7113C61165437C230002DBB146160AFE > = explosion_mpl_grenade_player DADB4E0465AFE3790002E75234A4FF3C
+		}
+	}
+	myNPCSensoryProjectileType Grenade
+	myInitialSpeed 60.0
+	myAccelerationConstant 0.0
+	myAccelerationCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.270235 -0.002532, }, outTangents = { 0.420993 0.81472099, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+	myBounceEnabled TRUE
+	myBounceVsDynamicEnabled TRUE
+	myBounceFriendlyFireEnabled FALSE
+	myAvoidPlayerWhenBouncing TRUE
+	myCanBounceConditions
+	{
+		myType Group
+		myIsNegated FALSE
+		myOperator Or
+		myCanBeOverridden FALSE
+		myConditions
+		{
+			GameConditionContextAgentIsSpecificNPC HitRancor
+			{
+				myAgentContextType TargetAgent
+				myNPCConstantData 2736B36563D140850001DF8C793B440D
+			}
+			GameConditionContextAgentIsSpecificNPC HitATST
+			{
+				myAgentContextType TargetAgent
+				myNPCConstantData 16DEADE661F0807B00001B62A29CB56F
+			}
+		}
+	}
+	myBounceSpeedRestitution 0.65
+	myBounceGroundSpeedRestitution 0.45
+	myBounceWallSpeedRestitution 0.55
+	myBounceMaxBounces 3
+}
+

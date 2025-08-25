@@ -1,0 +1,55 @@
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/emp_shp_base.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC previs_emp_shp_tiereaper_a < uid=6EA7962564A40A5300031F03DAD374F1 > : emp_shp_base
+{
+	myCharacterVisuals < uid=6EA7962564A40A5300031F04681F1384 > = character_visuals_npc_shp_tiereaper 6EA7962564098A2E0000419E896132F2
+	myBehavior helix/behaviors/tiefighter_spaceship_chase_new.mbehavior
+	myNPCComponentSetType Spaceship
+	myIsInvulnerable TRUE
+	mySpaceshipType Dummy
+	myMaxHealth 120
+	myHealthFormula 60*SpaceHealthDifficultyModifier
+	myDialogueCharactersFromDatabase
+	{
+	}
+	myLodType Spaceship_Medium
+	myVisionProfile < uid=6EA7962564A40A5300031F050289F838 > = TieFighterVisionProfile B4FBE430643FCC3500000B32C8290515
+	myHearingProfile < uid=6EA7962564A40A5300031F06AE52F54D > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=6EA7962564A40A5300031F07EF67688A > = TiefighterDetectionProfile B4FBE430648AB2A300008156205C1AB4
+	}
+	myThreatProfile < uid=6EA7962564A40A5300031F087F74C5D1 > = DefaultThreatProfile 16DEADE6608474380000004E85DD35EB
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout LoadoutA < uid=6EA7962564A40A5300031F093271BA3F > = weaponloadout_emp_shp_tiereaper 4F59E8F06409ECA0000151D6B7826947
+	}
+	myPatrolFormationProfile < uid=6EA7962564A40A5300031F0A0BB0D9A1 > = TiefighterPatrolFormation F97070E1630617BB000045D00ED770A9
+	myAudioParameters
+	{
+		myEmitterName X-wing
+		myPropagated FALSE
+		myEmitters
+		{
+			AgentEmitter Default
+			{
+				myEmitterLabel < uid=3A1C5D1865534CD70000B5EBFAA9BE1F > = Root 3A1C5D1863906F050000AB6FBD984CC4
+				myEmitterPrefab "emitterLayerName = \"misc\", enableDoppler = false, enablePropagation = false, sphereRadius = 1, stopOnDestroy = true"
+			}
+			AgentEmitter Weapon
+			{
+				myEmitterLabel < uid=3A1C5D1865534CD70000B5ECB1D59159 > = Hand 3A1C5D1863906F180000AB718F1E9EFD
+				myEmitterPrefab "emitterLayerName = \"misc\", enableDoppler = false, enablePropagation = false, sphereRadius = 1, stopOnDestroy = true"
+			}
+			AgentEmitter Dialogue
+			{
+				myEmitterLabel < uid=3A1C5D1865534CD70000B5ED8B829F87 > = Mouth 3A1C5D1863906F120000AB70A206E385
+				myEmitterPrefab "emitterLayerName = \"misc\", enableDoppler = false, enablePropagation = false, sphereRadius = 1, stopOnDestroy = true"
+			}
+		}
+	}
+}
+

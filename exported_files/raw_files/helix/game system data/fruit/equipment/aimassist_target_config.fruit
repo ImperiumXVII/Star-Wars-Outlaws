@@ -1,0 +1,47 @@
+include "helix/game system data/fruit/bodypart/bodypart.fruit"
+
+enum AimAssistMainPointType
+{
+	LOS
+	BodyPart
+}
+
+enum AimAssistBoxesType
+{
+	Static
+	Dynamic
+}
+
+class AimAssistDynamicBoxes
+{
+	vec2f myInnerAttractorSizeMultiplier 1;1 < min=0.1 tooltip="Multiplier will be applied over the 2D screen space rectangle as a result of project the AABB from the collision" >
+	vec2f myOuterAttractorSizeMultiplier 1.1;1.1 < min=0.1 tooltip="Multiplier will be applied over the 2D screen space rectangle as a result of project the AABB from the collision" >
+	vec2f mySnapSizeMultiplier 1;1 < min=0.1 tooltip="Multiplier will be applied over the 2D screen space rectangle as a result of project the AABB from the collision" >
+	vec2f myHeadAttractorSizeMultiplier 1;1 < min=0.1 tooltip="Multiplier will be applied over the 2D screen space rectangle as a result of project the AABB from the head collision if available" >
+}
+
+class AimAssistStaticBoxes
+{
+	vec2f myInnerAttractorBox 1.1;0.8 < min=0.0 tooltip="Width and height of the inner box attractor." >
+	vec2f myOuterAttractorBox 1.8;1.5 < min=0.0 tooltip="Width and height of the outter box attractor, at the edge of which the distance fade starts" >
+	vec2f mySnapBox 1.0;1.0 < min=0.0 tooltip="Width and height of the box within which snap is applied" >
+	vec2f myHeadAttractorBox 1.8;0.3 < min=0.0 tooltip="Width and height of the head box attractor" >	
+}
+
+class AimAssistTargetConfig < uid=auto >
+{
+	bool myAimAssistAllowed true
+	AimAssistBoxesType myBoxesType < tooltip="Static boxes have the same size regardless of the size of the target. Dynamic boxes use the size of the 3D hitbox and multipliers for size" >
+	AimAssistStaticBoxes myStaticBoxes < tooltip="Static boxes will be build using these values as the shape of the boxes. target shape doesn't affect the outcome." >
+	AimAssistDynamicBoxes myDynamicBoxes < tooltip="Dynamic boxes will be build everyframe using the screen space values from the target AABBs and applying multipliers" >
+	BodyPart* myCustomAimMainPointBodyPart
+	bool myUseHead true < tooltip="If true and the target has head, an exclusive head box will be added" >
+	bool myCustomSnapDurationEnabled false
+	float myCustomSnapDuration 1.0 < tooltip="If enabled it will replace the snap time provided by the aiming config of the weapon" >
+	float myAimAttractorStrengthMultiplier 1.0 < tooltip="Multiplier on the aim attractor strength. Valid values: 0 - 1. Note that increasing strength is not supported" >
+	float myAimAccelerationAccAttractorStrengthMultiplier 1.0 < tooltip="Multiplier on the aim acceleration attractor strength for accumulated speed. Valid values: 0 - 1. Note that increasing strength is not supported" >
+	float myAimAccelerationAddAttractorStrengthMultiplier 1.0 < tooltip="Multiplier on the aim acceleration attractor strength for added speed. Valid values: 0 - 1. Note that increasing strength is not supported" >
+	float myMovementAttractorStrengthMultiplier 1.0 < tooltip="Multiplier on the movement attractor strength. Valid values: 0 - 1. Note that increasing strength is not supported" >
+	bool mySnapAllowed true < tooltip="If false snap won't have effect on this target" >
+	BodyPartTypeList myNoRelativeSnapBodyPartsList < tooltip="The bodyparts that we don't want relative snap on (instead go to default snap points)" >
+}

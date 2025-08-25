@@ -1,0 +1,51 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+
+Quest gym_par_shiponspline_follow_quest < uid=91908ED2650AA5CB00011597D8494282 >
+{
+	myName "aurabesh = false, contextComment = \"gym_par_shiponspline_follow_quest name\", enabled = true, guid = #91908ED2650AA5CB000115940DD839AB, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 3614, text = \"Test Follow the ship\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myBeats
+	{
+		QuestBeat "B01 Press the button" < uid=91908ED2650AA786000115E8A934907C >
+		{
+			myScript helix/scripts/gym_par_shiponspline_follow_quest_b01_press_button.mscript
+			myName "aurabesh = false, contextComment = \"B01 Press the button\", enabled = true, guid = #91908ED2650AA8C4000113C69966E1EA, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 3614, text = \"Press button\", type = \"MenuLine\""
+			myObjectives
+			{
+				QuestObjectiveInteract "Press Button" < uid=91908ED2650AA8DD000115BA8306327E >
+				{
+					myName "aurabesh = false, contextComment = \"Obj Press Button\", enabled = true, guid = #91908ED2650AA8E2000115BB25D4216C, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 3614, text = \"Press Button\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=91908ED2650AA7A3000115EC6CC1D490 >
+			{
+			}
+		}
+		QuestBeat "B02 Follow the ship" < uid=91908ED2650AA5CB0001159814902D41 >
+		{
+			myScript helix/scripts/gym_par_shiponspline_follow_quest_b02_follow_ship.mscript
+			myName "aurabesh = false, contextComment = \"B01 Follow the ship name\", enabled = true, guid = #91908ED2650AA5CB00011595283447EE, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 3614, text = \"Follow the ship\", type = \"MenuLine\""
+			myLevelInfo 91908ED26509AAE80018650EDEA3CF94
+			myObjectives
+			{
+				QuestObjectiveFollow "Objective Follow" < uid=91908ED2650AA5CB000115999E11130A >
+				{
+					myName "aurabesh = false, contextComment = \"Objective Follow\", enabled = true, guid = #91908ED2650AA5CB000115960FE34563, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 3614, text = \"Follow the ship\", type = \"MenuLine\""
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputAgent ShipAgent < uid=91908ED2650AA79A000115EB617B1FB3 >
+				{
+				}
+			}
+			myQuestBeatStateGameValue < uid=91908ED2650AA5CB0001159A8BCC95F6 >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=91908ED2650AA5CB0001159B19038B5F >
+	{
+	}
+}
+

@@ -1,0 +1,1483 @@
+include "helix/game system data/fruit/attribute/formulacontexttypes.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditionbase.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+include "helix/game system data/fruit/gamevalues/gamevalues.fruit"
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+include "helix/game system data/juice/livingworld/livingworldvariables.juice"
+include "helix/game system data/juice/livingworld/tag/living_world_tags.mlivingworldtag"
+
+LivingWorldContent "Base Generic" < uid=9D0EE20B60E6AADE00005955E9B29969 >
+{
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base Camp Steal Goods" < uid=9D0EE20B606EB764000004D53B27E5E8 >
+{
+	myLocationCooldown 300.0
+	myTicket < uid=5F6139B4609506A40000109C9BF05B23 >
+	{
+	}
+	myTicketMax < uid=5F6139B4609506A20000109B79B4CAF9 >
+	{
+		myDefaultValue 2
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer <= ContentLocationDistanceNear"
+		{
+			myDistance = ContentLocationDistanceNear
+			myOperator LessThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > ContentLocationDistanceFar"
+		{
+			myDistance = ContentLocationDistanceFar
+			myOperator GreaterThan
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base  Imperial Speeder Patrol" < uid=9D0EE20B606EB77C000004D8B50CAC74 >
+{
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base  Road Traffic" < uid=9D0EE20B606EB791000004D9B849D4F1 >
+{
+	myLocationCooldown 20.0
+	myTicket < uid=5F6139B460954975000008D54D9D754D >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=5F6139B4609548AF000008D045383008 >
+	{
+		myDefaultValue 6
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_IsInLivingWorldLazyFrustum "IsInLivingWorldLazyFrustum Far"
+		{
+			myFrustumType Far
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_IsCompletedInCurrentActivation IsCompletedInCurrentActivation
+		{
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base Ambient Ships" < uid=9D0EE20B63875A2F000622F7FB8D3C31 >
+{
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base  Wanted Roadblock" < uid=9D0EE20B606EB798000004DAA8D39486 >
+{
+	myTicket < uid=5F6139B4609506B50000109E10230B53 >
+	{
+	}
+	myTicketMax < uid=5F6139B4609506B10000109D66322F7D >
+	{
+		myDefaultValue 8
+	}
+	myActivateGameCondition
+	{
+		myFormula RoadblockDefault
+		myContextType LivingWorldContentLocation
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > ContentLocationDistanceFar"
+		{
+			myDistance = ContentLocationDistanceFar
+			myOperator GreaterThan
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base  Wildlife" < uid=9D0EE20B60AD1760000008B9DFE3F783 >
+{
+	myLocationCooldown 10.0
+	myTicket < uid=2AE2EC856658A54300066D635351CCF4 >
+	{
+	}
+	myTicketMax < uid=F7FDFD606331AF1C000040FEC64818B7 >
+	{
+		myDefaultValue 10
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > 50"
+		{
+			myDistance 50.0
+			myOperator GreaterThan
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer < 200"
+		{
+			myDistance 200.0
+			myOperator LessThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > 200"
+		{
+			myDistance 200.0
+			myOperator GreaterThan
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base  Imperial Compound" < uid=9D0EE20B60C0B56400008A5562B5A63F >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer <= ContentLocationDistanceMedium"
+		{
+			myDistance = ContentLocationDistanceMedium
+			myOperator LessThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > ContentLocationDistanceFar"
+		{
+			myDistance = ContentLocationDistanceFar
+			myOperator GreaterThan
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base  Wanted Speeder Chase" < uid=9D0EE20B60D1CCE40048E80176FC2BD1 >
+{
+	myTicket < uid=9D0EE20B60D1CE0B0048E81C5A34B244 >
+	{
+	}
+	myTicketMax < uid=9D0EE20B60D1CDDE0048E815D137DCD0 >
+	{
+		myDefaultValue 6
+	}
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "WantedLevel > 0"
+		{
+			myOperator GreaterThan
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > ContentLocationDistanceVeryNear"
+		{
+			myDistance = ContentLocationDistanceVeryNear
+			myOperator GreaterThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "WantedLevel = 0"
+		{
+			myOperator Equal
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base  Cantina Ambience" < uid=E42FA10C625FD34D0001AF9296C06D14 >
+{
+	myTicket < uid=E42FA10C625FD86700008A54591B8BD1 >
+	{
+	}
+	myTicketMax < uid=E42FA10C625FD4880001AF94A4F0AF4E >
+	{
+		myDefaultValue 200
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer < 45"
+		{
+			myDistance 45.0
+			myOperator LessThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > 55"
+		{
+			myDistance 55.0
+			myOperator GreaterThan
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base  City Ambience" < uid=EBE060C26267C7A100016F79790871DB >
+{
+	myTicket < uid=EBE060C262680CDF00002E336155B07A >
+	{
+	}
+	myTicketMax < uid=EBE060C262680CDF00002E34A307C8B8 >
+	{
+		myDefaultValue 400
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer < 90"
+		{
+			myDistance 90.0
+			myOperator LessThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > 110"
+		{
+			myDistance 110.0
+			myOperator GreaterThan
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base City Imperial Speeder Patrol" < uid=9D0EE20B62A0559100011B860AEF52FA >
+{
+	myLocationCooldown 20.0
+	myTicket < uid=9D0EE20B62A0560000011B8709B9AFC8 >
+	{
+	}
+	myTicketMax < uid=9D0EE20B62A0560000011B888A467FDC >
+	{
+		myDefaultValue 3
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > ContentLocationDistanceNear"
+		{
+			myDistance = ContentLocationDistanceNear
+			myOperator GreaterThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup Group
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "LivingWorldContentLocationDistanceToPlayer > ContentLocationDistanceFar"
+				{
+					myDistance = ContentLocationDistanceFar
+				}
+				GameConditionContextLivingWorldContentLocation_IsCompletedInCurrentActivation IsCompletedInCurrentActivation
+				{
+				}
+			}
+		}
+	}
+	myPriorityConditions
+	{
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base Wanted Heavy Roadblock" < uid=F7FDFD6062AC40B6009D2F8F0DB7E6C1 >
+{
+	myTicket < uid=F7FDFD6062AC40B6009D2F90B0727E2C >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myTicketMax < uid=F7FDFD6062AC40B6009D2F91EF5878AD >
+	{
+		myDescription ""
+		myDefaultValue 4
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myCompletedGameValue < uid=F7FDFD6062AC40B6009D2F92DA710827 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myLivingWorldLayerBlockers
+	{
+	}
+	myLayerType Base
+	myActivateGameCondition
+	{
+		myType Formula
+		myFormula RoadblockDefault
+		myContextType LivingWorldContentLocation
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > ContentLocationDistanceFar"
+		{
+			myDistance = ContentLocationDistanceFar
+			myOperator GreaterThan
+		}
+	}
+	myPriorityConditions
+	{
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base Wanted Spawner" < uid=F7FDFD6062B40E0100007C23C55FB4BD >
+{
+	myLocationCooldown 3.0
+	myTicket < uid=F7FDFD6062B40E0100007C244FD6D1EF >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myTicketMax < uid=F7FDFD6062B40E0100007C25E3EA7ACA >
+	{
+		myDescription ""
+		myDefaultValue 2
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myCompletedGameValue < uid=F7FDFD6062B40E0100007C2628198B02 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myLivingWorldLayerBlockers
+	{
+	}
+	myLayerType Base
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "Wanted Level > 0"
+		{
+			myOperator GreaterThan
+		}
+		GameConditionPlayerHasWantedLevel "Wanted Level <= 6"
+		{
+			myWantedLevel 6
+			myOperator LessThanOrEqual
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > 50"
+		{
+			myDistance 50.0
+			myOperator GreaterThan
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer < 100"
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		GameConditionContextLivingWorldContentLocation_IsInLivingWorldLazyFrustum IsInLivingWorldFrustumMiddle
+		{
+			myFrustumType Middle
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > ContentLocationDistanceMedium"
+		{
+			myDistance = ContentLocationDistanceMedium
+			myOperator GreaterThan
+		}
+	}
+	myPriorityConditions
+	{
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base Wanted AT-ST" < uid=F7FDFD6062B4235200326910E020B06B >
+{
+	myTicket < uid=85F4BAC2644A8DAE0001346489F86882 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myTicketMax < uid=85F4BAC2644A8DAE00013465B9DDA04A >
+	{
+		myDescription ""
+		myDefaultValue 1
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myCompletedGameValue < uid=85F4BAC2644A8DAE00013466F77A6FC7 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myLivingWorldLayerBlockers
+	{
+	}
+	myLayerType Base
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "Wanted Level >= 5"
+		{
+			myWantedLevel 5
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > 50"
+		{
+			myDistance 50.0
+			myOperator GreaterThan
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer <= 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > ContentLocationDistanceFar"
+		{
+			myDistance = ContentLocationDistanceFar
+			myOperator GreaterThan
+		}
+	}
+	myPriorityConditions
+	{
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "[Unused] Base Wanted Scout Party 02" < uid=F7FDFD6062B4235200326914549076CC >
+{
+	myTicket < uid=85F4BAC2644A8DAE000134679A6B1933 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myTicketMax < uid=85F4BAC2644A8DAE00013468D09DCE84 >
+	{
+		myDescription ""
+		myDefaultValue 4
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myCompletedGameValue < uid=85F4BAC2644A8DAE000134698416FB2D >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myLivingWorldLayerBlockers
+	{
+	}
+	myLayerType Base
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "Wanted Level > 3"
+		{
+			myWantedLevel 3
+			myOperator GreaterThan
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer < 50"
+		{
+			myDistance 50.0
+			myOperator LessThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > ContentLocationDistanceFar"
+		{
+			myDistance = ContentLocationDistanceFar
+			myOperator GreaterThan
+		}
+	}
+	myPriorityConditions
+	{
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base Wanted Deathtrooper Event" < uid=F7FDFD6062B433EA005E022F09565E2D >
+{
+	myTicket < uid=F7FDFD6062B433EA005E023080F3C06C >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myTicketMax < uid=F7FDFD6062B433EA005E02319812B08D >
+	{
+		myDescription ""
+		myDefaultValue 1
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myCompletedGameValue < uid=F7FDFD6062B433EA005E023250120E80 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myLivingWorldLayerBlockers
+	{
+	}
+	myLayerType Base
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "Wanted Level = 6"
+		{
+			myWantedLevel 6
+			myOperator Equal
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer DistanceToPlayer
+		{
+			myDistance 650.0
+			myOperator GreaterThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > ContentLocationDistanceFar"
+		{
+			myDistance = ContentLocationDistanceVeryFar
+			myOperator GreaterThan
+		}
+		GameConditionPlayerHasWantedLevel "WantedLevel = 0"
+		{
+			myOperator Equal
+		}
+	}
+	myPriorityConditions
+	{
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base Wanted Ambush Speeder" < uid=1ED8F316645BAFEA002053151C4D2C74 >
+{
+	myLocationCooldown 15.0
+	myTicket < uid=1ED8F316645BAFEA002053165D3F30BD >
+	{
+		myDefaultValue 1
+	}
+	myTicketMax < uid=1ED8F316645BAFEA0020531727D0D945 >
+	{
+		myDefaultValue 2
+	}
+	myLayerType Wanted
+	myActivateGameCondition
+	{
+		myFormula ""
+		myContextType Global
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "ContextLivingWorldContentLocationDistanceToPlayer < 650"
+		{
+			myDistance 650.0
+			myOperator LessThan
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "ContextLivingWorldContentLocationDistanceToPlayer > 350"
+		{
+			myDistance 350.0
+			myOperator GreaterThan
+		}
+		GameConditionPlayerHasWantedLevel "WantedLevel > 1"
+		{
+			myWantedLevel 1
+			myOperator GreaterThan
+		}
+		GameConditionContextLivingWorldContentLocation_IsInLivingWorldLazyFrustum IsInLivingWorldFrustumFar
+		{
+			myFrustumType Far
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToActiveSameContent "DistanceToActiveSameContent > 350"
+		{
+			myDistance 350.0
+			myOperator GreaterThan
+		}
+	}
+	myDeactivateGameCondition
+	{
+		myContextType Global
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > 750"
+		{
+			myDistance 750.0
+			myOperator GreaterThan
+		}
+		GameConditionContextLivingWorldContentLocation_IsInLivingWorldLazyFrustum "IsNotInLivingWorldLazyFrustum Far"
+		{
+			myIsNegated TRUE
+			myFrustumType Far
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base Wanted Space VIP Shuttle event" < uid=1EAB3B4063CAB2F30001825E74EEC46F >
+{
+	myTicket < uid=1EAB3B4063CAB2F30001825FEF475DAE >
+	{
+	}
+	myTicketMax < uid=1EAB3B4063CAB2F300018260B93E7C26 >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=1EAB3B4063CAB2F30001826105A35DC7 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > 1"
+		{
+			myDistance 1.0
+			myOperator GreaterThan
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer < 3000"
+		{
+			myDistance 3000.0
+			myOperator LessThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > ContentLocationDistanceFar"
+		{
+			myDistance = ContentLocationDistanceFar
+			myOperator GreaterThan
+		}
+		GameConditionPlayerHasWantedLevel "WantedLevel = 0"
+		{
+			myOperator Equal
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base Faction Territory" < uid=9D0EE20B63D14AD200009C74EF6F3075 >
+{
+	myCompletedGameValue < uid=9D0EE20B63D14EE200110527AC5CEB8C >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer < ContentLocationDistanceFar"
+		{
+			myDistance = ContentLocationDistanceFar
+			myOperator LessThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > ContentLocationDistanceVeryFar"
+		{
+			myDistance = ContentLocationDistanceVeryFar
+			myOperator GreaterThan
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base Faction Camp" < uid=9D0EE20B63D14AD200009C757E33B4B5 >
+{
+	myTicket < uid=9D0EE20B63D14EE20011052856626375 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myTicketMax < uid=9D0EE20B63D14EE20011052991CDB6E3 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myCompletedGameValue < uid=9D0EE20B63D14EE20011052A45C26C32 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer < ContentLocationDistanceNear"
+		{
+			myDistance = ContentLocationDistanceNear
+			myOperator LessThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > ContentLocationDistanceMedium"
+		{
+			myDistance = ContentLocationDistanceMedium
+			myOperator GreaterThan
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base Neutral Gameplay Island" < uid=9D0EE20B63EE348A001599B860EE4464 >
+{
+	myTicket < uid=9D0EE20B63EE348A001599B92235BCB4 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myTicketMax < uid=9D0EE20B63EE348A001599BA155B76F2 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myCompletedGameValue < uid=9D0EE20B63EE348A001599BBA9B0C681 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer < ContentLocationDistanceFar"
+		{
+			myDistance = ContentLocationDistanceFar
+			myOperator LessThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > ContentLocationDistanceVeryFar"
+		{
+			myDistance = ContentLocationDistanceVeryFar
+			myOperator GreaterThan
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base Artifact Location" < uid=9D0EE20B63EE348A001599BCBB6F7AB7 >
+{
+	myTicket < uid=9D0EE20B63EE348A001599BD3430A172 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myTicketMax < uid=9D0EE20B63EE348A001599BEFA12ADE0 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myCompletedGameValue < uid=9D0EE20B63EE348A001599BFD5B9F8ED >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer < ContentLocationDistanceNear"
+		{
+			myDistance = ContentLocationDistanceNear
+			myOperator LessThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > ContentLocationDistanceMedium"
+		{
+			myDistance = ContentLocationDistanceMedium
+			myOperator GreaterThan
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base Settlement" < uid=9D0EE20B63EE3671001E283BC9E25450 >
+{
+	myCompletedGameValue < uid=9D0EE20B63EE3671001E283E3B4D3A9F >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer < ContentLocationDistanceFar"
+		{
+			myDistance = ContentLocationDistanceFar
+			myOperator LessThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > ContentLocationDistanceVeryFar"
+		{
+			myDistance = ContentLocationDistanceVeryFar
+			myOperator GreaterThan
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base Settlement Wanted" < uid=F7FDFD6064354A240000BD482087A60F >
+{
+	myTicket < uid=F7FDFD6064354A240000BD4989E524AE >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myTicketMax < uid=F7FDFD6064354A240000BD4A2581B4B6 >
+	{
+		myDescription ""
+		myDefaultValue 100
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myCompletedGameValue < uid=F7FDFD6064354A240000BD4B88D5E2F8 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myLayerType Wanted
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "WantedLevel > 0"
+		{
+			myOperator GreaterThan
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > 150"
+		{
+			myDistance 150.0
+			myOperator GreaterThan
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer < 400"
+		{
+			myDistance 400.0
+			myOperator LessThan
+		}
+	}
+	myDeactivateGameCondition
+	{
+		myFormula ""
+		myContextType LivingWorldContentLocation
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > 500"
+		{
+			myDistance 500.0
+			myOperator GreaterThan
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base JabbasPalace Faction District MainEntrance" < uid=1ED8F3166437E39D00020A3366C30090 >
+{
+	myCompletedGameValue < uid=1ED8F3166437E39D00020A34102FE03E >
+	{
+	}
+	myLayerType Base
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer < 250"
+		{
+			myDistance 250.0
+			myOperator LessThan
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > 60"
+		{
+			myDistance 60.0
+			myOperator GreaterThan
+		}
+		GameConditionQuestState "Quest Complete"
+		{
+			myQuest BFA41A0261C2FC4A00004D0F65DCABC9
+			myQuestState Completed
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > 250"
+		{
+			myDistance 250.0
+			myOperator GreaterThan
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base JabbasPalace Faction District ThroneRoom" < uid=1ED8F316643822FB0009A34FBE316E72 >
+{
+	myCompletedGameValue < uid=1ED8F316643822FB0009A350CB6285B1 >
+	{
+	}
+	myLayerType Base
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer < 250"
+		{
+			myDistance 250.0
+			myOperator LessThan
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > 80"
+		{
+			myDistance 80.0
+			myOperator GreaterThan
+		}
+		GameConditionQuestState "Quest Complete"
+		{
+			myQuest BFA41A0261C2FC4A00004D0F65DCABC9
+			myQuestState Completed
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > 250"
+		{
+			myDistance 250.0
+			myOperator GreaterThan
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base Landing Pad Ship Traffic" < uid=9D0EE20B6448F3930001905D9E9B0BCC >
+{
+	myLocationCooldown 10.0
+	myActivateGameCondition
+	{
+		myFormula ""
+		myContextType LivingWorldContentLocation
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer < ContentLocationDistanceMedium"
+		{
+			myDistance = ContentLocationDistanceMedium
+			myOperator LessThan
+		}
+	}
+	myDeactivateGameCondition
+	{
+		myFormula ""
+		myContextType LivingWorldContentLocation
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Is Completed or Far Away"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_IsCompletedInCurrentActivation IsCompletedInCurrentActivation
+				{
+				}
+				LivingWorldGameConditionGroup "Global deactivation" = "Global deactivation rule ground"
+			}
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base Foot Patrol" < uid=9D0EE20B645256D80001220C67E3A4B4 >
+{
+	myLocationCooldown 15.0
+	myTicket < uid=9D0EE20B645285C4000276EF344276B8 >
+	{
+		myDefaultValue 1
+	}
+	myTicketMax < uid=9D0EE20B645285C4000276F02F12AA79 >
+	{
+		myDefaultValue 10
+	}
+	myLayerType Wanted
+	myActivateGameCondition
+	{
+		myFormula ""
+		myContextType Global
+	}
+	myActivationGameConditions
+	{
+	}
+	myDeactivateGameCondition
+	{
+		myContextType Global
+	}
+	myDeactivationGameConditions
+	{
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base Speeder Patrol" < uid=9D0EE20B645256E30001220D083F7688 > : "Base Foot Patrol"
+{
+	myTicket < uid=9D0EE20B645A3E8300012B967A772131 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=9D0EE20B645A3E8300012B9758ADF5F9 >
+	{
+		myDefaultValue 4
+	}
+	myTags
+	{
+		LivingWorldTag Patrol < uid=85F4BAC2655B966800011326B604F842 > = LWT_Activity_FootPatrol 2AE2EC8564B552420000A0CBE20953F5
+	}
+}
+
+LivingWorldContent "Base Transport Patrol" < uid=9D0EE20B645A3D7A00012B62DE1E06FD > : "Base Foot Patrol"
+{
+	myTicket < uid=9D0EE20B645A3E8300012B98DB5E5E47 >
+	{
+		myDefaultValue 1
+	}
+	myTicketMax < uid=9D0EE20B645A3E8300012B9979730684 >
+	{
+		myDefaultValue 5
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > 400"
+		{
+			myDistance 400.0
+			myOperator GreaterThan
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer < 650"
+		{
+			myDistance 650.0
+			myOperator LessThan
+		}
+		GameConditionContextLivingWorldContentLocation_IsInLivingWorldLazyFrustum "IsInLivingWorldLazyFrustum Far"
+		{
+			myFrustumType Far
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToActiveSameContent "DistanceToActiveSameContent > 200"
+		{
+			myDistance 200.0
+			myOperator GreaterThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > 750"
+		{
+			myDistance 750.0
+			myOperator GreaterThan
+		}
+		GameConditionContextLivingWorldContentLocation_IsInLivingWorldLazyFrustum "IsNotInLivingWorldLazyFrustum Far"
+		{
+			myIsNegated TRUE
+			myFrustumType Far
+		}
+	}
+}
+
+LivingWorldContent "Base Space Gameplay Island" < uid=C864273E64F84D06000410141F3029A2 >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer < SpaceContentLocationDistanceVeryFar"
+		{
+			myDistance = SpaceContentLocationDistanceVeryFar
+			myOperator LessThan
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent "Base TAT Hostile Camp 02" < uid=2AEFFC7965E058120030B8106CDA92C6 > : "Base Faction Camp"
+{
+	myTicket < uid=2AEFFC7965E058120030B811DB699946 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myTicketMax < uid=2AEFFC7965E058120030B812C161F795 >
+	{
+		myDescription ""
+		myDefaultValue 1
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myCompletedGameValue < uid=2AEFFC7965E058120030B81335C904F1 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myAdditionalLayerTypes
+	{
+		LivingWorldContentLayerType "New LivingWorldContentLayerType" LivingWorldOverride
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer < ContentLocationDistanceNear"
+		{
+			myDistance = ContentLocationDistanceNear
+			myOperator LessThan
+		}
+		LivingWorldGameConditionGroup "Block Start When CRM 020 Beats are active"
+		{
+			myConditions
+			{
+				GameConditionQuestBeatState "Beat 2"
+				{
+					myQuestBeat C5B8DCF6651530300000810EE5A253E2
+					myQuestBeatState Started
+					myOperator NotEqual
+				}
+				GameConditionQuestBeatState "Beat 3"
+				{
+					myQuestBeat C5B8DCF66515326F000081268AC0D7B9
+					myQuestBeatState Started
+					myOperator NotEqual
+				}
+				GameConditionQuestBeatState "Beat 4"
+				{
+					myQuestBeat C5B8DCF66515393F00008010E11A8ABD
+					myQuestBeatState Started
+					myOperator NotEqual
+				}
+				GameConditionQuestBeatState "Beat 5"
+				{
+					myQuestBeat C5B8DCF665153B3E0000811D3E55C101
+					myQuestBeatState Started
+					myOperator NotEqual
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Distance and quest check"
+		{
+			myIsNegated FALSE
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState "Beat 2"
+				{
+					myQuestBeat C5B8DCF6651530300000810EE5A253E2
+					myQuestBeatState Started
+					myOperator Equal
+				}
+				GameConditionQuestBeatState "Beat 3"
+				{
+					myQuestBeat C5B8DCF66515326F000081268AC0D7B9
+					myQuestBeatState Started
+					myOperator Equal
+				}
+				GameConditionQuestBeatState "Beat 4"
+				{
+					myQuestBeat C5B8DCF66515393F00008010E11A8ABD
+					myQuestBeatState Started
+					myOperator Equal
+				}
+				GameConditionQuestBeatState "Beat 5"
+				{
+					myQuestBeat C5B8DCF665153B3E0000811D3E55C101
+					myQuestBeatState Started
+					myOperator Equal
+				}
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer  ContentLocationDistanceMedium"
+				{
+					myDistance = ContentLocationDistanceMedium
+					myOperator GreaterThan
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent "Base TOS Hostile Camp 02 Shipjackers" < uid=56CC0596667BE11C00018CA3300B5B1F > : "Base Faction Camp"
+{
+	myTicket < uid=56CC0596667BE11C00018CA485C41BA4 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myTicketMax < uid=56CC0596667BE11C00018CA5B2774900 >
+	{
+		myDescription ""
+		myDefaultValue 1
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myCompletedGameValue < uid=616F459666BA1055000917CB64F46C0B >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myAdditionalLayerTypes
+	{
+		LivingWorldContentLayerType "New LivingWorldContentLayerType" DLC1Override
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > ContentLocationDistanceMedium"
+		{
+			myDistance 275.0
+			myOperator GreaterThan
+		}
+	}
+}
+

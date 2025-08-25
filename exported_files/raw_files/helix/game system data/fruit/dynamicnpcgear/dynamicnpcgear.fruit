@@ -1,0 +1,60 @@
+include "helix/game system data/fruit/dynamicnpcgear/dynamicnpcgearenums.fruit"
+include "helix/game system data/fruit/combat/combat.fruit"
+include "helix/game system data/fruit/combat/damageresistance.fruit"
+include "helix/game system data/fruit/equipment/weapon/weapon_module.fruit"
+
+list DynamicNPCGearDamageModifierList
+{
+	DamageResistance
+}
+
+class DynamicNPCGear < uid=auto >
+{
+	bool myEnabledByDefault false
+
+	varmap myName < bhv="localization" >
+
+	string myIcon < bhv="sprite" >
+
+	bool myUIIsWeakpoint false
+	
+	string myHealth 1 < bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	
+	float myGearDamageModifier 1 < tooltip="Default damage multiplier applied for any damage type" >
+	string myGearDamageModifierFromDamageDealer 1 < bhv=formulaEditor formulaResolveContextType=AgentAttributes >	
+	DynamicNPCGearDamageModifierList myGearDamageModifierOverrides
+
+	float myNPCDamageMultiplier 0 < tooltip="NPC damage multiplier before destroyed. After destroyed, it will not be applied" >
+	DynamicNPCGearDamageModifierList myNPCDamageModifierOverrides
+	
+	file myOnDestroyedGameScript "" < tooltip="GameScript to run when the Dynamic NPC Gear is being destroyed." bhv=asset assettype="Game Script/DynamicNPCGear" >
+	
+	bool myWeaponModuleAffiliationEnabled false
+	WeaponModuleFamilyType myWeaponModuleAffiliation Plasma < tooltip="This value is mainly used by UI and represents the type of weapon module that is effective against this class if enabled" >
+}
+
+class ThresholdDynamicNPCGear : DynamicNPCGear
+{
+	string myHealth 10000 < tooltip="Threshold dynamic gear should not be destroyed so its health should be set to a relatively large value" bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	float myNPCDamageThreshold 10
+	int myThresholdCooldownMS 5000
+	file myOnThresholdReachGameScript "" < tooltip="GameScript to run when the Threshold NPC Gear reaches threshold." bhv=asset assettype="Game Script/DynamicNPCGear" > 
+}
+
+class DamageWeakpointDynamicNPCGear : DynamicNPCGear
+{
+	float myOnDestroyedDamage
+	DamageSourceType myOnDestroyedDamageSourceType Explosion
+	DamageTargetType myOnDestroyedDamageTargetType HP
+	DamageType myOnDestroyedDamageType Blast
+}
+
+list SpaceshipDynamicNPCGearTargetingOffsetsList
+{
+	vec3f
+}
+
+class SpaceshipDynamicNPCGear : DynamicNPCGear
+{
+	SpaceshipDynamicNPCGearTargetingOffsetsList myTargetingOffsets
+}

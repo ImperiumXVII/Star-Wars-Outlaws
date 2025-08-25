@@ -1,0 +1,37 @@
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+include "helix/game system data/fruit/monetization/storeenums.fruit"
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/fruit/tutorials/tutorial.fruit"
+
+class QuestStoreTag
+{
+    uid myQuest < bhv="constantData" constantDataType="quest" >
+    RecommendationTag myRecommendationTag
+    ProgressionTag myProgressionTag
+}
+
+list QuestStoreTagList
+{
+    QuestStoreTag
+}
+
+list MTXOfferGameConditions
+{
+	GameCondition
+}
+
+class MTXSettings < uid=auto >
+{
+    QuestStoreTagList myQuestStoreTags
+    MTXOfferGameConditions myProgressionConditions
+    MTXOfferGameConditions myStoreUnlockingRequirements
+
+    MTXOfferGameConditions myMailboxReminderConditions
+    TutorialHint* myMailboxReminderHint
+    int myMailboxReminderHintInterval < tooltip="In milliseconds" min=0 >
+
+    uid myInaccessiblePremiumContentUnlockedNotificationQuestBeat < bhv="constantData" constantDataType="questbeat" tooltip="After this quest beat has been completed, inaccessible premium content notification will be displayed if needed." >
+    uid myPremiumContentUnlockedNotificationQuest < bhv="constantData" constantDataType="quest" tooltip="After this quest has been completed, premium content notification will be displayed if needed." >
+
+    int mySupportedStoreVersion < tooltip="This is the store version that this TU of the game can render" min=1 >
+}

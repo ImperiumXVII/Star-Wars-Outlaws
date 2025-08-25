@@ -1,0 +1,26 @@
+include "helix/game system data/juice/character/character_visuals_ld_ingredients.mcharactervisuals"
+include "helix/game system data/juice/npc/emp_mech.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC emp_automatedturret_killable_coop < uid=6B0E1DE96488683A0002930EF824EC95 > : emp_mech
+{
+	myCharacterVisuals < uid=6B0E1DE96488683A0002930F06C27913 > = character_visuals_automated_turret 2736B36563FDC6710000DA6860459DD1
+	myBehavior helix/behaviors/emp_automatedturret.mbehavior
+	myIsInvulnerable FALSE
+	myMaxHealth 20
+	myHealthFormula 20
+	myInitialNPCControllerContextType NotSet
+	myVisionProfile < uid=6B0E1DE96488683A00029310B860495F > = AutomatedTurretVisionProfile 16DEADE661A167BE0000ADDB005525E8
+	myHearingProfile < uid=6B0E1DE96488683A000293119CFA11BE > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=6B0E1DE96488683A00029312436506F0 > = AutomatedTurretDetectionProfile 16DEADE661A164F10000541DCF9630FE
+	}
+	myThreatProfile < uid=6B0E1DE96488683A00029313567AE56E > = AutomatedTurretThreatProfile 16DEADE661A6532F000067E6A76DF48C
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout LoadoutA < uid=6B0E1DE96488683A00029314ECEA744F > = emp_automatedturret_A 2736B36563FE30CD00001D86C1361E7D
+	}
+	myFocusProfile < uid=6B0E1DE96488683A00029315A0D1FF8D > = CombatFocusProfile 91DC5D3C63FC700F0001A02A36DCA307
+}
+

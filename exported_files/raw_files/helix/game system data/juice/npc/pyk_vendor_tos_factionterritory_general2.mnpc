@@ -1,0 +1,26 @@
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npc/pyk_assault.mnpc"
+include "helix/game system data/juice/npc/pyk_vendor.mnpc"
+
+NPC pyk_vendor_TOS_factionTerritory_General2 < uid=91DC5D3C64F1EC0A0001234EAE0AE130 > : pyk_vendor
+{
+	myCharacterVisuals < uid=5C148C4665F2F3BF002DB23126C51073 > = character_visuals_hired_gun_light_vendor 91DC5D3C650B10D800296FE0C7E755BA
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout PistolStandard < uid=56CC059666962196000E7221D474065E > = HiredGun_Light_Pistol_Standard 4171A7E16523FB4C00010E15851176BF
+		NPCWeaponLoadout PistolBurtst < uid=56CC059666962196000E722282BAB83F > = HiredGun_Light_Pistol_Burst 4171A7E16523FBD800005C850FF94E02
+	}
+	myVendorConfig < uid=91DC5D3C64F1EDD200013A7D435CBE15 > = VendorConfig_TOS_FactionTerritory_Pyke_BlackMarket 2AE2EC85645514CE0000B575B24486FF
+	myHideMapRefGameConditions
+	{
+		myConditions
+		{
+			GameConditionContextAgentIsAlive "New GameConditionContextAgentIsAlive"
+			{
+				myIsNegated TRUE
+			}
+		}
+	}
+	myNPCIcon "mySpriteId = 758980260, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_map_icons_05.spritesheet\""
+}
+

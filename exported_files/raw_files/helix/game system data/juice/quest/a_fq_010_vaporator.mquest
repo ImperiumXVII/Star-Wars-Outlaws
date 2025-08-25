@@ -1,0 +1,53 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/rbtags/quest.mrbtagstags"
+
+Quest A_FQ_010_Vaporator < uid=B567AAE061767EB600004FCC074C649D >
+{
+	myName "contextComment = \"Faction Quest: A_FQ_010\", enabled = true, guid = #B567AAE061767EB600004FCB26E66C81, lineVersion = 9, maxLength = 0, productId = -1, sectionId = -1, text = 'A_FQ_010 - \"Vaporator\"', type = \"MenuLine\""
+	myDescription "contextComment = \"Pre-Alpha Quest set on Toshara and Tatooine Comment\", enabled = true, guid = #B567AAE061767EB600004FCD2998DE29, lineVersion = 6, maxLength = 0, productId = -1, sectionId = -1, text = \"Pre-Alpha Quest set on Toshara and Tatooine\", type = \"MenuLine\""
+	myBeats
+	{
+		QuestBeat "QB01 - ReachTrailblazer" < uid=B567AAE061767EB600004FCF74A18BD3 >
+		{
+			myScript helix/scripts/scr_A_FQ_010_TOS_PLN_B01_ReachTrailblazer.mscript
+			myName "contextComment = \"Objective 01 for A_FQ_010\", enabled = true, guid = #B567AAE061767EB600004FCE61366110, lineVersion = 15, maxLength = 0, productId = -1, sectionId = -1, text = \"Reach the Trailblazer\", type = \"MenuLine\""
+			myLevelInfo B567AAE061659D5E000031ED9F2FA816
+			myObjectives
+			{
+				QuestObjectiveCustom B01_010_LeaveToshara < uid=B567AAE061767EB600004FD35540B590 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective\", enabled = true, guid = #B567AAE061767EB600004FD010AD6156, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 2008, text = \"Leave Toshara\", type = \"MenuLine\""
+				}
+				QuestObjectiveInteract B01_010_LeaveToshara_Interact < uid=B567AAE06177ECA0000034A0324BE7AC >
+				{
+					myName "aurabesh = false, contextComment = \"Objective\", enabled = true, guid = #B567AAE06177ECB1000034A1FDB22F4E, lineVersion = 2, maxLength = 0, productId = -1, sectionId = 2008, text = \"Leave Toshara\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=6F2AF91962175DDE000033C283A5C303 >
+			{
+			}
+		}
+		QuestBeat "QB02 - Reach the Hyperspace point" < uid=B567AAE061767EB600004FD80261629A >
+		{
+			myScript helix/scripts/scr_A_FQ_010_TOS_SPC_B02_ReachHyperspacePoint.mscript
+			myName "aurabesh = false, contextComment = \"Comment\", enabled = true, guid = #B567AAE061767EB600004FD69AC451A6, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2008, text = \"Reach the Hyperspace point\", type = \"MenuLine\""
+			myLevelInfo B567AAE061659D5E000031ED9F2FA816
+			myObjectives
+			{
+				QuestObjectiveInteract B02_010_HyperspaceToTatooine < uid=B567AAE0617815BB00001B5D65264D21 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective\", enabled = true, guid = #B567AAE0617815DD00001B5EEC3FBF0E, lineVersion = 2, maxLength = 0, productId = -1, sectionId = 2008, text = \"Hyperspace to Tatooine\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=6F2AF91962175DDE000033C33436827C >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=6F2AF91962175DDE000033C45729BC35 >
+	{
+	}
+	myQuestStartedRBTag < uid=DA5615DD64B547310000C643BEE9053E > = World_Quest_FQASH010_Started DA5615DD64A4390E0001657EFE48B3FD
+	myQuestCompletedRBTag < uid=DA5615DD64B547310000C644E2B6F12C > = World_Quest_FQASH010_Completed DA5615DD64A4398E00016580903BA00D
+}
+

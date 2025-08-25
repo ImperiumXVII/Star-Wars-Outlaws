@@ -1,0 +1,35 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/spaceshipnpcthreatprofiles.mnpcthreatprofile"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/emp_shp_base.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC emp_shp_tiefighter_a < uid=6EA79625636BBC680000760F622FE647 > : emp_shp_base
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"TIE Fighter - Empire faction\", enabled = true, guid = #6AE6EE0D65782A2B00026686272AC84F, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10726, text = \"TIE/LN Starfighter\", type = \"MenuLine\""
+	myCharacterVisuals < uid=6EA79625636BBC680000761002DBF683 > = character_visuals_npc_shp_tiefighter 849AB26562B32167000081E7492D3BDF
+	myNPCComponentSetType Spaceship
+	mySpaceshipType Tiefighter
+	myMaxHealth 70
+	myHealthFormula 35*SpaceHealthDifficultyModifier
+	myLodType Spaceship_Small
+	myVisionProfile < uid=6EA79625636BBC680000761373F6121A > = visionProfile_emp_ship_Fighter 6B0E1DE964B79E7B0000AD3900B2FAF2
+	myHearingProfile < uid=6EA79625636BBC6800007614AE449D09 > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=6B0E1DE964B6755E00002C1414129559 > = detectionProfile_emp_ship_Fighter 6B0E1DE964B6560C0003C7104FFE7EA2
+	}
+	myThreatProfile < uid=F95CD8F3653FCB0000004D792CD00B41 > = Spaceshipthreatprofile F95CD8F3653F81EE00057BF796B8AD1A
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "tiefighter weapon loadout" < uid=F95CD8F3640B45680000099BF712040C > = weaponloadout_emp_shp_tiefighter F95CD8F3640AF8F7000009791889557F
+	}
+	myPlayerAwarenessProfile < uid=3A129121647DDDB4000188509FEE25E6 > = SPACE_CombatNPC 3A129121647DDDD40001888490E9E7A2
+	myAudioParameters
+	{
+		myEmitterName "TIE Fighter"
+	}
+	myCombatRole Fighter
+}
+

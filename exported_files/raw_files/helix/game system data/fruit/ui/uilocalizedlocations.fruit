@@ -1,0 +1,17 @@
+include "helix/game system data/fruit/gamevalues/gamevalues.fruit"
+
+//-----Grouping-----
+class LocationNameOverride
+{
+	uid myOverrideGameValue < bhv=constantdata constantDataType=gamevalue tooltip="Game value that determines if we should use the override location name" >
+	varmap myLocationName < bhv="localization" tooltip="Override used when you want to have a different location name displayed." >
+}
+
+//-----UI Localized Location-----
+class UILocalizedLocation < uid=auto >
+{
+	string myCustomID
+	varmap myLocationName < bhv="localization" tooltip="Name of a location, used in e.g. notifications and on the map." >
+	LocationNameOverride myLocationNameOverride
+	uid myParentLocation < bhv="constantData" constantDataType="uilocalizedlocation" tooltip="[OPTIONAL] Parent location used to contextualize the location." >
+}

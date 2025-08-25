@@ -1,0 +1,40 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/vandor_attached_npc_set.mnpconnpcattachmentset"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/cri_shp_base.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC cri_shp_vandor_a < uid=4F59E8F064355F3B00008320B5873C99 > : cri_shp_base
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Name of Ship - Victor-wing Fighter - Crimson Dawn Faction\", enabled = true, guid = #6AE6EE0D6578795F000266EB91AD36ED, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10726, text = \"Victor-wing Fighter\", type = \"MenuLine\""
+	myCharacterVisuals < uid=4F59E8F064355F3B00008321CDACCE10 > = character_visuals_npc_shp_vandor 4F59E8F064355D3D0000831B21C7367D
+	mySpaceshipType VandorCrimsonDawn
+	myMaxHealth 150
+	myHealthFormula 75*SpaceHealthDifficultyModifier
+	myDialogueCharactersFromDatabase
+	{
+		DialogueCharacterWithTags CrimsonDawn_F01 < uid=3A12912164760FC6000277AC7C09BC3A > = CrimsonDawn_Pilot_F01 3A1291216475FF75000162EF28B24D63
+		DialogueCharacterWithTags CrimsonDawn_F02 < uid=3A12912164760FE6000277AD1DF0715E > = CrimsonDawn_Pilot_F02 3A1291216475FF8C0001631786ABE97B
+		DialogueCharacterWithTags CrimsonDawn_M01 < uid=3A12912164760FED000277AEFA677BFA > = CrimsonDawn_Pilot_M01 3A1291216475FFC50001635026697518
+		DialogueCharacterWithTags CrimsonDawn_M02 < uid=3A12912164760FFB000277AFE1FE485B > = CrimsonDawn_Pilot_M02 3A1291216475FFD200016367E17576B8
+	}
+	myLodType Spaceship_Medium
+	myVisionProfile < uid=F95CD8F364835F24000AF6D48B3CE56A > = visionProfile_cri_ship_LightFreighter 6B0E1DE964B7A45D0000AD68D0381E2B
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=F95CD8F364835F24000AF6D52799D9FF > = detectionProfile_cri_ship_LightFreighter 6B0E1DE964B6644F0003C72BCF71B9B6
+	}
+	myThreatProfile < uid=F95CD8F3653FC4C200004D960928CA7E > = Spaceshipthreatprofile F95CD8F3653F81EE00057BF796B8AD1A
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "Vandor weaponloadout" < uid=4F59E8F06435616F000088318DC0FF54 > = weaponloadout_cri_shp_vandor 6AF0BA04649BF17D00049A6F5BAEBEF4
+	}
+	myAttachedNPCsSet < uid=4F59E8F0643562910000883FB86BEC91 > = vandor_attached_npc_set 4F59E8F0643562810000883C3737A0D0
+	myAudioParameters
+	{
+		myEmitterName "Crimson Dawn Ship"
+	}
+	myCombatRole LightFreighter
+}
+

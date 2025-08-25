@@ -1,0 +1,124 @@
+include "helix/game system data/fruit/settings/uisettings.fruit"
+include "helix/game system data/fruit/ui/uiexecutionstates.fruit"
+
+//////////////////////////////////////////////////////////
+// UI Event Queues
+//////////////////////////////////////////////////////////
+
+enum UIEventQueueId
+{
+	Unfiltered
+	CenterScreen
+	General
+	Log
+	Situational
+	Ubiconnect
+	Status
+}
+
+list UIEventQueueDependencyList
+{
+	UIEventQueueId
+}
+
+list UIEventQueueUIStateActive
+{
+	UIState
+}
+
+list UIExecutionStates
+{
+	UIExecutionState
+}
+
+class UIEventQueueDefinition
+{
+	UIEventQueueId myId
+	UIEventQueueDependencyList myQueueDependencies
+	UIEventQueueUIStateActive myIsActiveInUIStates
+	UIExecutionStates myRequiredExecutionStates
+	UIExecutionStates myUnallowedExecutionStates
+}
+
+list UIEventQueueDefinitionList
+{
+	UIEventQueueDefinition
+}
+
+//////////////////////////////////////////////////////////
+// UI Event Types
+//////////////////////////////////////////////////////////
+
+enum UIEventQueuePriority
+{
+	Urgent
+	High
+	Normal
+	Low
+}
+
+enum UIEventQueueingType
+{
+	Standard
+	FirstOnly
+	ReplaceExisting
+	LastOnly
+}
+
+enum UIEventTransitionContext
+{
+	LevelTransition
+	Cinematic
+}
+
+list UIEventTransitionContexts
+{
+	UIEventTransitionContext
+}
+
+list NodeDataFields
+{
+	varmap < bhv=nodedata >
+}
+
+class UIEventType
+{
+	UIEventQueueId myQueueId
+
+	UIEventQueuePriority myPriority Normal < tooltip="How the event will be prioritized against other events in the same queue. For events with the same priority, the order they were pushed in stays the same." >
+
+	UIEventQueueingType myQueueingType < tooltip="Standard: Queues normally, adding to the end.\nFirstOnly: Discard a new event if one of the same type already is in the queue, otherwise place in the end.\nReplaceExisting: Replaces an existing event of the same type, keeping its place in the queue.\nLastOnly: Removes any existing events of the same type, and puts the new event last in the queue." >
+
+	float myDuration 5 < tooltip="The maximum duration of the event type." >
+	bool myIsDurationInfinite false < tooltip="If true, the duration is ignored and the event must be manually consumed when it should be removed from the queue." >
+
+	float myTimeout 20 < tooltip="The maximum time an event of this type will wait in the queue before being removed due to being too old." >
+	bool myIsTimeoutInfinite false < tooltip="If true, the timeout is ignored and the event will be processed no matter how long it takes to get to it." >
+
+	float myStickyPauseTime -1 < tooltip="Optional: If pushed as a sticky event, the progress of the event will pause here until it needs to keep going. If -1, the half-way point through its duration will be used." >
+
+	UIEventTransitionContexts myDisallowedTransitionContexts < tooltip="Force timeout for this event when transitioning to one of the listed contexts." >
+
+	NodeDataFields myFields
+}
+
+list UIEventTypeGroup
+{
+	UIEventType
+}
+
+//////////////////////////////////////////////////////////
+// UI Event Settings Root
+//////////////////////////////////////////////////////////
+
+list UIEventTypeList
+{
+	UIEventTypeGroup
+	UIEventType
+}
+
+class UIEventSettingsRoot
+{
+	UIEventQueueDefinitionList myUIEventQueues
+	UIEventTypeList myUIEvents
+}

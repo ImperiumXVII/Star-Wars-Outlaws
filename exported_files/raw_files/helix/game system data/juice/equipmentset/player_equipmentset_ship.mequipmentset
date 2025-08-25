@@ -1,0 +1,344 @@
+include "helix/game system data/fruit/equipment/equipment_set.fruit"
+include "helix/game system data/juice/item/dlc2_items_materials_valuables_and_key_parts.mitem"
+include "helix/game system data/juice/item/dlc2_ship_gear_helix.mitem"
+include "helix/game system data/juice/item/ship_fuel.mitem"
+include "helix/game system data/juice/item/ship_gear.mitem"
+include "helix/game system data/juice/item/ship_skins.mitem"
+include "helix/game system data/juice/item/spaceship_shield_overcharge_gadget.mitem"
+include "helix/game system data/juice/item/tb_scanner.mitem"
+
+EquipmentSet player_equipmentset_ship < uid=A207755D61F1539100001B115F7B241F >
+{
+	mySlotList
+	{
+		EquipmentSlot Laser
+		{
+			myGroup Weapons
+			myTag ShipMain
+			myIsDefaultActive TRUE
+			myAttachment
+			{
+				mySlot SpaceshipWeapon_InnerLeft
+			}
+			myDefault < uid=B005013561FD3B5200001D9508476E8B > = ship_gear_laser_cannons_a B4FBE430642A8E4200000BB2EC003F6B
+		}
+		EquipmentSlot Engine
+		{
+			myGroup Engine
+			myTag ShipMain
+			myIsDefaultActive TRUE
+			myDefault < uid=AE04054764F8871500034A39B406514A > = ship_gear_engine_a B4FBE430642A916A00000BE3AE8DC2D1
+		}
+		EquipmentSlot Missile
+		{
+			myGroup Missiles
+			myTag ShipSecondary
+			myIsDefaultActive TRUE
+			myAttachment
+			{
+				mySlot TrailblazerMissile_Left
+			}
+			myDefault < uid=B005013562723F1400002D10795C517A > = ship_gear_launcher_concussion_a B4FBE430642A8E4200000BB870658DB6
+		}
+		EquipmentSlot Repair_Kit
+		{
+			myGroup AuxiliaryDevice
+			myIsAutoSlotEnabled TRUE
+			myIsDefaultActive TRUE
+			myDefault < uid=F8D3681862E8DFA3000096B44432BFF2 > = ship_gear_aux_repair_kit C10161EF64A287D3000030FADB30302C
+		}
+		EquipmentSlot Auxiliary_Devices
+		{
+			myGroup AuxiliaryDevice
+			myTag Secondary
+			myIsAutoSlotEnabled TRUE
+			myIsDefaultActive TRUE
+		}
+		EquipmentSlot Shield_Overcharge
+		{
+			myGroup Gadgets
+			myIsAutoSlotEnabled TRUE
+			myIsDefaultActive TRUE
+			myDefault < uid=6AEA320A6343F47700004AC5359C6574 > = spaceship_shield_overcharge_gadget 6AEA320A6343F17300001F888E584A9F
+		}
+		EquipmentSlot Turret
+		{
+			myGroup TurretMount
+			myIsDefaultActive TRUE
+			myAttachment
+			{
+				mySlot TrailblazerTurret
+			}
+		}
+		EquipmentSlot Hull
+		{
+			myGroup Hull
+			myIsDefaultActive TRUE
+			myDefault < uid=0B9940F364E8A10300004132444D0AC8 > = ship_gear_hull_a B4FBE430642A916A00000BE9E5F8A9FD
+		}
+		EquipmentSlot Shield
+		{
+			myGroup Shield
+			myIsDefaultActive TRUE
+			myDefault < uid=0B9940F364E8A10300004133E1C8BF9B > = ship_gear_shield_a B4FBE430642A93A000000C0653A014B2
+		}
+		EquipmentSlot Scanner
+		{
+			myGroup Scanner
+			myIsAutoSlotEnabled TRUE
+			myIsDefaultActive TRUE
+			myDefault < uid=C107E9E96538B88E0003419B1EECCB93 > = "Space Scanner" C10161EF6530ECC300043741F1EB319B
+		}
+		EquipmentSlot Skin
+		{
+			myGroup Skin
+			myIsDefaultActive TRUE
+			myDefault < uid=E41F4D1B653BACBC0003E33065B3360D > = ship_skin_00 E41F4D1B653BAD5E0003E350525C13A4
+		}
+		EquipmentSlot Fuel
+		{
+			myGroup ShipFuel
+			myIsDefaultActive TRUE
+			myDefault < uid=2552445265D4A495000001128951BC5D > = ship_fuel_00 2552445265D4A340000000F7EAF3700B
+		}
+		EquipmentSlot Trinket
+		{
+			myGroup VehicleTrinket
+			myIsDefaultActive TRUE
+		}
+		EquipmentSlot Dodge
+		{
+			myGroup Attachment
+			myIsDefaultActive TRUE
+			myDefault < uid=09AEDAAA65818EC900028370A9ACF940 > = ship_gear_dodge AE040547657AF28F0001F091A49AD5F9
+		}
+		EquipmentSlot Maneuver
+		{
+			myGroup Attachment
+			myTag Secondary
+			myIsDefaultActive TRUE
+		}
+		EquipmentSlot IonShield
+		{
+			myGroup ShieldGenerator
+			myTag ShipMain
+			myIsHidden TRUE
+			myIsAutoSlotEnabled FALSE
+			myIsDefaultActive TRUE
+		}
+		EquipmentSlot "Ship Charm 1"
+		{
+			myGroup ShipCharm
+			myTag ShipCharm_1
+			myIsDefaultActive TRUE
+			myUnlockRequirements
+			{
+				EquipmentSlotUnlockRequirement "Player has at least one ship charm"
+				{
+					myConditions
+					{
+						myOperator Or
+						myConditions
+						{
+							GameConditionPlayerHasItem "Player has ship charm 01"
+							{
+								myItem < uid=2AE2EC85677D32630002FCA35B5CE0B9 > = dlc2_ship_gear_charm_01 B4FBE4306709326A000000D5CAC92A0B
+							}
+							GameConditionPlayerHasItem "Player has ship charm 02"
+							{
+								myItem < uid=2AE2EC85677D32630002FCA465D323F9 > = dlc2_ship_gear_charm_02 B4FBE430670CB9DF0003FA3A7D650906
+							}
+							GameConditionPlayerHasItem "Player has ship charm 03"
+							{
+								myItem < uid=2AE2EC85677D32630002FCA5C81CE968 > = dlc2_ship_gear_charm_03 B4FBE430670CB9DF0003FA3B4AD63AAD
+							}
+							GameConditionPlayerHasItem "Player has ship charm 04"
+							{
+								myItem < uid=2AE2EC85677D31630002FB115EAAF3D0 > = dlc2_ship_gear_charm_04 B4FBE430670CB9DF0003FA3C7EE52262
+							}
+							GameConditionPlayerHasItem "Player has ship charm 05"
+							{
+								myItem < uid=2AE2EC85677D31630002FB12D944B8FD > = dlc2_ship_gear_charm_05 B4FBE430670CB9DF0003FA3D680EB753
+							}
+							GameConditionPlayerHasItem "Player has ship charm 06"
+							{
+								myItem < uid=2AE2EC85677D31630002FB13B206D680 > = dlc2_ship_gear_charm_06 255244526728EB1F000001503D5C671D
+							}
+							GameConditionPlayerHasItem "Player has ship charm 07"
+							{
+								myItem < uid=2AE2EC85677D31630002FB14213E9C67 > = dlc2_ship_gear_charm_07 255244526728EB1F000001510E2C5F32
+							}
+							GameConditionPlayerHasItem "Player has ship charm 08"
+							{
+								myItem < uid=2AE2EC85677D31630002FB152803DFE3 > = dlc2_ship_gear_charm_08 255244526728EB1F0000015244EFBBAC
+							}
+							GameConditionPlayerHasItem "Player has ship charm 09"
+							{
+								myItem < uid=2AE2EC85677D31630002FB16D47C094E > = dlc2_ship_gear_charm_09 255244526728EB1F00000153061B45B9
+							}
+							GameConditionPlayerHasItem "Player has ship charm 10"
+							{
+								myItem < uid=2AE2EC85677D31630002FB17504A7797 > = dlc2_ship_gear_charm_10 255244526728EB1F00000154D8A1AEE8
+							}
+							GameConditionPlayerHasItem "Player has ship charm 11"
+							{
+								myItem < uid=2AE2EC85677D31630002FB188542045D > = dlc2_ship_gear_charm_11 255244526728EB1F00000155B418AF01
+							}
+							GameConditionPlayerHasItem "Player has ship charm 12"
+							{
+								myItem < uid=2AE2EC85677D31630002FB19B3882FD1 > = dlc2_ship_gear_charm_12 255244526728EB1F000001568D1350F5
+							}
+							GameConditionPlayerHasItem "Player has ship charm 13"
+							{
+								myItem < uid=2AE2EC85677D31630002FB1A878A7697 > = dlc2_ship_gear_charm_13 255244526728EB1F0000015751F9FA63
+							}
+							GameConditionPlayerHasItem "Player has ship charm 14"
+							{
+								myItem < uid=2AE2EC85677D31630002FB1B847F5F3E > = dlc2_ship_gear_charm_14 255244526728EB1F0000015884FAC85A
+							}
+							GameConditionPlayerHasItem "Player has ship charm 15"
+							{
+								myItem < uid=2AE2EC85677D31630002FB1C118AC300 > = dlc2_ship_gear_charm_15 255244526728EB1F00000159F5EB1F63
+							}
+							GameConditionPlayerHasItem "Player has ship charm 16"
+							{
+								myItem < uid=2AE2EC85677D31630002FB1DE38E9047 > = dlc2_ship_gear_charm_16 255244526728EB1F0000015AE2686DD3
+							}
+							GameConditionPlayerHasItem "Player has ship charm 17"
+							{
+								myItem < uid=2AE2EC85677D31630002FB1E37647C6F > = dlc2_ship_gear_charm_17 25524452672E1D87000B41F28F6A705F
+							}
+							GameConditionPlayerHasItem "Player has ship charm 18"
+							{
+								myItem < uid=2552445267AC940F0004FA4F688E5B7D > = dlc2_ship_gear_charm_18 255244526793BF9C000000CB5A1E8F62
+							}
+						}
+					}
+					myLockedReason "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				}
+			}
+		}
+		EquipmentSlot "Ship Charm 2"
+		{
+			myGroup ShipCharm
+			myTag ShipCharm_2
+			myIsDefaultActive TRUE
+			myUnlockRequirements
+			{
+				EquipmentSlotUnlockRequirement "Player has unlock item"
+				{
+					myConditions
+					{
+						myConditions
+						{
+							GameConditionPlayerHasItem "Player has Second Passive Unlock Item"
+							{
+								myItem < uid=2AE2EC8567619C31000000DFB04520D5 > = Second_Ship_Charm_Unlock 2AE2EC856756C9990002C00AD4506DEA
+							}
+						}
+					}
+					myLockedReason "branch = \"DLC2\", contextComment = \"Locked reason description for the second ship passive system slot\", enabled = true, guid = #2AE2EC8567619B6C000000D67B7CB7F5, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 12361, text = \"Requires Passive System Extension (TO BE WRITTEN)\", type = \"MenuLine\""
+				}
+			}
+		}
+		EquipmentSlot "Volatile Cargo Upgrade 1"
+		{
+			myGroup ContrabandItem
+			myTag ContrabandItem_1
+			myIsAutoSlotEnabled TRUE
+			myIsDefaultActive TRUE
+		}
+		EquipmentSlot "Volatile Cargo Upgrade 2"
+		{
+			myGroup ContrabandItem
+			myTag ContrabandItem_2
+			myIsAutoSlotEnabled TRUE
+			myIsDefaultActive TRUE
+		}
+		EquipmentSlot "Ionized Cargo Upgrade 1"
+		{
+			myGroup ContrabandItem
+			myTag ContrabandItem_3
+			myIsAutoSlotEnabled TRUE
+			myIsDefaultActive TRUE
+		}
+		EquipmentSlot "Ionized Cargo Upgrade 2"
+		{
+			myGroup ContrabandItem
+			myTag ContrabandItem_4
+			myIsAutoSlotEnabled TRUE
+			myIsDefaultActive TRUE
+		}
+		EquipmentSlot "Timed Cargo Upgrade 1"
+		{
+			myGroup ContrabandItem
+			myTag ContrabandItem_5
+			myIsAutoSlotEnabled TRUE
+			myIsDefaultActive TRUE
+		}
+		EquipmentSlot "Timed Cargo Upgrade 2"
+		{
+			myGroup ContrabandItem
+			myTag ContrabandItem_6
+			myIsAutoSlotEnabled TRUE
+			myIsDefaultActive TRUE
+		}
+	}
+	myGroupList
+	{
+		EquipmentSlotGroup Weapons
+		{
+			myGroup Weapons
+			myUIInfo
+			{
+				myName "aurabesh = false, contextComment = \"Weapons slot group name  in the equipment menu\", enabled = true, guid = #F8252D3C620F9E1A000026042C955988, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 459, text = \"Weapons\", type = \"MenuLine\""
+				myDescription "aurabesh = false, contextComment = \"Weapons slot group description in the equipment menu\", enabled = true, guid = #F8252D3C620F9E1A000026050DD33399, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 459, text = \"Weapons description\", type = \"MenuLine\""
+				myIcon "mySpriteId = -1352828642, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_map_icons_01.spritesheet\""
+			}
+		}
+		EquipmentSlotGroup Skin
+		{
+			myGroup Skin
+			myUIInfo
+			{
+				myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Title for ship body appearence\", enabled = true, guid = #6CACDBEB657318250013BDC3DA88F926, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10724, text = \"Body\", type = \"MenuLine\""
+				myDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"A descriptive text for the ship body.\", enabled = true, guid = #6CACDBEB6573182A0013BDC5AB5FD50D, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10724, text = \"Lorem Ipsum. This is a flavourful description for ship body. Used when no item is equipped for this group. (TODO)\", type = \"MenuLine\""
+				myIcon "mySpriteId = -2019961801, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_generic_04.spritesheet\""
+			}
+		}
+		EquipmentSlotGroup Fuel
+		{
+			myGroup ShipFuel
+			myUIInfo
+			{
+				myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Title for ship fuel appearence\", enabled = true, guid = #6CACDBEB657315CD0013B18783B707CC, lineVersion = 4, maxLength = -1, productId = -1, sectionId = 10724, text = \"Fuel\", type = \"MenuLine\""
+				myDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"A descriptive text for the ship fuel.\", enabled = true, guid = #6CACDBEB657315DB0013B189EF940BB3, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10724, text = \"Lorem Ipsum. This is a flavourful description for ship fuel. Used when no item is equipped for this group. (TODO)\", type = \"MenuLine\""
+				myIcon "mySpriteId = -935314324, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_systems.spritesheet\""
+			}
+		}
+		EquipmentSlotGroup Trinket
+		{
+			myGroup VehicleTrinket
+			myUIInfo
+			{
+				myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Title for ship trinket appearence\", enabled = true, guid = #6CACDBEB6573188F0013BDC663252495, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10724, text = \"Trinket\", type = \"MenuLine\""
+				myDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"A descriptive text for the ship fuel.\", enabled = true, guid = #6CACDBEB657318970013BDC8AFE4DCAF, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10724, text = \"Lorem Ipsum. This is a flavourful description for ship trinket. Used when no item is equipped for this group. (TODO)\", type = \"MenuLine\""
+				myIcon "mySpriteId = 1618422535, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_speeder_upgrades_02.spritesheet\""
+			}
+		}
+		EquipmentSlotGroup ShipCharm
+		{
+			myGroup ShipCharm
+			myUIInfo
+			{
+				myName "branch = \"DLC2\", contextComment = \"Title for ship passive system slot group\", enabled = true, guid = #92D7D0C16790FB9A0005BACA2D520581, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10724, text = \"Passive System\", type = \"MenuLine\""
+				myDescription "branch = \"DLC2\", contextComment = \"Passive systems description text\", enabled = true, guid = #92D7D0C16790FBAC0005C211A620B3A9, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10724, text = \"Passive systems to further enhance the Trailblazer’s abilities.\", type = \"MenuLine\""
+				myIcon "mySpriteId = 364615164, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_systems.spritesheet\""
+			}
+		}
+	}
+	myChainList
+	{
+	}
+}
+

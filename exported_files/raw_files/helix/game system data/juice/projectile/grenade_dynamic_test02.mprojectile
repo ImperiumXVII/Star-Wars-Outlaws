@@ -1,0 +1,39 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/explosion/explosion_generic.mexplosion"
+include "helix/game system data/juice/projectile/realization/small_grenade.mprojectilerealization"
+
+BallisticProjectile grenade_dynamic_test02 < uid=A207755D622B1FF5000027C4D0551AE9 >
+{
+	myObject
+	{
+		myMaterialType Kinetic
+		myMass 2.0
+		myFriction 0.5
+		myAfterFinalImpactLifeTime 0.2
+	}
+	myRealization < uid=A207755D622B1FF5000027C5F85567A3 > = small_grenade 544DB90860915910000000318FCEBFA0
+	myActions
+	{
+		ProjectileActionExplosion "BoomBoom Expired"
+		{
+			myActionTargetType Expired
+			myExplosion < uid=A207755D64A583E10001A601861606F6 > = explosion_generic A207755D64A582C00001A5DA05173953
+		}
+		ProjectileActionGameScript HitDetonation
+		{
+			myActionTargetType FinalHit
+			myGameScript "helix/game scripts/gs_dev_grenade_detonation.mgamescript"
+			myDamageFormula 4
+			myRadiusFormula 5
+			myDefaultDamage 4.0
+			myDefaultRadius 5.0
+		}
+	}
+	myNPCSensoryProjectileType Grenade
+	myInitialSpeed 25.0
+	myAccelerationConstant -0.5
+	myBounceEnabled TRUE
+	myBounceVsDynamicEnabled TRUE
+	myBounceSpeedRestitution 0.35
+}
+

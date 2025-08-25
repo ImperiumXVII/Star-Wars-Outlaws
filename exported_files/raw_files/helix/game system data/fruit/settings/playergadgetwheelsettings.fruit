@@ -1,0 +1,24 @@
+include "helix/game system data/fruit/restriction/playerrestriction.fruit"
+
+//To be kept in sync with HC_PlayerGadgetWheelSettingsConstantData::HC_GadgetWheelEntry
+enum GadgetWheelEntry
+{
+	None
+	HoloReader
+	Binoculars
+	ThermalDetonator
+	SmokeGrenade
+}
+
+class PlayerGadgetWheelSettings < uid=auto >
+{
+	PlayerRestriction* myAppliedRestrictions < tooltip="Prevented actions while in gadget selection mode." >
+	string myTimeScaleCurve < bhv=inputgraph tooltip="The time scale modifier applied over wheel transition progress (between 0 and 1)." >
+	float myWheelTransitionTime 1.0 < min=0 tooltip="The time it takes to make the transition when opening the wheel." >
+	float myComboInputTime 0.3 < min=0 tooltip="The time frame window the player has to quickly select a gadget from the wheel once the open wheel button is pressed." >
+	bool myEnableFastAccessEntry FALSE  < tooltip="Will allow the player to equip selected entry by using the gagdet toggle game action while not holding any." >
+	GadgetWheelEntry myFastAccessEntry ThermalDetonator < tooltip="If Enable Fast Access Entry is active, player will unholster the selected entry when using the gadget toggle game action." >
+	bool myEnableThrowingGrenadeFromWheel TRUE < tooltip="If enabled, the player will be able to press the throw button and trigger an instant grenade throw." >
+	bool myRestrictToQuickThrowTargetsOnly FALSE < hidden=1 tooltip="If enabled, the player will only be able to perform a grenade throw from the wheel if a quick throw target is available." >
+	bool myEnableQuickThrowCombo TRUE < hidden=1 tooltip="If enabled, the player will be able to perform a grenade throw using just the quick combo without having to open the wheel." >
+}

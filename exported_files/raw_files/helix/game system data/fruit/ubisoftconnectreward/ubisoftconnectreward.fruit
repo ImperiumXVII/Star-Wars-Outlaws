@@ -1,0 +1,64 @@
+enum UCRewardRarity 
+{
+	Exotic
+	Common
+	Rare
+	Epic
+	Legendary
+}
+
+enum UCRewardUnlockCondition
+{
+	None
+	GamesPlayedTitleSpecific
+	GamesPlayedInstallmentBrandCount
+	S2SExclusive
+}
+
+enum UCRewardConditionTreeBehavior
+{
+	None
+	Unlockable
+	Discountable
+}
+
+list StringList
+{
+	string
+}
+
+class RewardItem
+{
+	uid myItemId < tooltip="The id of the secondary store item that is granted when purchasing the reward. Can't be null nor empty.">
+	int myCount 1 < tooltip="The quantity of secondary store item that will be granted. Is greater or equal to 1." >
+}
+
+list RewardItemList
+{
+	RewardItem
+}
+
+class UbisoftConnectReward < uid=auto >
+{
+	RewardItemList myItems < tooltip="The secondary store items that are granted when purchasing the reward. Is null or empty if reward has a downloadable asset. Otherwise, can't be null nor empty." >
+	int myUnits < tooltip="Base units quantity debited when the reward is purchased. Can be discounted if conditions are defined. Is greater or equal to 0." >
+	int myPurchaseLimit 1 < tooltip="Purchase max limit. Is greater or equal to 1." >
+	string myVisibilityStartsAt < tooltip="When the reward can start being returned by the Spaces and Profiles endpoints of the Public, Delegation and S2S APIs. If null, is never visible. (‘yyyy-mm-ddTHH:mm:ssZ’ format)" >
+	string myExclusivityStartsAt < tooltip="[WIP] When the rewards stops being returned by the Spaces endpoint of the Public, Delegation and S2S APIs, unless it is explicitly requested by its id. If null or empty, is never exclusive. (‘yyyy-mm-ddTHH:mm:ssZ’ format)" >
+	varmap myDisplayName < tooltip="The reward display name. Can't be null nor empty." bhv="localization" >
+	varmap myDisplayDescription < tooltip="The reward display description. Can't be null nor empty." bhv="localization" >
+	varmap myDisplayLockedStatusDescription < tooltip="The reward locked status description. Is only defined (but not mandatory, in that case null) if reward has unlock condition. Otherwise it is null." bhv="localization" >
+	varmap myDisplayUnlockedStatusDescription < tooltip="The reward unlocked status description. Is only defined (but not mandatory, in that case null) if reward has unlock condition. Otherwise it is null." bhv="localization" >
+	varmap myDisplayPurchasedStatusDescription < tooltip="The reward purchased status description localized. Can't be null nor empty." bhv="localization" >
+	file myRewardImage < tooltip="Can't be null nor empty." >
+	UCRewardRarity myRarity < tooltip="Can't be null nor empty." >
+	string myDownloadAssetId < tooltip="The reward download asset id. Is null if reward is not downloadable." >
+	UCRewardUnlockCondition myUnlockCondition < tooltip="The type of condition required to unlock or purchase the reward. Can't be null nor empty." >
+	StringList myGamesPlayedTitleSpecificConfigGameSpaceIds < tooltip="Configuration for a reward of type 'GamesPlayedTitleSpecific'. Array of game space id for which one of them need to be played to unlock the reward. Is null if type is not 'GamesPlayedTitleSpecific'." >
+	string myGamesPlayedInstallmentBrandListSpaceId < tooltip="Specifies a installment or brand space for which a number of games need to be played to unlock the reward." >
+	int myGamesPlayedInstallmentBrandListCount < tooltip="Number of games that need to be played to unlock the reward. Is greater or equal to 1." >
+	int myS2SExclusiveConfigExclusiveDays < tooltip="Configuration for a reward of type 'S2SExclusive'. The reward is locked and can only be granted from S2S. The reward is exclusive for X days following game's release date. After, it is unlocked to all players and purchasable for X units. Is null if type is not 'S2SExclusive'." >
+	UCRewardConditionTreeBehavior myConditionTreeBehavior < tooltip="The behavior after completing the condition tree. Possible values are 'Unlockable', 'Discountable'. If 'Unlockable', reward is unlocked with optionally a discount. If 'Discountable' discount is applied without having the reward locked." >
+	string myConditionTreeId < tooltip="Id of the condition tree. Can't be associated to another reward." >
+	int myLastRevision 1 < tooltip="The last revision of the reward." >
+}

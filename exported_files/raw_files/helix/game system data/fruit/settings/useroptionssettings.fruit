@@ -1,0 +1,784 @@
+include "snowdrop/modules/core/platforms.fruit"
+
+enum OptionEnum < useCategories=1 >
+{
+	//=================================================
+	// * Audio
+	//=================================================
+
+	< startCategory="Audio/Voice Chat" >
+	Audio_Voicechat_MicrophoneVolume
+	Audio_Voicechat_PushToTalk
+	Audio_Voicechat_SpeakerVolume
+	Audio_Voicechat_TextToSpeech
+	Audio_Voicechat_SpeechToText
+	Audio_Textchat_TextToSpeech
+	Audio_Textchat_SpeechToText
+	Audio_Textchat_NotificationsVolume
+	Audio_Voicechat_EnableVoIP
+
+	< startCategory="Audio/Cinematic description" >
+	Audio_CinematicDescription_Enable
+	Audio_CinematicDescription_Volume
+
+	< startCategory="Audio" >
+	Audio_Channels
+	Audio_CinematicsVolume
+	Audio_ControllerVolume
+	Audio_EnableInPhotoMode
+	Audio_FocusMode
+	Audio_HitSFXVolume
+	Audio_MasterVolume
+	Audio_Mix
+	Audio_MusicFrequency
+	Audio_MusicVolume
+	Audio_MuteWhenNotInFocus
+	Audio_Range
+	Audio_SFXVolume
+	Audio_SFXVolume_Gameplay
+	Audio_SFXVolume_Background
+	Audio_VoiceVolume
+	Audio_ControllerSpeaker
+
+	//=================================================
+	// * Controls
+	//=================================================
+
+	< startCategory="Controls/Gamepad" >
+	Controls_GamepadDeadzone
+	Controls_GamepadDeadzone_LeftInner
+	Controls_GamepadDeadzone_RightInner
+	Controls_GamepadDeadzone_LeftOuter
+	Controls_GamepadDeadzone_RightOuter
+	Controls_GamepadRumble
+	Controls_Gamepad_AdaptiveTriggers_Intensity
+	Controls_Gamepad_MotionAim
+	Controls_Gamepad_MotionAim_InvertVertical
+	Controls_Gamepad_MotionAim_Sensitivity
+	Controls_Gamepad_MotionAim_SmoothingStrength
+	Controls_Gamepad_MotionAim_RollHorizontal
+	Controls_Gamepad_MotionAim_HorizontalBoost
+	Controls_Gamepad_MotionAim_AimingType
+	Controls_Gamepad_SwapWhistleCallSpeeder
+	Controls_Gamepad_SwapPingObjectiveNixSense
+
+	< startCategory="Controls/Vibration" >
+	Controls_Vibration_Intensity
+	Controls_Vibration_IntensityWeapons
+	Controls_Vibration_IntensityMelee
+	Controls_Vibration_IntensityTraversal
+	Controls_Vibration_IntensityNix
+	Controls_Vibration_IntensitySpeeder
+	Controls_Vibration_IntensityAbilitiesEquipment
+	Controls_Vibration_IntensityWorldElements
+	Controls_Vibration_IntensityTrailblazer
+	Controls_Vibration_IntensityDamageDeath
+	Controls_Vibration_IntensityMinigames
+	Controls_Vibration_IntensityEnvironment
+	Controls_Vibration_IntensityMenus
+	Controls_Vibration_IntensityNarrative
+
+	< startCategory="Controls/Mouse" >
+	Controls_MouseSensitivity
+	Controls_MouseSensitivity_Speeder
+	Controls_MouseSensitivity_Trailblazer
+	Controls_MouseSmoothingStrength
+	Controls_UseMouseAcceleration
+
+	< startCategory="Controls" >
+	Controls_AimAssist
+	Controls_AimAssist_Switch
+	Controls_AimSensitivity
+	Controls_HipfireSensitivity
+	Controls_AutoLookCenter_Horizon
+	Controls_AutoLookCenter_Heading
+	Controls_InvertCameraX
+	Controls_InvertCameraY
+	Controls_InvertSpeederCameraX
+	Controls_InvertSpeederCameraY
+	Controls_InvertVehicleX
+	Controls_InvertVehicleY
+	Controls_InvertSpeederX
+	Controls_InvertSpeederY
+	Controls_InvertSpeederCameraX
+	Controls_InvertSpeederCameraY
+	Controls_InvertPhotoModeCameraX
+	Controls_InvertPhotoModeCameraY
+	Controls_LookSensitivity
+	Controls_SpaceshipSensitivity
+	Controls_SpeederSensitivity
+	Controls_SpeederCameraCentering
+	Controls_UseToggleForSprint
+	Controls_Spaceship_PursuitMode
+	Controls_Spaceship_AimAssist
+	Controls_Spaceship_PursuitMode_AimAssist
+	Controls_Spaceship_SpeedBoostMode
+	Controls_Spaceship_ShootingMode
+
+	//=================================================
+	// * Difficulty
+	//=================================================
+
+	< startCategory="Difficulty/Awareness" >
+	Difficulty_FootstepVisualization
+	Difficulty_PetPulseTimer
+	Difficulty_PetPulseTimerLength
+	Difficulty_PlayerCompass
+	Difficulty_StateIcons
+	Difficulty_ThreatSense
+
+	< startCategory="Difficulty/Drop frequency" >
+	Difficulty_DropBactaVial
+	Difficulty_DropWeapon
+
+	< startCategory="Difficulty/Enemy" >
+	Difficulty_DamageBurstProtection
+	Difficulty_DamageGraceTime
+	Difficulty_EnemyAggression
+	Difficulty_EnemyAwareness
+	Difficulty_EnemyHealth
+	Difficulty_EnemyMeleeResistance
+	Difficulty_EnemyDifficulty
+
+	< startCategory="Difficulty" >
+	Difficulty_Wanted
+	Difficulty_LootReward
+	Difficulty_PlayerHealth
+	Difficulty_AdrenalineRush
+	
+	< startCategory="Difficulty/Minigames" >
+	Difficulty_TimedInputs
+	Difficulty_Minigames
+	Difficulty_AlienStreetFood
+
+	//=================================================
+	// * User Choice
+	//=================================================
+
+	< startCategory="User Choice/Movement" >
+	UserChoice_AlwaysSprint
+	UserChoice_FallProtection
+
+	< startCategory="User Choice/Combat" >
+	UserChoice_ReloadAutoPerfect
+	UserChoice_PursuitModeAutoThrottle
+
+	< startCategory="User Choice/Visuals" >
+	UserChoice_AdditionalAimFOV
+	UserChoice_AdditionalFOV
+	UserChoice_ScreenshakeIntensity
+	UserChoice_BinocularsEffect
+	
+	< startCategory="User Choice/Minigame/Input Challenge" >
+	UserChoice_InputChallengeDifficulty
+	UserChoice_PetPrompt
+	UserChoice_StreetFood
+	UserChoice_SabaccCheat
+
+	< startCategory="User Choice/Minigame/Lockpicking" >
+	UserChoice_Lockpicking_Difficulty
+	UserChoice_Lockpicking_Enable
+	UserChoice_Lockpicking_VisualHelp
+
+	< startCategory="User Choice/Minigame/Sabacc" >
+	UserChoice_Sabacc_DisplayCardValue
+	UserChoice_Sabacc_CardValueFont
+	UserChoice_Sabacc_HelperLog
+	UserChoice_Sabacc_FastMode
+
+	< startCategory="User Choice/Minigame/Slicing" >
+	UserChoice_Slicing_Attempts
+	UserChoice_Slicing_Enable
+	UserChoice_Slicing_NumberedButtons
+
+	< startCategory="User Choice" >
+	UserChoice_EnemyDifficulty
+	UserChoice_CollisionDamagePrevention
+	UserChoice_IonStunEffectPrevention
+	UserChoice_HoldsToPress
+	UserChoice_AlienStreetFood
+	UserChoice_FastTalk
+	UserChoice_FastTalk_Enable
+	UserChoice_PetModeToggle
+	UserChoice_SpaceshipHorizonAutoAlign
+	UserChoice_SpeederMouseSteering
+	UserChoice_MSIMysticLight
+	UserChoice_OutOfFocusPause
+	UserChoice_PuristMode
+	UserChoice_OutOfFocusPause
+	UserChoice_AccessibilityShortcut
+	UserChoice_AccessibilityShortcut_PS5
+	UserChoice_AdrenalineRush_Window
+	UserChoice_AutoVault
+	UserChoice_AutoTransfer
+	UserChoice_EquipmentPouchToggle
+
+	//=================================================
+	// * User Interface
+	//=================================================
+
+	< startCategory="UI/Accessibility" >
+	UI_BackgroundContrast
+	UI_HUDBackground
+	UI_HUDBackground_Color
+	UI_TextCapitalizationDecoration
+	UI_WorldHighlighting
+	UI_StencilColorWorld
+	UI_StencilColorAlly
+	UI_StencilColorHostile_Aware
+	UI_StencilColorHostile_Unaware
+	UI_StencilColorInteractible
+	UI_StencilColorClimbable
+	UI_StencilColorAlly_Opacity
+	UI_StencilColorHostile_Aware_Opacity
+	UI_StencilColorHostile_Unaware_Opacity
+	UI_StencilColorInteractible_Opacity
+	UI_StencilColorClimbable_Opacity
+	UI_OutlineColorAlly
+	UI_OutlineColorHostile_Aware
+	UI_OutlineColorHostile_Unaware
+	UI_OutlineColorInteractable
+	UI_OutlineColorClimbable
+	UI_OutlineColorAlly_Opacity
+	UI_OutlineColorHostile_Aware_Opacity
+	UI_OutlineColorHostile_Unaware_Opacity
+	UI_OutlineColorInteractable_Opacity
+	UI_OutlineColorClimbable_Opacity
+	UI_TextSize
+	UI_DyslexiaMode
+	UI_HUDIconSize
+	UI_NixQuickActions
+	UI_NixQuickActionsButton
+
+	< startCategory="UI/Accessibility/Menu Narration" >
+	UI_MenuNarration
+	UI_MenuNarration_ReadOverview
+	UI_MenuNarration_ReadHighlight
+	UI_MenuNarration_Volume
+	UI_MenuNarration_Voice
+	UI_MenuNarration_Speed
+	UI_MenuNarration_ReadHUD
+	UI_MenuNarration_ReadHUD_Location
+	UI_MenuNarration_ReadHUD_Health
+	UI_MenuNarration_ReadHUD_Weapon
+	UI_MenuNarration_VOInterrupt
+
+	< startCategory="UI/Colors" >
+	UIColor_Preset
+	UIColor_UseHighContrast
+
+	< startCategory="UI/Subtitles" >
+	Subtitles_Color_CaptionBackground
+	Subtitles_Color_CaptionText
+	Subtitles_Color_EssentialBackground
+	Subtitles_Color_EssentialDialogue
+	Subtitles_Color_EssentialSpeaker
+	Subtitles_Color_OverheardBackground
+	Subtitles_Color_OverheardDialogue
+	Subtitles_Color_OverheardSpeaker
+	Subtitles_DisplayCaptions
+	Subtitles_DisplayDirection
+	Subtitles_DisplayEssential
+	Subtitles_DisplayOverheard
+	Subtitles_Scale
+	Subtitles_OffScreenSpeaker
+	Subtitles_BoldFont
+
+	< startCategory="UI" >
+	UI_AspectRatio
+	UI_CenterScreenDot
+	UI_CenterScreenDotScale
+	UI_DistanceUnits
+	UI_FontScale
+	UI_HudVisibility
+	UI_TutorialLevel
+	UI_MapRotation
+	UI_Map_HideCompleted
+	UI_AlwaysShowHUDStatus
+	UI_Backdrop
+	UI_ChromaticAberration
+	UI_Markers
+	UI_CameraDetection
+	UI_CrosshairVisibility
+	UI_HitFeedback
+
+	//=================================================
+	// * Video and Graphics
+	//=================================================
+
+	< startCategory="Video/Video Adapter" >
+	Video_ForceAspectRatio
+	Video_FrameGeneration
+	Video_FramerateLimiter
+	Video_FramerateTarget
+	Video_HDRMode
+	Video_HDRPeak
+	Video_HDRUIPeak
+	Video_Monitor
+	Video_NvReflex
+	Video_OutOfFocusSleep
+	Video_OverallFidelity
+	Video_RefreshRate
+	Video_Resolution
+	Video_UpscalerType
+	Video_UpscalerQuality
+	Video_UpscalerMode
+	Video_VerticalSync
+	Video_WindowMode
+	Video_RTXDirectLighting
+
+	< startCategory="Video/Advanced Options" >
+	Video_Advanced_Brightness
+	Video_Advanced_BVHQuality
+	Video_Advanced_CameraMotionBlurIntensity
+	Video_Advanced_CinematicsFramerate
+	Video_Advanced_CharacterDetail
+	Video_Advanced_DeformableTerrain
+	Video_Advanced_DepthOfField
+	Video_Advanced_DestructionQuality
+	Video_Advanced_DistantShadows
+	Video_Advanced_DitherFade
+	Video_Advanced_EnvironmentReflectionQuality
+	Video_Advanced_ExtraStreamingDistance
+	Video_Advanced_FilmGrain
+	Video_Advanced_FogBlur
+	Video_Advanced_LensCinematicEffects
+	Video_Advanced_MicrodetailQuality
+	Video_Advanced_MotionBlur
+	Video_Advanced_MotionBlurIntensity
+	Video_Advanced_Nebula
+	Video_Advanced_ObjectDetail
+	Video_Advanced_ObjectMotionBlurIntensity
+	Video_Advanced_ParticleQuality
+	Video_Advanced_RayReconstruction
+	Video_Advanced_RaytracedDirectLighting
+	Video_Advanced_ScatterDensity
+	Video_Advanced_ShadowProxies
+	Video_Advanced_ShadowQuality
+	Video_Advanced_SpaceDust
+	Video_Advanced_SpotlightProjectionResolution
+	Video_Advanced_SpotlightShadows
+	Video_Advanced_SpotlightShadowQuality
+	Video_Advanced_TerrainTesselation
+	Video_Advanced_VolumetricClouds
+	Video_Advanced_VolumetricFog
+	Video_Advanced_RaytracedDiffuseReflections
+	Video_Advanced_RaytracedSpecularReflections
+	Video_Advanced_RaytracedDiffuseReflectionsResolution
+	Video_Advanced_RaytracedSpecularReflectionsResolution
+	Video_Advanced_RaytracedContactShadows
+	Video_Advanced_CinematicLens
+	Video_Advanced_ChromaticAberration
+	Video_Advanced_DLSS3
+	Video_Advanced_FrameGeneration_Switch
+	
+	< startCategory="Video" >
+
+	//=================================================
+	// * Language
+	//=================================================
+
+	< startCategory="Language" >
+	Language_Menu
+	Language_Voice
+	
+	//=================================================
+	// * Network
+	//=================================================
+	
+	< startCategory="Network" >
+	Network_MatchmakingRegion
+}
+
+list OptionEnumList
+{
+	OptionEnum
+}
+
+enum PresetSelectorEnum
+{
+	Main_Cognitive
+	Main_Hearing
+	Main_Speech
+	Main_Vision
+	
+	Gameplay_ExamplePresetOne
+	Gameplay_ExamplePresetTwo
+	Gameplay_ExamplePresetThree
+
+	Subtitles_ColorPreset
+
+	Difficulty
+
+	Gameplay_GameplayExperience
+	Gameplay_HUD
+	Gameplay_Language
+	Visual_ColorblindPreset
+	Visual_TextSize
+	Audio_AudioDescription
+	Cognitive_MenuNarration
+	Cognitive_WorldHighlighting
+	Controls_KayCameraControls
+	Controls_SpeederCameraControls
+	Controls_SpaceshipCameraControls
+	Controls_CameraAssists
+	Graphics_GraphicsQuality
+	Accessibility_Vision
+	Accessibility_Motor
+	Accessibility_Cognitive
+	Accessibility_Hearing
+	Accessibility_Camera
+	Accessibility_Colors
+}
+
+//=========================================================
+// * User Option Controls
+//=========================================================
+class UserOptionControl < abstract=1 >
+{
+	OptionEnum myUserOption
+	varmap myUserOptionName < bhv = "localization" >
+	varmap myDescription < bhv = "localization" >
+	string myAbbreviation < tooltip = "A 4 letter abbreviation used for storing on cloud" >
+	bool myNeedsConfirmApply false
+	PlatformList myExclusiveToPlatforms
+	bool myExcludeOnLockhart false < tooltip = "If true, don't display this on Xbox Series S (Lockhart)" >
+}
+
+class BoolControl : UserOptionControl
+{
+	bool myDefaultValue false
+}
+
+class IntegerControl : UserOptionControl
+{
+	int myStepNumber 1
+	vec2i myMinMax 0;10
+	int myDefaultValue 5
+}
+
+list StringList
+{
+	varmap < bhv = "localization" >
+}
+
+class StringControl : UserOptionControl
+{
+	StringList myStrings
+	int myDefaultIndex 0
+	bool myShouldWrap true
+	bool myIsLastOptionMaxOnly false < tooltip = "If true, the last setting value will only be available if game is launched with -unlockmaxsettings." >
+}
+
+list HexColorList
+{
+	color
+}
+
+list PresetColorList
+{
+	uid < bhv = "color" >
+}
+
+class ColorControl : UserOptionControl
+{
+	uid myColor < bhv = "color" tooltip = "The preset color that should be overridable" >
+	bool myAllowOpacityChange < tooltip = "Allow user to change the opacity of the preset color" >
+	HexColorList myPredefinedHexColors < tooltip = "List of pre-defined colors to select from, keep empty to enable full color picker" >
+	PresetColorList myPredefinedPresetColors < tooltip = "List of pre-defined colors to select from, keep empty to enable full color picker" >
+}
+
+class UserOptionsColorPresetConfig
+{
+	uid myUID
+	uid myHighContrastUID
+	varmap myUIName < bhv = "localization" >
+}
+
+//=========================================================
+// * User Options Lists
+//=========================================================
+list BoolSettingsList
+{
+	BoolControl
+}
+
+list IntegerSettingsList
+{
+	IntegerControl
+}
+
+list StringSettingsList
+{
+	StringControl
+}
+
+list ColorSettingsList
+{
+	ColorControl
+}
+
+list UserOptionsColorPresetConfigList
+{
+	UserOptionsColorPresetConfig
+}
+
+//=========================================================
+// * User Options Menu Category Configurations
+//=========================================================
+class CategoryEntry < abstract=1 >
+{
+	PlatformList myExclusiveToPlatforms
+	bool myExcludeOnLockhart false < tooltip = "If true, don't display this on Xbox Series S (Lockhart)" >
+	bool myIsIndented
+}
+
+class CategoryEntryButton : CategoryEntry
+{
+	string myButtonIdentifier < tooltip = "Name of the button to check for in the UI Graph." >
+	varmap myButtonName < bhv = "localization" >
+}
+
+class CategoryEntryHeader : CategoryEntry
+{
+	varmap myHeaderTitle < bhv = "localization" >
+}
+
+class CategoryEntryOption : CategoryEntry
+{
+	OptionEnum myOption
+}
+
+class CategoryEntryPresetSelector : CategoryEntry
+{
+	PresetSelectorEnum myPresetSelector
+}
+
+class CategoryEntrySeparator : CategoryEntry
+{
+
+}
+
+class CategoryEntrySubpage : CategoryEntry
+{
+	string myCategoryDestination
+}
+
+list CategoryEntries
+{
+	CategoryEntryButton
+	CategoryEntryHeader
+	CategoryEntryOption
+	CategoryEntrySeparator
+	CategoryEntrySubpage
+	CategoryEntryPresetSelector
+}
+
+class OptionCategory
+{
+	varmap myCategoryName < bhv = "localization" >
+	bool myIsGrid false
+	string myIcon < bhv=sprite >
+	CategoryEntries myCategoryEntries
+}
+
+list OptionCategoryList
+{
+	OptionCategory
+}
+
+//=========================================================
+// * User Options Menu Preset Selector
+//=========================================================
+
+list UserOptionPresetSelectorEntries
+{
+	CategoryEntryOption
+	CategoryEntryHeader
+	CategoryEntrySeparator
+	CategoryEntryPresetSelector
+}
+
+class PresetValue < abstract = 1 >
+{
+	OptionEnum myOption
+}
+
+class PresetValueBoolean : PresetValue
+{
+	bool myValue
+}
+
+class PresetValueInteger : PresetValue
+{
+	int myValue
+}
+
+class PresetValueColor : PresetValue
+{
+	color myValue
+}
+
+class PresetValuePreset
+{
+	PresetSelectorEnum myPreset
+	int myPresetLevelIndex
+}
+
+list PresetLevelValues
+{
+	PresetValueBoolean
+	PresetValueInteger
+	PresetValueColor
+	PresetValuePreset
+}
+
+class PresetLevel
+{
+	varmap myName < bhv = "localization" >
+	PresetLevelValues myValues
+}
+
+list PresetLevels
+{
+	PresetLevel
+}
+
+class UserOptionPresetSelector
+{
+	PresetSelectorEnum myPresetSelector
+	varmap myName < bhv = "localization" >
+	varmap myDescription < bhv = "localization" >
+
+	UserOptionPresetSelectorEntries myLayout
+	PresetLevels myLevels
+}
+
+list UserOptionPresetSelectors
+{
+	UserOptionPresetSelector
+}
+
+//=========================================================
+// * User Options Menu Examples
+//=========================================================
+class UserOptionExample < abstract=1 >
+{
+	OptionEnumList myOptions
+}
+
+class UserOptionExampleGraph : UserOptionExample
+{
+	file myGraph < bhv=asset assettype="GUI" >
+}
+
+list UserOptionExampleHeaderList
+{
+	varmap < bhv = "localization" >
+}
+
+list UserOptionExampleTextureList
+{
+	file < bhv=asset assettype="texture" >
+}
+
+class UserOptionExampleTextures : UserOptionExample
+{
+	UserOptionExampleTextureList myTextures
+	UserOptionExampleHeaderList myHeaders
+}
+
+list UserOptionExampleVideoList
+{
+	file < bhv=asset assettype="bink" >
+}
+
+class UserOptionExampleVideos : UserOptionExample
+{
+	UserOptionExampleVideoList myVideos
+	UserOptionExampleHeaderList myHeaders
+}
+
+list UserOptionExamples
+{
+	UserOptionExampleGraph
+	UserOptionExampleTextures
+	UserOptionExampleVideos
+}
+
+class UserOptionsGraphicsPreset
+{
+	string myPresetName
+	varmap myUserFacingName < bhv = "localization" >
+
+	bool my40hzMonitorDependent false < tooltip = "If true, signals this preset is only available on 40hz monitors. " >
+	bool myNeedsRestartFromEarlier false < tooltip = "If true, signals that any change from a preset earlier(higher up) in the list will require a restart to apply fully." >
+	bool myNeedsRestartFromLater false < tooltip = "If true, signals that any change from a preset later(lower down) in the list will require a restart to apply fully." >
+	bool myIsMaxPreset false < tooltip = "If true, preset will only be available if the process runs with -unlockmaxsettings." >
+}
+
+list UserOptionsGraphicsPresets
+{
+	UserOptionsGraphicsPreset
+}
+
+class UserOptionsGraphicsPresetsPerPlatform
+{
+	UserOptionsGraphicsPresets myPCPresets
+	UserOptionsGraphicsPresets myXBXPresets
+	UserOptionsGraphicsPresets myXBSPresets
+	UserOptionsGraphicsPresets myPS5Presets
+	UserOptionsGraphicsPresets myPS5ProPresets
+}
+
+//=========================================================
+// * User Options Menu Hardcoded Strings
+//=========================================================
+class UserOptionsMenuHardcodedStrings
+{
+	varmap myDisplayNameFormat < bhv = "localization" >
+	varmap myDisplayNameFormatPrimary < bhv = "localization" >
+
+	varmap myCustomGraphicsPreset < bhv = "localization" >
+
+	varmap myWindowModeWindowed < bhv = "localization" >
+	varmap myWindowModeBorderless < bhv = "localization" >
+	varmap myWindowModeFullscreen < bhv = "localization" >
+
+	varmap myUpscalerTAAName < bhv = "localization" >
+	varmap myUpscalerFSR3Name < bhv = "localization" >
+	varmap myUpscalerXeSSName < bhv = "localization" >
+	varmap myUpscalerDLSSName < bhv = "localization" >
+	varmap myUpscalerPSSRName < bhv = "localization" >
+
+	varmap myMonitorNameFormat < bhv = "localization" >
+	varmap myMonitorNameFormatPrimary < bhv = "localization" >
+}
+
+//=========================================================
+// * User Options Root Types
+//=========================================================
+class UserOptionsMenuConfig
+{
+	OptionCategoryList myCategories
+	UserOptionExamples myExamples
+	UserOptionsColorPresetConfigList myColorPresets
+	UserOptionsMenuHardcodedStrings myHardcodedStrings
+}
+
+class UserOptionsSettings < uid=auto >
+{
+	BoolSettingsList myBoolOptions
+	IntegerSettingsList myIntegerOptions
+	StringSettingsList myStringOptions
+	ColorSettingsList myColorOptions
+
+	UserOptionPresetSelectors myPresets
+
+	UserOptionsGraphicsPresetsPerPlatform myGraphicsPresetsPerPlatform
+
+	UserOptionsMenuConfig myOptionsMenuConfig
+
+	uid myNavigationColor < bhv="color" tooltip="Default preset color for in-world navigation hints." >
+	uid myPuristNavigationColor < bhv="color" tooltip="Preset color for overriding the in-world navigation hints in Purist Mode." >
+}

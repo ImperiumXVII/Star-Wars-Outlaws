@@ -1,0 +1,23 @@
+include "helix/game system data/fruit/ai/roadsettings.fruit"
+
+class NPCPathwayTypeScoreMultiplier
+{
+	NPCPathType myPathType	
+	float myScoreMultiplier 1.0
+}
+
+list NPCPathwayTypeScoreMultipliers
+{
+	NPCPathwayTypeScoreMultiplier
+}
+
+list NPCPathTypeList
+{
+	NPCPathType
+}
+
+class NPCPathwayTraversalCapabilityProfile < uid=auto >
+{
+	NPCPathwayTypeScoreMultipliers myPathwayTypeScoreMultipliers
+	NPCPathTypeList myAllowedNPCPathTypes < tooltip="If empty, all npc path types are considered valid. Otherwise the npc will only be able to use the npc path types specified" >
+}

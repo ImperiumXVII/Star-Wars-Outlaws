@@ -1,0 +1,43 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/pir_lothalian_attached_npc_set.mnpconnpcattachmentset"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/loottable/loot_global.mloottable"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npc/pir_shp_base.mnpc"
+
+NPC pir_shp_pirate_03_dq10 < uid=ADBA7BC36669A6240005EC6F4FC8F320 > : pir_shp_base
+{
+	myName "aurabesh = false, branch = \"DLC1\", contextComment = \"Manta/ Lothalian - Pirate faction\", enabled = true, guid = #ADBA7BC36669A6240005EC6E792DAB92, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10726, text = \"SRX-T Manta\", type = \"MenuLine\""
+	myCharacterVisuals < uid=ADBA7BC36669A6240005EC70A245F0E5 > = character_visuals_npc_shp_Lothalian_Corvette F95CD8F362ECDC030000E9D3A03BC13F
+	myNPCComponentSetType Spaceship
+	mySpaceshipType LothalianPirate
+	myMaxHealth 1200
+	myHealthFormula 400*SpaceHealthWarshipDifficultyModifier
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=ADBA7BC36669A6240005EC71DF007D13 > = Agent_Archetype_Pilot 3A12912163EF7B9500005053123CF383
+		RBTagsTag "New RBTagsTag (0)" < uid=ADBA7BC36669A6240005EC72CB652C5A > = Agent_Faction_PiratesTag 16DEADE6620AE18B000020CFC3D6D96A
+		RBTagsTag "New RBTagsTag (1)" < uid=ADBA7BC36669A6240005EC73C33C97E5 > = Agent_ShipType_CruiserTag 3A12912164DCDD0A00011358B889F2D0
+	}
+	myLodType Spaceship_Cruiser
+	myVisionProfile < uid=ADBA7BC36669A6240005EC744E7395BF > = visionProfile_pir_ship_Warship 6B0E1DE964B7A45D0000AD5C72D380B6
+	myHearingProfile < uid=ADBA7BC36669A6240005EC7592479187 > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=ADBA7BC36669A6240005EC7670A27869 > = detectionProfile_pir_ship_Warship 6B0E1DE964B663A40003C7240FEF1E7E
+	}
+	myThreatProfile < uid=ADBA7BC36669A6240005EC7757064A27 > = warshipnpcthreatprofiles F95CD8F3653F5C6800009CA56C0B9313
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "Lothalian weapon loadout" < uid=ADBA7BC36669A6240005EC78850AF315 > = weaponloadout_pir_shp_lothalian 7EE64634651BF75D000146953918EA21
+	}
+	myAttachedNPCsSet < uid=ADBA7BC36669A6240005EC792B6F819A > = pir_lothalian_attached_npc_set 6EA79625650AE130000115959C403301
+	myLootTable < uid=ADBA7BC36669A6240005EC7A486DD5AE > = loot_OnKillShip_Cruiser 2AE2EC85654CB4920001094584D7F698
+	myAudioParameters
+	{
+	}
+	myCombatRole Warship
+}
+

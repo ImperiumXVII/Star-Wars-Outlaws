@@ -1,0 +1,639 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/rbtags/quest.mrbtagstags"
+include "helix/game system data/juice/reward/quest_completion_reward.mreward"
+
+Quest A_MQ_220_StarDestroyer < uid=619CD8EA63DB726500025CCFAF315A60 >
+{
+	myName "aurabesh = false, contextComment = \"Quest title\", enabled = true, guid = #619CD8EA63DB726500025CBE1618F00C, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9162, text = \"Star Destroyer\", type = \"MenuLine\""
+	myIntroDescription "aurabesh = false, contextComment = \"Quest intro description\", enabled = true, guid = #93D30865650DBF690001AD7E883E5490, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9162, text = \"Description placeholder\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"Quest description\", enabled = true, guid = #619CD8EA63DBC731000000BFD0837664, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 9162, text = \"Description placeholder\", type = \"MenuLine\""
+	myImage helix/baked/ui/loose_images/quest_bilboard/journal_billboard_mq_220.dds
+	myToastUIDisplayMode None
+	myCompletionReward < uid=2AE2EC8566ED3B5B00161E541341158C > = A_MQ_220_questcomplete_reward 2AE2EC85644A93860000B2DA782DFCC7
+	myIntroBeat < uid=E809214364C11CDF0002CA97E341CCF9 >
+	{
+		myScript helix/scripts/scr_mq_220_aki_spc_b00_intro.mscript
+		myName "aurabesh = false, contextComment = \"Beat text\", enabled = true, guid = #E809214364C11A3C00029F985565F9F6, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9523, text = \"Exit trailblazer\", type = \"MenuLine\""
+		myLevelInfo B5AFC8E4642A9B1E00000489CA5115F1
+		myMood Focused
+		myQuestBeatStateGameValue < uid=E809214364C11CDF0002CA98E2A714AA >
+		{
+		}
+		myQuestBeatAudioState
+		{
+			myGuid 4D8DC97B2F2B33E04EC426D6E13291A2
+		}
+	}
+	myBeats
+	{
+		QuestBeat "Beat 01 Infiltrate Star Destroyer" < uid=619CD8EA63DB726500025CD090E86FE0 >
+		{
+			myScript helix/scripts/scr_mq_220_aki_spc_b01_boarding.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"Beat text\", enabled = true, guid = #619CD8EA63DB726500025CBF49973E0E, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9524, text = \"Infiltrate the Revelator\", type = \"MenuLine\""
+			myLevelInfo B5AFC8E4642A9B1E00000489CA5115F1
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom "Obj 01 Infiltrate Revelator" < uid=93D30865655F155200036CBB2CDA3904 >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Quest objective text\", enabled = true, guid = #93D30865655F155200036CBC793FFC4A, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9524, text = \"Find ND-5 on the ship\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myQuestObjectiveAudioState
+					{
+						myGuid 460F438B288B1520C6603DE400503CA6
+					}
+					myChildObjectives
+					{
+						QuestObjectiveFollow "Stay close to Gedeek" < uid=93D30865655F157400036CBD09C45089 >
+						{
+							myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Quest objective text\", enabled = true, guid = #93D30865657AE803000F851D1CBF572A, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 9524, text = \"Escort Gedeek\", type = \"MenuLine\""
+							myIsHiddenInTracker FALSE
+							myIsHiddenInHUD FALSE
+						}
+						QuestObjectiveCustom "Close the door" < uid=93D30865655F159300036CD7BF506B36 >
+						{
+							myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD FALSE
+						}
+					}
+				}
+				QuestObjectiveKillFireteam "Obj 02 Secure control room" < uid=93D3086565AE8105000A3DE5B21BA53B >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Quest objective text\", enabled = true, guid = #93D3086565AE8105000A3DE66EC34944, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9524, text = \"Secure the control room\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 464118A2697B7BB032AD3DF4C3E54A92
+					}
+				}
+				QuestObjectiveCustom "[NONVISIBLE] Marker on the Control Room during LookAt" < uid=93D3086566265E2E000252D7E3BFBE0E >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+			}
+			myScriptInputs
+			{
+			}
+			myQuestBeatStateGameValue < uid=619CD8EA63DB726500025CD2A210229B >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4D8DC97B2F2B33E04EC426D6E13291A2
+			}
+		}
+		QuestBeat "Beat 02A Control Room" < uid=93D30865650B02E90001DCC4368EDB60 >
+		{
+			myScript helix/scripts/scr_mq_220_aki_spc_b02a_controlroom.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"Beat text\", enabled = true, guid = #93D30865650B02FA0001DCC6C8BBD197, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9525, text = \"Control room\", type = \"MenuLine\""
+			myLevelInfo B5AFC8E4642A9B1E00000489CA5115F1
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom [DEPRECATED] < uid=93D30865658011E70004F99318090368 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				}
+				QuestObjectiveFollow "Obj 02 Join the escort" < uid=93D30865650B08330001ED137004FC4F >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"Quest objective text\", enabled = true, guid = #93D30865650B08430001ED1464A2D5E6, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9525, text = \"Join Sliro's stormtrooper escort\", type = \"MenuLine\"}"
+					myQuestObjectiveAudioState
+					{
+						myGuid 4A88F37DAB6C6D4497676D120698FC9B
+					}
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputAgent Gedeek_NPC < uid=93D30865650B13CB0001F2A6C85B0501 >
+				{
+				}
+			}
+			myQuestBeatStateGameValue < uid=93D30865650B03200001DCC82D405119 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 46DA0A3C29722C5550B36E880073FDB1
+			}
+		}
+		QuestBeat "Beat 02B Find ND-5" < uid=619CD8EA63DB726500025CD387D78EE3 >
+		{
+			myScript helix/scripts/scr_mq_220_aki_spc_b02_findnd5.mscript
+			myName "aurabesh = false, contextComment = \"Beat text\", enabled = true, guid = #619CD8EA63DB726500025CC1B25D3926, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9525, text = \"Find ND-5\", type = \"MenuLine\""
+			myLevelInfo B5AFC8E4642A9B1E00000489CA5115F1
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveFollow "Obj 01 Escort Sliro to bridge" < uid=93D308656448F1460001785C8F726936 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"Quest objective text\", enabled = true, guid = #93D308656448F1580001785DE498AD85, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 9525, text = \"Escort Sliro to the bridge\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 4A88F37DAB6C6D4497676D120698FC9B
+					}
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputAgent Sliro < uid=93D30865650B14690001F2E1E67756C8 >
+				{
+				}
+				QuestBeatScriptInputAgent Escort < uid=93D30865650B146E0001F2E244BCCED3 >
+				{
+				}
+				QuestBeatScriptInputAgent CommandTrooper < uid=93D3086565DDB9FF0020B1F569197FB3 >
+				{
+				}
+			}
+			myQuestBeatStateGameValue < uid=619CD8EA63DB726500025CD504324FC7 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 46DA0A3C29722C5550B36E880073FDB1
+			}
+		}
+		QuestBeat "Beat 03 Liberate ND-5" < uid=619CD8EA63DB726500025CD62715B120 >
+		{
+			myScript helix/scripts/scr_mq_220_aki_spc_b03_liberatend5.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"Beat text\", enabled = true, guid = #619CD8EA63DB726500025CC3938302D3, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9526, text = \"Free ND-5\", type = \"MenuLine\""
+			myLevelInfo B5AFC8E4642A9B1E00000489CA5115F1
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom "Obj 01 Escape ND-5" < uid=93D30865643EB7D70000E93A7B007ECA >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"Quest objective text\", enabled = true, guid = #93D30865643EB80B0000E93BA96B1F4D, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9526, text = \"Escape from ND-5\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+					myQuestObjectiveAudioState
+					{
+						myGuid 4FFEAB51CC83168B34A7CC58B4C9F982
+					}
+				}
+				QuestObjectiveCustom "Obj 02 Find a way out" < uid=93D30865643EBA6B0000EBA43BB3B640 >
+				{
+					myName "aurabesh = false, contextComment = \"Quest objective text\", enabled = true, guid = #93D30865643EBA730000EBA59A2345A4, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 9526, text = \"Find a way out of the electrical room\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myQuestObjectiveAudioState
+					{
+						myGuid 40D0FA055DC84BAE14A250F3AC86119E
+					}
+					myChildObjectives
+					{
+					}
+				}
+				QuestObjectiveInteract "Obj 03 Activate trap for ND-5" < uid=93D308656579BF20000586F7B84B5499 >
+				{
+					myName "branch = \"MAIN\", contextComment = \"Quest text objective\", enabled = true, guid = #93D308656579BF35000586F9CC00EABB, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9526, text = \"Activate the central emitter\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myQuestObjectiveAudioState
+					{
+						myGuid 40D0FA055DC84BAE14A250F3AC86119E
+					}
+				}
+				QuestObjectiveCounter "Obj 04 Restart power cores" < uid=E8092143646B24660003D64BF6B3BD26 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"Quest objective text\", enabled = true, guid = #E8092143646B247A0003D64C66E2C5D4, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 9526, text = \"Restart the power cores\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 00000000000000000000000000000000
+					}
+					myChildObjectives
+					{
+					}
+					myMaxCount 2
+				}
+				QuestObjectiveCustom "Obj 04 Trap ND-5" < uid=93D3086565770B6000061F358D6A561F >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Quest objective text\", enabled = true, guid = #93D3086565770B6700061F37709C06F1, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 9526, text = \"Lure ND-5 into the trap\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 40D0FA055DC84BAE14A250F3AC86119E
+					}
+				}
+				QuestObjectiveGoToLocation "Obj 05 Free ND-5" < uid=E8092143646B25520004376769FD9D55 >
+				{
+					myName "aurabesh = false, contextComment = \"Quest objective text\", enabled = true, guid = #E8092143646B255D00043768DCB488DD, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 9526, text = \"Free ND-5\", type = \"MenuLine\""
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+					myQuestObjectiveAudioState
+					{
+						myGuid 40D0FA055DC84BAE14A250F3AC86119E
+					}
+				}
+				QuestObjectiveGoToLocation "[NONVISIBLE] Marker in-between cores" < uid=93D30865661CE98A00032AB71EFB2A77 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD FALSE
+				}
+				QuestObjectiveCustom "[NONVISIBLE] Power Core 1 - Console" < uid=93D30865661FF341000372379131604B >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveCustom "[NONVISIBLE] Power Core 1 - Lever 1" < uid=93D30865661FF341000372388FB2EF42 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveCustom "[NONVISIBLE] Power Core 1 - Lever 2" < uid=93D30865661FF3410003723959FD8C36 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveCustom "[NONVISIBLE] Power Core 1 - Lever 3" < uid=93D30865661FF3410003723ADCF453B7 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveCustom "[NONVISIBLE] Power Core 2 - Console" < uid=93D30865661FF3410003723BC6DD435A >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveCustom "[NONVISIBLE] Power Core 2 - Lockpick 1" < uid=93D30865661FF3410003723CDE0D6C3C >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveCustom "[NONVISIBLE] Power Core 2 - Lockpick 2" < uid=93D30865661FF3410003723D6B24D7F7 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveCustom "[NONVISIBLE] Power Core 2 - Lockpick 3" < uid=93D30865661FF3410003723E153358CF >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveCustom "[HINT] Whistle against ND5" < uid=93D308656627D5FD00024EC1D527C6E9 >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Hint text\", enabled = true, guid = #93D308656627D5FD00024EC2CC2A0E84, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9526, text = \"Whistle might be effective against ND-5\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myIsHint TRUE
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=619CD8EA63DB726500025CDACF2AF59C >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4E12964221BF93773CEF649CEC32E983
+			}
+		}
+		QuestBeat "Beat 03B CIN ND-5 Freed" < uid=E8092143668D48380002A58607AA1E9C >
+		{
+			myScript helix/scripts/scr_mq_220_aki_spc_b03b_cinnd5freed.mscript
+			myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo B5AFC8E4642A9B1E00000489CA5115F1
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=E8092143668D48B40002A5895D39C195 >
+			{
+			}
+		}
+		QuestBeat "Beat 04A The Escape" < uid=619CD8EA63DB726500025CDBA7D144F5 >
+		{
+			myScript helix/scripts/scr_mq_220_spc_b04__enterbattle.mscript
+			myName "aurabesh = false, contextComment = \"Beat text\", enabled = true, guid = #619CD8EA63DB726500025CC7C3E4460E, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9527, text = \"The Escape\", type = \"MenuLine\""
+			myLevelInfo B5AFC8E4642A9B1E00000489CA5115F1
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom "Obj 01 Escape power cell room" < uid=E80921436481E6000003356530E123DB >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"Quest objective text\", enabled = true, guid = #E80921436481E62E00033566D65A5495, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9527, text = \"Leave the power core room\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 4694EBA636816A9D151F496181705284
+					}
+				}
+				QuestObjectiveCustom "Obj 02 Secure machine room" < uid=E809214364AC03CD0002A8247BF20806 >
+				{
+					myName "aurabesh = false, contextComment = \"Quest objective text\", enabled = true, guid = #E809214364AC03CD0002A8253A215E9B, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9527, text = \"Secure the mechanical room\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myQuestObjectiveAudioState
+					{
+						myGuid 47B5EDD07869240D8BCA8BA1AE71E8A7
+					}
+				}
+				QuestObjectiveCustom "Obj 03 Use turbolift" < uid=93D30865653A764B00041BDBCD4348B9 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"Quest objective text\", enabled = true, guid = #93D30865653A764B00041BDC0A57B62E, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9527, text = \"Use the turbolift\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 47B5EDD07869240D8BCA8BA1AE71E8A7
+					}
+				}
+			}
+			myQuestBeatStateGameValue < uid=619CD8EA63DB726500025CDF5587577A >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4F3655A1236C30D7CD32A0E709D450A2
+			}
+		}
+		QuestBeat "Beat 04B The Escape" < uid=E809214364EC8E400005420C332B90EE >
+		{
+			myScript helix/scripts/scr_mq_220_aki_spc_b04_theescapeb.mscript
+			myName "aurabesh = false, contextComment = \"Beat text\", enabled = true, guid = #E809214364EC8E6A0005420E502D1CC9, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9527, text = \"The Escape\", type = \"MenuLine\""
+			myLevelInfo B5AFC8E4642A9B1E00000489CA5115F1
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveFollow [DEPRECATED] < uid=3E23952564F6DDBB000816E84983875B >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				}
+				QuestObjectiveGoToLocation [DEPRECATED] < uid=3E23952564F6FF5A001A7EA5F4CAF9CE >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				}
+				QuestObjectiveGoToLocation "Obj 03 Escape with the Trailblazer" < uid=93D30865653944E800014F4A4AE0039A >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"Quest objective text\", enabled = true, guid = #93D30865653944E800014F4B2DF175C6, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9527, text = \"Escape in the Trailblazer\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 47B5EDD07869240D8BCA8BA1AE71E8A7
+					}
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputAgent Asara < uid=C564585666B09609000636E9CA5F440D >
+				{
+				}
+				QuestBeatScriptInputAgent ND5 < uid=C564585666B0960E000636EA31AF696E >
+				{
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=E809214364EC8F9D0005516947BFC6FE >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4F3655A1236C30D7CD32A0E709D450A2
+			}
+		}
+		QuestBeat "Beat 05 Take Down Star Destroyer" < uid=619CD8EA63DB726500025CE0D1BE5CDE >
+		{
+			myScript helix/scripts/scr_mq_220_aki_spc_b05_takeoutsd_v2.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"Beat text\", enabled = true, guid = #619CD8EA63DB726500025CCB9F6319FE, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9528, text = \"Take down the Revelator\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012DFB0000001032A60B086
+			myMood Focused
+			myObjectives
+			{
+				QuestObjectiveCustom "Obj 01 Hold out for reinforcements" < uid=93D30865643FB7620000ED98C590F9ED >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"Quest objective text\", enabled = true, guid = #93D30865643FB7640000ED99CBE48749, lineVersion = 13, maxLength = 0, productId = -1, sectionId = 9528, text = \"Hold out for reinforcements\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myChildObjectives
+					{
+					}
+				}
+				QuestObjectiveCustom "Obj 02 Destroy the Gozanti ship" < uid=93D30865643FB8720000ED9BE98AC169 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"Quest objective text\", enabled = true, guid = #93D30865643FB8870000ED9C9F2F02C9, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9528, text = \"Destroy the Gozanti ship\", type = \"MenuLine\""
+					myShowHealthbars TRUE
+				}
+				QuestObjectiveKillFireteam "Obj 03 Destroy the shields generators" < uid=93D30865655E0C82000DAA70753A728C >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Quest objective text\", enabled = true, guid = #93D30865655E0C82000DAA7103A6274B, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9528, text = \"Destroy the shields generators\", type = \"MenuLine\""
+					myShowHealthbars TRUE
+				}
+				QuestObjectiveCustom "Obj 04 Destroy the reactor" < uid=93D3086565DC5F00000957EE87B76111 >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Quest text objective\", enabled = true, guid = #93D3086565DC5F00000957EFDFECAD3F, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9528, text = \"Destroy the reactor\", type = \"MenuLine\""
+					myShowHealthbars TRUE
+				}
+				QuestObjectiveCustom DEPRECATED < uid=93D30865643FB8DD0000EDA15038AB16 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myChildObjectives
+					{
+					}
+				}
+				QuestObjectiveGoToLocation DEPRECATED < uid=93D3086565782CD800069B76D4BE6C36 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myChildObjectives
+					{
+						QuestObjectiveFollow "Obj Ashiga Follow" < uid=93D3086565782CDE00069B77891C3319 >
+						{
+							myName "aurabesh = false, contextComment = \"obj title\", enabled = true, guid = #93D3086565782C7000069B727B680923, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2004, text = \"Protect the Ashiga Freighters\", type = \"MenuLine\""
+						}
+						QuestObjectiveGoToLocation "Obj Crimson GoTo" < uid=93D3086565782CDE00069B78F4635D9E >
+						{
+							myName "aurabesh = false, contextComment = \"Obj title\", enabled = true, guid = #93D3086565782C7000069B7320AFAA02, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2004, text = \"Luring the Tie's into ambush\", type = \"MenuLine\""
+						}
+						QuestObjectiveFollow "Obj Hutt Follow" < uid=93D3086565782CDE00069B7939052923 >
+						{
+							myName "aurabesh = false, contextComment = \"Obj title\", enabled = true, guid = #93D3086565782C7000069B7418ACB5D9, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2004, text = \"Protect the Hutt Cruiser\", type = \"MenuLine\""
+						}
+						QuestObjectiveKillFireteam "Obj Pyke KillFireTeam" < uid=93D3086565782CDE00069B7A1EFD2DE9 >
+						{
+							myName "aurabesh = false, contextComment = \"Obj title\", enabled = true, guid = #93D3086565782C7000069B75EFA441F0, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2004, text = \"Destroy Tie's and Turrets\", type = \"MenuLine\""
+						}
+					}
+				}
+				QuestObjectiveDefendAgent DEPRECATED < uid=3E239525648AC9F400022F0A7E051F7C >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myChildObjectives
+					{
+						QuestObjectiveFollow "Obj Ashiga Follow" < uid=3E23952564FECEC70004B1362639F950 >
+						{
+							myName "aurabesh = false, contextComment = \"obj title\", enabled = true, guid = #3E239525648AC9C500022F068FE97CAD, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2004, text = \"Protect the Ashiga Freighters\", type = \"MenuLine\""
+						}
+						QuestObjectiveGoToLocation "Obj Crimson GoTo" < uid=3E23952564FECEC70004B1371BEAF76D >
+						{
+							myName "aurabesh = false, contextComment = \"Obj title\", enabled = true, guid = #3E239525648AC9C500022F0706B0F56D, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2004, text = \"Luring the Tie's into ambush\", type = \"MenuLine\""
+						}
+						QuestObjectiveFollow "Obj Hutt Follow" < uid=3E23952564FECEC70004B13841049E02 >
+						{
+							myName "aurabesh = false, contextComment = \"Obj title\", enabled = true, guid = #3E239525648AC9C500022F08B6A128D1, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2004, text = \"Protect the Hutt Cruiser\", type = \"MenuLine\""
+						}
+						QuestObjectiveKillFireteam "Obj Pyke KillFireTeam" < uid=3E23952564FECEC70004B1391518F82A >
+						{
+							myName "aurabesh = false, contextComment = \"Obj title\", enabled = true, guid = #3E239525648AC9C500022F09BACD109C, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2004, text = \"Destroy Tie's and Turrets\", type = \"MenuLine\""
+						}
+					}
+				}
+				QuestObjectiveGoToLocation DEPRECATED < uid=3E239525648ACA6300022F17CB0FF695 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myChildObjectives
+					{
+						QuestObjectiveFollow "Obj Ashiga Follow" < uid=3E239525648ACAC100022F2D868FC62D >
+						{
+							myName "aurabesh = false, contextComment = \"obj title\", enabled = true, guid = #3E239525648ACA3900022F13BD8779D3, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2004, text = \"Protect the Ashiga Freighters\", type = \"MenuLine\""
+						}
+						QuestObjectiveGoToLocation "Obj Crimson GoTo" < uid=3E239525648ACAC100022F2E9BB0D884 >
+						{
+							myName "aurabesh = false, contextComment = \"Obj title\", enabled = true, guid = #3E239525648ACA3900022F14A940EDEE, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2004, text = \"Luring the Tie's into ambush\", type = \"MenuLine\""
+						}
+						QuestObjectiveFollow "Obj Hutt Follow" < uid=3E239525648ACAC100022F2FF6868DA9 >
+						{
+							myName "aurabesh = false, contextComment = \"Obj title\", enabled = true, guid = #3E239525648ACA3900022F154C6FC3DD, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2004, text = \"Protect the Hutt Cruiser\", type = \"MenuLine\""
+						}
+						QuestObjectiveKillFireteam "Obj Pyke KillFireTeam" < uid=3E239525648ACAC100022F305263AEFB >
+						{
+							myName "aurabesh = false, contextComment = \"Obj title\", enabled = true, guid = #3E239525648ACA3900022F164DC0571F, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2004, text = \"Destroy Tie's and Turrets\", type = \"MenuLine\""
+						}
+					}
+				}
+				QuestObjectiveGoToLocation DEPRECATED < uid=93D3086565782D1200069B9A981B5E6F >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myChildObjectives
+					{
+						QuestObjectiveFollow "Obj Ashiga Follow" < uid=93D3086565782D1200069B9BEDD5039C >
+						{
+							myName "aurabesh = false, contextComment = \"obj title\", enabled = true, guid = #93D3086565782CE800069B961539FD0D, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2004, text = \"Protect the Ashiga Freighters\", type = \"MenuLine\""
+						}
+						QuestObjectiveGoToLocation "Obj Crimson GoTo" < uid=93D3086565782D1200069B9CAB746F4F >
+						{
+							myName "aurabesh = false, contextComment = \"Obj title\", enabled = true, guid = #93D3086565782CE800069B97EB53DD05, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2004, text = \"Luring the Tie's into ambush\", type = \"MenuLine\""
+						}
+						QuestObjectiveFollow "Obj Hutt Follow" < uid=93D3086565782D1200069B9D6933452E >
+						{
+							myName "aurabesh = false, contextComment = \"Obj title\", enabled = true, guid = #93D3086565782CE800069B98C5906EFF, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2004, text = \"Protect the Hutt Cruiser\", type = \"MenuLine\""
+						}
+						QuestObjectiveKillFireteam "Obj Pyke KillFireTeam" < uid=93D3086565782D1200069B9E2B998641 >
+						{
+							myName "aurabesh = false, contextComment = \"Obj title\", enabled = true, guid = #93D3086565782CE800069B99421012B5, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2004, text = \"Destroy Tie's and Turrets\", type = \"MenuLine\""
+						}
+					}
+				}
+				QuestObjectiveDefendAgent DEPRECATED < uid=3E239525648ACAC100022F28D294DEE0 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myChildObjectives
+					{
+						QuestObjectiveFollow "Obj Ashiga Follow" < uid=3E23952564FECEC70004B13AFC0270A0 >
+						{
+							myName "aurabesh = false, contextComment = \"obj title\", enabled = true, guid = #3E239525648ACA2200022F0D925C7FBA, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2004, text = \"Protect the Ashiga Freighters\", type = \"MenuLine\""
+						}
+						QuestObjectiveGoToLocation "Obj Crimson GoTo" < uid=3E23952564FECEC70004B13BB01FA1D2 >
+						{
+							myName "aurabesh = false, contextComment = \"Obj title\", enabled = true, guid = #3E239525648ACA2200022F0EC4F46C72, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2004, text = \"Luring the Tie's into ambush\", type = \"MenuLine\""
+						}
+						QuestObjectiveFollow "Obj Hutt Follow" < uid=3E23952564FECEC70004B13CD58ECD5D >
+						{
+							myName "aurabesh = false, contextComment = \"Obj title\", enabled = true, guid = #3E239525648ACA2200022F0FC7DAAF56, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2004, text = \"Protect the Hutt Cruiser\", type = \"MenuLine\""
+						}
+						QuestObjectiveKillFireteam "Obj Pyke KillFireTeam" < uid=3E23952564FECEC70004B13D0785A66E >
+						{
+							myName "aurabesh = false, contextComment = \"Obj title\", enabled = true, guid = #3E239525648ACA2200022F10B915B8DD, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2004, text = \"Destroy Tie's and Turrets\", type = \"MenuLine\""
+						}
+					}
+				}
+				QuestObjectiveCustom DEPRECATED < uid=3E239525648ACAAB00022F1E4AAC6D08 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myChildObjectives
+					{
+						QuestObjectiveFollow "Obj Ashiga Follow" < uid=3E239525650033D30009884D8315BE0F >
+						{
+							myName "aurabesh = false, contextComment = \"obj title\", enabled = true, guid = #3E239525648ACA8100022F1A18FAD689, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2004, text = \"Protect the Ashiga Freighters\", type = \"MenuLine\""
+						}
+						QuestObjectiveGoToLocation "Obj Crimson GoTo" < uid=3E239525650033D30009884E6031CB1F >
+						{
+							myName "aurabesh = false, contextComment = \"Obj title\", enabled = true, guid = #3E239525648ACA8100022F1BACF5305D, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2004, text = \"Luring the Tie's into ambush\", type = \"MenuLine\""
+						}
+						QuestObjectiveFollow "Obj Hutt Follow" < uid=3E239525650033D30009884F64358A2B >
+						{
+							myName "aurabesh = false, contextComment = \"Obj title\", enabled = true, guid = #3E239525648ACA8100022F1CBB802221, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2004, text = \"Protect the Hutt Cruiser\", type = \"MenuLine\""
+						}
+						QuestObjectiveKillFireteam "Obj Pyke KillFireTeam" < uid=3E239525650033D300098850E459C523 >
+						{
+							myName "aurabesh = false, contextComment = \"Obj title\", enabled = true, guid = #3E239525648ACA8100022F1D842CAD9A, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 2004, text = \"Destroy Tie's and Turrets\", type = \"MenuLine\""
+						}
+					}
+				}
+				QuestObjectiveKillFireteam DEPRECATED < uid=93D3086564496F760006349695031A00 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myChildObjectives
+					{
+					}
+				}
+				QuestObjectiveCustom DEPRECATED < uid=93D30865655F64560004B0C9F40FB310 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myChildObjectives
+					{
+						QuestObjectiveCustom "Destroy shields generators" < uid=93D30865655F64910004B0CBA315A353 >
+						{
+							myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+						}
+						QuestObjectiveKillFireteam "Destroy turbo lasers turrets" < uid=93D30865655F64B40004B0CFCC34AB31 >
+						{
+							myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+						}
+					}
+				}
+			}
+			myQuestBeatStateGameValue < uid=619CD8EA63DB726500025CE4F198E566 >
+			{
+			}
+		}
+		QuestBeat "Beat 06 Jaylen's Fate" < uid=619CD8EA63DBC4560000E54BF03A9966 >
+		{
+			myScript helix/scripts/scr_mq_220_b06_jaylenfate.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"Beat text\", enabled = true, guid = #619CD8EA63DBC45F0000E54C55237ADB, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9588, text = \"Jaylen's fate\", type = \"MenuLine\"}"
+			myLevelInfo 9C4B6A046012DFB0000001032A60B086
+			myQuestBeatStateGameValue < uid=619CD8EA63DBC4770000E54D5AC3EDB0 >
+			{
+			}
+		}
+		QuestBeat "Beat 07 Credits" < uid=06F73AE166A10024003C07EAA12CD044 >
+		{
+			myScript helix/scripts/scr_mq_220_tos_pln_b07_credits.mscript
+			myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myDebugPlayLandingZone 9D0EE20B6073F61A000010D71D7A61B9
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myHasInitFromPreviousBeatPin FALSE
+			myQuestBeatStateGameValue < uid=06F73AE166A1007A003C083ADE372188 >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=619CD8EA63DB726500025CE5F9812C16 >
+	{
+	}
+	myQuestAudioState
+	{
+		myGuid 42B595BDB05EE4C000C2F0906DC4EF90
+	}
+	myQuestStartedRBTag < uid=F45722326679C4ED000953436F902FAC > = World_Quest_MQ220_Started DA5615DD64A3E1450000AC3DA0659CBE
+	myQuestCompletedRBTag < uid=F45722326679C4ED0009534489A34182 > = World_Quest_MQ220_Completed DA5615DD64A3E92D0000AC5219C6D153
+}
+

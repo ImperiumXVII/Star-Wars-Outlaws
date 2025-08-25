@@ -1,0 +1,57 @@
+include "helix/game system data/fruit/item/item_includes.fruit"
+include "helix/game system data/juice/talent/player_overheat_talents.mtalent"
+
+ShieldOverchargeEquipmentItem spaceship_shield_overcharge_gadget < uid=6AEA320A6343F17300001F888E584A9F >
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myInventoryPouch ToolsAndGadgets
+	myDefaultInventory Spaceship
+	myCooldown
+	{
+		myDuration 180.0
+	}
+	myInvincibilitySequence
+	{
+		myDuration 20.0
+		myTracks
+		{
+			myGenericTracks
+			{
+				ShieldRepairTrack ShieldRepairTrack
+				{
+					myRegeneration 40.0
+					myIsMaxShieldPercentage TRUE
+				}
+				ShipImmuneToIonEffectsTrack ShipImmuneToIonEffectsTrack
+				{
+				}
+				CombatDamageModifierTrack CombatDamageModifierTrack
+				{
+					myDamageModifier
+					{
+						myHasDamageType FALSE
+						myDependsOnCurrentAgentAsDealer TRUE
+						myValue 0.0
+					}
+				}
+				CombatDamageOverTimeTrack CombatDamageOverTimeTrack
+				{
+					myDamageSourceType ShipOvercharge
+					myDamageTargetType HP
+					myIsMaxHealthPercentage TRUE
+				}
+				ApplyTalentTrack ApplyMaxOverheatModifierTalentTrack
+				{
+					myTalent < uid=6AEA320A634E96F000004AA2D3097EAF > = player_maxoverheatmodifier_talent 6AEA320A634E966900004A9B691B7294
+				}
+			}
+		}
+	}
+}
+
+ShieldOverchargeEquipmentItem rokana_spaceship_shield_overcharge_gadget < uid=25319C7067371659000000F9A9F318A0 > : spaceship_shield_overcharge_gadget
+{
+	myDefaultInventory RokanaSpaceship
+}
+

@@ -1,0 +1,93 @@
+include "helix/game system data/fruit/ai/pathfinding/agent_navigation_metrics.fruit"
+include "helix/game system data/fruit/ai/pathfinding/hazard_types.fruit"
+
+list NPCList
+{
+	file < bhv=asset assettype=npc >
+}
+
+list NavMeshLayerAgentHeightCategoriesList
+{
+	float
+}
+
+class AI_NavMeshWaterConfig
+{
+	float myShoreDepth 0.0
+	float myShallowDepth 0.0
+	float myDeepDepth 0.0
+}
+
+class AI_AreaTypeOverwrite
+{
+	AI_NavMeshHazardTypeFlags myAreaType
+	float myLedgeErosion 0.0					//!< The ledge erosion distance.  A value of means no ledge erosion.  Valid range is [0.0, GetMaxErosionDistance()].
+	float myMaxSlope 56							//!< agent max walkable slope in degrees
+}
+
+list AI_AreaTypeOverwriteList
+{
+	AI_AreaTypeOverwrite
+}
+
+enum RegionBuilderType
+{
+	TILE_BASED
+	TRIANGLE_BASED
+}
+
+class NavMeshLayerRegionConfig
+{
+	RegionBuilderType myRegionBuilderType TRIANGLE_BASED
+	float myMaxRegionAreaSqM 1.0e6							// Maximum surface area of triangles per region
+	float myMinDeadEndAreaForTriBasedRegionsSqM 30.0		// Tri-based corridor regions with a smaller surface area than this value will be merged with adjacent regions
+	float myMinCorridorAreaForTriBasedRegionsSqM 30.0		// Tri-based dead-end regions with a smaller surface area than this value will be merged with adjacent regions
+	float myMinInnerRegionAreaForTriBasedRegionsSqM 5.0		// Inner tri-based region with area smaller than this value will be merged with outer region
+	float myMinObstaclePerimeterForTriBasedRegionsM 15.0	// Obstacles whose perimeter is less than this parameter value will not lead to the creation of decision regions
+}
+
+class NavMeshLayerConfig
+{
+	bool myGenerateNavLinks					false   //!< generate automatic jump nav-links
+	float myCellSize					0.16	//!< x/y size of a voxel cell in world units
+	float myCellHeight					0.16	//!< height of a voxel cell in world units (provided separately if greater vertical accuracy required)
+	
+	AgentNavigationMetrics myAgentNavigationMetrics
+	
+	float myAgentMaxClimb				0.3		//!< agent 'step height' in world units
+	float myAgentMaxSlope				56		//!< agent max walkable slope in degrees
+
+	float myMaximumGapWitdhToFill		0.1		//!< The distance between ledges (within step height) for which we can "fill in" during voxelisation to bridge with navmesh.
+	float myLedgeErosionDistanceDefault	0		//!< The ledge erosion distance.  A value of means no ledge erosion.  Valid range is [0.0, GetMaxErosionDistance()].
+
+	float myEdgeMaxSimplificationError 0.64		//!< maximum error (in world units) in region contour tracing (too small results in 'staircasing' of non-axis aligned edges, too big results in corner cutting)
+												//!< (should be at least 4 times the cell size and at least half the agent radius)
+	float myEdgeMaxSimplificationErrorHeight 0.6	//!< maximum height error (in world units) in region contour tracing (too small will result in excessive triangulation, too large will let the (random) detail mesh compensate)
+													//!< (should be at least 6 times the cell height and at least the agent max climb)
+
+	float myJumpLinkOffsetForVerticalJump 1.0			//!< Only works if "Generate Navlnks" is toggled. Should be greater than GetMaxErosionDistance().
+	float myJumpLinkMaxDistanceForVerticalJump 2.5		//!< Only works if "Generate Navlnks" is toggled. Should be greater than GetDistanceLedgeForVerticalJump().
+	
+	bool myUseGenOriginZ	false
+	float myGenOriginZ		0.0
+
+	AI_NavMeshWaterConfig myWaterConfig
+	AI_AreaTypeOverwriteList myAreaTypeOverwrites
+	NavMeshLayerAgentHeightCategoriesList myAgentHeightCategories
+	
+	NavMeshLayerRegionConfig myRegionGenerationSettings
+}
+
+class NavMeshGenConfig
+{
+	NavMeshLayerConfig mySmallLayer
+	NavMeshLayerConfig myMediumLayer
+	NavMeshLayerConfig myLargeLayer
+	NavMeshLayerConfig myHugeLayer
+	NavMeshLayerConfig myGiganticLayer
+
+	NPCList myNavLinkNPCs				//!< The navlink constraint of those NPCs are used to bake navlinks
+	
+	bool myOverrideDataPrefetchPoolSize false < tooltip="When enabled DataPrefetchPoolSize will override Pilots GeneratorConfig::dataPrefetchPoolSize. Useful for lowering memory allocation if it becomes to expensive to generate navmesh" >
+	int myDataPrefetchPoolSize 12 < min=1 max=48 tooltip="The data prefetch pool size controls the number of recast heightfields allowed at any time. Each heightfield in the pool keeps the memory it has for the max size for the entire duration of navmesh generation" >
+}

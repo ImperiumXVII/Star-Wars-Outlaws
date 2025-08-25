@@ -1,0 +1,44 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/lambda_attached_npc_set.mnpconnpcattachmentset"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/emp_shp_base.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC emp_shp_lambda_a < uid=4F59E8F0645249B80001227683698C95 > : emp_shp_base
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Lambda-class Shuttle - Empire faction\", enabled = true, guid = #6AE6EE0D65782F9C000266894771422F, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10726, text = \"Lambda-class T-4a Shuttle\", type = \"MenuLine\""
+	myCharacterVisuals < uid=4F59E8F0645249B800012277B673D02C > = character_visuals_npc_shp_lambda 4F59E8F0645249D400012287B3A538EF
+	myNPCComponentSetType Spaceship
+	mySpaceshipType Lambda
+	myMaxHealth 400
+	myHealthFormula 200*SpaceHealthDifficultyModifier
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag_1" < uid=4F59E8F0645249B800012279FE0C61F2 > = Agent_Archetype_Pilot 3A12912163EF7B9500005053123CF383
+		RBTagsTag "New RBTagsTag" < uid=4F59E8F0645249B80001227A31CE5782 > = Agent_Faction_EmpireTag 16DEADE6614FB69800001863A66D45A1
+	}
+	myDialogueCharactersFromDatabase
+	{
+	}
+	myLodType Spaceship_Medium
+	mySensoryProfile < uid=F95CD8F364835243000AF1A7AF6B6398 > = DefaultSpaceship 16C7D1FB631F23570000495589B79C85
+	myVisionProfile < uid=4F59E8F0645249B80001227D98BB7C7B > = visionProfile_emp_ship_HaulerShuttle 6B0E1DE964B7A45D0000AD5930260AFA
+	myHearingProfile < uid=4F59E8F0645249B80001227EDB8A5AA9 > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=F95CD8F364835243000AF1A8DAB0F46C > = detectionProfile_emp_ship_HaulerShuttle 6B0E1DE964B6564F0003C7136A021B82
+	}
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "Lambda weapon loadout" < uid=4F59E8F0645249B800012283141CB884 > = weaponloadout_emp_shp_lambda 4F59E8F064524EBB00008A0DB94A5E1B
+	}
+	myAttachedNPCsSet < uid=4F59E8F0645249B80001228479049168 > = lambda_attached_npc_set 4F59E8F0645253CE0001234D289A46C9
+	myLootTable < uid=2AE2EC8565E5D36B00054BC842290585 > = NULLREFERENCE
+	myAudioParameters
+	{
+		myEmitterName "Imperial Lambda"
+	}
+}
+

@@ -1,0 +1,4548 @@
+include "helix/game system data/fruit/input/gameinput.fruit"
+include "helix/game system data/juice/input/inputactions.juice"
+
+TriggerGameAction "[Speeder] Call Vehicle"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Gamepad
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 300
+					myInputAction = D_PAD_RIGHT
+				}
+				ConditionalInputAction Keyboard
+				{
+					myInputActionType Pressed
+					myTimer 100
+					myInputAction = KB_CALL_VEHICLE
+				}
+			}
+		}
+	}
+	myGameAction CallVehicle
+	myActionContexts
+	{
+		DefaultContext TRUE
+		GadgetSelectionContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		AimScopeContext TRUE
+		ArcadeGameContext TRUE
+		BinocularsContext TRUE
+		CoopContext TRUE
+		DeadContext TRUE
+		FreeCameraContext TRUE
+		GadgetContext TRUE
+		GadgetSelectionContext FALSE
+		GrapplingContext TRUE
+		HoloReaderMapContext TRUE
+		MeleeContext TRUE
+		PetModeContext TRUE
+		SequenceContext TRUE
+		SpaceshipContext TRUE
+		ThrowableContext FALSE
+		TransportSneakingContext TRUE
+		TrickShotContext TRUE
+		UIContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] ExitVehicle"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Gamepad_B_Circle
+				{
+					myInputActionType HoldDownAfterTime
+					myTimer 100
+					myInputAction = B_CIRCLE_SPEEDER
+				}
+				ConditionalInputAction MouseKb
+				{
+					myInputActionType HoldDownAfterTime
+					myTimer 100
+					myInputAction = KB_EXIT_VEHICLE
+				}
+			}
+		}
+	}
+	myGameAction ExitVehicle
+	myRequireNewInputOnContextChange TRUE
+	myActionContexts
+	{
+		DefaultContext FALSE
+		TransportSneakingContext TRUE
+		VehicleContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext TRUE
+		FreeCameraContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] LookBack"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Hold
+				{
+					myOperator And
+					myConditionalInputActions
+					{
+						ConditionalActionGroup "Input Actions"
+						{
+							myOperator Or
+							myConditionalInputActions
+							{
+								ConditionalInputAction Gamepad_Y_Triangle
+								{
+									myInputActionType HoldDown
+									myInputAction = Y_TRIANGLE_SPEEDER
+								}
+								ConditionalInputAction "KB Pressed"
+								{
+									myInputActionType HoldDown
+									myInputAction = KB_VEHICLE_LOOKBACK
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	myGameAction LookBack
+	myActionContexts
+	{
+		DefaultContext FALSE
+		HoloReaderCompassContext FALSE
+		HoloReaderMapContext FALSE
+		VehicleContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext TRUE
+		FreeCameraContext TRUE
+		GadgetContext FALSE
+		GadgetSelectionContext TRUE
+		HoloReaderCompassContext TRUE
+		HoloReaderMapContext TRUE
+		SpaceshipContext TRUE
+		SpaceshipPursuitModeContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] Thrust"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "Right Trigger"
+				{
+					myInputActionType Analog
+					myInputAction = RIGHT_TRIGGER_R2_SPEEDER
+				}
+				ConditionalInputAction "KB W"
+				{
+					myInputActionType Analog
+					myInputAction = KB_SPEEDER_THRUST
+				}
+			}
+		}
+	}
+	myGameAction Speeder_Thrust
+	myActionContexts
+	{
+		DefaultContext FALSE
+		VehicleContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		AdrenalineRushContext FALSE
+		BinocularsContext TRUE
+		FreeCameraContext TRUE
+		GadgetSelectionContext FALSE
+		HoloReaderCompassContext TRUE
+		HoloReaderMapContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] Brake"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "Left Trigger"
+				{
+					myInputActionType Analog
+					myInputAction = LEFT_TRIGGER_L2_SPEEDER
+				}
+				ConditionalInputAction "KB CTRL"
+				{
+					myInputActionType Analog
+					myInputAction = KB_SPEEDER_BRAKE
+				}
+			}
+		}
+	}
+	myGameAction Speeder_Brake
+	myActionContexts
+	{
+		DefaultContext FALSE
+		VehicleContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		AdrenalineRushContext FALSE
+		BinocularsContext TRUE
+		FreeCameraContext TRUE
+		GadgetSelectionContext FALSE
+		HoloReaderCompassContext TRUE
+		HoloReaderMapContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] YawLeft"
+{
+	myConditionalInputActions
+	{
+		HardcodedUIInput "[UI-only] Mouse left"
+		{
+			myButtonName MOUSE_XAXIS
+			myAxisDirection -1
+		}
+		ConditionalActionGroup "New ConditionalActionGroup"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Right Stick Left Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = LEFT_STICK_UP_SPEEDER
+					myBackInputAction = LEFT_STICK_DOWN_SPEEDER
+					myLeftInputAction = LEFT_STICK_LEFT_SPEEDER
+					myRightInputAction = LEFT_STICK_RIGHT_SPEEDER
+					myExpectedInputAction = LEFT_STICK_LEFT_SPEEDER
+				}
+				ConditionalInputAction "KB A"
+				{
+					myInputActionType Analog
+					myInputAction = KB_SPEEDER_ROLL_LEFT
+				}
+			}
+		}
+	}
+	myGameAction Speeder_YawLeft
+	myActionContexts
+	{
+		DefaultContext FALSE
+		HoloReaderCompassContext FALSE
+		HoloReaderMapContext FALSE
+		VehicleContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		AdrenalineRushContext FALSE
+		FreeCameraContext TRUE
+		GadgetSelectionContext FALSE
+		HoloReaderCompassContext TRUE
+		HoloReaderMapContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] YawRight"
+{
+	myConditionalInputActions
+	{
+		HardcodedUIInput "[UI-only] Mouse Right"
+		{
+			myButtonName MOUSE_XAXIS
+			myAxisDirection 1
+		}
+		ConditionalActionGroup "New ConditionalActionGroup"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Right Stick Right Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = LEFT_STICK_UP_SPEEDER
+					myBackInputAction = LEFT_STICK_DOWN_SPEEDER
+					myLeftInputAction = LEFT_STICK_LEFT_SPEEDER
+					myRightInputAction = LEFT_STICK_RIGHT_SPEEDER
+					myExpectedInputAction = LEFT_STICK_RIGHT_SPEEDER
+				}
+				ConditionalInputAction "KB D"
+				{
+					myInputActionType Analog
+					myInputAction = KB_SPEEDER_ROLL_RIGHT
+				}
+			}
+		}
+	}
+	myGameAction Speeder_YawRight
+	myActionContexts
+	{
+		DefaultContext FALSE
+		VehicleContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		AdrenalineRushContext FALSE
+		FreeCameraContext TRUE
+		GadgetSelectionContext FALSE
+		HoloReaderCompassContext TRUE
+		HoloReaderMapContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] YawHorizontal"
+{
+	myConditionalInputActions
+	{
+		ConditionalInputAction "Left stick left"
+		{
+			myInputActionType Analog
+			myInputAction = LEFT_STICK_LEFT_SPEEDER
+		}
+		ConditionalInputAction "Left stick Right"
+		{
+			myInputActionType Analog
+			myInputAction = LEFT_STICK_RIGHT_SPEEDER
+		}
+		HardcodedUIInput "[UI-only] Mouse left"
+		{
+			myButtonName MOUSE_XAXIS
+			myAxisDirection -1
+		}
+		HardcodedUIInput "[UI-only] Mouse Right"
+		{
+			myButtonName MOUSE_XAXIS
+			myAxisDirection 1
+		}
+	}
+	myGameAction Speeder_YawHorizontal
+	myExcludeInActionContexts
+	{
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] CameraYawLeft"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Right Stick Left Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = RIGHT_STICK_UP_SPEEDER
+					myBackInputAction = RIGHT_STICK_DOWN_SPEEDER
+					myLeftInputAction = RIGHT_STICK_LEFT_SPEEDER
+					myRightInputAction = RIGHT_STICK_RIGHT_SPEEDER
+					myExpectedInputAction = RIGHT_STICK_LEFT_SPEEDER
+				}
+			}
+		}
+	}
+	myGameAction Speeder_CameraYawLeft
+	myActionContexts
+	{
+		DefaultContext FALSE
+		VehicleContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		AdrenalineRushContext FALSE
+		FreeCameraContext TRUE
+		GadgetSelectionContext FALSE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] CameraYawRight"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Right Stick Right Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = RIGHT_STICK_UP_SPEEDER
+					myBackInputAction = RIGHT_STICK_DOWN_SPEEDER
+					myLeftInputAction = RIGHT_STICK_LEFT_SPEEDER
+					myRightInputAction = RIGHT_STICK_RIGHT_SPEEDER
+					myExpectedInputAction = RIGHT_STICK_RIGHT_SPEEDER
+				}
+			}
+		}
+	}
+	myGameAction Speeder_CameraYawRight
+	myActionContexts
+	{
+		DefaultContext FALSE
+		VehicleContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		AdrenalineRushContext FALSE
+		FreeCameraContext TRUE
+		GadgetSelectionContext FALSE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] PitchUp"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Right Stick Up Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = LEFT_STICK_UP_SPEEDER
+					myBackInputAction = LEFT_STICK_DOWN_SPEEDER
+					myLeftInputAction = LEFT_STICK_LEFT_SPEEDER
+					myRightInputAction = LEFT_STICK_RIGHT_SPEEDER
+					myExpectedInputAction = LEFT_STICK_UP_SPEEDER
+				}
+			}
+		}
+	}
+	myGameAction Speeder_PitchUp
+	myActionContexts
+	{
+		DefaultContext FALSE
+		VehicleContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+		GadgetSelectionContext FALSE
+		HoloReaderCompassContext TRUE
+		HoloReaderMapContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] PitchDown"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Right Stick Down Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = LEFT_STICK_UP_SPEEDER
+					myBackInputAction = LEFT_STICK_DOWN_SPEEDER
+					myLeftInputAction = LEFT_STICK_LEFT_SPEEDER
+					myRightInputAction = LEFT_STICK_RIGHT_SPEEDER
+					myExpectedInputAction = LEFT_STICK_DOWN_SPEEDER
+				}
+			}
+		}
+	}
+	myGameAction Speeder_PitchDown
+	myActionContexts
+	{
+		DefaultContext FALSE
+		VehicleContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+		GadgetSelectionContext FALSE
+		HoloReaderCompassContext TRUE
+		HoloReaderMapContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] CameraPitchUp"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Right Stick Up Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = RIGHT_STICK_UP_SPEEDER
+					myBackInputAction = RIGHT_STICK_DOWN_SPEEDER
+					myLeftInputAction = RIGHT_STICK_LEFT_SPEEDER
+					myRightInputAction = RIGHT_STICK_RIGHT_SPEEDER
+					myExpectedInputAction = RIGHT_STICK_UP_SPEEDER
+				}
+			}
+		}
+	}
+	myGameAction Speeder_CameraPitchUp
+	myActionContexts
+	{
+		DefaultContext FALSE
+		VehicleContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		AdrenalineRushContext FALSE
+		FreeCameraContext TRUE
+		GadgetSelectionContext FALSE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] CameraPitchDown"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Right Stick Down Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = RIGHT_STICK_UP_SPEEDER
+					myBackInputAction = RIGHT_STICK_DOWN_SPEEDER
+					myLeftInputAction = RIGHT_STICK_LEFT_SPEEDER
+					myRightInputAction = RIGHT_STICK_RIGHT_SPEEDER
+					myExpectedInputAction = RIGHT_STICK_DOWN_SPEEDER
+				}
+			}
+		}
+	}
+	myGameAction Speeder_CameraPitchDown
+	myActionContexts
+	{
+		DefaultContext FALSE
+		VehicleContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		AdrenalineRushContext FALSE
+		FreeCameraContext TRUE
+		GadgetSelectionContext FALSE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] FreeLookCam"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Hold
+				{
+					myOperator And
+					myConditionalInputActions
+					{
+						ConditionalActionGroup "Input Actions"
+						{
+							myOperator Or
+							myConditionalInputActions
+							{
+								ConditionalInputAction "Left Stick Pressed"
+								{
+									myInputActionType HoldDown
+									myInputAction = RIGHT_STICK_BUTTON_SPEEDER
+								}
+								ConditionalInputAction "KB Pressed"
+								{
+									myInputActionType HoldDown
+									myInputAction = RIGHT_CLICK
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	myGameAction FreeLookCamera
+	myActionContexts
+	{
+		DefaultContext FALSE
+		VehicleContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		AdrenalineRushContext FALSE
+		FreeCameraContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] Boost"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Gamepad
+				{
+					myOperator And
+					myConditionalInputActions
+					{
+						ConditionalInputAction "X_SQUARE Pressed"
+						{
+							myInputActionType Pressed
+							myTimer 0
+							myInputAction = X_SQUARE_SPEEDER
+						}
+						ConditionalGameActionState "Using Alternate Preset"
+						{
+							myNegate TRUE
+							myGameActionState IsUsingAlternatePreset
+						}
+					}
+				}
+				ConditionalInputAction "KB Pressed"
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myInputAction = KB_VEHICLE_BOOST
+				}
+			}
+		}
+	}
+	myGameAction Boost
+	myActionContexts
+	{
+		DefaultContext FALSE
+		VehicleContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext TRUE
+		FreeCameraContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] Boost Alternate Hold"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Gamepad
+				{
+					myOperator And
+					myConditionalInputActions
+					{
+						ConditionalInputAction "X_SQUARE Pressed"
+						{
+							myInputActionType ReleaseBeforeTime
+							myTimer 150
+							myInputAction = X_SQUARE_SPEEDER
+						}
+						ConditionalGameActionState "Using Alternate Preset"
+						{
+							myGameActionState IsUsingAlternatePreset
+						}
+						ConditionalInputAction "Holding left stick"
+						{
+							myInputActionType HoldDown
+							myInputAction = GP_ADRENALINE_RUSH_USE_A
+						}
+					}
+				}
+				ConditionalInputAction "KB Pressed"
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myInputAction = KB_VEHICLE_BOOST
+				}
+			}
+		}
+	}
+	myGameAction BoostAlternateHold
+	myActionContexts
+	{
+		DefaultContext FALSE
+		VehicleContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext TRUE
+		FreeCameraContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] Boost Alternate Tap"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Gamepad
+				{
+					myOperator And
+					myConditionalInputActions
+					{
+						ConditionalInputAction "X_SQUARE Pressed"
+						{
+							myInputActionType Pressed
+							myTimer 0
+							myInputAction = RIGHT_STICK_BUTTON_SPEEDER
+						}
+						ConditionalGameActionState "Using Alternate Preset"
+						{
+							myGameActionState IsUsingAlternatePreset
+						}
+						ConditionalInputAction "Not holding left stick"
+						{
+							myInputActionType HoldDown
+							myNegate TRUE
+							myInputAction = GP_ADRENALINE_RUSH_USE_A
+						}
+					}
+				}
+				ConditionalInputAction "KB Pressed"
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myInputAction = KB_VEHICLE_BOOST
+				}
+			}
+		}
+	}
+	myGameAction BoostAlternateTap
+	myActionContexts
+	{
+		DefaultContext FALSE
+		VehicleContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext TRUE
+		FreeCameraContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] DodgeLeft"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Gamepad
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myInputAction = LEFT_BUMPER_L1_SPEEDER
+				}
+				ConditionalInputAction KBD
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myInputAction = KB_SPEEDER_DODGE_LEFT
+				}
+			}
+		}
+	}
+	myGameAction Speeder_DodgeLeft
+	myActionContexts
+	{
+		DefaultContext FALSE
+		HoloReaderCompassContext FALSE
+		HoloReaderMapContext FALSE
+		HyperspaceJumpMenuContext FALSE
+		VehicleContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext TRUE
+		FreeCameraContext TRUE
+		GadgetSelectionContext FALSE
+		HoloReaderCompassContext TRUE
+		HoloReaderMapContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] DodgeRight"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Gamepad
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myInputAction = RIGHT_BUMPER_R1_SPEEDER
+				}
+				ConditionalInputAction KBD
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myInputAction = KB_SPEEDER_DODGE_RIGHT
+				}
+			}
+		}
+	}
+	myGameAction Speeder_DodgeRight
+	myActionContexts
+	{
+		DefaultContext FALSE
+		VehicleContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext TRUE
+		FreeCameraContext TRUE
+		GadgetSelectionContext FALSE
+		HoloReaderCompassContext TRUE
+		HoloReaderMapContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] JumpCharge"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup InputActions
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Gamepad
+				{
+					myInputActionType HoldDown
+					myInputAction = A_CROSS_SPEEDER
+				}
+				ConditionalInputAction KBD
+				{
+					myInputActionType HoldDown
+					myInputAction = KB_SPEEDER_JUMPCHARGE
+				}
+			}
+		}
+	}
+	myGameAction Speeder_JumpCharge
+	myActionContexts
+	{
+		DefaultContext TRUE
+		SpaceshipContext FALSE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext TRUE
+		FreeCameraContext FALSE
+		HoloReaderCompassContext TRUE
+		HoloReaderMapContext TRUE
+		UIContext TRUE
+		VehicleContext FALSE
+	}
+}
+
+TriggerGameAction "[Speeder] JumpBoost"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup InputActions
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Gamepad
+				{
+					myInputActionType Released
+					myInputAction = A_CROSS_SPEEDER
+				}
+				ConditionalInputAction KBD
+				{
+					myInputActionType Released
+					myInputAction = KB_SPEEDER_JUMPCHARGE
+				}
+			}
+		}
+	}
+	myGameAction Speeder_JumpBoost
+	myExcludeInActionContexts
+	{
+		BinocularsContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] JumpPressVariant"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup InputActions
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Gamepad
+				{
+					myInputAction = A_CROSS_SPEEDER
+				}
+				ConditionalInputAction KBD
+				{
+					myInputAction = KB_SPEEDER_JUMPCHARGE
+				}
+			}
+		}
+	}
+	myGameAction Speeder_JumpPressVariant
+	myExcludeInActionContexts
+	{
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] LookBackPressVariant"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Gamepad
+				{
+					myInputAction = Y_TRIANGLE_SPEEDER
+				}
+				ConditionalInputAction "KB Pressed"
+				{
+					myInputAction = KB_VEHICLE_LOOKBACK
+				}
+			}
+		}
+	}
+	myGameAction Speeder_LookBackPressVariant
+	myExcludeInActionContexts
+	{
+		SpaceshipContext TRUE
+		SpaceshipPursuitModeContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] ExitVehiclePressVariant"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Gamepad
+				{
+					myInputAction = B_CIRCLE_SPEEDER
+				}
+				ConditionalInputAction KB
+				{
+					myInputAction = KB_EXIT_VEHICLE
+				}
+			}
+		}
+	}
+	myGameAction Speeder_ExitVehiclePressVariant
+	myExcludeInActionContexts
+	{
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] TravelMode"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup InputActions
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Gamepad
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 200
+					myToggle FALSE
+					myInputAction = X_SQUARE_SPEEDER
+				}
+				ConditionalInputAction KBD
+				{
+					myToggle FALSE
+					myInputAction = KB_C
+				}
+			}
+		}
+	}
+	myGameAction None
+	myExcludeInActionContexts
+	{
+		BinocularsContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] Shoot"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Gamepad
+				{
+					myInputActionType HoldDown
+					myForceDisplayAsTapInUI TRUE
+					myInputAction = LEFT_BUMPER_L1_SPEEDER
+				}
+				ConditionalInputAction Mouse
+				{
+					myInputActionType HoldDown
+					myInputAction = KB_SPEEDER_SHOOT
+				}
+			}
+		}
+	}
+	myGameAction Speeder_Shoot
+	myActionContexts
+	{
+		DefaultContext FALSE
+		VehicleContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext TRUE
+		FreeCameraContext TRUE
+		HoloReaderCompassContext TRUE
+		HoloReaderMapContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] ReloadMinigame_FreeFireEnabled"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "R1 Pad"
+				{
+					myInputActionType Pressed
+					myNegate FALSE
+					myToggle FALSE
+					myClearToggle FALSE
+					myInputAction = LEFT_BUMPER_L1_SPEEDER
+				}
+				ConditionalInputAction "Keyboard R"
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myNegate FALSE
+					myToggle FALSE
+					myClearToggle FALSE
+					myInputAction = LEFT_CLICK
+				}
+			}
+		}
+	}
+	myGameAction Speeder_ReloadMinigameAction
+	myIsCinematicAction FALSE
+	myIsExclusiveToggle FALSE
+	myConsoleCommand ""
+	myActionContexts
+	{
+		BinocularsContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		EquipmentOverheatContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext FALSE
+		VehicleContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext TRUE
+		DeadContext TRUE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext TRUE
+		HoloReaderCompassContext FALSE
+		HoloReaderMapContext FALSE
+		PetModeContext TRUE
+		SequenceContext FALSE
+		SpaceshipContext TRUE
+		ThrowableContext TRUE
+		TransportSneakingContext FALSE
+		TrickShotContext TRUE
+		UIContext TRUE
+		VehicleContext FALSE
+	}
+}
+
+TriggerGameAction "[Speeder] DodgeLeft_FreefireEnabled"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction KBD
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myInputAction = KB_SPEEDER_DODGE_LEFT
+				}
+				ConditionalActionGroup Gamepad
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction RightBumper
+						{
+							myInputActionType Pressed
+							myInputAction = RIGHT_BUMPER_R1_SPEEDER
+						}
+						ConditionalInputAction LeftStick
+						{
+							myInputActionType Analog
+							myInputAction = LEFT_STICK_LEFT_SPEEDER
+						}
+					}
+				}
+			}
+		}
+	}
+	myGameAction Speeder_DodgeLeftFreeFireEnabled
+	myActionContexts
+	{
+		DefaultContext FALSE
+		HoloReaderCompassContext FALSE
+		HoloReaderMapContext FALSE
+		HyperspaceJumpMenuContext FALSE
+		VehicleContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext TRUE
+		FreeCameraContext TRUE
+		GadgetSelectionContext FALSE
+		HoloReaderCompassContext TRUE
+		HoloReaderMapContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] DodgeRight_FreefireEnabled"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction KBD
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myInputAction = KB_SPEEDER_DODGE_RIGHT
+				}
+				ConditionalActionGroup Gamepad
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction RightBumper
+						{
+							myInputActionType Pressed
+							myForceDisplayAsTapInUI TRUE
+							myInputAction = RIGHT_BUMPER_R1_SPEEDER
+						}
+						ConditionalInputAction LeftStick
+						{
+							myInputActionType Analog
+							myNegate TRUE
+							myInputAction = LEFT_STICK_LEFT_SPEEDER
+						}
+					}
+				}
+			}
+		}
+	}
+	myGameAction Speeder_DodgeRightFreeFireEnabled
+	myActionContexts
+	{
+		DefaultContext FALSE
+		VehicleContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext TRUE
+		FreeCameraContext TRUE
+		GadgetSelectionContext FALSE
+		HoloReaderCompassContext TRUE
+		HoloReaderMapContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction [Speeder]DismountBreakoutAim
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup InputActions
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Mouse
+				{
+					myInputActionType HoldDown
+					myInputAction = KB_AIM
+				}
+				ConditionalInputAction KB
+				{
+					myInputAction = KB_CHANGE_WEAPON_MODULE
+				}
+				ConditionalInputAction MouseScrollUp
+				{
+					myInputAction = M_WHEEL_UP
+				}
+				ConditionalInputAction MouseScrollDown
+				{
+					myInputAction = M_WHEEL_DOWN
+				}
+				ConditionalInputAction KBWeaponChoice1
+				{
+					myInputAction = KB_WEAPON_MODULES_SLOT_MODULE1
+				}
+				ConditionalInputAction KBWeaponChoice2
+				{
+					myInputAction = KB_WEAPON_MODULES_SLOT_MODULE2
+				}
+				ConditionalInputAction KBWeaponChoice3
+				{
+					myInputAction = KB_WEAPON_MODULES_SLOT_MODULE3
+				}
+				ConditionalInputAction KBWeaponCycleFwd
+				{
+					myInputAction = KB_WEAPON_MODULE_CYCLE_FORWARD
+				}
+				ConditionalInputAction KBWeaponCycleBkwd
+				{
+					myInputAction = KB_WEAPON_MODULE_CYCLE_BACKWARD
+				}
+				ConditionalInputAction GPWeaponCycle
+				{
+					myInputAction = Y_TRIANGLE
+				}
+			}
+		}
+	}
+	myGameAction Speeder_DismountBreakoutAim
+	myExcludeInActionContexts
+	{
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction [Speeder]DismountBreakoutShoot
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup InputActions
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Mouse
+				{
+					myInputActionType HoldDown
+					myInputAction = KB_SHOOT
+				}
+			}
+		}
+	}
+	myGameAction Speeder_DismountBreakoutShoot
+	myExcludeInActionContexts
+	{
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] Thrust"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Left Stick Up Analog"
+				{
+					myInputActionType Analog
+					myToggle FALSE
+					myForwardInputAction = LEFT_STICK_UP_TRAILBLAZER
+					myBackInputAction = LEFT_STICK_DOWN_TRAILBLAZER
+					myLeftInputAction = LEFT_STICK_LEFT_TRAILBLAZER
+					myRightInputAction = LEFT_STICK_RIGHT_TRAILBLAZER
+					myExpectedInputAction = LEFT_STICK_UP_TRAILBLAZER
+				}
+				ConditionalRotatedInputAction "Left KB"
+				{
+					myInputActionType Analog
+					myForwardInputAction = KB_TRAILBLAZER_THRUST
+					myBackInputAction = KB_TRAILBLAZER_BRAKE
+					myLeftInputAction = KB_MOVE_LEFT
+					myRightInputAction = KB_MOVE_RIGHT
+					myExpectedInputAction = KB_TRAILBLAZER_THRUST
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_Thrust
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SpaceshipContext TRUE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+		HyperspaceJumpMenuContext TRUE
+		LandingMenuContext TRUE
+		UIContext TRUE
+		VehicleContext FALSE
+	}
+}
+
+TriggerGameAction "[Trailblazer] Brake"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Left Stick Down Analog"
+				{
+					myInputActionType Analog
+					myNegate FALSE
+					myForwardInputAction = LEFT_STICK_UP_TRAILBLAZER
+					myBackInputAction = LEFT_STICK_DOWN_TRAILBLAZER
+					myLeftInputAction = LEFT_STICK_LEFT_TRAILBLAZER
+					myRightInputAction = LEFT_STICK_RIGHT_TRAILBLAZER
+					myExpectedInputAction = LEFT_STICK_DOWN_TRAILBLAZER
+				}
+				ConditionalRotatedInputAction KB
+				{
+					myInputActionType Analog
+					myForwardInputAction = KB_TRAILBLAZER_THRUST
+					myBackInputAction = KB_TRAILBLAZER_BRAKE
+					myLeftInputAction = KB_MOVE_LEFT
+					myRightInputAction = KB_MOVE_RIGHT
+					myExpectedInputAction = KB_TRAILBLAZER_BRAKE
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_Brake
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SpaceshipContext TRUE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+		HyperspaceJumpMenuContext TRUE
+		LandingMenuContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] FullThrust"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Left Stick Up Analog"
+				{
+					myInputActionType HoldDownAfterTime
+					myTimer 200
+					myToggle FALSE
+					myForwardInputAction = LEFT_STICK_UP_TRAILBLAZER
+					myBackInputAction = LEFT_STICK_DOWN_TRAILBLAZER
+					myLeftInputAction = LEFT_STICK_LEFT_TRAILBLAZER
+					myRightInputAction = LEFT_STICK_RIGHT_TRAILBLAZER
+					myExpectedInputAction = LEFT_STICK_UP_TRAILBLAZER
+				}
+				ConditionalRotatedInputAction "Left KB"
+				{
+					myInputActionType HoldDownAfterTime
+					myTimer 200
+					myForwardInputAction = KB_TRAILBLAZER_THRUST
+					myBackInputAction = KB_TRAILBLAZER_BRAKE
+					myLeftInputAction = KB_MOVE_LEFT
+					myRightInputAction = KB_MOVE_RIGHT
+					myExpectedInputAction = KB_TRAILBLAZER_THRUST
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_FullThrust
+	myActionContexts
+	{
+		DefaultContext FALSE
+		InputChallengeContext TRUE
+		SpaceshipContext TRUE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+		HyperspaceJumpMenuContext TRUE
+		UIContext TRUE
+		VehicleContext FALSE
+	}
+}
+
+TriggerGameAction "[Trailblazer] FullBrake"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Left Stick Down Analog"
+				{
+					myInputActionType HoldDownAfterTime
+					myTimer 200
+					myNegate FALSE
+					myForwardInputAction = LEFT_STICK_UP_TRAILBLAZER
+					myBackInputAction = LEFT_STICK_DOWN_TRAILBLAZER
+					myLeftInputAction = LEFT_STICK_LEFT_TRAILBLAZER
+					myRightInputAction = LEFT_STICK_RIGHT_TRAILBLAZER
+					myExpectedInputAction = LEFT_STICK_DOWN_TRAILBLAZER
+				}
+				ConditionalRotatedInputAction KB
+				{
+					myInputActionType HoldDownAfterTime
+					myTimer 200
+					myForwardInputAction = KB_TRAILBLAZER_THRUST
+					myBackInputAction = KB_TRAILBLAZER_BRAKE
+					myLeftInputAction = KB_MOVE_LEFT
+					myRightInputAction = KB_MOVE_RIGHT
+					myExpectedInputAction = KB_TRAILBLAZER_BRAKE
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_FullBrake
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SpaceshipContext TRUE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+		HyperspaceJumpMenuContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] Boost"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction LeftStick
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 200
+					myToggle FALSE
+					myInputAction = X_SQUARE_TRAILBLAZER
+				}
+				ConditionalInputAction "KB Pressed"
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 200
+					myInputAction = KB_TRAILBLAZER_BOOST
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_Boost
+	myIsCinematicAction FALSE
+	myIsExclusiveToggle FALSE
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SpaceshipContext TRUE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+		HyperspacePreparationReadyContext TRUE
+		SpaceshipPursuitModeContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] Toggle Boost"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction LeftStick
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myToggle FALSE
+					myInputAction = X_SQUARE_TRAILBLAZER
+				}
+				ConditionalInputAction "KB Pressed"
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myInputAction = KB_TRAILBLAZER_BOOST
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_ToggleBoost
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SpaceshipContext TRUE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+		HyperspacePreparationReadyContext TRUE
+		SpaceshipPursuitModeContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] UpgradedBoost"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction LeftStick
+				{
+					myInputActionType HoldDownAfterTime
+					myTimer 200
+					myToggle FALSE
+					myInputAction = X_SQUARE_TRAILBLAZER
+				}
+				ConditionalInputAction "KB Pressed"
+				{
+					myInputActionType HoldDownAfterTime
+					myTimer 200
+					myInputAction = KB_TRAILBLAZER_BOOST
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_UpgradedBoost
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SpaceshipContext TRUE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+		HyperspacePreparationReadyContext TRUE
+		SpaceshipPursuitModeContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] DodgeLeft"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Controller
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction "LeftBumper_L1 Pressed"
+						{
+							myInputActionType ReleaseBeforeTime
+							myTimer 200
+							myInputAction = LEFT_BUMPER_L1_TRAILBLAZER
+						}
+						ConditionalInputAction Not_R1_RB_Pressed
+						{
+							myInputActionType HoldDown
+							myTimer 0
+							myNegate TRUE
+							myInputAction = RIGHT_BUMPER_R1_TRAILBLAZER
+						}
+					}
+				}
+				ConditionalInputAction KB
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 150
+					myInputAction = KB_TRAILBLAZER_DODGELEFT
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_DodgeLeft
+	myRequireNewInputOnContextChange FALSE
+	myActionContexts
+	{
+		DefaultContext FALSE
+		HoloReaderCompassContext FALSE
+		HoloReaderMapContext FALSE
+		SpaceshipContext TRUE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+		HyperspaceJumpMenuContext TRUE
+		SpaceshipPursuitModeContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] DodgeRight"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Controller
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction "RightBumper_R1 Pressed"
+						{
+							myInputActionType ReleaseBeforeTime
+							myTimer 200
+							myInputAction = RIGHT_BUMPER_R1_TRAILBLAZER
+						}
+						ConditionalInputAction Not_L1_LB_Pressed
+						{
+							myInputActionType HoldDown
+							myTimer 0
+							myNegate TRUE
+							myInputAction = LEFT_BUMPER_L1_TRAILBLAZER
+						}
+					}
+				}
+				ConditionalInputAction KB
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 150
+					myInputAction = KB_TRAILBLAZER_DODGERIGHT
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_DodgeRight
+	myRequireNewInputOnContextChange FALSE
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SpaceshipContext TRUE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+		HyperspaceJumpMenuContext TRUE
+		SpaceshipPursuitModeContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] UpgradedDodgeLeft"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Controller
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction "LeftBumper_L1 Hold"
+						{
+							myInputActionType PressedAfterTime
+							myTimer 200
+							myInputAction = LEFT_BUMPER_L1_TRAILBLAZER
+						}
+						ConditionalInputAction Not_R1_RB
+						{
+							myInputActionType HoldDown
+							myTimer 0
+							myNegate TRUE
+							myInputAction = RIGHT_BUMPER_R1_TRAILBLAZER
+						}
+					}
+				}
+				ConditionalInputAction KB
+				{
+					myInputActionType PressedAfterTime
+					myTimer 150
+					myInputAction = KB_TRAILBLAZER_DODGELEFT
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_UpgradedDodgeLeft
+	myRequireNewInputOnContextChange FALSE
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SpaceshipContext TRUE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+		HyperspaceJumpMenuContext TRUE
+		SpaceshipPursuitModeContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] UpgradedDodgeRight"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Controller
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction "RightBumper_R1 Pressed"
+						{
+							myInputActionType PressedAfterTime
+							myTimer 200
+							myInputAction = RIGHT_BUMPER_R1_TRAILBLAZER
+						}
+						ConditionalInputAction Not_L1_LB_Pressed
+						{
+							myInputActionType HoldDown
+							myTimer 0
+							myNegate TRUE
+							myInputAction = LEFT_BUMPER_L1_TRAILBLAZER
+						}
+					}
+				}
+				ConditionalInputAction KB
+				{
+					myInputActionType PressedAfterTime
+					myTimer 150
+					myInputAction = KB_TRAILBLAZER_DODGERIGHT
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_UpgradedDodgeRight
+	myRequireNewInputOnContextChange FALSE
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SpaceshipContext TRUE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+		HyperspaceJumpMenuContext TRUE
+		SpaceshipPursuitModeContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] 180Maneuver"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Controller_A
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction LB
+						{
+							myInputActionType ReleaseBeforeTime
+							myTimer 350
+							myInputAction = LEFT_BUMPER_L1_TRAILBLAZER
+						}
+						ConditionalInputAction RB
+						{
+							myInputActionType HoldDownBeforeTime
+							myTimer 350
+							myInputAction = RIGHT_BUMPER_R1_TRAILBLAZER
+						}
+					}
+				}
+				ConditionalActionGroup Controller_B
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction LB
+						{
+							myInputActionType HoldDownBeforeTime
+							myTimer 350
+							myInputAction = LEFT_BUMPER_L1_TRAILBLAZER
+						}
+						ConditionalInputAction RB
+						{
+							myInputActionType ReleaseBeforeTime
+							myTimer 350
+							myInputAction = RIGHT_BUMPER_R1_TRAILBLAZER
+						}
+					}
+				}
+				ConditionalInputAction KB
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 350
+					myInputAction = KB_TRAILBLAZER_MANEUVER
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_180Maneuver
+	myRequireNewInputOnContextChange TRUE
+	myIsCinematicAction FALSE
+	myIsExclusiveToggle FALSE
+	myConsoleCommand ""
+	myActionContexts
+	{
+		BinocularsContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext TRUE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext FALSE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext TRUE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext FALSE
+		SpaceshipPursuitModeContext TRUE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext TRUE
+		VehicleContext FALSE
+	}
+}
+
+TriggerGameAction "[Trailblazer] 360Maneuver"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Controller
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction LB
+						{
+							myInputActionType HoldDownAfterTime
+							myTimer 350
+							myToggle FALSE
+							myClearToggle FALSE
+							myInputAction = LEFT_BUMPER_L1_TRAILBLAZER
+						}
+						ConditionalInputAction RB
+						{
+							myInputActionType HoldDownAfterTime
+							myTimer 350
+							myClearToggle FALSE
+							myInputAction = RIGHT_BUMPER_R1_TRAILBLAZER
+						}
+						ConditionalInputAction "Copy of RB"
+						{
+							myInputActionType HoldDownAfterTime
+							myTimer 1000
+							myNegate TRUE
+							myClearToggle FALSE
+							myInputAction = RIGHT_BUMPER_R1_TRAILBLAZER
+						}
+						ConditionalInputAction "Copy of Copy of RB"
+						{
+							myInputActionType HoldDownAfterTime
+							myTimer 1000
+							myNegate TRUE
+							myClearToggle FALSE
+							myInputAction = RIGHT_BUMPER_R1_TRAILBLAZER
+						}
+					}
+				}
+				ConditionalInputAction KB
+				{
+					myInputActionType PressedAfterTime
+					myTimer 350
+					myInputAction = KB_TRAILBLAZER_MANEUVER
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_360Maneuver
+	myRequireNewInputOnContextChange TRUE
+	myIsCinematicAction FALSE
+	myIsExclusiveToggle FALSE
+	myConsoleCommand ""
+	myActionContexts
+	{
+		BinocularsContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext TRUE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext FALSE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext TRUE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext FALSE
+		SpaceshipPursuitModeContext TRUE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext TRUE
+		VehicleContext FALSE
+	}
+}
+
+TriggerGameAction "[Trailblazer] ShootMainWeapons"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Hold
+				{
+					myOperator And
+					myConditionalInputActions
+					{
+						ConditionalActionGroup "Input Actions"
+						{
+							myOperator Or
+							myConditionalInputActions
+							{
+								ConditionalInputAction "RightTrigger_L2 Pressed"
+								{
+									myInputActionType Analog
+									myInputAction = RIGHT_TRIGGER_R2_TRAILBLAZER
+								}
+								ConditionalInputAction "KB Pressed"
+								{
+									myInputActionType HoldDown
+									myInputAction = KB_TRAILBLAZER_USE_MAIN_EQUIPMENT
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_UseMainEquipment
+	myActionContexts
+	{
+		DefaultContext FALSE
+		InputChallengeContext TRUE
+		SpaceshipContext TRUE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] ToggleShootMainWeapons"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Hold
+				{
+					myOperator And
+					myConditionalInputActions
+					{
+						ConditionalActionGroup "Input Actions"
+						{
+							myOperator Or
+							myConditionalInputActions
+							{
+								ConditionalInputAction "RightTrigger_L2 Pressed"
+								{
+									myInputActionType Pressed
+									myInputAction = RIGHT_TRIGGER_R2_TRAILBLAZER
+								}
+								ConditionalInputAction "KB Pressed"
+								{
+									myInputActionType Pressed
+									myInputAction = KB_TRAILBLAZER_USE_MAIN_EQUIPMENT
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_ToggleUseMainEquipment
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SpaceshipContext TRUE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+		HyperspaceJumpMenuContext FALSE
+		HyperspacePreparationReadyContext FALSE
+		LandingMenuContext FALSE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] ShootSecondaryWeapon"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Controller
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 200
+					myInputAction = A_CROSS_TRAILBLAZER
+				}
+				ConditionalInputAction KB
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 200
+					myInputAction = KB_TRAILBLAZER_USE_SECONDARY_EQUIPMENT
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_UseSecondaryEquipment
+	myRequireNewInputOnContextChange TRUE
+	myIsCinematicAction FALSE
+	myIsExclusiveToggle FALSE
+	myConsoleCommand ""
+	myActionContexts
+	{
+		BinocularsContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext TRUE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext FALSE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext TRUE
+		GrapplingContext FALSE
+		HyperspaceJumpMenuContext TRUE
+		HyperspacePreparationReadyContext TRUE
+		LandingMenuContext TRUE
+		SequenceContext FALSE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext TRUE
+		VehicleContext FALSE
+	}
+}
+
+TriggerGameAction "[Trailblazer] ForceShootSecondaryWeapon"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Controller
+				{
+					myInputActionType HoldDownAfterTime
+					myTimer 200
+					myInputAction = A_CROSS_TRAILBLAZER
+				}
+				ConditionalInputAction KB
+				{
+					myInputActionType HoldDownAfterTime
+					myTimer 200
+					myInputAction = KB_TRAILBLAZER_USE_SECONDARY_EQUIPMENT
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_ForceUseSecondaryEquipment
+	myRequireNewInputOnContextChange TRUE
+	myIsCinematicAction FALSE
+	myIsExclusiveToggle FALSE
+	myConsoleCommand ""
+	myActionContexts
+	{
+		BinocularsContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext TRUE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext FALSE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext TRUE
+		GrapplingContext FALSE
+		HyperspaceJumpMenuContext TRUE
+		HyperspacePreparationReadyContext TRUE
+		LandingMenuContext TRUE
+		SequenceContext FALSE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext TRUE
+		VehicleContext FALSE
+	}
+}
+
+TriggerGameAction "[Trailblazer] YawLeft"
+{
+	myConditionalInputActions
+	{
+		ConditionalRotatedInputAction "Rotated Right Stick Left Analog"
+		{
+			myInputActionType Analog
+			myForwardInputAction = RIGHT_STICK_UP_TRAILBLAZER
+			myBackInputAction = RIGHT_STICK_DOWN_TRAILBLAZER
+			myLeftInputAction = RIGHT_STICK_LEFT_TRAILBLAZER
+			myRightInputAction = RIGHT_STICK_RIGHT_TRAILBLAZER
+			myExpectedInputAction = RIGHT_STICK_LEFT_TRAILBLAZER
+		}
+		HardcodedUIInput "[UI-only] Mouse left"
+		{
+			myButtonName MOUSE_XAXIS
+			myAxisDirection -1
+		}
+	}
+	myGameAction Trailblazer_YawLeft
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SpaceshipContext TRUE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] YawRight"
+{
+	myConditionalInputActions
+	{
+		ConditionalRotatedInputAction "Rotated Right Stick Right Analog"
+		{
+			myInputActionType Analog
+			myForwardInputAction = RIGHT_STICK_UP_TRAILBLAZER
+			myBackInputAction = RIGHT_STICK_DOWN_TRAILBLAZER
+			myLeftInputAction = RIGHT_STICK_LEFT_TRAILBLAZER
+			myRightInputAction = RIGHT_STICK_RIGHT_TRAILBLAZER
+			myExpectedInputAction = RIGHT_STICK_RIGHT_TRAILBLAZER
+		}
+		HardcodedUIInput "[UI-only] Mouse right"
+		{
+			myButtonName MOUSE_XAXIS
+			myAxisDirection 1
+		}
+	}
+	myGameAction Trailblazer_YawRight
+	myActionContexts
+	{
+		DefaultContext FALSE
+		HoloReaderCompassContext FALSE
+		HoloReaderMapContext FALSE
+		SpaceshipContext TRUE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] PitchUp"
+{
+	myConditionalInputActions
+	{
+		ConditionalRotatedInputAction "Rotated Right Stick Up Analog"
+		{
+			myInputActionType Analog
+			myForwardInputAction = RIGHT_STICK_UP_TRAILBLAZER
+			myBackInputAction = RIGHT_STICK_DOWN_TRAILBLAZER
+			myLeftInputAction = RIGHT_STICK_LEFT_TRAILBLAZER
+			myRightInputAction = RIGHT_STICK_RIGHT_TRAILBLAZER
+			myExpectedInputAction = RIGHT_STICK_UP_TRAILBLAZER
+		}
+		HardcodedUIInput "[UI-only] Mouse up"
+		{
+			myButtonName MOUSE_YAXIS
+			myAxisDirection 1
+		}
+	}
+	myGameAction Trailblazer_PitchUp
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SpaceshipContext TRUE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] PitchDown"
+{
+	myConditionalInputActions
+	{
+		ConditionalRotatedInputAction "Rotated Right Stick Down Analog"
+		{
+			myInputActionType Analog
+			myForwardInputAction = RIGHT_STICK_UP_TRAILBLAZER
+			myBackInputAction = RIGHT_STICK_DOWN_TRAILBLAZER
+			myLeftInputAction = RIGHT_STICK_LEFT_TRAILBLAZER
+			myRightInputAction = RIGHT_STICK_RIGHT_TRAILBLAZER
+			myExpectedInputAction = RIGHT_STICK_DOWN_TRAILBLAZER
+		}
+		HardcodedUIInput "[UI-only] Mouse Down"
+		{
+			myButtonName MOUSE_YAXIS
+			myAxisDirection -1
+		}
+	}
+	myGameAction Trailblazer_PitchDown
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SpaceshipContext TRUE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+	}
+}
+
+TriggerGameAction "[Traiblazer] AllMovement"
+{
+	myConditionalInputActions
+	{
+		ConditionalInputAction "Right stick left"
+		{
+			myInputActionType Analog
+			myInputAction = RIGHT_STICK_LEFT_TRAILBLAZER
+		}
+		ConditionalInputAction "Right stick Right"
+		{
+			myInputActionType Analog
+			myInputAction = RIGHT_STICK_RIGHT_TRAILBLAZER
+		}
+		ConditionalInputAction "Right stick up"
+		{
+			myInputActionType Analog
+			myInputAction = RIGHT_STICK_UP_TRAILBLAZER
+		}
+		ConditionalInputAction "Right stick down"
+		{
+			myInputActionType Analog
+			myInputAction = RIGHT_STICK_DOWN_TRAILBLAZER
+		}
+		HardcodedUIInput "[UI-only] Mouse left"
+		{
+			myButtonName MOUSE_XAXIS
+			myAxisDirection -1
+		}
+		HardcodedUIInput "[UI-only] Mouse right"
+		{
+			myButtonName MOUSE_XAXIS
+			myAxisDirection 1
+		}
+		HardcodedUIInput "[UI-only] Mouse up"
+		{
+			myButtonName MOUSE_YAXIS
+			myAxisDirection 1
+		}
+		HardcodedUIInput "[UI-only] Mouse Down"
+		{
+			myButtonName MOUSE_YAXIS
+			myAxisDirection -1
+		}
+	}
+	myGameAction Trailbalzer_AllMovement
+}
+
+TriggerGameAction "[Trailblazer] RollLeft"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "Left Stick Left"
+				{
+					myInputActionType Analog
+					myInputAction = LEFT_STICK_LEFT_TRAILBLAZER
+				}
+				ConditionalInputAction "Left KB"
+				{
+					myInputActionType Analog
+					myInputAction = KB_TRAILBLAZER_ROLL_LEFT
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_RollLeft
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SpaceshipContext TRUE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] RollRight"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "Right Stick Right"
+				{
+					myInputActionType Analog
+					myInputAction = LEFT_STICK_RIGHT_TRAILBLAZER
+				}
+				ConditionalInputAction "Right KB"
+				{
+					myInputActionType Analog
+					myInputAction = KB_TRAILBLAZER_ROLL_RIGHT
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_RollRight
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SpaceshipContext TRUE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] Tag"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Gamepad
+				{
+					myInputAction = UI_SECONDARYINTERACT
+				}
+				ConditionalInputAction Keyboard
+				{
+					myInputAction = KB_E
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_Tag
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SpaceshipContext TRUE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] PursuitMode"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction LEFT_TRIGGER_L2
+				{
+					myInputActionType HoldDown
+					myInputAction = LEFT_TRIGGER_L2_TRAILBLAZER
+				}
+				ConditionalInputAction KB
+				{
+					myInputActionType HoldDown
+					myInputAction = KB_TOGGLE_PURSUITMODE
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_PursuitMode
+	myRequireNewInputOnContextChange TRUE
+	myIsCinematicAction FALSE
+	myIsExclusiveToggle FALSE
+	myConsoleCommand ""
+	myActionContexts
+	{
+		BinocularsContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext TRUE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext FALSE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext TRUE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext FALSE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext TRUE
+		VehicleContext FALSE
+	}
+}
+
+TriggerGameAction "[Trailblazer] TogglePursuitMode"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction LEFT_TRIGGER_L2
+				{
+					myInputActionType Pressed
+					myToggle FALSE
+					myClearToggle FALSE
+					myInputAction = LEFT_TRIGGER_L2_TRAILBLAZER
+				}
+				ConditionalInputAction KB
+				{
+					myInputActionType Pressed
+					myToggle FALSE
+					myClearToggle FALSE
+					myInputAction = KB_TOGGLE_PURSUITMODE
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_TogglePursuitMode
+	myActionContexts
+	{
+		BinocularsContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext TRUE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		TutorialPauseContext TRUE
+		UIContext FALSE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext TRUE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext FALSE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext TRUE
+		VehicleContext FALSE
+	}
+}
+
+TriggerGameAction "[Trailblazer] UseAuxiliaryDevice"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction LeftStickButton
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 200
+					myInputAction = LEFT_STICK_BUTTON_TRAILBLAZER
+				}
+				ConditionalInputAction KB
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 200
+					myInputAction = KB_TRAILBLAZER_USE_AUXILIARY_DEVICE
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_UseAuxiliaryDevice
+	myRequireNewInputOnContextChange TRUE
+	myIsCinematicAction FALSE
+	myIsExclusiveToggle FALSE
+	myConsoleCommand ""
+	myActionContexts
+	{
+		BinocularsContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext TRUE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext FALSE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext TRUE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext FALSE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext TRUE
+		VehicleContext FALSE
+	}
+}
+
+TriggerGameAction "[Trailblazer] UseRepairKit"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "D Pad Down"
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 200
+					myInputAction = D_PAD_DOWN_TRAILBLAZER
+				}
+				ConditionalInputAction KB
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 200
+					myInputAction = KB_TRAILBLAZER_USE_REPAIRKIT
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_UseRepairKit
+	myRequireNewInputOnContextChange TRUE
+	myIsCinematicAction FALSE
+	myIsExclusiveToggle FALSE
+	myConsoleCommand ""
+	myActionContexts
+	{
+		BinocularsContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext TRUE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext FALSE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext TRUE
+		GrapplingContext FALSE
+		HyperspaceJumpMenuContext TRUE
+		HyperspacePreparationReadyContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext FALSE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext TRUE
+		VehicleContext FALSE
+	}
+}
+
+TriggerGameAction "[Trailblazer] ToggleTurret"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Circle
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myInputAction = B_CIRCLE_TRAILBLAZER
+				}
+				ConditionalInputAction KB
+				{
+					myInputAction = KB_TRAILBLAZER_TOGGLE_TURRET
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_ToggleTurret
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SpaceshipContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+		HyperspaceJumpMenuContext TRUE
+		HyperspacePreparationReadyContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] FreeLook"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "DPAD Down"
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 500
+					myToggle FALSE
+					myInputAction = D_PAD_LEFT_TRAILBLAZER
+				}
+				ConditionalInputAction KB
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 500
+					myInputAction = KB_FREELOOK_CAMERA
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_FreeLookCamera
+	myRequireNewInputOnContextChange TRUE
+	myIsCinematicAction FALSE
+	myIsExclusiveToggle FALSE
+	myConsoleCommand ""
+	myActionContexts
+	{
+		BinocularsContext FALSE
+		CoopContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext TRUE
+		TextChatContext FALSE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext FALSE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		CoopContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		HyperspaceJumpMenuContext TRUE
+		LandingMenuContext TRUE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext FALSE
+		SpaceshipPursuitModeContext TRUE
+		TextChatContext TRUE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext TRUE
+		VehicleContext FALSE
+	}
+}
+
+TriggerGameAction "[Trailblazer] InteractHyperspaceJumpMenu"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction D_PAD_UP
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myNegate FALSE
+					myToggle FALSE
+					myInputAction = D_PAD_UP_TRAILBLAZER
+				}
+				ConditionalInputAction D_PAD_DOWN
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myToggle FALSE
+					myInputAction = D_PAD_DOWN_TRAILBLAZER
+				}
+				ConditionalInputAction KB_UP
+				{
+					myInputActionType Pressed
+					myInputAction = KB_MOVE_UP
+				}
+				ConditionalInputAction KB_DOWN
+				{
+					myInputActionType Pressed
+					myNegate FALSE
+					myInputAction = KB_MOVE_DOWN
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_InteractHyperspaceJumpMenu
+	myRequireNewInputOnContextChange TRUE
+	myIsCinematicAction FALSE
+	myIsExclusiveToggle FALSE
+	myConsoleCommand ""
+	myActionContexts
+	{
+		BinocularsContext FALSE
+		CoopContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		HyperspaceJumpMenuContext TRUE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext TRUE
+		TextChatContext FALSE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext FALSE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		CoopContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext FALSE
+		TextChatContext TRUE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext TRUE
+		VehicleContext FALSE
+	}
+}
+
+TriggerGameAction "[Trailblazer] OpenHyperspaceJumpMenu"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction D_PAD_RIGHT
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myToggle FALSE
+					myInputAction = D_PAD_RIGHT_TRAILBLAZER
+				}
+				ConditionalInputAction KB_X
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myToggle FALSE
+					myInputAction = KB_TRAILBLAZER_OPEN_HYPERSPACE_MENU
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_OpenHyperspaceJumpMenu
+	myRequireNewInputOnContextChange TRUE
+	myIsCinematicAction FALSE
+	myIsExclusiveToggle FALSE
+	myConsoleCommand ""
+	myActionContexts
+	{
+		BinocularsContext FALSE
+		CoopContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext TRUE
+		TextChatContext FALSE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext FALSE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		CoopContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext FALSE
+		TextChatContext TRUE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext TRUE
+		VehicleContext FALSE
+	}
+}
+
+TriggerGameAction "[Trailblazer] ExitHyperspaceJumpMenu"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction D_PAD_LEFT
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myToggle FALSE
+					myInputAction = B_CIRCLE_TRAILBLAZER
+				}
+				ConditionalInputAction KB_X
+				{
+					myInputAction = KB_F
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_ExitHyperspaceJumpMenu
+	myRequireNewInputOnContextChange TRUE
+	myIsCinematicAction FALSE
+	myIsExclusiveToggle FALSE
+	myConsoleCommand ""
+	myActionContexts
+	{
+		BinocularsContext FALSE
+		CoopContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		HyperspaceJumpMenuContext TRUE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext TRUE
+		TextChatContext FALSE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext FALSE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		CoopContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext FALSE
+		TextChatContext TRUE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] MoveUpHyperspaceJumpMenu"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction D_PAD_UP
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myNegate FALSE
+					myToggle FALSE
+					myInputAction = D_PAD_UP_TRAILBLAZER
+				}
+				ConditionalInputAction KB_UP
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myNegate FALSE
+					myToggle FALSE
+					myInputAction = UI_MOVE_UP_KB
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_MoveUpHyperspaceJumpMenu
+	myRequireNewInputOnContextChange TRUE
+	myIsCinematicAction FALSE
+	myIsExclusiveToggle FALSE
+	myConsoleCommand ""
+	myActionContexts
+	{
+		BinocularsContext FALSE
+		CoopContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		HyperspaceJumpMenuContext TRUE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext TRUE
+		TextChatContext FALSE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext FALSE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		CoopContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext FALSE
+		TextChatContext TRUE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext TRUE
+		VehicleContext FALSE
+	}
+}
+
+TriggerGameAction "[Trailblazer] MoveDownHyperspaceJumpMenu"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction D_PAD_DOWN
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myNegate FALSE
+					myToggle FALSE
+					myInputAction = D_PAD_DOWN_TRAILBLAZER
+				}
+				ConditionalInputAction KB_DOWN
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myNegate FALSE
+					myToggle FALSE
+					myInputAction = UI_MOVE_DOWN_KB
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_MoveDownHyperspaceJumpMenu
+	myRequireNewInputOnContextChange TRUE
+	myIsCinematicAction FALSE
+	myIsExclusiveToggle FALSE
+	myConsoleCommand ""
+	myActionContexts
+	{
+		BinocularsContext FALSE
+		CoopContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		HyperspaceJumpMenuContext TRUE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext TRUE
+		TextChatContext FALSE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext FALSE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		CoopContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext FALSE
+		TextChatContext TRUE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext TRUE
+		VehicleContext FALSE
+	}
+}
+
+TriggerGameAction "[Trailblazer] SelectHyperspaceJumpDestination"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction A_Cross
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myToggle FALSE
+					myInputAction = A_CROSS_TRAILBLAZER
+				}
+				ConditionalInputAction KB_E
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myToggle FALSE
+					myInputAction = KB_TRAILBLAZER_SELECT_HYPERSPACE_JUMP_DESTINATION
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_SelectHyperspaceJumpDestination
+	myRequireNewInputOnContextChange TRUE
+	myIsCinematicAction FALSE
+	myIsExclusiveToggle FALSE
+	myConsoleCommand ""
+	myActionContexts
+	{
+		BinocularsContext FALSE
+		CoopContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		HyperspaceJumpMenuContext TRUE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext FALSE
+		TextChatContext FALSE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext FALSE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		CoopContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext FALSE
+		TextChatContext TRUE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext TRUE
+		VehicleContext FALSE
+	}
+}
+
+TriggerGameAction "[Trailblazer] UseHyperspaceJump"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Controller
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction "LEFT_STICK_UP (0)"
+						{
+							myInputActionType PressWithDuration
+							myTimer 100
+							myToggle FALSE
+							myInputAction = LEFT_STICK_UP_TRAILBLAZER
+						}
+						ConditionalInputAction "RIGHT_STICK_UP (0)"
+						{
+							myInputActionType PressWithDuration
+							myTimer 100
+							myInputAction = RIGHT_STICK_UP_TRAILBLAZER
+						}
+					}
+				}
+				ConditionalActionGroup Keyboard
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction KB
+						{
+							myInputActionType Pressed
+							myTimer 0
+							myNegate FALSE
+							myInputAction = KB_TRAILBLAZER_USE_HYPERSPACE_JUMP
+						}
+					}
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_UseHyperspaceJump
+	myRequireNewInputOnContextChange TRUE
+	myIsCinematicAction FALSE
+	myIsExclusiveToggle FALSE
+	myConsoleCommand ""
+	myActionContexts
+	{
+		BinocularsContext FALSE
+		CoopContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		HyperspacePreparationReadyContext TRUE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext FALSE
+		TextChatContext FALSE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext FALSE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		CoopContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext FALSE
+		TextChatContext TRUE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext TRUE
+		VehicleContext FALSE
+	}
+}
+
+TriggerGameAction "[Trailblazer] CancelHyperspaceJumpPreparation"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction D_PAD_RIGHT
+				{
+					myInputActionType HoldDownAfterTime
+					myTimer 1000
+					myInputAction = B_CIRCLE_TRAILBLAZER
+				}
+				ConditionalInputAction KB_X
+				{
+					myInputActionType HoldDownAfterTime
+					myTimer 1000
+					myInputAction = KB_TRAILBLAZER_CANCEL_HYPERSPACE_JUMP_PREPARATION
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_CancelHyperspaceJumpPreparation
+	myRequireNewInputOnContextChange TRUE
+	myIsCinematicAction FALSE
+	myIsExclusiveToggle FALSE
+	myConsoleCommand ""
+	myActionContexts
+	{
+		BinocularsContext FALSE
+		CoopContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext TRUE
+		TextChatContext FALSE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext FALSE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		CoopContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext FALSE
+		TextChatContext TRUE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext TRUE
+		VehicleContext FALSE
+	}
+}
+
+TriggerGameAction "[Trailblazer] Scan"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Gamepad
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myInputAction = RIGHT_STICK_BUTTON_TRAILBLAZER
+				}
+				ConditionalInputAction Keyboard
+				{
+					myInputActionType HoldDownAfterTime
+					myTimer 500
+					myInputAction = KB_TRAILBLAZER_SCAN
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_Scan
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SpaceshipContext TRUE
+		UIContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		AdrenalineRushContext TRUE
+		FreeCameraContext TRUE
+		GadgetSelectionContext TRUE
+		TextChatContext TRUE
+		UIContext TRUE
+		WeaponModuleSelectionContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] ReleaseShootMainWeapons"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Hold
+				{
+					myOperator And
+					myConditionalInputActions
+					{
+						ConditionalActionGroup "Input Actions"
+						{
+							myOperator Or
+							myConditionalInputActions
+							{
+								ConditionalInputAction "RightTrigger_L2 Pressed"
+								{
+									myInputActionType Released
+									myTimer 0
+									myInputAction = RIGHT_TRIGGER_R2_TRAILBLAZER
+								}
+								ConditionalInputAction "KB Pressed"
+								{
+									myInputActionType Released
+									myTimer 0
+									myInputAction = KB_TRAILBLAZER_USE_MAIN_EQUIPMENT
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_ReleaseUseMainEquipment
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SpaceshipContext TRUE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] NextTarget"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Gamepad
+				{
+					myInputAction = D_PAD_UP_TRAILBLAZER
+				}
+				ConditionalInputAction Keyboard
+				{
+					myInputAction = KB_TRAILBLAZER_NEXTTARGET
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_NextTarget
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SpaceshipContext TRUE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] PrevTarget"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Keyboard
+				{
+					myInputAction = KB_TRAILBLAZER_PREVTARGET
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_PrevTarget
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SpaceshipContext TRUE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] LookBack"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction LeftStick
+				{
+					myInputActionType HoldDownAfterTime
+					myTimer 200
+					myToggle FALSE
+					myInputAction = D_PAD_LEFT_TRAILBLAZER
+				}
+				ConditionalInputAction "KB Pressed"
+				{
+					myInputActionType HoldDownAfterTime
+					myTimer 200
+					myInputAction = KB_FREELOOK_CAMERA
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_LookBack
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SpaceshipContext TRUE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+		HyperspaceJumpMenuContext TRUE
+		HyperspacePreparationReadyContext TRUE
+		SpaceshipPursuitModeContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] 180ManeuverTutorial"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Controller_A
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction LB
+						{
+							myInputActionType Pressed
+							myTimer 0
+							myInputAction = LEFT_BUMPER_L1_TRAILBLAZER
+						}
+						ConditionalInputAction RB
+						{
+							myInputActionType Pressed
+							myTimer 0
+							myInputAction = RIGHT_BUMPER_R1_TRAILBLAZER
+						}
+					}
+				}
+				ConditionalInputAction KB
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 350
+					myInputAction = KB_TRAILBLAZER_MANEUVER
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_180Maneuver_Tutorial
+}
+
+TriggerGameAction "[Trailblazer] DodgeLeftTutorial"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Controller
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction "LeftBumper_L1 Pressed"
+						{
+							myInputActionType Pressed
+							myTimer 0
+							myInputAction = LEFT_BUMPER_L1_TRAILBLAZER
+						}
+					}
+				}
+				ConditionalInputAction KB
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 150
+					myInputAction = KB_TRAILBLAZER_DODGELEFT
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_DodgeLeft_Tutorial
+	myActionContexts
+	{
+		DefaultContext FALSE
+		HoloReaderCompassContext FALSE
+		HoloReaderMapContext FALSE
+		SpaceshipContext TRUE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+		HyperspaceJumpMenuContext TRUE
+		SpaceshipPursuitModeContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] DodgeRightTutorial"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Controller
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction "LeftBumper_L1 Pressed"
+						{
+							myInputActionType Pressed
+							myTimer 0
+							myInputAction = RIGHT_BUMPER_R1_TRAILBLAZER
+						}
+					}
+				}
+				ConditionalInputAction KB
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 150
+					myInputAction = KB_TRAILBLAZER_DODGERIGHT
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_DodgeRight_Tutorial
+	myActionContexts
+	{
+		DefaultContext FALSE
+		HoloReaderCompassContext FALSE
+		HoloReaderMapContext FALSE
+		SpaceshipContext TRUE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		FreeCameraContext TRUE
+		HyperspaceJumpMenuContext TRUE
+		SpaceshipPursuitModeContext TRUE
+		UIContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] ScanPressVariant"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Gamepad
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myInputAction = RIGHT_STICK_BUTTON_TRAILBLAZER
+				}
+				ConditionalInputAction Keyboard
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myInputAction = KB_V
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_ScanVariant
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SpaceshipContext TRUE
+		UIContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		AdrenalineRushContext TRUE
+		FreeCameraContext TRUE
+		GadgetSelectionContext TRUE
+		TextChatContext TRUE
+		UIContext TRUE
+		WeaponModuleSelectionContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] OpenLandingMenu"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction D_PAD_RIGHT
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myToggle FALSE
+					myInputAction = D_PAD_RIGHT_TRAILBLAZER
+				}
+				ConditionalInputAction KB_X
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myToggle FALSE
+					myInputAction = KB_X
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_OpenLandingMenu
+	myRequireNewInputOnContextChange TRUE
+	myIsCinematicAction FALSE
+	myIsExclusiveToggle FALSE
+	myConsoleCommand ""
+	myActionContexts
+	{
+		BinocularsContext FALSE
+		CoopContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext TRUE
+		TextChatContext FALSE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext FALSE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		CoopContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext FALSE
+		TextChatContext TRUE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext TRUE
+		VehicleContext FALSE
+	}
+}
+
+TriggerGameAction "[Trailblazer] ExitLandingMenu"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction D_PAD_LEFT
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myToggle FALSE
+					myInputAction = B_CIRCLE_TRAILBLAZER
+				}
+				ConditionalInputAction KB_X
+				{
+					myInputAction = KB_F
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_ExitLandingMenu
+	myRequireNewInputOnContextChange TRUE
+	myIsCinematicAction FALSE
+	myIsExclusiveToggle FALSE
+	myConsoleCommand ""
+	myActionContexts
+	{
+		BinocularsContext FALSE
+		CoopContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		HyperspaceJumpMenuContext TRUE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext TRUE
+		TextChatContext FALSE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext FALSE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		CoopContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext FALSE
+		TextChatContext TRUE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] SelectLandingDestination"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction A_Cross
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myToggle FALSE
+					myInputAction = A_CROSS_TRAILBLAZER
+				}
+				ConditionalInputAction KB_E
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myToggle FALSE
+					myInputAction = KB_TRAILBLAZER_SELECT_HYPERSPACE_JUMP_DESTINATION
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_SelectLandingDestination
+	myRequireNewInputOnContextChange TRUE
+	myIsCinematicAction FALSE
+	myIsExclusiveToggle FALSE
+	myConsoleCommand ""
+	myActionContexts
+	{
+		BinocularsContext FALSE
+		CoopContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		HyperspaceJumpMenuContext TRUE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext TRUE
+		TextChatContext FALSE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext FALSE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		CoopContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext FALSE
+		TextChatContext TRUE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext TRUE
+		VehicleContext FALSE
+	}
+}
+
+TriggerGameAction "[Trailblazer] LandWithNoMenu"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction D_PAD_RIGHT
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myToggle FALSE
+					myInputAction = D_PAD_RIGHT_TRAILBLAZER
+				}
+				ConditionalInputAction KB_X
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myToggle FALSE
+					myInputAction = KB_X
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_LandWithNoMenu
+	myRequireNewInputOnContextChange TRUE
+	myIsCinematicAction FALSE
+	myIsExclusiveToggle FALSE
+	myConsoleCommand ""
+	myActionContexts
+	{
+		BinocularsContext FALSE
+		CoopContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext TRUE
+		TextChatContext FALSE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext FALSE
+		VehicleContext FALSE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		CoopContext FALSE
+		DeadContext FALSE
+		DefaultContext FALSE
+		FreeCameraContext FALSE
+		GrapplingContext FALSE
+		PetModeContext FALSE
+		SequenceContext FALSE
+		SpaceshipContext FALSE
+		TextChatContext TRUE
+		ThrowableContext FALSE
+		TransportSneakingContext FALSE
+		TrickShotContext FALSE
+		UIContext TRUE
+		VehicleContext FALSE
+	}
+}
+
+TriggerGameAction "[Trailblazer] TrailblazerInteract"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Console
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myInputAction = RIGHT_STICK_BUTTON_TRAILBLAZER
+				}
+				ConditionalInputAction Keyboard
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myInputAction = KB_TRAILBLAZER_INTERACT
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_Interact
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SpaceshipContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		AimScopeContext TRUE
+		GrapplingContext TRUE
+		HyperspacePreparationReadyContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] TrailblazerHoldInteract"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "Y-Triangle Pressed"
+				{
+					myInputActionType HoldDown
+					myTimer 0
+					myInputAction = Y_TRIANGLE_TRAILBLAZER
+				}
+				ConditionalInputAction "KB Pressed"
+				{
+					myInputActionType HoldDown
+					myTimer 0
+					myInputAction = KB_TRAILBLAZER_INTERACT
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_Hold_Interact
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SpaceshipContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		AimScopeContext TRUE
+		GrapplingContext TRUE
+		HyperspacePreparationReadyContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] TrailblazerSinglePressInteract"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "KB Pressed"
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myInputAction = KB_TRAILBLAZER_INTERACT
+				}
+				ConditionalInputAction "Y-Triangle Pressed"
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myInputAction = Y_TRIANGLE_TRAILBLAZER
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_SinglePress_Interact
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SpaceshipContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		AimScopeContext TRUE
+		GrapplingContext TRUE
+		HyperspacePreparationReadyContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[Trailblazer] TrailblazerDumpContraband"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Gamepad
+				{
+					myInputActionType HoldDownAfterTime
+					myTimer 4000
+					myInputAction = D_PAD_DOWN
+				}
+				ConditionalInputAction KB
+				{
+					myInputActionType HoldDownAfterTime
+					myTimer 4000
+					myInputAction = KB_TRAILBLAZER_DUMP_CONTRABAND
+				}
+			}
+		}
+	}
+	myGameAction Trailblazer_DumpContraband
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SpaceshipContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		AimScopeContext TRUE
+		GrapplingContext TRUE
+		HyperspacePreparationReadyContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[Speeder] Dismount Direction Forward"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Left Stick Up Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = LEFT_STICK_UP
+					myBackInputAction = LEFT_STICK_DOWN
+					myLeftInputAction = LEFT_STICK_LEFT
+					myRightInputAction = LEFT_STICK_RIGHT
+					myExpectedInputAction = LEFT_STICK_UP
+				}
+				ConditionalRotatedInputAction "Left KB"
+				{
+					myInputActionType Analog
+					myForwardInputAction = KB_MOVE_UP
+					myBackInputAction = KB_MOVE_DOWN
+					myLeftInputAction = KB_MOVE_LEFT
+					myRightInputAction = KB_MOVE_RIGHT
+					myExpectedInputAction = KB_MOVE_UP
+				}
+			}
+		}
+	}
+	myGameAction Speeder_DismountDirectionForward
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SequenceContext FALSE
+		VehicleContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		GadgetSelectionContext FALSE
+		SpaceshipContext TRUE
+		TrickShotContext TRUE
+		UIContext TRUE
+		VehicleContext FALSE
+		WeaponModuleSelectionContext FALSE
+	}
+}
+
+TriggerGameAction "[Speeder] Dismount Direction Backward"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Left Stick Down Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = LEFT_STICK_UP
+					myBackInputAction = LEFT_STICK_DOWN
+					myLeftInputAction = LEFT_STICK_LEFT
+					myRightInputAction = LEFT_STICK_RIGHT
+					myExpectedInputAction = LEFT_STICK_DOWN
+				}
+				ConditionalRotatedInputAction "Down KB"
+				{
+					myInputActionType Analog
+					myForwardInputAction = KB_MOVE_UP
+					myBackInputAction = KB_MOVE_DOWN
+					myLeftInputAction = KB_MOVE_LEFT
+					myRightInputAction = KB_MOVE_RIGHT
+					myExpectedInputAction = KB_MOVE_DOWN
+				}
+			}
+		}
+	}
+	myGameAction Speeder_DismountDirectionBackward
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SequenceContext FALSE
+		VehicleContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		GadgetSelectionContext FALSE
+		SpaceshipContext TRUE
+		TrickShotContext TRUE
+		UIContext TRUE
+		VehicleContext FALSE
+		WeaponModuleSelectionContext FALSE
+	}
+}
+
+TriggerGameAction "[Speeder] Dismount Direction Left"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Left Stick Left Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = LEFT_STICK_UP
+					myBackInputAction = LEFT_STICK_DOWN
+					myLeftInputAction = LEFT_STICK_LEFT
+					myRightInputAction = LEFT_STICK_RIGHT
+					myExpectedInputAction = LEFT_STICK_LEFT
+				}
+				ConditionalRotatedInputAction "Left KB"
+				{
+					myInputActionType Analog
+					myForwardInputAction = KB_MOVE_UP
+					myBackInputAction = KB_MOVE_DOWN
+					myLeftInputAction = KB_MOVE_LEFT
+					myRightInputAction = KB_MOVE_RIGHT
+					myExpectedInputAction = KB_MOVE_LEFT
+				}
+			}
+		}
+	}
+	myGameAction Speeder_DismountDirectionLeft
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SequenceContext FALSE
+		VehicleContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		GadgetSelectionContext FALSE
+		SpaceshipContext TRUE
+		TrickShotContext TRUE
+		UIContext TRUE
+		VehicleContext FALSE
+		WeaponModuleSelectionContext FALSE
+	}
+}
+
+TriggerGameAction "[Speeder] Dismount Direction Right"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Left Stick Right Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = LEFT_STICK_UP
+					myBackInputAction = LEFT_STICK_DOWN
+					myLeftInputAction = LEFT_STICK_LEFT
+					myRightInputAction = LEFT_STICK_RIGHT
+					myExpectedInputAction = LEFT_STICK_RIGHT
+				}
+				ConditionalRotatedInputAction "Right KB"
+				{
+					myInputActionType Analog
+					myForwardInputAction = KB_MOVE_UP
+					myBackInputAction = KB_MOVE_DOWN
+					myLeftInputAction = KB_MOVE_LEFT
+					myRightInputAction = KB_MOVE_RIGHT
+					myExpectedInputAction = KB_MOVE_RIGHT
+				}
+			}
+		}
+	}
+	myGameAction Speeder_DismountDirectionRight
+	myActionContexts
+	{
+		DefaultContext FALSE
+		SequenceContext FALSE
+		VehicleContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		BinocularsContext FALSE
+		GadgetSelectionContext FALSE
+		SpaceshipContext TRUE
+		TrickShotContext TRUE
+		UIContext TRUE
+		VehicleContext FALSE
+		WeaponModuleSelectionContext FALSE
+	}
+}
+

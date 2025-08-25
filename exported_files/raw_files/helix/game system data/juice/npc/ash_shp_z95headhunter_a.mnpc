@@ -1,0 +1,39 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/npc/ash_shp_base.mnpc"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC ash_shp_z95headhunter_a < uid=F95CD8F364AD199C0001D92439DEC11D > : ash_shp_base
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Name of Ship - Z94 / Haunter - Ashiga faction\", enabled = true, guid = #6AE6EE0D65787613000266CAD4847B74, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10726, text = \"B-4RB Haunter\", type = \"MenuLine\""
+	myCharacterVisuals < uid=F95CD8F364AD199C0001D925E721C0D1 > = character_visuals_npc_shp_z95 5DBECD5962C554EC00009D8A8FE3D268
+	mySpaceshipType Z95HeadhunterAshiga
+	myMaxHealth 120
+	myHealthFormula 60*SpaceHealthDifficultyModifier
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag (0)" < uid=3A12912164EE15340003C38717C1083D > = Agent_Gender_FeminineTag 16DEADE6626D20EA00002E5277B65AD4
+	}
+	myDialogueCharactersFromDatabase
+	{
+		DialogueCharacterWithTags "Ashiga F01" < uid=F95CD8F364AD199C0001D927DA10E281 > = Ashiga_Pilot_F01 3A1291216475FF31000162D860E1CD58
+	}
+	myVisionProfile < uid=F95CD8F364AD199C0001D928150906F7 > = visionProfile_ash_ship_Fighter 6B0E1DE964B7A45D0000AD6118043BCC
+	myHearingProfile < uid=F95CD8F364AD199C0001D929FCC76BCF > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=F95CD8F364AD199C0001D92AD353FD6B > = detectionProfile_ash_ship_Fighter 6B0E1DE964B662190003C715E97DE907
+	}
+	myThreatProfile < uid=F95CD8F3653F8A8C00004D788A482673 > = Spaceshipthreatprofile F95CD8F3653F81EE00057BF796B8AD1A
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "z95 weapon Loadout" < uid=F95CD8F364AD199C0001D92B8E0A096A > = weaponloadout_ash_shp_z95headhunter 6AF0BA04649BFC9400074B00D812C1C5
+	}
+	myAudioParameters
+	{
+		myEmitterName "Ashiga Clan Ship"
+	}
+	myCombatRole Fighter
+}
+

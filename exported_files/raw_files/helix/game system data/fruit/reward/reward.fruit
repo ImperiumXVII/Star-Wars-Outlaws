@@ -1,0 +1,87 @@
+include "helix/game system data/fruit/item/item.fruit"
+include "helix/game system data/fruit/reputation/reputation.fruit"
+include "helix/game system data/fruit/intel/intel.fruit"
+
+//Keep in sync with RewardType in HC_RewardConstantData.h
+enum RewardType
+{
+	ExpertSet
+	Group
+	Item
+	Intel
+	Legend
+	Reputation
+	WantedReset
+	DatabankElement
+}
+
+//Keep in sync with HC_RewardSourceType in HC_RewardContext.h
+enum RewardSource
+{
+	None
+	Debug
+	Quest
+	Dialogue
+	Wanted
+	Interaction
+	Item
+}
+
+class Reward < uid=auto abstract=1 >
+{
+}
+
+list RewardReferenceList
+{
+	Reward*
+}
+
+class RewardGroup : Reward
+{
+	RewardReferenceList myRewardReferences
+}
+
+class RewardItem : Reward
+{
+	Item* myItem
+	string myAmount 0 < bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	bool mySupressNotification false
+}
+
+class RewardReputation : Reward
+{
+	ReputationDefinition* myReputation < tooltip="If not set the reputation will be based on the faction in the reward context. This is only supported in some systems.">
+	string myValueFormula 0 < bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+}
+
+class RewardLegend : Reward
+{
+	string myValueFormula 0 < bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+}
+
+class RewardIntel : Reward
+{
+	Intel* myIntel
+	bool myActivate true
+}
+
+enum ExpertSetStateSupportedByReward
+{
+	Discovered
+	Unlocked
+}
+
+class RewardExpertSet : Reward
+{
+	uid myExpertSet < bhv="constantData" constantDataType="domainofmasteryexpertset" >
+	ExpertSetStateSupportedByReward myState Unlocked
+}
+
+class RewardWantedReset : Reward
+{
+}
+
+class RewardDatabankElement : Reward
+{
+	uid myElementToUnlock < bhv="constantData" constantDataType="databankelement" >
+}

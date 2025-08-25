@@ -1,0 +1,62 @@
+include "helix/game system data/fruit/explosion/explosion.fruit"
+include "helix/game system data/juice/explosion/explosion_generic_no_effect.mexplosion"
+
+Explosion dlc2_explosion_ion_shield_rokana < uid=061AC046672E4D8F0004CF57530051BC > : explosion_template
+{
+	myDefaultRadius 500.0
+	myDetonation
+	{
+		myBaseEffect helix/particles/dlc2_vfx_exp_ion_shield_generator_02.mparticles
+		myBaseEffectsByConditions
+		{
+		}
+		myImpactEffect
+		{
+			myEffects
+			{
+				myDefaultDecal ""
+				myDefaultEffect ""
+				myList
+				{
+				}
+				myEffectsByConditions
+				{
+				}
+			}
+			myCastForImpactGroundDistance 1.0
+		}
+		myCameraShakeSection
+		{
+			mySize 0.0
+			myCreationShake < uid=061AC046672E4D8F0004CF5824E17C7D > = NULLREFERENCE
+			myCreationStrengthByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0.0, 0 0, }, properties = { -749, -749, }, values = { 0 1, 1 0, }, }, numKeys = 2, }"
+			myLoopShake < uid=061AC046672E4D8F0004CF59D96F1A64 > = NULLREFERENCE
+			myLoopStrengthByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0.0, 0 0, }, properties = { -749, -749, }, values = { 0 1, 1 0, }, }, numKeys = 2, }"
+			myImpactShake < uid=061AC046672E4D8F0004CF5AF37E945D > = NULLREFERENCE
+			myImpactStrengthByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0.0, 0 0, }, properties = { -749, -749, }, values = { 0 1, 1 0, }, }, numKeys = 2, }"
+		}
+		myGameplayDamageEnabled FALSE
+		myGameplayDamageSection
+		{
+			myDamageFormula 0
+			myDefaultDamage 0.0
+			myStaggerDamageOverride 0.0
+		}
+		myIonChargeEnabled TRUE
+		myIonChargeSection
+		{
+			mySize 1.0
+			myIonChargeFormula 50
+			myDefaultIonCharge 0.0
+			myIonChargeMultiplierByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0, 0 0, }, properties = { 275, 1299, }, values = { 0.0039370656 1.0357519, 1 0.5, }, }, numKeys = 2, }"
+			myFriendlyFireEnabled FALSE
+		}
+		myFragmentablesEnabled FALSE
+		myPhysicsEnabled FALSE
+		myBendShockwaveEnabled FALSE
+		myWaterWaveEnabled FALSE
+		myFlinchEnabled FALSE
+		myFluffySectionEnabled FALSE
+	}
+}
+

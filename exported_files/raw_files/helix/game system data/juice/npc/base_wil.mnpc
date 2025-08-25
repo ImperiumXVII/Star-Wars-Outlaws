@@ -1,0 +1,75 @@
+include "helix/game system data/juice/character/character_visuals_wildlife.mcharactervisuals"
+include "helix/game system data/juice/npc/base_npc.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npcexclusionzone/basic wildlife exclusion profile.mnpcexclusionzoneprofile"
+
+NPC base_wil < uid=16DEADE660B09DEC00005C1F0D0460B8 > : base_npc
+{
+	myCharacterVisuals < uid=83E36AE361976A5B000019DEDD5E0300 > = character_visuals_base_wil 83E36AE361925CB100001923DA53B7A1
+	myMaxHealth 40
+	myHealthFormula "20 + 20"
+	myFaction < uid=16DEADE660B09E4900005C2214292BF7 > = Wildlife DA2A09C4541AF3F1000034649ABE71D0
+	myPositionReservationSize 4.0
+	myNavigationLayerType Huge
+	mySensoryProfile < uid=09E88278646C218400052F184D96FA6C > = DefautWildlife 09E882786465C7CB000B690A98B1794F
+	myVisionProfile < uid=16DEADE660B4CADE000009B9EB7C8C4D > = DefaultWildlifeVisionProfile 16DEADE660B4CAE6000009BFCBBA35B1
+	myHearingProfile < uid=16DEADE660B4CADE000009BA4CA3BE10 > = DefaultWildlifeHearingProfile 16DEADE660B4CAFC000009C29AB841E8
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=16C7D1FB6311C5DB0000A8A5BD0405E0 > = DefaultWildlifeDetectionProfile 290EB60C63368EF900000A2E5117619F
+	}
+	myTacticalPositionFinderProfile < uid=E9DD8F606426992B00001CC8D90E8E24 > = "Default Wildlife Tactical Position Finder Profile" E9DD8F60642681DD000070D6A275FC09
+	myThreatProfile < uid=16DEADE660B4CADE000009BCC4ABD78D > = DefaultWildlifeThreatProfile 16DEADE660B4CB1E000009C83F761A15
+	myAudioTriggerVolumeProfile < uid=F45C2A01662620BD0002CFE14BD8A61A > = wildlife_base 0DB118CC661E4187000000C9660F39FE
+	myMotionPlanFollowProfile < uid=09E882786583E16900002DB9F7A7CE66 > = DefaultWildlifeMotionPlanFollowProfile 09E882786583E0D000002D715D5ED948
+	myBehaviorUpdateBoostProfile < uid=EBEEDF3F63771EA8000136EB61A7CDE6 > = wildlife EBEEDF3F6358E4FC0001F0D6662042A3
+	myFleeProfile < uid=EBEEDF3F628D9B52000078D3AE234909 > = DefaultFleeProfile EBEEDF3F628D99E0000032AAE41E83C8
+	myFollowProfile < uid=FCC0CC206343A4F700028639B18C7350 > = NULLREFERENCE
+	myFocusProfile < uid=EBEEDF3F628EE62B00020BFD8F5EECAE > = DefaultWildLifeFocusProfile EBEEDF3F628EE5FC00020BCCF01D691F
+	myAudioParameters
+	{
+		myEmitterName "WL NPC"
+		myPropagated TRUE
+		myDoppler FALSE
+		mySwitches
+		{
+		}
+		myEmitters
+		{
+			AgentEmitter Default
+			{
+				myEmitterLabel < uid=1877DA4E6563F4270004FA85BC081606 > = Root 3A1C5D1863906F050000AB6FBD984CC4
+				myEmitterPrefab "emitterLayerName = \"wildlife\", enableDoppler = false, enablePropagation = true, sphereRadius = 1, stopOnDestroy = true"
+				myBoneName ""
+				mySetMovementSpeedRTPC TRUE
+			}
+			AgentEmitter Mouth
+			{
+				myEmitterLabel < uid=1877DA4E6563F4270004FA86FBB72E6A > = Mouth 3A1C5D1863906F120000AB70A206E385
+				myEmitterPrefab "emitterLayerName = \"wildlife\", enableDoppler = false, enablePropagation = true, sphereRadius = 1, stopOnDestroy = true"
+				myBoneName Jaw
+				mySetMovementSpeedRTPC TRUE
+			}
+			AgentEmitter Hand
+			{
+				myEmitterLabel < uid=D84D669065AF5A02000B1DC9240CABEB > = Hand 3A1C5D1863906F180000AB718F1E9EFD
+				myEmitterPrefab "emitterLayerName = \"wildlife\", enableDoppler = false, enablePropagation = true, sphereRadius = 1, stopOnDestroy = true"
+				myBoneName RightHand
+			}
+		}
+		myAudioSwitchByTags
+		{
+		}
+		myFootstepMarkerEventEmitterLabel < uid=1877DA4E6563F4270004FA87594D181F > = Root 3A1C5D1863906F050000AB6FBD984CC4
+		myDialogueMarkerEventEmitterLabel < uid=1877DA4E6563F4270004FA881AFB6A1A > = Mouth 3A1C5D1863906F120000AB70A206E385
+		myFootstepEmitterLabels
+		{
+		}
+	}
+	myCanBeDetectedByProximitySenses FALSE
+	myCanBeDistractedByPet FALSE
+	myCanInvestigatePlayerWhistle FALSE
+	myCombatRole Beast
+	myExclusionZoneProfile < uid=E9DD8F606327CC03000066E84705B2EF > = "basic wildlife exclusion profile" 2E5ACA7E6310672A00004462B3A6A94C
+}
+

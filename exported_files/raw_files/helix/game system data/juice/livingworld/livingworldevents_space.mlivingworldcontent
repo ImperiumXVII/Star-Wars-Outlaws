@@ -1,0 +1,1075 @@
+include "helix/game system data/fruit/attribute/formulacontexttypes.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditionbase.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+include "helix/game system data/fruit/gamevalues/gamevalues.fruit"
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+include "helix/game system data/fruit/livingworld/livingworldtag.fruit"
+include "helix/game system data/juice/livingworld/tag/living_world_tags.mlivingworldtag"
+
+LivingWorldContent Event_Space_TEMPLATE < uid=2AE2EC8564B54C020000A099225182C5 >
+{
+	myLocationCooldown 3600.0
+	mySharedLocationCooldown 300.0
+	myShouldSaveLocationCooldowns TRUE
+	myContentCooldown 1800.0
+	myTicket < uid=2AE2EC85653238F20000AD76C8CF210A >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC85653238F20000AD77DA0AE569 >
+	{
+		myDefaultValue 1
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType Encounter Encounter
+	}
+	myLayerType Encounter
+	myBlockingRadius 4000.0
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Global space activation condition" = "Global activation rule Space Far 750-4000"
+		GameConditionPlayerHasWantedLevel "Not Wanted" = "Player is not wanted"
+		GameConditionLivingWorldIsContrabandContractActive "Contraband Contracts not active"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Global space deactivation condition" = "Global Deactivation rule Space Extremely Far 6000"
+	}
+	myBasePriority 80.0
+	myTags
+	{
+		LivingWorldTag "New LivingWorldTag" < uid=616F4596660D25710000047F402AB768 > = LWT_Space_Event 616F4596660D219B0000047C4F08575A
+	}
+	myUIInfo
+	{
+		myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myIcon "mySpriteId = -1602006172, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_scanner_system.spritesheet\""
+	}
+	myWaitForCooldownAfterLoad TRUE
+}
+
+LivingWorldContent Event_Space_AttackImperialShuttle < uid=91CF4D4864493B780008FB39F42EE4FF > : Event_Space_TEMPLATE
+{
+	myTicket < uid=2AE2EC8564B54C370000A09DC7D73CCB >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC8564B54C370000A09E335B98E9 >
+	{
+		myDefaultValue 1
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "OR Group"
+		{
+			myOperator Or
+			myConditions
+			{
+				LivingWorldGameConditionGroup "Shuttle has not hyperjumped AND Distance to player is more than 5000"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer DistanceToPlayer
+						{
+							myDistance 5000.0
+						}
+						GameConditionLivingWorldFormula "Shuttle Not Hyperspaced"
+						{
+							myFormula gv_lw_ImperialShuttle_NotHyperjumped
+						}
+					}
+				}
+				LivingWorldGameConditionGroup "Event completed AND Distance to player is more than 1000 meters"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_IsCompletedInCurrentActivation IsCompletedInCurrentActivation
+						{
+						}
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to player is more than 1000"
+						{
+							myDistance 1000.0
+						}
+					}
+				}
+			}
+		}
+	}
+	myTags
+	{
+		LivingWorldTag "New LivingWorldTag" < uid=616F4596660D25D700000483C1B12D79 > = LWT_Space_Event 616F4596660D219B0000047C4F08575A
+		LivingWorldTag Faction_Tag < uid=616F4596660D25A600000480632FA942 > = LWT_Faction_Space_Empire 2AE2EC8564B553190000A1284702836E
+	}
+	myUIInfo
+	{
+		myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Name displayed over an icon indicating an Attack Imperial Shuttle event when the player uses the scanner in space. Documentation Link: https://confluence.ubisoft.com/pages/viewpage.action?pageId=1971930229\", enabled = true, guid = #2AE2EC8565B11F750017F3EF4EA0EF66, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 10476, text = \"Imperial VIP Shuttle (To be written)\", type = \"MenuLine\""
+	}
+}
+
+LivingWorldContent Event_Space_ImperialRaider < uid=91CF4D4864EC6CFD00020FA68A5E8FD6 > : Event_Space_TEMPLATE
+{
+	myLocationCooldown 0.0
+	mySharedLocationCooldown 0.0
+	myShouldSaveLocationCooldowns TRUE
+	myContentCooldown 5.0
+	myTicket < uid=91CF4D4864EC6CFD00020FA79B608C4E >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=91CF4D4864EC6CFD00020FA86B0A4ED2 >
+	{
+		myDefaultValue 1
+	}
+	myLayerType Wanted
+	myBlockingRadius 1500.0
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasWantedLevel "New GameConditionPlayerHasWantedLevel" = "Player is wanted 6 or more"
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Player Distance  5000"
+		{
+			myDistance 5000.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestIsCompleted "Player has completed MQ_065"
+		{
+			myQuest 8FD81D5164AD479C0001CCD6E9489B33
+		}
+		GameConditionLivingWorldIsContrabandContractActive "Contraband Contract is not Active"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup"
+		{
+			myOperator Or
+			myConditions
+			{
+				LivingWorldGameConditionGroup "Event Completed"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_IsCompletedInCurrentActivation "New GameConditionContextLivingWorldContentLocation_IsCompletedInCurrentActivation"
+						{
+						}
+					}
+				}
+				LivingWorldGameConditionGroup "Event Not Completed"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance  20000"
+						{
+							myDistance 20000.0
+						}
+						GameConditionContextLivingWorldContentLocation_IsCompletedInCurrentActivation "event is not completed"
+						{
+							myIsNegated TRUE
+						}
+					}
+				}
+			}
+		}
+	}
+	myBasePriority 1000.0
+	myTags
+	{
+		LivingWorldTag Faction < uid=91CF4D4864EC6FE4000761450CD96F0C > = LWT_Faction_Space_Empire 2AE2EC8564B553190000A1284702836E
+		LivingWorldTag Wanted < uid=2AE2EC85653243180000AD8AEA402577 > = LWT_Modifier_Space_Wanted 2AE2EC8564B553190000A134057263E6
+	}
+	myUIInfo
+	{
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent Event_Space_LootGoblin < uid=91CF4D4864F8725D000140381E1B0995 > : Event_Space_TEMPLATE
+{
+	myTicket < uid=91CF4D4864F8725D000140391401178E >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=91CF4D4864F8725D0001403A0EAC8FCD >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC85653243CD0000AD8DF0536E9D >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myBlockingRadius 2000.0
+	myEngagementRadius 0.0
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Global space activation condition" = "Global activation rule Space Far 750-4000"
+		GameConditionQuestIsCompleted "Player has unlocked ND-5" = "Player Has Unlocked ND-5"
+		GameConditionPlayerHasWantedLevel "Wanted is 3 or less" = "Player is wanted 3 or less"
+		GameConditionLivingWorldIsContrabandContractActive "Contraband Contract Not active"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup"
+		{
+			myOperator Or
+			myConditions
+			{
+				LivingWorldGameConditionGroup "Content engaged with"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_IsCompletedInCurrentActivation "New GameConditionContextLivingWorldContentLocation_IsCompletedInCurrentActivation"
+						{
+						}
+						LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup" = "Global Deactivation rule Space Extremely Far 6000"
+					}
+				}
+				LivingWorldGameConditionGroup "Content not engaged with"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_HasBeenEngagedWith "New GameConditionContextLivingWorldContentLocation_HasBeenEngagedWith"
+						{
+							myIsNegated TRUE
+						}
+						LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup" = "Global Deactivation rule Space Extremely Far 6000"
+					}
+				}
+			}
+		}
+	}
+	myBasePriority 90.0
+	myTags
+	{
+		LivingWorldTag "New LivingWorldTag" < uid=616F4596660D25D700000484E39C0F7A > = LWT_Space_Event 616F4596660D219B0000047C4F08575A
+		LivingWorldTag Faction_Tag < uid=616F4596660D25B900000481094D9A59 > = LWT_Faction_Space_Empire 2AE2EC8564B553190000A1284702836E
+	}
+	myUIInfo
+	{
+		myName "aurabesh = false, branch = \"MAIN\", contextComment = 'Name displayed over an icon indicating a Destroy a Tie Reaper \"loot goblin\" event when the player uses the scanner in space. Narratively it is supposed to be a special forces ship flying in a non-empire controled space. Documentation of the event: https://confluence.ubisoft.com/pages/viewpage.action?pageId=2121048466', enabled = true, guid = #2AE2EC8565B12B5C0017F40840EF6E10, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10476, text = \"Unusual Empire Signal (to be written)\", type = \"MenuLine\""
+	}
+}
+
+LivingWorldContent Event_Space_DefendCivilian < uid=91CF4D4864478CC1000193AC34477180 > : Event_Space_TEMPLATE
+{
+	myTicket < uid=2AE2EC8564B54C370000A09A3558241C >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC8564B54C370000A09BF688632B >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC85653243CD0000AD8C33866315 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myEngagementRadius 0.0
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Global space activation condition" = "Global activation rule Space Far 750-4000"
+		GameConditionQuestIsCompleted "Player has Unlocked ND-5" = "Player Has Unlocked ND-5"
+		GameConditionPlayerHasWantedLevel "Not Wanted" = "Player is not wanted"
+		GameConditionLivingWorldIsContrabandContractActive "Contraband Contract not active"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Global deactivation condition OR event is Completed in current activation"
+		{
+			myOperator Or
+			myConditions
+			{
+				LivingWorldGameConditionGroup "Global space deactivation condition" = "Global Deactivation rule Space Extremely Far 6000"
+				LivingWorldGameConditionGroup "Event is completed in current activation and farther and 500 meter"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_IsCompletedInCurrentActivation "Event is completed in current activation"
+						{
+						}
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is more than 500 meters"
+						{
+							myDistance 500.0
+						}
+					}
+				}
+			}
+		}
+	}
+	myBasePriority 80.0
+	myTags
+	{
+		LivingWorldTag "New LivingWorldTag" < uid=616F4596660D25D70000048579BCC7CC > = LWT_Space_Event 616F4596660D219B0000047C4F08575A
+		LivingWorldTag Faction_Tag < uid=616F4596660D25CD00000482AE02E0EF > = LWT_Faction_Space_Civilian 2AE2EC85653239CC0000AD7C95D05F7C
+	}
+	myUIInfo
+	{
+		myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Name displayed over an icon indicating a defend civilian event when the player uses the scanner in space. Documentation of the event: https://confluence.ubisoft.com/pages/viewpage.action?pageId=1972548897\", enabled = true, guid = #2AE2EC8565B11E260017F3EE94F54BD0, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 10476, text = \"Distress Signal (To be written)\", type = \"MenuLine\""
+	}
+}
+
+LivingWorldContent Event_Space_DefendAshigaVsPirate < uid=91CF4D4864F88695000145893A1BA378 > : Event_Space_DefendCivilian
+{
+	myTicket < uid=91CF4D4864F886950001458A6855A32B >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=91CF4D4864F886950001458B8E8459BE >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC856532450E0000AD94DB2793B4 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Global space activation condition" = "Global activation rule Space Far 750-4000"
+		GameConditionQuestIsCompleted "Player has Unlocked ND-5" = "Player Has Unlocked ND-5"
+		GameConditionPlayerHasWantedLevel "Not Wanted" = "Player is not wanted"
+		GameConditionPlayerHasReputation "Reputation with faction is greater than Terrible"
+		{
+			myFaction < uid=2AE2EC8566043395000E128D6B27E0B9 > = AshigaClan 4728ADF9620B6C2B0000201F5FC5C937
+			myOperator GreaterThan
+		}
+		GameConditionLivingWorldIsContrabandContractActive "Contraband Contract not active"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 90.0
+	myTags
+	{
+		LivingWorldTag "New LivingWorldTag" < uid=616F4596660D26FA00000487A31E223E > = LWT_Space_Event 616F4596660D219B0000047C4F08575A
+		LivingWorldTag Faction_Tag1 < uid=616F4596660D26FA0000048878E37E61 > = LWT_Faction_Space_Ashiga 2AE2EC8564B553190000A122D920F92B
+		LivingWorldTag Faction_Tag2 < uid=616F4596660D26E60000048670F89A9A > = LWT_Faction_Space_Pirate 2AE2EC8564B553190000A12E1282081A
+	}
+	myUIInfo
+	{
+		myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Name displayed over an icon indicating a defend faction convoy against pirates event when the player uses the scanner in space. Documentation of the event: https://confluence.ubisoft.com/pages/viewpage.action?pageId=2121048401\", enabled = true, guid = #2AE2EC8565B121400017F3F5A4391973, lineVersion = 13, maxLength = 0, productId = -1, sectionId = 10476, text = \"Ashiga Distress Signal (To be written)\", type = \"MenuLine\""
+	}
+}
+
+LivingWorldContent Event_Space_DefendAshigaVsEmpire < uid=91CF4D4864F886950001458D9CAC9F61 > : Event_Space_DefendCivilian
+{
+	myTicket < uid=91CF4D4864F886950001458E59253B24 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=91CF4D4864F886950001458FF5C0D017 >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC85653245800000AD9660257B2B >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Global space activation condition" = "Global activation rule Space Far 750-4000"
+		GameConditionQuestIsCompleted "Player has Unlocked ND-5" = "Player Has Unlocked ND-5"
+		GameConditionPlayerHasWantedLevel "Not Wanted" = "Player is not wanted"
+		GameConditionPlayerHasReputation "Reputation with faction is greater than Terrible"
+		{
+			myFaction < uid=2AE2EC8566043395000E128E7A09C67D > = AshigaClan 4728ADF9620B6C2B0000201F5FC5C937
+			myOperator GreaterThan
+		}
+		GameConditionLivingWorldIsContrabandContractActive "Contraband Contract not Active"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 90.0
+	myTags
+	{
+		LivingWorldTag "New LivingWorldTag" < uid=616F4596660D271F0000048A3FAF86DF > = LWT_Space_Event 616F4596660D219B0000047C4F08575A
+		LivingWorldTag Faction_Tag1 < uid=616F4596660D271F0000048B963BCF90 > = LWT_Faction_Space_Ashiga 2AE2EC8564B553190000A122D920F92B
+		LivingWorldTag Faction_Tag2 < uid=616F4596660D27110000048993056681 > = LWT_Faction_Space_Empire 2AE2EC8564B553190000A1284702836E
+	}
+	myUIInfo
+	{
+		myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Name displayed over an icon indicating a defend faction convoy against the Empire event when the player uses the scanner in space. Documentation of the event: https://confluence.ubisoft.com/pages/viewpage.action?pageId=2121048401\", enabled = true, guid = #2AE2EC8565B121610017F3F6107BC83C, lineVersion = 14, maxLength = 0, productId = -1, sectionId = 10476, text = \"Ashiga Distress Signal (To be written)\", type = \"MenuLine\""
+	}
+}
+
+LivingWorldContent Event_Space_DefendCrimsonDawnVsPirate < uid=91CF4D4864F886950001459909643E70 > : Event_Space_DefendCivilian
+{
+	myTicket < uid=2AE2EC85653245800000AD98541A1DF4 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC85653245800000AD99F65E6695 >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC85653245800000AD9ABDE9A756 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Global space activation condition" = "Global activation rule Space Far 750-4000"
+		GameConditionQuestIsCompleted "Player has Unlocked ND-5" = "Player Has Unlocked ND-5"
+		GameConditionPlayerHasWantedLevel "Not Wanted" = "Player is not wanted"
+		GameConditionPlayerHasReputation "New GameConditionPlayerHasReputation"
+		{
+			myFaction < uid=2AE2EC8565AAA473000882C3CF3BCD4B > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+			myOperator GreaterThan
+		}
+		GameConditionLivingWorldIsContrabandContractActive "Contraband Contract not active"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 90.0
+	myTags
+	{
+		LivingWorldTag "New LivingWorldTag" < uid=616F4596660D27D30000049033F3A6F4 > = LWT_Space_Event 616F4596660D219B0000047C4F08575A
+		LivingWorldTag Faction_Tag1 < uid=616F4596660D27D300000491F5C7BBD4 > = LWT_Faction_Space_CrimsonDawn 2AE2EC8564B553190000A1253A2069C1
+		LivingWorldTag Faction_Tag2 < uid=616F4596660D274B0000048CD204EC97 > = LWT_Faction_Space_Pirate 2AE2EC8564B553190000A12E1282081A
+	}
+	myUIInfo
+	{
+		myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Name displayed over an icon indicating a defend faction convoy against pirates event when the player uses the scanner in space. Documentation of the event: https://confluence.ubisoft.com/pages/viewpage.action?pageId=2121048401\", enabled = true, guid = #2AE2EC8565B127A50017F3FFA42DD52C, lineVersion = 13, maxLength = 0, productId = -1, sectionId = 10476, text = \"Crimson Dawn Distress Signal (To be written)\", type = \"MenuLine\""
+	}
+}
+
+LivingWorldContent Event_Space_DefendCrimsonDawnVsEmpire < uid=91CF4D4864F886950001459DC697143E > : Event_Space_DefendCivilian
+{
+	myTicket < uid=91CF4D4864F886950001459E4F55ABC7 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=91CF4D4864F886950001459FE210F4D3 >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC85653245800000AD97B347821B >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Global space activation condition" = "Global activation rule Space Far 750-4000"
+		GameConditionQuestIsCompleted "Player has Unlocked ND-5" = "Player Has Unlocked ND-5"
+		GameConditionPlayerHasWantedLevel "Not Wanted" = "Player is not wanted"
+		GameConditionPlayerHasReputation "New GameConditionPlayerHasReputation"
+		{
+			myFaction < uid=2AE2EC8565AAA473000882C4CCC1CE92 > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+			myOperator GreaterThan
+		}
+		GameConditionLivingWorldIsContrabandContractActive "Contraband Contract not active"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 90.0
+	myTags
+	{
+		LivingWorldTag "New LivingWorldTag" < uid=616F4596660D27D300000492924F9F21 > = LWT_Space_Event 616F4596660D219B0000047C4F08575A
+		LivingWorldTag Faction_Tag1 < uid=616F4596660D27D30000049323F6E183 > = LWT_Faction_Space_CrimsonDawn 2AE2EC8564B553190000A1253A2069C1
+		LivingWorldTag Faction_Tag2 < uid=616F4596660D27680000048D68AC1457 > = LWT_Faction_Space_Empire 2AE2EC8564B553190000A1284702836E
+	}
+	myUIInfo
+	{
+		myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Name displayed over an icon indicating a defend faction convoy against the Empire event when the player uses the scanner in space. Documentation of the event: https://confluence.ubisoft.com/pages/viewpage.action?pageId=2121048401\", enabled = true, guid = #2AE2EC8565B1220B0017F3F80846EC95, lineVersion = 14, maxLength = 0, productId = -1, sectionId = 10476, text = \"Crimson Dawn Distress Signal (To be written)\", type = \"MenuLine\""
+	}
+}
+
+LivingWorldContent Event_Space_DefendHuttVsPirate < uid=91CF4D4864F88695000145A9EFCCB403 > : Event_Space_DefendCivilian
+{
+	myTicket < uid=91CF4D4864F88695000145AA9C9FDBFB >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=91CF4D4864F88695000145ABF3D970AA >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC85653246660000B053C6BC3B38 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Global space activation condition" = "Global activation rule Space Far 750-4000"
+		GameConditionQuestIsCompleted "Player has Unlocked ND-5" = "Player Has Unlocked ND-5"
+		GameConditionPlayerHasWantedLevel "Not Wanted" = "Player is not wanted"
+		GameConditionPlayerHasReputation "New GameConditionPlayerHasReputation"
+		{
+			myFaction < uid=2AE2EC8565AAA473000882C7D8059D93 > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+			myOperator GreaterThan
+		}
+		GameConditionLivingWorldIsContrabandContractActive "Contraband Contract not active"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 90.0
+	myTags
+	{
+		LivingWorldTag "New LivingWorldTag" < uid=616F4596660D27D3000004948D9C270F > = LWT_Space_Event 616F4596660D219B0000047C4F08575A
+		LivingWorldTag Faction_Tag1 < uid=616F4596660D27D300000495454D3473 > = LWT_Faction_Space_Hutt 2AE2EC8564B553190000A12BCF888117
+		LivingWorldTag Faction_Tag2 < uid=616F4596660D27A10000048E67E4C71C > = LWT_Faction_Space_Pirate 2AE2EC8564B553190000A12E1282081A
+	}
+	myUIInfo
+	{
+		myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Name displayed over an icon indicating a defend faction convoy against pirates event when the player uses the scanner in space. Documentation of the event: https://confluence.ubisoft.com/pages/viewpage.action?pageId=2121048401\", enabled = true, guid = #2AE2EC8565B128000017F4015ABD7DB0, lineVersion = 14, maxLength = 0, productId = -1, sectionId = 10476, text = \"Hutt Distress Signal (To be written)\", type = \"MenuLine\""
+	}
+}
+
+LivingWorldContent Event_Space_DefendHuttVsEmpire < uid=91CF4D4864F88695000145AD125F621D > : Event_Space_DefendCivilian
+{
+	myTicket < uid=91CF4D4864F88695000145AE707D23AE >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=91CF4D4864F88695000145AF4819512B >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC85653246660000B0544F0B8003 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Global space activation condition" = "Global activation rule Space Far 750-4000"
+		GameConditionQuestIsCompleted "Player has Unlocked ND-5" = "Player Has Unlocked ND-5"
+		GameConditionPlayerHasWantedLevel "Not Wanted" = "Player is not wanted"
+		GameConditionPlayerHasReputation "New GameConditionPlayerHasReputation"
+		{
+			myFaction < uid=2AE2EC8565AAA473000882C81A726D5F > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+			myOperator GreaterThan
+		}
+		GameConditionLivingWorldIsContrabandContractActive "Contraband Contract not active"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 90.0
+	myTags
+	{
+		LivingWorldTag "New LivingWorldTag" < uid=616F4596660D27D300000496AB151D6C > = LWT_Space_Event 616F4596660D219B0000047C4F08575A
+		LivingWorldTag Faction_Tag1 < uid=616F4596660D27D3000004973F7B0B74 > = LWT_Faction_Space_Hutt 2AE2EC8564B553190000A12BCF888117
+		LivingWorldTag Faction_Tag2 < uid=616F4596660D27BD0000048FCB9BC0C0 > = LWT_Faction_Space_Empire 2AE2EC8564B553190000A1284702836E
+	}
+	myUIInfo
+	{
+		myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Name displayed over an icon indicating a defend faction convoy against the Empire event when the player uses the scanner in space. Documentation of the event: https://confluence.ubisoft.com/pages/viewpage.action?pageId=2121048401\", enabled = true, guid = #2AE2EC8565B1236D0017F3FAAA2C80E0, lineVersion = 14, maxLength = 0, productId = -1, sectionId = 10476, text = \"Hutt Distress Signal (To be written)\", type = \"MenuLine\""
+	}
+}
+
+LivingWorldContent Event_Space_DefendPykeVsPirate < uid=91CF4D4864F88695000145B9331C0787 > : Event_Space_DefendCivilian
+{
+	myTicket < uid=91CF4D4864F88695000145BABA854C01 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=91CF4D4864F88695000145BB74575760 >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC85653246660000B055815E1771 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Global space activation condition" = "Global activation rule Space Far 750-4000"
+		GameConditionQuestIsCompleted "Player has Unlocked ND-5" = "Player Has Unlocked ND-5"
+		GameConditionPlayerHasWantedLevel "Not Wanted" = "Player is not wanted"
+		GameConditionPlayerHasReputation "New GameConditionPlayerHasReputation"
+		{
+			myFaction < uid=2AE2EC8565AAA516000882DB98727713 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+			myOperator GreaterThan
+		}
+		GameConditionLivingWorldIsContrabandContractActive "Contraband Contract not active"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 90.0
+	myTags
+	{
+		LivingWorldTag "New LivingWorldTag" < uid=616F4596660D28130000049A5F10F3B8 > = LWT_Space_Event 616F4596660D219B0000047C4F08575A
+		LivingWorldTag Faction_Tag1 < uid=616F4596660D28130000049B0E741B61 > = LWT_Faction_Space_Pyke 2AE2EC8564B553190000A1317F531D5E
+		LivingWorldTag Faction_Tag2 < uid=616F4596660D27F1000004983E236972 > = LWT_Faction_Space_Pirate 2AE2EC8564B553190000A12E1282081A
+	}
+	myUIInfo
+	{
+		myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Name displayed over an icon indicating a defend faction convoy against pirates event when the player uses the scanner in space. Documentation of the event: https://confluence.ubisoft.com/pages/viewpage.action?pageId=2121048401\", enabled = true, guid = #2AE2EC8565B1296F0017F4031A5E4316, lineVersion = 15, maxLength = 0, productId = -1, sectionId = 10476, text = \"Pyke Distress Signal (To be written)\", type = \"MenuLine\""
+	}
+}
+
+LivingWorldContent Event_Space_DefendPykeVsEmpire < uid=91CF4D4864F88695000145BDABC201AD > : Event_Space_DefendCivilian
+{
+	myTicket < uid=91CF4D4864F88695000145BE3BB7B590 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=91CF4D4864F88695000145BFF59509D1 >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC85653246660000B056A9D90DFF >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Global space activation condition" = "Global activation rule Space Far 750-4000"
+		GameConditionQuestIsCompleted "Player has Unlocked ND-5" = "Player Has Unlocked ND-5"
+		GameConditionPlayerHasWantedLevel "Not Wanted" = "Player is not wanted"
+		GameConditionPlayerHasReputation "New GameConditionPlayerHasReputation"
+		{
+			myFaction < uid=2AE2EC8565AAA516000882DC6038E938 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+			myOperator GreaterThan
+		}
+		GameConditionLivingWorldIsContrabandContractActive "Contraband Contract not active"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 90.0
+	myTags
+	{
+		LivingWorldTag "New LivingWorldTag" < uid=616F4596660D28130000049C3C8B737C > = LWT_Space_Event 616F4596660D219B0000047C4F08575A
+		LivingWorldTag Faction_Tag1 < uid=616F4596660D28130000049DB9C0E3F2 > = LWT_Faction_Space_Pyke 2AE2EC8564B553190000A1317F531D5E
+		LivingWorldTag Faction_Tag2 < uid=616F4596660D280600000499D3D59502 > = LWT_Faction_Space_Empire 2AE2EC8564B553190000A1284702836E
+	}
+	myUIInfo
+	{
+		myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Name displayed over an icon indicating a defend faction convoy against the Empire event when the player uses the scanner in space. Documentation of the event: https://confluence.ubisoft.com/pages/viewpage.action?pageId=2121048401\", enabled = true, guid = #2AE2EC8565B123870017F3FC8943D3AB, lineVersion = 14, maxLength = 0, productId = -1, sectionId = 10476, text = \"Pyke Distress Signal (To be written)\", type = \"MenuLine\""
+	}
+}
+
+LivingWorldContent Event_Space_AttackPirateWithAshiga < uid=91CF4D4864F88695000145C91E950CCD > : Event_Space_TEMPLATE
+{
+	myTicket < uid=91CF4D4864F88695000145CA98322B98 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=91CF4D4864F88695000145CBC71C8A4B >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC85653246660000B0578E9B8607 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myEngagementRadius 0.0
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Global space activation condition" = "Global activation rule Space Far 750-4000"
+		GameConditionQuestIsCompleted "Player has Unlocked ND-5" = "Player Has Unlocked ND-5"
+		GameConditionPlayerHasWantedLevel "Not Wanted" = "Player is not wanted"
+		GameConditionPlayerHasReputation "Reputation with faction is greater than Terrible"
+		{
+			myFaction < uid=2AE2EC8565AAA32C000882B5D5D87239 > = AshigaClan 4728ADF9620B6C2B0000201F5FC5C937
+			myOperator GreaterThan
+		}
+		GameConditionLivingWorldIsContrabandContractActive "Contraband Contract not active"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 90.0
+	myTags
+	{
+		LivingWorldTag "New LivingWorldTag" < uid=616F4596660D3AA300031139AD29B58F > = LWT_Space_Event 616F4596660D219B0000047C4F08575A
+		LivingWorldTag Faction_Tag1 < uid=616F4596660D39E900031131F4D377E6 > = LWT_Faction_Space_Ashiga 2AE2EC8564B553190000A122D920F92B
+		LivingWorldTag Faction_Tag2 < uid=616F4596660D39F400031132468F1357 > = LWT_Faction_Space_Pirate 2AE2EC8564B553190000A12E1282081A
+	}
+	myUIInfo
+	{
+		myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Name displayed over an icon indicating an attack a pirate cruiser event when the player uses the scanner in space. Documentation of the event: https://confluence.ubisoft.com/pages/viewpage.action?pageId=2121048443\", enabled = true, guid = #2AE2EC8565B12A010017F405BC68F0F4, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10476, text = \"Pirate Cruiser Signal (to be written)\", type = \"MenuLine\""
+	}
+}
+
+LivingWorldContent Event_Space_AttackPirateWithCrimsonDawn < uid=91CF4D4864F88695000145D16BE6944F > : Event_Space_TEMPLATE
+{
+	myTicket < uid=91CF4D4864F88695000145D29E627601 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=91CF4D4864F88695000145D324F21FF8 >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC85653246660000B0589D83044F >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myEngagementRadius 0.0
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Global space activation condition" = "Global activation rule Space Far 750-4000"
+		GameConditionQuestIsCompleted "Player has Unlocked ND-5" = "Player Has Unlocked ND-5"
+		GameConditionPlayerHasWantedLevel "Not Wanted" = "Player is not wanted"
+		GameConditionPlayerHasReputation "New GameConditionPlayerHasReputation"
+		{
+			myFaction < uid=2AE2EC8565AAA473000882CB265B661B > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+			myOperator GreaterThan
+		}
+		GameConditionLivingWorldIsContrabandContractActive "Contraband Contract not active"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 90.0
+	myTags
+	{
+		LivingWorldTag "New LivingWorldTag" < uid=616F4596660D3AA30003113AC6C4AAE4 > = LWT_Space_Event 616F4596660D219B0000047C4F08575A
+		LivingWorldTag Faction_Tag1 < uid=616F4596660D3A2500031133CFC5F149 > = LWT_Faction_Space_CrimsonDawn 2AE2EC8564B553190000A1253A2069C1
+		LivingWorldTag Faction_Tag2 < uid=616F4596660D3A2E000311344B37C1BD > = LWT_Faction_Space_Pirate 2AE2EC8564B553190000A12E1282081A
+	}
+	myUIInfo
+	{
+		myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Name displayed over an icon indicating an attack a pirate cruiser event when the player uses the scanner in space. Documentation of the event: https://confluence.ubisoft.com/pages/viewpage.action?pageId=2121048443\", enabled = true, guid = #2AE2EC8565B224D80008C10FBBD61869, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10476, text = \"Pirate Signal (to be written)\", type = \"MenuLine\""
+	}
+}
+
+LivingWorldContent Event_Space_AttackPirateWithHutt < uid=91CF4D4864F88695000145D96BC88A67 > : Event_Space_TEMPLATE
+{
+	myTicket < uid=91CF4D4864F88695000145DA240307D0 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=91CF4D4864F88695000145DB11C737DC >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC85653246660000B059EC176D11 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myEngagementRadius 0.0
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Global space activation condition" = "Global activation rule Space Far 750-4000"
+		GameConditionQuestIsCompleted "Player has Unlocked ND-5" = "Player Has Unlocked ND-5"
+		GameConditionPlayerHasWantedLevel "Not Wanted" = "Player is not wanted"
+		GameConditionPlayerHasReputation "New GameConditionPlayerHasReputation"
+		{
+			myFaction < uid=2AE2EC8565AAA473000882CD83C2C60F > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+			myOperator GreaterThan
+		}
+		GameConditionLivingWorldIsContrabandContractActive "Contraband Contract not active"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 90.0
+	myTags
+	{
+		LivingWorldTag "New LivingWorldTag" < uid=616F4596660D3AA30003113BE66D60D9 > = LWT_Space_Event 616F4596660D219B0000047C4F08575A
+		LivingWorldTag Faction_Tag1 < uid=616F4596660D3A3F0003113582255795 > = LWT_Faction_Space_Hutt 2AE2EC8564B553190000A12BCF888117
+		LivingWorldTag Faction_Tag2 < uid=616F4596660D3A4B000311363A4372C0 > = LWT_Faction_Space_Pirate 2AE2EC8564B553190000A12E1282081A
+	}
+	myUIInfo
+	{
+		myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Name displayed over an icon indicating an attack a pirate cruiser event when the player uses the scanner in space. Documentation of the event: https://confluence.ubisoft.com/pages/viewpage.action?pageId=2121048443\", enabled = true, guid = #2AE2EC8565B2257D0008C111255539EB, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10476, text = \"Pirate Signal (to be written)\", type = \"MenuLine\""
+	}
+}
+
+LivingWorldContent Event_Space_AttackPirateWithPyke < uid=91CF4D4864F88695000145E10E0A8FF9 > : Event_Space_TEMPLATE
+{
+	myTicket < uid=91CF4D4864F88695000145E2003ED18B >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=91CF4D4864F88695000145E3AB267455 >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC85653246660000B05A8DC03399 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myEngagementRadius 0.0
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Global space activation condition" = "Global activation rule Space Far 750-4000"
+		GameConditionQuestIsCompleted "Player has Unlocked ND-5" = "Player Has Unlocked ND-5"
+		GameConditionPlayerHasWantedLevel "Not Wanted" = "Player is not wanted"
+		GameConditionPlayerHasReputation "New GameConditionPlayerHasReputation"
+		{
+			myFaction < uid=2AE2EC8565AAA516000882DFBE4AEE9C > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+			myOperator GreaterThan
+		}
+		GameConditionLivingWorldIsContrabandContractActive "Contraband Contract not active"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myBasePriority 90.0
+	myTags
+	{
+		LivingWorldTag "New LivingWorldTag" < uid=616F4596660D3AA30003113CC16A5184 > = LWT_Space_Event 616F4596660D219B0000047C4F08575A
+		LivingWorldTag Faction_Tag1 < uid=616F4596660D3A5C000311375A313679 > = LWT_Faction_Space_Pyke 2AE2EC8564B553190000A1317F531D5E
+		LivingWorldTag Faction_Tag2 < uid=616F4596660D3A62000311388DF351C8 > = LWT_Faction_Space_Pirate 2AE2EC8564B553190000A12E1282081A
+	}
+	myUIInfo
+	{
+		myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Name displayed over an icon indicating an attack a pirate cruiser event when the player uses the scanner in space. Documentation of the event: https://confluence.ubisoft.com/pages/viewpage.action?pageId=2121048443\", enabled = true, guid = #2AE2EC8565B225880008C1139597CFC5, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10476, text = \"Pirate Signal (to be written)\", type = \"MenuLine\""
+	}
+}
+
+LivingWorldContent Event_TatooineSkirmish_OneTime < uid=91CF4D486533C61F00011E9D819D3A96 > : Event_Space_TEMPLATE
+{
+	myLocationCooldown 0.0
+	mySharedLocationCooldown 0.0
+	myContentCooldown 0.0
+	myTicket < uid=91CF4D486533C61F00011E9E4C530454 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=91CF4D486533C61F00011E9FC632A6A8 >
+	{
+		myDefaultValue 1000
+	}
+	myCompletedGameValue < uid=91CF4D486533C61F00011EA023B17D1C >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType Encounter Encounter
+	}
+	myBlockingRadius 10000.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Event has not been completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionQuestBeatState "MQ_110 is not completed"
+		{
+			myQuestBeat 253B686765B775D30002E24ADB3D049F
+			myQuestBeatState Completed
+			myOperator NotEqual
+		}
+		GameConditionQuestState "MQ_110 is not completed"
+		{
+			myQuest BFA41A0261B3751E00000496D134E105
+			myQuestState Completed
+			myOperator NotEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to player is less than 12 000"
+		{
+			myDistance 12000.0
+		}
+		GameConditionLivingWorldContent_HasBeenCompleted "Event has been completed"
+		{
+			myLivingWorldContent C84D4B53651D37BA00007F93F8838704
+		}
+		GameConditionLivingWorldFormula "Arrival on tatooine Dialog Played"
+		{
+			myFormula "gv_LW_Space_Arrival_Dialogue_TatooinePlayed = 1"
+		}
+	}
+	myBasePriority 1000.0
+	myTags
+	{
+	}
+	myIsScannable FALSE
+	myWaitForCooldownAfterLoad FALSE
+}
+
+LivingWorldContent Event_HighSecurityWreckage_Repeat_DEPRECATED < uid=91CF4D4864F87473000141A5AA8E2E7C >
+{
+	myTicket < uid=91CF4D4864F87473000141A601FED712 >
+	{
+	}
+	myTicketMax < uid=91CF4D4864F87473000141A7987EC1AF >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=91CF4D4864F87473000141A85E41AFC1 >
+	{
+		myDefaultValue 0
+	}
+	myActivateGameCondition
+	{
+		myFormula "LivingWorldContentLocation.DistanceToPlayer <= SpaceContentLocationDistanceMedium"
+	}
+	myDeactivateGameCondition
+	{
+		myFormula "LivingWorldContentLocation.DistanceToPlayer > SpaceContentLocationDistanceVeryFar"
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent Event_HighSecurityWreckage_FirstTime_DEPRECATED < uid=91CF4D4864F87449000141492DD2ECAF >
+{
+	myTicket < uid=91CF4D4864F874490001414ADBE7EC96 >
+	{
+	}
+	myTicketMax < uid=91CF4D4864F874490001414BDC0BA15D >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=91CF4D4864F874490001414CAA815765 >
+	{
+		myDefaultValue 0
+	}
+	myActivateGameCondition
+	{
+		myFormula "LivingWorldContentLocation.DistanceToPlayer <= SpaceContentLocationDistanceMedium"
+	}
+	myDeactivateGameCondition
+	{
+		myFormula "LivingWorldContentLocation.DistanceToPlayer > SpaceContentLocationDistanceVeryFar"
+	}
+	myIsScannable FALSE
+}
+

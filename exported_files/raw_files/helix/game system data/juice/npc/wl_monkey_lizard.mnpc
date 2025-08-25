@@ -1,0 +1,35 @@
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npc/wil_fp_predator.mnpc"
+include "helix/game system data/juice/npcmove/wildlife_move_config.mnpcmoveconfig"
+
+NPC wl_monkey_lizard < uid=E9DD8F60650D5A310004E05AAEDF79AF > : wil_fp_predator
+{
+	myName "branch = \"TU1\", contextComment = \"The name of the monkey-like creature\", enabled = true, guid = #E9DD8F606684AADE0015FBA128FC5A84, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10572, text = \"Monkey Lizard\", type = \"MenuLine\""
+	myCharacterVisuals < uid=E9DD8F60650D5AAD0004E05E7A411AB8 > = character_visuals_wil_monkeylizard E9DD8F606501120E0000506484A4E5D8
+	myBehavior helix/behaviors/wildlife_monkeylizard.mbehavior
+	myAnimSystemType Monkey_Lizard
+	myHealthFormula 99999
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A129121667AF56B002CC4830873E601 > = Agent_Species_MonkeyLizard 3A129121667AF4D9002CC24E75B77C37
+	}
+	myPositionReservationSize 0.2
+	myNavigationLayerType Medium
+	myInitialNPCControllerContextType Flying
+	myLodProfile < uid=E8E55FD86686109A0003897AFEB13EBC > = Wildlife_Small E8E55FD8667A33EF0004AA52B205A0E7
+	myVisionProfile < uid=290EB60C652E30990006C8161EF27F90 > = MonkeyLizardVisionProfile 290EB60C652E30210006C8065E83B653
+	mySmellProfile < uid=290EB60C652E30990006C81798537B89 > = MonkeyLizardSmellProfile 290EB60C652E2E370003B68246164F54
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=290EB60C652E30990006C818D17A1E6D > = MonkeyLizardDetectionProfile 290EB60C652E2B3B0003B65F8850085C
+	}
+	mySteeringProfile < uid=E9DD8F6066A84A880000010A38ACE936 > = DisabledSteeringProfile E9DD8F6066A84D210000010C27C6DD9A
+	myAudioParameters
+	{
+		myEmitterName "WL Monkey Lizard"
+	}
+	myCanBeDetectedByProximitySenses FALSE
+	myMoveConfig < uid=E9DD8F606510F2E000009AA550E8EDC6 > = monkey_lizard_move_config E9DD8F606510EC630000968A90287C83
+	myResistanceProfile < uid=290EB60C659BA78C0004FC8491B93836 > = MonkeyLizardResistanceProfile 290EB60C659BA72F0004FC70B835B193
+}
+

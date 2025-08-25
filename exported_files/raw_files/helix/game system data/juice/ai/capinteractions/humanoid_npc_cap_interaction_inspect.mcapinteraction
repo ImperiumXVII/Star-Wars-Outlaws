@@ -1,0 +1,481 @@
+include "helix/game system data/fruit/ai/capinteraction.fruit"
+include "helix/game system data/juice/rbtags/allrbtags.juice"
+include "helix/game system data/juice/rbtags/metrics.mrbtagstags"
+include "helix/game system data/juice/rbtags/purpose.mrbtagstags"
+
+CAPInteraction Inspect_Inspectable200cm_Front_H164 < uid=EBE060C262A353C90000842C423E0D67 >
+{
+	mySequence helix/sequence/CAP_H164_EMP_storm_checking_mid_E11_M_V01.msequence
+	myCAPScript helix/scripts/scr_cap_base_loop_and_duration.mscript
+	myPriority Medium
+	myPurposeTag < uid=EBE060C262A353C90000842D7B75D59D > = Agent_Purpose_InspectTag EBE060C262A30DB40000C032B1E0C754
+	myAgentInteractionPointCooldown 5.0
+	myInteractionPointCooldown 10.0
+	myNPCInteractionCooldown 0.0
+	myPreferedDuration 20.0
+}
+
+CAPInteraction Inspect_Inspectable200cm_Front_H165_NotLoopable < uid=EBE060C262AC88340000840569E523B9 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H165_EMP_storm_checking_mid_E11_M_V02.msequence
+}
+
+CAPInteraction Inspect_Inspectable200cm_MovingAround_H161_NotLoopable < uid=EBE060C262AC5CEF00007B9590234CC8 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H161_PYK_assault_checking_mid_A300_M_V01.msequence
+}
+
+CAPInteraction Inspect_Inspectable200cm_MovingAround_H162_NotLoopable < uid=EBE060C262AC5D6500007B984C02F8E1 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H162_PYK_assault_checking_mid_A300_M_V02.msequence
+}
+
+CAPInteraction Inspect_Inspectable90cm_Front_H166_NotLoopable < uid=4137A3126408A49B0001A54D300D3B66 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H166_EMP_storm_checking_Low_E11_M_V01.msequence
+}
+
+CAPInteraction Inspect_Inspectable90cm_MovingAround_H162_NotLoopable < uid=4137A3126566FB9500012DBFA465A255 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H162_PYK_assault_checking_mid_A300_M_V02.msequence
+	myMetricTag < uid=4137A3126566FC6A00012DDFEE9202A8 > = Metric_Inspectable_90cm_Tag EBE060C262A3173F0001E1758157C014
+}
+
+CAPInteraction Inspect_Inspectable90cm_MovingAround_H161_NotLoopable < uid=4137A3126566FA7900012D936BDDF09A > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H161_PYK_assault_checking_mid_A300_M_V01.msequence
+	myMetricTag < uid=4137A3126566FC6A00012DDBA8F49E04 > = Metric_Inspectable_90cm_Tag EBE060C262A3173F0001E1758157C014
+}
+
+CAPInteraction Inspect_Inspectable90cm_MovingAround_H163_NotLoopable < uid=EBE060C263877EF90003D7799D22209B > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H163_PYK_assault_checking_low_A300_M_V01.msequence
+	myAgentInteractionPointCooldown 3.0
+	myInteractionPointCooldown 0.0
+	myNPCInteractionCooldown 0.0
+}
+
+CAPInteraction Inspect_Inspectable90cm_LookingAt_H309 < uid=4137A312656702FF00014EC2A3946352 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H309_HUM_checking_alarm_neutral_PI_M_V01.msequence
+	myMetricTag < uid=4137A3126567033100014EC4C1D03BD7 > = Metric_Inspectable_90cm_Tag EBE060C262A3173F0001E1758157C014
+}
+
+CAPInteraction Inspect_Inspectable90cm_LookingAt_H299_NotLoopable < uid=4137A3126567045600015B0FFC540497 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H299_EMP_storm_checking_alarm_damaged_AR_M_V01.msequence
+	myMetricTag < uid=4137A3126567048400015B139442B771 > = Metric_Inspectable_90cm_Tag EBE060C262A3173F0001E1758157C014
+}
+
+CAPInteraction Inspect_Inspectable90cm_LookingAt_H297 < uid=4137A312656700CC000136562E22F379 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H297_EMP_storm_checking_alarm_neutral_AR_M_V01.msequence
+	myMetricTag < uid=4137A312656700FC00013659EA81D04A > = Metric_Inspectable_90cm_Tag EBE060C262A3173F0001E1758157C014
+}
+
+CAPInteraction Inspect_Inspectable90cm_LookingAtSuspicous_H305 < uid=4137A312656703CB00015AF2133EFBD9 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H305_HUM_checking_alarm_damaged_AR_M_V01.msequence
+	myMetricTag < uid=4137A3126567048400015B1165E58771 > = Metric_Inspectable_90cm_Tag EBE060C262A3173F0001E1758157C014
+}
+
+CAPInteraction Inspect_Inspectable90cm_WeaponUpLooking_H312 < uid=4137A312656701D600013E84E52DA575 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H312_HUM_checking_alarm_damaged_PI_M_V02.msequence
+	myMetricTag < uid=4137A3126567022100013E874A9EFAF1 > = Metric_Inspectable_90cm_Tag EBE060C262A3173F0001E1758157C014
+}
+
+CAPInteraction Inspect_InspectableEntrance_MovingBackAndForth_H267_NotLoopable < uid=EBE060C263877BDB0003D7701417FB26 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H267_EMP_storm_checking_room_E11_M_V01.msequence
+	myAgentInteractionPointCooldown 10.0
+	myInteractionPointCooldown 5.0
+	myNPCInteractionCooldown 0.0
+}
+
+CAPInteraction Inspect_InspectableEntrance_MovingBackAndForth_H268_NotLoopable < uid=4137A31264086F42000011227FB28577 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H268_EMP_storm_checking_room_E11_M_V02.msequence
+}
+
+CAPInteraction Inspect_InspectableEntrance_MovingBackAndForth_H265_NotLoopable < uid=EBE060C2635166650004A80F46453987 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H265_HUM_checking_room_PI_M_V03.msequence
+}
+
+CAPInteraction Inspect_InspectableEntrance_MovingBackAndForth_H266_NotLoopable < uid=4137A312640208E80001E6C9A04BFE22 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H266_HUM_checking_room_PI_M_V04.msequence
+}
+
+CAPInteraction Inspect_InspectableEntrance_MovingBackAndForth_H269_NotLoopable < uid=EBE060C2638791D80001AF1944A53727 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H269_HUM_checking_room_AR_M_V01.msequence
+}
+
+CAPInteraction Inspect_InspectableEntrance_MovingBackAndForth_H270_NotLoopable < uid=4137A31264020B0B0001E6CA118D4185 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H270_HUM_checking_room_AR_M_V02.msequence
+}
+
+CAPInteraction Inspect_InspectableEntrance_LookingAt_H164 < uid=4137A3126566F672000120E4DD96C5F5 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H164_EMP_storm_checking_mid_E11_M_V01.msequence
+	myMetricTag < uid=4137A3126566FC6A00012DDC2702F70B > = Metric_Inspectable_Entrance_Tag EBE060C26351654D0004A7E93912F44A
+}
+
+CAPInteraction Inspect_InspectableEntrance_LookingAt_H463 < uid=41240B246571C54500098AD51F9151B8 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H463_HUM_checking_area_AR_M_V02.msequence
+}
+
+CAPInteraction Inspect_Crate60cm_Crouching_H231 < uid=41240B24651EC50800067CF95DFB183F > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H231_HUM_checking_low_AR_M_V01.msequence
+}
+
+CAPInteraction Inspect_Crate60cm_Crouching_H234_NotLoopable < uid=EBE060C263877DA50003D774CF3349E2 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H234_HUM_checking_low_AR_M_V04.msequence
+	myAgentInteractionPointCooldown 10.0
+	myInteractionPointCooldown 5.0
+	myNPCInteractionCooldown 0.0
+}
+
+CAPInteraction Inspect_Crate60cm_Crouching_H236_NotLoopable < uid=EBE060C2635164F70004A7E8D4E9B294 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H236_HUM_checking_low_AR_M_V06.msequence
+}
+
+CAPInteraction Inspect_Crate60cm_Crouching_H230_NotLoopable < uid=EBE060C26351615C00041464F85E1E64 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H230_HUM_checking_low_PI_M_V04.msequence
+}
+
+CAPInteraction Inspect_Crate60cm_MovingAround_H232_NotLoopable < uid=4137A31263FF6E810000F807B3DE29EF > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H232_HUM_checking_low_AR_M_V02.msequence
+}
+
+CAPInteraction Inspect_Crate60cm_TouchingWithFoot_H235_NotLoopable < uid=EBE060C2635164F70004A7E7D337FA1D > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H235_HUM_checking_low_AR_M_V05.msequence
+}
+
+CAPInteraction Inspect_Crate60cm_TouchingWithFoot_H228_NotLoopable < uid=EBE060C2635160DA0004145FC96F5C34 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H228_HUM_checking_low_PI_M_V02.msequence
+}
+
+CAPInteraction Inspect_Crate60cm_TouchingWithFoot_H224_NotLoopable < uid=41240B24651EC39B00045B40F64C8BFD > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H224_HUM_checking_low_M_V02.msequence
+}
+
+CAPInteraction Inspect_Crate60cm_TouchingWithHand_H229_NotLoopable < uid=EBE060C26351615C000414635EF0B033 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H229_HUM_checking_low_PI_M_V03.msequence
+}
+
+CAPInteraction Inspect_Crate60cm_TouchingWithFootAndHand_H223_NotLoopable < uid=41240B24651EB6830000B47EE6E112F6 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H223_HUM_checking_low_M_V01.msequence
+}
+
+CAPInteraction Inspect_Crate60cm_TouchingWithFootAndHand_H226_NotLoopable < uid=41240B24651EC3E600045D56E6A23FF2 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H226_HUM_checking_low_M_V04.msequence
+}
+
+CAPInteraction Inspect_Crate60cm_TouchingWithFootAndHand_H233_NotLoopable < uid=4137A31263FF6F2C0000FDFF1A1CF206 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H233_HUM_checking_low_AR_M_V03.msequence
+}
+
+CAPInteraction Inspect_Crate60cm_TouchingWithFootAndHand_H227_NotLoopable < uid=EBE060C263515F77000414176E71595A > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H227_HUM_checking_low_PI_M_V01.msequence
+}
+
+CAPInteraction Inspect_Crate60cm_TouchingWithHandAndCrouching_H225_NotLoopable < uid=41240B24651EC40100045D5715CC2B75 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H225_HUM_checking_low_M_V03.msequence
+}
+
+CAPInteraction Inspect_Crate60cm_TouchingWithHandAndCrouching_H675 < uid=41240B2465709369001922C76D1D2AF9 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H675_HUM_checking_low_UA_short_M_V01.msequence
+}
+
+CAPInteraction Inspect_Table80cm_CheckingPapersOnTable_H287 < uid=41240B24651ECE530015BBB2E7F7D2A9 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H287_HUM_checking_papers_table_AR_M_V01.msequence
+}
+
+CAPInteraction Inspect_Table80cm_CheckingPapersOnTable_H678 < uid=41240B2465709474001937EAE8E81A2C > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H678_HUM_checking_paper_table_AR_short_M_V01.msequence
+}
+
+CAPInteraction Inspect_Table80cm_LookingAt_H309 < uid=4137A312656702DE00014EC15B9CDCA1 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H309_HUM_checking_alarm_neutral_PI_M_V01.msequence
+	myMetricTag < uid=4137A3126567033100014EC347DD5EF3 > = Metric_Table_80cm_Tag EBE060C262F2261F00045575CAAFE4BD
+}
+
+CAPInteraction Inspect_Table80cm_WeaponUpLooking_H312 < uid=4137A312656701A500013E83A340E567 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H312_HUM_checking_alarm_damaged_PI_M_V02.msequence
+	myMetricTag < uid=4137A3126567022100013E8663619167 > = Metric_Table_80cm_Tag EBE060C262F2261F00045575CAAFE4BD
+}
+
+CAPInteraction Inspect_AlarmPanel120cm_LookingNear_H297 < uid=4137A31263EBA0B70001061891FE09A8 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H297_EMP_storm_checking_alarm_neutral_AR_M_V01.msequence
+}
+
+CAPInteraction Inspect_AlarmPanel120cm_LookingNear_H298_NotLoopable < uid=4137A31263EBA2A900010619D404E362 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H298_EMP_storm_checking_alarm_neutral_AR_M_V02.msequence
+}
+
+CAPInteraction Inspect_AlarmPanel120cm_LookingAt_H312 < uid=41240B24651ECC58001354E73F27F5CB > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H312_HUM_checking_alarm_damaged_PI_M_V02.msequence
+}
+
+CAPInteraction Inspect_AlarmPanel120cm_LookingAt_H309 < uid=41240B24651EC5E900068801D799D632 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H309_HUM_checking_alarm_neutral_PI_M_V01.msequence
+}
+
+CAPInteraction Inspect_AlarmPanel120cm_LookingAt_H164 < uid=4137A3126566F66A000120E3D2359008 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H164_EMP_storm_checking_mid_E11_M_V01.msequence
+	myMetricTag < uid=4137A3126566F6E3000120E57AC86898 > = Metric_AlarmPanel_120cm_Tag EBE060C26346BD61000123D8A012600D
+}
+
+CAPInteraction Inspect_AlarmPanel120cm_LookingAt_H305 < uid=4137A31264020C790001E6CDB4343181 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H305_HUM_checking_alarm_damaged_AR_M_V01.msequence
+}
+
+CAPInteraction Inspect_AlarmPanel120cm_LookingAt_H303_NotLoopable < uid=4137A31263EA648F0001575039E60976 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H303_HUM_checking_alarm_neutral_AR_M_V01.msequence
+}
+
+CAPInteraction Inspect_AlarmPanel120cm_LookingAt_H306_NotLoopable < uid=4137A31264020CCF0001E6CECFCECFEB > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H306_HUM_checking_alarm_damaged_AR_M_V02.msequence
+}
+
+CAPInteraction Inspect_AlarmPanel120cm_LookingAt_H304_NotLoopable < uid=4137A31263EA649700015753531CFC62 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H304_HUM_checking_alarm_neutral_AR_M_V02.msequence
+}
+
+CAPInteraction Inspect_AlarmPanel120cm_LookingAndReporting_H299_NotLoopable < uid=4137A31263EBA3080001061A1B22230A > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H299_EMP_storm_checking_alarm_damaged_AR_M_V01.msequence
+}
+
+CAPInteraction Inspect_AlarmPanel120cm_LookingAtSuspicious_H311_NotLoopable < uid=41240B24651EC66600068A813AC4B737 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H311_HUM_checking_alarm_damaged_PI_M_V01.msequence
+}
+
+CAPInteraction Inspect_Railing110cm_LookingDown_H278 < uid=4137A31264020B900001E6CB7CE21B2C > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H278_HUM_checking_rails_low_PI_M_V02.msequence
+}
+
+CAPInteraction Inspect_Railing110cm_LookingDown_H271_M_NotLoopable < uid=EBE060C263878CD00001AECC811D0674 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H271_EMP_checking_rails_low_PI_M_V01.msequence
+}
+
+CAPInteraction Inspect_Railing110cm_LookingDown_H277_NotLoopable < uid=EBE060C263878E310001AED2AAB15BB0 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H277_HUM_checking_rails_low_PI_M_V01.msequence
+}
+
+CAPInteraction Inspect_Railing110cm_LookingDown_H178_NotLoopable < uid=EBE060C2638767F200047E1B94272F28 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H178_EMP_storm_lean_rails_E11_M_V01.msequence
+}
+
+CAPInteraction Inspect_Railing110cm_LookingDown_H179_NotLoopable < uid=EBE060C26387679C00047E195D341ADA > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H179_EMP_storm_lean_rails_E11_M_V02.msequence
+}
+
+CAPInteraction Inspect_Railing110cm_LookingDown_H183_NotLoopable < uid=EBE060C263878C090001AEC8ACD3A72D > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H183_PYK_assault_lean_rails_A300_M_V03.msequence
+}
+
+CAPInteraction Inspect_Railing110cm_LookingDownAndAround_H180_NotLoopable < uid=EBE060C26387679E00047E1A46D7DD82 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H180_EMP_storm_lean_rails_E11_M_V03.msequence
+}
+
+CAPInteraction Inspect_Railing110cm_MovingAround_H378 < uid=41240B24651ECA46000DB13462F9BE9B > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H378_EMP_officer_supervising_vantage_point_lean_rail_M_V03.msequence
+}
+
+CAPInteraction Inspect_Railing110cm_LookingAround_H373_F < uid=41240B24651EC8AB000B9E235F856CC9 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H373_EMP_officer_supervising_vantage_point_lean_rail_F_V01.msequence
+}
+
+CAPInteraction Inspect_Railing110cm_LookingAround_H376 < uid=41240B24651EC9D8000DAECE574D87DC > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H376_EMP_officer_supervising_vantage_point_lean_rail_M_V02.msequence
+}
+
+CAPInteraction Inspect_Railing110cm_LookingAround_H181_NotLoopable < uid=EBE060C2638786B4000151083FEB633F > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H181_PYK_assault_lean_rails_A300_M_V01.msequence
+}
+
+CAPInteraction Inspect_Railing110cm_LookingAround_H279_NotLoopable < uid=EBE060C263878E310001AED322AD78F9 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H279_HUM_checking_rails_mid_PI_M_V01.msequence
+}
+
+CAPInteraction Inspect_Railing110cm_LookingAround_H273_M_NotLoopable < uid=EBE060C263878CD00001AECDA0362845 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H273_EMP_checking_rails_mid_PI_M_V01.msequence
+}
+
+CAPInteraction Inspect_Railing110cm_LookingAroundWithPistol_H280_NotLoopable < uid=4137A31264020C1D0001E6CC4B716C23 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H280_HUM_checking_rails_mid_PI_M_V02.msequence
+}
+
+CAPInteraction Inspect_Railing110cm_LookingAbove_H275_M_NotLoopable < uid=EBE060C263878CD00001AECE032A6513 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H275_EMP_checking_rails_above_PI_M_V01.msequence
+}
+
+CAPInteraction Inspect_Railing110cm_LookingAbove_H182_NotLoopable < uid=EBE060C263878C090001AEC7144AB8E9 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H182_PYK_assault_lean_rails_A300_M_V02.msequence
+}
+
+CAPInteraction Inspect_Railing110cm_LookingAbove_H281_NotLoopable < uid=EBE060C263878E310001AED4FF6701F1 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H281_HUM_checking_rails_above_PI_M_V01.msequence
+}
+
+CAPInteraction Inspect_Railing110cm_LookingAbove_H282_NotLoopable < uid=4137A31264020E930001E6D176E46BB0 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H282_HUM_checking_rails_above_PI_M_V02.msequence
+}
+
+CAPInteraction Inspect_InspectableFromBellow230cm_LookingAbove_H239 < uid=4137A3126411F8570000F82228A1E2EE > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H239_HUM_checking_above_PI_M_V01.msequence
+}
+
+CAPInteraction Inspect_InspectableFromBellow230cm_LookingAboveWithPistol_H240 < uid=4137A312640B0A1700013FF5DDFEFCA1 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H240_HUM_checking_above_PI_M_V02.msequence
+}
+
+CAPInteraction Inspect_InspectableFromBellow230cm_LookingAboveWithPistol_H241 < uid=4137A312640B0A3D00013FF665AB2B3C > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H241_HUM_checking_above_PI_M_V03.msequence
+}
+
+CAPInteraction Inspect_MarketStall90cm_MovingAround_H036 < uid=4137A3126536201600013CDD51F245EF > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H036_HUM_looking_at_stall_M.msequence
+}
+
+CAPInteraction Inspect_Shelves45to160cm_LookingAt_H399_M < uid=4137A3126544B2CD00011C884EDD4D61 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H399_HUM_checking_shelves_M_V01.msequence
+}
+
+CAPInteraction Inspect_Shelves45to160cm_LookingAt_H400_F < uid=4137A3126544B6CF0001220DC08F94FC > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H400_HUM_checking_shelves_F_V01.msequence
+}
+
+CAPInteraction Inspect_HidingSpot90cm_LookingAt_H309 < uid=4137A31265670258000146B626CFADC9 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H309_HUM_checking_alarm_neutral_PI_M_V01.msequence
+	myMetricTag < uid=4137A3126567029B000146B711B87940 > = Metric_HidingSpot_90cm_Tag EBE060C262A317550001E179FFD0F216
+}
+
+CAPInteraction Inspect_HidingSpot90cm_MovingAround_H161_NotLoopable < uid=4137A3126566F9F500012D925CD22D77 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H161_PYK_assault_checking_mid_A300_M_V01.msequence
+	myMetricTag < uid=4137A3126566FC6A00012DDD9303030B > = Metric_HidingSpot_90cm_Tag EBE060C262A317550001E179FFD0F216
+}
+
+CAPInteraction Inspect_HidingSpot90cm_MovingAround_H162_NotLoopable < uid=4137A3126566FB4000012D9492AA3387 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H162_PYK_assault_checking_mid_A300_M_V02.msequence
+	myMetricTag < uid=4137A3126566FC6A00012DDEE29AA441 > = Metric_HidingSpot_90cm_Tag EBE060C262A317550001E179FFD0F216
+}
+
+CAPInteraction Inspect_HidingSpot90cm_MovingAround_H163_NotLoopable < uid=4137A3126566FEED0001360E9AEE7527 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H163_PYK_assault_checking_low_A300_M_V01.msequence
+	myMetricTag < uid=4137A312656700FC00013657086C474E > = Metric_HidingSpot_90cm_Tag EBE060C262A317550001E179FFD0F216
+}
+
+CAPInteraction Inspect_HidingSpot90cm_TouchingWithWeapon_H166_NotLoopable < uid=4137A3126566FC3900012DDA60EEBAB0 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H166_EMP_storm_checking_Low_E11_M_V01.msequence
+	myMetricTag < uid=4137A3126566FC6A00012DE0DE180ADE > = Metric_HidingSpot_90cm_Tag EBE060C262A317550001E179FFD0F216
+}
+
+CAPInteraction Inspect_HidingSpot90cm_LookingAt_H297 < uid=4137A312656700050001365575DE9B68 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H297_EMP_storm_checking_alarm_neutral_AR_M_V01.msequence
+	myMetricTag < uid=4137A312656700FC0001365818E08E2A > = Metric_HidingSpot_90cm_Tag EBE060C262A317550001E179FFD0F216
+}
+
+CAPInteraction Inspect_HidingSpot90cm_LookingAtWeaponUp_H312 < uid=4137A3126567015500013E56C140D156 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H312_HUM_checking_alarm_damaged_PI_M_V02.msequence
+	myMetricTag < uid=4137A3126567022100013E85BBD8B7AF > = Metric_HidingSpot_90cm_Tag EBE060C262A317550001E179FFD0F216
+}
+
+CAPInteraction Inspect_HidingSpot90cm_LookingAtSuspicous_H305 < uid=4137A3126567039C00015AF11BA69DE5 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H305_HUM_checking_alarm_damaged_AR_M_V01.msequence
+	myMetricTag < uid=4137A3126567048400015B101E619603 > = Metric_HidingSpot_90cm_Tag EBE060C262A317550001E179FFD0F216
+}
+
+CAPInteraction Inspect_HidingSpot90cm_LookingAt_H299_NotLoopable < uid=4137A3126567042600015B0E9A762E21 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H299_EMP_storm_checking_alarm_damaged_AR_M_V01.msequence
+	myMetricTag < uid=4137A3126567048400015B12B50F49A7 > = Metric_HidingSpot_90cm_Tag EBE060C262A317550001E179FFD0F216
+}
+
+CAPInteraction Inspect_None_InspectGround_H465 < uid=41240B2465703CB50007BC2CD0102918 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H465_HUM_examining_trails_AR_M_V01.msequence
+}
+
+CAPInteraction Inspect_None_InspectGround_H466_F < uid=41240B24657041F70007C947C3D1F5C0 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H466_HUM_examining_trails_AR_F_V01.msequence
+}
+
+CAPInteraction Inspect_None_InspectGround_H467 < uid=41240B24657042710007D6CE60E4B019 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H467_HUM_examining_trails_M_V01.msequence
+}
+
+CAPInteraction Inspect_None_InspectGround_H468_F < uid=41240B24657043320007E5C36452E367 > : Inspect_Inspectable200cm_Front_H164
+{
+	mySequence helix/sequence/CAP_H468_HUM_examining_trails_F_V01.msequence
+}
+

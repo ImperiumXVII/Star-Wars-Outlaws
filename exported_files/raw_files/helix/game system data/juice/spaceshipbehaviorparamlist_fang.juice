@@ -1,0 +1,373 @@
+include "helix/game system data/fruit/ai/spaceshipsettings.fruit"
+include "helix/game system data/juice/ai/npcshootpatterns.mnpcshootpattern"
+include "helix/game system data/juice/ai/spaceshipcombatprofiles.mspaceshipcombatprofile"
+include "helix/game system data/juice/ai/spaceshipformationprofiles.mspaceshipformationprofile"
+include "helix/game system data/juice/ai/spaceshipspawnprofiles.mspaceshipspawnprofile"
+include "helix/game system data/juice/ai/spaceshipspeedprofiles.mspaceshipspeedprofile"
+include "helix/game system data/juice/ai/spaceshiptrajectories.mspaceshiptrajectoryprofile"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_default.juice"
+
+SpaceshipBehaviorParameter fangEvasiveStartCurrentManeuverMinElapsedTime : EvasiveStartCurrentManeuverMinElapsedTime
+{
+}
+
+SpaceshipBehaviorParameter fangEvasiveStartMinDistance : EvasiveStartMinDistance
+{
+}
+
+SpaceshipBehaviorParameter fangEvasiveMinDistance : EvasiveMinDistance
+{
+	myValue 150.0
+}
+
+SpaceshipBehaviorParameter fangEvasiveDurationRandomMin : EvasiveDurationRandomMin
+{
+	myValue 5.0
+}
+
+SpaceshipBehaviorParameter fangEvasiveDurationRandomMax : EvasiveDurationRandomMax
+{
+	myValue 10.0
+}
+
+SpaceshipBehaviorParameter fangEvasiveConeAngle : EvasiveConeAngle
+{
+}
+
+SpaceshipBehaviorParameter fangEvasiveStartAngleFromHostile : EvasiveStartAngleFromHostile
+{
+}
+
+SpaceshipBehaviorParameter fangEvasiveSpiralProbability : EvasiveSpiralProbability
+{
+}
+
+SpaceshipBehaviorParameter fangEvasivePauseBetweenPatternsMin : EvasivePauseBetweenPatternsMin
+{
+	myValue 1.0
+}
+
+SpaceshipBehaviorParameter fangEvasivePauseBetweenPatternsMax : EvasivePauseBetweenPatternsMax
+{
+	myValue 1.5
+}
+
+SpaceshipBehaviorParameter fangEvasiveBreakProbability : EvasiveBreakProbability
+{
+}
+
+SpaceshipBehaviorParameter fangEvasiveScaleWidth : EvasiveScaleWidth
+{
+}
+
+SpaceshipBehaviorParameter fangEvasiveScaleHeight : EvasiveScaleHeight
+{
+}
+
+SpaceshipBehaviorParameter fangEvasiveScaleLength : EvasiveScaleLength
+{
+}
+
+SpaceshipBehaviorParameter fangTimeToStartEvasiveIfStillInFrontOfHostile : TimeToStartEvasiveIfStillInFrontOfHostile
+{
+}
+
+SpaceshipBehaviorParameter fangBreakStartCurrentManeuverMinElapsedTime : BreakStartCurrentManeuverMinElapsedTime
+{
+}
+
+SpaceshipBehaviorParameter fangChaseDurationRandomMin : ChaseDurationRandomMin
+{
+	myValue 4.0
+}
+
+SpaceshipBehaviorParameter fangChaseDurationRandomMax : ChaseDurationRandomMax
+{
+	myValue 8.0
+}
+
+SpaceshipBehaviorParameter fangChaseDistanceMin : ChaseDistanceMin
+{
+}
+
+SpaceshipBehaviorParameter fangChaseDistanceMax : ChaseDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter fangChaseConeAngle : ChaseConeAngle
+{
+	myValue 20.0
+}
+
+SpaceshipBehaviorParameter fangChaseChanceToBreakOnHostileDodgePercent : ChaseChanceToBreakOnHostileDodgePercent
+{
+}
+
+SpaceshipBehaviorParameter fangChaseBreakProbabilityOverPass : ChaseBreakProbabilityOverPass
+{
+	myValue 70.0
+}
+
+SpaceshipBehaviorParameter fangOvershootMaxAngle : OvershootMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter fangInterceptConeAngle : InterceptConeAngle
+{
+	myValue 20.0
+}
+
+SpaceshipBehaviorParameter fangInterceptDistanceIdeal : InterceptDistanceIdeal
+{
+	myValue 400.0
+}
+
+SpaceshipBehaviorParameter fangInterceptDistanceMin : InterceptDistanceMin
+{
+	myValue 300.0
+}
+
+SpaceshipBehaviorParameter fangInterceptDistanceMax : InterceptDistanceMax
+{
+	myValue 600.0
+}
+
+SpaceshipBehaviorParameter fangInterceptDurationMin : InterceptDurationMin
+{
+}
+
+SpaceshipBehaviorParameter fangInterceptDurationMax : InterceptDurationMax
+{
+}
+
+SpaceshipBehaviorParameter fangJoustingProbability : JoustingProbability
+{
+	myValue 70.0
+}
+
+SpaceshipBehaviorParameter fangJoustingMaxDurationPrepare : JoustingMaxDurationPrepare
+{
+}
+
+SpaceshipBehaviorParameter fangJoustingMaxDuration : JoustingMaxDuration
+{
+}
+
+SpaceshipBehaviorParameter fangJoustingDistanceTurn : JoustingDistanceTurn
+{
+	myValue 1000.0
+}
+
+SpaceshipBehaviorParameter fangJoustingEndDistance : JoustingEndDistance
+{
+	myValue 200.0
+}
+
+SpaceshipBehaviorParameter fangJoustingAngle : JoustingAngle
+{
+	myValue 45.0
+}
+
+SpaceshipBehaviorParameter fangJoustingMaxAngle : JoustingMaxAngle
+{
+	myValue 120.0
+}
+
+SpaceshipBehaviorParameter fangJoustingEndBreakProbabilityOverPass : JoustingEndBreakProbabilityOverPass
+{
+}
+
+SpaceshipBehaviorParameter fangJoustingPositionMaxHeight : JoustingPositionMaxHeight
+{
+}
+
+SpaceshipBehaviorParameter fangAlignMinDistance : AlignMinDistance
+{
+}
+
+SpaceshipBehaviorParameter fangAlignMaxDistance : AlignMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter fangLeashingMinDistance : LeashingMinDistance
+{
+}
+
+SpaceshipBehaviorParameter fangLeashingMaxDistance : LeashingMaxDistance
+{
+	myValue 4000.0
+}
+
+SpaceshipBehaviorParameter fangLeashingToVolumeMaxDistance : LeashingToVolumeMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter fangShootMaxDistance : ShootMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter fangShootMaxAngle : ShootMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter fangBarkPositionDistanceMax : BarkPositionDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter fangBroadcastRangeEnterCombat : BroadcastRangeEnterCombat
+{
+}
+
+SpaceshipBehaviorParameter fangEscortDistance : EscortDistance
+{
+}
+
+SpaceshipBehaviorParameter fangLowProhibitedActionAttackDelay : LowProhibitedActionAttackDelay
+{
+}
+
+SpaceshipBehaviorParameter fangAccurateShootingProbability : AccurateShootingProbability
+{
+}
+
+SpaceshipBehaviorParameter fangRangeForSecondaryWeapon : RangeForSecondaryWeapon
+{
+}
+
+SpaceshipBehaviorParameter fangUndetectedTimeBeforeExitingCombat : UndetectedTimeBeforeExitingCombat
+{
+}
+
+SpaceshipBehaviorParameter fangUndetectedTimeBeforeExitingAware : UndetectedTimeBeforeExitingAware
+{
+}
+
+SpaceshipBehaviorParameter fangReinforcementsCallProbabilityPercent : ReinforcementsCallProbabilityPercent
+{
+}
+
+SpaceshipBehaviorParameter fangReinforcementsCallDuration : ReinforcementsCallDuration
+{
+}
+
+SpaceshipBehaviorParameter fangIdleDefaultSplineSizeHorizontal : IdleDefaultSplineSizeHorizontal
+{
+}
+
+SpaceshipBehaviorParameter fangIdleDefaultSplineSizeVertical : IdleDefaultSplineSizeVertical
+{
+}
+
+SpaceshipBehaviorParameter fangCooldownDuration : CooldownDuration
+{
+}
+
+SpaceshipBehaviorParameter fangCooldownMaxDistance : CooldownMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter fangSpaceshipMaxEngagementDistance : SpaceshipMaxEngagementDistance
+{
+	myValue 1500.0
+}
+
+SpaceshipBehaviorParameter fangSpaceshipPrimaryMaxAngle : SpaceshipPrimaryMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter fangSpaceshipPrimaryMaxDistance : SpaceshipPrimaryMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter fangSpaceshipPrimaryMinDistance : SpaceshipPrimaryMinDistance
+{
+}
+
+SpaceshipBehaviorParameter fangSpaceshipPrimaryMaxHealth : SpaceshipPrimaryMaxHealth
+{
+}
+
+SpaceshipBehaviorParameter fangSpaceshipSecondaryMaxAngle : SpaceshipSecondaryMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter fangSpaceshipSecondaryMaxDistance : SpaceshipSecondaryMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter fangSpaceshipSecondaryMinDistance : SpaceshipSecondaryMinDistance
+{
+}
+
+SpaceshipBehaviorParameter fangSpaceshipSecondaryMaxHealth : SpaceshipSecondaryMaxHealth
+{
+}
+
+SpaceshipBehaviorParameter fangSpaceshipMissileMaxAngle : SpaceshipMissileMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter fangSpaceshipMissileMaxDistance : SpaceshipMissileMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter fangSpaceshipMissileMinDistance : SpaceshipMissileMinDistance
+{
+}
+
+SpaceshipBehaviorParameter fangSpaceshipMissileMaxHealth : SpaceshipMissileMaxHealth
+{
+}
+
+SpaceshipBehaviorParameter fangCombatLeashingToPlayer : CombatLeashingToPlayer
+{
+}
+
+SpaceshipBehaviorParameter fangSpaceshipAccuracyRadiusMax : SpaceshipAccuracyRadiusMax
+{
+}
+
+SpaceshipBehaviorParameter fangSpaceshipAccuracyRadiusMin : SpaceshipAccuracyRadiusMin
+{
+}
+
+SpaceshipBehaviorParameter fangSpaceshipAccuracyDistanceMax : SpaceshipAccuracyDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter fangSpaceshipAccuracyDistanceMin : SpaceshipAccuracyDistanceMin
+{
+}
+
+SpaceshipBehaviorParameter fangSpaceshipShotSpreadPercentage : SpaceshipShotSpreadPercentage
+{
+}
+
+SpaceshipBehaviorParameter fangSpaceshipMissileLockOnTime : SpaceshipMissileLockOnTime
+{
+}
+
+SpaceshipBehaviorParameter fangHarassmentChance : HarassmentChance
+{
+}
+
+SpaceshipBehaviorParameter fangHarassmentDuration : HarassmentDuration
+{
+}
+
+SpaceshipBehaviorParameter fangHarassmentAreaSizeMin : HarassmentAreaSizeMin
+{
+}
+
+SpaceshipBehaviorParameter fangHarassmentAreaSizeMax : HarassmentAreaSizeMax
+{
+}
+
+SpaceshipBehaviorParameter fangHarassmentAreaHeightMin : HarassmentAreaHeightMin
+{
+}
+
+SpaceshipBehaviorParameter fangHarassmentAreaHeightMax : HarassmentAreaHeightMax
+{
+}
+

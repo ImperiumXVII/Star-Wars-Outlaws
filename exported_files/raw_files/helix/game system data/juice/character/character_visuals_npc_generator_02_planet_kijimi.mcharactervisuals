@@ -1,0 +1,75 @@
+include "helix/game system data/fruit/character/charactervisuals.fruit"
+include "helix/game system data/juice/character/character_visuals_npc_generator_02.mcharactervisuals"
+
+CharacterVisuals character_visuals_npc_generator_02_planet_kijimi < uid=66F572896578220300087C185B45764F > : character_visuals_npc_generator_02
+{
+	myCharacterVisualsParts
+	{
+		GearGraphInfoList Faction
+		{
+			EmptyGearGraphInfo Civilian
+			{
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728965C2282C00000662048DA506 > = Agent_Faction_CivilianTag 16DEADE6620AE18B000020C77856AAF4
+				}
+			}
+		}
+		GearGraphInfoList PlanetSelector
+		{
+			EmptyGearGraphInfo Cantonica
+			{
+				myWeight 0
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728965C2282C00000663B7A2FF3D > = Agent_Planet_CantonicaTag 66F572896527AF5E000128177E895A78
+				}
+			}
+			EmptyGearGraphInfo Toshara
+			{
+				myWeight 0
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728965C2282C0000066451B1435E > = Agent_Planet_TosharaTag 66F572896527B0EC0001281A47673417
+				}
+			}
+			EmptyGearGraphInfo Tatooine
+			{
+				myWeight 0
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728965C2282C00000665F49F7570 > = Agent_Planet_TatooineTag 66F572896527B0FC0001281B275E4740
+				}
+			}
+			EmptyGearGraphInfo Akiva
+			{
+				myWeight 0
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728965C2282C000006669D535B70 > = Agent_Planet_AkivaTag 66F572896527B1130001281C6F84FEFE
+				}
+			}
+			EmptyGearGraphInfo Kijimi
+			{
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728965C2282C000006673DA804F0 > = Agent_Planet_KijimiTag 66F572896527B11D0001281D657298EC
+				}
+			}
+		}
+		GearGraphInfoListWrapper Bodytype < uid=66F5728965C2282C00000668E6D81BA8 > = TagAverageSkinySelector 66F5728965C2167C000FC2D7140CEA15
+		GearGraphInfoListWrapper Species < uid=66F5728965C2282C00000669E9E3C6F6 > = TagSpeciesSelector 66F5728965C210F2000FC237EC984975
+		GearGraphInfoListWrapper OutfitCombiner < uid=66F5728965C2282C0000066AEE6C8861 > = OutfitCombiner 83E36AE36593F2F40000ED847D5A806B
+		GearGraphInfoListWrapper BodyCombiner < uid=66F5728965C2282C0000066B939E9ED8 > = SpeciesCivilianSelector 66F572896762C2A4000A91EF1718C0C0
+	}
+}
+
+CharacterVisuals character_visuals_npc_generator_02_planet_kijimi_sequence < uid=7D4684466596D40D0002141D4D29D00C > : character_visuals_npc_generator_02_planet_kijimi
+{
+	myCharacterVisualLogicItems
+	{
+		file collision "helix/graph objects/gear/chr_collision_sequence_human.mgraphobject"
+		file Walla "helix/graph objects/gear/chr_audio_billboarding_static_npc.mgraphobject"
+	}
+}
+

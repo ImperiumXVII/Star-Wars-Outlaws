@@ -1,0 +1,139 @@
+include "helix/game system data/juice/camera/modifiers/gun_charge_fovmodifier.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/gun_charge_shake.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_module_recoil_phasepulse.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_module_recoil_power.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_shake_kays_blaster_power.mcameramodifier"
+include "helix/game system data/juice/equipment/weaponanimationconfig/weapon_anim_kay_blaster_phasepulse.mweaponanimationconfig"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_blaster_template.mweaponfiremode"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_phasepulse.mprojectile"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_power.mprojectile"
+include "helix/game system data/juice/sound/weapons/player_aduioweapon_kays_sig_mod_charge.maudioweapon"
+include "helix/game system data/juice/sound/weapons/player_audioweapon_kays_sig_mod_phasepulse.maudioweapon"
+
+WeaponFireMode player_firemode_blaster_phasepulse < uid=7113C61164369849000054B40B87081E > : player_firemode_blaster_template
+{
+	myFireEvent
+	{
+		ChargedFireEvent ChargedFireEvent
+		{
+			myProjectilesPerRound 1
+			myRPM
+			{
+				myRPM 80
+				myRPMFluctuationMin 0
+				myRPMFluctuationMax 0
+			}
+			myChargeDurationFormula "1.4 * ChargeUpSpeedPhasePulse"
+			myMinChargeStrength 0.0
+			myDischargeDuration 0.2
+			myAutomaticFireAfterReachFullCharge FALSE
+			myAutomaticFireAfterReachFullChargeTime 1.5
+			myFullChargeFireOnly FALSE
+			myAutomaticResetEnabled FALSE
+			myAutomaticResetInterval 1.0
+			myChargeCameraShake < uid=7113C61164369849000054B5B1097FF2 > = gun_charge_shake B0ED92506298C63000003C0DA12A25E1
+			myChargeFOVCameraModifier < uid=7113C61164369849000054B67BB78D5D > = gun_charge_FoVModifier 4C1DFD4E633AD6820000001B4035D978
+		}
+	}
+	myBaseProperties
+	{
+		myAnimation < uid=7113C611651C0BA500037D4457CC33C3 > = weapon_anim_kay_blaster_phasepulse 7113C611651C0B7700037D4339C4914D
+		myRecoil < uid=A207755D6515A0DA00014E416EA14E65 > = weapon_module_recoil_phasepulse 7113C611653BA836000372B80724A988
+		myInputController
+		{
+			myFireRumble 7113C611663A20E4000BC77479B0B040
+			myHardPressTriggerEffect helix/trigger_effects/triggereffect_blaster_chargeup.mtriggereffect
+			myFireTriggerThreshold 0.8
+			myCharge
+			{
+				myChargingTriggerVibrationEnabled TRUE
+				myChargingRumble 7113C61165E349DA001CF97A631F7D1F
+				myOnFullChargeTriggerEffectEnabled FALSE
+				myOnFullChargeTriggerEffect
+				{
+					myAmplitude 1.0
+				}
+				myOnFullChargeRumble 7113C611663A204F000BC772BC3BD545
+				myFullChargeTriggerVibrationEnabled TRUE
+				myFullChargeTriggerVibration
+				{
+					myAmplitude 0.4
+					myFrequency 0.15
+				}
+				myFullChargeRumble 7113C611663A20AF000BC773D7975AB8
+			}
+		}
+	}
+	mySpecializations
+	{
+		WeaponFireModeSpecialization WeaponAnim
+		{
+			myAimMode ADS
+			myProperties
+			{
+				myAnimation < uid=7113C6116527B5C90003ECB99237B462 > = weapon_anim_kay_blaster_phasepulse_ads 7113C6116527B59F0003EB5FC315D84A
+			}
+		}
+	}
+	myProjectile < uid=7113C61164369849000054B70C390907 > = weapon_projectile_blaster_phasepulse 7113C6116462191500019B9AA9E63B92
+	myOverHeat
+	{
+		myHeatingMode Charge
+		myMaxHeatFormula "100.0 + PlayerOverheatBonus"
+		myHeatPerUseFormula "(34 + (16 * EquipmentHeat.IsFullCharge)) * MaxHeatModifier * PowerModuleHeatCapacityModifier"
+		myHeatOverTimeFormula 10.0
+		myCoolingOverTimeFormula "10 * PlayerOverheatModifierIce"
+		myActiveCooling
+		{
+			mySections
+			{
+				EquipmentOverHeatActiveCoolingSection Success
+				{
+					myStartOfSection "0.45 * FastReloadSectionStartModifier"
+					myLengthOfSection "0.3 * FastReloadSectionSizeModifier"
+					mySuperChargeBonusTime "5 * SuperChargeFastBonusTimeModifier"
+				}
+				EquipmentOverHeatActiveCoolingSection Success_Perfect
+				{
+					myStartOfSection "0.38 * PerfectReloadSectionStartModifier"
+					myLengthOfSection "0.08 * PerfectReloadSectionSizeModifier"
+					mySuperChargeBonusTime "5 * SuperChargePerfectBonusTimeModifier"
+					myIsPerfect TRUE
+				}
+			}
+		}
+	}
+	myDamage
+	{
+		myDamage
+		{
+			myDamageFormula "3 * EnergyModuleDamageModifier"
+			myDamageType Blast
+		}
+		myFullChargeBonusFormula "0.0 + FullChargeDamageBonus"
+	}
+	myFireShake < uid=7113C61164369849000054B9C5C12982 > = weapon_shake_kays_blaster_power 1C021E95634FE5050000C7D8DB862458
+	myUI
+	{
+		myDefaultUIGraph helix/ui/graphs/crosshair_pistol_chargeup_phasepulse_overheat.muigraph
+		myUIGraphByConditions
+		{
+			EquipmentUIByConditions "Accessibility Crosshair"
+			{
+				myConditions
+				{
+					myConditions
+					{
+						GameConditionAccessibilitySimplifiedCrosshair "Simplified Crosshair"
+						{
+							myMode 2
+						}
+					}
+				}
+				myUIGraph helix/ui/graphs/crosshair_accessibility_charge.muigraph
+			}
+		}
+	}
+	myAudioData < uid=7113C61164369849000054BA02DB8902 > = Player_audioweapon_kays_sig_mod_phasepulse DADB4E0465E5B05A000000C2D58A4FC8
+}
+

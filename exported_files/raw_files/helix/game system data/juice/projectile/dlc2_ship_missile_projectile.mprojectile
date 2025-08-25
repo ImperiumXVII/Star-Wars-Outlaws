@@ -1,0 +1,53 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/explosion/dlc2_rokana_explosion_missile_ion_01.mexplosion"
+include "helix/game system data/juice/explosion/explosion_concusion.mexplosion"
+include "helix/game system data/juice/explosion/explosion_generic.mexplosion"
+include "helix/game system data/juice/explosion/explosion_missile_ion_01.mexplosion"
+include "helix/game system data/juice/explosion/explosion_torpedoes.mexplosion"
+include "helix/game system data/juice/explosion/explosion_torpedoes_proton.mexplosion"
+include "helix/game system data/juice/projectile/realization/dlc2_rokana_torpedo.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/ship_missile.mprojectilerealization"
+include "helix/game system data/juice/projectile/ship_missile_projectile.mprojectile"
+
+BallisticProjectile dlc2_ship_torpedo_ion_projectile < uid=05B06D7D670E2FD5000005376FDBFF01 > : projectile_ship_missile_ion
+{
+	myObject
+	{
+		myTravelLifeTime 10.0
+	}
+	myRealization < uid=B4FBE4306722489D00033377D91176B1 > = dlc2_realization_rokana_torpedo B4FBE430672246F30002743E9A64C9A2
+	myActions
+	{
+		ProjectileActionExplosion Explosion
+		{
+			myActionTargetType FinalHit
+			myDamageType Ion
+			myDamageFormula 10
+			myRadiusFormula 20
+			myDefaultDamage 10.0
+			myDefaultRadius 20.0
+			myExplosion < uid=05B06D7D670E31340000055C732C4121 > = dlc2_rokana_explosion_missile_ion_01 05AD298067238F2E0000CA33827DF8F1
+		}
+		ProjectileActionExplosion "Missiles Life Time"
+		{
+			myActionTargetType Expired
+			myDamageType Blast
+			myDamageFormula 20
+			myRadiusFormula 20
+			myDefaultDamage 20.0
+			myDefaultRadius 20.0
+			myExplosion < uid=05B06D7D670E31340000055D3AEABEB3 > = explosion_missile_ion_01 F8181D48653932AD000348B7141DF007
+		}
+		ProjectileActionIonCharge "Ion Charge"
+		{
+			myCharge 100
+			myAOERadius 50.0
+		}
+	}
+	myInitialSpeed 300.0
+	myAccelerationType Curve
+	myAccelerationCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -1.3333334 0, -0.33333334 0, 0 0, }, outTangents = { 1.3333334 0, 0.33333334 0, 0 0, 0 0, }, properties = { 3, 3143, 4167, 2067, }, values = { 0 0, 4 100, 5 100, 5 5, }, }, numKeys = 4, }"
+	mySeekerMaxDistanceToConsiderMiss 300.0
+	mySeekerTargetMissAction AbandonTarget
+}
+

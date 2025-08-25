@@ -1,0 +1,31 @@
+//To be kept in sync with HC_AgentResolutionTypes::HC_AgentResolutionType enum
+enum AgentResolutionType
+{
+	LocalPlayer
+	NPC
+	NPCRemote
+	Pet
+	GroundVehicle
+	PlayerSpaceship
+	NPCSpaceship
+	Turret
+}
+
+class ScoreMultiplierByAgentType
+{
+	AgentResolutionType myAgentType LocalPlayer
+	float myScoreMultiplier 1.0 < min=0 >
+}
+
+list ScoreMultiplierByAgentTypeList
+{
+	ScoreMultiplierByAgentType
+}
+
+class VFXPerformanceSettings < uid=auto >
+{
+	bool myEnableVFXBudgetConfiguration false < tooltip="Kill switch for the VFX budget attribution." >
+    string myNeededScoreMultiplierByNumberOfRunningVFXs < bhv=inputgraph tooltip="The score multiplier (between 0 and 1) over number of currently reunning VFXs." >
+    string myScoreMultiplierOverDistance < bhv=inputgraph tooltip="The score multiplier (between 0 and 1) over distance from main camera in meters." >
+	ScoreMultiplierByAgentTypeList myScoreMultiplierByAgentTypes < tooltip="Any agent type missing from this list will receive a default multiplier of 1." >
+}

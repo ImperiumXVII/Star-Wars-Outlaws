@@ -1,0 +1,125 @@
+include "helix/game system data/fruit/fathierraces/fathierracesinfo.fruit"
+include "helix/game system data/fruit/fathierraces/fathierracesmicrostories.fruit"
+include "helix/game system data/fruit/fathierraces/fathierracesstatuses.fruit"
+include "helix/game system data/fruit/fathierraces/fathierracesemotions.fruit"
+include "helix/game system data/fruit/fathierraces/fathierracesfixedraces.fruit"
+include "helix/game system data/fruit/item/item.fruit"
+
+class RaceTrajectory
+{	
+	string myCurve "{ numKeys = 2, keys2 = { inTangents = { 0 0, -0.333333343 0, }, outTangents = { 0.333333343 0, 0 0, }, properties = { 3, 1027, }, values = { 0 0, 1 1, }, },  }," < bhv=inputgraph >
+}
+
+list RaceTrajectories
+{
+	RaceTrajectory
+}
+
+list BettingCostFormulas
+{
+	string 0 < tooltip="Formula to compute the betting cost of fathier races" bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+}
+
+class FathierRacesCooldownSettings
+{
+	float myFullCooldown 1 < min=1 tooltip="The duration of the full cooldown in seconds." >
+	float myRaceCooldown 1 < min=1 tooltip="If a certain number of races are done during this duration, the full cooldown is started." >
+	int myRaceCountForFullCooldown < min=0 tooltip="If this number of races is done during the race cooldown duration, the full cooldown is started." >
+}
+
+class OwnedFathierSettings
+{
+	FathierGenerationInfo* myOwnedFathier < tooltip="The fathier received at the end of the last microstory. This fathier will have the status 'Owned'." >
+	JockeyInfo myOwnedFathierJockey < tooltip="The jockey used with the owned fathier." >
+	float myProbabilityToRace < min=0.0 max=1.0 tooltip="The probability to select the owned fathier for each race.">
+	int myRaceCountWithoutOwnedFathier < min=0 tooltip="The owned fathier can't be selected for a race if it already was on this number of previous races.">
+	int myFirstRacesCountWithOwnedFathier < min=0 tooltip="The owned fathier is sure to be selected if it did less than this number of races.">
+	uid myMicrostory < bhv="constantData" constantDataType="fathierracesmicrostory" tooltip="The microstory which creates the owned fathier when ended.">
+	Item* myRewardItem < tooltip="The item the player receives in their mailbox once the owned fathier is created." >
+	float myRewardCooldown 1 < min = 1 tooltip="In seconds, the time to wait between two gain of the reward item." >
+	int myRewardItemLimitInMailBox < tooltip="The maximum number of reward item in the mail box. If set under 0, there is no limit." >
+}
+
+class FathierIndexParameters
+{
+	uid myMainColor < bhv=presetcolor >
+	uid mySecondaryColor < bhv=presetcolor >
+	file myJockeyTexture < bhv="asset" assettype="texture" >
+}
+
+list FathierIndexParametersList
+{
+	FathierIndexParameters
+}
+
+class WinnerFathierRerollSettings
+{
+	string myFathierRerollFormula 0 < tooltip="The probability that the selected fathier wins " bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	FathierStatusList myRerollableStatuses < tooltip="The selected fathier must be of one of these types to override the race. Be sure that the statuses in this list can win the race (by setting them in RaceRankings)" >
+}
+
+class FathierRacesSpectatorsSettings
+{
+	FathierRaceSteps myEmotionalScenario < tooltip="The level of emotion the characters watching the race have. The steps' times don't need to be in order." >
+	RaceStepTypes myRaceStepTypes
+	FathierRacesEmotionTransitions myEmotionTransitions < tooltip="Set the new emotion the spectator gets when moving from a belief to another." >
+	FathierRacesStartingEmotions myStartingEmotions < tooltip="Set the emotions and the associated beliefs a spectator can have at the beginning of a race." >
+	int myMinimumRankingForEmotionRankingUpdate < tooltip="A spectator can't send emotion ranking events if the new ranking of the fathier is lower this value.">
+	float myMinimumTimeBetweenEmotionEvents < min=0 tooltip="A spectator can't send emotion events if the previous event has been sent under this duration.">
+	float myFirstEmotionEventDelay 1.5 < min=0 tooltip="Delay before the first emotion event of a spectator, after that the cooldown will use the myMinimumTimeBetweenEmotionEvents as value.">
+	GameValue* myDisplaySpectatorsNumberDebugGameValue
+	float myMinimumEndOfRaceBeliefDelay 0.0 < min=0 tooltip="The end of race belief is not changed directly, but after a duration randomly selected between this minimum delay and the maximum delay." >
+	float myMaximumEndOfRaceBeliefDelay 1.5 < min=0 tooltip="The end of race belief is not changed directly, but after a duration randomly selected between the minimum delay and this maximum delay." >
+}
+
+class FathierHologramRotationSettings
+{
+	float myMinInitialRotation 0 < tooltip="Minimum random value for the starting rotation value" >
+	float myMaxInitialRotation 20 < tooltip="Maximum random value for the starting rotation value" >
+	float myRotationSpeed 50 < tooltip="Hologram rotation speed" >
+}
+
+class FathierHUDSettings
+{
+	file myMasterGraph < bhv="asset" assettype="GUI" tooltip="Fathier ui master graph." >
+	file myRaceGraph < bhv="asset" assettype="GUI" tooltip="Fathier ui race graph." >
+}
+
+class FathierRacesSettings < uid = auto >
+{
+	int myFathierQuantityInRace < min=0 tooltip="The total quantity of fathiers in a race" >
+	FathierHologramRotationSettings myFathierHologramRotationSettings < tooltip="Information about the fathier hologram rotation" >
+	FathierStatusDataList myFathierStatusDataList < tooltip="Information about the fathier statuses. All statuses should have a status data." >
+	RankingRange myDefaultPreviousRanking < tooltip="The default previous rankings a fathier have at its creation, randomly selected between the min and the max" >
+	FathierStatusList myFillerStatuses < tooltip="When selecting the fathiers for a race, once the intel and mandatory fathiers have been selected, we select fathiers with these statuses to reach the needed quantity of fathiers in a race" >
+	RaceRankings myRaceRankings < tooltip="The different possible results of a race, based on racing fathiers' statuses" >
+	FathierGenerationInfoList myFathierGenerationInfoList < tooltip="List of info that are used to generate the fathiers" >
+	JockeyInfoList myJockeyInfoList < tooltip="List of jockeys" >
+	OwnedFathierSettings myOwnedFathierSettings
+
+	Item* myBettingItem < tooltip="The item used to bet" >
+	BettingCostFormulas myBettingCostFormulas < tooltip="The formulas to compute amounts of betting item the player can spend to bet" >
+	float myTotalBetShareToRedistribute < min=0 max=1 tooltip="The proportion of the total bet that is kept to calculate the gains." >
+
+	float myMinimumRaceDuration 5.0 < min=0 tooltip="The minimum time (in seconds) it takes for the race to finish. All the fathiers will arrive at the finish line between the minimum race duration and the maximum race duration." >
+	float myMaximumRaceDuration 11.0 < min=0 tooltip="The maximum time (in seconds) it takes for the race to finish. All the fathiers will arrive at the finish line between the minimum race duration and the maximum race duration." >
+	float myMinimumArrivingTimeGap 0.1 < tooltip="The minimum gap in seconds between two fathiers arriving at the end of the race. This gap should be over 0 and not be over (myMaximumRaceDuration - myMinimumRaceDuration) / 5." >
+	RaceTrajectories myRaceTrajectories < tooltip="The trajectories the fathiers can have during a race. In each trajectory, the first key should be at {0,0} and the last one at {1,1}." >
+	RaceTrajectories myLaneTrajectories < tooltip="For each fathier in a race, the lane position the fathier tries to reach at a given position in the track. Race starts at x = 0 and finishes at x = 1. There must be as many trajectories as fathiers in a race. Fathier at index 0 is the fathier at the outside of the track." >
+	float myLaneSpeed -1 < tooltip="The maximum distance per second the fathier can move through its lane trajectory. If under 0 there are not speed limit." >
+	float myFathierLength < min = 0.0 tooltip="Used to check collisions and adapt the lane position." >
+	float myFathierWidth < min = 0.0 tooltip="Used to check collisions and adapt the lane position." >
+	float myRaceIntroDuration 10 < tooltip="In seconds, the time duration of a race intro (after the player has selected their bet and before the race starts). Should be higher than the duration of Kay's animation from the betting station to the table." >
+	float myScoreboardLifespan 20.f < tooltip="In seconds, the time the hologram score board stays displayed after the end of the race" >
+	FathierRacesCooldownSettings myCooldownSettings
+	int myPreviousRankingsToRemember 6 < min=0 tooltip="The quantity of previous rankings to save and display in the menu for each fathier" >
+	FathierIndexParametersList myIndexParameters < tooltip="The size of this array should be equal to the number of fathiers in a race.">
+	WinnerFathierRerollSettings myFathierRerollSettings
+	FathierRacesSpectatorsSettings mySpectatorsAndSportcasterSettings
+
+	FathierRacesMicrostories myFathierRacesMicrostories
+
+	ProceduralFixedRacesSettings myProceduralFixedRacesSettings
+
+	FathierHUDSettings myHUDSettings
+}

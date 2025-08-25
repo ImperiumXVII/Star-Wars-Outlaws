@@ -1,0 +1,83 @@
+include "helix/game system data/fruit/equipment/equipment_set.fruit"
+include "helix/game system data/fruit/domainsofmastery/domainofmastery.fruit"
+include "helix/game system data/fruit/reputation/reputation.fruit"
+
+class EquipmentReplacement
+{
+	EquipmentSlotGroupType myGroup Unassigned
+	EquipmentSlotTag myTag Main
+	EquipmentItem* myItem
+}
+
+list EquipmentReplacementList
+{
+	EquipmentReplacement
+}
+
+list DomainOfMasteryExpertsList
+{
+	uid < bhv="constantdata" constantDataType="domainofmasteryexpertset" >
+}
+
+list DoMAbilityList 
+{
+	uid < bhv="constantdata" constantDataType="domainofmasteryability" >
+}
+
+class ItemToAdd
+{
+	uid myItem < bhv="constantdata" constantDataType="item" >
+	int myAmount < default=1 >
+}
+
+list ItemsToAddToInventoryList
+{
+	ItemToAdd
+}
+
+class EquipmentUpgradeUnlock
+{
+	uid myUpgrade < bhv="constantData" constantDataType="equipmentupgrade" >
+	int myUpgradeLevel < min=0 max=5 step=1 default=1 tooltip="If set to 0 the upgrade will be set to max level. Cannot upgrade beyond max level no matter what number is put here" >
+	bool myShouldEquip < tooltip="If set to true the upgrade will be equipped after being upgraded" >
+	int myTalentUpgradeLevel < min=0 max=3 tooltip="The number of talents to be unlocked for the upgrade. Only applicable for the blaster modules">
+}
+
+list EquipmentUpgradesToUnlock
+{
+	EquipmentUpgradeUnlock
+}
+
+class ReputationLevels
+{
+	ReputationDefinition* myReputation
+	int myReputationToSet < default=500 tooltip="The number put here is what the reputation will be set to." >
+}
+
+list ReputationChanges
+{
+	ReputationLevels
+}
+
+class GadgetUnlocks
+{			
+	bool myUnlockBinoculars
+	bool myUnlockSmokeGrenade
+	bool myUnlockThrowables
+	bool myUnlockLuminRod
+	bool myUnlockHoloReader
+	bool myUnlockFusionCutter
+}
+
+class PlayerPresets < uid=auto >
+{
+	EquipmentReplacementList myPlayerReplacementEquipment
+	ItemsToAddToInventoryList myItemsToAddToInventory < bhv="constantData" tooltip="Items added here will be added to the players inventory" >
+	EquipmentUpgradesToUnlock myEquipmentUpgradesToUnlock < bhv="constantData" tooltip="Upgrades added here will be set as discovered and unlocked" >
+	
+	DomainOfMasteryExpertsList myExpertsToBeFullyUnlocked < tooltip="Experts added here will be unlocked and all their abilities will be unlocked." >
+	DoMAbilityList myAbilitiesToBeUnlocked < bhv="constantData" tooltip="Abilities added here will be unlocked aswell as their experts.">
+	
+	ReputationChanges myReputationChanges
+	GadgetUnlocks myGadgetsToUnlock
+}

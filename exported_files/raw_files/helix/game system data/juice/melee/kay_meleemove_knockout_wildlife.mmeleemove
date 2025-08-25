@@ -1,0 +1,149 @@
+include helix/audio/emitterlabels.juice
+include "helix/game system data/fruit/melee/melee_move.fruit"
+include "helix/game system data/juice/ai/dynamiccapinteractions/wildlifedcap.mnpcdynamiccapinteractionprofile"
+include "helix/game system data/juice/ai/npcagitationprofiles.mnpcagitationprofile"
+include "helix/game system data/juice/ai/npccapevaluatorprofiles.mnpccapinteractionevaluatorprofile"
+include "helix/game system data/juice/ai/npcdetectionprofiles.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/npcfleeprofiles.mnpcfleeprofile"
+include "helix/game system data/juice/ai/npcfocusprofiles.mnpcfocusprofile"
+include "helix/game system data/juice/ai/npcfootstepsprofiles.mnpcfootstepprofile"
+include "helix/game system data/juice/ai/npchearingprofiles.mnpchearingprofile"
+include "helix/game system data/juice/ai/npcmotionplanfollowprofiles.mnpcmotionplanfollowprofile"
+include "helix/game system data/juice/ai/npcpackprofiles.mnpcpackprofile"
+include "helix/game system data/juice/ai/npcresistanceprofile.mnpcresistanceprofile"
+include "helix/game system data/juice/ai/npcsensorymodifierprofiles.mnpcsensorymodifierprofile"
+include "helix/game system data/juice/ai/npcsensoryprofiles.mnpcsensoryprofile"
+include "helix/game system data/juice/ai/npcsmellprofiles.mnpcsmellprofile"
+include "helix/game system data/juice/ai/npcstaggerconfigs.mnpcstaggerconfig"
+include "helix/game system data/juice/ai/npcsteeringprofiles.mnpcsteeringprofile"
+include "helix/game system data/juice/ai/npctacticalpositionfinderprofiles.mnpctacticalpositionfinderprofile"
+include "helix/game system data/juice/ai/npcthreatprofiles.mnpcthreatprofile"
+include "helix/game system data/juice/ai/npcvisionprofiles.mnpcvisionprofile"
+include "helix/game system data/juice/ai/pathfinding/navigation_capabilities.juice"
+include "helix/game system data/juice/ai/wildlife corpse profile.mnpccorpseprofile"
+include "helix/game system data/juice/ai/wl_massiff.mnpcmotionpatternprofile"
+include "helix/game system data/juice/ai/wl_sammakho.mnpcmotionpatternprofile"
+include "helix/game system data/juice/ai/wl_tshikara.mnpcmotionpatternprofile"
+include "helix/game system data/juice/camera/modifiers/player_melee_punch_knockout.mcameramodifier"
+include "helix/game system data/juice/character/character_visuals_wildlife.mcharactervisuals"
+include "helix/game system data/juice/collisionmaterials/collisionmaterials.juice"
+include "helix/game system data/juice/faction/factions.mfaction"
+include "helix/game system data/juice/melee/kay_meleemove_base.mmeleemove"
+include "helix/game system data/juice/melee/wildlifemeleedefense.mnpcmeleedefenseprofile"
+include "helix/game system data/juice/npc/emp_massiff_companion_coop.mnpc"
+include "helix/game system data/juice/npc/wl_sammakho.mnpc"
+include "helix/game system data/juice/npc/wl_tshikara.mnpc"
+include "helix/game system data/juice/npcexclusionzone/allexclusionzonetypelist.mnpcexclusionzonetype"
+include "helix/game system data/juice/npcexclusionzone/basic wildlife exclusion profile.mnpcexclusionzoneprofile"
+include "helix/game system data/juice/physics/wildlife_physics_profiles.mnpcphysicsprofile"
+include "helix/game system data/juice/quadrupedalgroundaligner/wildlife_ground_aligner_config.mquadalignerconfig"
+include "helix/game system data/juice/rbtags/archetype.mrbtagstags"
+include "helix/game system data/juice/rbtags/factions.mrbtagstags"
+include "helix/game system data/juice/rbtags/purpose.mrbtagstags"
+include "helix/game system data/juice/rbtags/wildlifetags.mrbtagstags"
+include "helix/game system data/juice/settings/footstepeffects.juice"
+
+MeleeMove kay_meleemove_lowAtk_KO < uid=5CFE16D565AA4B17000F1628E86F15F4 > : kay_meleemove_base
+{
+	myExecutionDurationMin 1.5
+	myExecutionDurationMax 1.5
+	myRangeExecution 2.0
+	myExecutionSequence
+	{
+		myGenericTracks
+		{
+			CameraShakeTrack BaseCamShake
+			{
+				myCamShake < uid=5CFE16D565AA4B17000F1629B5FB48F2 > = player_melee_punch_base B0ED9250625FD32B0000403767915B64
+			}
+		}
+		myCustomTracks
+		{
+			MeleeHitTrack Hit
+			{
+				myStartCyclePos 0.25
+				myEndCyclePos 0.45
+				myDamage 0.0
+			}
+			MeleeMovingSpeedingUpTrack MovingSpeedingUp
+			{
+				myEndCyclePos 0.0
+			}
+			MeleeMovingTrack Moving
+			{
+				myEndCyclePos 0.275
+			}
+			MeleeBufferingTrack MeleeBuffering
+			{
+				myStartCyclePos 0.0
+				myEndCyclePos 1.0
+			}
+			MeleeTurnTrack Turn
+			{
+			}
+			MeleeStartNextMoveTrack "Start Next Move"
+			{
+				myStartCyclePos 0.5
+				myEndCyclePos 1.0
+			}
+			MeleePerfectInputTrack PerfectInput
+			{
+				myStartCyclePos 0.0
+				myEndCyclePos 0.0
+			}
+			MeleePerfectStartNextMoveTrack "Perfect Start Next Move"
+			{
+				myStartCyclePos 0.4
+				myEndCyclePos 1.0
+			}
+			MeleeLocomotionFreeTrack "Free Locomotion"
+			{
+				myStartCyclePos 0.8
+			}
+			MeleeUninterruptibleTrack Uninterruptible
+			{
+				myStartCyclePos 0.0
+				myEndCyclePos 0.665
+			}
+		}
+	}
+	myMoveMaxSpeed 15.0
+	myCustomTargetPointDistanceEnabled TRUE
+	myCustomTargetPointDistance 1.15
+	myHit
+	{
+		myDamage 2.0
+		myCamShake < uid=5CFE16D565AA4B17000F162A9B3AE366 > = player_melee_punch_knockout 5CFE16D564E86F7F000AFD1F6F9BD767
+		mySlowDownTimeScale "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.065281279 -0.10432076, -0.10264485 -0.10311842, -0.16540723 0, }, outTangents = { 0.065281272 0, 0.10264485 0.16402848, 0.16540723 0.16617037, 0 0, }, properties = { 6147, 9219, 8195, 7171, }, values = { 0 0.087392263, 0.19584382 0.19213364, 0.50377834 0.89243996, 1 1, }, }, numKeys = 4, }"
+		mySlowDownDuration 1.0
+	}
+	myStartConditions
+	{
+		myTargetInRange
+		{
+			myEnabled TRUE
+		}
+		myGameCondition
+		{
+			GameConditionMeleeGroup "Multiple Conditions"
+			{
+				myConditions
+				{
+					GameConditionMeleeTargetIsValid "has Target"
+					{
+					}
+					GameConditionMeleeTargetNumPunchesToDie "KO attack"
+					{
+						myIsNegated FALSE
+						myOperator LessThanOrEqual
+					}
+					GameConditionMeleeTargetPreferredAttack "Should Attack Low"
+					{
+						myPreferredAttack Kick
+					}
+				}
+			}
+		}
+	}
+}
+

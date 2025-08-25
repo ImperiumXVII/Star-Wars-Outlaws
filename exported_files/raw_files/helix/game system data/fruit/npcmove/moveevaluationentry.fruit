@@ -1,0 +1,57 @@
+// Must match enum HC_NPCMoveEvaluatorMask in code/helix/HClient/HC_NPCMoveEvaluatorEnum.h
+// Except "Invalid"
+enum NPCMoveEvaluationTargetType
+{
+	Invalid
+	
+	Distance
+	TargetFacingAngle
+	SelfFacingAngle
+	TargetSpeed
+	SelfSpeed
+	VerticalOffset
+	TargetSlopeAngle
+	TargetHealth
+	SlopeDifference
+}
+
+// Must match enum HC_NPCMoveEvaluationEntryType in code/helix/HClient/HC_NPCMoveEvaluationEntryBase.h
+enum NPCMoveEvaluationMethodType
+{
+	Range
+	SimpleComparison
+}
+
+// Must match enum HC_NPCMoveEvaluationOperatorType in code/helix/HClient/HC_NPCMoveEvaluationRelationOperator.h
+// Unlikely to change though
+enum NPCMoveEvaluationOperatorType
+{
+	Equal
+	NotEqual
+	GreaterThan
+	GreaterThanOrEqual
+	LessThan
+	LessThanOrEqual
+}
+
+class NPCMoveEvaluationEntryBase < abstract=1 >
+{
+	NPCMoveEvaluationMethodType myMethodType < hidden=1 >
+	NPCMoveEvaluationTargetType myEvaluationTargetType
+}
+
+class NPCMoveEvaluationEntryRange : NPCMoveEvaluationEntryBase
+{
+	NPCMoveEvaluationMethodType myMethodType Range < hidden=1 >
+	float myLowerBound 0.f
+	float myUpperBound 1.f
+	bool myInvertRange false		< tooltip="Invert input range. For example, for range [-45, 45], the invert will be (-inf, -45] and [45, inf)" >
+}
+
+class NPCMoveEvaluationEntrySimpleComparison : NPCMoveEvaluationEntryBase
+{
+	NPCMoveEvaluationMethodType myMethodType SimpleComparison < hidden=1 >
+	float myValueToCompare 0.f
+	NPCMoveEvaluationOperatorType myOperatorType Equal
+}
+

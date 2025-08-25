@@ -1,0 +1,42 @@
+include "helix/game system data/fruit/bodypart/bodypart.fruit"
+
+//Need to match enum in code: HC_NPCMeleeEnums.h
+enum MeleeDefenseReactionType
+{
+	Standard
+	AlwaysBlock
+	AlwaysMiss
+	AlwaysBlockButAllowPet
+}
+
+//Need to match enum in code: HC_NPCMeleeEnums.h
+enum MeleePlayerFocusPoint
+{
+	Eyes
+	LOS
+	None
+}
+
+//Need to match enum in code: HC_NPCMeleeEnums.h
+enum MeleePlayerPreferredAttackType
+{
+	Normal
+	Flying
+	Kick
+}
+
+class NPCMeleeDefenseProfile < uid=auto >
+{
+	MeleeDefenseReactionType myReactionType Standard
+	bool myAllowMeleeWhenStun false < tooltip="This will overwrite the defense reaction behavior" >
+	bool myAllowMeleeWhenDazed false < tooltip="This will overwrite the defense reaction behavior" >
+	bool myAllowMeleeWhenFriendly false < tooltip="This will allow you to melee this target despite them being friendly with you" >
+	bool myIsValidMeleeTargetCandidate true < tooltip="If true, the NPC will be included in the potential candidate lists when we look for a target to start a melee move" >
+	bool myAttackDistanceBasedOnCollisionCasting false < tooltip="If true, the distance between the player and the NPC during a player melee move will be defined based on casting against the NPC hit boxes" >
+	float myBlockDamageRatio 1.0 < hidden=1 min=0.0f max=1.0f tooltip="Only works in AlwaysBlock" >
+	string myNumberOfMeleeHitsToKill 3  < bhv=formulaEditor formulaResolveContextType=AgentAttributes tooltip="Number of player melee punches needed to drain the full health of the enemy" >
+	bool myCanBeWeakAgainstMelee true < tooltip="If false, agent regard as not weak to melee when melee weak condition is met" >
+	MeleePlayerFocusPoint myPlayerFocusType Eyes < tooltip="Part of the npc used by the player to focus the camera" >
+	MeleePlayerPreferredAttackType myPlayerPreferredAttack < tooltip="player will try to execute this type of attacks against this NPC" >
+	BodyPartTypeList mySpecializedBodyParts Head < tooltip="Player will try to prioritize hit these body parts" >
+}

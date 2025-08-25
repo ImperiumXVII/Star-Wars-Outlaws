@@ -1,0 +1,271 @@
+include "helix/game system data/fruit/rbtags/rbtags.fruit"
+include "helix/game system data/fruit/character/charactermaterialcombinations.fruit"
+
+//When you change the structure of CharacterVisualsBase or any class within it, make sure to update HT_CreateCharacterVisualsDialog
+
+list AgentTagsList
+{
+	RBTagsTag*  < compact_view=1 bhv=rbtags rbtags_filter="~+Agent" >
+}
+
+list GearGraphList
+{
+	file < bhv=charactervisualfile type=gear >
+}
+
+list GearGraphInfoList
+{
+	GearGraphInfo
+	EmptyGearGraphInfo	
+}
+
+enum GearGraphCompatibilityTag
+{
+	Default
+	Hat
+	Footwear
+	head_human_m_01
+	head_human_m_02
+	head_human_m_03
+	head_human_f_01
+	head_human_f_02
+	head_human_f_03
+	head_twilek_m_01
+	head_twilek_m_02
+	head_twilek_m_03
+	head_twilek_f_01
+	head_twilek_f_02
+	head_twilek_f_03
+	head_mirialan_m_01
+	head_mirialan_f_03
+	head_pantoran_m_01
+	head_pantoran_f_03
+	head_zabrak_m_01
+	head_zabrak_f_03
+	head_aqualish_m_01
+	head_aqualish_f_03
+	head_trandoshan_m_01
+	head_trandoshan_f_03
+	head_tusken_m_01
+	head_tusken_f_03
+	head_mellitto_m_01
+	head_mellitto_f_03
+	head_pyke_m_01
+	head_pyke_f_03
+	head_sullustan_m_01
+	head_sullustan_f_03
+	head_calamari_m_01
+	head_calamari_f_02
+	head_quarren_m_01
+	head_quarren_f_03
+	head_rodian_m_01
+	head_rodian_f_03
+	head_ithorian_m_01
+	headwear_hat_m_01
+	headwear_helmet_m_01
+	headwear_goggles_head_m_01
+	headwear_googles_eyes_m_01
+	headwear_mask_full_m_01
+	headwear_mask_partial_m_01
+	headwear_headwrap_m_01
+	headwear_headwrap_twilek_m_01
+	headwear_headwrap_bulky_m_01
+	hair_partial_m_01
+	hair_full_m_01
+	hair_facial_m_01
+	top_shirt_full_m_01
+	top_shirt_partial_m_01
+	top_shirt_tucked_full_m_01
+	top_shirt_tucked_partial_m_01
+	top_jacket_open_m_01
+	top_jacket_closed_m_01
+	top_vest_open_m_01
+	top_vest_closed_m_01
+	top_vest_hiredguns_m_01
+	top_belt_layer1_m_01
+	top_belt_layer2_m_01
+	top_jacket_open_bulky_m_01
+	top_jacket_closed_bulky_m_01
+	top_vest_bulky_m_01
+	top_vest_with_belt_m_01
+	bottom_pants_m_01
+	bottom_pants_high_m_01
+	bottom_skirt_m_01
+	bottom_boots_m_01
+	accessories_poncho_m_01
+	accessories_belt_accessory_m_01
+	accessories_boots_accessory_m_01
+	accessories_electronics_m_01
+	accessories_satchel_m_01
+	accessories_scarf_m_01
+	accessories_bracers_m_01
+	acc_holster_m_01
+	acc_gloves_m_01
+	acc_gloves_3fingered_m_01
+
+	---gen_02---
+	hat_off
+	hat_full
+	hat_partial
+	glove_off
+	glove_on
+	scarf_on
+	scarf_layer2_on
+	scarf_off
+	brace_on
+	brace_off
+	full_headwhear_on
+	full_headwhear_poncho_on
+	mask_on
+	mask_hat_on
+	mask_off
+	jacket_open
+	jacket_open_long
+	jacket_closed
+	jacket_off
+	vest_on
+	vest_belt_on
+	vest_long_on
+	layer2_on
+	layer2_off
+	top_layer1_belt
+	top_layer1_nobelt
+	shirt_full
+	shirt_partial
+	shirt_partial_tucked
+	shirt_tucked
+	shirt_full_nobelt
+	shirt_tucked_nobelt
+	belt
+	belt_layer2
+	poncho
+	poncho_hood
+	unique_set
+	unique_set_and_layer2
+	boots
+	skirt
+	skirt_layer2
+	hair_full
+	hair_partial
+	hair_off
+	pants_high
+	pants_low
+	sideburn_hair
+	sideburn_beard
+	
+}
+
+list GearGraphCompatibilityTagList
+{
+	GearGraphCompatibilityTag
+}
+
+class GearGraphInfoListWrapper < uid=auto >
+{
+	GearGraphCompatibilityTag myTag
+	GearGraphCompatibilityTagList myIncompatibleTags
+	GearGraphInfoList myGearGraphInfos
+}
+
+class VehicleGearGraphInfoListWrapper : GearGraphInfoListWrapper
+{
+}
+
+list CharacterVisualsPartList
+{
+	GearGraphInfoList
+	GearGraphInfoListWrapper*
+}
+
+list ColorVariationList
+{
+	color
+}
+
+class MaterialVariation
+{
+	uid myMaterial < tooltip="The UID of the corresponding material node inside the gear graph" hidden=true >
+	int myWeight 1 < tooltip="The weight influence used for randomizing between materials for individual meshes." min=1 max=50 >
+	AgentTagsList myAgentTagsList
+}
+
+list MaterialVariationList
+{
+	MaterialVariation
+}
+
+class GearMesh
+{
+	uid myUID < tooltip="The UID of the corresponding mesh node inside the gear graph" hidden=true >
+	MaterialVariationList myMaterialVariations < tooltip="The material nodes connected to the gear mesh node" >
+}
+
+list GearMeshList
+{
+	GearMesh
+}
+
+class MaterialCombination
+{
+	CharacterVisualsMaterialCombinationID myID < bhv=charactermaterialcombination >
+	int myWeight 1 < tooltip="The weight influence used for randomizing between material combinations." min=1 >
+}
+
+list MaterialCombinationList
+{
+	MaterialCombination
+}
+
+class GearGraphInfoBase
+{
+	file myGearGraph "" < bhv=charactervisualfile type=gear generate_from_graph_button=1 >
+	int myWeight 1 < tooltip="The weight influence used for randomizing between gear graphs." min=0 max=50 >
+	ColorVariationList myColorVariations
+	GearMeshList myGearMeshList < tooltip="The gear mesh nodes available in the gear graph" >
+	MaterialCombinationList myMaterialCombinationList < tooltip="If not empty, one of these material combinations will be picked for the gear graph and used to pick a material for each mesh (except for the meshes with an entry in GearMeshList)" >
+	AgentTagsList myAgentTagsList
+	GearGraphList myIncompatibleGearGraphs
+	CharacterVisualsPartList myChildCharacterVisualsParts
+	bool myIsEmpty false < hidden=true >
+}
+
+class GearGraphInfo : GearGraphInfoBase
+{
+	
+}
+
+class EmptyGearGraphInfo : GearGraphInfoBase
+{
+	file myGearGraph "" < hidden=true >
+	ColorVariationList myColorVariations < hidden=true >
+	bool myIsEmpty true < hidden=true >
+}
+
+class CharacterGraph
+{
+	file myCharacterGraph "" < bhv=charactervisualfile type=character >
+	AgentTagsList myAgentTagsList	
+}
+
+list CharacterGraphList
+{
+	CharacterGraph
+}
+
+class CharacterVisualsBase < uid=auto abstract=true >
+{
+	file myCharacterGraph "" < bhv=charactervisualfile type=character >
+	CharacterGraphList myCharacterGraphs
+	CharacterVisualsPartList myCharacterVisualsParts
+	GearGraphList myCharacterVisualLogicItems
+}
+
+class CharacterVisuals : CharacterVisualsBase
+{
+	bool myIsForVehicles false < hidden=true >
+}
+
+class VehicleCharacterVisuals : CharacterVisualsBase
+{
+	bool myIsForVehicles true < hidden=true >
+}

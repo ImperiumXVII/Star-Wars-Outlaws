@@ -1,0 +1,86 @@
+
+enum VaultEntryHeight
+{
+	Low
+	Knee
+	Waist
+	Head
+	High
+	WallRun
+} 
+
+enum PlayerLocomotionType
+{
+	Normal
+	Focused
+	Strafing
+}
+
+list PlayerLocomotionTypeList
+{
+	PlayerLocomotionType
+}
+
+enum MovementStance
+{
+	Stand
+	Crouch
+}
+
+list MovementStanceList
+{
+	MovementStance
+}
+
+enum MovementStyle
+{
+	None
+	City
+	Combat
+	Exploration
+	Alert
+}
+
+class PlayerMoveSpeedThreshold
+{
+	float myInputThreshold 0.0f
+	float myMoveSpeed 0.0f
+}
+
+class PlayerFacingTransitionParams
+{
+	PlayerLocomotionType myLocomotionType Normal
+	float myTransitionDuration 0.32f
+}
+
+list PlayerMoveSpeedThresholdList
+{
+	PlayerMoveSpeedThreshold
+}
+
+list PlayerFacingTransitionParamsList
+{
+	PlayerFacingTransitionParams
+}
+
+class PlayerMovementConfig < uid=auto >
+{
+	PlayerMoveSpeedThresholdList myDefaultMoveSpeedThresholds
+	PlayerMoveSpeedThresholdList myCrouchedMoveSpeedThresholds
+	
+	PlayerLocomotionType myLocomotionType Normal
+	MovementStyle myMovementStyle Exploration
+	float mySprintMoveSpeedBoost 1.4f
+	float myDefaultMoveAcceleration 8.0f
+	float myCrouchedMoveAcceleration 5.0f
+	float myStrafingAngle 0.0f
+	float myTurnRate 1.0f  < tooltip="0 means it will not be used and the direction is set instantly" >
+	float myBackPedalTransitionDuration 0.4f
+	PlayerFacingTransitionParamsList myFacingTransitionParams
+	float myEnterBackPedalThresholdRightAngle 135.0f < tooltip="Focused BackPedaling Enter Threshold in degrees" >
+	float myExitBackPedalThresholdRightAngle 112.5f < tooltip="Focused BackPedaling Exit Threshold in degrees" >
+	float myEnterBackPedalThresholdLeftAngle -112.5f < tooltip="Focused BackPedaling Enter Threshold in degrees" >
+	float myExitBackPedalThresholdLeftAngle -90.f < tooltip="Focused BackPedaling Exit Threshold in degrees" >
+	bool myAllowFocusedQuickturns FALSE < tooltip="If FOCUSED locomotion type has been selected, do we allow quickturns?" >
+	bool myAllowFocusedSprintBackPedal FALSE < tooltip="If FOCUSED locomotion type has been selected, do we allow sprinting backpedaling" >
+}

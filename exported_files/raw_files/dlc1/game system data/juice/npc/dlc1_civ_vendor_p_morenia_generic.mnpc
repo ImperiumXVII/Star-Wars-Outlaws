@@ -1,0 +1,38 @@
+include "dlc1/game system data/juice/character/character_visuals_batch_012.mcharactervisuals"
+include "dlc1/game system data/juice/character/dlc1_character_visuals_hired_gun_generator_droids_morenia.mcharactervisuals"
+include "dlc1/game system data/juice/character/dlc1_character_visuals_morenia_generator.mcharactervisuals"
+include "dlc1/game system data/juice/character/dlc1_character_visuals_npc.mcharactervisuals"
+include "dlc1/game system data/juice/character/dlc1_character_visuals_persistent.mcharactervisuals"
+include "dlc1/game system data/juice/character/dlc1_character_visuals_wil_scurrier.mcharactervisuals"
+include "dlc1/game system data/juice/vendor/dlc1_vendorconfigs.mvendorconfig"
+include "helix/game system data/juice/npc/base_civ_vendor.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC dlc1_civ_vendor_p_morenia_generic < uid=D00CF6546697F5400001CC57435AD0E6 > : base_civ_vendor
+{
+	myName "branch = \"DLC1\", contextComment = \"DLC1 - Sub-name for a general goods merchant in Morenia\", enabled = true, guid = #D00CF6546697F5640001CC5939A8385B, lineVersion = 4, maxLength = 0, productId = 84, sectionId = 12248, text = \"Merchant\", type = \"MenuLine\""
+	myCharacterVisuals < uid=D00CF6546697F6130001CC5D349E5EA8 > = dlc1_character_visuals_morenia_vendor 7D46844666BB674F001A9CC001BBF5B5
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=D00CF6546697F5A30001CC5ACE14C378 > = Agent_Gender_FeminineTag 16DEADE6626D20EA00002E5277B65AD4
+	}
+	myPossibleSpeciesTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=D00CF6546697F5AC0001CC5B5B5CE7BC > = Agent_Species_HumanBasicTag E4123D2763F4F615000798E9D27D0112
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=D00CF6546697F6130001CC5E5CF95440 > = Agent_Binocular_NotVOTarget 3A129121662B9A29000B2B5A42DACF63
+		RBTagsTag "New RBTagsTag_0" < uid=E4123D2766B0D6B3000001991C9C7CB0 > = Agent_Archetype_VendorShop E4123D2762A7917A00007B4D401E029D
+	}
+	myDialogueCharacters
+	{
+		DialogueCharacterWithTags VendorF02 < uid=D00CF6546697F5C50001CC5C4C8CDD82 >
+		{
+			myDialogueCharacter < uid=D00CF6546697F6130001CC5FE0243964 > = AI_VENDOR_DEFAULT_F02 E4123D2762712C3D00002D8B774DB8B7
+		}
+	}
+	myPlayerAwarenessProfile < uid=E4123D2766B0D7010000019AFDE05DD3 > = Vendor_Contract E4123D2762A82B2F00033CEFC2D827CA
+	myVendorConfig < uid=D00CF6546697F6130001CC60CA6E882F > = DLC1_VendorConfig_MORENIA_Neutral_General D00CF6546697F7ED0002EF2D305C352E
+}
+

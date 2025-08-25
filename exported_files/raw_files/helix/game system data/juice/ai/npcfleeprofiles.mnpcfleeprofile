@@ -1,0 +1,1396 @@
+include "helix/game system data/fruit/ai/npcfleeprofile.fruit"
+
+NPCFleeProfile DefaultFleeProfile < uid=EBEEDF3F628D99E0000032AAE41E83C8 >
+{
+	myStimSettings
+	{
+		NPCFleeStimSetting hostile
+		{
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry 0
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry 1
+				{
+					myMinDistanceFromThreat 15.0
+				}
+				NPCFleeMotionPatternTypeEntry 2
+				{
+					myMinDistanceFromThreat 25.0
+					myMotionPatternType Walk
+				}
+			}
+			myInitialWeight 3.0
+			myWeightFalloffDuration 5.0
+			myWeightFalloffDistance 100.0
+			myMinFleeAwayDistance 40.0
+			myMaxFleeAwayDistance 50.0
+		}
+		NPCFleeStimSetting explosion
+		{
+			myType CustomEvent
+			myCustomEvent Explosion
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry 0
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry 1
+				{
+					myMinDistanceFromThreat 15.0
+				}
+				NPCFleeMotionPatternTypeEntry 2
+				{
+					myMinDistanceFromThreat 25.0
+					myMotionPatternType Walk
+				}
+			}
+			myInitialWeight 5.0
+			myWeightFalloffDuration 3.0
+			myWeightFalloffDistance 30.0
+			myMinFleeAwayDistance 30.0
+			myMaxFleeAwayDistance 40.0
+		}
+	}
+	myCornerBehaviorSetting
+	{
+		myMaxDuration 10.0
+		myMaxRoarDuration 5.0
+		myCoolDownDuration 20.0
+		myDispelDuration 5.0
+		myInterruptEvents
+		{
+		}
+	}
+}
+
+NPCFleeProfile ScurrierFleeProfile < uid=E9DD8F6062945B230001037F173B1C3D >
+{
+	myStimSettings
+	{
+		NPCFleeStimSetting Hostile
+		{
+			myEnabled TRUE
+			myType Hostile
+			myCustomEvent NotSet
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 25.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 50.0
+					myMotionPatternType Jog
+				}
+			}
+			myInitialWeight 3.0
+			myWeightFalloffDuration 10.0
+			myWeightFalloffDistance 50.0
+			myMinFleeAwayDistance 60.0
+			myMaxFleeAwayDistance 70.0
+		}
+		NPCFleeStimSetting "Damage Instigator"
+		{
+			myEnabled TRUE
+			myType DamageInstigator
+			myCustomEvent NotSet
+			myDamageInstigatorAwarenessRadius 30.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 30.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 60.0
+				}
+			}
+			myInitialWeight 10.0
+			myWeightFalloffDuration 10.0
+			myWeightFalloffDistance 60.0
+			myMinFleeAwayDistance 70.0
+			myMaxFleeAwayDistance 80.0
+		}
+		NPCFleeStimSetting Explosion
+		{
+			myEnabled TRUE
+			myType CustomEvent
+			myCustomEvent Explosion
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 25.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 50.0
+					myMotionPatternType Jog
+				}
+			}
+			myInitialWeight 5.0
+			myWeightFalloffDuration 4.0
+			myWeightFalloffDistance 40.0
+			myMinFleeAwayDistance 50.0
+			myMaxFleeAwayDistance 60.0
+		}
+		NPCFleeStimSetting "Shoot Near NPC"
+		{
+			myEnabled TRUE
+			myType CustomEvent
+			myCustomEvent ShootNearNPC
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 15.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 30.0
+					myMotionPatternType Jog
+				}
+			}
+			myInitialWeight 2.0
+			myWeightFalloffDuration 1.5
+			myWeightFalloffDistance 20.0
+			myMinFleeAwayDistance 30.0
+			myMaxFleeAwayDistance 40.0
+		}
+		NPCFleeStimSetting Vehicle
+		{
+			myEnabled TRUE
+			myType CustomEvent
+			myCustomEvent HeardVehicleSound
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Run
+				}
+			}
+			myInitialWeight 2.0
+			myWeightFalloffDuration 1.5
+			myWeightFalloffDistance 30.0
+			myMinFleeAwayDistance 8.0
+			myMaxFleeAwayDistance 14.0
+		}
+		NPCFleeStimSetting HeardThreateningSound
+		{
+			myEnabled TRUE
+			myType CustomEvent
+			myCustomEvent HeardThreateningSound
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Run
+				}
+			}
+			myInitialWeight 2.0
+			myWeightFalloffDuration 1.5
+			myWeightFalloffDistance 40.0
+			myMinFleeAwayDistance 8.0
+			myMaxFleeAwayDistance 14.0
+		}
+		NPCFleeStimSetting WildlifeFlee_AvoidPlayer
+		{
+			myType CustomEvent
+			myCustomEvent WildlifeFlee_AvoidPlayer
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+				}
+			}
+			myMinFleeAwayDistance 1.0
+			myMaxFleeAwayDistance 2.0
+			myMinFleeDuration 1.0
+		}
+	}
+	myCornerBehaviorSetting
+	{
+		myEnabled TRUE
+		myMaxDuration 6.0
+		myMaxRoarDuration 3.0
+		myDispelDuration 4.5
+		myInterruptEvents
+		{
+			NPCFleeCornerBehaviorInterruptEvent "Shoot Near NPC"
+			{
+				myEvent ShootNearNPC
+			}
+			NPCFleeCornerBehaviorInterruptEvent Explosion
+			{
+				myEvent Explosion
+			}
+			NPCFleeCornerBehaviorInterruptEvent "NPC Was Damaged"
+			{
+				myEvent NPCWasDamaged
+			}
+			NPCFleeCornerBehaviorInterruptEvent "Heard Threatening Sound"
+			{
+				myEvent HeardThreateningSound
+			}
+		}
+	}
+	myLookAtSetting
+	{
+		myEnabledMotionPatternTypes
+		{
+			myRunEnabled TRUE
+		}
+		myInterval 3.0
+	}
+	myPackStuckCheckSetting
+	{
+		myDuration 30.0
+		myRadius 20.0
+	}
+}
+
+NPCFleeProfile BanthaFleeProfile < uid=E9DD8F6063059E7200004478493EF0B5 >
+{
+	myStimSettings
+	{
+		NPCFleeStimSetting Hostile
+		{
+			myEnabled TRUE
+			myType Hostile
+			myCustomEvent NotSet
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 20.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 40.0
+				}
+			}
+			myInitialWeight 3.0
+			myWeightFalloffDuration 10.0
+			myWeightFalloffDistance 40.0
+			myMinFleeAwayDistance 40.0
+			myMaxFleeAwayDistance 50.0
+		}
+		NPCFleeStimSetting "Damage Instigator"
+		{
+			myEnabled TRUE
+			myType DamageInstigator
+			myCustomEvent NotSet
+			myDamageInstigatorAwarenessRadius 30.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 25.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 50.0
+					myMotionPatternType Jog
+				}
+			}
+			myInitialWeight 10.0
+			myWeightFalloffDuration 10.0
+			myWeightFalloffDistance 50.0
+			myMinFleeAwayDistance 50.0
+			myMaxFleeAwayDistance 60.0
+		}
+		NPCFleeStimSetting Explosion
+		{
+			myEnabled TRUE
+			myType CustomEvent
+			myCustomEvent Explosion
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 20.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 40.0
+				}
+			}
+			myInitialWeight 5.0
+			myWeightFalloffDuration 5.0
+			myWeightFalloffDistance 40.0
+			myMinFleeAwayDistance 40.0
+			myMaxFleeAwayDistance 50.0
+		}
+		NPCFleeStimSetting "Shoot Near NPC"
+		{
+			myEnabled TRUE
+			myType CustomEvent
+			myCustomEvent ShootNearNPC
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 15.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 30.0
+					myMotionPatternType Jog
+				}
+			}
+			myInitialWeight 2.0
+			myWeightFalloffDuration 1.5
+			myWeightFalloffDistance 30.0
+			myMinFleeAwayDistance 30.0
+			myMaxFleeAwayDistance 40.0
+		}
+		NPCFleeStimSetting Vehicle
+		{
+			myEnabled TRUE
+			myType CustomEvent
+			myCustomEvent HeardVehicleSound
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 8.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 15.0
+					myMotionPatternType Jog
+				}
+			}
+			myInitialWeight 2.0
+			myWeightFalloffDuration 1.5
+			myWeightFalloffDistance 30.0
+			myMinFleeAwayDistance 15.0
+			myMaxFleeAwayDistance 20.0
+		}
+		NPCFleeStimSetting Nudge
+		{
+			myType CustomEvent
+			myCustomEvent PlayerNudgedNPC
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Walk
+				{
+					myMotionPatternType Walk
+				}
+			}
+			myAllowSpeedBoost FALSE
+			myWeightFalloffDuration 0.0
+			myWeightFalloffDistance 0.0
+			myMinFleeAwayDistance 1.0
+			myMaxFleeAwayDistance 3.0
+			myMinFleeDuration 1.0
+		}
+	}
+	myCornerBehaviorSetting
+	{
+		myEnabled TRUE
+		myMaxDuration 15.0
+		myMaxRoarDuration 5.0
+		myCoolDownDuration 25.0
+		myDispelDuration 5.0
+		myInterruptEvents
+		{
+			NPCFleeCornerBehaviorInterruptEvent "Shoot Near NPC"
+			{
+				myEvent ShootNearNPC
+			}
+			NPCFleeCornerBehaviorInterruptEvent Explosion
+			{
+				myEvent Explosion
+			}
+			NPCFleeCornerBehaviorInterruptEvent "NPC Was Damaged"
+			{
+				myEvent NPCWasDamaged
+			}
+			NPCFleeCornerBehaviorInterruptEvent "Heard Threatening Sound"
+			{
+				myEvent HeardThreateningSound
+			}
+		}
+	}
+	myPackStuckCheckSetting
+	{
+		myDuration 30.0
+		myRadius 25.0
+	}
+}
+
+NPCFleeProfile MassiffFleeProfile < uid=E9DD8F606310177C00004874D7CF9196 >
+{
+	myStimSettings
+	{
+		NPCFleeStimSetting Hostile
+		{
+			myEnabled TRUE
+			myType Hostile
+			myCustomEvent NotSet
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 13.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 20.0
+				}
+			}
+			myInitialWeight 3.0
+			myWeightFalloffDuration 10.0
+			myWeightFalloffDistance 20.0
+			myMinFleeAwayDistance 20.0
+			myMaxFleeAwayDistance 30.0
+		}
+		NPCFleeStimSetting "Damage Instigator"
+		{
+			myEnabled TRUE
+			myType DamageInstigator
+			myCustomEvent NotSet
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 13.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 20.0
+				}
+			}
+			myInitialWeight 10.0
+			myWeightFalloffDuration 10.0
+			myWeightFalloffDistance 20.0
+			myMinFleeAwayDistance 30.0
+			myMaxFleeAwayDistance 40.0
+		}
+		NPCFleeStimSetting Explosion
+		{
+			myEnabled TRUE
+			myType CustomEvent
+			myCustomEvent Explosion
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 13.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 20.0
+				}
+			}
+			myInitialWeight 8.0
+			myWeightFalloffDuration 4.0
+			myWeightFalloffDistance 20.0
+			myMinFleeAwayDistance 20.0
+			myMaxFleeAwayDistance 30.0
+		}
+		NPCFleeStimSetting "Shoot Near NPC"
+		{
+			myEnabled TRUE
+			myType CustomEvent
+			myCustomEvent ShootNearNPC
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 8.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 15.0
+					myMotionPatternType Jog
+				}
+			}
+			myInitialWeight 2.0
+			myWeightFalloffDuration 1.5
+			myWeightFalloffDistance 10.0
+			myMinFleeAwayDistance 10.0
+			myMaxFleeAwayDistance 20.0
+		}
+		NPCFleeStimSetting "Unreachable Hurt"
+		{
+			myType CustomEvent
+			myCustomEvent WildlifeFlee_HurtByUnreachableTarget
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMotionPatternType Sprint
+				}
+			}
+			myInitialWeight 8.0
+			myWeightFalloffDuration 4.0
+			myWeightFalloffDistance 40.0
+			myMinFleeAwayDistance 80.0
+			myMaxFleeAwayDistance 100.0
+		}
+		NPCFleeStimSetting "Unreachable Timeout"
+		{
+			myType CustomEvent
+			myCustomEvent WildlifeFlee_UnreachableTimeout
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+				}
+			}
+			myInitialWeight 2.0
+			myWeightFalloffDuration 4.0
+			myWeightFalloffDistance 40.0
+			myMinFleeAwayDistance 60.0
+			myMaxFleeAwayDistance 80.0
+		}
+		NPCFleeStimSetting Vehicle
+		{
+			myEnabled TRUE
+			myType CustomEvent
+			myCustomEvent HeardVehicleSound
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 10.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 20.0
+					myMotionPatternType Jog
+				}
+			}
+			myInitialWeight 2.0
+			myWeightFalloffDuration 1.5
+			myWeightFalloffDistance 30.0
+			myMinFleeAwayDistance 25.0
+			myMaxFleeAwayDistance 30.0
+		}
+	}
+	myCornerBehaviorSetting
+	{
+		myMaxDuration 10.0
+		myMaxRoarDuration 5.0
+		myCoolDownDuration 20.0
+		myDispelDuration 5.0
+		myInterruptEvents
+		{
+		}
+	}
+	myPackStuckCheckSetting
+	{
+		myDuration 30.0
+		myRadius 25.0
+	}
+}
+
+NPCFleeProfile NgombaFleeProfile < uid=E9DD8F606350F7B300022DA9F0CD66E8 >
+{
+	myStimSettings
+	{
+		NPCFleeStimSetting Hostile
+		{
+			myEnabled TRUE
+			myType Hostile
+			myCustomEvent NotSet
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 20.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 40.0
+				}
+			}
+			myInitialWeight 3.0
+			myWeightFalloffDuration 10.0
+			myWeightFalloffDistance 40.0
+			myMinFleeAwayDistance 40.0
+			myMaxFleeAwayDistance 50.0
+		}
+		NPCFleeStimSetting "Damage Instigator"
+		{
+			myEnabled TRUE
+			myType DamageInstigator
+			myCustomEvent NotSet
+			myDamageInstigatorAwarenessRadius 30.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 25.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 50.0
+					myMotionPatternType Jog
+				}
+			}
+			myInitialWeight 10.0
+			myWeightFalloffDuration 10.0
+			myWeightFalloffDistance 50.0
+			myMinFleeAwayDistance 50.0
+			myMaxFleeAwayDistance 60.0
+		}
+		NPCFleeStimSetting Explosion
+		{
+			myEnabled TRUE
+			myType CustomEvent
+			myCustomEvent Explosion
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 20.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 40.0
+				}
+			}
+			myInitialWeight 5.0
+			myWeightFalloffDuration 5.0
+			myWeightFalloffDistance 40.0
+			myMinFleeAwayDistance 40.0
+			myMaxFleeAwayDistance 50.0
+		}
+		NPCFleeStimSetting "Shoot Near NPC"
+		{
+			myEnabled TRUE
+			myType CustomEvent
+			myCustomEvent ShootNearNPC
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 15.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 30.0
+					myMotionPatternType Jog
+				}
+			}
+			myInitialWeight 2.0
+			myWeightFalloffDuration 1.5
+			myWeightFalloffDistance 30.0
+			myMinFleeAwayDistance 30.0
+			myMaxFleeAwayDistance 40.0
+		}
+		NPCFleeStimSetting Vehicle
+		{
+			myEnabled TRUE
+			myType CustomEvent
+			myCustomEvent HeardVehicleSound
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 8.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 15.0
+					myMotionPatternType Jog
+				}
+			}
+			myInitialWeight 2.0
+			myWeightFalloffDuration 1.5
+			myWeightFalloffDistance 30.0
+			myMinFleeAwayDistance 15.0
+			myMaxFleeAwayDistance 20.0
+		}
+		NPCFleeStimSetting Nudge
+		{
+			myType CustomEvent
+			myCustomEvent PlayerNudgedNPC
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Walk
+				{
+					myMotionPatternType Walk
+				}
+			}
+			myAllowSpeedBoost FALSE
+			myWeightFalloffDuration 0.0
+			myWeightFalloffDistance 0.0
+			myMinFleeAwayDistance 1.0
+			myMaxFleeAwayDistance 3.0
+			myMinFleeDuration 1.0
+		}
+	}
+	myCornerBehaviorSetting
+	{
+		myEnabled TRUE
+		myMaxDuration 12.0
+		myMaxRoarDuration 5.0
+		myCoolDownDuration 30.0
+		myDispelDuration 5.0
+		myInterruptEvents
+		{
+			NPCFleeCornerBehaviorInterruptEvent "Shoot Near NPC"
+			{
+				myEvent ShootNearNPC
+			}
+			NPCFleeCornerBehaviorInterruptEvent Explosion
+			{
+				myEvent Explosion
+			}
+			NPCFleeCornerBehaviorInterruptEvent "NPC Was Damaged"
+			{
+				myEvent NPCWasDamaged
+			}
+			NPCFleeCornerBehaviorInterruptEvent "Heard Threatening Sound"
+			{
+				myEvent HeardThreateningSound
+			}
+		}
+	}
+	myPackStuckCheckSetting
+	{
+		myDuration 30.0
+	}
+}
+
+NPCFleeProfile GushiroFleeProfile < uid=E9DD8F6063686F400000AC1114A6B70A >
+{
+	myStimSettings
+	{
+		NPCFleeStimSetting Hostile
+		{
+			myEnabled TRUE
+			myType Hostile
+			myCustomEvent NotSet
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 25.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 50.0
+					myMotionPatternType Jog
+				}
+			}
+			myInitialWeight 3.0
+			myWeightFalloffDuration 10.0
+			myWeightFalloffDistance 50.0
+			myMinFleeAwayDistance 60.0
+			myMaxFleeAwayDistance 70.0
+		}
+		NPCFleeStimSetting "Damage Instigator"
+		{
+			myEnabled TRUE
+			myType DamageInstigator
+			myCustomEvent NotSet
+			myDamageInstigatorAwarenessRadius 30.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 30.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 60.0
+				}
+			}
+			myInitialWeight 10.0
+			myWeightFalloffDuration 10.0
+			myWeightFalloffDistance 60.0
+			myMinFleeAwayDistance 70.0
+			myMaxFleeAwayDistance 80.0
+		}
+		NPCFleeStimSetting Explosion
+		{
+			myEnabled TRUE
+			myType CustomEvent
+			myCustomEvent Explosion
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 25.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 50.0
+					myMotionPatternType Jog
+				}
+			}
+			myInitialWeight 5.0
+			myWeightFalloffDuration 4.0
+			myWeightFalloffDistance 40.0
+			myMinFleeAwayDistance 50.0
+			myMaxFleeAwayDistance 60.0
+		}
+		NPCFleeStimSetting "Shoot Near NPC"
+		{
+			myEnabled TRUE
+			myType CustomEvent
+			myCustomEvent ShootNearNPC
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 15.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 30.0
+					myMotionPatternType Jog
+				}
+			}
+			myInitialWeight 2.0
+			myWeightFalloffDuration 1.5
+			myWeightFalloffDistance 20.0
+			myMinFleeAwayDistance 30.0
+			myMaxFleeAwayDistance 40.0
+		}
+		NPCFleeStimSetting Vehicle
+		{
+			myEnabled TRUE
+			myType CustomEvent
+			myCustomEvent HeardVehicleSound
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Jog
+				}
+			}
+			myInitialWeight 2.0
+			myWeightFalloffDuration 1.5
+			myWeightFalloffDistance 30.0
+			myMinFleeAwayDistance 8.0
+			myMaxFleeAwayDistance 14.0
+		}
+		NPCFleeStimSetting HeardThreateningSound
+		{
+			myEnabled TRUE
+			myType CustomEvent
+			myCustomEvent HeardThreateningSound
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Jog
+				}
+			}
+			myInitialWeight 2.0
+			myWeightFalloffDuration 1.5
+			myWeightFalloffDistance 40.0
+			myMinFleeAwayDistance 8.0
+			myMaxFleeAwayDistance 14.0
+		}
+		NPCFleeStimSetting WildlifeFlee_AvoidPlayer
+		{
+			myType CustomEvent
+			myCustomEvent WildlifeFlee_AvoidPlayer
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+				}
+			}
+			myMinFleeAwayDistance 1.0
+			myMaxFleeAwayDistance 2.0
+			myMinFleeDuration 1.0
+		}
+	}
+	myCornerBehaviorSetting
+	{
+		myEnabled TRUE
+		myMaxDuration 6.0
+		myMaxRoarDuration 3.0
+		myDispelDuration 4.5
+		myInterruptEvents
+		{
+			NPCFleeCornerBehaviorInterruptEvent "Shoot Near NPC"
+			{
+				myEvent ShootNearNPC
+			}
+			NPCFleeCornerBehaviorInterruptEvent Explosion
+			{
+				myEvent Explosion
+			}
+			NPCFleeCornerBehaviorInterruptEvent "NPC Was Damaged"
+			{
+				myEvent NPCWasDamaged
+			}
+		}
+	}
+	myLookAtSetting
+	{
+		myEnabledMotionPatternTypes
+		{
+			myRunEnabled TRUE
+		}
+		myInterval 3.0
+	}
+}
+
+NPCFleeProfile DewbackFleeProfile < uid=E9DD8F6063B66F2600005831E03F4E08 > : NgombaFleeProfile
+{
+}
+
+NPCFleeProfile KuFleeProfile < uid=E9DD8F6063EB57B50002944ACCE39967 > : BanthaFleeProfile
+{
+}
+
+NPCFleeProfile TshikaraFleeProfile < uid=E9DD8F60641964140002A833D98F9506 >
+{
+	myStimSettings
+	{
+		NPCFleeStimSetting Hostile
+		{
+			myEnabled TRUE
+			myType Hostile
+			myCustomEvent NotSet
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 15.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 30.0
+				}
+			}
+			myInitialWeight 3.0
+			myWeightFalloffDuration 10.0
+			myWeightFalloffDistance 30.0
+			myMinFleeAwayDistance 30.0
+			myMaxFleeAwayDistance 40.0
+		}
+		NPCFleeStimSetting "Damage Instigator"
+		{
+			myEnabled TRUE
+			myType DamageInstigator
+			myCustomEvent NotSet
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 15.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 30.0
+				}
+			}
+			myInitialWeight 10.0
+			myWeightFalloffDuration 10.0
+			myWeightFalloffDistance 30.0
+			myMinFleeAwayDistance 30.0
+			myMaxFleeAwayDistance 40.0
+		}
+		NPCFleeStimSetting Explosion
+		{
+			myEnabled TRUE
+			myType CustomEvent
+			myCustomEvent Explosion
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 10.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 20.0
+				}
+			}
+			myInitialWeight 8.0
+			myWeightFalloffDuration 4.0
+			myWeightFalloffDistance 20.0
+			myMinFleeAwayDistance 20.0
+			myMaxFleeAwayDistance 30.0
+		}
+		NPCFleeStimSetting "Shoot Near NPC"
+		{
+			myEnabled TRUE
+			myType CustomEvent
+			myCustomEvent ShootNearNPC
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 8.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 15.0
+					myMotionPatternType Jog
+				}
+			}
+			myInitialWeight 2.0
+			myWeightFalloffDuration 1.5
+			myWeightFalloffDistance 10.0
+			myMinFleeAwayDistance 10.0
+			myMaxFleeAwayDistance 20.0
+		}
+		NPCFleeStimSetting "Unreachable Hurt"
+		{
+			myType CustomEvent
+			myCustomEvent WildlifeFlee_HurtByUnreachableTarget
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMotionPatternType Sprint
+				}
+			}
+			myInitialWeight 8.0
+			myWeightFalloffDuration 4.0
+			myWeightFalloffDistance 40.0
+			myMinFleeAwayDistance 80.0
+			myMaxFleeAwayDistance 100.0
+		}
+		NPCFleeStimSetting "Unreachable Timeout"
+		{
+			myType CustomEvent
+			myCustomEvent WildlifeFlee_UnreachableTimeout
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMotionPatternType Jog
+				}
+			}
+			myInitialWeight 2.0
+			myWeightFalloffDuration 4.0
+			myWeightFalloffDistance 40.0
+			myMinFleeAwayDistance 60.0
+			myMaxFleeAwayDistance 80.0
+		}
+		NPCFleeStimSetting "Stalking Abort"
+		{
+			myType CustomEvent
+			myCustomEvent WildlifeFlee_StalkingAbort
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMotionPatternType Sprint
+				}
+			}
+			myInitialWeight 2.0
+			myWeightFalloffDuration 4.0
+			myWeightFalloffDistance 40.0
+			myMinFleeAwayDistance 80.0
+			myMaxFleeAwayDistance 100.0
+		}
+		NPCFleeStimSetting Vehicle
+		{
+			myEnabled TRUE
+			myType CustomEvent
+			myCustomEvent HeardVehicleSound
+			myDamageInstigatorAwarenessRadius 10.0
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Sprint
+				{
+					myMinDistanceFromThreat 0.0
+					myMotionPatternType Sprint
+				}
+				NPCFleeMotionPatternTypeEntry Run
+				{
+					myMinDistanceFromThreat 10.0
+					myMotionPatternType Run
+				}
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMinDistanceFromThreat 20.0
+					myMotionPatternType Jog
+				}
+			}
+			myInitialWeight 2.0
+			myWeightFalloffDuration 1.5
+			myWeightFalloffDistance 30.0
+			myMinFleeAwayDistance 25.0
+			myMaxFleeAwayDistance 30.0
+		}
+	}
+	myCornerBehaviorSetting
+	{
+		myMaxDuration 10.0
+		myMaxRoarDuration 5.0
+		myCoolDownDuration 20.0
+		myDispelDuration 5.0
+		myInterruptEvents
+		{
+		}
+	}
+}
+
+NPCFleeProfile SammakhoFleeProfile < uid=E9DD8F60644B5DDE0001B95554D65F76 > : MassiffFleeProfile
+{
+}
+
+NPCFleeProfile KraytDragonFleeProfile < uid=E9DD8F6064D345360000A3C4B1E314F8 >
+{
+	myStimSettings
+	{
+		NPCFleeStimSetting "Unreachable Timeout"
+		{
+			myType CustomEvent
+			myCustomEvent WildlifeFlee_UnreachableTimeout
+			myMotionPatternTypes
+			{
+				NPCFleeMotionPatternTypeEntry Jog
+				{
+					myMotionPatternType Sprint
+				}
+			}
+			myInitialWeight 2.0
+			myWeightFalloffDuration 4.0
+			myWeightFalloffDistance 265.0
+			myMinFleeAwayDistance 260.0
+			myMaxFleeAwayDistance 270.0
+			myMinFleeDuration 4.0
+		}
+	}
+	myCornerBehaviorSetting
+	{
+		myMaxDuration 10.0
+		myMaxRoarDuration 5.0
+		myCoolDownDuration 20.0
+		myDispelDuration 5.0
+		myInterruptEvents
+		{
+		}
+	}
+	myLookAtSetting
+	{
+		myEnabledMotionPatternTypes
+		{
+			myJogEnabled FALSE
+			myWalkEnabled FALSE
+		}
+	}
+	myDistantTargetSetting
+	{
+		myPathDistanceFromThreat 3000.0
+		myDistance2DFromThreat 3000.0
+		myMoveSegmentDistance 30.0
+	}
+}
+
+NPCFleeProfile MassiffCompanionFleeProfile < uid=E9DD8F6065434AAF00045C6B31FCA396 > : MassiffFleeProfile
+{
+	myDistantTargetSetting
+	{
+		myPathDistanceFromThreat 80.0
+		myDistance2DFromThreat 80.0
+	}
+}
+

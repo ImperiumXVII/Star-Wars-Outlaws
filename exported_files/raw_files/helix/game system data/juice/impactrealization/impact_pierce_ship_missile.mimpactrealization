@@ -1,0 +1,73 @@
+include "helix/game system data/fruit/impact/impact.fruit"
+include "helix/game system data/juice/collisionmaterials/collisionmaterials.juice"
+include "helix/game system data/juice/impactrealization/base_impact_hit_ship_projectile.mimpactrealization"
+
+ImpactRealization impact_pierce_ship_missile < uid=AE040547661D218000022EEBE474BC19 > : base_impact_hit_ship_projectile
+{
+	myEffects
+	{
+		myDefaultDecal ""
+		myDefaultEffect helix/particles/vfx_des_hitfx_generic_trailblazer.mparticles
+		myList
+		{
+			EffectOnMaterial "Asteroid Medium"
+			{
+				myMaterial < uid=AE040547661D218000022EECE38D2D9E > = AsteroidMedium 9C4B6A0462A9A03800007B64C608BF30
+				myEffect helix/particles/vfx_des_hitfx_asteroid_large_trailblazer.mparticles
+			}
+			EffectOnMaterial "Asteroid Large"
+			{
+				myMaterial < uid=AE040547661D218000022EEDDD00E471 > = AsteroidLarge 9C4B6A0462A8425D00007B5A601A5AD9
+				myEffect helix/particles/vfx_des_hitfx_asteroid_large_trailblazer.mparticles
+			}
+			EffectOnMaterial Shield
+			{
+				myMaterial < uid=AE040547661D218000022EEE9189F499 > = EnergyShield 9C4B6A0462F4E34B00008C492FCD613B
+				myEffect helix/particles/vfx_des_hitfx_shield_trailblazer_01.mparticles
+			}
+			EffectOnMaterial "Ice Asteroid Medium"
+			{
+				myMaterial < uid=AE040547661D218000022EEFD05C06C5 > = IceAsteroidMedium 61A9E8DE64492B11002116B8A01EE296
+				myEffect helix/particles/vfx_des_hitfx_ice_asteroids_large_trailblazer.mparticles
+			}
+			EffectOnMaterial "Ice Asteroid Large"
+			{
+				myMaterial < uid=AE040547661D218000022EF05A37208D > = IceAsteroidLarge 61A9E8DE64492B11002116B9D5ED1B33
+				myEffect helix/particles/vfx_des_hitfx_ice_asteroids_large_trailblazer.mparticles
+			}
+			EffectOnMaterial Sand
+			{
+				myMaterial < uid=AE040547661D218000022EF180CE64D6 > = Sand 6F860DB5506C75BF00000E16E163F30E
+				myEffect helix/particles/vfx_des_tie_fighter_sand_impact_01.mparticles
+			}
+			EffectOnMaterial Stone
+			{
+				myMaterial < uid=AE040547661D218000022EF25E3D656A > = Stone 6F860DB5506C75BF00000E14508A97DB
+				myEffect helix/particles/vfx_des_tie_fighter_sand_impact_01.mparticles
+			}
+			EffectOnMaterial Rock
+			{
+				myMaterial < uid=AE040547661D218000022EF36E672A46 > = Rock 71B756D45F4FB1CA00000078405C761E
+				myEffect helix/particles/vfx_des_tie_fighter_sand_impact_01.mparticles
+			}
+			EffectOnMaterial Gravel
+			{
+				myMaterial < uid=AE040547661D218000022EF48DB75C4F > = Gravel 6F860DB5506C75BF00000E1729209934
+				myEffect helix/particles/vfx_des_tie_fighter_sand_impact_01.mparticles
+			}
+			EffectOnMaterial Dirt
+			{
+				myMaterial < uid=AE040547661D218000022EF57EAC71FB > = Dirt 6F860DB5506C75BF00000E15D8BBCF79
+				myEffect helix/particles/vfx_des_tie_fighter_sand_impact_01.mparticles
+			}
+		}
+		myEffectsByConditions
+		{
+		}
+	}
+	myPhysics
+	{
+		myImpactEnergy 9999999827968.0
+	}
+}
+

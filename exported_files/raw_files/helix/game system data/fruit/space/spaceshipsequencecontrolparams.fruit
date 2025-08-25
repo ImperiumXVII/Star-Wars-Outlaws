@@ -1,0 +1,16 @@
+class SpaceshipSequenceControlParams < uid=auto >
+{
+    float myHorizontalRange 15.f < tooltip="The maximum horizontal offset (meters)" >
+	float myUpRange 10.f < tooltip="The maximum offset that the ship can move upwards (meters)" >
+	float myDownRange 5.f < tooltip="The maximum offset that the ship can move downwards (meters)" >
+	float myXYSpringStrength 10.f < tooltip="The spring strength for the horizontal and vertical offset" >
+	float myXYSpringDampingRatio 0.6f < tooltip="The spring damping ratio for the horizontal and vertical offset" >
+	float myMaxRoll 30.f < tooltip="The maximum the ship can roll (degrees)" >
+	float myRollSpringStrength 1.5f < tooltip="The spring strength for the ship roll" >
+	float myRollSpringDampingRatio 0.8f < tooltip="The spring damping ratio for the ship roll" >
+	float myLookAheadDistance 150.f < tooltip="Affects ship orientation when at the edge of the screen, the lower this value, the more the ship will orient towards the center" >
+	float myRestrictControlAtSequenceEndDuration 2.f < tooltip="The duration of the period at the end of the sequence in which the control is no longer permitted. (seconds)" >
+	string myRollInput "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { -0 -0, -0 -0, }, outTangents = { 0 0, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 0, }, }, numKeys = 2, }" < bhv=inputgraph tooltip="Roll input sent to the ship through the sequence block timeline. (X axis - block timeline, Y axis - input [-1, 1])" >
+	string myVerticalInput "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { -0 -0, -0 -0, }, outTangents = { 0 0, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 0, }, }, numKeys = 2, }" < bhv=inputgraph tooltip="Vertical movement input sent to the ship through the sequence block timeline. (X axis - block timeline, Y axis - input [-1, 1])" >
+	string myHorizontalInput "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { -0 -0, -0 -0, }, outTangents = { 0 0, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 0, }, }, numKeys = 2, }" < bhv=inputgraph tooltip="Horizontal movement input sent to the ship through the sequence block timeline. (X axis - block timeline, Y axis - input [-1, 1])" >
+}

@@ -1,0 +1,20 @@
+class SabaccGameDiceValueSetting
+{
+	int myValue < min=1 max=6 >
+	int myCount < min=0 tooltip="How many dices with this value are in the 'bag' of dices. Sets the probability that this value pops">
+}
+
+list SabaccGameDiceValueSettings
+{
+	SabaccGameDiceValueSetting
+}
+
+class SabaccDice < uid=auto >
+{
+	SabaccGameDiceValueSettings myValueSettings
+}
+
+list SabaccDices
+{
+	SabaccDice*
+}

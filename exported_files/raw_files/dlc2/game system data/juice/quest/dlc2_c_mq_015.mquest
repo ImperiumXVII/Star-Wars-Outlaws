@@ -1,0 +1,70 @@
+include "dlc2/game system data/juice/reward/dlc2_quest_rewards.mreward"
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/intel/intel_toshara.mintel"
+include "helix/game system data/juice/rbtags/dlc2_quest_tags.mrbtagstags"
+include "helix/game system data/juice/rbtags/quest.mrbtagstags"
+include "helix/game system data/juice/reward/quest_completion_reward.mreward"
+include "helix/game system data/juice/reward/quest_reward.mreward"
+
+Quest DLC2_C_MQ_015 < uid=8FD81D516751A9A5000000DE92BAC1D1 >
+{
+	myName "branch = \"DLC2\", contextComment = \"C_MQ_015 Quest Name\", enabled = true, guid = #8FD81D516751A9A5000000D6BE7AEFBF, lineVersion = 18, maxLength = 0, productId = -1, sectionId = 12374, text = \"Hondo\", type = \"MenuLine\""
+	myIntroDescription "branch = \"DLC2\", contextComment = \"C_MQ_015 Quest Intro Description\", enabled = true, guid = #8FD81D516751A9A5000000D7E2A83369, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 12374, text = \"Quest Intro Description Placeholder\", type = \"MenuLine\""
+	myDescription "branch = \"DLC2\", contextComment = \"C_MQ_015 Quest Description\", enabled = true, guid = #8FD81D516751A9A5000000D8B727EB5A, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 12374, text = \"Quest Description Placeholder\", type = \"MenuLine\""
+	myImage helix/baked/ui/loose_images/quest_bilboard/journal_billboard_c_mq_015.dds
+	myCompletionReward < uid=8FD81D516751A9A5000000DF32D25C47 > = NULLREFERENCE
+	myDebugPlayOnlyCompletionReward < uid=2AE2EC8567598A52000000D7F4963ED2 > = DebugCompletionReward_C_MQ_015 2AE2EC856752CC3B0005FD7C127596EE
+	myDebugPlayOnlyIsCompletionRewardUnique TRUE
+	myDebugPlayOnlyEquipItem TRUE
+	myGoals
+	{
+	}
+	myBeats
+	{
+		QuestBeat "QB01 ReachTrailblazer" < uid=8FD81D516751A9A5000000E504DC7CB9 >
+		{
+			myScript helix/scripts/scr_c_mq_015_trb_pln_b01_trailblazerworkbench_v2.mscript
+			myName "aurabesh = false, branch = \"DLC2\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 91908ED264F1BBC400000025E97B93DE
+			myDebugPlayLandingZone B5AFC8E463E5034C0001FF7C2A030CA6
+			myObjectives
+			{
+				QuestObjectiveInteract B01_015_GrabPouch < uid=8FD81D516752C08D0003BB75D8EED8BD >
+				{
+					myName "branch = \"DLC2\", contextComment = \"Objective Text\", enabled = true, guid = #8FD81D516752C08D0003BB76323661F5, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 12375, text = \"Retrieve Hondo's blaster parts\", type = \"MenuLine\"}"
+				}
+				QuestObjectiveCustom B01_020_UseWorkbench < uid=8FD81D516751A9A5000000E807AB7837 >
+				{
+					myName "branch = \"DLC2\", contextComment = \"A_MQ_075 Beat Text - Player must interact with workbench and build the Explosive Module\", enabled = true, guid = #8FD81D516751A9A5000000DD13831042, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 12375, text = \"Assemble the explosive module\", type = \"MenuLine\""
+					myChildObjectives
+					{
+						QuestObjectiveGetItem "New QuestObjectiveGetItem" < uid=8FD81D516751A9A5000000E9E075F5CF >
+						{
+							myName "aurabesh = false, branch = \"DLC2\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+						}
+					}
+				}
+			}
+			myQuestBeatStateGameValue < uid=8FD81D516751A9A5000000EA2481434C >
+			{
+			}
+			myWaitForInitCompletedOnInBeatVolume FALSE
+		}
+	}
+	myOutroBeat
+	{
+	}
+	myQuestStateGameValue < uid=8FD81D516751A9A5000000ED937A0404 >
+	{
+	}
+	myQuestAudioState
+	{
+		myGuid 49C63AD9A16838D83DFF05F15A19BB88
+	}
+	myQuestStartedRBTag < uid=8FD81D516751A9A5000000EEBDCFAE04 > = World_Quest_CMQ015_Started 3A129121677FECB90002375896D9AB88
+	myQuestCompletedRBTag < uid=8FD81D516751A9A5000000EFFAC9B3C1 > = World_Quest_CMQ015_Completed 3A129121677FECB90002375AC0E60553
+	myRequiredMTXAddonType DLC2
+}
+

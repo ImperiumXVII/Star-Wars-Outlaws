@@ -1,0 +1,222 @@
+include "helix\game system data\fruit\cameralens\cameralenspreset.fruit"
+include "helix\game system data\fruit\galaxy\galaxylocation.fruit"
+
+// Keep in sync with HC_UIPhotoModeSettingsConstantData.h
+enum PhotoModeSettingEnum < useCategories=1 >
+{
+	Invalid
+	< startCategory="Bools" >
+	ApertureEnabled
+	ShowPet
+	ShowPlayer
+	LensChromaticAberrationEnabled
+	LensDistortionEnabled
+	LensFilmGrainEnabled
+	LensFringeEnabled
+	LensVignetteEnabled
+	< endCategory = "">
+	< startCategory="Colors/Post FX" >
+	ColorGrading
+	< endCategory = "">
+	< startCategory="Enums" >
+	ActiveCamera
+	AnimCurve
+	Frame
+	Guides
+	Lens
+	Message
+	MessagePosition
+	Preset
+	ViewFinderState
+	< endCategory = "">
+	< startCategory="Floats/Post FX" >
+	Blue
+	ChromaticAbberation
+	Contrast
+	DepthOfFieldFStop
+	DepthOfFieldFocalPlane
+	Exposure
+	Green
+	Highlights
+	LensDistortionAnamorphicX
+	LensDistortionAnamorphicY
+	LensDistortionAnamorphicSqueeze
+	LensDistortionK1
+	LensDistortionK2
+	LensMagnifier
+	Midtones
+	Red
+	Saturation
+	Shadows
+	Vignette
+	< endCategory = "">
+	< startCategory="Floats/Other" >
+	AnimDuration
+	Aperture
+	CameraTilt
+	FieldOfView
+	FocalLength
+	FocusDistance
+	Scanlines
+	TimeOfDay
+	< endCategory = "">
+}
+
+list ExcludedGalaxyLocations
+{
+	GalaxyLocation*
+}
+
+class PhotoModeSettingData < abstract=1 >
+{
+	PhotoModeSettingEnum mySettingEnum
+	varmap myName < bhv="localization" >
+	bool myIsAvailableInSpaceContext true
+	bool myIsAvailableInPlanetContext true
+	bool myIsCameraSetting
+	bool myIsIndented
+	bool myCanBeSavedInPreset
+	ExcludedGalaxyLocations myExcludedGalaxyLocations
+	ExcludedGalaxyLocations myExcludedSurfaceGalaxyLocation < tooltip="Any galaxy location below will also be excluded." >
+}
+
+class PhotoModeSettingFloatData : PhotoModeSettingData < tooltip="Default values for Post FX and TimeOfDay values are overwritten by code." >
+{
+	float myDefaultValue 
+	float myMin
+	float myMax
+	float myStepSize
+	float myStepSizeWhenHeld
+}
+
+list PhotoModeSettingFloatDataList
+{
+	PhotoModeSettingFloatData
+}
+
+class PhotoModeSettingBoolData : PhotoModeSettingData
+{
+	bool myDefaultValue
+}
+
+list PhotoModeSettingBoolDataList
+{
+	PhotoModeSettingBoolData
+}
+
+class PhotoModeSettingIntegerData : PhotoModeSettingData
+{
+	int myDefaultValue
+	int myMin
+	int myMax
+	int myStepSize
+	int myStepSizeWhenHeld
+	bool myAllowWrapping
+}
+
+list PhotoModeSettingIntegerDataList
+{
+	PhotoModeSettingIntegerData
+}
+
+class PhotoModeSettingColorData : PhotoModeSettingData
+{
+	color myDefaultValue
+	float myStepSize
+	float myStepSizeWhenHeld
+}
+
+list PhotoModeSettingColorDataList
+{
+	PhotoModeSettingColorData
+}
+
+class PhotoModeSettingPresetValueFloat
+{
+	PhotoModeSettingEnum mySettingEnum
+	float myOverrideValue
+}
+
+list PhotoModeSettingPresetValueFloatList
+{
+	PhotoModeSettingPresetValueFloat
+}
+
+class PhotoModeSettingPresetValueColor
+{
+	PhotoModeSettingEnum mySettingEnum
+	color myOverrideValue
+}
+
+list PhotoModeSettingPresetValueColorList
+{
+	PhotoModeSettingPresetValueColor
+}
+
+class PhotoModeSettingPreset
+{
+	varmap myName < bhv="localization" >
+	PhotoModeSettingPresetValueFloatList myPresetValueFloats
+	PhotoModeSettingPresetValueColorList myPresetValueColors
+}
+
+list PhotoModeSettingPresetList
+{
+	PhotoModeSettingPreset
+}
+
+list PhotoModeSettingEnumList
+{
+	PhotoModeSettingEnum
+}
+
+class PhotoModeSettingCategory
+{
+	varmap myName < bhv="localization" >
+	string myIcon < bhv=sprite >
+	PhotoModeSettingEnumList mySettingEnums
+}
+
+list PhotoModeSettingCategoryList
+{
+	PhotoModeSettingCategory
+}
+
+class PhotoModeSettingCamera
+{
+	float myBaseSpeed < min=0 max=10 >
+	float myTetherDistance < tooltip="How far the camera can be on the X-axis and Z-axis relative to the player position." min=0 max=1000 >
+	float myVerticalDistance < tooltip="How far the camera can be on the Y-axis relative to the player position." min=0 max=1000 >
+	float myMinSpeedMultiplier < min=0 max=10 >
+	float myMaxSpeedMultiplier < min=0 max=10 >
+}
+
+class PhotoModeSettingCameras
+{
+	PhotoModeSettingCamera myPlanetCamera
+	PhotoModeSettingCamera mySpaceCamera
+}
+
+class PhotoModeSettingLens
+{
+	varmap myName < bhv="localization" >
+	CameraLensPreset myCameraLensPreset
+}
+
+list PhotoModeSettingLenses
+{
+	PhotoModeSettingLens < tooltip="First entry values will be overriden by in-game lens." >
+}
+
+class PhotoModeSettings < uid=auto >
+{
+	PhotoModeSettingCameras myCameraSettings
+	PhotoModeSettingCategoryList myCategories
+	PhotoModeSettingPresetList myPresets
+	PhotoModeSettingLenses mySettingLenses
+	PhotoModeSettingFloatDataList mySettingFloats
+	PhotoModeSettingBoolDataList mySettingBools
+	PhotoModeSettingIntegerDataList mySettingIntegers
+	PhotoModeSettingColorDataList mySettingColors
+	string mySaveTargetFolder < tooltip="The name of the folder where photos will be saved within the HelixClient folder." >
+}

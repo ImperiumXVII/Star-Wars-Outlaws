@@ -1,0 +1,257 @@
+include "helix\game system data\fruit\sabacc\sabaccgametypes.fruit"
+include "helix\game system data\fruit\sabacc\sabaccshiftcards.fruit"
+include "helix\game system data\fruit\sabacc\sabaccemotionalbehavior.fruit"
+
+// Keep in sync with HC_SabaccConditionType
+enum SabaccConditionType < process_using_strings=1 >
+{
+	Value
+	Variable
+	Compare
+	Boolean
+	PlayerCanDoChoice
+	PlayerWantChoice
+	GameConditionReference
+	Formula
+	PlayerHasDoneChoiceLastTurn
+	PlayerHasDoneShiftLastTurn
+	PlayerShiftIsActive
+	PlayerPositionInTurn
+	PlayerLastImpostorThrowOutcome
+	PlayerWinBeliefCondition
+	PlayerFullWinBeliefCondition
+	ShiftIsActive
+	RandomCondition
+	LocalPlayerSuspicion
+	PlayerHandRank
+}
+
+enum SabaccVariable
+{
+	SabaccPlayerHasSabacc
+	SabaccPlayerSabaccRank
+	SabaccPlayerHandValue
+	SabaccPlayerCoinsInStock
+	SabaccPlayerCoinsOnTable
+	SabaccPlayerRound
+	SabaccGameCount
+	SabaccPlayerOpponentStandingCount
+	SabaccLocalPlayerWinTableCount
+	SabaccSavedGameCount
+	SabaccPlayerPositiveCardValue
+	SabaccPlayerNegativeCardValue
+	SabaccInitialChipsCount
+	SabaccAIPlayersInPlayCount
+	SabaccPlayerShiftAvailableCount
+	SabaccPlayerShiftCardPlayedThisGameCount
+	SabaccSumOfOpponentsPots
+	SabaccOpponentsWithNonEmptyPotCount
+	SabaccOpponentsInStandWithNonEmptyPotCount
+	SabaccOpponentsInStandWithNonEmptyStockCount
+	SabaccOpponentsWithAvailableShiftCount
+	SabaccOpponentsWithNonEmptyStockCount
+}
+
+enum SabaccCompareOperator
+{
+	Equal
+	NotEqual
+	GreaterThan
+	GreaterThanOrEqual
+	LessThan
+	LessThanOrEqual
+}
+
+enum SabaccBooleanOperator
+{
+	Or
+	And
+}
+
+enum SabaccConditionPlayerTarget
+{
+	CurrentPlayer
+	NextPlayer
+	Antagonist
+}
+
+enum SabaccConditionPlayerPosition
+{
+	FirstPlayer
+	LastPlayer
+}
+
+enum SabaccHandRank
+{
+	BestHand
+	MiddleHand
+	WorstHand
+}
+
+class SabaccCondition < abstract=1 >
+{
+	SabaccConditionType myType < hidden=1 >
+}
+
+class SabaccConditionNegatable < abstract=1 > : SabaccCondition
+{
+	bool myIsNegated FALSE
+}
+
+list SabaccConditions
+{
+	SabaccCondition
+}
+
+list SabaccConditionsSize2 < size=2 >
+{
+	SabaccCondition
+}
+
+class SabaccValueCondition : SabaccCondition
+{
+	SabaccConditionType myType Value < hidden=1 >
+	int myValue
+}
+
+class SabaccVariableCondition : SabaccConditionNegatable
+{
+	SabaccConditionType myType Variable < hidden=1 >
+	SabaccVariable myVariable
+}
+
+class SabaccCompareConditionExpr : SabaccCondition
+{
+	SabaccConditionType myType Compare < hidden=1 >
+	SabaccCompareOperator myOperator
+	SabaccConditionsSize2 myConditions
+}
+
+class SabaccBooleanConditionExpr : SabaccConditionNegatable
+{
+	SabaccConditionType myType Boolean < hidden=1 >
+	SabaccBooleanOperator myOperator
+	SabaccConditions myConditions
+}
+
+class SabaccBasePlayerChoice : SabaccConditionNegatable
+{
+	SabaccConditionPlayerTarget myPlayerTarget
+	SabaccTaxGamePlayerChoice myChoice
+}
+
+class SabaccPlayerCanDoChoice : SabaccBasePlayerChoice
+{
+	SabaccConditionType myType PlayerCanDoChoice < hidden=1 >
+}
+
+class SabaccPlayerWantChoice : SabaccBasePlayerChoice
+{
+	SabaccConditionType myType PlayerWantChoice < hidden=1 >
+}
+
+class SabaccPlayerHasDoneChoiceLastTurn : SabaccBasePlayerChoice
+{
+	SabaccConditionType myType PlayerHasDoneChoiceLastTurn < hidden=1 >
+}
+
+class SabaccPlayerHasDoneShiftLastTurn : SabaccConditionNegatable
+{
+	SabaccConditionType myType PlayerHasDoneShiftLastTurn < hidden=1 >
+	SabaccConditionPlayerTarget myPlayerTarget
+	SabaccShiftCardSetting* myShift
+}
+
+class SabaccPlayerShiftIsActive : SabaccConditionNegatable
+{
+	SabaccConditionType myType PlayerShiftIsActive < hidden=1 >
+	SabaccConditionPlayerTarget myPlayerTarget
+	SabaccShiftCardSetting* myShift
+}
+
+class SabaccPlayerPositionInTurn : SabaccConditionNegatable
+{
+	SabaccConditionType myType PlayerPositionInTurn < hidden=1 >
+	SabaccConditionPlayerTarget myPlayerTarget
+	SabaccConditionPlayerPosition myPlayerPosition
+}
+
+class SabaccPlayerLastImpostorThrowOutcome : SabaccConditionNegatable
+{
+	SabaccConditionType myType PlayerLastImpostorThrowOutcome < hidden=1 >
+	SabaccConditionPlayerTarget myPlayerTarget
+}
+
+class SabaccPlayerWinBeliefCondition : SabaccConditionNegatable
+{
+	SabaccConditionType myType PlayerWinBeliefCondition < hidden=1 >
+	SabaccConditionPlayerTarget myPlayerTarget
+	SabaccWinBeliefState myWinBeliefState
+}
+
+class SabaccPlayerFullWinBeliefCondition : SabaccPlayerWinBeliefCondition
+{
+	SabaccConditionType myType PlayerFullWinBeliefCondition < hidden=1 >
+}
+
+class SabaccShiftIsActive : SabaccConditionNegatable
+{
+	SabaccConditionType myType ShiftIsActive < hidden=1 >
+	SabaccShiftCardSetting* myShift
+}
+
+class SabaccRandomCondition : SabaccConditionNegatable
+{
+	SabaccConditionType myType RandomCondition < hidden=1 >
+	float myThreshold < min=0 max=1 tooltip="The random float must be inferior or equal to this treshold for the condition to be true" >
+}
+
+class SabaccFormulaCondition : SabaccCondition
+{
+	SabaccConditionType myType Formula < hidden=1 >
+	string myFormula 0 < tooltip="the result of the formula rounded to int" bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+}
+
+class SabaccLocalPlayerSuspicion : SabaccConditionNegatable
+{
+	SabaccConditionType myType LocalPlayerSuspicion < hidden=1 >
+	SabaccSuspicionLevel mySuspicion
+}
+
+class SabaccPlayerHandRankCondition : SabaccConditionNegatable
+{
+	SabaccConditionType myType PlayerHandRank < hidden=1 >
+	SabaccConditionPlayerTarget myPlayerTarget
+	SabaccHandRank mySabaccHandRank
+}
+
+list SabaccStartingConditions < size=1 >
+{
+	SabaccVariableCondition
+	SabaccCompareConditionExpr
+	SabaccBooleanConditionExpr
+	SabaccPlayerCanDoChoice
+	SabaccPlayerWantChoice
+	SabaccPlayerHasDoneChoiceLastTurn
+	SabaccPlayerHasDoneShiftLastTurn
+	SabaccPlayerShiftIsActive
+	SabaccPlayerPositionInTurn
+	SabaccPlayerLastImpostorThrowOutcome
+	SabaccPlayerWinBeliefCondition
+	SabaccPlayerHandRankCondition
+	SabaccLocalPlayerSuspicion
+	SabaccFormulaCondition
+	SabaccShiftIsActive
+	SabaccRandomCondition
+}
+
+class SabaccGameConditions < uid=auto >
+{
+	SabaccStartingConditions myConditions
+}
+
+class SabaccGameConditionReference : SabaccConditionNegatable
+{
+	SabaccConditionType myType GameConditionReference < hidden=1 >
+	SabaccGameConditions* myGameConditionReference
+}

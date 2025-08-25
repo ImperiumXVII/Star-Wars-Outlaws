@@ -1,0 +1,34 @@
+include "helix/game system data/fruit/settings/playeraimsettings.fruit"
+include "helix/game system data/juice/camera/blendtransitions/shoulderaimcamerablend.mcamerablendtransition"
+include "helix/game system data/juice/equipment/aimassisttargetconfig/aimassisttargetconfig_npc_default.maimassisttargetconfig"
+include "helix/game system data/juice/equipment/aimconfig/disarmed_aimconfig.maimconfig"
+include "helix/game system data/juice/faction/factions.mfaction"
+include "helix/game system data/juice/playerrestrictions/aimcombat.mplayerrestriction"
+include "helix/game system data/juice/playerrestrictions/aimingdownsight.mplayerrestriction"
+include "helix/game system data/juice/playerrestrictions/hipfire.mplayerrestriction"
+include "helix/game system data/juice/playerrestrictions/scope.mplayerrestriction"
+
+AimParameters AimParameters
+{
+	myADSRestrictions < uid=A207755D63FDD615000009C42F238B05 > = aimingdownsight B0ED9250635269D500008086995F4046
+	myHipFireRestrictions < uid=A207755D63FDD628000009C50A6AE10E > = hipfire B0ED9250635269E30000808844AD34AF
+	myScopeRestrictions < uid=A207755D63FDD628000009C640429596 > = scope B0ED9250635269EB0000808AD59962FB
+	myAimSourceHeightWhileCrouching 1.0
+	myAimAssistParameters
+	{
+		myDefaultAimAssistTargetConfig < uid=A207755D65706D4E0002001809C402CB > = aimassisttargetconfig_npc_default A207755D65706D16000200177A5782F2
+	}
+	myDefaultAimConfig < uid=A207755D63FDD6E2000009C9D50053EF > = Disarmed_aimconfig A207755D63FDD6C9000009C8883FB177
+	myCoverDynamicStealthEnabled TRUE
+	myCoverDynamicCastRadius 0.4
+	myFactionCombatDenyList
+	{
+		Faction Civilian < uid=A207755D662FA6A2000000C9641EE014 > = Civilian B0EA4E53607561CC0000004DC311CAF9
+		Faction CivilianCombatant < uid=1C021E95663E2B7B0031DF34FC737A58 > = CivilianCombatant 91DC5D3C63D23B7B00016F4E0748B771
+		Faction WildlifeFriendly < uid=E9DD8F606683B352000021A8C23A382F > = WildlifeFriendly 290EB60C64644ED90000B7B265360CCF
+		Faction Rebel < uid=FFED0CDA671F4FFF000640D7478427CB > = RebelAlliance 16DEADE65F64A97D0000004E13F55CF3
+	}
+	myAimCombatDeniedRestrictions < uid=A207755D662FA6B4000000CABE7CD85D > = aimcombat A207755D662FA265000000CAF41399E6
+	mySwapShoulderCameraTransition < uid=840A9ABF66F1622F0000BC52B349F929 > = shoulderaimcamerablend B0ED9250634FEBF8000069C14B85636E
+}
+

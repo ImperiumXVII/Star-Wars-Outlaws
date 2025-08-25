@@ -1,0 +1,96 @@
+include "helix/game system data/fruit/equipment/weapon/weapon_fire_mode.fruit"
+include "helix/game system data/juice/camera/modifiers/weapon_recoil_module_ion_beam.mcameramodifier"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_pickup_exotic.mweaponfiremode"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_pickup_rifle.mweaponfiremode"
+include "helix/game system data/juice/projectile/weapon_projectile_zerek_beam.mprojectile"
+
+WeaponFireMode player_firemode_pickup_exotic_reconfigurable_beam < uid=4C1DFD4E645CF0D90001CDC6FED6B318 > : player_firemode_pickup_rifle
+{
+	myFireEvent
+	{
+		BurstFireEvent BurstBeam
+		{
+			myRPM
+			{
+				myRPM 600
+			}
+			myBurstData
+			{
+				myRoundsPerBurst 10
+			}
+		}
+	}
+	myBaseProperties
+	{
+		myRecoil < uid=A207755D6515A1E100014E4957094EC5 > = weapon_recoil_module_ion_beam 7113C61164EDDACA0003879424301A89
+	}
+	myTargetCollector
+	{
+		WeaponTargetCollector Beam
+		{
+			myShape
+			{
+				myType Line
+				myMaxDistance 80.0
+				myCastType All
+			}
+			myCandidateCastType LOS
+		}
+	}
+	myFireRampUpAndDown
+	{
+		myConfig
+		{
+			myRampUpTime 0.4
+			myRampDownTime 0.1
+		}
+	}
+	myProjectile < uid=4C1DFD4E645CF3310001D8B8AF88DB17 > = weapon_projectile_zerek_beam 5C421F5C6488188C00013A6F97B75080
+	myDamage
+	{
+		myDamage
+		{
+			myDamageFormula 1
+		}
+	}
+	mySpread
+	{
+		mySpreadValues
+		{
+			mySpread
+			{
+				myMin 0.0
+				myMax 0.0
+				myIsUniform FALSE
+			}
+		}
+		mySpreadIncreaseTime 0.1
+		myTimeToMinAccuracy 0.5
+		myTimeToMaxAccuracy 1.0
+		mySpreadIncreaseSpeed 0.1
+		mySpreadReductionSpeed 0.05
+		myMovementModifier 2.0
+		myMovementSpreadThreshold 0.0
+		myMovementSpreadAcceleration 6.0
+		myMovementSpreadDeceleration 6.0
+		myAimChangeModifier 2.0
+		myMovementModifierSpeedCap 3.0
+		myAimChangeSensitivity 1.0
+		myAimChangeAccuracyRecoveryTime 0.5
+		myAmountOfAccuracyLockedRounds 0
+		myUseAimChangeSpread FALSE
+		myUseReverseSpread FALSE
+		myAimModifierData
+		{
+			myADSFormula 1.0
+			myScopeFormula 1.0
+			myLockFormula 1.0
+			myHipFireFormula 1.0
+		}
+	}
+	myUI
+	{
+		myDefaultUIGraph helix/ui/graphs/crosshair_rifle_ammunition.muigraph
+	}
+}
+

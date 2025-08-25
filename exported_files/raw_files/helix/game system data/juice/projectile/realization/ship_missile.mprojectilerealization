@@ -1,0 +1,40 @@
+include "helix/game system data/fruit/projectile/projectile_realization.fruit"
+include "helix/game system data/juice/impactrealization/base_impact_hit_ship_missle.mimpactrealization"
+include "helix/game system data/juice/impactrealization/impact_hit_ship_concussion_missile.mimpactrealization"
+include "helix/game system data/juice/impactrealization/impact_pierce_ship_missile.mimpactrealization"
+include "helix/game system data/juice/projectile/realization/base_ship_projectile_realization.mprojectilerealization"
+include "helix/game system data/juice/sound/projectiles/weapon_projectile_concussion_missile.maudioprojectile"
+
+ProjectileRealization realization_ship_missile_base < uid=B00501356274D19C00002D8791255AA2 >
+{
+	myProjectileGraphObject "helix/graph objects/projectile/vfx projectile spaceship missile concussion.mgraphobject"
+	myAudioData < uid=9DB1BD4A6278FC3E00004377BF2B656F > = audioweapon_projectile_concussion_missile 9DB1BD4A6278FBBA0000437468366044
+	myHitImpact < uid=4F59E8F064623C590000DF8C3BCD1610 > = base_impact_hit_ship_missle 0B9940F364E7511D0005A7032456C7C8
+	myPierceImpact < uid=6B0E1DE964AFEF12000DEC14632B86D5 > = impact_pierce_ship_missile AE040547661D218000022EEBE474BC19
+}
+
+ProjectileRealization realization_ship_missile_concussion < uid=6B0E1DE964AFC830000BFFEC1B8B6FBD > : realization_ship_missile_base
+{
+	myProjectileGraphObject "helix/graph objects/projectile/vfx projectile spaceship missile concussion.mgraphobject"
+}
+
+ProjectileRealization realization_ship_missile_torpedoes < uid=6B0E1DE964AFC8BB000C00528BF2158B > : realization_ship_missile_base
+{
+	myProjectileGraphObject "helix/graph objects/projectile/vfx projectile spaceship missile torpedo.mgraphobject"
+}
+
+ProjectileRealization realization_ship_missile_ion < uid=6B0E1DE964AFC8BB000C0053DE023A68 > : realization_ship_missile_base
+{
+	myProjectileGraphObject "helix/graph objects/projectile/vfx projectile spaceship missile ion.mgraphobject"
+}
+
+ProjectileRealization realization_ship_missile_cluster < uid=6AF0BA0464B6AA2C0001AAD2AB3A991D > : realization_ship_missile_base
+{
+	myProjectileGraphObject "helix/graph objects/projectile/vfx projectile spaceship missile cluster.mgraphobject"
+}
+
+ProjectileRealization realization_ship_missile_proton < uid=6AF0BA0464C0DFB00001311BA4E0EBF4 > : realization_ship_missile_base
+{
+	myProjectileGraphObject "helix/graph objects/projectile/vfx projectile spaceship missile proton torpedo.mgraphobject"
+}
+

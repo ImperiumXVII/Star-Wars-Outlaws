@@ -1,0 +1,68 @@
+include "helix/game system data/fruit/settings/petsettings.fruit"
+include "helix/game system data/juice/animation/animvariableforwardingconfigs.manimvariableforwardingconfig"
+include "helix/game system data/juice/attribute/dictionary/pet_dictionary.mdict"
+include "helix/game system data/juice/equipmentset/player_equipmentset_pet.mequipmentset"
+include "helix/game system data/juice/gamestatistics/gs_dom_skills.mgamestatistic"
+include "helix/game system data/juice/item/items_dom_skill.mitem"
+include "helix/game system data/juice/playerrestrictions/petmode_restriction.mplayerrestriction"
+
+PetSettings myPetSettings < uid=16DEADE66036CF7A0000002D6AFEA125 >
+{
+	myEquipmentSet < uid=F8252D3C620FACB7000026068BE6E990 > = player_equipmentset_pet F8252D3C620F9D070000260CE04694E4
+	myPlayerSpeederMountAnticipationDistance 12.0
+	myPlayerSpeederDismountDistance 14.0
+	myDefautPlayerVelocityResponseCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 0, }, outTangents = { 0.33333334 0, 0 0, }, properties = { 71, 1095, }, values = { 0 1, 1 1, }, }, numKeys = 2, }"
+	myResponsivePlayerVelocityResponseCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.270235 -0.002532, }, outTangents = { 0.33333334 0, 0 0, }, properties = { 71, 1299, }, values = { 0 0.39999998, 1 1.4000001, }, }, numKeys = 2, }"
+	mySlowPlayerVelocityResponseCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.270235 -0.002532, }, outTangents = { 0.33333334 0, 0 0, }, properties = { 71, 1299, }, values = { 0 1.4000001, 1 0.40000001, }, }, numKeys = 2, }"
+	myPetCacheDetectionRequirement
+	{
+		myItem < uid=E41F4D1B629F1B910000335D76B5F8CA > = Dom_skill_PetCacheDetection E41F4D1B628630680000792BE46C5123
+	}
+	myPetDoubleDistractRequirement
+	{
+		myItem < uid=5CDD6EF365CE12A4000000F2A2DFC3A4 > = pet_gear_food_KIJ D00CF654650C58880000D073020C03F9
+	}
+	myMaxMultiDistractTargets PetCommandMaxMultiDistractTargets
+	myDistractTargetHeightDifferenceDistancePenalty "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.55541563 0, -1.08775 -0.0083198547, }, outTangents = { 0.88629472 0.00069707632, 0 2.9291844, 0 0, }, properties = { 275, 2322, 1299, }, values = { 0 0, 3 0, 6 10, }, }, numKeys = 3, }"
+	myPetGotPetGameStatistic < uid=E41F4D1B63062A58000051B2DABD6753 > = gs_dom_NixAid_NixPetCounter E41F4D1B62FBAEB5000042A9440BEF37
+	myPetModePlayerRestrictions < uid=5348798C634D8C27000077753EBC85B2 > = petmode_restriction 5348798C634D8C1A00007774E9FB98F1
+	myPetModePreparationPlayerRestrictions < uid=C6B18B0866793C5D0002F30CC02D741C > = petmode_preparation_restriction C6B18B0866793B740002F2ED633DF800
+	myPetSenseFactionFilter
+	{
+		Faction Ashiga < uid=E42C5D0F638DBDFA0000689A605681A8 > = AshigaClan 4728ADF9620B6C2B0000201F5FC5C937
+		Faction SixthKin < uid=E42C5D0F638DBE040000689B12B4B4CD > = SixthKin 93D30865651E6BBB0001E578886EFCA8
+		Faction CrimsonDawn < uid=E42C5D0F638DBE090000689C6A8BAD22 > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+		Faction Empire < uid=E42C5D0F638DBE0C0000689D87E93583 > = Empire 16DEADE65F21E5AB000000B35532A71B
+		Faction HuttClan < uid=E42C5D0F638DBE130000689E5366BF17 > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+		Faction ZerekBesh < uid=E42C5D0F638DBE4C0000689FE4C37B6A > = "Zerek Besh" 2736B36562BC1F8C0000C38818DFFEBC
+		Faction PykeSyndicate < uid=E42C5D0F638DBE5A000068A0D316386D > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+		Faction Pirates < uid=E42C5D0F63973A6D0000FAC0020B5E61 > = Pirates 16DEADE65F7DDA76000000C9CB7D6D62
+		Faction WildlifeAggressive < uid=E9DD8F606694BCDA000479AC52C548E3 > = WildlifeAggressive 16DEADE660B0029700001848D72C6D93
+		Faction Raiders < uid=91DC5D3C678E4DAC00027A51BE100E2E > = Raider 91DC5D3C66FBD94500000044FB8B5663
+	}
+	myPlayerAnimVariableForwardingConfig < uid=5CDD6EF366335444000112C5BBCC15F6 > = PlayerToPet 5CDD6EF3663353A100011290419C314A
+	mySpeederAnimVariableForwardingConfig < uid=5CDD6EF3663362600003E3C6BEDA09EA > = SpeederToPet 5CDD6EF3663362520003E3AB76AAC9E4
+	myDefaultStolenLootGraphObject "helix/graph objects/prop/pr_msv_1546_t.mgraphobject"
+	myPetPulseVisibilityConditions
+	{
+		PetPulseVisibilityCondition DoM_NixUpgrade_Scavenger
+		{
+			myLDIMetadata 1C021E956543A8F7000188494A10310A
+			myGameConditionGroup
+			{
+				myConditions
+				{
+					AbilityItemUnlockRequirement DoM_AssistedScavenging
+					{
+						myItem < uid=D00CF654655FB5DA0003921A8C63CA52 > = Dom_skill_PetCacheDetection E41F4D1B628630680000792BE46C5123
+						myOperator Equal
+					}
+				}
+			}
+		}
+	}
+	myNewInteractionSelectionRumble 8E25811B655DC42600016F659AD41249
+	myPetPulseRumble 8E25811B656F4A480006533740975E72
+	myPetModeInputComboTimerDuration 0.18
+}
+

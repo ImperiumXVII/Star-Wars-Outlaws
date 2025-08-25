@@ -1,0 +1,34 @@
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+include "helix/game system data/fruit/gamevalues/gamevalues.fruit"
+include "helix/game system data/fruit/mapref/mapref.fruit"
+include "helix/game system data/fruit/settings/spaceshipenums.fruit"
+
+list LandingZoneUnlockGameConditions
+{
+	GameConditionQuestState
+	GameConditionQuestBeatState
+	GameConditionPlayerIsPlayingQuestBeat
+	GameConditionPlayerHasReputation
+}
+
+class LandingZone < uid=auto ui_info=1 >
+{
+	varmap myName < bhv="localization" tooltip="Name of the Landing Zone for UI purposes." referenced_by_code=1 >
+	varmap myDescription < bhv="localization" tooltip="Description of the Landing Zone for UI purposes." referenced_by_code=1 >
+	uid myLevelInfo < bhv="constantData" constantDataType="levelinfo" tooltip="The level that the landing zone is." ui_info=0 >
+	MapRef* myMapRef < tooltip="Map Ref data for map and compass." ui_info=0 >
+	LandingZoneUnlockStateGameValue myUnlockedStateGameValue < init_set=1 tooltip="Game value representing the landing zone unlocked state." ui_info=0 >
+	LandingZoneLandingCountGameValue myLandingZoneLandingCountGameValue < init_set=1 tooltip="Game value representing the number of times the player has landed on this landing zone." ui_info=0 >
+	LandingZoneUnlockGameConditions myUnlockConditions < tooltip="If set, this will be a criteria used to unlock landing zones additionally to the UnlockedStateGameValue." ui_info=0 >
+	string myMapRefHideFormula < bhv=formulaEditor formulaResolveContextType=Global tooltip="If set, this will be a criteria used to hide the MapRef (UI element on map & compass)" >
+	file myLandingSequence < bhv=asset assettype=sequence tooltip="If set, the landing sequence to be played on a level transition from space to this landing zone." >
+	file myTakeOffSequence < bhv=asset assettype=sequence tooltip="If set, the take-off sequence to be played on a level transition from this landing zone to space." >
+	file myCallShipSequence < bhv=asset assettype=sequence tooltip="If set, the sequence to be played when the player calls the spaceship to this landing zone." >
+	vec3f mySpaceLocation < tooltip="The position in space which represents where the landing zone is located. Usually on the surface of a planet." >
+	bool myIsDiscoveredByDefault TRUE < tooltip="Whether the landing zone appears as discovered by the player as default, or not. Useful for first landing areas in each planet." >
+	bool myIsHiddenLandingZone FALSE < tooltip="If true the landing zone can not be discoverd, the player won't be able to space travel to it using normal gameplay (can still do it via scripts) and it will not have a map ref." >
+	bool myCanFastTravelHereWithRokanaShip FALSE
+	
+	bool myIsPlayerSpaceshipTypeRestricted false
+	PlayerSpaceshipType myPlayerSpaceshipType Trailblazer
+}

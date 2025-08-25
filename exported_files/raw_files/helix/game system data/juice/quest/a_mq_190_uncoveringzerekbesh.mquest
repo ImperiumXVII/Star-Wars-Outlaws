@@ -1,0 +1,355 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/rbtags/quest.mrbtagstags"
+include "helix/game system data/juice/reward/quest_completion_reward.mreward"
+
+Quest A_MQ_190_UncoveringZerekBesh < uid=BFA41A0261B37659000004A63442E57D >
+{
+	myName "aurabesh = false, contextComment = \"Quest Title\", enabled = true, guid = #BFA41A0261D55C45000025B79EA18812, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 9154, text = \"The Truth\", type = \"MenuLine\""
+	myIntroDescription "aurabesh = false, contextComment = \"Intro Beat Description\", enabled = true, guid = #C5645856651EB03200149CF38E6076C8, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9154, text = \"PLACEHOLDER TEXT FOR MQ_190 INTRO BEAT QUEST DESCRIPTION\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"Quest desc\", enabled = true, guid = #C5645856645E38E80000FADB5E86BF8E, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9154, text = \"PLACEHOLDER TEXT FOR MQ_190 QUEST DESCRIPTION\", type = \"MenuLine\""
+	myImage helix/baked/ui/loose_images/quest_bilboard/journal_billboard_mq_190.dds
+	myCompletionReward < uid=2AE2EC85644BE6830029EA07759DB600 > = A_MQ_190_questcomplete_reward 2AE2EC85644A93860000B2D6091A3F96
+	myGoals
+	{
+		QuestGoal "Do not trigger alarms" < uid=C564585664E75CED000165329C6BAD54 >
+		{
+			myGoalText "aurabesh = false, contextComment = \"Goal title\", enabled = true, guid = #C564585664E75CF6000165337EDF1722, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9154, text = \"Do not trigger alarms\", type = \"MenuLine\""
+			myDisplayAtBottom TRUE
+		}
+	}
+	myIntroBeat < uid=C5645856651D78F700077215DD341453 >
+	{
+		myScript helix/scripts/scr_a_mq_190_can_pln_b00a_talktorikointrailblazer.mscript
+		myName "aurabesh = false, contextComment = \"Intro Beat title\", enabled = true, guid = #C5645856651D78CD00077213C80247E0, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9505, text = \"Talk to Jaylen in the Trailblazer\", type = \"MenuLine\""
+		myLevelInfo 9C4B6A046012E6B0000001B224713F01
+		myObjectives
+		{
+			QuestObjectiveGoToLocation "Obj 1 Talk to Jaylen" < uid=912BBC856411D76E0007DB7CC31DFCB0 >
+			{
+				myName "aurabesh = false, contextComment = \"Objective 1\", enabled = true, guid = #912BBC856411D78D0007DB7DE1E8FE2A, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9505, text = \"Talk to Jaylen in the Trailblazer\", type = \"MenuLine\""
+			}
+		}
+		myQuestBeatStateGameValue < uid=C5645856651D78F7000772161CBE52F7 >
+		{
+		}
+	}
+	myBeats
+	{
+		QuestBeat "Beat 00B Enter Lambda shuttle" < uid=912BBC856411CAE00007A9E6BF419798 >
+		{
+			myScript helix/scripts/scr_a_mq_190_can_pln_b00b_enterlambdashuttle.mscript
+			myName "aurabesh = false, contextComment = \"Beat title\", enabled = true, guid = #912BBC856411CCC30007AAA309D62690, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 9511, text = \"Talk to Riko near Lake Amari\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E6B0000001B224713F01
+			myObjectives
+			{
+				QuestObjectiveTalkTo "OBJ 01 Go talk to Riko" < uid=912BBC85641309D3000110CD2BFAAE66 >
+				{
+					myName "aurabesh = false, contextComment = \"Quest objective\", enabled = true, guid = #912BBC85641309DF000110CEC7FF6495, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9511, text = \"Talk to Riko near Lake Amari\", type = \"MenuLine\""
+				}
+				QuestObjectiveTalkTo "Tell Riko you're ready" < uid=C564585665377963000373675244DEAB >
+				{
+					myName "aurabesh = false, contextComment = \"Quest objective\", enabled = true, guid = #C5645856653779630003736826C2774A, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9511, text = \"Talk to Riko\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=912BBC856411EC520004BB6A83A70E07 >
+			{
+				myDescription ""
+				myDefaultValue 0
+				myIsPersisted FALSE
+				myVariableAttributeName ""
+				myCanBeEditedFromScript FALSE
+				myCanBeEditedFromUI FALSE
+				myCanBeEditedFromProgressionGraph FALSE
+				myIntendedType QuestBeatState
+				myCategory QuestBeat
+				myParentLevelsToUseInInstanceName -1
+			}
+		}
+		QuestBeat "Beat 01A Find a way to the upper floor" < uid=C564585663B6D5FB000055D723A15EFB >
+		{
+			myScript helix/scripts/scr_a_mq_190_can_pln_b01_infiltratethestation.mscript
+			myName "aurabesh = false, contextComment = \"Beat Title\", enabled = true, guid = #C564585663B6D60C000055D8A84302D5, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 9506, text = \"Find a way to the upper floor\", type = \"MenuLine\""
+			myLevelInfo B4061E9E637B8A5B0000001B4FD26828
+			myMood Focused
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Obj 01 Get inside the station" < uid=C564585663B6D639000055DE7C89C0D5 >
+				{
+					myName "aurabesh = false, contextComment = \"Obj Title\", enabled = true, guid = #C564585663B6D636000055DAA8F09194, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9506, text = \"Break into the station\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 425F5BE33A8675FD15266F0B4F1B8FBE
+					}
+				}
+				QuestObjectiveCustom "Obj 02 Slice the console with Riko's help" < uid=E80921436425A01A0001B4095DC3F041 >
+				{
+					myName "aurabesh = false, contextComment = \"Obj title\", enabled = true, guid = #E80921436425A02E0001B40A5A28885E, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9506, text = \"Find a way in\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 425F5BE33A8675FD15266F0B4F1B8FBE
+					}
+					myChildObjectives
+					{
+						QuestObjectiveCustom "Obj 02A FAKE OBJ FOR MARKER" < uid=C5645856668E59D6000955E7B6B96700 >
+						{
+							myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+						}
+					}
+				}
+				QuestObjectiveCustom "Obj 03 Traverse the Conveyor Belt" < uid=5600F8C2644B96140002047096F1AE21 >
+				{
+					myName "aurabesh = false, contextComment = \"Obj title\", enabled = true, guid = #5600F8C2644B9624000204717D6BC11D, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9506, text = \"Traverse the conveyor belt\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 47C423A78BA37D6FD8212D49A17EBD8E
+					}
+					myChildObjectives
+					{
+					}
+				}
+				QuestObjectiveCustom "Obj 03A Conveyor Belt Marker A" < uid=C56458566511401F00070C0AB41D61A8 >
+				{
+					myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+				QuestObjectiveCustom "OBJ 03B Conveyor Belt Marker B" < uid=C56458566511426A00073BC60BCC7765 >
+				{
+					myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+			}
+			myQuestBeatStateGameValue < uid=C564585663B6D639000055E24D4A16F8 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 436E3F3B540B63A3723C96DBA7C04099
+			}
+		}
+		QuestBeat "Beat 01B Find a way to the upper floor" < uid=E809214363F368490000BA47965C8644 >
+		{
+			myScript helix/scripts/scr_a_mq_190_can_pln_b01b_findawaytoupperfloor.mscript
+			myName "aurabesh = false, contextComment = \"Beat Title\", enabled = true, guid = #E809214363F369020000BA4AF890BEFC, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9506, text = \"Infiltrate the data extraction hub\", type = \"MenuLine\""
+			myLevelInfo B4061E9E637B8A5B0000001B4FD26828
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom "Obj 05 Reach the access way to the Data Extraction Lab" < uid=5600F8C2644BD0C800038FF13DE6EA7C >
+				{
+					myName "aurabesh = false, contextComment = \"Obj title\", enabled = true, guid = #5600F8C2644BD0E300038FF232C28F6E, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9506, text = \"Infiltrate the data extraction hub\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myChildObjectives
+					{
+					}
+				}
+				QuestObjectiveCustom "Obj 05A Intermediary Marker" < uid=C5645856651143640007431548FCB39A >
+				{
+					myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+			}
+			myQuestBeatStateGameValue < uid=E809214363F36E640000BB97825A798E >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 453183D0A7FAD07EC267110CF07799BF
+			}
+		}
+		QuestBeat "Beat 01C Find a way to the upper floor" < uid=E809214363F368630000BA481F74C6F7 >
+		{
+			myScript helix/scripts/scr_a_mq_190_can_pln_b01c_findawaytoupperfloor.mscript
+			myName "aurabesh = false, contextComment = \"Beat Title\", enabled = true, guid = #E809214363F36BD60000BB5D9D6A8A7C, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 403, text = \"Find a way to the upper floor\", type = \"MenuLine\""
+			myLevelInfo B4061E9E637B8A5B0000001B4FD26828
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom "Obj 01 Find the data from the droid" < uid=5600F8C2649EC91C0004196D7D2FEF01 >
+				{
+					myName "aurabesh = false, contextComment = \"Obj Title\", enabled = true, guid = #5600F8C2649EC91C0004196ECF7F650B, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 9506, text = \"Find a way to wipe the droid's data\", type = \"MenuLine\"}"
+					myChildObjectives
+					{
+						QuestObjectiveCustom "Obj 01A Admin Panel MARKER" < uid=C564585666A215DA000F75B7AE6907B3 >
+						{
+							myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+						}
+					}
+				}
+				QuestObjectiveGoToLocation "Obj 02 Take the turbo lift" < uid=5600F8C264B79B750002FD942AFE97FE >
+				{
+					myName "aurabesh = false, contextComment = \"Obj title\", enabled = true, guid = #5600F8C264B79B750002FD95943EDA3C, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9506, text = \"Take the turbo lift\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=E809214363F36E640000BB98FADB84C6 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 439545CB9F070281C431389D2CE151B2
+			}
+		}
+		QuestBeat "Beat 02 Reach the meeting place" < uid=BFA41A0261D55C4B000025B9004F59E9 >
+		{
+			myScript helix/scripts/scr_a_mq_190_can_pln_b02_sliro.mscript
+			myName "aurabesh = false, contextComment = \"Beat Title\", enabled = true, guid = #BFA41A0261D55C68000025BB4E34C35A, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 9507, text = \"Reach the meeting room\", type = \"MenuLine\""
+			myLevelInfo B4061E9E637B8A5B0000001B4FD26828
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom "Obj 01 Reach the meeting room" < uid=E809214363DCF058000057F83B812769 >
+				{
+					myName "aurabesh = false, contextComment = \"Obj Title\", enabled = true, guid = #E809214363DCF08C000057F9B89DB48D, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9507, text = \"Reach the meeting room\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveCustom "Obj 01A Intermediary Marker" < uid=C5645856651182A8000209E232CEC430 >
+				{
+					myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+				QuestObjectiveCustom "Obj 02 Intermediary Marker 02" < uid=C5645856657AD07F001085D15F13B520 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+			}
+			myQuestBeatStateGameValue < uid=6F2AF91962178A0B000028084EAAC3B9 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 43135DEA53F084AFD3B57B33EB5C6CA7
+			}
+		}
+		QuestBeat "Beat 03 Steal Sliro key" < uid=C564585663998ECD0000C3AEECBB6068 >
+		{
+			myScript helix/scripts/scr_a_mq_190_can_pln_b03_securitycodes.mscript
+			myName "aurabesh = false, contextComment = \"Beat Title\", enabled = true, guid = #C564585663998EDF0000C3AFBFB6ECC5, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 9508, text = \"Steal Sliro's security codes\", type = \"MenuLine\"}"
+			myLevelInfo B4061E9E637B8A5B0000001B4FD26828
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom "Obj 01 Find the security codes" < uid=5600F8C2646748CF0001828E09CF0365 >
+				{
+					myName "aurabesh = false, contextComment = \"Obj Title\", enabled = true, guid = #5600F8C2646748F60001828F7FEDE0A2, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9508, text = \"Find the security codes in Sliro's quarters\", type = \"MenuLine\"}"
+					myChildObjectives
+					{
+						QuestObjectiveCustom "Obj 01A MARKER" < uid=C564585666A21A370011BF3581FDD488 >
+						{
+							myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+						}
+					}
+				}
+			}
+			myQuestBeatStateGameValue < uid=C564585663998FC10000C3BC3C1A3421 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4ED0A18150CC53A8EB521CAFBFB9D5A6
+			}
+		}
+		QuestBeat "Beat 03B The Bridge" < uid=C564585664C7AEE500013C105A1C6981 >
+		{
+			myScript helix/scripts/scr_a_mq_190_can_pln_b03b_thebridge.mscript
+			myName "aurabesh = false, contextComment = \"Beat Title\", enabled = true, guid = #C564585664C7AEEE00013C12394CF374, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9508, text = \"Escape the station\", type = \"MenuLine\""
+			myLevelInfo B4061E9E637B8A5B0000001B4FD26828
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Obj 01 Escape Sliro's quarters" < uid=E8092143642E82EB0000BB884F2524AD >
+				{
+					myName "aurabesh = false, contextComment = \"Obj Title\", enabled = true, guid = #E8092143642E83060000BB89900F174B, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9508, text = \"Escape Sliro's quarters\", type = \"MenuLine\"}"
+					myIntel
+					{
+					}
+				}
+				QuestObjectiveCustom "Obj 02 Erase your tracks" < uid=5600F8C2646733B90001921FBE5D9348 >
+				{
+					myName "aurabesh = false, contextComment = \"Obj Title\", enabled = true, guid = #5600F8C26467341400019221C25A62CE, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 9508, text = \"Erase any trace of Kay's presence\", type = \"MenuLine\"}"
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD FALSE
+					myChildObjectives
+					{
+						QuestObjectiveCustom "Obj 02A MARKER" < uid=C564585666A21BC80011CE7F4720EEC3 >
+						{
+							myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+						}
+					}
+				}
+				QuestObjectiveGoToLocation "Obj 03 Escape the bridge" < uid=E809214363EB6B770001130B85B4DC2E >
+				{
+					myName "aurabesh = false, contextComment = \"Obj Title\", enabled = true, guid = #E809214363EB6B950001130C940C9AAE, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9508, text = \"Escape from the bridge\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveCustom "Obj 03a Bridge Intermediary Checkpoint Corridor" < uid=C564585665E06295000C29DDACF0A7E7 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+				QuestObjectiveCustom "Obj 03b Bridge Intermediary Checkpoint Vent" < uid=C564585665549EF4000EB2328AE4985B >
+				{
+					myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD FALSE
+				}
+			}
+			myQuestBeatStateGameValue < uid=C564585664C7AF3A00013C3A88C3F434 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4C7F2A719F2700550ACCB677B901279D
+			}
+		}
+		QuestBeat "Beat 04 Find a way back to the Hangar" < uid=E809214363F368AB0000BA4976AF8CC9 >
+		{
+			myScript helix/scripts/scr_a_mq_190_can_pln_b04b_gettingout.mscript
+			myName "aurabesh = false, contextComment = \"Beat Title\", enabled = true, guid = #E809214363F36C7F0000BB5FE5E1430C, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9509, text = \"Find a way back to the hangar\", type = \"MenuLine\""
+			myLevelInfo B4061E9E637B8A5B0000001B4FD26828
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Obj 01 Meet with Riko" < uid=C564585663A2C2EF0000AA1C8F1BD69A >
+				{
+					myName "aurabesh = false, contextComment = \"Obj Title\", enabled = true, guid = #C564585663A2C3050000AA1DA5EBEB2B, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 9509, text = \"Find a way back to the hangar\", type = \"MenuLine\""
+				}
+				QuestObjectiveGoToLocation "Obj 02 Get back on the Lambda ship" < uid=5600F8C264B8E881000135A2803FE16E >
+				{
+					myName "aurabesh = false, contextComment = \"Obj Title\", enabled = true, guid = #5600F8C264B8E881000135A3A9436853, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 9509, text = \"Leave the station with the shuttle\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=E809214363F36E640000BB99B5FBF7FF >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4B3F0299115E409FB397D12DE26DCB9A
+			}
+		}
+	}
+	myQuestStateGameValue < uid=6F2AF91962178A0B000028099EAEA284 >
+	{
+	}
+	myQuestAudioState
+	{
+		myGuid 4A0F6B675E390F65492083280392DA9F
+	}
+	myQuestStartedRBTag < uid=DA5615DD64B501E50000ABB3FE7FA2D4 > = World_Quest_MQ190_Started DA5615DD64A3E12F0000AC3A6592232C
+	myQuestCompletedRBTag < uid=DA5615DD64B501E50000ABB40FA59B79 > = World_Quest_MQ190_Completed DA5615DD64A3E39D0000AC4F97FDEEC4
+}
+

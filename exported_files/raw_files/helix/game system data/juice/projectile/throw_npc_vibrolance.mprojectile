@@ -1,0 +1,36 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/projectile/realization/small_grenade.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/sonic_imploder.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/vibro_lance.mprojectilerealization"
+
+BallisticProjectile throw_npc_vibrolance < uid=2736B36563CE60350001BF7166094A07 >
+{
+	myObject
+	{
+		myMaterialType Kinetic
+		myMass 2.0
+		myAfterFinalImpactLifeTime 10.0
+		myMainShape
+		{
+			myShapeType Cylinder
+			myShapeRadius 0.1
+			myShapeHeight 1.0
+		}
+	}
+	myRealization < uid=2736B36563CE60350001BF72441FE1FC > = vibro_lance 2736B36563D00B5500014DA2E44F4DC3
+	myActions
+	{
+		ProjectileActionDamage DamageOnHit
+		{
+			myDamage 5.0
+		}
+	}
+	myNPCSensoryProjectileType Grenade
+	myInitialSpeed 20.0
+	myBounceEnabled FALSE
+	myBounceVsDynamicEnabled FALSE
+	myBounceSpeedRestitution 0.2
+	myBounceGroundSpeedRestitution 0.1
+	myBounceMaxBounces 1
+}
+

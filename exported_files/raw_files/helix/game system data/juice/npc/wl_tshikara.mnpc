@@ -1,0 +1,77 @@
+include "helix/game system data/juice/ai/dynamiccapinteractions/wildlifedcap.mnpcdynamiccapinteractionprofile"
+include "helix/game system data/juice/ai/wildlife corpse profile.mnpccorpseprofile"
+include "helix/game system data/juice/ai/wl_tshikara.mnpcmotionpatternprofile"
+include "helix/game system data/juice/melee/wildlifemeleedefense.mnpcmeleedefenseprofile"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npc/wil_fp_predator.mnpc"
+include "helix/game system data/juice/npcmove/wildlife_move_config.mnpcmoveconfig"
+include "helix/game system data/juice/quadrupedalgroundaligner/wildlife_ground_aligner_config.mquadalignerconfig"
+
+NPC wl_tshikara < uid=E9DD8F6064190E2E0000217EF6478489 > : wil_fp_predator
+{
+	myName "branch = \"TU1\", contextComment = \"The name of the feline-like creature\", enabled = true, guid = #E9DD8F606684B1FF0028BBFD85106760, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10572, text = \"Varaki\", type = \"MenuLine\""
+	myCharacterVisuals < uid=E9DD8F6064190E59000021842A068F95 > = character_visuals_wil_tshikara E9DD8F6064190E91000021894B266263
+	myBehavior helix/behaviors/wildlife_predator.mbehavior
+	myAnimSystemType Tshikara
+	myHealthFormula 24+4*WildlifeHealthDifficultyModifier
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=290EB60C641AAF9B00036FBDC2F0BB66 > = Agent_Wildlife_TshikaraTag 290EB60C641AAE4B0003496770221562
+	}
+	myPositionReservationSize 0.35
+	myNavigationLayerType Large
+	myNavigationCapability < uid=E9DD8F60647055580001A6E4054CDA25 > = TshikaraNavigationCapability E9DD8F606470541D0001A6DBE16E7474
+	myLodProfile < uid=E8E55FD8668611210003897ED16DA98F > = Wildlife_Big E8E55FD86672A9BA000AA896ED914E0D
+	myVisionProfile < uid=290EB60C641A930D00013A033C01B720 > = TshikaraVisionProfile 290EB60C641A9298000116C776A0CB92
+	myHearingProfile < uid=290EB60C641A930D00013A048614B547 > = DefaultWildlifePredatorHearingProfile 290EB60C63574559000079C00F124A84
+	mySmellProfile < uid=290EB60C641A94EB00013A2DFF2DA480 > = TshikaraSmellProfile 290EB60C641A942600013A1CFE6A4727
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=290EB60C641A962400013A4084A12AF1 > = TshikaraDetectionProfile 290EB60C641A952000013A2EC6ADCCB2
+	}
+	myAgitationProfile < uid=2E5ACA7E646F4786000041D9ACFBE8E4 > = "Tshikara Agitation Profile" 2E5ACA7E64376EB500000937C1A24519
+	myDynamicCAPInteractionProfile < uid=290EB60C64535319000127086E5C8F25 > = TshikaraDynamicCAP 290EB60C64534E9E00003731A808A70B
+	myCAPInteractionEvaluatorProfile < uid=290EB60C6453531900012709B1436260 > = DefaultCAPInteractionEvaluatorProfile EBE060C262E155B000003EBC3B767B35
+	myMotionPatternProfile < uid=E9DD8F60641917C400001DB3E158F92D > = TshikaraMotionPatternProfile E9DD8F60641916D400001DA1CDC73C34
+	myMoveTurnCapabilitiesProfile < uid=290B720F647083FC0000C74EFF9B5611 > = tshikara_NPCMoveTurnCapabilitiesProfile 290B720F647063040001673157FB02B0
+	mySteeringProfile < uid=290EB60C6461E777000921B624F20B39 > = BigWildlifeSteeringProfile 948DDC1D644A1B7100000E8CB784DC9D
+	myFleeProfile < uid=E9DD8F60641965190002A890B8D6288B > = TshikaraFleeProfile E9DD8F60641964140002A833D98F9506
+	myFootStepProfile < uid=E9DD8F60646344300000870D70783B48 > = TshikaraFootstep E9DD8F606459B2010000EFD71C8CF35F
+	myPackProfile < uid=E9DD8F60641965190002A891B680A0FA > = TshikaraPackProfile E9DD8F60641964E70002A86D164200A9
+	myPlayerMeleeDamageModifier 0.5
+	myAudioParameters
+	{
+		myEmitterName "WL Tshikara"
+		myBodyPartImpactSounds
+		{
+			BodyPartImpactSound Head
+			{
+				myBodyPart Head
+				myImpactAudioEvent
+				{
+					myGuid 492A3EA51218CF40CE9E0301C288CE8C
+				}
+			}
+		}
+	}
+	myMeleeConfig < uid=E9DD8F60641965AB0002FD12B0760D33 > = tshikara_melee_config E9DD8F6064191B510000A884B3B224B7
+	myMeleeDefenseProfile < uid=E9DD8F6065014BDD0000A2E7C8BC4EC0 > = TshikaraMeleeDefense E9DD8F6065014887000057A1ECA6A95A
+	myStaggerConfig < uid=E9DD8F6064197A1F0000B605D612F41E > = WildlifeTshikara E9DD8F60641972A400007D5520BEA039
+	myTakedownConfig < uid=E9DD8F6064549AE40000D7579499FC16 > = tshikara_takedown_config E9DD8F6064536F6700048108B02F3CEE
+	myPhysicsProfile < uid=290EB60C641AA80B00029E5C11EF6619 > = Tshikara 290EB60C641AA7A90002884B35327F49
+	myQuadrupedalGroundAlignerConfig < uid=290EB60C641BB28C00000A7099B9E19E > = "Tshikara Aligner Config" 4999D94C641AE2D9000074A6B0A1AE30
+	myMoveConfig < uid=E9DD8F6064196C070002FD3B5EA6FB9F > = tshikara_move_config E9DD8F6064196AB70002FD2CDAE6D275
+	myCorpseProfile < uid=290EB60C641BBB3D0000118808756B87 > = "Tshikara Corpse" 290EB60C641BBBD300001197B9F9DDB3
+	myResistanceProfile < uid=E9DD8F606538CF380008AE9185D79A5A > = TshikaraResistanceProfile E9DD8F606538CEE30008AE85EDB0D0C0
+	myVisualEffectFootstep < uid=D8550C146541C01500031FA9D897AA62 >
+	{
+		myFootstepEffects = Mid_wildlife
+		myLeftFootBoneAliasName LeftFoot
+		myRightFootBoneAliasName RightFoot
+		myLeftHandBoneAliasName LeftHand
+		myRightHandBoneAliasName RightHand
+		myReuseFootstepEffect TRUE
+	}
+	myFootstepVFXRange 70.0
+}
+

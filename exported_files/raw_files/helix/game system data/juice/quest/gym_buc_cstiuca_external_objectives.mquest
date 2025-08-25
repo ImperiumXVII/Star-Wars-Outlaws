@@ -1,0 +1,85 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+
+Quest gym_buc_cstiuca_branched_beat < uid=B5AFC8E463A064E40000B3D7E8DA4383 >
+{
+	myName "aurabesh = false, contextComment = \".\", enabled = true, guid = #B5AFC8E463A064E40000B3D333E56916, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 93, text = \"Branched beat test\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myBeats
+	{
+		QuestBeat "Dummy Beat" < uid=B5AFC8E463A1CE26000021091994B8FB >
+		{
+			myScript helix/scripts/scr_gym_buc_cstiuca_external_objectives_beat_initial.mscript
+			myName "aurabesh = false, contextComment = \".\", enabled = true, guid = #B5AFC8E463A317CB000167C106C40117, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"initial beat\", type = \"MenuLine\""
+			myLevelInfo DA8E26E560ACFFA2000000417898DC01
+			myObjectives
+			{
+				QuestObjectiveInteract "New QuestObjectiveInteract" < uid=B5AFC8E463A317F8000167C314855D7E >
+				{
+					myName "aurabesh = false, contextComment = \".\", enabled = true, guid = #B5AFC8E463A317F9000167C44C0F086F, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"initial interact\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=B5AFC8E463A1DD730000AE6F22306D2B >
+			{
+			}
+		}
+		QuestBeatBranchList "New QuestBeatBranchList"
+		{
+			QuestBeat BeatA < uid=B5AFC8E463A1C7370000B94469335904 >
+			{
+				myScript helix/scripts/scr_gym_buc_cstiuca_external_objectives.mscript
+				myName "aurabesh = false, contextComment = \".\", enabled = true, guid = #B5AFC8E463A1C7C30000B984462452E7, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"Beat A\", type = \"MenuLine\""
+				myLevelInfo DA8E26E560ACFFA2000000417898DC01
+				myObjectives
+				{
+					QuestObjectiveInteract ObjectiveA < uid=B5AFC8E463A1DD730000AE70E63A6B53 >
+					{
+						myName "aurabesh = false, contextComment = \".\", enabled = true, guid = #B5AFC8E463A1C7E40000B9877A543C30, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"Objective A\", type = \"MenuLine\""
+					}
+				}
+				myQuestBeatStateGameValue < uid=B5AFC8E463A1DD730000AE71D5971816 >
+				{
+					myDescription ""
+					myDefaultValue 0
+					myIsPersisted FALSE
+					myVariableAttributeName ""
+					myCanBeEditedFromScript FALSE
+					myCanBeEditedFromUI FALSE
+					myCanBeEditedFromProgressionGraph FALSE
+					myIntendedType QuestBeatState
+					myCategory QuestBeat
+					myParentLevelsToUseInInstanceName -1
+				}
+			}
+			QuestBeat BeatB < uid=B5AFC8E463A1C7380000B9455B367FFD >
+			{
+				myScript helix/scripts/scr_gym_buc_cstiuca_external_objectives_mygym.mscript
+				myName "aurabesh = false, contextComment = \".\", enabled = true, guid = #B5AFC8E463A1C85B0000B98943C154FD, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"Beat B\", type = \"MenuLine\""
+				myLevelInfo 82BA8ED362723163000000BC62929A9D
+				myObjectives
+				{
+					QuestObjectiveInteract ObjectiveB < uid=B5AFC8E463A1C87F0000B98BD9E67137 >
+					{
+						myName "aurabesh = false, contextComment = \".\", enabled = true, guid = #B5AFC8E463A1C8800000B98CD833ECAE, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"Objective B\", type = \"MenuLine\""
+					}
+				}
+				myQuestBeatStateGameValue < uid=B5AFC8E463A1C8F20000B98F3A97E4F4 >
+				{
+				}
+			}
+		}
+	}
+	myQuestStateGameValue < uid=B5AFC8E463A1AE330000E415A660D678 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType QuestState
+		myCategory Quest
+		myParentLevelsToUseInInstanceName 1
+	}
+}
+

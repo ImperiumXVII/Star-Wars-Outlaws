@@ -1,0 +1,172 @@
+//To be kept in sync with HC_CoverUtils::CoverSituation
+enum CoverSituation
+{
+	None
+	Normal
+	CornerLeft
+	CornerRight
+}
+
+list CoverSituations
+{
+	CoverSituation
+}
+
+//To be kept in sync with HC_CoverUtils::CoverAimState
+enum CoverAimState
+{
+	None
+	CrouchedAimOver
+	CrouchedLeanRight
+	CrouchedLeanLeft
+	StandingLeanRight
+	StandingLeanLeft
+	NormalActive
+	NormalHipfire
+}
+
+list CoverAimStates
+{
+	CoverAimState
+}
+
+class CoverPathfindingPenalties
+{
+	// There is a penalty based on distance between the cover and the NPC it is 1 point for each meter  1/m
+
+	float mySearchPositionDistanceFactor 1.5
+
+	float myMinSelfDistancePenalty 999.0
+	float myMaxSelfDistancePenalty 999.0
+	float myCloseToSelfDistanceFactor 3.0
+
+	float myMinTargetDistancePenalty 999.0
+	float myMaxTargetDistancePenalty 999.0
+	float myOptimalTargetDistanceFactor 3.0 // per meter cost for the target distance
+
+	float myTurningPenalty 10.0 // maximum cost for 180 turn
+
+	float myNotCoverButCoverPreferredPenalty 50.0
+	float myCornerCoverPenalty 2.0
+	float myPreviousAgentCoverPenalty 999.0
+	float myTargetsCoverPenalty 999.0
+	float myBrokenCoverPenalty 999.0
+
+	float myNoLosToTargetPenalty 999.0
+	float myFlankedPenalty 999.0
+	float myNotFlankingPositionPenalty 50.0
+	float myFlankedByNonTargetHostilePenalty 999.0
+	float myCloseToThreatPenalty 999.0
+
+	// Crossfirepenalty is used to make the NPC not take a cover between a threat and an ally
+	float myCrossfirePenalty 999.0
+	float myCloseToTeammatePenalty 45.0
+	// Penalty applied per meter if the NPC is further than 
+	float myTooFarFromTeammatesPenaltyFactor 1.0
+
+	float myOutOfNPCZoneBasePenalty 30.0
+	float myOutOfNPCZoneDistanceFactor 2.0 // per meter cost for distance from the npc zone
+
+	float myOutOfNPCPostBasePenalty 30.0
+	float myOutOfNPCPostDistanceFactor 2.0 // per meter cost for distance from the npc post
+
+	float myTacticalPositionModiferBonus 20.0
+
+	float myInsideObjectiveVolumeBonus 75.0 // deprecated, not used
+	float myInsideObjectiveVolumeBonusFalloffDistance 10.0 // deprecated, not used
+	float myOutOfNPCObjectiveVolumeBasePenalty 75.0
+	float myOutOfNPCObjectiveVolumeDistanceFactor 1.0
+	
+	float myOutOfInnerNPCObjectiveVolumeBasePenalty 150.0
+	float myOutOfInnerNPCObjectiveVolumeDistancePenalty 150.0
+
+	float myTooFarFromNPCObjectiveEntityDistanceThreshold 10.0
+	float myTooFarFromNPCObjectiveEntityBasePenalty 75.0
+	float myTooFarFromNPCObjectiveEntityDistanceFactor 1.0
+	float myInFrontOfDefendedEntityBonusFactor 20.0 // will be multiplied by a value in [-1, 1] where 1 is directly in front
+
+    float myBehindAgentPenalty 15.0
+	float myBehindTargetPenalty 15.0
+
+	float myTooCloseToDeathStainRadius 1.0
+	float myTooCloseToDeathStainPenalty 30.0
+
+	float myElevationBonus 2.0 // when higher elevation is preferred
+
+	// A shortcut to discard nodes early if their cost is too high
+	float myDiscardNodesAboveValue 500.0
+
+	// The factor for addditional positions to avoid
+	float myPositionsToAvoidFactor 1.0
+}
+
+class CoverSystem
+{
+	float myExposedMitigationFactor 0.5
+	float myFlankingCornerExtraAngle 45.0 // degrees
+	float myStrictFlankingPaddingAngle 10.0 // degrees
+	float myCornerFlankedRange 5.0
+	float myIgnoreCoverBeyondTargetAngle 110.0 // degrees from target to npc direction
+    float myIgnoreCoverBehindAgentAngle 135.0 // degrees from agent to target direction 
+	float myFlankingSafetyAngle 30.0 // degrees
+	float myOutOfCoverFlankingAngle 30.0 // degrees
+	float myCoverToCoverCameraDeadzone 25.0
+	float myCoverReleaseTimeThreshold 0.3
+	float myCoverSlotWidth 0.75
+	float myTakeCoverRotationThreshold 0.4
+	float myNPCMaxThinCoverDepth 0.35
+	float myNPCAimAroundAngle 2.0	//degrees
+	float myNPCAimOverAngle -5.0	//degrees
+	int myTurnAroundHoldTimeMS 200
+
+	float myMaxCoverSearchRadius 100.0
+
+	float myNarrowCoverMaxWidth 1.0
+
+	float myShortCornerCoverDistanceThreshold 0.6
+	
+	float myLowCoverEdgeDistance 0.8
+	float myHighCoverEdgeDistance 0.8
+	
+	float myLowCoverEdgeDistanceNPC 0.45
+	float myHighCoverEdgeDistanceNPC 0.45
+
+	float myC2CClosestPointsMaxDegreeDifference 2.5
+	float myC2CHitNormalInfluence 0.25
+	float myC2CAdjacentRailMinSlotDistance 2.0
+	float myC2CSameRailMinSlotDistance 5.0
+	float myC2CMinSlotDistance 2.0
+	
+	CoverPathfindingPenalties myCoverPathfindingPenalties
+	
+	float myRailConnectivityPropSearchRadius 10.0
+	float myRailConnectivityMaxEndpointDistance 0.2
+	float myRailConnectivityMaxOutsideAngleInDegrees 30.0
+	float myRailConnectivityMaxInsideAngleInDegrees 90.0
+	float myRailConnectivityInsideAngleEpsilonInDegrees 5.0
+	float myRailConnectivityMaxCornerAngleInDegrees 15.0
+	float myRailConnectivityShortRailsAngle 30.0
+	float myRailConnectivityMaxCornerEndpointDistance 0.51
+
+	float myRailValidationShiftEpsilon 0.01
+	float myRailValidationGroundClearance 0.2
+	float myRailValidationMaxRailHeightAboveGround 0.3
+	float myRailValidationPeekDistance 1.5
+	float myRailValidationPeekAngle1 30.0
+	float myRailValidationPeekAngle2 45.0
+	float myRailValidationStepOutDistance 0.8
+	float myRailValidationStepOutAngle1 10.0
+	float myRailValidationMinCoverVaultDepth 0.1
+	float myRailValidationMaxCoverVaultDepth 2.1
+	float myRailValidationMaxCoverTestHeight 2.7
+	bool  myRailValidationAllowPeekRightValidation FALSE
+	bool  myRailValidationAllowPeekLeftValidation FALSE
+	bool  myRailValidationAllowPeekTopValidation FALSE
+	float myRailValidationWidthEpsilon 0.01
+	float myRailValidationMinValidRailWidth 0.9
+	float myRailValidationMaxSingleRailWidth 1.2
+	float myRailValidationMinDoubleRailWidth 1.8
+	float myRailValidationMaxXRotationAngleInDegrees 10.0
+	float myRailValidationMaxZRotationAngleInDegrees 30.0
+	float myRailValidationSpacingClearance 3.0
+}

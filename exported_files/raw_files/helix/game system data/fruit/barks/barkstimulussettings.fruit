@@ -1,0 +1,191 @@
+include "helix/game system data/fruit/audio/stimulus.fruit"
+include "helix/game system data/fruit/dialogue character/dialogue_character.fruit"
+include "helix/game system data/fruit/item/item_includes.fruit"
+include "helix/game system data/fruit/rbtags/rbtags.fruit"
+include "snowdrop/modules/core/audio/vosettings.fruit"
+
+class BarkStimulusSettings
+{
+	StimulusIdentifier* myIdentifier				< tooltip="The Stimulus Identifier that these settings apply to." >
+	float myCooldown 0.0							< tooltip="Cooldown before a voice line with this Bark Stimulus can be triggered by the same agent." >
+	float myGlobalCooldown 0.0						< tooltip="Cooldown before a voice line with this Bark Stimulus can be triggered by any agent." >
+}
+
+list BarkStimulusSettingsList
+{
+	BarkStimulusSettings
+}
+
+class NPCBarks
+{
+	StimulusIdentifier* myNPCOnDamage
+	StimulusIdentifier* myNPCOnDeath
+	StimulusIdentifier* myNPCWantedEnterWanted
+	StimulusIdentifier* myNPCWantedTargetFound
+	StimulusIdentifier* myNPCWantedTargetLost
+	StimulusIdentifier* myNPCWantedRequestBackup
+	StimulusIdentifier* myNPCLastOneStanding
+}
+
+class VOInterruptBarks
+{
+	StimulusIdentifier* myInterruptSelf < tooltip="Triggered when a Kay VO line is interrupted" >
+	StimulusIdentifier* myInterruptNPCMale < tooltip="Triggered when a Male NPC VO line is interrupted" >
+	StimulusIdentifier* myInterruptNPCFemale < tooltip="Triggered when a Female NPC VO line is interrupted" >
+	StimulusIdentifier* myResumeSelf < tooltip="Triggered when a Kay VO line is resumed" >
+	StimulusIdentifier* myResumeNPCMale < tooltip="Triggered when a Male NPC VO line is resumed" >
+	StimulusIdentifier* myResumeNPCFemale < tooltip="Triggered when a Female NPC VO line is resumed" >
+}
+
+class SpaceNPCBarks
+{
+	StimulusIdentifier* mySpacePlayerDisabledStimulusIdentifier < tooltip="Triggered when an NPC ship disables the trailblazers engine." >
+	StimulusIdentifier* mySpacePlayerFullyIonizedStimulusIdentifier < tooltip="Triggered when an NPC ship fills the ion charge bar while the player is immune to stun" >
+	StimulusIdentifier* mySpacePlayerCollisionStimulusIdentifier < tooltip="Triggered when an NPC ship collides into the trailblazer." >
+	StimulusIdentifier* mySpaceFormationJoinedFightStimulusIdentifier < tooltip="Triggered when a formation joins another in battle." >
+}
+
+class SpaceKayBarks
+{
+	StimulusIdentifier* mySpaceKayCombatExitKilledAllEnemies < tooltip="Triggered when the player exits combat with all engaged enemies dead in space." >
+	StimulusIdentifier* mySpaceKayCombatExitEscapeShotsFired < tooltip="Triggered when the player exits combat after shooting at an enemy or being shot at by an enemy in space." >
+	StimulusIdentifier* mySpaceKayCombatExitEnemyHyperjumpedAway < tooltip="Triggered when the last enemy in combat with the player hyperjumps away" >
+	StimulusIdentifier* mySpaceKayCombatExitPlayerHyperjumpedAway < tooltip="Triggered when the player exits combat by hyperjumping away, upon reaching the hyperjump destination." >
+}
+
+class KayBarks
+{
+	StimulusIdentifier* myKayDeath
+	StimulusIdentifier* myKayPainBlaster
+	StimulusIdentifier* myKayPainFall
+	StimulusIdentifier* myKayBlabbermouth
+	StimulusIdentifier* myKayKilledNPC
+	StimulusIdentifier* myKayShieldFail
+	StimulusIdentifier* myKayShootInvincibleTarget
+	StimulusIdentifier* myKayStartGameReminder < tooltip="Triggered when the player enters the singleplayer game mode from the main menu." >
+	StimulusIdentifier* myKayRespawnReasonArrestedInWantedRelation < tooltip="Triggered when the player respawns after being arrested by the wanted system faction" >
+	StimulusIdentifier* myKayRespawnReasonArrestedInNonWantedRelation < tooltip="Triggered when the player respawns after being arrested by a non wanted based faction" >
+	StimulusIdentifier* myKayRespawnReasonNeutralizedByEmpire < tooltip="Triggered when the player respawns after being neutralized by the empire" >
+	StimulusIdentifier* myKayRespawnReasonDied < tooltip="Triggered when the player respawns after Dying" >
+	StimulusIdentifier* myKayRespawnReasonOutsideActiveQuest < tooltip="Triggered when the player respawns after being out of bounds" >
+	StimulusIdentifier* myKayEnterCoverOrConcealment
+	StimulusIdentifier* myKayAimingThrowable
+	StimulusIdentifier* myKayCombatExitKilledAllEnemies < tooltip="Triggered when the player exits combat with all engaged enemies dead on ground." >
+	StimulusIdentifier* myKayCombatExitEscapeShotsFired < tooltip="Triggered when the player exits combat after shooting at an enemy or being shot at by an enemy on ground." >
+	VOInterruptBarks myCombatVOInterruptBarks
+	VOInterruptBarks myRagdollVOInterruptBarks
+	VOInterruptBarks myNarrativeContextVOInterruptBarks
+}
+
+class CommsScannerBarks
+{
+	DialogueCharacterHelix* myCommsScannerFallback
+	float myMinInAreaInterval 20 < tooltip="Minimum amount of time that can go between TargetInAreaBarks" >
+	float myMaxInAreaInterval 20 < tooltip="Maximum amount of time that can go between TargetInAreaBarks" >
+	float myTimeThresholdBeforeReset 10
+	StimulusIdentifier* myWantedTargetInAreaFirst
+	StimulusIdentifier* myWantedTargetInArea
+	StimulusIdentifier* myWantedTargetInAreaLevelTransition
+	StimulusIdentifier* myWantedResetPassive
+	StimulusIdentifier* myWantedResetActive
+	StimulusIdentifier* myWantedReinforcementsIncoming
+}
+
+class PetSenseBark
+{
+	StimulusIdentifier* myStimulus
+	float myMinDistance 1.0 < tooltip="Min distance of the bark. All the PetSenseBarks will be sorted using this value so the max distance will be automatically the min distance of the next PetSenseBark." >
+}
+
+list PetSenseBarkList
+{
+	PetSenseBark
+}
+
+class PetBarks
+{
+	PetSenseBarkList myPetSenseBarks < tooltip="Triggered when the Pet Sense adds a new target." >
+}
+
+enum ThresholdBarkOperator
+{
+	LessOrEqual
+	GreaterOrEqual
+	Less
+	Greater
+	Equal
+}
+
+class ThresholdBarkStimulus
+{
+	float myThreshold 0.5
+	ThresholdBarkOperator myOperator
+	StimulusIdentifier* myStimulus
+	bool myPlayOnEachPass false < tooltip="Checking this allows the bark to play again if the threshold is passed in the other direction and then passed again." >
+}
+
+class CoopPlayerBarks
+{
+	StimulusIdentifier* myPlayerPickedUpCarriedHeistTarget
+	StimulusIdentifier* myPlayerPickedUpPocketableHeistTarget
+	StimulusIdentifier* myPlayerRevive
+	StimulusIdentifier* myPlayerDown
+	ThresholdBarkStimulus myPlayerLowHealth
+}
+
+list RBTagsList
+{
+	RBTagsTag* < compact_view=1 bhv=rbtags rbtags_filter="~+Agent" >
+}
+
+list BarkThrowableEquipmentList
+{
+	EquipmentItem*
+}
+
+list WeaponModuleItemList
+{
+	WeaponModuleItem*
+}
+
+list WantedTargetLostFallbackNPCList
+{
+	uid < bhv="constantData" constantDataType="npc" >
+}
+
+class BarkStimulusSettingsData < uid=auto >
+{
+	SpaceNPCBarks mySpaceNPCBarks
+	NPCBarks myNPCBarks
+	StimulusIdentifier* myPetOutOfRangeCommandResponseStimulusIdentifier < tooltip="Triggered when the player tries to give a pet order to the pet but the pet is too far away or busy." >
+	StimulusIdentifier* myWantedTargetLostFallback < tooltip="When wanted gauge starts to deplete, this bark is triggered. It will use a random dialogue character from the NPC list below." >
+	WantedTargetLostFallbackNPCList myWantedTargetLostFallbackNPCTypes
+
+	SpaceKayBarks mySpaceKayBarks
+	KayBarks myKayBarks
+	CommsScannerBarks myCommsScannerBarks
+	PetBarks myPetBarks
+	CoopPlayerBarks myCoopPlayerBarks
+
+	BarkStimulusSettingsList myBarkStimulusSettings
+	
+	VOType* myDefaultVOType
+	VOPrioritySource myDefaultVOPrioritySource Default
+	int myDefaultVOPriorityOverride -1
+	varmap mySubtitlePurpose < bhv = "subtitlepurpose" tooltip="Defines subtitle behaviour for Bark Stimulus" >
+
+	RBTagsList myWantedTrooperTags
+	RBTagsList myWantedOfficerTags
+	RBTagsList myWantedPilotTags
+	RBTagsList myWantedCameraTags
+	RBTagsList myInvincibleTags
+
+	WeaponModuleItemList myShieldFailBarkWeaponModules
+	BarkThrowableEquipmentList myBarkThrowableEquipments
+
+	float myAgentHighSpeedOnSpeederThreshold 15.0 < tooltip="Used to trigger high speed RBtags on Player & NPCS when using speeder" >
+	float myAgentLowSpeedOnSpeederThreshold 1.0 < tooltip="Used to trigger loew speed RBtags on Player & NPCS when using speeder" >
+
+	float myAgentIdleProximityDistance 100.0 < tooltip="Distance used to update agents proximity tags while not in combat">
+	float myPlayerFocusDistance 20.0 < tooltip="Distance in which the player keeps his focus on the bark target" >
+}

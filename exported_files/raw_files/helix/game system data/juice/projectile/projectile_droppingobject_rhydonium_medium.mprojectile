@@ -1,0 +1,48 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/projectile/realization/realization_droppingobject_rhydonium_medium.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/realization_droppingobject_small_03.mprojectilerealization"
+
+BallisticProjectile projectile_droppingObject_rhydonium_medium < uid=6F5419E764F58D9C000575336B379E96 >
+{
+	myObject
+	{
+		myMaterialType Kinetic
+		myMass 3.0
+		myFriction 1.0
+		myTravelLifeTime 5.0
+		myAfterFinalImpactLifeTime 0.0
+		myStickToHitSurfaceEnabled FALSE
+		myIgnoreProjectileCollisionFromOwner TRUE
+		myMainShape
+		{
+			myShapeType Sphere
+			myDynamicShapeEnabled FALSE
+			myShapeRadius 0.5
+			myShapeHeight 1.0
+		}
+		myExtraShapes
+		{
+		}
+	}
+	myRealization < uid=6F5419E764F58D9C00057534FF32E38A > = realization_droppingObject_rhydonium_medium 6F5419E764F58DC000057536FC183BB9
+	myActions
+	{
+		ProjectileActionDamage "New ProjectileActionDamage"
+		{
+			myDamage 10.0
+		}
+	}
+	myNPCSensoryProjectileType Grenade
+	myInitialSpeed 0.0
+	myAccelerationType Curve
+	myAccelerationConstant 1.0
+	myAccelerationCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.07212162 -0.26234567, }, outTangents = { 1.1684994 -0.070987657, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+	myBounceEnabled FALSE
+	myBounceVsDynamicEnabled FALSE
+	myBounceFriendlyFireEnabled FALSE
+	myBounceSpeedRestitution 1.0
+	myBounceGroundSpeedRestitution 0.25
+	myBounceWallSpeedRestitution 0.5
+	myBounceMaxBounces 10
+}
+

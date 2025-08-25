@@ -1,0 +1,41 @@
+// You can extend this enumeration as follows
+//	1. Introduce a new animationslots.fruit file in your game specific data folder, let's say in:
+//		FancyNewUbisoftGame\modules\core\animation\animationslots.fruit
+//	2. to introduce new additional enumeration items as follows. Snowdrop does not care for the name of the new
+//		enumeration type, for details read the next section. Just make sure to inherit from the base enumeration AnimationSlots.
+//		
+//		include "snowdrop\modules\core\animation\animationslots.fruit"
+//		enum NewAnimationSlots : AnimationSlots
+//		{
+//			NewAnimSlot1
+//			NewAnimSlot2
+//			...
+//			NewAnimSlotN
+//		}
+//		
+//	3. Introduce a new animationslotsconfig.juice file in your game specific data folder, let's say in:
+//		FancyNewUbisoftGame\modules\core\animation\animationslotsconfig.juice
+//	4. Assign the path of your new animationslots.fruit file to the member myAnimationSlotsFruit of your AnimationSlotsConfig object
+//		
+//		include snowdrop/modules/core/animation/animationslotsconfig.fruit
+//		AnimationSlotsConfig myAnimationSlotsConfig
+//		{
+//			myAnimationSlotsFruit "FancyNewUbisoftGame/modules/core/animation/animationslots.fruit"
+//		}
+//		
+//	5. In your game specific gameroots.juice file modify the path to your new animationslotsconfig.juice file assigned to file myAnimationSlotsConfig
+
+// Keep the following default enumeration in sync with "code/snowdrop/modules/Core/Core_AnimationSlotEnum.h"!
+
+include "snowdrop\modules\core\animation\animationslots.fruit"
+enum HelixAnimationSlots : AnimationSlots
+{
+	DriverSeat
+	PetSeat
+	PassengerSeat1
+	PassengerSeat2
+	PassengerSeat3
+	PassengerSeat4
+	PassengerSeat5
+	PassengerSeat6
+}

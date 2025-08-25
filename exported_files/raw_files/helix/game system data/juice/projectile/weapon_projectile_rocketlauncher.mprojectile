@@ -1,0 +1,80 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/explosion/explosion_generic.mexplosion"
+include "helix/game system data/juice/explosion/explosion_mpl.mexplosion"
+include "helix/game system data/juice/projectile/realization/rocket mpl.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/rocket.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/ship_missile.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/small_grenade.mprojectilerealization"
+
+BallisticProjectile weapon_projectile_rocketlauncher < uid=4171A7E164B93581000474DC2CD8F27D >
+{
+	myObject
+	{
+		myMaterialType Energy
+		myMass 0.0
+		myTravelLifeTime 20.0
+		myStickToHitSurfaceEnabled FALSE
+		myIgnoreProjectileCollisionFromOwner TRUE
+		myMainShape
+		{
+			myShapeType Point
+			myDynamicShapeEnabled FALSE
+			myShapeRadius 0.2
+			myDynamicShapeRadius "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 0, }, outTangents = { 0.33333334 0.066666678, 0 0, }, properties = { 2250, 3075, }, values = { 0 0.1, 1 0.30000001, }, }, maxValueBounds = 10, minValueBounds = -10, numKeys = 2, }"
+			myShapeHeight 0.2
+		}
+		myExtraShapes
+		{
+		}
+	}
+	myRealization < uid=4171A7E164B93581000474DD35DA4997 > = "Rocket MPL" 8FC7C960653FBCC10000CF2445F2F9B0
+	myActions
+	{
+		ProjectileActionGameScript HitAIEvent
+		{
+			myActionTargetType Hit
+			myGameScript "helix/game scripts/gs_grenadelauncher_detonation.mgamescript"
+			myDamageFormula 5
+			myRadiusFormula 4
+			myDefaultDamage 5.0
+			myDefaultRadius 4.0
+		}
+		ProjectileActionExplosion HitExplosion
+		{
+			myDamageFormula 5
+			myRadiusFormula 4
+			myDefaultDamage 5.0
+			myDefaultRadius 4.0
+			myExplosion < uid=4171A7E165AA35490007103B077CA96C > = explosion_mpl 8FC7C960654501CA000020BF218E6BC6
+		}
+		ProjectileActionExplosion DestroyedExplosion
+		{
+			myActionTargetType Destroyed
+			myDamageFormula 5
+			myRadiusFormula 5
+			myDefaultDamage 5.0
+			myDefaultRadius 5.0
+			myExplosion < uid=4171A7E165AA35490007103C69D9FC1F > = explosion_mpl 8FC7C960654501CA000020BF218E6BC6
+		}
+	}
+	myNPCSensoryProjectileType Grenade
+	myInitialSpeed 5.0
+	myAccelerationType Curve
+	myAccelerationConstant 1.0
+	myAccelerationCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, 0 0, -0.270235 -0.002532, }, outTangents = { 0.10149833 0, 0.13350126 1.0657327, 0 0, }, properties = { 2051, 275, 1299, }, values = { -0.30449498 0.5, 0 0.5, 2 25, }, }, numKeys = 3, }"
+	myBounceEnabled FALSE
+	myBounceVsDynamicEnabled FALSE
+	myBounceFriendlyFireEnabled FALSE
+	myBounceSpeedRestitution 0.2
+	myBounceGroundSpeedRestitution 0.1
+	myBounceMaxBounces 1
+	mySeekerEnabled TRUE
+	mySeekerTurnRate 0.03
+	mySeekerActivationDelayFormula 1
+	mySeekerTurnRateModifierCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 1, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.21837699 -0.010135055, -0.16687655 0, }, outTangents = { 0.420993 0.81472099, 0.21837699 0.010135055, 0 0, }, properties = { 275, 1299, 2051, }, values = { 0 0, 0.5 1, 1.0006297 0.39615387, }, }, numKeys = 3, }"
+	mySeekerHasMaxDistanceFromTarget TRUE
+	mySeekerMaxDistanceFromTarget 12.0
+	mySeekerMissActionEnabled FALSE
+	mySeekerTargetMissAction AbandonTarget
+}
+

@@ -1,0 +1,60 @@
+include "helix/game system data/fruit/equipment/equipment_holding.fruit"
+include "helix/game system data/juice/item/equipmentholding/holding_kays_base.mequipmentholdingconfig"
+include "helix/game system data/juice/playermovementconfig/player_movement_strafing.mplayermovementconfig"
+include "helix/game system data/juice/playermovementconfig/player_movement_throwable.mplayermovementconfig"
+include "helix/game system data/juice/playermovementconfig/player_movement_throwable_hipfire.mplayermovementconfig"
+
+EquipmentHoldingConfig holding_kays_throwable_base < uid=A207755D61F155EA00001B23C06C3601 >
+{
+	myAlwaysHold TRUE
+	mySkipPreviousHolstering TRUE
+	myCanCancelUnholster TRUE
+	mySequences
+	{
+		myHolster
+		{
+			myDuration 1.0
+		}
+		myUnHolster
+		{
+			myDuration 1.2
+		}
+		myIdleToQuickHipFireEnabled FALSE
+	}
+	myHolsterConfig
+	{
+		myHolsterMinTime 0.0
+	}
+	myRaiseConfig
+	{
+		myUseRaiseEquipment TRUE
+		myRaiseMinTime 1.33
+	}
+	myMovement
+	{
+		myMovementConfig < uid=C87B032964CD257C00078AC938E9B435 > = player_movement_throwable A207755D6285E92600003207241E04D8
+		myADSAimMovementConfig < uid=C87B032964D0EB2700025E820A4E3094 > = player_movement_strafing 4117C9C362AB16DE0018ECF8BFB03F3A
+		myADSAimMovementPersistOnUseDuration 0.5
+		myHipFireAimMovementConfig < uid=CC69B22164F0447D0001A1D57401E9B9 > = player_movement_throwable_hipfire CC69B22165EF07D000064D6D0D763D38
+		myHipFireAimMovementPersistOnUseDuration 0.7
+		myHipFireAimMovementPersistOnEndOfUse TRUE
+	}
+	myPlayerStateBehavior
+	{
+		myMelee HeldNotAllowed
+		myTraversal StateAllowed
+		myOverHeat HeldNotAllowed
+		myRoll StateAllowed
+		mySprint StateAllowed
+		myJump StateAllowed
+		myWeaponModuleSelection HeldNotAllowed
+		myInteract StateNotAllowedButRemoved
+		myForcedSlide HeldNotAllowed
+		myHangingTraversal HeldNotAllowed
+	}
+	myHeldConfig
+	{
+		myHeldIfEquipmentNotReady FALSE
+	}
+}
+

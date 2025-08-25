@@ -1,0 +1,59 @@
+include "helix/game system data/juice/melee/alwaysblockmeleedefense.mnpcmeleedefenseprofile"
+include "helix/game system data/juice/melee/npc_melee_config.mnpcmeleeconfig"
+include "helix/game system data/juice/melee/rancormeleedefense.mnpcmeleedefenseprofile"
+include "helix/game system data/juice/npc/base_hut.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC hut_rancor < uid=2736B36563D140850001DF8C793B440D > : base_hut
+{
+	myCharacterVisuals < uid=2736B36563D140850001DF8D015D9A71 > = character_visuals_2_silver_rancor 3BD581486287ACF400007CF9398EB0C7
+	myAdditionalGearGraphs 91DC5D3C6537915C0001E063BA86637B
+	myBehavior helix/behaviors/hut_rancor.mbehavior
+	myAnimSystemType Rancor
+	myIsInvulnerable FALSE
+	myMaxHealth 9999
+	myHealthFormula 9999
+	myUIFeedbackOffset 4.1
+	myFaction < uid=416E63E4651A917300053309864172F5 > = WildlifeAggressive 16DEADE660B0029700001848D72C6D93
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A129121664B49CC0004B87D20AA087F > = Agent_InvincibleVOTarget 3A1291216634DC1C000439525C698724
+	}
+	myNavigationLayerType Large
+	myNavigationCapability < uid=416E63E46687FECA00165753DBF92689 > = RancorNavigationCapability 416E63E466850BD6000B0616D9693254
+	myVisionProfile < uid=416E63E46687B9130000B29FF7F34FDF > = RancorVisionProfile 416E63E46687FE310016563FACEC8523
+	myThreatProfile < uid=416E63E4651ACFAD00037B516F53E639 > = RancorThreatProfile 416E63E465B9296B000847FEC8C12E8C
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "New NPCWeaponLoadout" < uid=416E63E46582CC520008A0603B1FB55A > = hut_Rancor 416E63E46582CC730008A06178174A25
+	}
+	myMotionPatternProfile < uid=91DC5D3C6401F2A90001561DA59006A5 > = RancorMotioNPatternProfile 91DC5D3C6401F18F000155E1467BA166
+	mySteeringProfile < uid=416E63E466505089000DFB62A0296145 > = RancorSteeringProfile 416E63E466504F0F000DF981F9DD283F
+	myFocusProfile < uid=91DC5D3C6426AAB20000EEF4D472BB54 > = CombatFocusProfile 91DC5D3C63FC700F0001A02A36DCA307
+	myCanBeDetectedByProximitySenses FALSE
+	myCanBeDistractedByPet FALSE
+	myMeleeConfig < uid=91DC5D3C63FF21EB0000C3BCBF88577F > = npc_melee_config BCDE37F162445830000053EBBBF07CF3
+	myMeleeDefenseProfile < uid=91DC5D3C642149F00000A96777229DC6 > = RancorMeleeDefense A207755D65B0FEDD00022005C79A2B3D
+	myStaggerConfig < uid=416E63E464B92848000124348DB2FC60 > = NPC_Rancor 416E63E464F1A5380001EE87A3158EF2
+	myCombatRole Beast
+	myResistanceProfile < uid=416E63E464FEDE48002C5F67C2D31075 > = RancorResistanceProfile 416E63E464FB2AB30018B819BC6A39E1
+	myVisualEffectFootstep < uid=F8181D486512F55B00017F668B6B0CE9 >
+	{
+		myFootstepEffects = Rancor
+		myLeftHandBoneAliasName LeftHand
+		myRightHandBoneAliasName RightHand
+	}
+	myRumbleEffectFootstep
+	{
+		myRumble 91CF4D48662A0B0B00020069B0F479AA
+		myIsPositional TRUE
+		myIsRotational TRUE
+		myIntensity 0.6
+		myRadius 10.0
+		myInnerRadiusMultiplier 0.2
+		myFalloffCurves Linear
+	}
+	myMusicProfileType Rancor
+	myFootstepAudioRange 100.0
+}
+

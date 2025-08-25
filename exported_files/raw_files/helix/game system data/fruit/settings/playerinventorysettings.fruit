@@ -1,0 +1,67 @@
+include "helix/game system data/fruit/item/item.fruit"
+
+class InventoryPouchSettings
+{
+	InventoryPouch myPouch
+	string myCapacity < bhv=formulaEditor formulaResolveContextType=AgentAttributes tooltip="Empty formula means unlimited capacity" >
+	bool myIsHidden false
+
+	varmap myName < bhv="localization" ui_info=1 >
+	varmap myDescription < bhv="localization" ui_info=1 >
+	string myIcon < bhv="sprite" ui_info=1 >
+}
+
+list InventoryPouchSettingsList
+{
+	InventoryPouchSettings
+}
+
+enum InventoryPouchUIGroup
+{
+	Pouch
+	PlayerInventory
+	ItemVendor
+	SpeederVendor
+	ShipVendor
+	Gear
+	Cosmetics
+	Tools
+}
+
+class InventoryPouchUIGroupInfo
+{
+	InventoryPouchUIGroup myGroup
+	InventoryPouchList myPouches
+}
+
+list InventoryPouchUIGroupInfoList
+{
+	InventoryPouchUIGroupInfo
+}
+
+class InventoryItem
+{
+	Item* myItem
+	int myAmount 1
+}
+
+list InventoryItems
+{
+	InventoryItem
+}
+
+class PlayerInventory
+{
+	InventoryItems myDefaultItems
+	InventoryPouchSettingsList myPouches < tooltip="Add more pouch types in item.fruit" >
+	InventoryPouchUIGroupInfoList myUIPouchGroups < tooltip="Add more pouch groups in playerinventorysettings.fruit" >
+}
+
+class PlayerInventorySettings < uid=auto >
+{
+	PlayerInventory myAgentInventory
+	PlayerInventory mySpeederInventory
+	PlayerInventory mySpaceshipInventory
+	PlayerInventory myPetInventory
+	PlayerInventory myRokanaSpaceshipInventory
+}

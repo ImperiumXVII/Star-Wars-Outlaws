@@ -1,0 +1,62 @@
+include "helix/game system data/fruit/settings/spaceshipenums.fruit"
+include snowdrop/modules/core/physics/collisionmaterials.fruit
+
+class CollisionEffectsByArchetype
+{
+	SpaceshipArchetype myToArchetype Default < tooltip="The collided spaceship, based on which we choose the collision effect" >
+	SpaceshipCollisionEffectType myCollisionsEffect None 
+}
+
+list CollisionEffectsByArchetypeList
+{
+	CollisionEffectsByArchetype
+}
+
+class ArchetypeToArchetypeCollisionRelation
+{
+	SpaceshipArchetype myFromArchetype Default < tooltip="The spaceship that we apply the effect on" >
+	CollisionEffectsByArchetypeList myCollisionEffectsByArchetypeList
+}
+
+list ArchetypeToArchetypeCollisionRelationList
+{
+	ArchetypeToArchetypeCollisionRelation
+}
+
+class SpaceshipArchetypeSpecificCollisionSettings
+{
+	SpaceshipCollisionEffectType myGenericDefaultCollisionEffectType Bump < tooltip="This works as a fallback, so it will be applied if we don't find any relation between the two archetypes of the colliding ships." >
+	ArchetypeToArchetypeCollisionRelationList myArchetypeToArchetypeCollisionRelations
+}
+
+class SpaceshipCollisionMaterialDamageMultiplier
+{
+	CollisionMaterialHitCategory myMaterialType VeryHard
+	float myDamageMultiplier 1.f
+}
+
+list SpaceshipMaterialDamageMultipliersList
+{
+	SpaceshipCollisionMaterialDamageMultiplier
+}
+
+class SpaceshipCollisionDamageSettings
+{
+	SpaceshipMaterialDamageMultipliersList myMaterialDamageMultipliers
+	float myGlobalDamageMultiplier 1.f
+	float myNPCDamageMultiplier 1.f
+	float myCollisionDamageInterval 1.f < tooltip="Timer started after collision damage is taken. During this time, total collision damage can't exceed max collision damage(damage of a max speed collision)" >
+	bool myUseAngularVelocity true < tooltip="Also use angular velocity in collision damage calculation" >
+}
+
+class SpaceNPCCommonSettings < uid=auto >
+{
+	string myHuntingZoneModifierFormula DecreaseHuntingRange < bhv=formulaEditor formulaResolveContextType=AgentAttributes tooltip="Percentage (0.0-1.0) applied to the NPC ships hunting zone" >
+
+	SpaceshipTypeList mySpaceshipTypesWithCallsign < tooltip="If no entry is added, the callsign and wing rbtags will be applied to all spaceship types, otherwise they will be applied only to the types from this list" >
+	float myHuntingDelay 3.f < tooltip="Time necessary to transition from relaxed state to searching state" >
+	string myDelayMultiplierByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys = { inTangents = { -0 0, -0.602639 -0.038683, }, outTangents = { -0.602639 -0.038683, 0 0, }, properties = { 3, 3}, values = { 0 5, 1000 1, }, }, numKeys = 2, }" < bhv=inputgraph tooltip="Multiplier by distance for the speed of the Hunting Delay timer" >
+	
+	SpaceshipArchetypeSpecificCollisionSettings mySpaceshipArchetypeSpecificCollisionSettings < tooltip="Collision effect relations between spaceship archetypes" >
+	SpaceshipCollisionDamageSettings myCollisionDamageSettings
+}

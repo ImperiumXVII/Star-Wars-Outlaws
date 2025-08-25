@@ -1,0 +1,691 @@
+include "dlc1/game system data/juice/sabacc/dlc1_sabaccgamegeneralconditions.msabaccgameconditions"
+include "helix/game system data/fruit/sabacc/sabaccgamescriptedcommands.fruit"
+include "helix/game system data/juice/sabacc/sabaccconditionalscriptedgames.msabaccconditionalscriptedcommandlist"
+
+SabaccGameScriptedCommands DLC1_DisableShiftOnAllPlayers < uid=E52E0D436650838E00028BCD64EBEF23 >
+{
+	myPlayerGameCommands
+	{
+		SabaccPlayerDisableShiftCommand "DISABLE SHIFT - P0"
+		{
+			myEndRound 2
+		}
+		SabaccPlayerDisableShiftCommand "DISABLE SHIFT - P1"
+		{
+			myPlayerIndex 1
+			myEndRound 2
+		}
+		SabaccPlayerDisableShiftCommand "DISABLE SHIFT - P2"
+		{
+			myPlayerIndex 2
+			myEndRound 2
+		}
+		SabaccPlayerDisableShiftCommand "DISABLE SHIFT - P3"
+		{
+			myPlayerIndex 3
+			myEndRound 2
+		}
+		SabaccPlayerDisableShiftCommand "DISABLE SHIFT - P4"
+		{
+			myPlayerIndex 4
+			myEndRound 2
+		}
+		SabaccPlayerDisableShiftCommand "DISABLE SHIFT - P5"
+		{
+			myPlayerIndex 5
+			myEndRound 2
+		}
+	}
+}
+
+SabaccGameScriptedCommands DLC1_DQ020_Game0 < uid=E52E0D43666094FF00029B56BBDB0A9A >
+{
+	myAIPlayersCheatDataCommands
+	{
+		SabaccAIPlayersCheatDataCommand "Round 2"
+		{
+			myStartRound 1
+			myEndRound 1
+			myRoundCheatInfos
+			{
+				SabaccRoundCheatInfos "CounterCheat P4 only"
+				{
+					mySabaccGameCondition < uid=305325DA667EC97A000125FBED2C9D98 > = SabaccCondition_01_Generic_IsTrue E52E0D4365BA3B42001853A216A98300
+					myRoundCheatData
+					{
+						myAIPlayerCheatingCount 1
+						myAIPlayerRandomCount 0
+						myIgnorePlayersNotClued TRUE
+						myIgnoredPlayersIndex
+						{
+							int Lando 3
+							int Player1 1
+							int Player2 2
+							int Player5 5
+						}
+					}
+				}
+			}
+		}
+	}
+	myDeckCommands
+	{
+	}
+	myStartingHandCommands
+	{
+		SabaccStartingPreciseHandCommand P0
+		{
+			myPositiveCardValue 2
+			myNegativeCardValue -4
+		}
+		SabaccStartingPreciseHandCommand P1
+		{
+			myPlayerIndex 1
+			myPositiveCardValue 4
+			myNegativeCardValue -5
+		}
+		SabaccStartingPreciseHandCommand P2
+		{
+			myPlayerIndex 2
+			myPositiveCardValue 6
+			myNegativeCardValue -5
+		}
+		SabaccStartingPreciseHandCommand P3
+		{
+			myPlayerIndex 3
+			myPositiveCardValue 0
+			myNegativeCardValue -3
+		}
+		SabaccStartingPreciseHandCommand P4
+		{
+			myPlayerIndex 4
+			myPositiveCardValue 6
+			myNegativeCardValue -2
+		}
+		SabaccStartingPreciseHandCommand P5
+		{
+			myPlayerIndex 5
+			myPositiveCardValue 8
+			myNegativeCardValue -3
+		}
+	}
+	myPlayerGameCommands
+	{
+		SabaccPlayerDisableShiftCommand "DISABLE SHIFT - P0"
+		{
+			myEndRound 2
+		}
+		SabaccPlayerDisableShiftCommand "DISABLE SHIFT - P1"
+		{
+			myPlayerIndex 1
+			myEndRound 2
+		}
+		SabaccPlayerDisableShiftCommand "DISABLE SHIFT - P2"
+		{
+			myPlayerIndex 2
+			myEndRound 2
+		}
+		SabaccPlayerDisableShiftCommand "DISABLE SHIFT - P3"
+		{
+			myPlayerIndex 3
+			myEndRound 2
+		}
+		SabaccPlayerDisableShiftCommand "DISABLE SHIFT - P4"
+		{
+			myPlayerIndex 4
+			myEndRound 2
+		}
+		SabaccPlayerDisableShiftCommand "DISABLE SHIFT - P5"
+		{
+			myPlayerIndex 5
+			myEndRound 2
+		}
+		SabaccLocalPlayerDrawCardCommand "R0 - P0 - DRAW"
+		{
+			myPositiveDeckCardValue
+			{
+				int "New int" 4
+			}
+			myNegativeDeckCardValue
+			{
+				int "New int" -3
+			}
+		}
+		SabaccLocalPlayerDrawCardCommand "R1 - P0 - DRAW"
+		{
+			myStartRound 1
+			myEndRound 1
+			myPositiveDeckCardValue
+			{
+				int "New int" 3
+			}
+			myNegativeDeckCardValue
+			{
+				int "New int" -2
+			}
+		}
+		SabaccPlayerDiceRangeCommand "DICE REVEAL - P0"
+		{
+			myEndRound 2
+			myDiceRanges
+			{
+				SabaccGameDiceRange "New SabaccGameDiceRange"
+				{
+					myRangeMax 1
+				}
+			}
+		}
+		SabaccAIPlayerDrawCardCommand "R0 - P3 - DRAW"
+		{
+			myPlayerIndex 3
+			myNegativeSeekedardValue
+			{
+				int "New int" -8
+			}
+			myNegativeDiscardedCardValue
+			{
+				int "New int" -3
+			}
+			myPositiveEndTurnCardValue
+			{
+			}
+		}
+		SabaccPlayerStandCommand "R1/2 - P3 - STAND"
+		{
+			myPlayerIndex 3
+			myStartRound 1
+			myEndRound 2
+		}
+		SabaccPlayerDiceCommand "DICE REVEAL - P3"
+		{
+			myPlayerIndex 3
+			myEndRound 2
+			myDiceValues
+			{
+				int "New int" 1
+				int "New int_0" 4
+			}
+		}
+		SabaccAIPlayerDrawCardCommand "R0 - P5 - DRAW"
+		{
+			myPlayerIndex 5
+			myPositiveSeekedCardValue
+			{
+				int "New int" 4
+			}
+			myPositiveDiscardedCardValue
+			{
+				int "New int" 8
+			}
+		}
+		SabaccAIPlayerDrawCardCommand "R0 - P1 - DRAW"
+		{
+			myPlayerIndex 1
+			myStartRound 0
+			myEndRound 0
+			myPositiveSeekedCardValue
+			{
+				int "New int" 2
+			}
+			myPositiveDiscardedCardValue
+			{
+				int "New int" 4
+			}
+			myPositiveEndTurnCardValue
+			{
+			}
+			myNegativeEndTurnCardValue
+			{
+			}
+		}
+		SabaccAIPlayerDrawCardCommand "R1 - P1 - DRAW"
+		{
+			myPlayerIndex 1
+			myStartRound 1
+			myEndRound 1
+			myNegativeDiscardedCardValue
+			{
+				int "New int" -6
+			}
+			myPositiveEndTurnCardValue
+			{
+			}
+			myNegativeEndTurnCardValue
+			{
+			}
+		}
+		SabaccAIPlayerDrawCardCommand "R2 - P1 - DRAW"
+		{
+			myPlayerIndex 1
+			myStartRound 2
+			myEndRound 2
+			myPositiveSeekedCardValue
+			{
+				int "New int" 5
+			}
+			myPositiveDiscardedCardValue
+			{
+				int "New int" 2
+			}
+			myPositiveEndTurnCardValue
+			{
+				int "New int" 5
+			}
+			myNegativeEndTurnCardValue
+			{
+				int "New int" -5
+			}
+		}
+		SabaccAIPlayerDrawCardCommand "R0 - P4 - DRAW"
+		{
+			myPlayerIndex 4
+			myStartRound 0
+			myEndRound 0
+			myPositiveSeekedCardValue
+			{
+				int "New int" 5
+			}
+			myPositiveDiscardedCardValue
+			{
+			}
+			myPositiveEndTurnCardValue
+			{
+			}
+			myNegativeEndTurnCardValue
+			{
+			}
+		}
+		SabaccAIPlayerDrawCardCommand "R1 - P4 - DRAW"
+		{
+			myPlayerIndex 4
+			myStartRound 1
+			myEndRound 1
+			myNegativeSeekedardValue
+			{
+				int "New int" -1
+			}
+			myNegativeDiscardedCardValue
+			{
+			}
+			myPositiveEndTurnCardValue
+			{
+			}
+			myNegativeEndTurnCardValue
+			{
+			}
+		}
+		SabaccAIPlayerDrawCardCommand "R2 - P4 - DRAW"
+		{
+			myPlayerIndex 4
+			myStartRound 2
+			myEndRound 2
+			myPositiveSeekedCardValue
+			{
+				int "New int" 4
+			}
+			myPositiveDiscardedCardValue
+			{
+			}
+			myPositiveEndTurnCardValue
+			{
+			}
+			myNegativeEndTurnCardValue
+			{
+			}
+		}
+	}
+}
+
+SabaccGameScriptedCommands DLC1_DQ020_Game1 < uid=E52E0D4366631EDB0008977DAFF1EC6F >
+{
+	myAIPlayersCheatDataCommands
+	{
+		SabaccAIPlayersCheatDataCommand "Round 1"
+		{
+			myStartRound 0
+			myEndRound 0
+			myRoundCheatInfos
+			{
+				SabaccRoundCheatInfos CheatInfos
+				{
+					mySabaccGameCondition < uid=305325DA667EC97A000125FD0819BE41 > = SabaccCondition_01_Generic_IsTrue E52E0D4365BA3B42001853A216A98300
+					myRoundCheatData
+					{
+						myAIPlayerCheatingCount 1
+						myAIPlayerRandomCount 0
+						myIgnorePlayersNotClued TRUE
+						myIgnoredPlayersIndex
+						{
+							int Lando 3
+						}
+					}
+				}
+			}
+		}
+		SabaccAIPlayersCheatDataCommand "Round 3"
+		{
+			myStartRound 2
+			myEndRound 2
+			myRoundCheatInfos
+			{
+				SabaccRoundCheatInfos CheatInfos
+				{
+					mySabaccGameCondition < uid=75B1D5B3670923AE0008E966123210D7 > = SabaccCondition_01_Generic_IsTrue E52E0D4365BA3B42001853A216A98300
+					myRoundCheatData
+					{
+						myAIPlayerCheatingCount 1
+						myAIPlayerRandomCount 0
+						myIgnorePlayersNotClued TRUE
+						myIgnoredPlayersIndex
+						{
+							int Lando 3
+						}
+					}
+				}
+			}
+		}
+	}
+	myDeckCommands
+	{
+	}
+	myStartingHandCommands
+	{
+		SabaccStartingPreciseHandCommand P0
+		{
+			myPositiveCardValue 5
+			myNegativeCardValue -1
+		}
+		SabaccStartingPreciseHandCommand P1
+		{
+			myPlayerIndex 1
+			myPositiveCardValue 3
+			myNegativeCardValue -6
+		}
+		SabaccStartingPreciseHandCommand P3
+		{
+			myPlayerIndex 3
+			myPositiveCardValue 6
+			myNegativeCardValue -4
+		}
+	}
+	myPlayerGameCommands
+	{
+		SabaccPlayerDisableShiftCommand "DISABLE SHIFT - P0"
+		{
+			myEndRound 2
+		}
+		SabaccPlayerDisableShiftCommand "DISABLE SHIFT - P1"
+		{
+			myPlayerIndex 1
+			myEndRound 2
+		}
+		SabaccPlayerDisableShiftCommand "DISABLE SHIFT - P2"
+		{
+			myPlayerIndex 2
+			myEndRound 2
+		}
+		SabaccPlayerDisableShiftCommand "DISABLE SHIFT - P3"
+		{
+			myPlayerIndex 3
+			myEndRound 2
+		}
+		SabaccPlayerDisableShiftCommand "DISABLE SHIFT - P4"
+		{
+			myPlayerIndex 4
+			myEndRound 2
+		}
+		SabaccPlayerDisableShiftCommand "DISABLE SHIFT - P5"
+		{
+			myPlayerIndex 5
+			myEndRound 2
+		}
+		SabaccLocalPlayerDrawCardCommand "R0 - P0 - DRAW"
+		{
+			myPositiveDeckCardValue
+			{
+				int "New int" 8
+			}
+			myNegativeDeckCardValue
+			{
+				int "New int" 0
+			}
+		}
+		SabaccLocalPlayerDrawCardCommand "R1 - P0 - DRAW"
+		{
+			myStartRound 1
+			myEndRound 1
+			myPositiveDeckCardValue
+			{
+				int "New int" 1
+			}
+			myNegativeDeckCardValue
+			{
+				int "New int" -5
+			}
+		}
+		SabaccLocalPlayerDrawCardCommand "R2 - P0 - DRAW"
+		{
+			myStartRound 2
+			myEndRound 2
+			myPositiveDeckCardValue
+			{
+				int "New int" 0
+			}
+			myNegativeDeckCardValue
+			{
+				int "New int" -1
+			}
+		}
+		SabaccPlayerDiceRangeCommand "DICE REVEAL - P0"
+		{
+			myEndRound 2
+			myDiceRanges
+			{
+				SabaccGameDiceRange "New SabaccGameDiceRange"
+				{
+					myRangeMax 1
+				}
+			}
+		}
+		SabaccAIPlayerDrawCardCommand "R0 - P1 - DRAW"
+		{
+			myPlayerIndex 1
+			myStartRound 0
+			myEndRound 0
+			myNegativeSeekedardValue
+			{
+				int "New int" -8
+			}
+			myNegativeDiscardedCardValue
+			{
+				int "New int" -6
+			}
+			myPositiveEndTurnCardValue
+			{
+			}
+			myNegativeEndTurnCardValue
+			{
+			}
+		}
+		SabaccAIPlayerDrawCardCommand "R1 - P1 - DRAW"
+		{
+			myPlayerIndex 1
+			myStartRound 1
+			myEndRound 1
+			myPositiveSeekedCardValue
+			{
+				int "New int" 2
+			}
+			myPositiveDiscardedCardValue
+			{
+				int "New int" 3
+			}
+			myPositiveEndTurnCardValue
+			{
+				int "New int" 2
+			}
+			myNegativeEndTurnCardValue
+			{
+				int "New int" -8
+			}
+		}
+		SabaccPlayerStandCommand "R2 - P1 - STAND"
+		{
+			myPlayerIndex 1
+			myStartRound 2
+			myEndRound 2
+		}
+		SabaccPlayerDiceCommand "DICE REVEAL - P1"
+		{
+			myPlayerIndex 1
+			myEndRound 2
+			myDiceValues
+			{
+				int "New int" 5
+				int "New int_0" 4
+			}
+		}
+		SabaccAIPlayerDrawCardCommand "R0 - P3 - DRAW"
+		{
+			myPlayerIndex 3
+			myStartRound 0
+			myEndRound 0
+			myPositiveSeekedCardValue
+			{
+				int "New int" 2
+			}
+			myNegativeSeekedardValue
+			{
+			}
+			myPositiveDiscardedCardValue
+			{
+				int "New int" 6
+			}
+			myNegativeDiscardedCardValue
+			{
+			}
+			myPositiveEndTurnCardValue
+			{
+			}
+			myNegativeEndTurnCardValue
+			{
+			}
+		}
+		SabaccAIPlayerDrawCardCommand "R1 - P3 - DRAW"
+		{
+			myPlayerIndex 3
+			myStartRound 1
+			myEndRound 1
+			myPositiveSeekedCardValue
+			{
+				int "New int" 4
+			}
+			myPositiveDiscardedCardValue
+			{
+				int "New int" 2
+			}
+			myPositiveEndTurnCardValue
+			{
+				int "New int" 4
+			}
+			myNegativeEndTurnCardValue
+			{
+				int "New int" -4
+			}
+		}
+		SabaccPlayerStandCommand "R2 - P3 - STAND"
+		{
+			myPlayerIndex 3
+			myStartRound 2
+			myEndRound 2
+		}
+	}
+}
+
+SabaccGameScriptedCommands DLC1_DQ020_Game2 < uid=E52E0D4366631F520008977F29A698F6 >
+{
+	myAIPlayersCheatDataCommands
+	{
+		SabaccAIPlayersCheatDataCommand "Round 2"
+		{
+			myStartRound 1
+			myEndRound 1
+			myRoundCheatInfos
+			{
+				SabaccRoundCheatInfos CheatInfos
+				{
+					mySabaccGameCondition < uid=305325DA667EC97A000125FF292AEEEE > = SabaccCondition_01_Generic_IsTrue E52E0D4365BA3B42001853A216A98300
+					myRoundCheatData
+					{
+						myAIPlayerCheatingCount 1
+						myAIPlayerRandomCount 0
+						myIgnorePlayersNotClued TRUE
+						myIgnoredPlayersIndex
+						{
+							int Lando 3
+						}
+					}
+				}
+			}
+		}
+	}
+	myDeckCommands
+	{
+	}
+	myStartingHandCommands
+	{
+		SabaccStartingPreciseHandCommand P0
+		{
+			myPositiveCardValue 3
+			myNegativeCardValue -2
+		}
+	}
+	myPlayerGameCommands
+	{
+		SabaccPlayerDisableShiftCommand "DISABLE SHIFT - P0"
+		{
+			myEndRound 2
+		}
+		SabaccPlayerDisableShiftCommand "DISABLE SHIFT - P1"
+		{
+			myPlayerIndex 1
+			myEndRound 2
+		}
+		SabaccPlayerDisableShiftCommand "DISABLE SHIFT - P2"
+		{
+			myPlayerIndex 2
+			myEndRound 2
+		}
+		SabaccPlayerDisableShiftCommand "DISABLE SHIFT - P3"
+		{
+			myPlayerIndex 3
+			myEndRound 2
+		}
+		SabaccPlayerDisableShiftCommand "DISABLE SHIFT - P4"
+		{
+			myPlayerIndex 4
+			myEndRound 2
+		}
+		SabaccPlayerDisableShiftCommand "DISABLE SHIFT - P5"
+		{
+			myPlayerIndex 5
+			myEndRound 2
+		}
+		SabaccPlayerDiceRangeCommand "DICE REVEAL - P0"
+		{
+			myEndRound 2
+			myDiceRanges
+			{
+				SabaccGameDiceRange "New SabaccGameDiceRange"
+				{
+					myRangeMax 1
+				}
+				SabaccGameDiceRange "New SabaccGameDiceRange_0"
+				{
+					myRangeMax 1
+				}
+			}
+		}
+	}
+}
+

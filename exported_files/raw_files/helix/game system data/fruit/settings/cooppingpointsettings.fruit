@@ -1,0 +1,23 @@
+include "helix/game system data/fruit/coop/cooppingpoint.fruit"
+
+class CoopPingPointSettings < uid=auto >
+{
+  float myMaxPingDistance 100.f < tooltip="Max distance you can ping at" >
+  float myAgentPingDuration 10.f < tooltip="Lifetime of agent pings" >
+  float myAgentDeadDuration 2.f < tooltip="Duration of the ping to stay alive after an agent is dead" >
+  float myLocationPingDuration 10.f < tooltip="Lifetime of ground pings" >
+  float myIngredientPingDuration 10.f < tooltip="Lifetime of ingredient pings" >
+  float myPingCooldown 1.0f < tooltip="Ping Cooldown in seconds">
+
+  float myBillboardDefaultHeight 1.5f < tooltip="Billboard default height. Used when we don't have a bounding box or for location pings." >
+  float myBillboardDefaultWidth 1.5f < tooltip="Billboard default width. Used when we don't have a bounding box or for location pings." >
+
+  int myAgentPingsLimit 3 < tooltip="Max number of agent pings per player" >
+  int myLocationPingsLimit 1 < tooltip="Max number of ground pings per player" >
+  int myIngredientPingsLimit 3 < tooltip="Max number of ingredient pings per player" >
+
+  CoopPingPoint* myLocationPingSettings < tooltip="Settings for environment pings (ground, walls, etc)" >
+  CoopPingPoint* myAgentPingSettings < tooltip="Settings for enemy pings" >
+  CoopPingPoint* myDownedSelfPingSettings < tooltip="Settings for downed player self pings" >
+  CoopPingPoint* myDownedPingSettings < tooltip="Settings for downed player pings" >
+}

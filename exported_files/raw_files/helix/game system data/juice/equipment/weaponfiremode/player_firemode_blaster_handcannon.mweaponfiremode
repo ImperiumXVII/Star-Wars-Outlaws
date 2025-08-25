@@ -1,0 +1,70 @@
+include "helix/game system data/juice/camera/modifiers/weapon_recoil_blaster_bryar.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_shake_kays_blaster.mcameramodifier"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_blaster_template.mweaponfiremode"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_small_explosive.mprojectile"
+
+WeaponFireMode player_firemode_blaster_handcannon < uid=A207755D62C2FBE30000374104A84D33 > : player_firemode_blaster_template
+{
+	myFireEvent
+	{
+		FullAutoFireEvent FullAutoFireEvent
+		{
+			myRPM
+			{
+				myRPM 140
+			}
+			myPatterns
+			{
+				myShootPatterns
+				{
+				}
+			}
+		}
+	}
+	myBaseProperties
+	{
+		myRecoil < uid=A207755D6515A03200014E3C5F984DD9 > = weapon_recoil_blaster_bryar 7113C61162AB2522000035D095251F7A
+	}
+	myOverHeat
+	{
+		myHeatingMode PerUse
+		myMaxHeatFormula 100.0
+		myHeatPerUseFormula 10.0
+		myHeatOverTimeFormula 5.0
+		myCoolingOverTimeFormula 20.0
+		myCoolingTimeToStartFormula 2.7
+		myOverHeatCoolingTimeToStartFormula 2.7
+		myOverHeatCoolingTime 0.0
+		myOverHeatCoolingOvertimeTime 33.0
+		myOverHeatReactionTime 1.0
+	}
+	myDamage
+	{
+		myDamage
+		{
+			myDamageFormula "5*(1 + (Sneakshot*(domain_expert_aila_bren.myAbilities.Sneak_Shot.myState = DomainOfMasteryAbilityState.Unlocked)))"
+		}
+	}
+	mySpread
+	{
+		mySpreadValues
+		{
+			mySpread
+			{
+				myMin 0.4
+				myMax 1.0
+			}
+		}
+		myTimeToMinAccuracy 0.3
+		myTimeToMaxAccuracy 0.6
+		mySpreadIncreaseSpeed 1.0
+		myMovementModifier 1.0
+	}
+	myFireShake < uid=A207755D62C2FBE300003745F4ABA050 > = weapon_shake_kays_blaster 346395BC6026351000000061F06D3A0E
+}
+
+WeaponFireMode player_firemode_blaster_handcannon_explosive < uid=A207755D62C2FD6F000037484CDA0DBC > : player_firemode_blaster_handcannon
+{
+	myProjectile < uid=A207755D62C2FDC20000374DD857D4F2 > = weapon_projectile_blaster_small_explosive 7113C61162B1EB700000B133F69F3263
+}
+

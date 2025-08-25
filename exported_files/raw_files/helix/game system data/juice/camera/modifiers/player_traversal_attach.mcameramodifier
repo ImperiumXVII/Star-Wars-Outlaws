@@ -1,0 +1,27 @@
+include "helix/game system data/fruit/camera/cameramodifier.fruit"
+
+ShakeCameraModifier player_traversal_attach < uid=9138CC79651E72100003658EE39AB024 >
+{
+	myTransitions
+	{
+		myInDuration 0.0
+		myInCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.9994024 0, }, outTangents = { 0.21649551 0, 0 0, }, properties = { 275, 1299, }, values = { 0 1, 1 1, }, }, numKeys = 2, }"
+		myOutDuration 0.0
+		myOutCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 0, }, outTangents = { 0.33333334 0, 0 0, }, properties = { 3, 1027, }, values = { 0 1, 1 0, }, }, numKeys = 2, }"
+	}
+	myBlocks
+	{
+		CameraShakeBlock "Air shake"
+		{
+			myIsCyclic TRUE
+			myBlendOutTime 0.0
+			myDuration 0.05
+			myStartOffset 0.0
+			myZMoveCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.10548972 -0.02500646, -0.097906575 -0.016746107, -0.12923603 0, }, outTangents = { 0.10548972 0, 0.097906575 0.02320887, 0.12923601 0.022104748, 0 0, }, properties = { 3, 1027, 2051, 3075, }, values = { 0.0021030828 0, 0.31857222 -0.11655256, 0.61229193 0.14464599, 1 0, }, }, numKeys = 4, }"
+			myZMoveAmplitude 0.1
+			myMovementStyle Cartesian
+		}
+	}
+	myShouldHandleCollision TRUE
+}
+

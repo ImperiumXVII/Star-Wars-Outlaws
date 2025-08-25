@@ -1,0 +1,49 @@
+include "helix/game system data/juice/contractgiver/fp_contractgiver_settlement.mcontractgiver"
+include "helix/game system data/juice/npc/civ_expert.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC civ_expert_selo_rovak < uid=16DEADE660D7AA730000111F6B902044 > : civ_expert
+{
+	myName "branch = \"\", contextComment = \"Selo Rovak's name both for the archetype and the sub-name in the vendor menu\", enabled = true, guid = #B581CAC860E815D70001BB91E2DB0695, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10653, text = \"Speeder Mechanic\", type = \"MenuLine\"}"
+	myCharacterVisuals < uid=83E36AE361976B1B000019E7094F2411 > = character_visuals_2_silver_selo_rovak 849AB26562A63211000081D60DE9527D
+	myAdditionalGearGraphs 91DC5D3C653665B400014B0CC310DD08
+	myBehavior helix/behaviors/civ_questnpc.mbehavior
+	myFaction < uid=16DEADE660D7AA73000011200012F378 > = Civilian B0EA4E53607561CC0000004DC311CAF9
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F25651D8213000764CEBFF3CFA8 > = Agent_Gender_FeminineTag 16DEADE6626D20EA00002E5277B65AD4
+	}
+	myPossibleSpeciesTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F25651D821A000764CFDC9DC171 > = Agent_Species_HumanTag 2736B365634D673A0003C27CFCFEFD1A
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F25651FC7B4000096C9EC9A421B > = Agent_Vendor_Named 1EC89F25651D7EBB0004A9C05AFB54F8
+		RBTagsTag "New RBTagsTag_0" < uid=3A129121656490E6000F937895B38803 > = Agent_Name_Selo 3A12912165648F65000E07C3A240B82F
+	}
+	myDialogueCharacters
+	{
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=1EC89F25651D8231000764D154C04DFC >
+		{
+			myDialogueCharacter < uid=1EC89F25651D8237000764D2756F4643 > = NAMED_SELO_ROVAK F12EE1F960CAF3ED00000DCF6CFDDAAA
+		}
+	}
+	myVendorConfig < uid=91DC5D3C651EA7D20000E075FB2A6554 > = VendorConfig_TOS_Settlement_Neutral_Speeder_EXPERT 3A296D0C6107D15E0002F514D030BFC0
+	myDomainOfMasteryExpertSet F8252D3C62568FFF00002C7582695525
+	myHideMapRefGameConditions
+	{
+		myType Group
+		myIsNegated TRUE
+		myOperator And
+		myCanBeOverridden FALSE
+		myConditions
+		{
+			GameConditionQuestIsCompleted "EQ_020 is completed"
+			{
+				myQuest 9D01D21761F7FFB000001D1CC17A3956
+			}
+		}
+	}
+}
+

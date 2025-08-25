@@ -1,0 +1,40 @@
+include "helix/game system data/fruit/ai/npcweapon.fruit"
+include "helix/game system data/juice/ai/dlc2_npcshootpatternsarray.mnpccustomshootpattern"
+include "helix/game system data/juice/ai/dlc2_npcweapons.mnpcweapon"
+include "helix/game system data/juice/ai/npcweaponloadouts.mnpcweaponloadout"
+
+NPCWeaponLoadout RokanaRaider_rifle_shield < uid=91DC5D3C66FA72B7000F5D9AD546E376 > : HiredGun_Light_Rifle_Shield
+{
+	myMainWeapon < uid=91DC5D3C66FD055100037E781F717FE6 > = weapon_npc_Blaster_RR_Rifle_Shield 91DC5D3C66FD053300037E25AA569FF5
+	myMainWeaponShootPattern < uid=91DC5D3C66FD06D700037FD46686EA1A > = Blaster_RR_Rifle 91DC5D3C66FD05E000037EC892B7710D
+	myRandomSelectionPercentage 100
+}
+
+NPCWeaponLoadout RokanaRaiderLight_pistol < uid=2E03BECB67470EAC0008B80F962DAA13 > : HiredGun_Light_Pistol_Standard
+{
+	myMainWeapon < uid=2E03BECB67599D11000233863F779F61 > = weapon_npc_RR_pistol_SE14C_modified 91DC5D3C677FEC6D0004259742C143ED
+	mySecondaryWeapon < uid=2E03BECB674710640008B820E6FEF7FC > = weapon_npc_Blaster_RR_Rifle_Shield_100drop 2E03BECB67A481960004D31540957EFA
+}
+
+NPCWeaponLoadout RokanaRaider_rifle_shield_nodrop < uid=91DC5D3C677D32F200027754791626C0 > : RokanaRaider_rifle_shield
+{
+	myMainWeapon < uid=91DC5D3C677D32F20002775521B507AC > = weapon_npc_blaster_RR_Rifle_Shield_nodrop 91DC5D3C677D326E0002764CCE82E4CF
+}
+
+NPCWeaponLoadout Hondo_pistol < uid=91DC5D3C679793C60003D649615F24D0 > : Quint_Pistol
+{
+	myMainWeapon < uid=91DC5D3C67A3308C00023995B333100B > = weapon_npc_pistol_HondoBlaster 91DC5D3C67A32F99000238FBBFCA9BB5
+	mySecondaryWeapon < uid=91DC5D3C67A3308C00023996F2D8C360 > = weapon_npc_pistol_HondoBlaster_maxDamage 91DC5D3C67A32FB3000238FCA0071FEC
+}
+
+NPCWeaponLoadout Empty_Loadout < uid=91DC5D3C67A3326A00023AE670CB1BF7 >
+{
+	myRandomSelectionPercentage 0
+}
+
+NPCWeaponLoadout StingerTash < uid=91DC5D3C67AA06B9000227D32FEDD0A2 > : RokanaRaiderLight_pistol
+{
+	myMainWeapon < uid=91DC5D3C67AA07400002384C9126227A > = weapon_npc_pistol_StingerTashBlaster 91DC5D3C67AA06DD000237F16D8D2FFA
+	myAimProfile < uid=4171A7E167EBA6D40006BDD26D5D746B > = QuestPerfectShootPattern 91DC5D3C63FDFA950002DE08E52992E2
+}
+

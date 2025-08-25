@@ -1,0 +1,93 @@
+include "helix/game system data/fruit/settings/npccombatareasanitychecksettings.fruit"
+include "helix/game system data/juice/npc/wl_bantha.mnpc"
+include "helix/game system data/juice/npc/wl_bantha_domestic.mnpc"
+include "helix/game system data/juice/npc/wl_dewback.mnpc"
+include "helix/game system data/juice/npc/wl_dewback_domestic.mnpc"
+include "helix/game system data/juice/npc/wl_gushiro.mnpc"
+include "helix/game system data/juice/npc/wl_ku.mnpc"
+include "helix/game system data/juice/npc/wl_massiff.mnpc"
+include "helix/game system data/juice/npc/wl_ngomba.mnpc"
+include "helix/game system data/juice/npc/wl_sammakho.mnpc"
+include "helix/game system data/juice/npc/wl_scurrier.mnpc"
+include "helix/game system data/juice/npc/wl_tshikara.mnpc"
+
+NPCCombatAreaSanityCheckSettings "NPC Combat Area Sanity Check Settings" < uid=2AA3EE5D65F19789000000D5C282E8DC >
+{
+	myShapeQualitySettings
+	{
+		myQualityDefinitions
+		{
+			NPCCombatAreaShapeQualityDefinition Excellent
+			{
+				myShapeScoreThreshold 3.0
+				myLabel Excellent
+				myDebugColor 0xff10ff40
+			}
+			NPCCombatAreaShapeQualityDefinition High
+			{
+				myShapeScoreThreshold 6.0
+				myLabel High
+				myDebugColor 0xff40ffff
+			}
+			NPCCombatAreaShapeQualityDefinition Medium
+			{
+				myShapeScoreThreshold 20.0
+				myLabel Medium
+				myDebugColor 0xffffe010
+			}
+			NPCCombatAreaShapeQualityDefinition Low
+			{
+				myShapeScoreThreshold 150.0
+				myLabel Low
+				myDebugColor 0xffff5a00
+			}
+		}
+	}
+	myProfiles
+	{
+		NPCCombatAreaSanityCheckProfile "Small Preys"
+		{
+			myNPCs
+			{
+				NPC wl_gushiro < uid=2AA3EE5D65F197D5000000D62BE8978D > = wl_gushiro E9DD8F606368683A0000A6C725250D89
+				NPC wl_scurrier < uid=2AA3EE5D65F93DFE001FFFF41C798888 > = wl_scurrier E9DD8F60620DF1B5000024CA5062A100
+			}
+			myDefaultSaneArea 800.0
+			myRelaxSaneAreaOverride 300.0
+		}
+		NPCCombatAreaSanityCheckProfile "Large Preys"
+		{
+			myNPCs
+			{
+				NPC wl_ngomba < uid=2AA3EE5D65F197F3000000D7CD03666D > = wl_ngomba E9DD8F606333EC38000046D1C65EE89B
+				NPC wl_dewback < uid=290EB60C660BD878002D98E423C5D306 > = wl_dewback E9DD8F6063B640C200003E016D7651DE
+				NPC wl_bantha < uid=290EB60C660BD878002D98E521D176AE > = wl_bantha E9DD8F6063058FCC00008AB2E34861F8
+				NPC wl_ku < uid=290EB60C660BD889002D98E60D3B540C > = wl_ku E9DD8F6063EB525300029316BEB61999
+				NPC wl_dewback_domestic < uid=290EB60C660BD88B002D98EE4DE25759 > = wl_dewback_domestic E9DD8F6064B8DB8D0001ECC9561C0A8B
+				NPC wl_bantha_domestic < uid=290EB60C660BDC2E002D98FB596AD0DF > = wl_bantha_domestic 948DDC1D6577FD2C0002667DD72D44E4
+			}
+			myDefaultSaneArea 5000.0
+			myRelaxSaneAreaOverride 2000.0
+		}
+		NPCCombatAreaSanityCheckProfile "Medium Predators"
+		{
+			myNPCs
+			{
+				NPC wl_massiff < uid=2AA3EE5D65F93CDB001F9380AD682978 > = wl_massiff E9DD8F6062284FB600002A5136E43318
+				NPC wl_sammakho < uid=290EB60C660BD137000000D246F49CC7 > = wl_sammakho E9DD8F60644B218000015BD478467048
+			}
+			myDefaultSaneArea 2000.0
+			myRelaxSaneAreaOverride 300.0
+		}
+		NPCCombatAreaSanityCheckProfile "Large Predators"
+		{
+			myNPCs
+			{
+				NPC wl_tshikara < uid=2AA3EE5D65F19812000000D822007B33 > = wl_tshikara E9DD8F6064190E2E0000217EF6478489
+			}
+			myDefaultSaneArea 10000.0
+			myRelaxSaneAreaOverride 400.0
+		}
+	}
+}
+

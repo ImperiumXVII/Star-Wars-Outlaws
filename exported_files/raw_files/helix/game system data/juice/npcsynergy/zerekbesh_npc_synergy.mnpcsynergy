@@ -1,0 +1,88 @@
+include "helix/game system data/fruit/npc/npcsynergy.fruit"
+include "helix/game system data/juice/legend/legendranks.mlegendrank"
+include "helix/game system data/juice/npc/ash_hiredgundroid.mnpc"
+include "helix/game system data/juice/npc/ash_ms613_ashigahenchman.mnpc"
+include "helix/game system data/juice/npc/ash_myrmite.mnpc"
+include "helix/game system data/juice/npc/ash_myrmitrix.mnpc"
+include "helix/game system data/juice/npc/civ_combatant.mnpc"
+include "helix/game system data/juice/npc/cri_commando.mnpc"
+include "helix/game system data/juice/npc/cri_enforcer.mnpc"
+include "helix/game system data/juice/npc/cri_hiredgundroid.mnpc"
+include "helix/game system data/juice/npc/cri_hiredgunlight.mnpc"
+include "helix/game system data/juice/npc/emp_deathtrooper.mnpc"
+include "helix/game system data/juice/npc/emp_heavytrooper.mnpc"
+include "helix/game system data/juice/npc/emp_officer.mnpc"
+include "helix/game system data/juice/npc/emp_probedroid.mnpc"
+include "helix/game system data/juice/npc/emp_scouttrooper_commander.mnpc"
+include "helix/game system data/juice/npc/emp_scouttrooper_no_speeder.mnpc"
+include "helix/game system data/juice/npc/emp_stormtrooper.mnpc"
+include "helix/game system data/juice/npc/emp_stormtrooper_commander.mnpc"
+include "helix/game system data/juice/npc/hut_beastmaster.mnpc"
+include "helix/game system data/juice/npc/hut_enforcer.mnpc"
+include "helix/game system data/juice/npc/hut_hiredgundroid.mnpc"
+include "helix/game system data/juice/npc/hut_hiredgunlight.mnpc"
+include "helix/game system data/juice/npc/pir_hiredgundroid.mnpc"
+include "helix/game system data/juice/npc/pir_hiredgunheavy.mnpc"
+include "helix/game system data/juice/npc/pir_hiredgunlight.mnpc"
+include "helix/game system data/juice/npc/pir_hiredgunlight_on_vehicle.mnpc"
+include "helix/game system data/juice/npc/pyk_assault.mnpc"
+include "helix/game system data/juice/npc/pyk_hiredgundroid.mnpc"
+include "helix/game system data/juice/npc/pyk_hiredgunheavy.mnpc"
+include "helix/game system data/juice/npc/pyk_hiredgunlight.mnpc"
+include "helix/game system data/juice/npc/pyk_leader.mnpc"
+include "helix/game system data/juice/npc/pyk_ms005_pykehenchman.mnpc"
+include "helix/game system data/juice/npc/pyk_ms307_injuredpyke.mnpc"
+include "helix/game system data/juice/npc/pyk_sentinel.mnpc"
+include "helix/game system data/juice/npc/wl_massiff.mnpc"
+include "helix/game system data/juice/npc/wl_sammakho.mnpc"
+include "helix/game system data/juice/npc/wl_tshikara.mnpc"
+include "helix/game system data/juice/npc/zer_hiredgundroid.mnpc"
+include "helix/game system data/juice/npc/zer_hiredgunheavy.mnpc"
+include "helix/game system data/juice/npc/zer_hiredgunlight.mnpc"
+include "helix/game system data/juice/npc/zer_hunter.mnpc"
+include "helix/game system data/juice/rbtags/living_world_activities_binary_tags.mrbtagsbinarytags"
+
+NPCSynergy zerekbesh_npc_synergy < uid=616F459666276FC4004EEDF4431C58CE >
+{
+	myCoreMembers
+	{
+		NPCSynergyMember "New NPCSynergyMember"
+		{
+			myNPC < uid=616F4596662770AB004EEE9EF0C8D839 > = zer_hunter 2736B36562BB0A67000161D6C92DD73A
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myFillerMember
+	{
+		myNPC < uid=616F459666276FC4004EEDF6AEE454E3 > = zer_hiredgunlight 2736B36563CA54120000A5EFFDDB4E8D
+		myWeight 1.0
+	}
+	myMaxAmount 10
+	myFaction 2736B36562BC1F8C0000C38818DFFEBC
+	myMinLegendRank < uid=616F459666276FC4004EEDF78ACA9C4B > = NULLREFERENCE
+	myMaxLegendRank < uid=616F459666276FC4004EEDF82BB17FF4 > = "Rank 20" 7110821464E310E10001275686AD600A
+	myTags
+	{
+	}
+}
+
+NPCSynergy Ambush_systematic < uid=616F459666277242004F6BF2E7DBB173 > : zerekbesh_npc_synergy
+{
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=616F45966627725E004F6BF3DDB4FC79 > = lwen_AmbushTag 2AE2EC8565733900000E925EEEFFCA0E
+	}
+}
+
+NPCSynergy Killsquad_systematic < uid=616F4596662783BB0005BF75736B0E3F > : zerekbesh_npc_synergy
+{
+	myFillerMember
+	{
+	}
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=616F4596662783D40005BF763F9A5C45 > = lwev_Killsquad 616F459665F4705B000549F68275B9B3
+	}
+}
+

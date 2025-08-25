@@ -1,0 +1,20 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/projectile/grenade_dynamic_smoke.mprojectile"
+
+BallisticProjectile device_dynamic_distraction_coop < uid=7EE64634633D801400019067F62C5647 > : grenade_dynamic_smoke
+{
+	myActions
+	{
+		ProjectileActionGameScript HitDetonation
+		{
+			myActionTargetType FinalHit
+			myGameScript "helix/game scripts/gs_coop_distractiondevice_detonation.mgamescript"
+			myDamageFormula 0
+			myRadiusFormula 15
+			myDefaultDamage 0.0
+			myDefaultRadius 15.0
+		}
+	}
+	myNPCSensoryProjectileType Grenade
+}
+

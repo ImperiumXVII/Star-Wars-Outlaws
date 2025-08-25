@@ -1,0 +1,31 @@
+include "helix/game system data/fruit/equipment/equipment_throwable.fruit"
+include "helix/game system data/juice/equipment/throwableconfig/grenade_base_throwable_config.mequipmentthrowableconfig"
+
+EquipmentThrowableConfig grenade_smoke_throwable_config < uid=CC69B221645A0867000218DB3CB16CE9 >
+{
+	myThrowActions
+	{
+		EquipmentThrowAction "Failsafe sequence"
+		{
+			myThrowSequence
+			{
+				myDuration 2.0
+			}
+		}
+	}
+	myQuickThrowConfig
+	{
+		myAllowQuickThrow FALSE
+	}
+	myEquipmentThrowRestrictions < uid=CC69B2216683FE7000039C36C67DAC0B > = GrenadeThrowRestriction 2277160F660BD0880002DB20E7C2C541
+	myEnableCodeDrivenThrowOrigin FALSE
+	myEquipmentThrowCurvesByConditions
+	{
+		EquipmentThrowCurveByCondition Default
+		{
+			myAngleOffsetCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = {}, outTangents = {}, properties = {}, values = {}, }, maxValueBounds = 180, minValueBounds = -180, numKeys = 0, }"
+			myThrowSpeedCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0.001 0, }, outTangents = { 0.001 0, }, properties = { 3, }, values = { 0 20, }, }, numKeys = 1, }"
+		}
+	}
+}
+

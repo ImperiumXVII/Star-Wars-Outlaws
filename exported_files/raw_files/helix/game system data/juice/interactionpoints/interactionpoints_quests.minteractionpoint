@@ -1,0 +1,228 @@
+include "helix/game system data/fruit/animation/gesturetypes.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditionbase.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+include "helix/game system data/fruit/gamevalues/gamevalues.fruit"
+include "helix/game system data/fruit/input/gameinput.fruit"
+include "helix/game system data/fruit/intel/intel.fruit"
+include "helix/game system data/fruit/interactionpoints/interactionpointminigames.fruit"
+include "helix/game system data/fruit/interactionpoints/interactionpoints.fruit"
+include "helix/game system data/fruit/interactionpoints/interactionpointtags.fruit"
+include "helix/game system data/fruit/interactionpoints/interactionpointtelemetrytypes.fruit"
+include "helix/game system data/fruit/mapref/mapref.fruit"
+include "helix/game system data/fruit/ui/uienums.fruit"
+include "helix/game system data/juice/interactionpoints/interactionpoints.minteractionpoint"
+
+InteractionPoint interactionpoints_quests < uid=91287888636CF4D70000DCA3EB6A8738 >
+{
+}
+
+InteractionPoint Examine < uid=C5B8DCF6658161FB000FC0C225EFB9AC > : TalkDefault_Interior
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, branch = \"\", contextComment = \"Kay is examining something generic\", enabled = true, guid = #C5B8DCF6658161BF000FC0C08B30603F, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 417, text = \"Examine\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myIcon ""
+		myStep 1
+	}
+	myDefaultInteractionRadius 3.0
+	myPlayerConditions
+	{
+		GameConditionIsInCriticalNarrativeMode "New GameConditionIsInCriticalNarrativeMode"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myRequiresGameActionHoldToPath FALSE
+}
+
+InteractionPoint Examine_Front < uid=C5B8DCF665816CF300177CE78D421BFE > : Examine
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, branch = \"\", contextComment = \"Kay is examining something generic\", enabled = true, guid = #C5B8DCF665816CB300177CE6D9168C75, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 417, text = \"Examine\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myIcon ""
+		myStep 1
+	}
+	myDefaultInteractionAngleDegree 180.0
+}
+
+InteractionPoint fq_htc_010_holopuck < uid=91287888636CF54A0000DCC80E8960A3 > : TalkDefault_Interior
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"UI Action Prompt\", enabled = true, guid = #91287888636CF56B0000DCD42A1AF6BA, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 417, text = \"Inspect\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "aurabesh = false, contextComment = \"UI Action Prompt\", enabled = true, guid = #91287888636CF56B0000DCD5AC64D2E8, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 417, text = \"Inspect\", type = \"MenuLine\""
+		myIcon ""
+		myStep 1
+	}
+}
+
+InteractionPoint A_MQ_130_Hangar_Gate < uid=9D0EE20B64258DDB0000E17B96599AFA >
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	}
+	myExtraStepsSetupList
+	{
+		InteractionPointSetup "75% health"
+		{
+			myLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		}
+		InteractionPointSetup "50% health"
+		{
+			myLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		}
+		InteractionPointSetup "25% health"
+		{
+			myLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		}
+		InteractionPointSetup "0% health"
+		{
+			myLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		}
+	}
+	myDefaultInteractionRadius 0.0
+	myDefaultVisibilityRadius 0.0
+}
+
+InteractionPoint A_MQ_150_holopuck < uid=C5B8DCF665A53CC7001713DFFE585FC7 > : TalkDefault_Interior
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"UI Action Prompt\", enabled = true, guid = #C5B8DCF665A53CAE001713DD5678EC2B, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 417, text = \"Inspect\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "aurabesh = false, contextComment = \"UI Action Prompt\", enabled = true, guid = #C5B8DCF665A53CAE001713DEB408D885, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 417, text = \"Inspect\", type = \"MenuLine\""
+		myIcon ""
+		myStep 1
+	}
+}
+
+InteractionPoint "EQ_020_Attach Magentic Charge" < uid=91287888649BE457001960FE82761E03 > : Sabotage
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, branch = \"\", contextComment = \"Interaction label for Attaching\", enabled = true, guid = #91287888649BE3F2001960FDA8A4C039, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10727, text = \"Attach Magnetic Charge\", type = \"MenuLine\""
+	}
+	myDefaultVisibilityRadius 12.0
+	myConsumedItem
+	{
+		myItem < uid=06F73AE165BB9619000178DE1A4A862C > = qitem_EQ_020_MagneticCharge 91287888649BFF3A002B217F4D08FC4F
+	}
+	myInteractionGestureAnimationType Place_Item
+	myConditions
+	{
+		GameConditionPlayerIsInCombatWithNPCs "Player not in combat"
+		{
+			myNumberOfNPCs 0
+			myOperator Equal
+		}
+	}
+}
+
+InteractionPoint "ASH_010 Play" < uid=912878886530E0BE0001EF51BD8EF419 > : TalkDefault_Interior
+{
+	myDefaultInteractionAngleDegree 180.0
+	myDefaultCameraAngleDegree 360.0
+	myRestrictions
+	{
+		GameConditionIsInCriticalNarrativeMode "New GameConditionIsInCriticalNarrativeMode"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionPlayerIsInCombatWithNPCs "New GameConditionPlayerIsInCombatWithNPCs"
+		{
+			myIsNegated FALSE
+			myNumberOfNPCs 0
+			myOperator Equal
+		}
+		GameConditionQuestBeatState "New GameConditionQuestBeatState"
+		{
+			myQuestBeat 619CD8EA63D8DE5D000037E06CF3A6E4
+			myQuestBeatState Started
+			myOperator NotEqual
+		}
+	}
+}
+
+InteractionPoint Talk_Ank_MQ090_Cargo < uid=4171A7E16579BF2800168B3B4AE9CEC5 > : TalkDefault_Interior
+{
+	myDefaultInteractionRadius 4.0
+	myDefaultInteractionDirection 1.0;0.0;-0.1
+	myDefaultInteractionAngleDegree 90.0
+	myDefaultMinInteractionHeightOffset -1.9
+	myDefaultUseGameEntityPositionForMinInteractionHeightOffset FALSE
+	myDefaultMaxInteractionHeightOffset -1.2
+	myDefaultUseGameEntityPositionForMaxInteractionHeightOffset FALSE
+	myDefaultVisibilityRadius 10.0
+	myDefaultVisibilityAngleDegree 360.0
+}
+
+InteractionPoint Connect_A_EQ_030 < uid=381EA52765A68205000C5479179D0896 > : interaction_once_base
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, branch = \"MAIN\", contextComment = \"A_EQ_030 Action text for connecting device\", enabled = true, guid = #381EA52765A6818D000C5478D56D0F4C, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10729, text = \"Connect\", type = \"MenuLine\""
+	}
+	myConditions
+	{
+		GameConditionPlayerIsInCombatWithNPCs GameConditionPlayerIsInCombatWithNPCs
+		{
+			myNumberOfNPCs 0
+			myOperator Equal
+		}
+	}
+}
+
+InteractionPoint TQ_PickupNixLoot < uid=CC6CF61E6419CB9B000075EF277FE8A0 > : interaction_once_base
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, branch = \"\", contextComment = \"Interaction label\", enabled = true, guid = #CC6CF61E6419CB70000075CC45F29AF8, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10727, text = \"Retreive\", type = \"MenuLine\""
+	}
+	myDefaultInteractionAngleDegree 360.0
+	myDefaultVisibilityAngleDegree 360.0
+	myRestrictions
+	{
+		GameConditionPlayerIsInMovementState "No Interaction during Jump"
+		{
+			myType PlayerIsInMovementState
+			myIsNegated TRUE
+			myState Air
+		}
+	}
+	myPersistenceType None
+	myAutosaveTriggerType OnReleaseAfterPerform
+	myPlayerEquipmentSettings
+	{
+		myHolsterOnClaimed TRUE
+		myHolsterOnClaimedSkipSequence TRUE
+	}
+	myEditorMenuStructure Loot
+}
+
+InteractionPoint A_MQ100_PlaceExplosive < uid=61A9E8DE65FAB5AD0004687A2B7793D8 > : Press
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, branch = \"MAIN\", contextComment = \"Action that the player can perform to place explosives on MQ100 wall\", enabled = true, guid = #61A9E8DE65FAB6270004687D5C7796A0, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 10727, text = \"Place explosive\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myIcon ""
+		myStep 1
+	}
+}
+
+InteractionPoint AKI_MS1006_Poster < uid=E52E0D4366224431000B4E7B4C0DC290 > : interaction_once_base
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, branch = \"\", contextComment = \"Name of interaction verb for viewing an object (here a poster in the world)\", enabled = true, guid = #E52E0D43662244E5000C2E3F0DBA1F79, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 10727, text = \"Inspect\", type = \"MenuLine\""
+	}
+}
+

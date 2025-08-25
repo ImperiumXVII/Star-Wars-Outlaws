@@ -1,0 +1,31 @@
+include "helix/game system data/fruit/ai/capinteraction.fruit"
+include "helix/game system data/juice/rbtags/allrbtags.juice"
+
+CAPInteraction Inspect_Dynamic_InspectGround_H467 < uid=41240B2465F2F6040010B411B03A8C67 >
+{
+	mySequence helix/sequence/cap_h467_hum_examining_trails_m_v01.msequence
+	myCAPScript helix/scripts/scr_cap_ambient_dynamic.mscript
+}
+
+CAPInteraction Patrol_Dynamic_StandingDusting_H672 < uid=41240B2465F306210002194E7424D178 > : Inspect_Dynamic_InspectGround_H467
+{
+	mySequence helix/sequence/cap_h672_hum_standing_dusting_ua_v01.msequence
+}
+
+CAPInteraction Patrol_Dynamic_StandingStretch_H673 < uid=41240B2465F3064B000219826AE1E689 > : Inspect_Dynamic_InspectGround_H467
+{
+	mySequence helix/sequence/cap_h673_hum_standing_stretching_ua_v01.msequence
+}
+
+CAPInteraction Guard_Dynamic_LookingAround_H370 < uid=41240B2465F303F30001A9B3F08B95AF >
+{
+	mySequence helix/sequence/cap_h370_emp_officer_supervising_vantage_point_m_v01.msequence
+	myCAPScript helix/scripts/scr_cap_ambient_dynamic.mscript
+	myPreferedDuration 5.0
+}
+
+CAPInteraction Eat_Dynamic_EatingWhileStandingUp_H060 < uid=41240B2465F2FB530004E21E4FAFFFF4 > : Guard_Dynamic_LookingAround_H370
+{
+	mySequence helix/sequence/cap_h060_hum_eating_standing_m_v1.msequence
+}
+

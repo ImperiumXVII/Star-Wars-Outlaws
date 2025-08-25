@@ -1,0 +1,22 @@
+include helix/audio/votypes.juice
+include "helix/game system data/fruit/settings/dialoguegraphsettings.fruit"
+include "helix/game system data/juice/dialogue choice tone/dialogue choice tones.mdialoguechoicetone"
+
+DialogueGraphSettings DialogueGraphSettings < uid=5B075E3E60C354E20000083E6AED4E97 >
+{
+	myDefaultVOType < uid=3A1C5D1862F376D10000409FE70C60B1 > = VOType_Scene_ScriptedVO 3A1C5D1862D94CAA00003D6D2224BA70
+	myDefaultChoiceTone < uid=5B075E3E60C355160000083FD999E894 > = Neutral 5B075E3E60C359AE00000CB80D42D283
+	myNodeSafeList
+	{
+		string "Activate Intel" HC_ActivateIntelScriptNode
+		string "Resolve Intel" HC_ResolveIntelScriptNode
+		string "Disable Intel" HC_DisableIntelScriptNode
+		string "Modify Reputation" HC_ModifyReputationScriptNode
+	}
+	myDialogueInterruptStatusEffects
+	{
+		StatusEffectType "New StatusEffectType" BlindedByPlayerPet
+		StatusEffectType "New StatusEffectType_0" Distracted
+	}
+}
+

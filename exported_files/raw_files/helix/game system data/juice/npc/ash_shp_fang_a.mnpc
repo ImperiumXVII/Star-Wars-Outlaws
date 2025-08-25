@@ -1,0 +1,31 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/ash_shp_base.mnpc"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC ash_shp_fang_a < uid=F95CD8F364AD16470001D89DDA415A90 > : ash_shp_base
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Junkros / Fang - Ashiga faction\", enabled = true, guid = #6AE6EE0D65771E62000236E192F86380, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10726, text = 'JLF-19 \"Junkros\" Fighter', type = \"MenuLine\""
+	myCharacterVisuals < uid=F95CD8F364AD16470001D89EB38B3F9F > = character_visual_npc_space_pirate_01 6EA796256329BC74000093EC8C1EB181
+	myNPCComponentSetType Spaceship
+	mySpaceshipType Fang
+	myMaxHealth 40
+	myHealthFormula 20*SpaceHealthDifficultyModifier
+	myLodType Spaceship_Small
+	myVisionProfile < uid=F95CD8F364AD16470001D89FBBB55879 > = visionProfile_ash_ship_Fighter 6B0E1DE964B7A45D0000AD6118043BCC
+	myHearingProfile < uid=F95CD8F364AD16470001D8A054803C42 > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=6B0E1DE964B67D7B0000A0F1223B1C3B > = detectionProfile_ash_ship_Fighter 6B0E1DE964B662190003C715E97DE907
+	}
+	myThreatProfile < uid=F95CD8F3653F85CE00057C01E454B51E > = Spaceshipthreatprofile F95CD8F3653F81EE00057BF796B8AD1A
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "fang weapon loadout" < uid=F95CD8F364AD16470001D8A26E58D958 > = weaponloadout_base_shp_fang F95CD8F3640B00770000097BBE3E67AD
+	}
+	myPatrolFormationProfile < uid=F95CD8F364AD16470001D8A37F3F327A > = TiefighterPatrolFormation F97070E1630617BB000045D00ED770A9
+	myCombatRole Fighter
+}
+

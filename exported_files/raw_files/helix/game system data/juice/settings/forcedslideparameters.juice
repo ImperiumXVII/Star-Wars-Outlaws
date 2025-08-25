@@ -1,0 +1,51 @@
+include "helix/game system data/fruit/settings/playersettings.fruit"
+include "helix/game system data/juice/camera/modifiers/player_forcedslide.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/player_jump.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/player_jump_sprint.mcameramodifier"
+include "helix/game system data/juice/playerrestrictions/forcedslide.mplayerrestriction"
+
+ForcedSlideParameters DefaultForcedSlideParameters
+{
+	myForcedSlideAccelerationOverTime "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 1, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.33333334 0, }, outTangents = { 0.048519909 0.66105223, 0 0, }, properties = { 1299, 2051, }, values = { 0 6, 1 8, }, }, numKeys = 2, }"
+	myForcedSlideMaxSpeed 15.0
+	myMinDistanceToStartForcedSlideDeceleration 1.5
+	myMinSpeedToStartForcedSlide 1.0
+	myMinExitSpeedToEndForcedSlide 4.0
+	myPreForcedSlideSpeedCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.06666667 0.2, -0.26666668 0, }, outTangents = { 0.641985 0, 0.26666668 -0.80000001, 0 0, }, properties = { 275, 2051, 1027, }, values = { 0 0, 0.2 -1, 1 -3, }, }, numKeys = 3, }"
+	myDecelerationOverMovementAngle "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -60 0, }, outTangents = { 60 0, 0 0, }, properties = { 1027, 2051, }, values = { 0 0, 180 2, }, }, numKeys = 2, }"
+	myTerminationTimeOffset 100.0
+	myOnExitSpeedCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.10000001 0, }, outTangents = { 0.1 0, 0 0, }, properties = { 275, 1027, }, values = { 0 0, 0.30000001 -15, }, }, numKeys = 2, }"
+	myForceSlideRestrictions < uid=558F531E64E7706200007F56DEAB1B99 > = forcedslide 558F531E645A68270000B462074F3654
+	myMaxTurnAngle 0.349066
+	myMovementTurnDurationWhileSliding 0.8
+	myKeepMovementOnForcedSlideEnd TRUE
+	myResetSpeedStartingOnLanding TRUE
+	myRetainedVerticalLandingSpeedPercentageFromSameDirection 1.0
+	myRetainedVerticalLandingSpeedPercentageFromOppositeDirection 0.45
+	myRetainedVerticalLandingSpeedMultiplierOverSlopeAngle "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -20 -0.33333334, }, outTangents = { 20 0.33333334, 0 0, }, properties = { 203, 1227, }, values = { 0 0, 60 1, }, }, numKeys = 2, }"
+	myRetainedInDirectionLandingSpeedPercentage 1.0
+	myRetainedSpeedMultiplierOnDownhillOverSlopeToMovementAngle "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -30 0, }, outTangents = { 30 0, 0 0, }, properties = { 2051, 3075, }, values = { 0 0.80000001, 90 0.1, }, }, numKeys = 2, }"
+	myOverriddenCoyoteJumpTimeWindow 0.2
+	myOverrideJumpCooldownStartingFromOppositeDirection 0.5
+	myStatesWithNixOnShoulder
+	{
+		ForcedSlideState "New ForcedSlideState" ForcedSliding
+	}
+	myForcedSlideFallStrategy FallInVolumeWithRaycastCheck
+	myCastLengthToFall 1.0
+	myMinDistanceToVolumeEndForOutroToFall 5.0
+	myForwardRaycastOffsetForOutroToFall 0.5
+	myVerticalRaycastOffsetForOutroToFall 0.5
+	myRaycastLengthForOutroToFall 1.0
+	myForcedSlideCameraModifier < uid=558F531E64E7706200007F57A8E538C6 > = player_forcedslide 558F531E645A6C0D0000B4634C779AB5
+	myJumpSettings
+	{
+		myMaxRange 5.0
+		mySpeedThreshold 999.0
+		myMaxHeight 1.3
+		myStompBoost 2.5
+		myDescentMultAfterApex 1.75
+		myCameraShake < uid=558F531E64E7706200007F585A982D92 > = player_jump_sprint 3842910665E8BA840005464D7A2FC040
+	}
+}
+

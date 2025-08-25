@@ -1,0 +1,415 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/explosion/explosion_concusion.mexplosion"
+include "helix/game system data/juice/explosion/explosion_generic.mexplosion"
+include "helix/game system data/juice/explosion/explosion_missile_ion_01.mexplosion"
+include "helix/game system data/juice/explosion/explosion_torpedoes.mexplosion"
+include "helix/game system data/juice/explosion/explosion_torpedoes_proton.mexplosion"
+include "helix/game system data/juice/projectile/realization/ship_missile.mprojectilerealization"
+
+BallisticProjectile projectile_ship_missile_base < uid=B005013562723C5100002CF6C1C5C41B >
+{
+	myObject
+	{
+		myMaterialType Kinetic
+		myMass 0.01
+		myTravelLifeTime 5.0
+		myMaxTravelDistanceEnabled TRUE
+		myMaxTravelDistance
+		{
+			myFormula 3500
+			myDefault 3500.0
+		}
+		myAfterFinalImpactLifeTime 0.2
+		myMainShape
+		{
+			myShapeType Point
+			myShapeRadius 1.5
+			myShapeHeight 0.6
+		}
+	}
+	myRealization < uid=B005013562723C5100002CF7FBA539BB > = base_projectile_realization A207755D63F36C75000009C1DF348ABD
+	myActions
+	{
+		ProjectileActionExplosion Explosion
+		{
+			myActionTargetType FinalHit
+			myDamageType Blast
+			myDamageFormula 50
+			myRadiusFormula 50
+			myDefaultDamage 50.0
+			myDefaultRadius 50.0
+			myExplosion < uid=A207755D64A584670001A6462493A273 > = explosion_torpedoes F8181D4864F6F4A300083B5DC4BEF98C
+		}
+		ProjectileActionExplosion "Missiles Life Time"
+		{
+			myActionTargetType Expired
+			myDamageType Blast
+			myDamageFormula 50
+			myRadiusFormula 50
+			myDefaultDamage 50.0
+			myDefaultRadius 50.0
+			myExplosion < uid=A207755D64A592E00001250C1A6DAD8D > = explosion_torpedoes F8181D4864F6F4A300083B5DC4BEF98C
+		}
+	}
+	myInitialSpeed 300.0
+	myAccelerationType Curve
+	myAccelerationConstant 0.0
+	myAccelerationCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -1 0, }, outTangents = { 1 0, 0 0, }, properties = { 3, 2051, }, values = { 0 25, 3 0, }, }, numKeys = 2, }"
+	myBounceEnabled FALSE
+	myBounceFriendlyFireEnabled FALSE
+	myBounceMaxBounces 1
+	mySeekerEnabled TRUE
+	mySeekerTurnRate 8.0
+	mySeekerActivationDelayFormula 0.4
+	mySeekerTurnRateModifierCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 1, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -1.5 0, }, outTangents = { 0.5 -0.12027764, 0 0, }, properties = { 275, 1299, }, values = { 0 1, 3 0.30000001, }, }, numKeys = 2, }"
+	mySeekerMissActionEnabled TRUE
+	mySeekerMaxDistanceToConsiderMiss 10.0
+}
+
+BallisticProjectile projectile_tb_missile_concussion < uid=B4FBE43065081A2B000B0ACDE9742657 > : projectile_ship_missile_base
+{
+	myObject
+	{
+		myTravelLifeTime 10.0
+	}
+	myRealization < uid=B4FBE43065081A2B000B0ACE42980275 > = realization_ship_missile_concussion 6B0E1DE964AFC830000BFFEC1B8B6FBD
+	myActions
+	{
+		ProjectileActionExplosion Explosion
+		{
+			myActionTargetType FinalHit
+			myDamageType Blast
+			myDamageFormula 30
+			myRadiusFormula 25
+			myDefaultDamage 30.0
+			myDefaultRadius 25.0
+			myExplosion < uid=B4FBE43065081A2B000B0ACFC90E01E4 > = explosion_concusion F8181D48653D25270027A9231DA04B3A
+		}
+		ProjectileActionExplosion "Missiles Life Time"
+		{
+			myActionTargetType Expired
+			myDamageType Blast
+			myDamageFormula 30
+			myRadiusFormula 25
+			myDefaultDamage 30.0
+			myDefaultRadius 25.0
+			myExplosion < uid=B4FBE43065081A2B000B0AD005AE7418 > = explosion_concusion F8181D48653D25270027A9231DA04B3A
+		}
+	}
+	myInitialSpeed 200.0
+	myAccelerationCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 -0, -0.33333334 0, }, outTangents = { 0.33333334 0, 0.33333334 0, 0 0, }, properties = { 3, 3075, 2051, }, values = { 0 0, 1 150, 2 0, }, }, numKeys = 3, }"
+	mySeekerEnabled TRUE
+	mySeekerTurnRate 6.0
+	mySeekerTurnRateModifierCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 1, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -1.5 0, }, outTangents = { 0.69773304 0.021518379, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 2 0.5, }, }, numKeys = 2, }"
+	mySeekerMissActionEnabled TRUE
+	mySeekerTargetMissAction Expire
+}
+
+BallisticProjectile projectile_tb_missile_advanced_concussion < uid=6B0E1DE964AFFA3B000DF29B257090D8 > : projectile_ship_missile_base
+{
+	myObject
+	{
+		myTravelLifeTime 10.0
+	}
+	myRealization < uid=6B0E1DE964AFFA3B000DF29C3F8894A7 > = realization_ship_missile_concussion 6B0E1DE964AFC830000BFFEC1B8B6FBD
+	myActions
+	{
+		ProjectileActionExplosion Explosion
+		{
+			myActionTargetType FinalHit
+			myDamageType Blast
+			myDamageFormula 50
+			myRadiusFormula 35
+			myDefaultDamage 50.0
+			myDefaultRadius 35.0
+			myExplosion < uid=B4FBE43065081A2B000B0AD14DA0AC64 > = explosion_concusion F8181D48653D25270027A9231DA04B3A
+		}
+		ProjectileActionExplosion "Missiles Life Time"
+		{
+			myActionTargetType Expired
+			myDamageType Blast
+			myDamageFormula 50
+			myRadiusFormula 35
+			myDefaultDamage 50.0
+			myDefaultRadius 35.0
+			myExplosion < uid=B4FBE43065081A2B000B0AD2CFA9840F > = explosion_concusion F8181D48653D25270027A9231DA04B3A
+		}
+	}
+	myInitialSpeed 300.0
+	myAccelerationCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 -0, -0.33333334 0, }, outTangents = { 0.33333334 0, 0.33333334 0, 0 0, }, properties = { 3, 3075, 2051, }, values = { 0 0, 1 200, 2 0, }, }, numKeys = 3, }"
+	mySeekerEnabled TRUE
+	mySeekerTurnRate 8.0
+	mySeekerTurnRateModifierCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 1, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.66666669 0, }, outTangents = { 1.0064578 0.032801867, 0 0, }, properties = { 275, 2051, }, values = { 0 0, 2 0.80000001, }, }, numKeys = 2, }"
+	mySeekerMissActionEnabled TRUE
+	mySeekerTargetMissAction Expire
+}
+
+BallisticProjectile projectile_tb_missile_cluster < uid=6AF0BA0464B6AA6F0001AAF37C8577EF > : projectile_ship_missile_base
+{
+	myObject
+	{
+		myTravelLifeTime 8.0
+	}
+	myRealization < uid=6AF0BA0464B6AA6F0001AAF483C43C86 > = realization_ship_missile_cluster 6AF0BA0464B6AA2C0001AAD2AB3A991D
+	myActions
+	{
+		ProjectileActionExplosion Explosion
+		{
+			myActionTargetType FinalHit
+			myDamageType Blast
+			myDamageFormula 50
+			myRadiusFormula 35
+			myDefaultDamage 50.0
+			myDefaultRadius 35.0
+			myExplosion < uid=B4FBE430653919370006A35172E92104 > = explosion_concusion F8181D48653D25270027A9231DA04B3A
+		}
+		ProjectileActionExplosion "Missiles Life Time"
+		{
+			myActionTargetType Expired
+			myDamageType Blast
+			myDamageFormula 50
+			myRadiusFormula 35
+			myDefaultDamage 50.0
+			myDefaultRadius 35.0
+			myExplosion < uid=B4FBE430653919370006A352E0AB4F7F > = explosion_concusion F8181D48653D25270027A9231DA04B3A
+		}
+	}
+	myInitialSpeed 300.0
+	myAccelerationCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 -0, -0.33333334 0, }, outTangents = { 0.33333334 0, 0.33333334 0, 0 0, }, properties = { 3, 3075, 2051, }, values = { 0 0, 1 200, 2 0, }, }, numKeys = 3, }"
+	mySeekerEnabled TRUE
+	mySeekerTurnRate 8.0
+	mySeekerTurnRateModifierCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 1, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.66666669 0, }, outTangents = { 1.054844 0.017301142, 0 0, }, properties = { 275, 2051, }, values = { 0 0, 2 0.80000001, }, }, numKeys = 2, }"
+	mySeekerMissActionEnabled TRUE
+	mySeekerTargetMissAction Expire
+}
+
+BallisticProjectile projectile_tb_missile_torpedo < uid=B4FBE430642EB1B500003870DA761A8E > : projectile_ship_missile_base
+{
+	myObject
+	{
+		myMaterialType Kinetic
+		myTravelLifeTime 5.0
+	}
+	myRealization < uid=B4FBE430642EB1B50000387163F3B417 > = realization_ship_missile_torpedoes 6B0E1DE964AFC8BB000C00528BF2158B
+	myActions
+	{
+		ProjectileActionExplosion Explosion
+		{
+			myActionTargetType FinalHit
+			myDamageType Blast
+			myDamageFormula 100
+			myRadiusFormula 100
+			myDefaultDamage 100.0
+			myDefaultRadius 100.0
+			myExplosion < uid=B4FBE4306512E2760003038E1E2C479D > = explosion_torpedoes F8181D4864F6F4A300083B5DC4BEF98C
+		}
+		ProjectileActionExplosion "Missiles Life Time"
+		{
+			myActionTargetType Expired
+			myDamageType Blast
+			myDamageFormula 100
+			myRadiusFormula 100
+			myDefaultDamage 100.0
+			myDefaultRadius 100.0
+			myExplosion < uid=B4FBE4306512E2760003038FDFE637D5 > = explosion_torpedoes F8181D4864F6F4A300083B5DC4BEF98C
+		}
+	}
+	myInitialSpeed 170.0
+	myAccelerationCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 -0, -0.33333334 0, }, outTangents = { 0.33333334 0, 0.33333334 0, 0 0, }, properties = { 3, 3075, 2051, }, values = { 0 0, 1 80, 2 0, }, }, numKeys = 3, }"
+	mySeekerEnabled TRUE
+	mySeekerTurnRate 6.0
+	mySeekerTurnRateModifierCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 1, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -1 0, }, outTangents = { 1.110513 -0.017078727, 0 0, }, properties = { 275, 2051, }, values = { 0 0, 3 0.5, }, }, numKeys = 2, }"
+	mySeekerMissActionEnabled TRUE
+	mySeekerTargetMissAction Expire
+}
+
+BallisticProjectile projectile_tb_missile_proton_torpedo < uid=B4FBE4306523F91F00088BA46C285ED0 > : projectile_ship_missile_base
+{
+	myObject
+	{
+		myMaterialType Kinetic
+		myTravelLifeTime 5.0
+	}
+	myRealization < uid=B4FBE4306523F91F00088BA58AA2D74C > = realization_ship_missile_proton 6AF0BA0464C0DFB00001311BA4E0EBF4
+	myActions
+	{
+		ProjectileActionExplosion Explosion
+		{
+			myActionTargetType FinalHit
+			myDamageType Blast
+			myDamageFormula 140
+			myRadiusFormula 100
+			myDefaultDamage 140.0
+			myDefaultRadius 100.0
+			myExplosion < uid=B4FBE4306523F91F00088BA685C55EE5 > = explosion_torpedoes_proton F8181D48653D295800021D1B2D2151F2
+		}
+		ProjectileActionExplosion "Missiles Life Time"
+		{
+			myActionTargetType Expired
+			myDamageType Blast
+			myDamageFormula 140
+			myRadiusFormula 100
+			myDefaultDamage 140.0
+			myDefaultRadius 100.0
+			myExplosion < uid=B4FBE4306523F91F00088BA777F226AB > = explosion_torpedoes_proton F8181D48653D295800021D1B2D2151F2
+		}
+	}
+	myInitialSpeed 170.0
+	myAccelerationCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 -0, -0.33333334 0, }, outTangents = { 0.33333334 0, 0.33333334 0, 0 0, }, properties = { 3, 3075, 2051, }, values = { 0 0, 1 160, 2 0, }, }, numKeys = 3, }"
+	mySeekerEnabled TRUE
+	mySeekerTurnRate 6.0
+	mySeekerTurnRateModifierCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 1, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -1 0, }, outTangents = { 1.1204971 -0.0017512441, 0 0, }, properties = { 275, 2051, }, values = { 0 0, 3 0.5, }, }, numKeys = 2, }"
+	mySeekerMissActionEnabled TRUE
+	mySeekerTargetMissAction Expire
+}
+
+BallisticProjectile projectile_tb_missile_ion < uid=6B0E1DE964AFC3EE0008EBCBA41ABFA3 > : projectile_ship_missile_base
+{
+	myObject
+	{
+		myMaterialType Kinetic
+		myTravelLifeTime 7.5
+	}
+	myRealization < uid=6B0E1DE964AFC3EE0008EBCC70C5E6FB > = realization_ship_missile_ion 6B0E1DE964AFC8BB000C0053DE023A68
+	myActions
+	{
+		ProjectileActionExplosion Explosion
+		{
+			myActionTargetType FinalHit
+			myDamageType Blast
+			myDamageFormula 25
+			myRadiusFormula 25
+			myDefaultDamage 25.0
+			myDefaultRadius 25.0
+			myExplosion < uid=6B0E1DE964AFC3EE0008EBCDD28BA007 > = explosion_missile_ion_01 F8181D48653932AD000348B7141DF007
+		}
+		ProjectileActionExplosion "Missiles Life Time"
+		{
+			myActionTargetType Expired
+			myDamageType Blast
+			myDamageFormula 25
+			myRadiusFormula 25
+			myDefaultDamage 25.0
+			myDefaultRadius 25.0
+			myExplosion < uid=6B0E1DE964AFC3EE0008EBCEA8952922 > = explosion_missile_ion_01 F8181D48653932AD000348B7141DF007
+		}
+		ProjectileActionIonCharge "Ion Charge"
+		{
+			myCharge "25.0 * TrailblazerIonDamageChargeModifier"
+			myAOERadius "25.0 * TrailblazerIonAOERadiusModifier"
+		}
+	}
+	myInitialSpeed 350.0
+	myAccelerationCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 0.033333335, -0.33333334 0, -0.33333334 0, }, outTangents = { 0.33333334 0, 0.33333334 -0.033333335, 0.33333334 0, 0 0, }, properties = { 3, 3075, 4167, 2119, }, values = { 0 0.2, 1 200, 2 0, 3 0, }, }, numKeys = 4, }"
+	mySeekerEnabled TRUE
+	mySeekerTurnRate 6.0
+	mySeekerTurnRateModifierCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 1, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.66666669 0, }, outTangents = { 1 0, 0 0, }, properties = { 275, 2119, }, values = { 0 0, 2 0.80000001, }, }, numKeys = 2, }"
+	mySeekerMissActionEnabled TRUE
+	mySeekerTargetMissAction Expire
+}
+
+BallisticProjectile projectile_tb_missile_advanced_ion < uid=B4FBE4306523F91F00088BA85902285B > : projectile_ship_missile_base
+{
+	myObject
+	{
+		myMaterialType Kinetic
+		myTravelLifeTime 10.0
+	}
+	myRealization < uid=B4FBE4306523F91F00088BA9C5868C80 > = realization_ship_missile_ion 6B0E1DE964AFC8BB000C0053DE023A68
+	myActions
+	{
+		ProjectileActionExplosion Explosion
+		{
+			myActionTargetType FinalHit
+			myDamageType Blast
+			myDamageFormula 30
+			myRadiusFormula 30
+			myDefaultDamage 30.0
+			myDefaultRadius 30.0
+			myExplosion < uid=B4FBE4306523F91F00088BAA6A1BD0A3 > = explosion_missile_ion_01 F8181D48653932AD000348B7141DF007
+		}
+		ProjectileActionExplosion "Missiles Life Time"
+		{
+			myActionTargetType Expired
+			myDamageType Blast
+			myDamageFormula 30
+			myRadiusFormula 30
+			myDefaultDamage 30.0
+			myDefaultRadius 30.0
+			myExplosion < uid=B4FBE4306523F91F00088BAB8C3A6435 > = explosion_missile_ion_01 F8181D48653932AD000348B7141DF007
+		}
+		ProjectileActionIonCharge "Ion Charge"
+		{
+			myCharge "50.0 * TrailblazerIonDamageChargeModifier"
+			myAOERadius "50.0 * TrailblazerIonAOERadiusModifier"
+		}
+	}
+	myInitialSpeed 350.0
+	myAccelerationCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 0.033333335, -0.33333334 0, -0.33333334 0, }, outTangents = { 0.33333334 0, 0.33333334 -0.033333335, 0.33333334 0, 0 0, }, properties = { 3, 3075, 4167, 2119, }, values = { 0 0.2, 1 200, 2 0, 3 0, }, }, numKeys = 4, }"
+	mySeekerEnabled TRUE
+	mySeekerTurnRate 6.0
+	mySeekerTurnRateModifierCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 1, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.66666669 0, }, outTangents = { 1 0, 0 0, }, properties = { 275, 1095, }, values = { 0 0, 2 1, }, }, numKeys = 2, }"
+	mySeekerMissActionEnabled TRUE
+	mySeekerTargetMissAction Expire
+}
+
+BallisticProjectile projectile_ship_missile_concussion < uid=6B0E1DE964AFF07F000DEEEA64F774E5 > : projectile_tb_missile_advanced_concussion
+{
+	myObject
+	{
+		myTravelLifeTime 10.0
+	}
+	myCanBeDisabledByAuxiliaryDevice TRUE
+	myInitialSpeed 150.0
+	myAccelerationCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -1.3333334 0, -0.33333334 0, 0 0, }, outTangents = { 1.3333334 0, 0.33333334 0, 0 0, 0 0, }, properties = { 3, 3143, 4167, 2067, }, values = { 0 0, 4 100, 5 100, 5 5, }, }, numKeys = 4, }"
+	mySeekerActivationDelayFormula 0.1
+	mySeekerTurnRateModifierCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 1, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -3.5 0, }, outTangents = { 3.5 0, 0 0, }, properties = { 275, 2323, }, values = { 0 0, 7 1, }, }, numKeys = 2, }"
+	mySeekerMaxDistanceToConsiderMiss 275.0
+	mySeekerTargetMissAction AbandonTarget
+}
+
+BallisticProjectile projectile_ship_missile_ion < uid=6B0E1DE964AFF0CF000DEF87A528E482 > : projectile_tb_missile_ion
+{
+	myActions
+	{
+		ProjectileActionExplosion Explosion
+		{
+			myActionTargetType FinalHit
+			myDamageType Ion
+			myDamageFormula 10
+			myRadiusFormula 20
+			myDefaultDamage 10.0
+			myDefaultRadius 20.0
+			myExplosion < uid=F8181D486539347200034AED4E271DC0 > = explosion_missile_ion_01 F8181D48653932AD000348B7141DF007
+		}
+		ProjectileActionExplosion "Missiles Life Time"
+		{
+			myActionTargetType Expired
+			myDamageType Blast
+			myDamageFormula 20
+			myRadiusFormula 20
+			myDefaultDamage 20.0
+			myDefaultRadius 20.0
+			myExplosion < uid=F8181D486539347200034AEED654B131 > = explosion_missile_ion_01 F8181D48653932AD000348B7141DF007
+		}
+	}
+	myCanBeDisabledByAuxiliaryDevice TRUE
+	mySeekerMaxDistanceToConsiderMiss 275.0
+	mySeekerTargetMissAction AbandonTarget
+}
+
+BallisticProjectile projectile_ship_missile_torpedoes < uid=6B0E1DE964AFF0CF000DEF85750ADD51 > : projectile_tb_missile_torpedo
+{
+	myObject
+	{
+		myTravelLifeTime 7.5
+	}
+	myCanBeDisabledByAuxiliaryDevice TRUE
+	myInitialSpeed 150.0
+	myAccelerationCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -1.3333334 0, -0.33333334 0, 0 0, }, outTangents = { 1.3333334 0, 0.33333334 0, 0 0, 0 0, }, properties = { 1027, 71, 2311, 3091, }, values = { 0 0, 4 75, 5 75, 5 5, }, }, numKeys = 4, }"
+	mySeekerTurnRate 1.0
+	mySeekerActivationDelayFormula 1
+	mySeekerMaxDistanceToConsiderMiss 275.0
+	mySeekerTargetMissAction AbandonTarget
+}
+

@@ -1,0 +1,26 @@
+class AttributeBonus < abstract=0 >
+{
+	uid myAttributeUID < bhv=attribute >
+}
+
+class BonusValue : AttributeBonus
+{
+	float myValue 0
+}
+
+class BonusModifier : AttributeBonus
+{
+	float myModifier 0 < tooltip="This value +1 is multiplied with the specified attribute. E.g. 0.5 will increase an attribute with 50%. If you want to make a debuff then you can do -0.5 to decrease something with 50%." >
+}
+
+class BonusAttributeRef : AttributeBonus
+{
+	float myValue 0 < tooltip="This can either be a percentage or a flat value depending on what bonus type is set on the attribute." >
+}
+
+list BonusList
+{
+	BonusValue
+	BonusModifier
+	BonusAttributeRef
+}

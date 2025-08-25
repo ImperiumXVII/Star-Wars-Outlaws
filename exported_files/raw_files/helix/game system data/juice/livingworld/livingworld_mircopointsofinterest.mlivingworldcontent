@@ -1,0 +1,196 @@
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+include "helix/game system data/juice/intel/intel_tatooine.mintel"
+
+LivingWorldContent livingworld_POI_Basic < uid=BAB09C5864A813AF0002B033607606A8 >
+{
+	myAdditionalLayerTypes
+	{
+		LivingWorldContentLayerType "New LivingWorldContentLayerType" LivingWorldOverride
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 150"
+		{
+			myDistance 150.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 150"
+		{
+			myDistance 150.0
+			myOperator GreaterThanOrEqual
+		}
+	}
+}
+
+LivingWorldContent livingworld_TAT_POI_Camp04 < uid=D4F63079652D4C67001FB7909E12B716 >
+{
+	myLayerType Encounter
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 150"
+		{
+			myDistance 150.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 150"
+		{
+			myDistance 150.0
+		}
+	}
+}
+
+LivingWorldContent livingworld_TAT_POI_Hutt_Checkpoint_02_MS < uid=D4F630796532419B00106CA1055E7958 >
+{
+	myCompletedGameValue < uid=D4F630796532419B00106CA2966B3007 >
+	{
+	}
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				LivingWorldGameConditionGroup "Group AND (Before Intel)"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 150"
+						{
+							myDistance 150.0
+							myOperator LessThanOrEqual
+						}
+						GameConditionPlayerHasIntel "Intel MS201 P1 Not Active"
+						{
+							myIsNegated FALSE
+							myIntel < uid=D4F630796532419B00106CA3B9DAEE28 > = A_TAT_MS201_ITL214_OnTheRunPart2_P1 D4F63079649980E400126D3900FA7008
+							myIntelState None
+						}
+					}
+				}
+				LivingWorldGameConditionGroup "Group AND (After Intel)"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 150"
+						{
+							myDistance 150.0
+							myOperator LessThanOrEqual
+						}
+						GameConditionPlayerHasIntel "MS201 Intel P1 Resolved"
+						{
+							myIntel < uid=D4F630796532419B00106CA470270300 > = A_TAT_MS201_ITL214_OnTheRunPart2_P1 D4F63079649980E400126D3900FA7008
+							myIntelState Resolved
+						}
+						GameConditionLivingWorldContent_HasBeenCompleted "New GameConditionLivingWorldContent_HasBeenCompleted"
+						{
+							myLivingWorldContent D4F63079652E70FE0040091783A2B08A
+						}
+					}
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel "Intel MS201 P1 Active"
+				{
+					myIntel < uid=D4F630796532419B00106CA5864520E5 > = A_TAT_MS201_ITL214_OnTheRunPart2_P1 D4F63079649980E400126D3900FA7008
+				}
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 150"
+				{
+					myDistance 150.0
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent livingworld_TOS_LANDMARK_ArtifactLocation_02 < uid=D4F630796576D276001D67D9D73369FD >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "New GameConditionContextLivingWorldContentLocation_DistanceToPlayer"
+		{
+			myDistance 200.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "New GameConditionContextLivingWorldContentLocation_DistanceToPlayer"
+		{
+			myDistance 200.0
+		}
+	}
+}
+
+LivingWorldContent livingworld_TAT_POI_Camp01 < uid=56C8C19965F2D4210000E9DCC97C17A1 >
+{
+	myTicket < uid=56C8C19965F2D4210000E9DD373E54AC >
+	{
+	}
+	myTicketMax < uid=56C8C19965F2D4210000E9DE694087A4 >
+	{
+	}
+	myCompletedGameValue < uid=56C8C19965F2D4210000E9DF50A55C41 >
+	{
+	}
+	myLayerType Encounter
+	myAdditionalLayerTypes
+	{
+		LivingWorldContentLayerType "New LivingWorldContentLayerType" LivingWorldOverride
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 150"
+		{
+			myDistance 150.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 150"
+		{
+			myDistance 150.0
+		}
+	}
+}
+
+LivingWorldContent livingworld_POI_Combat < uid=56CC059665F957510000E927F0C2E6C8 > : livingworld_POI_Basic
+{
+	myAdditionalLayerTypes
+	{
+		LivingWorldContentLayerType "New LivingWorldContentLayerType" LivingWorldOverride
+		LivingWorldContentLayerType "New LivingWorldContentLayerType_0" DLC1Override
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 150"
+		{
+			myDistance 300.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 150"
+		{
+			myDistance 300.0
+			myOperator GreaterThanOrEqual
+		}
+	}
+}
+

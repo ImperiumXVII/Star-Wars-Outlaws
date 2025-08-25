@@ -1,0 +1,278 @@
+include "helix/game system data/fruit/ai/spaceshipsettings.fruit"
+include "helix/game system data/juice/ai/npcshootpatterns.mnpcshootpattern"
+include "helix/game system data/juice/ai/spaceshipavoidanceprofiles.mspaceshipavoidanceprofile"
+include "helix/game system data/juice/ai/spaceshipcombatprofiles.mspaceshipcombatprofile"
+include "helix/game system data/juice/ai/spaceshipformationprofiles.mspaceshipformationprofile"
+include "helix/game system data/juice/ai/spaceshipspawnprofiles.mspaceshipspawnprofile"
+include "helix/game system data/juice/ai/spaceshipspeedprofiles.mspaceshipspeedprofile"
+include "helix/game system data/juice/ai/spaceshiptrajectories.mspaceshiptrajectoryprofile"
+include "helix/game system data/juice/spaceshipsettings_crimsondawnbase.juice"
+include "helix/game system data/juice/spaceshipsettings_piratesbase.juice"
+
+SpaceshipSetting s_FangPirate < uid=6AF0BA0464EC67E50004596BC40BF8CD > : s_Fang
+{
+	mySpaceshipType FangPirate
+	myAISpaceshipControlParameters
+	{
+		mySpaceshipBehaviorParameters = b_FangPirate 00000000000000000000000000000000
+		myEvasiveManeuverParams
+		{
+			myEvasiveCooldown 10.0
+			myMaxTimeBetweenProjectileHits 0.5
+			mySustainedDamageRequiredDuration 1.5
+			myReturnTrueDuration 0.3
+		}
+	}
+	mySpeedProfile < uid=7EE64634651FF88D00065B8A2252C4F5 > = speedProfile_pir_shp_fang F95CD8F365E9D3BB0001655BEE482CF7
+	myIonCollectorData
+	{
+		myMaxCharge 25.0
+		myDisabledDuration "10.0 * TrailblazerIonDisabledDurationModifier"
+		myTimeUntilRecovery 10.0
+		myRecoveryRate 5.0
+		myResistanceDuration 3.0
+		myResistanceValue 0.75
+		mySlowDownPercentage 0.5
+		myBrakingPowerToTime "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { -0 -0, -0.602639 -0.038683, }, outTangents = { 0.307335 0.942354, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+	}
+	myDeathSequenceSettings
+	{
+		myEndExplosionFilename ""
+		myOnExplosionGameScript ""
+		myCollisionDamageThreshold 10.0
+		myDeathSequenceDuration 5.0
+		myAfterDeathSequenceDelay 3.0
+		myShouldTumble TRUE
+		myTumbleProbability 0.6
+		myTumbleMaxDuration 2.5
+		myTumblingType LoseControl
+		myShouldTargetColliders TRUE
+		myTumbleFindTargetRadius 1500.0
+		myTumbleFindTargetAngle 45.0
+		myTumbleFallingCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -500 0, }, outTangents = { 500 0, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 2000 -2000, }, }, numKeys = 2, }"
+	}
+}
+
+SpaceshipSetting s_DurosPirate < uid=6AF0BA0464EC72B000008E4EE9B91B65 > : s_Duros
+{
+	mySpaceshipType DurosPirate
+	myPitchSpeed 85.0
+	myYawSpeed 85.0
+	myAISpaceshipControlParameters
+	{
+		mySpaceshipBehaviorParameters = b_DurosPirate 00000000000000000000000000000000
+		myEvasiveManeuverParams
+		{
+			myEvasiveCooldown 10.0
+			myMaxTimeBetweenProjectileHits 0.5
+			mySustainedDamageRequiredDuration 1.5
+			myReturnTrueDuration 0.3
+		}
+	}
+	myIonCollectorData
+	{
+		myMaxCharge 25.0
+		myDisabledDuration "10.0 * TrailblazerIonDisabledDurationModifier"
+		myTimeUntilRecovery 10.0
+		myRecoveryRate 5.0
+		myResistanceDuration 3.0
+		myResistanceValue 0.75
+		mySlowDownPercentage 0.5
+		myBrakingPowerToTime "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { -0 -0, -0.602639 -0.038683, }, outTangents = { 0.307335 0.942354, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+	}
+	myShieldData
+	{
+	}
+	myDeathSequenceSettings
+	{
+		myEndExplosionFilename ""
+		myOnExplosionGameScript ""
+		myCollisionDamageThreshold 1.0
+		myDeathSequenceDuration 5.0
+		myAfterDeathSequenceDelay 3.0
+		myShouldTumble TRUE
+		myTumbleProbability 0.6
+		myTumbleMaxDuration 2.5
+		myTumblingType LoseControl
+		myShouldTargetColliders TRUE
+		myTumbleFindTargetRadius 1500.0
+		myTumbleFindTargetAngle 45.0
+		myTumbleFallingCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -500 0, }, outTangents = { 500 0, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 2000 -2000, }, }, numKeys = 2, }"
+	}
+	mySpaceshipFormationProfile < uid=F95CD8F36537B65A00031175BF9CE437 > = Duros_FormationProfile_Pirate F95CD8F36537B559000311741FCC1920
+}
+
+SpaceshipSetting s_BowbreakerPirate < uid=6AF0BA0464EC72B000008E4F8805FEFE > : s_Bowbreaker
+{
+	mySpaceshipType BowBreakerPirate
+	myHuntingRadius 4000.0
+	myAISpaceshipControlParameters
+	{
+		myAvoidanceProfile < uid=841E78F3657C67D0000AFCF95729CEA1 > = SpaceshipAvoidance_Low_Mobility_Ships 841E78F3657C62570009C130B733DB18
+		mySpaceshipBehaviorParameters = b_BowBreakerPirate 00000000000000000000000000000000
+		myEvasiveManeuverParams
+		{
+			myEvasiveCooldown 30.0
+			myMaxTimeBetweenProjectileHits 2.0
+			mySustainedDamageRequiredDuration 6.0
+			myReturnTrueDuration 0.3
+		}
+	}
+	myIonCollectorData
+	{
+		myMaxCharge 100.0
+		myDisabledDuration "10.0 * TrailblazerIonDisabledDurationModifier"
+		myTimeUntilRecovery 10.0
+		myRecoveryRate 5.0
+		myResistanceDuration 3.0
+		myResistanceValue 0.75
+		mySlowDownPercentage 0.5
+		myBrakingPowerToTime "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { -0 -0, -0.602639 -0.038683, }, outTangents = { 0.307335 0.942354, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+	}
+	myShieldData
+	{
+		EnergyShieldData "New EnergyShieldData"
+		{
+			myMaxValue 30
+			myRegenerationRate 4
+			myCanRegenerateWhenDepleted TRUE
+			myShieldInvulnerabilityDuration 0
+		}
+	}
+	myDeathSequenceSettings
+	{
+		myEndExplosionFilename ""
+		myOnExplosionWreckGraphObjectPath "helix/graph objects/prop/pr_buc_0843_b.mgraphobject"
+		myCollisionDamageThreshold 10.0
+		myDeathSequenceDuration 5.0
+		myAfterDeathSequenceDelay 3.0
+		myShouldTumble TRUE
+		myTumbleProbability 1.0
+		myTumbleMaxDuration 5.0
+		myTumblingType Plunge
+		myShouldTargetColliders TRUE
+		myTumbleFindTargetRadius 1500.0
+		myTumbleFindTargetAngle 45.0
+		myTumbleFallingCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -500 0, }, outTangents = { 500 0, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 1388.7411 -3888.2205, }, }, numKeys = 2, }"
+	}
+}
+
+SpaceshipSetting s_LothalianPirate < uid=6AF0BA0464EC72B000008E50C3042989 > : s_Lothalian
+{
+	mySpaceshipType LothalianPirate
+	myHuntingRadius 4000.0
+	myAISpaceshipControlParameters
+	{
+		myAvoidanceProfile < uid=841E78F3657C67EE000AFCFAA18791CC > = SpaceshipAvoidance_Low_Mobility_Ships 841E78F3657C62570009C130B733DB18
+		mySpaceshipBehaviorParameters = b_LothalianPirate 00000000000000000000000000000000
+		myEvasiveManeuverParams
+		{
+			myEvasiveCooldown 30.0
+			myMaxTimeBetweenProjectileHits 3.0
+			mySustainedDamageRequiredDuration 8.0
+			myReturnTrueDuration 0.3
+		}
+	}
+	myIonCollectorData
+	{
+		myMaxCharge 100.0
+		myDisabledDuration "10.0 * TrailblazerIonDisabledDurationModifier"
+		myTimeUntilRecovery 10.0
+		myRecoveryRate 5.0
+		myResistanceDuration 3.0
+		myResistanceValue 0.75
+		mySlowDownPercentage 0.5
+		myBrakingPowerToTime "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { -0 -0, -0.602639 -0.038683, }, outTangents = { 0.307335 0.942354, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+	}
+	myShieldData
+	{
+		EnergyShieldData "New EnergyShieldData"
+		{
+			myMaxValue 30
+			myCanRegenerateWhenDepleted TRUE
+			myShieldInvulnerabilityDuration 0
+		}
+	}
+	myDeathSequenceSettings
+	{
+		myEndExplosionFilename ""
+		myOnExplosionWreckGraphObjectPath "helix/graph objects/prop/pr_buc_0844_b.mgraphobject"
+		myCollisionDamageThreshold 10.0
+		myDeathSequenceDuration 5.0
+		myAfterDeathSequenceDelay 3.0
+		myShouldTumble TRUE
+		myTumbleProbability 1.0
+		myTumbleMaxDuration 5.0
+		myTumblingType Plunge
+		myShouldTargetColliders TRUE
+		myTumbleFindTargetRadius 1500.0
+		myTumbleFindTargetAngle 45.0
+		myTumbleFallingCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -500 0, }, outTangents = { 500 0, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 1045.0784 -5522.374, }, }, numKeys = 2, }"
+	}
+	mySpaceshipFormationProfile < uid=F95CD8F365391D2D00004D66EBD06F95 > = Lothalian_FormationProfile_Pirate F95CD8F36537E25D0000968F9B4BB60F
+}
+
+SpaceshipSetting s_DurosPirate_b < uid=6AF0BA04656EDE4F00003301A8D8B1B9 > : s_Fang
+{
+	mySpaceshipType DurosPirateB
+	myPitchSpeed 100.0
+	myYawSpeed 100.0
+	myAISpaceshipControlParameters
+	{
+		mySpaceshipBehaviorParameters = b_DurosPirate 00000000000000000000000000000000
+		myEvasiveManeuverParams
+		{
+			myEvasiveCooldown 10.0
+			myMaxTimeBetweenProjectileHits 0.5
+			mySustainedDamageRequiredDuration 1.5
+			myReturnTrueDuration 0.3
+		}
+	}
+	mySpeedProfile < uid=6AF0BA04656EDE4F0000330233A37E40 > = speedProfile_pyk_shp_fang 05B06D7D65097082000AF2316955796A
+	myIonCollectorData
+	{
+		myMaxCharge 25.0
+		myDisabledDuration "10.0 * TrailblazerIonDisabledDurationModifier"
+		myTimeUntilRecovery 10.0
+		myRecoveryRate 5.0
+		myResistanceDuration 3.0
+		myResistanceValue 0.75
+		mySlowDownPercentage 0.5
+		myBrakingPowerToTime "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { -0 -0, -0.602639 -0.038683, }, outTangents = { 0.307335 0.942354, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+	}
+	myShieldData
+	{
+		EnergyShieldData BossShield
+		{
+			myMaxValue 50
+		}
+	}
+	myDeathSequenceSettings
+	{
+		myEndExplosionFilename ""
+		myOnExplosionGameScript ""
+		myCollisionDamageThreshold 1.0
+		myDeathSequenceDuration 5.0
+		myAfterDeathSequenceDelay 3.0
+		myShouldTumble TRUE
+		myTumbleProbability 0.6
+		myTumbleMaxDuration 2.5
+		myTumblingType LoseControl
+		myShouldTargetColliders TRUE
+		myTumbleFindTargetRadius 1500.0
+		myTumbleFindTargetAngle 45.0
+		myTumbleFallingCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -500 0, }, outTangents = { 500 0, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 2000 -2000, }, }, numKeys = 2, }"
+	}
+	mySpaceshipFormationProfile < uid=6AF0BA04656EDE4F0000330377E473BB > = Duros_FormationProfile_Pirate F95CD8F36537B559000311741FCC1920
+}
+
+SpaceshipSetting s_BowbreakerPirate_Defend < uid=F95CD8F365CA3EB8000662377EFA3AA5 > : s_BowbreakerPirate
+{
+	mySpaceshipType BowBreakerPirate_Defend
+	mySpaceshipUsage DefendObjective
+}
+
+SpaceshipSetting s_LothalianPirate_Defend < uid=F95CD8F365CA41320006623D0A093D50 > : s_LothalianPirate
+{
+}
+

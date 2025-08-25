@@ -1,0 +1,533 @@
+include "helix/game system data/fruit/reward/reward.fruit"
+include "helix/game system data/juice/equipmentset/player_equipmentset_speeder.mequipmentset"
+include "helix/game system data/juice/item/hidden_item.mitem"
+include "helix/game system data/juice/item/items_dom_skill.mitem"
+include "helix/game system data/juice/item/items_keycards.mitem"
+include "helix/game system data/juice/item/player_gear_plasma_cutter.mitem"
+include "helix/game system data/juice/item/player_pocketable_heist_target.mitem"
+include "helix/game system data/juice/item/player_speeder_unlock.mitem"
+include "helix/game system data/juice/item/questitems.mitem"
+include "helix/game system data/juice/reward/reputation_reward.mreward"
+
+RewardGroup reward_Quest_template < uid=E42FA10C620D0D8500007821B6B797D9 >
+{
+}
+
+RewardGroup reward_Quest_Example01 < uid=E42FA10C620E52E7000020DEB05390DD > : reward_Quest_template
+{
+	myRewardReferences
+	{
+		RewardReputation "Hutt Reputation Gain" < uid=E42FA10C620E52F7000020DF2BDEDE4F > = rep_hutt_gain_medium 4728ADF9620BA27B0000207667C1578D
+	}
+}
+
+RewardItem reward_quest_MQ_040_VIPTicket_add < uid=8FD81D51642C129700000909CF011497 >
+{
+	myItem < uid=8FD81D51642C149A00000911A3F57BFD > = qitem_MQ_040_VIPTicket 8FD81D51642C12EF0000090DD48CB81F
+	myAmount 1
+}
+
+RewardItem reward_quest_MQ_040_VIPTicket_remove < uid=8FD81D51642D27F8000ABDF0FA5ED919 >
+{
+	myItem < uid=8FD81D51642D27F8000ABDF15D1C95F3 > = qitem_MQ_040_VIPTicket 8FD81D51642C12EF0000090DD48CB81F
+	myAmount -1
+}
+
+RewardItem reward_quest_MQ_040_VIPTicketReal_add < uid=8FD81D51642D37E0000B9AE72ABA0CF1 >
+{
+	myItem < uid=8FD81D51642D37E0000B9AE81F7AC541 > = qitem_MQ_040_VIPTicket_Real 8FD81D51642D37AB000B9A83AC0010BB
+	myAmount 1
+}
+
+RewardItem reward_quest_MQ_040_GoraksRing_add < uid=4728ADF96218CB59000028F6953894FF >
+{
+	myItem < uid=4728ADF96218D1A3000028FA1C59C9A9 > = qitem_MQ_040_GoraksRing 5F6139B460A4E4CB0002112991FFF161
+	myAmount 1
+}
+
+RewardItem reward_quest_MQ_040_GoraksRing_remove < uid=4728ADF96218D861000028FE314601E0 > : reward_quest_MQ_040_GoraksRing_add
+{
+	myAmount -1
+}
+
+RewardItem reward_quest_MQ_040_PykeDataDisc_add < uid=4728ADF96218D12D000028F7F34844F2 >
+{
+	myItem < uid=4728ADF96218D1A3000028FBAD877104 > = qitem_MQ_040_PykeDataDisc 9D0EE20B60A650CE00000A38A9EA84FE
+	myAmount 1
+}
+
+RewardItem reward_quest_MQ_040_PykeDataDisc_remove < uid=4728ADF96218D8B1000028FFA7DF599D > : reward_quest_MQ_040_PykeDataDisc_add
+{
+	myAmount -1
+}
+
+RewardItem reward_quest_MQ_045_FuelInjectors_add < uid=4728ADF96218D17E000028F94D973388 >
+{
+	myItem < uid=4728ADF96218D1A3000028FDE38088B8 > = qitem_MQ_040_FuelInjectors E42FA10C6214C004000026BE043D0A98
+	myAmount 1
+}
+
+RewardItem reward_quest_MQ_045_FuelInjectors_remove < uid=4728ADF96218DDEE00002901A8FFB153 >
+{
+	myItem < uid=8FD81D5164BA6C410001FE7F0A5DE1DB > = qitem_MQ_040_FuelInjectors E42FA10C6214C004000026BE043D0A98
+	myAmount -1
+}
+
+RewardItem reward_quest_MQ_045_Transponder_remove < uid=8FD81D516672FA31001F0AA0A3B4C4F4 >
+{
+	myItem < uid=8FD81D516672FA31001F0AA15739A814 > = qitem_MQ_045_TrackingTransponder 8FD81D5164E615210008EA6BA991C2CE
+	myAmount -1
+	mySupressNotification TRUE
+}
+
+RewardItem reward_quest_MQ_050_SansannaSpice_remove < uid=8FD81D5164BA50DF000152A47864B592 >
+{
+	myItem < uid=8FD81D5164BA50DF000152A57AAC9DBC > = qitem_MQ_050_Sansanna 8FD81D516373AA240001F66C5329CF52
+	myAmount -3
+}
+
+RewardItem reward_quest_MQ_060_PowerCore_remove < uid=8FD81D51646229F400061DE3BCE865EC >
+{
+	myItem < uid=8FD81D51646229F400061DE4D43ED7AF > = qitem_MQ_060_PowerCore 8FD81D5163EF8FC20000BFD7CF1DA673
+	myAmount -1
+}
+
+RewardItem reward_quest_MQ_060_HiddenPowerCore_add < uid=8FD81D5166598E2A000121D7CD6B4796 >
+{
+	myItem < uid=8FD81D5166598E2A000121D8ADC7F592 > = qitem_MQ_060_PowerCoreSecret 8FD81D5166597EE5000F293B2943345E
+	myAmount 1
+	mySupressNotification TRUE
+}
+
+RewardItem reward_quest_MQ_075_PowerCapacitor_add < uid=8FD81D51654CB4A10002DB89B2F9FD18 >
+{
+	myItem < uid=8FD81D51654CB4A10002DB8AF8F1ADC2 > = qitem_MQ_075_ModulePart01 8FD81D51654CB35B0001E0231C1A9BDF
+	myAmount 1
+}
+
+RewardExpertSet reward_quest_EQ_020_BoostModule_discovered < uid=9D01D217621CD862000AF853E857E73C >
+{
+	myExpertSet F8252D3C62568FFF00002C7582695525
+	myState Discovered
+}
+
+RewardItem reward_quest_FQ_HTC_010_TimeBomb_add < uid=91287888636B7DC40000F77B18DE5A17 >
+{
+	myItem < uid=91287888636B7E1C0000F7ADC08EAF4C > = qitem_FQ_HTC_010_TimeBomb BFAAA1FC6346A14E00004BD925ED3F46
+	myAmount 1
+}
+
+RewardItem reward_quest_FQ_HTC_010_TimeBomb_remove < uid=91287888636B7E000000F7AC3060BB2E >
+{
+	myItem < uid=91287888636B7E1C0000F7AE76E7E123 > = qitem_FQ_HTC_010_TimeBomb BFAAA1FC6346A14E00004BD925ED3F46
+	myAmount -1
+}
+
+RewardItem reward_quest_FQ_PSY_010_Commlink_add < uid=8FD81D51626AB4040000B5362C2FF076 >
+{
+	myItem < uid=8FD81D51626AB4ED0000B5646F5445A5 > = qitem_FQ_PSY_010_Comlink 8FD81D51626AB4BA0000B53D004B24D2
+	myAmount 1
+}
+
+RewardItem reward_quest_FQ_PSY_010_Commlink_remove < uid=8FD81D51626AB4ED0000B565BE42D6AF >
+{
+	myItem < uid=8FD81D5164BA6C410001FE80637B79E2 > = qitem_FQ_PSY_010_Comlink 8FD81D51626AB4BA0000B53D004B24D2
+	myAmount -1
+}
+
+RewardItem reward_quest_COOP_DeathStar_HeistTargetPocketable_add < uid=6B0E1DE9637F88D2000057A4E8913B1B >
+{
+	myItem < uid=6B0E1DE9637F88FA000057A50A487B3C > = "Pocketable Heist Target" 0B1314156368BFAF00005A70A06D1F74
+	myAmount 1
+}
+
+RewardItem reward_quest_COOP_DeathStar_HeistTargetPocketable_remove < uid=6B0E1DE9637F8935000057A7D79AB6BA >
+{
+	myItem < uid=6B0E1DE9637F8956000057A8B6B206B1 > = "Pocketable Heist Target" 0B1314156368BFAF00005A70A06D1F74
+	myAmount -1
+}
+
+RewardItem reward_quest_MQ_110_GaffiStick_add < uid=9D01D217638633E10001FB58974F3EED >
+{
+	myItem < uid=9D01D217638634290001FB5A58DA9E45 > = qitem_MQ_110_KraytDragonPearl BFAAA1FC635A6B300000533C4100D240
+	myAmount 1
+}
+
+RewardItem reward_quest_MQ_110_GaffiStick_remove < uid=9D01D2176386340E0001FB593927E0AC >
+{
+	myItem < uid=9D01D217638634290001FB5BE37C99DD > = qitem_MQ_110_KraytDragonPearl BFAAA1FC635A6B300000533C4100D240
+	myAmount -1
+}
+
+RewardItem reward_quest_MQ_180_PlasmaCutter_add < uid=B5AFC8E4645A33EE00019B918A456698 >
+{
+	myItem < uid=B5AFC8E4645A344600019B92126AF49A > = player_gear_plasma_cutter 6F5419E76453AE060001A2198340603D
+	myAmount 1
+}
+
+RewardItem reward_quest_EQ_080_PristineSarlaccTooth_add < uid=C5B8DCF665410DBC00027E5B3C263100 >
+{
+	myItem < uid=C5B8DCF665410DE600027E5C97742A65 > = qitem_EQ_080_SarlaccPristineTooth C5B8DCF6647EF6E200032F59202899F0
+	myAmount 1
+}
+
+RewardItem reward_quest_EQ_080_PristineSarlaccTooth_remove < uid=C5B8DCF66481E7AF0001C320AB032882 >
+{
+	myItem < uid=C5B8DCF66481E7CE0001C3212504027B > = qitem_EQ_080_SarlaccPristineTooth C5B8DCF6647EF6E200032F59202899F0
+	myAmount -1
+}
+
+RewardItem reward_quest_EQ_020_MagneticCharge_add_02 < uid=91287888649C0054002B231BD43FA763 >
+{
+	myItem < uid=91287888649C0054002B231C26446A46 > = qitem_EQ_020_MagneticCharge 91287888649BFF3A002B217F4D08FC4F
+	myAmount 2
+}
+
+RewardItem reward_quest_EQ_020_MagneticCharge_remove < uid=91287888649C0054002B231D2BA66E9B >
+{
+	myItem < uid=91287888649C0054002B231E52428D2B > = qitem_EQ_020_MagneticCharge 91287888649BFF3A002B217F4D08FC4F
+	myAmount -1
+}
+
+RewardItem reward_quest_HTC_030_SilicaxOxalate_remove < uid=C5B8DCF664A5759A00023DB592290943 >
+{
+	myItem < uid=C5B8DCF664A575B600023DB627D8736B > = qitem_FQ_HTC_030_SilicaxOxalate C5B8DCF664A574D600023CE6E16E624C
+	myAmount -2
+}
+
+RewardItem reward_quest_MQ_010_SixthKinClubBackdoor < uid=93D3086564BFA1C10001B4843BE31A4A >
+{
+	myItem < uid=93D3086564BFA1F60001B485BC6D1686 > = qitem_MQ_010_SixthKinClubBackdoor 93D8B0CA64BE6F790004CEAB592F2A35
+	myAmount 1
+}
+
+RewardItem reward_quest_MQ_010_SixthKinClubBackdoor_Remove < uid=82DBC4DA66E98A8200040AA9985F82D9 >
+{
+	myItem < uid=82DBC4DA66E98A8200040AAAD92FDA07 > = qitem_MQ_010_SixthKinClubBackdoor 93D8B0CA64BE6F790004CEAB592F2A35
+	myAmount -1
+	mySupressNotification TRUE
+}
+
+RewardItem reward_quest_MQ_010_BrokenLockpick_Add < uid=93D308656501DCA3000267121DECBEB7 >
+{
+	myItem < uid=93D308656501DCA300026713280CB39F > = qitem_MQ_010_KayLockpickBroken C564585664EC8E8A00134B6BC92EEBF0
+	myAmount 1
+}
+
+RewardItem reward_quest_MQ_010_BrokenLockpick_Remove < uid=93D30865652906E500031CD69AB0C792 >
+{
+	myItem < uid=93D30865652906E500031CD736B3FCEB > = qitem_MQ_010_KayLockpickBroken C564585664EC8E8A00134B6BC92EEBF0
+	myAmount -1
+}
+
+RewardItem reward_quest_MQ_010_DataSpike < uid=93D30865651EE4310004DB87E9BB06B1 >
+{
+	myItem < uid=93D30865651EE4480004DB8828326C1E > = qitem_MQ_010_KayDataSpike 93D30865651EE2910003EACF910AC1CA
+	myAmount 1
+}
+
+RewardItem reward_quest_MQ_010_ForgedScandocs < uid=93D308656501DD4D0002673AA95BB297 >
+{
+	myItem < uid=93D308656501DD4D0002673B9CA8C0C4 > = qitem_MQ_010_Scandocs C564585664EC926300134B744F8CF2EB
+	myAmount 1
+}
+
+RewardItem reward_quest_MQ_020_PasswordOverride < uid=C56458566523C382000804BE0323E112 >
+{
+	myItem < uid=C56458566523C3D4000804E113BF5C54 > = qitem_MQ_020_Vault_Door_Code C56458566373969F0004ED8C854D2A2F
+	myAmount 1
+}
+
+RewardItem reward_quest_MQ_090_WeaponsFactoryKeycard_add < uid=05BD7D7164E4A970000C6961BE4ED321 >
+{
+	myItem < uid=05BD7D7164E4AA04000C69638219E53E > = Keycard_A_KIJ_MQ_090_WeaponsFactoryKeycard 05BD7D7164E6F6D10000ACCA22EEF3F9
+	myAmount 1
+}
+
+RewardItem reward_quest_MQ_090_WeaponsFactoryKeycard_remove < uid=05BD7D7164E4AA04000C6964B133188B >
+{
+	myItem < uid=05BD7D7164E4AA04000C6965792C0257 > = Keycard_A_KIJ_MQ_090_WeaponsFactoryKeycard 05BD7D7164E6F6D10000ACCA22EEF3F9
+	myAmount -1
+	mySupressNotification TRUE
+}
+
+RewardItem reward_quest_MQ_190_SlirosCode_add < uid=C5645856650014750008102D248D3583 >
+{
+	myItem < uid=C5645856650014870008102E8C2F4748 > = qitem_MQ_190_SliroCodes C56458566462464C000F10E5555E533B
+	myAmount 1
+}
+
+RewardItem reward_quest_MQ_200_AnkExplosives_add < uid=C56458566500123C000379C1B762624C >
+{
+	myItem < uid=C564585665001252000379C237377FA3 > = qitem_MQ_200_AnkExplosives C564585665001090000187CCB7D79428
+	myAmount 1
+}
+
+RewardItem reward_quest_MQ_200_AnkExplosives_remove < uid=C564585665001260000379D50E4338CF >
+{
+	myItem < uid=C56458566500126F000379D615617878 > = qitem_MQ_200_AnkExplosives C564585665001090000187CCB7D79428
+	myAmount -1
+}
+
+RewardItem reward_quest_MQ_220_FreedomSpike_Add < uid=93D30865653F721A000205856C098F25 >
+{
+	myItem < uid=93D30865653F724100020586457761FF > = qitem_MQ_220_FreedomSpike 93D308656526BB23000211D78C6FA57C
+	myAmount 1
+}
+
+RewardItem reward_quest_MQ_220_FreedomSpike_Remove < uid=93D30865653F7272000205AE2BA44DBB >
+{
+	myItem < uid=93D30865653F7288000205AF00180C96 > = qitem_MQ_220_FreedomSpike 93D308656526BB23000211D78C6FA57C
+	myAmount -1
+}
+
+RewardItem reward_quest_EQ_020_MagneticCharge_add_01 < uid=912878886513EE98000419B4062A746D >
+{
+	myItem < uid=912878886513EE98000419B536DB94AB > = qitem_EQ_020_MagneticCharge 91287888649BFF3A002B217F4D08FC4F
+	myAmount 1
+}
+
+RewardItem reward_quest_EQ_090_Crackshot_Add < uid=9D01D217651EB16B0020D5F6E3C1D511 >
+{
+	myItem < uid=9D01D217651EBC450020D600FBD3CD86 > = DoM_item_AdrenalineRushEnvironmentTarget B0ED925064E852ED0000A1A36EC3AF14
+	myAmount 1
+}
+
+RewardItem reward_quest_EQ_090_Crackshot_Remove < uid=9D01D217651EBC450020D6014E422015 >
+{
+	myItem < uid=9D01D217651EBC450020D6028473BDB3 > = DoM_item_AdrenalineRushEnvironmentTarget B0ED925064E852ED0000A1A36EC3AF14
+	myAmount 0
+}
+
+RewardItem reward_quest_MS1007_Datapad_Add < uid=225CF627652436A3000E8292E866A4BB >
+{
+	myItem < uid=225CF627652436EC000E82943C823FC3 > = qitem_MS_1007_datapad 225CF6276524365E000E826671024E24
+	myAmount 1
+}
+
+RewardItem reward_quest_MS1007_Datapad_Remove < uid=225CF627652436EC000E8295B6EDCB92 >
+{
+	myItem < uid=225CF627652436EC000E82968CE35744 > = qitem_MS_1007_datapad 225CF6276524365E000E826671024E24
+	myAmount -1
+}
+
+RewardItem reward_quest_ASH_010_BavKrantiClamPearl_add < uid=91287888652D2AF00003DE9C93FE8969 >
+{
+	myItem < uid=91287888652D2AF00003DE9D89430170 > = qitem_ASH_010_BevKrantiClamPearl 91287888652D2A3B0002FD323082B10A
+	myAmount 1
+}
+
+RewardItem reward_quest_ASH_010_BavKrantiClamPearl_remove < uid=91287888652D2AF00003DE9E9D9C2D52 > : reward_quest_MQ_040_GoraksRing_add
+{
+	myItem < uid=91287888652D2AF00003DE9F8C040160 > = qitem_ASH_010_BevKrantiClamPearl 91287888652D2A3B0002FD323082B10A
+	myAmount -1
+}
+
+RewardItem reward_quest_EQ_100_CrappyHydrorepulsor_add < uid=E1B84E3A6543A5AF004155472CC94005 >
+{
+	myItem < uid=E1B84E3A6543A5EE00415549A7CB0068 > = speeder_gear_repulsor_b00 BFAAA1FC6377A7B10000D137AB2D70B5
+	myAmount 1
+	mySupressNotification TRUE
+}
+
+RewardItem reward_quest_EQ_100_CrappyHydrorepulsor_remove < uid=E1B84E3A6543A5E10041554828A2D072 >
+{
+	myItem < uid=E1B84E3A6543A5EE0041554A9CBF1985 > = speeder_gear_repulsor_b00 BFAAA1FC6377A7B10000D137AB2D70B5
+	myAmount -1
+	mySupressNotification TRUE
+}
+
+RewardItem reward_quest_MQ_100_AnkExplosives_add < uid=5E589225654A06480007B631644A392F >
+{
+	myItem < uid=5E589225654A06B10007B661AB608B9A > = qitem_MQ_100_AnkExplosives 5E5892256548E0B10000E88B4FE0AEDD
+	myAmount 1
+}
+
+RewardItem reward_quest_MQ_100_AnkExplosives_remove < uid=5E589225654A06870007B632D7F68FCD >
+{
+	myItem < uid=5E589225654A06B10007B66224747CE4 > = qitem_MQ_100_AnkExplosives 5E5892256548E0B10000E88B4FE0AEDD
+	myAmount -1
+}
+
+RewardItem reward_quest_MQ_070_BannPudira_add < uid=91287888655643F300030FE964602DD8 >
+{
+	myItem < uid=91287888655643F300030FEA1B48EA7A > = qitem_MQ_070_BannPudira 5171C0C9653927ED001E48A813D70B4D
+	myAmount 1
+}
+
+RewardItem reward_quest_MQ_070_BannPudira_remove < uid=91287888655643F300030FEB38B10242 >
+{
+	myItem < uid=91287888655643F300030FEC01335CD1 > = qitem_MQ_070_BannPudira 5171C0C9653927ED001E48A813D70B4D
+	myAmount -1
+	mySupressNotification TRUE
+}
+
+RewardItem reward_quest_EQ_120_Token_add < uid=225CF627655DD197000F7DB03BEB3BC6 >
+{
+	myItem < uid=225CF627655DD197000F7DB1E05663EE > = qitem_EQ_120_Token 225CF627655DD10A000EB7FF6E0E3996
+	myAmount 1
+}
+
+RewardItem reward_quest_EQ_120_Token_remove < uid=225CF627655DD197000F7DB26A654089 >
+{
+	myItem < uid=225CF627655DD197000F7DB3375B6811 > = qitem_EQ_120_Token 225CF627655DD10A000EB7FF6E0E3996
+	myAmount -1
+}
+
+RewardItem reward_quest_FQ_ASH_020_Datapad_add < uid=7C12810B6568CA62001031DFB6904412 >
+{
+	myItem < uid=7C12810B6568CA94001031E1FF57C503 > = qitem_FQ_ASH_020_EmpireDatapad CC6CF61E64EE0B7F00047E3D33EB0AC1
+	myAmount 1
+}
+
+RewardItem reward_quest_FQ_ASH_020_Datapad_remove < uid=7C12810B6568CA94001031E27D7E8582 >
+{
+	myItem < uid=7C12810B6568CA94001031E349FAEEEB > = qitem_FQ_ASH_020_EmpireDatapad CC6CF61E64EE0B7F00047E3D33EB0AC1
+	myAmount -1
+}
+
+RewardItem reward_quest_EQ_100_Durasteel_remove < uid=7C12810B6571A68600127065B6C2F35C >
+{
+	myItem < uid=7C12810B6571A68600127066D51C1B1F > = qitem_EQ_100_DurasteelStruts 7C12810B657197D7001B53E02D3FECEE
+	myAmount -1
+}
+
+RewardItem reward_quest_EQ_060_HeavyWeaponSkill_add < uid=E1B84E3A65A00B5900239216375685AE >
+{
+	myItem < uid=E1B84E3A65A01BCA0035EC5F99EE673F > = Dom_Item_CanITryThat 1C73D33B657C787F0000BD4A3F4C0C5A
+	myAmount 1
+}
+
+RewardItem reward_quest_EQ_060_HeavyWeaponSkill_remove < uid=E1B84E3A65A170220068E700D4E39DD7 >
+{
+	myItem < uid=E1B84E3A65A170620068E7012F7F8452 > = Dom_Item_CanITryThat 1C73D33B657C787F0000BD4A3F4C0C5A
+	myAmount -1
+}
+
+RewardItem reward_quest_MQ_130_RingRoadKeyCard_add < uid=253B686765E72FE6000BA4C60F25F12C >
+{
+	myItem < uid=253B686765E72FE6000BA4C7FE83FA63 > = Keycard_A_MQ_130_B05_Ring_Road 913C1076646F6BDB0011A3BA2F163572
+	myAmount 1
+}
+
+RewardItem reward_quest_EQ_020_AtmosphericAccelerator_add < uid=9128788865E9708C000D01BF2DEDE18C >
+{
+	myItem < uid=9128788865E9708C000D01C0D3B85DB3 > = qitem_EQ_020_AtmosphericAccelerator 9128788865E82EDD000000C945D2FCCA
+	myAmount 1
+}
+
+RewardItem reward_quest_EQ_020_AtmosphericAccelerator_remove < uid=9128788865E9708C000D01C1E323E1CE >
+{
+	myItem < uid=9128788865E9708C000D01C21809C60C > = qitem_EQ_020_AtmosphericAccelerator 9128788865E82EDD000000C945D2FCCA
+	myAmount -1
+}
+
+RewardItem reward_quest_MQ_090_AnkCharm_add < uid=842ECCE466545B400003F3361C05284B >
+{
+	myItem < uid=842ECCE466545B400003F33759A9B740 > = qitem_MQ_090_AnkCharm 842ECCE46537C5EF000783E88FD0FE2A
+	myAmount 1
+	mySupressNotification TRUE
+}
+
+RewardItem reward_quest_MQ_090_AnkCharm_remove < uid=842ECCE466545A7D0003F30007811103 >
+{
+	myItem < uid=842ECCE466545B400003F338B037FB3B > = qitem_MQ_090_AnkCharm 842ECCE46537C5EF000783E88FD0FE2A
+	myAmount -1
+	mySupressNotification FALSE
+}
+
+RewardItem reward_quest_MQ_100_HeartofHive_remove < uid=5E589225665595B80004AF3EA05BCD0F >
+{
+	myItem < uid=5E589225665595E80004AF3F2BD20A1A > = qitem_MQ_100_HeartOfTheHive 5E589225653A342D000AE29BC257E886
+	myAmount -1
+}
+
+RewardItem reward_quest_EQ_020_MagneticCharge_remove_02 < uid=912878886669AA2000112A586E4F2318 >
+{
+	myItem < uid=912878886669AA2000112A595AFD3C26 > = qitem_EQ_020_MagneticCharge 91287888649BFF3A002B217F4D08FC4F
+	myAmount -2
+}
+
+RewardItem reward_quest_EQ_030_CodeSequencer_remove < uid=381EA527666AA41E00026C1FB9F3C906 >
+{
+	myItem < uid=381EA527666AA41E00026C206E834F5D > = qitem_EQ_030_CodeSequencer C7AA9ADA65377F9700125829EC6E5C7A
+	myAmount -1
+}
+
+RewardItem reward_quest_HTC_010_ClientListProjector_remove < uid=91287888666AAEB00013DB2B8844F14D >
+{
+	myItem < uid=91287888666AAEB00013DB2CF294EA27 > = qitem_FQ_HTC_010_HologramProjector BFAAA1FC63469F2300004BCFB15CACF9
+	myAmount -1
+}
+
+RewardItem reward_quest_MQ_020_PasswordOverride_remove < uid=C5645856667146CA00083F0E3F4BAC89 >
+{
+	myItem < uid=C5645856667146CA00083F0FF36B80DE > = qitem_MQ_020_Vault_Door_Code C56458566373969F0004ED8C854D2A2F
+	myAmount -1
+}
+
+RewardItem reward_quest_MQ_130_RingRoadKeyCard_remove < uid=253B68676673E151000C49A045CBB427 >
+{
+	myItem < uid=253B68676673E151000C49A10D311A45 > = Keycard_A_MQ_130_B05_Ring_Road 913C1076646F6BDB0011A3BA2F163572
+	myAmount -1
+}
+
+RewardItem reward_quest_MQ_130_MenagerieKeyCard_remove < uid=253B68676673E151000C49A213E182B5 >
+{
+	myItem < uid=253B68676673E151000C49A33FE85565 > = Keycard_A_MQ_130_B07_Menagerie 913C1076646DD7170003F60B02BC489B
+	myAmount -1
+}
+
+RewardItem reward_quest_ASH_010_BavKrantiClam_remove < uid=91287888667D765B0010DBE41705745B > : reward_quest_MQ_040_GoraksRing_add
+{
+	myItem < uid=91287888667D765B0010DBE5216F9C8B > = qitem_ASH_010_BevKrantiClam 91287888654A0D39000F950F5B6BE6AE
+	myAmount -1
+}
+
+RewardItem reward_quest_MQ_045_NixAccessoryFirstTimeDeliveryCrate < uid=2AE2EC85667EBF530017B67F77179AB1 >
+{
+	myItem < uid=2AE2EC85667EBF780017B6803E0E058F > = pet_gear_08 BFAAA1FC6501AB670000C79B0EE562EB
+	myAmount 1
+	mySupressNotification TRUE
+}
+
+RewardItem reward_quest_MQ_070_ControlRoomKeycard_remove < uid=912878886683CC08002826C77F9B3625 >
+{
+	myItem < uid=912878886683CC08002826C826CA2B64 > = Keycard_A_MQ_070_PrivateClubControlRoom 912878886556421B00030D9883C3FA4A
+	myAmount -1
+	mySupressNotification TRUE
+}
+
+RewardItem reward_quest_SQ_010_UnlockFeedback_add < uid=912878886687B43E0006F6B212F6A95D >
+{
+	myItem < uid=912878886687B43E0006F6B3133395B6 > = hidden_item_JabbasGambitQuestFeedback 2AE2EC856686C1280068070797D78165
+	myAmount 1
+}
+
+RewardItem reward_quest_ASH_010_BavKrantiClamPearl_Sellable_add_01 < uid=91287888668D46230034EA7B58870ADD >
+{
+	myItem < uid=91287888668D46230034EA7C592267BD > = qitem_ASH_010_BevKrantiClamPearl_Sellable 2AE2EC85667E76860007F7E20D50A829
+	myAmount 1
+}
+
+RewardItem reward_quest_ASH_010_BavKrantiClamPearl_Sellable_remove_01 < uid=91287888668D46230034EA7DEEF06738 >
+{
+	myItem < uid=91287888668D46230034EA7EA6E31BC8 > = qitem_ASH_010_BevKrantiClamPearl_Sellable 2AE2EC85667E76860007F7E20D50A829
+	myAmount -1
+	mySupressNotification TRUE
+}
+
+RewardItem reward_quest_ASH_010_BavKrantiClamPearl_remove_NoNotif < uid=91287888668D46AD0034EB724CF3E6FB >
+{
+	myItem < uid=91287888668D46AD0034EB7320F7E9C9 > = qitem_ASH_010_BevKrantiClamPearl 91287888652D2A3B0002FD323082B10A
+	myAmount -1
+	mySupressNotification TRUE
+}
+
+RewardItem reward_quest_EQ_020_MagneticCharge_remove_NoNotif < uid=91287888668E746D0005037F3739FB57 >
+{
+	myItem < uid=91287888668E746D000503808ED8B612 > = qitem_EQ_020_MagneticCharge 91287888649BFF3A002B217F4D08FC4F
+	myAmount -1
+	mySupressNotification TRUE
+}
+

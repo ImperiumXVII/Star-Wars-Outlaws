@@ -1,0 +1,649 @@
+include "helix/game system data/fruit/ai/npconnpcattachment.fruit"
+include "helix/game system data/fruit/audio/stimulus.fruit"
+include "helix/game system data/fruit/equipment/aiming.fruit"
+include "helix/game system data/fruit/equipment/adrenaline_rush.fruit"
+include "helix/game system data/fruit/equipment/equipment_cooldown.fruit"
+include "helix/game system data/fruit/equipment/equipment_holding.fruit"
+include "helix/game system data/fruit/equipment/equipment_overheat.fruit"
+include "helix/game system data/fruit/equipment/weapon/weapon_fire_mode.fruit"
+include "helix/game system data/fruit/equipment/weapon/weapon_configuration.fruit"
+include "helix/game system data/fruit/equipment/weapon/weapon_module.fruit"
+include "helix/game system data/fruit/equipment/trickshot/trickshot.fruit"
+include "helix/game system data/fruit/equipment/equipment_slot_types.fruit"
+include "helix/game system data/fruit/equipment/equipment_throwable.fruit"
+include "helix/game system data/fruit/equipment/equipment_ramp_up_down.fruit"
+include "helix/game system data/fruit/equipment/equipment_ui.fruit"
+include "helix/game system data/fruit/input/gameinput.fruit"
+include "helix/game system data/fruit/item/item.fruit"
+include "helix/game system data/fruit/item/consumed_item_config.fruit"
+include "helix/game system data/fruit/gearset/gearset.fruit"
+include "helix/game system data/fruit/player/playeragentstate.fruit"
+include "helix/game system data/fruit/restriction/playerrestriction.fruit"
+include "helix/game system data/fruit/timesequence/time_sequence.fruit"
+include "helix/game system data/fruit/tutorials/tutorial.fruit"
+include "helix/game system data/fruit/talent/talent.fruit"
+include "snowdrop/modules/core/audio/audio.fruit"
+
+class EquipmentItem < uid=auto abstract=1 > : Item
+{
+	ItemCategory myCategory Equipment
+	EquipmentCooldown myCooldown
+	EquipmentOverHeat myOverHeat
+	AimConfig* myAimConfig
+	EquipmentHoldingConfig* myHoldingConfig
+	bool myAlwaysAim false < tooltip="If true, if the player holds the equipment always want to activley aim, no matter the input." >
+	EquipmentRampUpAndDown myUseRampUpAndDown
+	EquipmentUI myUI
+	Item* myConsumedItem < tooltip="If set the player needs to have this item to be able to use the equipment and one will be consumed on use." >
+	ConsumedItemConfig myConsumedItemConfig < tooltip="Configurations for the item consumed when using the equipment" >
+	EquipmentSlotGroupType myDefaultSlotGroup Unassigned < tooltip="The equipment will be slotted in this group by default (unless the game intentionally slot it in a different one)." >
+	bool myIsPickable false < tooltip="If enabled, item will be automatically equipped in the pickable slot." >
+	bool myResetAmmoOnRemove true < tooltip="If this item has ammo and this is true, it will remove the ammo from the players inventory when removed" >
+	int myMaxNumberOfActivePickables 3 < tooltip="The max number of pickables of this item type that can be active within radius when this item is spawned." >
+	float myPickableDeactivationRadius 40.0 < tooltip="When spawned, if there are more than the max allowed active pickables within this radius from the item, some of the pickables will be disabled for pickup." >
+	TalentList myTalents < tooltip="Applied when equipment is equipped" >
+	TalentList myActiveDurationTalents < tooltip="Applied while equipment is active and removed when equipment goes in cooldown" >
+	GearSetlist myGearSets
+	ThrowableModule myThrowableModule < hidden=1 tooltip="Optional, fill to make the equipment throwable." >
+	bool myShouldAutoSave TRUE
+	bool myIsDisabledByDefault FALSE < tooltip="If set to true this item will not be usable until it's enabled by contextual gameplay systems." >
+	bool myDeployOnPickup TRUE < tooltip="if true when item is added to inventory, deploy automatically. (NOTE: If this is false, it will break unless given through script)" >
+	StimulusIdentifier* myActivationBark < tooltip="Bark to be played when the item is used." >
+	uid myActivationRumble < bhv="constantData" constantDataType="rumble" tooltip="This rumble plays when the equipment is activated, if it's owned by the player or spaceship." >
+	file myActivationParticleEffect < bhv=asset assettype=particles tooltip="Particle Effect to be triggered upon activation" >
+}
+
+class BinocularsEquipmentItem : EquipmentItem
+{
+	EquipmentSlotGroupType myDefaultSlotGroup Binoculars < hidden=1 >
+	file myGraphObject "" < bhv=asset assettype=object/gameplayobject >
+	PlayerRestriction* myRestrictedActions < tooltip="Prevented actions while having the binoculars in hand." >
+}
+
+class GrapplingHookEquipmentItem : EquipmentItem
+{
+	EquipmentSlotGroupType myDefaultSlotGroup GrapplingHook < hidden=1 >
+	file myGraphObject "" < bhv=asset assettype=object/gameplayobject >
+	float myMaxLength 10.0
+}
+
+class MedkitEquipmentItem : EquipmentItem
+{
+	EquipmentSlotGroupType myDefaultSlotGroup Medkit < hidden=1 >
+	file myGraphObject "" < bhv=asset assettype=object/gameplayobject >
+	TimeSequence myHealSequence
+}
+
+class ShieldOverchargeEquipmentItem : EquipmentItem
+{
+	EquipmentSlotGroupType myDefaultSlotGroup Gadgets < hidden=1 >
+	file myGraphObject "" < bhv=asset assettype=object/gameplayobject >
+	TimeSequence myInvincibilitySequence
+	float myChargeUpDuration 3.0
+}
+
+class WeaponModuleItem : EquipmentItem
+{
+	EquipmentOverHeat myOverHeat < hidden=1 >
+	AimConfig* myAimConfig < hidden=1 >
+	EquipmentRampUpAndDown myUseRampUpAndDown < hidden=1 >
+	file myUIGraph "" < bhv=asset assettype=GUI hidden=1 >
+	bool myAlwaysAim false < hidden=1 >
+	
+	EquipmentSlotGroupType myDefaultSlotGroup WeaponModules < hidden=1 >
+	file myGraphObject "" < bhv=asset assettype=object/gameplayobject >
+	WeaponFireMode* myFireMode
+	WeaponModuleFamilyType myFamily Plasma
+}
+
+class WeaponFireModeSlot
+{
+	WeaponFireModeSlotTag mySlotTag Main
+	bool myIsConst true
+	WeaponFireMode* myFireMode
+	WeaponModuleItem* myDefaultModule
+}
+
+list WeaponFireModeSlotList
+{
+	WeaponFireModeSlot
+}
+
+class WeaponItem : EquipmentItem
+{
+	EquipmentCooldown myCooldown < hidden=1 >
+	EquipmentOverHeat myOverHeat < hidden=1 >
+	AimConfig* myAimConfig < hidden=1 >
+	EquipmentRampUpAndDown myUseRampUpAndDown < hidden=1 >
+	file myUIGraph "" < bhv=asset assettype=GUI hidden=1 >
+	bool myAlwaysAim false < hidden=1 >
+	
+	EquipmentSlotGroupType myDefaultSlotGroup Weapons
+	file myGraphObject "" < bhv=asset assettype=object/gameplayobject >
+	EquipmentWeaponConfig* myConfig
+	WeaponFireModeSlotList myFireModes
+	string myQuickHipFireMultiplierFormula 1.0 < bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+}
+
+class TrickShotEquipmentItem : EquipmentItem
+{
+	EquipmentSlotGroupType myDefaultSlotGroup Skills < hidden=1 >
+	
+	file myGraphObject "" < hidden=1 bhv=asset assettype=object/gameplayobject >
+	
+	float myCandidateDistance 50.0
+	int myMaxNumTargets 8
+	
+	TrickShotScore myScore
+	
+	float myIntroductionTime 3.0
+	float myMiniGameWaitTime 0.15 < tooltip="This corresponds with the waiting stage before the UI minigame with multiple/single circles starts per target." >
+	
+	float myMiniGameUIInputMaxTime 0.35
+	float myMiniGameUIInputMinTime 0.25
+	
+	CameraModifierInOutTransitions myLookAtCamTransition
+	CameraModifierInOutTransitions myGeneralFOVCamTransition
+	CameraModifierInOutTransitions myMiniGameFOVCamTransition
+	
+	AimScreenTargetsOrderType myOrderType LeftToRight
+	
+	TimeSequenceTracks myMiniGameTracks
+	TimeSequence myShotSequence
+	TimeSequence myFailSequence
+	
+	float mySlowDownTimeScale 0.2
+	float myShotTimeScale 0.7
+	float myGeneralFOV -25.0 < tooltip="FOV modifier value applied during the whole Trick SHot mechanic." >
+	
+	bool myInterruptIfFailInput true
+	
+	float myMiniGameUIFakeMultiplier 0.7 < min=0.0 tooltip="This multiplier is applied to the minmigame time to produce the value to display for the player, inidependent from the logic values." >
+	
+	AudioEvent myInitAudioEvent
+	AudioEvent myEndAudioEvent
+	AudioEvent myCancelAudioEvent
+	AudioEvent myShotAudioEvent
+}
+
+class AdrenalineRushEquipmentItem : EquipmentItem
+{
+	EquipmentSlotGroupType myDefaultSlotGroup Skills < hidden=1 >
+
+	file myGraphObject "" < hidden=1 bhv=asset assettype=object/gameplayobject >
+	AdrenalineRushData myGroundData
+	AdrenalineRushData mySaddleShotData
+	AdrenalineRushUnlockConditions myUnlockConditions
+	SaddleShotContextData mySaddleShotContextData < tooltip="Settings specifically for SaddleShot" >
+	AimScreenTargetsOrderType myOrderType LeftToRight
+}
+
+class ThrowableEquipmentItem : EquipmentItem
+{
+	EquipmentSlotGroupType myDefaultSlotGroup Gadgets
+	file myGraphObject "" < bhv=asset assettype=object/gameplayobject >
+	ThrowableModule myThrowableModule < tooltip="Optional, fill to make the equipment throwable." >
+}
+
+// Must match enum HC_HoloReaderHotAndColdFeedbackType in code/helix/HClient/HC_ItemEquipmentHoloReaderConstantData.h
+enum HoloReaderHotAndColdFeedbackType
+{
+	FrequencyBasedOnDistance
+	IntensityBasedOnDistance
+}
+
+class HoloReaderEquipmentItem : EquipmentItem
+{
+	file myGraphObject "" < bhv=asset assettype=object/gameplayobject >
+	PlayerRestriction* myCompassModeRestrictions < tooltip="Prevented actions while in a compass mode" >
+	PlayerRestriction* myProjectionModeRestrictions < tooltip="Prevented actions while in a projection mode" >
+	PlayerRestriction* myLandscapeModeRestrictions < tooltip="Prevented actions while in a landscape mode" >
+	uid myDistanceToTargetRumble < bhv="constantData" constantDataType="rumble" >
+	AudioEvent myEnterTargetZoneSound
+	uid myEnterTargetZoneRumble < bhv="constantData" constantDataType="rumble" >
+	AudioEvent myExitTargetZoneSound
+	uid myExitTargetZoneRumble < bhv="constantData" constantDataType="rumble" >
+	AudioEvent myEnterTargetZoneSmugglerCrateSound
+	uid myEnterTargetZoneSmugglerCrateRumble < bhv="constantData" constantDataType="rumble" >
+	AudioEvent myExitTargetZoneSmugglerCrateSound
+	uid myExitTargetZoneSmugglerCrateRumble < bhv="constantData" constantDataType="rumble" >
+	uid myOnHologramOpen < bhv="constantData" constantDataType="rumble" >
+	uid myOnHologramClose < bhv="constantData" constantDataType="rumble" >
+	uid myOnRotateHolomap < bhv="constantData" constantDataType="rumble" >
+	file myTriggerEffect < bhv="asset" constantDataType="trigger effect" tooltip="The Trigger FX applied on turning the hologram" >
+	AudioEvent myTargetPingSound
+	AudioEvent myStartUsingGadgetSound
+	AudioEvent myEndUsingGadgetSound
+	AudioEvent myStartUsingGadgetSoundOnSpeeder
+	AudioEvent myEndUsingGadgetSoundOnSpeeder
+	AudioEvent myAutoHolsterSound
+	AudioEvent myStartTurnHoloSound
+	AudioEvent myEndTurnHoloSound
+	AudioEvent myEnterLandscapeMode
+	AudioEvent myExitLandscapeMode
+	AudioRTPC myAngleToTargetRtpc
+	AudioRTPC myDistanceToTargetRtpc
+	TutorialHint* myFindDiskOnThisPlanetMessage < tooltip="There is disk on this planet" >
+	TutorialHint* myFindDiskOnAnotherPlanetMessage < tooltip="There are unfinished disks on another planet" >
+	TutorialHint* myActiveDiskOnAnotherPlanetMessage < tooltip="Has an unlocked disk for another planet" >
+	TutorialHint* myAllDisksCompletedMessage < tooltip="All disks are completed" >
+	TutorialHint* myNoDiskMessage < tooltip="I have no disks yet" >
+	TutorialHint* myInitialDiskIsOnAnotherPlanetMessage < tooltip="Hint Message for the first disk on another planet" >
+	StimulusIdentifier* myInitialDiskIsOnAnotherPlanetMessageVO
+	StimulusIdentifier* myFindDiskOnThisPlanetMessageVO
+	StimulusIdentifier* myFindDiskOnAnotherPlanetMessageVO
+	StimulusIdentifier* myActiveDiskOnAnotherPlanetMessageVO
+	StimulusIdentifier* myAllDisksCompletedMessageVO
+	StimulusIdentifier* myNoDiskMessageVO
+	StimulusIdentifier* myEnterSearchAreaCacheVO
+	StimulusIdentifier* myExitSearchAreaCacheVO
+	StimulusIdentifier* myManualHolsterCacheVO
+	StimulusIdentifier* myManualUnholsterCacheVO
+	StimulusIdentifier* myEnterSearchAreaCrateVO
+	StimulusIdentifier* myExitSearchAreaCrateVO
+	StimulusIdentifier* myManualHolsterCrateVO
+	StimulusIdentifier* myManualUnholsterCrateVO
+	float myNoDiskHintDuration 5.0 < min=0.0 tooltip="How much time the empty disk stays on screen" >
+	float myRumbleIntensityWhenHolstered 0.5 < min=0.0 tooltip="A mutlipler to the rumble feedback of the gadget when hosltered" >
+	float myZoneHysteresis 1.0 < min=0.0 tooltip="The hysteresis of reentry to the discovery zone" >
+	float myFacingTimeHysteresis 1.0 < min=0.0 tooltip="Time after Orienting in the right direction before we start the feedback rumble and sound" >
+	float myEnterZoneTimeHysteresis 5.0 < min=0.0 tooltip="Time after exiting the discovery zone after which consider the character needs to auto unhoster the gadget" >
+	float myGadgetLightOnTime 0.8 < min=0.0 tooltip="Blink time for the gadget light" >
+	float myInnerAngleThresholdAtMinDistance 15 < min=0.0 tooltip="The half angle of the cone at the min distance. The further away you are the bigger the cone" >
+	float myInnerAngleThresholdAtMaxDistance 80 < min=0.0 tooltip="The half angle of the cone at the max distance. The further away you are the bigger the cone" >
+	float myOuterAngleThresholdAtMinDistance 35 < min=0.0 tooltip="The half angle of the cone at the min distance. The further away you are the bigger the cone" >
+	float myOuterAngleThresholdAtMaxDistance 90 < min=0.0 tooltip="The half angle of the cone at the max distance. The further away you are the bigger the cone" >
+	float myMinDistanceForRumble 2 < min=0.0 tooltip="The minimum distance for the rumble to trigger" >
+	float myMaxDistanceForRumble 100 < min=0.0 tooltip="The maximum distance for the rumble to trigger" >
+	HoloReaderHotAndColdFeedbackType myHoloReaderHotAndColdFeedbackType FrequencyBasedOnDistance	
+	bool myUseFlatDirection false
+	string myRumbleCooldownCurve < bhv=inputgraph >
+	string myOrientationAngleFeedbackCurve < bhv=inputgraph hidden=1 >
+	string myDistanceIntensityFeedbackCurve < bhv=inputgraph hidden=1 >
+	float myMinDistanceRumbleCooldown 0.5 < min=0.0 tooltip="The time between triggering rumble event at the min distance" hidden=1 >
+	float myMaxDistanceRumbleCooldown 3.0 < min=0.0 tooltip="The time between triggering rumble event at the max distance" hidden=1 >
+	float myMinAngleRumbleCooldown 0.5 < min=0.0 tooltip="The time between triggering rumble event at the min angle" hidden=1 >
+	float myMaxAngleRumbleCooldown 3.0 < min=0.0 tooltip="The time between triggering rumble event at the max angle" hidden=1 >
+	float myLandscapeThresholdValue 0.5 < min=0.0 tooltip="The stick value we consider the stick to be pressed up" >
+	float myRotationInputThresholdValue 0.3 < min=0.0 tooltip="The stick value we consider the stick to be pressed left or right" >
+	string myHoloNoiseAmplitudeCurve < bhv=inputgraph hidden=1 >
+	string myHoloNoiseAmplitudeModifierCurve < bhv=inputgraph hidden=1 >
+	string myHoloNoisePlaySpeedModifierCurve < bhv=inputgraph hidden=1 >
+	string myMouseSpeedToStickValueRemap "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.2 0.001, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+	bool myIsHologramAttachedToTheGadget false
+	float myDistanceFromCamera 0.0 < min=0.0 tooltip="Hologram distance from the camera" hidden=1 >
+	float myVerticalOffset 0.0 < tooltip="Vertical offset of the hologram" >
+	float myHorizontalOffset 0.0 < tooltip="Horizontal offset of the hologram" >
+	float myMinRotationSpeed 2.0 < min=0.0 >
+	float myMaxRotationSpeed 3.0 < min=0.0 >
+	vec3f myConePositionOffset -0.02;0.15;0.0 < tooltip="The local offset of the cone tip related to the gadget" >
+	float myConeAngle 60.0 < min=0.0  tooltip="The half angle of the holo map light cone" >
+	float myConeFadeStart 80.0 < min=0.0 tooltip="The start percentage of fade for the cone of light" >
+	float myConeFadeEnd 100.0 < min=0.0 tooltip="The end percentage of fade for the cone of light"  >
+	float myProjectionModeTransitionTime 1.2 < min=0.0 tooltip="Time needed to transition to the projection mode. It is used for the effect of the hologram" >
+	float myCompassModeTransitionTime 0.2 < min=0.0 tooltip="Time needed to transition to the compass mode. It is used for the effect of the hologram" >
+	float myCollisionTransitionTime 0.8 < min=0.0 tooltip="Time needed to transition to the collision mode. It is used for the effect of the hologram" >
+	float myLandscapeToProjectionTransitionTime 0.2 < min=0.0 tooltip="Time needed to transition from Landscape to Projection mode." >
+	float myProjectionToLandscapeTransitionTime 0.0 < min=0.0 tooltip="Time needed to transition from Projection to Landscape mode." >
+	float myInactiveTransitionTime 1.0 < min=0.0 tooltip="Time needed to transition to Projection to Inactive mode" >
+	float myCollisionCastRadius 0.2 < min=0.0 tooltip="Size Of the cast sphere" >
+	float myCollisionPhaseEnd 0.98 < min=0.0 max=1.0 tooltip="The phase represents the effect of the hologram. 0 would be hologram out and 1 will be completly hidden" >
+	bool myRestrictMoveInFocus false < tooltip="When this is on the character will not be able to move when projecting the hologram" >
+}
+
+class GearItem : EquipmentItem
+{
+	ItemCategory myCategory Gear
+	InventoryPouch myInventoryPouch Gear
+	
+	bool myCanBeSold FALSE
+	bool myHideAtVendorIfCantBeAddedToInventory TRUE
+	
+	file myGraphObject "" < bhv=asset assettype=object/gear;object/vehiclegear >
+	
+	EquipmentCooldown myCooldown < hidden=1 >
+	EquipmentOverHeat myOverHeat < hidden=1 >
+	AimConfig* myAimConfig < hidden=1 >
+	EquipmentHoldingConfig* myHoldingConfig < hidden=1 >
+	bool myAlwaysAim false < hidden=1 >
+	EquipmentRampUpAndDown myUseRampUpAndDown < hidden=1 >
+	file myUIGraph "" < bhv=asset assettype=GUI >
+	Item* myConsumedItem < hidden=1 >
+	EquipmentSlotGroupType myDefaultSlotGroup Unassigned < tooltip="The equipment will be slotted in this group by default (unless the game intentionally slot it in a different one)." >
+	AudioSwitch myGearWeightSwitch < tooltip="Set audio switch for gear weight" >
+}
+
+list GearItemList
+{
+	GearItem* 
+}
+
+class PikaxeEquipmentItem : EquipmentItem
+{
+	EquipmentSlotGroupType myDefaultSlotGroup Pikaxe < hidden=1 >
+	file myGraphObject "" < hidden=1 bhv=asset assettype=object/gameplayobject >
+	BallisticProjectile* myProjectile
+	TimeSequence myThrowSequence
+}
+
+class HeistTargetEquipmentItem : EquipmentItem
+{
+	EquipmentSlotGroupType myDefaultSlotGroup HeistTarget < hidden=1 >
+	file myGraphObject "" < bhv=asset assettype=object/gameplayobject >
+}
+
+class LuminRodLightPresetsByConditions
+{
+	GameConditionGroup myConditions < tooltip="Supports player centric conditions only. Leave empty for default preset" >
+	string myLightAnchorBone "RightHand" < tooltip="Bone to use to attach the light to." >
+	vec3f myLightPositionOffset 0.0;0.0;0.0 < tooltip="Offset to apply to the bone position." >
+	float myShadowStartDistance 0.01 < min=0.01 tooltip="Anything closer to the light than this value will not cast shadows and will be ignored for occlusion tests." >
+	bool myEnableLightLookAt TRUE < tooltip="If set to true, the player will be able to orient the light cone using the camera." >
+	float myMaxLightLookAtHorizontalAngle 70.0 < min=0 max=90 hidden=1 tooltip="Light look at will be clamped once the angle between camera facing and player facing reaches this angle." >
+	float myLightConeAngleCameraAlignedToPlayerFacing 80.0 < min=1 max=150 tooltip="Light cone angle used when camera is right behind player's back." >
+	float myConsideredAlignedMaximumAngle 90.0 < min=0 max=90 hidden=1 tooltip="Angle tolerance value for the camera to be considered fully aligned behind player's back and use LightConeAngleCameraAlignedToPlayerFacing." >
+	float myLightConeAngleCameraNotAlignedToPlayerFacing 80.0 < min=1 max=150 hidden=1 tooltip="Light cone angle used when camera is not behind Kay's back." >
+	float myConsideredNotAlignedMinimalAngle 90.0 < min=0 max=90 hidden=1 tooltip="Angle threshold above which camera will be considered fully not aligned behind Kay's back and use myLightConeAngleCameraNotAlignedToPlayerFacing." >
+	bool myDisableNixShadows FALSE 
+}
+
+list LuminRodLightPresetsByConditionsList
+{
+	LuminRodLightPresetsByConditions
+}
+
+class LuminRodEquipmentItem : EquipmentItem
+{
+	file myGraphObject "" < bhv=asset assettype=object/gameplayobject >
+	float myLightLifeTime 0.0 < min=0 tooltip="The life time (in seconds) of the light once the lumin is sparked. Set to 0 for infinite duration." >
+	bool myUseinHandRemaingTimeWhenThrowing FALSE < tooltip="If ticked, the in hand light remaining life time will be transmitted to the light life time after throw." >
+	float myLightLifeTimeAfterThrow 120.0 < min=0 tooltip="if UseinHandRemaingTimeWhenThrowing is not ticked, When throwing a lumin rod, the remaining life time will be reset with this value." >
+	float myLifeTimeOnceConsumed 10.0 < min=0 tooltip="The duration the lumin rod will remain in the world once the light turned off." >
+	ThrowableModule myThrowableModule < tooltip="Optional, fill to make the equipment throwable." >
+	int myMaxNumberOfActiveRods 4
+	bool myAutoSpark TRUE < tooltip="If ticked, the lumin rod will automatically be sparked when the player unholsters it." >
+	bool myDiscardOnStow TRUE < tooltip="If ticked, Kay will discard the current held lumin rod instead of stowing it." >
+	float myDiscardThrowSpeed 5.0 < min=0 >
+	vec3f myDiscardThrowDirection 0.1;-1.0;0.1
+	PlayerAgentStates myAutoUnholsterStates < tooltip="If the player had to stow the lumin rod because they entered in one of those states, it will be auto unholstered upon exit." >
+	TimeSequence myHolsterFromBeltToPouchSequence < tooltip="Put a EquipmentHolding custom track here to control at what point the lumin rod is attached and detached from the hand when holstering the rod from the belt to the pouch." >
+	float myUnholsterFromBeltWaitTime 0.5 < min=0.0 tooltip="The time it takes before the player automatically unholster the lumin rod from the belt once both hands are free." >
+	float mySwitchLightPresetBlendingTime 0.1 < min=0 tooltip="The time it takes for blending between 2 light presets." >
+	LuminRodLightPresetsByConditionsList myLightPresetsByConditions < tooltip="Order matters as first valid item in the list will be selected without checking the next ones. Don't forget to include a default preset with an empty condition in last position of the list!" >
+	TimeSequence myUnholsterFromPouchSequence < tooltip="Put a EquipmentHolding custom track here to control at what point the light will be turned on when unholstering the rod from pouch." >
+}
+
+// Must match enum HC_BlastChargeDetonationMode in code/helix/HClient/HC_ItemEquipmentBlastChargeConstantData.h
+enum BlastChargeDetonationMode
+{
+	OldestFirst
+	AllAtOnce
+	LastFirst
+}
+
+class BlastChargeEquipmentItem : EquipmentItem
+{
+	file myGraphObject "" < bhv=asset assettype=object/gameplayobject >
+	ThrowableModule myThrowableModule < tooltip="Optional, fill to make the equipment throwable." >
+	int myMaxChargesAtOnce 3 < min=0 tooltip="The number of charges that can be set simultaneously in the world." >
+	BlastChargeDetonationMode myDetonationMode AllAtOnce
+	float myMinDetonationDelay 0.1 < min=0 tooltip="When using AllAtOnce detonation mode, this will be the minimum delay between two charges explosions." >
+	float myMaxDetonationDelay 0.2 < min=0 tooltip="When using AllAtOnce detonation mode, this will be the maximum delay between two charges explosions." >
+	float myPlaceChargeRange 1.5 < min=0 tooltip="The max range the charge can be placed at instead of being thrown." >
+	float myCrosshairThrowChargeRange 3 < min=0 tooltip="The max range the charge can be thrown in the crosshair position instead of using a regular throw trajectory." >
+	float myCrosshairThrowChargeSpeed 30 < min=0 tooltip="The speed used for throwing the blast charge when doing a crosshair throw." >
+}
+
+class SmokeGrenadeEquipmentItem : EquipmentItem
+{
+	file myGraphObject "" < bhv=asset assettype=object/gameplayobject >
+	ThrowableModule myThrowableModule < tooltip="Optional, fill to make the equipment throwable." >
+	vec3f myThrowDirection 0.2;-1.0;0.0;
+	TimeSequence myUnholsterFromBeltSequence
+}
+
+class CoopTalentAbilityEquipmentItem : EquipmentItem
+{
+	EquipmentSlotGroupType myDefaultSlotGroup Skills < hidden=1 >
+	file myGraphObject "" < bhv=asset assettype=object/equipment >
+
+	float myDuration 10 < min=0 tooltip="Duration of the ability. In seconds." >
+	Talent* myTalent < min=0 tooltip="The talent that will be activated when the ability is used." >
+	StimulusIdentifier* myAbilityActivatedStimulus
+}
+
+class EMDisruptorEquipmentItem : EquipmentItem
+{
+	file myGraphObject "" < bhv=asset assettype=object/gameplayobject >
+	TimeSequence myUseSequence
+	file myGameScript "" < bhv=asset assettype="Game Script/GameEffect" >
+	float myImpulseRange 30.0 < tooltip="The radius of the disruption effect." >
+	float myDisruptionDuration 10.0 < tooltip="The duration of the disruption effect applied to nearby NPCs." >
+}
+
+class FocusFieldAbilityEquipmentItem : CoopTalentAbilityEquipmentItem
+{
+	EquipmentSlotGroupType myDefaultSlotGroup Skills < hidden=1 >
+	file myGraphObject "" < bhv=asset assettype=object/equipment >
+
+	float myRadius 10.0 < tooltip="The radius of the effect." >
+}
+
+class SensorJammerEquipmentItem : EquipmentItem
+{
+	EquipmentSlotGroupType myDefaultSlotGroup AuxiliaryDevice < hidden=1 >
+	file myGraphObject "" < hidden = 1 >
+
+	float myDuration 5.0 < tooltip="Jamming duration after activation" >
+}
+
+class CountermeasureEquipmentItem : EquipmentItem
+{
+	EquipmentSlotGroupType myDefaultSlotGroup AuxiliaryDevice < hidden=1 >
+	file myGraphObject "" < hidden = 1 >
+
+	float myDuration 5.0 < tooltip="Countermeasure duration after activation" >
+	float myAvoidanceDistance 13.0 < tooltip="Distance used to avoid the player spaceship" >
+}
+
+class WeaponOverdriveEquipmentItem : EquipmentItem
+{
+	EquipmentSlotGroupType myDefaultSlotGroup AuxiliaryDevice < hidden=1 >
+	file myGraphObject "" < hidden=1 >
+
+	float myDuration 5.0 < tooltip="Weapon Overdrive duration after activation" >
+}
+
+list SkinGraphObjectList
+{
+	file GraphObject < bhv=asset assettype=object/gear;object/vehiclegear >
+}
+
+class SkinEquipmentItem : EquipmentItem
+{
+	EquipmentSlotGroupType myDefaultSlotGroup Skin < hidden=1 >
+
+	file myL1NormalMap < bhv="asset" assettype="texture" >
+	file myL1ColorMap < bhv="asset" assettype="texture" >
+	file myL1Material < bhv="asset" assettype="texture" >
+	file myDetailNormal < bhv="asset" assettype="texture" >
+	file myASDUV2 < bhv="asset" assettype="texture" >
+	file myDCDCUV2 < bhv="asset" assettype="texture" >
+	file myFeatureMapSSD < bhv="asset" assettype="texture" >
+	file myPaintMapUV2 < bhv="asset" assettype="texture" >
+	file myWallStainsFeaturesUV3 < bhv="asset" assettype="texture" >
+
+	vec2f myBaseNormalTiling 0;0
+	vec2f myL1Tiling 0;0
+	vec2f myDetailTiling 0;0
+	vec2f myFeaturesTiling 0;0
+
+	float mySwapL1L2 0
+
+	color myL1ColorOverlay
+	color myL2ColorOverlay
+
+	float myL2Metalness 0
+	float myL2Roughness 0
+	float myL2RoughnessDetailContrast 0
+	float myL2RoughnessDetailPattern 0
+	float myL2ScratchAmount 0
+	float myDiscolorationDesaturation 0
+	float myDiscolorationBrightening 0
+
+	color myHullPaintColorR
+	vec2f myHullPaintColorRDesaturationBright 0;0
+	float myHullPaintColorRMetalness 0
+	vec2f myHullPaintColorRRoughnessBC 0;0
+
+	color myHullPaintColorG
+	vec2f myHullPaintColorGDesaturationBright 0;0
+	float myHullPaintColorGMetalness 0
+	vec2f myHullPaintColorGRoughnessBC 0;0
+
+	color myHullPaintColorB
+	vec2f myHullPaintColorBDesaturationBright 0;0
+	float myHullPaintColorBMetalness 0
+	vec2f myHullPaintColorBRoughnessBC 0;0
+
+	float myPaintAvoidMetal 0
+	float myPaintMapContrast 0
+	float myPaintMapFadeContrast 0
+
+	color myDirt1Color
+	float myDirt1Roughness 0
+	float myDirt1Amount 0
+	vec2f myDirt1MaskContrastRemap 0;0
+	float myDirt1MaskBlendBias 0
+
+	color myDirt2Color
+	float myDirt2Roughness 0
+	float myDirt2Amount 0
+	vec2f myDirt2MaskContrastRemap 0;0
+	float myDirt2MaskBlendBias 0
+
+	file myGreebleL1Normal < bhv="asset" assettype="texture" >
+	file myGreebleL1ColorTexture < bhv="asset" assettype="texture" >
+	file myGreebleL1Material < bhv="asset" assettype="texture" >
+
+	vec2f myGreebleBaseNormal 0;0
+	vec2f myGreebleL1Tiling 0;0
+
+	color myGreebleL1Color
+	float myGreebleL1DiscolorationDesaturation 0
+	float myGreebleL1DiscolorationBrightening 0
+
+	color myGreeblePaintR
+	vec2f myGreeblePaintRDiscolorationDesaturationBrightening 0;0
+	float myGreeblePaintRMetalness 0
+	vec2f myGreeblePaintRRoughnessBC 0;0
+
+	color myGreeblePaintG
+	vec2f myGreeblePaintGDiscolorationDesaturationBrightening 0;0
+	float myGreeblePaintGMetalness 0
+	vec2f myGreeblePaintGRoughnessBC 0;0
+
+	color myGreeblePaintB
+	vec2f myGreeblePaintBDiscolorationDesaturationBrightening 0;0
+	float myGreeblePaintBMetalness 0
+	vec2f myGreeblePaintBRoughnessBC 0;0
+
+	color myGlassTint
+	
+	SkinGraphObjectList myExtraGraphObjects
+	
+	int myVisualPriority 0 < tooltip="Used when there are more than one skin equipped at once. The skin with the higher visual priority will be the one visually applied." >
+}
+
+class RepairkitEquipmentItem : MedkitEquipmentItem
+{
+	EquipmentSlotGroupType myDefaultSlotGroup AuxiliaryDevice < hidden=1 >
+}
+
+class TurretMountEquipmentItem : EquipmentItem
+{
+	NPConNPCAttachmentSlot myNPCAttachmentSlot < tooltip="NPC to be added" >
+	string myTurretActiveDuration 4.0 < bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+}
+
+class TakedownWeaponEquipmentItem : EquipmentItem
+{
+	EquipmentSlotGroupType myDefaultSlotGroup TakedownWeapon < hidden=1 >
+	file myGraphObject "" < bhv=asset assettype=object >
+}
+
+list PlayerRestrictionTypesList
+{
+	PlayerRestrictionTypes
+}
+
+class GenericScriptSpawnerEquipmentItem : EquipmentItem
+{
+	GameConditionGroup myUseConditions < tooltip="Supports player centric conditions only." >
+	TimeSequence myUseSequence
+	file myGameScript "" < bhv=asset assettype="Game Script/GameEffect" >
+	GameAction myUseGameAction None
+	float myEffectDuration 1.0
+	float myEffectRadius 1.0
+	PlayerRestrictionTypesList myUsageRestrictions < tooltip="This item won't be usable if any of those restrictions are applied." >
+}
+
+class ScannerEquipmentItem : EquipmentItem
+{
+	EquipmentSlotGroupType myDefaultSlotGroup Scanner < hidden=1 >
+	file myGraphObject "" < hidden=1 >
+
+	float myDuration 5.0 < tooltip="Scanner duration after activation" >
+	float myEMIDuration 3.0 < tooltip="Scanner max duration while in Nebula (when EM Inteference is applied)" >
+}
+
+class VisualEffectEquipmentItem : EquipmentItem
+{
+	color myColor1
+	color myColor2
+}
+
+class DummyEquipmentItem : EquipmentItem
+{
+	file myGraphObject "" < bhv=asset assettype=object >
+}
+
+class DataspikeEquipmentItem : EquipmentItem
+{
+	file myGraphObject "" < bhv=asset assettype=object >
+	TimeSequence myHairToHandSequence
+	TimeSequence myHandToHairSequence
+}
+
+class CooldownTimeScaleByConditions
+{
+	GameConditionGroup myConditions
+	float myTimeScale < min=0 tooltip="" >
+}
+
+list CooldownTimeScaleByConditionsList
+{
+	CooldownTimeScaleByConditions
+}
+
+class StunEquipmentItem : EquipmentItem
+{
+	EquipmentOverHeat myOverHeat < hidden=1 >
+	AimConfig* myAimConfig < hidden=1 >
+	EquipmentRampUpAndDown myUseRampUpAndDown < hidden=1 >
+	file myUIGraph "" < bhv=asset assettype=GUI hidden=1 >
+	bool myAlwaysAim false < hidden=1 >
+	EquipmentCooldown myCooldown < hidden=1 >
+	WeaponItem* myWeapon
+	PlayerRestriction* myShotRestrictions < tooltip="Prevented actions while the shot is ongoing" >
+	CooldownTimeScaleByConditionsList myTimeScalesByConditions < tooltip="To be ordered by descending priorities." >
+}
+
+class GenericEquipmentItem : EquipmentItem
+{
+	EquipmentSlotGroupType myDefaultSlotGroup AuxiliaryDevice < readonly=1 >
+	file myGraphObject "" < hidden = 1 >
+
+	float myDuration 5.0 < tooltip="Duration after activation" >
+	EquipmentType myType GenericItem
+}

@@ -1,0 +1,1018 @@
+include "helix/game system data/fruit/settings/wantedsettings.fruit"
+include "helix/game system data/juice/ai/fireteamcore/npc_fireteam_cores.mnpcfireteamcore"
+include "helix/game system data/juice/faction/factions.mfaction"
+include "helix/game system data/juice/livingworld/reinforcementcontent.mlivingworldcontent"
+include "helix/game system data/juice/mapref/mapref_wanted_escapeoption.mmapref"
+include "helix/game system data/juice/npc/emp_atst.mnpc"
+include "helix/game system data/juice/npc/emp_automatedturret.mnpc"
+include "helix/game system data/juice/npc/emp_automatedturret_gedeek.mnpc"
+include "helix/game system data/juice/npc/emp_shp_tiefighter_a.mnpc"
+include "helix/game system data/juice/npc/emp_surveillance_camera.mnpc"
+include "helix/game system data/juice/npc/emp_troop_transport_turret.mnpc"
+include "helix/game system data/juice/npc/space_empire_floating_turret.mnpc"
+include "helix/game system data/juice/reward/currency_reward.mreward"
+include "helix/game system data/juice/reward/legend_reward.mreward"
+
+WantedSettings MainWantedSettings < uid=D9ED8AD45F60603D0000001EBD0C9AB0 >
+{
+	myReinforcementsMinSpawnRadius 20.0
+	myReinforcementsMaxSpawnRadius 500.0
+	myReinforcementRequestTimeout 5.0
+	myExitCombatGracePeriodSeconds 5.0
+	myDetectionConfig
+	{
+		myLoseDetectionGracePeriodSeconds 15.0
+		myLoseLKPGracePeriodSeconds 20.0
+	}
+	myRecruitmentConfigPlanet
+	{
+		myPursuitMaxNPCCount PlanetWantedPursuitMaxCount
+		myReleaseFromRecruitmentDistance PlanetReleaseFromRecruitmentDistance
+		myDespawnPolicy
+		{
+			myDespawnAtLocation_EnableDespawnDuringTravel FALSE
+		}
+		myDespawnLocationSearchParameters
+		{
+			myContentDestinationType WantedDespawn
+		}
+		myNPCScoreParameters
+		{
+			myTraversalContextScores
+			{
+				WantedPlayerTraversalContextScore OnMount
+				{
+					myPlayerTraversalContext OnMount
+					myNPCTraversalContexts
+					{
+						NPCTraversalContextScore NPCOnMOunt
+						{
+							myTraversalContext OnMount
+							myScore 0.3
+						}
+					}
+				}
+			}
+		}
+		myUnrecruitableNPCs
+		{
+			NPCUnrecruitableData AutomatedTurret
+			{
+				myNPC < uid=06FDC2DB650C5C770000FC356C255E0A > = emp_automatedturret 16DEADE661A14A6D00001AAA0448AB1E
+				myAddsToNPCCount TRUE
+			}
+			NPCUnrecruitableData AutomatedTurret_Gedeek
+			{
+				myNPC < uid=06FDC2DB650C5C770000FC3667E69AE9 > = emp_automatedturret_gedeek 4171A7E16494145400071B3563A1D513
+				myAddsToNPCCount TRUE
+			}
+			NPCUnrecruitableData Camera
+			{
+				myNPC < uid=06FDC2DB650C5C770000FC37306AAB16 > = emp_surveillance_camera 5C421F5C6405ED7500005943372FF28E
+			}
+			NPCUnrecruitableData AutomatedTurret_TroopTransport
+			{
+				myNPC < uid=06F3F6E465B758AC0004C6A49FB437E5 > = emp_troop_transport_turret 06F3F6E4657046A30009D6D80A29143F
+				myAddsToNPCCount TRUE
+			}
+			NPCUnrecruitableData ATST
+			{
+				myNPC < uid=06F3F6E46690F4560002F5F70DE37723 > = emp_atst 16DEADE661F0807B00001B62A29CB56F
+				myAddsToNPCCount TRUE
+			}
+		}
+	}
+	myRecruitmentConfigSpace
+	{
+		myPursuitMaxNPCCount SpaceWantedPursuitMaxCount
+		myReleaseFromRecruitmentDistance SpaceReleaseFromRecruitmentDistance
+		myDespawnPolicy
+		{
+			myDespawnInPlace_MinDistanceToPlayer 1000.0
+			myDespawnAtLocation_MinDistanceToPlayer 1500.0
+			myDespawnAtLocation_EnableDespawnDuringTravel FALSE
+		}
+		myDespawnLocationSearchParameters
+		{
+			myContentDestinationType WantedDespawn
+			myMaxSearchDistance 3000.0
+		}
+		myUnrecruitableNPCs
+		{
+			NPCUnrecruitableData SpaceTurret
+			{
+				myNPC < uid=06FDC2DB650C5C770000FC383BFA9557 > = space_empire_floating_turret 6EA7962563247A210000619A670708C3
+			}
+		}
+	}
+	mySpaceTravelWantedLevelClearThreshold 0
+	myEnforcementFaction < uid=595E8DFF5F76C8460000001E37695E23 > = Empire 16DEADE65F21E5AB000000B35532A71B
+	myWantedLevels
+	{
+		WantedLevelData Zero
+		{
+			myNPCDetectionRateMultiplier 1.0
+			myDepletionTime "30 * WantedLevelLossBonus"
+			myBribeCost 0
+			myArrestCost "Clamp(Player.CurrentCredits * 0.05, 50, 1000)"
+			myNeutralizationCost 0
+		}
+		WantedLevelData One
+		{
+			myReinforcements
+			{
+				ReinforcementData planet_toshara
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement Speeders < uid=5C148C4665E8477D0003DEAFA61BCA74 > = "Wanted Reinforcement Speeder" BAB09C5865DCA4720003079BF5DD8C48
+						LivingWorldContentWantedReinforcement Foot < uid=5C148C4665E88D09000000CE046C9625 > = "Wanted Reinforcement On Foot" BAB09C5865DC9DD50000CABF850F4967
+					}
+					myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+				}
+				ReinforcementData planet_tatooine
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement Speeders < uid=5C148C4665E847A80003DEB53D4D3955 > = "Wanted Reinforcement Speeder" BAB09C5865DCA4720003079BF5DD8C48
+					}
+					myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+				}
+				ReinforcementData planet_akiva
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement Speeders < uid=5C148C4665E847A80003DEB7C45D204A > = "Wanted Reinforcement Speeder" BAB09C5865DCA4720003079BF5DD8C48
+						LivingWorldContentWantedReinforcement Foot < uid=5C148C4665E88D70000000DECC064F2D > = "Wanted Reinforcement On Foot" BAB09C5865DC9DD50000CABF850F4967
+					}
+					myLevelInfo 9C4B6A046012E6B0000001B224713F01
+				}
+				ReinforcementData gym_msv_wantedsystem
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement Speeders < uid=5C148C4665E847FA0003DEC213EFBDCB > = "Wanted Reinforcement Speeder" BAB09C5865DCA4720003079BF5DD8C48
+						LivingWorldContentWantedReinforcement Foot < uid=5C148C4665E88D70000000DF3973CAB4 > = "Wanted Reinforcement On Foot" BAB09C5865DC9DD50000CABF850F4967
+						LivingWorldContentWantedReinforcement "Troop Transport" < uid=5C148C4665E88F5F0000013FED25FA2C > = "Wanted Reinforcement Road Transport" 6F2AF919618A7FC70000198B51C39E5C
+					}
+					myLevelInfo D9ED8AD45F9BCC5400000FA13DF02F4B
+				}
+				ReinforcementData gym_wanted_generated
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement Speeders < uid=5C148C4665E847FA0003DEC4AFAA1FA3 > = "Wanted Reinforcement Speeder" BAB09C5865DCA4720003079BF5DD8C48
+						LivingWorldContentWantedReinforcement Foot < uid=5C148C4665E88D70000000E0A5C50468 > = "Wanted Reinforcement On Foot" BAB09C5865DC9DD50000CABF850F4967
+						LivingWorldContentWantedReinforcement "Troop Transport" < uid=5C148C4665E88F5F0000014081E1C956 > = "Wanted Reinforcement Road Transport" 6F2AF919618A7FC70000198B51C39E5C
+					}
+					myLevelInfo E00F55FE634D07300000001B5FBB25F6
+				}
+			}
+			myNPCDetectionRateMultiplier 1.0
+			myPointsThreshold 200.0
+			myDepletionTime "(60.0+WantedDifficultyDepletionTimers) * WantedLevelLossBonus"
+			myBribeCost 150
+			myArrestCost "Clamp(Player.CurrentCredits * 0.05, 100, 2000)"
+			myNeutralizationCost "Clamp(Player.CurrentCredits * 0.05, 100, 2000)"
+		}
+		WantedLevelData Two
+		{
+			myReinforcements
+			{
+				ReinforcementData planet_toshara
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement Speeders < uid=5C148C4665E8482C0003DECB06303F20 > = "Wanted Reinforcement Speeder" BAB09C5865DCA4720003079BF5DD8C48
+						LivingWorldContentWantedReinforcement Foot < uid=5C148C4665E88D70000000E1A687C297 > = "Wanted Reinforcement On Foot" BAB09C5865DC9DD50000CABF850F4967
+					}
+					myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+				}
+				ReinforcementData planet_tatooine
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement Speeders < uid=5C148C4665E8482C0003DECDB397C1B5 > = "Wanted Reinforcement Speeder" BAB09C5865DCA4720003079BF5DD8C48
+					}
+					myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+				}
+				ReinforcementData planet_akiva
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement Speeders < uid=5C148C4665E8482C0003DECFA2A0349E > = "Wanted Reinforcement Speeder" BAB09C5865DCA4720003079BF5DD8C48
+						LivingWorldContentWantedReinforcement Foot < uid=5C148C4665E88D70000000E3FF87C993 > = "Wanted Reinforcement On Foot" BAB09C5865DC9DD50000CABF850F4967
+					}
+					myLevelInfo 9C4B6A046012E6B0000001B224713F01
+				}
+				ReinforcementData gym_msv_wantedsystem
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement Speeders < uid=5C148C4665E8482C0003DED11F7C02F5 > = "Wanted Reinforcement Speeder" BAB09C5865DCA4720003079BF5DD8C48
+						LivingWorldContentWantedReinforcement Foot < uid=5C148C4665E88D70000000E472EC744F > = "Wanted Reinforcement On Foot" BAB09C5865DC9DD50000CABF850F4967
+						LivingWorldContentWantedReinforcement "Troop Transport" < uid=5C148C4665E88F5F00000144098BF76C > = "Wanted Reinforcement Road Transport" 6F2AF919618A7FC70000198B51C39E5C
+					}
+					myLevelInfo D9ED8AD45F9BCC5400000FA13DF02F4B
+				}
+				ReinforcementData gym_wanted_generated
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement Speeders < uid=5C148C4665E8482C0003DED3EF5731C4 > = "Wanted Reinforcement Speeder" BAB09C5865DCA4720003079BF5DD8C48
+						LivingWorldContentWantedReinforcement Foot < uid=5C148C4665E88D70000000E5EAE793FF > = "Wanted Reinforcement On Foot" BAB09C5865DC9DD50000CABF850F4967
+						LivingWorldContentWantedReinforcement "Troop Transport" < uid=5C148C4665E88F5F0000014583AF9C56 > = "Wanted Reinforcement Road Transport" 6F2AF919618A7FC70000198B51C39E5C
+					}
+					myLevelInfo E00F55FE634D07300000001B5FBB25F6
+				}
+			}
+			myNPCDetectionRateMultiplier 1.0
+			myPointsThreshold 600.0
+			myDepletionTime "15 * WantedLevelLossBonus"
+			myBribeCost 165
+			myArrestCost "Clamp(Player.CurrentCredits * 0.05, 100, 2000)"
+			myNeutralizationCost "Clamp(Player.CurrentCredits * 0.05, 100, 2000)"
+		}
+		WantedLevelData Three
+		{
+			myReinforcements
+			{
+				ReinforcementData planet_toshara
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement "Troop Transport" < uid=5C148C4665E848600003DED9A26A0F09 > = "Wanted Reinforcement Road Transport" 6F2AF919618A7FC70000198B51C39E5C
+						LivingWorldContentWantedReinforcement Foot < uid=5C148C4665E88E5F000000FF0D7FC0E1 > = "Wanted Reinforcement On Foot" BAB09C5865DC9DD50000CABF850F4967
+					}
+					myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+				}
+				ReinforcementData planet_tatooine
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement "Troop Transport" < uid=5C148C4665E848600003DEDB9605195C > = "Wanted Reinforcement Road Transport" 6F2AF919618A7FC70000198B51C39E5C
+					}
+					myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+				}
+				ReinforcementData planet_akiva
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement "Troop Transport" < uid=5C148C4665E848600003DEDD326A8E16 > = "Wanted Reinforcement Road Transport" 6F2AF919618A7FC70000198B51C39E5C
+						LivingWorldContentWantedReinforcement Foot < uid=5C148C4665E88E5F0000010196315DAB > = "Wanted Reinforcement On Foot" BAB09C5865DC9DD50000CABF850F4967
+					}
+					myLevelInfo 9C4B6A046012E6B0000001B224713F01
+				}
+				ReinforcementData gym_msv_wantedsystem
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement "Troop Transport" < uid=5C148C4665E848600003DEDF279E81DA > = "Wanted Reinforcement Road Transport" 6F2AF919618A7FC70000198B51C39E5C
+						LivingWorldContentWantedReinforcement Foot < uid=5C148C4665E88E5F0000010216D3E6BE > = "Wanted Reinforcement On Foot" BAB09C5865DC9DD50000CABF850F4967
+						LivingWorldContentWantedReinforcement Speeders < uid=5C148C4665E88F0700000127F1AAA9E2 > = "Wanted Reinforcement Speeder" BAB09C5865DCA4720003079BF5DD8C48
+					}
+					myLevelInfo D9ED8AD45F9BCC5400000FA13DF02F4B
+				}
+				ReinforcementData gym_wanted_generated
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement "Troop Transport" < uid=5C148C4665E848600003DEE1D7E4ACF0 > = "Wanted Reinforcement Road Transport" 6F2AF919618A7FC70000198B51C39E5C
+						LivingWorldContentWantedReinforcement Foot < uid=5C148C4665E88E5F00000103E558544D > = "Wanted Reinforcement On Foot" BAB09C5865DC9DD50000CABF850F4967
+						LivingWorldContentWantedReinforcement Speeders < uid=5C148C4665E88F07000001281DDFEB92 > = "Wanted Reinforcement Speeder" BAB09C5865DCA4720003079BF5DD8C48
+					}
+					myLevelInfo E00F55FE634D07300000001B5FBB25F6
+				}
+			}
+			myNPCDetectionRateMultiplier 1.0
+			myPointsThreshold 1000.0
+			myDepletionTime "15 * WantedLevelLossBonus"
+			myBribeCost 180
+			myArrestCost "Clamp(Player.CurrentCredits * 0.1, 100, 2000)"
+			myNeutralizationCost "Clamp(Player.CurrentCredits * 0.1, 100, 2000)"
+		}
+		WantedLevelData Four
+		{
+			myReinforcements
+			{
+				ReinforcementData planet_toshara
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement "Troop Transport" < uid=5C148C4665E84A020003DEE8E08E0808 > = "Wanted Reinforcement Road Transport" 6F2AF919618A7FC70000198B51C39E5C
+						LivingWorldContentWantedReinforcement Foot < uid=5C148C4665E88E5F00000104C0F88685 > = "Wanted Reinforcement On Foot" BAB09C5865DC9DD50000CABF850F4967
+					}
+					myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+				}
+				ReinforcementData planet_tatooine
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement "Troop Transport" < uid=5C148C4665E84A020003DEEA67E5005A > = "Wanted Reinforcement Road Transport" 6F2AF919618A7FC70000198B51C39E5C
+					}
+					myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+				}
+				ReinforcementData planet_akiva
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement "Troop Transport" < uid=5C148C4665E84A020003DEECAA542042 > = "Wanted Reinforcement Road Transport" 6F2AF919618A7FC70000198B51C39E5C
+						LivingWorldContentWantedReinforcement Foot < uid=5C148C4665E88E5F000001065557AC1B > = "Wanted Reinforcement On Foot" BAB09C5865DC9DD50000CABF850F4967
+					}
+					myLevelInfo 9C4B6A046012E6B0000001B224713F01
+				}
+				ReinforcementData gym_msv_wantedsystem
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement "Troop Transport" < uid=5C148C4665E84A020003DEEED5B171E8 > = "Wanted Reinforcement Road Transport" 6F2AF919618A7FC70000198B51C39E5C
+						LivingWorldContentWantedReinforcement Foot < uid=5C148C4665E88E5F00000107728A60C0 > = "Wanted Reinforcement On Foot" BAB09C5865DC9DD50000CABF850F4967
+						LivingWorldContentWantedReinforcement Speeders < uid=5C148C4665E88F070000012CBA838795 > = "Wanted Reinforcement Speeder" BAB09C5865DCA4720003079BF5DD8C48
+					}
+					myLevelInfo D9ED8AD45F9BCC5400000FA13DF02F4B
+				}
+				ReinforcementData gym_wanted_generated
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement "Troop Transport" < uid=5C148C4665E84A020003DEF0B183A38D > = "Wanted Reinforcement Road Transport" 6F2AF919618A7FC70000198B51C39E5C
+						LivingWorldContentWantedReinforcement Foot < uid=5C148C4665E88E5F0000010876420CBA > = "Wanted Reinforcement On Foot" BAB09C5865DC9DD50000CABF850F4967
+						LivingWorldContentWantedReinforcement Speeders < uid=5C148C4665E88F070000012DFB872623 > = "Wanted Reinforcement Speeder" BAB09C5865DCA4720003079BF5DD8C48
+					}
+					myLevelInfo E00F55FE634D07300000001B5FBB25F6
+				}
+			}
+			myNPCDetectionRateMultiplier 1.0
+			myPointsThreshold 1800.0
+			myDepletionTime "15 * WantedLevelLossBonus"
+			myBribeCost 200
+			myArrestCost "Clamp(Player.CurrentCredits * 0.15, 100, 2000)"
+			myNeutralizationCost "Clamp(Player.CurrentCredits * 0.15, 100, 2000)"
+		}
+		WantedLevelData Five
+		{
+			myReinforcements
+			{
+				ReinforcementData planet_toshara
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement "Troop Transport" < uid=5C148C4665E84A020003DEF2BF034B34 > = "Wanted Reinforcement Road Transport" 6F2AF919618A7FC70000198B51C39E5C
+						LivingWorldContentWantedReinforcement Foot < uid=5C148C4665E88E5F00000109685DE4A1 > = "Wanted Reinforcement On Foot" BAB09C5865DC9DD50000CABF850F4967
+					}
+					myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+				}
+				ReinforcementData planet_tatooine
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement "Troop Transport" < uid=5C148C4665E84A020003DEF45F37AFA4 > = "Wanted Reinforcement Road Transport" 6F2AF919618A7FC70000198B51C39E5C
+					}
+					myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+				}
+				ReinforcementData planet_akiva
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement "Troop Transport" < uid=5C148C4665E84A020003DEF60196F481 > = "Wanted Reinforcement Road Transport" 6F2AF919618A7FC70000198B51C39E5C
+						LivingWorldContentWantedReinforcement Foot < uid=5C148C4665E88E5F0000010BA12F5675 > = "Wanted Reinforcement On Foot" BAB09C5865DC9DD50000CABF850F4967
+					}
+					myLevelInfo 9C4B6A046012E6B0000001B224713F01
+				}
+				ReinforcementData gym_msv_wantedsystem
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement "Troop Transport" < uid=5C148C4665E84A020003DEF837C2F642 > = "Wanted Reinforcement Road Transport" 6F2AF919618A7FC70000198B51C39E5C
+						LivingWorldContentWantedReinforcement Speeders < uid=5C148C4665E84A020003DEF9D9CBDEA0 > = "Wanted Reinforcement Speeder" BAB09C5865DCA4720003079BF5DD8C48
+						LivingWorldContentWantedReinforcement Foot < uid=5C148C4665E88E5F0000010CC76EB936 > = "Wanted Reinforcement On Foot" BAB09C5865DC9DD50000CABF850F4967
+					}
+					myLevelInfo D9ED8AD45F9BCC5400000FA13DF02F4B
+				}
+				ReinforcementData gym_wanted_generated
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement "Troop Transport" < uid=5C148C4665E84A020003DEFA6F4F0BE4 > = "Wanted Reinforcement Road Transport" 6F2AF919618A7FC70000198B51C39E5C
+						LivingWorldContentWantedReinforcement Speeders < uid=5C148C4665E84A020003DEFBEBEF2BC0 > = "Wanted Reinforcement Speeder" BAB09C5865DCA4720003079BF5DD8C48
+						LivingWorldContentWantedReinforcement Foot < uid=5C148C4665E88E5F0000010D40913596 > = "Wanted Reinforcement On Foot" BAB09C5865DC9DD50000CABF850F4967
+					}
+					myLevelInfo E00F55FE634D07300000001B5FBB25F6
+				}
+			}
+			myNPCDetectionRateMultiplier 1.0
+			myPointsThreshold 2600.0
+			myDepletionTime "15 * WantedLevelLossBonus"
+			myBribeCost 220
+			myArrestCost "Clamp(Player.CurrentCredits * 0.2, 100, 2000)"
+			myNeutralizationCost "Clamp(Player.CurrentCredits * 0.2, 100, 2000)"
+		}
+		WantedLevelData Six
+		{
+			myReinforcements
+			{
+				ReinforcementData planet_toshara
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement "Troop Transport" < uid=5C148C4665E84A020003DEFCCBBFA019 > = "Wanted Reinforcement Road Transport" 6F2AF919618A7FC70000198B51C39E5C
+						LivingWorldContentWantedReinforcement Foot < uid=5C148C4665E88E5F0000010ED5D06BC3 > = "Wanted Reinforcement On Foot" BAB09C5865DC9DD50000CABF850F4967
+					}
+					myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+				}
+				ReinforcementData planet_tatooine
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement "Troop Transport" < uid=5C148C4665E84A020003DEFE5B016B5F > = "Wanted Reinforcement Road Transport" 6F2AF919618A7FC70000198B51C39E5C
+					}
+					myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+				}
+				ReinforcementData planet_akiva
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement "Troop Transport" < uid=5C148C4665E84A020003DF00FFAB3481 > = "Wanted Reinforcement Road Transport" 6F2AF919618A7FC70000198B51C39E5C
+						LivingWorldContentWantedReinforcement Foot < uid=5C148C4665E88E5F00000110BC82BC1F > = "Wanted Reinforcement On Foot" BAB09C5865DC9DD50000CABF850F4967
+					}
+					myLevelInfo 9C4B6A046012E6B0000001B224713F01
+				}
+				ReinforcementData gym_msv_wantedsystem
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement "Troop Transport" < uid=5C148C4665E84A020003DF02D110E452 > = "Wanted Reinforcement Road Transport" 6F2AF919618A7FC70000198B51C39E5C
+						LivingWorldContentWantedReinforcement Speeders < uid=5C148C4665E84A020003DF030F3A50FE > = "Wanted Reinforcement Speeder" BAB09C5865DCA4720003079BF5DD8C48
+						LivingWorldContentWantedReinforcement Foot < uid=5C148C4665E88E5F000001117576139C > = "Wanted Reinforcement On Foot" BAB09C5865DC9DD50000CABF850F4967
+					}
+					myLevelInfo D9ED8AD45F9BCC5400000FA13DF02F4B
+				}
+				ReinforcementData gym_wanted_generated
+				{
+					myReinforcementContent
+					{
+						LivingWorldContentWantedReinforcement "Troop Transport" < uid=5C148C4665E84A020003DF04A99362A4 > = "Wanted Reinforcement Road Transport" 6F2AF919618A7FC70000198B51C39E5C
+						LivingWorldContentWantedReinforcement Speeders < uid=5C148C4665E84A020003DF05F1355DFF > = "Wanted Reinforcement Speeder" BAB09C5865DCA4720003079BF5DD8C48
+						LivingWorldContentWantedReinforcement Foot < uid=5C148C4665E88E5F0000011223AEE082 > = "Wanted Reinforcement On Foot" BAB09C5865DC9DD50000CABF850F4967
+					}
+					myLevelInfo E00F55FE634D07300000001B5FBB25F6
+				}
+			}
+			myNPCDetectionRateMultiplier 1.0
+			myPointsThreshold 3400.0
+			myDepletionTime 0
+			myBribeCost 250
+			myArrestCost "Clamp(Player.CurrentCredits * 0.25, 100, 2000)"
+			myNeutralizationCost "Clamp(Player.CurrentCredits * 0.25, 100, 2000)"
+		}
+	}
+	myEscapeRewards
+	{
+	}
+	myTotalFinesPaidGameValue < uid=0711D22965803ACC0000AC54CD94DE51 >
+	{
+	}
+	myBribeCostGameValue < uid=0711D22965E1D634000000C2ACFE3F7A >
+	{
+	}
+	myEscapeOptionPlanetMapRef < uid=5C077C5266338FB1000313E667B2E17B > = mapref_wanted_escapeoption 0711D229648AAC470000A98ACF00F446
+	myEscapeOptionSpaceMapRef < uid=5C077C5266338FB1000313E75168EEA2 > = mapref_wanted_escapeoption_space 5C077C5266338EBA0003133C3C2EA033
+	myPausedConditions
+	{
+		WantedPausedGameConditionGroup "Any of these"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestState "MQ_040 not completed"
+				{
+					myQuest B567AAE061F3F13300001B173A8B0CF2
+					myQuestState Completed
+					myOperator LessThan
+				}
+				WantedPausedGameConditionGroup mq_050
+				{
+					myOperator And
+					myConditions
+					{
+						GameConditionQuestBeatState "MQ_050 B01B Completed"
+						{
+							myQuestBeat BFA41A0261C0A5B50000354ABE0DA3FB
+							myQuestBeatState Completed
+						}
+						GameConditionQuestBeatState "MQ_050 B02 Not Completed"
+						{
+							myQuestBeat 8FD81D5162DE59C10008E4CB0CA8799B
+							myQuestBeatState Completed
+							myOperator NotEqual
+						}
+					}
+				}
+				GameConditionQuestBeatState "FQ_ASH_040 B01B Started"
+				{
+					myQuestBeat C5B8DCF664E89C5B0005286EB2F9A6B6
+					myQuestBeatState Started
+				}
+				WantedPausedGameConditionGroup "FQ_ASH_040 B02A To Quest Complete"
+				{
+					myConditions
+					{
+						GameConditionQuestBeatState "02a completed"
+						{
+							myQuestBeat 913C1076642AB55A0002A0D1A2741730
+							myQuestBeatState Completed
+						}
+						GameConditionQuestState "fq_ash_040 not completed"
+						{
+							myQuest 913C1076642A9E9A0002986397C3751C
+							myQuestState Completed
+							myOperator NotEqual
+						}
+					}
+				}
+				WantedPausedGameConditionGroup MQ_130
+				{
+					myConditions
+					{
+						GameConditionQuestBeatState "intro beat part 2 completed"
+						{
+							myQuestBeat 253B686765DC813B0002F81C6B4DCC6C
+							myQuestBeatState Completed
+						}
+						GameConditionQuestState "mq_130 not completed"
+						{
+							myQuest BFA41A0261B3755D0000049A3563A922
+							myQuestState Completed
+							myOperator NotEqual
+						}
+					}
+				}
+				WantedPausedGameConditionGroup HTC_030
+				{
+					myConditions
+					{
+						GameConditionQuestBeatState "meet the hutt convoy completed"
+						{
+							myQuestBeat C5B8DCF664A2A6F700024CFAADD3A819
+							myQuestBeatState Completed
+						}
+						GameConditionQuestState "htc 030 not completed"
+						{
+							myQuest C5B8DCF664A2A0760001A5991526EDDE
+							myQuestState Completed
+							myOperator NotEqual
+						}
+					}
+				}
+				WantedPausedGameConditionGroup FQ_ASH_010
+				{
+					myOperator Or
+					myConditions
+					{
+						GameConditionQuestBeatState "Syndicate Shootout Started"
+						{
+							myQuestBeat 9128788864D0AE550009284272D91FCA
+							myQuestBeatState Started
+						}
+						GameConditionQuestBeatState "Where is the clam Started"
+						{
+							myQuestBeat 9128788864D1F9590036DD95D96E2068
+							myQuestBeatState Started
+						}
+						GameConditionQuestBeatState "Leave the Pyke chop shop Started"
+						{
+							myQuestBeat 9128788863D3FE50000045893F4EFFFD
+							myQuestBeatState Started
+						}
+						GameConditionQuestBeatState "Return to Danka Started"
+						{
+							myQuestBeat 9128788863D3FE6C0000458B2B70C957
+							myQuestBeatState Started
+						}
+					}
+				}
+				WantedPausedGameConditionGroup DQ_030
+				{
+					myConditions
+					{
+						GameConditionQuestBeatState "B02 TheHologram completed"
+						{
+							myQuestBeat 1657B1AA6656EBF50013AD9CDCC7B020
+							myQuestBeatState Completed
+						}
+						GameConditionQuestState "dq_030 not completed"
+						{
+							myQuest 1657B1AA6626629B00034563BB578446
+							myQuestState Completed
+							myOperator NotEqual
+						}
+					}
+				}
+				WantedPausedGameConditionGroup DQ_040
+				{
+					myConditions
+					{
+						GameConditionQuestBeatState "DQ_040 Intro completed"
+						{
+							myQuestBeat 93D3086566226FB100056AB0B9198D9B
+							myQuestBeatState Completed
+						}
+						GameConditionQuestState "DQ_040 not completed"
+						{
+							myQuest 93D308656617B87C0000E3806CE259CC
+							myQuestState Completed
+							myOperator NotEqual
+						}
+					}
+				}
+				WantedPausedGameConditionGroup MQ_180
+				{
+					myConditions
+					{
+						GameConditionQuestBeatState "Return to myrra completed"
+						{
+							myQuestBeat 619CD8EA66683BA700322022D2971428
+							myQuestBeatState Completed
+						}
+						GameConditionQuestBeatState "Save the rebels not completed"
+						{
+							myQuestBeat 619CD8EA63D8DEDB000037E5AC5FEF27
+							myQuestBeatState Completed
+							myOperator NotEqual
+						}
+					}
+				}
+				GameConditionQuestBeatState "MQ_170 Rebel camp started"
+				{
+					myQuestBeat 842ECCE4650AFBC9001F4ED33D67A4D7
+					myQuestBeatState Started
+				}
+				WantedPausedGameConditionGroup "MQ_170 B01B to RebelFight completed"
+				{
+					myConditions
+					{
+						GameConditionQuestBeatState "reach facility completed"
+						{
+							myQuestBeat C5B8DCF66618FD2E00280BF6CEC61E8F
+							myQuestBeatState Completed
+						}
+						GameConditionQuestBeatState "rebel fight not completed"
+						{
+							myQuestBeat C5B8DCF6661904200028194B759B9451
+							myQuestBeatState Completed
+							myOperator NotEqual
+						}
+					}
+				}
+				WantedPausedGameConditionGroup "MQ_190 to mq_220"
+				{
+					myConditions
+					{
+						GameConditionQuestBeatState "mq_190 00B completed"
+						{
+							myQuestBeat 912BBC856411CAE00007A9E6BF419798
+							myQuestBeatState Completed
+						}
+						GameConditionQuestState "mq_220 not completed"
+						{
+							myQuest 619CD8EA63DB726500025CCFAF315A60
+							myQuestState Completed
+							myOperator NotEqual
+						}
+					}
+				}
+				WantedPausedGameConditionGroup Mq_100
+				{
+					myConditions
+					{
+						GameConditionQuestBeatState "Enter the tunnels completed"
+						{
+							myQuestBeat BFA41A0261C1FCD200018A9B07DAFB0A
+							myQuestBeatState Completed
+						}
+						GameConditionQuestBeatState "Deliver heart of hive not completed"
+						{
+							myQuestBeat 2923FE0162D7EA7B00003D796CB90DA1
+							myQuestBeatState Completed
+							myOperator NotEqual
+						}
+					}
+				}
+				GameConditionQuestState "EQ_090 started"
+				{
+					myQuest 913C10766408B288000063B69AD8F48F
+					myQuestState Started
+				}
+				WantedPausedGameConditionGroup SQ_010
+				{
+					myConditions
+					{
+						GameConditionQuestBeatState "Intro completed"
+						{
+							myQuestBeat 0EA96C6A651ADD960002CED6A0817697
+							myQuestBeatState Completed
+						}
+						GameConditionQuestBeatState "successfully fled not completed"
+						{
+							myQuestBeat 9128788865AAA2300014310D27ED664F
+							myQuestBeatState Completed
+							myOperator NotEqual
+						}
+					}
+				}
+				GameConditionQuestBeatState "EQ_060 find the weapon tracker started"
+				{
+					myQuestBeat 8B0C515964C7774E0001A6ACB9DC1A12
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "EQ_060 B04 Rob convoy  started"
+				{
+					myQuestBeat 8B0C515964C777960001A6B0F42C75E4
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "mq_050 leave trailblazer"
+				{
+					myQuestBeat 8FD81D5162E130A80014CA46C3592871
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "MQ_050 Hangar Stealth"
+				{
+					myQuestBeat 8FD81D51649408DA0001F86D4952693E
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "MQ_050 maintenance bay 01"
+				{
+					myQuestBeat 8FD81D516335617D0000A9BF617A999A
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "MQ_050 maintenance bay 02"
+				{
+					myQuestBeat 8FD81D5163A56C980001F7C677BE7DCF
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "MQ_050 search for data vault"
+				{
+					myQuestBeat 8FD81D5162FE3FE1001A5F95A93C074C
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "MQ_050 follow the cargo 1"
+				{
+					myQuestBeat 8FD81D5162FE340200149E8DC04ABC8E
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "MQ_050 follow the cargo 2"
+				{
+					myQuestBeat 8FD81D5163808628000178F04CF74D6D
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "MQ_050 follow the cargo 3"
+				{
+					myQuestBeat 8FD81D51638088600001799C3D0899EE
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "MQ_050 follow the cargo 4"
+				{
+					myQuestBeat 8FD81D5163808A0E00018412E2C5D3A0
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "MQ_050 Hangar control room"
+				{
+					myQuestBeat 8FD81D51633AAE24000320DC8FE2CEF5
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "MQ_050 Reach trailblazer"
+				{
+					myQuestBeat 8FD81D5162FE3659001620B5BB0860F7
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "MQ_050 Defend trailblazer"
+				{
+					myQuestBeat 8FD81D516532934A000A82B5287DC710
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "MQ_050 escape the station"
+				{
+					myQuestBeat 8FD81D5162EBE73E00005A85CFC34C88
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "MQ_050 defeat pursuers"
+				{
+					myQuestBeat 8FD81D51655E190F000B087C070FCBFA
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "MQ_050 Lose wanted"
+				{
+					myQuestBeat 8FD81D51655E2218001E01BAD7A52035
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "MQ_050 travel started"
+				{
+					myQuestBeat 8FD81D5165C0BB4F000266B01CB60E91
+					myQuestBeatState Started
+				}
+				WantedPausedGameConditionGroup "MQ_140  escape fort to trailblazer cin"
+				{
+					myConditions
+					{
+						GameConditionQuestBeatState "MQ_140 escape compound"
+						{
+							myQuestBeat 9D01D21763E4E823000285766DF9779C
+							myQuestBeatState Completed
+						}
+						GameConditionQuestBeatState "MQ_140 survive empire"
+						{
+							myQuestBeat 9D01D217631202EF0002066F835B6DC5
+							myQuestBeatState Completed
+							myOperator NotEqual
+						}
+					}
+				}
+				GameConditionQuestBeatState "MQ_150 escape"
+				{
+					myQuestBeat F3CF7529637CE2360000BF96B519283C
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "DLC2 C_MQ_040_B01A Maintain your cover"
+				{
+					myQuestBeat 9128788866F66C0600049B2535FF694E
+					myQuestBeatState Started
+				}
+			}
+		}
+	}
+	myPlayerShotAtNPC
+	{
+		myName "contextComment = \"\", enabled = true, guid = #4728ADF9612F824D000011D72D7D32B1, lineVersion = 4, maxLength = 0, productId = -1, sectionId = -1, text = \"Aggravated Assault\", type = \"MenuLine\""
+		myPointsOverrides
+		{
+			PointsOverride TieFighter
+			{
+				myNPC < uid=D9ED8AD46375FEF40000B242FF110F14 > = emp_shp_tiefighter_a 6EA79625636BBC680000760F622FE647
+				myPoints 200.0
+			}
+		}
+		myPoints 200.0
+		myRewardScore 50.0
+		myWaitForExitCombat TRUE
+	}
+	myPlayerShotNearNPC
+	{
+		myName "contextComment = \"\", enabled = true, guid = #4728ADF9612F825F000011D96C31DC50, lineVersion = 1, maxLength = 0, productId = -1, sectionId = -1, text = \"Assault\", type = \"MenuLine\""
+		myPoints 100.0
+		myRewardScore 50.0
+		myWaitForExitCombat TRUE
+		myWaitForExitWanted TRUE
+	}
+	myPlayerEliminatedNPC
+	{
+		myName "contextComment = \"\", enabled = true, guid = #4728ADF9612F8274000011DBCCB419EA, lineVersion = 2, maxLength = 0, productId = -1, sectionId = -1, text = \"Felony\", type = \"MenuLine\""
+		myPointsOverrides
+		{
+			PointsOverride TieFighter
+			{
+				myNPC < uid=D9ED8AD46375FF1B0000B2430B5570CA > = emp_shp_tiefighter_a 6EA79625636BBC680000760F622FE647
+				myPoints 200.0
+			}
+		}
+		myPoints 200.0
+		myRewardScore 50.0
+		myCooldownTimeInSeconds 0.0
+	}
+	myPlayerShotAtSpaceStation
+	{
+		myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myPoints 200.0
+		myRewardScore 50.0
+		myWaitForExitCombat TRUE
+		myWaitForExitWanted TRUE
+	}
+	myPlayerTrespassedLowSecurityArea
+	{
+		myName "contextComment = \"\", enabled = true, guid = #4728ADF9612F827C000011DD7989331C, lineVersion = 1, maxLength = 0, productId = -1, sectionId = -1, text = \"Trespassing\", type = \"MenuLine\""
+		myPoints 0.0
+		myRewardScore 50.0
+		myWaitForExitCombat TRUE
+		myWaitForExitWanted TRUE
+	}
+	myPlayerTrespassedHighSecurityArea
+	{
+		myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myPointsOverrides
+		{
+		}
+		myPoints 200.0
+		myRewardScore 50.0
+		myWaitForExitCombat TRUE
+		myWaitForExitWanted TRUE
+	}
+	myPlayerTrespassedFactionTerritory
+	{
+		myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myPoints 0.0
+		myRewardScore 50.0
+		myWaitForExitCombat TRUE
+		myWaitForExitWanted TRUE
+	}
+	myPlayerAimedAtNPC
+	{
+		myName "aurabesh = false, contextComment = \"\", enabled = true, guid = #4728ADF9612F8288000011DFDF9B0DD7, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 634, text = \"Disorderly Conduct\", type = \"MenuLine\""
+		myPoints 100.0
+		myRewardScore 25.0
+		myWaitForExitCombat TRUE
+		myWaitForExitWanted TRUE
+	}
+	myPlayerResistedArrest
+	{
+		myName "contextComment = \"\", enabled = true, guid = #4728ADF9613733EC00044FC980128EBE, lineVersion = 1, maxLength = 0, productId = -1, sectionId = -1, text = \"Resisting Arrest\", type = \"MenuLine\""
+		myPoints 200.0
+		myRewardScore 50.0
+		myWaitForExitWanted TRUE
+	}
+	myPlayerDisobeyedOrder
+	{
+		myName "contextComment = \"\", enabled = true, guid = #4728ADF9612F821B000011D692FEC672, lineVersion = 1, maxLength = 0, productId = -1, sectionId = -1, text = \"Insubordination\", type = \"MenuLine\""
+		myPoints 100.0
+		myRewardScore 25.0
+		myWaitForExitCombat TRUE
+		myWaitForExitWanted TRUE
+	}
+	myPlayerStoodTooCloseToNPC
+	{
+		myName "contextComment = \"\", enabled = true, guid = #C0D149F861827A9D000019AB1D1486FB, lineVersion = 4, maxLength = 0, productId = -1, sectionId = -1, text = \"Disorderly Conduct\", type = \"MenuLine\""
+		myPoints 100.0
+		myRewardScore 25.0
+		myWaitForExitCombat TRUE
+		myWaitForExitWanted TRUE
+	}
+	myPlayerAssaultedNPC
+	{
+		myName "contextComment = \"\", enabled = true, guid = #D9ED8AD461839C960000232429A4FC8F, lineVersion = 1, maxLength = 0, productId = -1, sectionId = -1, text = \"Assault\", type = \"MenuLine\""
+		myPoints 200.0
+		myWaitForExitCombat TRUE
+		myWaitForExitWanted TRUE
+	}
+	myPlayerBumpedIntoNPC
+	{
+		myName "contextComment = \"\", enabled = true, guid = #C0D149F8618A227E000019A9C7EACBED, lineVersion = 1, maxLength = 0, productId = -1, sectionId = -1, text = \"Disorderly Conduct\", type = \"MenuLine\""
+		myPoints 100.0
+		myRewardScore 25.0
+		myWaitForExitCombat TRUE
+		myWaitForExitWanted TRUE
+	}
+	myPlayerPerformedForbiddenInteraction
+	{
+		myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myPoints 200.0
+	}
+	myPlayerBecameWanted
+	{
+		myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	}
+	myPlayerHoldingForbiddenItem
+	{
+		myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myPoints 100.0
+	}
+	myPlayerThrowingForbiddenItem
+	{
+		myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myPoints 0.0
+	}
+	myPlayerFaceOffNPC
+	{
+		myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	}
+	myPlayerTriggeredAlarm
+	{
+		myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myPoints 1000.0
+	}
+	myPlayerStoleFromNPC
+	{
+		myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myPoints 200.0
+		myWaitForExitCombat TRUE
+	}
+	myPlayerVehicleCollisionWithNPC
+	{
+		myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myPointsOverrides
+		{
+			PointsOverride TieFighter
+			{
+				myNPC < uid=06FDC2DB654CD39A0004A5ADB0831F07 > = emp_shp_tiefighter_a 6EA79625636BBC680000760F622FE647
+				myPoints 200.0
+			}
+		}
+		myPoints 100.0
+	}
+	myCorruptedOfficer
+	{
+		myName "aurabesh = false, contextComment = \"\", enabled = true, guid = #0711D229649003B30000A710C8977DEB, lineVersion = 2, maxLength = 0, productId = -1, sectionId = -1, text = \"Corrupt Imperial Officer\", type = \"MenuLine\""
+	}
+	myWantedTerminal
+	{
+		myName "aurabesh = false, contextComment = \"\", enabled = true, guid = #0711D229649003C50000A71195CEB089, lineVersion = 1, maxLength = 0, productId = -1, sectionId = -1, text = \"Imperial Terminal\", type = \"MenuLine\""
+	}
+}
+

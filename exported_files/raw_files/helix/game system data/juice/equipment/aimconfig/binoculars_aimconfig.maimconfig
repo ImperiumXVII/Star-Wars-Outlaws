@@ -1,0 +1,37 @@
+include "helix/game system data/fruit/equipment/aiming.fruit"
+include "helix/game system data/juice/camera/modifiers/sway_binoculars.mcameramodifier"
+include "helix/game system data/juice/cameralenspresets/binocular_lens_preset.mcameralenspreset"
+
+AimConfig binoculars_aimconfig < uid=A207755D61F1686000001B1EFB375628 >
+{
+	myADSAimMode
+	{
+		myEnabled FALSE
+		mySway < uid=B38D59DF648721220001BF95CC7992CC > = sway_binoculars 1C021E9560B100DB000012AFE1305163
+	}
+	myScopeAimMode
+	{
+		myEnabled TRUE
+		myMaxAimDistance 5000.0
+		myAimAssist < uid=544DB9086006B4670000007266D7236E > = NULLREFERENCE
+		mySway < uid=544DB9086006B467000000731EC49903 > = sway_binoculars 1C021E9560B100DB000012AFE1305163
+		myZoomType Progressive
+		myEnableFocusView TRUE
+		myCameraLensPreset < uid=B38D59DF64BE7C170000945C74DFFFA1 > = binocular_lens_preset B38D59DF64BE7C870000A0344C2CF930
+		myFocalLengthIncrease 1.0
+		myMinFoV 6.0
+		myMaxFoV 35.0
+		myZoomMultiplierCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.47250384 0.0060616732, }, outTangents = { 0.34393328 0.0060616881, 0 0, }, properties = { 275, 1299, }, values = { 0 1, 1 1, }, }, numKeys = 2, }"
+		mySensitivityCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.086272001 0.063157901, }, outTangents = { 0.23929471 -7.4505806e-09, 0 0, }, properties = { 275, 1299, }, values = { 0 1, 1 0.1, }, }, numKeys = 2, }"
+		myInertiaWeightMS 4.0
+		myInertiaMultiplier 1.0
+		myMaxInertia 5
+		myZoomWheelTimerBaseDurationMS 200
+		myZoomInRumble 8E25811B655DD13200028FEB3CC5A5AC
+		myZoomOutRumble 8E25811B655DD1FF00028FED33C4FA14
+		myTriggerEffect helix/trigger_effects/gadgets_binoculars.mtriggereffect
+		myMaxZoomTriggerEffect helix/trigger_effects/gadgets_binoculars_max.mtriggereffect
+		myMinZoomTriggerEffect helix/trigger_effects/gadgets_binoculars_min.mtriggereffect
+	}
+}
+

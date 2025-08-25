@@ -1,0 +1,205 @@
+include "helix/game system data/fruit/camera/cameramodifier.fruit"
+include "helix/game system data/fruit/camera/camerapreset.fruit"
+include "helix/game system data/fruit/cameralens/cameralenspreset.fruit"
+include "helix/game system data/fruit/camera/camerablendtransitions.fruit"
+
+enum AimModeType
+{
+    Passive
+	ADS
+	Scope
+	Lock
+	HipFire
+    Spaceship
+	HoldingRelaxed
+	UnarmedAim
+}
+
+enum ScopeZoomType
+{
+	Step
+	Progressive
+}
+
+enum AimScreenTargetsOrderType
+{
+	LeftToRight
+	RightToLeft
+	FrontToBack
+}
+
+class AimCrosshairShape < abstract=1 >
+{
+	float myMovementModifier 1.0
+	float myMovementModifierMinSpeed 0.5
+	float myMovementModifierMaxSpeed 4.0
+	
+	float myUseModifier 1.0
+	int myUseModifierMinUses 0 < min=0 >
+	int myUseModifierMaxUses 5 < min=1 >
+	float myUseModifierTimePerUse 0.5f < tooltip="Time it takes until we substract 1 use on the counter" >
+}
+
+list AimCrosshairShapeList < size=1 >
+{
+	AimCrosshairShape
+}
+
+class AimCrosshairShapeSphere3D : AimCrosshairShape
+{
+	float myRadius 1.0f
+}
+
+class AimCrosshairShapeCircle2D : AimCrosshairShape
+{
+	float myRadius 0.25f < min="0.0" max="1.0" tooltip="This values it will define the screen space circle. The unit is in % of the smaller screen side resolution" >
+	float myAimDirectionWeight 0.6f < tooltip="When multiple candidates are valid, the alogorithm that decides the priority use this value to define how much weight have how close to the aim direction Vs the distance" >
+	string myRadiusMultiplierByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, 0 0, -0.5 -0.001, }, outTangents = { 0.5 0, 0.5 0, 0 0, }, properties = { -749, -749, -749, }, values = { 0 1, 20 1, 40 0.6, }, }, numKeys = 3, }" < bhv=inputgraph >
+}
+
+class AimCrosshair
+{
+	// TODO: crosshair offset
+	bool myAlignAimDeviationEnabled false < tooltip="If true, if the crosshair can look for a target not aligned with the center of the screen, it will affect the aim direction (i.e. character hand orientation, etc.)" >
+	bool myAutoLockCrosshairEnabled false < tooltip="If true, the lock on mechanic will be enabled and the aim system will try toi find always a target on screen and it will overwrite the aim target with it" >
+	AimCrosshairShapeList myShape < tooltip="If shape is not defined the aim crosshair will be a dot by default" >
+}
+
+class AimDepthOfField
+{
+	bool myEnabled true
+	float myDOFLerpSpeed 20.0
+	float myDOFFStop 16.0
+	float myMaxNearCoC 20.0
+	float myMaxFarCoC 20.0
+	float mySpeedFactorFarToNear 2.0
+	float myCloseDistanceThreshold 2.5 < min=0.1 tooltip="When the focal distance interpolation is smaller than this value we consider it is close" >
+}
+
+class AimHitConfig
+{
+	bool myBaseUseAimHitPositionEnabled true < tooltip="If true, the projectiles' end point will be modified based on the presence of an object in the crosshair (applies for objects of other types than the configs below)" >
+	bool mySpaceshipsUseAimHitPositionEnabled true < tooltip="If true, the projectiles' end point will be modified based on the presence of a spaceship in the crosshair" >
+}
+
+class AimSensitivity
+{
+	SensitivityCameraModifier* myDefault
+	SensitivityCameraModifier* myIntentToUse
+	SensitivityCameraModifier* myShooting < tooltip="This modifier only works with weapons" >
+	SensitivityCameraModifier* myRampUp
+	string myRampUpCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.2 0.001, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph >
+}
+
+class AimInputController
+{
+	file myPressTriggerEffect < bhv="asset" assettype="trigger effect" >
+	bool myTriggerThresholdEnabled < tooltip="Otherwise the threshold will be 0.0" >
+	float myTriggerThreshold 0.0 < min=0.0 max=1.0 tooltip="When the trigger has surpassed this threshold, the input will be processed as the player intents to fire" >
+}
+
+class AimMode
+{
+	bool myEnabled false
+	float myMaxAimDistance 100.0 < min=0.1 max=5000.0 >
+	float myMinAimDistance 0.0 < min=0.0 max=5000.0 >
+	bool myEnvironmentAffectsAimDistance true < tooltip="If true, in weather conditions with fog, the aim distance could be reduced based on the environment view distance" >
+	AimAssistCameraModifier* myAimAssist
+	AimAssistCameraModifier* myAimAssistStrong
+	SwayCameraModifier* mySway
+	bool mySwayCheckInput true < tooltip="If true, sway only will be able to be active when there is no camera input" >
+	bool myAllowShoulderSwap false < tooltip="If true, player can shoulder swap from input" >
+	MagnetismCameraModifier* myMagnetism < tooltip="If set, the camera will snap toward the target once its been detected" >
+	AimDepthOfField myDepthOfField
+	AimCrosshair myCrosshair
+	AimHitConfig myAimHitConfig
+	bool myCustomCameraModeEnabled false
+	CameraPreset* myCustomCameraMode
+	CameraPreset* myCustomCrouchCameraMode
+	CameraTransition* myCustomCameraTransition < tooltip="When using the custom camera mode, use this camera transition to blend into it. If it's invalid it uses a default blend." >
+	AimSensitivity mySensitivity
+}
+
+class PassiveMode : AimMode
+{
+	bool myEnabled true < hidden=1 >
+	AimDepthOfField myDepthOfField < hidden=1 >
+}
+
+class ScopeZoom
+{
+	CameraModifierInOutTransitions myTransitions
+	float myMagnifiedFov -10.0
+	float mySensitivityMultiplier 1.0
+}
+
+list ScopeZoomList
+{
+	ScopeZoom
+}
+
+class ScopeAimMode : AimMode
+{
+	bool mySwayCheckInput false
+	ScopeZoomType myZoomType Step < tooltip="how the zoom is handled" >
+	ScopeZoomList myZoomList < tooltip="Zoom steps, only for Step zoom" >
+	bool myFPSModeEnabled true < tooltip="If true, the player will turn on the visual first person mode" >
+	bool myEnableFocusView false < tooltip="Enable the View finder dynamic focus" >
+	bool myEnableMultiStreaming true < tooltip="Enable the multi streaming" >
+	bool myAllowShoulderSwap false < hidden=1 >
+
+ 	CameraLensPreset* myCameraLensPreset
+	float myFocalLengthIncrease 0.5 < min=0.0 max = 180.0 tooltip="FoV angle change per second when the player zooms" >
+	float myMinFoV 5.f < min = 0.0, max = 180.0 tooltip = "minimum Field of View angle in degree" > 
+	float myMaxFoV 150.f < min = 0.0, max = 180.0 tooltip = "maximum Field of View angle in degree" >
+	string myZoomMultiplierCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.2 0.001, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph tooltip= "zoom change multiplier curve. 0 = minimum zoom, 1 = maximum zoom" >
+	
+	string mySensitivityCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.2 0.001, 0 0, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph tooltip="Mouse sensitivity modifier according to the current zoom. 0 = minimum zoom, 1 = maximum zoom" >
+
+	string myGamepadFocalLengthStrengthMultiplierCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.5, }, outTangents = { 0.5 0.5, -0.5 -0.5, }, properties = { -749, -749, }, values = { 0 0, 1 1, }, }, numKeys = 2, }" < bhv=inputgraph tooltip="Gamepad zoom increase according to the button input strength" >
+
+	float myInertiaWeightMS 5 < min = 0, max = 100 tooltip = "Only mouse: base of remaining zoom time for each input of zoom. NOTE this should be a low number" >
+	float myInertiaMultiplier 1 < min = 0, max = 100 tooltip = "Only mouse: multiplier of remaining zoom time for each input of zoom. NOTE this should be a low number" >
+	int myMaxInertia 10 < min = 1 tooltip = "Only mouse: max inertia" >
+	int myZoomWheelTimerBaseDurationMS 200 < min = 0 tooltip = "Only mouse: time before the zoom stops after the last zoom input" >
+
+	uid myZoomInRumble < bhv="constantData" constantDataType="rumble" tooltip="This rumble is played when zoom in starts. One shot if Type is Step, Loop if progressive" >
+	uid myZoomOutRumble < bhv="constantData" constantDataType="rumble" tooltip="This rumble is played when zoom out starts. One shot if Type is Step, Loop if progressive" >
+
+	file myTriggerEffect < bhv="asset" assettype="trigger effect" >
+	file myMaxZoomTriggerEffect < bhv="asset" assettype="trigger effect" >
+	file myMinZoomTriggerEffect < bhv="asset" assettype="trigger effect" >
+}
+
+enum LockAimModeControlType
+{
+	SimpleRightAndLeft
+	CameraOffset
+}
+
+class LockAimMode : AimMode
+{
+	CameraModifierInOutTransitions myTransitions
+	AimScreenTargetsOrderType myOrderType LeftToRight
+	vec2f myUserMovementRestrictionAngles 0;0 < tooltip="Azimuth/Zenith" >
+	LockAimModeControlType myControlType SimpleRightAndLeft
+}
+
+class SpaceshipAimMode : AimMode
+{    
+    float myMaxAimDistance 1000.f < min=0.1 max=5000.0 >
+}
+
+class AimConfig < uid=auto >
+{
+	PassiveMode myPassiveAimMode
+	AimMode myHipFireAimMode
+	AimMode myADSAimMode
+	LockAimMode myLockAimMode
+	ScopeAimMode myScopeAimMode
+	SpaceshipAimMode mySpaceshipAimMode
+	AimMode myHoldingRelaxedAimMode
+	AimMode myUnarmedAimMode
+	
+	AimInputController myInputController
+}

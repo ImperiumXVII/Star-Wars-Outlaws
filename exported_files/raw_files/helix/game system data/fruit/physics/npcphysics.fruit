@@ -1,0 +1,32 @@
+class AgentPhysicsDimensions
+{
+	float myRadius 0.32
+	float myHeight 1.8
+}
+
+class NPCDynamicCollision
+{
+	float myPhantomVelocityModulation 1.0f < min=0 tooltip="Coefficient that will be applied to the velocity of the phantom body in contact velocity calculation.\nValues other than 1.0 can result in asymmetric contact solving." >
+	float myMaxContactSpeedBoostForPenetrationRecovery 3.0f < min=0 tooltip="Maximum boost value that can be applied to the contact speed in the case of penetration, for the sake of faster recovery." >
+}
+
+class NPCVehicleCollision
+{
+	bool myBlocksVehicle false < tooltip="If the NPC should block incoming vehicles rather than letting them pass through." >
+	bool myReactOnVehicleImpact true < tooltip="If the NPC should react on vehicle impact (inflict damage, trigger staggers, etc.)" >
+}
+
+class NPCCameraCollision
+{
+	bool myBlocksCamera false < tooltip="If the NPC character phantoms should block the camera." >
+}
+
+class NPCPhysicsProfile < uid=auto >
+{
+	AgentPhysicsDimensions myDefaultDimensions
+	NPCDynamicCollision myDynamicCollision
+	NPCVehicleCollision myVehicleCollision
+	NPCCameraCollision myCameraCollision
+	bool myDisablePhantomsAfterRagdollFrozen false < tooltip="Whether to disable character phantoms after ragdoll stabilization" >
+	bool myCanBeBumped true < tooltip="If the NPC should react to player bumps." >
+}

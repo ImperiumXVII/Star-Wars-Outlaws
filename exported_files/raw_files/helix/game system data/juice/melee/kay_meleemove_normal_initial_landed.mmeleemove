@@ -1,0 +1,119 @@
+include "helix/game system data/fruit/melee/melee_move.fruit"
+include "helix/game system data/juice/melee/kay_meleemove_base.mmeleemove"
+
+MeleeMove kay_meleemove_normal_initial_landed < uid=5CFE16D565B226CD001088EF8365A46C > : kay_meleemove_base
+{
+	myApproachingEnabled FALSE
+	myExecutionDurationMin 2.0
+	myExecutionDurationMax 2.0
+	myRangeExecution 4.0
+	myExecutionSequence
+	{
+		myGenericTracks
+		{
+			CameraShakeTrack BaseCamShake
+			{
+				myCamShake < uid=5CFE16D5663A7458000F1F214F2CE268 > = player_melee_punch_base B0ED9250625FD32B0000403767915B64
+			}
+		}
+		myCustomTracks
+		{
+			MeleeHitTrack Hit
+			{
+				myStartCyclePos 0.2
+				myEndCyclePos 0.375
+				myDamage 0.0
+			}
+			MeleeMovingSpeedingUpTrack MovingSpeedingUp
+			{
+				myStartCyclePos 0.0
+				myEndCyclePos 0.0
+			}
+			MeleeMovingTrack Moving
+			{
+				myStartCyclePos 0.0
+				myEndCyclePos 0.21
+			}
+			MeleeBufferingTrack MeleeBuffering
+			{
+				myStartCyclePos 0.2
+				myEndCyclePos 1.0
+			}
+			MeleeTurnTrack Turn
+			{
+				myEndCyclePos 1.0
+			}
+			MeleeStartNextMoveTrack StartNextMove
+			{
+				myStartCyclePos 0.375
+				myEndCyclePos 1.0
+			}
+			MeleeUninterruptibleTrack Uninterruptible
+			{
+				myStartCyclePos 0.0
+				myEndCyclePos 0.4
+			}
+			MeleePerfectStartNextMoveTrack MeleePerfectStartNextMoveTrack
+			{
+				myStartCyclePos 0.25
+				myEndCyclePos 0.5
+			}
+			MeleeLocomotionFreeTrack MeleeLocomotionFreeTrack
+			{
+				myStartCyclePos 0.65
+			}
+		}
+	}
+	myMoveMaxSpeed 10.0
+	myHit
+	{
+		myDamage 1.0
+		mySlowDownTimeScale "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.32492617 -0.0019296732, -0.048275869 0, }, outTangents = { 0.67740929 0.006862741, 0.055027828 0.00032679958, 0 0, }, properties = { 1299, 275, 2051, }, values = { 0 0, 0.8551724 0.2, 1 0, }, }, numKeys = 3, }"
+		mySlowDownDuration 0.0
+	}
+	myStartConditions
+	{
+		myTargetInRange
+		{
+			myEnabled TRUE
+			myDistance 10.0
+		}
+		myGameCondition
+		{
+			GameConditionMeleeGroup "Multiple Conditions"
+			{
+				myConditions
+				{
+					GameConditionMeleeTargetIsValid "Has Target"
+					{
+						myIsNegated FALSE
+					}
+					GameConditionMeleeIsFirstMoveInTheContext FirstMoveInTheContext
+					{
+					}
+					GameConditionMeleeGroup "Land or Crouched"
+					{
+						myOperator Or
+						myConditions
+						{
+							GameConditionMeleeHasLanded "Has Landed"
+							{
+								myTimeSinceLanded 0.33
+							}
+							GameConditionMeleeAttackerIsInMovementState "Is Crouched"
+							{
+								myState Crouch
+							}
+						}
+					}
+					GameConditionMeleeTargetPreferredAttack "Not Low Target"
+					{
+						myIsNegated TRUE
+						myPreferredAttack Kick
+					}
+				}
+			}
+		}
+	}
+}
+

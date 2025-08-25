@@ -1,0 +1,79 @@
+include "helix/game system data/fruit/ai/spaceshipsettings.fruit"
+include "helix/game system data/juice/ai/npcshootpatterns.mnpcshootpattern"
+include "helix/game system data/juice/ai/spaceshipcombatprofiles.mspaceshipcombatprofile"
+include "helix/game system data/juice/ai/spaceshipformationprofiles.mspaceshipformationprofile"
+include "helix/game system data/juice/ai/spaceshiprubberbandprofiles.mspaceshiprubberbandprofile"
+include "helix/game system data/juice/ai/spaceshipspawnprofiles.mspaceshipspawnprofile"
+include "helix/game system data/juice/ai/spaceshipspeedprofiles.mspaceshipspeedprofile"
+include "helix/game system data/juice/ai/spaceshiptrajectories.mspaceshiptrajectoryprofile"
+include "helix/game system data/juice/impactrealization/base_impact_passthrough_ship.mimpactrealization"
+include "helix/game system data/juice/spaceshipbehaviorparams_pykes.juice"
+
+SpaceshipSetting s_Porax < uid=6AF0BA0464EC735D00008E569BFBA059 >
+{
+	mySpaceshipType Porax
+	mySpaceshipArchetype Fighter
+	myPassThroughImpact < uid=05B06D7D661E479F00000702A19916F4 > = base_impact_passthrough_ship B508F424645A030B0000B46BE1DEBC61
+	myMaximumSpeed 190.0
+	myMinimumSpeed 0.0
+	myPitchSpeed 65.0
+	myYawSpeed 65.0
+	myRollSpeed 150.0
+	myAcceleration 150.0
+	myPitchAcceleration 120.0
+	myYawAcceleration 120.0
+	myRollAcceleration 75.0
+	myMass 10.0
+	mySpawnRadius 20.0
+	myHuntingRadius 1500.0
+	myAISpaceshipControlParameters
+	{
+		myCombatProfile < uid=F95CD8F36481E89A000466E0F40B7294 > = SignatureFighter F95CD8F364BF99230005E3FA96F00BD0
+		myCombatRoleType MultiLaser
+		mySpaceshipBehaviorParameters = b_PoraxBase 00000000000000000000000000000000
+		myRestrictionVolumeTypeExceptions
+		{
+			SpaceshipRestrictionVolumeType "New SpaceshipRestrictionVolumeType" RokanaLimits
+		}
+	}
+	myRubberbandProfile < uid=6AF0BA0465DF320C000007946A82CE28 > = SmallShipsRubberband F97070E165D77E990000024D3A80B7F3
+	mySpawnProfile < uid=F97070E164A40C480001104BABD708BF > = Fighter_Hyperjump F97070E164A4034400005ED3AB7AC7B0
+	mySpeedProfile < uid=4F59E8F063CA5CF90000423025F2DF2C > = speedProfile_base_shp_z95headhunter F95CD8F364D627840000D90BC9CDDFF3
+	myTrajectoryProfile < uid=4F59E8F063CA5CF900004231F106174A > = Fighter_TrajectoryProfile 82D16ABE628DF25A000025051D8485CD
+	myIonCollectorData
+	{
+		myMaxCharge 25.0
+		myDisabledDuration "10 * TrailblazerIonDisabledDurationModifier"
+		myTimeUntilRecovery 10.0
+		myRecoveryRate 5.0
+		myResistanceDuration 3.0
+		mySlowDownPercentage 0.5
+	}
+	myShieldData
+	{
+	}
+	myDimensions
+	{
+		myLength 11.8
+		myWidth 11.0
+		myHeight 2.6
+	}
+	myPhysicsParams
+	{
+		myCollisionDamageToBreakablesMultiplier 20.0
+		myCollisionDamageMultiplier 0.5
+	}
+	myShootPatternAccurate < uid=4F59E8F063CA5CF900004232C75D1B68 > = NULLREFERENCE
+	myShootPatternInaccurate < uid=4F59E8F063CA5CF90000423348487A57 > = NULLREFERENCE
+	myShootTicketAccurate SpaceEmpireShooting
+	myShootTicketInaccurate SpaceEmpireInaccurateShooting
+	myDeathSequenceSettings
+	{
+		myCollisionDamageThreshold 1.0
+		myDeathSequenceDuration 5.0
+		myShouldTumble TRUE
+		myTumbleMaxDuration 2.5
+	}
+	mySpaceshipFormationProfile < uid=F95CD8F3640A004C00000980030E3028 > = Porax42_FormationProfile_pyke F95CD8F364060EAC0001261FF0D8AF77
+}
+

@@ -1,0 +1,145 @@
+include "helix/game system data/fruit/chapter/chapter.fruit"
+include "helix/game system data/juice/rbtags/allrbtags.juice"
+include "helix/game system data/juice/reward/chaptercomplete_rewards.mreward"
+include "helix/game system data/juice/rewardpreview/chaptercomplete_rewards_previews.mrewardpreview"
+
+Chapter Chapter1 < uid=7110821465B13A86000461B64FEA2195 >
+{
+	myUIInfo
+	{
+		ChapterConditionalUIInfo "New ChapterConditionalUIInfo"
+		{
+			myConditions
+			{
+				GameConditionFlag "New GameConditionFlag"
+				{
+				}
+			}
+			myTitle "aurabesh = false, branch = \"MAIN\", contextComment = \"Title for chapter complete screen,\", enabled = true, guid = #7110821465B13A86000461B4A23D9B6F, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10690, text = \"Chapter 1 Complete\", type = \"MenuLine\""
+			myNarrativeSummary "aurabesh = false, branch = \"MAIN\", contextComment = \"Narrative summary of chapter.\", enabled = true, guid = #7110821465B13A86000461B5153AB4B9, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10690, text = \"After a chance encounter with rebels, and with Sliro and the Zerek Besh syndicate on her heels, Kay has made a narrow escape in a stolen starship.\", type = \"MenuLine\""
+		}
+	}
+	myReward < uid=7110821465B142EA000461EC75A41A7C > = Chapter1_Rewards 7110821465B141D0000461E8CE7C8A80
+	myRBTag < uid=E4123D2766895AEC0010BDAC89474696 > = World_Chapter_Intro_Completed 3A129121656760660001F36F214E2E5A
+	myIsImmediateGameConditions
+	{
+		GameConditionFlag True
+		{
+		}
+	}
+}
+
+Chapter Chapter2 < uid=7110821465B13A86000461B7952DF0DF >
+{
+	myUIInfo
+	{
+		ChapterConditionalUIInfo ChoseCrimson
+		{
+			myConditions
+			{
+				GameConditionFormula HelpedCRMinMQ050
+				{
+					myFormula "gv_A_MQ_050_Choice = 1"
+				}
+			}
+			myTitle "aurabesh = false, branch = \"MAIN\", contextComment = \"Title for chapter complete screen,\", enabled = true, guid = #7110821465B142F2000461EE52E955F5, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10690, text = \"Chapter 2 Complete\", type = \"MenuLine\""
+			myNarrativeSummary "aurabesh = false, branch = \"MAIN\", contextComment = \"Narrative summary of chapter.\", enabled = true, guid = #7110821465B142F2000461EF38B9C689, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10690, text = \"With the Zerek Besh bounty hunter Vail close behind, Kay has signed up for the heist of a lifetime with Jaylen Vrax, partnering up with his enforcer droid ND-5 to recruit a crew. \n\nInfiltrating an Imperial space station for Crimson Dawn, Kay destroyed data to create a schism between the Pyke Syndicate and the Empire.\", type = \"MenuLine\""
+		}
+		ChapterConditionalUIInfo ChosePykes
+		{
+			myConditions
+			{
+				GameConditionFormula HelpedPSYinMQ050
+				{
+					myFormula "gv_A_MQ_050_Choice = 0"
+				}
+			}
+			myTitle "aurabesh = false, branch = \"MAIN\", contextComment = \"Title for chapter complete screen,\", enabled = true, guid = #7110821465B22565001ACA3810E04CF9, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10690, text = \"Chapter 2 Complete\", type = \"MenuLine\""
+			myNarrativeSummary "aurabesh = false, branch = \"MAIN\", contextComment = \"Narrative summary of chapter.\", enabled = true, guid = #7110821465B22565001ACA396A239AE6, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10690, text = \"With the Zerek Besh bounty hunter Vail close behind, Kay has signed up for the heist of a lifetime with Jaylen Vrax, partnering up with his enforcer droid ND-5 to recruit a crew.\n\nInfiltrating an Imperial space station for Crimson Dawn, Kay turned on her employer and destroyed data to create a schism between Crimson Dawn and the Empire.\", type = \"MenuLine\""
+		}
+	}
+	myReward < uid=7110821465B1439E000461F60E38BF1E > = Chapter2_Rewards 7110821465B1436B000461F2A2DE920F
+	myRewardPreview < uid=2AE2EC856685537A001AB9DC574C32ED > = "New Minor Charm Slot" 2552445265D759FC00000130E5DEF107
+	myRBTag < uid=E4123D2766895AEC0010BDAD3393989C > = World_Chapter_Toshara_Completed 3A1291216567609C0001F371F47E2622
+}
+
+Chapter ChapterKijimi < uid=7110821465B143D0000461F8DA48697D >
+{
+	myUIInfo
+	{
+		ChapterConditionalUIInfo ChoseQueen
+		{
+			myConditions
+			{
+				GameConditionFormula "Killed Krisk"
+				{
+					myFormula "gv_A_MQ_100_KillQueen_choice = 2"
+				}
+			}
+			myTitle "aurabesh = false, branch = \"MAIN\", contextComment = \"Title for chapter complete screen,\", enabled = true, guid = #7110821465B143F6000461F982B73D23, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10690, text = \"Chapter {0} Complete\", type = \"MenuLine\""
+			myNarrativeSummary "aurabesh = false, branch = \"MAIN\", contextComment = \"Narrative summary of chapter.\", enabled = true, guid = #7110821465B143F6000461FA49BCA224, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10690, text = \"After disrupting Crimson Dawn’s plot to place Krisk as the head of the Ashiga Clan, Kay has recruited the talented safecracker and bombmaker Ank to the heist crew. \", type = \"MenuLine\""
+		}
+		ChapterConditionalUIInfo ChoseKrisk
+		{
+			myConditions
+			{
+				GameConditionFormula "Killed the Queen"
+				{
+					myFormula "gv_A_MQ_100_KillQueen_choice = 1"
+				}
+			}
+			myTitle "aurabesh = false, branch = \"MAIN\", contextComment = \"Title for chapter complete screen,\", enabled = true, guid = #7110821465B225AC001ACA3A994D19F6, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10690, text = \"Chapter {0} Complete\", type = \"MenuLine\""
+			myNarrativeSummary "aurabesh = false, branch = \"MAIN\", contextComment = \"Narrative summary of chapter.\", enabled = true, guid = #7110821465B225AC001ACA3B7E0DB278, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10690, text = \"After being manipulated by Crimson Dawn to help place Krisk as the head of the Ashiga Clan, Kay has recruited the talented safecracker and bombmaker Ank to the heist crew.\", type = \"MenuLine\""
+		}
+		ChapterConditionalUIInfo Neutral
+		{
+			myTitle "aurabesh = false, branch = \"MAIN\", contextComment = \"Title for chapter complete screen,\", enabled = true, guid = #7110821465B22621001ACA3C6C98BEC4, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10690, text = \"Chapter {0} Complete\", type = \"MenuLine\""
+			myNarrativeSummary "aurabesh = false, branch = \"MAIN\", contextComment = \"Narrative summary of chapter.\", enabled = true, guid = #7110821465B22621001ACA3D1A1AED1B, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 10690, text = \"After getting roped into Crimson Dawn’s plot to disrupt the Ashiga Clan, Kay has recruited the talented safecracker and bombmaker Ank to the heist crew.\", type = \"MenuLine\""
+		}
+	}
+	myReward < uid=7110821465B1468E00046243DB187051 > = KijimiChapter_Rewards 7110821465B1458C000462313E17D9B7
+	myRewardPreview < uid=2AE2EC856685537A001AB9DDD698E9F7 > = "New Minor Charm Slot" 2552445265D759FC00000130E5DEF107
+	myRBTag < uid=E4123D276633362D0001C7E1297FA4E1 > = World_Chapter_Kijimi_Completed 3A129121656760DB0001F375FE3B60B1
+}
+
+Chapter ChapterTatooine < uid=7110821465B1448A000462038DEB3B09 >
+{
+	myUIInfo
+	{
+		ChapterConditionalUIInfo "New ChapterConditionalUIInfo"
+		{
+			myTitle "aurabesh = false, branch = \"MAIN\", contextComment = \"Title for chapter complete screen,\", enabled = true, guid = #7110821465B1447600046201DAAE432A, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10690, text = \"Chapter {0} Complete\", type = \"MenuLine\""
+			myNarrativeSummary "aurabesh = false, branch = \"MAIN\", contextComment = \"Narrative summary of chapter.\", enabled = true, guid = #7110821465B1447600046202A05D84C9, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10690, text = \"Failing at recruiting the mercenary Hoss, Kay has survived an encounter with Jabba the Hutt and his rancor by collaborating with the Zerek Besh bounty hunter Vail. \", type = \"MenuLine\""
+		}
+	}
+	myReward < uid=7110821465B1468E000462459A6811F7 > = TatooineChapter_Rewards 7110821465B145A700046234F0CA9BE4
+	myRewardPreview < uid=2AE2EC856685537A001AB9DE84614B65 > = "New Minor Charm Slot" 2552445265D759FC00000130E5DEF107
+	myRBTag < uid=E4123D276633362D0001C7E2E8196A3B > = World_Chapter_Tatooine_Completed 3A129121656761820001F3799E9BBA1E
+}
+
+Chapter ChapterAkiva < uid=7110821465B144BB00046207BF618AC4 >
+{
+	myUIInfo
+	{
+		ChapterConditionalUIInfo "New ChapterConditionalUIInfo"
+		{
+			myTitle "aurabesh = false, branch = \"MAIN\", contextComment = \"Title for chapter complete screen,\", enabled = true, guid = #7110821465B1448F0004620527B1743D, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10690, text = \"Chapter {0} Complete\", type = \"MenuLine\""
+			myNarrativeSummary "aurabesh = false, branch = \"MAIN\", contextComment = \"Narrative summary of chapter.\", enabled = true, guid = #7110821465B1448F000462066B86C7CE, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 10690, text = \"Kay has met up and recruited her former partner, the droidsmith Gedeek, and helped him shut down a dangerous Imperial droid project in a secret ISB base.\", type = \"MenuLine\""
+		}
+	}
+	myReward < uid=7110821465B1468E000462465DBB1A26 > = AkivaChapter_Rewards 7110821465B1456D0004622EB2EF9342
+	myRewardPreview < uid=2AE2EC856685537A001AB9DFE98129A2 > = "New Minor Charm Slot" 2552445265D759FC00000130E5DEF107
+	myRBTag < uid=E4123D276633362D0001C7E3CD99061F > = World_Chapter_Akiva_Completed 3A129121656760EE0001F377C8B47BB4
+	myIsImmediateGameConditions
+	{
+		GameConditionChapterCompleted "New GameConditionChapterCompleted_Kijimi"
+		{
+			myChapter 7110821465B143D0000461F8DA48697D
+		}
+		GameConditionChapterCompleted "New GameConditionChapterCompleted_Tatooine"
+		{
+			myChapter 7110821465B1448A000462038DEB3B09
+		}
+	}
+}
+

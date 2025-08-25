@@ -1,0 +1,256 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/item/questitems.mitem"
+include "helix/game system data/juice/rbtags/quest.mrbtagstags"
+include "helix/game system data/juice/reward/quest_completion_reward.mreward"
+include "helix/game system data/juice/reward/quest_reward.mreward"
+include "helix/game system data/juice/rewardpreview/faction_quest_reward_previews.mrewardpreview"
+
+Quest a_fq_htc_030_eyeofthestorm < uid=C5B8DCF664A2A0760001A5991526EDDE >
+{
+	myName "branch = \"MAIN\", contextComment = \"A_FQ_HTC_030 The Eye of the Storm quest name displayed in the UI\", enabled = true, guid = #C5B8DCF6657B1BA90003ACB754C18CC1, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9388, text = \"Convoy\", type = \"MenuLine\""
+	myIntroDescription "branch = \"\", contextComment = \"A_FQ_HTC_030_TheEyeOfTheStorm intro description is displayed in the UI\", enabled = true, guid = #C5B8DCF6652049630003BC0EF5F588EC, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 9388, text = \"Bib Fortuna has a job offer for Kay. He asks to meet in Bestine, far from Jabba's Palace.\", type = \"MenuLine\"}"
+	myDescription "branch = \"\", contextComment = \"Faction Quest\", enabled = true, guid = #C5B8DCF664A2A0790001A59C08A01993, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 9388, text = \"Jabba's convoys have been going missing on the usual smuggling route between Tatooine and Toshara. Bib Fortuna hires Kay to personally escort the next shipment and make sure it arrives safely.\", type = \"MenuLine\"}"
+	myType Faction
+	myCompletionReward < uid=C5B8DCF664A2A1A60001A5A11D9E4BD2 > = A_FQ_HTC_030_questcomplete_reward 2AE2EC85644A93B30000B2FC98697614
+	myCompletionRewardPreview < uid=2AE2EC85666875E50040EF122ECFD9F7 > = HTC_030_reward_preview 2AE2EC856668752B003ED8484D43D7D4
+	myGoals
+	{
+	}
+	myRevealBeat < uid=C5B8DCF6657C1BFC000455BEEB34F6CD >
+	{
+		myScript helix/scripts/scr_lw_a_fq_htc_030_tat_pln_questunlock.mscript
+		myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+		myQuestBeatStateGameValue < uid=C5B8DCF6657C1BFC000455BF30F3770B >
+		{
+		}
+	}
+	myIntroBeat < uid=C5B8DCF664A2A5D100024CF42A15E266 >
+	{
+		myScript helix/scripts/scr_a_fq_htc_030_tat_pln_b00_meetbibfortuna.mscript
+		myName "aurabesh = false, contextComment = \"A_FQ_HTC_030_B00 Talk to Bib Fortuna in Jabba's Throne Room planet beat is not displayed in UI\", enabled = true, guid = #C5B8DCF664A3F049000C1EFAC4FA3ABF, lineVersion = 16, maxLength = 0, productId = 6, sectionId = 3664, text = \"Talk to Bib Fortuna\", type = \"MenuLine\"}"
+		myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+		myDebugPlayLandingZone 1EAB3B4063D122E0000091031BA0C33F
+		myObjectives
+		{
+			QuestObjectiveTalkTo "OBJ_010 Talk to Bib Fortuna" < uid=C5B8DCF664A3F068000C1EFCD0B61666 >
+			{
+				myName "aurabesh = false, contextComment = \"A_FQ_HTC_030_B00 Talk to Bib Fortuna objective is displayed in UI\", enabled = true, guid = #C5B8DCF664A3F085000C1EFDD5274A78, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 3664, text = \"Talk to Bib Fortuna\", type = \"MenuLine\""
+			}
+		}
+		myQuestBeatStateGameValue < uid=C5B8DCF664A41D1A0002D00F8D979BC7 >
+		{
+		}
+		myCompletionReward < uid=C5B8DCF665686FBD00040BECC9CF4168 > = NULLREFERENCE
+		myDebugPlayOnlyCompletionReward < uid=C5B8DCF665686FBD00040BEDD7189EAB > = HTC_030_Rewardgroup_ShipLoadout C5B8DCF665686F5400040BBBD398A3CC
+		myDebugPlayOnlyIsCompletionRewardUnique TRUE
+		myDebugPlayOnlyEquipItem TRUE
+	}
+	myBeats
+	{
+		QuestBeat "B01 Meet the Hutt convoy in Tatooine orbit" < uid=C5B8DCF664A2A6F700024CFAADD3A819 >
+		{
+			myScript helix/scripts/scr_a_fq_htc_030_tat_spc_b01_reachthehuttconvoy.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_HTC_030_B01 Meet the Hutt convoy in Tatooine orbit space beat is displayed in U\", enabled = true, guid = #C5B8DCF664A2AA8F00024D0CAB2B05E0, lineVersion = 16, maxLength = 0, productId = 6, sectionId = 3614, text = \"Meet the Hutt convoy in Tatooine orbit\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012DF06000000C9D0F252B6
+			myDebugPlayLandingZone 1EAB3B4063D122E0000091031BA0C33F
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "OBJ_010 Meet the Hutt convoy in Tatooine orbit" < uid=C5B8DCF664A2AAD800024D11F8BECCC0 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_HTC_030_B01 Meet the Hutt convoy in Tatooine orbit objective is displayed in UI\", enabled = true, guid = #C5B8DCF664A2AAEF00024D12D19A1CB2, lineVersion = 18, maxLength = 0, productId = 6, sectionId = 9391, text = \"Meet the Hutt convoy in Tatooine orbit\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+				}
+			}
+			myQuestBeatStateGameValue < uid=C5B8DCF664A2A77D00024D01DC806CBA >
+			{
+			}
+		}
+		QuestBeat "B02 Defend the Hutt Convoy" < uid=C5B8DCF664A2AA4F00024D06BC151D79 >
+		{
+			myScript helix/scripts/scr_a_fq_htc_030_tat_spc_b02_fightthepykes.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012DF06000000C9D0F252B6
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveDefendAgent "OBJ_010 Defend the freighters" < uid=C5B8DCF6653B8BEA001A0A1DE5586DC8 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_HTC_030_B02_OBJ_015 Defend the freighters objective is displayed in UI\", enabled = true, guid = #C5B8DCF6653B8BEA001A0A1ED02E916C, lineVersion = 8, maxLength = 0, productId = 6, sectionId = 9392, text = \"Defend the freighters\", type = \"MenuLine\""
+					myShowHealthbars TRUE
+				}
+				QuestObjectiveKillFireteam "OBJ_020 Defeat the remaining Pykes" < uid=B78B2E096540E77E0000E3EC5F20908A >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+				QuestObjectiveDefendAgent "OBJ_025 Defeat the remaining Pykes" < uid=C5B8DCF6657B3C3300032D3F3F6F658A >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"A_FQ_HTC_030_B02_OBJ_020 Defeat the remaining Pykes objective is displayed in UI\", enabled = true, guid = #C5B8DCF6657B3BFA00032D3E7200162A, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9392, text = \"Defeat the remaining Pykes\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD TRUE
+					myIsHighPrio TRUE
+					myShowHealthbars TRUE
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputFireteam "Pyke Fireteam A" < uid=C5B8DCF664A5308A0002FF5EDE9BE118 >
+				{
+				}
+				QuestBeatScriptInputFireteam "Pyke Fireteam B" < uid=B78B2E0964B0062700013D5585673831 >
+				{
+				}
+				QuestBeatScriptInputFireteam "Hutt Freighter Fireteam" < uid=C5B8DCF664A5309B0002FF5FE1D02630 >
+				{
+				}
+				QuestBeatScriptInputFireteam "Hutt Escort Fireteam" < uid=B78B2E0964A6D2D900019120C22D30C7 >
+				{
+				}
+			}
+			myQuestBeatStateGameValue < uid=C5B8DCF664A2AABC00024D0EEED8FAA7 >
+			{
+			}
+		}
+		QuestBeat "B02B Reunite with the convoy in Toshara orbit" < uid=C5B8DCF665368FC5004558A389FB816C >
+		{
+			myScript helix/scripts/scr_a_fq_htc_030_tos_spn_b02b_traveltotosharaspace.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012DF06000000C9D0F252B6
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom "OBJ_010 Travel to Toshara System" < uid=C5B8DCF665369115004558CD7932684A >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_HTC_030_B02b Travel  to Toshara System objective is displayed in UI\", enabled = true, guid = #C5B8DCF665369115004558CEFEEE6EFA, lineVersion = 5, maxLength = 0, productId = 6, sectionId = 9392, text = \"Travel  to Toshara System\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=C5B8DCF6653691B6004558CFD2D2B47F >
+			{
+			}
+		}
+		QuestBeat "B03 The Hutt Convoy" < uid=C5B8DCF664A2AA6200024D08397E7224 >
+		{
+			myScript helix/scripts/scr_a_fq_htc_030_tos_spc_b03_thehuttsconvoy.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012DDB0000000AEDF387547
+			myMood Focused
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "OBJ_010 Reach the Convoy" < uid=B78B2E0964ABFA120006024D84D8B291 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveKillFireteam "OBJ_020 Destroy the Hutt freighters to take their cargo" < uid=C5B8DCF664A2B97300024D1AAAA43EEF >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"A_FQ_HTC_030_B03 Destroy the Hutt freighters to take their cargo objective is displayed in UI\", enabled = true, guid = #C5B8DCF6657B1F470001EF65064C4C1F, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 9393, text = \"Destroy the Hutt freighters to take their cargo\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myShowHealthbars TRUE
+				}
+				QuestObjectiveCounter "OBJ_025 Take the Hutt cargo" < uid=C5B8DCF6657B1F900001EF66717CE550 >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"A_FQ_HTC_030_B03 Take the Hutt cargo objective is displayed in UI\", enabled = true, guid = #C5B8DCF6657B1FDA0001EF69E6855872, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 9393, text = \"Take the Hutt cargo\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+					myMaxCount 2
+				}
+				QuestObjectiveGetItemFromSpawnedLoot "OBJ_030 Recover the Cargo A" < uid=C5B8DCF664A2BBA800024D1E5BF696F1 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD FALSE
+				}
+				QuestObjectiveGetItemFromSpawnedLoot "OBJ_035 Recover the Cargo B" < uid=C5B8DCF66564C23B0001EDB93806303F >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+				QuestObjectiveDefendAgent "OBJ_040 Escort the Hutt freighters to Toshara" < uid=C5B8DCF664A2BBC100024D20541655F2 >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"A_FQ_HTC_030_B03 Escort the Hutt freighters to Toshara objective is displayed in UI\", enabled = true, guid = #C5B8DCF6657B208B0001EF6B850898F6, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 9393, text = \"Escort the Hutt freighters to Toshara\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myShowHealthbars TRUE
+				}
+			}
+			myScriptInputs
+			{
+			}
+			myQuestBeatStateGameValue < uid=C5B8DCF664A2AABC00024D0FFA6740C7 >
+			{
+			}
+		}
+		QuestBeat "B04A The Empire Attacks" < uid=C5B8DCF6652411A9000AC327076F97D3 >
+		{
+			myScript helix/scripts/scr_a_fq_crm_020_tos_spc_b04a_traveltotoshara.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012DDB0000000AEDF387547
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom "OBJ_010 Deliver the cargo to Toshara" < uid=C5B8DCF66524180B000AC4494BD04DD0 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_HTC_030_B04A Deliver the cargo to Toshara objective is displayed in UI\", enabled = true, guid = #C5B8DCF665241816000AC44A100EA5C1, lineVersion = 9, maxLength = 0, productId = 6, sectionId = 9394, text = \"Deliver the cargo to Toshara\", type = \"MenuLine\""
+				}
+				QuestObjectiveDefendAgent "OBJ_020 Defend against the Empire" < uid=C5B8DCF6653B8CA9001A0A20C8D34ECF >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_HTC_030_B04A Defend against the Empire objective is displayed in UI\", enabled = true, guid = #C5B8DCF6653B8CA9001A0A21EEC34C30, lineVersion = 6, maxLength = 0, productId = 6, sectionId = 9394, text = \"Defend against the Empire\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myShowHealthbars TRUE
+				}
+				QuestObjectiveCustom "OBJ_030 Defeat the Empire Troops" < uid=C5B8DCF6657B21300001EF71A785252A >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD FALSE
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputFireteam "Hutt Freighter Fireteam" < uid=B78B2E09654BA2D1000C593DE3225420 >
+				{
+				}
+			}
+			myQuestBeatStateGameValue < uid=C5B8DCF6652413A9000AC329E2F64DEE >
+			{
+			}
+		}
+		QuestBeat "B04B Deliver the Cargo to the Pykes" < uid=C5B8DCF664A2AA7A00024D0A15F88901 >
+		{
+			myScript helix/scripts/scr_a_fq_htc_030_tos_pln_b04_talktogorak.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myMood RelaxedNoSpawnpoints
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "OBJ_010 Deliver the Cargo to the Pykes" < uid=C5B8DCF664A2BDB200024DB8B731225A >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=C5B8DCF664A2AABC00024D1009905E6E >
+			{
+			}
+			mySkipConditions
+			{
+				GameConditionPlayerHasItem "Playuer has no Silicax Oxalate"
+				{
+					myItem < uid=C5B8DCF664E45BF000004885B41EE0F8 > = qitem_FQ_HTC_030_SilicaxOxalate C5B8DCF664A574D600023CE6E16E624C
+					myAmount 1
+					myOperator LessThan
+				}
+			}
+		}
+	}
+	myQuestStateGameValue < uid=C5B8DCF664A2A0760001A59A85EE33F9 >
+	{
+	}
+	myQuestStartedRBTag < uid=DA5615DD64B54D8B0000C654B961864A > = World_Quest_FQHTC030_Started DA5615DD64A43BDD0001659AA7E7C96D
+	myQuestCompletedRBTag < uid=DA5615DD64B54D8B0000C655B3382A41 > = World_Quest_FQHTC030_Completed DA5615DD64A43C030001659CEC96C5F8
+	myFaction 16DEADE65F7DDA76000000C847FBD2A1
+}
+

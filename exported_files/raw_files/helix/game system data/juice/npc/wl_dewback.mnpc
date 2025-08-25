@@ -1,0 +1,67 @@
+include "helix/game system data/juice/ai/dynamiccapinteractions/wildlifedcap.mnpcdynamiccapinteractionprofile"
+include "helix/game system data/juice/ai/wildlife corpse profile.mnpccorpseprofile"
+include "helix/game system data/juice/ai/wl_dewback.mnpcmotionpatternprofile"
+include "helix/game system data/juice/melee/wildlifemeleedefense.mnpcmeleedefenseprofile"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npc/wil_fp_prey.mnpc"
+include "helix/game system data/juice/quadrupedalgroundaligner/wildlife_ground_aligner_config.mquadalignerconfig"
+
+NPC wl_dewback < uid=E9DD8F6063B640C200003E016D7651DE > : wil_fp_prey
+{
+	myName "branch = \"TU1\", contextComment = \"The name of the lizard-like creature\", enabled = true, guid = #E9DD8F606684AE1F001EB4442E485939, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10572, text = \"Dewback\", type = \"MenuLine\""
+	myCharacterVisuals < uid=E9DD8F6063B64167000058237900F417 > = character_visuals_wil_dewback E9DD8F6062E3A4E70000250FCB739565
+	myAnimSystemType Dewback
+	myHealthFormula 5+5
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=290EB60C63FDA384000125CA8150C1D3 > = Agent_Wildlife_DewbackTag 290EB60C63FDA201000125A78E091DF4
+	}
+	myPositionReservationSize 2.5
+	myNavigationLayerType Large
+	myNavigationCapability < uid=290EB60C64D4466E0000E228172BA0E7 > = DefaultWildlifeNavigationCapability 290EB60C64D1A5C50000CA29617570E5
+	myLodProfile < uid=E8E55FD866860FD20003897411996A3D > = Wildlife_Big E8E55FD86672A9BA000AA896ED914E0D
+	myVisionProfile < uid=290EB60C63B684A50000A13634B6883C > = DewbackVisionProfile 290EB60C63B684100000A12C5E527254
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=290EB60C63B684910000A1331D3332B4 > = DewbackDetectionProfile 290EB60C63B6837D0000A1280942E22F
+	}
+	myAgitationProfile < uid=E9DD8F6063B66D390000581A4CDD5584 > = "Dewback Agitation Profile" E9DD8F6063B66CFD0000502EC07A0E2F
+	myAudioTriggerVolumeProfile < uid=F45C2A016627A0AB000834C3B2227C44 > = wildlife_medium_dewback F45C2A016627A08400083448FFB8D3F5
+	myDynamicCAPInteractionProfile < uid=290EB60C63B696710001324F089CB526 > = DewbackDynamicCAP 290EB60C63B694310001189C2BF61140
+	myCAPInteractionEvaluatorProfile < uid=290EB60C63B697B4000185E1CE32D959 > = DefaultCAPInteractionEvaluatorProfile EBE060C262E155B000003EBC3B767B35
+	myMotionPatternProfile < uid=E9DD8F6063B66E810000582E65BCBC0B > = DewbackMotionPatternProfile E9DD8F6063B66D850000581CD4250992
+	myMotionPlanFollowProfile < uid=EBEEDF3F65029B65000438A34CE41BE3 > = DewbackMotionPlanFollowProfile EBEEDF3F65029B13000432C28D975FB5
+	myMoveTurnCapabilitiesProfile < uid=290B720F64706D9600020A43C6145D5E > = dewback_NPCMoveTurnCapabilitiesProfile 290B720F6470183F00017649694F9A5F
+	mySteeringProfile < uid=290EB60C6461E6C5000921AE291CCF45 > = DewbackSteeringProfile EBEEDF3F662EFFE1000111783008D519
+	myFleeProfile < uid=E9DD8F6063B66F57000058358125B384 > = DewbackFleeProfile E9DD8F6063B66F2600005831E03F4E08
+	myFootStepProfile < uid=E9DD8F6064634373000070E4275607C0 > = DewbackFootstep E9DD8F606459B59C00016E9144B163F9
+	myPackProfile < uid=E9DD8F6063B66F8B0000583A3ABA2904 > = DewbackPackProfile E9DD8F6063B66F6000005836F2FB8113
+	myAudioParameters
+	{
+		myEmitterName "WL Dewback"
+		mySwitches
+		{
+			AudioSwitch "Dewback Audio Switch"
+			{
+				myGuid 494118917F1C326EF6B9CB75CEAA3293
+			}
+		}
+	}
+	myMeleeDefenseProfile < uid=E9DD8F6064AD0A0B0001761CA32312FB > = LargePreyMeleeDefense E9DD8F6064ACCF1900016EB1623B90CE
+	myStaggerConfig < uid=E9DD8F6063B671A30000D2B84358578C > = WildlifeDewback E9DD8F6063B6712B0000D2680E8CC86C
+	myPhysicsProfile < uid=290EB60C63E9DFAD0001639410A4507E > = Dewback 290EB60C63E9DFB5000164EAB20CC9EE
+	myQuadrupedalGroundAlignerConfig < uid=E9DD8F6063C7590F0002A76AD29B6831 > = "Dewback Aligner Config" 4999D94C633F8EC20002DBEBDD003934
+	myMoveConfig < uid=E9DD8F6063B679E90000F93581313200 > = dewback_move_config E9DD8F6063B67A380000F938016E8779
+	myCorpseProfile < uid=290EB60C63FF1D890001AC078E2416EE > = "Dewback Corpse" 290EB60C63FF1D3C0001A3AA57D4BA86
+	myVisualEffectFootstep < uid=D8550C146541C0DB00034E0F31CAF76E >
+	{
+		myFootstepEffects = Big_wildlife
+		myLeftFootBoneAliasName LeftFoot
+		myRightFootBoneAliasName RightFoot
+		myLeftHandBoneAliasName LeftHand
+		myRightHandBoneAliasName RightHand
+		myReuseFootstepEffect TRUE
+	}
+	myFootstepVFXRange 70.0
+}
+

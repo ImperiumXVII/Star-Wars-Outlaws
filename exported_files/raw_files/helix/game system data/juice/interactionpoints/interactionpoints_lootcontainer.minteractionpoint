@@ -1,0 +1,374 @@
+include "helix/game system data/fruit/interactionpoints/interactionpoints.fruit"
+include "helix/game system data/juice/interactionpoints/interactionpoints.minteractionpoint"
+include "helix/game system data/juice/interactionpoints/interactionpoints_loot.minteractionpoint"
+include "helix/game system data/juice/playerrestrictions/duringinteraction_lootcontainer.mplayerrestriction"
+
+InteractionPoint OpenContainer < uid=5F6139B460A3AD6B0003A760FA19F4EE > : Loot
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"Interaction label\", enabled = true, guid = #0F7E059861555F1B000018598ACA0868, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 417, text = \"Open Container\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	}
+	myDefaultInteractionAngleDegree 180.0
+	myDefaultMinInteractionHeightOffset -1.0
+	myDefaultMaxInteractionHeightOffset 0.7
+	myHapticFeedback
+	{
+		myNearRange 0.0
+		myNearRumble 00000000000000000000000000000000
+		myOnInteractRumble 8F9DE287665F0CDE00076BF85EF5EE48
+	}
+	myCoopPersistenceType SaveGame
+	myPlayerRestrictionsDuringInteraction < uid=8E25811B66545411001536D5CBC14730 > = duringinteraction_lootcontainer 8E25811B6654517D0012FBD54BDA1D46
+	myPlayerRestrictionsPreparingInteraction < uid=8E25811B66545411001536D641EDACC5 > = duringinteraction_lootcontainer 8E25811B6654517D0012FBD54BDA1D46
+	myCheckRequiredDistanceToPathFromPureInteractionPosition TRUE
+}
+
+InteractionPoint OpenContainer_Faction < uid=E42FA10C61838AA200003F214A235BAB > : OpenContainer
+{
+	myDefaultSetup
+	{
+		myLabel "contextComment = \"Interaction label\", enabled = true, guid = #E42FA10C61838AA200003F200D1A0612, lineVersion = 3, maxLength = 0, productId = -1, sectionId = -1, text = \"Open Container\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "contextComment = \"Forbidden Interaction label\", enabled = true, guid = #E42FA10C618BF46E00001995A5B12E03, lineVersion = 2, maxLength = 0, productId = -1, sectionId = -1, text = \"Steal\", type = \"MenuLine\""
+	}
+	myIsForbiddenConditions
+	{
+		GameConditionContextPlayerHasReputation "New GameConditionContextPlayerHasReputation (0)"
+		{
+			myType ContextPlayerHasReputation
+			myIsNegated FALSE
+			myReputationTier Excellent
+			myOperator LessThan
+		}
+	}
+	myEditorMenuStructure Faction-related
+}
+
+InteractionPoint OpenContainer_Faction_Reputation_Terrible < uid=5B17B22F6502BC0C0001437925FB0469 > : OpenContainer_Faction
+{
+	myIsForbiddenConditions
+	{
+		GameConditionContextPlayerHasReputation "New GameConditionContextPlayerHasReputation"
+		{
+			myOperator LessThanOrEqual
+		}
+	}
+}
+
+InteractionPoint OpenContainer_Faction_Reputation_Bad < uid=5B17B22F6502BD040001437E9BC553A4 > : OpenContainer_Faction
+{
+	myIsForbiddenConditions
+	{
+		GameConditionContextPlayerHasReputation "New GameConditionContextPlayerHasReputation"
+		{
+			myReputationTier Bad
+			myOperator LessThanOrEqual
+		}
+	}
+}
+
+InteractionPoint OpenContainer_Faction_Reputation_Fair < uid=5B17B22F6502BD040001437F8189B5EB > : OpenContainer_Faction
+{
+	myIsForbiddenConditions
+	{
+		GameConditionContextPlayerHasReputation "New GameConditionContextPlayerHasReputation"
+		{
+			myReputationTier Fair
+			myOperator LessThanOrEqual
+		}
+	}
+}
+
+InteractionPoint OpenContainer_Faction_Reputation_Good < uid=5B17B22F6502BD040001438006C1CA5B > : OpenContainer_Faction
+{
+	myIsForbiddenConditions
+	{
+		GameConditionContextPlayerHasReputation "New GameConditionContextPlayerHasReputation"
+		{
+			myReputationTier Good
+			myOperator LessThanOrEqual
+		}
+	}
+}
+
+InteractionPoint OpenContainer_Faction_Reputation_Exellent < uid=5B17B22F6502BD0400014381502EF95C > : OpenContainer_Faction
+{
+	myIsForbiddenConditions
+	{
+		GameConditionContextPlayerHasReputation "New GameConditionContextPlayerHasReputation"
+		{
+			myReputationTier Excellent
+			myOperator LessThanOrEqual
+		}
+	}
+}
+
+InteractionPoint OpenContainer_Faction_Reputation_Restricted < uid=5C148C466645ED35000CD34DDAD54E8B > : OpenContainer_Faction
+{
+	myIsForbiddenConditions
+	{
+		GameConditionFlag "New GameConditionFlag"
+		{
+		}
+	}
+}
+
+InteractionPoint OpenSmugglingCache < uid=E42FA10C621CED9000033AAE960D22A1 > : OpenContainer
+{
+	myDefaultSetup
+	{
+	}
+}
+
+InteractionPoint OpenContainer_Locked_Faction_Reputation_Terrible < uid=6F5419E765F2F81800173162153F9568 > : UseDataSpike(Easy)
+{
+	myDefaultSetup
+	{
+		myForbiddenInteractionLabel "aurabesh = false, branch = \"MAIN\", contextComment = \"Used to bypass a locked object technological in design.\", enabled = true, guid = #6F5419E765F422370008652F83B713D6, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10727, text = \"Override Lock\", type = \"MenuLine\""
+	}
+	myDefaultMinInteractionHeightOffset -1.0
+	myDefaultMaxInteractionHeightOffset 0.7
+	myAutosaveTriggerType OnReleaseAfterPerform
+	myIsForbiddenConditions
+	{
+		GameConditionContextPlayerHasReputation "New GameConditionContextPlayerHasReputation"
+		{
+			myOperator LessThanOrEqual
+		}
+	}
+	myEditorMenuStructure Faction-related
+}
+
+InteractionPoint OpenContainer_Locked_Faction_Reputation_Bad < uid=6F5419E765F2F8A9001731679D495ABF > : OpenContainer_Locked_Faction_Reputation_Terrible
+{
+	myIsForbiddenConditions
+	{
+		GameConditionContextPlayerHasReputation "New GameConditionContextPlayerHasReputation"
+		{
+			myReputationTier Bad
+			myOperator LessThanOrEqual
+		}
+	}
+}
+
+InteractionPoint OpenContainer_Locked_Faction_Reputation_Fair < uid=6F5419E765F2F94D0017316C5A3B8EE5 > : OpenContainer_Locked_Faction_Reputation_Terrible
+{
+	myIsForbiddenConditions
+	{
+		GameConditionContextPlayerHasReputation "New GameConditionContextPlayerHasReputation"
+		{
+			myReputationTier Fair
+			myOperator LessThanOrEqual
+		}
+	}
+}
+
+InteractionPoint OpenContainer_Locked_Faction_Reputation_Good < uid=6F5419E765F2F94D0017316D07032105 > : OpenContainer_Locked_Faction_Reputation_Terrible
+{
+	myRestrictions
+	{
+	}
+	myIsForbiddenConditions
+	{
+		GameConditionContextPlayerHasReputation "New GameConditionContextPlayerHasReputation"
+		{
+			myReputationTier Good
+			myOperator LessThanOrEqual
+		}
+	}
+}
+
+InteractionPoint OpenContainer_Locked_Faction_Reputation_Excellent < uid=6F5419E765F2F94D0017316E92138E94 > : OpenContainer_Locked_Faction_Reputation_Terrible
+{
+	myIsForbiddenConditions
+	{
+		GameConditionContextPlayerHasReputation "New GameConditionContextPlayerHasReputation"
+		{
+			myReputationTier Excellent
+			myOperator LessThanOrEqual
+		}
+	}
+}
+
+InteractionPoint OpenContainer_Locked_Faction_Reputation_Restricted < uid=5C148C466645ED55000CD34F72896C46 > : OpenContainer_Locked_Faction_Reputation_Terrible
+{
+	myIsForbiddenConditions
+	{
+		GameConditionFlag "New GameConditionFlag"
+		{
+		}
+	}
+}
+
+InteractionPoint OpenContainer_Faction_Empire < uid=6F5419E765F426EC000260BF79A88644 > : OpenContainer_Faction
+{
+	myIsForbiddenConditions
+	{
+	}
+}
+
+InteractionPoint OpenContainer_Locked_Faction_Empire < uid=6F5419E765F437580000E50E9FC60199 > : UseDataSpike(Easy)
+{
+	myDefaultSetup
+	{
+		myForbiddenInteractionLabel "aurabesh = false, branch = \"MAIN\", contextComment = \"Used to bypass a locked object technological in design.\", enabled = true, guid = #6F5419E765F437AE0000E510D7679DCE, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10727, text = \"Override Lock\", type = \"MenuLine\""
+	}
+	myDefaultMinInteractionHeightOffset -1.0
+	myDefaultMaxInteractionHeightOffset 0.7
+}
+
+InteractionPoint OpenContainer_EndOfActivity < uid=6F5419E766029E9D000330525601D247 > : OpenContainer
+{
+	myHapticFeedback
+	{
+		myNearRange 0.0
+		myNearRumble 00000000000000000000000000000000
+		myOnInteractRumble 00000000000000000000000000000000
+	}
+	myInteractionGestureAnimationType None
+	myRestrictions
+	{
+		GameConditionPlayerIsInCombatWithNPCs "In Combat"
+		{
+			myOperator LessThan
+		}
+	}
+	myPlayerRestrictionsDuringInteraction < uid=6F5419E766F415E80003AD97869E11A1 > = duringinteraction_lootcontainer_endofactivity 6F5419E766F415460003AD90CC9E90A0
+	myPlayerRestrictionsPreparingInteraction < uid=6F5419E766F415E80003AD9840494E11 > = duringinteraction_lootcontainer_endofactivity 6F5419E766F415460003AD90CC9E90A0
+	myPlayerEquipmentSettings
+	{
+		myHolsterOnClaimed FALSE
+		myHolsterOnClaimedSkipSequence FALSE
+		myIgnorePickables FALSE
+		myHolsterPickablesEnabled TRUE
+	}
+}
+
+InteractionPoint OpenContainer_EndOfActivity_Forbidden < uid=6F5419E766029E9F00033053B9E604D7 > : OpenContainer_Faction_Empire
+{
+	myHapticFeedback
+	{
+		myNearRange 0.0
+		myNearRumble 00000000000000000000000000000000
+		myOnInteractRumble 00000000000000000000000000000000
+	}
+	myInteractionGestureAnimationType None
+	myRestrictions
+	{
+		GameConditionPlayerIsInCombatWithNPCs "In Combat"
+		{
+			myOperator LessThan
+		}
+	}
+	myIsForbiddenConditions
+	{
+		GameConditionFlag Always
+		{
+		}
+	}
+	myPlayerRestrictionsDuringInteraction < uid=6F5419E766F415E80003AD99786ACD28 > = duringinteraction_lootcontainer_endofactivity 6F5419E766F415460003AD90CC9E90A0
+	myPlayerRestrictionsPreparingInteraction < uid=6F5419E766F415E80003AD9AF858C042 > = duringinteraction_lootcontainer_endofactivity 6F5419E766F415460003AD90CC9E90A0
+	myPlayerEquipmentSettings
+	{
+		myHolsterOnClaimed FALSE
+		myHolsterOnClaimedSkipSequence FALSE
+		myIgnorePickables FALSE
+		myHolsterPickablesEnabled TRUE
+	}
+}
+
+InteractionPoint OpenContainer_Guard_Encounter < uid=06F73AE1662100A900010D39CF1A2E4E > : OpenContainer_Faction_Reputation_Exellent
+{
+	myIsForbiddenConditions
+	{
+		GameConditionContextPlayerHasReputation "New GameConditionContextPlayerHasReputation"
+		{
+		}
+	}
+}
+
+InteractionPoint OpenContainer_No_Faction_UseDataSpike(Easy) < uid=7B2EAC6D66605BC500031569CFEFC43D > : UseDataSpike(Easy)
+{
+	myDefaultMinInteractionHeightOffset -1.0
+	myDefaultMaxInteractionHeightOffset 0.7
+}
+
+InteractionPoint OpenContainer_Guard_Encounter_Forbidden < uid=BAB09C58672DCAF00003E18EBADBAAE6 > : OpenContainer_Guard_Encounter
+{
+	myIsForbiddenConditions
+	{
+		GameConditionFlag "New GameConditionFlag"
+		{
+		}
+	}
+}
+
+InteractionPoint OpenContainer_Faction_Empire_Forbidden < uid=BAB09C58672DCB2D0003E1A9D341C210 > : OpenContainer_Faction_Empire
+{
+	myIsForbiddenConditions
+	{
+		GameConditionFlag "New GameConditionFlag"
+		{
+		}
+	}
+}
+
+InteractionPoint OpenContainer_Locked_Faction_Empire_Forbidden < uid=BAB09C58672DCB520003E1C4CB0A3089 > : OpenContainer_Locked_Faction_Empire
+{
+	myIsForbiddenConditions
+	{
+		GameConditionFlag "New GameConditionFlag"
+		{
+		}
+	}
+}
+
+InteractionPoint OpenContainer_Forbidden < uid=BAB09C58672DCB730003E1DF79901020 > : OpenContainer
+{
+	myDefaultSetup
+	{
+		myForbiddenInteractionLabel "branch = \"TU5\", contextComment = \"Copy of MAIN 7425\", enabled = true, guid = #BAB09C58672DCB810003E1E087B9F6E8, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 10727, text = \"Open Container\", type = \"MenuLine\""
+	}
+	myIsForbiddenConditions
+	{
+		GameConditionFlag "New GameConditionFlag"
+		{
+		}
+	}
+}
+
+InteractionPoint OpenContainer_Faction_Reputation_Forbidden < uid=BAB09C58672DCBBF0003E1E292AACD72 > : OpenContainer_Faction_Reputation_Terrible
+{
+	myIsForbiddenConditions
+	{
+		GameConditionFlag "New GameConditionFlag"
+		{
+		}
+	}
+}
+
+InteractionPoint OpenContainer_No_Faction_UseDataSpike(Easy)_Forbidden < uid=BAB09C58672DCDA60003E238715E8BCF > : OpenContainer_No_Faction_UseDataSpike(Easy)
+{
+	myDefaultSetup
+	{
+		myForbiddenInteractionLabel "branch = \"TU5\", contextComment = \"Copy of MAIN 7434\", enabled = true, guid = #BAB09C58672DCDE80003E23A764B0A25, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10727, text = \"Use Data Spike\", type = \"MenuLine\""
+	}
+	myIsForbiddenConditions
+	{
+		GameConditionFlag "New GameConditionFlag"
+		{
+		}
+	}
+}
+
+InteractionPoint OpenContainer_Locked_Faction_Reputation_Forbidden < uid=BAB09C58672DCE1A0003E23B29D7C170 > : OpenContainer_Locked_Faction_Reputation_Terrible
+{
+	myIsForbiddenConditions
+	{
+		GameConditionFlag "New GameConditionFlag"
+		{
+		}
+	}
+}
+

@@ -1,0 +1,38 @@
+include "helix/game system data/fruit/vehicle/vehicle.fruit"
+include "helix/game system data/juice/character/character_visuals_vehicle.mcharactervisuals"
+include "helix/game system data/juice/faction/factions.mfaction"
+include "helix/game system data/juice/vehicle/player_speeder_camera_settings.mvehiclecamera"
+
+Vehicle test_speeder_omnidirectional < uid=A51911A8615D8DB10000188D67F6D26E >
+{
+	myCharacterVisuals < uid=83E36AE36197691B000019E1FD5BE15D > = character_visuals_test_speeder_omnidirectional 83E36AE361925B0400001915756CF9A1
+	myFaction < uid=A51911A8615D8DB10000188E488B08F3 > = Vehicle 16DEADE65EB50E3B000000327244DD21
+	myCameraMode Speeder
+	mySpeedToAccelerationCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.52705687 -2.1630995, -1.0163704 -1.3041636, -10.583508 -0.10315514, }, outTangents = { 0.53910863 0.25821733, 2.0701685 8.4962006, 3.1754475 4.0746002, 0 0, }, properties = { 275, 4099, 1299, 3347, }, values = { 0.0049052238 0.50632489, 1.5860758 13.866436, 7.7965813 32.484222, 28.398857 19.538471, }, }, numKeys = 4, }"
+	mySpeedToAutoRollSpeedMultiplier "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -8.3143959 -0.71499085, }, outTangents = { 7.5717897 0.077419668, 0 0, }, properties = { 275, 3347, }, values = { 0 0, 18 1, }, }, numKeys = 2, }"
+	mySpeedToCameraDistanceCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -10 -0.33333334, -2 0, }, outTangents = { 10 0, 2.0000002 0.066666678, 0 0, }, properties = { 5123, 3, 6147, }, values = { 0 1.8, 30 2.4000001, 36 3, }, }, numKeys = 3, }"
+	myMass 1.0
+	myTargetPosSpringStrength 400.0
+	myTargetPosDampening 1.0
+	myDrag 0.3
+	myBrakingPower 5.0
+	myEngineBrakingPower 2.5
+	myMinimumSpeedForAutomaticEngineBraking 0.0
+	myTurnSpeed 60.0
+	myPitchSpeed 60.0
+	myRollSpeed 90.0
+	myDurationBeforeAutoRighting 0.2
+	myShouldStickToGround TRUE
+	myGroundOffset 1.5
+	myMaxRollAngle 20.0
+	myMaxPitchAngle 5.0
+	myCanManuallyRoll TRUE
+	myGroundContactSpringStrength 200.0
+	myGroundContactDampening 1.0
+	myUseDriveController TRUE
+	myMaxHealthFormula 100
+	myDismountSpeedThreshold 5.0
+	myUIIcon "mySpriteId = -1198496324, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_vehicles_01.spritesheet\""
+	myVehicleCameraSettings < uid=A51911A86241DB9200002BC84DD67FE6 > = player_speeder_camera_settings A51911A862418AAB00002ED237114685
+}
+

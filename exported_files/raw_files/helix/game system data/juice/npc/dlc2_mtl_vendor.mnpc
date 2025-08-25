@@ -1,0 +1,34 @@
+include "helix/game system data/juice/dialogue character/databases/dlc2_characters.mdialoguecharacter"
+include "helix/game system data/juice/npc/base_civ_vendor.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/vendor/dlc2_vendorconfigs.mvendorconfig"
+
+NPC dlc2_mtl_vendor < uid=91DC5D3C672251170004CF11AAD3CD72 > : base_civ_vendor
+{
+	myName "branch = \"DLC2\", contextComment = \"Name of the type of vendor for the Miyuki Trade League, male version.\", enabled = true, guid = #2AE2EC856737247B000286243CEF06CC, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 12361, text = \"Miyuki Trader\", type = \"MenuLine\""
+	myCharacterVisuals < uid=2E03BECB67C9615000057B46D4E7CD2E > = dlc2_character_visuals_3_bronze_npc_miyuki_trade_league_vendo_hauler_keep_01 66F5728967852BA900045C0AAB6714BF
+	myFaction < uid=91DC5D3C672251170004CF12DB598D1E > = TraderGroup 91DC5D3C66FBD9540000004783CAEE04
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2767475A850006566086FF30F5 > = Agent_Gender_FeminineTag 16DEADE6626D20EA00002E5277B65AD4
+	}
+	myPossibleSpeciesTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2767475A8A00065661D1954EF2 > = Agent_Species_HumanTag 2736B365634D673A0003C27CFCFEFD1A
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2767475AE80006566BD4A8D215 > = Agent_Binocular_NotVOTarget 3A129121662B9A29000B2B5A42DACF63
+		RBTagsTag "New RBTagsTag_0" < uid=E4123D2767475AD40006566A77C187C0 > = Agent_Vendor_Barterer 1EC89F256513F631000081B1DDA36D24
+		RBTagsTag "New RBTagsTag_1" < uid=E4123D276750702F0003E465B4E8B052 > = Agent_BarksFamily_NewMiyukiTrader E4123D27675023B0000239FA90EAB6E7
+	}
+	myDialogueCharacters
+	{
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=E4123D27674857C100084B2EB7F056AD >
+		{
+			myDialogueCharacter < uid=E4123D276748668F000000EBD245ADBC > = AI_DLC2_VENDOR_UNIQUE_HAULERS_KEEP_MIYUKI_HUMAN_BASIC_F01 E4123D2767485DE000084B2F5B68957A
+		}
+	}
+	myVendorConfig < uid=2AE2EC856724CA06000000E4D50BE82D > = VendorConfig_KHE_MiyukiTrader 2AE2EC85670CDA3D0003BDEA6E9A3C07
+}
+

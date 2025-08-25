@@ -1,0 +1,21 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/projectile/realization/bryar_k16_charge.mprojectilerealization"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_power.mprojectile"
+
+BallisticProjectile weapon_projectile_blaster_power_coop < uid=7EE64634648B1CBD000177DEEB5920B5 > : weapon_projectile_blaster_power
+{
+	myActions
+	{
+		ProjectileActionExplosion "Impact Explosion"
+		{
+			myActionTargetType FinalHit
+			myDamageFormula 2
+			myRadiusFormula 4
+			myDefaultDamage 0.0
+			myDefaultRadius 4.0
+			myDamageSelf FALSE
+			myExplosion < uid=A207755D64A586630001A6B15E2BFA99 > = explosion_generic_no_effect A207755D64A5856B0001A67361F5DD5A
+		}
+	}
+}
+

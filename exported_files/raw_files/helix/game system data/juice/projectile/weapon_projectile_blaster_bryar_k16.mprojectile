@@ -1,0 +1,34 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/explosion/explosion_generic_no_effect.mexplosion"
+include "helix/game system data/juice/projectile/realization/bryar_k16_charge.mprojectilerealization"
+
+BallisticProjectile weapon_projectile_blaster_bryar_k16 < uid=F8181D48625FD1F70000397328942EE5 >
+{
+	myObject
+	{
+		myMaterialType Energy
+		myStickType OnlyTranslation
+	}
+	myRealization < uid=F8181D48625FFC510000385E6B984861 > = bryar_k16_charge F8181D48625FFB380000385D58F68996
+	myActions
+	{
+		ProjectileActionExplosion "Impact Explosion"
+		{
+			myActionTargetType FinalHit
+			myDamageFormula 3
+			myRadiusFormula 4
+			myDefaultDamage 3.0
+			myDefaultRadius 4.0
+			myExplosion < uid=A207755D64A585A20001A69E25E2B4B1 > = explosion_generic_no_effect A207755D64A5856B0001A67361F5DD5A
+		}
+	}
+	myInitialSpeed 200.0
+	myAccelerationType Constant
+	myAccelerationConstant 0.0
+	myAccelerationCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.38326675 -4.7615814, -0.4883796 -1.2316742, }, outTangents = { 0.30116838 8.6079407, 0.10857789 1.3489363, 0 0, }, properties = { 274, 4371, 2066, }, values = { 0 0, 1.1780767 0, 1.511821 50, }, }, numKeys = 3, }"
+	myBounceEnabled FALSE
+	myBounceMaxBounces 1
+	mySeekerEnabled FALSE
+	mySeekerTurnRate 5.0
+}
+

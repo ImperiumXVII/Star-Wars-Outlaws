@@ -1,0 +1,32 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/loottable/loot_global.mloottable"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/hut_shp_base.mnpc"
+include "helix/game system data/juice/npc/neu_shp_dariusg_a.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC hut_shp_dariusg_a < uid=6EA7962563E50E540000521924EC7246 > : hut_shp_base
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"name of ship - Darius G-class Freighter - Hutt faction\", enabled = true, guid = #6AE6EE0D657874FE000266C458557CB9, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10726, text = \"Darius G-class Freighter\", type = \"MenuLine\""
+	myCharacterVisuals < uid=F95CD8F3648343ED000ACA9FB24DEBC1 > = character_visuals_npc_shp_DariusG_Freighter F95CD8F362ECDB5B0000E9CFCA726C84
+	mySpaceshipType DariusHutt
+	myMaxHealth 1600
+	myHealthFormula 800*SpaceHealthWarshipDifficultyModifier
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A12912164EE18BD0003C6F4A184D06C > = Agent_Archetype_Pilot 3A12912163EF7B9500005053123CF383
+		RBTagsTag "New RBTagsTag (0)" < uid=3A12912164EE18BD0003C6F518580899 > = Agent_Faction_HuttClanTag 16DEADE6620AE18B000020CD6EABF4EA
+		RBTagsTag "New RBTagsTag (1)" < uid=3A12912164EE18BD0003C6F65233E393 > = Agent_ShipType_FreighterTag 3A12912164EE0F180000FFAD5587F6E6
+	}
+	myLodType Spaceship_Cruiser
+	myVisionProfile < uid=F95CD8F3648343ED000ACAA0A7C0A1F8 > = visionProfile_hut_ship_HaulerShuttle 6B0E1DE964B7A45D0000AD607BEBFD38
+	myHearingProfile < uid=F95CD8F3648343ED000ACAA19DBBCFC1 > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=6B0E1DE964B67AE40000A0C97D041303 > = detectionProfile_hut_ship_HaulerShuttle 6B0E1DE964B6644F0003C7315D85A907
+	}
+	myLootTable < uid=2AE2EC85654CB76D000109655ABFEDE9 > = loot_OnKillShip_Freighter 2AE2EC8565E5C4AE000545FA2874CC04
+}
+

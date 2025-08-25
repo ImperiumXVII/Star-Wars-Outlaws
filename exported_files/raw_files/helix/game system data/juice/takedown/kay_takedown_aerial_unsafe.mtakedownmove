@@ -1,0 +1,85 @@
+include "helix/game system data/fruit/takedown/takedown_move.fruit"
+include "helix/game system data/juice/takedown/kay_takedown_aerial.mtakedownmove"
+
+TakedownMove kay_takedown_aerial_unsafe < uid=D588183D65C5F9E70000F045E6AA6276 > : kay_takedown_aerial
+{
+	myAlignments
+	{
+		TakedownAlignment -90
+		{
+			myAngle -90
+			mySequenceDuration 3.36
+			myDisableGravityDuringAlignment TRUE
+			myCameraVariations
+			{
+				TakedownCameraVariation CameraUnsafe
+				{
+					myMaxAngleRange 180.0
+					myVariationID 1
+				}
+				TakedownCameraVariation CameraUnsafe
+				{
+					myMinAngleRange 180.0
+					myVariationID 1
+				}
+			}
+			myAlignmentPosDuration 0.66
+			myAlignmentHorizontalPosProgressionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 -0.33333334, }, outTangents = { 0.33333334 0.33333334, 0 0, }, properties = { 203, 1227, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+			myAlignmentVerticalPosProgressionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.16666667 -0.33333334, }, outTangents = { 0.16666667 0.33333334, 0 0, }, properties = { 203, 1227, }, values = { 0.5 0, 1 1, }, }, numKeys = 2, }"
+			myAlignmentRotDuration 0.5
+			myAlignmentRotProgressionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.16666667 -0.33333334, }, outTangents = { 0.16666667 0.33333334, 0 0, }, properties = { 203, 1227, }, values = { 0 0, 0.5 1, }, }, numKeys = 2, }"
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.0
+			myOptimalOffset 0.3;0.89;-0.57
+			myTakedownStickToGroundSettings
+			{
+				myEnableStickToGround TRUE
+				myStickToGroundTimeDelay 0.9
+			}
+		}
+	}
+	myStartConditions
+	{
+		myGameCondition
+		{
+			GameConditionMeleeGroup Group
+			{
+				myConditions
+				{
+					GameConditionMeleeAttackerIsInMovementState Ground
+					{
+					}
+					GameConditionMeleeTargetHeightDelta HeightDelta
+					{
+						myHeightDelta 0.75
+						myUseEyePositionAsReference FALSE
+					}
+					GameConditionTakedownExecutionConstraints TakedownExecutionConstraints
+					{
+						myMaxDistanceFromTakedownInteractionPoint 5.0
+					}
+					GameConditionMeleeGroup TargetVisionConditions
+					{
+						myOperator Or
+						myConditions
+						{
+							GameConditionMeleeTargetNPCFocusState TargetNPCFocusState
+							{
+								myAttackerFocusCondition MustNotBeFocussed
+							}
+							GameConditionMeleeTargetHasStatusEffect Blinded
+							{
+								myStatusEffect BlindedByPlayerPet
+							}
+						}
+					}
+					GameConditionTakedownIsUnsafe IsUnsafe
+					{
+					}
+				}
+			}
+		}
+	}
+	myPriority 1
+}
+

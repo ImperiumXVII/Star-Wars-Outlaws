@@ -1,0 +1,36 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/loottable/loot_global.mloottable"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/neu_shp_bff_freighter_a.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC neu_shp_bff_freighter_b_defend < uid=F95CD8F366446F46000BDAADF01A487B > : neu_shp_bff_freighter_a
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Name of Ship - BFF-1 Bulk Freighter - Ashiga faction\", enabled = true, guid = #F95CD8F366446F46000BDAAC3F026FC8, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10726, text = \" BFF-1 Bulk Freighter\", type = \"MenuLine\""
+	mySpaceshipType BFF1_Defend
+	myMaxHealth 1000
+	myHealthFormula 300*SpaceHealthWarshipDifficultyModifier
+	myFaction < uid=F95CD8F366446F46000BDAAE6DABA10A > = Civilian B0EA4E53607561CC0000004DC311CAF9
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag (0)" < uid=F95CD8F366446F46000BDAAFD7E646D3 > = Agent_Gender_MasculineTag 16DEADE6626D20EA00002E504CE30DE2
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=F95CD8F366446F46000BDAB0FBB60FC8 > = Agent_Archetype_Pilot 3A12912163EF7B9500005053123CF383
+		RBTagsTag "New RBTagsTag (0)" < uid=F95CD8F366446F46000BDAB1D9CDD955 > = Agent_ShipType_FreighterTag 3A12912164EE0F180000FFAD5587F6E6
+		RBTagsTag "New RBTagsTag (1)" < uid=F95CD8F366446F46000BDAB2E95E9097 > = Agent_Faction_AshigaClanTag 4728ADF9620B7AF800002022DD5E94D3
+	}
+	myDialogueCharactersFromDatabase
+	{
+		DialogueCharacterWithTags "Ashiga M01" < uid=F95CD8F366446F46000BDAB30C6B83B1 > = Ashiga_Pilot_M01 3A1291216475FE6A0001627DE862B6ED
+	}
+	myVisionProfile < uid=F95CD8F366446F46000BDAB447E805BB > = visionProfile_ash_ship_HaulerShuttle 6B0E1DE964B7A45D0000AD65E6A9B9FC
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=F95CD8F366446F46000BDAB5F0587B62 > = detectionProfile_ash_ship_HaulerShuttle 6B0E1DE964B662520003C71850AE16FB
+	}
+	myLootTable < uid=F95CD8F366446F46000BDAB6ED9F97D6 > = NULLREFERENCE
+}
+

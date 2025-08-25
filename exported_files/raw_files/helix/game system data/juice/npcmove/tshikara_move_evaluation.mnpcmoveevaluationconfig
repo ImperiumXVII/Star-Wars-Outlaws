@@ -1,0 +1,948 @@
+include "helix/game system data/fruit/npcmove/moveevaluation.fruit"
+
+NPCMoveEvaluationConfig tshikara_jump_attack < uid=E9DD8F60641966750002FD15A8566E4A >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 2.5
+			myUpperBound 9.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -90.0
+			myUpperBound 90.0
+		}
+		NPCMoveEvaluationEntryRange "Vertical Offset"
+		{
+			myEvaluationTargetType VerticalOffset
+			myLowerBound -1.5
+			myUpperBound 1.5
+		}
+		NPCMoveEvaluationEntrySimpleComparison Speed
+		{
+			myEvaluationTargetType SelfSpeed
+			myValueToCompare 4.0
+			myOperatorType GreaterThanOrEqual
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_on_spot_attack < uid=E9DD8F60641966BC0002FD1733A7119A >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 0.4
+			myUpperBound 2.5
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -180.0
+			myUpperBound 180.0
+		}
+		NPCMoveEvaluationEntryRange "Vertical Offset"
+		{
+			myEvaluationTargetType VerticalOffset
+			myLowerBound -1.5
+			myUpperBound 1.5
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_pounce_attack < uid=E9DD8F60641966E50002FD1944B28C5E >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 2.5
+			myUpperBound 9.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -180.0
+			myUpperBound 180.0
+		}
+		NPCMoveEvaluationEntryRange "Vertical Offset"
+		{
+			myEvaluationTargetType VerticalOffset
+			myLowerBound -1.5
+			myUpperBound 1.5
+		}
+		NPCMoveEvaluationEntrySimpleComparison "Self Speed"
+		{
+			myEvaluationTargetType SelfSpeed
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_range_attack < uid=D85A76846436062F0000113EB35BC88C >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 10.0
+			myUpperBound 30.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -60.0
+			myUpperBound 60.0
+		}
+		NPCMoveEvaluationEntryRange "Vertical Offset"
+		{
+			myEvaluationTargetType VerticalOffset
+			myLowerBound -0.5
+			myUpperBound 3.5
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_takedown < uid=E9DD8F60641968D30002FD1BA8B37DC6 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 5.0
+			myUpperBound 9.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -180.0
+			myUpperBound 180.0
+		}
+		NPCMoveEvaluationEntryRange "Vertical Offset"
+		{
+			myEvaluationTargetType VerticalOffset
+			myLowerBound -1.5
+			myUpperBound 1.5
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_taunt < uid=E9DD8F60641969280002FD1D4BE3F110 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 2.0
+			myUpperBound 30.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -60.0
+			myUpperBound 60.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_move_away < uid=E9DD8F6064196A0C0002FD23D1CCA246 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 0.0
+			myUpperBound 50.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -180.0
+			myUpperBound 180.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_dodge_side < uid=E9DD8F6064196A0C0002FD2466E267D7 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 0.0
+			myUpperBound 30.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -60.0
+			myUpperBound 60.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_dodge_back < uid=E9DD8F6064196A0C0002FD257D4ABC25 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 0.0
+			myUpperBound 15.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -60.0
+			myUpperBound 60.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_back_off < uid=E9DD8F6064196A0C0002FD264DA1D209 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 0.0
+			myUpperBound 15.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -60.0
+			myUpperBound 60.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_takedown_player < uid=E9DD8F606539C3FF0000B7CA9FB2E0E0 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 0.0
+			myUpperBound 4.5
+		}
+		NPCMoveEvaluationEntryRange SelfFacingAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -30.0
+			myUpperBound 30.0
+		}
+		NPCMoveEvaluationEntryRange TargetFacingAngle
+		{
+			myEvaluationTargetType TargetFacingAngle
+			myLowerBound -180.0
+			myUpperBound 180.0
+		}
+		NPCMoveEvaluationEntryRange VertivalOffset
+		{
+			myEvaluationTargetType VerticalOffset
+			myLowerBound -10.0
+			myUpperBound 10.0
+		}
+		NPCMoveEvaluationEntrySimpleComparison Slope
+		{
+			myEvaluationTargetType TargetSlopeAngle
+			myValueToCompare 21.0
+			myOperatorType LessThanOrEqual
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_flank < uid=E9DD8F6064196A320002FD29A4E1A565 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 6.0
+			myUpperBound 30.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_tail_regen < uid=D85A76846436085D00001140CDC14CBC >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 4.0
+			myUpperBound 30.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_takedown_front < uid=E9DD8F6064536FD800048DA0D00559BA >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 3.5
+			myUpperBound 5.5
+		}
+		NPCMoveEvaluationEntryRange TargetFacingAngle
+		{
+			myEvaluationTargetType TargetFacingAngle
+			myLowerBound -45.0
+			myUpperBound 45.0
+		}
+		NPCMoveEvaluationEntryRange SelfFacingAngale
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -15.0
+			myUpperBound 15.0
+		}
+		NPCMoveEvaluationEntryRange VerticalOffset
+		{
+			myEvaluationTargetType VerticalOffset
+			myLowerBound -2.0
+			myUpperBound 2.0
+		}
+		NPCMoveEvaluationEntrySimpleComparison TargetSlopeAngle
+		{
+			myEvaluationTargetType TargetSlopeAngle
+			myValueToCompare 21.0
+			myOperatorType LessThanOrEqual
+		}
+		NPCMoveEvaluationEntrySimpleComparison HealthThreshold
+		{
+			myEvaluationTargetType TargetHealth
+			myValueToCompare 5.0
+			myOperatorType LessThanOrEqual
+		}
+		NPCMoveEvaluationEntrySimpleComparison Speed
+		{
+			myEvaluationTargetType SelfSpeed
+			myValueToCompare 3.5
+			myOperatorType LessThanOrEqual
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_takedown_back < uid=E9DD8F6064536FD800048DA1652CAC9E >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 3.5
+			myUpperBound 5.5
+		}
+		NPCMoveEvaluationEntryRange TargetFacingAngle
+		{
+			myEvaluationTargetType TargetFacingAngle
+			myLowerBound -135.0
+			myUpperBound 135.0
+			myInvertRange TRUE
+		}
+		NPCMoveEvaluationEntryRange SelfFacingAngale
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -15.0
+			myUpperBound 15.0
+		}
+		NPCMoveEvaluationEntryRange VerticalOffset
+		{
+			myEvaluationTargetType VerticalOffset
+			myLowerBound -2.0
+			myUpperBound 2.0
+		}
+		NPCMoveEvaluationEntrySimpleComparison TargetSlopeAngle
+		{
+			myEvaluationTargetType TargetSlopeAngle
+			myValueToCompare 21.0
+			myOperatorType LessThanOrEqual
+		}
+		NPCMoveEvaluationEntrySimpleComparison HealthThreshold
+		{
+			myEvaluationTargetType TargetHealth
+			myValueToCompare 5.0
+			myOperatorType LessThanOrEqual
+		}
+		NPCMoveEvaluationEntrySimpleComparison Speed
+		{
+			myEvaluationTargetType SelfSpeed
+			myValueToCompare 3.5
+			myOperatorType LessThanOrEqual
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_takedown_left < uid=E9DD8F6064536FD800048DA2E043F2D6 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 3.5
+			myUpperBound 5.5
+		}
+		NPCMoveEvaluationEntryRange TargetFacingAngle
+		{
+			myEvaluationTargetType TargetFacingAngle
+			myLowerBound -135.0
+			myUpperBound -45.0
+			myInvertRange FALSE
+		}
+		NPCMoveEvaluationEntryRange SelfFacingAngale
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -15.0
+			myUpperBound 15.0
+		}
+		NPCMoveEvaluationEntryRange VerticalOffset
+		{
+			myEvaluationTargetType VerticalOffset
+			myLowerBound -2.0
+			myUpperBound 2.0
+		}
+		NPCMoveEvaluationEntrySimpleComparison TargetSlopeAngle
+		{
+			myEvaluationTargetType TargetSlopeAngle
+			myValueToCompare 21.0
+			myOperatorType LessThanOrEqual
+		}
+		NPCMoveEvaluationEntrySimpleComparison HealthThreshold
+		{
+			myEvaluationTargetType TargetHealth
+			myValueToCompare 5.0
+			myOperatorType LessThanOrEqual
+		}
+		NPCMoveEvaluationEntrySimpleComparison Speed
+		{
+			myEvaluationTargetType SelfSpeed
+			myValueToCompare 3.5
+			myOperatorType LessThanOrEqual
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_takedown_right < uid=E9DD8F6064536FD800048DA3FC928462 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 3.5
+			myUpperBound 5.5
+		}
+		NPCMoveEvaluationEntryRange TargetFacingAngle
+		{
+			myEvaluationTargetType TargetFacingAngle
+			myLowerBound 45.0
+			myUpperBound 135.0
+			myInvertRange FALSE
+		}
+		NPCMoveEvaluationEntryRange SelfFacingAngale
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -15.0
+			myUpperBound 15.0
+		}
+		NPCMoveEvaluationEntryRange VerticalOffset
+		{
+			myEvaluationTargetType VerticalOffset
+			myLowerBound -2.0
+			myUpperBound 2.0
+		}
+		NPCMoveEvaluationEntrySimpleComparison TargetSlopeAngle
+		{
+			myEvaluationTargetType TargetSlopeAngle
+			myValueToCompare 21.0
+			myOperatorType LessThanOrEqual
+		}
+		NPCMoveEvaluationEntrySimpleComparison HealthThreshold
+		{
+			myEvaluationTargetType TargetHealth
+			myValueToCompare 5.0
+			myOperatorType LessThanOrEqual
+		}
+		NPCMoveEvaluationEntrySimpleComparison Speed
+		{
+			myEvaluationTargetType SelfSpeed
+			myValueToCompare 3.5
+			myOperatorType LessThanOrEqual
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_run_takedown_front < uid=F39985526641BC5700025F8A2CAA8600 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 3.5
+			myUpperBound 5.5
+		}
+		NPCMoveEvaluationEntryRange TargetFacingAngle
+		{
+			myEvaluationTargetType TargetFacingAngle
+			myLowerBound -45.0
+			myUpperBound 45.0
+		}
+		NPCMoveEvaluationEntryRange SelfFacingAngale
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -15.0
+			myUpperBound 15.0
+		}
+		NPCMoveEvaluationEntryRange VerticalOffset
+		{
+			myEvaluationTargetType VerticalOffset
+			myLowerBound -2.0
+			myUpperBound 2.0
+		}
+		NPCMoveEvaluationEntrySimpleComparison TargetSlopeAngle
+		{
+			myEvaluationTargetType TargetSlopeAngle
+			myValueToCompare 21.0
+			myOperatorType LessThanOrEqual
+		}
+		NPCMoveEvaluationEntrySimpleComparison HealthThreshold
+		{
+			myEvaluationTargetType TargetHealth
+			myValueToCompare 5.0
+			myOperatorType LessThanOrEqual
+		}
+		NPCMoveEvaluationEntrySimpleComparison Speed
+		{
+			myEvaluationTargetType SelfSpeed
+			myValueToCompare 3.5
+			myOperatorType GreaterThan
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_run_takedown_back < uid=F39985526641BC5700025F8B10C7FBDB >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 3.5
+			myUpperBound 5.5
+		}
+		NPCMoveEvaluationEntryRange TargetFacingAngle
+		{
+			myEvaluationTargetType TargetFacingAngle
+			myLowerBound -135.0
+			myUpperBound 135.0
+			myInvertRange TRUE
+		}
+		NPCMoveEvaluationEntryRange SelfFacingAngale
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -15.0
+			myUpperBound 15.0
+		}
+		NPCMoveEvaluationEntryRange VerticalOffset
+		{
+			myEvaluationTargetType VerticalOffset
+			myLowerBound -2.0
+			myUpperBound 2.0
+		}
+		NPCMoveEvaluationEntrySimpleComparison TargetSlopeAngle
+		{
+			myEvaluationTargetType TargetSlopeAngle
+			myValueToCompare 21.0
+			myOperatorType LessThanOrEqual
+		}
+		NPCMoveEvaluationEntrySimpleComparison HealthThreshold
+		{
+			myEvaluationTargetType TargetHealth
+			myValueToCompare 5.0
+			myOperatorType LessThanOrEqual
+		}
+		NPCMoveEvaluationEntrySimpleComparison Speed
+		{
+			myEvaluationTargetType SelfSpeed
+			myValueToCompare 3.5
+			myOperatorType GreaterThan
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_run_takedown_left < uid=F39985526641BC5700025F8C9F47B27C >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 3.5
+			myUpperBound 5.5
+		}
+		NPCMoveEvaluationEntryRange TargetFacingAngle
+		{
+			myEvaluationTargetType TargetFacingAngle
+			myLowerBound -135.0
+			myUpperBound -45.0
+			myInvertRange FALSE
+		}
+		NPCMoveEvaluationEntryRange SelfFacingAngale
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -15.0
+			myUpperBound 15.0
+		}
+		NPCMoveEvaluationEntryRange VerticalOffset
+		{
+			myEvaluationTargetType VerticalOffset
+			myLowerBound -2.0
+			myUpperBound 2.0
+		}
+		NPCMoveEvaluationEntrySimpleComparison TargetSlopeAngle
+		{
+			myEvaluationTargetType TargetSlopeAngle
+			myValueToCompare 21.0
+			myOperatorType LessThanOrEqual
+		}
+		NPCMoveEvaluationEntrySimpleComparison HealthThreshold
+		{
+			myEvaluationTargetType TargetHealth
+			myValueToCompare 5.0
+			myOperatorType LessThanOrEqual
+		}
+		NPCMoveEvaluationEntrySimpleComparison Speed
+		{
+			myEvaluationTargetType SelfSpeed
+			myValueToCompare 3.5
+			myOperatorType GreaterThan
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_run_takedown_right < uid=F39985526641BC5700025F8D861F3A42 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 3.5
+			myUpperBound 5.5
+		}
+		NPCMoveEvaluationEntryRange TargetFacingAngle
+		{
+			myEvaluationTargetType TargetFacingAngle
+			myLowerBound 45.0
+			myUpperBound 135.0
+			myInvertRange FALSE
+		}
+		NPCMoveEvaluationEntryRange SelfFacingAngale
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -15.0
+			myUpperBound 15.0
+		}
+		NPCMoveEvaluationEntryRange VerticalOffset
+		{
+			myEvaluationTargetType VerticalOffset
+			myLowerBound -2.0
+			myUpperBound 2.0
+		}
+		NPCMoveEvaluationEntrySimpleComparison TargetSlopeAngle
+		{
+			myEvaluationTargetType TargetSlopeAngle
+			myValueToCompare 21.0
+			myOperatorType LessThanOrEqual
+		}
+		NPCMoveEvaluationEntrySimpleComparison HealthThreshold
+		{
+			myEvaluationTargetType TargetHealth
+			myValueToCompare 5.0
+			myOperatorType LessThanOrEqual
+		}
+		NPCMoveEvaluationEntrySimpleComparison Speed
+		{
+			myEvaluationTargetType SelfSpeed
+			myValueToCompare 3.5
+			myOperatorType GreaterThan
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_stalking_taunt < uid=2E5ACA7E6454C2AA0001987257C8C280 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 2.0
+			myUpperBound 30.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_trajectory_waving < uid=D85A7684647834A800013B3EAA2D8D75 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 12.0
+			myUpperBound 60.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -45.0
+			myUpperBound 45.0
+		}
+		NPCMoveEvaluationEntryRange TargetFacingAngle
+		{
+			myEvaluationTargetType TargetFacingAngle
+			myLowerBound -60.0
+			myUpperBound 60.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_combo_always_success < uid=D85A768464D04334000286361D99A487 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 0.4
+			myUpperBound 100.0
+			myInvertRange FALSE
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_combo_pounce_attack < uid=E9DD8F6064D4891B00044F77FBFE4CE4 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 2.5
+			myUpperBound 11.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_combo_range_attack < uid=E9DD8F6064D4894600044F7EECF5048E >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 8.0
+			myUpperBound 100.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_grab_prepare < uid=E9DD8F606539C3FF0000B7CCA6B1223D >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 5.0
+			myUpperBound 10.0
+		}
+		NPCMoveEvaluationEntryRange "Self Angle"
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -45.0
+			myUpperBound 45.0
+		}
+		NPCMoveEvaluationEntrySimpleComparison "Self Speed"
+		{
+			myEvaluationTargetType SelfSpeed
+			myValueToCompare 10.0
+			myOperatorType LessThanOrEqual
+		}
+		NPCMoveEvaluationEntrySimpleComparison Slope
+		{
+			myEvaluationTargetType TargetSlopeAngle
+			myValueToCompare 21.0
+			myOperatorType LessThanOrEqual
+		}
+		NPCMoveEvaluationEntrySimpleComparison "Slope Difference"
+		{
+			myEvaluationTargetType SlopeDifference
+			myValueToCompare 5.0
+			myOperatorType LessThan
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_grab_attack < uid=E9DD8F606539C3FF0000B7CB1077428B >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange "Self Angle"
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -60.0
+			myUpperBound 60.0
+		}
+		NPCMoveEvaluationEntrySimpleComparison Slope
+		{
+			myEvaluationTargetType TargetSlopeAngle
+			myValueToCompare 21.0
+			myOperatorType LessThanOrEqual
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_taunt_for_vehicle < uid=2E5ACA7E667A69A30004A221F1C3FC4A >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 2.0
+			myUpperBound 30.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -60.0
+			myUpperBound 60.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_move_away_for_vehicle < uid=2E5ACA7E667A6C8E0004C6EF7AE85E33 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 0.0
+			myUpperBound 15.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -180.0
+			myUpperBound 180.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_dodge_side_for_vehicle < uid=2E5ACA7E667A69A30004A2223988FA84 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 2.0
+			myUpperBound 30.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -60.0
+			myUpperBound 60.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_dodge_back_for_vehicle < uid=2E5ACA7E667A69A30004A2239F43908B >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 2.0
+			myUpperBound 15.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -60.0
+			myUpperBound 60.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_back_off_for_vehicle < uid=2E5ACA7E667A69A30004A224B7FEC39F >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 2.0
+			myUpperBound 15.0
+		}
+		NPCMoveEvaluationEntryRange SelfAngle
+		{
+			myEvaluationTargetType SelfFacingAngle
+			myLowerBound -60.0
+			myUpperBound 60.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_flank_for_vehicle < uid=2E5ACA7E667A69A30004A22559315886 >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 6.0
+			myUpperBound 30.0
+		}
+	}
+}
+
+NPCMoveEvaluationConfig tshikara_tail_regen_for_vehicle < uid=2E5ACA7E667A69A30004A2262713D5FE >
+{
+	myEvaluationData
+	{
+		NPCMoveEvaluationEntryRange Distance
+		{
+			myEvaluationTargetType Distance
+			myLowerBound 4.0
+			myUpperBound 20.0
+		}
+	}
+}
+

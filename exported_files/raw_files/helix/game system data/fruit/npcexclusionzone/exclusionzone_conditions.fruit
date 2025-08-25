@@ -1,0 +1,37 @@
+include "helix/game system data/fruit/ai/alertlevel.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+
+// Game conditions
+class GameConditionExclusionZone < abstract=1 > : GameCondition
+{
+}
+
+class GameConditionExclusionZone_ContextAgentBase < abstract=1 > : GameConditionContextAgentBase
+{
+}
+
+list ExclusionZoneConditions
+{
+	GameConditionExclusionZone
+	GameConditionExclusionZone_ContextAgentBase
+}
+
+class GameConditionExclusionZoneGroup : GameConditionExclusionZone
+{
+	GameConditionType myType ExclusionZoneGroup < hidden=1 >
+	
+	GameConditionGroupOperator myOperator And
+	ExclusionZoneConditions myConditions
+}
+
+class GameConditionExclusionZoneIsAgentInAlertLevel : GameConditionExclusionZone_ContextAgentBase
+{
+	GameConditionType myType ExclusionZoneIsAgentInAlertLevel < hidden=1 >
+
+	NPCAlertLevel myAlertLevel UNKNOWN
+}
+
+class GameConditionExclusionZoneIsNPCSpawnedInThisZone : GameConditionExclusionZone
+{
+	GameConditionType myType ExclusionZoneIsNPCSpawnedInThisZone < hidden=1 >
+}

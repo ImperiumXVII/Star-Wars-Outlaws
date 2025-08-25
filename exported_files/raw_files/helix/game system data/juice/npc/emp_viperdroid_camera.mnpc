@@ -1,0 +1,37 @@
+include "helix/game system data/juice/character/character_visuals_ld_ingredients.mcharactervisuals"
+include "helix/game system data/juice/npc/emp_mech.mnpc"
+include "helix/game system data/juice/npc/emp_surveillance_camera.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC emp_viperdroid_camera < uid=416E63E464F5B315000151E27B707FD5 > : emp_surveillance_camera
+{
+	myCharacterVisuals < uid=416E63E464F5B315000151E3CC6E1DA5 > = character_visuals_surveillance_droid 416E63E464F60130000FFE0E72C3AA32
+	myBehavior helix/behaviors/emp_surveillance_camera_droid.mbehavior
+	myMaxHealth 15
+	myHealthFormula max(1,3+NPCFinalHealth)
+	myUIFeedbackOffset 4.1
+	mySensoryProfileOverrides
+	{
+		NPCSensoryProfileOverride Long
+		{
+			myVisionProfile < uid=416E63E464F5B315000151E54040E433 > = SurveillanceCameraLong 5C421F5C6406148A00005FEC3AD26532
+			mySensoryEnvironmentType CCTV_Long
+		}
+		NPCSensoryProfileOverride Medium
+		{
+			myVisionProfile < uid=416E63E464F5B315000151E6B836B539 > = SurveillanceCameraMedium 416E63E464526F5200059F7A1F3C17C6
+			mySensoryEnvironmentType CCTV_Medium
+		}
+		NPCSensoryProfileOverride Narrow
+		{
+			myVisionProfile < uid=416E63E464F5B315000151E7040914AF > = SurveillanceCameraNarrow 416E63E464526F5D00059F7B21190E11
+			mySensoryEnvironmentType CCTV_Narrow
+		}
+	}
+	myVisionProfile < uid=416E63E464F5B315000151E933EBDC8D > = SurveillanceDroid 416E63E464F5C7B70001523A127B42C0
+	myDetectionProfiles
+	{
+	}
+	myResistanceProfile < uid=416E63E46544CF2F000C414CED56E707 > = ViperDroidResisatnceProfile 416E63E4654A6524001F2D7EEB94F589
+}
+

@@ -1,0 +1,30 @@
+include "helix/game system data/juice/equipment/aimconfig/grenade_aimconfig.maimconfig"
+include "helix/game system data/juice/equipment/throwableconfig/grenade_base_throwable_config.mequipmentthrowableconfig"
+include "helix/game system data/juice/item/consumables.mitem"
+include "helix/game system data/juice/item/equipmentholding/holding_kays_blast_charge.mequipmentholdingconfig"
+include "helix/game system data/juice/item/equipmentholding/holding_kays_throwable_base.mequipmentholdingconfig"
+include "helix/game system data/juice/projectile/projectile_blast_charge.mprojectile"
+
+BlastChargeEquipmentItem player_blast_charge < uid=CC69B22163F8C906000009E74BD007F2 >
+{
+	myName "aurabesh = false, contextComment = \"Name of the C4 equipment item.\", enabled = true, guid = #7D292061669F6A370000003B079EB785, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 528, text = \"Blast Charge\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"Description of the C4 equipment item.\", enabled = true, guid = #7D292061669F6A370000003CC38398D5, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 528, text = \"A powerful explosive charge that can be triggered remotely.\", type = \"MenuLine\""
+	myIcon "mySpriteId = 196613216, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_item_icons_04.spritesheet\""
+	myInventoryPouch ToolsAndGadgets
+	myAimConfig < uid=CC69B22163F8CBEE000009E842714302 > = grenade_aimconfig A207755D61F1689000001B2079E673C4
+	myHoldingConfig < uid=CC69B22163F8CC26000009E9D1830CD6 > = holding_kays_blast_charge CC69B2216463A7F20001498A249AE2D9
+	myUI
+	{
+		myDefaultUIGraph helix/ui/graphs/hud_equipment_trajectory.muigraph
+	}
+	myConsumedItem < uid=CC69B22164639C90000149FD1BC05278 > = con_BlastCharge CC69B22164639C25000149B8FF6BF7CC
+	myDefaultSlotGroup Throwables
+	myThrowableModule
+	{
+		myConfig < uid=CC69B22163F8CBAF000009E73417A308 > = grenade_base_throwable_config CC69B22163DCD33B0000437301B6D9E8
+		myProjectile < uid=CC69B22163F8CB90000009E641ADA159 > = projectile_blast_charge CC69B22163F8C9D0000009ECD862692A
+	}
+	myGraphObject "helix/graph objects/gameplayobject/wpn_blast_charge_player.mgraphobject"
+	myDetonationMode AllAtOnce
+}
+

@@ -1,0 +1,33 @@
+include "helix/game system data/fruit/projectile/projectile_realization.fruit"
+include "helix/game system data/juice/collisionmaterials/collisionmaterials.juice"
+include "helix/game system data/juice/projectile/realization/small_laser.mprojectilerealization"
+include "helix/game system data/juice/sound/projectiles/weapon_projectile_cannons.maudioprojectile"
+
+ProjectileRealization ship_laser_red_mc < uid=B005013561FCE9FC00001E3A2620D4BF > : small_laser
+{
+	myProjectileGraphObject "helix/graph objects/projectile/vfx_wpn_projectile_spaceship_01.mgraphobject"
+	myImpactEffects
+	{
+		myDefault helix/particles/vfx_des_hitfx_generic_trailblazer.mparticles
+		myList
+		{
+			EffectOnMaterial "Asteroid Large"
+			{
+				myMaterial < uid=9C4B6A0462A9A1E700007B65A267F87A > = AsteroidLarge 9C4B6A0462A8425D00007B5A601A5AD9
+				myEffect helix/particles/vfx_des_hitfx_asteroid_large_trailblazer.mparticles
+			}
+			EffectOnMaterial "Asteroid Medium"
+			{
+				myMaterial < uid=9C4B6A0462A9A1FD00007B66AF1C99E4 > = AsteroidMedium 9C4B6A0462A9A03800007B64C608BF30
+			}
+			EffectOnMaterial Shield
+			{
+				myMaterial < uid=F8181D4862F63FB2000096482D46AA16 > = Shield 9C4B6A0462F4E34B00008C492FCD613B
+				myEffect helix/particles/vfx_des_hitfx_shield_trailblazer_01.mparticles
+			}
+		}
+	}
+	myLaserColor Red
+	myAudioData < uid=F45C2A0163593F660000AA6B3531D3F5 > = weapon_projectile_cannons_MC F45C2A01635920850000FBECF20C354B
+}
+

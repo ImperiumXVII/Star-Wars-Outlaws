@@ -1,0 +1,47 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+
+Quest expert_fp_grapplehook < uid=A7ECF0E360D037330000598C640BD5E5 >
+{
+	myName "contextComment = \"Grapple hook expert title\", enabled = true, guid = #A7ECF0E360D037330000598B131B6AC3, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 93, text = \"Aila Bren - Rough Terrain Expert\", type = \"MenuLine\""
+	myDescription "contextComment = \"\", enabled = true, guid = #F12EE1F96108FF350000083C98285A74, lineVersion = 2, maxLength = 0, productId = -1, sectionId = 93, text = \"Bandits have stolen Aila Bren’s stash. Steal it back for her to retrieve a grappling hook.\", type = \"MenuLine\""
+	myType Expert
+	myBeats
+	{
+		QuestBeat "1. Bandit Camp" < uid=9D0EE20B60DC8206000010C93C5608F3 >
+		{
+			myScript helix/scripts/scr_expert01_fp_grapplehook_external_banditcamp.mscript
+			myName "contextComment = \"\", enabled = true, guid = #9D0EE20B60DC832A00001164B67B7732, lineVersion = 4, maxLength = 0, productId = -1, sectionId = -1, text = \"Find Aila stolen stash\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myObjectives
+			{
+				QuestObjectiveInteract "Retrieve Item" < uid=9D0EE20B60DC83600000116B3635D8BE >
+				{
+					myName "contextComment = \"\", enabled = true, guid = #9D0EE20B60DC83660000116C5B9AFBAD, lineVersion = 4, maxLength = 0, productId = -1, sectionId = -1, text = \"Steal Aila's stash back\", type = \"MenuLine\"}"
+				}
+			}
+			myQuestBeatStateGameValue < uid=6F2AF91962178A470000283C5073B87C >
+			{
+			}
+		}
+		QuestBeat "2. Return to Expert" < uid=9D0EE20B60DC820D000010CA0F546658 >
+		{
+			myScript helix/scripts/scr_expert01_fp_beat03_grapplehook_unlock.mscript
+			myName "contextComment = \"\", enabled = true, guid = #9D0EE20B60DC82CF000010CC3E2BBDAE, lineVersion = 2, maxLength = 0, productId = -1, sectionId = -1, text = \"Return to Aila\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myObjectives
+			{
+				QuestObjectiveInteract "Talk with Aila Bren" < uid=9D0EE20B60DC82FA000010D53B9CA3F3 >
+				{
+					myName "contextComment = \"\", enabled = true, guid = #9D0EE20B60DC8302000010D6C27458CD, lineVersion = 1, maxLength = 0, productId = -1, sectionId = -1, text = \"Talk with Aila Bren\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=6F2AF91962178A470000283DDE79CDFD >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=6F2AF91962178A470000283EC11EC705 >
+	{
+	}
+}
+

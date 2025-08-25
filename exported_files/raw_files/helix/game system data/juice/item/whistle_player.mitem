@@ -1,0 +1,68 @@
+include "helix/game system data/fruit/item/item_includes.fruit"
+include "helix/game system data/juice/sound/stimuli/stim_id_main.mstimulusidentifier"
+
+GenericScriptSpawnerEquipmentItem whistle_player < uid=CC69B221650085E700006E8572B797A8 >
+{
+	myName "aurabesh = false, contextComment = \"Name of the Whistle equipment item.\", enabled = true, guid = #CC69B22163F8C908000009E8F2F817AD, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 10284, text = \"Whistle\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"Description of the Whistle equipment item.\", enabled = true, guid = #CC69B22163F8C908000009E9F5416294, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 10284, text = \"A Whistle to whistle.\", type = \"MenuLine\""
+	myGameplayDescription "aurabesh = false, contextComment = \"See above\", enabled = true, guid = #3A1291216527DC0B00012C572817B8E4, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10284, text = \"Kay has the ability to whistle to distract enemies.\", type = \"MenuLine\""
+	myHint "aurabesh = false, contextComment = \"Whistle hint\", enabled = true, guid = #CC69B22165008651000090D182A3997A, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 528, text = \"Whistle\", type = \"MenuLine\""
+	myIcon "mySpriteId = 196613216, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_item_icons_04.spritesheet\""
+	myGraphObject "helix/graph objects/gameplayobject/wpn_smoke_player.mgraphobject"
+	myInventoryPouch ToolsAndGadgets
+	myCanBeSold FALSE
+	myCooldown
+	{
+		myStartType OnEndUse
+		myDuration 1.0
+		myFinalCooldownFormula 1
+	}
+	myDefaultSlotGroup Whistle
+	myUseConditions
+	{
+		myConditions
+		{
+			GameConditionPlayerCanWhistleOnAgentsInRange PlayerCanWhistleOnAgentsInRange
+			{
+				myRange 25.0
+			}
+			GameConditionPlayerIsInRadioBroadcast "NOT PlayerIsInRadioBroadcast"
+			{
+				myIsNegated TRUE
+				myCheckPlayerActivelyTalkingOnly TRUE
+				myCriticalOnly FALSE
+			}
+		}
+	}
+	myUseSequence
+	{
+		myDuration 1.2
+		myTracks
+		{
+			myGenericTracks
+			{
+				KayBarkTrack "Kay Whistle Bark"
+				{
+					myStartCyclePos 0.0
+					myStimulusIdentifier < uid=3A1291216527DC1200012C586BAE7A24 > = S_KAY_DistractWhistle 3A129121650B046C000115B13339A7F7
+				}
+			}
+			myCustomTracks
+			{
+				EquipmentGenericScriptSpawnerRunScriptTrack GenericScriptSpawnerRunScriptTrack
+				{
+					myStartCyclePos 0.3
+				}
+			}
+		}
+	}
+	myGameScript "helix/game scripts/gs_player_whistle.mgamescript"
+	myUseGameAction Whistle
+	myEffectDuration 1.2
+	myEffectRadius 20.0
+	myUsageRestrictions
+	{
+		PlayerRestrictionTypes Whistle Whistle
+	}
+}
+

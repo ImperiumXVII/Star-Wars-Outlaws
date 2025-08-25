@@ -1,0 +1,63 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/explosion/explosion_generic.mexplosion"
+include "helix/game system data/juice/explosion/explosion_mpl.mexplosion"
+include "helix/game system data/juice/projectile/realization/micro_grenade_player.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/sonic_imploder_player.mprojectilerealization"
+
+BallisticProjectile weapon_projectile_micro_grenade < uid=7113C611653140A4000933C66A83E970 >
+{
+	myObject
+	{
+		myMaterialType Kinetic
+		myMass 2.0
+		myFriction 0.5
+		myAfterFinalImpactLifeTime 1.5
+	}
+	myRealization < uid=7113C611653140A4000933C7F1A8C421 > = micro_grenade_player 7113C61165314252000CBBD52FD1DBEB
+	myActions
+	{
+		ProjectileActionExplosion ImpactExplosion
+		{
+			myActionTargetType FinalHit
+			myDamageFormula "4 * AllExplosionDamageModifier"
+			myRadiusFormula "1.7 * AllExplosionRadiusModifier"
+			myDefaultDamage 4.0
+			myDefaultRadius 1.5
+			myExplosion < uid=7113C61165436E1D00055AF96A91E3D3 > = explosion_mpl 8FC7C960654501CA000020BF218E6BC6
+		}
+	}
+	myNPCSensoryProjectileType Grenade
+	myInitialSpeed 60.0
+	myAccelerationType Curve
+	myAccelerationConstant 0.0
+	myAccelerationCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.056223333 0.21921569, -0.20467906 0.026505277, }, outTangents = { 0.41271782 0.66889763, 0.013167478 -0.051340211, 0 -0, }, properties = { 275, 1299, 2323, }, values = { 0 1, 0.89999998 0.30000001, 1.2341995 0.1, }, }, numKeys = 3, }"
+	myBounceEnabled TRUE
+	myBounceVsDynamicEnabled TRUE
+	myBounceFriendlyFireEnabled FALSE
+	myAvoidPlayerWhenBouncing TRUE
+	myCanBounceConditions
+	{
+		myType Group
+		myIsNegated FALSE
+		myOperator Or
+		myCanBeOverridden FALSE
+		myConditions
+		{
+			GameConditionContextAgentIsSpecificNPC HitRancor
+			{
+				myAgentContextType TargetAgent
+				myNPCConstantData 2736B36563D140850001DF8C793B440D
+			}
+			GameConditionContextAgentIsSpecificNPC HitATST
+			{
+				myAgentContextType TargetAgent
+				myNPCConstantData 16DEADE661F0807B00001B62A29CB56F
+			}
+		}
+	}
+	myBounceSpeedRestitution 0.65
+	myBounceGroundSpeedRestitution 0.45
+	myBounceWallSpeedRestitution 0.55
+	myBounceMaxBounces 3
+}
+

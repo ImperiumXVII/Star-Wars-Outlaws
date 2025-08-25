@@ -1,0 +1,43 @@
+include "helix/game system data/juice/npc/base_civ_vendor.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC civ_temmin_wexley < uid=91DC5D3C651680630003FD1E394292A5 > : base_civ_vendor
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Temmin Wexley as a merchant, sub-name\", enabled = true, guid = #09AEDAAA65C4B1AB0000010257D454CB, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10653, text = \"Scavenger (TO BE WRITTEN)\", type = \"MenuLine\""
+	myCharacterVisuals < uid=91DC5D3C654B82FF00044210C43D5501 > = character_visuals_2_silver_temmin_wexley 849AB26562A6321B000081DDEDEB4CC3
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F25651D6D52000202BC84B1D84A > = Agent_Gender_MasculineTag 16DEADE6626D20EA00002E504CE30DE2
+	}
+	myPossibleSpeciesTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F25651D6D56000202BDC4D21A9C > = Agent_Species_HumanTag 2736B365634D673A0003C27CFCFEFD1A
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F25651D6D5D000202C0329ADFB2 > = Agent_Vendor_Unique 1EC89F25640075230003D75F86E0E0A3
+	}
+	myDialogueCharacters
+	{
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=1EC89F25651D6E0F000202C3BE583538 >
+		{
+			myDialogueCharacter < uid=1EC89F25651D6E15000202C57D18F8CF > = NAMED_TEMMIN_WEXLEY E4123D2762C29236000036BD8B73E9D4
+		}
+	}
+	myVendorConfig < uid=F4D8AE26653A21FD0000818FBD413DF0 > = VendorConfig_AKI_City_Neutral_Junkyard_TEMMIN F4D8AE26653A21C600008175496F28A0
+	myHideMapRefGameConditions
+	{
+		myType Group
+		myIsNegated FALSE
+		myOperator And
+		myCanBeOverridden FALSE
+		myConditions
+		{
+			GameConditionContextAgentIsAlive "New GameConditionContextAgentIsAlive"
+			{
+				myIsNegated TRUE
+			}
+		}
+	}
+}
+

@@ -1,0 +1,46 @@
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+
+enum GroundVehicleUpgradeType
+{
+	Engine
+	Steering
+	SpeedBoost
+	JumpBoost
+	Armour
+	LandingRepulsor
+	DriftTurn
+	EnhancedRepulsor
+	SignalJammer
+	Repair
+}
+
+enum GroundVehicleUpgradeLevel
+{
+	LevelOne
+	LevelTwo
+}
+
+list GroundVehicleConditions < size=2 >
+{
+	GameConditionPlayerHasItem
+}
+
+class GroundVehicleUpgradeModule
+{
+	string myName
+	GroundVehicleUpgradeType myUpgradeType
+	GroundVehicleUpgradeLevel myUpgradeLevel
+	GroundVehicleConditions myUpgradeConditions
+	float myModifierOne 0.0f
+	float myModifierTwo 0.0f
+}
+
+list GroundVehicleUpgradeModuleList < size=20 >
+{
+	GroundVehicleUpgradeModule
+}
+
+class GroundVehicleUpgrade < uid=auto >
+{
+	GroundVehicleUpgradeModuleList myVehicleUpgradeModules
+}

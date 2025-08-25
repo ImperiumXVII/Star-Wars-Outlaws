@@ -1,0 +1,39 @@
+include "helix/game system data/juice/character/character_visuals_2_silver_hutt.mcharactervisuals"
+include "helix/game system data/juice/loottable/loot_global.mloottable"
+include "helix/game system data/juice/npc/base_humanoid.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC base_hut < uid=16DEADE66057796400000067CCB94B34 > : base_humanoid
+{
+	myFaction < uid=16DEADE66057796400000068EE1E4F36 > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	myPositionReservationSize 0.5
+	mySensoryProfileOverrides
+	{
+		NPCSensoryProfileOverride DefaultCitySensoryProfile
+		{
+			myVisionProfile < uid=595E8DFF62AB1C65000154EB201C30B0 > = DefaultCityVisionProfile 595E8DFF62AADB4100007B71ACEA3C59
+			mySensoryEnvironmentType DefaultCity
+		}
+		NPCSensoryProfileOverride Distracted
+		{
+			myVisionProfile < uid=3C2FA92B663342A9000A62ADC79FF532 > = DistractedVisionProfile 3C2FA92B6631043C001169CF5B719AC7
+			mySensoryEnvironmentType Distract
+		}
+	}
+	myAgitationProfile < uid=3C2FA92B656A060E000AE94DB19B1B64 > = "Default Agitation Profile" 16DEADE662560BFD00002D1154F6BC6F
+	myLootTable < uid=85F4BAC26464B8130005CC849FEE9EA3 > = loot_con_OnKill_BactaGrenade BFAAA1FC6389D751000063AB1F48E723
+	myBehaviorUpdateBoostProfile < uid=2736B36563DCEB130000DE98B40751C4 > = hostile 2736B36563DCDB14000114E560E4B9A2
+	myAudioParameters
+	{
+		myEmitterName NPC
+		mySwitches
+		{
+			AudioSwitch "NPC Faction Switch"
+			{
+				myGuid 4B57665BF6FFD2C76331412EFC7D0DA1
+			}
+		}
+	}
+	myStaggerConfig < uid=3C2FA92B65169D88000242B509662D5A > = NPCStaggerConfig_Default 3C2FA92B6516D6EF000072E705D52753
+}
+

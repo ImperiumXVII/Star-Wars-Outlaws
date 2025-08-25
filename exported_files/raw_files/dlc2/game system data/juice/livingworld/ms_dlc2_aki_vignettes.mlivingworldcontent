@@ -1,0 +1,109 @@
+include "dlc2/game system data/juice/livingworld/ms_dlc2_template.mlivingworldcontent"
+include "helix/game system data/fruit/attribute/formulacontexttypes.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditionbase.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+include "helix/game system data/fruit/gamevalues/gamevalues.fruit"
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+include "helix/game system data/fruit/livingworld/livingworldenums.fruit"
+include "helix/game system data/fruit/livingworld/livingworldtag.fruit"
+
+LivingWorldContent MS5024_VI_StingerOutcomeNebula < uid=09AB96AD674046370006236432B633F2 > : DLC2_MS_TEMPLATE_Default
+{
+	myCompletedGameValue < uid=09AB96AD67404637000623679F9B2B2A >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance -100"
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Is Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionLivingWorldFormula "GV_DLC2_MQ_040_NebulaEnding = 1"
+		{
+			myFormula "GV_DLC2_MQ_040_NebulaEnding = 1"
+		}
+	}
+}
+
+LivingWorldContent MS5025_VI_StingerOutcomeDroid < uid=09AB96AD67404637000623681C31B288 > : DLC2_MS_TEMPLATE_Default
+{
+	myCompletedGameValue < uid=09AB96AD674046370006236B933463B3 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance -100"
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Is Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionLivingWorldFormula "GV_DLC2_MQ_040_DroidEnding = 1"
+		{
+			myFormula "GV_DLC2_MQ_040_DroidEnding = 1"
+		}
+	}
+}
+
+LivingWorldContent MS5028_VI_EscapedConvict < uid=09AB96AD6740463700062370ED3EF8C8 > : DLC2_MS_TEMPLATE_Default
+{
+	myCompletedGameValue < uid=09AB96AD67404637000623731A4BB04F >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance -100"
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Is Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionQuestBeatState "New GameConditionQuestBeatState"
+		{
+			myQuestBeat 8FD81D51675714BB000AD0CEFB993938
+			myQuestBeatState Completed
+		}
+	}
+}
+

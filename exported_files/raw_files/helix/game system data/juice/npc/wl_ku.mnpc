@@ -1,0 +1,57 @@
+include "helix/game system data/juice/ai/dynamiccapinteractions/wildlifedcap.mnpcdynamiccapinteractionprofile"
+include "helix/game system data/juice/ai/wildlife corpse profile.mnpccorpseprofile"
+include "helix/game system data/juice/ai/wildlifecapevaluatorprofiles.mnpccapinteractionevaluatorprofile"
+include "helix/game system data/juice/ai/wl_ku.mnpcmotionpatternprofile"
+include "helix/game system data/juice/melee/wildlifemeleedefense.mnpcmeleedefenseprofile"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npc/wil_fp_prey.mnpc"
+include "helix/game system data/juice/quadrupedalgroundaligner/wildlife_ground_aligner_config.mquadalignerconfig"
+
+NPC wl_ku < uid=E9DD8F6063EB525300029316BEB61999 > : wil_fp_prey
+{
+	myName "branch = \"TU1\", contextComment = \"The name of the yak-like creature\", enabled = true, guid = #E9DD8F606684B374002BA55D654918F4, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10572, text = \"Henku\", type = \"MenuLine\""
+	myCharacterVisuals < uid=E9DD8F6063EB528C0002931A21B07771 > = character_visuals_wil_ku E9DD8F6063EB52A30002931C05D7F396
+	myAnimSystemType Ku
+	myHealthFormula "5 + 5"
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=290EB60C63FDA31D000125C25D70684B > = Agent_Wildlife_KuTag 290EB60C63FDA29A000125B36A8B725F
+	}
+	myPositionReservationSize 2.0
+	myNavigationLayerType Large
+	myNavigationCapability < uid=290EB60C64D4468A0000E230787DE01A > = DefaultWildlifeNavigationCapability 290EB60C64D1A5C50000CA29617570E5
+	myLodProfile < uid=E8E55FD866861047000389786FD70E68 > = Wildlife_Big E8E55FD86672A9BA000AA896ED914E0D
+	myVisionProfile < uid=290EB60C63EC52D4000009D05752899A > = KuVisionProfile 290EB60C63EC522E000009CC45009993
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=290EB60C63EC5329000009D68DCCA9C0 > = KuDetectionProfile 290EB60C63EC52E4000009D1DE4CF3FF
+	}
+	myAgitationProfile < uid=E9DD8F6063EDC66100026D8F59D55D86 > = "Ku Agitation Profile" E9DD8F6063EDC603000267BAA263E5A5
+	myDynamicCAPInteractionProfile < uid=290EB60C63EC53EE000009D9E1A40494 > = KuDynamicCAP 290EB60C63FDAA2F000009CF54ECD387
+	myCAPInteractionEvaluatorProfile < uid=290EB60C63EC5436000009DCBD4F51FC > = wildlifecapevaluatorprofiles 290EB60C633262C600008C045368B169
+	myMotionPatternProfile < uid=E9DD8F6063EB574100029446D1D81B76 > = KuMotionPatternProfile E9DD8F6063EB55980002940835F4FE08
+	myMoveTurnCapabilitiesProfile < uid=290B720F6470790C0003388711123A88 > = ku_NPCMoveTurnCapabilitiesProfile 290B720F647060E60001458EA3FA3DD9
+	mySteeringProfile < uid=290EB60C6461E6EC000921B2489F1264 > = KuSteeringProfile EBEEDF3F662F0308000622A185C08385
+	myFleeProfile < uid=E9DD8F6063EB57ED000294573B371C15 > = KuFleeProfile E9DD8F6063EB57B50002944ACCE39967
+	myFootStepProfile < uid=E9DD8F606463431E0000685C63876DD8 > = KuFootstep E9DD8F606459B53A00016E8FBC5A20C4
+	myPackProfile < uid=E9DD8F6063EB5822000294660AF3ABD4 > = KuPackProfile E9DD8F6063EB57FD0002945933B22E24
+	myAudioParameters
+	{
+		myEmitterName "WL Ku"
+		mySwitches
+		{
+			AudioSwitch "Bantha Switch"
+			{
+				myGuid 4CC7F9F17FFB3DD673D75EAB7216A28C
+			}
+		}
+	}
+	myMeleeDefenseProfile < uid=E9DD8F6064AD10270001762253F77104 > = LargePreyMeleeDefense E9DD8F6064ACCF1900016EB1623B90CE
+	myStaggerConfig < uid=E9DD8F6063ED8C6D00006C3657DF7588 > = WildlifeKu E9DD8F6063ED8B8C00006C2CDED5627A
+	myPhysicsProfile < uid=E9DD8F6063EC36AA000069BBB24D31C2 > = Ku E9DD8F6063EC36F0000069BCC6DC05AD
+	myQuadrupedalGroundAlignerConfig < uid=E9DD8F6063EC362F000069B6D1F377D2 > = "Ku Aligner Config" E9DD8F6063EC3520000061A6B76B9C18
+	myMoveConfig < uid=E9DD8F6063EF31EA00001D9C846773A4 > = ku_move_config E9DD8F6063EF2F2600001D943889136D
+	myCorpseProfile < uid=290EB60C63FF22CA0001D210A6E57F5C > = "Ku Corpse" 290EB60C63FF18E00000A9E8C4825A6E
+	myFootstepVFXRange 70.0
+}
+

@@ -1,0 +1,208 @@
+include "helix/game system data/fruit/ai/spaceshipsettings.fruit"
+include "helix/game system data/juice/ai/dlc2_spaceshipavoidanceprofiles.mspaceshipavoidanceprofile"
+include "helix/game system data/juice/ai/dlc2_spaceshipformationprofiles.mspaceshipformationprofile"
+include "helix/game system data/juice/ai/dlc2_spaceshipspeedprofiles.mspaceshipspeedprofile"
+include "helix/game system data/juice/ai/npcshootpatterns.mnpcshootpattern"
+include "helix/game system data/juice/ai/spaceshipavoidanceprofiles.mspaceshipavoidanceprofile"
+include "helix/game system data/juice/ai/spaceshipcombatprofiles.mspaceshipcombatprofile"
+include "helix/game system data/juice/ai/spaceshipformationprofiles.mspaceshipformationprofile"
+include "helix/game system data/juice/ai/spaceshipspawnprofiles.mspaceshipspawnprofile"
+include "helix/game system data/juice/ai/spaceshipspeedprofiles.mspaceshipspeedprofile"
+include "helix/game system data/juice/ai/spaceshiptrajectories.mspaceshiptrajectoryprofile"
+include "helix/game system data/juice/ai/speedprofile_base_shp_zh40_dq10_helix.mspaceshipspeedprofile"
+include "helix/game system data/juice/dlc2_spaceshipbehaviorparamlist_rokana.juice"
+include "helix/game system data/juice/spaceshipsettings_ashigabase.juice"
+include "helix/game system data/juice/spaceshipsettings_crimsondawnbase.juice"
+include "helix/game system data/juice/spaceshipsettings_empire.juice"
+include "helix/game system data/juice/spaceshipsettings_huttbase.juice"
+include "helix/game system data/juice/spaceshipsettings_piratesbase.juice"
+include "helix/game system data/juice/spaceshipsettings_pykes.juice"
+include "helix/game system data/juice/spaceshipsettings_pykesbase.juice"
+
+SpaceshipSetting s_Refractor < uid=05B06D7D66FC07210002170A46DAD9D7 > : s_Fang
+{
+	mySpaceshipType RaiderPirate
+	mySpaceshipArchetype Fighter
+	myAISpaceshipControlParameters
+	{
+		myAvoidanceProfile < uid=05B06D7D67067DD7000E0C4D1F487D82 > = dlc2_spaceshipavoidanceprofileRokana 05B06D7D6787BDE800011DB599C3E338
+		myCombatProfile < uid=05B06D7D670692660005D8424AD1F143 > = Fighter_CombatProfile 82D16ABE62B47AA700002A78F8160B8E
+		myCombatRoleType MultiLaserAndMissileBehavior
+		mySpaceshipBehaviorParameters = b_RokanaRaider 00000000000000000000000000000000
+		myRestrictionVolumeTypeExceptions
+		{
+		}
+	}
+	myRubberbandProfile < uid=7490699B67A4D762000DDB2C881E472E > = SmallShipsRubberband F97070E165D77E990000024D3A80B7F3
+	mySpawnProfile < uid=05B06D7D670E62C300025A0D9AF53B22 > = Fighter_Hyperjump F97070E164A4034400005ED3AB7AC7B0
+	mySpeedProfile < uid=05B06D7D67079E24001064D8B65150A3 > = speedProfile_rok_refractor 05B06D7D670686120003463C25A465A0
+	myTrajectoryProfile < uid=05B06D7D670E62C300025A0ED7AC3AE4 > = Porax42_TrajectoryProfile 6B0E1DE964F9D48700063016F72F90C2
+	myIonCollectorData
+	{
+		myMaxCharge 50.0
+	}
+	myShieldData
+	{
+		EnergyShieldData "New EnergyShieldData"
+		{
+			myMaxValue 40
+			myRegenerationCooldown 5
+			myRegenerationRate 3
+			myCanRegenerateWhenDepleted TRUE
+		}
+	}
+	myDimensions
+	{
+		myLength 16.0
+		myWidth 18.0
+		myHeight 18.0
+	}
+	myPhysicsParams
+	{
+		myMinLinearEnginePower 0.1
+		myMaxLinearEnginePower 9.900001
+		myLinearEnginePowerRecoverySpeed 3.0
+		myMinAngularEnginePower 1.0
+		myMaxAngularEnginePower 1000.0
+		myAngularEnginePowerRecoverySpeed 600.0
+		myWeakCollisionImpulseThreshold 5.0
+		myCollisionImpulseThreshold 100.0
+		myCollisionDamageToBreakablesMultiplier 10.0
+		myCollisionDamageMultiplier 0.25
+		myCollisionDamageFromSameEntityCooldown 1.0
+		myWeakCollisionCooldown 0.2
+	}
+	myDeathSequenceSettings
+	{
+		myShouldTumble TRUE
+	}
+	myCollisionEffectSettings
+	{
+		myMinimumRelativeSpeedForEffect 300.0
+	}
+	mySpaceshipFormationProfile < uid=05B06D7D67079E24001064D9C21889F0 > = RokanaRefractor_FormationProfile 05B06D7D670797F3000F796413722D96
+}
+
+SpaceshipSetting s_Refractor_MQ030 < uid=05B06D7D670FB0DA0002218E21D5360B > : s_Refractor
+{
+	mySpaceshipType RaiderPirateMQ30
+	mySpeedProfile < uid=7490699B67E271190007E460A00FC660 > = speedProfile_rok_refractor_mq030 05B06D7D670FB85D000A69E0DD50E023
+	myShieldData
+	{
+		EnergyShieldData "New EnergyShieldData"
+		{
+			myMaxValue 40
+			myRegenerationCooldown 5
+			myRegenerationRate 3
+			myCanRegenerateWhenDepleted TRUE
+		}
+	}
+}
+
+SpaceshipSetting s_MiyukiDarius < uid=05B06D7D671F469B0004AEAE72A850A2 > : s_Darius
+{
+	mySpaceshipType DariusTrader
+	myAISpaceshipControlParameters
+	{
+		myAvoidanceProfile < uid=05B06D7D671F502500070C727ED6F3B2 > = SpaceshipAvoidance_Low_Mobility_Ships 841E78F3657C62570009C130B733DB18
+	}
+}
+
+SpaceshipSetting s_MiyukiBFF1 < uid=05B06D7D671F46C70004AEAF1C654880 > : s_BFF1
+{
+	mySpaceshipType BFF1Trader
+	myAISpaceshipControlParameters
+	{
+		myAvoidanceProfile < uid=05B06D7D671F503200070C73FDFAD2BA > = SpaceshipAvoidance_Low_Mobility_Ships 841E78F3657C62570009C130B733DB18
+	}
+}
+
+SpaceshipSetting s_MiyukiUtilipede < uid=05B06D7D671F46D70004AEB0F4B67720 > : s_Utilipede
+{
+	mySpaceshipType UtilipedeTrader
+	myAISpaceshipControlParameters
+	{
+		myAvoidanceProfile < uid=05B06D7D671F504300070C74419B6698 > = SpaceshipAvoidance_Default F97070E164F5977B000032568052ABB2
+	}
+}
+
+SpaceshipSetting s_PlayerspaceshipRokana < uid=B4FBE4306723A5DF00025CDBE5A164E5 >
+{
+	mySpaceshipType PlayerSpaceshipRokana
+	mySpaceshipArchetype PlayerSpaceship
+	myMaximumPitchUp 90.100006
+	myIonCollectorData
+	{
+		myDisabledDuration 3.0
+		myTimeUntilRecovery 8.0
+		myRecoveryRate 6.0
+		myResistanceDuration 3.0
+		myResistanceValue 1.0
+		mySlowDownPercentage 0.5
+		myHasPermanentImmunity TRUE
+	}
+	myShieldData
+	{
+		EnergyShieldData ShieldData
+		{
+			myMaxValue "30 - RokanaShield"
+			myRegenerationCooldown 4.0
+			myRegenerationRate 10
+			myModeSwitchRegenerationCooldown 0.5
+			myModeSwitchRegenerationDuration 0.5
+			myModeSwitchRegenerationRate 30
+			myShieldPerSegmentFormula 15
+			myEMInterferenceRegenerationModifier 0.3
+			myCanRegenerateWhenDepleted TRUE
+			myShieldInvulnerabilityDuration 0.8
+			myIsRegeneratingInAssaultMode FALSE
+			myIsRegeneratedByIonNebulas TRUE
+			myIonNebulaRegenerationCooldownBonus -2.0
+			myIonNebulaRegenerationRateBonus 25.0
+		}
+	}
+	myDimensions
+	{
+		myLength 16.0
+		myWidth 18.0
+		myHeight 18.0
+	}
+	myPhysicsParams
+	{
+		myCollisionImpulseThreshold 60.0
+		myCollisionDamageToBreakablesMultiplier 15.0
+	}
+}
+
+SpaceshipSetting s_Refractor_MQ10 < uid=05B06D7D674ED4E80005AA8925D7A45B > : s_Refractor
+{
+	mySpaceshipType RaiderPirateMQ10
+	mySpaceshipArchetype Civilan
+}
+
+SpaceshipSetting s_RaiderMQ40 < uid=05B06D7D675076510000052E3E1238B3 > : s_Raider
+{
+	mySpaceshipType RaiderEmpireVariant
+	myIonCollectorData
+	{
+		myMaxCharge 100
+	}
+}
+
+SpaceshipSetting s_PykeBowbreakerMQ30 < uid=7490699B6797461A00045159CAA7FFD9 > : s_BowBreakerPyke
+{
+	mySpaceshipType BowbreakerPykeMQ30
+	myMaximumPitchUp 5.0
+	myMaximumPitchDown 15.0
+}
+
+SpaceshipSetting s_DariusCivilianRaider < uid=7490699B67B73FAB00041E54485E882D > : s_DariusCivilian_Defend
+{
+	mySpaceshipType Darius_DefendRaider
+}
+
+SpaceshipSetting s_BFFCivilianRaider < uid=7490699B67B73FDF00041E55FA5724EB > : s_BFF1Civilian_Defend
+{
+	mySpaceshipType BFF_DefendRaider
+}
+

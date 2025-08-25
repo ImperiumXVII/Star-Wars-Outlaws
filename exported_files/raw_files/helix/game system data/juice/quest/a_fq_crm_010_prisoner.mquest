@@ -1,0 +1,210 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/reward/quest_completion_reward.mreward"
+include "helix/game system data/juice/rewardpreview/faction_quest_reward_previews.mrewardpreview"
+
+Quest A_FQ_CRM_010_Prisoner < uid=E1B84E3A64F057DB0001A2F8F3CC5499 >
+{
+	myName "aurabesh = false, contextComment = \"A_FQ_CRM_010_Prisoner Title\", enabled = true, guid = #E1B84E3A64F058EF0001A2FF62E26F2D, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 8722, text = \"Passenger\", type = \"MenuLine\""
+	myIntroDescription "branch = \"MAIN\", contextComment = \"A_FQ_CRM_010 Intro description\", enabled = true, guid = #8B0C5159656DE7EC0002F6502B6F8F9F, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9398, text = \"A Crimson Dawn agent named Dart Subterra has a job offer for Kay.\", type = \"MenuLine\""
+	myDescription "branch = \"\", contextComment = \"A_FQ_CRM_010 Quest description\", enabled = true, guid = #8B0C515964F09593000099C1975AC44A, lineVersion = 11, maxLength = 0, productId = 6, sectionId = 9398, text = \"Crimson Dawn agent Dart Subterra hired Kay to track down and rob a Pyke ship in the Kijimi Nebula, but he was unusually light on details. There might be more to this cargo than it seems.\", type = \"MenuLine\""
+	myType Faction
+	myCompletionReward < uid=E1B84E3A64F058EE0001A2FEE2ADA4DF > = A_FQ_CRM_010_questcomplete_reward 2AE2EC85644A93860000B2E463F951A4
+	myCompletionRewardPreview < uid=2AE2EC8566687639004219EBA2782687 > = CRM_010_reward_preview 2AE2EC856668752B003ED8424427313C
+	myIntroBeat < uid=8B0C515964F066D3000099A9531EE2BB >
+	{
+		myScript helix/scripts/a_fq_crm_010_kij_pln_b00_intro.mscript
+		myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_CRM_010_B00 Talk to the Crimson Dawn agent IntroBeat is displayed in UI\", enabled = true, guid = #8B0C5159650803AC000378FAADA91311, lineVersion = 8, maxLength = 0, productId = 6, sectionId = 8722, text = \"Talk to Dart Subterra\", type = \"MenuLine\""
+		myLevelInfo 9C4B6A046012E658000001A6972FA29E
+		myObjectives
+		{
+			QuestObjectiveTalkTo "Talk to the Crimson Dawn agent" < uid=8B0C5159650804470003791D8E32D5A4 >
+			{
+				myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_CRM_010_B00 Talk to the Crimson Dawn agent objective is displayed in UI\", enabled = true, guid = #8B0C5159650804610003791E1CBA9683, lineVersion = 5, maxLength = 0, productId = 6, sectionId = 8722, text = \"Talk to Dart Subterra\", type = \"MenuLine\""
+			}
+		}
+		myQuestBeatStateGameValue < uid=8B0C515964F066D3000099AADB72BE17 >
+		{
+		}
+	}
+	myBeats
+	{
+		QuestBeat "Beat01 - Reach the Nebula in Kijimi Space" < uid=8B0C515964F0659400009993F15222BF >
+		{
+			myScript helix/scripts/a_fq_crm_010_kij_spc_b01_reachnebula.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_CRM_010_B01 Reach the Nebula in Kijimi space beat is displayed in the UI\", enabled = true, guid = #8B0C515964F08669000099B60E56AD40, lineVersion = 8, maxLength = 0, productId = 6, sectionId = 3614, text = \"Find the Pyke ship near the Nebula\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012DE63000000BA154AA5F2
+			myDebugPlayLandingZone FB6AE4D5637C98AE00019CCC8A395287
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Reach the Nebula" < uid=8B0C515964F08CA4000077DAE74F8089 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_CRM_010_B01 Reach the Nebula objective is displayed in the UI\", enabled = true, guid = #8B0C515964F08CAC00007F6DC4CC5FAD, lineVersion = 8, maxLength = 0, productId = 6, sectionId = 8722, text = \"Find the Pyke ship near the Nebula\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=8B0C515964F066D3000099ABE17BEDEE >
+			{
+			}
+		}
+		QuestBeat "Beat02 - Find the Source of the Distress Call in the Nebula" < uid=8B0C515964F065A400009994EDD44D7F >
+		{
+			myScript helix/scripts/a_fq_crm_010_kij_spc_b02_pinpointsos.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_CRM_010_B02 Find the Source of the Distress Call in the Nebula beat is displayed in the UI\", enabled = true, guid = #8B0C515964F08723000099B8D763CF7A, lineVersion = 13, maxLength = 0, productId = 6, sectionId = 3614, text = \"Find the source of the distress call\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012DE63000000BA154AA5F2
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Reach the floating containers in the Nebula" < uid=8B0C515964F08D6900009995D9B7F0D3 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_CRM_010_B02 Reach the floating containers in the Nebula objective is displayed in the UI\", enabled = true, guid = #8B0C515964F08D7C00009996426768A4, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 9402, text = \"Reach the floating containers\", type = \"MenuLine\""
+				}
+				QuestObjectiveCustom "Follow the floating containers in the Nebula" < uid=8B0C51596520020F000FC783E0CF7996 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_CRM_010_B02 Follow the floating containers in the Nebula objective is displayed in the UI\", enabled = true, guid = #8B0C51596520020F000FC784FDD64484, lineVersion = 8, maxLength = 0, productId = 6, sectionId = 9402, text = \"Follow the trail of debris\", type = \"MenuLine\""
+					myChildObjectives
+					{
+						QuestObjectiveGoToLocation "Follow the trail of debris - Reach 01" < uid=8B0C51596560AC610002113D9C634313 >
+						{
+							myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+						}
+						QuestObjectiveGoToLocation "Follow the trail of debris - Reach 02" < uid=8B0C51596560B60B00021D3C42FC1922 >
+						{
+							myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+						}
+						QuestObjectiveGoToLocation "Follow the trail of debris - Reach 03" < uid=8B0C51596560B62000021D3EFEA14BA6 >
+						{
+							myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+						}
+					}
+				}
+				QuestObjectiveGoToLocation "Reach the spaceship in the Nebula" < uid=8B0C5159652002A1000FC7869D63DAD9 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_CRM_010_B02 Reach the spaceship in the Nebula objective is displayed in the UI\", enabled = true, guid = #8B0C5159652002A1000FC78706FB032A, lineVersion = 8, maxLength = 0, productId = 6, sectionId = 9402, text = \"Reach Pyke spaceship\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=8B0C515964F066D3000099ACD77C1B10 >
+			{
+			}
+		}
+		QuestBeat "Beat03 - Chase the Pirate ship" < uid=8B0C515964F0661700009999B7F6DDC3 >
+		{
+			myScript helix/scripts/a_fq_crm_010_kij_spc_b03_chasethief.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_CRM_010_B03 Chase the Pirate ship beat is displayed in the UI\", enabled = true, guid = #8B0C515964F08755000099BA1E5CF004, lineVersion = 14, maxLength = 0, productId = 6, sectionId = 3614, text = \"Chase the pirate spaceship\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012DE63000000BA154AA5F2
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveFollow "Chase the Pirate ship" < uid=8B0C515964F08DB60000999856356DE1 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_CRM_010_B03 Chase the Pirate ship objective is displayed in the UI\", enabled = true, guid = #8B0C515964F08DBE0000999930623E9C, lineVersion = 12, maxLength = 0, productId = 6, sectionId = 9343, text = \"Chase the pirate spaceship\", type = \"MenuLine\""
+				}
+			}
+			myScriptInputs
+			{
+			}
+			myQuestBeatStateGameValue < uid=8B0C515964F066D3000099AD73D3307E >
+			{
+			}
+		}
+		QuestBeat "Beat04 - Find the Pilot in ACHRA Space Station" < uid=8B0C515964F0661E0000999BEBD93F99 >
+		{
+			myScript helix/scripts/a_fq_crm_010_aki_spc_b04_spacestation_findpilote.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_CRM_010_B04 Find the Pilote in Achra Space Station beat is displayed in the UI\", enabled = true, guid = #8B0C515964F0878A000099BC3B7AB6D0, lineVersion = 16, maxLength = 0, productId = 6, sectionId = 3614, text = \"Reach Achra space station\", type = \"MenuLine\""
+			myLevelInfo 91908ED264F1BBC400000025E97B93DE
+			myDebugPlayLandingZone B5AFC8E463E5034C0001FF7C2A030CA6
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Go to Achra Space Station" < uid=8B0C515964F08DFE0000999B2E9D6EDF >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_CRM_010_B04 Go to Achra Space Station objective is displayed in the UI\", enabled = true, guid = #8B0C515964F08E0E0000999CD33A5488, lineVersion = 8, maxLength = 0, productId = 6, sectionId = 8722, text = \"Reach Achra space station\", type = \"MenuLine\""
+				}
+				QuestObjectiveGoToLocation "Find the Pilot in the Station" < uid=8B0C515964F09C0C0001061EF0AAFE81 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_CRM_010_B04 Find the Pilot in the Station objective is displayed in the UI\", enabled = true, guid = #8B0C515964F09C0C0001061FD2011231, lineVersion = 10, maxLength = 0, productId = 6, sectionId = 9404, text = \"Find Jadd Flaxxum\", type = \"MenuLine\""
+				}
+				QuestObjectiveTalkTo "Talk to the person behind the door of the Cargo Room" < uid=8B0C51596523D13400016862049B339D >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_CRM_010_B04 Talk to the person behind the door of the Cargo Room objective is displayed in the UI\", enabled = true, guid = #8B0C51596523D13400016863C757EC64, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 9404, text = \"Talk to the voice behind the door\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=8B0C515964F066D3000099AE3D1FBA15 >
+			{
+			}
+		}
+		QuestBeat "Beat05 - Steal the Keycard from the Pirate" < uid=8B0C515964F0662E0000999F2C882BC4 >
+		{
+			myScript helix/scripts/a_fq_crm_010_aki_spc_b05_spacestation_stealpass.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_CRM_010_B05 Steal the Keycard from the Pirate beat is displayed in the UI\", enabled = true, guid = #8B0C515964F08803000099C0FD09B534, lineVersion = 11, maxLength = 0, productId = 6, sectionId = 3614, text = \"Steal the keycard from Procyon Wy\", type = \"MenuLine\""
+			myLevelInfo 91908ED264F1BBC400000025E97B93DE
+			myDebugPlayLandingZone B5AFC8E463E5034C0001FF7C2A030CA6
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom "Find the Pirate in the Station" < uid=8B0C515964F08E8F000099A12F372F23 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_CRM_010_B05 Find the Pirate in the Station objective is displayed in the UI\", enabled = true, guid = #8B0C515964F08EBB000099A483418860, lineVersion = 14, maxLength = 0, productId = 6, sectionId = 9405, text = \"Find Procyon Wy in Achra station\", type = \"MenuLine\""
+					myIsHiddenInHUD FALSE
+					myIsHint FALSE
+				}
+				QuestObjectiveCustom "Hint - Procyon Wy is a female blue patoran" < uid=8B0C51596548F8D30006FFADB7B41A08 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_CRM_010_B05 Procyon Wy is a blue-skinned Pantoran woman hint is displayed in the UI\", enabled = true, guid = #8B0C51596548F8F30006FFAFED9D7758, lineVersion = 11, maxLength = 0, productId = 6, sectionId = 9404, text = \"She is a blue-skinned Pantoran\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myIsHint TRUE
+					myIsHighPrio FALSE
+				}
+				QuestObjectiveSteal "Steal the Keycard to the Pirate" < uid=8B0C515964F08EAC000099A27EC31F67 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_CRM_010_B05 Steal the Keycard to the Pirate objective is displayed in the UI\", enabled = true, guid = #8B0C515964F08EAC000099A399340BFB, lineVersion = 13, maxLength = 0, productId = 6, sectionId = 9405, text = \"Steal the keycard from Procyon Wy\", type = \"MenuLine\""
+				}
+				QuestObjectiveCustom "Use the keycard to free Jadd Flaxum" < uid=8B0C5159654B919D000582F37814C61A >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_CRM_010_B05 Free Jadd Flaxum objective is displayed in the UI\", enabled = true, guid = #8B0C5159654B919D000582F4CD396590, lineVersion = 5, maxLength = 0, productId = 6, sectionId = 9405, text = \"Free Jadd Flaxum\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=8B0C515964F066D3000099B034A60B28 >
+			{
+			}
+		}
+		QuestBeat "Beat06 - Leave the Station" < uid=8B0C515964F091A7000099B2BA2EA795 >
+		{
+			myScript helix/scripts/a_fq_crm_010_aki_spc_b07_deliverpackage.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_CRM_010_B07 Leave the Station beat is displayed in the UI\", enabled = true, guid = #8B0C515964F091BD000099B589A1D6FB, lineVersion = 9, maxLength = 0, productId = 6, sectionId = 3614, text = \"Leave Achra station\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012DFB0000001032A60B086
+			myMood Focused
+			myObjectives
+			{
+				QuestObjectiveLeaveArea "Reach Akiva Space" < uid=8B0C515964FAF5AE00127635A1B21567 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_CRM_010_B07 Leave the Station objective is displayed in the UI\", enabled = true, guid = #8B0C515964FAF5BE001276379C025401, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 10260, text = \"Leave Achra station area\", type = \"MenuLine\""
+					myIsHiddenInHUD FALSE
+					myInVolumeText "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myNotInVolumeInCombatText "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				}
+				QuestObjectiveCustom "[Marker outside the area to help player understanding]" < uid=8B0C515965EEE5B700037A9AADAB6F5F >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+				QuestObjectiveKillFireteam "Defeat the Pirate and his Crew - Quest Completed" < uid=8B0C515964F091FD000099B7AC752116 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_CRM_010_B07 Defeat Procyon objective is displayed in the UI\", enabled = true, guid = #8B0C515964F09213000099B89FD8AE5D, lineVersion = 12, maxLength = 0, productId = 6, sectionId = 10260, text = \"Defeat Procyon Wy\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=8B0C515964F092E7000099C0EC1E16E0 >
+			{
+			}
+			myCompletionReward < uid=8B0C515965240B62000F29DDC3FFE9F0 > = A_FQ_CRM_010_questcomplete_reward 2AE2EC85644A93860000B2E463F951A4
+		}
+	}
+	myQuestStateGameValue < uid=E1B84E3A64F057DB0001A2F98C7E0DC9 >
+	{
+	}
+	myFaction 16DEADE65F7DDA76000000C74AD19DCA
+}
+

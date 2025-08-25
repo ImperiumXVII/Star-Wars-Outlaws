@@ -1,0 +1,36 @@
+include "helix/game system data/juice/npc/base_civ_vendor.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC pyk_vendor_p_akiva_myrra_pyke_district < uid=91DC5D3C65086ECE0026B6A0FD1A112C > : base_civ_vendor
+{
+	myName "branch = \"MAIN\", contextComment = \"Sub-name for a pyke district merchant\", enabled = true, guid = #09AEDAAA65C5FB180000015E5FEC80EA, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 10653, text = \"Smuggler\", type = \"MenuLine\""
+	myCharacterVisuals < uid=91DC5D3C65086ECE0026B6A1535AE349 > = character_visuals_silver_toshara_mirogana_vendor_pyke_district E053C1D56537856B0003D8A27EC5532E
+	myAdditionalGearGraphs D00CF654668BADB0000358F36EE3259D
+	myFaction < uid=09AEDAAA65A906110032597A4F492C1C > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F25651FD4F60000C2AD6F18F7D8 > = Agent_Gender_FeminineTag 16DEADE6626D20EA00002E5277B65AD4
+	}
+	myPossibleSpeciesTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F25651FD5040000C2AE5A9F752D > = Agent_Species_PykesTag FFED0CDA634EC20D0000AD881A50C8B3
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F25651FD5090000C2AFADDC8992 > = Agent_Archetype_VendorFactionDistrict 1EC89F2563FC706500005020A5DD40C8
+		RBTagsTag "New RBTagsTag (0)" < uid=1EC89F25651FD5180000C2B1CF30874C > = Agent_Faction_PykeSyndicateTag 16DEADE6620AE18B000020D1381248A0
+		RBTagsTag "Droid Buddy" < uid=1EC89F25661003EE000E8204A538F1EA > = Agent_Vendor_HasADroidBuddy 1EC89F256389B1CC00006405BD01DB75
+	}
+	myDialogueCharacters
+	{
+		DialogueCharacterWithTags VendorPykeUnmaskedF01 < uid=1EC89F25651FD4950000C2ABBE693BAF >
+		{
+			myDialogueCharacter < uid=1EC89F25651FD5150000C2B0673E1A44 > = AI_VENDOR_FACTIONDISTRICT_PYKE_SYNDICATE_PYKE_UNMASKED_F01 1EC89F256319B2D70000201CD982F9EF
+		}
+	}
+	myPlayerAwarenessProfile < uid=1EC89F25668E775C0011718E9DAEDCDA > = Vendor_IdleOnly 1EC89F25652E966C000166E0B931EAD4
+	myVendorConfig < uid=F4D8AE26653A20AD0000803C65EFD75A > = VendorConfig_AKI_City_Pyke_District_BlackMarket F4D8AE26653A20650000801B633CCDAC
+	myNPCIcon "mySpriteId = 758980260, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_map_icons_05.spritesheet\""
+	myForceFriendlyRelationToPlayer TRUE
+}
+

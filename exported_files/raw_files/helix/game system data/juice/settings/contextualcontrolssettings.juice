@@ -1,0 +1,381 @@
+include "helix/game system data/fruit/settings/contextualcontrolssettings.fruit"
+include "helix/game system data/juice/item/items_dom_skill.mitem"
+
+ContextualControlsRoot "Contextual Controls" < uid=15AAF5F661BB64C00000003C2BF2CC7C >
+{
+	myContexts
+	{
+		ContextualControls_ControlContext "Default Ground"
+		{
+			myContextEnum Default_Ground
+			myControls
+			{
+			}
+		}
+		ContextualControls_ControlContext "Default Space"
+		{
+			myContextEnum Default_Space
+		}
+		ContextualControls_ControlContext "Climbing Dynamic Ledge"
+		{
+			myContextEnum Climbing_DynamicLedge
+			myControls
+			{
+				ContextualControls_Control "Climb up"
+				{
+					myGameAction Traversal
+					myUserOptionName "aurabesh = false, contextComment = \"While hanging off the ledge of an object, this label describes the button used to climb up and onto, or past, the object.\", enabled = true, guid = #15AAF5F661BB65D10000005018F4D41F, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 434, text = \"Climb up\", type = \"MenuLine\""
+				}
+				ContextualControls_Control Drop
+				{
+					myGameAction CancelTraversal
+					myUserOptionName "aurabesh = false, contextComment = \"While hanging off the ledge of an object, this label describes the button used to let go and drop down to the ground underneath, if there is any ground.\", enabled = true, guid = #15AAF5F661BB65DA0000005157D2BDDF, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 434, text = \"<b>(Hold)</b> Drop down\", type = \"MenuLine\""
+				}
+			}
+		}
+		ContextualControls_ControlContext "Climbing Placed Ledge"
+		{
+			myContextEnum Climbing_PlacedLedge
+			myControls
+			{
+				ContextualControls_Control Transfer
+				{
+					myGameAction Traversal
+					myUserOptionName "aurabesh = false, contextComment = \"While hanging off a ledge on a wall, this label describes the button used to move to an adjacent ledge.\", enabled = true, guid = #15AAF5F661BB65670000004A9B20D1F6, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 434, text = \"Transfer\", type = \"MenuLine\""
+				}
+				ContextualControls_Control "Transfer Down"
+				{
+					myGameAction CancelTraversal
+					myUserOptionName "aurabesh = false, contextComment = \"While hanging off a ledge on a wall, this label describes the button used to drop down and grab onto the ledge underneath.\", enabled = true, guid = #15AAF5F661BB656D0000004B75274636, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 434, text = \"Transfer Down\", type = \"MenuLine\""
+				}
+				ContextualControls_Control Detach
+				{
+					myGameAction HeldCancelTraversal
+					myUserOptionName "aurabesh = false, contextComment = \"While hanging off a ledge on a wall, this label describes the button used to let go and drop down to the ground underneath, if there is any ground.\", enabled = true, guid = #15AAF5F661BB65720000004C9535F4EC, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 434, text = \"<b>(Hold)</b> Drop down\", type = \"MenuLine\""
+				}
+			}
+		}
+		ContextualControls_ControlContext "Climbing Wall"
+		{
+			myContextEnum Climbing_Wall
+			myControls
+			{
+				ContextualControls_Control Detach
+				{
+					myGameAction Crouch
+					myUserOptionName "aurabesh = false, contextComment = \"While climbing a wall, this label describes the button used to let go and fall down to the ground underneath, if there is any ground.\", enabled = true, guid = #15AAF5F661BB650A0000003F3D986232, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 434, text = \"Drop down\", type = \"MenuLine\""
+				}
+			}
+		}
+		ContextualControls_ControlContext "Grappling Hook Swinging"
+		{
+			myContextEnum GrapplingHook_Swinging
+			myControls
+			{
+				ContextualControls_Control "Reel in"
+				{
+					myGameAction ShortenRope
+					myUserOptionName "aurabesh = false, contextComment = \"While using a grappling hook to hang from an object, this label describes the button used to shorten the rope to climb higher.\", enabled = true, guid = #15AAF5F661BB66AD000000620F6A18C4, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 434, text = \"Reel in\", type = \"MenuLine\""
+				}
+				ContextualControls_Control "Reel out"
+				{
+					myGameAction ExtendRope
+					myUserOptionName "aurabesh = false, contextComment = \"While using a grappling hook to hang from an object, this label describes the button used to extend the rope to move down lower.\", enabled = true, guid = #15AAF5F661BB66B500000063CA31FF7B, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 434, text = \"Extend\", type = \"MenuLine\""
+				}
+				ContextualControls_Control Jump
+				{
+					myGameAction Jump
+					myUserOptionName "aurabesh = false, contextComment = \"While using a grappling hook to hang from an object, this label describes the button used to jump off of the rope in any lateral direction.\", enabled = true, guid = #15AAF5F661BB66BD000000644381830A, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 434, text = \"Jump\", type = \"MenuLine\""
+				}
+				ContextualControls_Control Detach
+				{
+					myGameAction Release
+					myUserOptionName "aurabesh = false, contextComment = \"While using a grappling hook to hang from an object, this label describes the button used to let go of the rope and fall down to the ground underneath, if there is any ground.\", enabled = true, guid = #15AAF5F661BB66CA00000065E34FBE08, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 434, text = \"Detach\", type = \"MenuLine\""
+				}
+			}
+		}
+		ContextualControls_ControlContext Speeder
+		{
+			myContextEnum Speeder
+			myControls
+			{
+				ContextualControls_Control Brake
+				{
+					myGameAction Speeder_Brake
+					myUserOptionName "aurabesh = false, branch = \"MAIN\", contextComment = \"While using a vehicle, this label describes the button used slow the vehicle down.\", enabled = true, guid = #91CF4D4865EAD279000000CE3608F183, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 434, text = \"Brake\", type = \"MenuLine\""
+				}
+				ContextualControls_Control "Speeder Fire MK"
+				{
+					myGameAction Shoot
+					myUserOptionName "branch = \"DLC2\", contextComment = \"While using a vehicle on keyboard, this label describes the button used to fire the blaster\", enabled = true, guid = #7113C61167B30F6B001AE92BADC5E1C1, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 434, text = \"Fire\", type = \"MenuLine\""
+					myShowContextualControlConditions
+					{
+						GameConditionPlayerIsUsingGamepad PlayerIsNotUsingGamepad
+						{
+							myIsNegated TRUE
+						}
+					}
+				}
+				ContextualControls_Control "Speeder Fire Controller"
+				{
+					myGameAction Speeder_Shoot
+					myUserOptionName "branch = \"DLC2\", contextComment = \"While using a vehicle with controller, this label describes the button used to fire the blaster\", enabled = true, guid = #7113C61167B311340020DFCDB24E3A27, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 434, text = \"Fire\", type = \"MenuLine\""
+					myShowContextualControlConditions
+					{
+						GameConditionPlayerIsUsingGamepad PlayerIsUsingGamepad
+						{
+						}
+					}
+				}
+				ContextualControls_Control "Dodge Controller"
+				{
+					myGameAction Speeder_DodgeRightFreeFireEnabled
+					myUserOptionName "branch = \"DLC2\", contextComment = \"While using a vehicle on controller, this label describes the button used to dodge vehicle.\", enabled = true, guid = #7113C61167B30F28001AE92A492EF42B, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 434, text = \"Dodge\", type = \"MenuLine\""
+					myShowContextualControlConditions
+					{
+						GameConditionPlayerIsUsingGamepad PlayerIsUsingGamepad
+						{
+						}
+					}
+				}
+				ContextualControls_Control "Dodge Left"
+				{
+					myGameAction Speeder_DodgeLeft
+					myUserOptionName "aurabesh = false, branch = \"MAIN\", contextComment = \"While using a vehicle, this label describes the button used to quickly dodge left.\", enabled = true, guid = #91CF4D4865EAD350000000D2E9E3CB45, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 434, text = \"Dodge Left\", type = \"MenuLine\""
+					myShowContextualControlConditions
+					{
+						GameConditionPlayerIsUsingGamepad PlayerIsUsingGamepad
+						{
+							myIsNegated TRUE
+						}
+					}
+				}
+				ContextualControls_Control Boost
+				{
+					myGameAction Boost
+					myUserOptionName "aurabesh = false, branch = \"MAIN\", contextComment = \"While using a vehicle, this label describes the button used to initate the Speed Boost ability.\", enabled = true, guid = #91CF4D4865EAD2BE000000CF52D2B458, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 434, text = \"Boost\", type = \"MenuLine\""
+					myShowContextualControlConditions
+					{
+						AbilityItemUnlockRequirement "Has Speeder Boost Ability"
+						{
+							myItem < uid=91CF4D4865EAD44C000000D4094F0F25 > = "DoM skill Speed Boost" F8252D3C6261192900002DE1DFEE6107
+						}
+					}
+				}
+				ContextualControls_Control Jump
+				{
+					myGameAction Speeder_JumpCharge
+					myUserOptionName "aurabesh = false, contextComment = \"While using a vehicle, this label describes the button used to jump with the vehicle.\", enabled = true, guid = #6CACDBEB62A0A0BE00016140901EDE3C, lineVersion = 8, maxLength = 0, productId = 6, sectionId = 434, text = \"<b>(Hold)</b> Jump\", type = \"MenuLine\""
+					myShowContextualControlConditions
+					{
+						AbilityItemUnlockRequirement "Has Speeder Jump Ability"
+						{
+							myItem < uid=E42C5D0F65CB510F00171B82C9177FEF > = "DoM skill SpeederJump" F4D8AE266454EA450000B3CB44F314CB
+							myAmount 1
+						}
+					}
+				}
+				ContextualControls_Control Throttle
+				{
+					myGameAction Speeder_Thrust
+					myUserOptionName "aurabesh = false, branch = \"MAIN\", contextComment = \"While using a vehicle, this label describes the button used to accelerate vehicle.\", enabled = true, guid = #91CF4D4865EAD1A4000000CD4B209CFC, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 434, text = \"Throttle\", type = \"MenuLine\""
+				}
+				ContextualControls_Control "Dodge Right"
+				{
+					myGameAction Speeder_DodgeRight
+					myUserOptionName "aurabesh = false, branch = \"MAIN\", contextComment = \"While using a vehicle, this label describes the button used to quickly dodge right.\", enabled = true, guid = #91CF4D4865EAD417000000D32E54D255, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 434, text = \"Dodge Right\", type = \"MenuLine\""
+					myShowContextualControlConditions
+					{
+						GameConditionPlayerIsUsingGamepad PlayerIsUsingGamepad
+						{
+							myIsNegated TRUE
+						}
+					}
+				}
+				ContextualControls_Control "Look Back"
+				{
+					myGameAction LookBack
+					myUserOptionName "aurabesh = false, contextComment = \"While using a vehicle, this label describes the button used to aim the camera backwards to be able to see what is behind you.\", enabled = true, guid = #15AAF5F661BB662B0000005BD2063C7C, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 434, text = \"<b>(Hold)</b> Look back\", type = \"MenuLine\""
+					myShowContextualControlConditions
+					{
+						GameConditionUserOption "HoldsToPress Off"
+						{
+							myIsNegated TRUE
+							myOptionToCheck UserChoice_HoldsToPress
+						}
+					}
+				}
+				ContextualControls_Control "Look Back Press Variant"
+				{
+					myGameAction Speeder_LookBackPressVariant
+					myUserOptionName "branch = \"TU1\", contextComment = \"While using a vehicle, this label describes the button used to aim the camera backwards to be able to see what is behind you.\", enabled = true, guid = #E42C5D0F667AD192000000CA36694FBC, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 434, text = \"Look back\", type = \"MenuLine\""
+					myShowContextualControlConditions
+					{
+						GameConditionUserOption "HoldsToPress On"
+						{
+							myIsNegated FALSE
+							myOptionToCheck UserChoice_HoldsToPress
+						}
+					}
+				}
+				ContextualControls_Control Dismount
+				{
+					myGameAction ExitVehicle
+					myUserOptionName "aurabesh = false, contextComment = \"While using a vehicle, this label describes the button used to dismount the vehicle.\", enabled = true, guid = #15AAF5F661BB66260000005A155B44E1, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 434, text = \"<b>(Hold)</b> Dismount\", type = \"MenuLine\""
+					myShowContextualControlConditions
+					{
+						GameConditionUserOption "HoldsToPress Off"
+						{
+							myIsNegated TRUE
+							myOptionToCheck UserChoice_HoldsToPress
+						}
+					}
+				}
+				ContextualControls_Control "Dismount Press Variant"
+				{
+					myGameAction Speeder_ExitVehiclePressVariant
+					myUserOptionName "branch = \"TU1\", contextComment = \"While using a vehicle, this label describes the button used to dismount the vehicle.\", enabled = true, guid = #E42C5D0F667AD54B00052BCF9CFDC0A7, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 434, text = \"Dismount\", type = \"MenuLine\""
+					myShowContextualControlConditions
+					{
+						GameConditionUserOption "HoldsToPress On"
+						{
+							myOptionToCheck UserChoice_HoldsToPress
+						}
+					}
+				}
+			}
+		}
+		ContextualControls_ControlContext "Stealth-Riding Troop Transport"
+		{
+			myContextEnum RidingTroopTransport
+			myControls
+			{
+				ContextualControls_Control Detach
+				{
+					myGameAction ExitVehicle
+					myUserOptionName "aurabesh = false, contextComment = \"While hanging off of a vehicle, this label describes the button used to detach from the vehicle and land on the ground underneath.\", enabled = true, guid = #15AAF5F661BB64D70000003EE7050617, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 434, text = \"Detach from vehicle\", type = \"MenuLine\""
+				}
+			}
+		}
+		ContextualControls_ControlContext "Scoundrel Leacy Gadget - Holoprojector"
+		{
+			myContextEnum HoloReaderProjection
+			myControls
+			{
+				ContextualControls_Control "Rotate Holomap Left"
+				{
+					myGameAction HoloTurnLeft
+					myUserOptionName "aurabesh = false, contextComment = \"\", enabled = true, guid = #E259BC2164FB37390011D0CF02931582, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 2090, text = \"Rotate \", type = \"MenuLine\""
+					myShowContextualControlConditions
+					{
+					}
+				}
+				ContextualControls_Control "Rotate Holomap Right"
+				{
+					myGameAction HoloTurnRight
+					myUserOptionName "aurabesh = false, contextComment = \"\", enabled = true, guid = #E259BC2164FB384C0011D48EEA477CE4, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 2090, text = \"Rotate \", type = \"MenuLine\""
+				}
+				ContextualControls_Control Close
+				{
+					myGameAction HoloReaderCancel
+					myUserOptionName "aurabesh = false, contextComment = \"\", enabled = true, guid = #E259BC2164FB38AA0011D53AED545FCC, lineVersion = 2, maxLength = 0, productId = -1, sectionId = 2090, text = \"Close\", type = \"MenuLine\""
+				}
+			}
+		}
+		ContextualControls_ControlContext Throwables
+		{
+			myContextEnum ThrowableHeld
+			myControls
+			{
+				ContextualControls_Control Aim
+				{
+					myGameAction Aim
+					myUserOptionName "aurabesh = false, branch = \"MAIN\", contextComment = \"Reminder for the player that they can manually aim where to throw, and stop auto-targeting (the default behaviour)\", enabled = true, guid = #E259BC21662A629C00043F8E05BBC74E, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10284, text = \"Aim\", type = \"MenuLine\""
+				}
+				ContextualControls_Control Throw
+				{
+					myGameAction ThrowableThrowPress
+					myUserOptionName "aurabesh = false, branch = \"MAIN\", contextComment = \"\", enabled = true, guid = #E259BC21660BDB720000743810849C65, lineVersion = 2, maxLength = 0, productId = -1, sectionId = 10284, text = \"Throw\", type = \"MenuLine\""
+					myShowContextualControlConditions
+					{
+					}
+				}
+				ContextualControls_Control "Cancel - Pad"
+				{
+					myGameAction GadgetToggle
+					myUserOptionName "aurabesh = false, branch = \"MAIN\", contextComment = \"\", enabled = true, guid = #E259BC21660BDB6E00007437EBFAD64E, lineVersion = 2, maxLength = 0, productId = -1, sectionId = 10284, text = \"Cancel\", type = \"MenuLine\""
+					myShowContextualControlConditions
+					{
+						GameConditionPlayerIsUsingGamepad "Player Using Gamepad"
+						{
+						}
+					}
+				}
+				ContextualControls_Control "Cancel - M&K"
+				{
+					myGameAction GrenadeHoldQuick
+					myUserOptionName "branch = \"DLC2\", contextComment = \"Adding new cancel line, since this diplicate with 229249 prevents me from checking in.\", enabled = true, guid = #7113C61167B3279C002B6DBA3B6E64A6, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10284, text = \"Cancel\", type = \"MenuLine\""
+					myShowContextualControlConditions
+					{
+						GameConditionPlayerIsUsingGamepad "Player Not Using Gamepad"
+						{
+							myIsNegated TRUE
+						}
+					}
+				}
+			}
+		}
+		ContextualControls_ControlContext "Zooming Step"
+		{
+			myContextEnum AimingScope_ZoomingStep
+			myControls
+			{
+				ContextualControls_Control "Zoom Next"
+				{
+					myGameAction Contextual_Zoom
+					myUserOptionName "aurabesh = false, branch = \"MAIN\", contextComment = \"Shown next to the control for stepped zooming in and out.\", enabled = true, guid = #92D7D0C1661E5CCD0005994BD2497D8C, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 434, text = \"Zoom In and Out\", type = \"MenuLine\""
+				}
+			}
+		}
+		ContextualControls_ControlContext "Climbing Ladder"
+		{
+			myContextEnum Climbing_Ladder
+			myControls
+			{
+				ContextualControls_Control Detach
+				{
+					myGameAction Crouch
+					myUserOptionName "branch = \"TU1\", contextComment = \"While climbing a ladder, this label describes the button used to let go and fall down to the ground underneath, if there is any ground.\", enabled = true, guid = #49D824466660650C0010DB1A06D0445D, lineVersion = 8, maxLength = 0, productId = 149, sectionId = 434, text = \"Drop down\", type = \"MenuLine\""
+				}
+				ContextualControls_Control "Speed Up / Slide"
+				{
+					myGameAction Sprint
+					myUserOptionName "branch = \"TU1\", contextComment = \"While climbing a ladder, this prompt is listed next to the button for sliding down or speeding up on the ladder\", enabled = true, guid = #49D824466660652F0010E48EC36B3FDB, lineVersion = 5, maxLength = 0, productId = 149, sectionId = 434, text = \"Speed up / Slide down\", type = \"MenuLine\""
+				}
+			}
+		}
+		ContextualControls_ControlContext Rappel
+		{
+			myContextEnum Climbing_Rappel
+			myControls
+			{
+				ContextualControls_Control "Move Up"
+				{
+					myGameAction MoveForward
+					myUserOptionName "branch = \"TU1\", contextComment = \"Game action to move up while rappelling\", enabled = true, guid = #49D824466673F08F000000D4E57F146C, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 434, text = \"Move up\", type = \"MenuLine\""
+				}
+				ContextualControls_Control "Move Down"
+				{
+					myGameAction MoveBackward
+					myUserOptionName "branch = \"TU1\", contextComment = \"Game action to move down while rappelling\", enabled = true, guid = #49D824466673F0B9000000D54B6A02B6, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 434, text = \"Move down\", type = \"MenuLine\""
+				}
+				ContextualControls_Control "Drop Down"
+				{
+					myGameAction Crouch
+					myUserOptionName "branch = \"TU1\", contextComment = \"Game action to drop down while rappelling\", enabled = true, guid = #49D824466673F0CD000000D6CD19CE91, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 434, text = \"Drop down\", type = \"MenuLine\""
+				}
+			}
+		}
+	}
+}
+

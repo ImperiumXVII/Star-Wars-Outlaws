@@ -1,0 +1,84 @@
+include "helix/game system data/juice/ai/npc_elite_supression_profile.mnpcsuppressionprofile"
+include "helix/game system data/juice/melee/alwaysblockmeleedefense.mnpcmeleedefenseprofile"
+include "helix/game system data/juice/melee/elitemeleedefense.mnpcmeleedefenseprofile"
+include "helix/game system data/juice/melee/toughmeleedefense.mnpcmeleedefenseprofile"
+include "helix/game system data/juice/npc/base_emp.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC emp_deathtrooper < uid=16DEADE661F0801600001B5E1B0B1745 > : base_emp
+{
+	myName "aurabesh = false, contextComment = \"The name of the Empire Elite Unit and its archetype (Elite)\", enabled = true, guid = #91DC5D3C654E4133000521C3268524E0, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10572, text = \"Death Trooper\nElite\", type = \"MenuLine\""
+	myCharacterVisuals < uid=16DEADE661F0801600001B5F7094987E > = character_visuals_2_silver_empire_deathtrooper 616C01996422F56C00008561A30CD5FB
+	myAdditionalGearGraphs 91DC5D3C653A77E600043BB014C37135
+	myBehavior helix/behaviors/emp_deathtrooper.mbehavior
+	myMaxHealth 20
+	myHealthFormula max(1,14+NPCFinalHealth)
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag (0)" < uid=E4123D2762AF18C30000A837B822C72C > = Agent_Faction_EmpireTag 16DEADE6614FB69800001863A66D45A1
+		RBTagsTag "New RBTagsTag (1)" < uid=E4123D2762AF18CB0000A838CB863DC4 > = Agent_Archetype_DeathTrooperTag E4123D2762AF18600000A81C12B56660
+	}
+	myDialogueCharactersFromDatabase
+	{
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=E4123D27651422AC0000850DFCDCFBA6 > = Imperial_DeathTrooperF01 E4123D276514228B0000768583C8DEF7
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=E4123D27651422AC0000850E9AC2B1CF > = Imperial_DeathTrooperM01 E4123D27651422C000009026EA459AFC
+	}
+	mySensoryProfile < uid=5C421F5C64B5418E0006571B1056BE1D > = EliteHumanoid 5C421F5C64103FF60001DC110745631D
+	myVisionProfile < uid=5C421F5C62D6AA190014A27BFA3CCF06 > = DeathtrooperVisionProfile 5C421F5C62D6A8AE0014A2137F117E59
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=5C421F5C64B541D2000657A750E8B6BA > = EmpireEliteDetectionProfile 4171A7E166605CA10004711C42253FFD
+	}
+	myTacticalPositionFinderProfile < uid=5C421F5C64B541DE000657BB08850F58 > = EliteNPCTacticalPositionFinderProfile 5C421F5C640EFAB70000C32926573D6D
+	myAimProfile < uid=416E63E4652D3BB80026126162599637 > = PerfectAimProfile 5C421F5C64216EA30000A16110635C4A
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout LoadoutA < uid=2736B365635FF3DD0000A815C07CD454 > = emp_DeathTrooper_Rifle 2736B365635FF3940000A806AC9DD2C9
+	}
+	myMotionPatternProfile < uid=5C421F5C64B54231000657CFDD56CD23 > = EliteCombatMotionPatternProfile 5C421F5C640EF70E0004C354A9E670A2
+	myPlayerMeleeDamageModifier 1.0
+	myAudioParameters
+	{
+		mySwitches
+		{
+			AudioSwitch "NPC Faction Switch"
+			{
+				myGuid 4BD588516690529AC4713803A34EF19A
+			}
+		}
+		myAudioSwitchByTags
+		{
+			AudioSwitchByTags StormtrooperFemale
+			{
+				myTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=E4123D27651423A80000AD2987735937 > = Agent_Gender_FeminineTag 16DEADE6626D20EA00002E5277B65AD4
+				}
+				mySwitch
+				{
+					myGuid 4EA0E0CA034AE1004E6E83F8BC82058A
+				}
+			}
+			AudioSwitchByTags StormtrooperMale
+			{
+				myTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=E4123D27651423A80000AD2ABE75DC7F > = Agent_Gender_MasculineTag 16DEADE6626D20EA00002E504CE30DE2
+				}
+				mySwitch
+				{
+					myGuid 40DB4C2A9DA3EC08AB49C009C08A0CA5
+				}
+			}
+		}
+	}
+	myAudioNPCDangerWeight 6.0
+	myPetAttackTargetType HumanoidHeavy
+	myCanBeDetectedByPetSenses FALSE
+	myMeleeDefenseProfile < uid=5C421F5C641D5F0500016877EBB517CF > = EliteMeleeDefense 4171A7E1669A151400016D29EA660845
+	myStaggerConfig < uid=5C421F5C62F2152C000472041F3EC67A > = NPC_Elite 416E63E465242310000377F2DCF7DE2F
+	myCombatRole Elite
+	mySuppressionProfile < uid=4171A7E166FBB592000744E75EC6C9C5 > = npc_elite_supression_profile 4171A7E166FBB4FB000744DF3A7B56A0
+	myResistanceProfile < uid=4171A7E164415788000110252FF9EB6C > = EliteResistanceProfile 4171A7E164415759000106211E6A3DE7
+}
+

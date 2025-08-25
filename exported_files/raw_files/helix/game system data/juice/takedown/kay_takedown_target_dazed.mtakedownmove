@@ -1,0 +1,42 @@
+include "helix/game system data/fruit/takedown/takedown_move.fruit"
+include "helix/game system data/juice/takedown/kay_finisher_takedown_ground.mtakedownmove"
+
+TakedownMove kay_takedown_target_dazed < uid=D588183D66436B5B00025E4F97DF81AA > : kay_finisher_takedown_ground
+{
+	myIsFallback FALSE
+	myStartConditions
+	{
+		myTargetInRange
+		{
+			myEnabled TRUE
+			myDistance 3.0
+		}
+		myGameCondition
+		{
+			GameConditionMeleeGroup Group
+			{
+				myConditions
+				{
+					GameConditionMeleeAttackerIsInMovementState Ground
+					{
+					}
+					GameConditionTakedownExecutionConstraints TakedownExecutionConstraints
+					{
+						myMaxTargetFacingAngle 180.0
+					}
+					GameConditionMeleeTargetHeightDelta GameConditionMeleeTargetHeightDelta
+					{
+						myHeightDelta 0.75
+						myOperator LessThan
+						myUseEyePositionAsReference FALSE
+					}
+					GameConditionTargetIsDazed IsDazed
+					{
+					}
+				}
+			}
+		}
+	}
+	myPriority 1
+}
+

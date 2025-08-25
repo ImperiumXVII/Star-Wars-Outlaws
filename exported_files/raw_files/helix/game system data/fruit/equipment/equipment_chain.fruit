@@ -1,0 +1,34 @@
+include "helix/game system data/fruit/equipment/equipment_slot_types.fruit"
+
+enum EquipmentChainConfigurationType
+{
+	Main
+	Secondary
+}
+
+class EquipmentLinkData
+{
+	EquipmentSlotTagList myLinkedEquipmentList
+}
+
+list EquipmentLinkDataList
+{
+	EquipmentLinkData
+}
+
+class EquipmentChainConfiguration
+{
+	EquipmentLinkDataList myChainLinksList
+	EquipmentChainConfigurationType myConfigurationType Main
+}
+
+list EquipmentChainConfigurationList < size=4 >
+{
+	EquipmentChainConfiguration
+}
+
+class EquipmentChainData
+{
+	EquipmentChainConfigurationList myChainConfigurationList
+	EquipmentSlotGroupType myGroupType Unassigned
+}

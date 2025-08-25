@@ -1,0 +1,37 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/intel/gym_quest_intel.mintel"
+
+Quest gym_quest_objective_with_intel < uid=83E36AE361B0C6F30001E704915A88C7 >
+{
+	myName "aurabesh = false, contextComment = \"\", enabled = true, guid = #83E36AE361B0D0050004F8F30E452E4C, lineVersion = 2, maxLength = 0, productId = -1, sectionId = -1, text = \"Intel Quest\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = true, guid = #83E36AE361B0D0050004F8F41BFFA8A3, lineVersion = 2, maxLength = 0, productId = -1, sectionId = -1, text = \"Quest with intel\", type = \"MenuLine\""
+	myType Main
+	myBeats
+	{
+		QuestBeat "Interact with button" < uid=83E36AE361B0D00D0004FCBF79E51543 >
+		{
+			myScript helix/scripts/gym_quest_objective_with_intel_beat.mscript
+			myName "aurabesh = false, contextComment = \"\", enabled = true, guid = #83E36AE361B0D0100004FE30A7757173, lineVersion = 3, maxLength = 0, productId = -1, sectionId = -1, text = \"Interact with button\", type = \"MenuLine\""
+			myLevelInfo 5B075E3E5FFEC6FC0000003496B4E530
+			myObjectives
+			{
+				QuestObjectiveInteract Interact < uid=83E36AE361B0D0380005109866390680 >
+				{
+					myName "aurabesh = false, contextComment = \"\", enabled = true, guid = #83E36AE361B0D0390005113137274809, lineVersion = 2, maxLength = 0, productId = -1, sectionId = -1, text = \"Interact with button\", type = \"MenuLine\""
+					myIntel
+					{
+						Intel "Intel 1" < uid=83E36AE361B33184000019F93087CDEB > = gym_quest_intel_1 83E36AE361B0D0D40005582D39EE225C
+						Intel "Intel 2" < uid=83E36AE361B33184000019FAEDA452A0 > = gym_quest_intel_2 83E36AE361B0D115000575FF51482E5A
+					}
+				}
+			}
+			myQuestBeatStateGameValue < uid=6F2AF91962178AC8000028914016B3C0 >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=6F2AF91962178AC8000028925BD234D0 >
+	{
+	}
+}
+

@@ -1,0 +1,21 @@
+include "helix/game system data/fruit/equipment/equipment_holding.fruit"
+include "helix/game system data/juice/item/equipmentholding/holding_kays_weapon_base.mequipmentholdingconfig"
+
+EquipmentHoldingConfig holding_coop_rifle < uid=7EE64634637CDA6400004D1C73FB9D2B > : holding_kays_weapon_base
+{
+	myHandlingMode TwoHands
+	myAlwaysHold TRUE
+	myAlwaysRaise TRUE
+	myHeldIfEquipmentNotReadyEnabled TRUE
+	myPlayerStateBehavior
+	{
+		myMelee HeldNotAllowed
+		myTraversal StateAllowed
+		myOverHeat StateAllowed
+		myRoll StateAllowed
+		myCrouch HeldNotAllowedButStateRestricted
+		mySprint StateAllowed
+		myJump StateAllowed
+	}
+}
+

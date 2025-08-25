@@ -1,0 +1,103 @@
+include "helix/game system data/fruit/settings/playersettings.fruit"
+include "helix/game system data/juice/camera/modifiers/landing_heavy.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/landing_medium.mcameramodifier"
+
+LandingParameters LandingParameters
+{
+	myLandingSpeedMultiplierCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.43333334 0.040000003, -1.1333334 0.20666668, -0 0.083333336, -2.3333335 0, }, outTangents = { 0.43333334 -0.040000003, 1.1333334 -0.20666668, 0 -0.083333336, 2.3333335 0, 0 0, }, properties = { 203, 2251, 3275, 4299, 1095, }, values = { 0.30000001 0.99000001, 1.6 0.87, 5 0.25, 5 0, 12 0, }, }, numKeys = 5, }"
+	myLandingSettings
+	{
+		LandingSettings FatalLanding
+		{
+			myLandingType Fatal
+			myMinHeightThreshold 12.0
+			myFallDamagePercentage 1.0
+			myIsConcussive TRUE
+			mySpeedRecoveryTime 3.0
+			mySpeedRecoveryCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.0028822755 -3.1603759e-05, -1.1 0, }, outTangents = { 0.02 0, 0.081293523 0.00089137256, 0 -0, }, properties = { 8467, 9491, 7443, }, values = { 0 0.15000001, 0.03424114 0.1155415, 1 1, }, }, numKeys = 3, }"
+			myJumpCooldown 500
+			myPowerSlideCooldown 500
+			myRollCooldown 500
+			myResetPowerSlideInput TRUE
+			myResetRollInput TRUE
+			myIgnoreAutoStepup TRUE
+		}
+		LandingSettings HeavyLanding_NearDeath
+		{
+			myLandingType Heavy
+			myMinHeightThreshold 11.5
+			myFallDamagePercentage MIN(((3+PlayerHealthBonus-0.05)/(3+PlayerHealthBonus)),0.99)*PlayerReduceFallDamage
+			myIsConcussive FALSE
+			mySpeedRecoveryTime 3.0
+			mySpeedRecoveryCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.0028822755 -3.1603759e-05, -1.1 0, }, outTangents = { 0.02 0, 0.081293523 0.00089137256, 0 -0, }, properties = { 8467, 9491, 7443, }, values = { 0 0.15000001, 0.03424114 0.1155415, 1 1, }, }, numKeys = 3, }"
+			myJumpCooldown 500
+			myPowerSlideCooldown 500
+			myRollCooldown 500
+			myResetPowerSlideInput TRUE
+			myResetRollInput TRUE
+			myIgnoreAutoStepup TRUE
+		}
+		LandingSettings HeavyLanding_high
+		{
+			myLandingType Heavy
+			myMinHeightThreshold 9.2
+			myFallDamagePercentage MIN((4/(3+PlayerHealthBonus)),0.95)*PlayerReduceFallDamage
+			myIsConcussive FALSE
+			mySpeedRecoveryTime 2.8
+			mySpeedRecoveryCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.0028822755 -3.1603759e-05, -1.1 0, }, outTangents = { 0.02 0, 0.081293523 0.00089137256, 0 -0, }, properties = { 8467, 9491, 7443, }, values = { 0 0.15000001, 0.03424114 0.1155415, 1 1, }, }, numKeys = 3, }"
+			myJumpCooldown 500
+			myPowerSlideCooldown 500
+			myRollCooldown 500
+			myResetPowerSlideInput TRUE
+			myResetRollInput TRUE
+			myIgnoreAutoStepup TRUE
+		}
+		LandingSettings HeavyLanding_Medium
+		{
+			myLandingType Heavy
+			myMinHeightThreshold 7.2
+			myFallDamagePercentage MIN((2/(3+PlayerHealthBonus)),0.95)*PlayerReduceFallDamage
+			myIsConcussive FALSE
+			mySpeedRecoveryTime 2.6
+			mySpeedRecoveryCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.0028822755 -3.1603759e-05, -1.1 0, }, outTangents = { 0.02 0, 0.081293523 0.00089137256, 0 -0, }, properties = { 8467, 9491, 7443, }, values = { 0 0.15000001, 0.03424114 0.1155415, 1 1, }, }, numKeys = 3, }"
+			myJumpCooldown 500
+			myPowerSlideCooldown 500
+			myRollCooldown 500
+			myResetPowerSlideInput TRUE
+			myResetRollInput TRUE
+			myIgnoreAutoStepup TRUE
+		}
+		LandingSettings HeavyLanding_Low
+		{
+			myLandingType Heavy
+			myMinHeightThreshold 5.13
+			myFallDamagePercentage MIN((0.9/(3+PlayerHealthBonus)),0.95)*PlayerReduceFallDamage
+			myIsConcussive FALSE
+			mySpeedRecoveryTime 2.4
+			mySpeedRecoveryCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.0028822755 -3.1603759e-05, -1.1 0, }, outTangents = { 0.02 0, 0.081293523 0.00089137256, 0 -0, }, properties = { 8467, 9491, 7443, }, values = { 0 0.15000001, 0.03424114 0.1155415, 1 1, }, }, numKeys = 3, }"
+			myJumpCooldown 500
+			myPowerSlideCooldown 500
+			myRollCooldown 500
+			myResetPowerSlideInput TRUE
+			myResetRollInput TRUE
+			myIgnoreAutoStepup TRUE
+		}
+		LandingSettings MediumLanding
+		{
+			myLandingType Medium
+			myMinHeightThreshold 1.6
+			mySpeedRecoveryTime 1.4
+			mySpeedRecoveryCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.10000001 0, -0.89999998 0, }, outTangents = { 0.059999999 0, 0.25 0, 0 0, }, properties = { 2323, 274, 1299, }, values = { 0 0.5, 0.2 0.30000001, 1 1, }, }, numKeys = 3, }"
+			myJumpCooldown 150
+		}
+		LandingSettings LightLanding
+		{
+			myLandingType Light
+			myMinHeightThreshold -1.0
+			mySpeedRecoveryTime 1.25
+			mySpeedRecoveryCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.10000001 0, -0.75999999 0, }, outTangents = { 0.15000001 0, 0.25 0, 0 0, }, properties = { 2323, 274, 1299, }, values = { 0 0.5, 0.18000001 0.40000001, 1 1, }, }, numKeys = 3, }"
+			myJumpCooldown 0
+		}
+	}
+}
+

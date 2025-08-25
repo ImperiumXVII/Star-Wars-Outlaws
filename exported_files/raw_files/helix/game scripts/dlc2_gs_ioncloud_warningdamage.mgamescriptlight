@@ -1,0 +1,547 @@
+{
+	connectionsById = {
+		1201 0 2 -100,
+		1190 0 1189 0,
+		1146 3 1181 0,
+		1 100 1146 0,
+		1 217 1147 0,
+		1147 -1 1148 1,
+		1148 0 1146 1,
+		1180 0 1181 1,
+		1184 0 1185 1,
+		1185 0 1191 1,
+		1187 0 1180 1,
+		1188 0 1186 1,
+		1146 2 1201 1,
+		1 217 1179 1,
+		1 217 1187 1,
+		1 217 1188 1,
+		1183 -1 1185 2,
+		1189 -1 1188 2,
+		1149 0 1148 2,
+		1186 0 1179 2,
+		1191 0 1186 2,
+		1181 3 1201 2,
+		1 218 1191 2,
+		1192 0 1191 3,
+		1179 75 1201 3,
+		1 219 1186 3,
+		1181 2 1179 25,
+	},
+	graphTypeSpecific = {
+		gameScriptType = "Generic",
+		preload = true,
+	},
+	lastNodeId = 1203,
+	layers = {},
+	locComp = {},
+	nodesById = {
+		[1] = {
+			defaults = {
+				connectionsById = {
+					1145 0 17 217,
+					1202 0 17 218,
+					1203 0 17 219,
+				},
+				layers = {},
+				nodesById = {
+					[17] = {
+						editorData = {
+							position = 0 0,
+						},
+						type = "internal:CompoundDefaults",
+					},
+					[1145] = {
+						editorData = {
+							hidden = true,
+						},
+						type = "native:Constant",
+						value = {
+							#&00000000000000000000000000000000,
+						},
+						valueType = "HC_Agent",
+					},
+					[1202] = {
+						editorData = {
+							hidden = true,
+						},
+						type = "native:Constant",
+						value = 0,
+						valueType = "float",
+					},
+					[1203] = {
+						editorData = {
+							hidden = true,
+						},
+						type = "native:Constant",
+						value = 0,
+						valueType = "float",
+					},
+				},
+			},
+			editorData = {
+				position = 0 0,
+			},
+			gameScriptType = "Generic",
+			lastId = 219,
+			pins = {
+				{
+					id = 100,
+					name = "Start",
+				},
+				{
+					id = 217,
+				},
+				{
+					id = 218,
+					name = "Trailblazer Charge Amount",
+				},
+				{
+					id = 219,
+					name = "NPC Charge Amount",
+				},
+			},
+			type = "HC_InputsGameScriptNode",
+		},
+		{
+			editorData = {
+				position = 0 0,
+			},
+			gameScriptType = "Generic",
+			type = "HC_OutputsGameScriptNode",
+		},
+		[1146] = {
+			editorData = {
+				position = -4505 -2800,
+			},
+			type = "native:ImpulseSelect",
+		},
+		[1147] = {
+			editorData = {
+				position = -4845 -2740,
+			},
+			type = "HC_AgentNode_GetFaction",
+		},
+		[1148] = {
+			editorData = {
+				position = -4645 -2740,
+			},
+			label = "Comparison/Equal",
+			type = "internal:TypeSelectByLabel",
+		},
+		[1149] = {
+			editorData = {
+				hidden = true,
+			},
+			type = "native:Constant",
+			value = {
+				#&91DC5D3C66FBD94500000044FB8B5663,
+			},
+			valueType = "Faction Constant Data",
+		},
+		[1179] = {
+			editorData = {
+				parentId = 1195,
+				position = -3032 -2648,
+			},
+			type = "HC_CombatScriptNode_ApplyIonCharge",
+		},
+		[1180] = {
+			editorData = {
+				parentId = 1182,
+				position = -3465 -2550,
+			},
+			type = "HC_EntityIsValid",
+		},
+		[1181] = {
+			editorData = {
+				parentId = 1182,
+				position = -3317 -2614,
+			},
+			type = "native:ImpulseSelect",
+		},
+		[1182] = {
+			editorData = {
+				childIds = {
+					1180,
+					1181,
+				},
+				fontSize = 20,
+				parentId = 1195,
+				position = -3495 -2740,
+				size = 351 295,
+				text = "Fix to prevent small error if the ship\ngets destroyed while the talent\nis active",
+			},
+			type = "internal:Comment",
+		},
+		[1183] = {
+			editorData = {
+				parentId = 1195,
+				position = -3851 -2258,
+			},
+			type = "HC_SpaceshipNode_GetCurrentPlayerSpaceshipType",
+		},
+		[1184] = {
+			editorData = {
+				parentId = 1195,
+				position = -3711 -2298,
+			},
+			type = "native:Constant",
+			value = "Trailblazer",
+			valueType = "Player Spaceship Type",
+		},
+		[1185] = {
+			editorData = {
+				parentId = 1195,
+				position = -3575 -2300,
+			},
+			label = "Comparison/Equal",
+			type = "internal:TypeSelectByLabel",
+		},
+		[1186] = {
+			editorData = {
+				parentId = 1195,
+				position = -3250 -2379,
+			},
+			label = "Comparison/Select",
+			type = "internal:TypeSelectByLabel",
+		},
+		[1187] = {
+			editorData = {
+				hidden = true,
+			},
+			label = "Conversion/Implicit",
+			type = "internal:TypeSelectByLabel",
+		},
+		[1188] = {
+			editorData = {
+				parentId = 1195,
+				position = -3555 -2411,
+			},
+			label = "Comparison/Equal",
+			type = "internal:TypeSelectByLabel",
+		},
+		[1189] = {
+			editorData = {
+				parentId = 1195,
+				position = -3715 -2360,
+			},
+			type = "HC_LocalPlayerNode_GetPlayer",
+		},
+		[1190] = {
+			editorData = {
+				hidden = true,
+			},
+			type = "native:Constant",
+			value = "Spaceship",
+			valueType = "Player Type",
+		},
+		[1191] = {
+			editorData = {
+				parentId = 1195,
+				position = -3415 -2320,
+			},
+			label = "Comparison/Select",
+			type = "internal:TypeSelectByLabel",
+		},
+		[1192] = {
+			editorData = {
+				hidden = true,
+			},
+			type = "native:Constant",
+			value = 0,
+			valueType = "float",
+		},
+		[1195] = {
+			editorData = {
+				bgColor = -13816531,
+				childIds = {
+					1193,
+					1194,
+					1179,
+					1182,
+					1183,
+					1184,
+					1185,
+					1186,
+					1188,
+					1189,
+					1191,
+				},
+				fontSize = 20,
+				position = -4285 -2840,
+				size = 1447 804,
+				text = "Damage Loop",
+				textColor = -2697514,
+			},
+			type = "internal:Comment",
+		},
+		[1201] = {
+			editorData = {
+				position = -2775 -2931,
+			},
+			type = "native:ImpulseAny",
+		},
+	},
+	savecount = 314,
+	variableMetaData = {
+		[#BAB09C5867ACB279000037D68873150A] = {
+			comment = "",
+			path = "Allow Takedown",
+			subType = "None",
+		},
+		[#BAB09C5867ACB279000037D4DB7856C0] = {
+			comment = "",
+			path = "Damage",
+			subType = "None",
+		},
+		[#BAB09C5867ACB279000037DCE409C468] = {
+			comment = "",
+			path = "TargetPosition",
+			subType = "None",
+		},
+		[#BAB09C5867ACB279000037D2FDE3579C] = {
+			comment = "",
+			path = "Direction",
+			subType = "None",
+		},
+		[#BAB09C5867ACB279000037DB0BB30C08] = {
+			comment = "",
+			path = "LeftHandSetUp",
+			subType = "None",
+		},
+		[#BAB09C5867ACB279000037D13A91D2CC] = {
+			comment = "",
+			path = "Owner",
+			subType = "None",
+		},
+		[#BAB09C5867ACB279000037DA41872162] = {
+			comment = "",
+			path = "RightHandSetUp",
+			subType = "None",
+		},
+		[#BAB09C5867ACB279000037D34436827E] = {
+			comment = "",
+			path = "Melee Tick Interval",
+			subType = "None",
+		},
+		[#BAB09C5867ACB279000037D9514CBD0C] = {
+			comment = "",
+			path = "TargetAgent",
+			subType = "None",
+		},
+		[#BAB09C5867ACB279000037D86171C48A] = {
+			comment = "",
+			path = "DetectionSetup",
+			subType = "None",
+		},
+		[#BAB09C5867ACB279000037D56FCBF8D0] = {
+			comment = "",
+			path = "Environmental Damage",
+			subType = "None",
+		},
+		[#BAB09C5867ACB279000037D778A65B00] = {
+			comment = "",
+			path = "HasHitPlayer",
+			subType = "None",
+		},
+		[#BAB09C5867ACB2A200003878C1C35462] = {
+			comment = "",
+			path = "Trailblazer Damage",
+			subType = "None",
+		},
+		[#BAB09C5867ACB2A2000038772DCAF5A4] = {
+			comment = "",
+			path = "NPC Warning Damage",
+			subType = "None",
+		},
+	},
+	variables = {
+		{
+			arraysupport = "None",
+			data = {
+				"",
+			},
+			includeInWatchSummary = false,
+			modification = "None",
+			name = "LeftHandSetUp",
+			sharing = "Local",
+			storage = "None",
+			typeName = "string",
+			varId = #&BAB09C5867ACB279000037DB0BB30C08,
+		},
+		{
+			arraysupport = "None",
+			data = {
+				{
+					#&00000000000000000000000000000000,
+				},
+			},
+			includeInWatchSummary = false,
+			modification = "None",
+			name = "Owner",
+			sharing = "Local",
+			storage = "None",
+			typeName = "HC_Agent",
+			varId = #&BAB09C5867ACB279000037D13A91D2CC,
+		},
+		{
+			arraysupport = "None",
+			data = {
+				0 0 0,
+			},
+			includeInWatchSummary = false,
+			modification = "None",
+			name = "Direction",
+			sharing = "Local",
+			storage = "None",
+			typeName = "float3",
+			varId = #&BAB09C5867ACB279000037D2FDE3579C,
+		},
+		{
+			arraysupport = "None",
+			data = {
+				0,
+			},
+			includeInWatchSummary = false,
+			modification = "None",
+			name = "Melee Tick Interval",
+			sharing = "Local",
+			storage = "None",
+			typeName = "float",
+			varId = #&BAB09C5867ACB279000037D34436827E,
+		},
+		{
+			arraysupport = "None",
+			data = {
+				0,
+			},
+			includeInWatchSummary = false,
+			modification = "None",
+			name = "Damage",
+			sharing = "Local",
+			storage = "None",
+			typeName = "float",
+			varId = #&BAB09C5867ACB279000037D4DB7856C0,
+		},
+		{
+			arraysupport = "None",
+			data = {
+				0,
+			},
+			includeInWatchSummary = false,
+			modification = "None",
+			name = "Environmental Damage",
+			sharing = "Local",
+			storage = "None",
+			typeName = "float",
+			varId = #&BAB09C5867ACB279000037D56FCBF8D0,
+		},
+		{
+			arraysupport = "None",
+			data = {
+				false,
+			},
+			includeInWatchSummary = false,
+			modification = "None",
+			name = "Allow Takedown",
+			sharing = "Local",
+			storage = "None",
+			typeName = "bool",
+			varId = #&BAB09C5867ACB279000037D68873150A,
+		},
+		{
+			arraysupport = "None",
+			data = {
+				false,
+			},
+			includeInWatchSummary = false,
+			modification = "None",
+			name = "HasHitPlayer",
+			sharing = "Local",
+			storage = "None",
+			typeName = "bool",
+			varId = #&BAB09C5867ACB279000037D778A65B00,
+		},
+		{
+			arraysupport = "None",
+			data = {
+				"",
+			},
+			includeInWatchSummary = false,
+			modification = "None",
+			name = "DetectionSetup",
+			sharing = "Local",
+			storage = "None",
+			typeName = "string",
+			varId = #&BAB09C5867ACB279000037D86171C48A,
+		},
+		{
+			arraysupport = "None",
+			data = {
+				{
+					#&00000000000000000000000000000000,
+				},
+			},
+			includeInWatchSummary = false,
+			modification = "None",
+			name = "TargetAgent",
+			sharing = "Local",
+			storage = "None",
+			typeName = "HC_Agent",
+			varId = #&BAB09C5867ACB279000037D9514CBD0C,
+		},
+		{
+			arraysupport = "None",
+			data = {
+				"",
+			},
+			includeInWatchSummary = false,
+			modification = "None",
+			name = "RightHandSetUp",
+			sharing = "Local",
+			storage = "None",
+			typeName = "string",
+			varId = #&BAB09C5867ACB279000037DA41872162,
+		},
+		{
+			arraysupport = "None",
+			data = {
+				0 0 0,
+			},
+			includeInWatchSummary = false,
+			modification = "None",
+			name = "TargetPosition",
+			sharing = "Local",
+			storage = "None",
+			typeName = "float3",
+			varId = #&BAB09C5867ACB279000037DCE409C468,
+		},
+		{
+			arraysupport = "None",
+			data = {
+				0.5,
+			},
+			includeInWatchSummary = false,
+			modification = "None",
+			name = "NPC Warning Damage",
+			sharing = "Local",
+			storage = "None",
+			typeName = "float",
+			varId = #&BAB09C5867ACB2A2000038772DCAF5A4,
+		},
+		{
+			arraysupport = "None",
+			data = {
+				0.5,
+			},
+			includeInWatchSummary = false,
+			modification = "None",
+			name = "Trailblazer Damage",
+			sharing = "Local",
+			storage = "None",
+			typeName = "float",
+			varId = #&BAB09C5867ACB2A200003878C1C35462,
+		},
+	},
+}

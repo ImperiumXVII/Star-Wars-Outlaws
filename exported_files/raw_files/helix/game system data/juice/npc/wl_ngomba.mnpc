@@ -1,0 +1,66 @@
+include "helix/game system data/juice/ai/dynamiccapinteractions/wildlifedcap.mnpcdynamiccapinteractionprofile"
+include "helix/game system data/juice/ai/wildlife corpse profile.mnpccorpseprofile"
+include "helix/game system data/juice/ai/wildlifecapevaluatorprofiles.mnpccapinteractionevaluatorprofile"
+include "helix/game system data/juice/ai/wl_ngomba.mnpcmotionpatternprofile"
+include "helix/game system data/juice/melee/wildlifemeleedefense.mnpcmeleedefenseprofile"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npc/wil_fp_prey.mnpc"
+include "helix/game system data/juice/quadrupedalgroundaligner/wildlife_ground_aligner_config.mquadalignerconfig"
+
+NPC wl_ngomba < uid=E9DD8F606333EC38000046D1C65EE89B > : wil_fp_prey
+{
+	myName "branch = \"TU1\", contextComment = \"The name of the cattle-like creature\", enabled = true, guid = #E9DD8F606684B1D00028BAA737C3EEDB, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10572, text = \"Robuma\", type = \"MenuLine\""
+	myCharacterVisuals < uid=E9DD8F606333EC8E000046DA059681D3 > = character_visuals_wil_ngomba E9DD8F606333EC98000046DC918F233A
+	myAnimSystemType Ngomba
+	myHealthFormula "5 + 5"
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=290EB60C63FDA36F000125C6B6526B41 > = Agent_Wildlife_NgombaTag 290EB60C6347814B0002FA703DA789D1
+	}
+	myPositionReservationSize 2.4
+	myNavigationLayerType Large
+	myNavigationCapability < uid=290EB60C64D4467C0000E22CEE1D063F > = DefaultWildlifeNavigationCapability 290EB60C64D1A5C50000CA29617570E5
+	myLodProfile < uid=E8E55FD8668610BD0003897B61785D2F > = Wildlife_Big E8E55FD86672A9BA000AA896ED914E0D
+	myVisionProfile < uid=290EB60C635783B800008816D511E7D8 > = NgombaVisionProfile 290EB60C635781760000ABE814D6224D
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=290EB60C634F7D9700007D695FB892DE > = NgombaDetectionProfile 290EB60C634F7D5900007D48A77965E8
+	}
+	myAgitationProfile < uid=D85A76846359D55D00014010AE1A9D69 > = "Ngomba Agitation Profile" D85A76846359D33C0000D6A231920D67
+	myAudioTriggerVolumeProfile < uid=F45C2A0166434BD9000000D7C2EB4BD3 > = wildlife_large_ngomba F45C2A016627A300000841B3C36746CA
+	myDynamicCAPInteractionProfile < uid=290EB60C6348FE2300036C4644D6A07A > = NgombaDynamicCAP 290EB60C66305B66000000D191D7E8A5
+	myCAPInteractionEvaluatorProfile < uid=290EB60C634784F600013F4DE1FFB0F6 > = wildlifecapevaluatorprofiles 290EB60C633262C600008C045368B169
+	myMotionPatternProfile < uid=E9DD8F606333EE8100004A8E591BDFAB > = NgombaMotionPatternProfile E9DD8F606333EED400004A929FB434D6
+	myMotionPlanFollowProfile < uid=EBEEDF3F6615EF59000A080B159C6E01 > = DewbackMotionPlanFollowProfile EBEEDF3F65029B13000432C28D975FB5
+	myMoveTurnCapabilitiesProfile < uid=EBEEDF3F636876BC00025969693CAF10 > = gnomba_NPCMoveTurnCapabilitiesProfile EBEEDF3F636876160002583595E24B5D
+	mySteeringProfile < uid=290EB60C6461E5F6000921A6DA85EA03 > = DewbackSteeringProfile EBEEDF3F662EFFE1000111783008D519
+	myFleeProfile < uid=E9DD8F606333EE8100004A8FEA91C5F7 > = NgombaFleeProfile E9DD8F606350F7B300022DA9F0CD66E8
+	myFootStepProfile < uid=E9DD8F60646343D900007DC5A80A38FB > = NgombaFootstep E9DD8F606459B54B00016E90E6516DCE
+	myPackProfile < uid=E9DD8F6063801F5A00009D047E062EBB > = NgombaPackProfile E9DD8F606380195B000063143A4F4095
+	myAudioParameters
+	{
+		myEmitterName "WL Robuma"
+		mySwitches
+		{
+			AudioSwitch "Ngomba Audio Swtich"
+			{
+				myGuid 433FBC73863111EFDF589C35C3949BA1
+			}
+		}
+	}
+	myMeleeDefenseProfile < uid=E9DD8F6064AD11B800017627B9B7F6D5 > = LargePreyMeleeDefense E9DD8F6064ACCF1900016EB1623B90CE
+	myStaggerConfig < uid=2E5ACA7E63A3FD7B0000B293482B7E8B > = WildlifeNgomba 2E5ACA7E63A3FCBB0000B289E5826AD3
+	myPhysicsProfile < uid=290EB60C63E9DCE40000F9320484CE95 > = Ngomba 290EB60C63E9DD400000F93C4121DAF0
+	myQuadrupedalGroundAlignerConfig < uid=4999D94C633F90610003E26A9A47F020 > = "Dewback Aligner Config" 4999D94C633F8EC20002DBEBDD003934
+	myMoveConfig < uid=D85A76846359D55D00014011AA4BC2CE > = ngomba_move_config D85A76846359D3A60000DD1B426C1FF0
+	myCorpseProfile < uid=290EB60C63FF1B5F00012C653FA1023D > = "Ngomba Corpse" 290EB60C63FF1B44000129DCA18C5E2C
+	myVisualEffectFootstep < uid=D8550C14655F228C00176F16E7664E91 >
+	{
+		myFootstepEffects = Big_wildlife
+		myLeftHandBoneAliasName LeftHand
+		myRightHandBoneAliasName RightHand
+		myReuseFootstepEffect TRUE
+	}
+	myFootstepVFXRange 70.0
+}
+

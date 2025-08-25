@@ -1,0 +1,30 @@
+include "helix/game system data/fruit/gamestatistics/gamestatistics.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+include "helix/game system data/fruit/reward/reward.fruit"
+
+class ProgressionChallenge
+{
+	GameConditionGameStatistic myCondition
+	string myIcon < bhv="sprite" >
+	varmap myUIName < bhv="localization" >
+	varmap myUIDescription < bhv="localization" >
+	uid myReward < bhv="constantData" constantDataType="reward" subTypeFilter="RewardItem" >
+	bool myShouldRewardBeSentToMailbox TRUE
+}
+
+list ChallengeList
+{
+	ProgressionChallenge
+}
+
+list UnlockConditionList < size=1 >
+{
+	GameConditionFormula
+}
+
+class ChallengeProgressionFaction < uid=auto >
+{
+	uid myFaction < bhv="constantData" constantDataType="faction" >
+	UnlockConditionList myUnlockConditions
+	ChallengeList myChallenges
+}

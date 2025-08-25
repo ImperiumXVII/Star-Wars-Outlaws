@@ -1,0 +1,33 @@
+include "helix/game system data/juice/equipment/aimassisttargetconfig/aimassisttargetconfig_default.maimassisttargetconfig"
+include "helix/game system data/juice/equipment/aimassisttargetconfig/aimassisttargetconfig_droppingpin.maimassisttargetconfig"
+include "helix/game system data/juice/equipment/aimassisttargetconfig/aimassisttargetconfig_mse.maimassisttargetconfig"
+include "helix/game system data/juice/melee/droidmeleedefense.mnpcmeleedefenseprofile"
+include "helix/game system data/juice/npc/base_civ_droid.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC emp_droid_mse < uid=41240B24657731A8000394AC3B4EC6B8 > : base_civ_droid
+{
+	myCharacterVisuals < uid=41240B246577323E000394AF00D050F1 > = character_visuals_4_droids_mse_series_maintenance_droid 849AB26562B227E800007BFE7585D819
+	myAdditionalGearGraphs 41240B24657B03790008C024F56879FA
+	myIsInvulnerable FALSE
+	myFaction < uid=41240B24657745B800267F7D0E0A6402 > = Empire 16DEADE65F21E5AB000000B35532A71B
+	myDialogueCharacters
+	{
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=E4123D27659974520004781F727D3283 >
+		{
+			myDialogueCharacter < uid=E4123D276599745F0004783ABF60C35E > = AI_DROID_MSE_DROID_BINARY_01 E4123D276582E50F001B27D50991051C
+		}
+	}
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=EBE060C265831AFC001A0A4DEE82BEE3 > = AmbientAstromechDetectionProfile EBE060C265807EEB00075BA55AFF70FD
+	}
+	myTacticalPositionFinderProfile < uid=EBE060C265842219000BBC6948418696 > = "AmbientDroid Tactical Position Finder Profile" EBE060C265841DF6000A6770F44684AA
+	myMotionPatternProfile < uid=41240B246577323E000394B07581C9F6 > = AstromechMotionPatternProfile EBE060C26407402B0001149DE3B904AE
+	myPlayerCustomAimAssistConfig < uid=A207755D66C5E42100084E3E353E6BE0 > = AimAssistTargetConfig_MSE A207755D66C5E5A80008CAFF2F06A524
+	myCanBeDetectedByNPC FALSE
+	myMeleeDefenseProfile < uid=A207755D6634CD5D0002C3063851C629 > = MseDroidMeleeDefense A207755D6634CCEB000279A31E9B9794
+	myOnAgentKilledGameScript "helix/game scripts/gs_ks_emp_msedroid_death.mgamescript"
+	myResistanceProfile < uid=EBE060C265831B23001A0A6844326386 > = AmbientDroidResistanceProfile EBE060C2657857B10007A2C83FD7D907
+}
+

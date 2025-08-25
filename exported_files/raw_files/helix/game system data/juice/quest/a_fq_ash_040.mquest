@@ -1,0 +1,258 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/rbtags/quest.mrbtagstags"
+include "helix/game system data/juice/reward/quest_completion_reward.mreward"
+include "helix/game system data/juice/rewardpreview/faction_quest_reward_previews.mrewardpreview"
+
+Quest A_FQ_ASH_040 < uid=913C1076642A9E9A0002986397C3751C >
+{
+	myName "branch = \"\", contextComment = \"A_FQ_ASH_040_Scum&Villany quest name displayed in the UI\", enabled = true, guid = #913C1076642A9EDB0002986BE7462DDE, lineVersion = 14, maxLength = 0, productId = 6, sectionId = 9368, text = \"Gunrunner\", type = \"MenuLine\""
+	myIntroDescription "branch = \"\", contextComment = \"A_FQ_ASH_040_Scum&Villany intro  description displayed in the UI\", enabled = true, guid = #C5B8DCF665118BAF000635542C9CC8B5, lineVersion = 9, maxLength = 0, productId = 6, sectionId = 9368, text = \"A lone Ashiga Clan myrmitrix, far from her hive, wants to hire Kay.\", type = \"MenuLine\""
+	myDescription "branch = \"\", contextComment = \"Faction Quest\", enabled = true, guid = #913C1076642A9EDB0002986C3AB02E6E, lineVersion = 8, maxLength = 0, productId = 6, sectionId = 9368, text = \"Zyssyk, an Ashiga myrmitrix who's been sent by the Queen to disrupt Hutt Cartel operations on Tatooine, hires Kay to rob a major weapons sale in Mos Eisley.\", type = \"MenuLine\"}"
+	myType Faction
+	myCompletionReward < uid=2AE2EC85644BEBF000338F466D82797A > = A_FQ_ASH_040_questcomplete_reward 2AE2EC85644A93B30000B2F84BBEC3EB
+	myCompletionRewardPreview < uid=2AE2EC85666876210041C8340229817F > = ASH_040_reward_preview 2AE2EC856668752B003ED840BC75A851
+	myGoals
+	{
+		QuestGoal "GO_01 Follow Nix to track the droid scent" < uid=C5B8DCF66555E8E8002B8343A60C9CC2 >
+		{
+			myGoalText "aurabesh = false, contextComment = \"A_ASH_040 Follow Nix to track the droid scent planet goal is displayed in UI\", enabled = true, guid = #C5B8DCF66555E8FF002B83451F5C8DA7, lineVersion = 6, maxLength = 0, productId = 6, sectionId = 9373, text = \"Follow Nix to track the droid scent\", type = \"MenuLine\""
+		}
+		QuestGoal "GO_02 Find info on the weapons shipment" < uid=C5B8DCF66544DD0400280924D2300B88 >
+		{
+			myGoalText "aurabesh = false, contextComment = \"A_ASH_040 Find info on the weapons shipment planet goal is displayed in UI\", enabled = true, guid = #C5B8DCF66544DD0400280925B45809F6, lineVersion = 6, maxLength = 0, productId = 6, sectionId = 9371, text = \"Find info on the weapons shipment\", type = \"MenuLine\""
+		}
+		QuestGoal "GO_03  Intercept the weapons shipment" < uid=C5B8DCF66544DE6E0028093663A7B5DC >
+		{
+			myGoalText "aurabesh = false, contextComment = \"A_ASH_040 Intercept the weapons shipment planet goal is displayed in UI\", enabled = true, guid = #C5B8DCF66544DE6E002809373ACDD90C, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9371, text = \"Intercept the weapons shipment\", type = \"MenuLine\""
+		}
+	}
+	myIntroBeat < uid=913C1076642AD595000156D3D04144C0 >
+	{
+		myScript helix/scripts/scr_A_FQ_ASH_040_TAT_PLN_B00_MeetZyssyk.mscript
+		myName "aurabesh = false, contextComment = \"A_FQ_ASH_040_B00 Meet Zyssyk planet beat is displayed in UI\", enabled = true, guid = #913C1076642AD57E000156D00FF5F8AA, lineVersion = 10, maxLength = 0, productId = 6, sectionId = 9370, text = \"Meet Zyssyk\", type = \"MenuLine\""
+		myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+		myObjectives
+		{
+			QuestObjectiveTalkTo OBJ01_TalkToZyssyk < uid=913C1076642C233B000B0B7EBF943964 >
+			{
+				myName "aurabesh = false, contextComment = \"A_FQ_ASH_040_B00 Talk to Zyssyk objective is displayed in UI\", enabled = true, guid = #913C1076642C235A000B0BA1CCF51936, lineVersion = 9, maxLength = 0, productId = 6, sectionId = 9370, text = \"Talk to Zyssyk\", type = \"MenuLine\""
+			}
+		}
+		myQuestBeatStateGameValue < uid=913C1076642AD595000156D470D1C6CA >
+		{
+		}
+	}
+	myBeats
+	{
+		QuestBeat "B01 Find info on the weapons shipment" < uid=913C1076642AB5200002A0D09B9EE06A >
+		{
+			myScript helix/scripts/scr_a_fq_ash_040_tat_pln_b01_slicetheterminal.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_ASH_040_B01 Find info on the weapons shipment planet beat is displayed in UI\", enabled = true, guid = #913C1076642AB5BC0002A0D5AE313982, lineVersion = 33, maxLength = 0, productId = 6, sectionId = 3614, text = \"Find info on the weapons shipment\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood RelaxedNoSpawnpoints
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "OBJ_010 Enter the Hutt District" < uid=913C1076642D21FE00014CD4A60A23CC >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_ASH_040_B01 Enter the Hutt District objective is not displayed in UI\", enabled = true, guid = #913C1076642C3A110002B5E7350CEA48, lineVersion = 17, maxLength = 0, productId = 6, sectionId = 3614, text = \"Enter the Hutt District\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+				QuestObjectiveGoToLocation "OBJ_015 The info is on a terminal inside the main building" < uid=C5B8DCF664E5D54400014BE8614B08BD >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_ASH_040_B01 The info is on a terminal inside the main building objective hint is displayed in UI\", enabled = true, guid = #C5B8DCF664E5DA3D00014BEE0B95E64D, lineVersion = 11, maxLength = 0, productId = 6, sectionId = 9371, text = \"The info is on a terminal inside the main building\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD FALSE
+					myIsHint TRUE
+				}
+				QuestObjectiveCustom "OBJ_020 Slice The Terminal" < uid=913C1076642D21FE00014CD569F33FE8 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_ASH_040_B01 Slice the terminal objective is not displayed in UI\", enabled = true, guid = #913C1076642C3A4E0002B5E97016A400, lineVersion = 14, maxLength = 0, productId = 6, sectionId = 3614, text = \"Slice the terminal\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD FALSE
+					myChildObjectives
+					{
+						QuestObjectiveCustom "OB_020_010 Terminal Highlight" < uid=C5B8DCF6669F8C03000B2A5E79C8B019 >
+						{
+							myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD TRUE
+						}
+					}
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=913C1076642D21FE00014CD7445B45E4 >
+			{
+				myDescription ""
+				myDefaultValue 0
+				myIsPersisted FALSE
+				myVariableAttributeName ""
+				myCanBeEditedFromScript FALSE
+				myCanBeEditedFromUI FALSE
+				myCanBeEditedFromProgressionGraph FALSE
+				myIntendedType QuestBeatState
+				myCategory QuestBeat
+				myParentLevelsToUseInInstanceName -1
+			}
+		}
+		QuestBeat "B01B Slice the Terminal" < uid=C5B8DCF664E89C5B0005286EB2F9A6B6 >
+		{
+			myScript helix/scripts/scr_a_fq_ash_040_tat_pln_b01b_slicetheterminal.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_ASH_040_B01B Slice the Terminal district planet beat is not displayed in UI\", enabled = true, guid = #C5B8DCF664E89C8A0005287123A0A7CD, lineVersion = 12, maxLength = 0, productId = 6, sectionId = 3614, text = \"Slice the Terminal\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveLeaveArea "OBJ_030 Leave the Hutt District" < uid=C5B8DCF664E8A25F00065208F4D99E4D >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_ASH_040_B01B Leave the Hutt district objective is displayed in UI\", enabled = true, guid = #C5B8DCF664E8A25F0006520C8FF94D1A, lineVersion = 9, maxLength = 0, productId = 6, sectionId = 9371, text = \"Leave the Hutt district\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveGoToLocation "OBJ_035 Leave the Hutt District Helper" < uid=C5B8DCF665D71AA80020CFADB011A2FF >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=C5B8DCF664E89D1E000528732A8EE63C >
+			{
+			}
+		}
+		QuestBeat "B02A Intercept the weapons shipment" < uid=913C1076642AB55A0002A0D1A2741730 >
+		{
+			myScript helix/scripts/scr_a_fq_ash_040_tat_pln_b02_gettothestash.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_ASH_040_B02A Reach the deal location planet beat is displayed in UI\", enabled = true, guid = #913C1076642AB6200002A0D7FA96E601, lineVersion = 20, maxLength = 0, productId = 6, sectionId = 3614, text = \"Intercept the weapons shipment\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Relaxed
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "OBJ_010 Reach the Deal Location" < uid=913C1076642C440F00057A6DC6F5B61D >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_ASH_040_B02A Reach the deal location objective is not displayed in UI\", enabled = true, guid = #913C1076642D219700014CD2231C3610, lineVersion = 15, maxLength = 0, productId = 6, sectionId = 3614, text = \"Reach the deal location\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=913C1076642AD2CA000155CAB19C37C5 >
+			{
+			}
+		}
+		QuestBeat "B02B Break into the Deal Location" < uid=C5B8DCF6650C55A50006AECBEA096140 >
+		{
+			myScript helix/scripts/scr_a_fq_ash_040_tat_pln_b02b_breakintothedeallocation.mscript
+			myName "aurabesh = false, contextComment = \"A_FQ_ASH_040_B02B Break into the deal location planet beat is not displayed in UI\", enabled = true, guid = #C5B8DCF6650C55B80006AEF0C522F1A9, lineVersion = 6, maxLength = 0, productId = 6, sectionId = 3614, text = \"Break into the deal location\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "OBJ_015 Break into the Deal Location" < uid=C5B8DCF664F6E8A7000315DA5E9B5D62 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_ASH_040_B02 Enter the deal location objective is not displayed in UI\", enabled = true, guid = #C5B8DCF664F6E8B8000315DCDFC24839, lineVersion = 10, maxLength = 0, productId = 6, sectionId = 3614, text = \"Break into the deal location\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+				QuestObjectiveInteract "OBJ_020 Find The Weapon Stash" < uid=913C1076642D5B07000172B63A7A9311 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_ASH_040_B02 Find the weapon stash objective is not displayed in UI\", enabled = true, guid = #913C1076642D5D5C000225AE19886CB6, lineVersion = 18, maxLength = 0, productId = 6, sectionId = 3614, text = \"Find the weapon stash\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD FALSE
+				}
+				QuestObjectiveLeaveArea "OBJ_030 Leave the Area" < uid=9D01D2176436BD26000482BDCFBCBE79 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_ASH_040_B02 Leave the area objective is displayed in UI\", enabled = true, guid = #9D01D2176436BD30000482BE16D71572, lineVersion = 9, maxLength = 0, productId = 6, sectionId = 9372, text = \"Leave the area\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+				}
+			}
+			myQuestBeatStateGameValue < uid=C5B8DCF6650C55BC0006AEF1EB1EC755 >
+			{
+			}
+		}
+		QuestBeat "B03A Follow Nix" < uid=913C1076642AB5750002A0D251B7EA12 >
+		{
+			myScript helix/scripts/scr_a_fq_ash_040_tat_pln_b03_follownix.mscript
+			myName "aurabesh = false, contextComment = \"A_FQ_ASH_040_B03 Follow Nix to track the droid scent planet beat is not displayed in UI\", enabled = true, guid = #913C1076642AB6240002A0D98258D454, lineVersion = 16, maxLength = 0, productId = 6, sectionId = 3614, text = \"Follow Nix to track the droid scent\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveFollow "OBJ_10 Follow Nix" < uid=913C1076642D8E7000030B499C718507 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_ASH_040_B03 Follow Nix to track the droid scent objective is not displayed in UI\", enabled = true, guid = #913C1076642D8EB400030B4CC806990E, lineVersion = 11, maxLength = 0, productId = 6, sectionId = 3614, text = \"Follow Nix to track the droid scent\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=913C1076642AD2CA000155CB5C82A000 >
+			{
+			}
+		}
+		QuestBeat "B03B Follow Nix" < uid=C5B8DCF66554E6A0000DF5D012AABBB4 >
+		{
+			myScript helix/scripts/scr_a_fq_ash_040_tat_pln_b03b_follownix.mscript
+			myName "aurabesh = false, contextComment = \"A_FQ_ASH_040_B03 Follow Nix to track the droid scent planet beat is not displayed in UI\", enabled = true, guid = #C5B8DCF66554E66B000DF5CCD78B4B62, lineVersion = 16, maxLength = 0, productId = 6, sectionId = 3614, text = \"Follow Nix to track the droid scent\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveFollow "OBJ_010 Follow Nix" < uid=C5B8DCF66555E981002B8349CD1DFABC >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_ASH_040_B03 Follow Nix to track the droid scent objective is not displayed in UI\", enabled = true, guid = #C5B8DCF66555E95E002B834836D77874, lineVersion = 9, maxLength = 0, productId = 6, sectionId = 3614, text = \"Follow Nix to track the droid scent\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+				QuestObjectiveGoToLocation "OBJ_020 Find a Way to Go Past the Imperials" < uid=C5B8DCF66554E6A0000DF5D1CF810367 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_ASH_040_B03 Find a way past the Imperials objective is displayed in UI\", enabled = true, guid = #C5B8DCF66554E66B000DF5CEF81ACC4E, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 9373, text = \"Find a way past the Imperials\", type = \"MenuLine\""
+				}
+				QuestObjectiveFollow "OBJ_030 Follow Nix" < uid=C5B8DCF66554E6A0000DF5D28A1EC30E >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_ASH_040_B03 Follow Nix to track the droid scent objective is displayed in UI\", enabled = true, guid = #C5B8DCF66554E66B000DF5CF89BEF22E, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 9373, text = \"Follow Nix to track the droid scent\", type = \"MenuLine\""
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=C5B8DCF66554E6A0000DF5D33C3DC793 >
+			{
+			}
+		}
+		QuestBeat "B04 Secure the merchandise" < uid=913C1076642AB5820002A0D3C00F4361 >
+		{
+			myScript helix/scripts/scr_a_fq_ash_040_tat_pln_b04_securethemerchandise.mscript
+			myName "aurabesh = false, contextComment = \"A_FQ_ASH_040_B04 Secure the merchandise planet beat is not displayed in UI\", enabled = true, guid = #913C1076642AB6290002A0DB4A87ECE0, lineVersion = 13, maxLength = 0, productId = 6, sectionId = 3614, text = \"Secure the merchandise \", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "OBJ_010_Find The Weapon Shipment" < uid=9D01D2176439115A0001103F755A7676 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_ASH_040_B04 Find the weapons shipment objective is displayed in UI\", enabled = true, guid = #9D01D217643911C000011062C1C7F8E5, lineVersion = 12, maxLength = 0, productId = 6, sectionId = 9374, text = \"Find the weapons shipment\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveKillFireteam "OBJ_020 Secure The Area" < uid=9D01D2176437B9070003C36B69B2F549 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_ASH_040_B04 Secure the area objective is displayed in UI\", enabled = true, guid = #9D01D2176437B9170003C36CF7D78046, lineVersion = 9, maxLength = 0, productId = 6, sectionId = 9374, text = \"Secure the area\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveInteract "OBJ_050 Recover the Weapon Shipment" < uid=9D01D2176437F5A900053D95BB579D06 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_ASH_040_B04 Recover the weapons shipment objective is displayed in UI\", enabled = true, guid = #9D01D2176438005C00054812B253CA3E, lineVersion = 14, maxLength = 0, productId = 6, sectionId = 9374, text = \"Recover the weapons shipment\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=913C1076642AD2CA000155CC193F894A >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=913C1076642A9E9A00029864AAEB620C >
+	{
+	}
+	myQuestStartedRBTag < uid=DA5615DD64B5482B0000C64C68236FBD > = World_Quest_FQASH040_Started DA5615DD64A439D700016586F5FFBE80
+	myQuestCompletedRBTag < uid=DA5615DD64B5482B0000C64DE88FE6F2 > = World_Quest_FQASH040_Completed DA5615DD64A439E7000165880F8AE995
+	myFaction 4728ADF9620B6C2B0000201F5FC5C937
+}
+

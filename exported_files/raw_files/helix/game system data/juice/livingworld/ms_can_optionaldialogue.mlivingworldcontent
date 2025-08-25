@@ -1,0 +1,157 @@
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+
+LivingWorldContent "CAN OD BASE" < uid=93D8B0CA6564664600024A24AAFDB608 >
+{
+	myCompletedGameValue < uid=93D8B0CA6564671900024A25A69BFA69 >
+	{
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType Ambient Ambient
+	}
+	myLayerType MicroStory
+	myBlockingRadius 2.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 50"
+		{
+			myDistance 50.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 50"
+				{
+					myDistance 55.0
+				}
+				LivingWorldGameConditionGroup "Group AND"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+						{
+						}
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 50"
+						{
+							myDistance 50.0
+						}
+					}
+				}
+				GameConditionQuestBeatState "Mq010 Beat04 Started"
+				{
+					myQuestBeat C5645856628B81B10000B4AF5C900B6F
+					myQuestBeatState Started
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS801_OD_VendorBramLore < uid=93D8B0CA65646A420001FD950AF2F0DD > : "CAN OD BASE"
+{
+	myCompletedGameValue < uid=93D8B0CA65646BBD0001FD9EF9C9CDF3 >
+	{
+	}
+}
+
+LivingWorldContent MS802_OD_CasinoGambling < uid=93D8B0CA65646A950001FD9617E92740 > : "CAN OD BASE"
+{
+	myCompletedGameValue < uid=93D8B0CA65646BBD0001FD9F9D5AD3EC >
+	{
+	}
+}
+
+LivingWorldContent MS803_OD_VendorPayBack < uid=93D8B0CA65646AB10001FD971F03E8E6 > : "CAN OD BASE"
+{
+	myCompletedGameValue < uid=93D8B0CA65646BBD0001FDA069BF277C >
+	{
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 50"
+				{
+					myDistance 55.0
+				}
+				LivingWorldGameConditionGroup "Group AND"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+						{
+						}
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 50"
+						{
+							myDistance 50.0
+						}
+					}
+				}
+				GameConditionQuestBeatState "Mq010 Beat03 Completed"
+				{
+					myQuestBeat C564585663F33004000166D7DEE9FC69
+					myQuestBeatState Completed
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS804_OD_VendorOfferNixFood < uid=93D8B0CA65646AC20001FD98AC616C11 > : "CAN OD BASE"
+{
+	myCompletedGameValue < uid=93D8B0CA65646BBD0001FDA173938C87 >
+	{
+	}
+}
+
+LivingWorldContent MS811_OD_ClubGuards < uid=93D8B0CA65646B180001FD9CC8E79ECD > : "CAN OD BASE"
+{
+	myCompletedGameValue < uid=93D8B0CA65646BBD0001FDA38F0C1F9C >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 50"
+		{
+			myDistance 50.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionQuestBeatState "MQ_010 Beat04 Started"
+		{
+			myQuestBeat C5645856628B81B10000B4AF5C900B6F
+			myQuestBeatState Started
+		}
+	}
+}
+
+LivingWorldContent MQ_010_OD_CantinaWorker < uid=93D8B0CA65646B550001FD9DB9B4705C > : "CAN OD BASE"
+{
+	myCompletedGameValue < uid=93D8B0CA65646BBD0001FDA627DFF2AC >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 50"
+		{
+			myDistance 50.0
+			myOperator LessThanOrEqual
+		}
+	}
+}
+

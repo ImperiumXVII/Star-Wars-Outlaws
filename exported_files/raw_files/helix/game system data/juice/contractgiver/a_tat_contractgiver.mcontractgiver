@@ -1,0 +1,166 @@
+include "helix/game system data/fruit/contractgiver/contractgiver.fruit"
+include "helix/game system data/juice/contract/contracts_toshara.mcontract"
+include "helix/game system data/juice/contract/tos_contracts.mcontract"
+include "helix/game system data/juice/mapref/mapref_contractgiver_template.mmapref"
+include "helix/game system data/juice/rbtags/vendor.mrbtagstags"
+
+ContractGiver A_tat_contractgiver_TEMPLATE_neutral < uid=BE60F07F653395180005CDFFC182C9D5 >
+{
+	myGalaxyLocation B581CAC861852906000019CEA80B70F9
+	myUIInfo
+	{
+		myName "aurabesh = false, branch = \"\", contextComment = \"[DEV] independant contract giver title\", enabled = true, guid = #BE60F07F653395180005CDFB249385BD, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 415, text = \"Independent broker\", type = \"MenuLine\""
+	}
+	myAffiliatedFactions
+	{
+		Faction Hutt < uid=BE60F07F6544A63400011A298572A06D > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+		Faction "Crimson Dawn" < uid=BE60F07F6544A63700011A2A9717E5E7 > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+		Faction Ashiga < uid=BE60F07F6544A63E00011A2B1FC01414 > = AshigaClan 4728ADF9620B6C2B0000201F5FC5C937
+	}
+	myMapRef < uid=BE60F07F653395180005CE05B561BE67 > = mapref_contractgiver_template B581CAC8611B6CD80000298BBE69C121
+	mySlots
+	{
+		ContractGiverSlot "Slot 1"
+		{
+			myMaxReputationTierForGeneration Bad
+			mySlotCooldown 5400.0
+		}
+		ContractGiverSlot "Slot 2"
+		{
+			myMinReputationTierForGeneration Bad
+			myMaxReputationTierForGeneration Fair
+			mySlotCooldown 5400.0
+		}
+		ContractGiverSlot "Slot 3"
+		{
+			myMinReputationTierForGeneration Bad
+			myMaxReputationTierForGeneration Fair
+			mySlotCooldown 5400.0
+		}
+		ContractGiverSlot "Slot 4"
+		{
+			myMinReputationTierForGeneration Good
+			myMaxReputationTierForGeneration Excellent
+			mySlotCooldown 5400.0
+		}
+	}
+	myGiverOutOfJobsTag < uid=FD1071176579AAC40006F08CB08CF062 > = Agent_Vendor_OutOfJobsTemporarily 1EC89F2563FC746E000009C4B28E8D56
+	myFamiliarTag < uid=ADF6F5536581D64500002D7A5B26D1EC > = Agent_Vendor_TrustedCustomerBarksActive 1EC89F256401B61A0000D58ACE830A78
+	myRecentlyBetrayedTag < uid=FD13B51465D76F2C000000FE36122F3A > = Agent_Vendor_WasBetrayed 1EC89F2565BB59C3000000D2410D92AB
+	myLowReputationTier Fair
+	myLowReputationTag < uid=FD13B51465D76F2C000000FF84AC50E6 > = Agent_Vendor_LowReputationClosedForBusiness 1EC89F2565DDBAFF000A27BBD4679E47
+}
+
+ContractGiver A_tat_contractgiver_neutral_RaivanDhavik < uid=BE60F07F65339B2D0005CE79EFA0F8AF > : A_tat_contractgiver_TEMPLATE_neutral
+{
+}
+
+ContractGiver A_tat_contractgiver_neutral_Sonaplondu < uid=BE60F07F65339B470005CE7BD788A023 > : A_tat_contractgiver_TEMPLATE_neutral
+{
+}
+
+ContractGiver A_tat_contractgiver_TEMPLATE_faction < uid=BE60F07F6554E632000247F5526B57F4 >
+{
+	myGalaxyLocation B581CAC861852906000019CEA80B70F9
+	myUIInfo
+	{
+		myName "aurabesh = false, branch = \"\", contextComment = \"[DEV] faction giver template title\", enabled = true, guid = #BE60F07F6554E5C6000247F4B121EEA3, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 415, text = \"TEMPLATE Title\", type = \"MenuLine\""
+	}
+	myAffiliatedFactions
+	{
+		Faction Hutt < uid=BE60F07F6554E632000247F6EC81FFEC > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+		Faction "Crimson Dawn" < uid=BE60F07F6554E632000247F713D07060 > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+		Faction Ashiga < uid=BE60F07F6554E632000247F8C2BA20AB > = AshigaClan 4728ADF9620B6C2B0000201F5FC5C937
+	}
+	myMapRef < uid=BE60F07F6554E632000247F9CA661BFF > = mapref_contractgiver_template B581CAC8611B6CD80000298BBE69C121
+	mySlots
+	{
+		ContractGiverSlot "Slot 1"
+		{
+			myMinReputationTierForGeneration Good
+			myMaxReputationTierForGeneration Good
+			mySlotCooldown 5400.0
+		}
+		ContractGiverSlot "Slot 2"
+		{
+			myMinReputationTierForGeneration Good
+			myMaxReputationTierForGeneration Good
+			mySlotCooldown 5400.0
+		}
+		ContractGiverSlot "Slot 3"
+		{
+			myMinReputationTierForGeneration Excellent
+			myMaxReputationTierForGeneration Excellent
+			mySlotCooldown 5400.0
+		}
+	}
+	myGiverOutOfJobsTag < uid=FD1071176579AAC40006F08D129E68A8 > = Agent_Vendor_OutOfJobsTemporarily 1EC89F2563FC746E000009C4B28E8D56
+	myFamiliarTag < uid=ADF6F5536581D64500002D7B09B36E83 > = Agent_Vendor_TrustedCustomerBarksActive 1EC89F256401B61A0000D58ACE830A78
+	myRecentlyBetrayedTag < uid=FD13B51465D76F2C00000100B3B2757C > = Agent_Vendor_WasBetrayed 1EC89F2565BB59C3000000D2410D92AB
+	myLowReputationTier Fair
+	myLowReputationTag < uid=FD13B51465D76F2C00000101C8595497 > = Agent_Vendor_LowReputationClosedForBusiness 1EC89F2565DDBAFF000A27BBD4679E47
+}
+
+ContractGiver A_tat_contractgiver_hutt_ClemahMudoo < uid=BE60F07F65339A670005CE6CDCA3CBEE > : A_tat_contractgiver_TEMPLATE_faction
+{
+	myUIInfo
+	{
+		myName "aurabesh = false, branch = \"\", contextComment = \"[DEV] clemah mudoo Hutt contract giver title\", enabled = true, guid = #BE60F07F656610C80026D99928FFDCB9, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 415, text = \"Hutt Cartel broker\", type = \"MenuLine\""
+	}
+	myAffiliatedFactions
+	{
+		Faction Faction < uid=BE60F07F65339A990005CE6DBDE9244A > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	}
+}
+
+ContractGiver A_tat_contractgiver_hutt_BibFortuna < uid=BE60F07F65339AB30005CE6FD7A804C6 > : A_tat_contractgiver_TEMPLATE_faction
+{
+	myUIInfo
+	{
+		myName "aurabesh = false, branch = \"\", contextComment = \"[DEV] Bid fortuna Hutt contract giver title\", enabled = true, guid = #BE60F07F656610D70026D99A9A82C6ED, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 415, text = \"Hutt Cartel majordomo\", type = \"MenuLine\""
+	}
+	myAffiliatedFactions
+	{
+		Faction Faction < uid=BE60F07F65339AB30005CE7015965966 > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	}
+	mySlots
+	{
+		ContractGiverSlot "Slot 1"
+		{
+			myMinReputationTierForGeneration Excellent
+			myMaxReputationTierForGeneration Excellent
+			mySlotCooldown 5400.0
+		}
+		ContractGiverSlot "Slot 2"
+		{
+			myMinReputationTierForGeneration Excellent
+			myMaxReputationTierForGeneration Excellent
+			mySlotCooldown 5400.0
+		}
+	}
+}
+
+ContractGiver A_tat_contractgiver_ashiga_Zyssyk < uid=BE60F07F65339AF30005CE74B479DB4D > : A_tat_contractgiver_TEMPLATE_faction
+{
+	myUIInfo
+	{
+		myName "aurabesh = false, branch = \"\", contextComment = \"[DEV] zyssyk ashiga  contract giver title\", enabled = true, guid = #BE60F07F656610F00026D99BAF410D21, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 415, text = \"Ashiga Clan broker\", type = \"MenuLine\""
+	}
+	myAffiliatedFactions
+	{
+		Faction Faction < uid=BE60F07F65339AF30005CE751A59F79C > = AshigaClan 4728ADF9620B6C2B0000201F5FC5C937
+	}
+}
+
+ContractGiver A_tat_contractgiver_crimsondawn_eezok < uid=BE60F07F65339AF30005CE764CAF8B5B > : A_tat_contractgiver_TEMPLATE_faction
+{
+	myUIInfo
+	{
+		myName "aurabesh = false, branch = \"\", contextComment = \"[DEV] eezok crimsonDawn contract giver title\", enabled = true, guid = #BE60F07F656611010026D99C015D2CC7, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 415, text = \"Crimson Dawn broker\", type = \"MenuLine\""
+	}
+	myAffiliatedFactions
+	{
+		Faction Faction < uid=BE60F07F65339AF30005CE7740491581 > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+	}
+}
+

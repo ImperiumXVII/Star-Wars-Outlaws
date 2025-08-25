@@ -1,0 +1,369 @@
+include "helix/game system data/fruit/takedown/takedown_move.fruit"
+include "helix/game system data/juice/camera/animatedcameradata/takedown_concealed_animatedcameradata.manimatedcameradata"
+include "helix/game system data/juice/camera/blendtransitions/baseanimatedcamerablend_cameravariation_h-90.mcamerablendtransition"
+include "helix/game system data/juice/camera/blendtransitions/baseanimatedcamerablend_cameravariation_h180v3.mcamerablendtransition"
+include "helix/game system data/juice/camera/blendtransitions/baseanimatedcamerablend_cameravariation_h90.mcamerablendtransition"
+include "helix/game system data/juice/npc/emp_heavytrooper.mnpc"
+include "helix/game system data/juice/takedown/kay_takedown_ground.mtakedownmove"
+
+TakedownMove kay_takedown_concealed_backpack < uid=C01EA4E5667C086A00173C5D67829AC4 > : kay_takedown_ground
+{
+	myIsFallback FALSE
+	myAnimationEntryType Concealed
+	myAlignments
+	{
+		TakedownAlignment 0
+		{
+			myAngle 0
+			mySequenceDuration 4.76
+			myCameraVariations
+			{
+				TakedownCameraVariation "Back ID0"
+				{
+					myMinAngleRange 300.0
+					myMaxAngleRange 60.0
+				}
+				TakedownCameraVariation "Left ID1"
+				{
+					myMinAngleRange 60.0
+					myMaxAngleRange 180.0
+					myVariationID 1
+					myEnableOverrideSafetySettings TRUE
+					myOverrideSafetySettings
+					{
+						mySafetyAreaShapeType Box
+						mySafetyAreaPositioningRatio 1.0
+						mySafetyAreaCheckOffset -1.8;1.1;-0.7
+						mySafetyAreaCheckSize 0.94;0.6;1.53
+					}
+				}
+				TakedownCameraVariation "Right ID2"
+				{
+					myMinAngleRange 180.0
+					myMaxAngleRange 300.0
+					myVariationID 2
+					myEnableOverrideSafetySettings TRUE
+					myOverrideSafetySettings
+					{
+						mySafetyAreaShapeType Box
+						mySafetyAreaPositioningRatio 1.0
+						mySafetyAreaCheckOffset 1.53;1.3;-0.2
+						mySafetyAreaCheckSize 1.04;0.51;1.7
+					}
+				}
+			}
+			myEnableOverrideCameraSafetySettings TRUE
+			myOverrideCameraSafetySettings
+			{
+				mySafetyAreaShapeType Box
+				mySafetyAreaPositioningRatio 1.0
+				mySafetyAreaCheckOffset 0.0;0.7;-1.3
+				mySafetyAreaCheckSize 2.4;1.5;1.7
+			}
+			myOverrideCameraReturnTransitionIn < uid=C01EA4E5667C086A00173C5EDBB56D10 > = NULLREFERENCE
+			myEnableOverrideAnimatedCameraEndPercentage TRUE
+			myOverrideAnimatedCameraEndPercentage 0.5
+			myAlignmentPosDuration 0.63
+			myAlignmentRotDuration 0.63
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.0
+			myOptimalOffset 0.09;0.0;-0.98
+		}
+		TakedownAlignment 180
+		{
+			myAngle 180
+			myWeight 1.0
+			mySequenceDuration 3.7
+			myCameraVariations
+			{
+				TakedownCameraVariation "Back ID0"
+				{
+					myMinAngleRange 120.0
+					myMaxAngleRange 240.0
+					myEnableOverrideSafetySettings TRUE
+					myOverrideSafetySettings
+					{
+						mySafetyAreaShapeType Box
+						mySafetyAreaPositioningRatio 1.0
+						mySafetyAreaCheckOffset -0.4;0.9;-1.6
+						mySafetyAreaCheckSize 2.5;1.0;1.8
+					}
+				}
+				TakedownCameraVariation "Left ID1"
+				{
+					myMinAngleRange 240.0
+					myMaxAngleRange 0.0
+					myVariationID 1
+					myEnableOverrideSafetySettings TRUE
+					myOverrideSafetySettings
+					{
+						mySafetyAreaShapeType Box
+						mySafetyAreaPositioningRatio 1.0
+						mySafetyAreaCheckOffset -1.7;1.1;-0.16
+						mySafetyAreaCheckSize 1.33;0.47;1.44
+					}
+				}
+				TakedownCameraVariation "Right ID2"
+				{
+					myMinAngleRange 0.0
+					myMaxAngleRange 120.0
+					myVariationID 2
+					myEnableOverrideSafetySettings TRUE
+					myOverrideSafetySettings
+					{
+						mySafetyAreaShapeType Box
+						mySafetyAreaPositioningRatio 1.0
+						mySafetyAreaCheckOffset 1.9;1.3;-0.08
+						mySafetyAreaCheckSize 1.2;0.6;2.05
+					}
+				}
+			}
+			myEnableOverrideCameraSafetySettings TRUE
+			myOverrideCameraSafetySettings
+			{
+				mySafetyAreaShapeType Box
+				mySafetyAreaPositioningRatio 1.0
+				mySafetyAreaCheckOffset -0.4;0.9;-1.6
+				mySafetyAreaCheckSize 2.5;1.0;1.8
+			}
+			myOverrideCameraReturnTransitionIn < uid=C01EA4E5667C086A00173C5F2422DE95 > = baseanimatedcamerablend_cameravariation_h-90 34BDFEB0666AF67600000018659E0987
+			myEnableOverrideAnimatedCameraEndPercentage TRUE
+			myOverrideAnimatedCameraEndPercentage 0.53
+			myAlignmentPosDuration 0.73
+			myAlignmentRotDuration 0.13
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.0
+			myOptimalOffset 0.03;0.0;-0.84
+			myTriggerPostTakedownShakeHandClip TRUE
+		}
+		TakedownAlignment -180
+		{
+			myAngle -180
+			myWeight 1.0
+			mySequenceDuration 3.7
+			myCameraVariations
+			{
+				TakedownCameraVariation "Back ID0"
+				{
+					myMinAngleRange 120.0
+					myMaxAngleRange 240.0
+					myEnableOverrideSafetySettings TRUE
+					myOverrideSafetySettings
+					{
+						mySafetyAreaShapeType Box
+						mySafetyAreaPositioningRatio 1.0
+						mySafetyAreaCheckOffset -0.4;0.9;-1.6
+						mySafetyAreaCheckSize 2.5;1.0;1.8
+					}
+				}
+				TakedownCameraVariation "Left ID1"
+				{
+					myMinAngleRange 240.0
+					myMaxAngleRange 0.0
+					myVariationID 1
+					myEnableOverrideSafetySettings TRUE
+					myOverrideSafetySettings
+					{
+						mySafetyAreaShapeType Box
+						mySafetyAreaPositioningRatio 1.0
+						mySafetyAreaCheckOffset -1.7;1.1;-0.16
+						mySafetyAreaCheckSize 1.33;0.47;1.44
+					}
+				}
+				TakedownCameraVariation "Right ID2"
+				{
+					myMinAngleRange 0.0
+					myMaxAngleRange 120.0
+					myVariationID 2
+					myEnableOverrideSafetySettings TRUE
+					myOverrideSafetySettings
+					{
+						mySafetyAreaShapeType Box
+						mySafetyAreaPositioningRatio 1.0
+						mySafetyAreaCheckOffset 1.9;1.3;-0.08
+						mySafetyAreaCheckSize 1.2;0.6;2.05
+					}
+				}
+			}
+			myEnableOverrideCameraSafetySettings TRUE
+			myOverrideCameraSafetySettings
+			{
+				mySafetyAreaShapeType Box
+				mySafetyAreaPositioningRatio 1.0
+				mySafetyAreaCheckOffset -0.4;0.9;-1.6
+				mySafetyAreaCheckSize 2.5;1.0;1.8
+			}
+			myOverrideCameraReturnTransitionIn < uid=C01EA4E5667C086A00173C62124DDE5A > = baseanimatedcamerablend_cameravariation_h-90 34BDFEB0666AF67600000018659E0987
+			myEnableOverrideAnimatedCameraEndPercentage TRUE
+			myOverrideAnimatedCameraEndPercentage 0.53
+			myAlignmentPosDuration 0.73
+			myAlignmentRotDuration 0.13
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.0
+			myOptimalOffset 0.03;0.0;-0.84
+			myTriggerPostTakedownShakeHandClip TRUE
+		}
+		TakedownAlignment -90
+		{
+			myAngle -90
+			mySequenceDuration 4.8
+			myCameraVariations
+			{
+				TakedownCameraVariation "Back ID0"
+				{
+					myMinAngleRange 210.0
+					myMaxAngleRange 330.0
+				}
+				TakedownCameraVariation "Left ID1"
+				{
+					myMinAngleRange 330.0
+					myMaxAngleRange 90.0
+					myVariationID 1
+					myEnableOverrideSafetySettings TRUE
+					myOverrideSafetySettings
+					{
+						mySafetyAreaShapeType Box
+						mySafetyAreaPositioningRatio 1.0
+						mySafetyAreaCheckOffset -1.57;1.15;0.32
+						mySafetyAreaCheckSize 1.06;0.36;2.8
+					}
+				}
+				TakedownCameraVariation "Right ID2"
+				{
+					myMinAngleRange 90.0
+					myMaxAngleRange 210.0
+					myVariationID 2
+					myEnableOverrideSafetySettings TRUE
+					myOverrideSafetySettings
+					{
+						mySafetyAreaShapeType Box
+						mySafetyAreaPositioningRatio 1.0
+						mySafetyAreaCheckOffset 2.0;1.0;0.0
+						mySafetyAreaCheckSize 0.91;0.65;2.4
+					}
+				}
+			}
+			myEnableOverrideCameraSafetySettings TRUE
+			myOverrideCameraSafetySettings
+			{
+				mySafetyAreaShapeType Box
+				mySafetyAreaPositioningRatio 1.0
+				mySafetyAreaCheckOffset -0.4;0.9;-1.8
+				mySafetyAreaCheckSize 1.4;0.8;1.4
+			}
+			myOverrideCameraReturnTransitionIn < uid=C01EA4E5667C086A00173C656CA0E059 > = baseanimatedcamerablend_cameravariation_h-90 34BDFEB0666AF67600000018659E0987
+			myEnableOverrideAnimatedCameraEndPercentage TRUE
+			myOverrideAnimatedCameraEndPercentage 0.52
+			myAlignmentPosDuration 0.53
+			myAlignmentRotDuration 0.53
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.0
+			myOptimalOffset 0.1;0.0;-0.81
+		}
+		TakedownAlignment 90
+		{
+			myAngle 90
+			mySequenceDuration 5.26
+			myCameraVariations
+			{
+				TakedownCameraVariation "Back ID0"
+				{
+					myMinAngleRange 30.0
+					myMaxAngleRange 150.0
+				}
+				TakedownCameraVariation "Left ID1"
+				{
+					myMinAngleRange 150.0
+					myMaxAngleRange 270.0
+					myVariationID 1
+					myEnableOverrideSafetySettings TRUE
+					myOverrideSafetySettings
+					{
+						mySafetyAreaShapeType Box
+						mySafetyAreaPositioningRatio 1.0
+						mySafetyAreaCheckOffset -1.7;1.05;-0.53
+						mySafetyAreaCheckSize 1.6;0.5;2.1
+					}
+				}
+				TakedownCameraVariation "Right ID2"
+				{
+					myMinAngleRange 270.0
+					myMaxAngleRange 30.0
+					myVariationID 2
+					myEnableOverrideSafetySettings TRUE
+					myOverrideSafetySettings
+					{
+						mySafetyAreaShapeType Box
+						mySafetyAreaPositioningRatio 1.0
+						mySafetyAreaCheckOffset 1.55;1.0;-0.53
+						mySafetyAreaCheckSize 1.41;0.4;2.23
+					}
+				}
+			}
+			myEnableOverrideCameraSafetySettings TRUE
+			myOverrideCameraSafetySettings
+			{
+				mySafetyAreaShapeType Box
+				mySafetyAreaPositioningRatio 1.0
+				mySafetyAreaCheckOffset 0.05;0.8;-1.4
+				mySafetyAreaCheckSize 2.1;0.7;1.45
+			}
+			myOverrideCameraReturnTransitionIn < uid=C01EA4E5667C086A00173C6610635C99 > = baseanimatedcamerablend_cameravariation_h90 34BDFEB0666ABD0D000304AB9C75C274
+			myEnableOverrideAnimatedCameraEndPercentage TRUE
+			myOverrideAnimatedCameraEndPercentage 0.62
+			myAlignmentPosDuration 0.53
+			myAlignmentRotDuration 0.53
+			myAlignmentStandStillDuration 0.0
+			myOptimalDistance 0.0
+			myOptimalOffset -0.23;0.0;-0.99
+		}
+	}
+	myStartConditions
+	{
+		myGameCondition
+		{
+			GameConditionMeleeGroup Group
+			{
+				myConditions
+				{
+					GameConditionMeleeAttackerIsInMovementState Ground
+					{
+					}
+					GameConditionMeleeAttackerIsInMovementState Crouch
+					{
+						myState Crouch
+					}
+					GameConditionMeleeIsInConcealmentVolume Concealed
+					{
+					}
+					GameConditionTakedownExecutionConstraints TakedownExecutionConstraints
+					{
+						myMaxDistanceFromTakedownInteractionPoint 5.0
+					}
+					GameConditionMeleeTargetHeightDelta GameConditionMeleeTargetHeightDelta
+					{
+						myHeightDelta 0.75
+						myOperator LessThan
+						myUseEyePositionAsReference FALSE
+					}
+					GameConditionMeleeTargetIsNPCType "New GameConditionMeleeTargetIsNPCType"
+					{
+						myNPC < uid=C01EA4E5667C08A200173C68E3896893 > = emp_heavytrooper 16DEADE661F07FFD00001B598880F582
+					}
+				}
+			}
+		}
+	}
+	myAnimatedCameraData < uid=C01EA4E5667C086A00173C677B46EC99 > = takedown_concealed_animatedcameradata 34BDFEB065F80DF5000000181D6B1B07
+	myObstacleDetectionSettings
+	{
+		myDirectionsToCheck
+		{
+			TakedownDirection Front Front
+			TakedownDirection Left Left
+		}
+		myBoxCastLength 2.0
+	}
+	myPriority 2
+}
+

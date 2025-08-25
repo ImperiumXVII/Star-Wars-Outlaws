@@ -1,0 +1,89 @@
+include "helix/game system data/fruit/camera/cameramodifier.fruit"
+
+AimAssistCameraModifier aimassist_default_TU4 < uid=C54AA1EA66F69C88001063365EC6527A >
+{
+	myTransitions
+	{
+		myInDuration 0.5
+		myInCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.71683353 0, }, outTangents = { 0.30944932 0.032786876, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+		myOutDuration 1.0
+		myOutCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.39580724 0.10040984, }, outTangents = { 0.59668338 0.0010246262, 0 -0, }, properties = { 275, 1299, }, values = { 0 1, 1 0, }, }, numKeys = 2, }"
+	}
+	myAimAssistValues
+	{
+		AimAssistValues "Zero distance"
+		{
+			mySnap
+			{
+				mySnapEnabled FALSE
+			}
+			myAimAttractorStrength 0.0
+			myAimAccelerationAccAttractorStrength 0.0
+			myAimAccelerationAddAttractorStrength 0.0
+			myMovementAttractorStrength 0.0
+		}
+		AimAssistValues "Zero 2"
+		{
+			mySnap
+			{
+				mySnapEnabled FALSE
+			}
+			myAimAttractorStrength 0.0
+			myAimAccelerationAccAttractorStrength 0.0
+			myAimAccelerationAddAttractorStrength 0.0
+			myMovementAttractorStrength 0.0
+			myDistance 2.5
+		}
+		AimAssistValues Min
+		{
+			mySnap
+			{
+				mySnapEnabled TRUE
+				myDuration 0.4
+				myGrippyness 0.0
+				mySnapWhenAimModeBecomesActiveEnabled TRUE
+			}
+			myAimAttractorStrength 0.1
+			myAimAccelerationAccAttractorStrength 0.3
+			myMovementAttractorStrength 0.3
+			myAimAttractorAdditionInZoom 0.0
+			myCatchupHelpStrength 0.9
+			myDistance 4.0
+		}
+		AimAssistValues Mid
+		{
+			mySnap
+			{
+				mySnapEnabled TRUE
+				myOffsetLimit 0.55
+				myDuration 0.4
+				mySnapWhenAimModeBecomesActiveEnabled TRUE
+			}
+			myAimAttractorStrength 0.4
+			myMovementAttractorStrength 0.7
+			myAimAttractorAdditionInZoom 0.0
+			myCatchupHelpStrength 0.6
+			myDistance 20.0
+		}
+		AimAssistValues Max
+		{
+			mySnap
+			{
+				mySnapEnabled FALSE
+				myOffsetLimit 0.3
+				myDuration 0.4
+				mySnapWhenAimModeBecomesActiveEnabled TRUE
+			}
+			myAimAttractorStrength 0.3
+			myMovementAttractorStrength 0.1
+			myCatchupHelpStrength 0.5
+			myDistance 80.0
+		}
+	}
+	myFade
+	{
+		myDistanceCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.39987403 -0.43478262, }, outTangents = { 0.59256929 0.56847829, 0 0, }, properties = { 275, 1299, }, values = { 0 0, 1 1, }, }, numKeys = 2, }"
+		myFadeTime 1.0
+	}
+}
+

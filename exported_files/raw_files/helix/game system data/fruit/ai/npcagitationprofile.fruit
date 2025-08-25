@@ -1,0 +1,62 @@
+// Must match enum HC_NPCAgitationLevel in code/helix/HClient/HC_NPCAgitationConstantData.h
+enum NPCAgitationLevel
+{
+	Invalid
+	Low
+	Medium
+	High
+}
+
+class NPCAgitationStimulus
+{
+	float myStimulusDelta 0.0 < tooltip="Stimulus increase per action (or per second for continuous action)" >
+	NPCAgitationLevel myMaxAgitationLevel High < tooltip="Maximum agitation level that can be achieved by this action" >
+	bool myAllowedInCombat FALSE < tooltip="If false, the agitation stimulus will not be used in combat situation" >
+}
+
+class NPCAgitationProfile < uid=auto >
+{
+	string myMediumThreshold 0.0 < min=0 max=1 tooltip="Agitation Value threshold for the transition from Low to Medium" bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	string myHighThreshold 0.0 < min=0 max=1 tooltip="Agitation Value threshold for the transition from Medium to High" bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	float myAgitationDecayTimeSeconds 0.0 < tooltip="If an agitation value is not changed within this time then the NPC's agitation value will start decay." >
+	float myAgitationDecayRate 0.0 < min=0 tooltip="If this value is 0, agitation level will decay to 0 instantly when decay start, if greater than 0, agitation level will slowly decay." >
+	float myStimulusMultiplierWhenInCombat 0.75f < min=0 max=1 tooltip="When the NPC is already in combat, this multiplier is applied on agitation stimulus values received." >
+
+	NPCAgitationStimulus myPlayerAimAtNPCAgitationStimulus < min=0 max=1 tooltip="Agitation Value stimulus for an NPC being aimed at by a Player" >
+	NPCAgitationStimulus myWitnessedPlayerAimAtNPCAgitationStimulus < min=0 max=1 tooltip="Agitation Value stimulus for witnessing a Player aim at another NPC" >
+
+	NPCAgitationStimulus myPlayerBumpedIntoNPCAgitationStimulus < min=0 max=1 tooltip="Agitation Value stimulus for an NPC being bumped into by a Player" >
+	NPCAgitationStimulus myWitnessedPlayerBumpedIntoNPCAgitationStimulus < min=0 max=1 tooltip="Agitation Value stimulus for witnessing a Player bump into another NPC" >
+	
+	NPCAgitationStimulus myPlayerBumpedLightIntoNPCAgitationStimulus < min=0 max=1 tooltip="Agitation Value stimulus for being bumped lightly by a Player" >
+	NPCAgitationStimulus myWitnessedPlayerBumpedLightIntoNPCAgitationStimulus < min=0 max=1 tooltip="Agitation Value stimulus for witnessing a Player bump lightly into another NPC" >
+	
+	NPCAgitationStimulus myPlayerBumpedHeavyIntoNPCAgitationStimulus < min=0 max=1 tooltip="Agitation Value stimulus for being bumped heavily by a Player" >
+	NPCAgitationStimulus myWitnessedPlayerBumpedHeavyIntoNPCAgitationStimulus < min=0 max=1 tooltip="Agitation Value stimulus for witnessing a Player bump heavily into another NPC" >
+
+	NPCAgitationStimulus myPlayerTooCloseToNPCAgitationStimulus < min=0 max=1 tooltip="Agitation Value stimulus for a Player standing too close to an NPC" >
+	NPCAgitationStimulus myWitnessedPlayerTooCloseToNPCAgitationStimulus < min=0 max=1 tooltip="Agitation Value stimulus for witnessing a Player standing too close to another NPC" >
+	
+	NPCAgitationStimulus myPlayerShotNearNPCAgitationStimulus < min=0 max=1 tooltip="Agitation value stimulus for a Player shooting too close to an NPC" >
+	NPCAgitationStimulus myWitnessedPlayerShotNearNPCAgitationStimulus < min=0 max=1 tooltip="Agitation value stimulus for witnessing a Player shooting too close to another NPC" >
+	
+	NPCAgitationStimulus myHeardPlayerThreateningSoundAgitationStimulus < min=0 max=1 tooltip="Agitation value stimulus for heard threatening sound" >
+	NPCAgitationStimulus myHeardNotPlayerThreateningSoundAgitationStimulus < min=0 max=1 tooltip="Agitation value stimulus for heard threatening sound from source that is not a Player" >
+
+	float myHeardPlayerThreateningSoundCooldown 0.0 < min=0 tooltip="Cooldown before the agitation stimulus can be used again. If an agitation stimulus is received when the cooldown is not done it will be ignored." >
+	
+	NPCAgitationStimulus myPlayerFaceOffNPCAgitationStimulus < min=0 max=1 tooltip="Agitation value stimulus for facing off with the player" >
+	
+	NPCAgitationStimulus myPlayerHoldingForbiddenItemStimulus < min=0 max=1 tooltip="Agitation Value Stimulus for an NPC seeing a Player holding a Forbidden Item" >
+	NPCAgitationStimulus myPlayerThrowingForbiddenItemStimulus < min=0 max=1 tooltip="Agitation Value Stimulus for an NPC seeing a Player Throwing a Forbidden Item" >
+	NPCAgitationStimulus myPlayerForbiddenInterractionStimulus < min=0 max=1 tooltip="Agitation Value Stimulus for an NPC seeing a Player doing a Forbidden Interraction" >
+	NPCAgitationStimulus myPlayerTrespassedLowSecurityAreaStimulus < min=0 max=1 tooltip="Agitation Value Stimulus when an NPC see a Player trespassed a low security area" >
+	NPCAgitationStimulus myPlayerTrespassedHighSecurityAreaStimulus < min=0 max=1 tooltip="Agitation Value Stimulus when an NPC see a Player trespassed a high security area" >
+
+	NPCAgitationStimulus myPlayerDamagedNPCAtHighReputationAgitationStimulus < min=0 max=1 tooltip="Agitation Value Stimulus for an NPC beeing damaged by a Player with high reputation" >
+
+	NPCAgitationStimulus myWitnessedCorpseStimulus < min=0 max=1 tooltip="Agitation Value Stimulus for an NPC seeing a corpse" >
+	
+	NPCAgitationStimulus myWitnessedPlayerKilledNPCAgitationStimulus < min=0 max=1 tooltip="Agitation Value Stimulus for witnessing an NPC beeing killed by a Player" >
+	
+}

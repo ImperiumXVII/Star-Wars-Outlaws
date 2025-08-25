@@ -1,0 +1,663 @@
+include "dlc2/game system data/juice/intel/chains/intelchain_dlc2_khepi.mintelchain"
+include "dlc2/game system data/juice/intel/intel_dlc2_akiva.mintel"
+include "dlc2/game system data/juice/intel/intel_dlc2_khepi.mintel"
+include "helix/game system data/fruit/attribute/formulacontexttypes.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditionbase.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+include "helix/game system data/fruit/gamevalues/gamevalues.fruit"
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+include "helix/game system data/fruit/livingworld/livingworldenums.fruit"
+include "helix/game system data/fruit/livingworld/livingworldtag.fruit"
+include "helix/game system data/fruit/ui/uienums.fruit"
+include "helix/game system data/juice/intel/intel_akiva.mintel"
+
+LivingWorldContent ms_dlc2_khepi_intelchain < uid=09AB96AD674F215000035F64A1D0F16E >
+{
+	myCompletedGameValue < uid=2AEFFC7967652C72000000D6ACAAF80D >
+	{
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType "New LivingWorldContentLayerType" Ambient
+		LivingWorldContentLayerType "New LivingWorldContentLayerType_0" Encounter
+	}
+	myLayerType MicroStory
+	myBlockingRadius 2.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance <75"
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance >75"
+		{
+			myDistance 80.0
+		}
+	}
+}
+
+LivingWorldContent MS5002_ITIC_OnTheRunPart4_P1 < uid=09AB96AD674F215000035F681856DC43 > : ms_dlc2_khepi_intelchain
+{
+	myCompletedGameValue < uid=2AEFFC796781126D001580BAE339E5E0 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance -75"
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel "MS416 ITL P3 Resolved"
+		{
+			myIntel < uid=2AEFFC7967B314D20007BAB65F05A63B > = A_AKI_MS416_ITL443_OnTheRunPart3_P2 F12EE1F96536609800061E285BDA524B
+			myIntelState Resolved
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance +80"
+		{
+			myDistance 80.0
+		}
+	}
+}
+
+LivingWorldContent MS5002_ITIC_OnTheRunPart4_P2 < uid=58006D50675012FB000000D86FD5EC71 > : ms_dlc2_khepi_intelchain
+{
+	myCompletedGameValue < uid=2AEFFC796781126D001580BBC520AEA8 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance -100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel "MS5002 ITL P1 Active"
+		{
+			myIntel < uid=58006D50675029FE00046C51C514918C > = C_DLC2_MS5002_ITL5005_OnTheRun_Part4_P1 09AB96AD67470FE600042043C23F0188
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance +105"
+		{
+			myDistance 105.0
+		}
+	}
+}
+
+LivingWorldContent MS5002_ITIC_OnTheRunPart4_P3 < uid=58006D50675012FB000000DC179625D9 > : ms_dlc2_khepi_intelchain
+{
+	myCompletedGameValue < uid=2AEFFC796781126D001580BC1395C847 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance -75"
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel "MS5002 ITL P2 Active"
+		{
+			myIntel < uid=58006D50675029FE00046C52F979EEDA > = C_DLC2_MS5002_ITL5006_OnTheRun_Part4_P2 2AEFFC796790F19B00073DDCC5B12BB4
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance +105"
+		{
+			myDistance 105.0
+		}
+	}
+}
+
+LivingWorldContent MS50XX_ITIC_TalkToReese < uid=2AE2EC85675AFF73002781D40BE64BC8 > : ms_dlc2_khepi_intelchain
+{
+	myCompletedGameValue < uid=2AEFFC796781126D001580BDD2216705 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance <75"
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel "Talk to Reese Intel is Active"
+		{
+			myIntel < uid=2AE2EC85675C0F500004500ECB10C3B4 > = C_DLC2_MS50XX_ITL50XX_TalkToReese 2AE2EC85675AFD4B0026806E5617D36F
+		}
+	}
+}
+
+LivingWorldContent MS5009_ITLC_JetKordosHideout_P1 < uid=2AEFFC7967614CF8000000D8F18503FB > : ms_dlc2_khepi_intelchain
+{
+	myCompletedGameValue < uid=2AEFFC796781126D001580BEFE1B8E44 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance <75"
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestIsCompleted JetKordosLegacy
+		{
+			myQuest CC6CF61E639B522F00009BD7995E0DEB
+		}
+	}
+}
+
+LivingWorldContent MS5009_ITLC_JetKordosHideout_P2 < uid=2AEFFC7967614CF8000000D91D6487D0 > : ms_dlc2_khepi_intelchain
+{
+	myCompletedGameValue < uid=2AEFFC796781126D001580BF3E8E2AC1 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance 300"
+		{
+			myDistance 300.0
+			myOperator LessThanOrEqual
+		}
+		LivingWorldGameConditionGroup OR
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel "Has Intel ITL5003"
+				{
+					myIntel < uid=2AEFFC796781126D001580C083E40AA7 > = C_DLC2_MS5009_ITL5003_JetKordosHideout 09AB96AD67405DC7000235F650562271
+				}
+				GameConditionLivingWorldFormula "GameValue is True"
+				{
+					myFormula "gv_lw_ms_itlc_5009_p2_active = 1"
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance Greater Than 350"
+		{
+			myDistance 350.0
+		}
+	}
+}
+
+LivingWorldContent MS5009_ITLC_JetKordosHideout_P2_INACTIVE < uid=2AEFFC79677FC5890007CC77B4BCEF9A >
+{
+	myCompletedGameValue < uid=2AEFFC796781126D001580C337F875D1 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer Distance
+		{
+			myDistance 300.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionLivingWorldFormula "GameValue is False"
+		{
+			myFormula "gv_lw_ms_itlc_5009_p2_active = 0"
+		}
+		GameConditionPlayerHasIntel "Intel Not Active"
+		{
+			myIsNegated TRUE
+			myIntel < uid=2AEFFC796781126D001580C494EAF0BB > = C_DLC2_MS5009_ITL5003_JetKordosHideout 09AB96AD67405DC7000235F650562271
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup OR
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel "Intel ILT5003 Active"
+				{
+					myIntel < uid=2AEFFC796781126D001580C5ECD26673 > = C_DLC2_MS5009_ITL5003_JetKordosHideout 09AB96AD67405DC7000235F650562271
+				}
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance Greater Than 350"
+				{
+					myDistance 350.0
+				}
+				GameConditionLivingWorldContent_HasBeenCompleted "MS5009 is Completed"
+				{
+					myLivingWorldContent 2AEFFC7967614CF8000000D91D6487D0
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS5009_ITLC_JetKordosHideout_P2_ActiveOrCompleted < uid=2AEFFC79679A340A00389BEED9DD0D62 >
+{
+	myCompletedGameValue < uid=2AEFFC79679A340A00389BEF2DE09C79 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer Distance
+		{
+			myDistance 300.0
+			myOperator LessThanOrEqual
+		}
+		LivingWorldGameConditionGroup Or
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel "Intel Active"
+				{
+					myIsNegated FALSE
+					myIntel < uid=2AEFFC79679A340A00389BF0AE16E053 > = C_DLC2_MS5009_ITL5003_JetKordosHideout 09AB96AD67405DC7000235F650562271
+				}
+				GameConditionLivingWorldContent_HasBeenCompleted "MS5009 Completed"
+				{
+					myLivingWorldContent 2AEFFC7967614CF8000000D91D6487D0
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance Greater Than 350"
+		{
+			myDistance 350.0
+		}
+	}
+}
+
+LivingWorldContent ms_dlc2_khepi_space_TEMPLATE < uid=2AE2EC8567B75215000D32806542A836 > : ms_dlc2_khepi_intelchain
+{
+	myTicketMax < uid=2AE2EC8567B75215000D32815F84579B >
+	{
+		myDescription ""
+		myDefaultValue 1
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myCompletedGameValue < uid=2AE2EC8567B75215000D328276BD2BB5 >
+	{
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType "New LivingWorldContentLayerType_0" Encounter
+	}
+	myBlockingRadius 500.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance less than 10000"
+		{
+			myDistance 10000.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance more than 11000"
+		{
+			myDistance 11000.0
+		}
+	}
+	myIsScannable FALSE
+}
+
+LivingWorldContent MS5004_ITL_RaidInProgress < uid=2AE2EC8567B7531A000D32D93F25A15B > : ms_dlc2_khepi_space_TEMPLATE
+{
+	myTicketMax < uid=2AE2EC8567B7531A000D32DA0CA81ACE >
+	{
+		myDescription ""
+		myDefaultValue 1
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myCompletedGameValue < uid=2AE2EC8567B7531A000D32DB234CE083 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance less than 10000"
+		{
+			myDistance 10000.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel "HasIntel C_AKI_MS5004_ITL5004_RaidInProgress"
+		{
+			myIntel < uid=2AEFFC7967B844B20009C9B50C19F274 > = C_AKI_MS5004_ITL5004_RaidInProgress 09AB96AD674043DD00000103174654AD
+		}
+	}
+}
+
+LivingWorldContent MS5010_ITL_GhostShip < uid=2AE2EC8567B7531A000D32DC2646B789 > : ms_dlc2_khepi_space_TEMPLATE
+{
+	myTicketMax < uid=2AE2EC8567B7531A000D32DD347BE563 >
+	{
+		myDescription ""
+		myDefaultValue 1
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myCompletedGameValue < uid=2AE2EC8567B7531A000D32DE7849F748 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance less than 10000"
+		{
+			myDistance 10000.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel "HasIntel ITL5001"
+		{
+			myIntel < uid=2AEFFC7967B84C02000F5F796FF50EF0 > = C_DLC2_MS5010_ITL5001_GhostShip 09AB96AD672C98B800216E6E17BDDABD
+		}
+	}
+}
+
+LivingWorldContent MS5040_ITL_TheOthers < uid=2AE2EC8567B7531A000D32DF3C45483A > : ms_dlc2_khepi_space_TEMPLATE
+{
+	myTicketMax < uid=2AE2EC8567B7531A000D32E02FAC4AC4 >
+	{
+		myDescription ""
+		myDefaultValue 1
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myCompletedGameValue < uid=2AE2EC8567B7531A000D32E1C417E2AF >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance less than 10000"
+		{
+			myDistance 10000.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel "HasIntel ITL5007"
+		{
+			myIntel < uid=2AEFFC7967B85A7E0012762F2C3D726C > = C_DLC_MS5040_ITL5007_TheOthers 09AB96AD67A35B3C000000CBCFAB2562
+		}
+	}
+}
+
+LivingWorldContent MS5012_ITLC_RaiderShipChat_P0_Intro < uid=2AE2EC8567B7531A000D32E2F3D3BED2 > : ms_dlc2_khepi_space_TEMPLATE
+{
+	myTicketMax < uid=2AE2EC8567B7531A000D32E3E5C13C0A >
+	{
+		myDescription ""
+		myDefaultValue 1
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myCompletedGameValue < uid=2AE2EC8567B7531A000D32E4A876B01C >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance less than 10000"
+		{
+			myDistance 10000.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestIsCompleted "C_MQ_040 is completed"
+		{
+			myQuest 9128788866E010350000AE0A4AFF641B
+		}
+	}
+}
+
+LivingWorldContent MS5012_ITLC_RaiderShipChat_P1 < uid=2AE2EC8567B7531A000D32E5D30F3D27 > : ms_dlc2_khepi_intelchain
+{
+	myTicketMax < uid=2AE2EC8567B7531A000D32E6BD442CBA >
+	{
+		myDescription ""
+		myDefaultValue 1
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myCompletedGameValue < uid=2AE2EC8567B7531A000D32E751897674 >
+	{
+	}
+}
+
+LivingWorldContent MS5012_ITLC_RaiderShipChat_P1_5 < uid=91D5D54267C9A42A0004AD658C9E596A > : ms_dlc2_khepi_space_TEMPLATE
+{
+	myTicket < uid=91D5D54267C9A48C0004AD694F5C2CD3 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myTicketMax < uid=91D5D54267C9A42A0004AD66F6F6461A >
+	{
+		myDescription ""
+		myDefaultValue 1
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myCompletedGameValue < uid=91D5D54267C9A42A0004AD6762DE1D79 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance less than 10000"
+		{
+			myDistance 10000.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel "ITL 5002 Part 1_5 is active"
+		{
+			myIntel < uid=91D5D54267C9A42A0004AD683177769E > = C_DLC2_MS5012_ITL5002_RaiderShipChat_Part1_5 91D5D54267C706600002F416A59C9969
+		}
+		GameConditionPlayerIsRokanaSpaceShip "Is the player in the Rokana Ship"
+		{
+		}
+	}
+}
+
+LivingWorldContent MS5012_ITLC_RaiderShipChat_P2 < uid=2AE2EC8567B7531A000D32E84C62DA09 > : ms_dlc2_khepi_space_TEMPLATE
+{
+	myTicketMax < uid=2AE2EC8567B7531A000D32E9E62E30A7 >
+	{
+		myDescription ""
+		myDefaultValue 1
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myCompletedGameValue < uid=2AE2EC8567B7531A000D32EA7A93F124 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance less than 10000"
+		{
+			myDistance 10000.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel "HasIntel ITL5002 Part2"
+		{
+			myIntel < uid=2AEFFC7967B85AE800127644083B0FD3 > = C_DLC2_MS5012_ITL5002_RaiderShipChat_Part2 09AB96AD672CC2020005B47F9FBB3406
+		}
+	}
+}
+
+LivingWorldContent MS5053_ITL_RaidersRecord < uid=2AE2EC8567B7533B000D3306760BBD39 > : ms_dlc2_khepi_intelchain
+{
+	myCompletedGameValue < uid=2AE2EC8567B7533B000D3307A4D49C09 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance 140"
+		{
+			myDistance 140.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel "HasIntel ITL5007"
+		{
+			myIntel < uid=2AEFFC7967B89EA5001C852BF155D051 > = C_DLC2_MS5053_ITL5007_RaidersRecord 09AB96AD67B89830000000D0D00834B8
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance 150"
+		{
+			myDistance 150.0
+		}
+	}
+}
+

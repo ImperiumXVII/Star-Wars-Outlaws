@@ -1,0 +1,49 @@
+include "helix/game system data/fruit/npc/npcsynergy.fruit"
+include "helix/game system data/juice/legend/legendranks.mlegendrank"
+include "helix/game system data/juice/npc/dlc2_rok_shp_refractor.mnpc"
+include "helix/game system data/juice/rbtags/living_world_activities_binary_tags.mrbtagsbinarytags"
+
+NPCSynergy space_raider_npc_synergy < uid=05B06D7D66FE40E000000456F5D681E1 >
+{
+	myCoreMembers
+	{
+		NPCSynergyMember raider
+		{
+			myNPC < uid=05B06D7D67051E560004B276ECFFE78F > = dlc2_rok_shp_refractor 05B06D7D66FBE789000474578DED79CC
+			myAlwaysAdd TRUE
+			myWeight 1.0
+		}
+	}
+	myFillerMember
+	{
+		myPossibleLoadouts
+		{
+		}
+		myNPC < uid=05B06D7D66FE40E00000045835FF2D0B > = dlc2_rok_shp_refractor 05B06D7D66FBE789000474578DED79CC
+		myWeight 1.0
+	}
+	myMaxAmount 10
+	myFaction 91DC5D3C66FBD94500000044FB8B5663
+	myMinLegendRank < uid=05B06D7D66FE40E0000004593D282707 > = NULLREFERENCE
+	myMaxLegendRank < uid=05B06D7D66FE40E00000045A7CB070CA > = "Rank 20" 7110821464E310E10001275686AD600A
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=05B06D7D67051D720004B271B9189527 > = lwen_SpaceSkirmishTag 05B06D7D66FE46B100000043DF062E81
+		RBTagsTag "New RBTagsTag_0" < uid=05B06D7D67051D730004B272F4B99B3E > = lwen_SpaceAmbushTag 05B06D7D66FE50A5000498D070A37B5B
+		RBTagsTag "New RBTagsTag_1" < uid=05B06D7D67051D750004B27326EF1678 > = lwen_SpacePatrolTag 05B06D7D66FE4B2E000498CB6478A74B
+		RBTagsTag "New RBTagsTag_2" < uid=05B06D7D67051D790004B274A96BFFE9 > = lwen_SpaceWreckage 05B06D7D670516320004B024B465FA6C
+		RBTagsTag "New RBTagsTag_3" < uid=05B06D7D6705314100038DB6B0A1763A > = lwen_SpaceFactionTransportTag 05B06D7D66FE50DD000498D296196B28
+		RBTagsTag "New RBTagsTag_4" < uid=05B06D7D670537D100038ECC5A07C4E6 > = lwen_SpaceFireteamSmallTag 05B06D7D6704D8A40004A044000B27C9
+		RBTagsTag "New RBTagsTag_5" < uid=05B06D7D670537E500038ECDD95C3834 > = lwen_SpaceFireteamMediumTag 05B06D7D6704D8AC0004A0454853D772
+		RBTagsTag "New RBTagsTag_6" < uid=05B06D7D670537E900038ECE1A3DC4A9 > = lwen_SpaceFireteamLargeTag 05B06D7D6704D8B50004A046A63F1E27
+	}
+}
+
+NPCSynergy space_raider_fallback < uid=05B06D7D67051E390004B275D4A7F64E > : space_raider_npc_synergy
+{
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=05B06D7D6705200D0004B410A4F7C05B > = lwen_SpaceFallback 05B06D7D67051F080004B33147508CAD
+	}
+}
+

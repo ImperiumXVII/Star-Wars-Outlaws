@@ -1,0 +1,70 @@
+include "dlc2/game system data/juice/livingworld/ms_dlc2_aki_vignettes.mlivingworldcontent"
+include "dlc2/game system data/juice/livingworld/ms_dlc2_optionaldialogue.mlivingworldcontent"
+include "helix/game system data/fruit/attribute/formulacontexttypes.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditionbase.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+include "helix/game system data/fruit/gamevalues/gamevalues.fruit"
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+include "helix/game system data/fruit/livingworld/livingworldenums.fruit"
+include "helix/game system data/fruit/livingworld/livingworldtag.fruit"
+include "helix/game system data/juice/livingworld/ms_tos_overheard.mlivingworldcontent"
+
+LivingWorldContent MS5004_OHC_RaidInProgress < uid=09AB96AD674046F800062376A37DB190 > : DLC2_MS_TEMPLATE_Default
+{
+	myCompletedGameValue < uid=91D5D54267ED2C8C0006A41FBF59DDAF >
+	{
+	}
+	myBlockingRadius 2.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance -100"
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Is Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionQuestBeatState "New GameConditionQuestBeatState"
+		{
+			myQuestBeat 8FD81D51675714BB000AD0CEFB993938
+			myQuestBeatState Completed
+		}
+	}
+}
+
+LivingWorldContent MS5013_OD_GoodLuckNix < uid=09AB96AD674046F80006237AC056F43B > : DLC2_MS_TEMPLATE_Default
+{
+	myCompletedGameValue < uid=09AB96AD674046F80006237DA3E60C56 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance -100"
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Is Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionQuestBeatState "New GameConditionQuestBeatState"
+		{
+			myQuestBeat 8FD81D51675714BB000AD0CEFB993938
+			myQuestBeatState Completed
+		}
+	}
+}
+

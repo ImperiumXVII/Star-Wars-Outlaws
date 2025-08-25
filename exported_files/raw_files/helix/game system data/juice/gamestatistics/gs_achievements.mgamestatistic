@@ -1,0 +1,1667 @@
+include "helix/game system data/fruit/gamestatistics/gamestatistics.fruit"
+include "helix/game system data/juice/faction/factions.mfaction"
+include "helix/game system data/juice/gamestatistics/gs_achievement_31_cases.mgamestatistic"
+include "helix/game system data/juice/gamestatistics/gs_alienstreetfood_sampled.mgamestatistic"
+include "helix/game system data/juice/gamestatistics/gs_crack_shot_kills.mgamestatistic"
+include "helix/game system data/juice/gamestatistics/gs_faction_warships_destroyed.mgamestatistic"
+include "helix/game system data/juice/gamestatistics/gs_find_experts.mgamestatistic"
+include "helix/game system data/juice/gamestatistics/gs_galaxy_location_discovered.mgamestatistic"
+include "helix/game system data/juice/gamestatistics/gs_pickpocket_location.mgamestatistic"
+include "helix/game system data/juice/gamestatistics/gs_scoundrel_gear_set_count.mgamestatistic"
+include "helix/game system data/juice/gamestatistics/gs_trackable_actions.mgamestatistic"
+include "helix/game system data/juice/gearset/player_gear_sets.mgearset"
+include "helix/game system data/juice/item/player_gear_chest.mitem"
+include "helix/game system data/juice/legend/legendranks.mlegendrank"
+include "helix/game system data/juice/sabacc/sabacc players.msabaccplayer"
+
+GameStatistic gs_achievements_01_Bribe_Imperial_Officer < uid=6CF1B5F2652D287300008F96304CF91B >
+{
+	myGameValue < uid=6CF1B5F2652D289C00008F99959B1480 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Wanted state changed"
+		{
+			myGameTriggerType Manual
+			myConditions
+			{
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_02_Complete_Deathtrooper_Event < uid=1896EE3A6540D78C00011D3E6C3A8522 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=1896EE3A6540D7E200011D4167AB7800 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Event completed"
+		{
+			myGameStatisticOperation IncrementOnce
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_03_Defeat_6_Enemies_With_Crack_Shot < uid=1896EE3A6537A56D00005B8A18DA0562 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=1896EE3A6537A61A000062CCDA183FA6 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Adrenaline rush finished"
+		{
+			myGameTriggerType GameStatisticChanged
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionGameStatistic "Defeated 6 enemies simultaneously"
+				{
+					myGameStatistic < uid=1896EE3A6537A642000064FDF135330E > = gs_crack_shot_kills 1896EE3A652E80710000EFBFE9FFD1BB
+					myTargetValue 6
+				}
+				GameConditionPlayerIsOnSpeeder "Is not on speeder"
+				{
+					myIsNegated TRUE
+				}
+				GameConditionContextIsOneOfGameStatistics "Is crack shot"
+				{
+					myGameStatisticsList
+					{
+						GameStatistic "Crack shot" < uid=B7BA90C9668F9EC500029002FF312BD2 > = gs_crack_shot_kills 1896EE3A652E80710000EFBFE9FFD1BB
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_04_Blaster_Module_Max_Upgrade < uid=1896EE3A653A7BE90000A2524A6CB53A >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=1896EE3A653A7CC00000A256E84BF309 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Upgrade talent applied"
+		{
+			myGameTriggerType UpgradeTierTalentApplied
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionEquipmentOfTypeIsFullyUpgraded "Blaster module is maximum upgraded"
+				{
+					myEquipmentType WeaponModule
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_05_Complete_All_Nix_Tail_Quests < uid=6CF1B5F2652D06CD000108DE8025624A >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=6CF1B5F2652D0D02000108F39562AB7A >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Complete TOS 02 Flyers"
+		{
+			myGameTriggerType QuestCompleted
+			myConditions
+			{
+				GameConditionContextQuestIsSpecificQuest "Quest is TOS 02 Flyers"
+				{
+					myQuest CC6CF61E63C16B17000B1152DE165864
+				}
+			}
+		}
+		GameStatisticEventBlock "Complete TOS 03 Gushino"
+		{
+			myGameTriggerType QuestCompleted
+			myConditions
+			{
+				GameConditionContextQuestIsSpecificQuest "Quest is TOS 03 Gushino"
+				{
+					myQuest 20037F80642D3E160006E430FC1C4DA3
+				}
+			}
+		}
+		GameStatisticEventBlock "Complete TOS 04 IntoTheCrevice"
+		{
+			myGameTriggerType QuestCompleted
+			myConditions
+			{
+				GameConditionContextQuestIsSpecificQuest "Quest is TOS 04 Crevice"
+				{
+					myQuest 20037F8064300BEE0000094664004638
+				}
+			}
+		}
+		GameStatisticEventBlock "Complete TOS 05 Tunnel"
+		{
+			myGameTriggerType QuestCompleted
+			myConditions
+			{
+				GameConditionContextQuestIsSpecificQuest "Quest is TOS 05 Tunnel"
+				{
+					myQuest 20037F8064301150000009607459C2AF
+				}
+			}
+		}
+		GameStatisticEventBlock "Complete TOS 06 Suburbs"
+		{
+			myGameTriggerType QuestCompleted
+			myConditions
+			{
+				GameConditionContextQuestIsSpecificQuest "Quest is TOS 06 Suburbs"
+				{
+					myQuest 20037F8064301C2E0000378908B415C6
+				}
+			}
+		}
+		GameStatisticEventBlock "Complete TOS 07 Maze"
+		{
+			myGameTriggerType QuestCompleted
+			myConditions
+			{
+				GameConditionContextQuestIsSpecificQuest "Quest is TOS 07 Maze"
+				{
+					myQuest 20037F80646E20530003B534E2306DE6
+				}
+			}
+		}
+		GameStatisticEventBlock "Complete TAT 01 Pillar"
+		{
+			myGameTriggerType QuestCompleted
+			myConditions
+			{
+				GameConditionContextQuestIsSpecificQuest "Quest is TAT 01 Pillar"
+				{
+					myQuest 20037F806430213500012ED8EAB9B24B
+				}
+			}
+		}
+		GameStatisticEventBlock "Complete TAT 02 HighPathway"
+		{
+			myGameTriggerType QuestCompleted
+			myConditions
+			{
+				GameConditionContextQuestIsSpecificQuest "Quest is TAT 02 HighPathway"
+				{
+					myQuest 20037F8064302F890000003EA6355E1D
+				}
+			}
+		}
+		GameStatisticEventBlock "Complete TAT 03 LostCave"
+		{
+			myGameTriggerType QuestCompleted
+			myConditions
+			{
+				GameConditionContextQuestIsSpecificQuest "Quest is TAT 03 LostCave"
+				{
+					myQuest 20037F80643030A30000004D3C81792A
+				}
+			}
+		}
+		GameStatisticEventBlock "Complete TAT 04 Sidestreet"
+		{
+			myGameTriggerType QuestCompleted
+			myConditions
+			{
+				GameConditionContextQuestIsSpecificQuest "Quest is TAT 04 SideStreet"
+				{
+					myQuest 20037F80648C361A0000AAD8EDF3B813
+				}
+			}
+		}
+		GameStatisticEventBlock "Complete AKI 02 Shadows"
+		{
+			myGameTriggerType QuestCompleted
+			myConditions
+			{
+				GameConditionContextQuestIsSpecificQuest "Quest is AKI 02 Shadows"
+				{
+					myQuest 20037F80647463CD0000E2F918042F10
+				}
+			}
+		}
+		GameStatisticEventBlock "Complete AKI 03 Jungle"
+		{
+			myGameTriggerType QuestCompleted
+			myConditions
+			{
+				GameConditionContextQuestIsSpecificQuest "Quest is AKI 03 Jungle"
+				{
+					myQuest 20037F80647463B20000E2EC789C7CD7
+				}
+			}
+		}
+		GameStatisticEventBlock "Complete AKI 04 Cliff"
+		{
+			myGameTriggerType QuestCompleted
+			myConditions
+			{
+				GameConditionContextQuestIsSpecificQuest "Quest is AKI 04 Cliff"
+				{
+					myQuest 20037F80649ADCA4000137EFD9116E02
+				}
+			}
+		}
+		GameStatisticEventBlock "Complete AKI 05 AhiaKoRuins"
+		{
+			myGameTriggerType QuestCompleted
+			myConditions
+			{
+				GameConditionContextQuestIsSpecificQuest "Quest is AKI 05 AhiaKoRuins"
+				{
+					myQuest 20037F80647DF5C000018768E1C88B24
+				}
+			}
+		}
+		GameStatisticEventBlock "Complete KIJ 01 Snow"
+		{
+			myGameTriggerType QuestCompleted
+			myConditions
+			{
+				GameConditionContextQuestIsSpecificQuest "Quest is KIJ 01 Snow"
+				{
+					myQuest 20037F80649AFF1300013898316CB46E
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_06_Sample_All_Alien_Street_Food < uid=5D9E25776543650E0000228BF0FB1594 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=5D9E2577654365320000228EAEC840DD >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Gamestatistic changed"
+		{
+			myGameTriggerType GameStatisticChanged
+			myConditions
+			{
+				GameConditionGameStatistic "Gamestatistic alien street food sampled in Toshara >= 1"
+				{
+					myGameStatistic < uid=5D9E2577654394EF0000228B47A3A968 > = gs_alienstreetfood_sampled_Toshara 5D9E25776543709E000022924A777508
+				}
+				GameConditionGameStatistic "Gamestatistic alien street food sampled in Akiva >= 1"
+				{
+					myGameStatistic < uid=5D9E2577654394EF0000228C53670642 > = gs_alienstreetfood_sampled_Akiva 634C312365A94EBD00067C08C2F38D17
+				}
+				GameConditionGameStatistic "Gamestatistic alien street food sampled in Tatooine >= 1"
+				{
+					myGameStatistic < uid=5D9E2577654394EF0000228D71D9E713 > = gs_alienstreetfood_sampled_Tatooine 5D9E2577654370B20000229546CE4030
+				}
+				GameConditionGameStatistic "Gamestatistic alien street food sampled in Kijimi >= 1"
+				{
+					myGameStatistic < uid=5D9E2577654394EF0000228E2567B2B8 > = gs_alienstreetfood_sampled_Kijimi 634C312365A94E72000653CCB79EADFF
+				}
+				GameConditionContextIsOneOfGameStatistics "Gamestatistic that triggered the event is an alien street food game statistic"
+				{
+					myGameStatisticsList
+					{
+						GameStatistic "Alien street food sampled in Akiva" < uid=634C312365AFA4DA000033234BCB823D > = gs_alienstreetfood_sampled_Akiva 634C312365A94EBD00067C08C2F38D17
+						GameStatistic "Alien street food sampled in Kijimi" < uid=634C312365AFA50900003327268293A1 > = gs_alienstreetfood_sampled_Kijimi 634C312365A94E72000653CCB79EADFF
+						GameStatistic "Alien street food sampled in Tatooine" < uid=634C312365AFA50900003328AB7A81B5 > = gs_alienstreetfood_sampled_Tatooine 5D9E2577654370B20000229546CE4030
+						GameStatistic "Alien street food sampled in Toshara" < uid=634C312365AFA509000033297F01DAB3 > = gs_alienstreetfood_sampled_Toshara 5D9E25776543709E000022924A777508
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_07_Listen_Longest_Sob_Story < uid=6CF1B5F2653F794F00010031AE8E4767 >
+{
+	myGameValue < uid=6CF1B5F2653F7C050001CFAEE7A23A13 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Incremented from script"
+		{
+			myGameTriggerType Manual
+			myConditions
+			{
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_08_Find_All_Experts < uid=6CF1B5F265435AE5000148D7B5A9401B >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=6CF1B5F265435CCE000148DA036338B1 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Found all experts"
+		{
+			myGameTriggerType GameStatisticChanged
+			myConditions
+			{
+				GameConditionGameStatistic "Found Aila Bren"
+				{
+					myGameStatistic < uid=6CF1B5F265435CCE000148DBFC35095E > = gs_find_expert_aila_bren 6CF1B5F26542755F0000266A12449438
+				}
+				GameConditionGameStatistic "Found Lando Calrisian"
+				{
+					myGameStatistic < uid=6CF1B5F265435CCE000148DC8B9493C8 > = gs_find_expert_lando_calrisian 6CF1B5F26542755F000026766745540F
+				}
+				GameConditionGameStatistic "Found MT-7"
+				{
+					myGameStatistic < uid=6CF1B5F265435CCE000148DDC2DF2730 > = gs_find_expert_mt7 6CF1B5F26542755F000026742E56E379
+				}
+				GameConditionGameStatistic "Found Rooster Trace"
+				{
+					myGameStatistic < uid=6CF1B5F265435CCE000148DED863296A > = gs_find_expert_rooster_trace 6CF1B5F26542755F00002670B8056B39
+				}
+				GameConditionGameStatistic "Found Selo Rovak"
+				{
+					myGameStatistic < uid=6CF1B5F265435CCE000148DF8C48B4C1 > = gs_find_expert_selo_rovak 6CF1B5F26542755F000026687F854B77
+				}
+				GameConditionGameStatistic "Found Sheriff Quint"
+				{
+					myGameStatistic < uid=6CF1B5F265435CCE000148E0A36D7C53 > = gs_find_expert_sheriff_quint 6CF1B5F26542755F0000266EB45499E7
+				}
+				GameConditionGameStatistic "Found Teeka"
+				{
+					myGameStatistic < uid=6CF1B5F265435CCE000148E198B029A9 > = gs_find_expert_teeka 6CF1B5F26542755F0000266CEF31CF63
+				}
+				GameConditionGameStatistic "Found Temmin Wexley"
+				{
+					myGameStatistic < uid=6CF1B5F265435CCE000148E259596BAC > = gs_find_expert_temmin_wexley 6CF1B5F26542755F000026721374E73B
+				}
+				GameConditionContextIsOneOfGameStatistics "Gamestatistic that triggered the event is a find expert game statistic"
+				{
+					myGameStatisticsList
+					{
+						GameStatistic "Expert Aila Bren" < uid=634C312365AFA5420000332A37286951 > = gs_find_expert_aila_bren 6CF1B5F26542755F0000266A12449438
+						GameStatistic "Expert Lando Calrisian" < uid=634C312365AFA59A0000333282BA4F34 > = gs_find_expert_lando_calrisian 6CF1B5F26542755F000026766745540F
+						GameStatistic "Expert Mt7" < uid=634C312365AFA59A00003333BC50C00D > = gs_find_expert_mt7 6CF1B5F26542755F000026742E56E379
+						GameStatistic "Expert Rooster Trace" < uid=634C312365AFA59A0000333429DF7938 > = gs_find_expert_rooster_trace 6CF1B5F26542755F00002670B8056B39
+						GameStatistic "Expert Selo Rovak" < uid=634C312365AFA59A00003335E16CC7B9 > = gs_find_expert_selo_rovak 6CF1B5F26542755F000026687F854B77
+						GameStatistic "Expert Sheriff Quint" < uid=634C312365AFA59A00003336B1FFF74F > = gs_find_expert_sheriff_quint 6CF1B5F26542755F0000266EB45499E7
+						GameStatistic "Expert Teeka" < uid=634C312365AFA59A000033378B9519D5 > = gs_find_expert_teeka 6CF1B5F26542755F0000266CEF31CF63
+						GameStatistic "Expert Wexley" < uid=634C312365AFA59A000033385951A726 > = gs_find_expert_temmin_wexley 6CF1B5F26542755F000026721374E73B
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_09_Discover_All_Planet_Areas < uid=634C312365AE58A10002ECA5E3338BA5 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=634C312365AE59070002ECAACF974035 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "GalaxyLocation Game statistic changed"
+		{
+			myGameTriggerType GameStatisticChanged
+			myConditions
+			{
+				GameConditionContextIsOneOfGameStatistics "Gamestatistic that triggered the event is a galaxy location game statistic"
+				{
+					myGameStatisticsList
+					{
+						GameStatistic Akiva_Region_HuntersCanopy < uid=634C312365AE58FC0002ECA990344467 > = gs_galaxy_location_Akiva_Region_HuntersCanopy_discovered 634C312365A7A0F60002D80B670B96E2
+						GameStatistic Akiva_Region_KarabaFoothills < uid=634C312365AE5BD90002ECC50E4B1319 > = gs_galaxy_location_Akiva_Region_KarabaFoothills_discovered 634C312365A7CFC10002D831938B3DBE
+						GameStatistic Akiva_Region_MountSelasa < uid=634C312365AE5BD90002ECC6941CAA6F > = gs_galaxy_location_Akiva_Region_MountSelasa_discovered 634C312365A7CFC10002D834484D86D4
+						GameStatistic Akiva_Region_MyrraValley < uid=634C312365AE5BD90002ECC757CEED94 > = gs_galaxy_location_Akiva_Region_MyrraValley_discovered 634C312365A7CFC10002D8375AC94ACA
+						GameStatistic Akiva_Region_Stormhollow < uid=634C312365AE5BD90002ECC85B28804B > = gs_galaxy_location_Akiva_Region_Stormhollow_discovered 634C312365A7CFC10002D83AC1EB7550
+						GameStatistic Akiva_Region_TheGreatBasin < uid=634C312365AE5BD90002ECC90DAD83EC > = gs_galaxy_location_Akiva_Region_TheGreatBasin_discovered 634C312365A7CFC10002D83D2625989D
+						GameStatistic Kijimi_Area_BoilerRoom < uid=634C312365AE5BD90002ECCA7C931FE4 > = gs_galaxy_location_Kijimi_Area_BoilerRoom_discovered 634C312365A7F0070002D8C7B3FC7D5D
+						GameStatistic Kijimi_Area_KijimyCityCaverns < uid=634C312365AE5BD90002ECCB5C11FFAF > = gs_galaxy_location_Kijimi_Area_KijimyCityCaverns_discovered 634C312365A7F0070002D8C4611BDA2C
+						GameStatistic Kijimi_Cantina < uid=634C312365AE5BD90002ECCC432406BE > = gs_galaxy_location_Kijimi_Cantina_discovered 634C312365A7F0070002D8CA1D359953
+						GameStatistic Kijimi_District_MainSquare < uid=634C312365AE5BD90002ECCD22F75FD5 > = gs_galaxy_location_Kijimi_District_MainSquare_discovered 634C312365A7F0070002D8BEDEF946C3
+						GameStatistic Kijimi_District_RidgeTerrace < uid=634C312365AE5BD90002ECCEC67F0850 > = gs_galaxy_location_Kijimi_District_RidgeTerrace_discovered 634C312365A7F0070002D8C1FF360D6E
+						GameStatistic Kijimi_District_SpeederGate < uid=634C312365AE5BD90002ECCF15407BB7 > = gs_galaxy_location_Kijimi_District_SpeederGate_discovered 634C312365A7F0070002D8BBD3317C30
+						GameStatistic Kijimi_District_StrongholdRoad < uid=634C312365AE5BD90002ECD076329E57 > = gs_galaxy_location_Kijimi_District_StrongholdRoad_discovered 634C312365A7F0070002D8B5DA8A1501
+						GameStatistic Kijimi_District_TavernRoad < uid=634C312365AE5BD90002ECD1EEA36EB3 > = gs_galaxy_location_Kijimi_District_TavernRoad_discovered 634C312365A7F0070002D8B8AE09EEFB
+						GameStatistic Tatooine_Region_DesertValley < uid=634C312365AE5BD90002ECD2D0A0C6BF > = gs_galaxy_location_Tatooine_Region_DesertValley_discovered 634C312365A7CFC10002D840A98AE4CC
+						GameStatistic Tatooine_Region_GreatChottSaltFlat < uid=634C312365AE5BD90002ECD3C62B82DF > = gs_galaxy_location_Tatooine_Region_GreatChottSaltFlat_discovered 634C312365A7CFC10002D843EC4829AA
+						GameStatistic Tatooine_Region_MosEisley < uid=634C312365AE5BD90002ECD424097C6B > = gs_galaxy_location_Tatooine_Region_MosEisley_discovered 634C312365A7CFC10002D846FC2A728F
+						GameStatistic Tatooine_Region_NorthJundlandWastes < uid=634C312365AE5BD90002ECD5D12A58AF > = gs_galaxy_location_Tatooine_Region_NorthJundlandWastes_discovered 634C312365A7CFC10002D849B5B2C636
+						GameStatistic Tatooine_Region_SouthJundlandWastes < uid=634C312365AE5BD90002ECD60769E90B > = gs_galaxy_location_Tatooine_Region_SouthJundlandWastes_discovered 634C312365A7CFC10002D84C053FA07C
+						GameStatistic Tatooine_Region_WesternDuneSea < uid=634C312365AE5BD90002ECD79DCEAE43 > = gs_galaxy_location_Tatooine_Region_WesternDuneSea_discovered 634C312365A7CFC10002D84F094FDC89
+						GameStatistic Toshara_Region_BoulderForest < uid=634C312365AE5BD90002ECD8F24B73B5 > = gs_galaxy_location_Toshara_Region_BoulderForest_discovered 634C312365A7CFC10002D852E6427F80
+						GameStatistic Toshara_Region_MiroganaValley < uid=634C312365AE5BD90002ECD97127A273 > = gs_galaxy_location_Toshara_Region_MiroganaValley_discovered 634C312365A7CFC10002D85530D13F6F
+						GameStatistic Toshara_Region_SouthernFalls < uid=634C312365AE5BD90002ECDA394E3CED > = gs_galaxy_location_Toshara_Region_SouthernFalls_discovered 634C312365A7CFC10002D85837E4DCA3
+						GameStatistic Toshara_Region_TheGrazingFields < uid=634C312365AE5BD90002ECDBD11A3131 > = gs_galaxy_location_Toshara_Region_TheGrazingFields_discovered 634C312365A7CFC10002D85B11772A2C
+						GameStatistic Toshara_Region_TheLostSteppe < uid=634C312365AE5BD90002ECDC7865267C > = gs_galaxy_location_Toshara_Region_TheLostSteppe_discovered 634C312365A7CFC10002D85E75611F71
+						GameStatistic Toshara_Region_TheMirage < uid=634C312365AE5BD90002ECDD341D2739 > = gs_galaxy_location_Toshara_Region_TheMirage_discovered 634C312365A7CFC10002D86110C6FD4A
+					}
+				}
+				GameConditionGameStatistic "Akiva HuntersCanopy"
+				{
+					myGameStatistic < uid=634C312365AE5DA90002ECDE7CFCDC03 > = gs_galaxy_location_Akiva_Region_HuntersCanopy_discovered 634C312365A7A0F60002D80B670B96E2
+				}
+				GameConditionGameStatistic "Akiva KarabaFoothills"
+				{
+					myGameStatistic < uid=634C312365AE5DA90002ECDF7C6FF914 > = gs_galaxy_location_Akiva_Region_KarabaFoothills_discovered 634C312365A7CFC10002D831938B3DBE
+				}
+				GameConditionGameStatistic "Akiva MountSelasa"
+				{
+					myGameStatistic < uid=634C312365AE5DA90002ECE02D686623 > = gs_galaxy_location_Akiva_Region_MountSelasa_discovered 634C312365A7CFC10002D834484D86D4
+				}
+				GameConditionGameStatistic "Akiva MyrraValley"
+				{
+					myGameStatistic < uid=634C312365AE5DA90002ECE1F091A858 > = gs_galaxy_location_Akiva_Region_MyrraValley_discovered 634C312365A7CFC10002D8375AC94ACA
+				}
+				GameConditionGameStatistic "Akiva Stormhollow"
+				{
+					myGameStatistic < uid=634C312365AE5DA90002ECE26A176E8D > = gs_galaxy_location_Akiva_Region_Stormhollow_discovered 634C312365A7CFC10002D83AC1EB7550
+				}
+				GameConditionGameStatistic "Akiva TheGreatBasin"
+				{
+					myGameStatistic < uid=634C312365AE5DA90002ECE369B39D82 > = gs_galaxy_location_Akiva_Region_TheGreatBasin_discovered 634C312365A7CFC10002D83D2625989D
+				}
+				GameConditionGameStatistic "Kijimi BoilerRoom"
+				{
+					myGameStatistic < uid=634C312365AE5DA90002ECE40784B7E9 > = gs_galaxy_location_Kijimi_Area_BoilerRoom_discovered 634C312365A7F0070002D8C7B3FC7D5D
+				}
+				GameConditionGameStatistic "Kijimi KijimiCityCaverns"
+				{
+					myGameStatistic < uid=634C312365AE5DA90002ECE57A2A0C29 > = gs_galaxy_location_Kijimi_Area_KijimyCityCaverns_discovered 634C312365A7F0070002D8C4611BDA2C
+				}
+				GameConditionGameStatistic "Kijimi Cantina"
+				{
+					myGameStatistic < uid=634C312365AE5DA90002ECE6AB9866E7 > = gs_galaxy_location_Kijimi_Cantina_discovered 634C312365A7F0070002D8CA1D359953
+				}
+				GameConditionGameStatistic "Kijimi MainSquare"
+				{
+					myGameStatistic < uid=634C312365AE5DA90002ECE75E32A19B > = gs_galaxy_location_Kijimi_District_MainSquare_discovered 634C312365A7F0070002D8BEDEF946C3
+				}
+				GameConditionGameStatistic "Kijimi RidgeTerrace"
+				{
+					myGameStatistic < uid=634C312365AE5DA90002ECE87C2B6E4B > = gs_galaxy_location_Kijimi_District_RidgeTerrace_discovered 634C312365A7F0070002D8C1FF360D6E
+				}
+				GameConditionGameStatistic "Kijimi SpeederGate"
+				{
+					myGameStatistic < uid=634C312365AE5DA90002ECE9564A6EA3 > = gs_galaxy_location_Kijimi_District_SpeederGate_discovered 634C312365A7F0070002D8BBD3317C30
+				}
+				GameConditionGameStatistic "Kijimi StrongholdRoad"
+				{
+					myGameStatistic < uid=634C312365AE5DA90002ECEA3E8D95D3 > = gs_galaxy_location_Kijimi_District_StrongholdRoad_discovered 634C312365A7F0070002D8B5DA8A1501
+				}
+				GameConditionGameStatistic "Kijimi TavernRoad"
+				{
+					myGameStatistic < uid=634C312365AE5DA90002ECEBF578D5E0 > = gs_galaxy_location_Kijimi_District_TavernRoad_discovered 634C312365A7F0070002D8B8AE09EEFB
+				}
+				GameConditionGameStatistic "Tatooine DesertValley"
+				{
+					myGameStatistic < uid=634C312365AE5DA90002ECECD206A432 > = gs_galaxy_location_Tatooine_Region_DesertValley_discovered 634C312365A7CFC10002D840A98AE4CC
+				}
+				GameConditionGameStatistic "Tatooine GreatChottSaltFlat"
+				{
+					myGameStatistic < uid=634C312365AE5DA90002ECEDD73CF7A7 > = gs_galaxy_location_Tatooine_Region_GreatChottSaltFlat_discovered 634C312365A7CFC10002D843EC4829AA
+				}
+				GameConditionGameStatistic "Tatooine MosEisley"
+				{
+					myGameStatistic < uid=634C312365AE5DA90002ECEE854DC39E > = gs_galaxy_location_Tatooine_Region_MosEisley_discovered 634C312365A7CFC10002D846FC2A728F
+				}
+				GameConditionGameStatistic "Tatooine NorthJundlandWastes"
+				{
+					myGameStatistic < uid=634C312365AE5DA90002ECEFB6A9D102 > = gs_galaxy_location_Tatooine_Region_NorthJundlandWastes_discovered 634C312365A7CFC10002D849B5B2C636
+				}
+				GameConditionGameStatistic "Tatooine SouthJundlandWastes"
+				{
+					myGameStatistic < uid=634C312365AE5DA90002ECF05169D4D1 > = gs_galaxy_location_Tatooine_Region_SouthJundlandWastes_discovered 634C312365A7CFC10002D84C053FA07C
+				}
+				GameConditionGameStatistic "Tatooine WesternDuneSea"
+				{
+					myGameStatistic < uid=634C312365AE5DA90002ECF161D89094 > = gs_galaxy_location_Tatooine_Region_WesternDuneSea_discovered 634C312365A7CFC10002D84F094FDC89
+				}
+				GameConditionGameStatistic "Toshara BoulderForest"
+				{
+					myGameStatistic < uid=634C312365AE5DA90002ECF28A62FE02 > = gs_galaxy_location_Toshara_Region_BoulderForest_discovered 634C312365A7CFC10002D852E6427F80
+				}
+				GameConditionGameStatistic "Toshara MiroganaValley"
+				{
+					myGameStatistic < uid=634C312365AE5DA90002ECF372BB0F8D > = gs_galaxy_location_Toshara_Region_MiroganaValley_discovered 634C312365A7CFC10002D85530D13F6F
+				}
+				GameConditionGameStatistic "Toshara SouthernFalls"
+				{
+					myGameStatistic < uid=634C312365AE5DA90002ECF46D6B9257 > = gs_galaxy_location_Toshara_Region_SouthernFalls_discovered 634C312365A7CFC10002D85837E4DCA3
+				}
+				GameConditionGameStatistic "Toshara TheGrazingFields"
+				{
+					myGameStatistic < uid=634C312365AE5DA90002ECF5C892F35E > = gs_galaxy_location_Toshara_Region_TheGrazingFields_discovered 634C312365A7CFC10002D85B11772A2C
+				}
+				GameConditionGameStatistic "Toshara TheLostSteppe"
+				{
+					myGameStatistic < uid=634C312365AE5DA90002ECF6559D96A0 > = gs_galaxy_location_Toshara_Region_TheLostSteppe_discovered 634C312365A7CFC10002D85E75611F71
+				}
+				GameConditionGameStatistic "Toshara TheMirage"
+				{
+					myGameStatistic < uid=634C312365AE5DA90002ECF7FFF03CF9 > = gs_galaxy_location_Toshara_Region_TheMirage_discovered 634C312365A7CFC10002D86110C6FD4A
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_10_Buy_From_VIP_Stock < uid=6CF1B5F2654226B40000BB5F5B7ABFBE >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=6CF1B5F2654226F50000BB622A4A52D5 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Vendor Transaction Completed"
+		{
+			myGameTriggerType VendorTransactionCompleted
+			myConditions
+			{
+				GameConditionContextItemIsFromSpecialStock "Item is from Special (VIP) Stock"
+				{
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_11_Aquire_Separatist_Gear < uid=6CF1B5F265240169000111C8ABF3C543 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=6CF1B5F265250C640002BA4E0F91F64D >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Incremented by A_EQ_110_PLN_AKI_Intel_GearRoom01 script"
+		{
+			myGameTriggerType Manual
+			myConditions
+			{
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_12_Complete_Faction_Contracts < uid=6CF1B5F265240A0D000078AEFF1083F5 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=6CF1B5F265250C640002BA4F7DB775EF >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Complete Contract"
+		{
+			myGameTriggerType ContractStateChanged
+			myConditions
+			{
+				GameConditionContextContractIsInState "Contract is Completed"
+				{
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_13_Max_Reputation_Pyke_Syndicate < uid=6CF1B5F265240EB2000078B0466E957F >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=6CF1B5F265250C640002BA50878C3C99 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Reach Max Reputation With Pyke"
+		{
+			myGameTriggerType ReputationChanged
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextFactionIsOfType "Faction Is Pyke"
+				{
+					myFaction < uid=6CF1B5F26526C60E000025498FD2566C > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+				}
+				GameConditionPlayerHasReputation "Reputation WIth Pyke"
+				{
+					myFaction < uid=6CF1B5F2652518FA0001BB74C3D6CD60 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+					myReputationTier Excellent
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_14_Max_Reputation_Crimson_Dawn < uid=6CF1B5F2652410F2000078B830991CC8 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=6CF1B5F265250C640002BA5266DA177C >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Reach Max Reputation With Crimson"
+		{
+			myGameTriggerType ReputationChanged
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextFactionIsOfType "Faction is Crimson"
+				{
+					myFaction < uid=6CF1B5F26527AF780000A7B221974A0E > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+				}
+				GameConditionPlayerHasReputation "Reputation WIth Crimson"
+				{
+					myFaction < uid=6CF1B5F265250C640002BA53A0040E45 > = CrimsonDawn 16DEADE65F7DDA76000000C74AD19DCA
+					myReputationTier Excellent
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_15_Max_Reputation_Hutt_Cartel < uid=6CF1B5F2652410F2000078BB335E1D18 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=6CF1B5F265250C640002BA54468A8628 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Reach Max Reputation With Hutt"
+		{
+			myGameTriggerType ReputationChanged
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionPlayerHasReputation "Reputation WIth Hutt"
+				{
+					myFaction < uid=6CF1B5F265250C640002BA556D6BF22F > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+					myReputationTier Excellent
+				}
+				GameConditionContextFactionIsOfType "Faction is Hutt"
+				{
+					myFaction < uid=6CF1B5F26527AF780000A7B3AC1CCA9E > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_16_Max_Reputation_Ashiga_Cran < uid=6CF1B5F2652410F2000078BE412B371A >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=6CF1B5F265250C640002BA56DBBC6909 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Reach Max Reputation With Ashiga"
+		{
+			myGameTriggerType ReputationChanged
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionPlayerHasReputation "Reputation WIth Ashiga"
+				{
+					myFaction < uid=6CF1B5F265250C640002BA575B4A221D > = AshigaClan 4728ADF9620B6C2B0000201F5FC5C937
+					myReputationTier Excellent
+				}
+				GameConditionContextFactionIsOfType "Faction is Ashiga"
+				{
+					myFaction < uid=6CF1B5F26527AF780000A7B4A1C28088 > = AshigaClan 4728ADF9620B6C2B0000201F5FC5C937
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_17_Min_Reputation_Any_Faction < uid=6CF1B5F2652410F2000078C1834C3BFD >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=6CF1B5F265250C640002BA5849E3549A >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Reach Min Reputation With Any Faction"
+		{
+			myGameTriggerType ReputationChanged
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextPlayerHasReputation "Has Reputation"
+				{
+					myReputationTier Terrible
+					myOperator LessThanOrEqual
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_18_Find_Jet_Kordo_Treasure < uid=6CF1B5F2652CFC640000DC64854380DF >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=6CF1B5F2652D0D02000108F291BA6CE5 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Complete Jet Kordo Intel Chain (Quest)"
+		{
+			myGameTriggerType GameStatisticChanged
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionGameStatistic "Has final 2 pieces"
+				{
+					myGameStatistic < uid=B7BA90C966A9F6AD0000030019932956 > = gs_scoundrel_gear_set_count B7BA90C966A9F55D000002FDF380246E
+					myTargetValue 2
+				}
+				GameConditionContextIsOneOfGameStatistics "Is scoundrel set gs"
+				{
+					myGameStatisticsList
+					{
+						GameStatistic "Scoundrel gear" < uid=B7BA90C966A9F6A2000002FF05339557 > = gs_scoundrel_gear_set_count B7BA90C966A9F55D000002FDF380246E
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_19_Complete_First_ChainIntel < uid=6CF1B5F2652E7A4600002A329D824D3E >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=6CF1B5F2652E7A5B00002B856FBD76EE >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Completed Last Intel in Chain"
+		{
+			myGameTriggerType IntelCompleted
+			myConditions
+			{
+				GameConditionContextIntelIsLastInChain "Intel is Last in Chain"
+				{
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_20_Pickpocket_on_all_Planets < uid=6CF1B5F2653917530000A2DBFE42EDD4 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=6CF1B5F2653918AE0000A2DF2040C5BD >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Pickpocked on all Planets"
+		{
+			myGameTriggerType GameStatisticChanged
+			myConditions
+			{
+				GameConditionGameStatistic "Pickpocketed in Akiva Cantina"
+				{
+					myGameStatistic < uid=6CF1B5F265391CFD0000A2E37F18AF97 > = gs_pickpocket_akiva_cantina 6CF1B5F2653917390000A2D3853A0DD2
+				}
+				GameConditionGameStatistic "Pickpocketed in Kijimi Cantina"
+				{
+					myGameStatistic < uid=6CF1B5F265391CFD0000A2E4C00A1CE8 > = gs_pickpocket_kijimi_cantina 6CF1B5F2653917390000A2D501C5066C
+				}
+				GameConditionGameStatistic "Pickpocketed in Tatooine Cantina"
+				{
+					myGameStatistic < uid=6CF1B5F265391CFD0000A2E5A9A5B90D > = gs_pickpocket_tatooine_cantina 6CF1B5F2653917390000A2D9A57FFFB1
+				}
+				GameConditionGameStatistic "Pickpocketed in Toshara Cantina"
+				{
+					myGameStatistic < uid=6CF1B5F265391CFD0000A2E66F115298 > = gs_pickpocket_toshara_cantina 6CF1B5F2653917390000A2D778C49246
+				}
+				GameConditionContextIsOneOfGameStatistics "Gamestatistic that triggered the event is a pickpocket game statistic"
+				{
+					myGameStatisticsList
+					{
+						GameStatistic "Pickpocket Akiva Cantina" < uid=634C312365AFA5C300003339DE87F2BA > = gs_pickpocket_akiva_cantina 6CF1B5F2653917390000A2D3853A0DD2
+						GameStatistic "Pickpocket Kijimi Cantina" < uid=634C312365AFA6070000333F62E4FB68 > = gs_pickpocket_kijimi_cantina 6CF1B5F2653917390000A2D501C5066C
+						GameStatistic "Pickpocket Tatooine Cantina" < uid=634C312365AFA60700003340441A9D96 > = gs_pickpocket_tatooine_cantina 6CF1B5F2653917390000A2D9A57FFFB1
+						GameStatistic "Pickpocket Toshara Cantina" < uid=634C312365AFA607000033411A8C5B72 > = gs_pickpocket_toshara_cantina 6CF1B5F2653917390000A2D778C49246
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_21_Win_Fixed_Fathier_Race < uid=5D9E25776502CEE1000057B57F0AE65B >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=5D9E25776502CF40000060C717E2437A >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock FathierRaceCompleted
+		{
+			myGameTriggerType FathierRaceCompleted
+			myConditions
+			{
+				GameConditionFathierRacesCompletedAsPlayerWin "Fathier race has been won"
+				{
+				}
+				GameConditionFathierRacesCompletedAndFixed "Fathier race has been fixed"
+				{
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_22_Cheat_A_Winning_Sabacc_Game_Against_Lando < uid=5D9E25776512D3EE0001E91796FDB66B >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=5D9E25776512D4740001F1252633BB65 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Sabacc game completed"
+		{
+			myGameTriggerType SabaccGameCompleted
+			myConditions
+			{
+				GameConditionSabaccGameCompletedAsPlayerWin "Sabacc game completed as player win"
+				{
+				}
+				GameConditionSabaccGameCompletedUsingNumberOfCheats "Sabacc game completed using at least 1 cheat"
+				{
+					myNumberOfCheatsUsed 1
+					myCountOnlySuccessfulCheatAttempts TRUE
+				}
+				GameConditionSabaccGameContainsSabaccPlayer "Sabacc game contained Lando"
+				{
+					myPlayer < uid=634C31236584252300045C6B47BFD8FE > = AIPlayer_AKI_Nemesis_01_Lando_P02 E52E0D43651AF4150003520B0C99056E
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_23_Get_High_Score_Arcade_Game < uid=5D9E25776511804B00002422EF47E6F1 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=5D9E25776511808A00002AA80FE3AD7B >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Arcade Game Completed"
+		{
+			myGameTriggerType ArcadeGameCompleted
+			myConditions
+			{
+				GameConditionArcadeGameCompletedHighScoreBeaten "Has beaten score in arcade game"
+				{
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_24_Kill_Enemies_With_Pet_Pickups < uid=1896EE3A6527F4090001BC9810E420E9 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=1896EE3A6527F4CB0001D442B9BF3A14 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Enemy killed"
+		{
+			myGameTriggerType AgentKilledByAgent
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionIsPickupWeaponBroughtByPet "Pickup weapon was brought by pet"
+				{
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_25_Blind_Enemies_Pet < uid=1896EE3A652D1D25000108D6D6418ED6 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=1896EE3A652D1DA3000108DA3CE4592C >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Pet interaction"
+		{
+			myGameTriggerType InteractionPerformed
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionContextInteractionPointIsType "Blind enemy"
+				{
+					myInteractionPointTypes
+					{
+						InteractionPointType "Pet blind" PetCommandBlind
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_26_Defeat_All_Faction_Warships_Without_Taking_Damage < uid=5D9E25776571D1E20002729FEFFDCABC >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=5D9E25776571D294000272A380E75700 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Gamestatistic changed"
+		{
+			myGameTriggerType GameStatisticChanged
+			myConditions
+			{
+				GameConditionGameStatistic "Gamestatistic gs_ashigaclan_warship_destroyed >= 1"
+				{
+					myGameStatistic < uid=5D9E25776571D294000272A4E2530C8A > = gs_ashigaclan_warship_destroyed 5D9E2577656DCFB500002D2E4F8C0D44
+				}
+				GameConditionGameStatistic "Gamestatistic gs_huttclan_warship_destroyed >= 1"
+				{
+					myGameStatistic < uid=5D9E25776571D294000272A5D546CE69 > = gs_huttclan_warship_destroyed 5D9E2577656DCFB500002D2B0E88CA5F
+				}
+				GameConditionGameStatistic "Gamestatistic gs_crimsondawn_warship_destroyed >= 1"
+				{
+					myGameStatistic < uid=5D9E25776571D294000272A622D28A43 > = gs_crimsondawn_warship_destroyed 5D9E2577656DC74E00002D1D80668A89
+				}
+				GameConditionGameStatistic "Gamestatistic gs_pykesyndicate_warship_destroyed >= 1"
+				{
+					myGameStatistic < uid=5D9E25776571D294000272A79837864E > = gs_pykesyndicate_warship_destroyed 5D9E2577656DCFB500002D31D1A77344
+				}
+				GameConditionContextIsOneOfGameStatistics "Gamestatistic that triggered the event is a faction warship destroyed game statistic"
+				{
+					myGameStatisticsList
+					{
+						GameStatistic "Ashigaclan Warship" < uid=634C312365AFA63800003342B21CE4C8 > = gs_ashigaclan_warship_destroyed 5D9E2577656DCFB500002D2E4F8C0D44
+						GameStatistic "Huttclan Warship" < uid=634C312365AFA676000033464A40BEDF > = gs_huttclan_warship_destroyed 5D9E2577656DCFB500002D2B0E88CA5F
+						GameStatistic "Crimsondawn Warship" < uid=634C312365AFA676000033478E50D579 > = gs_crimsondawn_warship_destroyed 5D9E2577656DC74E00002D1D80668A89
+						GameStatistic "Pykesyndicate Warship" < uid=634C312365AFA67600003348ECAA9777 > = gs_pykesyndicate_warship_destroyed 5D9E2577656DCFB500002D31D1A77344
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_27_Fully_Upgraded_Spaceship < uid=1896EE3A6527BACA0000730AA6F2FDF9 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=1896EE3A6527BAE10000733AC79CE550 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Gear changed in space"
+		{
+			myGameTriggerType SpaceshipGearChangedSpace
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionSpaceshipHasMaxLevelEquipment Weapons
+				{
+					myEquipmentSlotGroupType Weapons
+					myEquipmentSlotTag ShipMain
+				}
+				GameConditionSpaceshipHasMaxLevelEquipment Engine
+				{
+					myEquipmentSlotGroupType Engine
+					myEquipmentSlotTag ShipMain
+				}
+				GameConditionSpaceshipHasMaxLevelEquipment Missiles
+				{
+					myEquipmentSlotGroupType Missiles
+					myEquipmentSlotTag ShipSecondary
+				}
+				GameConditionSpaceshipHasMaxLevelEquipment Turret
+				{
+					myEquipmentSlotGroupType TurretMount
+					myEquipmentSlotTag Main
+				}
+				GameConditionSpaceshipHasMaxLevelEquipment Hull
+				{
+					myEquipmentSlotGroupType Hull
+					myEquipmentSlotTag Main
+				}
+				GameConditionSpaceshipHasMaxLevelEquipment Shield
+				{
+					myEquipmentSlotGroupType Shield
+					myEquipmentSlotTag Main
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_28_Blabbermouth_Shoot_Down < uid=1896EE3A650D865B0002DC403794998A >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=1896EE3A650D8BB50002F88D361086D3 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Enemy killed while distracted"
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentKilledByDamageSourceType "Killed by shooting"
+				{
+					myDamageSourceType Projectile
+				}
+				GameConditionSourceAgentIsAssistedByBlabbermouthAgainstTarget "Distracted by blabbermouth"
+				{
+				}
+			}
+		}
+		GameStatisticEventBlock "Enemy takedown while distracted"
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentKilledByDamageSourceType "Killed by takedown"
+				{
+					myDamageSourceType Takedown
+				}
+				GameConditionSourceAgentIsAssistedByBlabbermouthAgainstTarget "Distracted by blabbermouth"
+				{
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_29_Defeat_Raider_To_Clear_Wanted_Level < uid=5D9E2577652924A600003B3EAF589467 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=5D9E2577652925150000492491E19C9C >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Agent killed by Player"
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionContextAgentIsSpecificSpaceshipType "Target Agent spaceship is Raider"
+				{
+					myAgentContextType TargetAgent
+					mySpaceshipType Raider
+				}
+				GameConditionContextAgentIsSpaceship "Target Agent is spaceship"
+				{
+					myAgentContextType TargetAgent
+				}
+				GameConditionPlayerHasWantedLevel "Player has wanted level"
+				{
+					myWantedLevel 1
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_30_Defeat_Enemy_Ship_After_Loop_Maneuver < uid=5D9E2577651ACF0000002679C0B88B85 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=5D9E2577651ACFA400003432307A8558 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Player Defeated Enemy Ship"
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionPlayerSpaceShipDefeatedEnemyAfterLoopManeuver "Player spaceship defeated an enemy after a loop maneuver"
+				{
+					myTimeFrameForLoopManeuverInSeconds 3.0
+				}
+				GameConditionContextAgentIsSpaceship "Defeated agent is spaceship"
+				{
+					myAgentContextType TargetAgent
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_31_Defeat_Ship_Without_Direct_Fire < uid=5D9E2577652E47C60000AFB6FEF7D4CA >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=5D9E2577652E48610000B8C2A0F6F379 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Gamestatisic triggered"
+		{
+			myGameTriggerType GameStatisticChanged
+			myConditions
+			{
+				GameConditionContextIsOneOfGameStatistics "List of gamestats to trigger the event"
+				{
+					myGameStatisticsList
+					{
+						GameStatistic gs_ship_destroyed_by_player_ship_colliion < uid=634C3123672343D1000000F25240DFEC > = gs_ship_destroyed_by_player_ship_collision 634C312367234201000000E4B45EB23F
+						GameStatistic gs_ship_destroyed_by_non_player_collision < uid=634C3123672343DF000000F4D65C4237 > = gs_ship_destroyed_by_non_player_collision 634C312367234314000000E9A35B7269
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_32_Destroy_10_Enemy_Ships_Inside_Kijimi_Nebula < uid=5D9E2577652FC8D800002B9EB7A4CBF6 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=5D9E2577652FC9EC00003AB339935AB1 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Agent killed by Player"
+		{
+			myGameTriggerType AgentKilledByAgent
+			myConditions
+			{
+				GameConditionPlayerIsInLevelInfo "Player is in Space Kijimi"
+				{
+					myLevelInfos
+					{
+						uid "Space Kijimi" 9C4B6A046012DE63000000BA154AA5F2
+					}
+				}
+				GameConditionContextAgentIsInEMInterferenceVolume "Player is in EMInterferenceVolume (Nebula)"
+				{
+				}
+				GameConditionContextAgentIsInEMInterferenceVolume "Target Agent is in EMInterferenceVolume (Nebula)"
+				{
+					myAgentContextType TargetAgent
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_33_Speeder_Perfect_Landing < uid=1896EE3A656F592100002E3FF9FBE2AB >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=1896EE3A656F5BE600002E447BD990A8 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Speeder landed"
+		{
+			myGameTriggerType PlayerSpeederLandedWithType
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionPlayerSpeederHasPerfectLanding "Was perfect landing"
+				{
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_34_PowerslideDrife_30s < uid=1896EE3A652D2F5B00009314BC75207C >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=1896EE3A652D2FFB0000931844A80987 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Powerslide drift"
+		{
+			myGameTriggerType PlayerSpeederExecutedPowerslideDrift
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionPlayerSpeederPowerslideDriftMinDuration "30 second powerslide drift"
+				{
+					myMinDurationSeconds 30.0
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_35_Defeat_5_Enemies_With_Saddle_Shot < uid=1896EE3A6537DA5D0003EAFA3D49D921 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=1896EE3A6537DBE40003F0CDFB022D90 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Adrenaline rush finished"
+		{
+			myGameTriggerType GameStatisticChanged
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+				GameConditionGameStatistic "Defeat 5 enemies simultaneously"
+				{
+					myGameStatistic < uid=1896EE3A6537DBE40003F0CE61C973CE > = gs_crack_shot_kills 1896EE3A652E80710000EFBFE9FFD1BB
+					myTargetValue 5
+				}
+				GameConditionPlayerIsOnSpeeder "Is on speeder"
+				{
+				}
+				GameConditionContextIsOneOfGameStatistics "Is crack shot"
+				{
+					myGameStatisticsList
+					{
+						GameStatistic "Crack shot" < uid=B7BA90C9668F9E66000290007A4B9AF2 > = gs_crack_shot_kills 1896EE3A652E80710000EFBFE9FFD1BB
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_36_Slice_Advanced_Successful < uid=1896EE3A6509AD8C0000BB19859B9B68 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=1896EE3A6509AEAE0000BB217867DF94 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Slicing
+		{
+			myGameTriggerType InteractionRequiredMinigameResult
+			myConditions
+			{
+				GameConditionContextInteractionRequiredMinigameSlicingTerminalState "Has sliced advanced terminal successfully"
+				{
+					myIsAdvancedTerminal TRUE
+					mySlicingStates
+					{
+						SlicingState Success Success
+						SlicingState CriticalSuccess CriticalSuccess
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_37_Slice_Regular_Successful < uid=1896EE3A6509AE250000BB1D29B6A2B2 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=1896EE3A6509AEAE0000BB22268E4D67 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Regular slicing"
+		{
+			myGameTriggerType InteractionRequiredMinigameResult
+			myConditions
+			{
+				GameConditionContextInteractionRequiredMinigameSlicingTerminalState "Has sliced regular terminal successfully"
+				{
+					mySlicingStates
+					{
+						SlicingState Success Success
+						SlicingState CriticalSuccess CriticalSuccess
+					}
+				}
+			}
+		}
+		GameStatisticEventBlock "Advanced slicing"
+		{
+			myGameTriggerType InteractionRequiredMinigameResult
+			myConditions
+			{
+				GameConditionContextInteractionRequiredMinigameSlicingTerminalState "Has sliced advanced terminal successfully"
+				{
+					myIsAdvancedTerminal TRUE
+					mySlicingStates
+					{
+						SlicingState Success Success
+						SlicingState CriticalSuccess CriticalSuccess
+					}
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_38_Disable_Alarm_While_Alarm_Is_Running < uid=5D9E2577654223260000CDC6A8371D59 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=5D9E25776542234B0000CDCA7A294790 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Alarm disabled"
+		{
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_39_Lockpick_Successfull < uid=1896EE3A64F5ABD0000075777792416E >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=1896EE3A64F5AC4B000075B36B37C68C >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock Lockpick
+		{
+			myGameTriggerType InteractionRequiredMinigameResult
+			myConditions
+			{
+				GameConditionContextInteractionRequiredMinigameResult "Has lockpicked successfully"
+				{
+					myRequiredMinigameType Lockpicking
+					myRequiredMinigameResult Success
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_40_Complete_MQ_030 < uid=1896EE3A64F5ABD3000075799D9DEACF >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=1896EE3A64F5AC4B000075B43EFB8401 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Complete MQ 030"
+		{
+			myGameTriggerType Manual
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_41_Complete_MQ_060 < uid=1896EE3A64F5ABD70000757BD9EE3CF9 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=1896EE3A64F5AC4B000075B580D82FE9 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Complete MQ 060"
+		{
+			myGameTriggerType QuestCompleted
+			myConditions
+			{
+				GameConditionContextQuestIsSpecificQuest "MQ 060 Completed"
+				{
+					myQuest BFA41A0261B36172000004093607CD4A
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_42_Complete_MQ_100 < uid=1896EE3A64F5ABDA0000757D071464A5 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=1896EE3A64F5AC4B000075B6C8FBFF52 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Complete MQ 100"
+		{
+			myGameTriggerType QuestCompleted
+			myConditions
+			{
+				GameConditionContextQuestIsSpecificQuest "MQ 100 Completed"
+				{
+					myQuest BFA41A0261B36D3600000442ABE68872
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_43_Complete_MQ_130 < uid=1896EE3A64F5ABDC0000757F0716B4BB >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=1896EE3A64F5AC4B000075B71D2D4367 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Complete MQ 130"
+		{
+			myGameTriggerType QuestCompleted
+			myConditions
+			{
+				GameConditionContextQuestIsSpecificQuest "MQ 130 Completed"
+				{
+					myQuest BFA41A0261B3755D0000049A3563A922
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_44_Complete_MQ_140 < uid=1896EE3A64F5ABE000007581BFA8A6C1 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=1896EE3A64F5AC4B000075B8FF14174F >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Complete MQ 140"
+		{
+			myGameTriggerType QuestCompleted
+			myConditions
+			{
+				GameConditionContextQuestIsSpecificQuest "MQ 140 Completed"
+				{
+					myQuest BFA41A0261C2FC4A00004D0F65DCABC9
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_45_Complete_MQ_170 < uid=1896EE3A64F5ABE30000758318E972A2 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=1896EE3A64F5AC4B000075B9BEF2C823 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Complete MQ 170"
+		{
+			myGameTriggerType QuestCompleted
+			myConditions
+			{
+				GameConditionContextQuestIsSpecificQuest "MQ 170 Completed"
+				{
+					myQuest BFA41A0261B375EA000004A25661B01D
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_46_Complete_MQ_180 < uid=1896EE3A64F5ABEB0000758517870383 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=1896EE3A64F5AC4B000075BAA9E4B1C0 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Complete MQ 180"
+		{
+			myGameTriggerType QuestCompleted
+			myConditions
+			{
+				GameConditionContextQuestIsSpecificQuest "MQ 180 Completed"
+				{
+					myQuest BFA41A0261B37600000004A4C3D0A4E0
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_47_Complete_MQ_190 < uid=1896EE3A64F5ABEE00007587AB6ED16B >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=1896EE3A64F5AC4B000075BBDEA5E9E0 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Complete MQ 190"
+		{
+			myGameTriggerType QuestCompleted
+			myConditions
+			{
+				GameConditionContextQuestIsSpecificQuest "MQ 190 Completed"
+				{
+					myQuest BFA41A0261B37659000004A63442E57D
+				}
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_48_Complete_MQ_200 < uid=1896EE3A64F5ABF20000758970BF7081 >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=1896EE3A64F5AC4B000075BC81543314 >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Complete MQ 200"
+		{
+			myGameTriggerType Manual
+			myGameStatisticOperation IncrementOnce
+			myConditions
+			{
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+
+GameStatistic gs_achievements_49_Complete_MQ_220 < uid=1896EE3A64F5ABF50000758B5BB50ECE >
+{
+	myIncrementOncePerTrigger TRUE
+	myGameValue < uid=1896EE3A64F5AC4B000075BDA9CF40CD >
+	{
+	}
+	myEventBlocks
+	{
+		GameStatisticEventBlock "Complete MQ 220"
+		{
+			myGameTriggerType Manual
+			myConditions
+			{
+			}
+		}
+	}
+	myUIDescription "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+}
+

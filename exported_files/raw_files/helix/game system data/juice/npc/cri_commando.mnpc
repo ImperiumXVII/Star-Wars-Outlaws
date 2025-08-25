@@ -1,0 +1,52 @@
+include "helix/game system data/juice/ai/cri_commando_suppression_profile.mnpcsuppressionprofile"
+include "helix/game system data/juice/melee/alwaysblockmeleedefense.mnpcmeleedefenseprofile"
+include "helix/game system data/juice/melee/alwaysmissmeleedefense.mnpcmeleedefenseprofile"
+include "helix/game system data/juice/npc/base_cri.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC cri_commando < uid=2736B36562BAFA5A00010A41DEEA292C > : base_cri
+{
+	myName "aurabesh = false, contextComment = \"The name of the Crimson Dawn Fast Attacker Unit and its archetype (assault)\", enabled = true, guid = #91DC5D3C654E406E00051D0EF3C74FC7, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10572, text = \"Commando\nAssault\", type = \"MenuLine\""
+	myCharacterVisuals < uid=2736B36562BAFA5A00010A42E489B18C > = character_visuals_2_silver_crimson_dawn_commando 7D468446653FDA890004FBD68C55E5DF
+	myAdditionalGearGraphs 91DC5D3C653665B400014B0EAA04596D
+	myBehavior helix/behaviors/cri_commando.mbehavior
+	myMaxHealth 15
+	myHealthFormula max(1,2+NPCFinalHealth)
+	myDialogueCharactersFromDatabase
+	{
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=E4123D2765141FB80000AFA82B4E0FF8 > = CrimsonDawnF01 E4123D2764B92EA90002DA727887DDD8
+		DialogueCharacterWithTags "New DialogueCharacterWithTags (0)" < uid=E4123D2765141FB00000AFA4D9F76DAE > = CrimsonDawnF02 E4123D2765141EE00000AF74BFF61113
+		DialogueCharacterWithTags "New DialogueCharacterWithTags (1)" < uid=E4123D2765141FB50000AFA5475DC54F > = CrimsonDawnF03 E4123D2765141EE00000AF79072CA83A
+	}
+	myTacticalPositionFinderProfile < uid=416E63E4642EDD6C000A2212779B3DF2 > = "Assault Tactical Position Finder Profile" 5C421F5C64A5764C000057F0C65A6821
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout Pistol < uid=2736B3656362535A0001D521C8FE7D67 > = cri_Commando_Pistol 2736B365636252B40001D4F90E14B37E
+	}
+	myLootTable < uid=4171A7E165F844A50008C1AB6829FFBA > = loot_con_OnKill_BactaOnly 2AE2EC8565F81F4F0002A84860BF6E62
+	myMotionPatternProfile < uid=416E63E4642C29B200020F1D372A2EF2 > = AssassinCombatMotion 416E63E4642C2B790002C64140687CB2
+	myAudioParameters
+	{
+		myAudioSwitchByTags
+		{
+			AudioSwitchByTags Female
+			{
+				myTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=E4123D2765141EB40000AF70F9E8DAFD > = Agent_Species_HumanTag 2736B365634D673A0003C27CFCFEFD1A
+					RBTagsTag "New RBTagsTag (0)" < uid=E4123D2765141EB40000AF71169701B9 > = Agent_Gender_FeminineTag 16DEADE6626D20EA00002E5277B65AD4
+				}
+				mySwitch
+				{
+					myGuid 439DAB8542C152C904E5560627DE5B8E
+				}
+			}
+		}
+	}
+	myMeleeDefenseProfile < uid=4171A7E1668B9A8F000C898AB280B443 > = DefaultMeleeDefense 4171A7E1641C75FD0004C9002D69F726
+	myStaggerConfig < uid=2736B365634527A60000603F6986C59B > = NPCStaggerConfig_Humanoid_Medium_MeleeTier2 3C2FA92B6515832C0004A42547889D4B
+	myCombatRole Assault
+	myOnAgentKilledGameScript "helix/game scripts/gs_npc_force_visible.mgamescript"
+	myResistanceProfile < uid=7113C61166BC6596000000E96459FD75 > = HumanoidResistanceProfileDifficultyAffector 7113C61166BC5ED2000000DFD4908E31
+}
+

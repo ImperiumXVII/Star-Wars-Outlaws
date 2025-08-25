@@ -1,0 +1,870 @@
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+include "helix/game system data/juice/intel/intel_a_sl.mintel"
+include "helix/game system data/juice/intel/intel_sabacc.mintel"
+include "helix/game system data/juice/livingworld/ambientlife_livingworldcontent.mlivingworldcontent"
+include "helix/game system data/juice/livingworld/ms_tat_optionaldialogue.mlivingworldcontent"
+
+LivingWorldContent sabacc_livingworldcontent < uid=1657B1AA64EF0440000874CC89C8FAD8 >
+{
+	myTicket < uid=1657B1AA64EF0440000874CDC14E1F92 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=1657B1AA64EF0440000874CEED819E90 >
+	{
+		myDefaultValue 5
+	}
+	myCompletedGameValue < uid=1657B1AA64EF0440000874CF1A5875A6 >
+	{
+		myDefaultValue 0
+		myVariableAttributeName ""
+	}
+	myActivationGameConditions
+	{
+		GameConditionQuestBeatState GameConditionQuestBeatState
+		{
+			myQuestBeat CC6CF61E64215E560000710309244A91
+			myQuestBeatState Started
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer GameConditionContextLivingWorldContentLocation_DistanceToPlayer
+		{
+			myDistance 150.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer GameConditionContextLivingWorldContentLocation_DistanceToPlayer
+		{
+			myDistance 50.0
+		}
+	}
+}
+
+LivingWorldContent Sabacc_Table_Init < uid=91908ED265A53EBB0022DF724FFBA73B > : AmbientLife_ShortRangeDayAndNight
+{
+}
+
+LivingWorldContent MS2005_TAT_QuintSabacc_P0_Locked < uid=1657B1AA64EF057F00089A2F26B7DEB8 >
+{
+	myLayerType MicroStory
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup QuintChallenge_NotStarted_OR_Finished
+		{
+			myConditions
+			{
+				GameConditionPlayerHasIntel HasNOT_QuintChallenge
+				{
+					myIsNegated TRUE
+					myIntel < uid=1657B1AA65A92DE2001DA8C31CB25AAA > = intel_A_SNQ_020_TAT_Nemesis_Intel_Final_BeatQuint 91908ED26486EC570005F226CAF6F187
+				}
+				GameConditionPlayerHasIntel NOTFinished_QuintChallenge
+				{
+					myIsNegated TRUE
+					myIntel < uid=1657B1AA65A92DE2001DA8C4925BDBDD > = intel_A_SNQ_020_TAT_Nemesis_Intel_Final_BeatQuint 91908ED26486EC570005F226CAF6F187
+					myIntelState Resolved
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup Has_OR_Resolved_QuintInvite
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel Has_QuintInvite
+				{
+					myIntel < uid=1657B1AA65A934620009181B399B77A8 > = intel_A_SNQ_020_TAT_Nemesis_Intel_Final_BeatQuint 91908ED26486EC570005F226CAF6F187
+				}
+				GameConditionPlayerHasIntel Resolved_QuintInvite
+				{
+					myIntel < uid=1657B1AA65A934620009181CBE8E52D0 > = intel_A_SNQ_020_TAT_Nemesis_Intel_Final_BeatQuint 91908ED26486EC570005F226CAF6F187
+					myIntelState Resolved
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS2006_TAT_QuintSabacc_P1_Start < uid=1657B1AA64EF058500089A30B33A4302 >
+{
+	myCompletedGameValue < uid=1657B1AA65BA42F20015CB823FDC57F9 >
+	{
+	}
+	myLayerType MicroStory
+	myActivationGameConditions
+	{
+		GameConditionQuestIsCompleted EQ_090_IsCompleted
+		{
+			myQuest 913C10766408B288000063B69AD8F48F
+		}
+		GameConditionQuestIsCompleted SNQ_010_IsCompleted
+		{
+			myQuest 91908ED26483176700072FE1A8F5796B
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance less than 50"
+		{
+			myDistance 50.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "This LWC has NOT been completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_IsSpaceshipOnMyLandingZone IsSpaceshipOnMyLandingZone
+		{
+		}
+		GameConditionQuestBeatState "MQ_140 Beat06 is not played"
+		{
+			myQuestBeat 9D01D21763DCFBF30000D1C9241B5B6D
+			myQuestBeatState Started
+			myOperator NotEqual
+		}
+		LivingWorldGameConditionGroup "Group OR - Intel BeatQuint is not Active or Resolved"
+		{
+			myIsNegated TRUE
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel "Intel BeatQuint is not Resolved"
+				{
+					myIsNegated FALSE
+					myIntel < uid=91803AE167068B4300192BC24BA9E43E > = intel_A_SNQ_020_TAT_Nemesis_Intel_Final_BeatQuint 91908ED26486EC570005F226CAF6F187
+					myIntelState Resolved
+				}
+				GameConditionPlayerHasIntel "Intel BeatQuint is not Active"
+				{
+					myIntel < uid=91803AE167068B4300192BC3888152ED > = intel_A_SNQ_020_TAT_Nemesis_Intel_Final_BeatQuint 91908ED26486EC570005F226CAF6F187
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Or LivingWorldGameConditionGroup"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_IsSpaceshipOnMyLandingZone "Not IsSpaceshipOnMyLandingZone"
+				{
+					myIsNegated TRUE
+				}
+				LivingWorldGameConditionGroup "And LivingWorldGameConditionGroup"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted HasBeenCompleted
+						{
+						}
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance  100"
+						{
+							myDistance 100.0
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS20062_TAT_QuintSabacc_P1_Final < uid=1657B1AA65A9301F001F88C16043C4EF >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		LivingWorldGameConditionGroup Has_OR_Resolved_QuintInvite
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel Has_QuintInvite
+				{
+					myIntel < uid=1657B1AA65A9301F001F88C503008E2A > = intel_A_SNQ_020_TAT_Nemesis_Intel_Final_BeatQuint 91908ED26486EC570005F226CAF6F187
+				}
+				GameConditionPlayerHasIntel Resolved_QuintInvite
+				{
+					myIntel < uid=1657B1AA65A9301F001F88C6491F1BD4 > = intel_A_SNQ_020_TAT_Nemesis_Intel_Final_BeatQuint 91908ED26486EC570005F226CAF6F187
+					myIntelState Resolved
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance  100"
+		{
+			myDistance 100.0
+		}
+	}
+}
+
+LivingWorldContent MS2007_KIJ_AshigaSabacc_P0_Intro < uid=1657B1AA64EF0C54000AF6BCA9A7BC54 >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is less 40m"
+		{
+			myDistance 40.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestIsCompleted SNQ_010_IsCompleted
+		{
+			myQuest 91908ED26483176700072FE1A8F5796B
+		}
+		LivingWorldGameConditionGroup "Intel 01 is NOT Active Disabled AND Resolved"
+		{
+			myIsNegated FALSE
+			myOperator And
+			myConditions
+			{
+				GameConditionPlayerHasIntel "Intel 01 FindTable is NOT Active"
+				{
+					myIsNegated TRUE
+					myIntel < uid=91803AE166C34C1900056DF2A050012F > = intel_A_SNQ_020_KIJ_Nemesis_Intel_01_KijFindTable 91908ED26486EC620005F228F660A672
+				}
+				GameConditionPlayerHasIntel "Intel 01 FindTable is NOT Resolved"
+				{
+					myIsNegated TRUE
+					myIntel < uid=91803AE166C34C1900056DF3904148DA > = intel_A_SNQ_020_KIJ_Nemesis_Intel_01_KijFindTable 91908ED26486EC620005F228F660A672
+					myIntelState Resolved
+				}
+				GameConditionPlayerHasIntel "Intel 01 FindTable is NOT Disabled"
+				{
+					myIsNegated TRUE
+					myIntel < uid=91803AE166C34C9800056DF479C3157E > = intel_A_SNQ_020_KIJ_Nemesis_Intel_01_KijFindTable 91908ED26486EC620005F228F660A672
+					myIntelState Disabled
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is more 50m"
+		{
+			myDistance 50.0
+		}
+	}
+}
+
+LivingWorldContent MS2027_KIJ_AshigaSabacc_BouncerClosedDoor < uid=1657B1AA65BD0EF200878D9E1E17FDF0 >
+{
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Intel_Final_BeatAshiga is NOT Active AND Resolved"
+		{
+			myConditions
+			{
+				GameConditionPlayerHasIntel "Intel_Final_BeatAshiga is NOT Resolved"
+				{
+					myIsNegated TRUE
+					myIntel < uid=1657B1AA65BD0FB600878DF6E28FE4C4 > = intel_A_SNQ_020_KIJ_Nemesis_Intel_Final_BeatAshiga 91908ED26486EC6D0005F22AB95BC5E4
+					myIntelState Resolved
+				}
+				GameConditionPlayerHasIntel "Intel_Final_BeatAshiga is NOT Active"
+				{
+					myIsNegated TRUE
+					myIntel < uid=1657B1AA65BD0FB600878DF70F4095A1 > = intel_A_SNQ_020_KIJ_Nemesis_Intel_Final_BeatAshiga 91908ED26486EC6D0005F22AB95BC5E4
+				}
+			}
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is less than 55m"
+		{
+			myDistance 55.0
+			myOperator LessThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance more than 65m"
+		{
+			myDistance 65.0
+		}
+	}
+}
+
+LivingWorldContent MS2008_KIJ_AshigaSabacc_P1_FrontGuy_Barman < uid=1657B1AA64EF0DA2000AF6BEE3529DA5 >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is less than 40m"
+		{
+			myDistance 40.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestIsCompleted SNQ_010_IsCompleted
+		{
+			myQuest 91908ED26483176700072FE1A8F5796B
+		}
+		GameConditionPlayerHasIntel "Intel_01_FindTable is Active"
+		{
+			myIntel < uid=1657B1AA65BBAFE60035035BF391F300 > = intel_A_SNQ_020_KIJ_Nemesis_Intel_01_KijFindTable 91908ED26486EC620005F228F660A672
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is more than 50m"
+		{
+			myDistance 50.0
+		}
+	}
+}
+
+LivingWorldContent MS2010_KIJ_AshigaSabacc_P1_5_Loser < uid=1657B1AA64EF0F79000AF6C63F5E027E >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is less 70m"
+		{
+			myDistance 70.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestIsCompleted "SNQ_010 is Completed"
+		{
+			myQuest 91908ED26483176700072FE1A8F5796B
+		}
+		LivingWorldGameConditionGroup "Intel 01 FindTable Or Intel 03 Loser are Active"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel "Intel 01 FindTable is Active"
+				{
+					myIntel < uid=1657B1AA653A5F420015611A4A586DC1 > = intel_A_SNQ_020_KIJ_Nemesis_Intel_01_KijFindTable 91908ED26486EC620005F228F660A672
+				}
+				GameConditionPlayerHasIntel "Intel 03 Loser is Active"
+				{
+					myIntel < uid=1657B1AA653A5F420015611BC9E86728 > = intel_A_SNQ_020_KIJ_Nemesis_Intel_03_KijLoserPosition 1657B1AA653A5A75000FBA667CDA8D5B
+					myIntelState Active
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is more than 80m"
+		{
+			myDistance 80.0
+		}
+	}
+}
+
+LivingWorldContent MS2012_KIJ_AshigaSabacc_P2_Final < uid=1657B1AA64EF0FF1000AF6CEA248AB63 >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is less than 70m"
+		{
+			myDistance 70.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestIsCompleted SNQ_010_IsCompleted
+		{
+			myQuest 91908ED26483176700072FE1A8F5796B
+		}
+		GameConditionPlayerHasIntel Intel_FindTable
+		{
+			myIntel < uid=1657B1AA64EF0FF1000AF6CF1AA93E30 > = intel_A_SNQ_020_KIJ_Nemesis_Intel_Final_BeatAshiga 91908ED26486EC6D0005F22AB95BC5E4
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is more than 80m"
+		{
+			myDistance 80.0
+		}
+	}
+}
+
+LivingWorldContent MS2013_AKI_LandoSabacc_P1_Start < uid=1657B1AA64EF135D000DA4802A9C73B1 >
+{
+	myCompletedGameValue < uid=1657B1AA6543CEFB00451989CFECC03D >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionQuestIsCompleted SNQ_010_IsCompleted
+		{
+			myQuest 91908ED26483176700072FE1A8F5796B
+		}
+		GameConditionQuestIsCompleted EQ_120_IsCompleted
+		{
+			myQuest E1B84E3A64BE58710004095265CCBF6D
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is less than 120m"
+		{
+			myDistance 120.0
+			myOperator LessThan
+		}
+		GameConditionSabaccCheatsResultsCount CheatedTwice
+		{
+			myCheatID DoubleDraw
+			myCheatResult Success
+			myCheatResultCount 2
+		}
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted HasNot_BeenCompleted
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_IsSpaceshipOnMyLandingZone IsSpaceshipOnMyLandingZone
+		{
+		}
+		LivingWorldGameConditionGroup "Group OR - Intl BeatLando is not Active or Resolved"
+		{
+			myIsNegated TRUE
+			myOperator Or
+			myConditions
+			{
+				GameConditionPlayerHasIntel "Intel BeatLando is not Resolved"
+				{
+					myIsNegated FALSE
+					myIntel < uid=91803AE167068AF700192BA605DE7138 > = intel_A_SNQ_020_AKI_Nemesis_Intel_Final_BeatLando 91908ED26486EC680005F229A288D612
+					myIntelState Resolved
+				}
+				GameConditionPlayerHasIntel "Intel BeatLando is not Active"
+				{
+					myIntel < uid=91803AE167068AF700192BA7AD9BF3C5 > = intel_A_SNQ_020_AKI_Nemesis_Intel_Final_BeatLando 91908ED26486EC680005F229A288D612
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Or LivingWorldGameConditionGroup"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted HasBeenCompleted
+				{
+				}
+				GameConditionContextLivingWorldContentLocation_IsSpaceshipOnMyLandingZone "Not IsSpaceshipOnMyLandingZone"
+				{
+					myIsNegated TRUE
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS2026_TOS_SecretSabaccParlor_P1 < uid=1657B1AA6537897900042F7BB0573A0D >
+{
+	myCompletedGameValue < uid=1657B1AA65378AB400042F7DD20D58F5 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		GameConditionQuestIsCompleted Finished_SNQ_010
+		{
+			myQuest 91908ED26483176700072FE1A8F5796B
+		}
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted HasNot_BeenCompleted
+		{
+			myIsNegated TRUE
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup HasStarted_OR_HasResolved_DefeatBosnok
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState Finished_DefeatBosnot
+				{
+					myQuestBeat 91908ED264832AF4000259119867FCF3
+					myQuestBeatState Completed
+				}
+			}
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance more than 40"
+		{
+			myDistance 40.0
+		}
+	}
+}
+
+LivingWorldContent MS2027_TOS_BouncerMirogana_P0_PreQuest < uid=1657B1AA654A36ED0001BD7829A913E4 >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is less than 15m"
+		{
+			myDistance 15.0
+			myOperator LessThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "SNQ010 started or completed  or MQ050 B08 Started or Distance more than 15m"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState SNQ_010_Started
+				{
+					myQuestBeat 91908ED26483189700072FE87E30F69D
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState SNQ_010_Finished
+				{
+					myQuestBeat 91908ED26483189700072FE87E30F69D
+					myQuestBeatState Completed
+				}
+				LivingWorldGameConditionGroup "MQ050 B08 Started"
+				{
+					myOperator Or
+					myConditions
+					{
+						GameConditionQuestBeatState "MQ050 B08 Pykes Started"
+						{
+							myQuestBeat 8FD81D516318B32D00040D094F87E5EF
+							myQuestBeatState Started
+						}
+						GameConditionQuestBeatState "MQ050 B08 CD Started"
+						{
+							myQuestBeat 8FD81D516318B31500040D08138C5683
+							myQuestBeatState Started
+						}
+					}
+				}
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is more than 15m"
+				{
+					myDistance 15.0
+					myOperator GreaterThan
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS2030_TOS_BouncerMirogana_P05_MQ050_B08 < uid=03BE13BA66475CF90057204E3EDA3D35 >
+{
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "MQ050 B08 Started"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState "MQ050 B08 Pykes Started"
+				{
+					myQuestBeat 8FD81D516318B32D00040D094F87E5EF
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "MQ050 B08 CD Started"
+				{
+					myQuestBeat 8FD81D516318B31500040D08138C5683
+					myQuestBeatState Started
+				}
+			}
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is less than 15m"
+		{
+			myDistance 15.0
+			myOperator LessThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Distance more than 15m or MQ050 B08 completed"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is more than 15m"
+				{
+					myDistance 15.0
+					myOperator GreaterThan
+				}
+				LivingWorldGameConditionGroup "MQ050 B08 Completed"
+				{
+					myOperator Or
+					myConditions
+					{
+						GameConditionQuestBeatState "MQ050 B08 Pykes Started"
+						{
+							myQuestBeat 8FD81D516318B32D00040D094F87E5EF
+							myQuestBeatState Completed
+						}
+						GameConditionQuestBeatState "MQ050 B08 CD Started"
+						{
+							myQuestBeat 8FD81D516318B31500040D08138C5683
+							myQuestBeatState Completed
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS2028_TOS_BouncerMirogana_P1_StartQuest < uid=1657B1AA654A37080001BD7915B7F029 >
+{
+	myCompletedGameValue < uid=91803AE1668D0BA7002713C4DFFFA60D >
+	{
+	}
+	myLivingWorldLayerBlockers
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionQuestBeatState SNQ_010_Started
+		{
+			myQuestBeat 91908ED26483189700072FE87E30F69D
+			myQuestBeatState Started
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is less than 15m"
+		{
+			myDistance 15.0
+			myOperator LessThan
+		}
+		GameConditionLivingWorldContent_HasBeenCompleted "New GameConditionLivingWorldContent_HasBeenCompleted"
+		{
+			myIsNegated TRUE
+			myLivingWorldContent 1657B1AA654A37080001BD7915B7F029
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Distance is more than 15m or SNQ_010_Finished"
+		{
+			myIsNegated FALSE
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState SNQ_010_Finished
+				{
+					myQuestBeat 91908ED26483189700072FE87E30F69D
+					myQuestBeatState Completed
+				}
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is more than 15m"
+				{
+					myDistance 15.0
+					myOperator GreaterThan
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS2029_TOS_BouncerMirogana_P2_PostQuest < uid=1657B1AA654A37240001BD7A6D10FDE9 >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is less than 15m"
+		{
+			myDistance 15.0
+			myOperator LessThan
+		}
+		GameConditionLivingWorldContent_HasBeenCompleted "MS2028_BouncerMirogana_P1_StartQuest is Completed"
+		{
+			myLivingWorldContent 1657B1AA654A37080001BD7915B7F029
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is more than 15m"
+		{
+			myDistance 15.0
+			myOperator GreaterThan
+		}
+	}
+}
+
+LivingWorldContent MS20261_TOS_SecretSabaccParlor_P1_Avenue < uid=1657B1AA65AFDA4600150EF4902EC65B >
+{
+	myCompletedGameValue < uid=1657B1AA65AFDBE800150EF92F121E77 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		GameConditionQuestIsCompleted Finished_SNQ_010
+		{
+			myQuest 91908ED26483176700072FE1A8F5796B
+		}
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted HasNot_BeenCompleted
+		{
+			myIsNegated TRUE
+		}
+		GameConditionQuestBeatState "SNQ_020 Beat01_DefeatBosnot is not Completed"
+		{
+			myQuestBeat 91908ED264832AF4000259119867FCF3
+			myQuestBeatState Completed
+			myOperator NotEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance more than 60m"
+		{
+			myDistance 60.0
+		}
+	}
+}
+
+LivingWorldContent MS20262_TOS_SecretSabaccParlor_P1_SabaccVendor < uid=1657B1AA65AFDA6700150EF5AA95016F >
+{
+	myCompletedGameValue < uid=1657B1AA65AFDBE800150EFACBFCCD8B >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		GameConditionQuestIsCompleted Finished_SNQ_010
+		{
+			myQuest 91908ED26483176700072FE1A8F5796B
+		}
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted HasNot_BeenCompleted
+		{
+			myIsNegated TRUE
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup HasStarted_OR_HasResolved_DefeatBosnok
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState Finished_DefeatBosnot
+				{
+					myQuestBeat 91908ED264832AF4000259119867FCF3
+					myQuestBeatState Completed
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS20263_TOS_SecretSabaccParlor_P1_Alleyway < uid=1657B1AA65AFDA8200150EF69E3ADCB7 >
+{
+	myCompletedGameValue < uid=1657B1AA65AFDBE800150EFB6C2F5D6A >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		GameConditionQuestIsCompleted Finished_SNQ_010
+		{
+			myQuest 91908ED26483176700072FE1A8F5796B
+		}
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted HasNot_BeenCompleted
+		{
+			myIsNegated TRUE
+		}
+		GameConditionQuestBeatState "SNQ_020 Beat01_DefeatBosnot is not Completed"
+		{
+			myQuestBeat 91908ED264832AF4000259119867FCF3
+			myQuestBeatState Completed
+			myOperator NotEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance is more than 30m"
+		{
+			myDistance 30.0
+		}
+	}
+}
+
+LivingWorldContent MS20264_TOS_SecretSabaccParlor_P1_Trickster < uid=1657B1AA65AFDA9B00150EF79BAFE73F >
+{
+	myCompletedGameValue < uid=1657B1AA65AFDBE800150EFC6F9CA43D >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance less than 25m"
+		{
+			myDistance 25.0
+			myOperator LessThan
+		}
+		GameConditionQuestIsCompleted Finished_SNQ_010
+		{
+			myQuest 91908ED26483176700072FE1A8F5796B
+		}
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted HasNot_BeenCompleted
+		{
+			myIsNegated TRUE
+		}
+		GameConditionQuestBeatState "SNQ_020 Beat01_DefeatBosnot is not Completed"
+		{
+			myQuestBeat 91908ED264832AF4000259119867FCF3
+			myQuestBeatState Completed
+			myOperator NotEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance more than 30m"
+		{
+			myDistance 30.0
+		}
+	}
+}
+
+LivingWorldContent MS20265_TOS_SecretSabaccParlor_P1_Door < uid=1657B1AA65AFDAAF00150EF82ADDB083 >
+{
+	myCompletedGameValue < uid=1657B1AA65AFDBE800150EFDD0C2EE1F >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 100"
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		GameConditionQuestIsCompleted Finished_SNQ_010
+		{
+			myQuest 91908ED26483176700072FE1A8F5796B
+		}
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted HasNot_BeenCompleted
+		{
+			myIsNegated TRUE
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup HasStarted_OR_HasResolved_DefeatBosnok
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState Finished_DefeatBosnot
+				{
+					myQuestBeat 91908ED264832AF4000259119867FCF3
+					myQuestBeatState Completed
+				}
+			}
+		}
+	}
+}
+

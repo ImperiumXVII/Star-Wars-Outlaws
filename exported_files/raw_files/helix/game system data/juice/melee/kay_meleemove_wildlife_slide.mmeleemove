@@ -1,0 +1,121 @@
+include "helix/game system data/fruit/melee/melee_move.fruit"
+include "helix/game system data/juice/camera/modifiers/player_melee_attack_creatures.mcameramodifier"
+include "helix/game system data/juice/melee/kay_meleemove_base.mmeleemove"
+include "helix/game system data/juice/npc/emp_massiff_companion_coop.mnpc"
+include "helix/game system data/juice/npc/hut_massiff_companion.mnpc"
+include "helix/game system data/juice/npc/wl_massiff.mnpc"
+include "helix/game system data/juice/npc/wl_sammakho.mnpc"
+include "helix/game system data/juice/npc/wl_tshikara.mnpc"
+
+MeleeMove kay_meleemove_lowAtk_slide < uid=5CFE16D565AA8AC8001EE9CEA30AEA87 > : kay_meleemove_base
+{
+	myExecutionDurationMin 1.5
+	myExecutionDurationMax 1.5
+	myRangeExecution 2.0
+	myExecutionSequence
+	{
+		myGenericTracks
+		{
+			CameraShakeTrack BaseCamShake
+			{
+				myCamShake < uid=5CFE16D565AA8AC8001EE9CF5556A620 > = player_melee_attack_creatures 5CFE16D5656DE04600141FC947916F26
+			}
+		}
+		myCustomTracks
+		{
+			MeleeHitTrack Hit
+			{
+				myStartCyclePos 0.25
+				myEndCyclePos 0.45
+				myDamage 0.0
+			}
+			MeleeMovingSpeedingUpTrack MovingSpeedingUp
+			{
+				myEndCyclePos 0.0
+			}
+			MeleeMovingTrack Moving
+			{
+				myEndCyclePos 0.275
+			}
+			MeleeBufferingTrack MeleeBuffering
+			{
+				myStartCyclePos 0.0
+				myEndCyclePos 1.0
+			}
+			MeleeTurnTrack Turn
+			{
+				myEndCyclePos 1.0
+			}
+			MeleeStartNextMoveTrack "Start Next Move"
+			{
+				myStartCyclePos 0.5
+				myEndCyclePos 1.0
+			}
+			MeleePerfectInputTrack PerfectInput
+			{
+				myStartCyclePos 0.0
+				myEndCyclePos 0.0
+			}
+			MeleePerfectStartNextMoveTrack "Perfect Start Next Move"
+			{
+				myStartCyclePos 0.4
+				myEndCyclePos 1.0
+			}
+			MeleeLocomotionFreeTrack "Free Locomotion"
+			{
+				myStartCyclePos 0.8
+			}
+			MeleeUninterruptibleTrack Uninterruptible
+			{
+				myStartCyclePos 0.0
+				myEndCyclePos 0.665
+			}
+		}
+	}
+	myMoveMaxSpeed 15.0
+	myHit
+	{
+		myDamage 2.0
+		mySlowDownTimeScale "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.34162679 -0.0034002685, -0.1 0, 0 0, -0.34162679 -0.0034002685, -0.1 0, }, outTangents = { 0.1 0, 0.21296564 0.0021196827, 0 0, 0.1 0, 0.21296564 0.0021196827, 0 0, }, properties = { 1299, 2323, 275, 5395, 4371, 3347, }, values = { 0.14086074 1, 0.69999999 0.45614576, 0.80000001 1, 19112.213 1, 19112.412 0.45614576, 19112.514 1, }, }, numKeys = 6, }"
+	}
+	myStartConditions
+	{
+		myTargetInRange
+		{
+			myEnabled TRUE
+			myDistance 3.0
+		}
+		myGameCondition
+		{
+			GameConditionMeleeGroup "Multiple Conditions"
+			{
+				myConditions
+				{
+					GameConditionMeleeTargetIsValid "has Target"
+					{
+					}
+					GameConditionMeleeGroup "Is Powersliding"
+					{
+						myOperator Or
+						myConditions
+						{
+							GameConditionMeleeAttackerIsInMovementState "Is Powersliding"
+							{
+								myState PowerSlide
+							}
+							GameConditionMeleeAttackerIsInMovementState "Exiting Powerslide"
+							{
+								myState ExitPowerslide
+							}
+						}
+					}
+					GameConditionMeleeTargetPreferredAttack "Should Attack Low"
+					{
+						myPreferredAttack Kick
+					}
+				}
+			}
+		}
+	}
+}
+

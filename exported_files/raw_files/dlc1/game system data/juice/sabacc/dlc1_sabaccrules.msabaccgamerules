@@ -1,0 +1,152 @@
+include "dlc1/game system data/juice/sabacc/dlc1_sabacccheats.msabacccheats"
+include "dlc1/game system data/juice/sabacc/dlc1_sabaccconditionalscriptedgames.msabaccconditionalscriptedcommandlist"
+include "dlc1/game system data/juice/sabacc/dlc1_sabaccgamebaserules.msabaccgamebaserules"
+include "dlc1/game system data/juice/sabacc/dlc1_sabaccplayers.msabaccplayer"
+include "helix/game system data/fruit/sabacc/sabaccgamerules.fruit"
+include "helix/game system data/juice/faction/factions.mfaction"
+include "helix/game system data/juice/intel/intel_a_sl.mintel"
+include "helix/game system data/juice/item/currencies.mitem"
+include "helix/game system data/juice/item/items_sabaccshifttokencollectibles.mitem"
+include "helix/game system data/juice/reward/reputation_reward.mreward"
+include "helix/game system data/juice/reward/sabacc_reward.mreward"
+include "helix/game system data/juice/sabacc/sabaccaiprofileselectorfixed.msabaccaiprofileselector"
+include "helix/game system data/juice/sabacc/sabaccaishiftcardsconditions.msabaccgameconditions"
+include "helix/game system data/juice/sabacc/sabacccheats.msabacccheats"
+include "helix/game system data/juice/sabacc/sabaccconditionalrandomgames.msabaccconditionalscriptedcommandlist"
+include "helix/game system data/juice/sabacc/sabaccconditionalscriptedgames.msabaccconditionalscriptedcommandlist"
+include "helix/game system data/juice/sabacc/sabaccgamebaserules_default.msabaccgamebaserules"
+include "helix/game system data/juice/sabacc/sabaccrules.msabaccgamerules"
+include "helix/game system data/juice/sabacc/sabaccshiftcardslibrary.msabaccshiftcards"
+
+SabaccGameRules DLC1_SabaccGameRules_Default < uid=E52E0D4366508BE000039EC00A139EFE > : SabaccGameRules_Default
+{
+	myPriceToEnterFormula 0
+}
+
+SabaccGameRules DLC1_SabaccGameRules_SixPlayers < uid=E52E0D4366508BE000039EC1BE961536 > : DLC1_SabaccGameRules_Default
+{
+	mySabaccBaseRules < uid=E52E0D436663071B0004E7EBD74EBC1C > = DLC1_SabaccGameBaseRules_SixPlayers E52E0D43666306E40004E7EA586957F3
+	myGameConditionalScripts
+	{
+		SabaccConditionalScriptedCommandList "New SabaccConditionalScriptedCommandList" < uid=E52E0D4366508BE000039EC2CFB4A243 > = DLC1__DQ020_TournamentGame E52E0D436650831A00028BCA00EB5773
+	}
+	myPriceToEnterFormula 0
+	myShouldPlayEndGameNotification FALSE
+	myPlayers
+	{
+		SabaccPlayer "New SabaccPlayer_4" < uid=E52E0D4366508BE000039EC8136F99F2 > = DLC1_Kay 03BE13BA667950CA0002AE18B05E4134
+		SabaccPlayer "New SabaccPlayer" < uid=E52E0D4366508D8C00039EF80D263900 > = AIPlayer_DLC1_SixPlayers_P01 E52E0D4366508C3000039EE14F6F675E
+		SabaccPlayer "New SabaccPlayer_0" < uid=E52E0D4366508D8D00039EF90F2E1017 > = AIPlayer_DLC1_SixPlayers_P02 E52E0D4366508C3000039EE3AE3CD532
+		SabaccPlayer "New SabaccPlayer_1" < uid=E52E0D4366508D8F00039EFAC1E924AD > = AIPlayer_DLC1_SixPlayers_P03_Lando E52E0D4366508C3000039EE5EB50E7B4
+		SabaccPlayer "New SabaccPlayer_2" < uid=E52E0D4366508D8F00039EFB15C6E50E > = AIPlayer_DLC1_SixPlayers_P04 E52E0D4366508C3000039EE7C44374B0
+		SabaccPlayer "New SabaccPlayer_3" < uid=E52E0D4366508D9100039EFC2914308F > = AIPlayer_DLC1_SixPlayers_P05 E52E0D4366508C3000039EE9FED177EC
+	}
+	myCardCollections
+	{
+		SabaccGameCardCollection PositiveDeck
+		{
+			myCards
+			{
+				SabaccGameCard 0
+				{
+					myValue 0
+					myCount 0
+				}
+				SabaccGameCard 1
+				{
+					myValue 1
+					myCount 3
+				}
+				SabaccGameCard 2
+				{
+					myValue 2
+					myCount 3
+				}
+				SabaccGameCard 3
+				{
+					myValue 3
+					myCount 3
+				}
+				SabaccGameCard 4
+				{
+					myValue 4
+					myCount 3
+				}
+				SabaccGameCard 5
+				{
+					myValue 5
+					myCount 4
+				}
+				SabaccGameCard 6
+				{
+					myValue 6
+					myCount 4
+				}
+				SabaccGameCard 7
+				{
+					myValue 7
+					myCount 0
+				}
+				SabaccGameCard X
+				{
+					myValue 8
+					myCount 2
+				}
+			}
+		}
+		SabaccGameCardCollection NegativeDeck
+		{
+			myCards
+			{
+				SabaccGameCard 0
+				{
+					myValue 0
+					myCount 0
+				}
+				SabaccGameCard 1
+				{
+					myValue -1
+					myCount 3
+				}
+				SabaccGameCard 2
+				{
+					myValue -2
+					myCount 3
+				}
+				SabaccGameCard 3
+				{
+					myValue -3
+					myCount 3
+				}
+				SabaccGameCard 4
+				{
+					myValue -4
+					myCount 3
+				}
+				SabaccGameCard 5
+				{
+					myValue -5
+					myCount 4
+				}
+				SabaccGameCard 6
+				{
+					myValue -6
+					myCount 4
+				}
+				SabaccGameCard 7
+				{
+					myValue -7
+					myCount 0
+				}
+				SabaccGameCard X
+				{
+					myValue -8
+					myCount 2
+				}
+			}
+			myType NegativeDeck
+		}
+	}
+	myCheats < uid=75B1D5B3666175BA00018F46C641C6A7 > = DLC1_SabaccCheats_SixPlayers 75B1D5B36661738A00018F42CAF5B695
+}
+

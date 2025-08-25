@@ -1,0 +1,22 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/neu_shp_base.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC neu_shp_bff_freighter_a < uid=6EA79625641D4FA4000077278B080FCE > : neu_shp_base
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Name of Ship - BFF-1 Bulk Freighter - Neutral faction\", enabled = true, guid = #6AE6EE0D65787424000266BB116EAD90, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10726, text = \"BFF-1 Bulk Freighter\", type = \"MenuLine\""
+	myCharacterVisuals < uid=6EA79625641D4FA40000772828EF81A8 > = character_visuals_npc_shp_bff_freighter 6EA79625641D4EE80000771E943B444F
+	mySpaceshipType BFF1
+	myMaxHealth 1200
+	myHealthFormula 600*SpaceHealthWarshipDifficultyModifier
+	myFaction < uid=6EA79625641D4FA4000077292E50CEDD > = Civilian B0EA4E53607561CC0000004DC311CAF9
+	myLodType Spaceship_Cruiser
+	myVisionProfile < uid=6B0E1DE964B917AD0001911899AD0158 > = visionProfile_neu_ship_HaulerShuttle 6B0E1DE964B7A4080000AD5512E47AD0
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=6B0E1DE964B68B530000A15893913DAD > = detectionProfile_neu_ship_HaulerShuttle 6B0E1DE964B68AD90000A151DE59C166
+	}
+}
+

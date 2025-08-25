@@ -1,0 +1,106 @@
+include "helix/game system data/fruit/equipment/weapon/weapon_fire_mode.fruit"
+include "helix/game system data/juice/equipment/weaponanimationconfig/weapon_anim_pickup_mpl_rocket.mweaponanimationconfig"
+include "helix/game system data/juice/equipment/weaponanimationconfig/weapon_anim_pickup_reconfigurable_grenade.mweaponanimationconfig"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_pickup_exotic.mweaponfiremode"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_pickup_rifle.mweaponfiremode"
+include "helix/game system data/juice/projectile/grenade_projectile_sonic_imploder.mprojectile"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_grenade.mprojectile"
+include "helix/game system data/juice/projectile/weapon_projectile_mpl_grenade.mprojectile"
+include "helix/game system data/juice/projectile/weapon_projectile_reconfigurable_grenade.mprojectile"
+include "helix/game system data/juice/sound/weapons/player_audioweapon_zerek_besh_grenade_launcher.maudioweapon"
+
+WeaponFireMode player_firemode_pickup_exotic_reconfigurable_grenadelauncher < uid=4C1DFD4E645CF0C90001CD7F624BE605 > : player_firemode_pickup_rifle
+{
+	myFireEvent
+	{
+		SemiAutoFireEvent SemiAutoFireEvent
+		{
+			myRPM
+			{
+				myRPM 90
+			}
+		}
+	}
+	myBaseProperties
+	{
+		myAnimation < uid=7113C61165C0DC960011203747B1283B > = weapon_anim_pickup_reconfigurable_grenade 7113C61165C0DCDD00114F1B0427DE90
+		myInputController
+		{
+			myFireRumble 8E25811B656D8FF500002DB1B1989DDA
+			myFireAimVibrationTriggerEffect
+			{
+				myDuration 0.7
+			}
+			myHardPressTriggerEffect helix/trigger_effects/triggereffect_blaster_chargeup.mtriggereffect
+			myFireTriggerThreshold 0.8
+			myCharge
+			{
+				myChargingTriggerVibrationEnabled TRUE
+				myChargingTriggerVibration
+				{
+					myAmplitude "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.67939007 0.0050914758, }, outTangents = { 0.75 0, 0.12738562 -0.00095465156, }, properties = { 275, 1299, }, values = { 0 0.30000001, 0.90000004 0.5, }, }, numKeys = 2, }"
+					myPosition 5
+				}
+			}
+		}
+	}
+	mySpecializations
+	{
+		WeaponFireModeSpecialization "New WeaponFireModeSpecialization"
+		{
+			myAimMode ADS
+			myProperties
+			{
+				myAnimation < uid=7113C61165C0DC4A0010F122CAD261AA > = weapon_anim_pickup_reconfigurable_grenade_ADS 7113C61165C0DCDD00114F1C63C9B9CC
+			}
+		}
+	}
+	myProjectile < uid=4C1DFD4E645CF5A20001E6DC7DE0305C > = weapon_projectile_reconfigurable_grenade 7113C6116543B5130004715156413264
+	myDamage
+	{
+		myBodyDamageMultipliers
+		{
+		}
+	}
+	mySpread
+	{
+		mySpreadValues
+		{
+			mySpread
+			{
+				myMin 0.4
+				myMax 0.7
+				myIsUniform FALSE
+			}
+		}
+		mySpreadIncreaseTime 0.1
+		myTimeToMinAccuracy 0.5
+		myTimeToMaxAccuracy 1.0
+		mySpreadIncreaseSpeed 0.1
+		mySpreadReductionSpeed 0.05
+		myMovementModifier 2.0
+		myMovementSpreadThreshold 0.0
+		myMovementSpreadAcceleration 6.0
+		myMovementSpreadDeceleration 6.0
+		myAimChangeModifier 2.0
+		myMovementModifierSpeedCap 3.0
+		myAimChangeSensitivity 1.0
+		myAimChangeAccuracyRecoveryTime 0.5
+		myAmountOfAccuracyLockedRounds 0
+		myUseAimChangeSpread FALSE
+		myUseReverseSpread FALSE
+		myAimModifierData
+		{
+			myADSFormula 1.0
+			myScopeFormula 1.0
+			myLockFormula 1.0
+			myHipFireFormula 1.0
+		}
+	}
+	myUI
+	{
+		myDefaultUIGraph helix/ui/graphs/crosshair_rifle_ammunition.muigraph
+	}
+	myAudioData < uid=DADB4E0465D35330000000E8410A15FA > = player_audioweapon_zerek_besh_grenade_launcher DADB4E0465D352F1000000E728B76E3C
+}
+

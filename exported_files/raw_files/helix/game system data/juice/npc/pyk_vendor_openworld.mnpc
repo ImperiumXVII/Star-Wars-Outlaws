@@ -1,0 +1,47 @@
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npc/pyk_hiredgunlight.mnpc"
+
+NPC pyk_vendor_openworld < uid=2AE2EC8564186CE70010F3946881BAB8 > : pyk_hiredgunlight
+{
+	myName "branch = \"MAIN\", contextComment = \"Sub-name of a Wandering Merchant\", enabled = true, guid = #09AEDAAA65C4A4D20000C8110DBDC6F6, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 10653, text = \"Traveling Merchant\", type = \"MenuLine\""
+	myCharacterVisuals < uid=2AE2EC8564186D440010F3E01EC4CB07 > = character_visuals_3_hired_gun_vendor 2AE2EC8564186CFD0010F3A9DFFEA9DA
+	myAdditionalGearGraphs D00CF654668BD33F0017568B472204BB
+	myPossibleSpeciesTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2764E75A0A000A7B55A88AB465 > = Agent_Species_HumanHutteseTag E4123D2763F4F626000798EB1B6F102A
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2764E75A0A000A7B578DA3A0A7 > = Agent_Faction_PykeSyndicateTag 16DEADE6620AE18B000020D1381248A0
+		RBTagsTag "New RBTagsTag" < uid=E4123D2764E75A0A000A7B58E734FBA0 > = Agent_BarksFamily_HiredGun E4123D2762F4CA2800048CADB39E55F8
+		RBTagsTag "New RBTagsTag (0)" < uid=E4123D2764E759F3000A7B5446459704 > = Agent_Archetype_VendorFactionDistrict 1EC89F2563FC706500005020A5DD40C8
+		RBTagsTag "New RBTagsTag (1)" < uid=1EC89F2564F5DE3C00061236A890EB6D > = Agent_Vendor_CombatantHuttese 1EC89F2564F5CB10000EEE473451198F
+	}
+	myDialogueCharactersFromDatabase
+	{
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=E4123D2764E75B09000A7B70CF77B6D5 > = HiredGun_Huttese_HumanF01 E4123D2763E238E7000517F064A3CF56
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=E4123D2764E75B09000A7B71144FDB9B > = HiredGun_Huttese_HumanF02 E4123D2763E238E7000517F578AF3E96
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=E4123D2764E75B09000A7B7257453531 > = HiredGun_Huttese_HumanF03 E4123D2763E238E7000517FA0CF4D475
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=E4123D2764E75B09000A7B733DA3EB92 > = HiredGun_Huttese_HumanM01 E4123D2763E239040005180252D1AC42
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=E4123D2764E75B09000A7B744F1033ED > = HiredGun_Huttese_HumanM02 E4123D2763E2390400051807BFD16FE8
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=E4123D2764E75B09000A7B7525E9AA97 > = HiredGun_Huttese_HumanM03 E4123D2763E239040005180C588A0E6C
+	}
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout PistolStandard < uid=56CC05966696234C0019F5ED079CF052 > = HiredGun_Light_Pistol_Standard 4171A7E16523FB4C00010E15851176BF
+		NPCWeaponLoadout PistolBurtst < uid=56CC05966696234C0019F5EE0A2B7405 > = HiredGun_Light_Pistol_Burst 4171A7E16523FBD800005C850FF94E02
+	}
+	myVendorConfig < uid=2AE2EC8564186D810010F3F513C9F2C4 > = VendorConfig_TOS_OpenWorld_Pyke_Wandering 2AE2EC8564539FE30009CBE47F2FA0C9
+	myHideMapRefGameConditions
+	{
+		myConditions
+		{
+			GameConditionContextAgentIsAlive "New GameConditionContextAgentIsAlive"
+			{
+				myIsNegated TRUE
+			}
+		}
+	}
+	myNPCIcon "mySpriteId = 652654702, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_map_icons_05.spritesheet\""
+}
+

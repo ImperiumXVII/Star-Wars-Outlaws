@@ -1,0 +1,311 @@
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+include "helix/game system data/juice/livingworld/ms_base_inworldmessage.mlivingworldcontent"
+
+LivingWorldContent TEMPLATE_IWM_Tomb_MQ_010 < uid=ACAEF5AB67B5A35F0001C90494EDB1FA > : "TEMPLATE In World Message"
+{
+	myCompletedGameValue < uid=91D5D54267B72BF00007ECE8DF34C103 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted ContentHasBeenCompleted
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer DistanceToPlayer
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestIsCompleted "C_MQ_005 Is Completed"
+		{
+			myQuest 8FD81D51675714BB000AD0C84984B587
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup OR
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer DistanceToPlayer
+				{
+					myDistance 150.0
+				}
+				GameConditionQuestIsCompleted "C_MQ_010 Completed"
+				{
+					myQuest 8FD81D5166E055E40002162611A74F72
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent TEMPLATE_IWM_Tomb_MQ_040 < uid=ACAEF5AB67B5A4800001C906CDE657A7 > : "TEMPLATE In World Message"
+{
+	myCompletedGameValue < uid=ACAEF5AB67B5A4800001C907B2DAF7CE >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted ContentHasBeenCompleted
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance -100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestIsCompleted "C_MQ_030 Is Completed"
+		{
+			myQuest 253B686766E29D0B00000C3B47ABDF14
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup OR
+		{
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance +150"
+				{
+					myDistance 150.0
+				}
+				GameConditionQuestBeatState "C_MQ_040 B06 Is Completed"
+				{
+					myQuestBeat 9128788866F55479000A150EE120C4A2
+					myQuestBeatState Completed
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS5045_HondosCode_IWM < uid=91D5D54267B4BBD300080FB84B8D8BDE > : "TEMPLATE In World Message"
+{
+	myCompletedGameValue < uid=91D5D54267B4BBE200080FB9B4D8DF8A >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+}
+
+LivingWorldContent MS5045_HaulersKeep_IWM < uid=91D5D54267AC6B6900053234E57E4058 > : "TEMPLATE In World Message"
+{
+	myCompletedGameValue < uid=91D5D54267AC704300053238BAA5F267 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myLayerType MicroStory
+}
+
+LivingWorldContent MS5046_TradeLeague_IWM < uid=91D5D54267AC6F8B00053235089E7DC8 > : "TEMPLATE In World Message"
+{
+	myCompletedGameValue < uid=91D5D54267AC704300053239412EA8C6 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+}
+
+LivingWorldContent MS5047_RulesofEngagement_IWM < uid=91D5D54267AC6FEB00053236D725B4DE > : "TEMPLATE In World Message"
+{
+	myCompletedGameValue < uid=91D5D54267AC70430005323ABB576779 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+}
+
+LivingWorldContent MS5048_KhepiSystem_IWM < uid=91D5D54267AC662A00053232D041E4A9 > : "TEMPLATE In World Message"
+{
+	myCompletedGameValue < uid=91D5D54267AC6B4B00053233F5B1E418 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+}
+
+LivingWorldContent MS5050_PirateCode_MQ040_IWM < uid=91D5D54267CAE89C00034E87D969844D > : TEMPLATE_IWM_Tomb_MQ_040
+{
+	myCompletedGameValue < uid=91D5D54267CAE89C00034E88DE7C2F46 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+}
+
+LivingWorldContent MS5050_PirateCode_MQ010_IWM < uid=91D5D54267B4BB5500080FB223A27791 > : TEMPLATE_IWM_Tomb_MQ_010
+{
+	myCompletedGameValue < uid=91D5D54267B72BF00007ECE93B5ABD36 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+}
+
+LivingWorldContent MS5051_PirateCodeAnnotatedEdition_IWM < uid=91D5D54267B4BB7F00080FB37927AFDC > : TEMPLATE_IWM_Tomb_MQ_010
+{
+	myCompletedGameValue < uid=91D5D54267B72BF00007ECEA2E201199 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+}
+
+LivingWorldContent MS5052_PUNISHMENTS_IWM < uid=91D5D54267B4BB9D00080FB47F2BC597 > : TEMPLATE_IWM_Tomb_MQ_010
+{
+	myCompletedGameValue < uid=91D5D54267B72BF00007ECEBEA69408C >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+}
+
+LivingWorldContent MS5053_RaidersRecord_IWM < uid=91D5D54267B4B82C000645302BB451CB > : TEMPLATE_IWM_Tomb_MQ_010
+{
+	myCompletedGameValue < uid=91D5D54267B72BF00007ECEC932CB81B >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+}
+
+LivingWorldContent MS5061_ExplorersJournal_IWM < uid=91D5D54267A60C9F000219849CC682CF > : "TEMPLATE In World Message"
+{
+	myCompletedGameValue < uid=91D5D54267A60DA8000219850D94E209 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myLayerType MicroStory
+}
+
+LivingWorldContent MS5014_MusicAndLyrics_IWM < uid=91D5D54267B72BBE0007ECE724B750CC > : "TEMPLATE In World Message"
+{
+	myCompletedGameValue < uid=91D5D54267B72BF00007ECED7D711445 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+}
+

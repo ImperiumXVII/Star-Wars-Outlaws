@@ -1,0 +1,133 @@
+include "helix/game system data/juice/camera/modifiers/weapon_recoil_kays_blaster.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_recoil_module_ion_beam.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_shake_kays_blaster.mcameramodifier"
+include "helix/game system data/juice/equipment/aimconfig/weapon_aimconfig_freeaim_beam.maimconfig"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_blaster_template.mweaponfiremode"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_ion_beam.mprojectile"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_medium_blue.mprojectile"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_small_ion.mprojectile"
+include "helix/game system data/juice/sound/weapons/player_audioweapon_kays_sig_mod_ion.maudioweapon"
+
+WeaponFireMode player_firemode_blaster_ion_beam < uid=7113C611643CFF2A000014545738517D > : player_firemode_blaster_template
+{
+	myFireEvent
+	{
+		BurstFireEvent BurstBeam
+		{
+			myRPM
+			{
+				myRPM 600
+			}
+			myBurstData
+			{
+				myRoundsPerBurst 10
+			}
+		}
+	}
+	myBaseProperties
+	{
+		myRecoil < uid=A207755D6515A0A100014E3FC899D66B > = weapon_recoil_module_ion_beam 7113C61164EDDACA0003879424301A89
+	}
+	myTargetCollector
+	{
+		WeaponTargetCollector Beam
+		{
+			myShape
+			{
+				myType Line
+				myMaxDistance 80.0
+				myCastType All
+			}
+			myCandidateCastType LOS
+		}
+	}
+	myFireRampUpAndDown
+	{
+		myConfig
+		{
+			myRampUpTime 0.4
+			myRampDownTime 0.1
+		}
+	}
+	myAimConfig < uid=7113C611646CA60500004E5C3903F389 > = weapon_aimconfig_freeaim_beam 7113C611646B338100018671B6FE2C7C
+	myProjectile < uid=7113C611643CFF2A0000145599D21171 > = weapon_projectile_blaster_ion_beam 7113C611645E4BF800043669D1EA1819
+	myOverHeat
+	{
+		myMaxHeatFormula "100.0 * MaxHeatModifier * IonModuleHeatCapacityModifier + PlayerOverheatBonus"
+		myHeatPerUseFormula 2.5
+		myCoolingTimeToStartFormula "3 * OverheatCooldownModifierIce"
+		myOverHeatCoolingTimeToStartFormula "3 * OverheatCooldownModifierIce"
+		myActiveCooling
+		{
+			mySections
+			{
+				EquipmentOverHeatActiveCoolingSection Success
+				{
+					myStartOfSection 0.25*FastReloadSectionStartModifier
+					myLengthOfSection 0.3*FastReloadSectionSizeModifier
+					mySuperChargeBonusTime "5 * SuperChargeFastBonusTimeModifier"
+					myIsPerfect FALSE
+				}
+				EquipmentOverHeatActiveCoolingSection Success_Perfect
+				{
+					myStartOfSection 0.39-PerfectCoolingWindowBonus*0.01
+					myLengthOfSection 0.05+PerfectCoolingWindowBonus*0.02
+					mySuperChargeBonusTime "5 * SuperChargePerfectBonusTimeModifier"
+					myIsPerfect TRUE
+				}
+			}
+			myFailurePenalizationTime 1.5
+		}
+	}
+	myDamage
+	{
+		myDamage
+		{
+			myDamageFormula "0.5*(1 + (Sneakshot*(domain_expert_aila_bren.myAbilities.Sneak_Shot.myState = DomainOfMasteryAbilityState.Unlocked)))*BlasterIonDamageBonus"
+			myDamageType Ion
+		}
+	}
+	mySpread
+	{
+		mySpreadValues
+		{
+			mySpread
+			{
+				myMin 0.0
+				myMax 0.0
+				myIsUniform FALSE
+			}
+		}
+		mySpreadIncreaseTime 0.1
+		myTimeToMinAccuracy 0.5
+		myTimeToMaxAccuracy 1.0
+		mySpreadIncreaseSpeed 0.1
+		mySpreadReductionSpeed 0.05
+		myMovementModifier 1.5
+		myMovementSpreadThreshold 0.0
+		myMovementSpreadAcceleration 6.0
+		myMovementSpreadDeceleration 6.0
+		myAimChangeModifier 2.0
+		myMovementModifierSpeedCap 3.0
+		myAimChangeSensitivity 1.0
+		myAimChangeAccuracyRecoveryTime 0.5
+		myAmountOfAccuracyLockedRounds 0
+		myUseAimChangeSpread FALSE
+		myUseReverseSpread FALSE
+		myAimModifierData
+		{
+			myADSFormula 1.0
+			myScopeFormula 1.0
+			myLockFormula 1.0
+			myHipFireFormula 1.0
+		}
+	}
+	myFireShake < uid=7113C611643CFF2A00001457421F7F09 > = weapon_shake_kays_blaster 346395BC6026351000000061F06D3A0E
+	myUI
+	{
+		myDefaultUIGraph helix/ui/graphs/crosshair_pistol_ion_overheat.muigraph
+	}
+	myAudioData < uid=7113C611643CFF2A00001458D7397D8E > = player_audioweapon_kays_sig_mod_ion 1B6B9DC6632DC2C500000017B5B040ED
+	myNPCDetectionSoundEvent < uid=1C73D33B6536894C0008FE45DACD3DBA > = WeaponTriigger_Default_Ion 1C73D33B65366DAC0001A4B78F1BD02F
+}
+

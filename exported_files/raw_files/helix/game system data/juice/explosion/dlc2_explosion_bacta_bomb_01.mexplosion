@@ -1,0 +1,104 @@
+include "helix/game system data/fruit/effects/effects.fruit"
+include "helix/game system data/fruit/explosion/explosion.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditionbase.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+include "helix/game system data/fruit/impact/impact_conditions.fruit"
+include "helix/game system data/juice/collisionmaterials/collisionmaterials.juice"
+include "helix/game system data/juice/explosion/explosion_template.mexplosion"
+include snowdrop/modules/core/physics/collisionmaterials.fruit
+
+Explosion dlc2_explosion_bacta_bomb_01 < uid=061AC0466729EC3300033BE09D011503 > : explosion_template
+{
+	myDefaultRadius 4.0
+	myDetonation
+	{
+		myPropagationSpeed 150.0
+		myStartTime 0.0
+		myBaseEffect helix/particles/vfx_wpn_bactabomb_01.mparticles
+		myBaseEffectsByConditions
+		{
+			BaseEffectByConditions "Is Under Water"
+			{
+				myConditions
+				{
+					myConditions
+					{
+						GameConditionImpactWaterDepth "New GameConditionImpactWaterDepth"
+						{
+							myDepth 0.5
+						}
+					}
+				}
+				myEffect helix/particles/vfx_exp_water_imploder_01.mparticles
+			}
+		}
+		myImpactEffect
+		{
+			myEffects
+			{
+				myDefaultDecal ""
+				myDefaultEffect ""
+				myList
+				{
+				}
+				myEffectsByConditions
+				{
+				}
+			}
+			myCastForImpactGroundDistance 1.0
+		}
+		myGameplayDamageSection
+		{
+			mySize 1.0
+			myBlockerType None
+			myDamageType Physical
+			myDamageTargetType All
+			myDamageFormula 0
+			myDefaultDamage 0.0
+			myDamageSelf TRUE
+			myFriendlyFireEnabled TRUE
+		}
+		myGameplayHealEnabled TRUE
+		myGameplayHealSection
+		{
+			mySize 1.0
+			myBlockerType StaticOnly
+			myHealFormula 5
+			myDefaultHeal 1.0
+			myHealMultiplierByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0.0, 0 0, }, properties = { -749, -749, }, values = { 0 1, 1 1, }, }, numKeys = 2, }"
+			myHealOverTime 0.0
+			myHealOverTimeDamageAmount 0.0
+			myHealOverTimeDamageTimeWindow 1.0
+			myDamageInterruptsHealingOverTime FALSE
+			myHealSelf TRUE
+			myHealBySegment FALSE
+			myOnlyHealFriendlies FALSE
+		}
+		myPhysicsSection
+		{
+			mySize 3.0
+			myImpactEnergy -50.0
+		}
+		myAudioSection
+		{
+			myDetonationEvent
+			{
+				myGuid 47E6E9B7E5EF192090ECB7F64AB5F9B0
+			}
+			myUnderWaterDetonationEvent
+			{
+				myGuid 42B38E469F83BEF1B636C9A953F22DAB
+			}
+			myShockwaveLoopStartEvent
+			{
+				myGuid 4A42DA94E5F686C8A657EE6E04CEBEA4
+			}
+			myShockwavePlayerImpactEvent
+			{
+				myGuid 00000000000000000000000000000000
+			}
+			myEmitterSphereRadius 10.0
+		}
+	}
+}
+

@@ -1,0 +1,15 @@
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+
+class LivingWorldGroupGameConditionGroup : LivingWorldGameConditionGroup
+{
+	LivingWorldGameConditions myConditions
+	
+	bool myCanBeOverridden false < hidden=1 >
+}
+
+class LivingWorldGroup < uid=auto >
+{
+	LivingWorldGroupGameConditionGroup myActivationGameCondition
+	LivingWorldGroupGameConditionGroup myDeactivationGameCondition
+	LivingWorldContentLayerTypeList myAffectedLayers
+}

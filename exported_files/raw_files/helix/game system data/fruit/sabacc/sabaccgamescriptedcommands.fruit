@@ -1,0 +1,358 @@
+include "helix\game system data\fruit\sabacc\sabaccgametypes.fruit"
+include "helix\game system data\fruit\sabacc\sabaccshiftcards.fruit"
+include "helix\game system data\fruit\inworldmessage\inworldmessage.fruit"
+include "helix\game system data\fruit\sabacc\sabaccgameconditions.fruit"
+
+// Keep in sync with HC_SabaccScriptedCommandType
+enum SabaccScriptedCommandType < process_using_strings=1 >
+{
+	FillDeckCommand
+	FillDiscardCommand
+	StartingSabaccHandCommand
+	StartingPreciseHandCommand
+	PlayerStandCommand
+	LocalPlayerDrawCardCommand
+	AIPlayerDrawCardCommand
+	PlayerDiceCommand
+	PlayerDisableShiftCommand
+	PlayerPlayShiftCommand
+	LocalPlayerWorldMessageCommand
+	LocalPlayerDisableCheat
+	StartingNoSabaccHandCommand
+	StartingRandomHandCommand
+	PlayerDiceRangeCommand
+	PlayerDisableShiftConditionCommand
+	AIPlayerCheatBaitDataCommand
+}
+
+// ------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------
+
+
+class SabaccScriptedCommand < abstract=1 >
+{
+	SabaccScriptedCommandType myType < hidden=1 >
+}
+
+class SabaccDeckCommand < abstract=1 > : SabaccScriptedCommand
+{
+	bool myTryUseExistingCards
+}
+
+enum FillDeckCollectionType
+{
+	PositiveDeck
+	NegativeDeck
+}
+
+enum FillDiscardCollectionType
+{
+	PositiveDiscard
+	NegativeDiscard
+}
+
+class SabaccIndexedCardValue
+{
+	int myIndex < min=0 >
+	int myValue < min=-8 max=8 >
+}
+
+list SabaccIndexedCardValues
+{
+	SabaccIndexedCardValue
+}
+
+class SabaccFillDeckCommand : SabaccDeckCommand
+{
+	SabaccScriptedCommandType myType FillDeckCommand < hidden=1 >
+	FillDeckCollectionType myDeckType
+	SabaccIndexedCardValues myIndexedCardValues
+}
+
+class SabaccFillDiscardCommand : SabaccDeckCommand
+{
+	SabaccScriptedCommandType myType FillDiscardCommand < hidden=1 >
+	FillDiscardCollectionType myDeckType
+	int myCardValue < min=-8 max=8 >
+}
+
+// ------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------
+
+class SabaccPlayerCommand < abstract=1 > : SabaccScriptedCommand
+{
+	int myPlayerIndex < min=0 max=3 >
+}
+
+class SabaccStartingHandCommand < abstract=1 > : SabaccPlayerCommand
+{
+}
+
+enum SabaccStartingSabaccHandType
+{
+	PureSabacc
+	SylopSabacc
+}
+
+enum SabaccStartingNoSabaccHandType
+{
+	Normal
+	Commander
+}
+
+enum SabaccHandCompareOperator
+{
+	Equal
+	NotEqual
+	GreaterThan
+	GreaterThanOrEqual
+	LessThan
+	LessThanOrEqual
+}
+
+class SabaccStartingSabaccHandCommand : SabaccStartingHandCommand
+{
+	SabaccScriptedCommandType myType StartingSabaccHandCommand < hidden=1 >
+	SabaccStartingSabaccHandType myStartingSabaccHandType
+	SabaccHandCompareOperator myStartingSabaccHandCompareOperator
+	int myValue < min=0 max=7 >
+}
+
+list AbsoluteCardValues
+{
+	int < min=0 max=6 >
+}
+
+class SabaccStartingNoSabaccHandCommand : SabaccStartingHandCommand
+{
+	SabaccScriptedCommandType myType StartingNoSabaccHandCommand < hidden=1 >
+	SabaccStartingNoSabaccHandType myStartingNoSabaccHandType
+	SabaccHandCompareOperator myStartingHandCompareOperator < hidden=1 >
+	int myValue < min=0 max=7 hidden=1 >
+	int myHighestAbsoluteSumValue < min=1 >
+	AbsoluteCardValues myAbsoluteCardValuesToExclude
+}
+
+class SabaccStartingPreciseHandCommand : SabaccStartingHandCommand
+{
+	SabaccScriptedCommandType myType StartingPreciseHandCommand < hidden=1 >
+	int myPositiveCardValue < min=0 max=8 >
+	int myNegativeCardValue < min=-8 max=0 >
+}
+
+list SabaccBaseStartingHandCommands < size=1 >
+{
+	SabaccStartingSabaccHandCommand
+	SabaccStartingNoSabaccHandCommand
+	SabaccStartingPreciseHandCommand
+}
+
+class SabaccStartingHand < uid=auto >
+{
+	SabaccBaseStartingHandCommands myStartingHandCommands
+}
+
+class SabaccProbabilityStartingHand
+{
+	float myProbability
+	SabaccStartingHand* myStartingHand
+}
+
+list SabaccProbabilityStartingHands
+{
+	SabaccProbabilityStartingHand
+}
+
+class SabaccRandomHandCollection < uid=auto >
+{
+	SabaccProbabilityStartingHands myProbabilityStartingHands
+}
+
+class SabaccStartingRandomHandCommand : SabaccStartingHandCommand
+{
+	SabaccScriptedCommandType myType StartingRandomHandCommand < hidden=1 >
+	SabaccRandomHandCollection* mySabaccRandomHandCollection
+}
+
+// ------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------
+
+class SabaccPlayerGameCommand < abstract=1 > : SabaccPlayerCommand
+{
+	int myStartRound < min=0 >
+	int myEndRound < min=0 >
+}
+
+class SabaccPlayerChoiceCommand < abstract=1 > : SabaccPlayerGameCommand
+{
+}
+
+class SabaccPlayerStandCommand : SabaccPlayerChoiceCommand 
+{
+	SabaccScriptedCommandType myType PlayerStandCommand < hidden=1 >
+}
+
+list SabaccPositiveCardSize1 < size=1 >
+{
+	int < min=0 max=8 >
+}
+
+list SabaccNegativeCardSize1 < size=1 >
+{
+	int < min=-8 max=0 >
+}
+
+list SabaccCardSize1 < size=1 >
+{
+	int < min=-8 max=8 >
+}
+
+class SabaccLocalPlayerDrawCardCommand : SabaccPlayerChoiceCommand 
+{
+	SabaccScriptedCommandType myType LocalPlayerDrawCardCommand < hidden=1 >
+	int myPlayerIndex < hidden=1 >
+	SabaccPositiveCardSize1 myPositiveDeckCardValue
+	SabaccNegativeCardSize1 myNegativeDeckCardValue
+}
+
+class SabaccLocalPlayerWorldMessageCommand : SabaccPlayerGameCommand
+{
+	SabaccScriptedCommandType myType LocalPlayerWorldMessageCommand < hidden=1 >
+	int myPlayerIndex < hidden=1 >
+	InWorldMessage* myWorldMessage
+}
+
+class SabaccLocalPlayerDisableCheat : SabaccPlayerGameCommand
+{
+	SabaccScriptedCommandType myType LocalPlayerDisableCheat < hidden=1 >
+	int myPlayerIndex < hidden=1 >
+	SabaccCheatID myCheatID
+}
+
+class SabaccAIPlayerDrawCardCommand : SabaccPlayerChoiceCommand 
+{
+	SabaccScriptedCommandType myType AIPlayerDrawCardCommand < hidden=1 >
+	SabaccPositiveCardSize1 myPositiveSeekedCardValue
+	SabaccNegativeCardSize1 myNegativeSeekedardValue
+	SabaccPositiveCardSize1 myPositiveDiscardedCardValue
+	SabaccNegativeCardSize1 myNegativeDiscardedCardValue
+	SabaccPositiveCardSize1 myPositiveEndTurnCardValue
+	SabaccNegativeCardSize1 myNegativeEndTurnCardValue
+}
+
+list SabaccGameDiceValues
+{
+	int < min=1 max=6 >
+}
+
+class SabaccPlayerDiceCommand : SabaccPlayerGameCommand
+{
+	SabaccScriptedCommandType myType PlayerDiceCommand < hidden=1 >
+	int myThrowIndex -1 < min=-1 tooltip="If the index is -1 the dice values will be use for all the dice throws" >
+	SabaccGameDiceValues myDiceValues
+}
+
+class SabaccGameDiceRange 
+{
+	int myRangeMin < min=0 max=5 tooltip="Min range dice offset (compared to the value of the other card in hand)" >
+	int myRangeMax < min=1 max=6 tooltip="Max range dice offset (compared to the value of the other card in hand)" >
+}
+
+list SabaccGameDiceRanges
+{
+	SabaccGameDiceRange
+}
+
+class SabaccPlayerDiceRangeCommand : SabaccPlayerGameCommand
+{
+	SabaccScriptedCommandType myType PlayerDiceRangeCommand < hidden=1 >
+	SabaccGameDiceRanges myDiceRanges
+}
+
+class SabaccPlayerDisableShiftCommand : SabaccPlayerGameCommand
+{
+	SabaccScriptedCommandType myType PlayerDisableShiftCommand < hidden=1 >
+}
+
+class SabaccPlayerDisableShiftConditionCommand : SabaccPlayerGameCommand
+{
+	SabaccScriptedCommandType myType PlayerDisableShiftConditionCommand < hidden=1 >
+}
+
+class SabaccPlayerPlayShiftCommand : SabaccPlayerGameCommand
+{
+	SabaccScriptedCommandType myType PlayerPlayShiftCommand < hidden=1 >
+	SabaccShiftCardSetting* myShiftCardSetting
+	int myPlayerTargetIndex 0 < min=0 max=3 >
+}
+
+enum SabaccAIPlayerCheatPriority
+{
+	PrioritiseCheaters
+	PrioritiseBaiters
+}
+
+list SabaccPlayersIndex
+{
+	int < min=0 max=5 >
+}
+
+class SabaccAIPlayersRoundCheatData
+{
+	int myAIPlayerCheatingCount
+	int myAIPlayerBaitingCount
+	int myAIPlayerRandomCount
+	SabaccAIPlayerCheatPriority myCheatPriority
+	bool myIgnorePlayersNotClued
+	SabaccPlayersIndex myIgnoredPlayersIndex
+}
+
+class SabaccRoundCheatInfos
+{
+	SabaccGameConditions* mySabaccGameCondition
+	SabaccAIPlayersRoundCheatData myRoundCheatData
+}
+
+list SabaccRoundCheatInfosList
+{
+	SabaccRoundCheatInfos
+}
+
+class SabaccAIPlayersCheatDataCommand : SabaccScriptedCommand
+{
+	SabaccScriptedCommandType myType AIPlayerCheatBaitDataCommand < hidden=1 >
+	int myStartRound < min=0 >
+	int myEndRound < min=0 >
+	SabaccRoundCheatInfosList myRoundCheatInfos
+}
+
+// ------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------
+
+list SabaccDeckCommands
+{
+	SabaccDeckCommand
+}
+
+list SabaccStartingHandCommands
+{
+	SabaccStartingHandCommand
+}
+
+list SabaccPlayerGameCommands
+{
+	SabaccPlayerGameCommand
+}
+
+list SabaccAIPlayersCheatDataCommands
+{
+	SabaccAIPlayersCheatDataCommand
+}
+
+class SabaccGameScriptedCommands < uid=auto >
+{
+	SabaccAIPlayersCheatDataCommands myAIPlayersCheatDataCommands
+	SabaccDeckCommands myDeckCommands
+	SabaccStartingHandCommands myStartingHandCommands
+	SabaccPlayerGameCommands myPlayerGameCommands
+}

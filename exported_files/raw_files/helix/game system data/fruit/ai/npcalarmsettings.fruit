@@ -1,0 +1,14 @@
+include "helix/game system data/fruit/npc/npc.fruit"
+
+list IgnoredArchetypesForDeescalation
+{
+	Archetype
+}
+
+class AlarmSetting < uid=auto >
+{
+	float myLKPUpdateRate 0.0 < tooltip="Update rate of the last known position for the alarm intruder" >
+	float myDefaultMinLifetime 5.0 < tooltip="Default min lifetime for the alarm when triggered" >
+	float myMinDistanceToIntruderForDuty 0 < tooltip="Required distance between a duty post and alarm intruder" >
+	IgnoredArchetypesForDeescalation myIgnoredArchetypesForDeescalation < tooltip="When an alarm checks if deescalation has happened it will not consider agents of archetype specified in list" >
+}

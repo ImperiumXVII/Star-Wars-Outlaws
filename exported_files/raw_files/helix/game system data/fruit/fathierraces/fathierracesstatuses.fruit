@@ -1,0 +1,49 @@
+include "helix/game system data/fruit/fathierraces/fathierracestraits.fruit"
+
+// Keep in sync with HC_FathierStatus in HC_FathierStatus.h
+enum FathierStatus
+{
+	YoungBad
+	Promising
+	Dominant
+	OldBad
+	Retired
+	Inteled
+	Owned
+}
+
+list WinningProbabilities
+{
+	float < min=0.0 max=1.0 >
+}
+
+class FathierStatusData
+{
+	FathierStatus myStatus
+	int myQuantityInManager 0 < tooltip="The maximum number of fathiers that will be set at this status at the creation of fathiers." >
+	int myMandatoryQuantityInRace 0 < tooltip="The number of fathiers of this status we want to have in each race. If set at 0 no fathiers of this status will be added to the race unless it's in the Filler Statuses or linked to a microstory." >
+	WinningProbabilities myWinningProbabilities < tooltip="The probabilities a fathier of this status has to win. Every time a fathier does a race with the same status, the next probabilities is selected. In a race, the sum of all fathiers' probabilities should be at least 1." >
+	FathierStatus myNextStatus
+	RankingRange myNextStatusRankingRange < tooltip="If a fathier finishes a race between the minimum and maximum rankings (included), it's moved to the next status" >
+	int myRaceCountBeforeStatusChange 0 < min = 0 tooltip="The fathier will move to the next status after this number of race (even if it didn't participate), if this variable is not set at 0" >
+	int myMinimumNPCBet 1 < min = 1 tooltip="The minimum bet on a fathier of this status before the player bets on it" >
+	int myMaximumNPCBet 1 < min = 1 tooltip="The maximum bet on a fathier of this status before the player bets on it" >
+	bool myUsePreviousJockey < tooltip="If true, fathiers of this status will use the jockey they had in their previous race and not select one at random before each race" >
+	FathierTraitPresets myTraitPresets < tooltip="The traits a fathier of this status can have" >
+	RankingRangeList mySpecificPreviousRankings < tooltip="A fathier created with this status will have these previous rankings, randomly selected between the min and the max. The rest of the rankings will be filled with the default one set in the settings." >
+}
+
+list FathierStatusDataList
+{
+	FathierStatusData
+}
+
+list FathierStatusList
+{
+	FathierStatus
+}
+
+list RaceRankings
+{
+	FathierStatusList < tooltip="Add fathier status up to the fathier quantity in a race. If there are less status than the quantity of fathiers in a race, the other fathiers will be given the remaining rankings at random." >
+}

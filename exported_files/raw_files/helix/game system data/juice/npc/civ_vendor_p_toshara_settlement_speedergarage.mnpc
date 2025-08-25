@@ -1,0 +1,30 @@
+include "helix/game system data/juice/npc/base_civ_vendor.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC civ_vendor_p_toshara_settlement_speedergarage < uid=16DEADE660D7A8180000110066BB4B42 > : base_civ_vendor
+{
+	myName "aurabesh = false, contextComment = \"Vendor name\", enabled = true, guid = #F4D8AE266217861100025A62A4239F04, lineVersion = 2, maxLength = 0, productId = -1, sectionId = -1, text = \"Speeder Vendor\", type = \"MenuLine\""
+	myCharacterVisuals < uid=91DC5D3C63763AF50000E0912C70E7FF > = character_visuals_silver_tos_settlement_speeder_vendor E053C1D565322EBE000121FE640B0952
+	myPossibleGenderTags
+	{
+		RBTagsTag Gender < uid=1EC89F25655492AA000029CCDD72936E > = Agent_Gender_MasculineTag 16DEADE6626D20EA00002E504CE30DE2
+	}
+	myPossibleSpeciesTags
+	{
+		RBTagsTag Species < uid=1EC89F25655492B6000029CD2F8B2A13 > = Agent_Species_HumanTag 2736B365634D673A0003C27CFCFEFD1A
+	}
+	myAgentRBTags
+	{
+		RBTagsTag Vendor < uid=E4123D2762A88CA60002A5263B4837F7 > = Agent_Archetype_VendorSpeederMechanic E4123D2762A791BE00007B532B475484
+	}
+	myDialogueCharacters
+	{
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=1EC89F25650197EB00007347C631212D >
+		{
+			myDialogueCharacter < uid=1EC89F256351699E0000537832F54D4E > = AI_VENDOR_MECHANIC_M05 1EC89F25633E91D4000049D60938DD37
+		}
+	}
+	myPlayerAwarenessProfile < uid=E4123D2762A8879200017FB9E6C85F7F > = Vendor_Mechanic E4123D2762A8878B00017F8B479815F6
+	myVendorConfig < uid=E42FA10C60E5634100023E1132C0F140 > = VendorConfig_TOS_Settlement_Neutral_Speeder F4D8AE266538E5D300007959B40CEA57
+}
+

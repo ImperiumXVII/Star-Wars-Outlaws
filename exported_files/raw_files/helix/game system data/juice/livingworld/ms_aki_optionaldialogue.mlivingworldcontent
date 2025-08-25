@@ -1,0 +1,1088 @@
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+include "helix/game system data/juice/faction/factions.mfaction"
+include "helix/game system data/juice/intel/intel_akiva.mintel"
+
+LivingWorldContent AKI_OD_BASE < uid=AFFE793B652CD539000182660BC4E872 >
+{
+	myCompletedGameValue < uid=AFFE793B652CD5BE000182674EEB153A >
+	{
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType "New LivingWorldContentLayerType" Ambient
+		LivingWorldContentLayerType "New LivingWorldContentLayerType_0" Encounter
+	}
+	myLayerType MicroStory
+	myBlockingRadius 2.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance <75"
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance >75"
+		{
+			myDistance 80.0
+		}
+	}
+}
+
+LivingWorldContent MS401_OD_SecurityDetail_P1 < uid=AFFE793B652CD61A0001826813A90A52 > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=AFFE793B652CD9010001826F0BDB2CB2 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance <75"
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestIsCompleted "MQ_150 Completed"
+		{
+			myQuest F3CF7529637CE2360000BF8068E874C2
+		}
+	}
+}
+
+LivingWorldContent MS401_OD_SecurityDetail_2 < uid=AFFE793B652E8B240003F6F9F527FB1D > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=AFFE793B652E8B4C0003F6FB93B2DF88 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance <75"
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionLivingWorldContent_HasBeenCompleted "MS404 Security Derail P1 Completed"
+		{
+			myLivingWorldContent AFFE793B652CD61A0001826813A90A52
+		}
+	}
+}
+
+LivingWorldContent MS401_OD_SecurityDetail_3 < uid=AFFE793B652E8B2C0003F6FA76383718 > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=AFFE793B652E8B4C0003F6FC260CEDF9 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance <75"
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel "New GameConditionPlayerHasIntel"
+		{
+			myIntel < uid=AFFE793B65323AA3001484A010A11B80 > = A_AKI_MS401_ITL401_SecurityDetail F12EE1F9652E8FC8000A98FB385CBFDB
+		}
+	}
+}
+
+LivingWorldContent MS407_OD_CrimsonContract < uid=AFFE793B652CD63B0001826949FB152B > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=AFFE793B652CD901000182700348A935 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance <75"
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance >75"
+		{
+			myDistance 80.0
+		}
+	}
+}
+
+LivingWorldContent MS409_OD_YardSale < uid=AFFE793B6538CF5600042C07151ED318 >
+{
+	myCompletedGameValue < uid=AFFE793B6538CFAB00042C0C85FE4563 >
+	{
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType "New LivingWorldContentLayerType" Ambient
+		LivingWorldContentLayerType "New LivingWorldContentLayerType_0" Encounter
+	}
+	myLayerType MicroStory
+	myBlockingRadius 2.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance <75"
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance >75"
+		{
+			myDistance 80.0
+		}
+	}
+}
+
+LivingWorldContent MS410_OD_FamilyDrama < uid=AFFE793B6537B89D0006658DEE2DC9EC > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=AFFE793B6537BBEB00004D3837535B00 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance <75"
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestIsCompleted "MQ_150 Completed"
+		{
+			myQuest F3CF7529637CE2360000BF8068E874C2
+		}
+	}
+}
+
+LivingWorldContent MS411_OD_Grotto_P1 < uid=AFFE793B6537C8DB00011985F298E204 > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=AFFE793B6537E2E9000719E2B5043697 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance 100"
+		{
+			myDistance 100.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestIsCompleted "MQ_150 Completed"
+		{
+			myQuest F3CF7529637CE2360000BF8068E874C2
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance 100"
+		{
+			myDistance 105.0
+		}
+	}
+}
+
+LivingWorldContent MS411_OD_Grotto_2 < uid=AFFE793B6538C72E00004E771F744056 >
+{
+	myCompletedGameValue < uid=AFFE793B6538C73E00004E7A07CCE3C8 >
+	{
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType "New LivingWorldContentLayerType" Ambient
+		LivingWorldContentLayerType "New LivingWorldContentLayerType_0" Encounter
+	}
+	myLayerType MicroStory
+	myBlockingRadius 2.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance <75"
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel "New GameConditionPlayerHasIntel"
+		{
+			myIntel < uid=AFFE793B6538CA66000225C67278DDF3 > = A_AKI_MS411_ITL427_Grotto AFFE793B6537E99D0001AA185BA5CB15
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance >75"
+		{
+			myDistance 80.0
+		}
+	}
+}
+
+LivingWorldContent MS412_OD_RetiredDroid_P1 < uid=AFFE793B6538D03A00042C122C329457 >
+{
+	myCompletedGameValue < uid=AFFE793B6538D0FB00042C1842C5DC0D >
+	{
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType "New LivingWorldContentLayerType" Ambient
+		LivingWorldContentLayerType "New LivingWorldContentLayerType_0" Encounter
+	}
+	myLayerType MicroStory
+	myBlockingRadius 2.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer Distance<75
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestBeatState "MQ_150  Completed"
+		{
+			myQuestBeat F3CF7529637CE2360000BF96B519283C
+			myQuestBeatState Completed
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance >75"
+		{
+			myDistance 80.0
+		}
+	}
+}
+
+LivingWorldContent MS412_OD_RetiredDroid_P2_Hutt < uid=AFFE793B653F72FC000196A95F86479B >
+{
+	myCompletedGameValue < uid=AFFE793B653F7F800001F4DDD1F35E7D >
+	{
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType "New LivingWorldContentLayerType" Ambient
+		LivingWorldContentLayerType "New LivingWorldContentLayerType_0" Encounter
+	}
+	myLayerType MicroStory
+	myBlockingRadius 2.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer Distance<75
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel "Player has ITL428"
+		{
+			myIntel < uid=AFFE793B653F7F800001F4DE7C0D62ED > = A_AKI_MS412_ITL456_RetiredDroid FB6AE4D565795E7A001C89D2871921CB
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance >75"
+		{
+			myDistance 80.0
+		}
+	}
+}
+
+LivingWorldContent MS412_OD_RetiredDroid_P3_Hutt_Ending < uid=FB6AE4D565796167001D81E45CF33705 > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=FB6AE4D565796167001D81E5995BDF9F >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer Distance<75
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionLivingWorldFormula "GV_MS412_Hutt_Ending = 1"
+		{
+			myFormula "GV_MS412_Hutt_Ending =1"
+		}
+		GameConditionPlayerHasIntel ITL428_Hutt_resolved
+		{
+			myIntel < uid=FB6AE4D5657966AB00275945BBBE49E9 > = A_AKI_MS412_ITL456_RetiredDroid FB6AE4D565795E7A001C89D2871921CB
+			myIntelState Resolved
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+	}
+}
+
+LivingWorldContent MS412_OD_RetiredDroid_P3_Hutt < uid=FB6AE4D565E9AC75002D171FC371BCE2 > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=FB6AE4D565E9AC75002D172043204437 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionLivingWorldFormula "GV_MS412_Hutt_Ending_DroidAV = 1"
+		{
+			myFormula "GV_MS412_Hutt_Ending_DroidAV = 1"
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionLivingWorldFormula "GV_MS412_RetiredDroid_AfterStory = 1"
+				{
+					myFormula "GV_MS412_RetiredDroid_AfterStory = 1"
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent MS412_OD_RetiredDroid_P4_Hutt < uid=ACAEF5AB663F440500248824D99271F5 > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=ACAEF5AB663F440500248825B717AE98 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance <75"
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionLivingWorldFormula "GV_MS412_RetiredDroid_AfterStory = 1"
+		{
+			myFormula "GV_MS412_RetiredDroid_AfterStory = 1"
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance >75"
+		{
+			myDistance 80.0
+		}
+	}
+}
+
+LivingWorldContent MS412_OD_RetiredDroid_P2_Pyke < uid=AFFE793B653F705B000E291584C439F7 > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=AFFE793B653F7091000E29197596470F >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance <75"
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel "Player has ITL428"
+		{
+			myIntel < uid=AFFE793B653F71C7000E291A859AA83C > = A_AKI_MS412_ITL456_RetiredDroid FB6AE4D565795E7A001C89D2871921CB
+		}
+	}
+}
+
+LivingWorldContent "MS414_OD_Anoter Dispute" < uid=AFFE793B6538D05E00042C15CE174A97 >
+{
+	myCompletedGameValue < uid=AFFE793B6538D17700042C1BD902FDB4 >
+	{
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType "New LivingWorldContentLayerType" Ambient
+		LivingWorldContentLayerType "New LivingWorldContentLayerType_0" Encounter
+	}
+	myLayerType MicroStory
+	myBlockingRadius 2.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer Distance<75
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance >75"
+		{
+			myDistance 80.0
+		}
+	}
+}
+
+LivingWorldContent MS417_OD_HelpingAResident < uid=AFFE793B6538D00100042C0F3EF89735 >
+{
+	myCompletedGameValue < uid=AFFE793B6538D17700042C1CB54B772D >
+	{
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType "New LivingWorldContentLayerType" Ambient
+		LivingWorldContentLayerType "New LivingWorldContentLayerType_0" Encounter
+	}
+	myLayerType MicroStory
+	myBlockingRadius 2.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Contenct Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer Distance<75
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestBeatState "MQ150 Complete"
+		{
+			myQuestBeat F3CF7529637CE2360000BF96B519283C
+			myQuestBeatState Completed
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer Distance>75
+		{
+			myDistance 80.0
+		}
+	}
+}
+
+LivingWorldContent MS505_OD_AkivasBloodTree < uid=AFFE793B652CD7FE0001826B7304684B > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=AFFE793B652CD90100018272B3333671 >
+	{
+	}
+}
+
+LivingWorldContent MS408_OD_RecruitingKay < uid=AFFE793B65324B1100208900ABAA79C3 > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=AFFE793B65324B2B00208901DC705715 >
+	{
+	}
+}
+
+LivingWorldContent MS502_OD_UserTesting_P1 < uid=AFFE793B652CD86C0001826E5BCD51B0 > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=ACAEF5AB663246AA00CABE07C00325AD >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance <75"
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasReputation "Hutt Reputation Good +"
+		{
+			myFaction < uid=ACAEF5AB663227560012D28857F69CE1 > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+			myReputationTier Good
+		}
+	}
+}
+
+LivingWorldContent MS502_OD_UserTesting_P2 < uid=7D4A85E965326C95001743F18D7D09B4 > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=7D4A85E965326C95001743F4FBCDFE35 >
+	{
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType "New LivingWorldContentLayerType_0" Encounter
+	}
+	myBlockingRadius 100.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance <75"
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel PlayerHasIntelITL414
+		{
+			myIntel < uid=7D4A85E96573272B00545A74B3E91383 > = A_AKI_MS502_ITL414_UserTesting F12EE1F9652D30DE000B686C2F13E53B
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionLivingWorldFormula MS502_OD_UserTestingP3Compleated
+		{
+			myFormula "GV_MS502_OD_User_Testing_DroidDowned = 1"
+		}
+	}
+}
+
+LivingWorldContent MS502_OD_UserTesting_P3 < uid=7D4A85E965326C95001743F59E987851 > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=7D4A85E965326C95001743F8EAB9BD0A >
+	{
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType "New LivingWorldContentLayerType_0" Encounter
+	}
+	myBlockingRadius 100.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionPlayerHasIntel PlayerHasIntelITL414
+		{
+			myIntel < uid=7D4A85E96573272B00545A75DB0DC9BA > = A_AKI_MS502_ITL414_UserTesting F12EE1F9652D30DE000B686C2F13E53B
+			myIntelState Resolved
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+	}
+}
+
+LivingWorldContent MS502_OD_UserTesting_P4 < uid=7D4A85E965326C95001743F9B7BE0AFC > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=7D4A85E965326C95001743FCC6A9A4EB >
+	{
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType "New LivingWorldContentLayerType_0" Encounter
+	}
+	myAdditionalLayerTypes
+	{
+	}
+	myBlockingRadius 100.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance <75"
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionLivingWorldFormula MS502_OD_UserTestingP3_Completed
+		{
+			myFormula "GV_MS502_OD_User_Testing_DroidDowned = 1"
+		}
+	}
+}
+
+LivingWorldContent MS507_OD_TreeTunnel_P1 < uid=AFFE793B652CD8500001826DB9671D91 > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=AFFE793B652CD9010001827427182E06 >
+	{
+	}
+	myBlockingRadius 5.0
+}
+
+LivingWorldContent MS507_OD_TreeTunnel_P2 < uid=7D4A85E96538DB9400049802A2B937E9 > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=7D4A85E96538DB94000498039C40FFCB >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance <75"
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel PlayerHasIntel
+		{
+			myIntel < uid=7D4A85E96571F4B400459551CDCB5681 > = A_AKI_MS507_ITL418_TreeTunnel F12EE1F9652D3D7E00070FF13DA79CC5
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionLivingWorldContent_HasBeenCompleted "MS507_OD_TreeTunnel_P3 Completed"
+		{
+			myLivingWorldContent 7D4A85E96538DB940004980491471FCE
+		}
+	}
+}
+
+LivingWorldContent MS507_OD_TreeTunnel_P3 < uid=7D4A85E96538DB940004980491471FCE > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=7D4A85E96538DB9400049805D6EBB0F9 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionPlayerHasIntel PlayerHasIntel
+		{
+			myIntel < uid=7D4A85E96571F4B400459552F1A7DB97 > = A_AKI_MS507_ITL418_TreeTunnel F12EE1F9652D3D7E00070FF13DA79CC5
+		}
+	}
+}
+
+LivingWorldContent MS507_OD_TreeTunnel_P4 < uid=7D4A85E96538DB9400049806BD86D3B2 > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=7D4A85E96538DB940004980726A3DD6E >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance <75"
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionLivingWorldContent_HasBeenCompleted MS507_OD_TreeTunnel_P3Compl
+		{
+			myLivingWorldContent 7D4A85E96538DB940004980491471FCE
+		}
+	}
+}
+
+LivingWorldContent MS511_OD_Akiva_Safari < uid=7D4A85E965391DBA00194AC844B3C32C > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=7D4A85E965391DBA00194AC91BC2ABE9 >
+	{
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType "New LivingWorldContentLayerType_0" Encounter
+	}
+	myBlockingRadius 100.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance 150"
+		{
+			myDistance 150.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance 150"
+		{
+			myDistance 155.0
+		}
+	}
+}
+
+LivingWorldContent MS533_OD_EntangledIsland_P1 < uid=7D4A85E9653A4FC800056FCA2DFEA4F5 > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=7D4A85E9653A4FC800056FCB948457CD >
+	{
+	}
+	myBlockingRadius 4.0
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance >75"
+		{
+			myDistance 80.0
+		}
+		GameConditionPlayerHasIntel "New GameConditionPlayerHasIntel"
+		{
+			myIntel < uid=AFFE793B662264310014F8FFAAD8FDE8 > = A_AKI_MS533_ITL436_EntangledIsland 7110821465365E2A0000BAA8748B4C22
+		}
+	}
+}
+
+LivingWorldContent MS533_OD_EntangledIsland_P2 < uid=7D4A85E96552242B00031CC1455B19D5 > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=7D4A85E96552242B00031CC2AA9B6051 >
+	{
+	}
+	myLivingWorldLayerBlockers
+	{
+	}
+	myLayerType Base
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasIntel PlayerHasIntelITL436
+		{
+			myIntel < uid=7D4A85E96552242B00031CC37F9FF814 > = A_AKI_MS533_ITL436_EntangledIsland 7110821465365E2A0000BAA8748B4C22
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionPlayerHasIntel IntelResolved
+		{
+			myIntel < uid=7D4A85E9656F59610005FAAA8E3A461A > = A_AKI_MS533_ITL436_EntangledIsland 7110821465365E2A0000BAA8748B4C22
+			myIntelState Resolved
+		}
+	}
+}
+
+LivingWorldContent MS533_OD_EntangledIsland_P3 < uid=AFFE793B66224135000E48EE754DB074 > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=AFFE793B66224135000E48EF0E8F326C >
+	{
+	}
+	myBlockingRadius 4.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance <75"
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel "Intel Resolved"
+		{
+			myIsNegated FALSE
+			myIntel < uid=ACAEF5AB6669ACC7001460E5BA17FAAA > = A_AKI_MS533_ITL436_EntangledIsland 7110821465365E2A0000BAA8748B4C22
+			myIntelState Resolved
+		}
+	}
+}
+
+LivingWorldContent MS506_OD_ProfitSeeker_P1 < uid=AFFE793B652CD8210001826C28A407E3 > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=AFFE793B652CD90100018273615F2219 >
+	{
+	}
+}
+
+LivingWorldContent MS506_OD_ProfitSeeker_P2_O1 < uid=7D4A85E9653F8163000D3D3B7A51DB41 > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=7D4A85E9653F8163000D3D3CA75429FD >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance <75"
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel ITL419-PlayerHasIntel
+		{
+			myIntel < uid=7D4A85E9653F8234000D3D41984DAE15 > = A_AKI_MS506_ITL419_ProfitSeeker F12EE1F9652D4654001641FEE7200D2F
+		}
+	}
+}
+
+LivingWorldContent MS506_OD_ProfitSeeker_P2_O2 < uid=7D4A85E9653F8163000D3D3DF4E06781 > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=7D4A85E9653F8163000D3D3E7344678D >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance <75"
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionPlayerHasIntel ITL419-PlayerHasIntel
+		{
+			myIntel < uid=7D4A85E9653F8234000D3D42183DE3B4 > = A_AKI_MS506_ITL419_ProfitSeeker F12EE1F9652D4654001641FEE7200D2F
+		}
+	}
+}
+
+LivingWorldContent MS413_OD_WantedOfficer < uid=FB6AE4D56540CF3F00081695A8BEC03C > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=FB6AE4D56540CF3F00081698A8D9FF1C >
+	{
+	}
+}
+
+LivingWorldContent MS504_OHC_ScavengerHuntWreckage_P1 < uid=7D4A85E9654A63BD000A495709C0A19B > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=7D4A85E9654A63BD000A4958A18D5B15 >
+	{
+	}
+}
+
+LivingWorldContent MS504_OHC_ScavengerHuntWreckage_P2 < uid=7D4A85E9654A63BD000A49598926FDB6 > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=7D4A85E9654A63BD000A495A123A48D6 >
+	{
+	}
+	myLivingWorldLayerBlockers
+	{
+	}
+	myLayerType Base
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasIntel PlayerHasIntelITL417
+		{
+			myIntel < uid=7D4A85E9654A64BA000A4961831E6627 > = A_AKI_MS504_ITL417_ScavengerHuntWreckage F12EE1F9652D403900133C6AB5BA932D
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionPlayerHasIntel IntelResolved
+		{
+			myIntel < uid=7D4A85E96571CA5E0027917B414C74D3 > = A_AKI_MS504_ITL417_ScavengerHuntWreckage F12EE1F9652D403900133C6AB5BA932D
+			myIntelState Resolved
+		}
+	}
+}
+
+LivingWorldContent MS504_OD_ScavengerHuntWreakageRP1 < uid=7D4A85E9654A63BD000A495B1EFAFF73 > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=7D4A85E9654A63BD000A495CD5645A4A >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionPlayerHasIntel IntelResolvedITL417
+		{
+			myIntel < uid=7D4A85E9654B49C8000421B3CC4777A8 > = A_AKI_MS504_ITL417_ScavengerHuntWreckage F12EE1F9652D403900133C6AB5BA932D
+			myIntelState Resolved
+		}
+	}
+}
+
+LivingWorldContent MS412_OD_RetiredDroid_P3_Pyke_Ending < uid=FB6AE4D565796066001D81CBEBE92FBF > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=FB6AE4D565796066001D81CC002AD7F7 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance <75"
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionLivingWorldFormula "GV_MS412_Pyke_Ending = 1"
+		{
+			myFormula "GV_MS412_Pyke_Ending = 1"
+		}
+		GameConditionPlayerHasIntel ITL428_Pyke_resolved
+		{
+			myIntel < uid=FB6AE4D5657966AB00275944B19426DD > = A_AKI_MS412_ITL456_RetiredDroid FB6AE4D565795E7A001C89D2871921CB
+			myIntelState Resolved
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+	}
+}
+
+LivingWorldContent MS409_OD_YardSale_greet_loop < uid=FB6AE4D565E8462D000EB30369B23AED >
+{
+	myCompletedGameValue < uid=FB6AE4D565E8462D000EB3044F1C5F26 >
+	{
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType "New LivingWorldContentLayerType" Ambient
+		LivingWorldContentLayerType "New LivingWorldContentLayerType_0" Encounter
+	}
+	myLayerType MicroStory
+	myBlockingRadius 2.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance <75"
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionLivingWorldFormula "GV_MS409_YardSale_reward_received =1"
+		{
+			myFormula "GV_MS409_YardSale_reward_received = 1"
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Completed"
+		{
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance >75"
+		{
+			myDistance 80.0
+		}
+	}
+}
+
+LivingWorldContent MS412_OD_RetiredDroid_P3_Pyke < uid=FB6AE4D565E9AC75002D171DD5CE2902 > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=FB6AE4D565E9AC75002D171E2BAC8EAB >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Content Not Completed"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionLivingWorldFormula "GV_MS412_Pyke_Ending_DroidAV = 1"
+		{
+			myFormula "GV_MS412_Pyke_Ending_DroidAV = 1"
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionLivingWorldFormula "GV_MS412_RetiredDroid_AfterStory_Pyke = 1"
+		{
+			myFormula "GV_MS412_RetiredDroid_AfterStory_Pyke = 1"
+		}
+	}
+}
+
+LivingWorldContent MS412_OD_RetiredDroid_P4_Pyke < uid=ACAEF5AB663F4AC1002EC11C847B04BC > : AKI_OD_BASE
+{
+	myCompletedGameValue < uid=ACAEF5AB663F4AC1002EC11D15B1CA3D >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance <75"
+		{
+			myDistance 75.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionLivingWorldFormula "GV_MS412_RetiredDroid_AfterStory_Pyke = 1"
+		{
+			myFormula "GV_MS412_RetiredDroid_AfterStory_Pyke = 1"
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance >75"
+		{
+			myDistance 80.0
+		}
+	}
+}
+

@@ -1,0 +1,30 @@
+include "helix/game system data/juice/equipment/aimconfig/weapon_aimconfig_rifle_shield.maimconfig"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_pickup_rotatorycannon.mweaponfiremode"
+include "helix/game system data/juice/item/consumables.mitem"
+include "helix/game system data/juice/item/equipmentholding/holding_kays_rotary_cannon.mequipmentholdingconfig"
+include "helix/game system data/juice/item/player_weapon_pickup_template.mitem"
+
+WeaponItem player_weapon_pickup_rotarycannon < uid=4C1DFD4E630723D200004468A68CD0D9 > : player_weapon_pickup_template
+{
+	myName "aurabesh = false, contextComment = \"Minigun-like heavy blaster rifle pick-up weapon\", enabled = true, guid = #4C1DFD4E630723D200004467E400E08E, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 394, text = \"Z-6 Rotary Cannon\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"Heavy Troopers should drop this weapon\", enabled = true, guid = #4C1DFD4E634D51DF00004BE4C8DDBF75, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 394, text = \"Pickup from Empire Heavy Troopers\", type = \"MenuLine\""
+	myIcon "mySpriteId = -435390678, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_weapon_icons_02.spritesheet\""
+	myGraphObject "helix/graph objects/gameplayobject/gpo_player_weapon_rotarycannon.mgraphobject"
+	myLootGraphObject "helix/graph objects/gameplayobject/gpo_player_weapon_rotarycannon.mgraphobject"
+	myAmount < uid=4C1DFD4E640F48130000AA8E2AF1B69E >
+	{
+		myDefaultValue 0
+	}
+	myAimConfig < uid=4C1DFD4E630723D2000044697DF14172 > = weapon_aimconfig_rifle_shield A207755D61F1678100001B18A2AABA6C
+	myHoldingConfig < uid=4C1DFD4E630723D20000446A0F929367 > = holding_kays_rotary_cannon 4C1DFD4E62B4176300009581822D8A2D
+	myAlwaysAim TRUE
+	myConsumedItem < uid=4C1DFD4E643D4187000259FD30A3A47F > = con_Ammo_Z-6RotaryCannon 4C1DFD4E643D40810002497BAFCDB476
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=4C1DFD4E630723D20000446BEC75068B > = player_firemode_pickup_rotatorycannon A207755D62C3EAE90000377A6B01B1C5
+		}
+	}
+}
+

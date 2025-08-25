@@ -1,0 +1,33 @@
+include "helix/game system data/fruit/ai/detection.fruit"
+include "helix/game system data/juice/ai/npcdetectionmodifierprofiles_coop.mnpcdetectionmodifierprofile"
+include "helix/game system data/juice/ai/npcdetectionprofiles.mnpcdetectionprofile"
+
+NPCDetectionProfile DefaultDetectionProfile_COOP < uid=7EE6463463D7D64A0000555B947C08EA > : DefaultDetectionProfile
+{
+	myAwareThreshold 1.5
+	myCombatThreshold 2.5
+	myPlayerAwareThreshold 1.5
+	myPlayerCombatThreshold 2.5
+	myVisionStimulusDropoffCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -5 0, }, outTangents = { 3.3608494 -0.021226406, 0 0, }, properties = { 6419, 5191, }, values = { 5 5, 20 0.5, }, }, numKeys = 2, }"
+	myVisibilityStimulusRateMinimumThreshold 0.06
+	myDetectionModifierProfile < uid=7EE6463463D7D79B0000555E750C9FD0 > = DefaultModifierProfile_COOP 7EE6463463D7D7770000555D11E87079
+	myDecayStartTime 3.0
+	myDecayRate 0.6
+}
+
+NPCDetectionProfile AutomatedTurretDetectionProfile_COOP < uid=7EE6463463D7D7D10000555F0143F2C3 > : AutomatedTurretDetectionProfile
+{
+	myDetectionModifierProfile < uid=7EE6463463D7D7E40000556013A26C38 > = DefaultModifierProfile_COOP 7EE6463463D7D7770000555D11E87079
+}
+
+NPCDetectionProfile DroidDetectionProfile_COOP < uid=7EE6463463D7E8A3000057DB36068D6B > : DroidDetectionProfile
+{
+	myAwareThreshold 0.5
+	myCombatThreshold 1.5
+	myPlayerAwareThreshold 0.5
+	myPlayerCombatThreshold 1.5
+	myVisionStimulusDropoffCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -1.6666667 0, }, outTangents = { 1.6666667 0, 0 0, }, properties = { 3143, 5191, }, values = { 15 1.5, 20 0.75, }, }, numKeys = 2, }"
+	myDetectionModifierProfile < uid=7EE6463463EA5056000039C32FF5AB62 > = DefaultModifierProfile_COOP 7EE6463463D7D7770000555D11E87079
+	myDecayStartTime 3.0
+}
+

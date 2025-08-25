@@ -1,0 +1,33 @@
+include "helix/game system data/fruit/adminpanel/adminpanelactiontype.fruit"
+include "helix/game system data/fruit/adminpanel/adminpanelactiontriggertype.fruit"
+include "helix/game system data/fruit/slicing/slicingstate.fruit"
+
+class AdminPanelAction
+{
+	SlicingStateList mySlicingStateForAvailability
+	string myIcon < bhv="sprite" >
+	varmap myText < bhv="localization" >
+	varmap myOnButtonStateText < bhv="localization" >
+	varmap myOffButtonStateText < bhv="localization" >
+	AdminPanelActionType myActionType
+}
+
+class AdminPanelToggleAction : AdminPanelAction
+{
+	bool myInitialToggleValue
+}
+
+list AdminPanelActionList
+{
+	AdminPanelAction
+}
+
+class AdminPanelSetup
+{
+	AdminPanelActionList myAdminPanelActions
+}
+
+class AdminPanel < uid=auto >
+{
+	AdminPanelSetup myAdminPanelSetup
+}

@@ -1,0 +1,2924 @@
+include helix/audio/votypes.juice
+include "helix/game system data/fruit/audio/stimulus.fruit"
+include "helix/game system data/juice/barks/cooldown_e3.mbarkscooldown"
+include "helix/game system data/juice/barks/cooldown_main.mbarkscooldown"
+include "helix/game system data/juice/rbtags/allrbtags.juice"
+include "helix/game system data/juice/sound/stimuli/stim_id_combat_npc.mstimulusidentifier"
+include "helix/game system data/juice/sound/stimuli/stim_id_e3.mstimulusidentifier"
+
+StimulusElementContainer ----------ChopShop----------- < uid=3A129121640F5450001A56E4F34CB849 >
+{
+	myIdentifier < uid=E4123D27641CBE6400007109B51AC9AD > = ___E3_DIVIDER___ E4123D27641CBE33000070F6BC3457AF
+}
+
+StimulusElementContainer 00_NPC_PykeIdleSelf < uid=E4123D276411BDDD000009A3FCD47892 >
+{
+	myIdentifier < uid=E4123D276411BDDD000009A465F6F5A7 > = E3_ChopShop_NPC_PykeIdleSelf E4123D276411BDD9000009A2A22A20E9
+	myVOType < uid=E4123D276411BDDD000009A5B19C6706 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 437AB0C812016B5CD1F6224CAA208A92
+			}
+			myTemplateOverride
+			{
+				myGuid 4745D2AB53E8750DFCC6B36EDBF8CBAB
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 00_NPC_HiredGunIdleSelf < uid=E4123D276411BDDD000009A6424234B4 >
+{
+	myIdentifier < uid=E4123D276411BDDD000009A71D0DC486 > = E3_ChopShop_NPC_HiredGunIdleSelf E4123D276411BDE6000009AFFD00B715
+	myVOType < uid=E4123D276411BDDD000009A8CF84514D > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 437AB0C812016B5CD1F6224CAA208A92
+			}
+			myTemplateOverride
+			{
+				myGuid 4745D2AB53E8750DFCC6B36EDBF8CBAB
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 00_NPC_HiredGunIdleConvoStatement < uid=E4123D276411BDDD000009A99D72BBEC >
+{
+	myIdentifier < uid=E4123D276411BDDD000009AACEC6DB62 > = E3_ChopShop_NPC_HiredGunIdleConvoStatement E4123D276411BDF4000009B0542E68FD
+	myVOType < uid=E4123D276411BDDD000009ABBD9C1FC8 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" ClosestAlly
+		}
+		myAgentTags
+		{
+			RBTagsTag "New RBTagsTag" < uid=E4123D276411BE3E000009B282F03C4B > = Agent_BarksFamily_HiredGun E4123D2762F4CA2800048CADB39E55F8
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 4A05866686ED54F028CB88D8989926A0
+			}
+			myTemplateOverride
+			{
+				myGuid 4745D2AB53E8750DFCC6B36EDBF8CBAB
+			}
+			myDelay 0.0
+			myDisable TRUE
+			myResponse < uid=E4123D276411BE48000009B37AB08B1F > = E3_ChopShop_NPC_HiredGunIdleConvoReply E4123D276411BDFD000009B1DE675AB4
+		}
+	}
+}
+
+StimulusElementContainer 00_NPC_HiredGunIdleConvoReply < uid=E4123D276411BDDD000009AC507F3F0F >
+{
+	myIdentifier < uid=E4123D276411BDDD000009AD58DA4337 > = E3_ChopShop_NPC_HiredGunIdleConvoReply E4123D276411BDFD000009B1DE675AB4
+	myVOType < uid=E4123D276411BDDD000009AEA03F9E85 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 41A303DD3C2F100BB407EA966B3E8E8B
+			}
+			myTemplateOverride
+			{
+				myGuid 4745D2AB53E8750DFCC6B36EDBF8CBAB
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 01_Nix_Stealth < uid=3A129121640F546C001A56F6AACC764A >
+{
+	myIdentifier < uid=3A129121640F54D4001A5719CB682808 > = E3_ChopShop_Nix_Stealthing 3A129121640F533F001A569FCEA18E34
+	myCooldowns
+	{
+	}
+	myVOType < uid=3A129121640F553B001A574D2D64A040 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myVOPriorityOverride 0
+	myElements
+	{
+		StimulusElement Nix
+		{
+			myElement
+			{
+				myGuid 45394C5208C97E96D7D4E468FA32E6B9
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=3A1291216412122E001C2927F69526E8 > = cooldown_nix_idle 3A12912162D910940000EDBEBDE80413
+			}
+			myTemplateOverride
+			{
+				myGuid 424CDD6F70A1727144D13AB5F0773FA1
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 01_NPC_PykeForeman < uid=E4123D276411BC8D0000099AEAC24BD9 >
+{
+	myIdentifier < uid=E4123D276411BC8D0000099B076BD83A > = E3_ChopShop_NPC_PykeForemanBeingBossy E4123D276411BC930000099D0F99B2BB
+	myVOType < uid=E4123D276411BC8D0000099C848C7D27 > = VOType_Scene_Cutscene 3A1C5D1862D94CC900003D730BF553BB
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Ally
+			BarkAgentScope "New BarkAgentScope (0)" SortCloser
+		}
+		myAgentTags
+		{
+			RBTagsTag "New RBTagsTag" < uid=3A1291216413652D002EE407E3B1A852 > = Agent_BarksFamily_PykeDefault E4123D2762F4CA3A00048CB0EF7F9A5E
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 46EB06129FFE84FC251DE5C6BA852FBD
+			}
+			myTemplateOverride
+			{
+				myGuid 4F796F60479B7BEA6EC40F2CDA8F9D81
+			}
+			myDelay 0.0
+			myDisable TRUE
+			myResponse < uid=E4123D276411BFAF000009B9BAD2A189 > = E3_ChopShop_NPC_PykeForemanBeingBossyReply E4123D276411BF94000009B814E71C75
+		}
+	}
+}
+
+StimulusElementContainer 01_NPC_PykeForeman_Reply < uid=E4123D276411BF8C000009B566B90444 >
+{
+	myIdentifier < uid=E4123D276411BF8C000009B6857E6A63 > = E3_ChopShop_NPC_PykeForemanBeingBossyReply E4123D276411BF94000009B814E71C75
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=3A1291216413680900351723629062F4 > = Cooldown_BossReply 3A129121641367CB0034F9F2DEE10163
+	}
+	myVOType < uid=E4123D276411BF8C000009B718146A3D > = VOType_Scene_Cutscene 3A1C5D1862D94CC900003D730BF553BB
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 4C914C11C418C5AF96AE44206A16FBA9
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=3A1291216413681200351B9493F7A698 > = Cooldown_BossReply 3A129121641367CB0034F9F2DEE10163
+			}
+			myTemplateOverride
+			{
+				myGuid 4F796F60479B7BEA6EC40F2CDA8F9D81
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 02_Kay_PostTakedown < uid=3A129121640F55EA001A5781BC89C71C >
+{
+	myIdentifier < uid=3A129121640F5658001A5782F94B7A6C > = E3_ChopShop_Kay_PostTakedown 3A129121640B578F0021F44F8B923BEF
+	myVOType < uid=3A12912164118D23000067E496DD7686 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope Nix Nix
+		}
+	}
+	myElements
+	{
+		StimulusElement Kay
+		{
+			myElement
+			{
+				myGuid 487EC0E4837453158337D56FBEDEEEA8
+			}
+			myTemplateOverride
+			{
+				myGuid 40943D2CE961FE9C89F1A1BBA93E7097
+			}
+			myDelay 0.7
+			myDisable TRUE
+			myResponseDelay 0.15
+			myResponse < uid=3A1291216412F39700195BB633D03478 > = E3_ChopShop_Nix_Stealthing 3A129121640F533F001A569FCEA18E34
+		}
+	}
+}
+
+StimulusElementContainer 03_Kay_ButtonCommandAttention < uid=3A1291216410AC4000008DC0E4E8BC23 >
+{
+	myIdentifier < uid=3A1291216410AC4000008DC10AA1E495 > = E3_ChopShop_Kay_ButtonCommandAttention 3A129121640B50B20021EA88EFBB4A04
+	myVOType < uid=3A12912164118D23000067E5B2FFB695 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement Kay
+		{
+			myElement
+			{
+				myGuid 4BAA661A723842F6D93F8F17EC2708BF
+			}
+			myTemplateOverride
+			{
+				myGuid 40943D2CE961FE9C89F1A1BBA93E7097
+			}
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 04_Kay_ButtonCommand < uid=3A1291216410AC4000008DC3AD8C4FFB >
+{
+	myIdentifier < uid=3A1291216410AC4000008DC40C24F7CD > = E3_ChopShop_Kay_ButtonCommand 3A129121640B50AB0021EA871DB47CDB
+	myVOType < uid=3A12912164118D23000067E6EAEB9F3A > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Nix
+		}
+	}
+	myElements
+	{
+		StimulusElement Kay
+		{
+			myElement
+			{
+				myGuid 4AD1F1620A0BBD8B30593E9B0705C4B3
+			}
+			myTemplateOverride
+			{
+				myGuid 40943D2CE961FE9C89F1A1BBA93E7097
+			}
+			myDisable TRUE
+			myResponseDelay -0.15
+			myResponse < uid=3A12912164119E8D0000D73AD2F2362A > = E3_ChopShop_Nix_ButtonCommandResponse 3A129121640F52EB001A55CD850615BA
+		}
+	}
+}
+
+StimulusElementContainer 05_Nix_ButtonCommandResponse < uid=3A1291216410AC4000008DC68A7BDF7D >
+{
+	myIdentifier < uid=3A1291216410AC4000008DC74547AA5E > = E3_ChopShop_Nix_ButtonCommandResponse 3A129121640F52EB001A55CD850615BA
+	myVOType < uid=3A12912164118D23000067E7ECDDCA45 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myVOPriorityOverride 0
+	myElements
+	{
+		StimulusElement Nix
+		{
+			myElement
+			{
+				myGuid 4D5BC442D7DCD9C7B6D810B415A48CA8
+			}
+			myTemplateOverride
+			{
+				myGuid 424CDD6F70A1727144D13AB5F0773FA1
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 06_Nix_ButtonCommandReturn < uid=3A1291216410AC4000008DC946864D55 >
+{
+	myIdentifier < uid=3A1291216410AC4000008DCA1252F2CF > = E3_ChopShop_Nix_ButtonCommandReturn 3A129121640F5316001A569BB3DBCC5B
+	myVOType < uid=3A12912164118D23000067E891C9F81E > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myVOPriorityOverride 0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Kay
+		}
+	}
+	myElements
+	{
+		StimulusElement Nix
+		{
+			myElement
+			{
+				myGuid 4FA281AA5864A81E70B45B938607E68C
+			}
+			myTemplateOverride
+			{
+				myGuid 424CDD6F70A1727144D13AB5F0773FA1
+			}
+			myDelay 1.0
+			myDisable TRUE
+			myResponse < uid=3A12912164119EC40000D76E59821CAD > = E3_ChopShop_Kay_ButtonCommandReturn 3A129121640B50DD0021F37B5392B668
+		}
+	}
+}
+
+StimulusElementContainer 07_Kay_ButtonCommandReturn < uid=3A1291216410AC4000008DCCB12FFEE5 >
+{
+	myIdentifier < uid=3A1291216410AC4000008DCDC5B7E170 > = E3_ChopShop_Kay_ButtonCommandReturn 3A129121640B50DD0021F37B5392B668
+	myVOType < uid=3A12912164118D23000067E9DECDBFAC > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+		}
+	}
+	myElements
+	{
+		StimulusElement Kay
+		{
+			myElement
+			{
+				myGuid 46D505EC576B7C8227C3303128D82788
+			}
+			myTemplateOverride
+			{
+				myGuid 40943D2CE961FE9C89F1A1BBA93E7097
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 08_WORLD_Announcement < uid=E4123D276419B0450002BAC0002553BE >
+{
+	myIdentifier < uid=E4123D276419B0450002BAC19AB14DD6 > = E3_ChopShop_WORLD_ChopShopAnnouncement E4123D276419B02D0002BA9DE9328500
+	myVOType < uid=E4123D276419B0450002BAC2C84CB7CF > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 4BB11EDA9C807B1C3B8369A0F2A3248E
+			}
+			myTemplateOverride
+			{
+				myGuid 4E3EA51E445A549F6870AFD99A6A7888
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 08_NPC_Blabbermouth < uid=3A1291216410A9A100008DB1EA845E0B >
+{
+	myIdentifier < uid=E4123D276411B32F0000099CB155AE53 > = E3_ChopShop_NPC_Blabbermouth_SpotsKay E4123D276411B2EA0000099A1430C4AC
+	myVOType < uid=3A12912164118D23000067EA6869F900 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Nix
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 4512C7D85A84D59AFAE042F90A1DC689
+			}
+			myTemplateOverride
+			{
+				myGuid 4308BE9AB93C179C29150D904DAFFAA9
+			}
+			myDelay 0.4
+			myDisable TRUE
+			myResponseDelay -2.5
+			myResponse < uid=3A1291216447D53400011E46DA195FD3 > = E3_ChopShop_Nix_BlabberSurprise 3A1291216447C7E90004B7C852D57BEE
+		}
+	}
+}
+
+StimulusElementContainer 09_Kay_Blabbermouth < uid=3A1291216410AC4000008DCFD7A2CBAB >
+{
+	myIdentifier < uid=3A1291216410AC4000008DD019B4DF6C > = E3_ChopShop_Kay_Blabbermouth 3A129121640B50810021EA85FECEC751
+	myVOType < uid=3A12912164118D23000067EB6AE499AA > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Enemy
+			BarkAgentScope "New BarkAgentScope (0)" SortCloser
+		}
+		myAgentTags
+		{
+			RBTagsTag "New RBTagsTag" < uid=E4123D27642DCB0C0000763A336A40B0 > = Agent_Species_RodianTag 2736B365634D673A0003C282928B2032
+			RBTagsTag "New RBTagsTag (0)" < uid=E4123D27642DCB130000763B2E46BECA > = Agent_BarksFamily_HiredGun E4123D2762F4CA2800048CADB39E55F8
+		}
+	}
+	myElements
+	{
+		StimulusElement Kay
+		{
+			myElement
+			{
+				myGuid 4BB49ED7E7B103B4F336EC5264D857A4
+			}
+			myTemplateOverride
+			{
+				myGuid 40943D2CE961FE9C89F1A1BBA93E7097
+			}
+			myDelay 0.0
+			myDisable TRUE
+			myResponseDelay -0.2
+			myResponse < uid=E4123D27642DCB510000764D722239DA > = E3_ChopShop_NPC_Blabbermouth_Reacts E4123D276411B3050000099B07664CF3
+		}
+	}
+}
+
+StimulusElementContainer 10_NPC_Blabbermouth < uid=3A1291216410A9D600008DB3067BE3E3 >
+{
+	myIdentifier < uid=E4123D276411B32F0000099D12084D2C > = E3_ChopShop_NPC_Blabbermouth_Reacts E4123D276411B3050000099B07664CF3
+	myCooldowns
+	{
+	}
+	myVOType < uid=3A12912164118D58000067FD1A2E0E97 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myVOPriorityOverride 9
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 4237F5673AF0F655C6551D6DA7B1C889
+			}
+			myTemplateOverride
+			{
+				myGuid 4D487625D717A0EBEDB767FA0C405BA1
+			}
+			myDelay 0.0
+			myIgnorePriorityAfterPendingTimeout TRUE
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 14_NPC_ExplosionReaction < uid=E4123D276411C298000009CD9BB8D8D8 >
+{
+	myIdentifier < uid=E4123D276411C6A0000009F0511CF3D4 > = E3_ChopShop_NPC_CombatExplosionReaction_HiredGun E4123D276411C066000009BA1E3206D3
+	myVOType < uid=E4123D276411C298000009CE96BC268A > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Ally
+			BarkAgentScope "New BarkAgentScope" SortCloser
+		}
+		myAgentTags
+		{
+			RBTagsTag "New RBTagsTag" < uid=E4123D276411C70A000009F2C16A33D8 > = Agent_BarksFamily_PykeDefault E4123D2762F4CA3A00048CB0EF7F9A5E
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 430C8F504ECDCAB8BCB990D7F9E692A2
+			}
+			myTemplateOverride
+			{
+				myGuid 45463AAC5AF933355E08957D4D23D4BF
+			}
+			myDelay 1.5
+			myDisable TRUE
+			myResponseDelay -0.3
+			myResponse < uid=E4123D27641C3FB50011FE00D582A051 > = E3_ChopShop_NPC_CombatExplosionReactionReply_Pyke E4123D276411C074000009BB8B3A8E57
+		}
+	}
+}
+
+StimulusElementContainer 14_NPC_ExplosionReaction_Reply < uid=E4123D276411C298000009CFBC717970 >
+{
+	myIdentifier < uid=E4123D276411C6A0000009F1294CDC68 > = E3_ChopShop_NPC_CombatExplosionReactionReply_Pyke E4123D276411C074000009BB8B3A8E57
+	myVOType < uid=E4123D276411C298000009D0B6699985 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" QuietestAlly
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 4A525840BF8139D5EADBF6C247F219BD
+			}
+			myTemplateOverride
+			{
+				myGuid 4D487625D717A0EBEDB767FA0C405BA1
+			}
+			myDelay 0.0
+			myDisable TRUE
+			myResponse < uid=E4123D27642EB6EB000073ADA5FE1EEC > = E3_ChopShop_NPC_CombatExplosionReactionReply_Reply E4123D27642EB6B80000739A08EC4AA1
+		}
+	}
+}
+
+StimulusElementContainer 14_NPC_ExplosionReaction_ReplyReply < uid=E4123D27642EB68F000073852D9E2A58 >
+{
+	myIdentifier < uid=E4123D27642EB68F00007386BC2E965C > = E3_ChopShop_NPC_CombatExplosionReactionReply_Reply E4123D27642EB6B80000739A08EC4AA1
+	myVOType < uid=E4123D27642EB68F00007387A7BBD12C > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 4A665FC617BEE09DD780E283799E30A8
+			}
+			myTemplateOverride
+			{
+				myGuid 4D487625D717A0EBEDB767FA0C405BA1
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 12_Kay_PostBarrels_EnterCombat < uid=3A1291216410AC4000008DD296CDE809 >
+{
+	myIdentifier < uid=3A1291216410AC4000008DD357F396E8 > = E3_ChopShop_Kay_PostBarrels_EnterCombat 3A129121640B57740021F44E69D55298
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=3A12912164121238001C2939D59AD9F8 > = Cooldown_EnterCombat 3A12912162F5017C000087A6CDADCEEB
+	}
+	myVOType < uid=3A12912164118D58000067FFC43090A9 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Nix
+		}
+	}
+	myElements
+	{
+		StimulusElement Kay
+		{
+			myElement
+			{
+				myGuid 4F457CEE0CB05183D7C4D2BEDF16BFB4
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=3A12912164121242001C293AA0851D9D > = Cooldown_EnterCombat 3A12912162F5017C000087A6CDADCEEB
+			}
+			myTemplateOverride
+			{
+				myGuid 484F6D4D6D849C0D3CDBAC21EE6A97AD
+			}
+			myDelay 0.0
+			myDisable TRUE
+			myResponseDelay 0.0
+			myResponse < uid=3A12912164119F140000D780FB403937 > = E3_ChopShop_Nix_EnterCombatResponse 3A129121640F5327001A569C7E2B6F6B
+		}
+	}
+}
+
+StimulusElementContainer 13_Nix_EnterCombatResponse < uid=3A1291216410AC4000008DD51B8850D7 >
+{
+	myIdentifier < uid=3A1291216410AC4000008DD6E2FC7E0F > = E3_ChopShop_Nix_EnterCombatResponse 3A129121640F5327001A569C7E2B6F6B
+	myVOType < uid=3A12912164118D5800006800CD0BBA4A > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myVOPriorityOverride 0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+		}
+		myAgentTags
+		{
+			RBTagsTag "New RBTagsTag" < uid=E4123D276439597400085CCEA158A2CA > = Agent_BarksFamily_PykeSentinel E4123D2762F4CA4200048CB1AE0F23DC
+		}
+	}
+	myElements
+	{
+		StimulusElement Nix
+		{
+			myElement
+			{
+				myGuid 4BBA1DECB3FA30FED533CCA949CA77BA
+			}
+			myTemplateOverride
+			{
+				myGuid 4C92D15807EE804D9253F4E1E0EBF5A0
+			}
+			myDelay 0.0
+			myDisable TRUE
+			myResponseDelay -0.2
+		}
+	}
+}
+
+StimulusElementContainer 15_Sentinel_SpotKay < uid=3A1291216410ACB300008DEA8FB78DBD >
+{
+	myIdentifier < uid=E4123D276411C5D2000009EEB6ABCCBD > = E3_ChopShop_NPC_SentinelSpotsKay E4123D276411C575000009ECBB0B50D1
+	myVOType < uid=3A12912164118D58000068022DE48A49 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 4F893FB6A525ABEA366F4354123040A1
+			}
+			myTemplateOverride
+			{
+				myGuid 4D487625D717A0EBEDB767FA0C405BA1
+			}
+			myDelay 0.0
+			myDisable TRUE
+			myResponseDelay 0.0
+		}
+	}
+}
+
+StimulusElementContainer 16_Sentinel_ShieldDeployed < uid=3A1291216410AD1400008DEB4527061D >
+{
+	myIdentifier < uid=E4123D276411C5D2000009EFB070B0D3 > = S_NPC_Dummy E4123D27630892C000008ADB10EB867B
+	myVOType < uid=3A12912164118D58000068036D11E284 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myVOPriorityOverride 9
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Nix
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 4E582BF17F7DBDB5F5300E61244391A5
+			}
+			myTemplateOverride
+			{
+				myGuid 45463AAC5AF933355E08957D4D23D4BF
+			}
+			myDelay 0.4
+			myPendingTime 0.0
+			myIgnorePriorityAfterPendingTimeout FALSE
+			myDisable TRUE
+			myResponseDelay -0.2
+			myResponse < uid=3A1291216447E1C10016AFE61841FCD9 > = E3_General_Nix_Growl 3A1291216447C84A0004B7E07855B8A4
+		}
+	}
+}
+
+StimulusElementContainer 17_Kay_ShieldFail < uid=3A1291216410AEE000008DFBF49AE0CC >
+{
+	myIdentifier < uid=3A1291216410AEE000008DFCB76CC257 > = E3_ChopShop_Kay_ShieldFail 3A129121640B57970021F45091734768
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=E4123D27642DB0170000766ACA18EF03 > = ShieldFail E4123D27642DABD800073123B0457038
+	}
+	myVOType < uid=3A12912164118D5800006804FD58DC86 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Enemy
+			BarkAgentScope "New BarkAgentScope (0)" SortCloser
+		}
+		myAgentTags
+		{
+			RBTagsTag "New RBTagsTag" < uid=E4123D27642DCD93000076EDCA233030 > = Agent_BarksFamily_PykeSentinel E4123D2762F4CA4200048CB1AE0F23DC
+		}
+	}
+	myElements
+	{
+		StimulusElement Kay
+		{
+			myElement
+			{
+				myGuid 48A8D52B70CBF7BBD6DE6275D9F195A3
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=E4123D27642DB0200000766BEC4C9B2D > = ShieldFail E4123D27642DABD800073123B0457038
+			}
+			myTemplateOverride
+			{
+				myGuid 484F6D4D6D849C0D3CDBAC21EE6A97AD
+			}
+			myDelay 0.25
+			myDisable TRUE
+			myResponseDelay -0.2
+			myResponse < uid=E4123D27642DCD8A000076DB25E8FBD5 > = E3_ChopShop_NPC_ShieldFail_Reply E4123D27642D4AE0000073DF37586365
+		}
+	}
+}
+
+StimulusElementContainer 17_NPC_ShieldFail_SentinelReply < uid=E4123D27642DCD2B00007693A683848D >
+{
+	myIdentifier < uid=E4123D27642DCD2B000076942B7AB736 > = E3_ChopShop_NPC_ShieldFail_Reply E4123D27642D4AE0000073DF37586365
+	myVOType < uid=E4123D27642DCD2B00007695BAD7C8A0 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 4AE1F3596B69BD0B425DAFDA9891FEB9
+			}
+			myTemplateOverride
+			{
+				myGuid 45463AAC5AF933355E08957D4D23D4BF
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 14_NPC_EnterCombat_Pyke < uid=3A1291216410ACA700008DE927EE28C0 >
+{
+	myIdentifier < uid=E4123D276411C55F000009EA1E7E9F68 > = E3_ChopShop_NPC_CombatEnter_Pyke E4123D276411C07A000009BC1836A12B
+	myVOType < uid=3A12912164118D5800006801A73B4FCA > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Ally
+			BarkAgentScope "New BarkAgentScope (0)" SortCloser
+		}
+		myAgentTags
+		{
+			RBTagsTag "New RBTagsTag" < uid=E4123D276411C52F000009E914BE72D0 > = Agent_BarksFamily_HiredGun E4123D2762F4CA2800048CADB39E55F8
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 46C08A45F0DDC3AF4C1709D2AD65BD85
+			}
+			myTemplateOverride
+			{
+				myGuid 45463AAC5AF933355E08957D4D23D4BF
+			}
+			myDisable TRUE
+			myResponse < uid=E4123D27641C3FB50011FE017DB0647B > = E3_ChopShop_NPC_CombatEnterReply_HiredGun E4123D276411C080000009BD36DDD898
+		}
+	}
+}
+
+StimulusElementContainer 14_NPC_EnterCombat_Reply_HiredGun < uid=E4123D276411C298000009D1EB4AE988 >
+{
+	myIdentifier < uid=E4123D276411C55F000009EB2865D70C > = E3_ChopShop_NPC_CombatEnterReply_HiredGun E4123D276411C080000009BD36DDD898
+	myVOType < uid=E4123D276411C298000009D29CB50A1D > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 4DDC0D042AE7DC229EEF1B956209E599
+			}
+			myTemplateOverride
+			{
+				myGuid 45463AAC5AF933355E08957D4D23D4BF
+			}
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 18_Kay_SpotChopShopEnemies < uid=3A1291216410AEE000008DFE779C4E54 >
+{
+	myIdentifier < uid=3A1291216410AEE000008DFF54235CEB > = E3_ChopShop_Kay_SpotChopShopEnemies 3A129121640B579D0021F451718CF03D
+	myVOType < uid=3A12912164118D5800006805806099F8 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Enemy
+			BarkAgentScope "New BarkAgentScope (0)" SortCloser
+		}
+		myAgentTags
+		{
+			RBTagsTag "New RBTagsTag" < uid=E4123D27642E5EC4001A9BF326792499 > = Agent_BarksFamily_PykeDefault E4123D2762F4CA3A00048CB0EF7F9A5E
+		}
+	}
+	myElements
+	{
+		StimulusElement Kay
+		{
+			myElement
+			{
+				myGuid 4AA04D3B688DA5EA46D94C1CE82C4BA7
+			}
+			myTemplateOverride
+			{
+				myGuid 484F6D4D6D849C0D3CDBAC21EE6A97AD
+			}
+			myDelay 2.0
+			myDisable TRUE
+			myResponseDelay -0.4
+			myResponse < uid=E4123D27642E5ED3001A9BF4FCF577F6 > = E3_ChopShop_NPC_CombatStartShooting_Pyke E4123D276411C0A4000009BEB857440E
+		}
+	}
+}
+
+StimulusElementContainer 14_NPC_StartShooting_Pyke < uid=E4123D276411C298000009D3AB385A02 >
+{
+	myIdentifier < uid=E4123D276411C4A9000009E61962750A > = E3_ChopShop_NPC_CombatStartShooting_Pyke E4123D276411C0A4000009BEB857440E
+	myVOType < uid=E4123D276411C298000009D451675B51 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Ally
+			BarkAgentScope "New BarkAgentScope (0)" SortCloser
+		}
+		myAgentTags
+		{
+			RBTagsTag "New RBTagsTag" < uid=E4123D276411C489000009E5FF0F16D8 > = Agent_BarksFamily_HiredGun E4123D2762F4CA2800048CADB39E55F8
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 4740B9BFAE5BCD1ADEE6B24106E1EFBB
+			}
+			myTemplateOverride
+			{
+				myGuid 45463AAC5AF933355E08957D4D23D4BF
+			}
+			myDelay 0.0
+			myDisable TRUE
+			myResponseDelay 0.1
+			myResponse < uid=E4123D276411C4A9000009E7EE5B0ECD > = E3_ChopShop_NPC_CombatStartShootingReply_HiredGun E4123D276411C0C1000009BFE7402D65
+		}
+	}
+}
+
+StimulusElementContainer 14_NPC_StartShooting_Reply_HiredGun < uid=E4123D276411C298000009D5EDDDFE5C >
+{
+	myIdentifier < uid=E4123D276411C4A9000009E893800FAE > = E3_ChopShop_NPC_CombatStartShootingReply_HiredGun E4123D276411C0C1000009BFE7402D65
+	myVOType < uid=E4123D276411C298000009D6D90CE418 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 436F2914065ECFB5B0432DC34364EA87
+			}
+			myTemplateOverride
+			{
+				myGuid 4D487625D717A0EBEDB767FA0C405BA1
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 19_Kay_FetchGunAttention < uid=3A1291216410AEE000008E019A09E37B >
+{
+	myIdentifier < uid=3A1291216410AEE000008E020F72F080 > = E3_ChopShop_Kay_FetchGunAttention 3A129121640B50EB0021F37D3EB415D4
+	myVOType < uid=3A12912164118D580000680689DFFD7F > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement Kay
+		{
+			myElement
+			{
+				myGuid 46F8DD800538E46FF2A0D37944E73386
+			}
+			myTemplateOverride
+			{
+				myGuid 484F6D4D6D849C0D3CDBAC21EE6A97AD
+			}
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 20_Kay_FetchGunCommand < uid=3A1291216410AEE000008E04A60165BE >
+{
+	myIdentifier < uid=3A1291216410AEE000008E0573C6583E > = E3_ChopShop_Kay_FetchGun 3A129121640B50E60021F37C664C3D74
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=3A1291216412127B001C29917492F146 > = Cooldown_Fetch 3A12912164121262001C294C84B807C2
+	}
+	myVOType < uid=3A12912164118D58000068076B382B02 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Nix
+		}
+	}
+	myElements
+	{
+		StimulusElement Kay
+		{
+			myElement
+			{
+				myGuid 406816CB2CED5B920A8BE7E3FB4393B3
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=3A12912164121291001C29A3558B1B7B > = Cooldown_Fetch 3A12912164121262001C294C84B807C2
+			}
+			myTemplateOverride
+			{
+				myGuid 484F6D4D6D849C0D3CDBAC21EE6A97AD
+			}
+			myDisable TRUE
+			myResponseDelay 0.15
+			myResponse < uid=3A12912164119F4A0000D7C593D23DAD > = E3_ChopShop_Nix_FetchGunResponse 3A129121640F532E001A569D89328D66
+		}
+	}
+}
+
+StimulusElementContainer 21_Nix_FetchGunResponse < uid=3A1291216410AEE000008E076B5C00FB >
+{
+	myIdentifier < uid=3A1291216410AEE000008E08C6DDB4BB > = E3_ChopShop_Nix_FetchGunResponse 3A129121640F532E001A569D89328D66
+	myVOType < uid=3A12912164118D580000680850BF760F > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myVOPriorityOverride 0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+		}
+		myAgentTags
+		{
+		}
+	}
+	myElements
+	{
+		StimulusElement Nix
+		{
+			myElement
+			{
+				myGuid 4365C3E8F4F120DE447414C7BAD06CBE
+			}
+			myTemplateOverride
+			{
+				myGuid 4C92D15807EE804D9253F4E1E0EBF5A0
+			}
+			myDelay 0.0
+			myDisable TRUE
+			myResponseDelay 0.8
+		}
+	}
+}
+
+StimulusElementContainer 22_Nix_FetchGunReturn < uid=3A1291216410AEE000008E0A2E1BDAD3 >
+{
+	myIdentifier < uid=3A1291216410AEE000008E0BA5CB5C33 > = E3_ChopShop_Nix_FetchGunReturn 3A129121640F5337001A569EA3753715
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=3A129121642A929300214B626DE425CB > = FetchGun 3A129121642A927F00214B3F8C123054
+	}
+	myVOType < uid=3A12912164118D5800006809D4948AB9 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myVOPriorityOverride 0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Kay
+		}
+	}
+	myElements
+	{
+		StimulusElement Nix
+		{
+			myElement
+			{
+				myGuid 4AD5729A07210F540F37991CEADB92A3
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=3A129121642A929D00214B630D9B3D54 > = FetchGun 3A129121642A927F00214B3F8C123054
+			}
+			myTemplateOverride
+			{
+				myGuid 4C92D15807EE804D9253F4E1E0EBF5A0
+			}
+			myDisable TRUE
+			myResponse < uid=3A12912164119F540000D7D70B2BC7FF > = E3_ChopShop_Kay_FetchGunReturn 3A129121640B50F90021F424150FBB88
+		}
+	}
+}
+
+StimulusElementContainer 23_Kay_FetchGunReturn < uid=3A1291216410AEE000008E0DD1437ACB >
+{
+	myIdentifier < uid=3A1291216410AEE000008E0E217EEF72 > = E3_ChopShop_Kay_FetchGunReturn 3A129121640B50F90021F424150FBB88
+	myVOType < uid=3A12912164118D580000680AA2D6A151 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement Kay
+		{
+			myElement
+			{
+				myGuid 40946EE8F633DDCB8B1736C4FCA9D086
+			}
+			myTemplateOverride
+			{
+				myGuid 484F6D4D6D849C0D3CDBAC21EE6A97AD
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 23_Kay_PickupGun < uid=E4123D2764205576000E91A294B6155C >
+{
+	myIdentifier < uid=E4123D2764205576000E91A3EE968BA6 > = E3_ChopShop_Kay_PickupGun 3A129121640B510A0021F44DAD89B2C1
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=3A129121642A8BD1000081146A0F06FF > = PickupGun 3A129121642A8B59000080E028EE55ED
+	}
+	myVOType < uid=E4123D2764205576000E91A4374E77FD > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Enemy
+			BarkAgentScope "New BarkAgentScope (0)" SortCloser
+		}
+		myAgentTags
+		{
+			RBTagsTag "New RBTagsTag" < uid=E4123D2764205584000E91B6628C1F3F > = Agent_BarksFamily_PykeDefault E4123D2762F4CA3A00048CB0EF7F9A5E
+		}
+	}
+	myElements
+	{
+		StimulusElement Kay
+		{
+			myElement
+			{
+				myGuid 4D22BD9948EC77BC59031CB11EF0ED8F
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=3A129121642A8BDC0000811590789F5C > = PickupGun 3A129121642A8B59000080E028EE55ED
+			}
+			myTemplateOverride
+			{
+				myGuid 484F6D4D6D849C0D3CDBAC21EE6A97AD
+			}
+			myDelay 0.0
+			myDisable TRUE
+			myResponseDelay -0.3
+			myResponse < uid=E4123D27642055A0000E91B71FFA645B > = E3_ChopShop_NPC_CombatShesGotAGun_Pyke E4123D276411C0C5000009C04AD2F75F
+		}
+	}
+}
+
+StimulusElementContainer 14_NPC_ShesGotAGun_Pyke_PICKUPGUNRESPONSE < uid=E4123D276411C298000009D7B08D5D71 >
+{
+	myIdentifier < uid=E4123D276411C40E000009E24835D7C4 > = E3_ChopShop_NPC_CombatShesGotAGun_Pyke E4123D276411C0C5000009C04AD2F75F
+	myVOType < uid=E4123D276411C298000009D8DB5B25E2 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Ally
+			BarkAgentScope "New BarkAgentScope (0)" SortCloser
+		}
+		myAgentTags
+		{
+			RBTagsTag "New RBTagsTag" < uid=E4123D276411C408000009E18A7737BB > = Agent_BarksFamily_PykeDefault E4123D2762F4CA3A00048CB0EF7F9A5E
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 4EECBF4D9FAC9F008E7D64167CFCBFB6
+			}
+			myTemplateOverride
+			{
+				myGuid 45463AAC5AF933355E08957D4D23D4BF
+			}
+			myDelay 0.0
+			myDisable TRUE
+			myResponseDelay -0.1
+			myResponse < uid=E4123D276411C40E000009E3153C5E5D > = E3_ChopShop_NPC_CombatShesGotAGunReply_Pyke E4123D276411C0D0000009C19213FF85
+		}
+	}
+}
+
+StimulusElementContainer 14_NPC_ShesGotAGun_Reply_Pyke < uid=E4123D276411C298000009D9D9760FCB >
+{
+	myIdentifier < uid=E4123D276411C40E000009E4CCF62A12 > = E3_ChopShop_NPC_CombatShesGotAGunReply_Pyke E4123D276411C0D0000009C19213FF85
+	myVOType < uid=E4123D276411C298000009DA67E41CD9 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 4DA34F991A1C2E51B886E8AA67BADE9C
+			}
+			myTemplateOverride
+			{
+				myGuid 4D487625D717A0EBEDB767FA0C405BA1
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 14_NPC_SuppressedByKaysNewGun_Pyke < uid=E4123D2764425667000360768B7E306F >
+{
+	myIdentifier < uid=E4123D276442566700036077DCC3D0D6 > = E3_ChopShop_NPC_CombatSuppressed E4123D276442534C00026FAE08FF43B5
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=E4123D27644256A4000360D177CD1777 > = E3_Suppressed E4123D2764425691000360AEF5B80000
+	}
+	myVOType < uid=E4123D2764425667000360789989C6C7 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Ally
+			BarkAgentScope "New BarkAgentScope (0)" SortQuieter
+		}
+		myAgentTags
+		{
+			RBTagsTag "New RBTagsTag" < uid=E4123D27644B96D10001F62E5C3B8EA2 > = Agent_BarksFamily_HiredGun E4123D2762F4CA2800048CADB39E55F8
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 490A9BD0AD87CB5230C9A5C9653DCE92
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=E4123D27644256AA000360D21C806F2E > = E3_Suppressed E4123D2764425691000360AEF5B80000
+			}
+			myTemplateOverride
+			{
+				myGuid 45463AAC5AF933355E08957D4D23D4BF
+			}
+			myDelay 0.5
+			myDisable TRUE
+			myResponseDelay -0.1
+			myResponse < uid=E4123D27644256670003607A198E6C58 > = E3_ChopShop_NPC_CombatIncidental_Reply E4123D27642EB71E000073D571F19043
+		}
+	}
+}
+
+StimulusElementContainer 24_Kay_UnderFire < uid=3A1291216410AEE000008E10929DD096 >
+{
+	myIdentifier < uid=3A1291216410AEE000008E1158C2752C > = E3_ChopShop_Kay_UnderFire 3A129121640B57A70021F452B20E2D06
+	myVOType < uid=3A12912164118D580000680B081CEE32 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Nix
+		}
+	}
+	myElements
+	{
+		StimulusElement Kay
+		{
+			myElement
+			{
+				myGuid 4D5B860ECF7C860CAF7B8F1E8F17E3B3
+			}
+			myTemplateOverride
+			{
+				myGuid 484F6D4D6D849C0D3CDBAC21EE6A97AD
+			}
+			myDisable TRUE
+			myResponseDelay 0.15
+			myResponse < uid=3A1291216447D15600011CA69A11B914 > = E3_ChopShop_Nix_TroubleResponse 3A1291216447C4050004B7B1ABDF4899
+		}
+	}
+}
+
+StimulusElementContainer 25_Kay_GunEmpty < uid=3A1291216410AEE000008E130811C604 >
+{
+	myIdentifier < uid=3A1291216410AEE000008E147474BEF0 > = E3_ChopShop_Kay_GunEmpty 3A129121640B51000021F44C5E888E63
+	myVOType < uid=3A12912164118D580000680CA3B8EE30 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Enemy
+			BarkAgentScope "New BarkAgentScope (0)" SortCloser
+		}
+		myAgentTags
+		{
+			RBTagsTag "New RBTagsTag" < uid=E4123D27642DCDE00000771088AF4B8C > = Agent_BarksFamily_PykeDefault E4123D2762F4CA3A00048CB0EF7F9A5E
+		}
+	}
+	myElements
+	{
+		StimulusElement Kay
+		{
+			myElement
+			{
+				myGuid 40B390488DC41D4C9DF466F227706093
+			}
+			myTemplateOverride
+			{
+				myGuid 484F6D4D6D849C0D3CDBAC21EE6A97AD
+			}
+			myDelay 0.7
+			myDisable TRUE
+			myResponse < uid=E4123D27642DCDEB00007711214D6849 > = E3_ChopShop_NPC_CombatPursueKay_Pyke E4123D276411C113000009C376AB9291
+		}
+	}
+}
+
+StimulusElementContainer 14_NPC_PursueKay_Pyke < uid=E4123D276411C298000009DBBD58A381 >
+{
+	myIdentifier < uid=E4123D276411C39E000009E0217F0D8D > = E3_ChopShop_NPC_CombatPursueKay_Pyke E4123D276411C113000009C376AB9291
+	myVOType < uid=E4123D276411C298000009DCBF2EF5FD > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Ally
+			BarkAgentScope "New BarkAgentScope (0)" SortQuieter
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 4B6E8E3D6D3584153DB6AF2AB708DE9F
+			}
+			myTemplateOverride
+			{
+				myGuid 45463AAC5AF933355E08957D4D23D4BF
+			}
+			myDelay 0.0
+			myDisable TRUE
+			myResponseDelay -0.1
+			myResponse < uid=E4123D276436892900073A1C3101DF16 > = E3_ChopShop_NPC_CombatIncidental E4123D276411C0F9000009C29066AEFD
+		}
+	}
+}
+
+StimulusElementContainer 14_NPC_CombatIncidental < uid=E4123D276411C298000009DDD64FBD84 >
+{
+	myIdentifier < uid=E4123D276411C37F000009DFE9368C4B > = E3_ChopShop_NPC_CombatIncidental E4123D276411C0F9000009C29066AEFD
+	myVOType < uid=E4123D276411C298000009DE910A7140 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Ally
+			BarkAgentScope "New BarkAgentScope (0)" SortQuieter
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 4A665FC617BEE09DD780E283799E30A8
+			}
+			myTemplateOverride
+			{
+				myGuid 4D487625D717A0EBEDB767FA0C405BA1
+			}
+			myDelay 0.0
+			myDisable TRUE
+			myResponse < uid=E4123D27642EBBAB0000738415B3866B > = E3_ChopShop_NPC_CombatIncidental_Reply E4123D27642EB71E000073D571F19043
+		}
+	}
+}
+
+StimulusElementContainer 14_NPC_CombatIncidental_Reply < uid=E4123D27642EB70A000073C00A460631 >
+{
+	myIdentifier < uid=E4123D27642EB70A000073C16E5C0D4B > = E3_ChopShop_NPC_CombatIncidental_Reply E4123D27642EB71E000073D571F19043
+	myProbability 70
+	myVOType < uid=E4123D27642EB70A000073C27877959A > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 4A665FC617BEE09DD780E283799E30A8
+			}
+			myTemplateOverride
+			{
+				myGuid 4D487625D717A0EBEDB767FA0C405BA1
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer ---------SpederChase--------- < uid=3A129121641183B800005A7B3F3104CD >
+{
+	myIdentifier < uid=E4123D27641CBF1B0000711B2D9CDA78 > = ___E3_DIVIDER___ E4123D27641CBE33000070F6BC3457AF
+}
+
+StimulusElementContainer 01_Kay_EnterSpeeder < uid=3A1291216411879100005AAF116E31AB >
+{
+	myIdentifier < uid=3A1291216411879100005AB0656D2770 > = E3_SpeederChase_Kay_EnterSpeeder 3A129121640B58890021F453A85935EB
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=3A129121642A8BE6000081272B7E01DC > = SpeederMount 3A129121642A8B4C000080BD2C8B2044
+	}
+	myVOType < uid=3A12912164118D580000680DD30979BC > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Nix
+		}
+	}
+	myElements
+	{
+		StimulusElement Kay
+		{
+			myElement
+			{
+				myGuid 42FA3DAF22E03EC5739F6E01F9F059A9
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=3A129121642A8BF000008128E8E7E646 > = SpeederMount 3A129121642A8B4C000080BD2C8B2044
+			}
+			myTemplateOverride
+			{
+				myGuid 49BCFC65842A4A01831EA4244247EB82
+			}
+			myDisable TRUE
+			myResponseDelay 0.15
+			myResponse < uid=3A12912164119F720000D7E92AF467A6 > = E3_SpeederChase_Nix_EnterSpeederResponse 3A129121640F5347001A56A0EBD4F0BC
+		}
+	}
+}
+
+StimulusElementContainer 02_Nix_EnterSpeederResponse < uid=3A1291216411879100005AB29F9F4B38 >
+{
+	myIdentifier < uid=3A1291216411879100005AB3FF1CD209 > = E3_SpeederChase_Nix_EnterSpeederResponse 3A129121640F5347001A56A0EBD4F0BC
+	myVOType < uid=3A12912164118D580000680EC4C296A5 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myVOPriorityOverride 0
+	myElements
+	{
+		StimulusElement Nix
+		{
+			myElement
+			{
+				myGuid 479AFB7ACD4A02A7156B6380A7C0AFB0
+			}
+			myTemplateOverride
+			{
+				myGuid 4221A097D0CB085550B7DC82218B2790
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 03_Kay_SpeedBoost < uid=3A1291216411879100005AB5B884A913 >
+{
+	myIdentifier < uid=3A1291216411879100005AB6DD27F3B0 > = E3_SpeederChase_Kay_SpeedBoost 3A129121640B58A20021F454A31A6F8F
+	myVOType < uid=3A12912164118D580000680F2B409D71 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Nix
+		}
+	}
+	myElements
+	{
+		StimulusElement Kay
+		{
+			myElement
+			{
+				myGuid 44FAF3546DEEE776E08E5A250316D48B
+			}
+			myTemplateOverride
+			{
+				myGuid 49BCFC65842A4A01831EA4244247EB82
+			}
+			myDisable TRUE
+			myResponseDelay -1.3
+			myResponse < uid=3A1291216422DC44002B0E7A519CB204 > = E3_SpeederChase_Nix_SpeedBoost 3A129121640F535B001A56A1F690091D
+		}
+	}
+}
+
+StimulusElementContainer 04_Nix_SpeedBoost < uid=3A1291216411879100005AB806D795F8 >
+{
+	myIdentifier < uid=3A1291216411879100005AB99B866800 > = E3_SpeederChase_Nix_SpeedBoost 3A129121640F535B001A56A1F690091D
+	myVOType < uid=3A12912164118D58000068104FED3F47 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myVOPriorityOverride 0
+	myElements
+	{
+		StimulusElement Nix
+		{
+			myElement
+			{
+				myGuid 48E5897AE09A7CBA8FDF1079FE0916B7
+			}
+			myTemplateOverride
+			{
+				myGuid 4221A097D0CB085550B7DC82218B2790
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 05_NPC_TwinTowersEnterCombat_Pyke < uid=E4123D27641C3F570011FDC9CC69A10C >
+{
+	myIdentifier < uid=E4123D27641C3F570011FDCAAF448F06 > = E3_SpeederChase_NPC_TwinTowersEnterCombat E4123D27641C3F510011FDC899AB6630
+	myMaxDistance 60.0
+	myVOType < uid=E4123D27641C3F570011FDCBB2F34638 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+		}
+		myAgentTags
+		{
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 46C08A45F0DDC3AF4C1709D2AD65BD85
+			}
+			myTemplateOverride
+			{
+				myGuid 4900C9FD310618C7D32AD93755311D97
+			}
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 05_NPC_SpeederEnterCombat_BLANK_TO_KAY < uid=E4123D27642DDF1D001A8FEDF6DEFF55 >
+{
+	myIdentifier < uid=E4123D27642DDF1D001A8FEE5C18238A > = E3_SpeederChase_NPC_EnterCombat_BLANK E4123D2764369DF900088B006AEE1B00
+	myCooldowns
+	{
+	}
+	myMaxDistance 1000.0
+	myVOType < uid=E4123D27642DDF1D001A8FF0C8CFD9A6 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Kay
+		}
+		myAgentTags
+		{
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 00000000000000000000000000000000
+			}
+			myCooldowns
+			{
+			}
+			myTemplateOverride
+			{
+				myGuid 00000000000000000000000000000000
+			}
+			myDelay 0.0
+			myDisable TRUE
+			myResponseDelay 0.0
+			myResponse < uid=E4123D27642DDF1D001A8FF35986D4D3 > = E3_SpeederChase_Kay_SpeederCombatEnter 3A129121640B58EB0021F455B5016EC9
+		}
+	}
+}
+
+StimulusElementContainer 05_Kay_SpeederCombatEnter < uid=3A1291216411879100005ABB2ACB3DC9 >
+{
+	myIdentifier < uid=3A1291216411879100005ABC9009153D > = E3_SpeederChase_Kay_SpeederCombatEnter 3A129121640B58EB0021F455B5016EC9
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=E4123D276452154D00013F4AF18AFB7E > = SpeederEnterCombat E4123D27641C42A4001A6E83DD39122B
+	}
+	myVOType < uid=3A12912164118D5800006811D7B16B9F > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Enemy
+		}
+		myAgentTags
+		{
+			RBTagsTag "New RBTagsTag" < uid=E4123D27642DDF7D001A905A51F45A57 > = Agent_BarksFamily_PykeDefault E4123D2762F4CA3A00048CB0EF7F9A5E
+			RBTagsTag "New RBTagsTag (0)" < uid=E4123D27642DDF86001A906C4B952121 > = Agent_Archetype_VendorSpeederMechanic E4123D2762A791BE00007B532B475484
+		}
+	}
+	myElements
+	{
+		StimulusElement Kay
+		{
+			myElement
+			{
+				myGuid 4DC038BA2AB19E0B561D25EDCA3D87BE
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=E4123D276452154100013F4913E51968 > = SpeederEnterCombat E4123D27641C42A4001A6E83DD39122B
+			}
+			myTemplateOverride
+			{
+				myGuid 49BCFC65842A4A01831EA4244247EB82
+			}
+			myDelay 0.0
+			myDisable TRUE
+			myResponseDelay -0.3
+			myResponse < uid=E4123D27642DDFCA001A90B8E652B8B7 > = E3_SpeederChase_NPC_EnterCombat E4123D276411D22B0009E0991644B2DA
+		}
+	}
+}
+
+StimulusElementContainer 05_NPC_SpeederEnterCombat < uid=E4123D276411D1D50009E0956CC02ECD >
+{
+	myIdentifier < uid=E4123D276411D34C0009E0A1DD9FA7A4 > = E3_SpeederChase_NPC_EnterCombat E4123D276411D22B0009E0991644B2DA
+	myCooldowns
+	{
+	}
+	myMaxDistance 1000.0
+	myVOType < uid=E4123D276411D3720009E0A3CEF1118B > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Ally
+			BarkAgentScope "New BarkAgentScope (0)" SortCloser
+		}
+		myAgentTags
+		{
+			RBTagsTag "New RBTagsTag" < uid=3A1291216423047C000949E88745D92F > = Agent_BarksFamily_PykeDefault E4123D2762F4CA3A00048CB0EF7F9A5E
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 45281C836894941B7EE26AC534106E93
+			}
+			myCooldowns
+			{
+			}
+			myTemplateOverride
+			{
+				myGuid 4900C9FD310618C7D32AD93755311D97
+			}
+			myDelay 0.0
+			myDisable TRUE
+			myResponseDelay 0.1
+			myResponse < uid=E4123D276411D3270009E09EFECBBEAC > = E3_SpeederChase_NPC_EnterCombatReply E4123D276411D2330009E09A523A03FD
+		}
+	}
+}
+
+StimulusElementContainer 05_NPC_SpeederEnterCombatReply < uid=E4123D276411D1DF0009E096C9F1B966 >
+{
+	myIdentifier < uid=E4123D276411D3270009E09FE38A792F > = E3_SpeederChase_NPC_EnterCombatReply E4123D276411D2330009E09A523A03FD
+	myVOType < uid=E4123D276411D3720009E0A4A3E1281E > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Nix
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 4398929B776F586A6D15261A077C18B8
+			}
+			myTemplateOverride
+			{
+				myGuid 4900C9FD310618C7D32AD93755311D97
+			}
+			myDelay 0.0
+			myDisable TRUE
+			myResponseDelay -0.2
+			myResponse < uid=3A1291216447ECDB0050F0A0FE7D1A89 > = E3_General_Nix_Growl 3A1291216447C84A0004B7E07855B8A4
+		}
+	}
+}
+
+StimulusElementContainer 05_NPC_SpeederCombatIncidental < uid=E4123D276411D20A0009E0987B9F4D22 >
+{
+	myIdentifier < uid=E4123D276411D34C0009E0A27E025C65 > = E3_SpeederChase_NPC_CombatIncidental E4123D276411D23B0009E09BCEFA74DE
+	myVOType < uid=E4123D276411D3720009E0A583631941 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 4A665FC617BEE09DD780E283799E30A8
+			}
+			myTemplateOverride
+			{
+				myGuid 4900C9FD310618C7D32AD93755311D97
+			}
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 06_Kay_TrickShotSuccess < uid=3A1291216411879100005ABEB4A0CFC1 >
+{
+	myIdentifier < uid=3A1291216411879100005ABFC7F689E9 > = E3_SpeederChase_Kay_TrickShotSuccess 3A129121640B59090021F45717339620
+	myVOType < uid=3A12912164118D58000068120716B872 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement Kay
+		{
+			myElement
+			{
+				myGuid 4FD5285891607465C450AAAD6939D2B8
+			}
+			myTemplateOverride
+			{
+				myGuid 49BCFC65842A4A01831EA4244247EB82
+			}
+			myDelay 1.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 06_NPC_LoseControl < uid=E4123D276411D1FD0009E0972C160945 >
+{
+	myIdentifier < uid=E4123D276411D3270009E0A0C215ED16 > = E3_SpeederChase_NPC_LoseControl E4123D276411D2480009E09C4F8DC67E
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=E4123D276442586E0003848CF7D1F12A > = E3_SpeederLoseControl E4123D27644258550003847AA3FB7FFE
+	}
+	myVOType < uid=E4123D276411D3720009E0A6EFEE9C3C > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D27645243D0000C73FC8A6ABC28 > = Agent_Gender_FeminineTag 16DEADE6626D20EA00002E5277B65AD4
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 4DC227CD175891CC9666422103C1BD9F
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=E4123D27644258750003848D6E0EAAF1 > = E3_SpeederLoseControl E4123D27644258550003847AA3FB7FFE
+			}
+			myTemplateOverride
+			{
+				myGuid 4900C9FD310618C7D32AD93755311D97
+			}
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 07_Kay_SpeederCombatExit < uid=3A1291216411879100005AC11AA6EB7B >
+{
+	myIdentifier < uid=3A1291216411879100005AC2A8CAF129 > = E3_SpeederChase_Kay_SpeederCombatExit 3A129121640B58F30021F45676A40372
+	myVOType < uid=3A12912164118D5800006813289206F4 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Nix
+		}
+	}
+	myElements
+	{
+		StimulusElement Kay
+		{
+			myElement
+			{
+				myGuid 46B1756828C39EFD59299B9FF4C69183
+			}
+			myTemplateOverride
+			{
+				myGuid 49BCFC65842A4A01831EA4244247EB82
+			}
+			myDisable TRUE
+			myResponseDelay 0.2
+			myResponse < uid=3A12912164119FC50000D80C4DFD9B39 > = E3_SpeederChase_Nix_SpeederCombatExitResponse 3A129121640F5362001A56A2FC574545
+		}
+	}
+}
+
+StimulusElementContainer 08_Nix_SpeederCombatExitResponse < uid=3A1291216411879100005AC4B2811BDB >
+{
+	myIdentifier < uid=3A1291216411879100005AC59F51C3C3 > = E3_SpeederChase_Nix_SpeederCombatExitResponse 3A129121640F5362001A56A2FC574545
+	myVOType < uid=3A12912164118D58000068140EA313A6 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myVOPriorityOverride 0
+	myElements
+	{
+		StimulusElement Nix
+		{
+			myElement
+			{
+				myGuid 4F7D6518E698723D39E3973B10719DAC
+			}
+			myTemplateOverride
+			{
+				myGuid 4221A097D0CB085550B7DC82218B2790
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer --------JauntasHope-------- < uid=3A1291216411852A00005A967E03513B >
+{
+	myIdentifier < uid=E4123D27641CBF1B0000711CB4D23D62 > = ___E3_DIVIDER___ E4123D27641CBE33000070F6BC3457AF
+}
+
+StimulusElementContainer 00_NPC_CantinaLoiterer < uid=E4123D27641B58F80000DC00D809A70D >
+{
+	myIdentifier < uid=E4123D27641B58F80000DC01FB7BB218 > = E3_JauntasHope_NPC_CantinaLoiterer E4123D27641B59090000DC47A2123E3B
+	myVOType < uid=E4123D27641B58F80000DC020F281387 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Ally
+			BarkAgentScope "New BarkAgentScope (0)" SortCloser
+		}
+		myAgentTags
+		{
+			RBTagsTag "New RBTagsTag" < uid=E4123D27643AAFCC00013E5A9B80D5C3 > = Agent_Gender_UndefinedTag 16DEADE6626D20EA00002E54BFCC6D94
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 4C4CBA1832BD560A27DDDBCD182C9880
+			}
+			myTemplateOverride
+			{
+				myGuid 46E358AF08951599F73A3BBBADE67AAD
+			}
+			myDelay 0.0
+			myDisable TRUE
+			myResponseDelay -0.1
+			myResponse < uid=E4123D27643AAFDF00013E5B55694E4F > = E3_JauntasHope_NPC_CantinaLoiterer_Reply E4123D27643AAF8300013E54473B209A
+		}
+	}
+}
+
+StimulusElementContainer 00_NPC_CantinaLoitererDroidReply < uid=E4123D27643AAF6800013E503355F937 >
+{
+	myIdentifier < uid=E4123D27643AAF6800013E51BBB76EB6 > = E3_JauntasHope_NPC_CantinaLoiterer_Reply E4123D27643AAF8300013E54473B209A
+	myVOType < uid=E4123D27643AAF6800013E528D9B5868 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 49F0C4FCA097190B713D9F6E20D2A785
+			}
+			myTemplateOverride
+			{
+				myGuid 46E358AF08951599F73A3BBBADE67AAD
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 01_Kay_GreetND5 < uid=3A1291216411879100005AC7BFD29AE0 >
+{
+	myIdentifier < uid=3A1291216411879100005AC805371102 > = E3_JauntasHope_Kay_GreetND5 3A129121640F525B001A55A1F3581B4D
+	myVOType < uid=3A12912164118D580000681552126C7E > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+		}
+	}
+	myElements
+	{
+		StimulusElement Kay
+		{
+			myElement
+			{
+				myGuid 4DC057D57EDB224C9F45B45A216AE096
+			}
+			myTemplateOverride
+			{
+				myGuid 4B0FBE51576C46467F39920835624BA8
+			}
+			myDisable TRUE
+			myResponseDelay 0.4
+		}
+	}
+}
+
+StimulusElementContainer 02_ND5_GreetResponse < uid=3A129121641185D600005A994563B83D >
+{
+	myIdentifier < uid=3A1291216411894C00005AF87264441D > = E3_JauntasHope_ND5_GreetResponse 3A129121640F53A5001A56C600E5FB14
+	myVOType < uid=3A12912164118D5800006816E0759B66 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement ND5
+		{
+			myElement
+			{
+				myGuid 410DC2687262DDF40B875C1EAF6F8CB1
+			}
+			myTemplateOverride
+			{
+				myGuid 4CB1D0FCFEAD10C3AB6A373C42053B91
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 03_ND5_TrailblazerSitDown < uid=3A129121641185EE00005A9A218DB323 >
+{
+	myIdentifier < uid=3A1291216411894C00005AF9414348C9 > = E3_JauntasHope_ND5_TrailblazerSitDown 3A129121640F53B6001A56C70262B2D8
+	myCooldowns
+	{
+		BarksCooldown "New BarksCooldown" < uid=E4123D27643AC18B002EB17E330AA4EE > = ND5_Beckon E4123D27643AC14D002EB139B33894E7
+	}
+	myVOType < uid=3A12912164118D58000068175868843A > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Kay
+		}
+	}
+	myElements
+	{
+		StimulusElement ND5
+		{
+			myElement
+			{
+				myGuid 4F869C7F51F26CDE8713A915D1CD11B3
+			}
+			myCooldowns
+			{
+				BarksCooldown "New BarksCooldown" < uid=E4123D27643AC196002EB17FC5E15C00 > = ND5_Beckon E4123D27643AC14D002EB139B33894E7
+			}
+			myTemplateOverride
+			{
+				myGuid 4CB1D0FCFEAD10C3AB6A373C42053B91
+			}
+			myDelay 0.0
+			myDisable TRUE
+			myResponseDelay 0.15
+			myResponse < uid=3A12912164232D90000A254E8A98BC85 > = E3_JauntasHope_Kay_TrailblazerSitDown 3A129121640F5276001A55A2838C290C
+		}
+	}
+}
+
+StimulusElementContainer 04_Kay_TrailblazerSitDownResponse < uid=3A1291216411879100005ACA1DD8DD6A >
+{
+	myIdentifier < uid=3A1291216411879100005ACB36F641AB > = E3_JauntasHope_Kay_TrailblazerSitDown 3A129121640F5276001A55A2838C290C
+	myVOType < uid=3A12912164118D58000068184E4092B2 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement Kay
+		{
+			myElement
+			{
+				myGuid 49DDD7C8C0B10A3254B0E29B03207893
+			}
+			myTemplateOverride
+			{
+				myGuid 4B0FBE51576C46467F39920835624BA8
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer --------Space-------- < uid=3A1291216411861800005A9CC2E4730B >
+{
+	myIdentifier < uid=E4123D27641CBF1B0000711D7D07FD19 > = ___E3_DIVIDER___ E4123D27641CBE33000070F6BC3457AF
+}
+
+StimulusElementContainer 01_Kay_EnterSpace < uid=3A1291216411879100005ACDD3E8C9D1 >
+{
+	myIdentifier < uid=3A1291216411879100005ACE08006D4B > = E3_Space_Kay_EnterSpace 3A129121640F5288001A55A386436BA1
+	myMaxDistance 0.0
+	myVOType < uid=3A12912164118D58000068198FF07698 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" ND5
+		}
+	}
+	myElements
+	{
+		StimulusElement Kay
+		{
+			myElement
+			{
+				myGuid 4B1A1BFF8321CB72E34FCC3996C81ABD
+			}
+			myTemplateOverride
+			{
+				myGuid 4941AACFDF7A4D0A831C5F78204495AF
+			}
+			myDisable TRUE
+			myResponse < uid=3A1291216411A0450000D8638809571D > = E3_Space_ND5_EnterSpaceResponse 3A129121640F53CA001A56C865BAC2D6
+		}
+	}
+}
+
+StimulusElementContainer 02_ND5_EnterSpaceResponse < uid=3A1291216411865E00005AA02AB84973 >
+{
+	myIdentifier < uid=3A1291216411894C00005AFAC05205B5 > = E3_Space_ND5_EnterSpaceResponse 3A129121640F53CA001A56C865BAC2D6
+	myMaxDistance 0.0
+	myVOType < uid=3A12912164118D580000681AC31262AB > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement ND5
+		{
+			myElement
+			{
+				myGuid 475CDF10C2930347DD8DF90BB15B71BB
+			}
+			myTemplateOverride
+			{
+				myGuid 41D26B8E67E01FD9DC375B932BD0DF8A
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 03_ND5_SpotTies < uid=3A1291216411862C00005A9D9A1E993A >
+{
+	myIdentifier < uid=3A1291216411894C00005AFBFE7DB3DC > = E3_Space_ND5_SpotTIEs 3A129121640F541F001A56D156F3D397
+	myMaxDistance 0.0
+	myVOType < uid=3A12912164118D580000681BDF4767A7 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement Nd5
+		{
+			myElement
+			{
+				myGuid 4762931445D64CDD09CC28F8427300A9
+			}
+			myTemplateOverride
+			{
+				myGuid 41D26B8E67E01FD9DC375B932BD0DF8A
+			}
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 04_Kay_EnterCombat < uid=3A129121643EA6D4000ACA476F7648FF >
+{
+	myIdentifier < uid=3A129121643EA6D4000ACA4899127A6C > = E3_Space_Kay_EnterCombat 3A129121643EA6DC000ACA5BF7E99BFB
+	myMaxDistance 0.0
+	myVOType < uid=3A129121643EA6D4000ACA496529411B > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement Kay
+		{
+			myElement
+			{
+				myGuid 4BCE57882E1B9925EEEF906EF21C2898
+			}
+			myTemplateOverride
+			{
+				myGuid 4941AACFDF7A4D0A831C5F78204495AF
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 04_Kay_SpotTies < uid=3A1291216411879100005AD0A06CE949 >
+{
+	myIdentifier < uid=3A1291216411879100005AD1355F1AD4 > = E3_Space_Kay_SpotTIEs 3A129121640F52E0001A55BBF3CB308D
+	myMaxDistance 0.0
+	myVOType < uid=3A12912164118D580000681C95D8ABFF > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement Kay
+		{
+			myElement
+			{
+				myGuid 4F4D948DC2CF9DD8868678DA8A00199D
+			}
+			myTemplateOverride
+			{
+				myGuid 4941AACFDF7A4D0A831C5F78204495AF
+			}
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 05_Kay_StartHyperDrive < uid=3A1291216411879100005AD34E460A79 >
+{
+	myIdentifier < uid=3A1291216411879100005AD489A78459 > = E3_Space_Kay_StartHyperDrive 3A129121640F52D6001A55BA49897E6B
+	myMaxDistance 0.0
+	myVOType < uid=3A12912164118D580000681D99904B6A > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" ND5
+		}
+	}
+	myElements
+	{
+		StimulusElement Kay
+		{
+			myElement
+			{
+				myGuid 4C03DD18D5E72656D26610E978F7CE94
+			}
+			myTemplateOverride
+			{
+				myGuid 4941AACFDF7A4D0A831C5F78204495AF
+			}
+			myDisable TRUE
+			myResponseDelay 0.0
+			myResponse < uid=3A1291216411A0520000D875A4B2EDA4 > = E3_Space_ND5_StartHyperDriveResponse 3A129121640F5413001A56CFE3911170
+		}
+	}
+}
+
+StimulusElementContainer 06_ND5_StartHyperDriveResponse < uid=3A1291216411869900005AA2A30F8E9B >
+{
+	myIdentifier < uid=3A1291216411894C00005AFCAE6944A2 > = E3_Space_ND5_StartHyperDriveResponse 3A129121640F5413001A56CFE3911170
+	myMaxDistance 0.0
+	myVOType < uid=3A12912164118D580000681EC9C765C9 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement ND5
+		{
+			myElement
+			{
+				myGuid 42EB1648FB0E56DD5AF10905FE9A6DA9
+			}
+			myTemplateOverride
+			{
+				myGuid 4941AACFDF7A4D0A831C5F78204495AF
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer 07_Kay_HyperdrivePunch < uid=3A129121643EA9B4000CCE2EFC792965 >
+{
+	myIdentifier < uid=3A129121643EA9B4000CCE2F356D9EDF > = E3_Space_Kay_HyperDrivePunch 3A129121640F52AF001A55A6C327E6AE
+	myMaxDistance 0.0
+	myVOType < uid=3A129121643EA9B4000CCE30A013C7A6 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+		}
+	}
+	myElements
+	{
+		StimulusElement Kay
+		{
+			myElement
+			{
+				myGuid 4EBBDE117B867A7BD98F77203ED9CDB7
+			}
+			myTemplateOverride
+			{
+				myGuid 4941AACFDF7A4D0A831C5F78204495AF
+			}
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer General_Kay_FirstTieDown < uid=3A129121641186AA00005AA340F03972 >
+{
+	myIdentifier < uid=3A1291216411894C00005AFDF53754A6 > = E3_Space_Kay_FirstTIEDown 3A129121640F529D001A55A521016FCB
+	myMaxDistance 0.0
+	myVOType < uid=3A12912164118D580000681F2D595909 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 41DE95731A72E9F134ED60AED45B7483
+			}
+			myTemplateOverride
+			{
+				myGuid 4941AACFDF7A4D0A831C5F78204495AF
+			}
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer General_Kay_OnIt < uid=3A129121641186E300005AA5E232FFEE >
+{
+	myIdentifier < uid=3A1291216411894C00005AFEA5189818 > = E3_Space_Kay_OnIt 3A129121640F52C2001A55B89C3D9AC1
+	myProbability 50
+	myMaxDistance 0.0
+	myVOType < uid=3A12912164118D58000068207D8E880E > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 4F7A18C5848A4333DD0D80A0F05DC980
+			}
+			myTemplateOverride
+			{
+				myGuid 4941AACFDF7A4D0A831C5F78204495AF
+			}
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer General_Kay_SpaceBoost < uid=3A129121641186FE00005AA63D96CE65 >
+{
+	myIdentifier < uid=3A1291216411894C00005AFFB6E83C34 > = E3_Space_Kay_SpaceBoost 3A129121640F5298001A55A412B09CA3
+	myMaxDistance 0.0
+	myVOType < uid=3A12912164118D5800006821665E57CE > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Nix
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 43DE5547D99A6FD0D11B3819F21CA4BA
+			}
+			myTemplateOverride
+			{
+				myGuid 4941AACFDF7A4D0A831C5F78204495AF
+			}
+			myDelay 0.0
+			myDisable TRUE
+			myResponseDelay -0.2
+			myResponse < uid=3A1291216411A09D0000D88718C8928D > = E3_Space_Nix_Surprise 3A129121640F5370001A56A33E45A4D5
+		}
+	}
+}
+
+StimulusElementContainer General_Nix_Surprise < uid=3A129121641186D400005AA4A8EB13CE >
+{
+	myIdentifier < uid=3A1291216411894C00005B005240321F > = E3_Space_Nix_Surprise 3A129121640F5370001A56A33E45A4D5
+	myMaxDistance 0.0
+	myVOType < uid=3A12912164118D580000682294459FE1 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 48323D0A59707BA9360D44C5E8E8C3A2
+			}
+			myTemplateOverride
+			{
+				myGuid 4F14F3F7FA254E7395604929DBBFA884
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer General_ND5_EnemiesApproaching < uid=3A1291216411870A00005AA7FC6C5B0C >
+{
+	myIdentifier < uid=3A1291216411894C00005B011D9DCE95 > = E3_Space_ND5_EnemiesApproaching 3A129121640F53DB001A56C9E7AC7DC2
+	myMaxDistance 0.0
+	myVOType < uid=3A12912164118D580000682373330D71 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 4CCFCE1D30625628B96DF30A7F589CAE
+			}
+			myTemplateOverride
+			{
+				myGuid 41D26B8E67E01FD9DC375B932BD0DF8A
+			}
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer General_ND5_EnemiesInFront < uid=3A1291216411873000005AA9795111D0 >
+{
+	myIdentifier < uid=3A1291216411894C00005B038BDAD74A > = E3_Space_ND5_EnemiesInFront 3A129121640F53EF001A56CBDF5D98C5
+	myMaxDistance 0.0
+	myVOType < uid=3A12912164118D5800006825EE80FD56 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 441AED2C1431143F2AD660EBDACCD08A
+			}
+			myTemplateOverride
+			{
+				myGuid 41D26B8E67E01FD9DC375B932BD0DF8A
+			}
+			myDisable TRUE
+			myResponseDelay 0.15
+			myResponse < uid=3A1291216411A0EE0000D8ABFF6191B4 > = E3_Space_Kay_OnIt 3A129121640F52C2001A55B89C3D9AC1
+		}
+	}
+}
+
+StimulusElementContainer General_ND5_EnemiesBehind < uid=3A1291216411872500005AA80CE9522C >
+{
+	myIdentifier < uid=3A1291216411894C00005B027C244D66 > = E3_Space_ND5_EnemiesBehind 3A129121640F53E8001A56CAC8BE0778
+	myMaxDistance 0.0
+	myVOType < uid=3A12912164118D58000068247AF435E1 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 444A8ECC8CA4ACCE2F6BFC78DABED2BA
+			}
+			myTemplateOverride
+			{
+				myGuid 41D26B8E67E01FD9DC375B932BD0DF8A
+			}
+			myDisable TRUE
+			myResponseDelay 0.15
+			myResponse < uid=3A1291216411A0B90000D899D51DFBEB > = E3_Space_Kay_OnIt 3A129121640F52C2001A55B89C3D9AC1
+		}
+	}
+}
+
+StimulusElementContainer General_ND5_EnemiesLeft < uid=3A1291216411873D00005AAAF23F1D79 >
+{
+	myIdentifier < uid=3A1291216411894C00005B04D859DCE4 > = E3_Space_ND5_EnemiesLeft 3A129121640F53F8001A56CC6C425D8A
+	myMaxDistance 0.0
+	myVOType < uid=3A12912164118D58000068265682CDF0 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 48B1A45805940CD50871C86F9D62DBAC
+			}
+			myTemplateOverride
+			{
+				myGuid 41D26B8E67E01FD9DC375B932BD0DF8A
+			}
+			myDisable TRUE
+			myResponseDelay 0.15
+			myResponse < uid=3A1291216411A0EE0000D8ACD8AF1B22 > = E3_Space_Kay_OnIt 3A129121640F52C2001A55B89C3D9AC1
+		}
+	}
+}
+
+StimulusElementContainer General_ND5_EnemiesRight < uid=3A1291216411875000005AAB6C158C09 >
+{
+	myIdentifier < uid=3A1291216411894C00005B052B43481C > = E3_Space_ND5_EnemiesRight 3A129121640F5405001A56CDE8847FAD
+	myMaxDistance 0.0
+	myVOType < uid=3A12912164118D5800006827BD311AD4 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Kay
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 42187B648C37E1FECF63EC4CAF8478B0
+			}
+			myTemplateOverride
+			{
+				myGuid 41D26B8E67E01FD9DC375B932BD0DF8A
+			}
+			myDisable TRUE
+			myResponseDelay 0.15
+			myResponse < uid=3A1291216411A0EE0000D8AD4837D503 > = E3_Space_Kay_EnterCombat 3A129121643EA6DC000ACA5BF7E99BFB
+		}
+	}
+}
+
+StimulusElementContainer General_ND5_ShieldCritical < uid=3A1291216411875C00005AAC2A2BCB95 >
+{
+	myIdentifier < uid=3A1291216411894C00005B0675527F6F > = E3_Space_ND5_ShieldCritical 3A129121640F540B001A56CED0392002
+	myMaxDistance 0.0
+	myVOType < uid=3A12912164118D580000682866B16BAE > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Kay
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 41556D6B87B820AA83D533F0553159AE
+			}
+			myTemplateOverride
+			{
+				myGuid 41D26B8E67E01FD9DC375B932BD0DF8A
+			}
+			myDisable TRUE
+			myResponseDelay 0.15
+			myResponse < uid=3A1291216411A0EE0000D8AEC77430E3 > = E3_Space_Kay_ShieldCriticalResponse 3A129121640F52CB001A55B92A7079F9
+		}
+	}
+}
+
+StimulusElementContainer General_Kay_ShieldCriticalResponse < uid=3A1291216411876600005AADDB058091 >
+{
+	myIdentifier < uid=3A1291216411894C00005B07286F9608 > = E3_Space_Kay_ShieldCriticalResponse 3A129121640F52CB001A55B92A7079F9
+	myMaxDistance 0.0
+	myVOType < uid=3A12912164118D58000068298F324063 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 424279097091B28E8352ED01D9D629B3
+			}
+			myTemplateOverride
+			{
+				myGuid 4941AACFDF7A4D0A831C5F78204495AF
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer General_ND5_TakingFire < uid=3A1291216411877B00005AAED1DB9A5D >
+{
+	myIdentifier < uid=3A1291216411894C00005B083EC7D11D > = E3_Space_ND5_TakingFire 3A129121640F541C001A56D09D41AE85
+	myMaxDistance 0.0
+	myVOType < uid=3A12912164118D580000682ACF9FF138 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 4BD8FF7DB58C356245452D990691A58C
+			}
+			myTemplateOverride
+			{
+				myGuid 41D26B8E67E01FD9DC375B932BD0DF8A
+			}
+			myDisable TRUE
+			myResponseDelay 0.15
+		}
+	}
+}
+
+StimulusElementContainer Blank_General_ND5_EnemiesApproaching < uid=3A129121643D6C8000086E1E41974B1E >
+{
+	myIdentifier < uid=3A129121643D6C8000086E1FFBCD573F > = E3_Space_Kay_EnemiesApproaching 3A129121643D561800079B3E4202F9FB
+	myMaxDistance 0.0
+	myVOType < uid=3A129121643D6C8000086E2016FCA6DE > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" ND5
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 00000000000000000000000000000000
+			}
+			myTemplateOverride
+			{
+				myGuid 41D26B8E67E01FD9DC375B932BD0DF8A
+			}
+			myDisable TRUE
+			myResponseDelay 0.0
+			myResponse < uid=3A129121643D6CBC00086E4A240B9567 > = E3_Space_ND5_EnemiesApproaching 3A129121640F53DB001A56C9E7AC7DC2
+		}
+	}
+}
+
+StimulusElementContainer Blank_General_ND5_EnemiesInFront < uid=3A129121643D6C8000086E21B269D19C >
+{
+	myIdentifier < uid=3A129121643D6C8000086E22495DB374 > = E3_Space_Kay_EnemiesInFront 3A129121643D566700079B409A5DDC3B
+	myMaxDistance 0.0
+	myVOType < uid=3A129121643D6C8000086E23D8B861CF > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" ND5
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 00000000000000000000000000000000
+			}
+			myTemplateOverride
+			{
+				myGuid 41D26B8E67E01FD9DC375B932BD0DF8A
+			}
+			myDisable TRUE
+			myResponseDelay 0.0
+			myResponse < uid=3A129121643D6C8000086E242B81E650 > = E3_Space_ND5_EnemiesInFront 3A129121640F53EF001A56CBDF5D98C5
+		}
+	}
+}
+
+StimulusElementContainer Blank_General_ND5_EnemiesBehind < uid=3A129121643D6C8000086E25D798378D >
+{
+	myIdentifier < uid=3A129121643D6C8000086E2673FAF819 > = E3_Space_Kay_EnemiesBehind 3A129121643D564100079B3F39B36679
+	myMaxDistance 0.0
+	myVOType < uid=3A129121643D6C8000086E27685759B0 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" ND5
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 00000000000000000000000000000000
+			}
+			myTemplateOverride
+			{
+				myGuid 41D26B8E67E01FD9DC375B932BD0DF8A
+			}
+			myDisable TRUE
+			myResponseDelay 0.0
+			myResponse < uid=3A129121643D6C8000086E284CC0818C > = E3_Space_ND5_EnemiesBehind 3A129121640F53E8001A56CAC8BE0778
+		}
+	}
+}
+
+StimulusElementContainer Blank_General_ND5_EnemiesLeft < uid=3A129121643D6C8000086E295AF2F3C6 >
+{
+	myIdentifier < uid=3A129121643D6C8000086E2AFE6CF2B1 > = E3_Space_Kay_EnemiesLeft 3A129121643D566E00079B417435A597
+	myMaxDistance 0.0
+	myVOType < uid=3A129121643D6C8000086E2B2C24AE15 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" ND5
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 00000000000000000000000000000000
+			}
+			myTemplateOverride
+			{
+				myGuid 41D26B8E67E01FD9DC375B932BD0DF8A
+			}
+			myDisable TRUE
+			myResponseDelay 0.0
+			myResponse < uid=3A129121643D6C8000086E2C64A086FC > = E3_Space_ND5_EnemiesLeft 3A129121640F53F8001A56CC6C425D8A
+		}
+	}
+}
+
+StimulusElementContainer Blank_General_ND5_EnemiesRight < uid=3A129121643D6C8000086E2DA901256D >
+{
+	myIdentifier < uid=3A129121643D6C8000086E2E3061B386 > = E3_Space_Kay_EnemiesRight 3A129121643D567500079B4221AD47CB
+	myMaxDistance 0.0
+	myVOType < uid=3A129121643D6C8000086E2F393CE799 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" ND5
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 00000000000000000000000000000000
+			}
+			myTemplateOverride
+			{
+				myGuid 41D26B8E67E01FD9DC375B932BD0DF8A
+			}
+			myDisable TRUE
+			myResponseDelay 0.0
+			myResponse < uid=3A129121643D6C8000086E3059CB1124 > = E3_Space_ND5_EnemiesRight 3A129121640F5405001A56CDE8847FAD
+		}
+	}
+}
+
+StimulusElementContainer Blank_General_ND5_ShieldCritical < uid=3A129121643D6C8000086E31F9417D3D >
+{
+	myIdentifier < uid=3A129121643D6C8000086E32C4811C10 > = E3_Space_Kay_ShieldCritical 3A129121643D583600079B5AA3B4B4E3
+	myMaxDistance 0.0
+	myVOType < uid=3A129121643D6C8000086E331A5F2B36 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" ND5
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 00000000000000000000000000000000
+			}
+			myTemplateOverride
+			{
+				myGuid 41D26B8E67E01FD9DC375B932BD0DF8A
+			}
+			myDisable TRUE
+			myResponseDelay 0.0
+			myResponse < uid=3A129121643D6C8000086E341B1C5B68 > = E3_Space_Kay_ShieldCritical 3A129121643D583600079B5AA3B4B4E3
+		}
+	}
+}
+
+StimulusElementContainer Blank_General_ND5_TakingFire < uid=3A129121643D6C8000086E35E94665A3 >
+{
+	myIdentifier < uid=3A129121643D6C8000086E3625EB8507 > = E3_Space_Kay_TakingFire 3A129121643D55E900079B27B839E736
+	myMaxDistance 0.0
+	myVOType < uid=3A129121643D6C8000086E37C60E1C17 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" ND5
+		}
+	}
+	myElements
+	{
+		StimulusElement "New StimulusElement"
+		{
+			myElement
+			{
+				myGuid 00000000000000000000000000000000
+			}
+			myTemplateOverride
+			{
+				myGuid 41D26B8E67E01FD9DC375B932BD0DF8A
+			}
+			myDisable TRUE
+			myResponseDelay 0.0
+			myResponse < uid=3A129121643D6C8000086E383F30D8A5 > = E3_Space_ND5_TakingFire 3A129121640F541C001A56D09D41AE85
+		}
+	}
+}
+
+StimulusElementContainer Nix_WeMadeItResponse < uid=3A1291216447D1CD00011CBAF3A18E27 >
+{
+	myIdentifier < uid=3A1291216447D1CD00011CBBC3771F2B > = E3_SpeederChase_Nix_WeMadeItResponse 3A1291216447D1D200011CCECAB7C6D4
+	myMaxDistance 0.0
+	myVOType < uid=3A1291216447D1CD00011CBC10D5ADAA > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myVOPriorityOverride 0
+	myElements
+	{
+		StimulusElement Nix
+		{
+			myElement
+			{
+				myGuid 43A0A2AE1FDD701BE38BB311BFA43D99
+			}
+			myTemplateOverride
+			{
+				myGuid 4221A097D0CB085550B7DC82218B2790
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer Nix_TroubleResponse < uid=3A1291216447D10A00011C70E32A08B4 >
+{
+	myIdentifier < uid=3A1291216447D10A00011C71425B6AD3 > = E3_ChopShop_Nix_TroubleResponse 3A1291216447C4050004B7B1ABDF4899
+	myMaxDistance 0.0
+	myVOType < uid=3A1291216447D10A00011C7237F79AC0 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myVOPriorityOverride 0
+	myElements
+	{
+		StimulusElement Nix
+		{
+			myElement
+			{
+				myGuid 43714805DEE3330743F7F0842094B7A6
+			}
+			myTemplateOverride
+			{
+				myGuid 4C92D15807EE804D9253F4E1E0EBF5A0
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer Nix_HangTightResponse < uid=3A1291216447C3760004B7534E58BBB1 >
+{
+	myIdentifier < uid=3A1291216447C3760004B7547C1ED036 > = E3_ChopShop_Nix_HangTightResponse 3A1291216447C3990004B767AD4699E6
+	myVOType < uid=3A1291216447C3760004B7552F49222D > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myVOPriorityOverride 0
+	myElements
+	{
+		StimulusElement Nix
+		{
+			myElement
+			{
+				myGuid 4C2FFBC2619FFBBC592576EF7DE08297
+			}
+			myTemplateOverride
+			{
+				myGuid 424CDD6F70A1727144D13AB5F0773FA1
+			}
+			myDelay 0.3
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer Nix_ButtonPush < uid=3A1291216447D2F500011D98707425C2 >
+{
+	myIdentifier < uid=3A1291216447D2F500011D99EB5D9B94 > = E3_ChopShop_Nix_ButtonPush 3A1291216447C81B0004B7C90D0924D2
+	myVOType < uid=3A1291216447D2F500011D9A5733BF87 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myVOPriorityOverride 0
+	myElements
+	{
+		StimulusElement Nix
+		{
+			myElement
+			{
+				myGuid 48AE3AF1EEEE67F2726C113956EF10AF
+			}
+			myTemplateOverride
+			{
+				myGuid 424CDD6F70A1727144D13AB5F0773FA1
+			}
+			myDelay 0.9
+			myDisable TRUE
+			myResponseDelay 0.5
+		}
+	}
+}
+
+StimulusElementContainer Nix_BlabberSurprise < uid=3A1291216447D31300011DBE0B961A4E >
+{
+	myIdentifier < uid=3A1291216447D31300011DBF56B22EF4 > = E3_ChopShop_Nix_BlabberSurprise 3A1291216447C7E90004B7C852D57BEE
+	myVOType < uid=3A1291216447D31300011DC0A404D4B7 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myVOPriorityOverride 0
+	myElements
+	{
+		StimulusElement Nix
+		{
+			myElement
+			{
+				myGuid 46CC4F812A138EFD224918C6082741A2
+			}
+			myTemplateOverride
+			{
+				myGuid 4C92D15807EE804D9253F4E1E0EBF5A0
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer Nix_Growl < uid=3A1291216447D35200011DF54381F28E >
+{
+	myIdentifier < uid=3A1291216447D35200011DF6D8962F50 > = E3_General_Nix_Growl 3A1291216447C84A0004B7E07855B8A4
+	myVOType < uid=3A1291216447D35200011DF727528CDA > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myVOPriorityOverride 0
+	myElements
+	{
+		StimulusElement Nix
+		{
+			myElement
+			{
+				myGuid 4E850888B4D786E066624790F42D63AC
+			}
+			myTemplateOverride
+			{
+				myGuid 4C92D15807EE804D9253F4E1E0EBF5A0
+			}
+			myDelay 0.0
+			myDisable TRUE
+		}
+	}
+}
+
+StimulusElementContainer Blank_WeMadeItResponse < uid=3A1291216447D42200011E0ACC0DCE28 >
+{
+	myIdentifier < uid=3A1291216447D42200011E0BE5CC4BD6 > = E3_SpeederChase_Kay_WeMadeItResponse 3A1291216447D20E00011CF209364FCF
+	myVOType < uid=3A1291216447D42200011E0CC642868B > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myVOPriorityOverride 0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Nix
+		}
+	}
+	myElements
+	{
+		StimulusElement Nix
+		{
+			myElement
+			{
+				myGuid 00000000000000000000000000000000
+			}
+			myTemplateOverride
+			{
+				myGuid 4221A097D0CB085550B7DC82218B2790
+			}
+			myDelay 0.0
+			myDisable TRUE
+			myResponse < uid=3A1291216447D42200011E0DC03B08A3 > = E3_SpeederChase_Nix_WeMadeItResponse 3A1291216447D1D200011CCECAB7C6D4
+		}
+	}
+}
+
+StimulusElementContainer Blank_HangTightResponse < uid=3A1291216447D45E00011E2080D1D4EC >
+{
+	myIdentifier < uid=3A1291216447D45E00011E21C1D39A59 > = E3_ChopShop_Kay_HangTightResponse 3A1291216447D24200011D17637D8E1E
+	myVOType < uid=3A1291216447D45E00011E22E1214E86 > = VOType_E3_Barks 3A12912164118AD600005B1AC7D452B0
+	myVOPriorityOverride 0
+	myResponseAgentRequirements
+	{
+		myAgentScopes
+		{
+			BarkAgentScope "New BarkAgentScope" Nix
+		}
+	}
+	myElements
+	{
+		StimulusElement Nix
+		{
+			myElement
+			{
+				myGuid 00000000000000000000000000000000
+			}
+			myTemplateOverride
+			{
+				myGuid 4221A097D0CB085550B7DC82218B2790
+			}
+			myDelay 0.0
+			myDisable TRUE
+			myResponse < uid=3A1291216447D45E00011E23A23F5789 > = E3_ChopShop_Nix_HangTightResponse 3A1291216447C3990004B767AD4699E6
+		}
+	}
+}
+

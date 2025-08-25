@@ -1,0 +1,16 @@
+include "helix/game system data/fruit/camera/cameramodifier.fruit"
+include "helix/game system data/fruit/rumble/rumble.fruit"
+
+// Hidding the flags as they will be set contextually in code
+class NearMissRumble : Rumble
+{
+	bool myIsPositional false < hidden=1 >
+	bool myIsRotational false < hidden=1 >
+	bool myIsLoop false < hidden=1 >
+}
+
+class PlayerNearMissFeedbackConfig
+{
+	ShakeCameraModifier* myCameraShake
+	NearMissRumble myRumble
+}

@@ -1,0 +1,37 @@
+include "helix/game system data/juice/ai/npcpackprofiles.mnpcpackprofile"
+include "helix/game system data/juice/item/player_weapon_pickup_e11.mitem"
+include "helix/game system data/juice/melee/npc_melee_config.mnpcmeleeconfig"
+include "helix/game system data/juice/npc/base_emp.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC gym_test_damage_stormtrooper < uid=2552445266586AF7000A1C8D8DB949CB > : base_emp
+{
+	myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	myCharacterVisuals < uid=2552445266586AF7000A1C8ECB93B051 > = character_visuals_2_silver_empire_stormtrooper 616C01996422F56C000085626C2F5F95
+	myAdditionalGearGraphs 91DC5D3C6536665400014B47949A130F
+	myBehavior helix/behaviors/test_empty_behavior.mbehavior
+	myMaxHealth 15
+	myHealthFormula 1000
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag (1)" < uid=2552445266586AF7000A1C8FA6728C1A > = Agent_Faction_EmpireTag 16DEADE6614FB69800001863A66D45A1
+		RBTagsTag "New RBTagsTag (2)" < uid=2552445266586AF7000A1C9065349356 > = Agent_Archetype_LightTag 16DEADE6626D213900002E666FED23C5
+		RBTagsTag "New RBTagsTag (0)" < uid=2552445266586AF7000A1C912284792A > = Agent_Weapon_Rifle2H_Tag EBE060C262A31390000155F83D20E483
+		RBTagsTag "New RBTagsTag" < uid=2552445266586AF7000A1C9274C35413 > = Agent_BarksFamily_Stormtrooper E4123D2762F4C9F000048CA972FB8238
+		RBTagsTag RBTag_Reinforcement < uid=2552445266586AF7000A1C9346E314CD > = Agent_CanCallReinforcements 3C2FA92B661D510B00039C814C5A3821
+	}
+	myTacticalPositionFinderProfile < uid=2552445266586AF7000A1C94878C9164 > = "Assault Tactical Position Finder Profile" 5C421F5C64A5764C000057F0C65A6821
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout LoadoutA < uid=2552445266586AF7000A1C9586C0E596 > = emp_Stormtrooper_Rifle 2736B365635F9FBD00009B7F2C729781
+	}
+	myPickpocketableLootTable < uid=2552445266586AF7000A1C96E8CD5A91 > = loot_pickpocket_grenades 2AE2EC8564AE78F2000253450FCB272B
+	myMotionPatternProfile < uid=2552445266586AF7000A1C97B6D67E39 > = AssaultMotionPatternProfile 4171A7E16543D25F000722E2FBD78BFE
+	myPackProfile < uid=2552445266586AF7000A1C985532DE36 > = VehicleChasePackProfile 91DC5D3C63F61E9400008FAEB6509FFC
+	myFocusProfile < uid=2552445266586AF7000A1C99D45F6D53 > = DefaultNPCFocusProfile 16DEADE6627D79E600002F681EE4B5D5
+	myAudioNPCDangerWeight 2.0
+	myMeleeConfig < uid=2552445266586AF7000A1C9A56C4BC9B > = npc_melee_config BCDE37F162445830000053EBBBF07CF3
+	myStaggerConfig < uid=2552445266586AF7000A1C9B53E627CC > = NPCStaggerConfig_Humanoid_Medium_MeleeTier3 3C2FA92B651582BD0004A41755AB8CD4
+	myCombatRole Assault
+}
+

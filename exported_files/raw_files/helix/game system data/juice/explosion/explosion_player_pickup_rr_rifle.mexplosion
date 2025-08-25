@@ -1,0 +1,45 @@
+include "helix/game system data/fruit/explosion/explosion.fruit"
+include "helix/game system data/juice/explosion/explosion_player_pickup_zerekbesh_grenade.mexplosion"
+
+Explosion explosion_player_pickup_rr_rifle < uid=4C1DFD4E670E65AC000000DEAE80E30A > : explosion_player_pickup_zerekbesh_grenade
+{
+	myDetonation
+	{
+		myBaseEffect helix/particles/dlc2_vfx_exp_tl40_01.mparticles
+		myCameraShakeSection
+		{
+			mySize 7.0
+			myCreationStrengthByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.50755668 0.0086206794, }, outTangents = { 0.25629723 -0.008620739, 0 -0, }, properties = { 275, 1299, }, values = { 0 1, 1 0, }, }, numKeys = 2, }"
+		}
+		myGameplayDamageSection
+		{
+			mySize 1.0
+			myBlockerType ShieldAndStatic
+			myDamageType Physical
+			myDamageTargetType All
+			myDamageFormula 1.0
+			myDefaultDamage 1.0
+			myDamageMultiplierByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.085973814 -0.00074213761, -0.058214426 0.43384129, }, outTangents = { 0.16666667 0, 0.0429869 0.00037106872, 0 -0, }, properties = { 203, 2323, 1299, }, values = { 0 1, 0.5 1, 0.89999998 0.2, }, }, numKeys = 3, }"
+			myStaggerDamageOverrideEnabled TRUE
+			myStaggerDamageOverride 10.0
+			myStaggerDamageOverrideMultiplierByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0.0, 0 0, }, properties = { -749, -749, }, values = { 0 1, 1 0.1, }, }, numKeys = 2, }"
+			myAdditionalStaggerDamageEnabled FALSE
+			myAdditionalStaggerDamage
+			{
+				myStaggerDamage 1.0
+				myStaggerDamageMultiplierByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0.0, 0 0, }, properties = { -749, -749, }, values = { 0 1, 1 0.1, }, }, numKeys = 2, }"
+				myStaggerDamageOverrideDamageType Physical
+			}
+			mySensoryStaggerEnabled TRUE
+			mySensoryStagger
+			{
+				myStaggerDamage 5.0
+				myStaggerDamageMultiplierByDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.09918654 0.39700413, }, outTangents = { 0.75 0, 0 -0, }, properties = { 275, 1299, }, values = { 0 1, 1 0.1, }, }, numKeys = 2, }"
+				myStaggerDamageOverrideDamageType Physical
+			}
+			myDamageSelf FALSE
+		}
+		myFlinchEnabled FALSE
+	}
+}
+

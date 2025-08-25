@@ -1,0 +1,43 @@
+include "helix/game system data/juice/npc/base_civ_vendor.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC civ_vendor_p_tatooine_mos_eisley_blackmarket < uid=91DC5D3C64C91B130001284D091E375F > : base_civ_vendor
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Sub-name for a black market merchant\", enabled = true, guid = #09AEDAAA65C5F10500000131D99431BE, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 10653, text = \"Black Market Merchant (TO BE WRITTEN)\", type = \"MenuLine\""
+	myCharacterVisuals < uid=91DC5D3C64C91B3D000128772D5D331C > = character_visuals_2_silver_tat_mos_eisley_black_market_vendor E4123D2764B67D10000162EE8BF33908
+	myAdditionalGearGraphs 913C107666422EF3000A85DD298FB00E
+	myFaction < uid=09AEDAAA65BCB5C900267FEC63E0194F > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F256511AA2B000232D63C8AF565 > = Agent_Gender_FeminineTag 16DEADE6626D20EA00002E5277B65AD4
+	}
+	myPossibleSpeciesTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F2564F6F44D00009799CE0DA1A4 > = Agent_Species_AqualishTag 2736B365634D673A0003C278D0993580
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F2564F6F4530000979C55F92819 > = Agent_Archetype_VendorBlackMarket E4123D2762A791AE00007B5125A87DDB
+		RBTagsTag "New RBTagsTag (1)" < uid=1EC89F2564F6F46B000097A1667C91AD > = Agent_Faction_HuttClanTag 16DEADE6620AE18B000020CD6EABF4EA
+	}
+	myDialogueCharacters
+	{
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=1EC89F2564F6F3B500009791A52F1298 >
+		{
+			myDialogueCharacter < uid=1EC89F2564F6F3BD000097935AA5EF1D > = AI_VENDOR_BLACK_MARKET_AQUALISH_F01 1EC89F25648AD9830000A9890425CBBA
+		}
+	}
+	myVendorConfig < uid=91DC5D3C64C91B260001286267137ECF > = VendorConfig_TAT_City_Hutt_Cantina_BlackMarket F7FDFD60630388BC000CF0B641DB7280
+	myAudioParameters
+	{
+		mySwitches
+		{
+			AudioSwitch VocoderAqualish
+			{
+				myGuid 4DC9D96F307E1E05CF5E1D09B4164296
+			}
+		}
+	}
+	myNPCIcon "mySpriteId = 758980260, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_map_icons_05.spritesheet\""
+}
+

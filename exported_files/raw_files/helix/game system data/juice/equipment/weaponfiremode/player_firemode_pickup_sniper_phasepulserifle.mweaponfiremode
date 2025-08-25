@@ -1,0 +1,131 @@
+include "helix/game system data/fruit/equipment/weapon/weapon_fire_mode.fruit"
+include "helix/game system data/juice/bodypart/bodypart.mbodypart"
+include "helix/game system data/juice/camera/modifiers/sniper_charge_shake.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_recoil_pickup_sniper_dlt20a.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_recoil_pickup_sniper_dlt20a_scope.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_recoil_pickup_sniper_phasepulse.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_shake_kays_blaster_power.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_shake_pickup_sniper_charge.mcameramodifier"
+include "helix/game system data/juice/equipment/aimconfig/weapon_aimconfig_pickup_rifle.maimconfig"
+include "helix/game system data/juice/equipment/weaponanimationconfig/weapon_anim_pickup_dlt20a.mweaponanimationconfig"
+include "helix/game system data/juice/equipment/weaponanimationconfig/weapon_anim_pickup_phasepulserifle.mweaponanimationconfig"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_pickup_rotatorycannon.mweaponfiremode"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_pickup_sniper.mweaponfiremode"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_large_blue_phasepulse.mprojectile"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_large_red.mprojectile"
+include "helix/game system data/juice/sound/weapons/player_aduioweapon_kays_sig_mod_charge.maudioweapon"
+include "helix/game system data/juice/sound/weapons/player_audioweapon_longblaster_phasepulse.maudioweapon"
+
+WeaponFireMode player_firemode_pickup_sniper_phasepulserifle < uid=4C1DFD4E643D459600027118A7C3FBDD > : player_firemode_pickup_sniper
+{
+	myFireEvent
+	{
+		ChargedFireEvent ChargedFireEvent
+		{
+			myProjectilesPerRound 3
+			myChargeDurationFormula 0.8
+			myMinChargeStrength 0.8
+			myAutomaticResetEnabled FALSE
+			myChargeCameraShake < uid=1C021E956533B1FD00379C96AB99802A > = weapon_shake_pickup_sniper_charge 7113C6116509A01E000541D40B39676E
+		}
+	}
+	myBaseProperties
+	{
+		myAnimation < uid=7113C61165C0CFC4000E4DB0E80FADF5 > = weapon_anim_pickup_phasepulserifle 7113C61165C0D000000E7C7F65D06AED
+		myRecoil < uid=A207755D6515A2D400014E52F6C287A2 > = weapon_recoil_pickup_sniper_phasepulse 1C021E956533B5FA0038B1BAED585B7F
+		myInputController
+		{
+			myFireRumble 8E25811B65607D9100146C857CBC707B
+			myFireVibrationTriggerEffect
+			{
+				myAmplitude 0.7
+			}
+			myFireAimVibrationTriggerEffect
+			{
+				myDuration 0.5
+			}
+			myHardPressTriggerEffect helix/trigger_effects/triggereffect_rifle_chargeup.mtriggereffect
+			myCharge
+			{
+				myChargingTriggerVibrationEnabled TRUE
+				myChargingTriggerVibration
+				{
+					myAmplitude "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.67939007 0.0050914758, }, outTangents = { 0.75 0, 0.12738562 -0.00095465156, }, properties = { 275, 1299, }, values = { 0 0.30000001, 0.90000004 0.60000002, }, }, numKeys = 2, }"
+					myFrequency "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, keys = { inTangents = { 0 0, -0.5 -0.001, }, outTangents = { 0.75 0.0, 0 0, }, properties = { -749, -749, }, values = { 0 0.05, 1 0.1, }, }, numKeys = 2, }"
+					myPosition 9
+				}
+				myChargingRumble 7113C611663A3BCE000347A911B819D3
+				myOnFullChargeTriggerEffectEnabled FALSE
+				myOnFullChargeTriggerEffect
+				{
+					myAmplitude 0.5
+					myPosition 9
+				}
+			}
+		}
+	}
+	mySpecializations
+	{
+	}
+	myAimConfig < uid=C54AA1EA66FD101E0006E7C13A5140E2 > = weapon_aimconfig_pickup_rifle 4C1DFD4E636BB79E00005DEB786E02F9
+	myProjectile < uid=4C1DFD4E643D45960002711AF5772848 > = weapon_projectile_blaster_large_blue_phasepulse F8181D486512955F0015C3F02C92044B
+	myDamage
+	{
+		myDamage
+		{
+			myDamageFormula "3 * PickUpWeaponDamageBonus"
+			myVariation 0.0
+			myDamageType Physical
+		}
+		myRange
+		{
+			myEnabled TRUE
+			myOptimal 20.0
+			myMax 40.0
+			myMinDamagePercentatge 0.5
+		}
+		myCriticalHitChance 0.0
+		myCriticalHitChanceDistanceMin 0.0
+		myCriticalHitChanceDistanceMax 100.0
+		myCriticalHitDamageModifier 1.0
+	}
+	mySpread
+	{
+		mySpreadValues
+		{
+			mySpread
+			{
+				myMin 1.2
+				myMax 2.0
+			}
+		}
+		mySpreadIncreaseTime 0.1
+		myTimeToMinAccuracy 0.1
+		myTimeToMaxAccuracy 1.2
+	}
+	myFireShake < uid=7113C6116509A1610005D3C603D81F6F > = weapon_shake_pickup_sniper 4C1DFD4E636BBE3D00005E0B10CA4B52
+	myUI
+	{
+		myDefaultUIGraph helix/ui/graphs/crosshair_rifle_ammunition.muigraph
+		myUIGraphByConditions
+		{
+			EquipmentUIByConditions "Accessibility Crosshair"
+			{
+				myConditions
+				{
+					myConditions
+					{
+						GameConditionAccessibilitySimplifiedCrosshair "Simplified Crosshair"
+						{
+							myMode 2
+						}
+					}
+				}
+				myUIGraph helix/ui/graphs/crosshair_accessibility_simple_limitedammo.muigraph
+			}
+		}
+	}
+	myAudioData < uid=7113C611650AE4590003433390745404 > = player_audioweapon_longblaster_phasepulse DADB4E0465BCDC2D000000D2350666F7
+	myNPCDetectionSoundEvent < uid=3C2FA92B66B0A72500118C5311A2E5F5 > = WeaponTrigger_Loud 3C2FA92B66B089CB000B7A4263B21E82
+}
+

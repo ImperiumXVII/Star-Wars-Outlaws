@@ -1,0 +1,36 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/explosion/explosion_npc_dropped_thermal_detonator.mexplosion"
+include "helix/game system data/juice/projectile/grenade_npc_thermal_detonator.mprojectile"
+
+BallisticProjectile grenade_npc_dropped_thermal_detonator < uid=91DC5D3C65D47903000771921BBB5D5F > : grenade_npc_thermal_detonator
+{
+	myActions
+	{
+		ProjectileActionGameScript HitDetonation
+		{
+			myActionTargetType FinalHit
+			myGameScript "helix/game scripts/gs_thermal_detonator_detonation.mgamescript"
+			myGameScriptDuration 1.5
+			myDamageFormula 5
+			myRadiusFormula 4
+			myDefaultDamage 5.0
+			myDefaultRadius 4.0
+		}
+		ProjectileActionGameScript GrenadeSpawn
+		{
+			myActionTargetType Spawned
+			myGameScript "helix/game scripts/gs_dev_sonic_imploder_spawn.mgamescript"
+			myGameScriptDuration 1.0
+		}
+		ProjectileActionExplosion Explosion
+		{
+			myActionTargetType FinalHit
+			myDamageFormula 5
+			myRadiusFormula 4
+			myDefaultDamage 5.0
+			myDefaultRadius 4.0
+			myExplosion < uid=91DC5D3C65D4790300077193EEF2EC7D > = explosion_npc_dropped_thermal_detonator 91DC5D3C65D4822E0001B8294D5AEC73
+		}
+	}
+}
+

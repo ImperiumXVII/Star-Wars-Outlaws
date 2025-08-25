@@ -1,0 +1,30 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/ash_shp_base.mnpc"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC ash_shp_duros_a < uid=F95CD8F364AD15BC0001D83DD181ADC8 > : ash_shp_base
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Scourge / Duros - Ashiga faction\", enabled = true, guid = #6AE6EE0D657831D8000266914A987D5F, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10726, text = \"DF-11 Scourge\", type = \"MenuLine\""
+	myCharacterVisuals < uid=F95CD8F364AD15BC0001D83E458456AA > = character_visuals_npc_shp_Durosian_Starfighter F95CD8F362ECDB8D0000E9D1A33F200A
+	myNPCComponentSetType Spaceship
+	mySpaceshipType DurosAshiga
+	myMaxHealth 80
+	myHealthFormula 40*SpaceHealthDifficultyModifier
+	myLodType Spaceship_Small
+	myVisionProfile < uid=F95CD8F364AD15BC0001D83F548D349B > = visionProfile_ash_ship_Fighter 6B0E1DE964B7A45D0000AD6118043BCC
+	myHearingProfile < uid=F95CD8F364AD15BC0001D840087BA961 > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=F95CD8F364AD15BC0001D841D448AA4B > = detectionProfile_ash_ship_Fighter 6B0E1DE964B662190003C715E97DE907
+	}
+	myThreatProfile < uid=F95CD8F3653FC2BB00004D7CEB4DDD8D > = Spaceshipthreatprofile F95CD8F3653F81EE00057BF796B8AD1A
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "duros weapon loadout" < uid=F95CD8F364AD15BC0001D8438E0A547A > = weaponloadout_ash_shp_duros 6AF0BA04649BFC9400074AFC9EB7A419
+	}
+	myCombatRole Fighter
+}
+

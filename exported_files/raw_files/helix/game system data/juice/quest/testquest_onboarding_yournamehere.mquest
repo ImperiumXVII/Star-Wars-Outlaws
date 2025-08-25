@@ -1,0 +1,49 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+
+Quest testquest_onboarding_yournamehere < uid=989363C16149A1C3000139E7ADA7EC38 >
+{
+	myName "contextComment = \"\", enabled = true, guid = #989363C16149A2EB000139EC696A2092, lineVersion = 2, maxLength = 0, productId = -1, sectionId = -1, text = \"[Your Name] Exercise Quest\", type = \"MenuLine\""
+	myDescription "contextComment = \"\", enabled = true, guid = #989363C16149A470000139EF39BF614F, lineVersion = 1, maxLength = 0, productId = -1, sectionId = -1, text = \"Exercise quest for new LDs\", type = \"MenuLine\""
+	myType Event
+	myBeats
+	{
+		QuestBeat "1. Talk to NPC" < uid=989363C16149D93F000139F19E0C17A6 >
+		{
+			myScript helix/scripts/scr_testquest_onboarding_yournamehere_beat01.mscript
+			myLevelInfo 9D0EE20B613F661B0000A4A8BBD2477A
+			myObjectives
+			{
+				QuestObjectiveInteract "Talk to Quest Giver" < uid=989363C16149DDCC00013A02BC004DB5 >
+				{
+					myName "contextComment = \"\", enabled = true, guid = #989363C16149DDD400013A03E4B5AC20, lineVersion = 1, maxLength = 0, productId = -1, sectionId = -1, text = \"Talk to Quest Giver\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=6F2AF91962175E50000033C57BB3DAB6 >
+			{
+			}
+		}
+		QuestBeat "2. Empire Outpost" < uid=989363C16149DA1F000139F5BE54B573 >
+		{
+			myScript helix/scripts/scr_testquest_onboarding_yournamehere_beat02.mscript
+			myLevelInfo 9D0EE20B613F661B0000A4A8BBD2477A
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Find Empire terminal" < uid=989363C16149F42A000063A1172B2A21 >
+				{
+					myName "contextComment = \"\", enabled = true, guid = #989363C16149F46F000063A599AE72D1, lineVersion = 1, maxLength = 0, productId = -1, sectionId = -1, text = \"Find Empire terminal\", type = \"MenuLine\""
+				}
+				QuestObjectiveInteract "Retrieve prisoner data" < uid=989363C16149F45E000063A36B7632B3 >
+				{
+					myName "contextComment = \"\", enabled = true, guid = #989363C16149F46C000063A4D79A3021, lineVersion = 1, maxLength = 0, productId = -1, sectionId = -1, text = \"Retrieve prisoner data\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=6F2AF91962175E50000033C6D6A3B318 >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=6F2AF91962175E50000033C75606EED2 >
+	{
+	}
+}
+

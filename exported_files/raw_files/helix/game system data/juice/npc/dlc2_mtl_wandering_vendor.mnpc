@@ -1,0 +1,71 @@
+include "helix/game system data/juice/dialogue character/databases/dlc2_characters.mdialoguecharacter"
+include "helix/game system data/juice/dialogue character/databases/miyuki_characters.mdialoguecharacter"
+include "helix/game system data/juice/npc/civ_transaction_with_npc.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/vendor/dlc2_vendorconfigs.mvendorconfig"
+
+NPC dlc2_mtl_wandering_vendor < uid=91DC5D3C672252D60004CFDC3C97FE16 > : civ_transaction_with_npc
+{
+	myName "branch = \"DLC2\", contextComment = \"Name of the type of vendor for the Miyuki Trade League, male version.\", enabled = true, guid = #2AE2EC85673CB082003EDC1D358E9CC6, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 12361, text = \"Miyuki Trader\", type = \"MenuLine\""
+	myNameFeminine "branch = \"DLC2\", contextComment = \"Name of the type of vendor for the Miyuki Trade League, female version.\", enabled = true, guid = #2AE2EC85673CB082003EDC1E4864DB95, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 12361, text = \"Miyuki Trader\", type = \"MenuLine\""
+	myAdditionalGearGraphs 91DC5D3C653665B400014B0CC310DD08
+	myFaction < uid=91DC5D3C672252D60004CFDDDF11CE16 > = TraderGroup 91DC5D3C66FBD9540000004783CAEE04
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=E4123D2767475AC900065663B01CE7DE > = Agent_Faction_CivilianTag 16DEADE6620AE18B000020C77856AAF4
+		RBTagsTag "New RBTagsTag" < uid=E4123D2767475AC900065664CF1B11B0 > = Agent_BarksFamily_CivCombatant E4123D276471F5C50000329C4D751A83
+		RBTagsTag "New RBTagsTag_0" < uid=E4123D2767475AC900065665B482347F > = Agent_BarksFamily_NewMiyukiTrader E4123D27675023B0000239FA90EAB6E7
+		RBTagsTag "New RBTagsTag_1" < uid=E4123D2767475AC900065666CF325D93 > = Agent_Vendor_Barterer 1EC89F256513F631000081B1DDA36D24
+	}
+	myDialogueCharacters
+	{
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=E4123D2767475AC900065667984771BC >
+		{
+			myDialogueCharacter < uid=E4123D2767475AC9000656688FC66595 > = AI_MIYUKI_TRADER_BASIC_F01 3A129121672DE523000236B7CE0A879E
+			myTagsList
+			{
+				RBTagsTag "New RBTagsTag" < uid=E4123D276748665C000000E354182878 > = Agent_Gender_FeminineTag 16DEADE6626D20EA00002E5277B65AD4
+			}
+		}
+		DialogueCharacterWithTags "New DialogueCharacterWithTags_0" < uid=E4123D276748663B000000E0614CD10A >
+		{
+			myDialogueCharacter < uid=E4123D2767486676000000E76D971677 > = AI_MIYUKI_TRADER_BASIC_F02 3A129121672DE523000236B8E1186EBD
+			myTagsList
+			{
+				RBTagsTag "New RBTagsTag" < uid=E4123D2767486664000000E453DB6770 > = Agent_Gender_FeminineTag 16DEADE6626D20EA00002E5277B65AD4
+			}
+		}
+		DialogueCharacterWithTags "New DialogueCharacterWithTags_1" < uid=E4123D2767486646000000E157CFE931 >
+		{
+			myDialogueCharacter < uid=E4123D2767486676000000E8E5FF1C52 > = AI_MIYUKI_TRADER_BASIC_M01 3A129121672DE4B000023648AA8675C1
+			myTagsList
+			{
+				RBTagsTag "New RBTagsTag" < uid=E4123D2767486668000000E57B758A5B > = Agent_Gender_MasculineTag 16DEADE6626D20EA00002E504CE30DE2
+			}
+		}
+		DialogueCharacterWithTags "New DialogueCharacterWithTags_2" < uid=E4123D276748664A000000E2ED6DD849 >
+		{
+			myDialogueCharacter < uid=E4123D2767486676000000E9320F75E4 > = AI_MIYUKI_TRADER_BASIC_M02 3A129121672DE523000236B9CEC86810
+			myTagsList
+			{
+				RBTagsTag "New RBTagsTag" < uid=E4123D276748666F000000E6F859BAEC > = Agent_Gender_MasculineTag 16DEADE6626D20EA00002E504CE30DE2
+			}
+		}
+	}
+	myVendorConfig < uid=2AE2EC856724CC87000000ED19B6A4CD > = VendorConfig_AllPlanets_MiyukiTraderEncounter 2AE2EC85670CDAD50003BE03B34B4835
+	myHideMapRefGameConditions
+	{
+		myType Group
+		myIsNegated FALSE
+		myOperator And
+		myCanBeOverridden FALSE
+		myConditions
+		{
+			GameConditionContextAgentIsAlive "New GameConditionContextAgentIsAlive"
+			{
+				myIsNegated TRUE
+			}
+		}
+	}
+}
+

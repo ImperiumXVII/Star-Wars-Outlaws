@@ -1,0 +1,40 @@
+include "helix/game system data/fruit/gamevalues/gamevalues.fruit"
+include "helix/game system data/fruit/mapref/mapref.fruit"
+
+//Keep in sync with HC_IntelState in HC_IntelState.h
+enum IntelState
+{
+	None
+	Active
+	Resolved
+	Disabled
+}
+
+enum IntelCategory
+{
+	Default
+	KeyPart
+	ScoundrelLegacy
+	Expert
+}
+
+class Intel < uid=auto >
+{
+	varmap myName < bhv="localization" ui_info=1 >
+	varmap myDescription < bhv="localization" ui_info=1 tooltip="This is the narrative context for your intel. It is optional and can be left blank if your actionable text carries enough narrative context by itself." >
+	varmap myDescriptionInVolume < bhv="localization" ui_info=1 tooltip="Replaces the description when the player is inside the intel volume. If it's not set, the normal description will be used." >
+	varmap myObjectiveText < bhv="localization" ui_info=1 tooltip="This is the actionable text that players should follow or decipher to solve the intel." >
+	string myIcon < bhv="sprite" ui_info=1 >
+	file myImage < bhv="asset" assettype="texture" ui_info=1 tooltip="This is the image that will appear in the journal's details panel.">	
+	MapRef* myMapRefData
+	uid myTargetLevelInfo < bhv="constantData" constantDataType="levelinfo" tooltip="The level that the target is in." >
+	IntelGameValue myStateGameValue < init_set=1 hidden=1 >
+	IntelCategory myCategory Default < ui_info=1 >
+	bool myIsKeyPart false < ui_info=1 >
+	bool myIsScoundrelLegacy false < ui_info=1 >
+}
+
+list IntelList
+{
+	Intel*
+}

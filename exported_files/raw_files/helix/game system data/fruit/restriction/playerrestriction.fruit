@@ -1,0 +1,325 @@
+
+enum PlayerRestrictionTypes < useCategories=1 process_using_strings=1 >
+{
+	< startCategory="Movement" >
+	Crouch
+	CrouchToggling
+	Jump
+	Sprint
+	Traversal
+	AutoTraversal
+	ForceWalking
+	Roll
+	RootMotion
+	Powerslide
+	MovementInput
+	AutoWalk
+	FastTravel
+	FocusAreas
+	FallDamage
+	TurnOnSpot
+	NonFatalFallDamage
+	PlayerAvoidance
+	EdgeHesitation
+	TraversalLedge
+	HangingTraversalOnly
+	LedgeDrop
+	SprintToggle
+	LastingCrouch
+	< endCategory="" >
+
+	< startCategory="Equipment" >
+	Shooting
+	Binoculars
+	GrapplingHook
+	AutoHolster
+	ManualHolster
+	ManualUnholster
+	HavingPickables
+	HoldingEquipment
+	HoldingOffensiveEquipment
+	HoldingPickables
+	HoldingMainWeapon
+	HoldingPickablesNoAutoUnholster
+	HolsterTransition
+	UnholsterTransition
+	UseEquipment
+	UseOffensiveEquipment
+	EquipItemsInUI
+	MainWeapon
+	SecondaryWeapon
+	TertiaryWeapon
+	ChangeWeaponModule
+	ChangeWeaponFireMode
+	ChangeWeaponModuleHoldAndPress
+	ChangeWeaponModuleCycling
+	ChangeWeaponModuleAndModeAnimation
+	QuickChangeWeaponModule
+	ReloadWeapon
+	ChargeWeapon
+	Throwable
+	ReceivePickupWeaponFromPet
+	EquipmentUI
+	ForcedSlide
+	Whistle
+	SlopeSlide
+	BactaVial
+	StunWeapon
+	RaiseEquipment
+	RaiseOffensiveEquipment
+	EquipmentActiveCooling
+	HeldEquipmentVisibility
+	MainWeaponVisibility
+	HoloReader
+	Throwing
+	ThrowAwayPickables
+	HolsterPickables
+	< endCategory="" >
+
+	< startCategory="Combat" >
+	Melee
+	Takedown
+	Finisher
+	NPCTakedown
+	Stagger
+	AdrenalineRush
+	AdrenalineRushTimer
+	AdrenalineRushCancel
+	PanicShot
+	CrackShot
+	CoopAbility
+	Thrown
+	MeleeStagger
+	ExplosionStagger
+	EnvironmentStagger
+	AutomaticTagging
+	< endCategory="" >
+
+	< startCategory="Aiming" >
+	ActiveAiming
+	ActiveAimingForOffensive
+	UnarmedAiming
+	ScopeAiming
+	< endCategory="" >
+
+	< startCategory="Camera" >
+	GameCameraInput
+	CameraDeviation
+	CameraAutoLookCenter
+	CameraDynamicShoulderOffset
+	CameraCollisionSanityCheck
+	< endCategory="" >
+
+	< startCategory="Speeder" >
+	CallSpeeder
+	SpeederInnerVolume
+	SpeederOuterVolume
+	DismountSpeeder
+	MountSpeeder
+	< endCategory="" >
+
+	< startCategory="Interactions" >
+	Interactions
+		< startCategory="Interactions/Interaction Types" >
+		InteractionSimple
+		InteractionPet
+		InteractionVehicle
+		InteractionTakedown
+		InteractionVehicleRepair
+		InteractionStealthSneak
+		InteractionDamage
+		InteractionLedgeClimb
+		InteractionDropDown
+		InteractionLoot
+		InteractionLootContainer
+		InteractionLootSmugglerCache
+		InteractionPickupCarried
+		InteractionLootSpace
+		InteractionLootContainerSpace
+		InteractionAlarmPanel
+		InteractionReactToPet
+		InteractionGrapplingHook
+		InteractionDomainOfMasteryExpert
+		InteractionNPCVendor
+		InteractionNPCContractGiver
+		InteractionPetNPC
+		InteractionRevive
+		InteractionJukebox
+		InteractionBlabbermouth
+		InteractionCantinaMinigame
+		InteractionInWorldMessage
+		InteractionDoor
+		InteractionMailbox
+		InteractionAdminPanel
+		InteractionLadder
+		InteractionCranePuzzleLever
+		< endCategory="" >
+	< endCategory="" >
+
+	< startCategory="Cover" >
+	CoverUse
+	CoverCameraOffsets
+	< endCategory="" >
+
+	< startCategory="Pet" >
+	PetSenses
+	PetInteractions
+		< startCategory="Pet/Pet Commands" >
+		PetInteractSimple
+		PetFreeDistract
+		PetAttack
+		PetSteal
+		PetFetch
+		PetMakeNoise
+		PetHoldLever
+		PetSabotage
+		PetShove
+		PetPullCrate
+		PetCreateHole
+		PetBlindCamera
+		PetReleaseLockedPin
+		PetReleaseLadder
+		PetRemoveVent
+		PetDropObject
+		PetHoldOpenLatch
+		PetUsePetTunnel
+		PetRevivePlayer
+		PetSkilledAttack
+		PetControlAttack
+		< endCategory="" >
+	< endCategory="" >
+
+	< startCategory="UI" >
+		AccessUIMenus
+		UseGadgetWheel
+	< endCategory="" >
+
+	< startCategory="Spaceship" >
+		TrailblazerAuxiliaryDevice
+		TrailblazerRepairKit
+		TrailblazerScanner
+		TrailblazerTurret
+		SpaceTravel
+		TrailblazerAimAssist
+		TrailblazerAutoRighting
+		TrailblazerDodge
+		TrailblazerUpgradedDodge
+		TrailblazerManeuver
+		Trailblazer360Maneuver
+		TrailblazerSpeedBoost
+		TrailblazerInfiniteBoost
+		TrailblazerPursuitAgentsMode
+		TrailblazerPursuitObjectsMode
+		TrailblazerFreeLook
+		TrailblazerLookBack
+		TrailblazerWeaponLockOn
+		TrailblazerImpactDecals
+		TrailblazerLanding
+		AssaultMode
+		ReconMode
+		ToggleFlightMode
+	< endCategory="" >
+}
+
+list PlayerRestrictionsList
+{
+	PlayerRestrictionTypes
+}
+
+class PlayerRestriction < uid=auto >
+{
+	PlayerRestrictionsList myPlayerRestrictions
+}
+
+enum PlayerActionRestrictReason < process_using_strings=1 >
+{
+	InvalidReason
+	VolumeModifier
+	Script
+	MeleeApproaching
+	MeleeBlocked
+	MeleeContext
+	MeleeExecution
+	MeleeMove
+	MeleeMoveFile
+	MeleeUninterruptible
+	TrickShot
+	Equipment
+	Aim
+	AimDenied
+	Takedown
+	Traversal
+	Ladder
+	Death
+	CustomAnimation
+	OverHeat
+	OverHeatFailure
+	OverHeatSuccess
+	Powerslide
+	DodgeRoll
+	Stagger
+	Blabbermouth
+	Arrest
+	Debug
+	Pathing
+	Combat
+	Vault
+	Jump
+	ForceSlide
+	Falling
+	LookAt
+	SpaceShip
+	PetMode
+	TransitionToSequence
+	ChangeWeaponModule
+	QuickChangeWeaponModule
+	WeaponModuleSelector
+	Thrown
+	RideSpeeder
+	AdrenalineRush
+	Teleport
+	BlabbermouthInteraction
+	GrapplingHook
+	Rappel
+	DuringInteraction
+	ScriptSequence
+	PetWildlife
+	WearingControlledOutfit
+	ForcedCrouch
+	BrinkOfDeath
+	AnimationSequence
+	AttachedToVehicle
+	GadgetWheel
+	Lockpicking
+	TrailblazerIonDisabled
+	TrailblazerLookBack
+	TrailblazerManeuver
+	TrailblazerOutOfBounds
+	TrailblazerSpeedBoost
+	AnimationChannelEvent
+	LandingSequence
+	PreparingInteraction
+	Stun
+	FallProtection
+	StepOff
+	TraiblazerControlParamsNode
+	MoveTo
+	LandingZone
+	CameraModifier
+	Throwing
+	OutsideBeatVolume
+	LevelTransitionSequence
+	LevelTransition
+	ClimbUp
+	CoverCornerSnap
+	ThrowAwayOutOfAmmo
+	ThrowAwayOutOfAmmoBreakout
+	RokanaReconMode
+	SpaceshipDodge
+	RokanaModeSwitchCooldown
+}
+
+list PlayerActionRestrictReasonList
+{
+	PlayerActionRestrictReason
+}

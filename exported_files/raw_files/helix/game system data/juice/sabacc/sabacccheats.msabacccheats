@@ -1,0 +1,445 @@
+include "helix/game system data/fruit/sabacc/sabacccheats.fruit"
+include "helix/game system data/juice/item/items_dom_skill.mitem"
+
+SabaccCheats SabaccCheats_Default < uid=E7561B02649ECCC80000B4B73A633C64 >
+{
+	mySuspicionsSettings
+	{
+		SabaccSuspicionSettings Low
+		{
+			mySuspicionLevel Low
+			myNumberOfAutoSuccessToIncreaseSuspicion 3
+		}
+		SabaccSuspicionSettings Middle
+		{
+			mySuspicionLevel Middle
+			myRequiredSuspicionValue 1
+			myCheatDifficultyIndex 2
+			myNumberOfAutoSuccessToIncreaseSuspicion 3
+		}
+		SabaccSuspicionSettings High
+		{
+			mySuspicionLevel High
+			myRequiredSuspicionValue 2
+			myCheatDifficultyIndex 4
+			myNumberOfAutoSuccessToIncreaseSuspicion 3+SabaccSuspicionRaiseBlockerBonus
+			myBlabbermouthPercentageChanceToTrigger 1.0
+			myBlabbermouthOpportunityDuration 3
+		}
+		SabaccSuspicionSettings Caught
+		{
+			mySuspicionLevel Caught
+			myRequiredSuspicionValue 3+SabaccSuspicionRaiseBlockerBonus
+			myBlabbermouthPercentageChanceToTrigger 0.0
+			myBlabbermouthOpportunityDuration 0.0
+		}
+	}
+	myBlabbermouthMaxOpportunities 1
+	myRequiredItemToUnlockBlabbermouth < uid=E7561B02652F9B7C00014B9BCF239407 > = Dom_skill_Blabbermouth E41F4D1B629A10FC00008D1845DDD90A
+	myBanDuration 900
+	myAllCheatsNotActiveWarning "aurabesh = false, branch = \"\", contextComment = \"All the sabacc cheats are not available on this table\", enabled = true, guid = #75B1D5B364C0CCD7000186BCD32A7F9F, lineVersion = 6, maxLength = 29, productId = 6, sectionId = 9981, text = \"Cheats unavailable\", type = \"MenuLine\""
+	myDoubleDrawCheatSettings < uid=E7561B0264A2B19700018CA920EA10AF >
+	{
+		myIsActive TRUE
+		myIsNotActiveWarning "aurabesh = false, contextComment = 'Sabacc cheat  \"double draw\" is not available on this table', enabled = true, guid = #75B1D5B364C0DECD000711B7CCE948EB, lineVersion = 5, maxLength = 30, productId = 6, sectionId = 428, text = \"Double draw unavailable\", type = \"MenuLine\""
+		myPhaseInterruptionWhenSuspicionIncreased
+		{
+			myPhaseToInterrupt ChoiceDiscardCard
+		}
+		myRequiredItem < uid=E7561B02652815F200014095BA7A1AA8 > = DoM_skill_Sabacc_DoubleDrawCheat E7561B026527F1F30000EA9E3ABF28DF
+		mySettingsByDifficulty
+		{
+			SabaccCheatDoubleDrawSettingsByDifficulty "New SabaccCheatDoubleDrawSettingsByDifficulty"
+			{
+				myInputChallenge E7561B02652515BA0005A1A1946EEA5F
+			}
+			SabaccCheatDoubleDrawSettingsByDifficulty "New SabaccCheatDoubleDrawSettingsByDifficulty 1"
+			{
+				myInputChallenge 75B1D5B36537C707000299561F52D226
+			}
+			SabaccCheatDoubleDrawSettingsByDifficulty "New SabaccCheatDoubleDrawSettingsByDifficulty 2"
+			{
+				myInputChallenge 75B1D5B36537C70700029957BB078ACD
+			}
+			SabaccCheatDoubleDrawSettingsByDifficulty "New SabaccCheatDoubleDrawSettingsByDifficulty 3"
+			{
+				myInputChallenge 75B1D5B36537C707000299585FDE1582
+			}
+			SabaccCheatDoubleDrawSettingsByDifficulty "New SabaccCheatDoubleDrawSettingsByDifficulty 4"
+			{
+				myInputChallenge 75B1D5B36537C7070002995955850975
+			}
+			SabaccCheatDoubleDrawSettingsByDifficulty "New SabaccCheatDoubleDrawSettingsByDifficulty 5"
+			{
+				myInputChallenge 75B1D5B36537C7070002995ADCCF2201
+			}
+			SabaccCheatDoubleDrawSettingsByDifficulty "New SabaccCheatDoubleDrawSettingsByDifficulty 6"
+			{
+				myInputChallenge 75B1D5B36537C7070002995B5B198AB7
+			}
+		}
+	}
+	myDiceCheatSettings < uid=4206B61F64AD87F300058814012D8761 >
+	{
+		myIsActive TRUE
+		myIsNotActiveWarning "aurabesh = false, contextComment = 'Sabacc cheat  \"dice cheat\" is not available on this table', enabled = true, guid = #75B1D5B364C0DEA9000711B68A245B9F, lineVersion = 5, maxLength = 30, productId = 6, sectionId = 428, text = \"Dice cheat unavailable\", type = \"MenuLine\""
+		myPhaseInterruptionWhenSuspicionIncreased
+		{
+			myPhaseToInterrupt ChoiceDice
+			myInterruptionTime Before
+		}
+		myRequiredItem < uid=E7561B026528171600041751F3E1C8DD > = DoM_skill_Sabacc_DiceCheat E7561B02652816D40003237BA5649166
+		myPrimeSettings
+		{
+			myDieRanksWhenTwoImpostorsOnSucceed
+			{
+				int "New int" 3
+				int "New int_0" 4
+				int "New int_1" 5
+			}
+			myDieRankWhenImpostorAndSylopOnSucceed 5
+			myDieRanksWhenImpostorAndSylopOnFail
+			{
+				int "New int" 0
+				int "New int_0" 1
+				int "New int_1" 2
+			}
+		}
+		myRevealSettings
+		{
+			myDieExcludedRanksWhenImpostorOrSylopOnFail
+			{
+				int "New int" 0
+			}
+		}
+		mySettingsByDifficulty
+		{
+			SabaccCheatDiceSettingsByDifficulty "New SabaccCheatDiceSettingsByDifficulty"
+			{
+				myInputChallenge E7561B02651C23B70006CA6AFD939134
+			}
+			SabaccCheatDiceSettingsByDifficulty "New SabaccCheatDiceSettingsByDifficulty 1"
+			{
+				myInputChallenge 75B1D5B36537BD990001D5C6722E1B18
+			}
+			SabaccCheatDiceSettingsByDifficulty "New SabaccCheatDiceSettingsByDifficulty 2"
+			{
+				myInputChallenge 75B1D5B36537BD990001D5C8745DD74C
+			}
+			SabaccCheatDiceSettingsByDifficulty "New SabaccCheatDiceSettingsByDifficulty 3"
+			{
+				myInputChallenge 75B1D5B36537BD990001D5CA40B4384E
+			}
+			SabaccCheatDiceSettingsByDifficulty "New SabaccCheatDiceSettingsByDifficulty 4"
+			{
+				myInputChallenge 75B1D5B36537BD990001D5CCB0A16F1B
+			}
+			SabaccCheatDiceSettingsByDifficulty "New SabaccCheatDiceSettingsByDifficulty 5"
+			{
+				myInputChallenge 75B1D5B36537BD990001D5CE13DAC2B0
+			}
+			SabaccCheatDiceSettingsByDifficulty "New SabaccCheatDiceSettingsByDifficulty 6"
+			{
+				myInputChallenge 75B1D5B36537BD990001D5D0637A5E3D
+			}
+		}
+	}
+	mySneakPeekCheatSettings < uid=E7561B0264A6BCA400013DC0A4D27984 >
+	{
+		myIsNotActiveWarning "aurabesh = false, contextComment = 'Sabacc cheat  \"sneak peek\" is not available on this table', enabled = true, guid = #75B1D5B364C0CCDA000186BD794A53D3, lineVersion = 6, maxLength = 30, productId = 6, sectionId = 428, text = \"Sneak Peek unavailable\", type = \"MenuLine\""
+		myPhaseInterruptionWhenSuspicionIncreased
+		{
+			myPhaseToInterrupt ChoicePlayer
+		}
+		myAutoSuccessGameplayDuration 1.0
+		mySettingsByDifficulty
+		{
+			SabaccCheatSneakPeekSettingsByDifficulty "New SabaccCheatSneakPeekSettingsByDifficulty"
+			{
+				myInputChallenge 75B1D5B364C0CD0F000186BE445EFD5B
+			}
+			SabaccCheatSneakPeekSettingsByDifficulty "New SabaccCheatSneakPeekSettingsByDifficulty 1"
+			{
+				myInputChallenge 75B1D5B364C0D291000600EF374B370A
+			}
+			SabaccCheatSneakPeekSettingsByDifficulty "New SabaccCheatSneakPeekSettingsByDifficulty 2"
+			{
+				myInputChallenge 75B1D5B364C0D32600068911B3618E3C
+			}
+			SabaccCheatSneakPeekSettingsByDifficulty "New SabaccCheatSneakPeekSettingsByDifficulty 3"
+			{
+				myInputChallenge 75B1D5B364DF19DB0001C204F07A9265
+			}
+			SabaccCheatSneakPeekSettingsByDifficulty "New SabaccCheatSneakPeekSettingsByDifficulty 4"
+			{
+				myInputChallenge 75B1D5B364DF1B5D00032DFB8306A715
+			}
+			SabaccCheatSneakPeekSettingsByDifficulty "New SabaccCheatSneakPeekSettingsByDifficulty 5"
+			{
+				myInputChallenge 75B1D5B364DF20180004A3BD8D632597
+			}
+			SabaccCheatSneakPeekSettingsByDifficulty "New SabaccCheatSneakPeekSettingsByDifficulty 6"
+			{
+				myInputChallenge 75B1D5B36531276A000EC813335C95D5
+			}
+		}
+	}
+}
+
+SabaccCheats SabaccCheats_Serious < uid=75B1D5B3655F58B100017D9F6DF5CEBE > : SabaccCheats_Default
+{
+	mySuspicionsSettings
+	{
+		SabaccSuspicionSettings Low
+		{
+			mySuspicionLevel Low
+			myNumberOfAutoSuccessToIncreaseSuspicion 2
+		}
+		SabaccSuspicionSettings Middle
+		{
+			mySuspicionLevel Middle
+			myRequiredSuspicionValue 1
+			myCheatDifficultyIndex 2
+			myNumberOfAutoSuccessToIncreaseSuspicion 2
+		}
+		SabaccSuspicionSettings High
+		{
+			mySuspicionLevel High
+			myRequiredSuspicionValue 2
+			myCheatDifficultyIndex 4
+			myNumberOfAutoSuccessToIncreaseSuspicion 2+SabaccSuspicionRaiseBlockerBonus
+			myBlabbermouthPercentageChanceToTrigger 1.0
+			myBlabbermouthOpportunityDuration 3.0
+		}
+		SabaccSuspicionSettings Caught
+		{
+			mySuspicionLevel Caught
+			myRequiredSuspicionValue 3+SabaccSuspicionRaiseBlockerBonus
+		}
+	}
+	myDoubleDrawCheatSettings < uid=75B1D5B3655F58B100017DA0553D9A68 >
+	{
+		mySettingsByDifficulty
+		{
+			SabaccCheatDoubleDrawSettingsByDifficulty "New SabaccCheatDoubleDrawSettingsByDifficulty 0"
+			{
+				myInputChallenge 75B1D5B36565F4930002A045593810ED
+			}
+			SabaccCheatDoubleDrawSettingsByDifficulty "New SabaccCheatDoubleDrawSettingsByDifficulty 1"
+			{
+				myInputChallenge 75B1D5B36565F4930002A045593810ED
+			}
+			SabaccCheatDoubleDrawSettingsByDifficulty "New SabaccCheatDoubleDrawSettingsByDifficulty 2"
+			{
+				myInputChallenge 75B1D5B36565F4930002A046D832BB01
+			}
+			SabaccCheatDoubleDrawSettingsByDifficulty "New SabaccCheatDoubleDrawSettingsByDifficulty 3"
+			{
+				myInputChallenge 75B1D5B36565F4930002A046D832BB01
+			}
+			SabaccCheatDoubleDrawSettingsByDifficulty "New SabaccCheatDoubleDrawSettingsByDifficulty 4"
+			{
+				myInputChallenge 75B1D5B36565F4930002A047DDE0C88B
+			}
+			SabaccCheatDoubleDrawSettingsByDifficulty "New SabaccCheatDoubleDrawSettingsByDifficulty 5"
+			{
+				myInputChallenge 75B1D5B36565F4930002A04805ED5D5D
+			}
+			SabaccCheatDoubleDrawSettingsByDifficulty "New SabaccCheatDoubleDrawSettingsByDifficulty 6"
+			{
+				myInputChallenge 75B1D5B36565F4930002A0499CCB9A75
+			}
+		}
+	}
+	myDiceCheatSettings < uid=75B1D5B3655F58B100017DA167B7A586 >
+	{
+		mySettingsByDifficulty
+		{
+			SabaccCheatDiceSettingsByDifficulty "New SabaccCheatDiceSettingsByDifficulty"
+			{
+				myInputChallenge 75B1D5B36565F8A20002A053384F789C
+			}
+			SabaccCheatDiceSettingsByDifficulty "New SabaccCheatDiceSettingsByDifficulty 1"
+			{
+				myInputChallenge 75B1D5B36565F8A20002A053384F789C
+			}
+			SabaccCheatDiceSettingsByDifficulty "New SabaccCheatDiceSettingsByDifficulty 2"
+			{
+				myInputChallenge 75B1D5B36565F8A20002A0545D598113
+			}
+			SabaccCheatDiceSettingsByDifficulty "New SabaccCheatDiceSettingsByDifficulty 3"
+			{
+				myInputChallenge 75B1D5B36565F8A20002A0545D598113
+			}
+			SabaccCheatDiceSettingsByDifficulty "New SabaccCheatDiceSettingsByDifficulty 4"
+			{
+				myInputChallenge 75B1D5B36565F8A20002A05570B128CF
+			}
+			SabaccCheatDiceSettingsByDifficulty "New SabaccCheatDiceSettingsByDifficulty 5"
+			{
+				myInputChallenge 75B1D5B36565F8A20002A05691A65A12
+			}
+			SabaccCheatDiceSettingsByDifficulty "New SabaccCheatDiceSettingsByDifficulty 6"
+			{
+				myInputChallenge 75B1D5B36565F8A20002A057D26E5B22
+			}
+		}
+	}
+	mySneakPeekCheatSettings < uid=75B1D5B3655F58B100017DA2918014F4 >
+	{
+		mySettingsByDifficulty
+		{
+			SabaccCheatSneakPeekSettingsByDifficulty "New SabaccCheatSneakPeekSettingsByDifficulty 0"
+			{
+				myInputChallenge 75B1D5B36565FE870002A061C0A38883
+			}
+			SabaccCheatSneakPeekSettingsByDifficulty "New SabaccCheatSneakPeekSettingsByDifficulty 1"
+			{
+				myInputChallenge 75B1D5B36565FE870002A061C0A38883
+			}
+			SabaccCheatSneakPeekSettingsByDifficulty "New SabaccCheatSneakPeekSettingsByDifficulty 2"
+			{
+				myInputChallenge 75B1D5B36565FE870002A062ACBC1967
+			}
+			SabaccCheatSneakPeekSettingsByDifficulty "New SabaccCheatSneakPeekSettingsByDifficulty 3"
+			{
+				myInputChallenge 75B1D5B36565FE870002A062ACBC1967
+			}
+			SabaccCheatSneakPeekSettingsByDifficulty "New SabaccCheatSneakPeekSettingsByDifficulty 4"
+			{
+				myInputChallenge 75B1D5B36565FE870002A0633115EF3E
+			}
+			SabaccCheatSneakPeekSettingsByDifficulty "New SabaccCheatSneakPeekSettingsByDifficulty 5"
+			{
+				myInputChallenge 75B1D5B36565FE870002A064BBD7E03D
+			}
+			SabaccCheatSneakPeekSettingsByDifficulty "New SabaccCheatSneakPeekSettingsByDifficulty 6"
+			{
+				myInputChallenge 75B1D5B36531276A000EC813335C95D5
+			}
+		}
+	}
+}
+
+SabaccCheats SabaccCheats_Bosknok < uid=75B1D5B3655F2D29000AFD2D569B9B8C > : SabaccCheats_Serious
+{
+	mySneakPeekCheatSettings < uid=75B1D5B3655F2D49000AFD317ADF8C4B >
+	{
+		myIsActive FALSE
+	}
+}
+
+SabaccCheats SabaccCheats_Lando < uid=75B1D5B3655F389100017D727C8EC7A1 > : SabaccCheats_Serious
+{
+	myDoubleDrawCheatSettings < uid=75B1D5B3655F5CCE00017DB856E80B95 >
+	{
+		mySettingsByDifficulty
+		{
+			SabaccCheatDoubleDrawSettingsByDifficulty "New SabaccCheatDoubleDrawSettingsByDifficulty 0"
+			{
+				myInputChallenge 75B1D5B36565F4930002A046D832BB01
+			}
+			SabaccCheatDoubleDrawSettingsByDifficulty "New SabaccCheatDoubleDrawSettingsByDifficulty 1"
+			{
+				myInputChallenge 75B1D5B36565F4930002A046D832BB01
+			}
+			SabaccCheatDoubleDrawSettingsByDifficulty "New SabaccCheatDoubleDrawSettingsByDifficulty 2"
+			{
+				myInputChallenge 75B1D5B36565F4930002A047DDE0C88B
+			}
+			SabaccCheatDoubleDrawSettingsByDifficulty "New SabaccCheatDoubleDrawSettingsByDifficulty 3"
+			{
+				myInputChallenge 75B1D5B36565F4930002A047DDE0C88B
+			}
+			SabaccCheatDoubleDrawSettingsByDifficulty "New SabaccCheatDoubleDrawSettingsByDifficulty 4"
+			{
+				myInputChallenge 75B1D5B36565F4930002A04805ED5D5D
+			}
+			SabaccCheatDoubleDrawSettingsByDifficulty "New SabaccCheatDoubleDrawSettingsByDifficulty 5"
+			{
+				myInputChallenge 75B1D5B36565F4930002A04805ED5D5D
+			}
+			SabaccCheatDoubleDrawSettingsByDifficulty "New SabaccCheatDoubleDrawSettingsByDifficulty 6"
+			{
+				myInputChallenge 75B1D5B36565F4930002A0499CCB9A75
+			}
+		}
+	}
+}
+
+SabaccCheats SabaccCheats_Ashiga < uid=75B1D5B3655F38D800017D74D503202C > : SabaccCheats_Serious
+{
+	myDiceCheatSettings < uid=75B1D5B3655F5D4900017DB960478AE2 >
+	{
+		mySettingsByDifficulty
+		{
+			SabaccCheatDiceSettingsByDifficulty "New SabaccCheatDiceSettingsByDifficulty 0"
+			{
+				myInputChallenge 75B1D5B36565F8A20002A0545D598113
+			}
+			SabaccCheatDiceSettingsByDifficulty "New SabaccCheatDiceSettingsByDifficulty 1"
+			{
+				myInputChallenge 75B1D5B36565F8A20002A0545D598113
+			}
+			SabaccCheatDiceSettingsByDifficulty "New SabaccCheatDiceSettingsByDifficulty 2"
+			{
+				myInputChallenge 75B1D5B36565F8A20002A05570B128CF
+			}
+			SabaccCheatDiceSettingsByDifficulty "New SabaccCheatDiceSettingsByDifficulty 3"
+			{
+				myInputChallenge 75B1D5B36565F8A20002A05570B128CF
+			}
+			SabaccCheatDiceSettingsByDifficulty "New SabaccCheatDiceSettingsByDifficulty 4"
+			{
+				myInputChallenge 75B1D5B36565F8A20002A05691A65A12
+			}
+			SabaccCheatDiceSettingsByDifficulty "New SabaccCheatDiceSettingsByDifficulty 5"
+			{
+				myInputChallenge 75B1D5B36565F8A20002A05691A65A12
+			}
+			SabaccCheatDiceSettingsByDifficulty "New SabaccCheatDiceSettingsByDifficulty 6"
+			{
+				myInputChallenge 75B1D5B36565F8A20002A057D26E5B22
+			}
+		}
+	}
+}
+
+SabaccCheats SabaccCheats_Quint < uid=75B1D5B3655F38EE00017D768AA8ED65 > : SabaccCheats_Serious
+{
+	mySneakPeekCheatSettings < uid=75B1D5B3655F5DE400017DBA60E82DE7 >
+	{
+		mySettingsByDifficulty
+		{
+			SabaccCheatSneakPeekSettingsByDifficulty "New SabaccCheatSneakPeekSettingsByDifficulty 0"
+			{
+				myInputChallenge 75B1D5B36565FE870002A062ACBC1967
+			}
+			SabaccCheatSneakPeekSettingsByDifficulty "New SabaccCheatSneakPeekSettingsByDifficulty 1"
+			{
+				myInputChallenge 75B1D5B36565FE870002A062ACBC1967
+			}
+			SabaccCheatSneakPeekSettingsByDifficulty "New SabaccCheatSneakPeekSettingsByDifficulty 2"
+			{
+				myInputChallenge 75B1D5B36565FE870002A0633115EF3E
+			}
+			SabaccCheatSneakPeekSettingsByDifficulty "New SabaccCheatSneakPeekSettingsByDifficulty 3"
+			{
+				myInputChallenge 75B1D5B36565FE870002A0633115EF3E
+			}
+			SabaccCheatSneakPeekSettingsByDifficulty "New SabaccCheatSneakPeekSettingsByDifficulty 4"
+			{
+				myInputChallenge 75B1D5B36565FE870002A064BBD7E03D
+			}
+			SabaccCheatSneakPeekSettingsByDifficulty "New SabaccCheatSneakPeekSettingsByDifficulty 5"
+			{
+				myInputChallenge 75B1D5B36565FE870002A064BBD7E03D
+			}
+			SabaccCheatSneakPeekSettingsByDifficulty "New SabaccCheatSneakPeekSettingsByDifficulty 6"
+			{
+				myInputChallenge 75B1D5B36565FE870002A06567EC8054
+			}
+		}
+	}
+}
+

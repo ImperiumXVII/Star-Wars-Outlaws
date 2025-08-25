@@ -1,0 +1,105 @@
+include "helix/game system data/fruit/combat/combat.fruit"
+include "helix/game system data/fruit/effects/effects.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditionbase.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+include "helix/game system data/fruit/projectile/npcsensoryprojectiletype.fruit"
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/fruit/projectile/projectile_actions.fruit"
+include "helix/game system data/fruit/projectile/projectile_object.fruit"
+include "helix/game system data/juice/projectile/realization/rokana_medium_laser.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/ship_laser_red.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/ship_medium_laser_blue.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/ship_medium_laser_green.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/ship_small_laser_blue.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/ship_small_laser_purple.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/ship_small_laser_red.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/ship_small_plasburst_laser_red.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/trailblazer_small_laser.mprojectilerealization"
+include "helix/game system data/juice/projectile/weapon_projectile_space_lasers.mprojectile"
+include snowdrop/modules/core/audio/audio.fruit
+
+BallisticProjectile dlc2_rokana_laser_projectile < uid=B4FBE4306716522A0000029EB41F62BE >
+{
+	myObject
+	{
+		myMaterialType Energy
+		myTravelLifeTime 1.5
+		myStickType OnlyTranslation
+	}
+	myRealization < uid=B4FBE4306716522A0000029F7FEBBD72 > = trailblazer_small_laser 5E65A219649C1F0C00062577F2FC5400
+	myActions
+	{
+		ProjectileActionDamage Damage
+		{
+			myActionTargetType Hit
+			myDamageType Laser
+			myDamage 1.0
+		}
+	}
+	myInitialSpeed 2000.0
+	myAccelerationType Constant
+	myAccelerationConstant 0.0
+	myAccelerationCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.38326675 -4.7615814, -0.4883796 -1.2316742, }, outTangents = { 0.30116838 8.6079407, 0.10857789 1.3489363, 0 0, }, properties = { 274, 4371, 2066, }, values = { -0.0035484582 0, 1.1780767 0, 1.51182 50, }, }, numKeys = 3, }"
+	myBounceEnabled FALSE
+	myBounceMaxBounces 1
+	mySeekerEnabled TRUE
+	mySeekerTurnRate 0.25
+	mySeekerTurnRateModifierCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 1, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 0, }, outTangents = { 0.33333334 0, 0 0, }, properties = { 71, 1027, }, values = { 0 1, 1 1, }, }, numKeys = 2, }"
+	mySeekerHasMaxDistanceFromTarget TRUE
+	mySeekerMaxDistanceFromTarget 3000.0
+	mySeekerMissActionEnabled TRUE
+	mySeekerMaxDistanceToConsiderMiss 25.0
+	mySeekerTargetMissAction AbandonTarget
+}
+
+BallisticProjectile dlc2_rokana_small_laser_projectile < uid=B4FBE4306716522A000002A0BE45D095 >
+{
+	myObject
+	{
+		myMaterialType Energy
+		myTravelLifeTime 1.25
+		myStickType OnlyTranslation
+	}
+	myRealization < uid=B4FBE4306716522A000002A198F0ABC3 > = trailblazer_small_laser 5E65A219649C1F0C00062577F2FC5400
+	myActions
+	{
+		ProjectileActionDamage Damage
+		{
+			myDamageType Laser
+			myDamage 3.0
+		}
+	}
+	myInitialSpeed 2400.0
+	myAccelerationType Constant
+	myAccelerationConstant 0.0
+	myAccelerationCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.38326675 -4.7615814, -0.4883796 -1.2316742, }, outTangents = { 0.30116838 8.6079407, 0.10857789 1.3489363, 0 0, }, properties = { 274, 4371, 2066, }, values = { -0.0038081706 0.41102505, 1.1780767 0, 1.511821 50, }, }, numKeys = 3, }"
+	myBounceEnabled FALSE
+	myBounceMaxBounces 1
+	mySeekerEnabled TRUE
+	mySeekerTurnRate 0.25
+	mySeekerTurnRateModifierCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 1, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -0.33333334 0, }, outTangents = { 0.33333334 0, 0 0, }, properties = { 71, 1027, }, values = { 0 1, 1 1, }, }, numKeys = 2, }"
+	mySeekerHasMaxDistanceFromTarget TRUE
+	mySeekerMaxDistanceFromTarget 3000.0
+	mySeekerMissActionEnabled TRUE
+	mySeekerMaxDistanceToConsiderMiss 25.0
+	mySeekerTargetMissAction AbandonTarget
+}
+
+BallisticProjectile dlc2_rokana_medium_laser_projectile < uid=B4FBE43067165310000002AFD24DD8E9 > : dlc2_rokana_small_laser_projectile
+{
+	myRealization < uid=FB5408EA679B9ADC0021FED383EEF740 > = ship_small_laser_purple 061AC04667BDC0BD00138D98EBF07DE7
+	myActions
+	{
+		ProjectileActionDamage Damage
+		{
+			myDamageType Laser
+			myDamage 6.0
+		}
+	}
+}
+
+BallisticProjectile dlc2_rokana_medium_laser_projectile_npc < uid=C5349EF767BDC9E800072B9676925BEF > : projectile_ship_laser_medium
+{
+	myRealization < uid=C5349EF767BDC9E800072B978416B03A > = ship_small_laser_purple 061AC04667BDC0BD00138D98EBF07DE7
+}
+

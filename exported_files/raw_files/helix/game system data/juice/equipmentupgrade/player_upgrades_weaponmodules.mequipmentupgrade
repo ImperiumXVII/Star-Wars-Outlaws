@@ -1,0 +1,749 @@
+include "helix/game system data/fruit/equipmentupgrade/equipmentupgrade.fruit"
+include "helix/game system data/juice/equipmentupgrade/weaponmodules_upgrades_categories.mequipmentupgradecategory"
+include "helix/game system data/juice/item/craftingmaterials.mitem"
+include "helix/game system data/juice/item/items_blaster_unlocks.mitem"
+include "helix/game system data/juice/item/keyitems.mitem"
+include "helix/game system data/juice/item/player_weaponmodule_concussion.mitem"
+include "helix/game system data/juice/item/player_weaponmodule_heavy.mitem"
+include "helix/game system data/juice/item/player_weaponmodule_ion.mitem"
+include "helix/game system data/juice/item/player_weaponmodule_ion_beam.mitem"
+include "helix/game system data/juice/item/player_weaponmodule_ion_blast.mitem"
+include "helix/game system data/juice/item/player_weaponmodule_phasepulse.mitem"
+include "helix/game system data/juice/item/player_weaponmodule_power.mitem"
+include "helix/game system data/juice/item/player_weaponmodule_repeater.mitem"
+include "helix/game system data/juice/item/player_weaponmodule_standard.mitem"
+include "helix/game system data/juice/item/questitems.mitem"
+include "helix/game system data/juice/talent/player_weaponupgrade_talents.mtalent"
+
+EquipmentUpgrade blaster_standard < uid=7113C611645A56610000B46549BBD009 >
+{
+	myEquipmentUpgradeTiers
+	{
+		UpgradeTier Assembly
+		{
+			myEquipmentItem < uid=7113C611645A5CBB0000B4702C0EAEB3 > = player_weaponmodule_standard A207755D6310C6A9000058E93687C223
+			myUnlockConditions
+			{
+			}
+			myTalents
+			{
+				UpgradeTierTalent "Upgrade 1 - Stability"
+				{
+					myTalent < uid=7113C611645CA8D40000B4867CE31E7B > = WeaponUpgrade_Talent_Stability 7113C611645CA6730000B4712FD28483
+					myUnlockConditions
+					{
+						GameConditionPlayerHasItem CommonPart
+						{
+							myItem < uid=2AE2EC85645DE6390000B46558003AF6 > = Mat_General_Common_06 F4D8AE2664F5E98100036FEFC8775E12
+							myAmount 5
+						}
+						GameConditionPlayerHasItem RarePart
+						{
+							myItem < uid=2AE2EC85645DE6390000B466726058F8 > = Mat_Blaster_Common_01 E42FA10C60D31106000531FBF190AF2C
+							myAmount 2
+						}
+					}
+				}
+				UpgradeTierTalent "Upgrade 2 - Perfect Reload"
+				{
+					myTalent < uid=7113C611645CA8D40000B488ACCC51A2 > = WeaponUpgrade_Talent_PerfectReload 7113C611645CA7360000B47892FED06B
+					myUnlockConditions
+					{
+						GameConditionPlayerHasItem "Blaster Module Ugrade lvl 1"
+						{
+							myItem < uid=2AE2EC85645DE65B0000B4680F05C999 > = Mat_Blaster_Rare_01 2AE2EC85645516BD0000B6254425158C
+						}
+						GameConditionPlayerHasItem CommonPart
+						{
+							myItem < uid=2AE2EC85645DE65B0000B469568B9505 > = Mat_General_Common_02 E42FA10C60D31106000531F700A10DE9
+							myAmount 10
+						}
+						GameConditionPlayerHasItem RarePart
+						{
+							myItem < uid=F4D8AE2664FEFD9D0000807304495977 > = Mat_Blaster_Common_02 E42FA10C60D31106000531FE006F9A19
+							myAmount 4
+						}
+					}
+				}
+				UpgradeTierTalent "Upgrade 3 - Damage"
+				{
+					myTalent < uid=7113C611645CA8D40000B48A73E5613E > = WeaponUpgrade_Talent_Damage 7113C611645CA7380000B479CC5FDDD5
+					myUnlockConditions
+					{
+						GameConditionPlayerHasItem "Key Part"
+						{
+							myItem < uid=2AE2EC85645DE6AA0000B46F10C887FC > = KP_Blaster_03_SemiAuto_Max E42FA10C60C8B87800016996EA5E15B4
+						}
+						GameConditionPlayerHasItem CommonPart
+						{
+							myItem < uid=2AE2EC85645DE6AA0000B46DB31EDC6A > = Mat_General_Common_04 F4D8AE2664F5E90B00036FBC8BB3155F
+							myAmount 15
+						}
+						GameConditionPlayerHasItem RarePart
+						{
+							myItem < uid=2AE2EC85645DE6AA0000B46E708493BD > = Mat_Blaster_Common_05 F4D8AE2664F5ED26000370F4CCF846D8
+							myAmount 6
+						}
+					}
+				}
+			}
+			myRequiresManualUnlock FALSE
+		}
+	}
+	myDiscoveryConditions
+	{
+	}
+	myCategory < uid=7113C611645A571E0000B4676A3AAC21 > = Weaponmodule_Blaster E41F4D1B645528220000B3D9D73A3F03
+}
+
+EquipmentUpgrade blaster_repeater < uid=7113C611645A58310000B46967FE5910 >
+{
+	myEquipmentUpgradeTiers
+	{
+		UpgradeTier Assembly
+		{
+			myEquipmentItem < uid=7113C611645A5CBB0000B472DE13D43B > = player_weaponmodule_repeater 7113C6116436601400001C0F97607264
+			myUnlockConditions
+			{
+				GameConditionPlayerHasItem ExplorationMaterial
+				{
+					myItem < uid=7113C611645A5CBB0000B473B2162057 > = KP_ConfigUnlockItem_Blaster_Repeater 2AE2EC85645A68440000B47B58FA79CE
+				}
+			}
+			myTalents
+			{
+				UpgradeTierTalent "Upgrade 1 - Heat"
+				{
+					myTalent < uid=7113C611645CAA2B0000B4958ED8CDFD > = WeaponUpgrade_Talent_Heat 7113C611645CA9330000B48CDE59AA1B
+					myUnlockConditions
+					{
+						GameConditionPlayerHasItem "Superior Part"
+						{
+							myItem < uid=2AE2EC85668520F20018214B7D466F83 > = Mat_Blaster_Rare_01 2AE2EC85645516BD0000B6254425158C
+						}
+						GameConditionPlayerHasItem CommonPart
+						{
+							myItem < uid=2AE2EC85645E2FE30000B460EAE2FA05 > = Mat_General_Common_05 F4D8AE2664F5E93100036FD3FC5225C4
+							myAmount 10
+						}
+						GameConditionPlayerHasItem RarePart
+						{
+							myItem < uid=2AE2EC85645E2FE30000B4613A415F8E > = Mat_Blaster_Common_03 E42FA10C62B2C63E0002016F8D71283C
+							myAmount 4
+						}
+					}
+				}
+				UpgradeTierTalent "Upgrade 2 - Stability"
+				{
+					myTalent < uid=7113C611645CA9940000B49327C1559A > = WeaponUpgrade_Talent_Stability 7113C611645CA6730000B4712FD28483
+					myUnlockConditions
+					{
+						GameConditionPlayerHasItem "Blaster Module Ugrade lvl 1"
+						{
+							myItem < uid=2AE2EC85645DF708000150CB94084E07 > = Mat_Blaster_Rare_01 2AE2EC85645516BD0000B6254425158C
+						}
+						GameConditionPlayerHasItem CommonPart
+						{
+							myItem < uid=2AE2EC85645DF708000150CC9457F343 > = Mat_General_Common_06 F4D8AE2664F5E98100036FEFC8775E12
+							myAmount 15
+						}
+						GameConditionPlayerHasItem RarePart
+						{
+							myItem < uid=2AE2EC85645DF708000150CD26DF2D12 > = Mat_Blaster_Common_05 F4D8AE2664F5ED26000370F4CCF846D8
+							myAmount 7
+						}
+					}
+				}
+				UpgradeTierTalent "Upgrade 3 - Perfect Reload"
+				{
+					myTalent < uid=7113C611645CA9940000B494913D5616 > = WeaponUpgrade_Talent_PerfectReload 7113C611645CA7360000B47892FED06B
+					myUnlockConditions
+					{
+						GameConditionPlayerHasItem "Key Part"
+						{
+							myItem < uid=F4D8AE2664FEFF03000080755B0D3C4D > = KP_Blaster_04_Repeater_Max F4D8AE266384C70C0000962A05676C98
+						}
+						GameConditionPlayerHasItem CommonPart
+						{
+							myItem < uid=F4D8AE2664FEFF0300008076AC500B7B > = Mat_General_Common_02 E42FA10C60D31106000531F700A10DE9
+							myAmount 20
+						}
+						GameConditionPlayerHasItem RarePart
+						{
+							myItem < uid=F4D8AE2664FEFF0300008077E29C7D67 > = Mat_Blaster_Common_02 E42FA10C60D31106000531FE006F9A19
+							myAmount 10
+						}
+					}
+				}
+			}
+		}
+	}
+	myDiscoveryConditions
+	{
+		GameConditionPlayerHasItem ExplorationMaterial
+		{
+			myItem < uid=7113C611645A5E480000B48332D53375 > = KP_ConfigUnlockItem_Blaster_Repeater 2AE2EC85645A68440000B47B58FA79CE
+		}
+	}
+	myCategory < uid=7113C611645A5B6600005DD81D9DB2C1 > = Weaponmodule_Blaster E41F4D1B645528220000B3D9D73A3F03
+}
+
+EquipmentUpgrade blaster_heavy < uid=7113C611645A58370000B46AAFF6B1FA >
+{
+	myEquipmentUpgradeTiers
+	{
+		UpgradeTier Assembly
+		{
+			myEquipmentItem < uid=7113C611645A5DB90000B47D98485CFB > = player_weaponmodule_heavy 7113C61164365EA300001C06C3FBCCA3
+			myUnlockConditions
+			{
+				GameConditionPlayerHasItem ExplorationMaterial
+				{
+					myItem < uid=7113C611645A5DB90000B47ED9D6CF83 > = KP_ConfigUnlockItem_Blaster_Heavy 2AE2EC85645A6A130000B48F00856DE0
+				}
+			}
+			myTalents
+			{
+				UpgradeTierTalent "Upgrade 1 - Perfect Reload"
+				{
+					myTalent < uid=7113C611645CAB8F0000B4A71CE6D911 > = WeaponUpgrade_Talent_PerfectReload 7113C611645CA7360000B47892FED06B
+					myUnlockConditions
+					{
+						GameConditionPlayerHasItem "Superior Part"
+						{
+							myItem < uid=2AE2EC856685213D001822080809737C > = Mat_Blaster_Rare_01 2AE2EC85645516BD0000B6254425158C
+						}
+						GameConditionPlayerHasItem CommonPart
+						{
+							myItem < uid=F4D8AE2664FEFF5B000080789CC8E5D3 > = Mat_General_Common_02 E42FA10C60D31106000531F700A10DE9
+							myAmount 10
+						}
+						GameConditionPlayerHasItem RarePart
+						{
+							myItem < uid=F4D8AE2664FEFF5B00008079AE154D53 > = Mat_Blaster_Common_02 E42FA10C60D31106000531FE006F9A19
+							myAmount 4
+						}
+					}
+				}
+				UpgradeTierTalent "Upgrade 2 - Rate of Fire"
+				{
+					myTalent < uid=7113C611645CAB8F0000B4A950F52BE5 > = WeaponUpgrade_Talent_RateOfFire 7113C611645CABFB0000B4B96CF6187C
+					myUnlockConditions
+					{
+						GameConditionPlayerHasItem "Blaster Module Ugrade lvl 1"
+						{
+							myItem < uid=F4D8AE2664FEFF5B0000807A82328039 > = Mat_Blaster_Rare_01 2AE2EC85645516BD0000B6254425158C
+						}
+						GameConditionPlayerHasItem CommonPart
+						{
+							myItem < uid=F4D8AE2664FEFF5B0000807B8344A25D > = Mat_General_Common_06 F4D8AE2664F5E98100036FEFC8775E12
+							myAmount 15
+						}
+						GameConditionPlayerHasItem RarePart
+						{
+							myItem < uid=F4D8AE2664FEFF5B0000807C5879299B > = Mat_Blaster_Common_03 E42FA10C62B2C63E0002016F8D71283C
+							myAmount 7
+						}
+					}
+				}
+				UpgradeTierTalent "Upgrade 3 - Damage"
+				{
+					myTalent < uid=7113C611645CAB8F0000B4AB08B348BF > = WeaponUpgrade_Talent_Damage 7113C611645CA7380000B479CC5FDDD5
+					myUnlockConditions
+					{
+						GameConditionPlayerHasItem "Key Part"
+						{
+							myItem < uid=F4D8AE2664FEFF940000807E4A27F8E3 > = KP_Blaster_05_Heavy_Max E42FA10C62B4457B000035E5DC3CB61A
+						}
+						GameConditionPlayerHasItem CommonPart
+						{
+							myItem < uid=F4D8AE2664FEFF940000807FECD7EDB0 > = Mat_General_Common_04 F4D8AE2664F5E90B00036FBC8BB3155F
+							myAmount 20
+						}
+						GameConditionPlayerHasItem RarePart
+						{
+							myItem < uid=F4D8AE2664FEFF94000080807D733440 > = Mat_Blaster_Common_01 E42FA10C60D31106000531FBF190AF2C
+							myAmount 10
+						}
+					}
+				}
+			}
+		}
+	}
+	myDiscoveryConditions
+	{
+		GameConditionPlayerHasItem ExplorationMaterial
+		{
+			myItem < uid=7113C611645A5E670000B48459F073AB > = KP_ConfigUnlockItem_Blaster_Heavy 2AE2EC85645A6A130000B48F00856DE0
+		}
+	}
+	myCategory < uid=7113C611645A5B6600005DD9DBF26346 > = Weaponmodule_Blaster E41F4D1B645528220000B3D9D73A3F03
+}
+
+EquipmentUpgrade ion_bolt < uid=7113C611645A583D0000B46B10125B81 >
+{
+	myEquipmentUpgradeTiers
+	{
+		UpgradeTier Assembly
+		{
+			myEquipmentItem < uid=7113C611645A5D980000B477ED7E096B > = player_weaponmodule_ion 7113C611640B41AD000095D922A7DC11
+			myUnlockConditions
+			{
+				GameConditionPlayerHasItem QuestUnlock
+				{
+					myItem < uid=7113C611645A5D980000B478A5DE07AF > = qitem_MQ_045_ModulePart01 8FD81D5164E6144D0008A9CFDDFEBC77
+				}
+				GameConditionPlayerHasItem "Copy of QuestUnlock"
+				{
+					myItem < uid=8FD81D51651AEA17000889EE33FCB2A9 > = qitem_MQ_045_ModulePart02 8FD81D5164E615210008EA69827823EA
+				}
+			}
+			myTalents
+			{
+				UpgradeTierTalent "Upgrade 1 - Stability"
+				{
+					myTalent < uid=7113C611645CABD20000B4ADC3FA69CC > = WeaponUpgrade_Talent_Stability 7113C611645CA6730000B4712FD28483
+					myUnlockConditions
+					{
+						GameConditionPlayerHasItem CommonPart
+						{
+							myItem < uid=F4D8AE2664FF068800008081357961E4 > = Mat_General_Common_06 F4D8AE2664F5E98100036FEFC8775E12
+							myAmount 5
+						}
+						GameConditionPlayerHasItem RarePart
+						{
+							myItem < uid=F4D8AE2664FF06880000808240EC6748 > = Mat_Blaster_Common_04 F4D8AE2664F5EC0F00037073902288BC
+							myAmount 2
+						}
+					}
+				}
+				UpgradeTierTalent "Upgrade 2 - Perfect Reload"
+				{
+					myTalent < uid=7113C611645CABD20000B4AFCA2F6D67 > = WeaponUpgrade_Talent_PerfectReload 7113C611645CA7360000B47892FED06B
+					myUnlockConditions
+					{
+						GameConditionPlayerHasItem "Blaster Module Ugrade lvl 1"
+						{
+							myItem < uid=F4D8AE2664FF0688000080831305B888 > = Mat_Blaster_Rare_01 2AE2EC85645516BD0000B6254425158C
+						}
+						GameConditionPlayerHasItem CommonPart
+						{
+							myItem < uid=F4D8AE2664FF068800008084F7305F9C > = Mat_General_Common_02 E42FA10C60D31106000531F700A10DE9
+							myAmount 10
+						}
+						GameConditionPlayerHasItem RarePart
+						{
+							myItem < uid=F4D8AE2664FF06880000808509B876DF > = Mat_Blaster_Common_02 E42FA10C60D31106000531FE006F9A19
+							myAmount 4
+						}
+					}
+				}
+				UpgradeTierTalent "Upgrade 3 - Damage"
+				{
+					myTalent < uid=7113C611645CABD20000B4B1AE6D737E > = WeaponUpgrade_Talent_Damage 7113C611645CA7380000B479CC5FDDD5
+					myUnlockConditions
+					{
+						GameConditionPlayerHasItem "Key Part"
+						{
+							myItem < uid=F4D8AE2664FF06880000808714B2BABE > = KP_Blaster_06_IonBolt_Max E42FA10C60CB5B9B0001574D2F956C5B
+						}
+						GameConditionPlayerHasItem CommonPart
+						{
+							myItem < uid=F4D8AE2664FF068800008088610BCB0B > = Mat_General_Common_04 F4D8AE2664F5E90B00036FBC8BB3155F
+							myAmount 15
+						}
+						GameConditionPlayerHasItem RarePart
+						{
+							myItem < uid=F4D8AE2664FF068800008089ABCF477B > = Mat_Blaster_Common_04 F4D8AE2664F5EC0F00037073902288BC
+							myAmount 6
+						}
+					}
+				}
+			}
+			myAutoEquipOnUnlock TRUE
+		}
+	}
+	myDiscoveryConditions
+	{
+		GameConditionPlayerHasItem QuestUnlock_01
+		{
+			myItem < uid=7113C611645A5D980000B479D2AE4FC2 > = qitem_MQ_045_ModulePart01 8FD81D5164E6144D0008A9CFDDFEBC77
+		}
+		GameConditionPlayerHasItem QuestUnlock_02
+		{
+			myItem < uid=8FD81D51651AE7F40006F35EE57BD53F > = qitem_MQ_045_ModulePart02 8FD81D5164E615210008EA69827823EA
+		}
+	}
+	myCategory < uid=7113C611645A5B6600005DDA7E313835 > = Weaponmodule_Ion E41F4D1B645528220000B3DA901E491D
+}
+
+EquipmentUpgrade ion_blast < uid=7113C611645A58460000B46C770393B4 >
+{
+	myEquipmentUpgradeTiers
+	{
+		UpgradeTier Assembly
+		{
+			myEquipmentItem < uid=7113C611645A5DD80000B47FC66F37FC > = player_weaponmodule_ion_blast 7113C611643E45E600000835ADFD9B74
+			myUnlockConditions
+			{
+				GameConditionPlayerHasItem ExplorationMaterial
+				{
+					myItem < uid=7113C611645A5DD80000B480380A688C > = KP_ConfigUnlockItem_Ion_Blast 2AE2EC85645A6A130000B49337E750B0
+				}
+			}
+			myTalents
+			{
+				UpgradeTierTalent "Upgrade 1 - Rate Of Fire"
+				{
+					myTalent < uid=7113C611645CABF70000B4B31ED1022C > = WeaponUpgrade_Talent_RateOfFire 7113C611645CABFB0000B4B96CF6187C
+					myUnlockConditions
+					{
+						GameConditionPlayerHasItem "Superior Part"
+						{
+							myItem < uid=2AE2EC856685220A0018238246165F45 > = Mat_Blaster_Rare_01 2AE2EC85645516BD0000B6254425158C
+						}
+						GameConditionPlayerHasItem CommonPart
+						{
+							myItem < uid=F4D8AE26650010D90000808B6C16A571 > = Mat_General_Common_05 F4D8AE2664F5E93100036FD3FC5225C4
+							myAmount 10
+						}
+						GameConditionPlayerHasItem RarePart
+						{
+							myItem < uid=F4D8AE26650010D90000808C537A686B > = Mat_Blaster_Common_01 E42FA10C60D31106000531FBF190AF2C
+							myAmount 4
+						}
+					}
+				}
+				UpgradeTierTalent "Upgrade 2 - Heat"
+				{
+					myTalent < uid=7113C611645CABF70000B4B52B10A264 > = WeaponUpgrade_Talent_Heat 7113C611645CA9330000B48CDE59AA1B
+					myUnlockConditions
+					{
+						GameConditionPlayerHasItem "Blaster Module Ugrade lvl 1"
+						{
+							myItem < uid=F4D8AE26650010D90000808D825F09E0 > = Mat_Blaster_Rare_01 2AE2EC85645516BD0000B6254425158C
+						}
+						GameConditionPlayerHasItem CommonPart
+						{
+							myItem < uid=F4D8AE26650010D90000808EEB6F0DDD > = Mat_General_Common_05 F4D8AE2664F5E93100036FD3FC5225C4
+							myAmount 15
+						}
+						GameConditionPlayerHasItem RarePart
+						{
+							myItem < uid=F4D8AE26650010D90000808F328B00EC > = Mat_Blaster_Common_03 E42FA10C62B2C63E0002016F8D71283C
+							myAmount 7
+						}
+					}
+				}
+				UpgradeTierTalent "Upgrade 3 - Range"
+				{
+					myTalent < uid=7113C611645CABF70000B4B732DAD4F5 > = WeaponUpgrade_Talent_BlastRange 7113C611645CAC5C0000B4C00784677E
+					myUnlockConditions
+					{
+						GameConditionPlayerHasItem "Key Part"
+						{
+							myItem < uid=F4D8AE26650010D900008091C8580049 > = KP_Blaster_07_IonBlast_Max 2AE2EC85645516BD0000B62B2FED1A81
+						}
+						GameConditionPlayerHasItem CommonPart
+						{
+							myItem < uid=F4D8AE26650010D9000080925BCAFD7A > = Mat_General_Common_06 F4D8AE2664F5E98100036FEFC8775E12
+							myAmount 20
+						}
+						GameConditionPlayerHasItem RarePart
+						{
+							myItem < uid=F4D8AE26650010D900008093312C1A8F > = Mat_Blaster_Common_04 F4D8AE2664F5EC0F00037073902288BC
+							myAmount 10
+						}
+					}
+				}
+			}
+		}
+	}
+	myDiscoveryConditions
+	{
+		GameConditionPlayerHasItem ExplorationMaterial
+		{
+			myItem < uid=7113C611645A5E670000B48541B0F4B3 > = KP_ConfigUnlockItem_Ion_Blast 2AE2EC85645A6A130000B49337E750B0
+		}
+	}
+	myCategory < uid=7113C611645A5B6600005DDB6A63B6D0 > = Weaponmodule_Ion E41F4D1B645528220000B3DA901E491D
+}
+
+EquipmentUpgrade chargeup_power < uid=7113C611645A58500000B46EF8C37652 >
+{
+	myEquipmentUpgradeTiers
+	{
+		UpgradeTier Assembly
+		{
+			myEquipmentItem < uid=7113C611645A5D980000B47A70A62F2E > = player_weaponmodule_power 7113C611631B2BFF00004992F3FF42C3
+			myUnlockConditions
+			{
+				GameConditionPlayerHasItem QuestUnlock
+				{
+					myItem < uid=7113C611645A5D980000B47B6D8E4500 > = qitem_MQ_075_ModulePart01 8FD81D51654CB35B0001E0231C1A9BDF
+				}
+			}
+			myTalents
+			{
+				UpgradeTierTalent "Upgrade 1 - Perfect Reload"
+				{
+					myTalent < uid=7113C611645CB0080000B4E229DCADEF > = WeaponUpgrade_Talent_PerfectReload 7113C611645CA7360000B47892FED06B
+					myUnlockConditions
+					{
+						GameConditionPlayerHasItem "Superior Parts"
+						{
+							myItem < uid=2AE2EC856685220A0018238380CB76C0 > = Mat_Blaster_Rare_01 2AE2EC85645516BD0000B6254425158C
+						}
+						GameConditionPlayerHasItem CommonPart
+						{
+							myItem < uid=F4D8AE2665001AD80000809DD9F0D680 > = Mat_General_Common_02 E42FA10C60D31106000531F700A10DE9
+							myAmount 10
+						}
+						GameConditionPlayerHasItem RarePart
+						{
+							myItem < uid=F4D8AE2665001AD80000809E1D9ED1E6 > = Mat_Blaster_Common_02 E42FA10C60D31106000531FE006F9A19
+							myAmount 4
+						}
+					}
+				}
+				UpgradeTierTalent "Upgrade 2 - Charge Speed"
+				{
+					myTalent < uid=7113C611645CB0080000B4E406DFAE23 > = WeaponUpgrade_Talent_ChargeSpeed 7113C611645CB0100000B4E864642AC9
+					myUnlockConditions
+					{
+						GameConditionPlayerHasItem "Blaster Module Ugrade lvl 1"
+						{
+							myItem < uid=F4D8AE2665001B690000809F98419E1A > = Mat_Blaster_Rare_01 2AE2EC85645516BD0000B6254425158C
+						}
+						GameConditionPlayerHasItem CommonPart
+						{
+							myItem < uid=F4D8AE2665001B69000080A0B34C0454 > = Mat_General_Common_05 F4D8AE2664F5E93100036FD3FC5225C4
+							myAmount 15
+						}
+						GameConditionPlayerHasItem RarePart
+						{
+							myItem < uid=F4D8AE2665001B69000080A1EC57806B > = Mat_Blaster_Common_04 F4D8AE2664F5EC0F00037073902288BC
+							myAmount 7
+						}
+					}
+				}
+				UpgradeTierTalent "Upgrade 3 - Damage"
+				{
+					myTalent < uid=7113C611645CB0080000B4E6AF5DF402 > = WeaponUpgrade_Talent_Damage 7113C611645CA7380000B479CC5FDDD5
+					myUnlockConditions
+					{
+						GameConditionPlayerHasItem "Key Part"
+						{
+							myItem < uid=F4D8AE2665001B69000080A393889247 > = KP_Blaster_09_Power_Max E42FA10C60CB5B9B0001574617FCF7C6
+						}
+						GameConditionPlayerHasItem CommonPart
+						{
+							myItem < uid=F4D8AE2665001B69000080A440354AC6 > = Mat_General_Common_03 F4D8AE2664F5E8DC00036FA58305736D
+							myAmount 20
+						}
+						GameConditionPlayerHasItem RarePart
+						{
+							myItem < uid=F4D8AE2665001B69000080A51031CE73 > = Mat_Blaster_Common_05 F4D8AE2664F5ED26000370F4CCF846D8
+							myAmount 10
+						}
+					}
+				}
+			}
+			myAutoEquipOnUnlock TRUE
+		}
+	}
+	myDiscoveryConditions
+	{
+		GameConditionPlayerHasItem QuestUnlock
+		{
+			myItem < uid=7113C611645A5D980000B47C3838D461 > = qitem_MQ_075_ModulePart01 8FD81D51654CB35B0001E0231C1A9BDF
+		}
+	}
+	myCategory < uid=7113C611645A5B6600005DDDD238A2A1 > = Weaponmodule_Chargeup E41F4D1B6455283F0000B3DDF3580488
+}
+
+EquipmentUpgrade chargeup_concussion < uid=7113C611645A58560000B46F7A8FF498 >
+{
+	myEquipmentUpgradeTiers
+	{
+		UpgradeTier Assembly
+		{
+			myEquipmentItem < uid=7113C611645A5F3F0000B4899AC8F649 > = player_weaponmodule_concussion 7113C611643674F60000D1754FBA806D
+			myUnlockConditions
+			{
+				GameConditionPlayerHasItem ExplorationMaterial
+				{
+					myItem < uid=7113C611645A5F3F0000B48A4F44B01D > = KP_ConfigUnlockItem_ChargeUp_Concussion 2AE2EC85645A6A130000B499801D8AC4
+				}
+			}
+			myTalents
+			{
+				UpgradeTierTalent "Upgrade 1 - Charge Speed"
+				{
+					myTalent < uid=7113C611645CB1BB0000B50A638DC657 > = WeaponUpgrade_Talent_ChargeSpeed 7113C611645CB0100000B4E864642AC9
+					myUnlockConditions
+					{
+						GameConditionPlayerHasItem "Superior Parts"
+						{
+							myItem < uid=2AE2EC856685220A0018238466ED7C2E > = Mat_Blaster_Rare_01 2AE2EC85645516BD0000B6254425158C
+						}
+						GameConditionPlayerHasItem CommonPart
+						{
+							myItem < uid=F4D8AE2665001BED000080A67C9F53CE > = Mat_General_Common_05 F4D8AE2664F5E93100036FD3FC5225C4
+							myAmount 10
+						}
+						GameConditionPlayerHasItem RarePart
+						{
+							myItem < uid=F4D8AE2665001BED000080A7AB52ECB0 > = Mat_Blaster_Common_03 E42FA10C62B2C63E0002016F8D71283C
+							myAmount 4
+						}
+					}
+				}
+				UpgradeTierTalent "Upgrade 2 - Projectile Speed"
+				{
+					myTalent < uid=7113C611645CB1BB0000B50C0882AB08 > = WeaponUpgrade_Talent_ProjectileSpeed 7113C611645CB02B0000B4E913C38867
+					myUnlockConditions
+					{
+						GameConditionPlayerHasItem "Blaster Module Ugrade lvl 1"
+						{
+							myItem < uid=F4D8AE2665001BED000080A841DBE066 > = Mat_Blaster_Rare_01 2AE2EC85645516BD0000B6254425158C
+						}
+						GameConditionPlayerHasItem CommonPart
+						{
+							myItem < uid=F4D8AE2665001BED000080A9DF07FC78 > = Mat_General_Common_06 F4D8AE2664F5E98100036FEFC8775E12
+							myAmount 15
+						}
+						GameConditionPlayerHasItem RarePart
+						{
+							myItem < uid=F4D8AE2665001BED000080AA5980C575 > = Mat_Blaster_Common_01 E42FA10C60D31106000531FBF190AF2C
+							myAmount 7
+						}
+					}
+				}
+				UpgradeTierTalent "Upgrade 3 - Explosion Radius"
+				{
+					myTalent < uid=7113C611645CB1BB0000B50E166DE985 > = WeaponUpgrade_Talent_ExplosionRadius 7113C611645CB0390000B4EA537E93F9
+					myUnlockConditions
+					{
+						GameConditionPlayerHasItem "Key Part"
+						{
+							myItem < uid=F4D8AE2665001D20000080ACFBCD919E > = KP_Blaster_10_Concussion_Max 2AE2EC85650971530000B8DC96C6D674
+						}
+						GameConditionPlayerHasItem CommonPart
+						{
+							myItem < uid=F4D8AE2665001D20000080AD1BC956A3 > = Mat_General_Common_04 F4D8AE2664F5E90B00036FBC8BB3155F
+							myAmount 20
+						}
+						GameConditionPlayerHasItem RarePart
+						{
+							myItem < uid=F4D8AE2665001D20000080AE443D93C2 > = Mat_Blaster_Common_02 E42FA10C60D31106000531FE006F9A19
+							myAmount 10
+						}
+					}
+				}
+			}
+		}
+	}
+	myDiscoveryConditions
+	{
+		GameConditionPlayerHasItem ExplorationMaterial
+		{
+			myItem < uid=7113C611645A5E670000B48786ACD240 > = KP_ConfigUnlockItem_ChargeUp_Concussion 2AE2EC85645A6A130000B499801D8AC4
+		}
+	}
+	myCategory < uid=7113C611645A5B6600005DDE253FD843 > = Weaponmodule_Chargeup E41F4D1B6455283F0000B3DDF3580488
+}
+
+EquipmentUpgrade chargeup_phasepulse < uid=7113C611645A585C0000B470117A564E >
+{
+	myEquipmentUpgradeTiers
+	{
+		UpgradeTier Assembly
+		{
+			myEquipmentItem < uid=7113C611645A5F3F0000B48BAF9A5567 > = player_weaponmodule_phasepulse 7113C61164369832000054B26974601E
+			myUnlockConditions
+			{
+				GameConditionPlayerHasItem "item 1"
+				{
+					myItem < uid=7113C611645A5F3F0000B48C2F2157AD > = KP_ConfigUnlockItem_ChargeUp_PhasePulse_1 2AE2EC85645A6A130000B49BF085D000
+				}
+			}
+			myTalents
+			{
+				UpgradeTierTalent "Upgrade 1 - Cooldown Time"
+				{
+					myTalent < uid=7113C611645CB2310000B510A75F3B99 > = WeaponUpgrade_Talent_CooldownSpeed 7113C61164F57F5100056CC9AE4A86D3
+					myUnlockConditions
+					{
+						GameConditionPlayerHasItem "Superior parts"
+						{
+							myItem < uid=2AE2EC856685220A00182385E2A42B79 > = Mat_Blaster_Rare_01 2AE2EC85645516BD0000B6254425158C
+							myAmount 1
+						}
+						GameConditionPlayerHasItem CommonPart
+						{
+							myItem < uid=F4D8AE2665001D20000080AF7D23E181 > = Mat_General_Common_02 E42FA10C60D31106000531F700A10DE9
+							myAmount 15
+						}
+						GameConditionPlayerHasItem RarePart
+						{
+							myItem < uid=F4D8AE2665001D20000080B0EAF5CEDA > = Mat_Blaster_Common_03 E42FA10C62B2C63E0002016F8D71283C
+							myAmount 7
+						}
+					}
+				}
+				UpgradeTierTalent "Upgrade 2 - Charge-up Speed"
+				{
+					myTalent < uid=7113C611657B0921000571D6CCC789AA > = WeaponUpgrade_Talent_ChargeSpeed_Phasepulse 7113C61164F999460004C4B6C42B8686
+					myUnlockConditions
+					{
+						GameConditionPlayerHasItem "Blaster Module Ugrade lvl 1"
+						{
+							myItem < uid=F4D8AE2665001D20000080B1BBD8E169 > = Mat_Blaster_Rare_01 2AE2EC85645516BD0000B6254425158C
+						}
+						GameConditionPlayerHasItem CommonPart
+						{
+							myItem < uid=F4D8AE2665001D20000080B213D3D653 > = Mat_General_Common_04 F4D8AE2664F5E90B00036FBC8BB3155F
+							myAmount 20
+						}
+						GameConditionPlayerHasItem RarePart
+						{
+							myItem < uid=F4D8AE2665001D20000080B3719E1241 > = Mat_Blaster_Common_05 F4D8AE2664F5ED26000370F4CCF846D8
+							myAmount 12
+						}
+					}
+				}
+				UpgradeTierTalent "Upgrade 3 - Max Charge Dmg"
+				{
+					myTalent < uid=7113C611645CB2310000B51418B28E82 > = WeaponUpgrade_Talent_MaxChargeDmg 7113C611645CB0430000B4EB455454DD
+					myUnlockConditions
+					{
+						GameConditionPlayerHasItem "Key Part"
+						{
+							myItem < uid=F4D8AE2665001D20000080B549F6FDDD > = KP_Blaster_11_PhasePulse_Max 2AE2EC85650971530000B8DFD5F35CC9
+						}
+						GameConditionPlayerHasItem CommonPart
+						{
+							myItem < uid=F4D8AE2665001D20000080B6C41ADBFE > = Mat_General_Common_05 F4D8AE2664F5E93100036FD3FC5225C4
+							myAmount 20
+						}
+						GameConditionPlayerHasItem RarePart
+						{
+							myItem < uid=F4D8AE2665001D20000080B74597D526 > = Mat_Blaster_Common_03 E42FA10C62B2C63E0002016F8D71283C
+							myAmount 15
+						}
+					}
+				}
+			}
+		}
+	}
+	myDiscoveryConditions
+	{
+		GameConditionPlayerHasItem "item 1"
+		{
+			myItem < uid=7113C611645A5E670000B4885C1B8415 > = KP_ConfigUnlockItem_ChargeUp_PhasePulse_1 2AE2EC85645A6A130000B49BF085D000
+		}
+	}
+	myCategory < uid=7113C611645A5B6600005DDF529D3F02 > = Weaponmodule_Chargeup E41F4D1B6455283F0000B3DDF3580488
+}
+

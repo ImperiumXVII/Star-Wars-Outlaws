@@ -1,0 +1,64 @@
+include "helix/game system data/fruit/item/item.fruit"
+include "helix/game system data/fruit/vendor/vendorconfig.fruit"
+include "helix/game system data/fruit/gamestatistics/gamestatistics.fruit"
+include "helix/game system data/fruit/vendor/vendorreplenishingbracket.fruit"
+include "helix/game system data/fruit/restriction/playerrestriction.fruit"
+
+class VendorServiceUIInfo < ui_info=1 >
+{
+	varmap myName < bhv="localization" ui_info_debug_ui_name=1 >
+}
+
+class VendorCategoryUIInfo < ui_info=1 >
+{
+	varmap myName < bhv="localization" ui_info_debug_ui_name=1 >
+	string myIcon < bhv="sprite" >
+}
+
+// Keep VendorServiceType in vendor/vendorservicetype.fruit in sync
+// Format as "my[VendorServiceType]"
+class VendorServiceUIInfos
+{
+	VendorServiceUIInfo myItemShopBuy
+	VendorServiceUIInfo myItemShopSell
+	VendorServiceUIInfo mySpeederComponents
+	VendorServiceUIInfo mySpeederAppearance
+	VendorServiceUIInfo myShipComponents
+	VendorServiceUIInfo myShipAppearance
+	VendorServiceUIInfo myPersonalRequest
+	VendorServiceUIInfo myGiveData
+	VendorServiceUIInfo myShipCargoUpgrade
+}
+
+// Keep VendorServiceType in vendor/vendorcategorytype.fruit in sync
+// Format as "my[VendorCategoryType]"
+class VendorCategoryUIInfos
+{
+	VendorCategoryUIInfo myGeneric
+	VendorCategoryUIInfo myShady
+	VendorCategoryUIInfo myTech
+	VendorCategoryUIInfo myNature
+	VendorCategoryUIInfo mySpeederGarage
+	VendorCategoryUIInfo myShipMechanic
+	VendorCategoryUIInfo myMaker
+	VendorCategoryUIInfo myMiyukiTrader
+}
+
+class VendorSettings < uid=auto >
+{
+	CurrencyItem* myDefaultCurrency
+	VendorPriceModifiers myBuyPriceModifiers
+	VendorPriceModifiers mySellPriceModifiers
+	float mySellPricePercentage 0.5 < bhv="percent" min=0 max=1 >
+	int myDefaultMaxItemQuantity
+	int myCurrencySpentToRemoveSuspicious 500
+	ItemCategoryList mySellableItemCategories
+	VendorServiceUIInfos myServiceUIInfos
+	VendorCategoryUIInfos myCategoryUIInfos
+	int myPreferredAmountOfItemsPerOffer 1
+	string myPreferredAmountOfExchangeOffers 1 < bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	VendorStockReplenishingBracketList myVendorStockReplenishingBrackets
+	GameStatistic* myNumberOfTrustedVendors
+	VendorServiceTypes myItemShopServices
+	PlayerRestriction* myPlayerRestrictionsDuringMenu
+}

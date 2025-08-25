@@ -1,0 +1,190 @@
+include helix/audio/emitterlabels.juice
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+include "helix/game system data/fruit/vehicle/vehicle.fruit"
+include "helix/game system data/juice/camera/modifiers/speederbike_acceleration.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/speederbike_boostability.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/speederbike_collisionshake.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/speederbike_damageshake.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/speederbike_hardbrake.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/speederbike_heavylanding_heavy.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/speederbike_heavylanding_light.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/speederbike_heavylanding_success.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/speederbike_jumpability_down.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/speederbike_jumpability_up.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/speederbike_landing_heavy.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/speederbike_landing_light.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/speederbike_landing_success.mcameramodifier"
+include "helix/game system data/juice/character/character_visuals_vehicle.mcharactervisuals"
+include "helix/game system data/juice/faction/factions.mfaction"
+include "helix/game system data/juice/impactrealization/base_impact_passthrough_vehicle.mimpactrealization"
+include "helix/game system data/juice/vehicle/player_speeder_camera_settings.mvehiclecamera"
+include "helix/game system data/juice/vehicle/player_speeder_upgrades.mgroundvehicleupgrade"
+
+Vehicle speeder_vehicle < uid=0B6B42D75FB3A860000000252353D608 >
+{
+	myCharacterVisuals < uid=83E36AE3619768D4000019DD9BAFBA9E > = character_visuals_speeder 83E36AE3619253BE000019128A1D1DCA
+	myFaction < uid=0B6B42D75FB3A86000000026951106CC > = Vehicle 16DEADE65EB50E3B000000327244DD21
+	myCameraMode Speeder
+	myAudioParameters
+	{
+		myEmitterName Speeder
+		myPropagated TRUE
+		myEmitters
+		{
+			AgentEmitter Speeder
+			{
+				myEmitterLabel < uid=5E65A219656F17070000A26AE0F3AB5D > = Root 3A1C5D1863906F050000AB6FBD984CC4
+				myEmitterPrefab "emitterLayerName = \"vehicle_player\", enableDoppler = false, enablePropagation = true, sphereRadius = 1, stopOnDestroy = true"
+			}
+		}
+	}
+	myCollisionDamageMultiplier 0.1
+	myFrontalDamageMultiplier 0.15
+	myLateralDamageMultiplier 0.1
+	myMinFrontalDamageToThrowDriver 3.5
+	myMinMoveSpeedToThrowDriverFromBlast 0.0
+	myMouseControlDeadzoneRadius 0.001
+	myMouseControlMaxRadius 1.0
+	myMouseInactivityTime 2.0
+	myMouseRecenterTime 0.5
+	myMouseSensitivity 0.125
+	myMouseInputCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.018656299 -0.00032360107, -0.071763635 -0.71471775, }, outTangents = { 0.062402099 0.00078047399, 0.21454699 0.0037208982, 0 0, }, properties = { 275, 2323, 1299, }, values = { 0 0, 0.079999998 0.050000001, 1 1, }, }, numKeys = 3, }"
+	myYawAngleRestrictionEquipment 110.0
+	myUseDriveController TRUE
+	myDismountSpeedThreshold 5.0
+	myUIIcon "mySpriteId = 3328609, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_vehicles_01.spritesheet\""
+	myEquipmentSet A207755D61F153C600001B13644D2D95
+	myGroundVehicleUpgradeModules < uid=A51911A864527ED80000B2F295AC47E9 > = player_speeder_upgrades A51911A864527E270000B23F84D0E69E
+	myTimeBeforeEngineOn 1.0
+	myDismountAnimationTime 9.0
+	myVehicleCameraSettings < uid=A51911A862418BC700002BCC26130B49 > = player_speeder_camera_settings A51911A862418AAB00002ED237114685
+	myInitialAccelCameraShake < uid=A51911A862F0E49A000C7A82EB8F9E86 > = SpeederBike_Acceleration 91CF4D486285FABF0003A43EAF070E51
+	myBoostCameraShake < uid=A51911A862F0E49A000C7A83043BD841 > = SpeederBike_BoostAbility 91CF4D486284FD9700013C7CC7D149BE
+	myHardDecelCameraShake < uid=A51911A862F0E49A000C7A84E429CF75 > = SpeederBike_HardBrake 91CF4D486285FC830004A0CDD57C149B
+	myJumpChargeCameraShake < uid=A51911A862F0E49A000C7A852C8E46CD > = SpeederBike_JumpAbility_down 91CF4D48628637730002590DAA46D7ED
+	myJumpReleaseCameraShake < uid=A51911A862F0E49A000C7A86BB629674 > = SpeederBike_JumpAbility_up 91CF4D4862863A920003CEE1B3A997B5
+	myCollisionCameraShake < uid=91CF4D4862F4EBF7000044B51BFC5C29 > = Speederbike_CollisionShake 91CF4D4862F4EB0E000044B4B26427DC
+	myHitDetectionCameraShake < uid=91CF4D4865B915DD000FAB3CD4BDFF4F > = speederbike_damageshake 91CF4D4865C27CCC0001A4206ED51AB4
+	myHeavyPerfectLandingCameraShake < uid=91CF4D4865C3ECAB00050346E10E9854 > = SpeederBike_HeavyLanding_Success 91CF4D4865BE42EF00036862D9A5793B
+	myHeavyGoodLandingCameraShake < uid=91CF4D4865BE47AB0001C66C879B9EF0 > = SpeederBike_HeavyLanding_Light 91CF4D4865BE430000036D39686B8B07
+	myHeavyBadLandingCameraShake < uid=91CF4D4865BE47AB0001C66DDE19A2C7 > = SpeederBike_HeavyLanding_Heavy 91CF4D4865BE430F0003716EB7DDEA3D
+	myPerfectLandingCameraShake < uid=91CF4D4865C3ECAB00050347FBD00199 > = SpeederBike_Landing_Success 91CF4D48628654A10009C95EFC637655
+	myGoodLandingCameraShake < uid=A51911A862F0E49A000C7A88CBB991B3 > = SpeederBike_Landing_Light 91CF4D4862F4F38B000507DC3897D356
+	myBadLandingCameraShake < uid=91CF4D4865B91276000A2A2282995BF7 > = SpeederBike_Landing_Heavy 91CF4D48628640ED00065D0DC6A45F0D
+	myVehicleRumbleSettings < uid=A51911A8628BAF2D000032D5829FE690 >
+	{
+		mySpeederRumbleCategory Speeder
+		myAdrenalineRushStrengthDamping 0.2
+		myIdleRumble 91CF4D4865A02130000913E2FCA8BB51
+		myTurningRumbles
+		{
+			myMinAngle 0.25
+			myMinIntensity 0.0
+			myIntensityByAngle TRUE
+			myIntensityBySpeed TRUE
+			myLeftRumble 91CF4D4865AFEE9C000A73AF009B185D
+			myRightRumble 91CF4D4865AFEEFD000A73B9AADECDD3
+		}
+		myAccelerationRumble 8E25811B653BA81500006C4032880513
+		myMinimumThrottleThreshold 0.65
+		myBrakeRumble 8E25811B653BA89700006C44FE87222A
+		myBoostRumble 8E25811B653BA83F00006C41AFA8D45E
+		myJumpChargeRumble 8E25811B653BA90200006C474EBCD86C
+		myJumpReleaseRumble 8E25811B653BA92400006C4889ED35E3
+		myCollisionRumble 8E25811B653BA85E00006C429B7CDB3C
+		myDamageCombatRumble 8E25811B653BA87600006C438C550E2E
+		myDodgeLeftRumble 8E25811B6581B82C00002D7E90777C69
+		myDodgeRightRumble 8E25811B6581B84A00002D7F203765E5
+		myTurnOnEngineRumble 91CF4D4865C2861100020D72BF4CFCEA
+		myWheelSpinStartRumble 91CF4D4865B14DC0000A6BE420C08F77
+		myWheelSpinRumbles
+		{
+			myMinAngle 0.1
+			myIntensityByAngle TRUE
+			myIntensityBySpeed FALSE
+			myCenterRumble 91CF4D4865B001400016E8BA03F0D05B
+			myLeftRumble 91CF4D4865B001B600171E837FF6D360
+			myRightRumble 91CF4D4865B0032300183681DFAD45F6
+			myCenterTriggerEffect helix/trigger_effects/speeder_burnout_trigger.mtriggereffect
+			myLeftTriggerEffect helix/trigger_effects/speeder_burnout_left_trigger.mtriggereffect
+			myRightTriggerEffect helix/trigger_effects/speeder_burnout_right_trigger.mtriggereffect
+		}
+		myPowerSlideBoostReadyRumble 91CF4D4865CBA02E00038A2683D8A2CC
+		myPowerSlideBoostRumble 91CF4D4865B14F9C000B1EC45D6F58E1
+		myPowerSlideRumbles
+		{
+			myMinAngle 0.1
+			myMinIntensity 0.01
+			myIntensityBySpeed FALSE
+			myLeftRumble 91CF4D4865B15E030013ADF12475A333
+			myRightRumble 91CF4D4865B15E0C0013B0647C7E9B85
+		}
+		myDisabledRumble 8E25811B653BA8B700006C4517641380
+		myThrownRumble 91CF4D4866476E68000000D5691FDE49
+		myHeavyPerfectLandingRumble 91CF4D4865BE57F40008190048C5FE79
+		myHeavyGoodLandingRumble 91CF4D4865BE5B70000AE30DDBA5F8CD
+		myHeavyBadLandingRumble 91CF4D4865BE5C00000AE30FC4959798
+		myGoodLandingRumble 91CF4D4865BE57F40008190048C5FE79
+		myBadLandingRumble 8E25811B653BA8DA00006C466ABC8F6B
+		myAgainstWindTunnelRumbles
+		{
+			myEnterNoBoostRumble 91CF4D486634F6EF002B4B57D23CFCB6
+			myInTunnelLoopRumble 91CF4D486634DE9A0016030AEF157404
+			myExitRumble 91CF4D486634F748002B4B59D98E890E
+		}
+		myWithWindTunnelRumbles
+		{
+			myEnterNoBoostRumble 91CF4D486634F38D001F2B774081F8DD
+			myInTunnelLoopRumble 91CF4D486634DE1300160308045B17C9
+			myExitRumble 91CF4D486634F4D6001F2B7BF89A8C77
+		}
+		myTraversalRumbles
+		{
+			myDefaultRumble 91CF4D4865DE0E0C000284F217AEF8C0
+			myInWaterRumble 91CF4D4865E74AFC0001657549D71743
+			myInWaterWithUpgradeRumble 91CF4D4865E74B0D00016590ED8234EA
+		}
+	}
+	myVehicleTriggerEffectSettings < uid=91CF4D48659FF3D6000AD16AF68034B4 >
+	{
+		myTraversalTriggerEffect helix/trigger_effects/speeder_throttletrigger.mtriggereffect
+		myBrakeTriggerEffect helix/trigger_effects/speeder_braketrigger.mtriggereffect
+	}
+	myVehicleHealthSettings
+	{
+		myMaxHealthFormula 8
+		myHealthPerSegment 2.0
+		myHealingRateFormula 1
+		myCanRegenerate TRUE
+		myRegenerationRateFormula 0.1
+		myRegenerationRateDuringCombatFormula 0.1
+		myHealthRegenCooldown 5.0
+		myUseSafetyBelt TRUE
+		mySafetyBelt
+		{
+		}
+	}
+	myVehicleDismountSettings
+	{
+		myVehicleDismountOffsetLeft 0.8
+		myVehicleDismountOffsetRight 0.8
+		myVehicleDismountOffsetFront 1.5
+		myVehicleDismountOffsetBack 1.8
+	}
+	myVehicleFallDamageSettings
+	{
+		myMinFallHeightToCauseDamage 15.0
+		myMaxFallHeightBeforeFatal 51.0
+		myDamagePerSegment 0.8
+		myUseContinuousDamageInsteadOfSegments FALSE
+		myDamagePerMeterContinuous 0.005
+		myGoodLandingThreshold 0.9
+		myBadLandingMultiplier 1.2
+		myGoodLandingMultiplier 1.0
+		myPerfectLandingBoostTime 0.8
+		myPerfectLandingBoostAmount 4.0
+	}
+	myVehicleAnimationType Player
+	myPassThroughImpact < uid=A207755D642BE151000008EBCAB5EC6F > = base_impact_passthrough_vehicle A207755D642BE115000008EAE74D81DC
+}
+

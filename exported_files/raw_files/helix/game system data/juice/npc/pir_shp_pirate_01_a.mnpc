@@ -1,0 +1,50 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npc/pir_shp_base.mnpc"
+
+NPC pir_shp_pirate_01_a < uid=6EA79625636BBC4D00006F17DEAA71AB > : pir_shp_base
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Junkros - Pirate Faction\", enabled = true, guid = #6AE6EE0D65771B7E000236CE4CE78F68, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 10726, text = 'JLF-19 \"Junkros\" Fighter', type = \"MenuLine\""
+	myCharacterVisuals < uid=6EA79625636BBC4D00006F18C6FF22CC > = character_visual_npc_space_pirate_01 6EA796256329BC74000093EC8C1EB181
+	myNPCComponentSetType Spaceship
+	mySpaceshipType FangPirate
+	myMaxHealth 70
+	myHealthFormula 35*SpaceHealthDifficultyModifier
+	myDialogueCharactersFromDatabase
+	{
+		DialogueCharacterWithTags Pirate_Basic_F01 < uid=3A129121647605CF0002753BFC3A8607 > = Pirate_Basic_Pilot_F01 3A1291216476010F000164382AEADBCD
+		DialogueCharacterWithTags Pirate_Basic_F02 < uid=3A129121647606EC000275994986DBD4 > = Pirate_Basic_Pilot_F02 3A1291216476015E00016453EE3910B6
+		DialogueCharacterWithTags Pirate_Basic_F03 < uid=3A129121647607000002759A7F8649F1 > = Pirate_Basic_Pilot_F03 3A1291216476015E00016458B3CFFFFC
+		DialogueCharacterWithTags Pirate_Basic_M01 < uid=3A1291216476071C000275AC9EED4994 > = Pirate_Basic_Pilot_M01 3A1291216476015E0001645D5C81904F
+		DialogueCharacterWithTags Pirate_Basic_M02 < uid=3A1291216476073F000275AD0375546E > = Pirate_Basic_Pilot_M02 3A1291216476015E0001646259578997
+		DialogueCharacterWithTags Pirate_Basic_M03 < uid=3A12912164760747000275BFAA46C932 > = Pirate_Basic_Pilot_M03 3A1291216476015E000164678C869827
+		DialogueCharacterWithTags Pirate_Designed_F01 < uid=3A1291216476074E000275D14EBE7681 > = Pirate_Designed_Pilot_F01 3A129121647601E8000164837530AE6E
+		DialogueCharacterWithTags Pirate_Designed_F02 < uid=3A12912164760761000275D265DAE5DA > = Pirate_Designed_Pilot_F02 3A129121647601E800016488891B50CC
+		DialogueCharacterWithTags Pirate_Designed_F03 < uid=3A1291216476076B000275D394F27376 > = Pirate_Designed_Pilot_F03 3A129121647601E80001648DAD35AF74
+		DialogueCharacterWithTags Pirate_Designed_M01 < uid=3A12912164760776000275E5AB5B79A6 > = Pirate_Designed_Pilot_M01 3A129121647601E800016492AC414A6F
+		DialogueCharacterWithTags Pirate_Designed_M02 < uid=3A12912164760782000275E6A4E18A3E > = Pirate_Designed_Pilot_M02 3A129121647601E800016497F93BE23B
+		DialogueCharacterWithTags Pirate_Designed_M03 < uid=3A12912164760789000275E7D852C0CE > = Pirate_Designed_Pilot_M03 3A129121647601E80001649C5C8964A0
+	}
+	myLodType Spaceship_Small
+	myVisionProfile < uid=6EA79625636BBC4D00006F1AB08120C9 > = visionProfile_pir_ship_Fighter 6B0E1DE964B7A45D0000AD5B5DCEDB99
+	myHearingProfile < uid=6EA79625636BBC4D00006F1B3D2B385B > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=F95CD8F364835661000AF5E60417D2F9 > = detectionProfile_pir_ship_Fighter 6B0E1DE964B663680003C7237D16F27F
+	}
+	myThreatProfile < uid=F95CD8F3653F85B000057BFFAABDE149 > = Spaceshipthreatprofile F95CD8F3653F81EE00057BF796B8AD1A
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "fang weapon loadout" < uid=F95CD8F3640B49E3000009B30AEA5200 > = weaponloadout_pir_shp_fang 6AF0BA04649BFC9400074B44C0DEB7D2
+	}
+	myPatrolFormationProfile < uid=6EA79625636BBC4D00006F204CA98F47 > = TiefighterPatrolFormation F97070E1630617BB000045D00ED770A9
+	myAudioParameters
+	{
+		myEmitterName "Space Pirate Ship"
+	}
+	myCombatRole Fighter
+}
+

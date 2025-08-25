@@ -1,0 +1,91 @@
+include "helix/game system data/fruit/interactionpoints/interactionpoints.fruit"
+include "helix/game system data/juice/interactionpoints/interactionpoints.minteractionpoint"
+include "helix/game system data/juice/interactionpoints/petcommands.minteractionpoint"
+
+InteractionPoint ScriptAlarmPanel < uid=06F73AE1655783F80001ECD480D41906 >
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	}
+	myExtraStepsSetupList
+	{
+		InteractionPointSetup Sabotaged
+		{
+			myLabel "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		}
+		InteractionPointSetup Disabled
+		{
+			myLabel "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		}
+		InteractionPointSetup Sabotaged_Deadly
+		{
+			myLabel "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		}
+	}
+	myDefaultInteractionRadius 0.0
+	myDefaultVisibilityRadius 0.0
+	myUnarmedAimingInsideNonCombatAreaVisibilityProfile
+	{
+		myIsVisible FALSE
+	}
+	myPersistenceType Session
+}
+
+InteractionPoint DeadlyAlarmSabotage < uid=3C2FA92B65757FE20003B704762458A0 >
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	}
+	myExtraStepsSetupList
+	{
+	}
+	myDefaultInteractionRadius 0.0
+	myDefaultVisibilityRadius 0.0
+	myUnarmedAimingInsideNonCombatAreaVisibilityProfile
+	{
+		myIsVisible FALSE
+	}
+	myPersistenceType Session
+}
+
+InteractionPoint DisableAlarm < uid=6F5419E7659FE7CD0004A22243E34780 > : LeverToggle
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, branch = \"MAIN\", contextComment = \"Action that the player can perform to disable the alarm\n\", enabled = true, guid = #6F5419E7659FE88D0004A3B490C3DCCB, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10727, text = \"Disable alarm\", type = \"MenuLine\""
+	}
+	myExtraStepsSetupList
+	{
+	}
+}
+
+InteractionPoint DestroyAlarm < uid=6F5419E7659FE8B40004A5BCEC466A94 > : PetSabotage
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, branch = \"\", contextComment = \"Action that the player can perform to destroy the alarm\", enabled = true, guid = #6F5419E7659FE9020004A5BF4F8F3E0B, lineVersion = 8, maxLength = 0, productId = 6, sectionId = 10727, text = \"Destroy alarm\", type = \"MenuLine\""
+	}
+}
+
+InteractionPoint WantedReinforcements < uid=5C148C4665D4B47C0005F26BE9B79EC7 >
+{
+	myDefaultInteractionRadius 0.0
+	myDefaultInteractionDirection -0.1;0.0;1.0
+	myDefaultVisibilityRadius 0.0
+	myGameAction None
+}
+
+InteractionPoint PetDisableAlarm < uid=6F5419E7668801A60002C0773A0B3716 > : DisableAlarm
+{
+	myGameAction OrderPetCommandMain
+	myPlayerRestrictionsDuringInteraction < uid=6F5419E7668801D90002C92056429B54 > = NULLREFERENCE
+	myPlayerRestrictionsPreparingInteraction < uid=6F5419E7668801D90002C921159E65CC > = NULLREFERENCE
+}
+

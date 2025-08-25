@@ -1,0 +1,37 @@
+include "helix/game system data/juice/character/character_visuals_3_hired_guns.mcharactervisuals"
+include "helix/game system data/juice/character/character_visuals_hired_gun_generator.mcharactervisuals"
+include "helix/game system data/juice/melee/npc_melee_config.mnpcmeleeconfig"
+include "helix/game system data/juice/npc/base_hiredgun.mnpc"
+include "helix/game system data/juice/npc/base_npc.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npcmove/wildlife_move_config.mnpcmoveconfig"
+
+NPC base_hiredgunheavy < uid=16DEADE661F1A75700001B6268341C56 > : base_hiredgun
+{
+	myCharacterVisuals < uid=16DEADE6624C1016000020518018684A > = character_visuals_hired_gun_generator 66F572896548EC8500006F0D7AE31A68
+	myAdditionalGearGraphs 416E63E46708F6DB0003DCD8CB3A31AD
+	myBehavior helix/behaviors/base_hiredgunheavy.mbehavior
+	myMaxHealth 15
+	myHealthFormula max(1,2+NPCFinalHealth)
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=4171A7E165CB9F9C0005F1CC65A9A719 > = Agent_Gender_MasculineTag 16DEADE6626D20EA00002E504CE30DE2
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=4171A7E165CB9F6E0005F1AF275833FC > = Agent_BarksFamily_HiredGun E4123D2762F4CA2800048CADB39E55F8
+		RBTagsTag "New RBTagsTag_0" < uid=4171A7E165CB9F580005F1AEA701E621 > = Agent_Archetype_HeavyTag 16DEADE6626D213900002E64966E0FFD
+	}
+	myVisionProfile < uid=4171A7E164B7D4FD0005904309B1B5F8 > = SniperVisionProfile 2736B365625FDB0800000B32BA2AB46D
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout LoadoutA < uid=2736B365635FFFB20003D688721672CC > = HiredGun_Heavy_GrenadeLauncher 2736B365635FFEEB0003D604B4757FDC
+	}
+	myLootTable < uid=BFAAA1FC6380E7A60000863F2FF4722B > = loot_con_OnKill_BactaOnly 2AE2EC8565F81F4F0002A84860BF6E62
+	myBehaviorUpdateBoostProfile < uid=2736B36563DCEAD60000DE89F9CDD4E9 > = hostile 2736B36563DCDB14000114E560E4B9A2
+	myAudioNPCDangerWeight 2.0
+	myMeleeConfig < uid=2736B36562C8045D0001BEA8F6ED6E5B > = npc_melee_config BCDE37F162445830000053EBBBF07CF3
+	myStaggerConfig < uid=2736B36562C8045D0001BEA9D8464994 > = NPCStaggerConfig_Humanoid_Medium_MeleeTier2 3C2FA92B6515832C0004A42547889D4B
+	myCombatRole Sniper
+}
+

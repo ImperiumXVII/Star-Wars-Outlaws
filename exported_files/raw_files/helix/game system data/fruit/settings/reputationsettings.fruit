@@ -1,0 +1,112 @@
+include "helix/game system data/fruit/mapref/mapref.fruit"
+
+//Keep in sync with HC_ReputationChangeReason
+enum ReputationChangeReason
+{
+	None //Needs to stay first
+	Brawling
+	Stealing
+	Trespassing
+	Combination
+	GainForLossTalent
+}
+
+class ReputationChangeReasons
+{
+	//Needs to match the ReputationChangeReason enum (except for None)
+	varmap myBrawling < bhv="localization" ui_info=1 >
+	varmap myStealing < bhv="localization" ui_info=1 tooltip="Used when doing a forbidden loot interaction." >
+	varmap myTrespassing < bhv="localization" ui_info=1 tooltip="Used when arrested for trespassing or caught doing a forbidden interaction other than stealing." >
+	varmap myCombination < bhv="localization" ui_info=1 tooltip="Used when more than one reason lead to the reputation change." >
+	varmap myGainForLossTalent < bhv="localization" ui_info=1 tooltip="Used by Major Charm: reputation loss triggers a reputation gain on another faction." >
+}
+
+class ReputationTierConsequence < ui_info=1 >
+{
+	varmap myTitle < bhv="localization" >
+	varmap myType < bhv="localization" >
+	varmap myDescription < bhv="localization" >
+	string myIcon < bhv="sprite" >
+}
+
+list ReputationTierConsequenceList
+{
+	ReputationTierConsequence
+}
+
+class ReputationTierSettings
+{
+	varmap myUIName < bhv="localization" >
+	varmap myUIRewardRequirementName < bhv="localization" tooltip="Due to german grammar we need a separate string for the reward screen and can't use the normal UI name" >
+	uid myUIPresetColor < bhv=presetcolor >
+	string myUIIcon < bhv="sprite" >
+	ReputationTierConsequenceList myConsequences
+}
+
+class ReputationTierSettingsContainer
+{
+	ReputationTierSettings myTerribleReputation
+	ReputationTierSettings myBadReputation
+	ReputationTierSettings myFairReputation
+	ReputationTierSettings myGoodReputation
+	ReputationTierSettings myExcellentReputation
+}
+
+class ReputationActionSettings
+{
+	int myReputationChange 0
+	bool myIsAppliedAfterCombat true < tooltip = "If this is true this will be combined with any other reputation action for the same faction that happens during a combat and applied together afterwards as one reputation change.">
+	bool myCanOnlyHappenOncePerCombat false < tooltip = "If this is true this action will only cause a reputation loss once per combat.">
+	bool myIgnoresSuppression false < tooltip= "If this is true, this action will always result in a reputation change no matter if it's suppressed by volume or script." >
+	ReputationChangeReason myChangeReason None < tooltip = "Decides what reason should be shown in the reputation notification." >
+}
+
+class ReputationActionSettingsContainer
+{
+	float myCumulativeActionTime 5 < tooltip="Time after combat has ended before the cumulated changes are applied." >
+	int myCumulativeReputationLossCap -100 < max=-1 >
+	
+	ReputationActionSettings myPlayerShotAtNPC
+	ReputationActionSettings myPlayerShotNearNPC
+	ReputationActionSettings myPlayerEliminatedNPC
+	ReputationActionSettings myPlayerShotAtSpaceStation
+	ReputationActionSettings myPlayerTrespassedLowSecurityArea
+	ReputationActionSettings myPlayerTrespassedHighSecurityArea
+	ReputationActionSettings myPlayerTrespassedFactionTerritory
+	ReputationActionSettings myPlayerAimedAtNPC
+	ReputationActionSettings myPlayerResistedArrest
+	ReputationActionSettings myPlayerDisobeyedOrder
+	ReputationActionSettings myPlayerStoodTooCloseToNPC
+	ReputationActionSettings myPlayerAssaultedNPC
+	ReputationActionSettings myPlayerBumpedIntoNPC
+	ReputationActionSettings myPlayerPerformedForbiddenInteraction
+	ReputationActionSettings myPlayerBecameWanted
+	ReputationActionSettings myPlayerHoldingForbiddenItem
+	ReputationActionSettings myPlayerThrowingForbiddenItem
+	ReputationActionSettings myPlayerFaceOffNPC
+	ReputationActionSettings myPlayerTriggeredAlarm
+	ReputationActionSettings myPlayerStoleFromNPC
+	ReputationActionSettings myPlayerVehicleCollisionWithNPC
+}
+
+class ReputationChangeThresholds
+{
+	int myBigNegativeChangeThreshold < max=0 tooltip="Should be negative">
+	int mySmallNegativeChangeThreshold < max =0 tooltip="Should be negative, but smaller than myBigNegativeChangeThreshold">
+	int mySmallPositiveChangeThreshold < min =0 tooltip="Should be positive">
+	int myBigPositiveChangeThreshold < min=0 tooltip="Should be positive, but bigger than mySmallPositiveChangeThreshold">
+}
+
+
+class ReputationSettings < uid=auto >
+{
+	ReputationTierSettingsContainer myTiers
+	ReputationActionSettingsContainer myActions
+	MapRef* myDialogueReputationOpportunityMapRef
+	int myTerritorialArrestReputationCost 0 < tooltip="The cost/loss should be defined as a positive value." >
+	varmap myReachHigherTierHint < bhv="localization" ui_info=1 >
+	varmap myReachLowerTierHint < bhv="localization" ui_info=1 >
+	ReputationChangeThresholds myReputationChangeThresholds < tooltip="Needed for UI to determine the intervals for displaying the arrows (big, small, positive, negative)">
+	ReputationChangeReasons myReputationChangeReasons
+	varmap myMaxTierUIRewardRequirementName < bhv="localization" tooltip="Used in the reputation reward screen" >
+}

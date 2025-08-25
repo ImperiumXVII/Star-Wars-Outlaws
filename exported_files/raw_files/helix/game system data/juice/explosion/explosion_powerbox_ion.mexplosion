@@ -1,0 +1,30 @@
+include "helix/game system data/fruit/explosion/explosion.fruit"
+include "helix/game system data/juice/explosion/explosion_default.mexplosion"
+
+Explosion explosion_powerbox_ion < uid=F8181D48654A150F00011D6898E173B5 > : explosion_template
+{
+	myDefaultRadius 5.0
+	myDetonation
+	{
+		myBaseEffect helix/particles/vfx_ldi_powerbox_02.mparticles
+		myGameplayDamageSection
+		{
+			mySize 1.0
+			myBlockerType StaticOnly
+			myDamageType Ion
+			myDamageTargetType All
+			myDamageFormula 1.0
+			myDefaultDamage 1.0
+			myDamageSelf TRUE
+			myFriendlyFireEnabled TRUE
+		}
+		myAudioSection
+		{
+			myDetonationEvent
+			{
+				myGuid 490719BA4A076343148D0F2E650EC7B3
+			}
+		}
+	}
+}
+

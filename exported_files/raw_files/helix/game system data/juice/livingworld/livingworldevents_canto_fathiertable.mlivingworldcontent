@@ -1,0 +1,74 @@
+include "helix/game system data/fruit/attribute/formulacontexttypes.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditionbase.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+include "helix/game system data/fruit/gamevalues/gamevalues.fruit"
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+include "helix/game system data/fruit/livingworld/livingworldtag.fruit"
+include "helix/game system data/fruit/quest/questenums.fruit"
+
+LivingWorldContent livingworldevents_canto_FathierTable_Working < uid=BD27FEFF6560C7750009C21F6B24EAE8 >
+{
+	myLayerType Expert
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "MQ10 ongoing"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState "MQ10 intro"
+				{
+					myQuestBeat C5645856628B81B10000B4AAB4371172
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "MQ10 B2"
+				{
+					myQuestBeat C564585662FF3D11000122801F914F84
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "MQ10 B3"
+				{
+					myQuestBeat C564585663F33004000166D7DEE9FC69
+					myQuestBeatState Started
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionQuestBeatState "MQ10 B4"
+		{
+			myQuestBeat C564585663F33004000166D7DEE9FC69
+			myQuestBeatState Completed
+			myOperator Equal
+		}
+	}
+}
+
+LivingWorldContent livingworldevents_canto_FathierTable_MQ200Cinematic < uid=BD27FEFF6560C7750009C2204BFB7610 >
+{
+	myLayerType Expert
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup OR
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState "MQ10 b3 completed"
+				{
+					myQuestBeat C564585663F33004000166D7DEE9FC69
+					myQuestBeatState Completed
+				}
+				GameConditionQuestIsCompleted "MQ10 completed"
+				{
+					myQuest C5645856628B81B10000B4A8BCA85E04
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+	}
+}
+

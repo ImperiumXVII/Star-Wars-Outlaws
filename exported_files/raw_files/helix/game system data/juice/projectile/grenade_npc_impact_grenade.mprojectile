@@ -1,0 +1,40 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/explosion/explosion_generic.mexplosion"
+include "helix/game system data/juice/explosion/explosion_npc_impact_grenade.mexplosion"
+include "helix/game system data/juice/projectile/grenade_npc_base.mprojectile"
+include "helix/game system data/juice/projectile/realization/impact_grenade.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/sonic_imploder.mprojectilerealization"
+
+BallisticProjectile grenade_npc_impact_grenade < uid=4171A7E1652405C10006F77F97B8BCEC > : grenade_npc_base
+{
+	myRealization < uid=4171A7E1652405C10006F7808B281029 > = impact_grenade 4171A7E1652405E50006F78146B265F8
+	myActions
+	{
+		ProjectileActionGameScript HitDetonation
+		{
+			myActionTargetType FinalHit
+			myGameScript "helix/game scripts/gs_impact_grenade_detonation.mgamescript"
+			myGameScriptDuration 2.5
+			myDamageFormula 5
+			myRadiusFormula 4
+			myDefaultDamage 5.0
+			myDefaultRadius 4.0
+		}
+		ProjectileActionGameScript Spawn
+		{
+			myActionTargetType Spawned
+			myGameScript "helix/game scripts/gs_dev_sonic_imploder_spawn.mgamescript"
+			myGameScriptDuration 1.0
+		}
+		ProjectileActionExplosion Explosion
+		{
+			myActionTargetType FinalHit
+			myDamageFormula 5
+			myRadiusFormula 4
+			myDefaultDamage 5.0
+			myDefaultRadius 4.0
+			myExplosion < uid=C6B18B08653A771F0000FD1EC0959AF4 > = explosion_npc_impact_grenade 4171A7E16525605D002175D097F27024
+		}
+	}
+}
+

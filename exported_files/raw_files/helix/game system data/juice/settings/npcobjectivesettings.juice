@@ -1,0 +1,42 @@
+include "helix/game system data/fruit/settings/npcobjectivesettings.fruit"
+
+NPCObjectiveSettingsRoot Root < uid=16C7D1FB6407499E000000B27B1CEBF7 >
+{
+	myObjectiveSettings
+	{
+		myPriorityMapping
+		{
+			NPCObjectivePriorityMapping Wanted
+			{
+				myObjectives
+				{
+					NPCObjectiveType Pursuit PursueWantedPlayer
+					NPCObjectiveType Fallback FallbackWanted
+				}
+				myPriority 1
+			}
+		}
+		myMutexMapping
+		{
+			NPCObjectiveMutexMapping Wanted
+			{
+				myObjectives
+				{
+					NPCObjectiveType Pursuit PursueWantedPlayer
+					NPCObjectiveType Fallback FallbackWanted
+				}
+				myMutexGroup Wanted
+			}
+			NPCObjectiveMutexMapping Guide
+			{
+				myObjectives
+				{
+					NPCObjectiveType ProceedToWaypoint Guide_ProceedToWaypoint
+					NPCObjectiveType RushToWaypoint Guide_RushToWaypoint
+				}
+				myMutexGroup Guide
+			}
+		}
+	}
+}
+

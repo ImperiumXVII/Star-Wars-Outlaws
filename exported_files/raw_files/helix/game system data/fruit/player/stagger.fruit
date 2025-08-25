@@ -1,0 +1,17 @@
+include "helix/game system data/fruit/restriction/playerrestriction.fruit"
+include "helix/game system data/fruit/camera/cameramodifier.fruit"
+include "helix/game system data/fruit/timesequence/time_sequence.fruit"
+
+class StaggerRules < uid=auto >
+{
+	PlayerRestriction* myRestrictions < tooltip="The actions prevented when you are staggered" >
+	float myDuration 0.5f < tooltip="The time in seconds that the restrictions are in effect" >
+	TimeSequenceTracks mySequence
+	float myImmunityDuration 1.0f < tooltip="The time in seconds after the stagger that you can't be staggered again" >
+	float myMinDamageToTrigger 1.f < tooltip="The minimum amount of damage from the effect to trigger the stagger" >
+	float myDisplacementDistance 1.f < tooltip="Distance to move her on stagger" >
+	bool myCanBeChained false < tooltip="If the stagger can be replaced by a new stagger, so the timer resets on new hits" >
+	ShakeCameraModifier* myCameraShake < tooltip="The camera shake applied for this stagger type" >
+	uid myRumble < bhv="constantData" constantDataType="rumble">
+	string mySpeedCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, }, outTangents = { 0.54345089 -0.10883617, }, properties = { 275, }, values = { 0 0, }, }, numKeys = 1, }" < bhv=inputgraph tooltip="Overrides the displacement distance (not duration) for calculating speed" >
+}

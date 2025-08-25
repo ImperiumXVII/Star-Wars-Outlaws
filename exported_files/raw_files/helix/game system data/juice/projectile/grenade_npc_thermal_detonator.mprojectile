@@ -1,0 +1,52 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/explosion/explosion_generic.mexplosion"
+include "helix/game system data/juice/explosion/explosion_npc_thermal_detonator.mexplosion"
+include "helix/game system data/juice/projectile/grenade_npc_base.mprojectile"
+include "helix/game system data/juice/projectile/realization/impact_grenade.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/sonic_imploder.mprojectilerealization"
+include "helix/game system data/juice/projectile/realization/thermal_detonator.mprojectilerealization"
+
+BallisticProjectile grenade_npc_thermal_detonator < uid=4171A7E1652545F10008158771284E89 > : grenade_npc_base
+{
+	myObject
+	{
+		myMainShape
+		{
+			myShapeType Sphere
+			myDynamicShapeEnabled FALSE
+			myShapeRadius 0.08
+			myDynamicShapeRadius "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, }, outTangents = { 1 0, }, properties = { 2250, }, values = { 0 0.1, }, }, maxValueBounds = 10, minValueBounds = -10, numKeys = 1, }"
+			myShapeHeight 0.0
+		}
+	}
+	myRealization < uid=4171A7E1652545F1000815881445668A > = thermal_detonator 4171A7E16525464B0008159427E17312
+	myActions
+	{
+		ProjectileActionGameScript HitDetonation
+		{
+			myActionTargetType FinalHit
+			myGameScript "helix/game scripts/gs_thermal_detonator_detonation.mgamescript"
+			myGameScriptDuration 2.5
+			myDamageFormula 5
+			myRadiusFormula 4
+			myDefaultDamage 5.0
+			myDefaultRadius 4.0
+		}
+		ProjectileActionGameScript GrenadeSpawn
+		{
+			myActionTargetType Spawned
+			myGameScript "helix/game scripts/gs_dev_sonic_imploder_spawn.mgamescript"
+			myGameScriptDuration 1.0
+		}
+		ProjectileActionExplosion Explosion
+		{
+			myActionTargetType FinalHit
+			myDamageFormula 5
+			myRadiusFormula 4
+			myDefaultDamage 5.0
+			myDefaultRadius 4.0
+			myExplosion < uid=C6B18B08653A77FE0000FE4AA606E975 > = explosion_npc_thermal_detonator 4171A7E165256039002175C2E4D7BA25
+		}
+	}
+}
+

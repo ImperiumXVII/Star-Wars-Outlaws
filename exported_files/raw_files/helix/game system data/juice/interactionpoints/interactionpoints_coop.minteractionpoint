@@ -1,0 +1,612 @@
+include "helix/game system data/fruit/animation/gesturetypes.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditionbase.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+include "helix/game system data/fruit/gamevalues/gamevalues.fruit"
+include "helix/game system data/fruit/input/gameinput.fruit"
+include "helix/game system data/fruit/interactionpoints/interactionpointminigames.fruit"
+include "helix/game system data/fruit/interactionpoints/interactionpoints.fruit"
+include "helix/game system data/fruit/interactionpoints/interactionpointtelemetrytypes.fruit"
+include "helix/game system data/juice/interactionpoints/interactionpoints.minteractionpoint"
+include "helix/game system data/juice/interactionpoints/interactionpoints_loot.minteractionpoint"
+
+InteractionPoint coop_Slice_60s < uid=6B0E1DE9639C38E20000ACE13D78166D > : Slice_base
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"Player interaction with computer terminal that requires hacking\", enabled = true, guid = #6B0E1DE963BBDBEB0000F1A711E447C9, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 417, text = \"Slice\", type = \"MenuLine\""
+		myIcon "mySpriteId = 1285654962, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_coop_classes.spritesheet\""
+	}
+	myHoldDuration 60.0
+	myCoopPersistenceType SaveGame
+	myEditorMenuStructure "COOP Interactions"
+}
+
+InteractionPoint coop_lockpicking_10s < uid=6B0E1DE963B3F7690000BA12B13F5DC2 > : Slice_base
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"Player interaction with object that requires lockpicking\", enabled = true, guid = #6B0E1DE963B3F71A0000BA0B2EB2B831, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 417, text = \"Lockpick\", type = \"MenuLine\""
+		myIcon "mySpriteId = -170646897, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_coop_classes.spritesheet\""
+	}
+	myRestrictions
+	{
+		GameConditionPlayerCanAddItem PlayerCanAddItem
+		{
+			myItem < uid=06F73AE1654A3B0800020C4898C14356 > = "Pocketable Heist Target" 0B1314156368BFAF00005A70A06D1F74
+		}
+	}
+	myHoldDuration 10.0
+	myCoopPersistenceType SaveGame
+	myEditorMenuStructure "COOP Interactions"
+}
+
+InteractionPoint coop_lockpicking_15s < uid=6B0E1DE963B3F7690000BA136C9E724F > : Slice_base
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"Player interaction with object that requires lockpicking\", enabled = true, guid = #6B0E1DE963B3F72C0000BA0EFF5B6105, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 417, text = \"Lockpick\", type = \"MenuLine\""
+		myIcon "mySpriteId = -170646897, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_coop_classes.spritesheet\""
+	}
+	myRestrictions
+	{
+		GameConditionPlayerCanAddItem PlayerCanAddItem
+		{
+			myItem < uid=06F73AE1654A3B0800020C49F89C154B > = "Pocketable Heist Target" 0B1314156368BFAF00005A70A06D1F74
+		}
+	}
+	myHoldDuration 15.0
+	myCoopPersistenceType SaveGame
+	myEditorMenuStructure "COOP Interactions"
+}
+
+InteractionPoint coop_lockpicking_60s < uid=6B0E1DE963B3F7690000BA14D7D51711 > : Slice_base
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"Player interaction with object that requires lockpicking\", enabled = true, guid = #6B0E1DE963B3F7430000BA1195485527, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 417, text = \"Lockpick\", type = \"MenuLine\""
+		myIcon "mySpriteId = -170646897, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_coop_classes.spritesheet\""
+	}
+	myExtraStepsSetupList
+	{
+		InteractionPointSetup "ExtraStep for changing the interaction point on completed"
+		{
+			myLabel "aurabesh = false, contextComment = \"Player Interaction with lootcontainer after unlocking it\", enabled = true, guid = #6B0E1DE963C012B0000144C746FB6C00, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 417, text = \"Open\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"Player Interaction with lootcontainer after unlocking it\", enabled = true, guid = #6B0E1DE963BFFEDC000287EB89ED74F8, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 417, text = \"Open\", type = \"MenuLine\""
+		}
+	}
+	myConditions
+	{
+	}
+	myRestrictions
+	{
+		GameConditionPlayerCanAddItem "Pocketable Heist Target Carrying Capacity"
+		{
+			myItem < uid=06F73AE1654A3B0800020C4AAFE795E5 > = "Pocketable Heist Target" 0B1314156368BFAF00005A70A06D1F74
+		}
+	}
+	myHoldDuration 60.0
+	myCoopPersistenceType SaveGame
+	myEditorMenuStructure "COOP Interactions"
+}
+
+InteractionPoint coop_Slice_10s < uid=6B0E1DE963BBDC410000F1E11ACB9E32 > : Slice_base
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"Player interaction with computer terminal that requires hacking\", enabled = true, guid = #6B0E1DE963BBDC1B0000F1E0381C77C5, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 417, text = \"Slice\", type = \"MenuLine\""
+		myIcon "mySpriteId = 1285654962, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_coop_classes.spritesheet\""
+	}
+	myHoldDuration 10.0
+	myCoopPersistenceType SaveGame
+	myEditorMenuStructure "COOP Interactions"
+}
+
+InteractionPoint coop_Slice_15s < uid=6B0E1DE963BBDCF90000F21B1E424274 > : Slice_base
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"Player interaction with computer terminal that requires hacking\", enabled = true, guid = #6B0E1DE963BBDC4C0000F21ACB4DE33D, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 417, text = \"Slice\", type = \"MenuLine\""
+		myIcon "mySpriteId = 1285654962, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_coop_classes.spritesheet\""
+	}
+	myHoldDuration 15.0
+	myCoopPersistenceType SaveGame
+	myEditorMenuStructure "COOP Interactions"
+}
+
+InteractionPoint coop_SetCharge_60s < uid=841E78F363BE9104000049989526FF86 > : Slice_base
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"Player interaction with computer terminal that requires hacking\", enabled = true, guid = #841E78F363BE8F900000499780263B8A, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 417, text = \"Slice\", type = \"MenuLine\""
+		myIcon "mySpriteId = -624192246, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_coop_classes.spritesheet\""
+	}
+	myHoldDuration 60.0
+	myCoopPersistenceType SaveGame
+	myEditorMenuStructure "COOP Interactions"
+}
+
+InteractionPoint coop_setCharge_10s < uid=6B0E1DE963C012740001445E2433385C > : Slice_base
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"Player interaction with destructible wall\", enabled = true, guid = #6B0E1DE963C011FB0001445B9F094746, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 417, text = \"Set Charge\", type = \"MenuLine\""
+		myIcon "mySpriteId = -624192246, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_coop_classes.spritesheet\""
+	}
+	myHoldDuration 10.0
+	myCoopPersistenceType SaveGame
+	myEditorMenuStructure "COOP Interactions"
+}
+
+InteractionPoint coop_SetCharge_15s < uid=6B0E1DE963C012740001445FF1D578EB > : Slice_base
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"Player interaction with Destructible Wall \", enabled = true, guid = #6B0E1DE963C011FF0001445DAB9442E9, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 417, text = \"Set Charge\", type = \"MenuLine\""
+		myIcon "mySpriteId = -624192246, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_coop_classes.spritesheet\""
+	}
+	myHoldDuration 15.0
+	myCoopPersistenceType SaveGame
+	myEditorMenuStructure "COOP Interactions"
+}
+
+InteractionPoint coop_LootCarriedHeistTarget < uid=FD13B51463C0266F000046000A5602AA > : Loot
+{
+	myExtraStepsSetupList
+	{
+		InteractionPointSetup LootedState
+		{
+			myStep -1
+		}
+	}
+}
+
+InteractionPoint coop_Platform_2Levels < uid=05BD7D7163D8EB680001395A2FD314B6 > : Slice_base
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"Player controlls the elevator\", enabled = true, guid = #05BD7D7163D8EB2E00013955C9FB94D8, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 93, text = \"Activate\", type = \"MenuLine\""
+		myIcon ""
+	}
+	myExtraStepsSetupList
+	{
+		InteractionPointSetup step1
+		{
+			myLabel "aurabesh = false, contextComment = \".\", enabled = true, guid = #05BD7D7163D8EB2E00013956B784978E, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 93, text = \"Activate\", type = \"MenuLine\""
+			myStep 1
+		}
+	}
+	myHoldDuration 0.2
+	myCoopPersistenceType SaveGame
+	myEditorMenuStructure "COOP Interactions"
+}
+
+InteractionPoint coop_Platform_3Levels < uid=FB50C4ED63D3F07A0000436EEF0EAA06 > : Slice_base
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"Player controlls the elevator\", enabled = true, guid = #FB50C4ED63D3EEE50000435FEE993575, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 93, text = \"Activate\", type = \"MenuLine\""
+		myIcon "mySpriteId = 1285654962, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_coop_classes.spritesheet\""
+	}
+	myExtraStepsSetupList
+	{
+		InteractionPointSetup step1
+		{
+			myLabel "aurabesh = false, contextComment = \".\", enabled = true, guid = #FB50C4ED63D3F01A00004360BD6185CF, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"Activate\", type = \"MenuLine\""
+		}
+		InteractionPointSetup step2
+		{
+			myLabel "aurabesh = false, contextComment = \".\", enabled = true, guid = #FB50C4ED63D3F05400004367DCF2FD00, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"Activate\", type = \"MenuLine\""
+		}
+		InteractionPointSetup step3
+		{
+			myLabel "aurabesh = false, contextComment = \".\", enabled = true, guid = #FB50C4ED63D3F0660000436BE696F7E8, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 93, text = \"Activate\", type = \"MenuLine\""
+		}
+	}
+	myHoldDuration 0.2
+	myCoopPersistenceType SaveGame
+	myEditorMenuStructure "COOP Interactions"
+}
+
+InteractionPoint coop_generic_interaction_hold_base < uid=6B0E1DE963ECC960000010F16ECF5D6A > : interaction_once_base
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"Only used for dev testing purposes\", enabled = true, guid = #6B0E1DE963ECC7B6000010F08CDFF28B, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 417, text = \"COOP Generic Interact\", type = \"MenuLine\""
+	}
+	myGameAction HoldInteract
+	myHoldDuration 0.2
+	myCoopPersistenceType SaveGame
+	myEditorMenuStructure "COOP Interactions"
+}
+
+InteractionPoint coop_HeavyTakeDown < uid=7EE6463463EE042A00005782A3805933 > : HeavyTakeDown
+{
+	myConditions
+	{
+		InteractionConditionGroup IsSpecificClass
+		{
+			myConditions
+			{
+				GameConditionPlayerIsClass IsEnforcer
+				{
+					myCoopClassUID 7EE64634648980E80000AB965E6C021E
+				}
+			}
+		}
+	}
+}
+
+InteractionPoint coop_SlicerSpecific < uid=6B0E1DE963EF38E60000580AC72EE235 > : Slice_base
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"Player interaction with computer terminal that requires hacking\", enabled = true, guid = #6B0E1DE963EF387500005804217DED79, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 417, text = \"Slice\", type = \"MenuLine\""
+		myIcon "mySpriteId = 1285654962, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_coop_classes.spritesheet\""
+	}
+	myConsumedItem
+	{
+		myItem < uid=06F73AE1654A3B0800020C4B490B90D7 > = trink_coop_Slicer 6B0E1DE963F4DA1D0000AF7ED31A8B7C
+	}
+	myHoldDuration 3.0
+	myCoopPersistenceType SaveGame
+	myEditorMenuStructure "COOP Interactions"
+}
+
+InteractionPoint coop_DoorPanel < uid=6B0E1DE963EF411500005A444383EB79 > : interaction_once_base
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"Open door prompt\", enabled = true, guid = #7D292061669F6A37000000389E2B5E55, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 417, text = \"Open\", type = \"MenuLine\""
+		myStep 1
+	}
+	myExtraStepsSetupList
+	{
+		InteractionPointSetup Close
+		{
+			myLabel "aurabesh = false, contextComment = \"Close door prompt\", enabled = true, guid = #7D292061669F6A3700000039FCB3B46A, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 417, text = \"Close\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myStep -1
+		}
+		InteractionPointSetup Locked
+		{
+			myLabel "aurabesh = false, contextComment = \"Open door prompt\", enabled = true, guid = #7D292061669F6A370000003A852904D6, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 417, text = \"Locked\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myStep 0
+		}
+		InteractionPointSetup "Disabled Locked"
+		{
+			myLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		}
+		InteractionPointSetup "Disabled Unlocked"
+		{
+		}
+		InteractionPointSetup "Opened By NPC"
+		{
+			myLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		}
+		InteractionPointSetup AutoOpen
+		{
+			myLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		}
+	}
+	myDefaultInteractionAngleDegree 180.0
+	myDefaultCameraAngleDegree 45.0
+	myDefaultVisibilityAngleDegree 180.0
+	myPersistenceType Session
+	myCoopPersistenceType SaveGame
+}
+
+InteractionPoint coop_SabotageAlarm < uid=6B0E1DE963EF797C00015CCF494A4A2D > : Slice_base
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"Player interaction with computer terminal that requires hacking to sabotage the Alarm\", enabled = true, guid = #6B0E1DE963EF793600015CCE36214BAF, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 417, text = \"Sabotage Alarm\", type = \"MenuLine\""
+		myIcon "mySpriteId = -1108289278, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_coop_ping_icons.spritesheet\""
+	}
+	myExtraStepsSetupList
+	{
+		InteractionPointSetup ExtraStep
+		{
+			myLabel "aurabesh = false, contextComment = \"Player interaction with computer terminal that requires hacking to sabotage the Alarm\", enabled = true, guid = #05BD7D716479CEF000017378752BF850, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 417, text = \"Sabotage Alarm\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myIcon "mySpriteId = -1108289278, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_coop_ping_icons.spritesheet\""
+		}
+	}
+	myConsumedItem
+	{
+		myType PlayerHasItem
+		myItem < uid=06F73AE1654A3B0800020C4CDB42B153 > = trink_coop_Slicer 6B0E1DE963F4DA1D0000AF7ED31A8B7C
+		myAmount 1
+		myOperator GreaterThanOrEqual
+	}
+	myHoldDuration 3.0
+	myCoopPersistenceType SaveGame
+	myEditorMenuStructure "COOP Interactions"
+}
+
+InteractionPoint coop_GunslingerSpecific < uid=841E78F363F48FD30000C264F82BB423 > : Slice_base
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"Player placing an explosive charge in a designated area\", enabled = true, guid = #841E78F363F48F4D0000C245B108F027, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 417, text = \"Set Charge\", type = \"MenuLine\""
+		myIcon "mySpriteId = -1661709725, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_coop_ping_icons.spritesheet\""
+	}
+	myConsumedItem
+	{
+		myType PlayerHasItem
+		myItem < uid=06F73AE1654A3B0800020C4DC36CD13D > = trink_coop_Gunslinger 6B0E1DE963F4D9D50000AF424C18980D
+		myAmount 1
+		myOperator GreaterThanOrEqual
+	}
+	myHoldDuration 3.0
+	myCoopPersistenceType SaveGame
+	myEditorMenuStructure "COOP Interactions"
+}
+
+InteractionPoint coop_ThiefSpecific < uid=6B0E1DE963F4DD1A000012685CEC5D20 > : Slice_base
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"Player interaction with ingredient that is locked\", enabled = true, guid = #6B0E1DE963F4DC590000126470FF9DAA, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 417, text = \"Lockpick\", type = \"MenuLine\""
+		myIcon "mySpriteId = -1112294779, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_coop_ping_icons.spritesheet\""
+	}
+	myConsumedItem
+	{
+		myType PlayerHasItem
+		myItem < uid=06F73AE1654A3B0800020C4E50B73C08 > = trink_coop_Thief 6B0E1DE963F4D9A90000AF06EB6E2A8A
+		myAmount 1
+		myOperator GreaterThanOrEqual
+	}
+	myHoldDuration 3.0
+	myCoopPersistenceType SaveGame
+	myEditorMenuStructure "COOP Interactions"
+}
+
+InteractionPoint coop_EnforcerSpecific < uid=6B0E1DE963F4DD1A0000126A779CDAE5 > : Slice_base
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"Player interaction with computer terminal that requires hacking\", enabled = true, guid = #6B0E1DE963F4DCB300001267D0729849, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 417, text = \"Slice\", type = \"MenuLine\""
+		myIcon "mySpriteId = -522855256, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_coop_ping_icons.spritesheet\""
+	}
+	myConsumedItem
+	{
+		myType PlayerHasItem
+		myItem < uid=06F73AE1654A3B0800020C4F452F93E1 > = trink_coop_Enforcer 6B0E1DE963F4D9770000AECA76F1BEB9
+		myAmount 1
+		myOperator GreaterThanOrEqual
+	}
+	myHoldDuration 3.0
+	myCoopPersistenceType SaveGame
+	myEditorMenuStructure "COOP Interactions"
+}
+
+InteractionPoint coop_LockpickResupply < uid=FD13B51463F6318700005056C9D66E10 > : coop_ThiefSpecific
+{
+	myDefaultSetup
+	{
+	}
+	myExtraStepsSetupList
+	{
+		InteractionPointSetup Unlocked
+		{
+			myLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		}
+	}
+	myConsumedItem
+	{
+		myItem < uid=06F73AE1654A3B0800020C508B297A3E > = trink_coop_Slicer 6B0E1DE963F4DA1D0000AF7ED31A8B7C
+	}
+}
+
+InteractionPoint coop_LootResupply < uid=FD13B51463F631C800005059DF4462EE > : Loot
+{
+	myDefaultSetup
+	{
+		myIcon "mySpriteId = 1113437893, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_coop_ping_icons.spritesheet\""
+	}
+	myGameAction HoldInteract
+	myHoldDuration 0.5
+	myCoopPersistenceType SaveGame
+	myEditorMenuStructure "COOP Interactions"
+}
+
+InteractionPoint coop_DoorPanel_ThiefOnly < uid=FB50C4ED63F738CD000012DD5D7D9406 > : coop_DoorPanel
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"Lockpick door prompt\", enabled = true, guid = #6B0E1DE963F73CA700005D0DAEB24837, lineVersion = 6, maxLength = 0, productId = 6, sectionId = 417, text = \"Lockpick\", type = \"MenuLine\""
+	}
+	myRestrictions
+	{
+		GameConditionPlayerHasItem "Is Thief"
+		{
+			myItem < uid=06F73AE1654A3B0800020C512E69B75F > = trink_coop_Thief 6B0E1DE963F4D9A90000AF06EB6E2A8A
+		}
+	}
+	myEditorMenuStructure "COOP Interactions"
+}
+
+InteractionPoint coop_DoorPanel_SlicerOnly < uid=FB50C4ED63F73948000012E1FE2F8678 > : coop_DoorPanel
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"Slice door prompt\", enabled = true, guid = #6B0E1DE963F73CC800005D1046F4CB60, lineVersion = 6, maxLength = 0, productId = 6, sectionId = 417, text = \"Slice\", type = \"MenuLine\""
+	}
+	myRestrictions
+	{
+		GameConditionPlayerHasItem "Is Slicer"
+		{
+			myItem < uid=06F73AE1654A3B0800020C52C7D799E6 > = trink_coop_Slicer 6B0E1DE963F4DA1D0000AF7ED31A8B7C
+		}
+	}
+	myEditorMenuStructure "COOP Interactions"
+}
+
+InteractionPoint coop_DoorPanel_GunslingerOnly < uid=FB50C4ED63F73989000012E466C97716 > : coop_DoorPanel
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"Player sets an explosive  prompt\", enabled = true, guid = #6B0E1DE963F73CE000005D137EEA48BC, lineVersion = 6, maxLength = 0, productId = 6, sectionId = 417, text = \"Set Charge\", type = \"MenuLine\""
+	}
+	myRestrictions
+	{
+		GameConditionPlayerHasItem "Is Gunslinger"
+		{
+			myItem < uid=06F73AE1654A3B0800020C53FE5EAA66 > = trink_coop_Gunslinger 6B0E1DE963F4D9D50000AF424C18980D
+		}
+	}
+	myEditorMenuStructure "COOP Interactions"
+}
+
+InteractionPoint coop_DoorPanel_EnforcerOnly < uid=FB50C4ED63F739E7000012E79A903554 > : coop_DoorPanel
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"Force door open prompt\", enabled = true, guid = #6B0E1DE963F73D0200005D16A1A32CBC, lineVersion = 6, maxLength = 0, productId = 6, sectionId = 417, text = \"Unjam\", type = \"MenuLine\""
+	}
+	myRestrictions
+	{
+		GameConditionPlayerHasItem "Is Enforcer"
+		{
+			myItem < uid=06F73AE1654A3B0800020C543E66C719 > = trink_coop_Enforcer 6B0E1DE963F4D9770000AECA76F1BEB9
+		}
+	}
+	myEditorMenuStructure "COOP Interactions"
+}
+
+InteractionPoint coop_LeverHold_30s < uid=6B0E1DE9646368920000788C5E595643 > : interaction_hold_base
+{
+	myDefaultSetup
+	{
+		myIcon "mySpriteId = 767016569, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_coop_ping_icons.spritesheet\""
+	}
+	myExtraStepsSetupList
+	{
+		InteractionPointSetup LeverOn
+		{
+			myLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		}
+		InteractionPointSetup testworkaround
+		{
+			myLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myStep 2
+		}
+	}
+	myHoldDuration 30.0
+	myCoopPersistenceType SaveGame
+	myEditorMenuStructure coop
+}
+
+InteractionPoint coop_LeverToggle < uid=6B0E1DE96465CEE20000DA9932F15540 > : interaction_once_base
+{
+	myDefaultSetup
+	{
+		myIcon "mySpriteId = 767016569, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_coop_ping_icons.spritesheet\""
+	}
+	myExtraStepsSetupList
+	{
+		InteractionPointSetup LeverOn
+		{
+			myLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myStep 1
+		}
+	}
+	myCoopPersistenceType SaveGame
+	myEditorMenuStructure coop
+}
+
+InteractionPoint coop_sabotage_powerbox < uid=6B0E1DE9647EF25E00015955B530F9BE > : interaction_hold_base
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"Interaction with power generator\", enabled = true, guid = #6B0E1DE9647EF203000141A2C4A93815, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 417, text = \"Sabotage\", type = \"MenuLine\""
+	}
+	myExtraStepsSetupList
+	{
+		InteractionPointSetup "New InteractionPointSetup"
+		{
+			myLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		}
+	}
+	myCoopPersistenceType SaveGame
+	myEditorMenuStructure coop
+}
+
+InteractionPoint coop_DestructibleProps < uid=6B0E1DE9647F43410001CF2E6BBE35D2 > : interaction_once_base
+{
+	myDefaultSetup
+	{
+		myIcon ""
+	}
+	myExtraStepsSetupList
+	{
+		InteractionPointSetup Destroyed
+		{
+			myLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myStep 1
+		}
+	}
+	myCoopPersistenceType SaveGame
+	myEditorMenuStructure coop
+}
+
+InteractionPoint coop_UseDataSpike < uid=6B0E1DE9648ADC330001328C2984A9F4 > : interaction_once_base
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"Interaction label\", enabled = true, guid = #6B0E1DE9648ADC020001328B56AB779B, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 417, text = \"Use Data Spike\", type = \"MenuLine\""
+		myIcon "mySpriteId = 1113437893, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_coop_ping_icons.spritesheet\""
+	}
+	myExtraStepsSetupList
+	{
+		InteractionPointSetup "New InteractionPointSetup"
+		{
+			myLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myForbiddenInteractionLabel "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		}
+	}
+	myDefaultInteractionAngleDegree 180.0
+	myRequiredMinigame
+	{
+		myType Lockpicking
+		myDifficulty Normal
+		myBespokeOverride < uid=06F73AE1654A3B0800020C555DD65CC5 > = NULLREFERENCE
+	}
+	myCoopPersistenceType SaveGame
+	myEditorMenuStructure coop
+}
+
+InteractionPoint OpenedChestPocketableHeistTargetsContainer < uid=0B131415636BBB020000685C47651588 > : Loot
+{
+	myDefaultSetup
+	{
+		myLabel "aurabesh = false, contextComment = \"Interaction label\", enabled = true, guid = #6B0E1DE9642C4BDB0001DA53330AB93D, lineVersion = 5, maxLength = 0, productId = 6, sectionId = 417, text = \"Loot Beskar\", type = \"MenuLine\""
+		myIcon "mySpriteId = 1113437893, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_coop_ping_icons.spritesheet\""
+	}
+	myAudio
+	{
+		myActivationAudio 4A2C12FC2784AA80F4252D6E35F18EB8
+	}
+	myRestrictions
+	{
+		GameConditionPlayerCanAddItem PlayerCanAddItem
+		{
+			myItem < uid=06F73AE1654A3D090003CCAFBF362E49 > = "Pocketable Heist Target" 0B1314156368BFAF00005A70A06D1F74
+		}
+	}
+	myGameAction HoldInteract	
+	myHoldDuration 1.0
+	myCoopPersistenceType Session
+	myEditorMenuStructure "COOP Interactions"
+}
+

@@ -1,0 +1,291 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/rbtags/quest.mrbtagstags"
+include "helix/game system data/juice/reward/quest_completion_reward.mreward"
+include "helix/game system data/juice/rewardpreview/faction_quest_reward_previews.mrewardpreview"
+
+Quest A_FQ_CRM_020 < uid=C5B8DCF6651420800000F6EB218F45E2 >
+{
+	myName "branch = \"\", contextComment = \"A_FQ_CRM_020 Into The Depths quest name displayed in the UI\", enabled = true, guid = #C5B8DCF6651420800000F6D21A46C79A, lineVersion = 19, maxLength = 0, productId = 6, sectionId = 9318, text = \"Defector\", type = \"MenuLine\""
+	myIntroDescription "branch = \"\", contextComment = \"A_FQ_CRM_020_Into the Depths intro description displayed in the UI\", enabled = true, guid = #C5B8DCF6651420800000F6D3AA2A035B, lineVersion = 13, maxLength = 0, productId = 6, sectionId = 9318, text = \"A Crimson Dawn agent has asked to meet Kay in the Bestine Sabacc Parlor.\", type = \"MenuLine\""
+	myDescription "branch = \"\", contextComment = \"Faction Quest\", enabled = true, guid = #C5B8DCF6651420800000F6D4717E185D, lineVersion = 11, maxLength = 0, productId = 6, sectionId = 9318, text = \"EE'zok hires Kay to find Ays Varga, an Imperial superweapons engineer who disappeared shortly after she decided to defect to Crimson Dawn.\", type = \"MenuLine\"}"
+	myType Faction
+	myCompletionReward < uid=C5B8DCF6651420800000F6ECE302C80A > = A_FQ_CRM_020_questcomplete_reward 2AE2EC85644A93B30000B2FA2583B18E
+	myCompletionRewardPreview < uid=2AE2EC856668766B0042AB4470A9A1FD > = CRM_020_reward_preview 2AE2EC856668752B003ED844CB9F0C30
+	myGoals
+	{
+		QuestGoal "GO_01 Find Ays" < uid=C5B8DCF6654CE0230003645834832694 >
+		{
+			myGoalText "aurabesh = false, contextComment = \"A_FQ_CRM_020 Find Ays planet goal is displayed in UI\", enabled = true, guid = #C5B8DCF6654CE02300036459D21069AD, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 9321, text = \"Find Ays\", type = \"MenuLine\""
+		}
+		QuestGoal "GO_02 Escape with Ays" < uid=C5B8DCF6654CE1F70003645ACDD95DB9 >
+		{
+			myGoalText "aurabesh = false, contextComment = \"A_FQ_CRM_020 Escape with Ays planet goal is displayed in UI\", enabled = true, guid = #C5B8DCF6654CE1F70003645B8BB618ED, lineVersion = 6, maxLength = 0, productId = 6, sectionId = 9324, text = \"Escape with Ays\", type = \"MenuLine\""
+		}
+		QuestGoal "GO_03 Reach the Pirate Camp" < uid=C5B8DCF665B390AE00054E3BBE76E8C0 >
+		{
+			myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"A_FQ_CRM_020 Reach the Pirate camp planet goal is displayed in UI\", enabled = true, guid = #C5B8DCF665B390AE00054E3C3FC2B225, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9321, text = \"Reach the pirate camp\", type = \"MenuLine\""
+		}
+	}
+	myIntroBeat < uid=C5B8DCF6651420800000F6ED396CF9BB >
+	{
+		myScript helix/scripts/scr_a_fq_crm_020_tat_pln_b00_meeteezok.mscript
+		myName "aurabesh = false, contextComment = \"A_FQ_CRM_020_B00 Meet E'Ezok planet beat is displayed in UI\", enabled = true, guid = #C5B8DCF6651420800000F6D514DC209E, lineVersion = 12, maxLength = 0, productId = 6, sectionId = 9320, text = \"Meet E'Ezok\", type = \"MenuLine\""
+		myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+		myObjectives
+		{
+			QuestObjectiveTalkTo "OBJ010_Meet EEzok" < uid=C5B8DCF6651420800000F6EE6322CC7F >
+			{
+				myName "aurabesh = false, contextComment = \"A_FQ_CRM_020_B00 Talk to EEzok objective is displayed in UI\", enabled = true, guid = #C5B8DCF6651420800000F6D6388A4F88, lineVersion = 12, maxLength = 0, productId = 6, sectionId = 9320, text = \"Meet E'Ezok\", type = \"MenuLine\"}"
+			}
+		}
+		myQuestBeatStateGameValue < uid=C5B8DCF6651420800000F6EF38D935AC >
+		{
+		}
+	}
+	myBeats
+	{
+		QuestBeat "B01A Find Ays' hideout" < uid=C5B8DCF6651420800000F6F0CD6EE825 >
+		{
+			myScript helix/scripts/scr_a_fq_crm_020_tat_pln_b01_traveltoayshideout.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_CRM_020_B01A Find Ays' hideout planet beat is displayed in UI\", enabled = true, guid = #C5B8DCF6651420800000F6D7C240A319, lineVersion = 42, maxLength = 0, productId = 6, sectionId = 3614, text = \"Find Ays' hideout\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood RelaxedNoSpawnpoints
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "OBJ_010 Find Ays' hideout" < uid=C5B8DCF6651420800000F6F193917112 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_CRM_020_B01A Find Ays' hideout objective is displayed in UI\", enabled = true, guid = #C5B8DCF6651420800000F6D8437DF7FC, lineVersion = 26, maxLength = 0, productId = 6, sectionId = 9321, text = \"Find Ays' hideout\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+				}
+			}
+			myQuestBeatStateGameValue < uid=C5B8DCF6651420800000F6F2E6A5162B >
+			{
+				myDescription ""
+				myDefaultValue 0
+				myIsPersisted FALSE
+				myVariableAttributeName ""
+				myCanBeEditedFromScript FALSE
+				myCanBeEditedFromUI FALSE
+				myCanBeEditedFromProgressionGraph FALSE
+				myIntendedType QuestBeatState
+				myCategory QuestBeat
+				myParentLevelsToUseInInstanceName -1
+			}
+		}
+		QuestBeat "B01B Search for Clues on Ays's Location" < uid=C5B8DCF6654CDD4200031BCA1C4A0F10 >
+		{
+			myScript helix/scripts/scr_a_fq_crm_020_tat_pln_b01b_searchcluesforayslocation.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_CRM_020_B01B Search for clues to Ays' location planet beat is displayed in UI\", enabled = true, guid = #C5B8DCF6654CDD4B00031BCC77321246, lineVersion = 6, maxLength = 0, productId = 6, sectionId = 3614, text = \"Search for clues to Ays' location\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myDebugPlayLandingZone 1EAB3B4063D122E0000091031BA0C33F
+			myMood RelaxedNoSpawnpoints
+			myObjectives
+			{
+				QuestObjectiveCustom "OBJ_020 Search for Clues on Ays's Location" < uid=C5B8DCF665144DE6000108D99B921792 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_CRM_020_B01 Search for clues to Ays' location objective is displayed in UI\", enabled = true, guid = #C5B8DCF665144DE6000108DAB6EE3624, lineVersion = 12, maxLength = 0, productId = 6, sectionId = 9321, text = \"Search for clues to Ays' location\", type = \"MenuLine\""
+					myIsHiddenInHUD FALSE
+					myIsHighPrio TRUE
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=C5B8DCF6654CDD5B00031BCD48C09825 >
+			{
+			}
+		}
+		QuestBeat "B02 Find Ays" < uid=C5B8DCF6651530300000810EE5A253E2 >
+		{
+			myScript helix/scripts/scr_a_fq_crm_020_tat_pln_b02_traveltothepiratecamp.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_CRM_020_B02 Find Ays planet beat is displayed in UI\", enabled = true, guid = #C5B8DCF6651530300000810FC3CB9814, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 3614, text = \"Find Ays\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "OBJ_010 Find Ays" < uid=C5B8DCF6651530A500008119C043A6E7 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_ASH_040_B02 Find Ays objective is displayed in UI\", enabled = true, guid = #C5B8DCF6651530D50000811A3274001B, lineVersion = 8, maxLength = 0, productId = 6, sectionId = 9322, text = \"Find Ays\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD FALSE
+				}
+			}
+			myQuestBeatStateGameValue < uid=C5B8DCF6651531070000811EECB18809 >
+			{
+			}
+		}
+		QuestBeat "B03 Find Ays" < uid=C5B8DCF66515326F000081268AC0D7B9 >
+		{
+			myScript helix/scripts/scr_a_fq_crm_020_tat_pln_b03_findays.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myDebugPlayLandingZone 1EAB3B4063D122E0000091031BA0C33F
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "OBJ_10 Find Ays" < uid=C5B8DCF66515375100001FBBF2BD280B >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_CRM_020_B03 Find Ays objective is displayed in UI\", enabled = true, guid = #C5B8DCF6651537690000239A21ABDE22, lineVersion = 5, maxLength = 0, productId = 6, sectionId = 9323, text = \"Find Ays\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD FALSE
+					myIsHighPrio TRUE
+					myIsImmediate FALSE
+				}
+				QuestObjectiveCustom "OBJ_20 Rescue Ays" < uid=C5B8DCF66520050E000905220FA8AEC0 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_CRM_020_B03 Rescue Ays objective is displayed in UI\", enabled = true, guid = #C5B8DCF6652005300009052EC1E9300C, lineVersion = 10, maxLength = 0, productId = 6, sectionId = 9323, text = \"Rescue Ays\", type = \"MenuLine\""
+					myIsHighPrio TRUE
+					myIsImmediate FALSE
+				}
+			}
+			myQuestBeatStateGameValue < uid=C5B8DCF6651532ED0000812A12A65E38 >
+			{
+			}
+		}
+		QuestBeat "B04 Escort Ays to Her Speeder" < uid=C5B8DCF66515393F00008010E11A8ABD >
+		{
+			myScript helix/scripts/scr_a_fq_crm_020_tat_pln_b04_escortaystoherspeeder.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myDebugPlayLandingZone 1EAB3B4063D122E0000091031BA0C33F
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveDefendAgent "0BJ_010 Escape with Ays" < uid=C5B8DCF665153A0400008119EAAC124E >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_CRM_020_B04 Escape with Ays objective is displayed in UI\", enabled = true, guid = #C5B8DCF665153A1F0000811ADFD622C4, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 9324, text = \"Escape with Ays\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputAgent npc_Ays < uid=FBB3292A651AE65400016E8FFE33CB05 >
+				{
+				}
+			}
+			myQuestBeatStateGameValue < uid=C5B8DCF665153A450000811CB4E18BB1 >
+			{
+			}
+		}
+		QuestBeat "B05 Follow Ays to Bestine" < uid=C5B8DCF665153B3E0000811D3E55C101 >
+		{
+			myScript helix/scripts/scr_a_fq_crm_020_tat_pln_b05_followaystobestine.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myDebugPlayLandingZone 1EAB3B4063D122E0000091031BA0C33F
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveFollow "OBJ_010 Escape with Ays" < uid=C5B8DCF665153BFB00008127381939B7 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_CRM_020_B05 Escape with Ays objective is displayed in UI\", enabled = true, guid = #C5B8DCF665153C04000081282F99AD70, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 9325, text = \"Escape with Ays\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputAgent npc_Ays < uid=FBB3292A651AD1F8001B21A880236F5E >
+				{
+				}
+				QuestBeatScriptInputFireteam "Camp Imperial Troops" < uid=C5B8DCF6655738BC00123DB74F07C8DE >
+				{
+				}
+			}
+			myQuestBeatStateGameValue < uid=C5B8DCF665153C690000812AB6ECC463 >
+			{
+			}
+		}
+		QuestBeat "B06 Escape Tatooine" < uid=C5B8DCF665153B4E0000811FA2ED0FE8 >
+		{
+			myScript helix/scripts/scr_a_fq_crm_020_tat_pln_b06_escapetatooine.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myDebugPlayLandingZone 1EAB3B4063D122E0000091031BA0C33F
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom "OBJ_010 Escape with Ays" < uid=C5B8DCF66515404700008131A415B3D1 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_CRM_020_B06 Escape with Ays objective is displayed in UI\", enabled = true, guid = #C5B8DCF6651540F40000813C4599B2DD, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 10003, text = \"Escape with Ays\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputFireteam EmpTroopers < uid=FBB3292A6533B6F0000A0C3A5FC2F5CB >
+				{
+				}
+				QuestBeatScriptInputAgent Ayes < uid=FBB3292A6533B89E000B95250243FBB0 >
+				{
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=C5B8DCF665153C690000812B47C98788 >
+			{
+			}
+		}
+		QuestBeat "B07 Escape to Toshara" < uid=C5B8DCF665153B5F000081218A243392 >
+		{
+			myScript helix/scripts/scr_a_fq_crm_020_tat_pln_b07_escapetotosharaspace.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012DF06000000C9D0F252B6
+			myMood Focused
+			myObjectives
+			{
+				QuestObjectiveCustom "OBJ_010 Escape to Toshara" < uid=C5B8DCF66515433F000024BBF4EF4C3D >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_CRM_020_B07 Escape to Toshara objective is displayed in UI\", enabled = true, guid = #C5B8DCF66515439A000024D0EECAF9A3, lineVersion = 10, maxLength = 0, productId = 6, sectionId = 10004, text = \"Escape to Toshara\", type = \"MenuLine\""
+					myIsHighPrio TRUE
+					myIsImmediate TRUE
+				}
+			}
+			myQuestBeatStateGameValue < uid=C5B8DCF665153C690000812CA5D9502C >
+			{
+			}
+		}
+		QuestBeat "B08A Bring Ays To Toshara" < uid=C5B8DCF6654E0D2B0008AACCFDEECE0E >
+		{
+			myScript helix/scripts/scr_a_fq_crm_020_tat_pln_b08a_traveltotoshara.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_FQ_CRM_020_B08A Bring Ays to Toshara space beat is displayed in UI\", enabled = true, guid = #C5B8DCF6654E0D410008AAD0C9A4DC32, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 3614, text = \"Bring Ays to Toshara\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012DDB0000000AEDF387547
+			myMood Focused
+			myObjectives
+			{
+				QuestObjectiveCustom "OBJ_010 Bring Ays to Toshara" < uid=C5B8DCF6654E0D9B0008AAD16E14D446 >
+				{
+					myName "aurabesh = false, contextComment = \"A_FQ_CRM_020_B08A Bring Ays to Toshara space  beat is displayed in UI\", enabled = true, guid = #C5B8DCF6654E0D9B0008AAD2810679CD, lineVersion = 5, maxLength = 0, productId = 6, sectionId = 10004, text = \"Bring Ays to Toshara\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=C5B8DCF6654E0EB00008AB4AFB377AF4 >
+			{
+			}
+		}
+		QuestBeat "B08B Bring Ays to Toshara" < uid=C5B8DCF665153B8300008123C82F485E >
+		{
+			myScript helix/scripts/scr_a_fq_crm_020_tat_pln_b08_traveltotoshara.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myMood RelaxedNoSpawnpoints
+			myObjectives
+			{
+			}
+			myQuestBeatStateGameValue < uid=C5B8DCF665153C690000812D54A210F9 >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=C5B8DCF6651420800000F70AD71B34B8 >
+	{
+	}
+	myQuestStartedRBTag < uid=C5B8DCF6651420800000F70BB50A7E15 > = World_Quest_FQASH040_Started DA5615DD64A439D700016586F5FFBE80
+	myQuestCompletedRBTag < uid=C5B8DCF6651420800000F70C903F25B9 > = World_Quest_FQASH040_Completed DA5615DD64A439E7000165880F8AE995
+	myFaction 16DEADE65F7DDA76000000C74AD19DCA
+}
+

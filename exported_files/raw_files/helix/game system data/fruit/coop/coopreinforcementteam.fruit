@@ -1,0 +1,23 @@
+include "helix/game system data/fruit/npc/npc.fruit" 
+
+class CoopReinforcementMember
+{
+	NPC* myNPC
+	bool myAlwaysAdd
+	float myWeight
+	bool myForceCombatWithPlayer
+	bool myAlwaysDetectPlayer
+}
+
+list CoopReinforcementMemberList
+{
+	CoopReinforcementMember
+}
+
+class CoopReinforcementTeam < uid = auto >
+{
+	CoopReinforcementMemberList myReinforcementMembers
+	float myTimeBetweenWavesInS 20.0
+	
+	int myWaveMaxNPCs 4
+}

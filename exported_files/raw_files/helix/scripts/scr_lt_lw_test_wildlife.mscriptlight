@@ -1,0 +1,240 @@
+{
+	connectionsById = {
+		54 -101 52 1,
+		4 50 70 1,
+		1 102 2209 1,
+		70 250 74 1,
+		59 0 2209 2,
+		3 100 52 2,
+		4 101 74 2,
+		73 0 70 10,
+		2209 0 4 10,
+		1 106 4 15,
+		74 0 64 25,
+		52 4 4 25,
+		72 0 70 50,
+		4 100 70 100,
+		2212 0 81 101,
+		1 104 54 101,
+		2211 0 81 102,
+		1 105 54 102,
+	},
+	lastNodeId = 2212,
+	layers = {},
+	locComp = {},
+	nodesById = {
+		[1] = {
+			defaults = {
+				connectionsById = {
+					26 0 7 102,
+					50 0 7 104,
+					51 0 7 105,
+					65 0 7 106,
+				},
+				layers = {},
+				nodesById = {
+					[1, 2, 3, 4, 5, 6, 7] = {
+						type = "internal:CompoundDefaults",
+					},
+					[26] = {
+						type = "native:Constant",
+						value = {
+							{
+								myNPCConstantDataUID = #&2AA3EE5D62F4B54100031D3EDC5D648D,
+							},
+						},
+						valueType = "HC_NPCFireteamSpawnData",
+					},
+					[50] = {
+						type = "native:Constant",
+						value = 1,
+						valueType = "integer",
+					},
+					[51] = {
+						type = "native:Constant",
+						value = 2,
+						valueType = "integer",
+					},
+					[65] = {
+						type = "native:Constant",
+						value = {
+							#&00000000000000000000000000000000,
+						},
+						valueType = "HC_Volume",
+					},
+				},
+			},
+			lastId = 106,
+			pins = {
+				{
+					id = 102,
+					name = "Wildlife NPC",
+				},
+				{
+					id = 104,
+					name = "Min NPCs",
+				},
+				{
+					id = 105,
+					name = "Max NPCs",
+				},
+				{
+					id = 106,
+					name = "Spawn Volume",
+				},
+			},
+			type = "Script:Inputs",
+		},
+		{
+			lastId = -100,
+			pins = {},
+			type = "Script:Outputs",
+		},
+		{
+			constantDataUID = #&9D0EE20B60AD1760000008B9DFE3F783,
+			type = "HC_ScriptLivingWorldInitNode",
+		},
+		{
+			myPredictedSpawnedNPCs = {},
+			type = "HC_ScriptNPCFireteamSpawnerNode",
+		},
+		[52] = {
+			accessTypeEnum = "ImpulseSet",
+			type = "internal:VariableNode",
+			varId = #&F7FDFD606336B70700008C517BCCAAAC,
+		},
+		[54] = {
+			filename = "helix/nodes/compounds/random_ranged_int.mcompoundnode",
+			name = "random_ranged_int",
+			type = "internal:Compound",
+		},
+		[59] = {
+			accessTypeEnum = "Get",
+			type = "internal:VariableNode",
+			varId = #&F7FDFD606336B70700008C517BCCAAAC,
+		},
+		[64] = {
+			type = "HC_ScriptCompleteLivingContentLocationNode",
+		},
+		[70] = {
+			type = "HC_ScriptNPCFireteamSizeListenerNode",
+		},
+		[72] = {
+			type = "native:Constant",
+			value = true,
+			valueType = "bool",
+		},
+		[73] = {
+			type = "native:Constant",
+			value = 0,
+			valueType = "integer",
+		},
+		[74] = {
+			type = "native:ImpulseAny",
+		},
+		[81] = {
+			graph = {
+				connectionsById = {
+					2200 0 2199 -101,
+					2201 0 2204 1,
+					2202 0 2206 1,
+					2203 0 2202 1,
+					2198 101 2200 1,
+					2198 101 2201 1,
+					2201 0 2202 2,
+					2204 0 2206 2,
+					2205 0 2204 2,
+					2206 0 2200 2,
+					2198 102 2202 3,
+				},
+				layers = {},
+				nodesById = {
+					[2198] = {
+						lastId = 104,
+						pins = {
+							{
+								id = 101,
+							},
+							{
+								id = 102,
+							},
+						},
+						type = "internal:CompoundInputs",
+					},
+					[2199] = {
+						lastId = -103,
+						pins = {
+							{
+								id = -101,
+							},
+						},
+						type = "internal:CompoundOutputs",
+					},
+					[2200] = {
+						type = "native:ArrayGetAtIndexIfExists",
+					},
+					[2201] = {
+						type = "native:ArrayCount",
+					},
+					[2202] = {
+						label = "Array/Generate Random Array",
+						type = "internal:TypeSelectByLabel",
+					},
+					[2203] = {
+						type = "native:Constant",
+						value = 0,
+						valueType = "integer",
+					},
+					[2204] = {
+						label = "Arithmetic/Subtract",
+						type = "internal:TypeSelectByLabel",
+					},
+					[2205] = {
+						type = "native:Constant",
+						value = 1,
+						valueType = "integer",
+					},
+					[2206] = {
+						label = "Comparison/Min",
+						type = "internal:TypeSelectByLabel",
+					},
+				},
+			},
+			type = "internal:Group",
+		},
+		[2209] = {
+			type = "native:ArrayFilled",
+		},
+		[2211] = {
+			type = "native:Constant",
+			value = 0,
+			valueType = "integer",
+		},
+		[2212] = {
+			type = "native:Constant",
+		},
+	},
+	savecount = 25,
+	variableMetaData = {
+		[#F7FDFD606336B70700008C517BCCAAAC] = {
+			comment = "",
+			path = "NPC count",
+			subType = "None",
+		},
+	},
+	variables = {
+		{
+			arraysupport = "None",
+			data = {
+				0,
+			},
+			includeInWatchSummary = false,
+			modification = "None",
+			name = "NPC count",
+			sharing = "Local",
+			storage = "None",
+			typeName = "integer",
+			varId = #&F7FDFD606336B70700008C517BCCAAAC,
+		},
+	},
+}

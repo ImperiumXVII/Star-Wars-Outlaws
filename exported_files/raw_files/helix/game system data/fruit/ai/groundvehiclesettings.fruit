@@ -1,0 +1,34 @@
+include "helix/game system data/fruit/ai/groundvehicleaimovementprofile.fruit"
+
+class GroundVehicleWobbleSettings
+{
+	string myTorqueStrengthOverTime < bhv=inputgraph tooltip="Based on the total time in 'Lose Control' state, how much should the vehicle rotate">
+	string myTorqueSpeedMultiplier < bhv=inputgraph tooltip="Based on the vehicle current speed, how much should the vehicle rotate">
+	string myVelocityStrengthOverTime < bhv=inputgraph tooltip="Based on the total time in 'Lose Control' state, how much should the vehicle be pushed side to side">
+	string myVelocitySpeedMultiplier < bhv=inputgraph tooltip="Based on the vehicle current speed, how much should the vehicle be pushed side to side">
+}
+
+class SmartDriveSettings
+{
+	bool myUseNetwork false
+	string myPrototypePath "./tools/smartdrive/trainingdata/"
+	string myXPPath "./tools/smartdrive/trainingdata/XP"
+	string myNetworkIPAddress ""
+	int myNetworkIPPort 0
+}
+	
+class AbandonedVehicleLimiterSettings
+{
+	int myMaxAbandonedVehicles 20 < min=0 tooltip="If the number of abandoned vehicles exceeds this number we will start despawning abandoned vehicles if possible." >
+	float myDistanceToPlayerScoringWeight 1.0 < min=0 tooltip="When scoring abandoned vehicles to decide which to despawn, this is the weight to apply to the distance from the player." >
+	float myNotVisibleScoringPenalty 50.0 < min=0 tooltip="When scoring abandoned vehicles to decide which to despawn, this is the penalty score to apply to an vehicle that is not visible." >
+}	
+	
+class GroundVehicleAISettings < uid=auto >
+{
+	GroundVehicleWobbleSettings myWobbleSettings
+	SmartDriveSettings mySmartDriveSettings
+	AbandonedVehicleLimiterSettings myAbandonedVehicleLimiterSettings
+	
+	GroundVehicleAIMovementProfile* myDefaultMovementProfile
+}

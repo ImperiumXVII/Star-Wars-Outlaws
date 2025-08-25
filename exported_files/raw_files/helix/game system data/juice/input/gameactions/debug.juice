@@ -1,0 +1,462 @@
+include "helix/game system data/fruit/input/gameinput.fruit"
+include "helix/game system data/juice/input/inputactions.juice"
+
+TriggerGameAction "[Debug] FreeCam Move Left"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Left Stick Left Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = LEFT_STICK_UP
+					myBackInputAction = LEFT_STICK_DOWN
+					myLeftInputAction = LEFT_STICK_LEFT
+					myRightInputAction = LEFT_STICK_RIGHT
+					myExpectedInputAction = LEFT_STICK_LEFT
+				}
+				ConditionalRotatedInputAction "Left KB"
+				{
+					myInputActionType Analog
+					myForwardInputAction = KB_MOVE_UP
+					myBackInputAction = KB_MOVE_DOWN
+					myLeftInputAction = KB_MOVE_LEFT
+					myRightInputAction = KB_MOVE_RIGHT
+					myExpectedInputAction = KB_MOVE_LEFT
+				}
+			}
+		}
+	}
+	myGameAction FreeCamMoveLeft
+	myActionContexts
+	{
+		DefaultContext FALSE
+		FreeCameraContext TRUE
+	}
+}
+
+TriggerGameAction "[Debug] FreeCam Move Right"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Left Stick Right Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = LEFT_STICK_UP
+					myBackInputAction = LEFT_STICK_DOWN
+					myLeftInputAction = LEFT_STICK_LEFT
+					myRightInputAction = LEFT_STICK_RIGHT
+					myExpectedInputAction = LEFT_STICK_RIGHT
+				}
+				ConditionalRotatedInputAction "Right KB"
+				{
+					myInputActionType Analog
+					myForwardInputAction = KB_MOVE_UP
+					myBackInputAction = KB_MOVE_DOWN
+					myLeftInputAction = KB_MOVE_LEFT
+					myRightInputAction = KB_MOVE_RIGHT
+					myExpectedInputAction = KB_MOVE_RIGHT
+				}
+			}
+		}
+	}
+	myGameAction FreeCamMoveRight
+	myActionContexts
+	{
+		DefaultContext FALSE
+		FreeCameraContext TRUE
+	}
+}
+
+TriggerGameAction "[Debug] FreeCam Move Forward"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Left Stick Up Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = LEFT_STICK_UP
+					myBackInputAction = LEFT_STICK_DOWN
+					myLeftInputAction = LEFT_STICK_LEFT
+					myRightInputAction = LEFT_STICK_RIGHT
+					myExpectedInputAction = LEFT_STICK_UP
+				}
+				ConditionalRotatedInputAction "Left KB"
+				{
+					myInputActionType Analog
+					myForwardInputAction = KB_MOVE_UP
+					myBackInputAction = KB_MOVE_DOWN
+					myLeftInputAction = KB_MOVE_LEFT
+					myRightInputAction = KB_MOVE_RIGHT
+					myExpectedInputAction = KB_MOVE_UP
+				}
+			}
+		}
+	}
+	myGameAction FreeCamMoveForward
+	myActionContexts
+	{
+		DefaultContext FALSE
+		FreeCameraContext TRUE
+	}
+}
+
+TriggerGameAction "[Debug] FreeCam Move Backward"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Left Stick Down Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = LEFT_STICK_UP
+					myBackInputAction = LEFT_STICK_DOWN
+					myLeftInputAction = LEFT_STICK_LEFT
+					myRightInputAction = LEFT_STICK_RIGHT
+					myExpectedInputAction = LEFT_STICK_DOWN
+				}
+				ConditionalRotatedInputAction "Down KB"
+				{
+					myInputActionType Analog
+					myForwardInputAction = KB_MOVE_UP
+					myBackInputAction = KB_MOVE_DOWN
+					myLeftInputAction = KB_MOVE_LEFT
+					myRightInputAction = KB_MOVE_RIGHT
+					myExpectedInputAction = KB_MOVE_DOWN
+				}
+			}
+		}
+	}
+	myGameAction FreeCamMoveBackward
+	myActionContexts
+	{
+		DefaultContext FALSE
+		FreeCameraContext TRUE
+	}
+}
+
+TriggerGameAction "[Debug] FreeCam Look Up"
+{
+	myConditionalInputActions
+	{
+		ConditionalInputAction "Right Stick Up Analog"
+		{
+			myInputActionType Analog
+			myInputAction = RIGHT_STICK_UP
+		}
+	}
+	myGameAction FreeCamLookUp
+	myActionContexts
+	{
+		DefaultContext FALSE
+		FreeCameraContext TRUE
+	}
+}
+
+TriggerGameAction "[Debug] FreeCam Look Down"
+{
+	myConditionalInputActions
+	{
+		ConditionalInputAction "Right Stick Down Analog"
+		{
+			myInputActionType Analog
+			myInputAction = RIGHT_STICK_DOWN
+		}
+	}
+	myGameAction FreeCamLookDown
+	myActionContexts
+	{
+		DefaultContext FALSE
+		FreeCameraContext TRUE
+	}
+}
+
+TriggerGameAction "[Debug] FreeCam Look Left"
+{
+	myConditionalInputActions
+	{
+		ConditionalInputAction "Right Stick Left Analog"
+		{
+			myInputActionType Analog
+			myInputAction = RIGHT_STICK_LEFT
+		}
+	}
+	myGameAction FreeCamLookLeft
+	myActionContexts
+	{
+		DefaultContext FALSE
+		FreeCameraContext TRUE
+	}
+}
+
+TriggerGameAction "[Debug] FreeCam Look Right"
+{
+	myConditionalInputActions
+	{
+		ConditionalInputAction "Right Stick Right Analog"
+		{
+			myInputActionType Analog
+			myInputAction = RIGHT_STICK_RIGHT
+		}
+	}
+	myGameAction FreeCamLookRight
+	myActionContexts
+	{
+		DefaultContext FALSE
+		FreeCameraContext TRUE
+	}
+}
+
+TriggerGameAction "[Debug] FreeCam Speed up"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "Right Trigger R2"
+				{
+					myInputActionType Analog
+					myInputAction = RIGHT_TRIGGER_R2
+				}
+				ConditionalInputAction "KB Pressed"
+				{
+					myInputActionType HoldDown
+					myInputAction = KB_SPRINT
+				}
+			}
+		}
+	}
+	myGameAction FreeCamSpeedUp
+	myActionContexts
+	{
+		DefaultContext FALSE
+		FreeCameraContext TRUE
+	}
+}
+
+TriggerGameAction "[Debug] FreeCam Slow down"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "Left Trigger L2"
+				{
+					myInputActionType Analog
+					myInputAction = LEFT_TRIGGER_L2
+				}
+				ConditionalInputAction "KB Pressed"
+				{
+					myInputActionType HoldDown
+					myInputAction = KB_C
+				}
+			}
+		}
+	}
+	myGameAction FreeCamSlowDown
+	myActionContexts
+	{
+		DefaultContext FALSE
+		FreeCameraContext TRUE
+	}
+}
+
+TriggerGameAction "[Debug] Toggle Freecam"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Gamepad
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction R3
+						{
+							myInputActionType DoublePress
+							myTimer 250
+							myInputAction = RIGHT_STICK_BUTTON
+						}
+						ConditionalInputAction L3
+						{
+							myInputActionType HoldDown
+							myTimer 0
+							myInputAction = LEFT_STICK_BUTTON
+						}
+					}
+				}
+				ConditionalActionGroup KB_Mouse
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction Home
+						{
+							myInputActionType Pressed
+							myTimer 0
+							myInputAction = KB_TOGGLE_FREECAM
+						}
+					}
+				}
+			}
+		}
+	}
+	myGameAction FreeCamToggle
+	myActionContexts
+	{
+		DefaultContext TRUE
+		FreeCameraContext TRUE
+	}
+}
+
+TriggerGameAction "[Debug] Teleport to Freecam"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup Gamepad
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction R3
+						{
+							myInputActionType PressedAfterTime
+							myTimer 500
+							myInputAction = RIGHT_STICK_BUTTON
+						}
+						ConditionalInputAction L3
+						{
+							myInputActionType HoldDown
+							myTimer 0
+							myInputAction = LEFT_STICK_BUTTON
+						}
+					}
+				}
+				ConditionalActionGroup KB_Mouse
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction Insert
+						{
+							myInputActionType Pressed
+							myTimer 0
+							myInputAction = KB_TELEPORT_FREECAM
+						}
+					}
+				}
+			}
+		}
+	}
+	myGameAction FreeCamTeleportToCam
+	myActionContexts
+	{
+		DefaultContext FALSE
+		FreeCameraContext TRUE
+	}
+}
+
+TriggerGameAction "[Debug] FreeCam Move Down"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction DPadDown
+				{
+					myInputActionType HoldDown
+					myInputAction = D_PAD_DOWN
+				}
+			}
+		}
+	}
+	myGameAction FreeCamMoveDown
+	myActionContexts
+	{
+		DefaultContext FALSE
+		FreeCameraContext TRUE
+	}
+}
+
+TriggerGameAction "[Debug] FreeCam Move Up"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction DPadUp
+				{
+					myInputActionType HoldDown
+					myInputAction = D_PAD_UP
+				}
+			}
+		}
+	}
+	myGameAction FreeCamMoveUp
+	myActionContexts
+	{
+		DefaultContext FALSE
+		FreeCameraContext TRUE
+	}
+}
+
+TriggerGameAction "[Debug] FreeCam Speed up 2x"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "Right Bumper  R1"
+				{
+					myInputActionType HoldDown
+					myInputAction = RIGHT_BUMPER_R1
+				}
+			}
+		}
+	}
+	myGameAction FreeCamSpeedUp2x
+	myActionContexts
+	{
+		DefaultContext FALSE
+		FreeCameraContext TRUE
+	}
+}
+

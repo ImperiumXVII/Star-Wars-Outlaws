@@ -1,0 +1,17 @@
+include "helix/game system data/fruit/camera/cameramodifier.fruit"
+
+class MultiCameraShakeEntry
+{
+	CameraModifier* myShake
+	float myWeight 1.0 < min=0.0 tooltip="As higher the value, most likely this entry will be the chosen one">
+}
+
+list MultiCameraShakeEntryList
+{
+	MultiCameraShakeEntry
+}
+
+class MultiCameraShake < uid=auto >
+{
+	MultiCameraShakeEntryList myShakes < tooltip="The camera shake will be randomly selected from this list using the weight values" >
+}

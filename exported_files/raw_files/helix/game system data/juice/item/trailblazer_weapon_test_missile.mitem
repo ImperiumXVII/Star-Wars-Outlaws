@@ -1,0 +1,29 @@
+include "helix/game system data/juice/equipment/weaponfiremode/trailblazer_firemode_test_missile.mweaponfiremode"
+include "helix/game system data/juice/item/consumables.mitem"
+include "helix/game system data/juice/item/trailblazer_weapon_template.mitem"
+include "helix/game system data/juice/projectile/ship_missile_projectile.mprojectile"
+include "helix/game system data/juice/sound/weapons/player_audioweapon_traiblazer_m1.maudioweapon"
+
+WeaponItem trailblazer_weapon_test_missile < uid=B005013562723D5200002CFC38B8E820 > : trailblazer_weapon_template
+{
+	myName "aurabesh = false, contextComment = \"do not translate\", enabled = true, guid = #9DB1BD4A6278DB9B00002AD945944F5F, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 653, text = \"Missile Weapon \", type = \"MenuLine\""
+	myIcon "mySpriteId = -1602552365, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_ship_upgrades_weapons.spritesheet\""
+	myGraphObject "helix/graph objects/weapon/spaceship_dummy_weapon.mgraphobject"
+	myInventoryPouch Weapons
+	myAimConfig < uid=B005013562723D5200002CFDF78E4028 > = NULLREFERENCE
+	myHoldingConfig < uid=B005013562723D5200002CFE80557FFB > = NULLREFERENCE
+	myConsumedItem < uid=F8D368186310A161000045D5B9AA1ABE > = con_MissileProjectile F8D368186310A14B000045D16B3818B6
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=A207755D62C2EB2300003743BC7BE72B > = trailblazer_firemode_test_missile A207755D62C2E9CE00003759B7418112
+		}
+		WeaponFireModeSlot MultiShot
+		{
+			mySlotTag MultiShot
+			myFireMode < uid=AE04054764AE572B00012123A116A434 > = trailblazer_firemode_test_missile_multishot AE04054764AC14260000634D5208CB51
+		}
+	}
+}
+

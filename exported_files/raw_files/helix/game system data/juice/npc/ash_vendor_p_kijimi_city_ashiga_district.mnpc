@@ -1,0 +1,44 @@
+include "helix/game system data/juice/npc/base_civ_vendor.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC ash_vendor_p_kijimi_city_ashiga_district < uid=91DC5D3C65086A1E0023A7DA6AE81B95 > : base_civ_vendor
+{
+	myName "branch = \"MAIN\", contextComment = \"Sub-name for an ashiga merchant\", enabled = true, guid = #09AEDAAA65C5E8E000000112DC7D0FCF, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 10653, text = \"Armorer\", type = \"MenuLine\""
+	myCharacterVisuals < uid=91DC5D3C65086A1E0023A7DBCC9B0220 > = character_visuals_2_silver_kij_city_ashiga_district_vendor E4123D2764B67A2600015F575A078F17
+	myAdditionalGearGraphs D00CF654668BB1B200035912055694D7
+	myFaction < uid=09AEDAAA6583FF91001E0D1970C89CAC > = AshigaClan 4728ADF9620B6C2B0000201F5FC5C937
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F256512FB0C0000813DAEC70B96 > = Agent_Gender_FeminineTag 16DEADE6626D20EA00002E5277B65AD4
+	}
+	myPossibleSpeciesTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F256512FB180000814095A12C90 > = Agent_Species_MelittoTag FFED0CDA634EC1CA0000AD689E0477D4
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F256512FB29000081432C5F7CFF > = Agent_Archetype_VendorFactionDistrict 1EC89F2563FC706500005020A5DD40C8
+		RBTagsTag "New RBTagsTag (0)" < uid=1EC89F256512FB930000814649A46754 > = Agent_Faction_AshigaClanTag 4728ADF9620B7AF800002022DD5E94D3
+	}
+	myDialogueCharacters
+	{
+		DialogueCharacterWithTags VendorAshigaMelittoF01 < uid=1EC89F256513F871000097F22904826A >
+		{
+			myDialogueCharacter < uid=1EC89F256513F87B000097F4530EE375 > = AI_VENDOR_FACTIONDISTRICT_ASHIGA_CLAN_MELITTO_F01 1EC89F25648ADC560000A9A2F7D816BA
+		}
+	}
+	myVendorConfig < uid=91DC5D3C65086A270023A7F064274263 > = VendorConfig_KIJ_City_Ashiga_District_Weapons_Armorer F4D8AE2665363C2D000078290E818082
+	myAudioParameters
+	{
+		mySwitches
+		{
+			AudioSwitch VocoderMelitto
+			{
+				myGuid 47C48A52CA9E03681F81283C1412DF8D
+			}
+		}
+	}
+	myNPCIcon "mySpriteId = -515235874, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_map_icons_07.spritesheet\""
+	myForceFriendlyRelationToPlayer TRUE
+}
+

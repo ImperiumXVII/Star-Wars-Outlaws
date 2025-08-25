@@ -1,0 +1,37 @@
+include "helix/game system data/juice/ai/npcresistanceprofile.mnpcresistanceprofile"
+include "helix/game system data/juice/melee/alwaysmissmeleedefense.mnpcmeleedefenseprofile"
+include "helix/game system data/juice/npc/base_civ_droid.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/npcexclusionzone/allexclusionzonetypelist.mnpcexclusionzonetype"
+include "helix/game system data/juice/physics/npc_physics_profiles.mnpcphysicsprofile"
+include "helix/game system data/juice/settings/footstepeffects.juice"
+
+NPC base_civ_droid_astromech < uid=EBE060C265708E3E00193DA110BC6E23 > : base_civ_droid
+{
+	myCharacterVisuals < uid=EBE060C265708E3E00193DA22A4AF08F > = character_visuals_4_droids_r5_astromech_droid 849AB26562B227EA00007C0051663931
+	myAdditionalGearGraphs 91DC5D3C653782E60000F8BB620E1849
+	myAnimSystemType Droid_R5
+	myIsInvulnerable FALSE
+	myDialogueCharacters
+	{
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=EBE060C26571DE0F001A511773DB4581 >
+		{
+			myDialogueCharacter < uid=EBE060C26571DE0F001A5118F4BD2AD5 > = AI_CIVILIAN_DEFAULT_DESIGNED_BINARY_ASTROMECH_R5_01 E4123D27643D87760000085435C385C5
+		}
+	}
+	mySensoryProfileOverrides
+	{
+	}
+	myVisionProfile < uid=EBE060C265708E3E00193DA3E7DE1C2D > = AmbientDroidVisionProfile EBE060C264C9278500067CF05BF783F6
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=EBE060C265738B45007EB1A57A46D1F3 > = AmbientAstromechDetectionProfile EBE060C265807EEB00075BA55AFF70FD
+	}
+	myTacticalPositionFinderProfile < uid=EBE060C26584220D000BBC4C74881D1B > = "AmbientDroid Tactical Position Finder Profile" EBE060C265841DF6000A6770F44684AA
+	myPlayerAwarenessProfile < uid=EBE060C265708E3E00193DA420A2F4AC > = AmbientDroid_NPC EBE060C264C92CBC00081DDA1B75F836
+	myMotionPatternProfile < uid=EBE060C265708E3E00193DA5D39C4BED > = AstromechMotionPatternProfile EBE060C26407402B0001149DE3B904AE
+	myFocusProfile < uid=EBE060C265708E3E00193DA6AE2F1799 > = AstromechFocusProfile EBE060C26436E79500030D29AC754EAD
+	myOnAgentKilledGameScript "helix/game scripts/gs_ks_droid_r5_death.mgamescript"
+	myResistanceProfile < uid=EBE060C2657857C50007A8953F0B0182 > = AmbientDroidResistanceProfile EBE060C2657857B10007A2C83FD7D907
+}
+

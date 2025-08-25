@@ -1,0 +1,97 @@
+include "helix/game system data/fruit/character/charactervisuals.fruit"
+include "helix/game system data/juice/character/character_visuals_npc_generator_02.mcharactervisuals"
+
+CharacterVisuals character_visuals_npc_generator_02_planet_tatooine_sabacc_asf < uid=66F5728965D716930003CC2A1684FFDF > : character_visuals_npc_generator_02
+{
+	myCharacterVisualsParts
+	{
+		GearGraphInfoList FactionArchetype
+		{
+			EmptyGearGraphInfo FactionArchtype
+			{
+				myAgentTagsList
+				{
+				}
+				myChildCharacterVisualsParts
+				{
+					GearGraphInfoList Archetype
+					{
+						EmptyGearGraphInfo Sabacc
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F5728965D723B700074A4050C7E486 > = Agent_Archetype_SabaccGambler DA5615DD63B6ADE10000D98F4BF4C920
+							}
+						}
+					}
+					GearGraphInfoList Faction
+					{
+						EmptyGearGraphInfo Civilian
+						{
+							myAgentTagsList
+							{
+								RBTagsTag "New RBTagsTag" < uid=66F5728965D723C600074A412D9AE83D > = Agent_Faction_CivilianTag 16DEADE6620AE18B000020C77856AAF4
+							}
+						}
+					}
+				}
+			}
+		}
+		GearGraphInfoList PlanetSelector
+		{
+			EmptyGearGraphInfo Cantonica
+			{
+				myWeight 0
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728965D716930003CC2D5114970B > = Agent_Planet_CantonicaTag 66F572896527AF5E000128177E895A78
+				}
+			}
+			EmptyGearGraphInfo Toshara
+			{
+				myWeight 0
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728965D716930003CC2E605FE0F1 > = Agent_Planet_TosharaTag 66F572896527B0EC0001281A47673417
+				}
+			}
+			EmptyGearGraphInfo Tatooine
+			{
+				myWeight 1
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728965D716930003CC2FA3191D7A > = Agent_Planet_TatooineTag 66F572896527B0FC0001281B275E4740
+				}
+			}
+			EmptyGearGraphInfo Akiva
+			{
+				myWeight 0
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728965D716930003CC30380B42BD > = Agent_Planet_AkivaTag 66F572896527B1130001281C6F84FEFE
+				}
+			}
+			EmptyGearGraphInfo Kijimi
+			{
+				myWeight 0
+				myAgentTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=66F5728965D716930003CC31CD522678 > = Agent_Planet_KijimiTag 66F572896527B11D0001281D657298EC
+				}
+			}
+		}
+		GearGraphInfoListWrapper Bodytype < uid=66F5728965D716930003CC3252950F4B > = TagAverageSkinySelector 66F5728965C2167C000FC2D7140CEA15
+		GearGraphInfoListWrapper Species < uid=66F5728965D716930003CC33390C3AAE > = TagSpeciesSelector 66F5728965C210F2000FC237EC984975
+		GearGraphInfoListWrapper OutfitCombiner < uid=66F5728965D716930003CC345B708998 > = OutfitCombiner 83E36AE36593F2F40000ED847D5A806B
+		GearGraphInfoListWrapper BodyCombiner < uid=66F5728965D716930003CC35074D0568 > = SpeciesCivilianSelector 66F572896762C2A4000A91EF1718C0C0
+	}
+}
+
+CharacterVisuals character_visuals_npc_generator_02_planet_tatooine_sabacc_asf_sequence < uid=7D46844665DCB0710018E99125CE9CF3 > : character_visuals_npc_generator_02_planet_tatooine_sabacc_asf
+{
+	myCharacterVisualLogicItems
+	{
+		file collision "helix/graph objects/gear/chr_collision_sequence_human.mgraphobject"
+	}
+}
+

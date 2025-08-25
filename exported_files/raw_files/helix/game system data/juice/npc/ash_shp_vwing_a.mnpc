@@ -1,0 +1,30 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/character/character_visuals_npc.mcharactervisuals"
+include "helix/game system data/juice/npc/ash_shp_base.mnpc"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC ash_shp_vwing_a < uid=F95CD8F364AD16F70001D8F9D6921971 > : ash_shp_base
+{
+	myName "aurabesh = false, branch = \"MAIN\", contextComment = \"name of ship - V-92 Tine Hunter/ VWing - Ashiga faction\", enabled = true, guid = #6AE6EE0D6578767F000266CE6192362B, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10726, text = \"V-92 Tine Hunter\", type = \"MenuLine\""
+	myCharacterVisuals < uid=F95CD8F364AD16F70001D8FAA4D42867 > = character_visuals_npc_shp_VWing F95CD8F362ECDB180000E9CDAA60D460
+	myNPCComponentSetType Spaceship
+	mySpaceshipType VWingAshiga
+	myMaxHealth 60
+	myHealthFormula 30*SpaceHealthDifficultyModifier
+	myLodType Spaceship_Small
+	myVisionProfile < uid=F95CD8F364AD16F70001D8FB4A8DA0BC > = visionProfile_ash_ship_Interceptor 6B0E1DE964B7A45D0000AD62F6FAAF18
+	myHearingProfile < uid=F95CD8F364AD16F70001D8FCCFAFDA68 > = DeafHearingProfile 16DEADE6605D0C4B00000448CF921217
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=F95CD8F364AD16F70001D8FD89B00B7D > = detectionProfile_ash_ship_Interceptor 6B0E1DE964B660570003C714D6B5730E
+	}
+	myThreatProfile < uid=F95CD8F3653F88EE0008334880FAE775 > = Spaceshipthreatprofile F95CD8F3653F81EE00057BF796B8AD1A
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout "vwing weapon loadout" < uid=F95CD8F364AD16F70001D8FFAB8D4444 > = weaponloadout_ash_shp_vwing 6AF0BA04649BFC9400074AF890B1B115
+	}
+	myCombatRole Interceptor
+}
+

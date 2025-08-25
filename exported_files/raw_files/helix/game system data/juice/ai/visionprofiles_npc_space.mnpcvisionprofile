@@ -1,0 +1,2250 @@
+include "helix/game system data/fruit/ai/vision.fruit"
+include "helix/game system data/juice/ai/visioncone_npc_space.juice"
+
+NPCVisionProfile visionProfiles_npc_ship_base < uid=6B0E1DE964B79E7B0000AD389F5616A4 >
+{
+	myIdleConeState
+	{
+		myCone
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 270.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 800.0
+			myMaxRadius 800.0
+			myMaxWidth 500.0
+			myMaxHeightUp 800.0
+			myMaxHeightDown 800.0
+			myPeripheralPivotOffset 0.0;0.0;0.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 500.0
+			myPeripheralMaxRadius 500.0
+			myPeripheralMaxWidth 800.0
+			myPeripheralMaxHeightUp 300.0
+			myPeripheralMaxHeightDown 300.0
+		}
+		myAlertCone
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 270.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 800.0
+			myMaxRadius 800.0
+			myMaxWidth 500.0
+			myMaxHeightUp 800.0
+			myMaxHeightDown 800.0
+			myPeripheralPivotOffset 0.0;0.0;0.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 500.0
+			myPeripheralMaxRadius 500.0
+			myPeripheralMaxWidth 800.0
+			myPeripheralMaxHeightUp 300.0
+			myPeripheralMaxHeightDown 300.0
+		}
+	}
+	myAwareConeState
+	{
+		myCone
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 270.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 800.0
+			myMaxRadius 800.0
+			myMaxWidth 500.0
+			myMaxHeightUp 800.0
+			myMaxHeightDown 800.0
+			myPeripheralPivotOffset 0.0;0.0;0.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 500.0
+			myPeripheralMaxRadius 500.0
+			myPeripheralMaxWidth 800.0
+			myPeripheralMaxHeightUp 300.0
+			myPeripheralMaxHeightDown 300.0
+		}
+		myAlertCone
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 270.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 800.0
+			myMaxRadius 800.0
+			myMaxWidth 500.0
+			myMaxHeightUp 800.0
+			myMaxHeightDown 800.0
+			myPeripheralPivotOffset 0.0;0.0;0.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 500.0
+			myPeripheralMaxRadius 500.0
+			myPeripheralMaxWidth 800.0
+			myPeripheralMaxHeightUp 300.0
+			myPeripheralMaxHeightDown 300.0
+		}
+	}
+	myCombatConeState
+	{
+		myCone : visionCone_NPC_ship_Combat_base
+		{
+		}
+		myAlertCone : visionCone_NPC_ship_Combat_base
+		{
+		}
+	}
+	myUse3DOrientation TRUE
+	myConcealmentVolumeRange 3.0
+	myMinEMTransmittance 0.0
+}
+
+NPCVisionProfile vision_fighter_base < uid=B4FBE4306554DAA900069520BD892464 > : visionProfiles_npc_ship_base
+{
+	myIdleConeState
+	{
+		myCone : visionCone_NPC_ship_Idle_base
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 800.0
+			myMaxRadius 800.0
+			myMaxWidth 500.0
+			myMaxHeightUp 800.0
+			myMaxHeightDown 800.0
+			myPeripheralPivotOffset 0.0;0.0;0.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 500.0
+			myPeripheralMaxRadius 500.0
+			myPeripheralMaxWidth 800.0
+			myPeripheralMaxHeightUp 300.0
+			myPeripheralMaxHeightDown 300.0
+		}
+		myAlertCone : visionCone_NPC_ship_Idle_base
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 800.0
+			myMaxRadius 800.0
+			myMaxWidth 500.0
+			myMaxHeightUp 800.0
+			myMaxHeightDown 800.0
+			myPeripheralPivotOffset 0.0;0.0;0.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 500.0
+			myPeripheralMaxRadius 500.0
+			myPeripheralMaxWidth 800.0
+			myPeripheralMaxHeightUp 300.0
+			myPeripheralMaxHeightDown 300.0
+		}
+	}
+	myAwareConeState
+	{
+		myCone : visionCone_NPC_ship_Aware_base
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 800.0
+			myMaxRadius 800.0
+			myMaxWidth 500.0
+			myMaxHeightUp 800.0
+			myMaxHeightDown 800.0
+			myPeripheralPivotOffset 0.0;0.0;0.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 500.0
+			myPeripheralMaxRadius 500.0
+			myPeripheralMaxWidth 800.0
+			myPeripheralMaxHeightUp 300.0
+			myPeripheralMaxHeightDown 300.0
+		}
+		myAlertCone : visionCone_NPC_ship_Aware_base
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 800.0
+			myMaxRadius 800.0
+			myMaxWidth 500.0
+			myMaxHeightUp 800.0
+			myMaxHeightDown 800.0
+			myPeripheralPivotOffset 0.0;0.0;0.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 500.0
+			myPeripheralMaxRadius 500.0
+			myPeripheralMaxWidth 800.0
+			myPeripheralMaxHeightUp 300.0
+			myPeripheralMaxHeightDown 300.0
+		}
+	}
+	myCombatConeState
+	{
+		myCone : visionCone_NPC_ship_Combat_base
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 1000.0
+			myMaxRadius 1000.0
+			myMaxWidth 1000.0
+			myMaxHeightUp 1000.0
+			myMaxHeightDown 1000.0
+			myPeripheralPivotOffset 0.0;0.0;0.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 5.0
+			myPeripheralMaxRadius 5.0
+			myPeripheralMaxWidth 1000.0
+			myPeripheralMaxHeightUp 0.0
+			myPeripheralMaxHeightDown 0.0
+		}
+		myAlertCone : visionCone_NPC_ship_Combat_base
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 1000.0
+			myMaxRadius 1000.0
+			myMaxWidth 1000.0
+			myMaxHeightUp 1000.0
+			myMaxHeightDown 1000.0
+			myPeripheralPivotOffset 0.0;0.0;0.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 5.0
+			myPeripheralMaxRadius 5.0
+			myPeripheralMaxWidth 1000.0
+			myPeripheralMaxHeightUp 0.0
+			myPeripheralMaxHeightDown 0.0
+		}
+	}
+}
+
+NPCVisionProfile vision_warship_base < uid=B4FBE4306554DAD50006952660D47125 > : visionProfiles_npc_ship_base
+{
+	myIdleConeState
+	{
+		myCone : visionCone_NPC_ship_Idle_base
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 1500
+			myMaxRadius 1500.0
+			myMaxWidth 500.0
+			myMaxHeightUp 800.0
+			myMaxHeightDown 800.0
+			myPeripheralPivotOffset 0.0;0.0;0.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 500.0
+			myPeripheralMaxRadius 500.0
+			myPeripheralMaxWidth 800.0
+			myPeripheralMaxHeightUp 300.0
+			myPeripheralMaxHeightDown 300.0
+		}
+		myAlertCone : visionCone_NPC_ship_Idle_base
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 1500
+			myMaxRadius 1500.0
+			myMaxWidth 500.0
+			myMaxHeightUp 800.0
+			myMaxHeightDown 800.0
+			myPeripheralPivotOffset 0.0;0.0;0.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 500.0
+			myPeripheralMaxRadius 500.0
+			myPeripheralMaxWidth 800.0
+			myPeripheralMaxHeightUp 300.0
+			myPeripheralMaxHeightDown 300.0
+		}
+	}
+	myAwareConeState
+	{
+		myCone : visionCone_NPC_ship_Aware_base
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 1500
+			myMaxRadius 1500.0
+			myMaxWidth 500.0
+			myMaxHeightUp 800.0
+			myMaxHeightDown 800.0
+			myPeripheralPivotOffset 0.0;0.0;0.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 500.0
+			myPeripheralMaxRadius 500.0
+			myPeripheralMaxWidth 800.0
+			myPeripheralMaxHeightUp 300.0
+			myPeripheralMaxHeightDown 300.0
+		}
+		myAlertCone : visionCone_NPC_ship_Aware_base
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 1500
+			myMaxRadius 1500.0
+			myMaxWidth 500.0
+			myMaxHeightUp 800.0
+			myMaxHeightDown 800.0
+			myPeripheralPivotOffset 0.0;0.0;0.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 500.0
+			myPeripheralMaxRadius 500.0
+			myPeripheralMaxWidth 800.0
+			myPeripheralMaxHeightUp 300.0
+			myPeripheralMaxHeightDown 300.0
+		}
+	}
+	myCombatConeState
+	{
+		myCone : visionCone_NPC_ship_Combat_base
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 1000.0
+			myMaxRadius 1000.0
+			myMaxWidth 1000.0
+			myMaxHeightUp 1000.0
+			myMaxHeightDown 1000.0
+			myPeripheralPivotOffset 0.0;0.0;0.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 5.0
+			myPeripheralMaxRadius 5.0
+			myPeripheralMaxWidth 1000.0
+			myPeripheralMaxHeightUp 0.0
+			myPeripheralMaxHeightDown 0.0
+		}
+		myAlertCone : visionCone_NPC_ship_Combat_base
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 1000.0
+			myMaxRadius 1000.0
+			myMaxWidth 1000.0
+			myMaxHeightUp 1000.0
+			myMaxHeightDown 1000.0
+			myPeripheralPivotOffset 0.0;0.0;0.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 5.0
+			myPeripheralMaxRadius 5.0
+			myPeripheralMaxWidth 1000.0
+			myPeripheralMaxHeightUp 0.0
+			myPeripheralMaxHeightDown 0.0
+		}
+	}
+}
+
+NPCVisionProfile visionProfile_trailblazer_turret < uid=B4FBE43064C266ED0003C8C9981D6D69 > : visionProfiles_npc_ship_base
+{
+	myIdleConeState
+	{
+		myCone : visionCone_NPC_ship_Idle_base
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 150.0
+			myRadiusFormula 1200.0
+			myMaxRadius 1200.0
+			myMaxWidth 30000.0
+			myMaxHeightUp 30000.0
+			myMaxHeightDown 50.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 150.0
+			myPeripheralRadiusFormula 1200.0
+			myPeripheralMaxRadius 1200.0
+			myPeripheralMaxWidth 30000.0
+			myPeripheralMaxHeightUp 30000.0
+			myPeripheralMaxHeightDown 50.0
+		}
+		myAlertCone
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 150.0
+			myRadiusFormula 1200.0
+			myMaxRadius 1200.0
+			myMaxWidth 30000.0
+			myMaxHeightUp 30000.0
+			myMaxHeightDown 50.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 150.0
+			myPeripheralRadiusFormula 1200.0
+			myPeripheralMaxRadius 1200.0
+			myPeripheralMaxWidth 30000.0
+			myPeripheralMaxHeightUp 30000.0
+			myPeripheralMaxHeightDown 50.0
+		}
+	}
+	myAwareConeState
+	{
+		myCone : visionCone_NPC_ship_Aware_base
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 150.0
+			myRadiusFormula 1200.0
+			myMaxRadius 1200.0
+			myMaxWidth 30000.0
+			myMaxHeightUp 30000.0
+			myMaxHeightDown 50.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 150.0
+			myPeripheralRadiusFormula 1200.0
+			myPeripheralMaxRadius 1200.0
+			myPeripheralMaxWidth 30000.0
+			myPeripheralMaxHeightUp 30000.0
+			myPeripheralMaxHeightDown 50.0
+		}
+		myAlertCone
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 150.0
+			myRadiusFormula 1200.0
+			myMaxRadius 1200.0
+			myMaxWidth 30000.0
+			myMaxHeightUp 30000.0
+			myMaxHeightDown 50.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 150.0
+			myPeripheralRadiusFormula 1200.0
+			myPeripheralMaxRadius 1200.0
+			myPeripheralMaxWidth 30000.0
+			myPeripheralMaxHeightUp 30000.0
+			myPeripheralMaxHeightDown 50.0
+		}
+	}
+	myCombatConeState
+	{
+		myCone : visionCone_NPC_ship_Combat_base
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 150.0
+			myRadiusFormula 1800
+			myMaxRadius 2000.0
+			myMaxWidth 30000.0
+			myMaxHeightUp 30000.0
+			myMaxHeightDown 50.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 150.0
+			myPeripheralRadiusFormula 1800
+			myPeripheralMaxRadius 2000.0
+			myPeripheralMaxWidth 30000.0
+			myPeripheralMaxHeightUp 30000.0
+			myPeripheralMaxHeightDown 50.0
+		}
+		myAlertCone
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 150.0
+			myRadiusFormula 1800
+			myMaxRadius 1800.0
+			myMaxWidth 30000.0
+			myMaxHeightUp 30000.0
+			myMaxHeightDown 50.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 150.0
+			myPeripheralRadiusFormula 1800
+			myPeripheralMaxRadius 1800.0
+			myPeripheralMaxWidth 30000.0
+			myPeripheralMaxHeightUp 30000.0
+			myPeripheralMaxHeightDown 50.0
+		}
+	}
+}
+
+NPCVisionProfile visionProfile_emp_ship_Fighter < uid=6B0E1DE964B79E7B0000AD3900B2FAF2 > : vision_fighter_base
+{
+}
+
+NPCVisionProfile visionProfile_emp_ship_Interceptor < uid=6B0E1DE964B7A45D0000AD5737D3AE14 > : vision_fighter_base
+{
+}
+
+NPCVisionProfile visionProfile_emp_ship_LightFreighter < uid=6B0E1DE964B7A45D0000AD580125C2F4 > : vision_fighter_base
+{
+}
+
+NPCVisionProfile visionProfile_emp_ship_HaulerShuttle < uid=6B0E1DE964B7A45D0000AD5930260AFA > : vision_fighter_base
+{
+}
+
+NPCVisionProfile visionProfile_emp_ship_Warship < uid=6B0E1DE964B7A45D0000AD5AF7C7687B > : vision_warship_base
+{
+}
+
+NPCVisionProfile visionProfile_pir_ship_Fighter < uid=6B0E1DE964B7A45D0000AD5B5DCEDB99 > : vision_fighter_base
+{
+}
+
+NPCVisionProfile visionProfile_pir_ship_Warship < uid=6B0E1DE964B7A45D0000AD5C72D380B6 > : vision_warship_base
+{
+}
+
+NPCVisionProfile visionProfile_hut_ship_Fighter < uid=6B0E1DE964B7A45D0000AD5D72A225CC > : vision_fighter_base
+{
+}
+
+NPCVisionProfile visionProfile_hut_ship_LightFreighter < uid=6B0E1DE964B7A45D0000AD5EBEEA1F53 > : vision_fighter_base
+{
+}
+
+NPCVisionProfile visionProfile_hut_ship_Warship < uid=6B0E1DE964B7A45D0000AD5F95D30904 > : vision_warship_base
+{
+}
+
+NPCVisionProfile visionProfile_hut_ship_HaulerShuttle < uid=6B0E1DE964B7A45D0000AD607BEBFD38 > : vision_fighter_base
+{
+}
+
+NPCVisionProfile visionProfile_ash_ship_Fighter < uid=6B0E1DE964B7A45D0000AD6118043BCC > : vision_fighter_base
+{
+}
+
+NPCVisionProfile visionProfile_ash_ship_Interceptor < uid=6B0E1DE964B7A45D0000AD62F6FAAF18 > : vision_fighter_base
+{
+}
+
+NPCVisionProfile visionProfile_ash_ship_LightFreighter < uid=6B0E1DE964B7A45D0000AD63FB6C03EA > : vision_fighter_base
+{
+}
+
+NPCVisionProfile visionProfile_ash_ship_Warship < uid=6B0E1DE964B7A45D0000AD64DF4A2382 > : vision_warship_base
+{
+}
+
+NPCVisionProfile visionProfile_ash_ship_HaulerShuttle < uid=6B0E1DE964B7A45D0000AD65E6A9B9FC > : vision_fighter_base
+{
+}
+
+NPCVisionProfile visionProfile_cri_ship_Fighter < uid=6B0E1DE964B7A45D0000AD66C508485E > : vision_fighter_base
+{
+}
+
+NPCVisionProfile visionProfile_cri_ship_Interceptor < uid=6B0E1DE964B7A45D0000AD675EE07046 > : vision_fighter_base
+{
+}
+
+NPCVisionProfile visionProfile_cri_ship_LightFreighter < uid=6B0E1DE964B7A45D0000AD68D0381E2B > : vision_fighter_base
+{
+}
+
+NPCVisionProfile visionProfile_cri_ship_Warship < uid=6B0E1DE964B7A45D0000AD697BF53B89 > : vision_warship_base
+{
+}
+
+NPCVisionProfile visionProfile_cri_ship_HaulerShuttle < uid=6B0E1DE964B7A45D0000AD6AFC38C611 > : vision_fighter_base
+{
+}
+
+NPCVisionProfile visionProfile_pyk_ship_Fighter < uid=6B0E1DE964B7A45D0000AD6BA107FB90 > : vision_fighter_base
+{
+}
+
+NPCVisionProfile visionProfile_pyk_ship_Interceptor < uid=6B0E1DE964B7A45D0000AD6CB1DE60DD > : vision_fighter_base
+{
+}
+
+NPCVisionProfile visionProfile_pyk_ship_LightFreighter < uid=6B0E1DE964B7A45D0000AD6D63252C1C > : vision_fighter_base
+{
+}
+
+NPCVisionProfile visionProfile_pyk_ship_Warship < uid=6B0E1DE964B7A45D0000AD6E59176627 > : vision_warship_base
+{
+}
+
+NPCVisionProfile visionProfile_pyk_ship_HaulerShuttle < uid=6B0E1DE964B7A45D0000AD6FC752CDEE > : vision_fighter_base
+{
+}
+
+NPCVisionProfile visionProfile_reb_ship_Fighter < uid=6B0E1DE964B7A3DC0000AD53C77684C1 > : vision_fighter_base
+{
+}
+
+NPCVisionProfile visionProfile_reb_ship_Interceptor < uid=6B0E1DE964B7A45D0000AD7085C88551 > : vision_fighter_base
+{
+}
+
+NPCVisionProfile visionProfile_neu_ship_HaulerShuttle < uid=6B0E1DE964B7A4080000AD5512E47AD0 > : vision_fighter_base
+{
+}
+
+NPCVisionProfile visionProfile_npc_ship_Turret_base < uid=6B0E1DE964B7A4240000AD5644F07AC7 > : visionProfiles_npc_ship_base
+{
+	myIdleConeState
+	{
+		myCone : visionCone_NPC_ship_turret_Idle_base
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 0.0
+			myVerticalAngleDegrees 0.0
+			myRadiusFormula 0.0
+			myMaxRadius 0.0
+			myMaxWidth 1000.0
+			myMaxHeightUp 2.5
+			myMaxHeightDown 2.5
+			myPeripheralHorizontalAngleDegrees 0.0
+			myPeripheralVerticalAngleDegrees 0.0
+			myPeripheralRadiusFormula 0.0
+			myPeripheralMaxRadius 0.0
+			myPeripheralMaxWidth 1000.0
+			myPeripheralMaxHeightUp 3.5
+			myPeripheralMaxHeightDown 3.5
+		}
+		myAlertCone : visionCone_NPC_ship_turret_Idle_base
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 0.0
+			myVerticalAngleDegrees 0.0
+			myRadiusFormula 0.0
+			myMaxRadius 0.0
+			myMaxWidth 1000.0
+			myMaxHeightUp 2.5
+			myMaxHeightDown 2.5
+			myPeripheralHorizontalAngleDegrees 0.0
+			myPeripheralVerticalAngleDegrees 0.0
+			myPeripheralRadiusFormula 0.0
+			myPeripheralMaxRadius 0.0
+			myPeripheralMaxWidth 1000.0
+			myPeripheralMaxHeightUp 3.5
+			myPeripheralMaxHeightDown 3.5
+		}
+	}
+	myAwareConeState
+	{
+		myCone : visionCone_NPC_ship_turret_Aware_base
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 0.0
+			myVerticalAngleDegrees 0.0
+			myRadiusFormula 0.0
+			myMaxRadius 0.0
+			myMaxWidth 1000.0
+			myMaxHeightUp 2.5
+			myMaxHeightDown 2.5
+			myPeripheralHorizontalAngleDegrees 0.0
+			myPeripheralVerticalAngleDegrees 0.0
+			myPeripheralRadiusFormula 0.0
+			myPeripheralMaxRadius 0.0
+			myPeripheralMaxWidth 1000.0
+			myPeripheralMaxHeightUp 3.5
+			myPeripheralMaxHeightDown 3.5
+		}
+		myAlertCone : visionCone_NPC_ship_turret_Aware_base
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 0.0
+			myVerticalAngleDegrees 0.0
+			myRadiusFormula 0.0
+			myMaxRadius 0.0
+			myMaxWidth 1000.0
+			myMaxHeightUp 2.5
+			myMaxHeightDown 2.5
+			myPeripheralHorizontalAngleDegrees 0.0
+			myPeripheralVerticalAngleDegrees 0.0
+			myPeripheralRadiusFormula 0.0
+			myPeripheralMaxRadius 0.0
+			myPeripheralMaxWidth 1000.0
+			myPeripheralMaxHeightUp 3.5
+			myPeripheralMaxHeightDown 3.5
+		}
+	}
+	myCombatConeState
+	{
+		myCone : visionCone_NPC_ship_turret_Combat_base
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 0.0
+			myVerticalAngleDegrees 0.0
+			myRadiusFormula 0.0
+			myMaxRadius 0.0
+			myMaxWidth 1000.0
+			myMaxHeightUp 2.5
+			myMaxHeightDown 2.5
+			myPeripheralHorizontalAngleDegrees 0.0
+			myPeripheralVerticalAngleDegrees 0.0
+			myPeripheralRadiusFormula 0.0
+			myPeripheralMaxRadius 0.0
+			myPeripheralMaxWidth 1000.0
+			myPeripheralMaxHeightUp 3.5
+			myPeripheralMaxHeightDown 3.5
+		}
+		myAlertCone : visionCone_NPC_ship_turret_Combat_base
+		{
+			myPivotOffset 0.0;0.0;0.0
+			myHorizontalAngleDegrees 0.0
+			myVerticalAngleDegrees 0.0
+			myRadiusFormula 0.0
+			myMaxRadius 0.0
+			myMaxWidth 1000.0
+			myMaxHeightUp 2.5
+			myMaxHeightDown 2.5
+			myPeripheralHorizontalAngleDegrees 0.0
+			myPeripheralVerticalAngleDegrees 0.0
+			myPeripheralRadiusFormula 0.0
+			myPeripheralMaxRadius 0.0
+			myPeripheralMaxWidth 1000.0
+			myPeripheralMaxHeightUp 3.5
+			myPeripheralMaxHeightDown 3.5
+		}
+	}
+}
+
+NPCVisionProfile visionProfile_npc_turret_base < uid=7EE64634650D6444000527E0C72F1726 >
+{
+	myIdleConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 1500.0
+			myMaxRadius 1500.0
+			myMaxWidth 30000.0
+			myMaxHeightUp 30000.0
+			myMaxHeightDown 30000.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 1500.0
+			myPeripheralMaxRadius 1500.0
+			myPeripheralMaxWidth 30000.0
+			myPeripheralMaxHeightUp 30000.0
+			myPeripheralMaxHeightDown 30000.0
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 1500.0
+			myMaxRadius 1500.0
+			myMaxWidth 30000.0
+			myMaxHeightUp 30000.0
+			myMaxHeightDown 30000.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 1500.0
+			myPeripheralMaxRadius 1500.0
+			myPeripheralMaxWidth 30000.0
+			myPeripheralMaxHeightUp 30000.0
+			myPeripheralMaxHeightDown 30000.0
+		}
+	}
+	myAwareConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 1500.0
+			myMaxRadius 1500.0
+			myMaxWidth 30000.0
+			myMaxHeightUp 30000.0
+			myMaxHeightDown 30000.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 1500.0
+			myPeripheralMaxRadius 1500.0
+			myPeripheralMaxWidth 30000.0
+			myPeripheralMaxHeightUp 30000.0
+			myPeripheralMaxHeightDown 30000.0
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 1500.0
+			myMaxRadius 1500.0
+			myMaxWidth 30000.0
+			myMaxHeightUp 30000.0
+			myMaxHeightDown 30000.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 1500.0
+			myPeripheralMaxRadius 1500.0
+			myPeripheralMaxWidth 30000.0
+			myPeripheralMaxHeightUp 30000.0
+			myPeripheralMaxHeightDown 30000.0
+		}
+	}
+	myCombatConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 1500.0
+			myMaxRadius 1500.0
+			myMaxWidth 30000.0
+			myMaxHeightUp 30000.0
+			myMaxHeightDown 30000.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 1500.0
+			myPeripheralMaxRadius 1500.0
+			myPeripheralMaxWidth 30000.0
+			myPeripheralMaxHeightUp 30000.0
+			myPeripheralMaxHeightDown 30000.0
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 1500.0
+			myMaxRadius 1500.0
+			myMaxWidth 30000.0
+			myMaxHeightUp 30000.0
+			myMaxHeightDown 30000.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 1500.0
+			myPeripheralMaxRadius 1500.0
+			myPeripheralMaxWidth 30000.0
+			myPeripheralMaxHeightUp 30000.0
+			myPeripheralMaxHeightDown 30000.0
+		}
+	}
+	myUse3DOrientation TRUE
+	myConcealmentVolumeRange 1.0
+	myNPCToNPCNonCombatRadiusMultiplier 1.0
+	myNPCToWildlifeRadiusMultiplier 1.0
+	myInvestigationConeExpandDelay 0.0
+	myInvestigationConeExpandTime 0.0
+}
+
+NPCVisionProfile visionProfile_npc_turret_arc170 < uid=7EE64634650D652000052A2B43A9167B > : visionProfile_npc_turret_base
+{
+	myIdleConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 80.0
+			myVerticalAngleDegrees 80.0
+			myMaxHeightDown 10.0
+			myPeripheralHorizontalAngleDegrees 80.0
+			myPeripheralVerticalAngleDegrees 80.0
+			myPeripheralMaxHeightDown 10.0
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 80.0
+			myVerticalAngleDegrees 80.0
+			myMaxHeightDown 10.0
+			myPeripheralHorizontalAngleDegrees 0.0
+			myPeripheralVerticalAngleDegrees 0.0
+			myPeripheralMaxHeightDown 10.0
+		}
+	}
+	myAwareConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 80.0
+			myVerticalAngleDegrees 80.0
+			myMaxHeightDown 10.0
+			myPeripheralHorizontalAngleDegrees 80.0
+			myPeripheralVerticalAngleDegrees 80.0
+			myPeripheralMaxHeightDown 10.0
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 80.0
+			myVerticalAngleDegrees 80.0
+			myMaxHeightDown 10.0
+			myPeripheralHorizontalAngleDegrees 80.0
+			myPeripheralVerticalAngleDegrees 80.0
+			myPeripheralMaxHeightDown 10.0
+		}
+	}
+	myCombatConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 80.0
+			myVerticalAngleDegrees 80.0
+			myMaxHeightDown 10.0
+			myPeripheralHorizontalAngleDegrees 80.0
+			myPeripheralVerticalAngleDegrees 80.0
+			myPeripheralMaxHeightDown 10.0
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 80.0
+			myVerticalAngleDegrees 80.0
+			myMaxHeightDown 10.0
+			myPeripheralHorizontalAngleDegrees 80.0
+			myPeripheralVerticalAngleDegrees 80.0
+			myPeripheralMaxHeightDown 10.0
+		}
+	}
+}
+
+NPCVisionProfile visionProfile_npc_turret_zh40_front < uid=7EE64634650D654200052A2C112C252A > : visionProfile_npc_turret_base
+{
+	myIdleConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 130.0
+			myVerticalAngleDegrees 10.0
+			myPeripheralHorizontalAngleDegrees 130.0
+			myPeripheralVerticalAngleDegrees 10.0
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 130.0
+			myVerticalAngleDegrees 10.0
+			myPeripheralHorizontalAngleDegrees 130.0
+			myPeripheralVerticalAngleDegrees 10.0
+		}
+	}
+	myAwareConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 130.0
+			myVerticalAngleDegrees 10.0
+			myPeripheralHorizontalAngleDegrees 130.0
+			myPeripheralVerticalAngleDegrees 10.0
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 130.0
+			myVerticalAngleDegrees 10.0
+			myPeripheralHorizontalAngleDegrees 130.0
+			myPeripheralVerticalAngleDegrees 10.0
+		}
+	}
+	myCombatConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 130.0
+			myVerticalAngleDegrees 10.0
+			myPeripheralHorizontalAngleDegrees 130.0
+			myPeripheralVerticalAngleDegrees 10.0
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 130.0
+			myVerticalAngleDegrees 10.0
+			myPeripheralHorizontalAngleDegrees 130.0
+			myPeripheralVerticalAngleDegrees 10.0
+		}
+	}
+}
+
+NPCVisionProfile visionProfile_npc_turret_zh40_back < uid=7EE64634650D655200052A2DBFD92F1F > : visionProfile_npc_turret_base
+{
+	myIdleConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 320.0
+			myMaxHeightDown 0.0
+			myPeripheralHorizontalAngleDegrees 320.0
+			myPeripheralMaxHeightDown 0.0
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 320.0
+			myMaxHeightDown 0.0
+			myPeripheralHorizontalAngleDegrees 320.0
+			myPeripheralMaxHeightDown 0.0
+		}
+	}
+	myAwareConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 320.0
+			myMaxHeightDown 0.0
+			myPeripheralHorizontalAngleDegrees 320.0
+			myPeripheralMaxHeightDown 0.0
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 320.0
+			myMaxHeightDown 0.0
+			myPeripheralHorizontalAngleDegrees 320.0
+			myPeripheralMaxHeightDown 0.0
+		}
+	}
+	myCombatConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 320.0
+			myMaxHeightDown 0.0
+			myPeripheralHorizontalAngleDegrees 320.0
+			myPeripheralMaxHeightDown 0.0
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 320.0
+			myMaxHeightDown 0.0
+			myPeripheralHorizontalAngleDegrees 320.0
+			myPeripheralMaxHeightDown 0.0
+		}
+	}
+}
+
+NPCVisionProfile visionProfile_npc_turret_bowbreaker_lothalian < uid=7EE64634650D65EF00052A2E00F089E5 > : visionProfile_npc_turret_base
+{
+	myIdleConeState
+	{
+		myCone
+		{
+			myRadiusFormula 2000.0
+			myMaxRadius 2000.0
+			myMaxHeightDown 15.0
+			myPeripheralRadiusFormula 2000.0
+			myPeripheralMaxRadius 2000.0
+			myPeripheralMaxHeightDown 15.0
+		}
+		myAlertCone
+		{
+			myRadiusFormula 2000.0
+			myMaxRadius 2000.0
+			myMaxHeightDown 15.0
+			myPeripheralRadiusFormula 2000.0
+			myPeripheralMaxRadius 2000.0
+			myPeripheralMaxHeightDown 15.0
+		}
+	}
+	myAwareConeState
+	{
+		myCone
+		{
+			myRadiusFormula 2000.0
+			myMaxRadius 2000.0
+			myMaxHeightDown 15.0
+			myPeripheralRadiusFormula 2000.0
+			myPeripheralMaxRadius 2000.0
+			myPeripheralMaxHeightDown 15.0
+		}
+		myAlertCone
+		{
+			myRadiusFormula 2000.0
+			myMaxRadius 2000.0
+			myMaxHeightDown 15.0
+			myPeripheralRadiusFormula 2000.0
+			myPeripheralMaxRadius 2000.0
+			myPeripheralMaxHeightDown 15.0
+		}
+	}
+	myCombatConeState
+	{
+		myCone
+		{
+			myRadiusFormula 2000.0
+			myMaxRadius 2000.0
+			myMaxHeightDown 15.0
+			myPeripheralRadiusFormula 2000.0
+			myPeripheralMaxRadius 2000.0
+			myPeripheralMaxHeightDown 15.0
+		}
+		myAlertCone
+		{
+			myRadiusFormula 2000.0
+			myMaxRadius 2000.0
+			myMaxHeightDown 15.0
+			myPeripheralRadiusFormula 2000.0
+			myPeripheralMaxRadius 2000.0
+			myPeripheralMaxHeightDown 15.0
+		}
+	}
+}
+
+NPCVisionProfile visionProfile_npc_turret_wtk85 < uid=7EE64634650D660800052A2F0BE15D4E > : visionProfile_npc_turret_base
+{
+	myIdleConeState
+	{
+		myCone
+		{
+			myVerticalAngleDegrees 140.0
+			myMaxHeightDown 5.0
+			myPeripheralVerticalAngleDegrees 140.0
+			myPeripheralMaxHeightDown 5.0
+		}
+		myAlertCone
+		{
+			myVerticalAngleDegrees 140.0
+			myMaxHeightDown 5.0
+			myPeripheralVerticalAngleDegrees 140.0
+			myPeripheralMaxHeightDown 5.0
+		}
+	}
+	myAwareConeState
+	{
+		myCone
+		{
+			myVerticalAngleDegrees 140.0
+			myMaxHeightDown 5.0
+			myPeripheralVerticalAngleDegrees 140.0
+			myPeripheralMaxHeightDown 5.0
+		}
+		myAlertCone
+		{
+			myVerticalAngleDegrees 140.0
+			myMaxHeightDown 5.0
+			myPeripheralVerticalAngleDegrees 140.0
+			myPeripheralMaxHeightDown 5.0
+		}
+	}
+	myCombatConeState
+	{
+		myCone
+		{
+			myVerticalAngleDegrees 140.0
+			myMaxHeightDown 5.0
+			myPeripheralVerticalAngleDegrees 140.0
+			myPeripheralMaxHeightDown 5.0
+		}
+		myAlertCone
+		{
+			myVerticalAngleDegrees 140.0
+			myMaxHeightDown 5.0
+			myPeripheralVerticalAngleDegrees 140.0
+			myPeripheralMaxHeightDown 5.0
+		}
+	}
+}
+
+NPCVisionProfile visionProfile_npc_turret_vandor < uid=7EE64634650D663200052A307B942C6D > : visionProfile_npc_turret_base
+{
+	myIdleConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 320.0
+			myMaxHeightDown 0.0
+			myPeripheralHorizontalAngleDegrees 320.0
+			myPeripheralMaxHeightDown 0.0
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 320.0
+			myMaxHeightDown 0.0
+			myPeripheralHorizontalAngleDegrees 320.0
+			myPeripheralMaxHeightDown 0.0
+		}
+	}
+	myAwareConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 320.0
+			myMaxHeightDown 0.0
+			myPeripheralHorizontalAngleDegrees 320.0
+			myPeripheralMaxHeightDown 0.0
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 320.0
+			myMaxHeightDown 0.0
+			myPeripheralHorizontalAngleDegrees 320.0
+			myPeripheralMaxHeightDown 0.0
+		}
+	}
+	myCombatConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 320.0
+			myMaxHeightDown 0.0
+			myPeripheralHorizontalAngleDegrees 320.0
+			myPeripheralMaxHeightDown 0.0
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 320.0
+			myMaxHeightDown 0.0
+			myPeripheralHorizontalAngleDegrees 320.0
+			myPeripheralMaxHeightDown 0.0
+		}
+	}
+}
+
+NPCVisionProfile visionProfile_npc_turret_gozanti < uid=7EE64634650D665D00052A310D4355D7 > : visionProfile_npc_turret_base
+{
+	myIdleConeState
+	{
+		myCone
+		{
+			myVerticalAngleDegrees 90.0
+			myMaxHeightDown 10.0
+			myPeripheralVerticalAngleDegrees 90.0
+			myPeripheralMaxHeightDown 10.0
+		}
+		myAlertCone
+		{
+			myVerticalAngleDegrees 90.0
+			myMaxHeightDown 10.0
+			myPeripheralVerticalAngleDegrees 90.0
+			myPeripheralMaxHeightDown 10.0
+		}
+	}
+	myAwareConeState
+	{
+		myCone
+		{
+			myVerticalAngleDegrees 90.0
+			myMaxHeightDown 10.0
+			myPeripheralVerticalAngleDegrees 90.0
+			myPeripheralMaxHeightDown 10.0
+		}
+		myAlertCone
+		{
+			myVerticalAngleDegrees 90.0
+			myMaxHeightDown 10.0
+			myPeripheralVerticalAngleDegrees 90.0
+			myPeripheralMaxHeightDown 10.0
+		}
+	}
+	myCombatConeState
+	{
+		myCone
+		{
+			myVerticalAngleDegrees 90.0
+			myMaxHeightDown 10.0
+			myPeripheralVerticalAngleDegrees 90.0
+			myPeripheralMaxHeightDown 10.0
+		}
+		myAlertCone
+		{
+			myVerticalAngleDegrees 90.0
+			myMaxHeightDown 10.0
+			myPeripheralVerticalAngleDegrees 90.0
+			myPeripheralMaxHeightDown 10.0
+		}
+	}
+}
+
+NPCVisionProfile visionProfile_npc_turret_raider_upper < uid=7EE64634650D667A00052A3289784A3B > : visionProfile_npc_turret_base
+{
+	myIdleConeState
+	{
+		myCone
+		{
+			myVerticalAngleDegrees 120.0
+			myRadiusFormula 2000.0
+			myMaxRadius 2000.0
+			myMaxHeightDown 10.0
+			myPeripheralVerticalAngleDegrees 120.0
+			myPeripheralRadiusFormula 2000.0
+			myPeripheralMaxRadius 2000.0
+			myPeripheralMaxHeightDown 10.0
+		}
+		myAlertCone
+		{
+			myVerticalAngleDegrees 120.0
+			myRadiusFormula 2000.0
+			myMaxRadius 2000.0
+			myMaxHeightDown 10.0
+			myPeripheralVerticalAngleDegrees 120.0
+			myPeripheralRadiusFormula 2000.0
+			myPeripheralMaxRadius 2000.0
+			myPeripheralMaxHeightDown 10.0
+		}
+	}
+	myAwareConeState
+	{
+		myCone
+		{
+			myVerticalAngleDegrees 120.0
+			myRadiusFormula 2000.0
+			myMaxRadius 2000.0
+			myMaxHeightDown 10.0
+			myPeripheralVerticalAngleDegrees 120.0
+			myPeripheralRadiusFormula 2000.0
+			myPeripheralMaxRadius 2000.0
+			myPeripheralMaxHeightDown 10.0
+		}
+		myAlertCone
+		{
+			myVerticalAngleDegrees 120.0
+			myRadiusFormula 2000.0
+			myMaxRadius 2000.0
+			myMaxHeightDown 10.0
+			myPeripheralVerticalAngleDegrees 120.0
+			myPeripheralRadiusFormula 2000.0
+			myPeripheralMaxRadius 2000.0
+			myPeripheralMaxHeightDown 10.0
+		}
+	}
+	myCombatConeState
+	{
+		myCone
+		{
+			myVerticalAngleDegrees 120.0
+			myRadiusFormula 2000.0
+			myMaxRadius 2000.0
+			myMaxHeightDown 10.0
+			myPeripheralVerticalAngleDegrees 120.0
+			myPeripheralRadiusFormula 2000.0
+			myPeripheralMaxRadius 2000.0
+			myPeripheralMaxHeightDown 10.0
+		}
+		myAlertCone
+		{
+			myVerticalAngleDegrees 120.0
+			myRadiusFormula 2000.0
+			myMaxRadius 2000.0
+			myMaxHeightDown 10.0
+			myPeripheralVerticalAngleDegrees 120.0
+			myPeripheralRadiusFormula 2000.0
+			myPeripheralMaxRadius 2000.0
+			myPeripheralMaxHeightDown 10.0
+		}
+	}
+}
+
+NPCVisionProfile visionProfile_npc_turret_raider_side < uid=7EE64634650D669600052A3388727D77 > : visionProfile_npc_turret_base
+{
+	myIdleConeState
+	{
+		myCone
+		{
+			myRadiusFormula 2000.0
+			myMaxRadius 2000.0
+			myMaxHeightDown 10.0
+			myPeripheralRadiusFormula 2000.0
+			myPeripheralMaxRadius 2000.0
+			myPeripheralMaxHeightDown 10.0
+		}
+		myAlertCone
+		{
+			myRadiusFormula 2000.0
+			myMaxRadius 2000.0
+			myMaxHeightDown 10.0
+			myPeripheralRadiusFormula 2000.0
+			myPeripheralMaxRadius 2000.0
+			myPeripheralMaxHeightDown 10.0
+		}
+	}
+	myAwareConeState
+	{
+		myCone
+		{
+			myRadiusFormula 2000.0
+			myMaxRadius 2000.0
+			myMaxHeightDown 10.0
+			myPeripheralRadiusFormula 2000.0
+			myPeripheralMaxRadius 2000.0
+			myPeripheralMaxHeightDown 10.0
+		}
+		myAlertCone
+		{
+			myRadiusFormula 2000.0
+			myMaxRadius 2000.0
+			myMaxHeightDown 10.0
+			myPeripheralRadiusFormula 2000.0
+			myPeripheralMaxRadius 2000.0
+			myPeripheralMaxHeightDown 10.0
+		}
+	}
+	myCombatConeState
+	{
+		myCone
+		{
+			myRadiusFormula 2000.0
+			myMaxRadius 2000.0
+			myMaxHeightDown 10.0
+			myPeripheralRadiusFormula 2000.0
+			myPeripheralMaxRadius 2000.0
+			myPeripheralMaxHeightDown 10.0
+		}
+		myAlertCone
+		{
+			myRadiusFormula 2000.0
+			myMaxRadius 2000.0
+			myMaxHeightDown 10.0
+			myPeripheralRadiusFormula 2000.0
+			myPeripheralMaxRadius 2000.0
+			myPeripheralMaxHeightDown 10.0
+		}
+	}
+}
+
+NPCVisionProfile visionProfile_npc_turret_sentinel < uid=7EE64634650D66A200052A34525FDF50 > : visionProfile_npc_turret_base
+{
+	myIdleConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 80.0
+			myVerticalAngleDegrees 15.0
+			myPeripheralHorizontalAngleDegrees 80.0
+			myPeripheralVerticalAngleDegrees 15.0
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 80.0
+			myVerticalAngleDegrees 15.0
+			myPeripheralHorizontalAngleDegrees 80.0
+			myPeripheralVerticalAngleDegrees 15.0
+		}
+	}
+	myAwareConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 80.0
+			myVerticalAngleDegrees 15.0
+			myPeripheralHorizontalAngleDegrees 80.0
+			myPeripheralVerticalAngleDegrees 15.0
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 80.0
+			myVerticalAngleDegrees 15.0
+			myPeripheralHorizontalAngleDegrees 80.0
+			myPeripheralVerticalAngleDegrees 15.0
+		}
+	}
+	myCombatConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 80.0
+			myVerticalAngleDegrees 15.0
+			myPeripheralHorizontalAngleDegrees 80.0
+			myPeripheralVerticalAngleDegrees 15.0
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 80.0
+			myVerticalAngleDegrees 15.0
+			myPeripheralHorizontalAngleDegrees 80.0
+			myPeripheralVerticalAngleDegrees 15.0
+		}
+	}
+}
+
+NPCVisionProfile visionProfile_npc_turret_gozanti_armed_down < uid=7EE64634650D66A700052A3545A5D521 > : visionProfile_npc_turret_base
+{
+	myIdleConeState
+	{
+		myCone
+		{
+			myVerticalAngleDegrees 40.0
+			myPeripheralVerticalAngleDegrees 40.0
+		}
+		myAlertCone
+		{
+			myVerticalAngleDegrees 40.0
+			myPeripheralVerticalAngleDegrees 40.0
+		}
+	}
+	myAwareConeState
+	{
+		myCone
+		{
+			myVerticalAngleDegrees 40.0
+			myPeripheralVerticalAngleDegrees 40.0
+		}
+		myAlertCone
+		{
+			myVerticalAngleDegrees 40.0
+			myPeripheralVerticalAngleDegrees 40.0
+		}
+	}
+	myCombatConeState
+	{
+		myCone
+		{
+			myVerticalAngleDegrees 40.0
+			myPeripheralVerticalAngleDegrees 40.0
+		}
+		myAlertCone
+		{
+			myVerticalAngleDegrees 40.0
+			myPeripheralVerticalAngleDegrees 40.0
+		}
+	}
+}
+
+NPCVisionProfile visionProfile_npc_turret_gozanti_armed_front < uid=7EE64634650D66B600052A360EC7663C > : visionProfile_npc_turret_base
+{
+	myIdleConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 270.0
+			myVerticalAngleDegrees 10.0
+			myPeripheralHorizontalAngleDegrees 270.0
+			myPeripheralVerticalAngleDegrees 10.0
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 270.0
+			myVerticalAngleDegrees 10.0
+			myPeripheralHorizontalAngleDegrees 270.0
+			myPeripheralVerticalAngleDegrees 10.0
+		}
+	}
+	myAwareConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 270.0
+			myVerticalAngleDegrees 10.0
+			myPeripheralHorizontalAngleDegrees 270.0
+			myPeripheralVerticalAngleDegrees 10.0
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 270.0
+			myVerticalAngleDegrees 10.0
+			myPeripheralHorizontalAngleDegrees 270.0
+			myPeripheralVerticalAngleDegrees 10.0
+		}
+	}
+	myCombatConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 270.0
+			myVerticalAngleDegrees 10.0
+			myPeripheralHorizontalAngleDegrees 270.0
+			myPeripheralVerticalAngleDegrees 10.0
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 270.0
+			myVerticalAngleDegrees 10.0
+			myPeripheralHorizontalAngleDegrees 270.0
+			myPeripheralVerticalAngleDegrees 10.0
+		}
+	}
+}
+
+NPCVisionProfile visionProfile_npc_turret_lambda_back < uid=7EE64634650D66C300052A3715453B56 > : visionProfile_npc_turret_base
+{
+	myIdleConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 70.0
+			myVerticalAngleDegrees 70.0
+			myPeripheralHorizontalAngleDegrees 70.0
+			myPeripheralVerticalAngleDegrees 70.0
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 70.0
+			myVerticalAngleDegrees 70.0
+			myPeripheralHorizontalAngleDegrees 70.0
+			myPeripheralVerticalAngleDegrees 70.0
+		}
+	}
+	myAwareConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 70.0
+			myVerticalAngleDegrees 70.0
+			myPeripheralHorizontalAngleDegrees 70.0
+			myPeripheralVerticalAngleDegrees 70.0
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 70.0
+			myVerticalAngleDegrees 70.0
+			myPeripheralHorizontalAngleDegrees 70.0
+			myPeripheralVerticalAngleDegrees 70.0
+		}
+	}
+	myCombatConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 70.0
+			myVerticalAngleDegrees 70.0
+			myPeripheralHorizontalAngleDegrees 70.0
+			myPeripheralVerticalAngleDegrees 70.0
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 70.0
+			myVerticalAngleDegrees 70.0
+			myPeripheralHorizontalAngleDegrees 70.0
+			myPeripheralVerticalAngleDegrees 70.0
+		}
+	}
+}
+
+NPCVisionProfile visionProfile_npc_turret_lambda_wing < uid=7EE64634650D66D100052A38B94CC3F1 > : visionProfile_npc_turret_base
+{
+	myIdleConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 10.0
+			myVerticalAngleDegrees 160.0
+			myMaxHeightUp 0.5
+			myPeripheralHorizontalAngleDegrees 10.0
+			myPeripheralVerticalAngleDegrees 160.0
+			myPeripheralMaxHeightUp 0.5
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 10.0
+			myVerticalAngleDegrees 160.0
+			myMaxHeightUp 0.5
+			myPeripheralHorizontalAngleDegrees 10.0
+			myPeripheralVerticalAngleDegrees 160.0
+			myPeripheralMaxHeightUp 0.5
+		}
+	}
+	myAwareConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 10.0
+			myVerticalAngleDegrees 160.0
+			myMaxHeightUp 0.5
+			myPeripheralHorizontalAngleDegrees 10.0
+			myPeripheralVerticalAngleDegrees 160.0
+			myPeripheralMaxHeightUp 0.5
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 10.0
+			myVerticalAngleDegrees 160.0
+			myMaxHeightUp 0.5
+			myPeripheralHorizontalAngleDegrees 10.0
+			myPeripheralVerticalAngleDegrees 160.0
+			myPeripheralMaxHeightUp 0.5
+		}
+	}
+	myCombatConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 10.0
+			myVerticalAngleDegrees 160.0
+			myMaxHeightUp 0.5
+			myPeripheralHorizontalAngleDegrees 10.0
+			myPeripheralVerticalAngleDegrees 160.0
+			myPeripheralMaxHeightUp 0.5
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 10.0
+			myVerticalAngleDegrees 160.0
+			myMaxHeightUp 0.5
+			myPeripheralHorizontalAngleDegrees 10.0
+			myPeripheralVerticalAngleDegrees 160.0
+			myPeripheralMaxHeightUp 0.5
+		}
+	}
+}
+
+NPCVisionProfile visionProfile_npc_turret_arc170_ashiga < uid=6B0E1DE9651A89B8000284B3680CCFC0 > : visionProfile_npc_turret_arc170
+{
+	myIdleConeState
+	{
+		myCone
+		{
+			myRadiusFormula 700.0
+			myMaxRadius 700.0
+			myPeripheralRadiusFormula 700.0
+			myPeripheralMaxRadius 700.0
+		}
+		myAlertCone
+		{
+			myRadiusFormula 700.0
+			myMaxRadius 700.0
+			myPeripheralRadiusFormula 700.0
+			myPeripheralMaxRadius 700.0
+		}
+	}
+	myAwareConeState
+	{
+		myCone
+		{
+			myRadiusFormula 700.0
+			myMaxRadius 700.0
+			myPeripheralRadiusFormula 700.0
+			myPeripheralMaxRadius 700.0
+		}
+		myAlertCone
+		{
+			myRadiusFormula 700.0
+			myMaxRadius 700.0
+			myPeripheralRadiusFormula 700.0
+			myPeripheralMaxRadius 700.0
+		}
+	}
+	myCombatConeState
+	{
+		myCone
+		{
+			myRadiusFormula 700.0
+			myMaxRadius 700.0
+			myPeripheralRadiusFormula 700.0
+			myPeripheralMaxRadius 700.0
+		}
+		myAlertCone
+		{
+			myRadiusFormula 700.0
+			myMaxRadius 700.0
+			myPeripheralRadiusFormula 700.0
+			myPeripheralMaxRadius 700.0
+		}
+	}
+}
+
+NPCVisionProfile visionProfile_npc_turret_zh40_front_ashiga < uid=6B0E1DE9651A8E22000284E699F63093 > : visionProfile_npc_turret_zh40_front
+{
+	myIdleConeState
+	{
+		myCone
+		{
+			myRadiusFormula 1200.0
+			myMaxRadius 1200.0
+			myPeripheralRadiusFormula 1200.0
+			myPeripheralMaxRadius 1200.0
+		}
+		myAlertCone
+		{
+			myRadiusFormula 1200.0
+			myMaxRadius 1200.0
+			myPeripheralRadiusFormula 1200.0
+			myPeripheralMaxRadius 1200.0
+		}
+	}
+	myAwareConeState
+	{
+		myCone
+		{
+			myRadiusFormula 1200.0
+			myMaxRadius 1200.0
+			myPeripheralRadiusFormula 1200.0
+			myPeripheralMaxRadius 1200.0
+		}
+		myAlertCone
+		{
+			myRadiusFormula 1200.0
+			myMaxRadius 1200.0
+			myPeripheralRadiusFormula 1200.0
+			myPeripheralMaxRadius 1200.0
+		}
+	}
+	myCombatConeState
+	{
+		myCone
+		{
+			myRadiusFormula 1200.0
+			myMaxRadius 1200.0
+			myPeripheralRadiusFormula 1200.0
+			myPeripheralMaxRadius 1200.0
+		}
+		myAlertCone
+		{
+			myRadiusFormula 1200.0
+			myMaxRadius 1200.0
+			myPeripheralRadiusFormula 1200.0
+			myPeripheralMaxRadius 1200.0
+		}
+	}
+}
+
+NPCVisionProfile visionProfile_npc_turret_zh40_back_ashiga < uid=6B0E1DE9651A8E22000284E729D479EF > : visionProfile_npc_turret_zh40_back
+{
+	myIdleConeState
+	{
+		myCone
+		{
+			myRadiusFormula 700.0
+			myMaxRadius 700.0
+			myPeripheralRadiusFormula 700.0
+			myPeripheralMaxRadius 700.0
+		}
+		myAlertCone
+		{
+			myRadiusFormula 700.0
+			myMaxRadius 700.0
+			myPeripheralRadiusFormula 700.0
+			myPeripheralMaxRadius 700.0
+		}
+	}
+	myAwareConeState
+	{
+		myCone
+		{
+			myRadiusFormula 700.0
+			myMaxRadius 700.0
+			myPeripheralRadiusFormula 700.0
+			myPeripheralMaxRadius 700.0
+		}
+		myAlertCone
+		{
+			myRadiusFormula 700.0
+			myMaxRadius 700.0
+			myPeripheralRadiusFormula 700.0
+			myPeripheralMaxRadius 700.0
+		}
+	}
+	myCombatConeState
+	{
+		myCone
+		{
+			myRadiusFormula 700.0
+			myMaxRadius 700.0
+			myPeripheralRadiusFormula 700.0
+			myPeripheralMaxRadius 700.0
+		}
+		myAlertCone
+		{
+			myRadiusFormula 700.0
+			myMaxRadius 700.0
+			myPeripheralRadiusFormula 700.0
+			myPeripheralMaxRadius 700.0
+		}
+	}
+}
+
+NPCVisionProfile visionProfile_npc_turret_bowbreaker_lothalian_ashiga < uid=6B0E1DE9651E98A1000A3D0774AEE151 > : visionProfile_npc_turret_bowbreaker_lothalian
+{
+	myIdleConeState
+	{
+		myCone
+		{
+			myRadiusFormula 800.0
+			myMaxRadius 800.0
+			myPeripheralRadiusFormula 800.0
+			myPeripheralMaxRadius 800.0
+		}
+		myAlertCone
+		{
+			myRadiusFormula 800.0
+			myMaxRadius 800.0
+			myPeripheralRadiusFormula 800.0
+			myPeripheralMaxRadius 800.0
+		}
+	}
+	myAwareConeState
+	{
+		myCone
+		{
+			myRadiusFormula 800.0
+			myMaxRadius 800.0
+			myPeripheralRadiusFormula 800.0
+			myPeripheralMaxRadius 800.0
+		}
+		myAlertCone
+		{
+			myRadiusFormula 800.0
+			myMaxRadius 800.0
+			myPeripheralRadiusFormula 800.0
+			myPeripheralMaxRadius 800.0
+		}
+	}
+	myCombatConeState
+	{
+		myCone
+		{
+			myRadiusFormula 800.0
+			myMaxRadius 800.0
+			myPeripheralRadiusFormula 800.0
+			myPeripheralMaxRadius 800.0
+		}
+		myAlertCone
+		{
+			myRadiusFormula 800.0
+			myMaxRadius 800.0
+			myPeripheralRadiusFormula 800.0
+			myPeripheralMaxRadius 800.0
+		}
+	}
+}
+
+NPCVisionProfile visionProfile_npc_turret_sentinel_wing < uid=7EE64634651FCFE50004D6A2C983BC85 > : visionProfile_npc_turret_base
+{
+	myIdleConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 10.0
+			myVerticalAngleDegrees 160.0
+			myMaxHeightUp 0.5
+			myPeripheralHorizontalAngleDegrees 10.0
+			myPeripheralVerticalAngleDegrees 160.0
+			myPeripheralMaxHeightUp 0.5
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 10.0
+			myVerticalAngleDegrees 160.0
+			myMaxHeightUp 0.5
+			myPeripheralHorizontalAngleDegrees 10.0
+			myPeripheralVerticalAngleDegrees 160.0
+			myPeripheralMaxHeightUp 0.5
+		}
+	}
+	myAwareConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 10.0
+			myVerticalAngleDegrees 160.0
+			myMaxHeightUp 0.5
+			myPeripheralHorizontalAngleDegrees 10.0
+			myPeripheralVerticalAngleDegrees 160.0
+			myPeripheralMaxHeightUp 0.5
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 10.0
+			myVerticalAngleDegrees 160.0
+			myMaxHeightUp 0.5
+			myPeripheralHorizontalAngleDegrees 10.0
+			myPeripheralVerticalAngleDegrees 160.0
+			myPeripheralMaxHeightUp 0.5
+		}
+	}
+	myCombatConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 10.0
+			myVerticalAngleDegrees 160.0
+			myMaxHeightUp 0.5
+			myPeripheralHorizontalAngleDegrees 10.0
+			myPeripheralVerticalAngleDegrees 160.0
+			myPeripheralMaxHeightUp 0.5
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 10.0
+			myVerticalAngleDegrees 160.0
+			myMaxHeightUp 0.5
+			myPeripheralHorizontalAngleDegrees 10.0
+			myPeripheralVerticalAngleDegrees 160.0
+			myPeripheralMaxHeightUp 0.5
+		}
+	}
+}
+
+NPCVisionProfile visionProfile_npc_large_turret_base < uid=7EE646346572F1DC00040CD2BBC73BF6 >
+{
+	myIdleConeState
+	{
+		myCone
+		{
+			myPivotOffset 0.0;0.0;-0.2
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 1500
+			myMaxRadius 1500.0
+			myMaxWidth 3000.0
+			myMaxHeightUp 1500.0
+			myMaxHeightDown 30.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 1500
+			myPeripheralMaxRadius 1500.0
+			myPeripheralMaxWidth 3000.0
+			myPeripheralMaxHeightUp 1500.0
+			myPeripheralMaxHeightDown 30.0
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 1500
+			myMaxRadius 1500.0
+			myMaxWidth 3000.0
+			myMaxHeightUp 1500.0
+			myMaxHeightDown 30.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 1500
+			myPeripheralMaxRadius 1500.0
+			myPeripheralMaxWidth 3000.0
+			myPeripheralMaxHeightUp 1500.0
+			myPeripheralMaxHeightDown 30.0
+		}
+	}
+	myAwareConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 1500
+			myMaxRadius 1500.0
+			myMaxWidth 3000.0
+			myMaxHeightUp 1500.0
+			myMaxHeightDown 30.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 1500
+			myPeripheralMaxRadius 1500.0
+			myPeripheralMaxWidth 3000.0
+			myPeripheralMaxHeightUp 1500.0
+			myPeripheralMaxHeightDown 30.0
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 1500
+			myMaxRadius 1500.0
+			myMaxWidth 3000.0
+			myMaxHeightUp 1500.0
+			myMaxHeightDown 30.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 1500
+			myPeripheralMaxRadius 1500.0
+			myPeripheralMaxWidth 3000.0
+			myPeripheralMaxHeightUp 1500.0
+			myPeripheralMaxHeightDown 30.0
+		}
+	}
+	myCombatConeState
+	{
+		myCone
+		{
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 1500
+			myMaxRadius 1500.0
+			myMaxWidth 3000.0
+			myMaxHeightUp 1500.0
+			myMaxHeightDown 30.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 1500
+			myPeripheralMaxRadius 1500.0
+			myPeripheralMaxWidth 3000.0
+			myPeripheralMaxHeightUp 1500.0
+			myPeripheralMaxHeightDown 30.0
+		}
+		myAlertCone
+		{
+			myHorizontalAngleDegrees 360.0
+			myVerticalAngleDegrees 180.0
+			myRadiusFormula 1500
+			myMaxRadius 1500.0
+			myMaxWidth 3000.0
+			myMaxHeightUp 1500.0
+			myMaxHeightDown 30.0
+			myPeripheralHorizontalAngleDegrees 360.0
+			myPeripheralVerticalAngleDegrees 180.0
+			myPeripheralRadiusFormula 1500
+			myPeripheralMaxRadius 1500.0
+			myPeripheralMaxWidth 3000.0
+			myPeripheralMaxHeightUp 1500.0
+			myPeripheralMaxHeightDown 30.0
+		}
+	}
+	myUse3DOrientation TRUE
+	myConcealmentVolumeRange 1.0
+	myNPCToNPCNonCombatRadiusMultiplier 1.0
+	myNPCToWildlifeRadiusMultiplier 1.0
+	myInvestigationConeExpandDelay 0.0
+	myInvestigationConeExpandTime 0.0
+}
+
+NPCVisionProfile visionProfile_npc_large_turret_floating < uid=7EE646346572F3E200040DC48553DDB4 > : visionProfile_npc_large_turret_base
+{
+	myIdleConeState
+	{
+		myCone
+		{
+			myMaxHeightDown 100.0
+			myPeripheralMaxHeightDown 100.0
+		}
+		myAlertCone
+		{
+			myMaxHeightDown 100.0
+			myPeripheralMaxHeightDown 100.0
+		}
+	}
+	myAwareConeState
+	{
+		myCone
+		{
+			myMaxHeightDown 100.0
+			myPeripheralMaxHeightDown 100.0
+		}
+		myAlertCone
+		{
+			myMaxHeightDown 100.0
+			myPeripheralMaxHeightDown 100.0
+		}
+	}
+	myCombatConeState
+	{
+		myCone
+		{
+			myMaxHeightDown 100.0
+			myPeripheralMaxHeightDown 100.0
+		}
+		myAlertCone
+		{
+			myMaxHeightDown 100.0
+			myPeripheralMaxHeightDown 100.0
+		}
+	}
+}
+
+NPCVisionProfile visionProfile_npc_large_turret_surface < uid=7EE646346572F40700040DC51FA24170 > : visionProfile_npc_large_turret_base
+{
+	myIdleConeState
+	{
+		myCone
+		{
+			myRadiusFormula 1200
+			myMaxRadius 1200.0
+			myMaxWidth 2400.0
+			myMaxHeightUp 1200.0
+			myPeripheralRadiusFormula 1200
+			myPeripheralMaxRadius 1200.0
+			myPeripheralMaxWidth 2400.0
+			myPeripheralMaxHeightUp 1200.0
+		}
+		myAlertCone
+		{
+			myRadiusFormula 1200
+			myMaxRadius 1200.0
+			myMaxWidth 2400.0
+			myMaxHeightUp 1200.0
+			myPeripheralRadiusFormula 1200
+			myPeripheralMaxRadius 1200.0
+			myPeripheralMaxWidth 2400.0
+			myPeripheralMaxHeightUp 1200.0
+		}
+	}
+	myAwareConeState
+	{
+		myCone
+		{
+			myRadiusFormula 1200
+			myMaxRadius 1200.0
+			myMaxWidth 2400.0
+			myMaxHeightUp 1200.0
+			myPeripheralRadiusFormula 1200
+			myPeripheralMaxRadius 1200.0
+			myPeripheralMaxWidth 2400.0
+			myPeripheralMaxHeightUp 1200.0
+		}
+		myAlertCone
+		{
+			myRadiusFormula 1200
+			myMaxRadius 1200.0
+			myMaxWidth 2400.0
+			myMaxHeightUp 1200.0
+			myPeripheralRadiusFormula 1200
+			myPeripheralMaxRadius 1200.0
+			myPeripheralMaxWidth 2400.0
+			myPeripheralMaxHeightUp 1200.0
+		}
+	}
+	myCombatConeState
+	{
+		myCone
+		{
+			myRadiusFormula 1200
+			myMaxRadius 1200.0
+			myMaxWidth 2400.0
+			myMaxHeightUp 1200.0
+			myPeripheralRadiusFormula 1200
+			myPeripheralMaxRadius 1200.0
+			myPeripheralMaxWidth 2400.0
+			myPeripheralMaxHeightUp 1200.0
+		}
+		myAlertCone
+		{
+			myRadiusFormula 1200
+			myMaxRadius 1200.0
+			myMaxWidth 2400.0
+			myMaxHeightUp 1200.0
+			myPeripheralRadiusFormula 1200
+			myPeripheralMaxRadius 1200.0
+			myPeripheralMaxWidth 2400.0
+			myPeripheralMaxHeightUp 1200.0
+		}
+	}
+}
+
+NPCVisionProfile visionProfile_npc_large_turret_star_destroyer < uid=7EE646346572F41500040DC6B37CDF56 > : visionProfile_npc_large_turret_base
+{
+	myIdleConeState
+	{
+		myCone
+		{
+			myVerticalAngleDegrees 70.0
+			myMaxHeightDown 35.0
+			myPeripheralVerticalAngleDegrees 70.0
+			myPeripheralMaxHeightDown 35.0
+		}
+		myAlertCone
+		{
+			myVerticalAngleDegrees 70.0
+			myMaxHeightDown 35.0
+			myPeripheralVerticalAngleDegrees 70.0
+			myPeripheralMaxHeightDown 35.0
+		}
+	}
+	myAwareConeState
+	{
+		myCone
+		{
+			myVerticalAngleDegrees 70.0
+			myMaxHeightDown 35.0
+			myPeripheralVerticalAngleDegrees 70.0
+			myPeripheralMaxHeightDown 35.0
+		}
+		myAlertCone
+		{
+			myVerticalAngleDegrees 70.0
+			myMaxHeightDown 35.0
+			myPeripheralVerticalAngleDegrees 70.0
+			myPeripheralMaxHeightDown 35.0
+		}
+	}
+	myCombatConeState
+	{
+		myCone
+		{
+			myVerticalAngleDegrees 70.0
+			myMaxHeightDown 35.0
+			myPeripheralVerticalAngleDegrees 70.0
+			myPeripheralMaxHeightDown 35.0
+		}
+		myAlertCone
+		{
+			myVerticalAngleDegrees 70.0
+			myMaxHeightDown 35.0
+			myPeripheralVerticalAngleDegrees 70.0
+			myPeripheralMaxHeightDown 35.0
+		}
+	}
+}
+

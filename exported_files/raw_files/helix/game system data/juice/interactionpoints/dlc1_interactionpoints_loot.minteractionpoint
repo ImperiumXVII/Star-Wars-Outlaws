@@ -1,0 +1,69 @@
+include "helix/game system data/fruit/animation/gesturetypes.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditionbase.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+include "helix/game system data/fruit/gamevalues/gamevalues.fruit"
+include "helix/game system data/fruit/input/gameinput.fruit"
+include "helix/game system data/fruit/interactionpoints/interactionpointminigames.fruit"
+include "helix/game system data/fruit/interactionpoints/interactionpoints.fruit"
+include "helix/game system data/fruit/interactionpoints/interactionpointtelemetrytypes.fruit"
+include "helix/game system data/fruit/item/item.fruit"
+include "helix/game system data/fruit/restriction/playerrestriction.fruit"
+include "helix/game system data/fruit/reward/reward.fruit"
+include "helix/game system data/juice/interactionpoints/interactionpoints.minteractionpoint"
+include "helix/game system data/juice/interactionpoints/interactionpoints_contracts.minteractionpoint"
+include "helix/game system data/juice/interactionpoints/interactionpoints_loot.minteractionpoint"
+include "helix/game system data/juice/playerrestrictions/duringinteraction_loot.mplayerrestriction"
+include "helix/game system data/juice/playerrestrictions/duringinteraction_lootcontainer.mplayerrestriction"
+
+InteractionPoint SliceSpace < uid=ADBA7BC366C878370000EF5DE74D0550 > : LootSpace
+{
+	myDefaultSetup
+	{
+		myLabel "branch = \"DLC1\", contextComment = \"Interaction label\", enabled = true, guid = #ADBA7BC366C878370000EF53FD461931, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 11581, text = \"Slice\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "aurabesh = false, branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	}
+	myDefaultInteractionAngleDegree 360.0
+	myDefaultVisibilityRadius 600.0
+	myDefaultVisibilityAngleDegree 360.0
+	myAudio
+	{
+		myActivationAudio 49E53F0DA9AE61CA83E576348B4DD3B4
+	}
+	myInteractionGestureAnimationType Loot
+	myGameAction Trailblazer_Hold_Interact
+	myLOSRequirement RequiredBlockingTransparency
+	myPersistenceType SaveGame
+	myAutosaveTriggerType OnReleaseAfterPerform
+	myPlayerRestrictionsDuringInteraction < uid=ADBA7BC366C878370000EF5E21FC396B > = duringinteraction_loot 58C9A198665836A5001B65D2FD5B912B
+	myEditorMenuStructure Loot
+}
+
+InteractionPoint Holotable_DLC1 < uid=03BE13BA66F2DA58001D1DF37FF6E42D > : Holotable
+{
+	mySpawnUIMenu ""
+	myConditions
+	{
+	}
+	myPlayerConditions
+	{
+	}
+	myRestrictions
+	{
+		GameConditionIsInCriticalNarrativeMode "New GameConditionIsInCriticalNarrativeMode"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionPlayerIsInCombatWithNPCs "New GameConditionPlayerIsInCombatWithNPCs"
+		{
+			myNumberOfNPCs 0
+			myOperator Equal
+		}
+		GameConditionQuestBeatState "New GameConditionQuestBeatState"
+		{
+			myQuestBeat 619CD8EA63D8DE5D000037E06CF3A6E4
+			myQuestBeatState Started
+			myOperator NotEqual
+		}
+	}
+}
+

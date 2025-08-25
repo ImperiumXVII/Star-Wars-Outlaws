@@ -1,0 +1,1182 @@
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+include "helix/game system data/juice/intel/intel_tatooine_quest.mintel"
+include "helix/game system data/juice/item/items_livingworld.mitem"
+include "helix/game system data/juice/livingworld/livingworldvariables.juice"
+include "helix/game system data/juice/livingworld/tag/living_world_tags.mlivingworldtag"
+
+LivingWorldContent Event_TEMPLATE < uid=2AE2EC85650DB0EB001678CD2F42631F >
+{
+	myLocationCooldown 6400.0
+	mySharedLocationCooldown 1800.0
+	myShouldSaveLocationCooldowns TRUE
+	myContentCooldown 3200.0
+	myTicket < uid=2AE2EC85650DB336001678ECD84211C6 >
+	{
+		myDefaultValue 1
+	}
+	myTicketMax < uid=2AE2EC85650DB1FA001678D43E644239 >
+	{
+		myDefaultValue 5
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType "New LivingWorldContentLayerType" Encounter
+	}
+	myLayerType Encounter
+	myBlockingRadius 250.0
+	myEngagementRadius -1.0
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "General activation condtion" = "Global activation rule ground Event"
+		GameConditionPlayerHasWantedLevel "Wanted 2 or Less" = "Player is Wanted 2 or less"
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "General deactivation condition" = "Global deactivation rule ground event"
+	}
+	myBasePriority 80.0
+	myTags
+	{
+		LivingWorldTag "Event General" < uid=2AE2EC85650DB228001678D93BD9A728 > = LWT_Events_General 2AE2EC85650C5D3D00041F6C04C2D857
+		LivingWorldTag "Event Or Race" < uid=2AE2EC8566F3CFA2001611980D3B7932 > = LWT_Event_Or_Speeder_Race 2AE2EC8566F3CF4800161195B6DA7E94
+	}
+	myWaitForCooldownAfterLoad TRUE
+}
+
+LivingWorldContent Event_Defend_Civilians < uid=616F459664FB2CF90003027D69F2D7D5 > : Event_TEMPLATE
+{
+	myTicket < uid=616F45966527DA360004B93492019EFB >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC85650DB28F001678DE1BD69E93 >
+	{
+		myDefaultValue 1
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType "New LivingWorldContentLayerType" Encounter
+		LivingWorldContentLayerType "New LivingWorldContentLayerType_0" LivingWorldOverride
+		LivingWorldContentLayerType "New LivingWorldContentLayerType_1" LivingWorldVendors
+	}
+	myBlockingRadius 200.0
+	myEngagementRadius 0.0
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "General activation condtion" = "Global activation rule ground Event Far"
+		GameConditionPlayerHasWantedLevel "Wanted 2 or Less" = "Player is Wanted 2 or less"
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "General deactivation condition" = "Global deactivation rule ground event Very Far"
+	}
+	myTags
+	{
+		LivingWorldTag "New LivingWorldTag" < uid=616F4596650C5FD90000840380D01B1C > = LWT_Events_General 2AE2EC85650C5D3D00041F6C04C2D857
+		LivingWorldTag "Civilian - Combat" < uid=616F459666952D9500CF62DEEBE17B01 > = LWT_Civilian_Combat 616F459666952CEC00CF62D943D17726
+		LivingWorldTag "Event Or Race" < uid=2AE2EC8566F3D005001611EC6CE58A1E > = LWT_Event_Or_Speeder_Race 2AE2EC8566F3CF4800161195B6DA7E94
+	}
+}
+
+LivingWorldContent Event_Empire_Raid < uid=616F459664FB2D060003027E6B5E40C5 > : Event_TEMPLATE
+{
+	myTicket < uid=616F45966527DA360004B935A282D0A6 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC85650DB28F001678DFFD9F6133 >
+	{
+		myDefaultValue 1
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType "New LivingWorldContentLayerType" Encounter
+		LivingWorldContentLayerType "New LivingWorldContentLayerType_0" LivingWorldOverride
+	}
+	myEngagementRadius 0.0
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "General activation condtion" = "Global activation rule ground Event Very Far"
+		GameConditionPlayerHasWantedLevel "Wanted 2 or Less" = "Player is Wanted 2 or less"
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "General deactivation condition" = "Global deactivation rule ground event Extremely Far"
+	}
+}
+
+LivingWorldContent Event_Pirate_Camp_Attack_TEMPLATE < uid=616F459664FB2D3700030281BC9228F6 > : Event_TEMPLATE
+{
+	myTicket < uid=616F45966527DA360004B938A14D2DA6 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC85650DB28F001678E258492A5D >
+	{
+		myDefaultValue 1
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType "New LivingWorldContentLayerType" Encounter
+		LivingWorldContentLayerType "New LivingWorldContentLayerType_0" LivingWorldOverride
+	}
+	myEngagementRadius 0.0
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "General activation condtion" = "Global activation rule ground Event Far"
+		GameConditionPlayerHasWantedLevel "Player is not wanted" = "Player is not wanted"
+		GameConditionQuestIsCompleted "Player has Unlocked ND-5" = "Player Has Unlocked ND-5"
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "General deactivation condition" = "Global deactivation rule ground event Very Far"
+	}
+}
+
+LivingWorldContent Event_Pirate_Camp_Attack_CrimsonDawn < uid=2AE2EC8566310A820002B1042C8EC174 > : Event_Pirate_Camp_Attack_TEMPLATE
+{
+	myTicket < uid=2AE2EC8566310A820002B105A4275170 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC8566310A820002B10613B4E433 >
+	{
+		myDefaultValue 1
+	}
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "General activation condtion" = "Global activation rule ground Event Far"
+		GameConditionPlayerHasWantedLevel "Player is not Wanted" = "Player is not wanted"
+		GameConditionQuestIsCompleted "Player has Unlocked ND-5" = "Player Has Unlocked ND-5"
+		GameConditionPlayerHasReputation "Reputation with faction is Poor or Better" = "Fair Rep Crimson Dawn or better"
+	}
+}
+
+LivingWorldContent Event_Pirate_Camp_Attack_Hutt < uid=2AE2EC8566310A820002B10784910436 > : Event_Pirate_Camp_Attack_TEMPLATE
+{
+	myTicket < uid=2AE2EC8566310A820002B108DE4EF0B1 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC8566310A820002B109407C96D9 >
+	{
+		myDefaultValue 1
+	}
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "General activation condtion" = "Global activation rule ground Event Far"
+		GameConditionPlayerHasWantedLevel "Player is not wanted" = "Player is not wanted"
+		GameConditionQuestIsCompleted "Player has Unlocked ND-5" = "Player Has Unlocked ND-5"
+		GameConditionPlayerHasReputation "Reputation with faction is Poor or Better" = "Fair Rep Hutt or better"
+	}
+}
+
+LivingWorldContent Event_Pirate_Camp_Attack_Pyke < uid=2AE2EC8566310A820002B10AF45D7799 > : Event_Pirate_Camp_Attack_TEMPLATE
+{
+	myTicket < uid=2AE2EC8566310A820002B10BF8E16D90 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC8566310A820002B10C5183C145 >
+	{
+		myDefaultValue 1
+	}
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "General activation condtion" = "Global activation rule ground Event Far"
+		GameConditionPlayerHasWantedLevel "Player is not Wanted" = "Player is not wanted"
+		GameConditionQuestIsCompleted "Player has Unlocked ND-5" = "Player Has Unlocked ND-5"
+		GameConditionPlayerHasReputation "Reputation with faction is Poor or Better" = "Fair Rep Pyke or better"
+	}
+}
+
+LivingWorldContent Event_Speeder_Race < uid=616F459664FB2DB400030688FBC6803E > : Event_TEMPLATE
+{
+	mySharedLocationCooldown 60.0
+	myContentCooldown 600.0
+	myTicket < uid=616F45966527DA360004B93A869E46F8 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC85650DB28F001678E41EDA070B >
+	{
+		myDefaultValue 1
+	}
+	myBlockingRadius 50.0
+	myEngagementRadius 0.0
+	myActivationMinDistanceToPlayerLoadingOverride 0.0
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Overridable Distance Between 100 and 500"
+		{
+			myCanBeOverridden TRUE
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayerRange "Distance Between Very Near and Far"
+				{
+					myMinDistance = ContentLocationDistanceVeryNear
+					myMaxDistance = ContentLocationDistanceMedium
+				}
+			}
+		}
+		GameConditionPlayerHasWantedLevel "Wanted 2 or Less" = "Player is Wanted 2 or less"
+		LivingWorldGameConditionGroup FrustrumCheck = OutofLazyFrustrum
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup"
+		{
+			myOperator Or
+			myConditions
+			{
+				LivingWorldGameConditionGroup "Race completed"
+				{
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_IsCompletedInCurrentActivation "New GameConditionContextLivingWorldContentLocation_IsCompletedInCurrentActivation"
+						{
+						}
+						LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup" = "Standardized Despawn Distance Planet - Medium"
+					}
+				}
+				LivingWorldGameConditionGroup "Race not engaged with"
+				{
+					myConditions
+					{
+						LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup" = "Standardized Despawn Distance Planet - Medium"
+						GameConditionContextLivingWorldContentLocation_HasBeenEngagedWith "New GameConditionContextLivingWorldContentLocation_HasBeenEngagedWith"
+						{
+							myIsNegated TRUE
+						}
+					}
+				}
+			}
+		}
+	}
+	myBasePriority 70.0
+	myTags
+	{
+		LivingWorldTag "New LivingWorldTag" < uid=616F4596650C6006000096DF726DA80B > = LWT_Event_Or_Speeder_Race 2AE2EC8566F3CF4800161195B6DA7E94
+	}
+}
+
+LivingWorldContent Event_Speeder_Race_Water < uid=616F459665A7A72600742A38C12FB209 > : Event_Speeder_Race
+{
+	myTicket < uid=616F459665A7A7D000742A762E39EE08 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=616F459665A7A7D000742A77554E98AB >
+	{
+		myDefaultValue 1
+	}
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "General activation condtion" = "Global activation rule ground Event"
+		GameConditionPlayerHasWantedLevel "Wanted 2 or Less" = "Player is Wanted 2 or less"
+		GameConditionQuestIsCompleted "New GameConditionQuestIsCompleted" = "Player Has Unlocked the HydroRepulsor"
+	}
+}
+
+LivingWorldContent Event_Faction_Killsquad_TEMPLATE < uid=616F459664FB2CB60003027A758EE41A > : Event_TEMPLATE
+{
+	myLocationCooldown 60.0
+	mySharedLocationCooldown 30.0
+	myContentCooldown 180.0
+	myTicket < uid=2AE2EC85650DB336001678ED4C7B19EE >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myTicketMax < uid=2AE2EC85650DB1FA001678D57E731B89 >
+	{
+		myDefaultValue 10
+	}
+	myLayerType Encounter
+	myBlockingRadius 25.0
+	myEngagementRadius 10.0
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Spawn Range" = "Distance to Player is between extremely near and Medium"
+		LivingWorldGameConditionGroup OutOfLazyFrustrum = OutofLazyFrustrum
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "New LivingWorldGameConditionGroup" = "Global deactivation rule ground event Medium"
+	}
+	myBasePriority 100.0
+	myTags
+	{
+		LivingWorldTag "Killsquad Tag" < uid=616F459665F7FABB0016721C8249CA07 > = LWT_Faction_Killsquad 616F459665F7FA0A00167218AA3E7E3F
+	}
+}
+
+LivingWorldContent Event_Faction_Killsquad_Ashiga < uid=616F45966527E28E000384884C33CA69 > : Event_Faction_Killsquad_TEMPLATE
+{
+	myTicket < uid=616F45966527E28E00038489BB9B8295 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myTicketMax < uid=616F45966527E28E0003848AF32F670D >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=616F45966527E28E0003848B5E716ABB >
+	{
+	}
+	myLayerType Encounter
+	myBlockingRadius 25.0
+	myEngagementRadius 10.0
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Spawn Range" = "Distance to Player is between extremely near and Medium"
+		LivingWorldGameConditionGroup OutOfLazyFrustrum = OutofLazyFrustrum
+		GameConditionPlayerHasReputation AshigaTerribleRep = "Terrible Rep Ashiga"
+	}
+}
+
+LivingWorldContent Event_Faction_Killsquad_CrimsonDawn < uid=616F45966527E28E0003848DEB2B37B9 > : Event_Faction_Killsquad_TEMPLATE
+{
+	myTicket < uid=616F45966527E28E0003848E63B432DE >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myTicketMax < uid=616F45966527E28E0003848FB645A8A1 >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=616F45966527E28E00038490260A1284 >
+	{
+	}
+	myLayerType Encounter
+	myBlockingRadius 25.0
+	myEngagementRadius 10.0
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Spawn Range" = "Distance to Player is between extremely near and Medium"
+		LivingWorldGameConditionGroup OutOfLazyFrustrum = OutofLazyFrustrum
+		GameConditionPlayerHasReputation CrimsonDawnTerribleRep = "Terrible Rep Crimson Dawn"
+	}
+}
+
+LivingWorldContent Event_Faction_Killsquad_Hutt < uid=616F45966527E28E0003849256CE8D9A > : Event_Faction_Killsquad_TEMPLATE
+{
+	myTicket < uid=616F45966527E28E00038493CD552742 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myTicketMax < uid=616F45966527E28E00038494BBBD925E >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=616F45966527E28E000384955C8C344D >
+	{
+	}
+	myLayerType Encounter
+	myBlockingRadius 25.0
+	myEngagementRadius 10.0
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Spawn Range" = "Distance to Player is between extremely near and Medium"
+		LivingWorldGameConditionGroup OutOfLazyFrustrum = OutofLazyFrustrum
+		GameConditionPlayerHasReputation HuttTerribleRep = "Terrible Rep Hutt"
+	}
+}
+
+LivingWorldContent Event_Faction_Killsquad_Pyke < uid=616F45966527E28E000384971A0797AF > : Event_Faction_Killsquad_TEMPLATE
+{
+	myTicket < uid=616F45966527E28E000384984D7FD9D3 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myTicketMax < uid=616F45966527E28E00038499706CA26D >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=616F45966527E28E0003849A6878B863 >
+	{
+	}
+	myLayerType Encounter
+	myBlockingRadius 25.0
+	myEngagementRadius 10.0
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Spawn Range" = "Distance to Player is between extremely near and Medium"
+		LivingWorldGameConditionGroup OutOfLazyFrustrum = OutofLazyFrustrum
+		GameConditionPlayerHasReputation PykeTerribleRep = "Terrible Rep Pyke"
+	}
+}
+
+LivingWorldContent Event_Faction_Killsquad_ZerekBesh < uid=616F45966627822A0005BF1B867A508C > : Event_Faction_Killsquad_TEMPLATE
+{
+	myContentCooldown 3600.0
+	myTicket < uid=616F45966627825C0005BF1C858C04B0 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted FALSE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Integer
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myTicketMax < uid=616F45966627825C0005BF1DE22BF9E6 >
+	{
+		myDefaultValue 1
+	}
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Spawn Range" = "Distance to Player is between extremely near and Medium"
+		LivingWorldGameConditionGroup OutOfLazyFrustrum = OutofLazyFrustrum
+	}
+	myBasePriority 110.0
+	myTags
+	{
+		LivingWorldTag Faction_zerekBesh < uid=616F45966627833E0005BF2292FA4AA9 > = LWT_Faction_ZerekBesh 616F4596662782B20005BF1F4D1915D7
+	}
+}
+
+LivingWorldContent Event_Toshara_Endgame < uid=93D308656583FEFB00057747E16BFC51 >
+{
+	myCompletedGameValue < uid=93D30865658418F00006A82F0E2C52A2 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionQuestIsCompleted "MQ_220 Completed"
+		{
+			myQuest 619CD8EA63DB726500025CCFAF315A60
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionLivingWorldContent_HasBeenCompleted "Deactivate on Completed"
+		{
+			myLivingWorldContent 93D308656583FEFB00057747E16BFC51
+		}
+	}
+}
+
+LivingWorldContent Event_Shifty_Trader_Toshara < uid=616F459664FB2CE10003027CB3F87CB4 > : Event_TEMPLATE
+{
+	myShouldSaveLocationCooldowns FALSE
+	myTicket < uid=616F459665002B0F00019DF41F03834C >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=616F4596650025D9000196A97239C2CF >
+	{
+		myDefaultValue 1
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType Encounter Encounter
+	}
+	myBlockingRadius 50.0
+	myActivationMinDistanceToPlayerLoadingOverride 1.0
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Overridable distance less than 2000 meters"
+		{
+			myCanBeOverridden TRUE
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer less than 2000"
+				{
+					myDistance 2000.0
+					myOperator LessThan
+				}
+			}
+		}
+		GameConditionPlayerHasWantedLevel "Wanted 2 or Less" = "Player is Wanted 2 or less"
+		GameConditionQuestIsCompleted "MQ050 completed"
+		{
+			myQuest BFA41A0261B360F8000004066BC62BAC
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer > ContentLocationDistanceVeryFar"
+		{
+			myDistance = ContentLocationDistanceVeryFar
+			myOperator GreaterThan
+		}
+		GameConditionContextLivingWorldContentLocation_IsCompletedInCurrentActivation IsCompletedInCurrentActivation
+		{
+		}
+	}
+	myBasePriority 60.0
+	myTags
+	{
+	}
+	myWaitForCooldownAfterLoad FALSE
+}
+
+LivingWorldContent Event_Shifty_Trader_Tatooine < uid=2AE2EC8565CCDF52005C9F31EB860A46 > : Event_Shifty_Trader_Toshara
+{
+	myTicket < uid=2AE2EC8565CCDF52005C9F32813907D2 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC8565CCDF52005C9F33E4F6DC69 >
+	{
+		myDefaultValue 1
+	}
+}
+
+LivingWorldContent Event_Shifty_Trader_Akiva < uid=2AE2EC8565CCDF52005C9F34E3CC3426 > : Event_Shifty_Trader_Toshara
+{
+	myTicket < uid=2AE2EC8565CCDF52005C9F3538C3C623 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC8565CCDF52005C9F36718D517E >
+	{
+		myDefaultValue 1
+	}
+	myBlockingRadius 25.0
+}
+
+LivingWorldContent Event_Shifty_Trader_Kijimi < uid=2AE2EC8565CCDF52005C9F3723CADEB2 > : Event_Shifty_Trader_Toshara
+{
+	myTicket < uid=2AE2EC8565CCDF52005C9F38A125B3E9 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC8565CCDF52005C9F3987F18B30 >
+	{
+		myDefaultValue 1
+	}
+	myBlockingRadius 5.0
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Overridable distance betwen 100 and 200"
+		{
+			myCanBeOverridden TRUE
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayerRange "DistanceToPlayer between 50 and 200"
+				{
+					myMinDistance 100.0
+					myMaxDistance 200.0
+				}
+			}
+		}
+		GameConditionQuestIsCompleted "MQ_070 is completed"
+		{
+			myQuest BFA41A0261B36AA20000042AC0DF379C
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Deactivation Group"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "DistanceToPlayer more than 250"
+				{
+					myDistance 250.0
+					myOperator GreaterThan
+				}
+				GameConditionQuestBeatState "MQ_070 Beat 03"
+				{
+					myQuestBeat 2923FE016373710E00010C58F3E92CD8
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "MQ_070 Beat 04a"
+				{
+					myQuestBeat 9E6F6DF56514164700108644F9A10D12
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "MQ_070 Beat 04b"
+				{
+					myQuestBeat 9128788865F94F62000280830D10569B
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "MQ_070 Beat 04c"
+				{
+					myQuestBeat 9128788865F94F6200028085A23FEB0E
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "MQ_070 Beat 05"
+				{
+					myQuestBeat 4984AD6862A9881D00005072F681576F
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "MQ_070 Beat 06"
+				{
+					myQuestBeat 4984AD6862A98875000050746FB8430E
+					myQuestBeatState Started
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent Event_Shifty_Trader_MutexEnable < uid=BAB09C5866016B18004EE9926B499320 > : Event_Shifty_Trader_Toshara
+{
+	myLocationCooldown 0.0
+	mySharedLocationCooldown 0.0
+	myContentCooldown 0.0
+	myTicket < uid=BAB09C586602F5900004E5087A7D5805 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=BAB09C586602F5900004E509350F697E >
+	{
+		myDefaultValue 1
+	}
+	myLivingWorldLayerBlockers
+	{
+		LivingWorldContentLayerType "Blocking Radius" Base
+	}
+	myLayerType Base
+	myBlockingRadius 1.0
+	myActivationGameConditions
+	{
+		GameConditionLivingWorldFormula "New GameConditionLivingWorldFormula"
+		{
+			myFormula "gv_ShiftyTraderMutexEnable = 1"
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_HasActiveLivingWorldLocationInContentZone "Has Active Living World Location In Content Zone"
+		{
+			myIsNegated TRUE
+			myLayers
+			{
+				LivingWorldContentLayerType Encounter Encounter
+			}
+		}
+	}
+	myTags
+	{
+	}
+}
+
+LivingWorldContent Event_Sandcrawler_TEMPLATE < uid=616F459664FB2DBD0003068967F980F2 > : Event_TEMPLATE
+{
+	myLocationCooldown 0.0
+	mySharedLocationCooldown 0.0
+	myShouldSaveLocationCooldowns FALSE
+	myContentCooldown 0.0
+	myTicket < uid=616F45966527DA360004B93B957FC6B6 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC85650DB28F001678E5C948D170 >
+	{
+		myDefaultValue 1
+	}
+	myLivingWorldLayerBlockers
+	{
+	}
+	myLayerType Ambient
+	myBlockingRadius 50.0
+	myActivationMinDistanceToPlayerLoadingOverride 10.0
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Not In EQ_080"
+		{
+			myIsNegated TRUE
+			myConditions
+			{
+				GameConditionPlayerHasIntel "First Intel of chain leading to quest is started"
+				{
+					myIntel < uid=2AE2EC85655F9542002D78867D66879B > = A_EQ_080_Intel_FindMosEisleyShipMechanic C5B8DCF6646CDBA6000200104CFE027B
+					myIntelState Resolved
+				}
+				GameConditionQuestState "EQ_080 is not completed"
+				{
+					myQuest C5B8DCF6646C7C820001431F532ED5CD
+					myQuestState Completed
+					myOperator NotEqual
+				}
+			}
+		}
+		LivingWorldGameConditionGroup "Overridable Condition - 500m < Distance to Player < 2000 m"
+		{
+			myCanBeOverridden TRUE
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayerRange "500m Distance to Player 2000m"
+				{
+					myMinDistance 500.0
+					myMaxDistance 2000.0
+				}
+			}
+		}
+		GameConditionPlayerHasWantedLevel "Player is not Wanted" = "Player is not wanted"
+		GameConditionTimeOfDay "New GameConditionTimeOfDay"
+		{
+			myTimeOfDay Night
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Player > 2200m OR is in EQ_080"
+		{
+			myOperator Or
+			myConditions
+			{
+				LivingWorldGameConditionGroup "Overidable Conditon - Player is over 2200 m"
+				{
+					myCanBeOverridden TRUE
+					myConditions
+					{
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Player is over 2200m"
+						{
+							myDistance 2200.0
+						}
+					}
+				}
+				LivingWorldGameConditionGroup "Is in EQ_080"
+				{
+					myIsNegated FALSE
+					myConditions
+					{
+						GameConditionPlayerHasIntel "First Intel of chain leading to quest is started"
+						{
+							myIntel < uid=2AE2EC856560AA920031E3364D39B2CC > = A_EQ_080_Intel_FindMosEisleyShipMechanic C5B8DCF6646CDBA6000200104CFE027B
+							myIntelState Resolved
+						}
+						GameConditionQuestState "EQ_080 is not completed"
+						{
+							myQuest C5B8DCF6646C7C820001431F532ED5CD
+							myQuestState Completed
+							myOperator NotEqual
+						}
+					}
+				}
+			}
+		}
+	}
+	myBasePriority 80.0
+	myTags
+	{
+	}
+	myWaitForCooldownAfterLoad FALSE
+}
+
+LivingWorldContent Event_Sandcrawler_Morning < uid=616F459665FD567800147A92165DCD16 > : Event_Sandcrawler_TEMPLATE
+{
+	myTicket < uid=616F459665FD567800147A934D132DE7 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=616F459665FD567800147A94055831E1 >
+	{
+		myDefaultValue 1
+	}
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Not In EQ_080"
+		{
+			myIsNegated TRUE
+			myConditions
+			{
+				GameConditionPlayerHasIntel "First Intel of chain leading to quest is started"
+				{
+					myIntel < uid=616F459665FD7A180012DE72BDB23A88 > = A_EQ_080_Intel_FindMosEisleyShipMechanic C5B8DCF6646CDBA6000200104CFE027B
+					myIntelState Resolved
+				}
+				GameConditionQuestState "EQ_080 is not completed"
+				{
+					myQuest C5B8DCF6646C7C820001431F532ED5CD
+					myQuestState Completed
+					myOperator NotEqual
+				}
+			}
+		}
+		LivingWorldGameConditionGroup "Overridable Condition - 500m < Distance to Player < 2000 m"
+		{
+			myCanBeOverridden TRUE
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayerRange "500m Distance to Player 2000m"
+				{
+					myMinDistance 500.0
+					myMaxDistance 2000.0
+				}
+			}
+		}
+		GameConditionPlayerHasWantedLevel "Player is not Wanted" = "Player is not wanted"
+		GameConditionTimeOfDay "New GameConditionTimeOfDay"
+		{
+			myTimeOfDay Dawn
+		}
+	}
+}
+
+LivingWorldContent Event_Sandcrawler_Day < uid=616F459665FD567800147A95E6B1BA8D > : Event_Sandcrawler_TEMPLATE
+{
+	myTicket < uid=616F459665FD567800147A961E7CEE30 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=616F459665FD567800147A97CAD4840D >
+	{
+		myDefaultValue 1
+	}
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Not In EQ_080"
+		{
+			myIsNegated TRUE
+			myConditions
+			{
+				GameConditionPlayerHasIntel "First Intel of chain leading to quest is started"
+				{
+					myIntel < uid=616F459665FD7A180012DE733359994D > = A_EQ_080_Intel_FindMosEisleyShipMechanic C5B8DCF6646CDBA6000200104CFE027B
+					myIntelState Resolved
+				}
+				GameConditionQuestState "EQ_080 is not completed"
+				{
+					myQuest C5B8DCF6646C7C820001431F532ED5CD
+					myQuestState Completed
+					myOperator NotEqual
+				}
+			}
+		}
+		LivingWorldGameConditionGroup "Overridable Condition - 500m < Distance to Player < 2000 m"
+		{
+			myCanBeOverridden TRUE
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayerRange "500m Distance to Player 2000m"
+				{
+					myMinDistance 500.0
+					myMaxDistance 2000.0
+				}
+			}
+		}
+		GameConditionPlayerHasWantedLevel "Player is not Wanted" = "Player is not wanted"
+		GameConditionTimeOfDay "New GameConditionTimeOfDay"
+		{
+			myTimeOfDay Day
+		}
+	}
+}
+
+LivingWorldContent Event_Sandcrawler_Night < uid=616F459665FD5F76005537DF593B6EF3 > : Event_Sandcrawler_TEMPLATE
+{
+	myTicket < uid=616F459665FD5F76005537E081034DD3 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=616F459665FD5F76005537E1F90BF61B >
+	{
+		myDefaultValue 1
+	}
+}
+
+LivingWorldContent "(Deprecated) Event TOS Tosharan Flyer" < uid=F7FDFD60633402240000F05CAD49D264 >
+{
+	myLocationCooldown 120.0
+	myTicket < uid=F7FDFD60633402DB0000F05D9392D137 >
+	{
+		myDefaultValue 1
+	}
+	myTicketMax < uid=F7FDFD60633402DB0000F05E41F14420 >
+	{
+		myDefaultValue 2
+	}
+	myLayerType Encounter
+	myActivateGameCondition
+	{
+		myFormula "LivingWorldContentLocation.DistanceToPlayer > 70 AND LivingWorldContentLocation.DistanceToPlayer < 200"
+	}
+	myDeactivateGameCondition
+	{
+		myFormula "LivingWorldContentLocation.DistanceToPlayer > 500"
+	}
+}
+
+LivingWorldContent Event_Imperial_Convoy_DEPRECATED < uid=616F459664FB2CCE0003027BDFD0F344 > : Event_TEMPLATE
+{
+	myTicket < uid=616F45966527DA360004B93349C0FAE5 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC85650DB28F001678DD07BF61D7 >
+	{
+		myDefaultValue 5
+	}
+}
+
+LivingWorldContent Event_Biker_Gang_DEPRECATED < uid=616F459664FB2D150003027F334CD439 > : Event_TEMPLATE
+{
+	myTicket < uid=616F45966527DA360004B936717C51E7 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC85650DB28F001678E00B89794F >
+	{
+		myDefaultValue 1
+	}
+	myActivationGameConditions
+	{
+		GameConditionLivingWorldFormula "Hack to prevent the encounter to spawn"
+		{
+			myFormula 0
+		}
+	}
+}
+
+LivingWorldContent Event_Smuggler_Pod_DEPRECATED < uid=616F459664FB2D270003028043211338 > : Event_TEMPLATE
+{
+	myTicket < uid=616F45966527DA360004B9373F259AFF >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC85650DB28F001678E1F7C41030 >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=AD48F3BC656F4D9800034D467BD5BD97 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myActivationGameConditions
+	{
+		GameConditionLivingWorldFormula "Hack to prevent the encounter to spawn"
+		{
+			myFormula 0
+		}
+	}
+	myTags
+	{
+		LivingWorldTag "New LivingWorldTag" < uid=616F4596650C5FF100008F5C50E399C4 > = LWT_Events_General 2AE2EC85650C5D3D00041F6C04C2D857
+	}
+}
+
+LivingWorldContent Event_Catch_thief_toshara_DEPRECATED < uid=616F459664FB2D6A000306873BD95519 > : Event_TEMPLATE
+{
+	myTicket < uid=616F45966527DA360004B93915FEDEC9 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=2AE2EC85650DB28F001678E35ED94E9E >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=06F73AE1659D56F300020258D3DFCC7B >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup LivingWorldGameConditionGroup
+		{
+			myConditions
+			{
+				LivingWorldGameConditionGroup "General activation condtion" = "Global activation rule ground Event"
+				LivingWorldGameConditionGroup "Player Has not Lost Item"
+				{
+					myIsNegated TRUE
+					myConditions
+					{
+						GameConditionLivingWorldFormula "Has Aquired Item"
+						{
+							myFormula "gv_lw_catch_thief_item_aquired_toshara = 1"
+						}
+						GameConditionPlayerHasItem "Does not have item"
+						{
+							myItem < uid=06F73AE1652FF10E0000A39C7B31877C > = lwitem_catch_thief_toshara_01 06F73AE1652FC352000342F1ADE195E4
+							myOperator LessThan
+						}
+					}
+				}
+				GameConditionLivingWorldContent_HasBeenCompleted "Catch thief not completed"
+				{
+					myIsNegated TRUE
+					myLivingWorldContent 616F459664FB2D6A000306873BD95519
+				}
+			}
+		}
+		GameConditionPlayerHasWantedLevel "Wanted 2 or Less" = "Player is Wanted 2 or less"
+		GameConditionQuestIsCompleted "Player has Unlocked ND-5" = "Player Has Unlocked ND-5"
+	}
+}
+
+LivingWorldContent Event_Catch_thief_tatooine_DEPRECATED < uid=06F73AE16530F3190000E1556AF1305A > : Event_Catch_thief_toshara_DEPRECATED
+{
+	myTicket < uid=06F73AE16530F34C0000ED03080F3365 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=06F73AE16530F34C0000ED044B37857D >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC8565A12D500007E42A4CA1FC17 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup LivingWorldGameConditionGroup
+		{
+			myConditions
+			{
+				LivingWorldGameConditionGroup "General activation condtion" = "Global activation rule ground Event"
+				LivingWorldGameConditionGroup "Player Has not Lost Item"
+				{
+					myIsNegated TRUE
+					myConditions
+					{
+						GameConditionLivingWorldFormula "Has Aquired Item"
+						{
+							myFormula "gv_lw_catch_thief_item_aquired_tatooine = 1"
+						}
+						GameConditionPlayerHasItem "Does not have item"
+						{
+							myItem < uid=06F73AE16530F39A0000EDD915EE156A > = lwitem_catch_thief_tatooine_01 06F73AE1652FEB95000BC5161ED2034D
+							myOperator LessThan
+						}
+					}
+				}
+				GameConditionLivingWorldContent_HasBeenCompleted "Catch thief not completed"
+				{
+					myIsNegated TRUE
+					myLivingWorldContent 06F73AE16530F3190000E1556AF1305A
+				}
+			}
+		}
+		GameConditionPlayerHasWantedLevel "Wanted 2 or Less" = "Player is Wanted 2 or less"
+	}
+}
+
+LivingWorldContent Event_Catch_thief_akiva_DEPRECATED < uid=06F73AE16530F3350000E67CFC861CDC > : Event_Catch_thief_toshara_DEPRECATED
+{
+	myTicket < uid=06F73AE16530F34C0000ED05A8A71FA1 >
+	{
+		myDefaultValue 0
+	}
+	myTicketMax < uid=06F73AE16530F34C0000ED06640B9695 >
+	{
+		myDefaultValue 1
+	}
+	myCompletedGameValue < uid=2AE2EC8565A12D500007E42B260F3609 >
+	{
+		myDescription ""
+		myDefaultValue 0
+		myIsPersisted TRUE
+		myVariableAttributeName ""
+		myCanBeEditedFromScript FALSE
+		myCanBeEditedFromUI FALSE
+		myCanBeEditedFromProgressionGraph FALSE
+		myIntendedType Bool
+		myCategory LivingWorldContent
+		myParentLevelsToUseInInstanceName 1
+	}
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup LivingWorldGameConditionGroup
+		{
+			myConditions
+			{
+				LivingWorldGameConditionGroup "General activation condtion" = "Global activation rule ground Event"
+				LivingWorldGameConditionGroup "Player Has not Lost Item"
+				{
+					myIsNegated TRUE
+					myConditions
+					{
+						GameConditionLivingWorldFormula "Has Aquired Item"
+						{
+							myFormula "gv_lw_catch_thief_item_aquired_akiva = 1"
+						}
+						GameConditionPlayerHasItem "Does not have item"
+						{
+							myItem < uid=06F73AE16530F4070000EDDAE20566C7 > = lwitem_catch_thief_akiva_01 06F73AE1652FEBA9000BC51B824C57CD
+							myOperator LessThan
+						}
+					}
+				}
+				GameConditionLivingWorldContent_HasBeenCompleted "Catch thief not completed"
+				{
+					myIsNegated TRUE
+					myLivingWorldContent 06F73AE16530F3350000E67CFC861CDC
+				}
+			}
+		}
+		GameConditionPlayerHasWantedLevel "Waned 2 or Less" = "Player is Wanted 2 or less"
+	}
+}
+

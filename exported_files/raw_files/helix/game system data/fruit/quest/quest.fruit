@@ -1,0 +1,262 @@
+include "helix/game system data/fruit/mapref/mapref.fruit"
+include "helix/game system data/fruit/gamevalues/gamevalues.fruit"
+include "helix/game system data/fruit/rbtags/rbtags.fruit"
+include "helix/game system data/fruit/reward/reward.fruit"
+include "helix/game system data/fruit/rewardpreview/rewardpreview.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+include "helix/game system data/fruit/quest/questenums.fruit"
+include "snowdrop/modules/core/audio/audio.fruit"
+include "helix/game system data/fruit/monetization/mtxaddons.fruit"
+
+list QuestObjectiveList
+{
+	QuestObjective
+}
+
+class QuestObjective < uid=auto abstract=1 >
+{
+	varmap myName < bhv="localization" tooltip="Name of the objective." >
+	string myIconOverride < bhv="sprite" tooltip="Pick from ui_spritesheet_map_icons_04. Quests: 2-8 Event (LW) 10-16">
+	bool myIsOptional
+	bool myIsExternal < tooltip="External objectives are not reset when the beat script is reset and are objectives that needs to be setup in their own script." >
+	bool myIsHiddenInTracker FALSE < tooltip="Hidden in UI Tracker" >
+	bool myIsHiddenInHUD FALSE < tooltip="Hidden in HUD" >
+	bool myIsHint < tooltip="Displayed as a hint in UI" >
+	bool myIsHighPrio < tooltip="Skip showing completed animations of previous objectives and instantly show this one in the tracker." >
+	bool myIsImmediate < tooltip="Skip the intro animation when showing this one in the tracker." >
+	bool myShowHealthbars < tooltip="If objective is tied to agent entities, show their healthbars in the tracker." >
+	IntelList myIntel
+	bool myAutoResolveIntel TRUE < tooltip="Auto resolves intel when the objective is completed." >
+	AudioState myQuestObjectiveAudioState
+	AudioState myQuestObjectiveAudioStateOnReset
+	QuestObjectiveList myChildObjectives < hidden=1 >
+}
+
+class QuestObjectiveCustom : QuestObjective
+{
+	QuestObjectiveList myChildObjectives < hidden=0 >
+}
+
+class QuestObjectiveGoToLocation : QuestObjective
+{
+}
+
+class QuestObjectiveCoopGoToLocation : QuestObjective
+{
+}
+
+class QuestObjectiveKillFireteam : QuestObjective
+{
+}
+
+class QuestObjectiveInteract : QuestObjective
+{
+}
+
+class QuestObjectiveCounter : QuestObjective
+{
+	QuestObjectiveList myChildObjectives < hidden=0 >
+	int myMaxCount 1 < min=1 >
+}
+
+class QuestObjectiveDefendAgent : QuestObjective
+{
+}
+
+class QuestObjectiveLeaveArea : QuestObjective
+{
+	varmap myInVolumeText < bhv="localization" tooltip="Objective text when in LeaveArea volume." >
+	varmap myNotInVolumeInCombatText < bhv="localization" tooltip="Objective text when not in LeaveArea volume but still in combat." >
+}
+
+class QuestObjectiveGetWantedLevel : QuestObjective
+{
+}
+
+class QuestObjectiveGetItem : QuestObjective
+{
+}
+
+class QuestObjectiveTalkTo : QuestObjective
+{
+}
+
+class QuestObjectiveSteal : QuestObjective
+{
+}
+
+class QuestObjectiveBinocular : QuestObjective
+{
+}
+
+class QuestObjectiveGetItemFromSpawnedLoot : QuestObjective
+{
+}
+
+class QuestObjectiveEvade : QuestObjective
+{
+}
+
+class QuestObjectiveFollow : QuestObjective
+{
+}
+
+class QuestBeatScriptInput < uid=auto abstract=1 >
+{
+}
+
+list QuestBeatScriptInputs
+{
+	QuestBeatScriptInput
+}
+
+class QuestBeatScriptInputAgent : QuestBeatScriptInput
+{
+}
+
+class QuestBeatScriptInputFireteam : QuestBeatScriptInput
+{
+}
+
+class QuestBeatScriptInputOutcome : QuestBeatScriptInput
+{
+}
+
+class QuestGoal < uid=auto >
+{
+	varmap myGoalText < bhv="localization" tooltip="The text that will be visible in the tracker when the goal is active." >
+	bool myDisplayAtBottom FALSE < tooltip="If true, this goal will be shown at the very bottom of the quest tracker." >
+}
+
+list QuestGoals
+{
+	QuestGoal
+}
+
+list QuestBeatSkipGameConditions < size=2 >
+{
+	GameConditionPlayerHasItem
+	GameConditionQuestState
+}
+
+class QuestBeat < uid=auto >
+{
+	string myScript "" < bhv=questbeatscript >
+	varmap myName < bhv="localization" tooltip="Name of the quest beat." >
+	QuestGoal myAutostartQuestGoal < can_be_set=1 init_set=0 >
+	uid myLevelInfo < bhv="constantData" constantDataType="levelinfo" tooltip="The level that the quest beat is played on." >
+	uid myDebugPlayLandingZone < bhv="constantData" constantDataType="landingzone" tooltip="When this beat is started with debug, the spaceship will be put here. Will work sequentially with the progression graph." >
+	QuestBeatMood myMood Relaxed
+	bool mySetPlayerInBeatOnStart false < tooltip="If this is set to true, we will be set as playing this as soon as it starts" >
+	QuestObjectiveList myObjectives
+	QuestBeatScriptInputs myScriptInputs < tooltip="Inputs passed from the previous beat to the beat init node." >
+	bool myHasInitFromPreviousBeatPin FALSE
+	QuestBeatStateGameValue myQuestBeatStateGameValue < init_set=1 >
+	bool myDeactivateContentLocationOnComplete false < tooltip="USE WITH CARE \nIf set to true, this beat will deactivate its content location when being completed and its script will stop running." >
+	bool myWaitForInitCompletedOnInBeatVolume false < tooltip="USE WITH CARE \nIf set to true, OnInBeatVolume will not trigger unless the node 'Quest Beat Init Complete' has been executed." >
+	bool myShouldHaveHiddenMarkerOverride false < tooltip="This will hide the beat in compass, megamap and hud. It will also hide its galaxy location." >
+	AudioState myQuestBeatAudioState
+	AudioState myQuestBeatAudioStateOnReset
+	QuestBeatSkipGameConditions mySkipConditions
+	Reward* myCompletionReward
+	Reward* myDebugPlayOnlyCompletionReward < tooltip="This reward will only be given when using debug play to complete this quest beat." >
+	bool myDebugPlayOnlyIsCompletionRewardUnique < tooltip="DebugOnly, if set to true, this reward will only be given when the player doesn't have the reward items before completing this quest beat." >
+	bool myDebugPlayOnlyEquipItem < tooltip="DebugOnly, if set to true and the debug play only reward contains equipments, they'll be auto equipped." >
+	bool myForbidsBackupSave false < tooltip="If this is true, the backup save will not be created while the player is in beat's volume. Backup save is loaded when a player leaves a focused beat." >
+}
+
+class QuestBeatIntel : QuestBeat
+{	
+	string myScript "" < hidden=1 >
+	uid myLevelInfo < hidden=1 >
+	QuestBeatMood myMood Relaxed < hidden=1 >
+	QuestObjectiveList myObjectives < hidden=1 >
+	QuestBeatScriptInputs myScriptInputs < hidden=1 >
+	bool myHasInitFromPreviousBeatPin FALSE < hidden=1 >
+	bool myDeactivateContentLocationOnComplete false < hidden=1 >
+	bool myWaitForInitCompletedOnInBeatVolume false < hidden=1 >
+	AudioState myQuestBeatAudioState < hidden=1 >
+	AudioState myQuestBeatAudioStateOnReset < hidden=1 >
+	IntelList myIntel
+	bool myAutoActivateIntelChain true < tooltip="If set to false, the first intel in all the intel lists of this beat will not be activated automatically." >
+	varmap myDefaultIntelText < bhv="localization" tooltip="Text to display when there is no active intel on the same level as the player." >
+}
+
+class QuestBeatParallel : QuestBeat
+{
+	QuestBeatScriptInputs myScriptInputs < hidden=1 >
+}
+
+list LevelTransitionQuestBeatLevelInfos
+{
+	uid < bhv="constantData" constantDataType="levelinfo" tooltip="The level that will complete the quest beat upon reaching." >
+}
+
+class QuestBeatLevelTransition : QuestBeat
+{	
+	string myScript "" < hidden=1 >
+	uid myLevelInfo < hidden=1 >
+	QuestBeatMood myMood Relaxed < hidden=1 >
+	QuestObjectiveList myObjectives < hidden=1 >
+	QuestBeatScriptInputs myScriptInputs < hidden=1 >
+	bool myHasInitFromPreviousBeatPin FALSE < hidden=1 >
+	bool myDeactivateContentLocationOnComplete false < hidden=1 >
+	bool myWaitForInitCompletedOnInBeatVolume false < hidden=1 >
+	AudioState myQuestBeatAudioState < hidden=1 >
+	AudioState myQuestBeatAudioStateOnReset < hidden=1 >
+	LevelTransitionQuestBeatLevelInfos myLevelTransitionLevelInfos
+}
+
+list QuestBeatBranchList < size=2 >
+{
+	QuestBeat
+}
+
+list QuestBeatParallelList
+{
+	QuestBeatParallel
+}
+
+list QuestBeatList
+{
+	QuestBeat
+	QuestBeatBranchList
+	QuestBeatParallelList
+}
+
+list OutroQuestBeatList < size=1 >
+{
+	QuestBeat
+	QuestBeatBranchList
+}
+
+class Quest < uid=auto >
+{
+	varmap myName < bhv="localization" tooltip="Name of the quest." >
+	varmap myIntroDescription < bhv="localization" tooltip="Description of the quest when in Intro." >
+	varmap myDescription < bhv="localization" tooltip="Description of the quest after Intro." >
+	file myImage < bhv=asset assettype="texture" tooltip="Image that represents the quest in the journal." >	
+	QuestType myType
+	QuestToastUIDisplayMode myToastUIDisplayMode All
+	Reward* myCompletionReward
+	Reward* myDebugPlayOnlyCompletionReward < tooltip="this reward will only be given when using debug play to complete this quest." >
+	bool myDebugPlayOnlyIsCompletionRewardUnique < tooltip="DebugOnly, if set to true, this reward will only be given when the player doesn't have the reward items before completing this quest." >
+	bool myDebugPlayOnlyEquipItem < tooltip="DebugOnly, if set to true and the DebugPlayOnly reward contains equipments, they'll be auto equipped." >
+	RewardPreview* myCompletionRewardPreview
+	Reward* myFailureReward
+	RewardPreview* myFailureRewardPreview
+	MapRef* myMapRefConstantData
+	QuestGoals myGoals
+	QuestBeat myRevealBeat < init_set=0 can_be_set=1 >
+	QuestBeat myIntroBeat < init_set=0 can_be_set=1 >
+	QuestBeatList myBeats
+	OutroQuestBeatList myOutroBeat 
+	QuestStateGameValue myQuestStateGameValue < init_set=1 >
+	AudioState myQuestAudioState
+	AudioState myQuestAudioStateOnReset
+	RBTagsTag* myQuestStartedRBTag
+	RBTagsTag* myQuestCompletedRBTag
+	uid myFaction < bhv="constantData" constantDataType="faction" tooltip="What faction does this quest 'belong' to." >
+	MTXAddonType myRequiredMTXAddonType None < tooltip="Does this quest require any MTX Addon type to be accessed?" >
+	uid myDebugPlayOnlyPlayerPreset < bhv="constantData" constantDataType="playerpreset" tooltip="The selected preset will be applied when you debug play this quest." >
+}

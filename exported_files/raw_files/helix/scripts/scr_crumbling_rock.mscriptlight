@@ -1,0 +1,721 @@
+{
+	connectionsById = {
+		70 0 11 -200,
+		14 0 13 0,
+		18 0 19 0,
+		22 0 23 0,
+		33 0 11 0,
+		34 0 12 0,
+		12 75 26 0,
+		39 75 93 0,
+		11 100 71 0,
+		12 100 32 0,
+		79 100 86 0,
+		1 102 43 0,
+		1 107 81 0,
+		84 -101 86 1,
+		108 -101 105 1,
+		222 -101 9 1,
+		23 -1 24 1,
+		43 -1 45 1,
+		43 -1 130 1,
+		43 -1 152 1,
+		81 -1 83 1,
+		81 -1 131 1,
+		81 -1 151 1,
+		17 0 13 1,
+		24 0 26 1,
+		75 0 88 1,
+		132 0 79 1,
+		133 0 28 1,
+		151 0 126 1,
+		152 0 128 1,
+		32 2 30 1,
+		71 2 60 1,
+		86 2 75 1,
+		71 3 72 1,
+		61 75 58 1,
+		19 77 107 1,
+		19 79 31 1,
+		1 108 93 1,
+		11 200 71 1,
+		108 -102 107 2,
+		222 -102 9 2,
+		15 0 13 2,
+		25 0 24 2,
+		58 0 60 2,
+		26 2 30 2,
+		26 3 31 2,
+		86 3 88 2,
+		93 3 105 2,
+		9 4 128 2,
+		128 4 126 2,
+		13 100 72 2,
+		1 104 58 2,
+		1 106 75 2,
+		16 0 13 3,
+		21 0 19 3,
+		62 -101 61 25,
+		30 0 13 25,
+		31 0 39 25,
+		126 4 11 25,
+		11 75 12 25,
+		32 1 19 27,
+		60 0 19 29,
+		88 0 28 50,
+		105 0 79 50,
+		107 0 79 51,
+		79 101 28 51,
+		35 -102 222 101,
+		93 2 108 101,
+		1 101 35 101,
+		1 105 62 101,
+		1 106 84 101,
+		35 -101 222 102,
+		72 0 62 102,
+		85 0 84 102,
+		3 100 35 102,
+		223 0 222 107,
+	},
+	lastNodeId = 223,
+	layers = {},
+	locComp = {},
+	nodesById = {
+		[1] = {
+			defaults = {
+				connectionsById = {
+					38 0 37 101,
+					40 0 37 102,
+					69 0 37 104,
+					74 0 37 105,
+					77 0 37 106,
+					78 0 37 107,
+					89 0 37 108,
+				},
+				layers = {},
+				nodesById = {
+					[37] = {
+						type = "internal:CompoundDefaults",
+					},
+					[38] = {
+						type = "native:Constant",
+						value = #00000000000000000000000000000000,
+						valueType = "uid",
+					},
+					[40] = {
+						type = "native:Constant",
+						value = #00000000000000000000000000000000,
+						valueType = "uid",
+					},
+					[69] = {
+						type = "native:Constant",
+						value = 0.5,
+						valueType = "float",
+					},
+					[74] = {
+						type = "native:Constant",
+						value = {
+							#00000000000000000000000000000000,
+						},
+						valueType = "Camera Shake Constant Data",
+					},
+					[77] = {
+						type = "native:Constant",
+						value = 0,
+						valueType = "float",
+					},
+					[78] = {
+						type = "native:Constant",
+						value = #00000000000000000000000000000000,
+						valueType = "uid",
+					},
+					[89] = {
+						type = "native:Constant",
+						value = false,
+						valueType = "bool",
+					},
+				},
+			},
+			lastId = 108,
+			pins = {
+				{
+					id = 101,
+					name = "Platform_UID",
+					widget = {
+						type = "Hidden",
+					},
+				},
+				{
+					id = 102,
+					name = "Slide_Volume_UID",
+					widget = {
+						type = "Hidden",
+					},
+				},
+				{
+					id = 107,
+					name = "Prevent_Jump_Volume_UID",
+					widget = {
+						type = "Hidden",
+					},
+				},
+				{
+					id = 105,
+				},
+				{
+					id = 104,
+					name = "Trigger Delay (s)",
+					widget = {
+						tooltip = "Time before we ttrigger the collapse, this is also the time between OnPreTriggered and OnTriggered.",
+					},
+				},
+				{
+					id = 106,
+					name = "Slide Delay (s)",
+					widget = {
+						tooltip = "Delay in seconds before triggering the slide. This delay is triggered after the Trigger Delay (s).",
+					},
+				},
+				{
+					id = 108,
+					name = "Disable After Player Exit Volume",
+				},
+			},
+			type = "Script:Inputs",
+		},
+		{
+			lastId = -100,
+			pins = {},
+			type = "Script:Outputs",
+		},
+		{
+			type = "HC_StreamingScriptInitNode",
+		},
+		[9] = {
+			accessTypeEnum = "ImpulseSet",
+			type = "internal:VariableNode",
+			varId = #&9D0EE20B643D38D70000BE0DC148DC2E,
+		},
+		[11] = {
+			eventData = {
+				{
+					eventDataId = 0,
+					name = "SkipCameraShake",
+					widgetConfig = {
+						tooltip = "Skip the pre-trigger and camera shake setup and collapses the platform immediately instead.",
+					},
+				},
+			},
+			eventDataIdCounter = 1,
+			eventNodeName = "Trigger",
+			type = "HC_ScriptReceiveEventNode",
+		},
+		[12] = {
+			eventData = {},
+			eventDataIdCounter = 0,
+			eventNodeName = "Reset",
+			type = "HC_ScriptReceiveEventNode",
+		},
+		[13] = {
+			type = "HC_ScriptVolumeListenerNode",
+		},
+		[14] = {
+			type = "native:Constant",
+			value = {
+				#&9D0EE20B643D36B10004BD18F35BC250,
+			},
+			valueType = "HC_Volume",
+		},
+		[15] = {
+			type = "native:Constant",
+			value = true,
+			valueType = "bool",
+		},
+		[16] = {
+			type = "native:Constant",
+			value = true,
+			valueType = "bool",
+		},
+		[17] = {
+			type = "native:Constant",
+			value = {
+				{
+					allAgents = false,
+					carriedTarget = false,
+					localPlayer = false,
+					npc = false,
+					player = true,
+					playerPet = false,
+					spaceship = false,
+					vehicle = false,
+				},
+			},
+			valueType = "HC_VolumeFilter",
+		},
+		[18] = {
+			accessTypeEnum = "Get",
+			type = "internal:VariableNode",
+			varId = #&9D0EE20B643D38D70000BE0DC148DC2E,
+		},
+		[19] = {
+			type = "HC_ScriptInteractionModifierNode",
+		},
+		[21] = {
+			type = "native:Constant",
+			value = 1,
+			valueType = "integer",
+		},
+		[22] = {
+			accessTypeEnum = "Get",
+			type = "internal:VariableNode",
+			varId = #&9D0EE20B643D38D70000BE0DC148DC2E,
+		},
+		[23] = {
+			type = "HC_InteractionPointNode_GetCurrentStep",
+		},
+		[24] = {
+			label = "Comparison/Equal",
+			type = "internal:TypeSelectByLabel",
+		},
+		[25] = {
+			type = "native:Constant",
+			value = 0,
+			valueType = "integer",
+		},
+		[26] = {
+			type = "native:ImpulseSelect",
+		},
+		[28] = {
+			type = "HC_ScriptVolumeModifierNode",
+		},
+		[30] = {
+			type = "native:ImpulseAny",
+		},
+		[31] = {
+			type = "native:ImpulseAny",
+		},
+		[32] = {
+			type = "native:ImpulseSequence",
+		},
+		[33] = {
+			type = "native:Constant",
+			value = false,
+			valueType = "bool",
+		},
+		[34] = {
+			type = "native:Constant",
+			value = false,
+			valueType = "bool",
+		},
+		[35] = {
+			filename = "helix/nodes/compounds/try_get_prop_by_uid.mcompoundnode",
+			name = "try_get_prop_by_uid",
+			type = "internal:Compound",
+		},
+		[39] = {
+			eventData = {},
+			eventDataIdCounter = 0,
+			eventNodeName = "OnTriggered",
+			type = "HC_ScriptSendBroadcastEventNode",
+		},
+		[43] = {
+			type = "HC_GetEntityByUIDNode",
+		},
+		[45] = {
+			label = "Conversion/Explicit",
+			type = "internal:TypeSelectByLabel",
+		},
+		[58] = {
+			type = "Script:Delay",
+		},
+		[60] = {
+			type = "native:ImpulseAny",
+		},
+		[61] = {
+			eventData = {},
+			eventDataIdCounter = 0,
+			eventNodeName = "OnPreTriggered",
+			type = "HC_ScriptSendBroadcastEventNode",
+		},
+		[62] = {
+			graph = {
+				connectionsById = {
+					65 0 64 -101,
+					63 101 66 0,
+					63 102 68 0,
+					67 0 68 1,
+					66 75 65 1,
+					63 101 67 1,
+					68 3 65 2,
+					68 2 66 25,
+				},
+				layers = {},
+				nodesById = {
+					[63] = {
+						lastId = 103,
+						pins = {
+							{
+								id = 101,
+							},
+							{
+								id = 102,
+							},
+						},
+						type = "internal:CompoundInputs",
+					},
+					[64] = {
+						lastId = -102,
+						pins = {
+							{
+								id = -101,
+							},
+						},
+						type = "internal:CompoundOutputs",
+					},
+					[65] = {
+						type = "native:ImpulseAny",
+					},
+					[66] = {
+						type = "HC_PlayerCameraShakeScriptNode",
+					},
+					[67] = {
+						label = "Constant Data/Is Valid",
+						type = "internal:TypeSelectByLabel",
+					},
+					[68] = {
+						type = "native:ImpulseSelect",
+					},
+				},
+			},
+			type = "internal:Group",
+		},
+		[70] = {
+			type = "native:Constant",
+			value = true,
+			valueType = "bool",
+		},
+		[71] = {
+			type = "native:ImpulseSelect",
+		},
+		[72] = {
+			type = "native:ImpulseAny",
+		},
+		[75] = {
+			type = "Script:Delay",
+		},
+		[79] = {
+			type = "HC_ScriptVolumeModifierNode",
+		},
+		[81] = {
+			type = "HC_GetEntityByUIDNode",
+		},
+		[83] = {
+			label = "Conversion/Explicit",
+			type = "internal:TypeSelectByLabel",
+		},
+		[84] = {
+			label = "Comparison/Not Equal",
+			type = "internal:TypeSelectByLabel",
+		},
+		[85] = {
+			type = "native:Constant",
+			value = 0,
+			valueType = "float",
+		},
+		[86] = {
+			type = "native:ImpulseSelect",
+		},
+		[88] = {
+			type = "native:ImpulseAny",
+		},
+		[93] = {
+			type = "native:ImpulseSelect",
+		},
+		[105] = {
+			type = "native:ImpulseAny",
+		},
+		[107] = {
+			type = "native:ImpulseAny",
+		},
+		[108] = {
+			graph = {
+				connectionsById = {
+					120 0 110 -102,
+					116 75 110 -101,
+					214 10001 206 -100,
+					210 0 209 0,
+					211 0 206 0,
+					221 0 214 0,
+					214 10001 116 0,
+					214 20052 115 0,
+					209 -1 212 1,
+					119 0 116 1,
+					172 0 220 1,
+					173 0 174 1,
+					173 0 219 1,
+					174 0 216 1,
+					212 0 211 1,
+					216 0 221 1,
+					206 2 115 1,
+					116 101 120 1,
+					117 0 116 2,
+					219 0 216 2,
+					115 3 120 2,
+					118 0 116 3,
+					220 0 216 3,
+					115 2 116 25,
+					109 101 214 20002,
+				},
+				layers = {},
+				nodesById = {
+					[109] = {
+						lastId = 102,
+						pins = {
+							{
+								id = 101,
+							},
+						},
+						type = "internal:CompoundInputs",
+					},
+					[110] = {
+						lastId = -103,
+						pins = {
+							{
+								id = -101,
+								name = "Activate",
+							},
+							{
+								id = -102,
+								name = "Deactivate",
+							},
+						},
+						type = "internal:CompoundOutputs",
+					},
+					[115] = {
+						type = "native:ImpulseSelect",
+					},
+					[116] = {
+						type = "HC_ScriptVolumeListenerNode",
+					},
+					[117] = {
+						type = "native:Constant",
+						value = true,
+						valueType = "bool",
+					},
+					[118] = {
+						type = "native:Constant",
+						value = true,
+						valueType = "bool",
+					},
+					[119] = {
+						type = "native:Constant",
+						value = {
+							{
+								allAgents = false,
+								carriedTarget = false,
+								localPlayer = false,
+								npc = false,
+								player = true,
+								playerPet = false,
+								spaceship = false,
+								vehicle = false,
+							},
+						},
+						valueType = "HC_VolumeFilter",
+					},
+					[120] = {
+						type = "native:ImpulseAny",
+					},
+					[172] = {
+						accessTypeEnum = "Get",
+						type = "internal:VariableNode",
+						varId = #&06F73AE165EB0AC10000601D661CACEE,
+					},
+					[173] = {
+						accessTypeEnum = "Get",
+						type = "internal:VariableNode",
+						varId = #&06F73AE165EB0AAD0000601C2ADA76F0,
+					},
+					[174] = {
+						type = "native:ArrayNotEmpty",
+					},
+					[206] = {
+						type = "HC_VolumeNodes_IsPointInside",
+					},
+					[209] = {
+						type = "HC_LocalPlayerNode_GetPlayer",
+					},
+					[210] = {
+						type = "native:Constant",
+						value = "Agent",
+						valueType = "Player Type",
+					},
+					[211] = {
+						type = "Entity:Position",
+					},
+					[212] = {
+						label = "Conversion/Implicit",
+						type = "internal:TypeSelectByLabel",
+					},
+					[214] = {
+						pins = {
+							{
+								id = 0,
+							},
+							{
+								id = 1,
+							},
+						},
+						type = "Script:PassThrough",
+					},
+					[215] = {
+						type = "internal:Comment",
+					},
+					[216] = {
+						label = "Comparison/Select",
+						type = "internal:TypeSelectByLabel",
+					},
+					[219] = {
+						label = "Conversion/Implicit",
+						type = "internal:TypeSelectByLabel",
+					},
+					[220] = {
+						label = "Conversion/Implicit",
+						type = "internal:TypeSelectByLabel",
+					},
+					[221] = {
+						label = "Conversion/Explicit",
+						type = "internal:TypeSelectByLabel",
+					},
+				},
+			},
+			type = "internal:Group",
+		},
+		[126] = {
+			accessTypeEnum = "ImpulseSet",
+			type = "internal:VariableNode",
+			varId = #&06F73AE165EB0AC10000601D661CACEE,
+		},
+		[128] = {
+			accessTypeEnum = "ImpulseSet",
+			type = "internal:VariableNode",
+			varId = #&06F73AE165EB0AAD0000601C2ADA76F0,
+		},
+		[130] = {
+			label = "Conversion/Explicit",
+			type = "internal:TypeSelectByLabel",
+		},
+		[131] = {
+			label = "Conversion/Explicit",
+			type = "internal:TypeSelectByLabel",
+		},
+		[132] = {
+			accessTypeEnum = "Get",
+			type = "internal:VariableNode",
+			varId = #&06F73AE165EB0AC10000601D661CACEE,
+		},
+		[133] = {
+			accessTypeEnum = "Get",
+			type = "internal:VariableNode",
+			varId = #&06F73AE165EB0AAD0000601C2ADA76F0,
+		},
+		[151] = {
+			label = "Conversion/Explicit",
+			type = "internal:TypeSelectByLabel",
+		},
+		[152] = {
+			label = "Conversion/Explicit",
+			type = "internal:TypeSelectByLabel",
+		},
+		[222] = {
+			filename = "helix/nodes/compounds/safe_get_interaction_points_from_static_prop.mcompoundnode",
+			name = "safe_get_interaction_points_from_static_prop",
+			type = "internal:Compound",
+		},
+		[223] = {
+			type = "native:Constant",
+			value = 1,
+			valueType = "integer",
+		},
+	},
+	savecount = 46,
+	variableMetaData = {
+		[#9D0EE20B643D38D70000BE0DC148DC2E] = {
+			comment = "",
+			path = "interaction",
+			subType = "None",
+		},
+		[#06F73AE165EB0AAD0000601C2ADA76F0] = {
+			comment = "",
+			path = "slideVol",
+			subType = "None",
+		},
+		[#06F73AE165EB0AC10000601D661CACEE] = {
+			comment = "",
+			path = "preventJumpVol",
+			subType = "None",
+		},
+		[#06F73AE165EB1828000090FEE07488BE] = {
+			comment = "",
+			path = "resetVolume",
+			subType = "None",
+		},
+	},
+	variables = {
+		{
+			arraysupport = "None",
+			includeInWatchSummary = false,
+			modification = "None",
+			name = "interaction",
+			sharing = "Local",
+			storage = "None",
+			typeName = "Interaction Point",
+			varId = #&9D0EE20B643D38D70000BE0DC148DC2E,
+		},
+		{
+			arraysupport = "All",
+			data = {
+				{
+					#&00000000000000000000000000000000,
+				},
+			},
+			includeInWatchSummary = false,
+			modification = "None",
+			name = "slideVol",
+			sharing = "Local",
+			storage = "None",
+			typeName = "HC_Volume",
+			varId = #&06F73AE165EB0AAD0000601C2ADA76F0,
+		},
+		{
+			arraysupport = "All",
+			data = {
+				{
+					#&00000000000000000000000000000000,
+				},
+			},
+			includeInWatchSummary = false,
+			modification = "None",
+			name = "preventJumpVol",
+			sharing = "Local",
+			storage = "None",
+			typeName = "HC_Volume",
+			varId = #&06F73AE165EB0AC10000601D661CACEE,
+		},
+		{
+			arraysupport = "None",
+			data = {
+				{
+					#&00000000000000000000000000000000,
+				},
+			},
+			includeInWatchSummary = false,
+			modification = "None",
+			name = "resetVolume",
+			sharing = "Local",
+			storage = "None",
+			typeName = "HC_Volume",
+			varId = #&06F73AE165EB1828000090FEE07488BE,
+		},
+	},
+}

@@ -1,0 +1,102 @@
+include "helix/game system data/fruit/input/gameinput.fruit"
+
+enum InputMajorContextType
+{
+    None
+    OnFoot
+    Speeder
+    Spaceship
+    Menus
+}
+
+class InputActionContext
+{
+    file myActionGroupFile
+}
+
+class InputActionCategoryContext
+{
+    string myCategory
+ 	varmap myUIName < bhv = "localization" >   
+}
+
+list InputActionCategoryContexts
+{
+	InputActionCategoryContext
+}
+
+class InputActionContextPerFile : InputActionContext
+{
+ 	varmap myContextName < bhv = "localization" >   
+}
+
+class InputActionContextPerCategory : InputActionContext
+{
+    InputActionCategoryContexts myCategoriesContexts
+}
+
+list InputActionChosenContext < size=1 >
+{
+	InputActionContext
+}
+
+list InputActionGroupContexts
+{
+	InputActionChosenContext
+}
+
+class InputMajorContext
+{
+    InputMajorContextType myInputMajorContext
+ 	varmap myUIName < bhv = "localization" >
+	string myIcon < bhv="sprite" referenced_by_code=1 ui_info=1 >
+
+	InputActionGroupContexts myActionGroupContexts
+}
+
+list InputMajorContextList
+{
+    InputMajorContext
+}
+
+class InputPresetName
+{
+ 	varmap myUIName < bhv = "localization" >
+    string myPresetConfiguration
+}
+
+list InputPresetSetting
+{
+    InputPresetName
+}
+
+class InputLayoutAction
+{
+ 	varmap myUIName < bhv = "localization" >   
+    GameAction myDisplayedAction None
+}
+
+list InputLayoutActionList
+{
+    InputLayoutAction
+}
+
+class InputLayoutActionSetting
+{
+    InputMajorContextType myLinkedInputMajorContext None
+
+    InputLayoutActionList myDisplayedActions
+}
+
+list InputLayoutActionSettings
+{
+    InputLayoutActionSetting
+}
+
+class InputRebindSettings < uid = auto > 
+{
+    InputMajorContextList myInputMajorContexts
+
+    InputPresetSetting myInputPresetGamepadSetting
+    InputLayoutActionSettings myDisplayedActionGamepadSettings
+}

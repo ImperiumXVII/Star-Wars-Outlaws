@@ -1,0 +1,121 @@
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+
+LivingWorldContent TOS_IC_01 < uid=91DC5D3C644B88300000B0EC62EFDA95 >
+{
+	myCompletedGameValue < uid=91DC5D3C644B89A2000087219EBDFA4B >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Completed != 1"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 50"
+		{
+			myDistance 200.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Completed = 1"
+		{
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+		{
+			myDistance 100.0
+			myOperator GreaterThan
+		}
+	}
+}
+
+LivingWorldContent TOS_IC_02 < uid=755DDF04646C877900103DFE250E3EFE >
+{
+}
+
+LivingWorldContent AKI_IC_01_OW_ < uid=FB50C4ED64F5940B00018A01BBD488F5 >
+{
+	myActivationGameConditions
+	{
+		GameConditionQuestState IsQuestNotActive
+		{
+			myQuest BFA41A0261B375EA000004A25661B01D
+			myQuestState Started
+			myOperator NotEqual
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer DistanceToPlayer
+		{
+			myDistance 200.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionQuestState IsQuestActive
+		{
+			myQuest BFA41A0261B375EA000004A25661B01D
+			myQuestState Started
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer DistanceToPlayer
+		{
+			myDistance 200.0
+		}
+	}
+}
+
+LivingWorldContent AKI_IC_01 < uid=FB50C4ED65A7D72A0004FB7E84438252 >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer DistanceToPlayer
+		{
+			myDistance 200.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer DistanceToPlayer
+		{
+			myDistance 200.0
+		}
+	}
+}
+
+LivingWorldContent TAT_IC_02 < uid=2AEFFC79653667A10001D2A4FAA56492 >
+{
+	myTicket < uid=2AEFFC79653667A10001D2A57E923381 >
+	{
+	}
+	myTicketMax < uid=2AEFFC79653667A10001D2A6A681009F >
+	{
+	}
+	myCompletedGameValue < uid=2AEFFC79653667A10001D2A7070B2778 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Completed != 1"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 50"
+		{
+			myDistance 200.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Completed = 1"
+		{
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+		{
+			myDistance 100.0
+			myOperator GreaterThan
+		}
+	}
+}
+

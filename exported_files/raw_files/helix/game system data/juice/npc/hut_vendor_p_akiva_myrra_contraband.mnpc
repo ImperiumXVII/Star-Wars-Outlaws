@@ -1,0 +1,42 @@
+include "helix/game system data/juice/npc/base_civ_vendor.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC hut_vendor_p_akiva_myrra_contraband < uid=91DC5D3C650870A20026B7849FB1ED6E > : base_civ_vendor
+{
+	myName "branch = \"MAIN\", contextComment = \"Sub-name of a Contraband Merchant\", enabled = true, guid = #09AEDAAA65C5F607000001513BA8A752, lineVersion = 15, maxLength = 0, productId = -1, sectionId = 10653, text = \"Armorer\", type = \"MenuLine\""
+	myCharacterVisuals < uid=91DC5D3C650870A20026B7850CD0ACB4 > = character_visuals_2_silver_aki_myrra_contraband_hutt_vendor E4123D2764B6739F00014D785776DEE9
+	myFaction < uid=09AEDAAA65A9059E00325974027B4DD0 > = HuttClan 16DEADE65F7DDA76000000C847FBD2A1
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F25651FD1BC0000C291A5E47FF2 > = Agent_Gender_FeminineTag 16DEADE6626D20EA00002E5277B65AD4
+	}
+	myPossibleSpeciesTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F25651FD1B70000C28E68EB5FC8 > = Agent_Species_AqualishTag 2736B365634D673A0003C278D0993580
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F25651FD18A0000C28B35B2DE21 > = Agent_Vendor_Unique 1EC89F25640075230003D75F86E0E0A3
+		RBTagsTag "New RBTagsTag (0)" < uid=1EC89F25651FD1F40000C29297C36199 > = Agent_Faction_HuttClanTag 16DEADE6620AE18B000020CD6EABF4EA
+	}
+	myDialogueCharacters
+	{
+		DialogueCharacterWithTags VendorCBAqualishF01 < uid=1EC89F25651FD1640000C2868F08A4B5 >
+		{
+			myDialogueCharacter < uid=1EC89F25651FD16B0000C288C10DF32F > = AI_VENDOR_UNIQUE_CONTRABAND_AQUALISH_F01 1EC89F25648ADA610000A98FE57E7C43
+		}
+	}
+	myVendorConfig < uid=91DC5D3C650870B40026B79A796E05B2 > = VendorConfig_AKI_City_Hutt_Armorer F4D8AE2665391B8F00007CFE6D419C20
+	myAudioParameters
+	{
+		mySwitches
+		{
+			AudioSwitch VocoderAqualish
+			{
+				myGuid 4DC9D96F307E1E05CF5E1D09B4164296
+			}
+		}
+	}
+	myNPCIcon "mySpriteId = -515235874, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_map_icons_07.spritesheet\""
+}
+

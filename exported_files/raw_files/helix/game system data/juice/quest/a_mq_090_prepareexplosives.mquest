@@ -1,0 +1,338 @@
+include "helix/game system data/fruit/intel/intel.fruit"
+include "helix/game system data/fruit/mapref/mapref.fruit"
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/mapref/mapref_intel_template.mmapref"
+include "helix/game system data/juice/rbtags/quest.mrbtagstags"
+include "helix/game system data/juice/reward/quest_completion_reward.mreward"
+
+Quest A_MQ_090_ThePrototype < uid=BFA41A0261B36C290000043A28FDDE56 >
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_090 Quest name\", enabled = true, guid = #BFA41A0261C1F52B00014FBAA37C096F, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9118, text = \"Breakout\", type = \"MenuLine\""
+	myIntroDescription "aurabesh = false, branch = \"\", contextComment = \"A_MQ_090 Quest description\", enabled = true, guid = #842ECCE4650BD44B000171481753B128, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9118, text = \"Kay has made a deal with Queen Ashiga to release Ank from the weapons factory, but the Queen's daughter Krisk, the heir to the Ashiga Clan throne, has contacted Kay to discuss an alternative.\", type = \"MenuLine\"}"
+	myDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"A_MQ_090 Quest description\", enabled = true, guid = #842ECCE465F4144100053C8B80E3B0B7, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 9118, text = \"Krisk is colluding with Qi'ra from Crimson Dawn to take down the Queen and lay claim of the Ashiga Clan throne. They have given Kay access to Ank in the Ashiga Clan weapons factory in exchange for her help with the coup.\", type = \"MenuLine\"}"
+	myImage helix/baked/ui/loose_images/quest_bilboard/journal_billboard_mq_090.dds
+	myCompletionReward < uid=2AE2EC85644BDF1B0029E37E30310FD7 > = A_MQ_090_questcomplete_reward 2AE2EC85644A93860000B2C4C4BF62EF
+	myGoals
+	{
+		QuestGoal Undetected < uid=842ECCE46477121C0001D6052FB1F5D4 >
+		{
+			myGoalText "aurabesh = false, contextComment = \"A_MQ_090_B01 Goal text - the player fails quest if alarm is raised\", enabled = true, guid = #842ECCE4647712260001D60667B6DF28, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 9452, text = \"Do not raise the alarm\", type = \"MenuLine\""
+			myDisplayAtBottom TRUE
+		}
+	}
+	myRevealBeat < uid=2538246A658033F30005C4F3FF48A8CB >
+	{
+		myScript helix/scripts/scr_a_mq_090_kij_pln_revealbeat_introvo.mscript
+		myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myLevelInfo 9C4B6A046012E658000001A6972FA29E
+		myObjectives
+		{
+			QuestObjectiveLeaveArea B00_Reveal_LeaveTrailblazer < uid=842ECCE466C32DA6000F52B332947CF7 >
+			{
+				myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myIsHiddenInTracker TRUE
+				myIsHiddenInHUD TRUE
+				myInVolumeText "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myNotInVolumeInCombatText "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			}
+		}
+		myQuestBeatStateGameValue < uid=2538246A658033F30005C4F4B151545D >
+		{
+		}
+	}
+	myIntroBeat < uid=AFFE793B6360D34B000056246990586F >
+	{
+		myScript helix/scripts/scr_a_mq090_beat00.mscript
+		myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_090_IntroBeat Beat Text - Reach the Cantina\", enabled = true, guid = #AFFE793B6360D1E000005621A16BF755, lineVersion = 17, maxLength = 0, productId = -1, sectionId = 3614, text = \"Reach the Cantina\", type = \"MenuLine\""
+		myLevelInfo 9C4B6A046012E658000001A6972FA29E
+		myObjectives
+		{
+			QuestObjectiveGoToLocation B00_010_TalkKrisk < uid=AFFE793B6360EB7E0000A34706212748 >
+			{
+				myName "aurabesh = false, contextComment = \"A_MQ_090_IntroBeat Objective Text - player must reach the Kijimi cantina and talk to Krisk\", enabled = true, guid = #AFFE793B6360EB800000A348AC7ABE77, lineVersion = 17, maxLength = 0, productId = -1, sectionId = 9451, text = \"Talk to Krisk\", type = \"MenuLine\""
+			}
+		}
+		myQuestBeatStateGameValue < uid=AFFE793B6360D34B0000562597BFDB57 >
+		{
+		}
+		myCompletionReward < uid=842ECCE464E5B7EF000911731663D8E9 > = NULLREFERENCE
+		myDebugPlayOnlyCompletionReward < uid=A20F6E2B66167D4C00072259BF5534AA > = MQ_090_WeaponFactory_Keycard 05BD7D7164E5B62A00069B1CA280D764
+	}
+	myBeats
+	{
+		QuestBeat B01a_ReachtheSpeederparking < uid=842ECCE464E86B6D000DA0AB59A44F7D >
+		{
+			myScript helix/scripts/scr_a_mq_090_kij_pln_beat00_reachspeederparking.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_090_B01 Beat Text - Reach the Weapons Factory\", enabled = true, guid = #842ECCE464E8671B000B7B8F51DE09C6, lineVersion = 25, maxLength = 0, productId = -1, sectionId = 3614, text = \"Reach the Weapons Factory\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E658000001A6972FA29E
+			myMood Relaxed
+			myObjectives
+			{
+				QuestObjectiveGoToLocation B01a_010_ReachSpeederParking < uid=842ECCE464E86B6D000DA0ACDEA53A1D >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_090_B01 Objective Text - player must reach the Weapons Factory\", enabled = true, guid = #842ECCE464E8671B000B7B90175A7B64, lineVersion = 17, maxLength = 0, productId = -1, sectionId = 9452, text = \"Reach the weapons factory\", type = \"MenuLine\""
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputAgent Bouncer_01 < uid=842ECCE46571C65700170FB8327A48F0 >
+				{
+				}
+				QuestBeatScriptInputAgent Bouncer_02 < uid=842ECCE46571C67500170FB9D4F057A4 >
+				{
+				}
+			}
+			myQuestBeatStateGameValue < uid=842ECCE464E86B6D000DA0AD1F333B1B >
+			{
+			}
+			myCompletionReward < uid=842ECCE464E86B6D000DA0AEF11F052E > = NULLREFERENCE
+		}
+		QuestBeat "B01b_Reach the Weapon Factory" < uid=842ECCE464E74FEF0003D3AB95A6D106 >
+		{
+			myScript helix/scripts/scr_a_mq090_beat00_exit.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_090_B01 Beat Text - Reach the Weapons Factory\", enabled = true, guid = #842ECCE464E74F9D0003D3A8A6925E33, lineVersion = 22, maxLength = 0, productId = -1, sectionId = 3614, text = \"Reach the Weapons Factory\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E658000001A6972FA29E
+			myMood Relaxed
+			myObjectives
+			{
+				QuestObjectiveGoToLocation B01b_010_ReachFactory < uid=842ECCE464E74FEF0003D3ACA1F16647 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_090_B01 Objective Text - player must reach the Weapons Factory\", enabled = true, guid = #842ECCE464E74F9D0003D3A9ACD9CC1B, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 9452, text = \"Reach the weapons factory\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=842ECCE464E74FEF0003D3AEA1FD3581 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4E4C775BE27437370F92FD71BA0F73A5
+			}
+			myCompletionReward < uid=842ECCE464E76412000A7A437DE198CB > = NULLREFERENCE
+		}
+		QuestBeat "B01c_Infiltrate the Weapon Factory" < uid=AFFE793B6360F0770000A35DD040F6AA >
+		{
+			myScript helix/scripts/scr_a_mq090_beat2.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_090_B01 Beat Text - Return to the weapons factory \", enabled = true, guid = #AFFE793B6360F25B0000A360F502C3BC, lineVersion = 20, maxLength = -1, productId = -1, sectionId = 3614, text = \"Return to the Weapons Factory\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E658000001A6972FA29E
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation B01c_010_InfiltrateFactory < uid=842ECCE464E4AEC2000181133A4B54A4 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_090_B01 Objective Text - player must break into the weapons factory\", enabled = true, guid = #842ECCE464E4AE62000181129FFD011D, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 9452, text = \"Infiltrate the weapons factory\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 49589A8E3D3679F336160D89D26B8598
+					}
+				}
+				QuestObjectiveCustom B01c_020_FindAnk < uid=842ECCE465608CB6000C238AF5AF712F >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_090_B01 Objective Text - player much find Ank\", enabled = true, guid = #842ECCE465608C56000C22993BF24DDC, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 9452, text = \"Find Ank\", type = \"MenuLine\""
+					myIsHiddenInHUD FALSE
+					myQuestObjectiveAudioState
+					{
+						myGuid 4FAB6BB9A28527C36AA1BF39BC294EBC
+					}
+				}
+				QuestObjectiveCustom B01c_030_ReachAnk < uid=AFFE793B6361161B0000A3869899545B >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_090_B01 Objective Text - player much reach Ank and talk to her\", enabled = true, guid = #AFFE793B636116200000A387AF80B328, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 9452, text = \"Reach Ank\", type = \"MenuLine\""
+					myIsHiddenInHUD FALSE
+					myQuestObjectiveAudioState
+					{
+						myGuid 4FAB6BB9A28527C36AA1BF39BC294EBC
+					}
+				}
+			}
+			myQuestBeatStateGameValue < uid=AFFE793B6360F3680000A3667A1DB7F7 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4E4C775BE27437370F92FD71BA0F73A5
+			}
+			myCompletionReward < uid=842ECCE464E74FEF0003D3AF0270EE59 > = NULLREFERENCE
+		}
+		QuestBeat B02a_StealCharm < uid=AFFE793B6360F1220000A35E534452B9 >
+		{
+			myScript helix/scripts/scr_a_mq090_beat03.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_090_B02 Beat Text - Return to Ank\", enabled = true, guid = #AFFE793B6360F2C70000A3625380C177, lineVersion = 16, maxLength = 0, productId = -1, sectionId = 3614, text = \"Return to Ank\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E658000001A6972FA29E
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom B02a_010_FindControlRoom < uid=842ECCE4656EE2A00007B14471D3FF69 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_090_B02 Objective Text - player should find the control room\", enabled = true, guid = #842ECCE4656EE23C0007B1134F393AF2, lineVersion = 20, maxLength = 0, productId = -1, sectionId = 9453, text = \"Reach the locker room\", type = \"MenuLine\""
+					myIsHiddenInHUD FALSE
+					myQuestObjectiveAudioState
+					{
+						myGuid 46DFF7870BF025A276CE301C263E3D90
+					}
+					myChildObjectives
+					{
+						QuestObjectiveGoToLocation B02_010_010_ExitStorageRoom < uid=842ECCE4656EE38E0007B19E936DB3CB >
+						{
+							myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_090_B02 Objective Text - player should leave the storage room\", enabled = true, guid = #842ECCE4656EE3070007B1990F5DB863, lineVersion = 19, maxLength = 0, productId = -1, sectionId = 3614, text = \"Exit storage room\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD FALSE
+						}
+						QuestObjectiveGoToLocation B02_010_020_ReachControlRoom < uid=842ECCE4656EE38E0007B19F6FE0DFE6 >
+						{
+							myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_090_B02 Objective Text - player should reach the control room\", enabled = true, guid = #842ECCE4656EE36B0007B19DA3409BA4, lineVersion = 21, maxLength = 0, productId = -1, sectionId = 3614, text = \"Reach control room\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD FALSE
+						}
+					}
+				}
+				QuestObjectiveInteract "B02a_020_Get Ank's Macguffin" < uid=AFFE793B636116BF0000A389EAD99BB4 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_090_B02 Objective Text - player should retrieve Ank's stuff\", enabled = true, guid = #AFFE793B636116CF0000A38B1203CCF5, lineVersion = 18, maxLength = 0, productId = -1, sectionId = 9453, text = \"Retrieve Ank's belongings\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 49589A8E3D3679F336160D89D26B8598
+					}
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputAgent Ank < uid=842ECCE464F6CC930000F2793E028013 >
+				{
+				}
+			}
+			myQuestBeatStateGameValue < uid=AFFE793B6360F3680000A367D900C08D >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 419D16DC9160F80964C66B3C5E9D1283
+			}
+		}
+		QuestBeat B02b_FollowSled < uid=842ECCE46572D0320008690A51D044C7 >
+		{
+			myScript helix/scripts/scr_a_mq_090_kij_pln_beat02b_followshed.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_090_B02 Beat Text - Follow Ank's sled\", enabled = true, guid = #842ECCE46572CF7900086807F1DF3EFD, lineVersion = 20, maxLength = 0, productId = -1, sectionId = 3614, text = \"Follow Ank's sled\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E658000001A6972FA29E
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveFollow B02b_010_FollowTheSled1 < uid=842ECCE46572D032000869113BACBC15 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_090_B02 Objective text - player should follow Ank and her sled\", enabled = true, guid = #842ECCE46572CF790008680E57752D91, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 9453, text = \"Follow Ank\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+				}
+				QuestObjectiveCustom B02b_020_OpenGatePowerboxes < uid=842ECCE46572D03200086912201705E6 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_090_B02 Objective text - player should open the path for Ank\", enabled = true, guid = #842ECCE46572CF790008680FA62F1892, lineVersion = 14, maxLength = 0, productId = -1, sectionId = 9453, text = \"Disable the energy barrier\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 493EC15442A1D38D5D9C3735A3A977B3
+					}
+					myChildObjectives
+					{
+						QuestObjectiveCustom B02_040_010_PowerBox1 < uid=842ECCE46572D0320008691397AD14C8 >
+						{
+							myName "aurabesh = false, contextComment = \"A_MQ_090_B02 SubObjective text - player must disable first power box\", enabled = true, guid = #842ECCE46572CF790008681000B62BE3, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 3614, text = \"Disable the first power box\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD FALSE
+						}
+						QuestObjectiveCustom B02_040_010_PowerBox2 < uid=842ECCE46572D03200086914F974219A >
+						{
+							myName "aurabesh = false, contextComment = \"A_MQ_090_B02 SubObjective text  - player must disable second power box\", enabled = true, guid = #842ECCE46572CF7900086811FCA623DB, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 3614, text = \"Disable the second power box\", type = \"MenuLine\""
+							myIsHiddenInTracker TRUE
+							myIsHiddenInHUD FALSE
+						}
+					}
+				}
+				QuestObjectiveFollow B02b_030_FollowTheSled2 < uid=842ECCE46572D03200086915A76666B5 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_090_B02 Objective text - player should follow Ank and her sled\", enabled = true, guid = #842ECCE46572CF79000868120241807B, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 9453, text = \"Follow Ank\", type = \"MenuLine\""
+				}
+			}
+			myScriptInputs
+			{
+			}
+			myQuestBeatStateGameValue < uid=842ECCE46572D032000869163FC67F8A >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4AE98A238C0523FB3B74DB7D68105B95
+			}
+			myDebugPlayOnlyCompletionReward < uid=842ECCE466547EFF000281C9CD74C57C > = MQ_090_AnksCharm 842ECCE4665469F20005D76361071C6F
+		}
+		QuestBeat B03_Escape < uid=AFFE793B6360F12F0000A35F621B6D7D >
+		{
+			myScript helix/scripts/scr_a_mq090_beat04.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_090_B03 Beat Text - Escape the weapons factory\", enabled = true, guid = #AFFE793B6360F3260000A36409B51F29, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 3614, text = \"Escape the weapons factory\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E658000001A6972FA29E
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveFollow B03_010_StayClose < uid=AFFE793B636117530000A39057E22989 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_090_B03 Objective Text - player should follow Ank and her sled\", enabled = true, guid = #AFFE793B6361175A0000A391331C4384, lineVersion = 13, maxLength = 0, productId = -1, sectionId = 9454, text = \"Stay close to Ank's sled\", type = \"MenuLine\"}"
+					myQuestObjectiveAudioState
+					{
+						myGuid 49589A8E3D3679F336160D89D26B8598
+					}
+					myChildObjectives
+					{
+					}
+				}
+				QuestObjectiveKillFireteam B03_020_SecureArea < uid=842ECCE465AFB960000155F359C7EBA1 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_090_B03 Objective Text - player must secure the area by killing the enemies\", enabled = true, guid = #842ECCE465AFB94A000155F2FF668B76, lineVersion = 13, maxLength = 0, productId = -1, sectionId = 9454, text = \"Secure the area\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myQuestObjectiveAudioState
+					{
+						myGuid 49589A8E3D3679F336160D89D26B8598
+					}
+				}
+				QuestObjectiveTalkTo "B03_030_Talk to Ank" < uid=2923FE01645CE6E5000A1C8AD0079321 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"A_MQ_090_B03 Objective Text - player must talk to Ank\", enabled = true, guid = #2923FE01645CDACC0009D67BAFB9276E, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 9454, text = \"Talk to Ank\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 459BD6B4EECBF079C619AFF548671D9D
+					}
+				}
+				QuestObjectiveGoToLocation B03_040_LeaveArea < uid=2923FE016455093300011558BBDCEB5F >
+				{
+					myName "aurabesh = false, contextComment = \"A_MQ_090_B03 Objective text - player must leave the location\", enabled = true, guid = #2923FE0164550994000136BC557C7BB8, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9454, text = \"Leave the weapons factory\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 492040606FE7E0B3391621CF12824B85
+					}
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputAgent Ank < uid=842ECCE464F6CCA50000F3947708B31E >
+				{
+				}
+			}
+			myQuestBeatStateGameValue < uid=AFFE793B6360F3680000A36878EDC0D3 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 426575E4E54250F8A5CA9D4E5240E7A5
+			}
+		}
+	}
+	myQuestStateGameValue < uid=6F2AF919621789D4000027E22109ECB0 >
+	{
+	}
+	myQuestAudioState
+	{
+		myGuid 4C5B5A2A6C852F46931D0E8107E4938F
+	}
+	myQuestStartedRBTag < uid=DA5615DD64B4FBB40000AB92C8F3912E > = World_Quest_MQ090_Started DA5615DD64A3E0E90000AC30F286FEFA
+	myQuestCompletedRBTag < uid=DA5615DD64B4FBB40000AB936B87CB34 > = World_Quest_MQ090_Completed DA5615DD64A3E1F80000AC451FCCF76F
+}
+

@@ -1,0 +1,161 @@
+include "helix/game system data/fruit/arcadegame/arcadegame.fruit"
+include "helix/game system data/juice/item/currencies.mitem"
+
+ArcadeGameRailShooter ArcadeGameRailShooter < uid=CC69B2216386333700005B8677925D70 >
+{
+	myCreditCurrency < uid=CC69B2216386333700005B87B2B93B43 > = Credits 83E36AE360487E88000000375F5EDD50
+	myCreditCost 1
+	myPlayerLeaderboardAlias KAY
+	myStaticLeaderboard
+	{
+		ArcadeGameLeaderboardScoreByPlayer BestScore
+		{
+			myPlayerAlias MICHO
+			myPlayerScore 27800
+			myNPCScoreToAddMin 0
+			myNPCScoreToAddMax 0
+		}
+		ArcadeGameLeaderboardScoreByPlayer Second
+		{
+			myPlayerAlias QUERO
+			myPlayerScore 25620
+			myPercentageChanceToBeReplacedByNewNPCScore 0.25
+			myNPCScoreToAddMin 5
+			myNPCScoreToAddMax 100
+		}
+		ArcadeGameLeaderboardScoreByPlayer Third
+		{
+			myPlayerAlias TOLLA
+			myPlayerScore 23240
+			myPercentageChanceToBeReplacedByNewNPCScore 0.5
+			myNPCScoreToAddMin 5
+			myNPCScoreToAddMax 100
+		}
+		ArcadeGameLeaderboardScoreByPlayer Fourth
+		{
+			myPlayerAlias NOMOS
+			myPlayerScore 20855
+			myPercentageChanceToBeReplacedByNewNPCScore 0.75
+			myNPCScoreToAddMin 5
+			myNPCScoreToAddMax 100
+		}
+		ArcadeGameLeaderboardScoreByPlayer Fifth
+		{
+			myPlayerAlias MEIRA
+			myPlayerScore 19855
+			myPercentageChanceToBeReplacedByNewNPCScore 1.0
+			myNPCScoreToAddMin 5
+			myNPCScoreToAddMax 100
+		}
+	}
+	myMouseSensitivity 0.7
+	myTimeBeforeNewNPCScoreMin 300.0
+	myTimeBeforeNewNPCScoreMax 1200.0
+	myNPCNameList
+	{
+		string NPC_01_Marine MEIRA
+		string NPC_02_Ufuk YULA
+		string NPC_03_Josephine HESPO
+		string NPC_04_Matthieu TOLLA
+		string NPC_05_Thomas ZABOC
+		string NPC_06_Adrien GRANO
+		string NPC_07_Antoine GERET
+		string NPC_08_Audrey KEYRA
+		string NPC_09_Dusan VONA
+		string NPC_10_Erwann WARNA
+		string NPC_11_Fabrice HOBB
+		string NPC_12_Pierre RERRI
+		string NPC_13_Simon NOMOS
+		string NPC_14_Thibaut CHUNI
+		string NPC_15_Alex DANIX
+		string NPC_16_JBB JEBB
+		string NPC_17_Yoann ROYNA
+		string NPC_18_Zak ZABKA
+		string NPC_19_Cedric HUDUC
+		string NPC_20_Julien PINA
+		string NPC_21_Severine RAMSA
+		string NPC_22_Quentin QUERO
+		string NPC_23_MihajloChoukroun MICHO
+	}
+	myMandatoryGraphs
+	{
+		file "Game graph" helix/ui/graphs/hud_arcade_game_3drailshooter.muigraph
+	}
+	mySpeedOverDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.0077573406 0.0088537084, -0.030164786 0, -0.26666665 0, -0.14483634 0.011190414, }, outTangents = { 0 5.4381695, 0.073850393 -0.084287882, 0.26666668 0, 0.03333335 0, 0 -0, }, properties = { 2323, 4371, 71, 6215, 5395, }, values = { 0 0.5, 0.0095056444 6.0615883, 0.1 1.5, 0.89999998 1.5, 1 6, }, }, numKeys = 5, }"
+	myCameraLookAtDistanceOnSpline 0.01
+	myPlayerShipOffsetToCamera 0.0;0.0;0.0
+	myTargetKilledScoreList
+	{
+		ArcadeGameRailShooterTargetKilledScore Asteroid
+		{
+			myTargetID Asteroid
+			myKilledScore 5
+		}
+		ArcadeGameRailShooterTargetKilledScore "Hostile 01"
+		{
+			myTargetID Hostile01
+			myKilledScore 20
+		}
+		ArcadeGameRailShooterTargetKilledScore "Hostile 02"
+		{
+			myTargetID Hostile02
+			myKilledScore 30
+		}
+	}
+	myProjectilesOffsetFromCamera
+	{
+		vec3f "New vec3f" -0.05;-0.1;0.1
+		vec3f "New vec3f_0" 0.05;-0.1;0.1
+	}
+	myProjectileSpeed 20.0
+	myTargetInstantKill TRUE
+	myStunDuration 0.5
+	myRaycastDistance 20.0
+	myCrosshairSpeedMultiplierOverDistance "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, }, outTangents = { 0.30000001 0, }, properties = { 275, }, values = { 0 1, }, }, numKeys = 1, }"
+	myCrosshairAccelerationMeasureDuration 1.0
+	myAimAssistSpeed 0.15
+	myCombosLevels
+	{
+		ArcadeGameRailShooterComboLevel 0
+		{
+			mySuperShootUnlocked FALSE
+		}
+		ArcadeGameRailShooterComboLevel 1
+		{
+			myRequiredPointsToReachThisLevel 100
+			myPointsMultiplier 2.0
+			mySuperShootUnlocked FALSE
+		}
+		ArcadeGameRailShooterComboLevel 2
+		{
+			myRequiredPointsToReachThisLevel 300
+			myPointsMultiplier 4.0
+			mySuperShootUnlocked FALSE
+			myComboIndexWhenStunned 1
+		}
+		ArcadeGameRailShooterComboLevel 3
+		{
+			myRequiredPointsToReachThisLevel 900
+			myPointsMultiplier 8.0
+			mySuperShootUnlocked FALSE
+			myComboIndexWhenStunned 2
+		}
+		ArcadeGameRailShooterComboLevel 4
+		{
+			myRequiredPointsToReachThisLevel 3000
+			myPointsMultiplier 8.0
+			mySuperShootUnlocked TRUE
+			myComboIndexWhenStunned 2
+		}
+	}
+	myShootCooldownDuration 0.15
+	myAudioSpatializationScale 1.0
+	myCameraTurnRotationAmplitude 1.0
+	myCameraTurnRotationNextPositionDistance 5.0
+	myCameraUpVectorMaxX 0.6
+	myEnemyShipTurnRotationAmplitude 100.0
+	myEnemyShipTurnRotationNextDistance 5.0
+	myEnemyShipMaxRotation 90.0
+	myEndingDistanceFromLastSplinePoint 12.25
+}
+

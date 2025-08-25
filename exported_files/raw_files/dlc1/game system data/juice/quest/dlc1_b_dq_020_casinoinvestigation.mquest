@@ -1,0 +1,547 @@
+include "dlc1/game system data/juice/intel/dlc1_intel.mintel"
+include "dlc1/game system data/juice/reward/dlc1_quest_completion_reward.mreward"
+include "dlc1/game system data/juice/reward/dlc1_quest_reward.mreward"
+include "helix/game system data/fruit/quest/quest.fruit"
+
+Quest dlc1_b_dq_020_CasinoInvestigation < uid=03BE13BA662A6E15000001385AA3DE64 >
+{
+	myName "branch = \"DLC1\", contextComment = \"DQ 020 Quest name\", enabled = true, guid = #03BE13BA662A6E1500000118FF730423, lineVersion = 7, maxLength = 0, productId = 84, sectionId = 11584, text = \"The Tournament\", type = \"MenuLine\""
+	myIntroDescription "branch = \"DLC1\", contextComment = \"DQ 020 Intro Description - Go to Akiva and find the highroler\", enabled = true, guid = #03BE13BA662A6E150000011960165078, lineVersion = 13, maxLength = 0, productId = 84, sectionId = 11584, text = \"With the Morenia's sabacc tournament looming, Kay travels to Akiva to brush up on her skills.\", type = \"MenuLine\"}"
+	myDescription "branch = \"DLC1\", contextComment = \"DQ 020  Description\", enabled = true, guid = #03BE13BA662A6E150000011A446D1ECA, lineVersion = 8, maxLength = 0, productId = 84, sectionId = 11584, text = \"Forced to do a job for Governor Thorden, Kay must travel to the casino cruiser Morenia and win a high-stakes sabacc tournament on board.\", type = \"MenuLine\""
+	myImage helix/baked/ui/loose_images/quest_bilboard/dlc1_journal_billboard_dq_020.dds
+	myCompletionReward < uid=225CF62766B5D456000C3216C1C5A4E2 > = DLC1_A_DQ_020_QuestComplete_Reward D00CF65466B4E73200031F8BD445F7D0
+	myGoals
+	{
+		QuestGoal "INTRO GOAL Find the Sabacc Expert" < uid=225CF62766744782000A8DF36815337B >
+		{
+			myGoalText "branch = \"DLC1\", contextComment = \"goal description\", enabled = true, guid = #225CF62766744782000A8DF40F896663, lineVersion = 5, maxLength = 0, productId = 84, sectionId = 11585, text = \"Learn Sabacc tricks from the High Roller\", type = \"MenuLine\""
+		}
+		QuestGoal "INTRO GOAL Check the Abilities menu for clues" < uid=225CF627667447BE000A8DF76F72C461 >
+		{
+			myGoalText "branch = \"DLC1\", contextComment = \"goal description\", enabled = true, guid = #225CF627667447A5000A8DF6146E4319, lineVersion = 5, maxLength = 0, productId = 84, sectionId = 11585, text = \"Check the Abilities menu for clues\", type = \"MenuLine\""
+		}
+	}
+	myIntroBeat < uid=ADBA7BC36669C8A2000000D58CACB8F3 >
+	{
+		myScript helix/scripts/dlc1_scr_b_dq_020_aki_pln_b00_intro.mscript
+		myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myLevelInfo 9C4B6A046012E6B0000001B224713F01
+		myMood RelaxedNoSpawnpoints
+		myObjectives
+		{
+			QuestObjectiveCustom "Objectives intro beat" < uid=225CF627667445A80007CEA97905C59A >
+			{
+				myName "branch = \"DLC1\", contextComment = \"Intro name description\", enabled = true, guid = #225CF627667445A80007CEAAF3395AC5, lineVersion = 5, maxLength = 0, productId = 84, sectionId = 11585, text = \"Find the Sabacc Expert\nCheck the Abilities menu for clues\", type = \"MenuLine\""
+			}
+		}
+		myQuestBeatStateGameValue < uid=ADBA7BC36669C8A2000000D6C9C4190A >
+		{
+		}
+		mySkipConditions
+		{
+			GameConditionQuestIsCompleted "Eq_120 Check"
+			{
+				myQuest E1B84E3A64BE58710004095265CCBF6D
+			}
+		}
+	}
+	myBeats
+	{
+		QuestBeat "B01 Enter the morenia" < uid=03BE13BA662A6E150000013D2FE43BAE >
+		{
+			myScript dlc1/scripts/dlc1_scr_b_dq_020_b01_mrn_spc_boardtheship.mscript
+			myName "aurabesh = false, branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 20037F8065FC4D050000A0D4DAC72DB3
+			myDebugPlayLandingZone CC6CF61E66267D460005EF8A62D72613
+			myMood Relaxed
+			mySetPlayerInBeatOnStart FALSE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Go to the ship coordinates" < uid=03BE13BA662A6E150000013EEF9CF5E4 >
+				{
+					myName "aurabesh = false, branch = \"DLC1\", contextComment = \"DQ020 B01 Objective1 Name\", enabled = true, guid = #03BE13BA662A6E150000011F4B67A035, lineVersion = 6, maxLength = 0, productId = 84, sectionId = 11585, text = \"Go to the ship coordinates\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 00000000000000000000000000000000
+					}
+				}
+			}
+			myQuestBeatStateGameValue < uid=03BE13BA662A6E150000013F9F11DE6F >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4B3CFEB22FC45E2BF4DABC6B91198895
+			}
+		}
+		QuestBeat "B02 Find the playerlist" < uid=03BE13BA662A6E15000001400E6FF933 >
+		{
+			myScript "dlc1/scripts/dlc1_scr_b_dq_020_ parta_mrn_pln_b02_ findplayerlist.mscript"
+			myName "aurabesh = false, branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 20037F8065FC4BB80000914A0E5AF776
+			myDebugPlayLandingZone CC6CF61E66267D460005EF8A62D72613
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom "MAIN OBJECTIVE Enter the sabacc tournament" < uid=C9E22992664B76B50004996FBD9BAF57 >
+				{
+					myName "branch = \"DLC1\", contextComment = \"B_DQ_020_B01_Objective01 Name. Displayed in UI\", enabled = true, guid = #C9E22992664B76EE000499729CE46874, lineVersion = 5, maxLength = 0, productId = 84, sectionId = 11585, text = \"Enter the tournament\", type = \"MenuLine\""
+				}
+				QuestObjectiveTalkTo "MAIN OBJECTIVE Talk ND5" < uid=225CF62766954B3800211A3E795C1610 >
+				{
+					myName "branch = \"DLC1\", contextComment = \"B_DQ_020_B01_Objective01 Name. Displayed in UI\", enabled = true, guid = #225CF62766954B2700211A3D06188FB3, lineVersion = 6, maxLength = 0, productId = 84, sectionId = 11585, text = \"Talk to ND-5\", type = \"MenuLine\""
+				}
+				QuestObjectiveCustom "MAIN OBJECTIVE Find the playerlist" < uid=C9E22992664B7A1500049A329C60BAB6 >
+				{
+					myName "branch = \"DLC1\", contextComment = \"B_DQ_020_B01_Objective Name. Displayed in UI\", enabled = true, guid = #C9E22992664B79BE00049A3177FFC2F2, lineVersion = 9, maxLength = 0, productId = 84, sectionId = 11585, text = \"Find the player list\", type = \"MenuLine\""
+					myIntel
+					{
+						Intel "New Intel" < uid=225CF62766B38D3A001394D2BDB763AD > = dlc1_dq_20_Intel_C1_Reception_Desk 225CF62766B36DD500093C83C845E0CF
+						Intel "New Intel_0" < uid=225CF62766B38D3B001394D376530BE0 > = dlc1_dq_20_Intel_C2_Ship_Database 225CF62766B37D71000B16EBF7385B7B
+						Intel "New Intel_1" < uid=225CF62766B38D3B001394D41884151B > = dlc1_dq_20_Intel_D1_The_Clandestine_Bookie 225CF62766B37D71000B16EE88070F0B
+						Intel "New Intel_2" < uid=225CF62766B38D3C001394D57BD6B1FE > = dlc1_dq_20_Intel_D2_1_Bookies_location 225CF62766B37F1B000B17329BA7351E
+						Intel "New Intel_3" < uid=225CF62766B38D3D001394D6B8092E74 > = dlc1_dq_20_Intel_D2_2_Bookies_Description 225CF62766B37F1B000B17358476931A
+						Intel "New Intel_4" < uid=225CF62766B38D3D001394D7B932FE1E > = dlc1_dq_20_Intel_D3_Bookies_Looks_And_Place 225CF62766B37F1B000B17380DE0C3C3
+					}
+					myAutoResolveIntel FALSE
+				}
+				QuestObjectiveTalkTo "MAIN OBJECTIVE Return to ND5" < uid=C9E22992664C56AB0003253C1C3FB5EA >
+				{
+					myName "branch = \"DLC1\", contextComment = \"B_DQ_020_B01_Objective01 Name. Displayed in UI\", enabled = true, guid = #C9E22992664C56440003253B001E3896, lineVersion = 6, maxLength = 0, productId = 84, sectionId = 11585, text = \"Talk to ND-5\", type = \"MenuLine\""
+					myIntel
+					{
+					}
+				}
+				QuestObjectiveCustom "EXO BROKER" < uid=225CF6276683BE3900039E68BC861F2E >
+				{
+					myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsExternal TRUE
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+					myIntel
+					{
+					}
+				}
+				QuestObjectiveCustom "EXO DATABASE" < uid=225CF6276683BF0A00039E9F30DFD038 >
+				{
+					myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsExternal TRUE
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+					myIntel
+					{
+					}
+				}
+				QuestObjectiveCustom "SEARCH AREA CABIN" < uid=C9E2299266D832B400056EABECA7E4B3 >
+				{
+					myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myAutoResolveIntel FALSE
+				}
+				QuestObjectiveCustom "SEARCH AREA WelcomeDesk" < uid=C9E2299266D832D500056EAFAE6C055E >
+				{
+					myName "branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myAutoResolveIntel FALSE
+				}
+				QuestObjectiveCustom "SEARCH AREA DATABASE" < uid=225CF62766F6AFDF0025938B1FDC7F64 >
+				{
+					myName "branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myAutoResolveIntel FALSE
+				}
+				QuestObjectiveCustom "SEARCH AREA DATABASE_02" < uid=225CF62766F6B6B3002902DF7D0B0F96 >
+				{
+					myName "branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myAutoResolveIntel FALSE
+				}
+			}
+			myQuestBeatStateGameValue < uid=03BE13BA662A6E1500000152E96AFDAD >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 46368436607301C1170B33BADBA209A2
+			}
+			myDebugPlayOnlyCompletionReward < uid=C9E2299266F411CD00258F6193126EE7 > = DQ020_KayRoom_add 225CF6276674063F00083A1BC7260716
+		}
+		QuestBeat "B03 Find  Zana" < uid=225CF627662E3C7200032E7F0B566EA0 >
+		{
+			myScript dlc1/scripts/dlc1_scr_b_dq_020_mrn_pln_b03_findzana.mscript
+			myName "aurabesh = false, branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 20037F8065FC4BB80000914A0E5AF776
+			myDebugPlayLandingZone CC6CF61E66267D460005EF8A62D72613
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom "OBJ Get the golden ticket from Zana" < uid=225CF627662E3C7200032E80D3D0D07A >
+				{
+					myName "branch = \"DLC1\", contextComment = \"DQ020 B03 Objective Name. Displayed in UI\", enabled = true, guid = #225CF627662E338300032E7ECEFB2FB0, lineVersion = 9, maxLength = 0, productId = 84, sectionId = 11585, text = \"Find Zana Gatta and get her invitation\", type = \"MenuLine\""
+					myIntel
+					{
+						Intel "New Intel" < uid=C9E2299266B614FD0003E507E7E200EE > = dlc1_dq_20_B03_Intel_A1_Zanas_trail C9E2299266B4DFF2000472FFA31EA8A8
+						Intel "New Intel_1" < uid=C9E2299266B615140003E523421B6FE8 > = dlc1_dq_20_B03_Intel_A_HIDDEN_Intel_Empty C9E2299266B6127A0003D61B138E780E
+						Intel "New Intel_0" < uid=C9E2299266B6150B0003E52234341B81 > = "dlc1_dq_20_B03_Intel_A2_1_Zanas description" C9E2299266B4DFF200047305B4C6AD07
+						Intel "New Intel_2" < uid=C9E2299266B615210003E524A05E5382 > = dlc1_dq_20_B03_Intel_A2_Zanas_location C9E2299266B4DFF2000473027E473AB0
+						Intel "New Intel_3" < uid=C9E2299266B6152B0003E52538B077D1 > = dlc1_dq_20_B03_Intel_A3_Zanas_looks_and_place C9E2299266B4DFF200047308F600ED86
+						Intel "New Intel_4" < uid=C9E2299266B615330003E5266D6AD410 > = dlc1_dq_20_B03_Intel_B1_Locked_Cabins C9E2299266B4DFF20004730B327519F7
+						Intel "New Intel_5" < uid=C9E2299266B6153A0003E52714F53275 > = dlc1_dq_20_B03_Intel_B2_Master_keycard C9E2299266B4DFF20004730EA9B07F67
+						Intel "New Intel_7" < uid=C9E2299266E312FC000C49CCC58320DF > = dlc1_dq_20_B03_Intel_B_HIDDEN_Intel_Empty C9E2299266E307180009FFFF1CA43406
+						Intel "New Intel_6" < uid=C9E2299266B615420003E528E8E708BF > = dlc1_dq_20_B03_Intel_B3_Morenia_Cleaners C9E2299266B4DFF2000473113A37DE14
+						Intel "New Intel_13" < uid=C9E2299266E31305000C49CD6A491D8D > = dlc1_dq_20_B03_Intel_B4_Roomservice C9E2299266E3053300094869A437A9A1
+						Intel "New Intel_14" < uid=C9E2299266E31313000C49CEED08E2FF > = dlc1_dq_20_B03_Intel_B5_Cleaningservice C9E2299266E305CE0009FFFA7FB57DE7
+						Intel "New Intel_8" < uid=C9E2299266B615510003E52A9A29C633 > = dlc1_dq_20_B03_Intel_B5_verillian_egg C9E2299266B4DFF20004731729BA536F
+						Intel "New Intel_9" < uid=C9E2299266B615570003E52B14D6BAF1 > = dlc1_dq_20_B03_Intel_C1_Zanas_Room C9E2299266B4DFF20004731AC08BA851
+						Intel "New Intel_10" < uid=C9E2299266B615600003E52CAC3CCBAC > = dlc1_dq_20_B03_Intel_C2_Tournament_buy_in C9E2299266B4DFF20004731D1E0ADD9B
+						Intel "New Intel_11" < uid=C9E2299266B6156B0003E52D2F2F6A9E > = dlc1_dq_20_B03_Intel_C3_Pyke_Vip_keycard C9E2299266B4DFF20004732047EBBDF3
+						Intel "New Intel_12" < uid=C9E2299266B6156E0003E52E9A3DFFE0 > = dlc1_dq_20_B03_Intel_C4_missing_clue C9E2299266B4DFF20004732301239394
+					}
+					myAutoResolveIntel FALSE
+				}
+				QuestObjectiveCustom "EXO HINT Zanas room" < uid=C9E22992664E1ABD00159C1DE3F3A32B >
+				{
+					myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIconOverride "mySpriteId = 169308265, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_morenia_icon.spritesheet\""
+					myIsExternal TRUE
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD FALSE
+					myIsHint TRUE
+				}
+				QuestObjectiveCustom "EXO Find Zana" < uid=C9E229926683D5C00003C897C6967E45 >
+				{
+					myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsExternal TRUE
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveCustom "OBJ Blackmail Zana" < uid=C9E22992668BEE8200092AF2FE632EDE >
+				{
+					myName "branch = \"DLC1\", contextComment = \"DQ020 B03 Objective Name. Displayed in UI\", enabled = true, guid = #C9E22992668BED8600092AE822890BE4, lineVersion = 11, maxLength = 0, productId = 84, sectionId = 11585, text = \"Blackmail Zana to get her invitation\", type = \"MenuLine\""
+					myIntel
+					{
+						Intel "New Intel" < uid=C9E2299266E316DD0002BE87F5A035D4 > = dlc1_dq_20_B03_Intel_A1_Zanas_trail C9E2299266B4DFF2000472FFA31EA8A8
+						Intel "New Intel_1" < uid=C9E2299266E316DD0002BE88184276D4 > = dlc1_dq_20_B03_Intel_A_HIDDEN_Intel_Empty C9E2299266B6127A0003D61B138E780E
+						Intel "New Intel_0" < uid=C9E2299266E316DD0002BE896849980F > = "dlc1_dq_20_B03_Intel_A2_1_Zanas description" C9E2299266B4DFF200047305B4C6AD07
+						Intel "New Intel_2" < uid=C9E2299266E316DD0002BE8AF2084231 > = dlc1_dq_20_B03_Intel_A2_Zanas_location C9E2299266B4DFF2000473027E473AB0
+						Intel "New Intel_3" < uid=C9E2299266E316DD0002BE8B06F2C731 > = dlc1_dq_20_B03_Intel_A3_Zanas_looks_and_place C9E2299266B4DFF200047308F600ED86
+						Intel "New Intel_4" < uid=C9E2299266E316DD0002BE8C0D0DE5ED > = dlc1_dq_20_B03_Intel_B1_Locked_Cabins C9E2299266B4DFF20004730B327519F7
+						Intel "New Intel_5" < uid=C9E2299266E316DD0002BE8D29A08DA3 > = dlc1_dq_20_B03_Intel_B2_Master_keycard C9E2299266B4DFF20004730EA9B07F67
+						Intel "New Intel_7" < uid=C9E2299266E316DD0002BE8E99095B6C > = dlc1_dq_20_B03_Intel_B_HIDDEN_Intel_Empty C9E2299266E307180009FFFF1CA43406
+						Intel "New Intel_6" < uid=C9E2299266E316DD0002BE8F0952CC33 > = dlc1_dq_20_B03_Intel_B3_Morenia_Cleaners C9E2299266B4DFF2000473113A37DE14
+						Intel "New Intel_13" < uid=C9E2299266E316DD0002BE906B126279 > = dlc1_dq_20_B03_Intel_B4_Roomservice C9E2299266E3053300094869A437A9A1
+						Intel "New Intel_14" < uid=C9E2299266E316DD0002BE9146F2372D > = dlc1_dq_20_B03_Intel_B5_Cleaningservice C9E2299266E305CE0009FFFA7FB57DE7
+						Intel "New Intel_8" < uid=C9E2299266E316DD0002BE9295F3D6A4 > = dlc1_dq_20_B03_Intel_B5_verillian_egg C9E2299266B4DFF20004731729BA536F
+						Intel "New Intel_9" < uid=C9E2299266E316DD0002BE930A5FA37D > = dlc1_dq_20_B03_Intel_C1_Zanas_Room C9E2299266B4DFF20004731AC08BA851
+						Intel "New Intel_10" < uid=C9E2299266E316DD0002BE94F2A609E5 > = dlc1_dq_20_B03_Intel_C2_Tournament_buy_in C9E2299266B4DFF20004731D1E0ADD9B
+						Intel "New Intel_11" < uid=C9E2299266E316DD0002BE95253A03C3 > = dlc1_dq_20_B03_Intel_C3_Pyke_Vip_keycard C9E2299266B4DFF20004732047EBBDF3
+						Intel "New Intel_12" < uid=C9E2299266E316DD0002BE962E77B736 > = dlc1_dq_20_B03_Intel_C4_missing_clue C9E2299266B4DFF20004732301239394
+					}
+					myAutoResolveIntel TRUE
+				}
+				QuestObjectiveCustom "OBJ Gather_info_on_Zana" < uid=C9E2299266C60BCC00042CE58F408EA5 >
+				{
+					myName "branch = \"DLC1\", contextComment = \"DQ020 B03 Objective Name. Displayed in UI\", enabled = true, guid = #C9E2299266C60B8700042CE4BA296BB6, lineVersion = 12, maxLength = 0, productId = 84, sectionId = 11585, text = \"Gather information on Zana Gatta\", type = \"MenuLine\""
+					myIntel
+					{
+						Intel "New Intel" < uid=C9E2299266E316DD0002BE97D9C4BDCE > = dlc1_dq_20_B03_Intel_A1_Zanas_trail C9E2299266B4DFF2000472FFA31EA8A8
+						Intel "New Intel_1" < uid=C9E2299266E316DD0002BE981BEF6E32 > = dlc1_dq_20_B03_Intel_A_HIDDEN_Intel_Empty C9E2299266B6127A0003D61B138E780E
+						Intel "New Intel_0" < uid=C9E2299266E316DD0002BE99EE3E5297 > = "dlc1_dq_20_B03_Intel_A2_1_Zanas description" C9E2299266B4DFF200047305B4C6AD07
+						Intel "New Intel_2" < uid=C9E2299266E316DD0002BE9A7D638661 > = dlc1_dq_20_B03_Intel_A2_Zanas_location C9E2299266B4DFF2000473027E473AB0
+						Intel "New Intel_3" < uid=C9E2299266E316DD0002BE9B81B56ECE > = dlc1_dq_20_B03_Intel_A3_Zanas_looks_and_place C9E2299266B4DFF200047308F600ED86
+						Intel "New Intel_4" < uid=C9E2299266E316DD0002BE9CE14B1E34 > = dlc1_dq_20_B03_Intel_B1_Locked_Cabins C9E2299266B4DFF20004730B327519F7
+						Intel "New Intel_5" < uid=C9E2299266E316DD0002BE9DFDFD4260 > = dlc1_dq_20_B03_Intel_B2_Master_keycard C9E2299266B4DFF20004730EA9B07F67
+						Intel "New Intel_7" < uid=C9E2299266E316DD0002BE9E9CCC8330 > = dlc1_dq_20_B03_Intel_B_HIDDEN_Intel_Empty C9E2299266E307180009FFFF1CA43406
+						Intel "New Intel_6" < uid=C9E2299266E316DD0002BE9FB6254D79 > = dlc1_dq_20_B03_Intel_B3_Morenia_Cleaners C9E2299266B4DFF2000473113A37DE14
+						Intel "New Intel_13" < uid=C9E2299266E316DD0002BEA00F265F37 > = dlc1_dq_20_B03_Intel_B4_Roomservice C9E2299266E3053300094869A437A9A1
+						Intel "New Intel_14" < uid=C9E2299266E316DD0002BEA118DFF2F1 > = dlc1_dq_20_B03_Intel_B5_Cleaningservice C9E2299266E305CE0009FFFA7FB57DE7
+						Intel "New Intel_8" < uid=C9E2299266E316DD0002BEA2E0F227D9 > = dlc1_dq_20_B03_Intel_B5_verillian_egg C9E2299266B4DFF20004731729BA536F
+						Intel "New Intel_9" < uid=C9E2299266E316DD0002BEA37C20F03B > = dlc1_dq_20_B03_Intel_C1_Zanas_Room C9E2299266B4DFF20004731AC08BA851
+						Intel "New Intel_10" < uid=C9E2299266E316DD0002BEA441C2C76F > = dlc1_dq_20_B03_Intel_C2_Tournament_buy_in C9E2299266B4DFF20004731D1E0ADD9B
+						Intel "New Intel_11" < uid=C9E2299266E316DD0002BEA5A66DFDDC > = dlc1_dq_20_B03_Intel_C3_Pyke_Vip_keycard C9E2299266B4DFF20004732047EBBDF3
+						Intel "New Intel_12" < uid=C9E2299266E316DD0002BEA6D7D0CA27 > = dlc1_dq_20_B03_Intel_C4_missing_clue C9E2299266B4DFF20004732301239394
+					}
+					myAutoResolveIntel FALSE
+				}
+				QuestObjectiveCustom "SEARCH AREA CABIN" < uid=C9E2299266D832E300056EB11B094396 >
+				{
+					myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myAutoResolveIntel FALSE
+				}
+				QuestObjectiveCustom "SEARCH AREA SYNDICAT" < uid=C9E2299266D832F900056EB4ECBB76E9 >
+				{
+					myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myAutoResolveIntel FALSE
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputAgent ND5_from_b02 < uid=C9E2299266EC413A001A7DC89078997C >
+				{
+				}
+			}
+			myQuestBeatStateGameValue < uid=225CF627662E3C7200032E81E4048772 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4108AB28A5C4E57218420F961C8CC8BC
+			}
+			myCompletionReward < uid=C9E2299266B4824D00043319C0C136C0 > = DQ020_GoldenTicket_add 225CF6276674090A000AA89AD5C8C5DC
+		}
+		QuestBeat "B04 Enter the tournament" < uid=225CF627662E3CDB00032E8A25FD45D8 >
+		{
+			myScript dlc1/scripts/dlc1_scr_b_dq_020_mrn_pln_b04_enterthetournament.mscript
+			myName "aurabesh = false, branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 20037F8065FC4BB80000914A0E5AF776
+			myDebugPlayLandingZone CC6CF61E66267D460005EF8A62D72613
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "REACH THE TOURNAMENT" < uid=225CF627662E3CDB00032E8B7A821D71 >
+				{
+					myName "branch = \"DLC1\", contextComment = \"DQ020 B04 Objective Name.Displayed in UI\", enabled = true, guid = #225CF627662E3CA700032E86D4095095, lineVersion = 9, maxLength = 0, productId = 84, sectionId = 11585, text = \"Enter the tournament\", type = \"MenuLine\""
+					myQuestObjectiveAudioState
+					{
+						myGuid 48FCB42439C80503DA585C7A6F09CF98
+					}
+				}
+				QuestObjectiveCustom "Win sabacc game" < uid=03BE13BA662B59EC00048B851BF24F54 >
+				{
+					myName "branch = \"DLC1\", contextComment = \"DQ020 B04 Objective2 Name\", enabled = true, guid = #03BE13BA662B59EC00048B86EA28FFA0, lineVersion = 5, maxLength = 0, productId = 84, sectionId = 11585, text = \"Win the tournament\", type = \"MenuLine\""
+					myIntel
+					{
+						Intel "New Intel" < uid=C9E2299266FAC7D500024FBA88A9AB4C > = dlc1_dq_20_A_Intel_E1_Sabacc_Teasing D00CF65466B4EA1C0002521817A03D4C
+						Intel "New Intel_0" < uid=C9E2299266FAC81B00024FBBA24BC3C3 > = dlc1_dq_20_A_Intel_E2_Sabacc_Quarren_CheatHint D00CF65466B4EFB40002523710BC0D95
+						Intel "New Intel_1" < uid=C9E2299266FAC82100024FBC8175DD17 > = dlc1_dq_20_A_Intel_E3_Sabacc_Human_CheatHint D00CF65466B4F231000252412A940D10
+						Intel "New Intel_2" < uid=C9E2299266FAC82500024FBD2710286B > = dlc1_dq_20_A_Intel_E4_Sabacc_Pyke_CheatHint D00CF65466B4F2610002524999E9A8F2
+						Intel "New Intel_3" < uid=C9E2299266FAC82800024FBEE226140E > = dlc1_dq_20_A_Intel_E5_Sabacc_Rodian_CheatHint D00CF65466B4F2AC0002525200A61502
+						Intel "New Intel_4" < uid=C9E2299266FAC82900024FBF1E8F8652 > = dlc1_dq_20_A_Intel_E6_1_Sabacc_Hidden D00CF65466B4F335000252611924ABEF
+						Intel "New Intel_5" < uid=C9E2299266FAC83C00024FC0313D7DF1 > = dlc1_dq_20_A_Intel_E6_Sabacc_Outro D00CF65466B4F3350002525E44F25C64
+					}
+					myQuestObjectiveAudioState
+					{
+						myGuid 4FE42E39363568D831A2AB225833598D
+					}
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=225CF627662E3CDB00032E8C499DBA68 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4E8648FCF26F7B3A905F3B1ECEC158A2
+			}
+		}
+		QuestBeat "B11 Escape to safety" < uid=03BE13BA662A6E1500000153E36BE96B >
+		{
+			myScript dlc1/scripts/dlc1_scr_b_dq_020_mrn_pln_b11_escape.mscript
+			myName "aurabesh = false, branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 20037F8065FC4BB80000914A0E5AF776
+			myDebugPlayLandingZone CC6CF61E66267D460005EF8A62D72613
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "B11 Objective 01 Escape" < uid=03BE13BA662A6E150000015431840F04 >
+				{
+					myName "branch = \"DLC1\", contextComment = \"B_DQ_020_B11_Objective01 Name\", enabled = true, guid = #03BE13BA662A6E15000001316590491A, lineVersion = 5, maxLength = 0, productId = 84, sectionId = 11585, text = \"Run to safety\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myIsHighPrio TRUE
+				}
+			}
+			myQuestBeatStateGameValue < uid=03BE13BA662A6E1500000155BCFFD8B3 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4027901E904077E1E189BF3949C423B4
+			}
+		}
+		QuestBeat "B12 Escape the ship" < uid=03BE13BA662A6E150000015602C6DD14 >
+		{
+			myScript dlc1/scripts/dlc1_scr_b_dq_020_mrn_pln_b12_escapetheship.mscript
+			myName "aurabesh = false, branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 20037F8065FC4BB80000914A0E5AF776
+			myDebugPlayLandingZone CC6CF61E66267D460005EF8A62D72613
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Find a way out" < uid=7C12810B66D81D2E00082D86DE174A09 >
+				{
+					myName "branch = \"DLC1\", contextComment = \"B_DQ_020_B12_Objective01 Name\", enabled = true, guid = #7C12810B66D81D2E00082D8752613214, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 11585, text = \"Find a way out\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myQuestObjectiveAudioState
+					{
+						myGuid 45A39EA5D099FC51122B1386C99C72A1
+					}
+				}
+				QuestObjectiveGoToLocation "Find the map to Okala V" < uid=7C12810B66D81D6A00082D8921CC1F64 >
+				{
+					myName "branch = \"DLC1\", contextComment = \"B_DQ_020_B12_Objective02 Name\", enabled = true, guid = #7C12810B66D81D6A00082D8A0286ED31, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 11585, text = \"Find the map to Okala V\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myQuestObjectiveAudioState
+					{
+						myGuid 4299EE06802F5F323DAD5716A327D887
+					}
+				}
+			}
+			myScriptInputs
+			{
+			}
+			myQuestBeatStateGameValue < uid=03BE13BA662A6E1500000158AFB78876 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 45BD727F2E0055BD4F8DA834854A0CB7
+			}
+		}
+		QuestBeat "B13 Chase the pirate" < uid=03BE13BA662A6E1500000159EDCFE773 >
+		{
+			myScript dlc1/scripts/dlc1_scr_b_dq_020_mrn_pln_b13_chasethepirate.mscript
+			myName "aurabesh = false, branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 20037F8065FC4BB80000914A0E5AF776
+			myDebugPlayLandingZone CC6CF61E66267D460005EF8A62D72613
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveFollow "Chase the pirate" < uid=03BE13BA662A6E150000015AD9D5A9A3 >
+				{
+					myName "branch = \"DLC1\", contextComment = \"B_DQ_020_B13_Objective01 Name\", enabled = true, guid = #03BE13BA662A6E15000001336773F542, lineVersion = 5, maxLength = 0, productId = 84, sectionId = 11585, text = \"Chase the bandit leader\", type = \"MenuLine\""
+					myIsHiddenInHUD FALSE
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputAgent PirateAgent < uid=03BE13BA662A6E150000015CA660AA0D >
+				{
+				}
+				QuestBeatScriptInputFireteam PIrateFireteam < uid=7C12810B66855F3E001CA80C4C11B2B1 >
+				{
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=03BE13BA662A6E150000015D340635CD >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4B069DB5E5FA1EF2354CEA0A2A49A899
+			}
+		}
+		QuestBeat "B14 Open the ship" < uid=03BE13BA662A6E150000015E40EA1A5F >
+		{
+			myScript dlc1/scripts/dlc1_scr_b_dq_020_mrn_pln_b14_opentheship.mscript
+			myName "aurabesh = false, branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 20037F8065FC4BB80000914A0E5AF776
+			myDebugPlayLandingZone CC6CF61E66267D460005EF8A62D72613
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom "Defeat the pirates" < uid=7C12810B6686A9A60018F0628FACE832 >
+				{
+					myName "branch = \"DLC1\", contextComment = \"B_DQ_020_B14_Objective01 Name\", enabled = true, guid = #7C12810B6686A9A60018F063A388A482, lineVersion = 5, maxLength = 0, productId = 84, sectionId = 11585, text = \"Defeat the bandits\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveInteract "Open the ship" < uid=03BE13BA662A6E150000015FCE64FA59 >
+				{
+					myName "branch = \"DLC1\", contextComment = \"B_DQ_020_B14_Objective02 Name\", enabled = true, guid = #03BE13BA662A6E15000001349E6B51F7, lineVersion = 8, maxLength = 0, productId = 84, sectionId = 11585, text = \"Shut down the hyperdrive\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=03BE13BA662A6E15000001606DF7115A >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4591493D788228FEFBC4AE8130AC0BB8
+			}
+		}
+		QuestBeat "B15 Escape the ship" < uid=03BE13BA662A6E1500000161685AE974 >
+		{
+			myScript dlc1/scripts/dlc1_scr_b_dq_020_mrn_pln_b15_escapetheship.mscript
+			myName "aurabesh = false, branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 20037F8065FC4BB80000914A0E5AF776
+			myDebugPlayLandingZone CC6CF61E66267D460005EF8A62D72613
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveCustom "Escape the Morenia beacon" < uid=03BE13BA662A6E150000016444851B19 >
+				{
+					myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myQuestObjectiveAudioState
+					{
+						myGuid 00000000000000000000000000000000
+					}
+				}
+				QuestObjectiveCustom "Escape the Morenia" < uid=03BE13BA662A6E1500000163912DB5A7 >
+				{
+					myName "branch = \"DLC1\", contextComment = \"B_DQ_020_B15_Objective02 Name\", enabled = true, guid = #03BE13BA662A6E150000013666A2F0D9, lineVersion = 6, maxLength = 0, productId = 84, sectionId = 11585, text = \"Escape the Morenia\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myQuestObjectiveAudioState
+					{
+						myGuid 4E891C9BABB664C219D6679E80E83A83
+					}
+				}
+				QuestObjectiveCustom "Open the ship" < uid=7C12810B66D1C349000D1030E95DAC0B >
+				{
+					myName "branch = \"DLC1\", contextComment = \"B_DQ_020_B15_Objective02 Hint Name\", enabled = true, guid = #7C12810B66D1C349000D1031F9E70B4E, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 11585, text = \"There must be a console to open the doors\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myIsHint TRUE
+					myQuestObjectiveAudioState
+					{
+						myGuid 46B339C3EC33AF4A66FBFC23887BC1B4
+					}
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=03BE13BA662A6E1500000165FB2B4BB4 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4583EF46B6530EB2937754EA5989BDAA
+			}
+			myQuestBeatAudioStateOnReset
+			{
+				myGuid 49D9C4E2412A94F4712F85D76E05FC95
+			}
+		}
+		QuestBeat "B20 TalkToLando" < uid=B1105BD26659DD45000B8307D5C7E189 >
+		{
+			myScript helix/scripts/scr_dq_020_tos_pln_b20_talktolando.mscript
+			myName "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A04601178B20000001A1F0FDFCB
+			myDebugPlayLandingZone 9D0EE20B6073F5F4000010D6D710D5C6
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myQuestBeatStateGameValue < uid=B1105BD26659DF6D000B88E054191535 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 49D9C4E2412A94F4712F85D76E05FC95
+			}
+		}
+	}
+	myQuestStateGameValue < uid=03BE13BA662A6E15000001661246FE3D >
+	{
+	}
+	myQuestAudioState
+	{
+		myGuid 4E19FD38A7E7420E643BEC10F1A42C87
+	}
+	myRequiredMTXAddonType DLC1
+}
+

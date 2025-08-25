@@ -1,0 +1,22 @@
+include "helix/game system data/fruit/contractgiver/contractgiver.fruit"
+include "helix/game system data/juice/contract/fp_contracts.mcontract"
+include "helix/game system data/juice/mapref/mapref_contractgiver_template.mmapref"
+include "helix/game system data/juice/rbtags/vendor.mrbtagstags"
+
+ContractGiver "Space Contraband Giver Test" < uid=F3C0F4616749B9A1000111BCBB434983 >
+{
+	myGalaxyLocation F3C0F4616749B711000F8AEF43476444
+	myMapRef < uid=F3C0F4616749B9A1000111BDEB8C5F14 > = mapref_contractgiver_template B581CAC8611B6CD80000298BBE69C121
+	mySlots
+	{
+		ContractGiverSlot "New ContractGiverSlot"
+		{
+			myInitialContract < uid=F3C0F461674D7E6B0007B3ED704E5B17 > = "Gym Space Contract Contraband" F3C0F4616749B6D3000F8AEBE8D30EEF
+		}
+	}
+	myGiverOutOfJobsTag < uid=F3C0F4616749B9A1000111BFAF0F840D > = Agent_Vendor_NotOutOfJobsPermanently 1EC89F2563FC748F000009C7A9038EB4
+	myFamiliarTag < uid=F3C0F4616749B9A1000111C00EA1CF3E > = Agent_Vendor_TrustedCustomerBarksActive 1EC89F256401B61A0000D58ACE830A78
+	myRecentlyBetrayedTag < uid=F3C0F4616749B9A1000111C1875C4501 > = Agent_Vendor_WasBetrayed 1EC89F2565BB59C3000000D2410D92AB
+	myLowReputationTag < uid=F3C0F4616749B9A1000111C28E09ABBF > = Agent_Vendor_LowReputationClosedForBusiness 1EC89F2565DDBAFF000A27BBD4679E47
+}
+

@@ -1,0 +1,391 @@
+include "helix/game system data/fruit/ai/spaceshipsettings.fruit"
+include "helix/game system data/juice/ai/npcshootpatterns.mnpcshootpattern"
+include "helix/game system data/juice/ai/spaceshipcombatprofiles.mspaceshipcombatprofile"
+include "helix/game system data/juice/ai/spaceshipformationprofiles.mspaceshipformationprofile"
+include "helix/game system data/juice/ai/spaceshipspawnprofiles.mspaceshipspawnprofile"
+include "helix/game system data/juice/ai/spaceshipspeedprofiles.mspaceshipspeedprofile"
+include "helix/game system data/juice/ai/spaceshiptrajectories.mspaceshiptrajectoryprofile"
+include "helix/game system data/juice/spaceshipbehaviorparamlist_default.juice"
+
+SpaceshipBehaviorParameter xwingEvasiveStartCurrentManeuverMinElapsedTime : EvasiveStartCurrentManeuverMinElapsedTime
+{
+}
+
+SpaceshipBehaviorParameter xwingEvasiveStartMinDistance : EvasiveStartMinDistance
+{
+}
+
+SpaceshipBehaviorParameter xwingEvasiveMinDistance : EvasiveMinDistance
+{
+}
+
+SpaceshipBehaviorParameter xwingEvasiveDurationRandomMin : EvasiveDurationRandomMin
+{
+	myValue 8.0
+}
+
+SpaceshipBehaviorParameter xwingEvasiveDurationRandomMax : EvasiveDurationRandomMax
+{
+	myValue 12.0
+}
+
+SpaceshipBehaviorParameter xwingEvasiveConeAngle : EvasiveConeAngle
+{
+}
+
+SpaceshipBehaviorParameter xwingEvasiveStartAngleFromHostile : EvasiveStartAngleFromHostile
+{
+}
+
+SpaceshipBehaviorParameter xwingEvasiveSpiralProbability : EvasiveSpiralProbability
+{
+}
+
+SpaceshipBehaviorParameter xwingEvasivePauseBetweenPatternsMin : EvasivePauseBetweenPatternsMin
+{
+}
+
+SpaceshipBehaviorParameter xwingEvasivePauseBetweenPatternsMax : EvasivePauseBetweenPatternsMax
+{
+}
+
+SpaceshipBehaviorParameter xwingEvasiveBreakProbability : EvasiveBreakProbability
+{
+}
+
+SpaceshipBehaviorParameter xwingEvasiveScaleWidth : EvasiveScaleWidth
+{
+	myValue 1.5
+}
+
+SpaceshipBehaviorParameter xwingEvasiveScaleHeight : EvasiveScaleHeight
+{
+	myValue 1.0
+}
+
+SpaceshipBehaviorParameter xwingEvasiveScaleLength : EvasiveScaleLength
+{
+	myValue 1.5
+}
+
+SpaceshipBehaviorParameter xwingTimeToStartEvasiveIfStillInFrontOfHostile : TimeToStartEvasiveIfStillInFrontOfHostile
+{
+	myValue 6.0
+}
+
+SpaceshipBehaviorParameter xwingBreakStartCurrentManeuverMinElapsedTime : BreakStartCurrentManeuverMinElapsedTime
+{
+	myValue 6.0
+}
+
+SpaceshipBehaviorParameter xwingChaseDurationRandomMin : ChaseDurationRandomMin
+{
+	myValue 8.0
+}
+
+SpaceshipBehaviorParameter xwingChaseDurationRandomMax : ChaseDurationRandomMax
+{
+	myValue 16.0
+}
+
+SpaceshipBehaviorParameter xwingChaseDistanceMin : ChaseDistanceMin
+{
+}
+
+SpaceshipBehaviorParameter xwingChaseDistanceMax : ChaseDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter xwingChaseConeAngle : ChaseConeAngle
+{
+	myValue 40.0
+}
+
+SpaceshipBehaviorParameter xwingChaseChanceToBreakOnHostileDodgePercent : ChaseChanceToBreakOnHostileDodgePercent
+{
+	myValue 5.0
+}
+
+SpaceshipBehaviorParameter xwingChaseBreakProbabilityOverPass : ChaseBreakProbabilityOverPass
+{
+}
+
+SpaceshipBehaviorParameter xwingOvershootMaxAngle : OvershootMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter xwingInterceptConeAngle : InterceptConeAngle
+{
+}
+
+SpaceshipBehaviorParameter xwingInterceptDistanceIdeal : InterceptDistanceIdeal
+{
+	myValue 600.0
+}
+
+SpaceshipBehaviorParameter xwingInterceptDistanceMin : InterceptDistanceMin
+{
+	myValue 200.0
+}
+
+SpaceshipBehaviorParameter xwingInterceptDistanceMax : InterceptDistanceMax
+{
+	myValue 1000.0
+}
+
+SpaceshipBehaviorParameter xwingInterceptDurationMin : InterceptDurationMin
+{
+}
+
+SpaceshipBehaviorParameter xwingInterceptDurationMax : InterceptDurationMax
+{
+}
+
+SpaceshipBehaviorParameter xwingJoustingProbability : JoustingProbability
+{
+	myValue 60.0
+}
+
+SpaceshipBehaviorParameter xwingJoustingMaxDurationPrepare : JoustingMaxDurationPrepare
+{
+}
+
+SpaceshipBehaviorParameter xwingJoustingMaxDuration : JoustingMaxDuration
+{
+}
+
+SpaceshipBehaviorParameter xwingJoustingDistanceTurn : JoustingDistanceTurn
+{
+	myValue 900.0
+}
+
+SpaceshipBehaviorParameter xwingJoustingEndDistance : JoustingEndDistance
+{
+	myValue 80.0
+}
+
+SpaceshipBehaviorParameter xwingJoustingAngle : JoustingAngle
+{
+}
+
+SpaceshipBehaviorParameter xwingJoustingMaxAngle : JoustingMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter xwingJoustingEndBreakProbabilityOverPass : JoustingEndBreakProbabilityOverPass
+{
+}
+
+SpaceshipBehaviorParameter xwingJoustingPositionMaxHeight : JoustingPositionMaxHeight
+{
+	myValue 150.0
+}
+
+SpaceshipBehaviorParameter xwingAlignMinDistance : AlignMinDistance
+{
+}
+
+SpaceshipBehaviorParameter xwingAlignMaxDistance : AlignMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter xwingLeashingMinDistance : LeashingMinDistance
+{
+}
+
+SpaceshipBehaviorParameter xwingLeashingMaxDistance : LeashingMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter xwingLeashingToVolumeMaxDistance : LeashingToVolumeMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter xwingShootMaxDistance : ShootMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter xwingShootMaxAngle : ShootMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter xwingBarkPositionDistanceMax : BarkPositionDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter xwingBroadcastRangeEnterCombat : BroadcastRangeEnterCombat
+{
+}
+
+SpaceshipBehaviorParameter xwingEscortDistance : EscortDistance
+{
+}
+
+SpaceshipBehaviorParameter xwingLowProhibitedActionAttackDelay : LowProhibitedActionAttackDelay
+{
+}
+
+SpaceshipBehaviorParameter xwingAccurateShootingProbability : AccurateShootingProbability
+{
+}
+
+SpaceshipBehaviorParameter xwingRangeForSecondaryWeapon : RangeForSecondaryWeapon
+{
+}
+
+SpaceshipBehaviorParameter xwingUndetectedTimeBeforeExitingCombat : UndetectedTimeBeforeExitingCombat
+{
+}
+
+SpaceshipBehaviorParameter xwingUndetectedTimeBeforeExitingAware : UndetectedTimeBeforeExitingAware
+{
+	myValue 15.0
+}
+
+SpaceshipBehaviorParameter xwingReinforcementsCallProbabilityPercent : ReinforcementsCallProbabilityPercent
+{
+}
+
+SpaceshipBehaviorParameter xwingReinforcementsCallDuration : ReinforcementsCallDuration
+{
+}
+
+SpaceshipBehaviorParameter xwingIdleDefaultSplineSizeHorizontal : IdleDefaultSplineSizeHorizontal
+{
+	myValue 800.0
+}
+
+SpaceshipBehaviorParameter xwingIdleDefaultSplineSizeVertical : IdleDefaultSplineSizeVertical
+{
+	myValue 250.0
+}
+
+SpaceshipBehaviorParameter xwingCooldownDuration : CooldownDuration
+{
+	myValue 1.0
+}
+
+SpaceshipBehaviorParameter xwingCooldownMaxDistance : CooldownMaxDistance
+{
+	myValue 600.0
+}
+
+SpaceshipBehaviorParameter xwingSpaceshipMaxEngagementDistance : SpaceshipMaxEngagementDistance
+{
+	myValue 1200.0
+}
+
+SpaceshipBehaviorParameter xwingSpaceshipPrimaryMaxAngle : SpaceshipPrimaryMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter xwingSpaceshipPrimaryMaxDistance : SpaceshipPrimaryMaxDistance
+{
+	myValue 900.0
+}
+
+SpaceshipBehaviorParameter xwingSpaceshipPrimaryMinDistance : SpaceshipPrimaryMinDistance
+{
+	myValue 50.0
+}
+
+SpaceshipBehaviorParameter xwingSpaceshipPrimaryMaxHealth : SpaceshipPrimaryMaxHealth
+{
+}
+
+SpaceshipBehaviorParameter xwingSpaceshipSecondaryMaxAngle : SpaceshipSecondaryMaxAngle
+{
+}
+
+SpaceshipBehaviorParameter xwingSpaceshipSecondaryMaxDistance : SpaceshipSecondaryMaxDistance
+{
+}
+
+SpaceshipBehaviorParameter xwingSpaceshipSecondaryMinDistance : SpaceshipSecondaryMinDistance
+{
+}
+
+SpaceshipBehaviorParameter xwingSpaceshipSecondaryMaxHealth : SpaceshipSecondaryMaxHealth
+{
+}
+
+SpaceshipBehaviorParameter xwingSpaceshipMissileMaxAngle : SpaceshipMissileMaxAngle
+{
+	myValue 160.0
+}
+
+SpaceshipBehaviorParameter xwingSpaceshipMissileMaxDistance : SpaceshipMissileMaxDistance
+{
+	myValue 1000.0
+}
+
+SpaceshipBehaviorParameter xwingSpaceshipMissileMinDistance : SpaceshipMissileMinDistance
+{
+	myValue 400.0
+}
+
+SpaceshipBehaviorParameter xwingSpaceshipMissileMaxHealth : SpaceshipMissileMaxHealth
+{
+}
+
+SpaceshipBehaviorParameter xwingCombatLeashingToPlayer : CombatLeashingToPlayer
+{
+	myValue 1100.0
+}
+
+SpaceshipBehaviorParameter xwingSpaceshipAccuracyRadiusMax : SpaceshipAccuracyRadiusMax
+{
+	myValue 7.0
+}
+
+SpaceshipBehaviorParameter xwingSpaceshipAccuracyRadiusMin : SpaceshipAccuracyRadiusMin
+{
+}
+
+SpaceshipBehaviorParameter xwingSpaceshipAccuracyDistanceMax : SpaceshipAccuracyDistanceMax
+{
+}
+
+SpaceshipBehaviorParameter xwingSpaceshipAccuracyDistanceMin : SpaceshipAccuracyDistanceMin
+{
+}
+
+SpaceshipBehaviorParameter xwingSpaceshipShotSpreadPercentage : SpaceshipShotSpreadPercentage
+{
+	myValue 8.0
+}
+
+SpaceshipBehaviorParameter xwingSpaceshipMissileLockOnTime : SpaceshipMissileLockOnTime
+{
+	myValue 0.5
+}
+
+SpaceshipBehaviorParameter xwingHarassmentChance : HarassmentChance
+{
+	myValue 10.0
+}
+
+SpaceshipBehaviorParameter xwingHarassmentDuration : HarassmentDuration
+{
+	myValue 20.0
+}
+
+SpaceshipBehaviorParameter xwingHarassmentAreaSizeMin : HarassmentAreaSizeMin
+{
+	myValue 100.0
+}
+
+SpaceshipBehaviorParameter xwingHarassmentAreaSizeMax : HarassmentAreaSizeMax
+{
+	myValue 600.0
+}
+
+SpaceshipBehaviorParameter xwingHarassmentAreaHeightMin : HarassmentAreaHeightMin
+{
+}
+
+SpaceshipBehaviorParameter xwingHarassmentAreaHeightMax : HarassmentAreaHeightMax
+{
+	myValue 100.0
+}
+

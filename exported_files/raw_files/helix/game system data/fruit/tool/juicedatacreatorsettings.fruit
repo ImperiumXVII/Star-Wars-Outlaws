@@ -1,0 +1,127 @@
+list ForcedFiles
+{
+    file
+}
+
+class FileSelection < tooltip="FileSelection decides what files and assets are displayed in the tool" >
+{
+    string myInheritFrom < tooltip="disregard file selection settings and copy fileselection from different element. Useful to merge file selections and create multiple elements in the same file" >
+    string myAssetType < tooltip="ASSETTYPE_X: Asset Types can be found in \code\helix\HClient\HC_AssetTypes.h" >
+    ForcedFiles myForcedFiles
+    string myStringFilter
+    string myDefaultSelection
+}
+
+list Operations
+{
+    SetOperation
+    AssignString
+    AssignLocString
+    AssignInt
+    AssignChildEditType
+    AssignReference
+    CreateListMember
+	AssignUID
+}
+
+class SetOperation
+{
+
+}
+
+class AssignString
+{
+    string myValue
+}
+
+class AssignUID
+{
+	string myValue
+}
+
+class AssignLocString
+{
+    varmap myValue < bhv="localization" >
+}
+
+class AssignInt
+{
+    string myValue
+}
+
+class AssignChildEditType
+{
+    string myValue
+}
+
+class AssignReference
+{
+    string myType
+    FileSelection myFileSelection
+    string mySuffixSepparator ""
+}
+
+
+
+
+list Members
+{
+    Member
+}
+
+class Member
+{
+    Operations myOperations
+    Members myChildren
+}
+
+class CreateListMember
+{
+    string myType
+    string myName
+    Members myChildren
+}
+
+list Parameters
+{
+    TextParameter
+    AssetParameter
+    CustomListParameter
+}
+
+class TextParameter
+{
+    string myExampleText "Example"
+}
+
+class AssetParameter
+{
+    string myType "Quest"
+	string mySubType ""
+    FileSelection myFileSelection
+    string mySuffixSepparator ""  
+}
+
+list CustomListParameter
+{
+    string
+}
+
+list ChildEditTypes
+{
+    EditType
+}
+
+class EditType
+{
+    string myName < tooltip="name of the generated juice data entry" >
+    string myType < tooltip="type of the generated juice data entry" >
+    string mySuffixSepparator "" < tooltip="EditTypes are also added as Parameters, this decides the suffix to split the string by (optional)" >
+    bool myIsHidden < tooltip="Hides the EditType from the UI" >
+    FileSelection myFileSelection 
+    uid myInheritUID < tooltip="Inherit from a juice entry with this UID (optional)" >
+    bool myAllowModifyExisting < tooltip="Toggle if it is allowed to modify existing data if juice content already exists. If FALSE the data generation will fail if the juice data already exists" >
+    Parameters myParameters < tooltip="parameters to expose to the user, these can be used in members by using [parameterstring]" >
+    Members myMembers < tooltip="juice members to set after edit type has been created" >
+    ChildEditTypes myChildEditTypes < tooltip="aditional juice entries to create, these can be referenced using the AssignChildEditType operation" >
+}

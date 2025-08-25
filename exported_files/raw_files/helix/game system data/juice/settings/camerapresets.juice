@@ -1,0 +1,42 @@
+include "helix/game system data/fruit/camera/camera.fruit"
+include "helix/game system data/juice/camerainput/aim_camera_input.mcamerainput"
+
+CameraPreset DefaultCameraTemplate < uid=46C1263953959303000003DAFB33DCFF >
+{
+	myDistance 3.15
+	myMinPitch -80.0
+	myMaxPitch 70.0
+	myPivot 0.35;1.71;0.0
+}
+
+CameraPreset Default_Camera < uid=1AD7B525537475D80000000CBD22CD1E > : DefaultCameraTemplate
+{
+	myMode Default
+}
+
+CameraPreset AimCameraTemplate < uid=544DB9085FA2D9D40000001EC9A4F56D >
+{
+	myMode ShoulderAim
+	myFOV 55.0
+	myDistance 1.25
+	myMinPitch -70.0
+	myInput < uid=B0ED925063FDDC3E00002FC02833E345 > : aim_camera_input
+	{
+	}
+	myPivot 0.45;1.46;0.0
+	myBlendPivotWithMirror FALSE
+	myCanRaiseWhenCloseToTarget FALSE
+	myLazinessValues
+	{
+		myUseLaziness FALSE
+	}
+	myHeightDeviationData
+	{
+		mySpringConstant 200.0
+		mySpringConstantOffset 200.0
+		myMaxDistance 0.1
+	}
+	myWantsToUseAimingFOV TRUE
+	myShouldOffsetCollisionAnchorX TRUE
+}
+

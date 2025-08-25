@@ -1,0 +1,46 @@
+enum LivingWorldLazyFrustumsContext
+{
+	OnFoot
+	OnSpeeder
+	InSpaceship
+}
+
+//Keep in sync with HC_LivingWorldLazyFrustumType
+enum LivingWorldLazyFrustumType
+{
+	Near
+	Middle
+	Far
+}
+
+class LivingWorldLazyFrustumData
+{
+	float myFOV 75.0f
+	float myFarPlaneDistance 0.0 < tooltip="Distance between the near and far plane" >
+	float myNearPlaneDistance 0.0 < tooltip="Distance between the origin and near plane" >
+	color myDebugColor 0xFF00FF00
+}
+
+class LivingWorldLazyFrustumsConfig
+{
+	int myNumberOfDirectionSamples 3 < tooltip="How many direction samples should be kept." >
+	float myMaxAngle 5 < tooltip="If all sample directions are within this angle of eachother the frustum will update position and direction." >
+	float mySampleMovementThreshold 2 < tooltip="How long the player needs to move from the last sample point to add a new sample." >
+	float myForceUpdateDistance 10 < tooltip="If the samples don't keep within the angle (player running in zig zag or looping), how long from the frustum position until we force an update.">
+	
+	LivingWorldLazyFrustumData myLivingWorldLazyFrustumNear
+	LivingWorldLazyFrustumData myLivingWorldLazyFrustumMiddle
+	LivingWorldLazyFrustumData myLivingWorldLazyFrustumFar
+}
+
+class LivingWorldSettings < uid=auto >
+{
+	LivingWorldLazyFrustumsConfig myOnFootConfig
+	LivingWorldLazyFrustumsConfig myOnSpeederConfig
+	LivingWorldLazyFrustumsConfig myInSpaceshipConfig
+	
+	float myPlanetGridCellSize 200 < min=1 >
+	float mySpaceGridCellSize 2000 < min=1 >
+	
+	float myCooldownAfterLoad 0 < tooltip="Time before living world content with the WaitForCooldownAfterLoad flag set are allowed to start after loading screen." >
+}

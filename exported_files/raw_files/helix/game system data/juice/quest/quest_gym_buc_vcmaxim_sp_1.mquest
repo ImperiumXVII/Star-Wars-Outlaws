@@ -1,0 +1,193 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/mapref/mapref_quest_hidden.mmapref"
+include "helix/game system data/juice/mapref/mapref_quest_main.mmapref"
+include "helix/game system data/juice/reward/currency_reward.mreward"
+
+Quest quest_gym_buc_vcmaxim_SP_1 < uid=82BA8ED36294D06A0000DDA1C52D82BE >
+{
+	myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE.\", enabled = true, guid = #82BA8ED36294D06A0000DD9FDD240699, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 653, text = \"Retrieve the evidence against your client\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE.\", enabled = true, guid = #82BA8ED36294D06A0000DDA0CEC1FC3F, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 653, text = \"Kay receives a contract from [Z] on planet [Y], town [X] to infiltrate in [Z]'s old house, get access to his hangar and to ‘liberate’ all the evidence of his involvement with the Rebels that are soon to be found by the Empire forces, because, now the entire area is under the Empire's control, which already were tipped about the Rebels involvement and are conducting a full-scale investigation over the town and took over our client's neighborhood, while his hangar becoming the Empire's Command Center. \nThe client also offered to help with a distraction, by faking the attack over the town's power plant on our signal and helping Kay with the evacuation.\", type = \"MenuLine\""
+	myCompletionReward < uid=82BA8ED36294D09B0000DDA4B5A07352 > = cur_credits_gain_huge E42FA10C62163E84000026FA31CDFCD6
+	myMapRefConstantData < uid=82BA8ED36294D0760000DDA3744159E1 > = mapref_quest_main B581CAC86228678D00002783B5F9DADE
+	myIntroBeat < uid=82BA8ED36294D1360000DE1AA8BE8E3C >
+	{
+		myScript helix/scripts/gym_buc_vcmaxim_QuestSP1_2.mscript
+		myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE.\", enabled = true, guid = #82BA8ED36294D0A10000DDA51C312F2A, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 653, text = \"Reach the Main Street\", type = \"MenuLine\""
+		myLevelInfo 82BA8ED362723163000000BC62929A9D
+		myObjectives
+		{
+			QuestObjectiveLeaveArea "Leave the backstreet" < uid=82BA8ED36294D31A0000DE3C622C1742 >
+			{
+				myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE.\", enabled = true, guid = #82BA8ED36294D32E0000DE3DFA6A5DE9, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 653, text = \"Leave the backstreet\", type = \"MenuLine\""
+				myIsHiddenInHUD TRUE
+			}
+		}
+		myQuestBeatStateGameValue < uid=82BA8ED36294D1360000DE1B28438554 >
+		{
+		}
+	}
+	myBeats
+	{
+		QuestBeat Beat_1 < uid=82BA8ED36294D1D40000DE3371E41D4A >
+		{
+			myScript helix/scripts/gym_buc_vcmaxim_QuestSP1_3.mscript
+			myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE\", enabled = true, guid = #82BA8ED36294D1EE0000DE352D496597, lineVersion = 6, maxLength = 0, productId = 6, sectionId = 653, text = \"Find a way past the blockade\", type = \"MenuLine\""
+			myLevelInfo 82BA8ED362723163000000BC62929A9D
+			myMood Focused
+			myObjectives
+			{
+				QuestObjectiveLeaveArea "Find a way past the blockade" < uid=82BA8ED36294D8290000FD11F9F890DD >
+				{
+					myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE\", enabled = true, guid = #82BA8ED36294D8350000FD12E97C972D, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 653, text = \"Find a way past the blockade\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveCounter "Eavesdrop on the Officer" < uid=82BA8ED362965B100000F857DE24137F >
+				{
+					myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE\", enabled = true, guid = #82BA8ED362965B1E0000F858E337D27C, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 653, text = \"Eavesdrop on the Officer\", type = \"MenuLine\""
+					myIsOptional TRUE
+					myIsHint TRUE
+				}
+				QuestObjectiveKillFireteam "Kill the officer for the Key Card" < uid=82BA8ED362965B5F0000F859E04F87A6 >
+				{
+					myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE\", enabled = true, guid = #82BA8ED362965B700000F85AD0EACD7A, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 653, text = \"Kill the officer and his guards\", type = \"MenuLine\""
+					myIsOptional TRUE
+				}
+				QuestObjectiveGetItem "Get the Key Card" < uid=82BA8ED362965BA50000F85B2EAB83F3 >
+				{
+					myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE\", enabled = true, guid = #82BA8ED362965BBC0000F85C73521068, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 653, text = \"Get the Key Card\", type = \"MenuLine\""
+					myIsOptional TRUE
+				}
+				QuestObjectiveInteract "Go through teh security Check" < uid=82BA8ED362967DFF0002C1B6488D0E7E >
+				{
+					myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE\", enabled = true, guid = #82BA8ED362967E100002C1B7F0201CCE, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 653, text = \"Go through teh security Check\", type = \"MenuLine\""
+					myIsOptional TRUE
+				}
+			}
+			myQuestBeatStateGameValue < uid=82BA8ED36294D27C0000DE363373522B >
+			{
+			}
+		}
+		QuestBeat Beat_2 < uid=82BA8ED3629BA50A0000BFBDDAAC924A >
+		{
+			myScript helix/scripts/gym_buc_vcmaxim_QuestSP1_4.mscript
+			myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE.\", enabled = true, guid = #82BA8ED3629BA5920000C09C09550701, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 653, text = \"Find a way inside the residentiary area\", type = \"MenuLine\""
+			myLevelInfo 82BA8ED362723163000000BC62929A9D
+			myMood Focused
+			myObjectives
+			{
+				QuestObjectiveLeaveArea "Find a way inside the residentiary area" < uid=82BA8ED3629BA5D80000C09E1ED582FC >
+				{
+					myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE.\", enabled = true, guid = #82BA8ED3629BA5EA0000C09F90FA929B, lineVersion = 6, maxLength = 0, productId = 6, sectionId = 653, text = \"Search for opportunities to reach the residentiary area.\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD TRUE
+					myIsHint FALSE
+				}
+				QuestObjectiveGoToLocation "Search the area for opportunities [1]" < uid=82BA8ED3629BA6570000C0A03136E28A >
+				{
+					myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE.\", enabled = true, guid = #82BA8ED3629BA6B60000C0A1481ACAF8, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 653, text = \"Search the area for opportunities [1]\", type = \"MenuLine\""
+					myIsOptional TRUE
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+					myIsHint TRUE
+				}
+				QuestObjectiveGoToLocation "Search the area for opportunities [2]" < uid=82BA8ED3629BA70A0000C0A2FA6A6365 >
+				{
+					myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE.\", enabled = true, guid = #82BA8ED3629BA7150000C0A3BE4058F9, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 653, text = \"Search the area for opportunities [1]\", type = \"MenuLine\""
+					myIsOptional TRUE
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+					myIsHint TRUE
+				}
+				QuestObjectiveInteract "Insert the KeyCard[1]" < uid=82BA8ED3629BA7870000C0A438E4DF09 >
+				{
+					myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE.\", enabled = true, guid = #82BA8ED3629BA7930000C0A5A6379FE7, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 653, text = \"Insert the KeyCard\", type = \"MenuLine\""
+					myIsOptional TRUE
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD FALSE
+					myIsHint FALSE
+				}
+				QuestObjectiveInteract "Insert the DataSpike" < uid=82BA8ED3629BA7A90000C0A60FEFB10F >
+				{
+					myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE.\", enabled = true, guid = #82BA8ED3629BA7B90000C0A7B3D4A79B, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 653, text = \"Insert the DataSpike\", type = \"MenuLine\""
+					myIsOptional TRUE
+					myIsExternal FALSE
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD FALSE
+					myIsHint FALSE
+				}
+				QuestObjectiveInteract "Interact with the Vendor" < uid=82BA8ED3629C40370000B24C148F848C >
+				{
+					myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE.\", enabled = true, guid = #82BA8ED3629C40430000B24D77932AE7, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 653, text = \"[Placeholder] Find the item you need\", type = \"MenuLine\""
+					myIsOptional TRUE
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD TRUE
+					myIsHint TRUE
+				}
+				QuestObjectiveInteract "Get the KeyCard" < uid=82BA8ED3629C40DC0000B24F4AA9437F >
+				{
+					myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE.\", enabled = true, guid = #82BA8ED3629C40E50000B250226A0542, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 653, text = \"[Placeholder] Get The KeyCard\", type = \"MenuLine\""
+					myIsOptional TRUE
+					myIsHiddenInTracker FALSE
+					myIsHint TRUE
+				}
+				QuestObjectiveInteract "Get the DataSpike" < uid=82BA8ED3629C41140000B2521D087D36 >
+				{
+					myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE.\", enabled = true, guid = #82BA8ED3629C411B0000B2531DBA7753, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 653, text = \"[Placeholder] Get the DataSpike\", type = \"MenuLine\""
+					myIsOptional TRUE
+					myIsHint TRUE
+				}
+				QuestObjectiveKillFireteam "Kill the Stormtropper" < uid=82BA8ED3629C4D090000D7ED1D34AF43 >
+				{
+					myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE.\", enabled = true, guid = #82BA8ED3629C4D2D0000D7EEB3A65329, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 653, text = \"Kill the Stormtropper\", type = \"MenuLine\""
+					myIsOptional TRUE
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveInteract "Disguise yourself" < uid=82BA8ED3629C4D4D0000D7EFBBDE8305 >
+				{
+					myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE\", enabled = true, guid = #82BA8ED3629C4D570000D7F022FF420B, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 653, text = \"Disguise yourself\", type = \"MenuLine\""
+					myIsOptional TRUE
+					myIsHiddenInHUD FALSE
+				}
+				QuestObjectiveGoToLocation "Get through the security check" < uid=82BA8ED3629C57B20000FF6101271524 >
+				{
+					myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE.\", enabled = true, guid = #82BA8ED3629C57BD0000FF62884167EF, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 653, text = \"Get through the security check\", type = \"MenuLine\""
+					myIsHint TRUE
+				}
+				QuestObjectiveInteract "Insert the KeyCard[2]" < uid=82BA8ED3629C583C0000FF6345D12529 >
+				{
+					myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE.\", enabled = true, guid = #82BA8ED3629C58450000FF64745F766D, lineVersion = 7, maxLength = 0, productId = 6, sectionId = 653, text = \"Insert the KeyCard\", type = \"MenuLine\""
+					myIsOptional TRUE
+					myIsHiddenInTracker TRUE
+					myIsHint FALSE
+				}
+			}
+			myQuestBeatStateGameValue < uid=82BA8ED3629BA5C70000C09D194C032F >
+			{
+			}
+		}
+		QuestBeat Beast_3 < uid=82BA8ED3629C40C60000B24E834A5A6E >
+		{
+			myScript helix/scripts/gym_buc_vcmaxim_QuestSP1_5.mscript
+			myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE.\", enabled = true, guid = #82BA8ED3629EF1F400008A8116C47882, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 653, text = \"Reach the Hangar\", type = \"MenuLine\""
+			myLevelInfo 82BA8ED362723163000000BC62929A9D
+			myMood Focused
+			myObjectives
+			{
+				QuestObjectiveLeaveArea "Reach The Hangar" < uid=82BA8ED3629EF23400008A83FED715E8 >
+				{
+					myName "aurabesh = false, contextComment = \"TEST. DO NOT TRANSLATE.\", enabled = true, guid = #82BA8ED3629EF23E00008A8445D0FEB6, lineVersion = 4, maxLength = 0, productId = 6, sectionId = 653, text = \"Reach The Hangar\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD TRUE
+				}
+			}
+			myQuestBeatStateGameValue < uid=82BA8ED3629C41080000B251CC40D7FA >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=82BA8ED36294D06A0000DDA289AC9683 >
+	{
+	}
+}
+

@@ -1,0 +1,70 @@
+include "helix/game system data/fruit/npc/npcenums.fruit"
+
+// Enum need to be sync with HC_NPCAimManagerType in HC_NPCAimManagerConstantData.h
+enum HC_NPCAimManagerType
+{
+	None
+	NPC
+	Spaceship
+	NPCCoop
+	Turret
+	NPCAgainstSpeeder
+}
+
+class AimManagerSettingsTargetData
+{
+	string myIsVisibleMinimumTime 0.0 < tooltip = "The target has to be visible for at least this amount of time before being able to shoot at him." bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	string myMinimumVisibleTimeTargetSpeedModifierCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -1 0, }, outTangents = { 1.6666667 0, 0 0, }, properties = { 2051, 3347, }, values = { 0 0, 5 1, }, }, numKeys = 2, }" < tooltip = "The curve represents a modifier value applied to the visible minimum time Depending of the target speed.\nValue need to be higher or equal to 0" bhv=inputgraph >
+	string myIsHiddenMinimumTime 0.0 < tooltip = "The target has to be hidden for at least this amount of time before myIsVisibleMinimumTime is reused." bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	string myLastHitTimeModulationVelocityCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -1 0, }, outTangents = { 1.6666667 0, 0 0, }, properties = { 2051, 3347, }, values = { 0 0, 1 0, }, }, numKeys = 2, }" < tooltip = "The curve represents a time modulation of the LastHit dependant of the target speed.\n" bhv=inputgraph >
+	bool myLastHitTimeModulationVelocityAppliedOnYAxis FALSE < tooltip = "If TRUE the modualtion will be applied on the Y axis of myLastHitThresholdCurve." >
+	string myDamageThresholdTimeModulationVelocityCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -1 0, }, outTangents = { 1.6666667 0, 0 0, }, properties = { 2051, 3347, }, values = { 0 0, 1 0, }, }, numKeys = 2, }" < tooltip = "The curve represents a time modulation on the MaxDamageThreshold dependant of the target speed.\n" bhv=inputgraph >
+	string myLastHitTimeModulationDistanceCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -1 0, }, outTangents = { 6.666667 0, 0 0, }, properties = { 2051, 3347, }, values = { 0 0, 20 2, }, }, numKeys = 2, }" < tooltip = "The curve represents a time modulation of the LastHit dependant of the target speed.\nDistance need to be higher or equal to 0" bhv=inputgraph >
+	bool myLastHitTimeModulationDistanceAppliedOnYAxis FALSE < tooltip = "If TRUE the modualtion will be applied on the Y axis of myLastHitThresholdCurve." >
+	string myLastHitTimeModulationMovingDirectionCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.5 0, -1 -0.5, }, outTangents = { 1 0.5, 0.5 0, 0 -0, }, properties = { 2323, 4371, 3347, }, values = { -1 -1, 0 0, 1 1, }, }, numKeys = 3, }" < tooltip = "The curve represents a time modulation of the LastHit dependant of the target direction when moving. \n(If the target move towards or away from the NPC)\nX Axis value must be between 1 and -1" bhv=inputgraph >
+	bool myLastHitTimeModulationMovingDirectionAppliedOnYAxis FALSE < tooltip = "If TRUE the modualtion will be applied on the Y axis of myLastHitThresholdCurve." >
+}
+
+class AimManagerSettingsDataStruct
+{	
+	string myMaxDamagePerThreshold 0.0 < tooltip = "The maximum damage the target can suffer in an amount of time, above this value, all shot will miss the target." bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	string myDamageThresoldMaxTime 0.0 < tooltip = "If the total damage received by the target during this time is higher than myMaxDamagePerThreshold, the target can't be hit." bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	string myDamageThresoldMinTime 0.0 < tooltip = "If the total damage received by the target during this time is higher than myMaxDamagePerThreshold, the target can't be hit." bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	string myTimeReductionPerMetaFireteamMember 0.0 < tooltip = "myDamageThresoldMaxTime will be reduced for each extra fireteam member alive." bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	string myLastHitTimeReductionPerMetaFireteamMember 0.0 < tooltip = "myLastHitThresholdCurve max time will be reduced for each extra fireteam member alive." bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	string myLastHitThresholdTime 0.0 < tooltip = "Minimum time between each hit on the target." bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	string myRandomMinimumLastHitTimeModulation 0.0 < tooltip = "Minimum random value added to the LastHitTimeModulationVelocityCurve." bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	string myRandomMaximumLastHitTimeModulation 0.0 < tooltip = "Maximum random value added to the LastHitTimeModulationVelocityCurve." bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	string myLastHitThresholdCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 0, -1 0, }, outTangents = { 1 0, 0 -0, }, properties = { 2051, 3347, }, values = { 0 1, 5 0, }, }, numKeys = 2, }" < tooltip = "The highest value of the curve represents the visible minimum time to shoot the target, and the smallest represents the LastHitThresholdTime. The value over time of the curve represents the ratio between those two values." bhv=inputgraph >
+	string myLastHitThresholdCurveMinMaxTime 0.0 < tooltip = "Minimum value of the Last Hit Curve max time. \nAfter modifiers are applied on the curve, the Max position on the curve can't be below this value." bhv=formulaEditor formulaResolveContextType=AgentAttributes >
+	
+	AimManagerSettingsTargetData mySettingsTargetData
+}
+
+class AimManagerSettingsDataStructPerRoleType
+{
+	NPCCombatRole myCombatRole None
+	AimManagerSettingsDataStruct myAimManagerSettingsData
+}
+
+list AimManagerSettingsDataStructPerRoleTypeList
+{
+	AimManagerSettingsDataStructPerRoleType
+}
+
+class AimManagerSettingsData < uid=auto >
+{
+	HC_NPCAimManagerType myNPCAimManagerType
+	AimManagerSettingsDataStruct myAimManagerSettingsData
+	AimManagerSettingsDataStructPerRoleTypeList myAimManagerSettingsDataOverridePerCombatRole
+}
+
+list AimManagerSettingsDataList
+{
+	AimManagerSettingsData
+}
+
+class AimManagerSettings < uid=auto >
+{
+	AimManagerSettingsDataList myAimManagerSettingsDataList
+}

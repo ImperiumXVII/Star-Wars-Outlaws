@@ -1,0 +1,478 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/rbtags/quest.mrbtagstags"
+include "helix/game system data/juice/reward/quest_completion_reward.mreward"
+
+Quest A_MQ_130_RancorSurprise < uid=BFA41A0261B3755D0000049A3563A922 >
+{
+	myName "aurabesh = false, contextComment = \"Quest name\", enabled = true, guid = #BFA41A0261C33ADC000082DE8531A37A, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9134, text = \"Rancor Surprise\", type = \"MenuLine\""
+	myIntroDescription "aurabesh = false, branch = \"MAIN\", contextComment = \"Quest intro description\", enabled = true, guid = #253B68676571969200132DE3E1D9BC0B, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9134, text = \"Quest intro description placeholder\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"Quest description\", enabled = true, guid = #9D01D217651C29A400095775FE59FCAB, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9134, text = \"Quest description placeholder\", type = \"MenuLine\""
+	myImage helix/baked/ui/loose_images/quest_bilboard/journal_billboard_mq_130.dds
+	myToastUIDisplayMode OnlyFinish
+	myCompletionReward < uid=2AE2EC85644BE1230029E388C41855E4 > = A_MQ_130_questcomplete_reward 2AE2EC85644A93860000B2CA99AC1F97
+	myGoals
+	{
+		QuestGoal "No Alarm" < uid=9D01D2176524009D0000F81E70954DFD >
+		{
+			myGoalText "aurabesh = false, contextComment = \"Goal Text\", enabled = true, guid = #9D01D217652400A40000F81F1BE9D06C, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9475, text = \"Do not raise the alarm\", type = \"MenuLine\""
+			myDisplayAtBottom TRUE
+		}
+		QuestGoal "Break into Jabba's palace" < uid=253B6867653BC5AC0006964BA056E006 >
+		{
+			myGoalText "aurabesh = false, contextComment = \"Goal text\", enabled = true, guid = #253B6867653BC5AC0006964C7B636B6D, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9476, text = \"Break into Jabba's palace\", type = \"MenuLine\"}"
+		}
+		QuestGoal "Rescue Nix from the menagerie" < uid=253B6867653BC7550013674749641756 >
+		{
+			myGoalText "aurabesh = false, contextComment = \"Goal text\", enabled = true, guid = #253B6867653BC75600136748C1E86913, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9477, text = \"Rescue Nix from the menagerie\", type = \"MenuLine\""
+		}
+		QuestGoal "Escape the palace" < uid=253B6867653BCB3600136901A72D7B7C >
+		{
+			myGoalText "aurabesh = false, contextComment = \"Goal text\", enabled = true, guid = #253B6867653BCB3600136902DEAADF47, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9479, text = \"Escape the palace\", type = \"MenuLine\""
+		}
+		QuestGoal "Find a way to escape" < uid=253B68676571A07500132E161D1E9B75 >
+		{
+			myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"Goal text\", enabled = true, guid = #253B68676571A07500132E17DAEB4C8E, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9480, text = \"Find a way to escape\", type = \"MenuLine\""
+		}
+	}
+	myIntroBeat < uid=9D01D21762A871120024D993EDD9455D >
+	{
+		myScript helix/scripts/scr_A_MQ_130_TAT_PLN_MeetHoss.mscript
+		myName "aurabesh = false, branch = \"\", contextComment = \"Beat Text\", enabled = true, guid = #9D01D21762A82FB40024D98B4C273D81, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 3614, text = \"Meet with Hoss in Mos Eisley\", type = \"MenuLine\""
+		myAutostartQuestGoal < uid=253B686765AF954D000C76FFC508A6CF >
+		{
+			myGoalText "aurabesh = false, branch = \"MAIN\", contextComment = \"Goal text\", enabled = true, guid = #253B686765AF9530000C76FEC7FE80FA, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9475, text = \"Meet with Hoss in Mos Eisley\", type = \"MenuLine\""
+		}
+		myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+		myDebugPlayLandingZone F7FDFD6063047D0A00013908778A0BF4
+		myObjectives
+		{
+			QuestObjectiveGoToLocation OBJ000_GoToDockingBay94 < uid=253B6867656DE31A001371FFD5536C65 >
+			{
+				myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myIsOptional TRUE
+				myIsHiddenInTracker TRUE
+			}
+			QuestObjectiveGoToLocation OBJ010_GoToRDVPoint < uid=9D01D2176411D5A90000D80CC737D173 >
+			{
+				myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #9D01D2176411D5CF0000D82FE6AE7DB5, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 9475, text = \"Meet with Hoss at docking bay 94\", type = \"MenuLine\""
+				myIsHiddenInHUD TRUE
+			}
+			QuestObjectiveInteract OBJ020_WaitForHoss < uid=253B6867653BC3BC000438A64CE4A449 >
+			{
+				myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #253B6867653BC3BC000438A71ACAA4C2, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9475, text = \"Wait for Hoss\", type = \"MenuLine\""
+			}
+		}
+		myQuestBeatStateGameValue < uid=9D01D21762A871120024D994BBF04787 >
+		{
+		}
+		myDeactivateContentLocationOnComplete TRUE
+		myWaitForInitCompletedOnInBeatVolume FALSE
+	}
+	myBeats
+	{
+		QuestBeat "Intro beat part2" < uid=253B686765DC813B0002F81C6B4DCC6C >
+		{
+			myScript helix/scripts/scr_a_mq_130_tat_pln_b00_meethoss_cin.mscript
+			myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Beat Text\", enabled = true, guid = #253B686765DC81550002F81E5538981D, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 3614, text = \"Meet with Hoss in Mos Eisley\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myDebugPlayLandingZone F7FDFD6063047D0A00013908778A0BF4
+			myObjectives
+			{
+				QuestObjectiveGoToLocation OBJ030_MeetHoss < uid=9D01D21762A875250024D9BA8C02D1E3 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #9D01D21762A875310024D9BB48ED4156, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 9475, text = \"Pick up Hoss from the cantina\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD FALSE
+				}
+			}
+			myQuestBeatStateGameValue < uid=253B686765DC836E0002F83ACF9CCCFF >
+			{
+			}
+			myDeactivateContentLocationOnComplete TRUE
+		}
+		QuestBeat "B00 Reach secret path entrance" < uid=9D01D21763189FE70005F34AEAEAA4D3 >
+		{
+			myScript helix/scripts/scr_a_mq_130_tat_pln_b005_reachjabbapalace.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"Beat text\", enabled = true, guid = #9D01D2176318A0410005F34B167D3D2C, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 3614, text = \"Break into Jabba's palace\", type = \"MenuLine\"}"
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation OBJ01_ReachTunnelEntrance < uid=9D01D217642D38E60000C4AFE5629711 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #9D01D217642D39030000C4B0044347F1, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 3614, text = \"Reach tunnel entrance\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=9D01D2176318A1320005F3572C8E2F08 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 48F37EFC87447D0178DF227FADAE598F
+			}
+		}
+		QuestBeat "B00b Reach Jabba's palace" < uid=253B6867663497630013459E659E7B93 >
+		{
+			myScript helix/scripts/scr_a_mq_130_tat_pln_b005b_reachjabbapalace2.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation OBJ01_HeadToThePalace < uid=9D01D217632C46C20000B4EBDB67AFA8 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #9D01D217632C46E50000B4EC1F0088E7, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 3614, text = \"Follow the tunnel to Jabba's palace\", type = \"MenuLine\"}"
+					myIsHiddenInTracker TRUE
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=253B686766349898001345C883599A30 >
+			{
+			}
+		}
+		QuestBeat "B01 Enter Jabba's Palace" < uid=BFA41A0261C33AE1000082DF6B8C1E96 >
+		{
+			myScript helix/scripts/scr_a_MQ_130_TAT_PLN_EnterJabbaPalace.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"Beat text\", enabled = true, guid = #BFA41A0261C33AEF000082E1E8B31007, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 3614, text = \"Enter Jabba's Palace\", type = \"MenuLine\"}"
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation OBJ01_EnterThePalace < uid=9D01D21762A993430000374143356A87 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #9D01D21762A9934F00003742AF9E97A9, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 3614, text = \"Enter the tower\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=6F2AF919621789D4000027E9AC17E482 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4A57ADDC98D6968E35E864B735E53492
+			}
+		}
+		QuestBeat "B02 Find Nix" < uid=9D01D21762A873360024D99B54443FB5 >
+		{
+			myScript helix/scripts/scr_A_MQ_130_TAT_PLN_RescueNix.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"Beat text\", enabled = true, guid = #9D01D21762A8734E0024D99C0A591758, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 3614, text = \"Search for Nix\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveInteract OBJ010_LocateNix < uid=9D01D21762A9E8070000B988BCA3DA31 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #9D01D21762A9E8110000B9897F83CE63, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9477, text = \"Search for Nix\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD TRUE
+					myIsHint FALSE
+				}
+				QuestObjectiveSteal OBJ020_GetTheKey < uid=9D01D217642D77DE0001CB0AC7333674 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #9D01D217642D78180001CB0D0DB9D107, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9477, text = \"Get the key\", type = \"MenuLine\""
+				}
+			}
+			myScriptInputs
+			{
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=9D01D21762A874E50024D9B574270BC2 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4DE3516F5C933195223EC528EE57D38E
+			}
+		}
+		QuestBeat "B02a Reach menagerie" < uid=1B6515CC649D97E90005A8F42991908B >
+		{
+			myScript helix/scripts/scr_a_mq_130_tat_pln_b02a_reachmenagerie.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"Beat text\", enabled = true, guid = #1B6515CC649D97980005A8D63C3434CB, lineVersion = 12, maxLength = 0, productId = -1, sectionId = 3614, text = \"Search for Nix\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation OBJ010_UseKey < uid=253B686765E71F780002739BCB752305 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+				QuestObjectiveGoToLocation OBJ020_ReachTheMenagerie < uid=1B6515CC649D97E90005A8F9F5B40404 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #1B6515CC649D97980005A8DBE9E25A59, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 3614, text = \"Reach the menagerie\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+			}
+			myScriptInputs
+			{
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=1B6515CC649D97E90005A8FC3115131F >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 413F43D9D388637F4E67554C5B2E7581
+			}
+		}
+		QuestBeat "B02b Rescue Nix" < uid=9D01D2176408A3C70001A2C32D46A03B >
+		{
+			myScript helix/scripts/scr_a_mq_130_tat_pln_b02b_rescuenix.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"Beat text\", enabled = true, guid = #9D01D2176408A41E0001A2C4A690F6CF, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 3614, text = \"Rescue Nix\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation OBJ00_SearchForNix < uid=9D01D21764A57C51000E08D2E0DCB178 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #9D01D21764A57C51000E08D330DD30CC, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 3614, text = \"Search for Nix\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveCustom OBJ01_DefeatBeastmaster < uid=9D01D2176408A7790001A31984B0F9A3 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #9D01D2176408A7910001A31AD24B8452, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 9477, text = \"Defeat the Beastmaster\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveInteract OBJ02_OpenTheCage < uid=9D01D21762AAE14200007E2B7A5DAC02 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #9D01D21762AAE15400007E2C72792384, lineVersion = 9, maxLength = 0, productId = -1, sectionId = 9477, text = \"Free Nix\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+				}
+			}
+			myScriptInputs
+			{
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=9D01D2176408A5910001A2F9D7DE1777 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 413F43D9D388637F4E67554C5B2E7581
+			}
+		}
+		QuestBeat "B02c Escape with Nix" < uid=9D01D2176409F69A000597DBBE4C873F >
+		{
+			myScript helix/scripts/scr_a_mq_130_tat_pln_b02c_escapewithnix.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"Beat text\", enabled = true, guid = #9D01D2176409F6BB000597FEA7D40BF0, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 3614, text = \"Escape with Nix\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation OBJ010_EscapeWithNix < uid=9D01D21762B4556B00010E6CD234B6CE >
+				{
+					myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #9D01D21762B4557B00010E6DF9DBB2DB, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9477, text = \"Escape with Nix\", type = \"MenuLine\""
+				}
+			}
+			myScriptInputs
+			{
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=9D01D2176409F6F7000598008838FC89 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 413F43D9D388637F4E67554C5B2E7581
+			}
+		}
+		QuestBeat "B03 Defeat the beasts" < uid=9D01D21762A873B50024D9A1C5C43C3D >
+		{
+			myScript helix/scripts/scr_A_MQ_130_TAT_PLN_DefeatBeasts.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"Beat text\", enabled = true, guid = #9D01D21762A873BE0024D9A24C23ACCA, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 3614, text = \"Defeat the beasts\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Focused
+			mySetPlayerInBeatOnStart FALSE
+			myObjectives
+			{
+				QuestObjectiveKillFireteam OBJ01_DefeatTheMassifs < uid=9D01D21762AB136C00004A6A234B96F7 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #9D01D21762AB138300004A6B986AC64D, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 9478, text = \"Defeat the beasts\", type = \"MenuLine\""
+				}
+			}
+			myScriptInputs
+			{
+			}
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=9D01D21762A874E50024D9B6ECB3028F >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 413F43D9D388637F4E67554C5B2E7581
+			}
+		}
+		QuestBeat "B04 Leave the palace" < uid=9D01D21762A8740B0024D9A72CFA2454 >
+		{
+			myScript helix/scripts/scr_A_MQ_130_TAT_PLN_LeavePalace.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"Beat text\", enabled = true, guid = #9D01D21762A874150024D9A8CF4FD42C, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 3614, text = \"Escape the palace\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation OBJ01_ReachTheHangar < uid=9D01D21762AB19CC0000BA1260FDD562 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #9D01D21762AB1D160000BA246036A8BC, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 3614, text = \"Reach the hangar\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputAgent Vail < uid=9D01D217640B296F0002C876B57FC0CC >
+				{
+				}
+			}
+			myQuestBeatStateGameValue < uid=9D01D21762A874E50024D9B73EBF529F >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 413F43D9D388637F4E67554C5B2E7581
+			}
+		}
+		QuestBeat "B05 Survive the rancor" < uid=9D01D21762A8745D0024D9AD7026A73C >
+		{
+			myScript helix/scripts/scr_A_MQ_130_TAT_PLN_SurviveRancor.mscript
+			myName "aurabesh = false, branch = \"\", contextComment = \"Beat text\", enabled = true, guid = #9D01D21762A874680024D9AE6400DD8A, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 3614, text = \"Escape\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myObjectives
+			{
+				QuestObjectiveGoToLocation OBJ01_ReachTheHangarDoor < uid=9D01D21762C7F8BD000049325D2D1ED7 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #9D01D21762C7F94600004936E547AE55, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 3614, text = \"Reach the hangar door\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+				}
+				QuestObjectiveCustom Hint_BaitTheRancor_1 < uid=253B68676571A0C400132E1973DCFD81 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"Hint text\", enabled = true, guid = #253B6867657094A20009DD1127E071B1, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 9480, text = \"Bait the rancor to hit the hangar door 1\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+					myIsHint TRUE
+					myIsHighPrio TRUE
+				}
+				QuestObjectiveCustom Hint_ExplosiveEfficient < uid=253B686765CCD2B70029DDDE12B0522C >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Hint text\", enabled = true, guid = #253B686765CCD2B70029DDDFED4D85B0, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9480, text = \"Explosives might be effective against the rancor\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myIsHint TRUE
+				}
+				QuestObjectiveCustom Hint_ExplosiveBarrelEfficient < uid=253B686765CCD5F90029DDE40FD7BF34 >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Hint text\", enabled = true, guid = #253B686765CCD3320029DDE115D9A40F, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9480, text = \"Explosive barrels might be effective against the rancor\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myIsHint TRUE
+				}
+				QuestObjectiveCustom Hint_WaitForVail < uid=253B68676571A0C400132E1A9AF005BC >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Hint text\", enabled = true, guid = #253B68676570493E0009B86B5F3251D4, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 9480, text = \"Wait for Vail to restart the railing system\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myIsHint TRUE
+				}
+				QuestObjectiveCustom Hint_BaitTheRancor_2 < uid=253B68676571A0C400132E1CAFE924F9 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"Hint text\", enabled = true, guid = #253B6867657094A80009DD1392BBE27F, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 9480, text = \"Bait the rancor to hit the hangar door 2\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myIsHint FALSE
+					myIsHighPrio TRUE
+				}
+				QuestObjectiveCustom Hint_FindTheLever < uid=253B68676571A0C400132E1D3B4DF470 >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Hint Text\", enabled = true, guid = #253B6867657049D50009B86D00032D6A, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9480, text = \"Find the lever to restart the railing system\", type = \"MenuLine\""
+					myIsHiddenInHUD TRUE
+					myIsHint TRUE
+				}
+				QuestObjectiveCustom Hint_FindLever < uid=253B686765CCD5C50029DDE28568B5AA >
+				{
+					myName "aurabesh = false, branch = \"MAIN\", contextComment = \"Hint text\", enabled = true, guid = #253B686765CCD5C50029DDE30489C0B2, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9480, text = \"Look for a lever to restart the railing system\", type = \"MenuLine\""
+					myIsHiddenInHUD FALSE
+					myIsHint TRUE
+				}
+				QuestObjectiveCustom Hint_BaitTheRancor_3 < uid=253B68676571A0C400132E1FC6B83F04 >
+				{
+					myName "aurabesh = false, branch = \"\", contextComment = \"Hint text\", enabled = true, guid = #253B6867657094B60009DD15425449E7, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 9480, text = \"Bait the rancor to hit the hangar door 3\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+					myIsHiddenInHUD TRUE
+					myIsHint TRUE
+					myIsHighPrio TRUE
+				}
+				QuestObjectiveGoToLocation OBJ03_ReachTheHangarDoor < uid=9D01D21762FCD1C200018B89A3FBC46B >
+				{
+					myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #9D01D21762FCD1EF00018B8A146B4C5A, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 9480, text = \"Reach the hangar door\", type = \"MenuLine\""
+					myIsHiddenInTracker FALSE
+					myIsHiddenInHUD FALSE
+				}
+			}
+			myScriptInputs
+			{
+				QuestBeatScriptInputAgent Vail < uid=9D01D217640B38A90008C705ABAC364A >
+				{
+				}
+			}
+			myQuestBeatStateGameValue < uid=9D01D21762A874E50024D9B8B4E46749 >
+			{
+			}
+			myQuestBeatAudioState
+			{
+				myGuid 4D151BCD41664BDEA58DB0C49F18118B
+			}
+			myQuestBeatAudioStateOnReset
+			{
+				myGuid 4D151BCD41664BDEA58DB0C49F18118B
+			}
+		}
+		QuestBeat "B06 Talk to Jabba" < uid=9D01D2176440F1BD0002DF5A0D494E96 >
+		{
+			myScript helix/scripts/scr_a_mq_130_tat_pln_b06_talktojabba.mscript
+			myName "aurabesh = false, contextComment = \"Beat text\", enabled = true, guid = #9D01D2176440F1F70002DF5BC8FB1999, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 3614, text = \"Talk to Jabba\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myMood Focused
+			mySetPlayerInBeatOnStart TRUE
+			myHasInitFromPreviousBeatPin TRUE
+			myQuestBeatStateGameValue < uid=9D01D2176440F2EA0002DF5D6C95E103 >
+			{
+			}
+			myDeactivateContentLocationOnComplete FALSE
+			myQuestBeatAudioState
+			{
+				myGuid 413F43D9D388637F4E67554C5B2E7581
+			}
+		}
+	}
+	myOutroBeat
+	{
+		QuestBeat Outro < uid=9D01D21764D4DEF8001B105421B47449 >
+		{
+			myScript helix/scripts/scr_a_mq_130_tat_pln_outro.mscript
+			myName "aurabesh = false, contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			myLevelInfo 8F2AC097626BDD5C00002F2423EFE372
+			myQuestBeatStateGameValue < uid=9D01D21764D4DF82001B107D682B9216 >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=6F2AF919621789D4000027EA9841B927 >
+	{
+	}
+	myQuestAudioState
+	{
+		myGuid 4146EAE089854A5A7EA21A1CF44359A9
+	}
+	myQuestStartedRBTag < uid=DA5615DD64B4FCB40000ABA02D9B4DE3 > = World_Quest_MQ130_Started DA5615DD64A3E10A0000AC34F6504882
+	myQuestCompletedRBTag < uid=DA5615DD64B4FCB40000ABA10C007CFA > = World_Quest_MQ130_Completed DA5615DD64A3E21F0000AC49C1171F59
+}
+

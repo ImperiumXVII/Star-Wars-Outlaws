@@ -1,0 +1,52 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+
+Quest testquest_onboarding_station_gtintillier < uid=E1B84E3A64AD15010002A753295D7731 >
+{
+	myName "aurabesh = false, contextComment = \"Comment Testquest Station Sabotage\", enabled = true, guid = #E1B84E3A64AD15040002A75594985573, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 3614, text = \"Testquest Station Sabotage\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"Comment Disable the Empire Research Station\", enabled = true, guid = #E1B84E3A64AD15040002A7568CB7A220, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 3614, text = \"Disable the Empire Research Station\", type = \"MenuLine\""
+	myType Event
+	myBeats
+	{
+		QuestBeat "Reach the Imperial Station" < uid=E1B84E3A64AD15980002A75916A23323 >
+		{
+			myScript helix/scripts/scr_testquest_onboarding_stationbeat01_gtintillier.mscript
+			myName "aurabesh = false, contextComment = \"Comment Reach the Imperial Station\", enabled = true, guid = #E1B84E3A64AD15B10002A75D9D8D9231, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 3614, text = \"Reach the Imperial Station\", type = \"MenuLine\""
+			myLevelInfo E1B84E3A64ABBFEA0000003D3B2B49E6
+			myObjectives
+			{
+				QuestObjectiveGoToLocation "Obj 01 Reach the Station" < uid=E1B84E3A64AD15D70002A762CB95F655 >
+				{
+					myName "aurabesh = false, contextComment = \"Comment Reach the station\", enabled = true, guid = #E1B84E3A64AD15D80002A7633310A11F, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 3614, text = \"Reach the station\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=E1B84E3A64AD15BA0002A760C509A2E9 >
+			{
+			}
+		}
+		QuestBeat "Sabotage the Station" < uid=E1B84E3A64AD15AF0002A75BE4248B83 >
+		{
+			myScript helix/scripts/scr_testquest_onboarding_stationbeat02_gtintillier.mscript
+			myName "aurabesh = false, contextComment = \"Comment Sabotage the Imperial Station\", enabled = true, guid = #E1B84E3A64AD15AF0002A75C9AB1916F, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 3614, text = \"Sabotage the Imperial Station\", type = \"MenuLine\""
+			myLevelInfo E1B84E3A64ABBFEA0000003D3B2B49E6
+			myObjectives
+			{
+				QuestObjectiveKillFireteam "Obj 01 Destroy the Laser Turret Platforms" < uid=E1B84E3A64AD20DF0002A765AA90E7C9 >
+				{
+					myName "aurabesh = false, contextComment = \"Comment Destroy the Laser Turret Platforms\", enabled = true, guid = #E1B84E3A64AD20E00002A766CED38B90, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 3614, text = \"Destroy the Laser Turret Platforms\", type = \"MenuLine\""
+				}
+				QuestObjectiveCustom "Obj 02 Disable the Power" < uid=E1B84E3A64AD21110002A768F1E962DE >
+				{
+					myName "aurabesh = false, contextComment = \"Comment Disable the Station's Power Generators\", enabled = true, guid = #E1B84E3A64AD21110002A769DC6A7D85, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 3614, text = \"Disable the Station's Power Generators\", type = \"MenuLine\""
+					myIsHiddenInTracker TRUE
+				}
+			}
+			myQuestBeatStateGameValue < uid=E1B84E3A64AD15BA0002A76134E4BC63 >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=E1B84E3A64AD15010002A754CB78A413 >
+	{
+	}
+}
+

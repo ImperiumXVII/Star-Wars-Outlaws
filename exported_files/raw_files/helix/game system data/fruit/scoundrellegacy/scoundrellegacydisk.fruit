@@ -1,0 +1,40 @@
+include "snowdrop/modules/core/audio/audio.fruit"
+include "helix/game system data/fruit/intel/intelchain.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+include "helix/game system data/fruit/quest/quest.fruit"
+
+class ScoundrelLegacyDisk < uid=auto >
+{
+	GameConditionGroup myUnlockRequirement
+	uid myLevelInfo < bhv="constantData" constantDataType="levelinfo" tooltip="The level that the chache is on." >
+	file myHologramObject "" < bhv=asset assettype=Object tooltip="The hologram prop to display for this cache." >
+	bool myNeedsDiscovery true < tooltip="Does the disk needs discovery before we start hot/cold gameplay" >
+	bool myUseFlatDirection false < tooltip="Is hot/cold gameplay flat or usign verticality" >
+	bool myExcludeFromHintsInformationWhenLocked false < tooltip="If set to true the disk will not be considered for hints. (Use case would hidden caches)" >
+	bool myExcludeFromFinalGame false < tooltip="If set to true the disk will not be considered for final game. (Use case would be gyms)" >
+	bool myIsInitialDisk false < tooltip="This is a mandatory disk with highest priority" >
+	uid myAsssociatedQuestBeat < bhv="constantData" constantDataType="questbeat" >
+	IntelChain* myHoloDiskIntelChain < tooltip="The intel chain linked to the disk." >
+	uid myDiskAcquisitionReward < bhv="constantdata" constantDataType="reward" tooltip="Reward on activating the holo disk" >
+	uid myDiskCompletionReward < bhv="constantdata" constantDataType="reward" tooltip="Reward on deactivating the holo disk" >
+	bool myOverrideGadgetValues false < tooltip="Override gadget values for this specific cache." >
+	float myHologramScale 0.07 < min=0.0 tooltip="Scale of the hologram" hidden=1 >
+	float myVerticalOffset 1.4 < min=0.0 tooltip="The vertical offset of the hologram" hidden=1 >
+	bool myOverrideHotAndColdValues false < tooltip="Override Sonar handling values for this specific cache." >
+	float myBlinkingLightIntensityDawnMultiplier 1.0 < min=0.0 tooltip="Per world intensity multiplier to resolve the lighting issues" >
+	float myBlinkingLightIntensityDayMultiplier 1.0 < min=0.0 tooltip="Per world intensity multiplier to resolve the lighting issues" >
+	float myBlinkingLightIntensityDuskMultiplier 1.0 < min=0.0 tooltip="Per world intensity multiplier to resolve the lighting issues" >
+	float myBlinkingLightIntensityNightMultiplier 1.0 < min=0.0 tooltip="Per world intensity multiplier to resolve the lighting issues" >
+	float myInnerAngleThresholdAtMinDistance 15 < min=0.0 tooltip="The distance when the orientation feedback is at its minimum" hidden=1 >
+	float myInnerAngleThresholdAtMaxDistance 80 < min=0.0 tooltip="The distance when the orientation feedback is at its maximum" hidden=1 >
+	float myOuterAngleThresholdAtMinDistance 35 < min=0.0 tooltip="The distance when the orientation feedback is at its minimum" hidden=1 >
+	float myOuterAngleThresholdAtMaxDistance 90 < min=0.0 tooltip="The distance when the orientation feedback is at its maximum" hidden=1 >
+	float myMinDistanceForRumble 2 < min=0.0 tooltip="The distance when the proximity feedback is at its minimum" hidden=1 >
+	float myMaxDistanceForRumble 100 < min=0.0 tooltip="The distance when the proximity feedback is at its maximum" hidden=1 >
+	float myMinDistanceRumbleCooldown 0.5 < min=0.0 tooltip="delay between two rumbles when at the feedback is at its minimum" hidden=1 >
+	float myMaxDistanceRumbleCooldown 3.0 < min=0.0 tooltip="delay between two rumbles when at the feedback is at its maximum" hidden=1 >
+	float myMinAngleRumbleCooldown 0.5 < min=0.0 tooltip="The time between triggering rumble event at the min angle" hidden=1 >
+	float myMaxAngleRumbleCooldown 3.0 < min=0.0 tooltip="The time between triggering rumble event at the max angle" hidden=1 >
+	float myMinRotationSpeed 2.0 < min=0.0 tooltip="minimum rotation speed of the hologram when using the gadget" hidden=1 >
+	float myMaxRotationSpeed 3.0 < min=0.0 tooltip="maximum rotation speed of the hologram when using the gadget" hidden=1 >
+}

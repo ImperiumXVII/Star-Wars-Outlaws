@@ -1,0 +1,36 @@
+include "helix/game system data/juice/ai/detectionprofile_ship.mnpcdetectionprofile"
+include "helix/game system data/juice/ai/visionprofiles_npc_space.mnpcvisionprofile"
+include "helix/game system data/juice/npc/base_shp.mnpc"
+include "helix/game system data/juice/npc/emp_shp_base.mnpc"
+include "helix/game system data/juice/npc/neu_shp_bff_freighter_a.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC previs_emp_shp_bff_freighter_b < uid=6EA79625651D80D000006CD335A6FF35 > : emp_shp_base
+{
+	myCharacterVisuals < uid=6EA79625651D80D000006CD41FFFB1CB > = character_visuals_npc_shp_bff_freighter_V2 6EA79625651D7FFA00005E899EE7D31E
+	mySpaceshipType Dummy
+	myMaxHealth 600
+	myHealthFormula 300*SpaceHealthDifficultyModifier
+	myFaction < uid=6EA79625651D80D000006CD5BF20EE09 > = Empire 16DEADE65F21E5AB000000B35532A71B
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag (0)" < uid=6EA79625651D80D000006CD6106326C6 > = Agent_Gender_MasculineTag 16DEADE6626D20EA00002E504CE30DE2
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=6EA79625651D80D000006CD7123E2CA8 > = Agent_Archetype_Pilot 3A12912163EF7B9500005053123CF383
+		RBTagsTag "New RBTagsTag (0)" < uid=6EA79625651D80D000006CD8F0ADB6CD > = Agent_ShipType_FreighterTag 3A12912164EE0F180000FFAD5587F6E6
+		RBTagsTag "New RBTagsTag (1)" < uid=6EA79625651D80D000006CD948455E77 > = Agent_Faction_AshigaClanTag 4728ADF9620B7AF800002022DD5E94D3
+	}
+	myDialogueCharactersFromDatabase
+	{
+		DialogueCharacterWithTags "Ashiga M01" < uid=6EA79625651D80D000006CDA411914AF > = Ashiga_Pilot_M01 3A1291216475FE6A0001627DE862B6ED
+	}
+	myLodType Spaceship_Cruiser
+	myVisionProfile < uid=6EA79625651D80D000006CDBA2A12B48 > = visionProfile_emp_ship_HaulerShuttle 6B0E1DE964B7A45D0000AD5930260AFA
+	myDetectionProfiles
+	{
+		myDefaultProfile < uid=6EA79625651D80D000006CDC3F27FA0F > = detectionProfile_ash_ship_HaulerShuttle 6B0E1DE964B662520003C71850AE16FB
+	}
+}
+

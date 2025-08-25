@@ -1,0 +1,49 @@
+include "dlc1/game system data/juice/character/character_visuals_batch_012.mcharactervisuals"
+include "dlc1/game system data/juice/character/dlc1_character_visuals_morenia_generator.mcharactervisuals"
+include "dlc1/game system data/juice/character/dlc1_character_visuals_persistent.mcharactervisuals"
+include "helix/game system data/juice/dialogue character/databases/dlc1_characters.mdialoguecharacter"
+include "helix/game system data/juice/npc/base_civ_humanoid.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC dlc1_civ_Morenia_Crew_Behind_Locked_Door_02 < uid=C9E2299266C4BD6600110AAB7157F9D0 > : base_civ_humanoid
+{
+	myCharacterVisuals < uid=C9E2299266C4BD6600110AACCF265558 > = morenia_casino_staff_male 7D46844666EAC46F001FC71FF5796C0B
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=C9E2299266C4BD6600110AADFC9FA8FE > = Agent_BarksFamily_Civilian E4123D2762FCA28100010F7D623B521E
+		RBTagsTag "New RBTagsTag_0" < uid=C9E2299266C4BD6600110AAE3B6D4433 > = Agent_Quest_IdlesDisabledTag E4123D27637B88050000994D6BB1A601
+	}
+	myDialogueCharacters
+	{
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=C9E2299266C4BD6600110AAFF53AA3F7 >
+		{
+			myDialogueCharacter < uid=C9E2299266C4BD6600110AB0084BA49D > = AI_GAMBLER_BASIC_HUMAN_F01 DA5615DD63B6A5F30000D8DF594AFDDF
+		}
+	}
+	myAudioParameters
+	{
+		myEmitters
+		{
+			AgentEmitter Default
+			{
+				myEmitterLabel < uid=E4123D276717C272001D9D41C2D6ECA7 > = Root 3A1C5D1863906F050000AB6FBD984CC4
+				myEmitterPrefab "emitterLayerName = \"footsteps\", enableDoppler = false, enablePropagation = true, enableReflections = false, sphereRadius = 1, stopOnDestroy = true"
+				myEnableBillboarding FALSE
+				myBillboardingCategory < uid=E4123D276717C272001D9D4210CFFDA5 > = NULLREFERENCE
+				mySetMovementSpeedRTPC TRUE
+			}
+			AgentEmitter Dialogue
+			{
+				myEmitterLabel < uid=E4123D276717C272001D9D43D4E9A5C9 > = Mouth 3A1C5D1863906F120000AB70A206E385
+				myEmitterPrefab "emitterLayerName = \"misc\", enableDirectObstruction = true, enableDoppler = false, enablePropagation = false, sphereRadius = 1, stopOnDestroy = true"
+				myBoneName Head
+			}
+			AgentEmitter Weapon
+			{
+				myEmitterLabel < uid=E4123D276717C272001D9D4467AC6F08 > = Hand 3A1C5D1863906F180000AB718F1E9EFD
+				myEmitterPrefab "emitterLayerName = \"weapons_npc\", enableDoppler = false, enablePropagation = true, sphereRadius = 1, stopOnDestroy = true"
+			}
+		}
+	}
+}
+

@@ -1,0 +1,63 @@
+include "helix/game system data/fruit/settings/playersettings.fruit"
+include "helix/game system data/juice/item/player_currency_adrenaline_rush.mitem"
+
+AdrenalineRushParameters AdrenalineRushParameters
+{
+	myCurrency < uid=B0ED925063451DB1000049DA16FACEC1 > = player_currency_adrenaline_rush B0ED9250633402170000607B51C3DC35
+	myGainEvents
+	{
+		myAmountPerProjectileDamage "3 * AdrenalineGainModifier"
+		myAmountPerDamageFromBlaster 0
+		myAmountPerDamageFromHipFire "AdrenalineGainAmountPerHipFireBonus * AdrenalineGainModifier"
+		myAmountPerDefeat "(50 + AdrenalineGainBonusAmountPerDefeat) * AdrenalineGainModifier"
+		myAmountPerTakedown "(150  + (Target.IsDistracted * AdrenalineGainPerTakedownOnDistractedEnemy) + (Player.IsInTakedownAfterWhistle * AdrenalineGainPerTakedownAfterWhistle)) * AdrenalineGainModifier"
+		myAmountPerPunch "(25 + AdrenalineGainBonusAmountPerPunch) * AdrenalineGainModifier"
+		myAmountFromFastCooling "AdrenalineGainPerFastCooling * AdrenalineGainModifier"
+		myAmountFromPerfectCooling "AdrenalineGainAmountPerPerfectCoolingBonus * AdrenalineGainPerPerfectCoolingMultiplier * AdrenalineGainModifier"
+		myAmountFromNearMiss "(2 + AdrenalineGainAmountPerNearMissesBonus) * AdrenalineGainModifier"
+		myAmountFromLostHealthSegment "(50 + AdrenalineGainBonusAmountFromLostHealthSegment) * AdrenalineGainModifier"
+		myAmountFromDamagingTaggedEnemy "10 * AdrenalineGainModifier"
+		myAmountFromMedkit "30 * AdrenalineGainModifier"
+		myAmountFromMeleeFinisher "150 * AdrenalineGainModifier"
+		myAmountPerDamageFromExplosion "50 * AdrenalineGainModifier"
+		myAmountFromEscapeExplosion "100  * AdrenalineGainModifier"
+		myAmountPerDamageFromHeadshot "3 * AdrenalineGainFromHeadshotsBonus * AdrenalineGainModifier"
+		myAmountPerDamageNearOverheat "30 * AdrenalineGainModifier"
+		myAmountPerDamageMissEnemyWithBlaster "3 * AdrenalineGainModifier"
+		myAmountPerDamageMissEnemyWithPickable "3 * AdrenalineGainModifier"
+		myAmountFromIonizing "70 * AdrenalineGainModifier"
+		myAmountFromGrenadePrimingNear "100 * AdrenalineGainModifier"
+		myAmountFromHittingEnemyWithGrenade "50 * AdrenalineGainModifier"
+		myAmountFromHostileNPCEnteringAware "20 * AdrenalineGainBonusAmountFromHostileNPCEnteringAwareOrCombat * AdrenalineGainModifier"
+		myAmountFromHostileNPCEnteringCombat "15 * AdrenalineGainBonusAmountFromHostileNPCEnteringAwareOrCombat * AdrenalineGainModifier"
+		myAmountPerHostileNPCDetectionSegmentIncrement "1 * AdrenalineGainModifier"
+		myAmountFromSneakingNearHostileNPCPatrol "3 * AdrenalineGainFromSneakingNearHostileNPCPatrolModifier * AdrenalineGainModifier"
+	}
+	myMultipliers
+	{
+		myMultiplierWhenDamagingEnemyWithBlaster "1 * AdrenalineGainFromBlasterModifier"
+		myMultiplierWhenDefeatingEnemyWithHeavyWeapons "1 * AdrenalineGainBonusWhenDefeatingEnemyWithHeavyWeapons"
+		myMultiplierWhenDefeatingEnemyWithGrenades "1 * AdrenalineGainBonusWhenDefeatingEnemyWithGrenades"
+		myMultiplierWhenDefeatingEnemyWithTakedowns "1 * AdrenalineGainBonusWhenDefeatingEnemyWithTakedowns"
+		myMultiplierWhenDefeatingEnemyWithFinishers "1 * AdrenalineGainBonusWhenDefeatingEnemyWithFinishers"
+	}
+	myDrainedAdrenalinePerInterval "10 * DrainedAdrenalinePerIntervalBonus"
+	myStartDrainDelay "12 + StartDrainDelayBonus"
+	myDrainUpdateInterval 0.25
+	myAdrenalineGrowthPerInterval "AdrenalineGrowthPerInterval * AdrenalineGainModifier"
+	myAdrenalineGrowthUpdateInterval 0.5
+	myReachTierAddedDrainDelay 10.0
+	mySpeederParameters
+	{
+		myMinimumSpeedToBeConsideredMax 100.0
+		myGainEvents
+		{
+			myAmountFromNearMiss "3 * AdrenalineGainFromSpeederModifier * AdrenalineGainModifier"
+			myAmountPerIntervalInCombat "5 * AdrenalineGainFromSpeederModifier * AdrenalineGainModifier"
+			myAmountPerInAirInterval "100 * AdrenalineGainFromSpeederModifier * AdrenalineGainModifier"
+			myAmountFromVehicleNearMiss "50 * AdrenalineGainFromSpeederModifier * AdrenalineGainModifier"
+			myAmountPerMaxSpeedInterval "0 * AdrenalineGainFromSpeederModifier * AdrenalineGainModifier"
+		}
+	}
+}
+

@@ -1,0 +1,30 @@
+class CoverDetectionSelection < uid=auto >
+{
+	string myLookingDirectionCoverSelectionScore "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.5 0, }, outTangents = { 0.5 0, 0 0, }, properties = { 275, 1299, }, values = { 0 1, 1 0, }, }, numKeys = 2, }" < bhv=inputgraph >
+	string myDistanceCoverSelectionScore "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -1.5 0, }, outTangents = { 1.5 0, 0 0, }, properties = { 275, 1299, }, values = { 0 1, 3 0, }, }, numKeys = 2, }" < bhv=inputgraph >
+	string myPlayerDirectionCoverSelectionScore "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { -0 -0, -0.5 0, }, outTangents = { 0.5 0, 0 0, }, properties = { 275, 1299, }, values = { 0 0.5, 1 0, }, }, numKeys = 2, }" < bhv=inputgraph >
+	
+	float myCoverMaximumDistance 2.f < tooltip="Maximum Distance for Cover behaviour to trigger // modifier by OutsideCoverBoundariesFactor below" >
+	float myOutsideCoverBoundariesDistanceFactor 0.5f < tooltip="When coming from out of the cover boundaries, what percentage of the maximum cover distance to use to determine if we're at cover or not" >
+	float myHighCoverDistanceToCornerThreshold 0.85f < tooltip="If Kay is in a High Cover and gets closer to a corner than this value we are considered in-corner // modified by Hysteresis below" >
+	float myLowCoverDistanceToCornerThreshold 0.45f < tooltip="If Kay is in a Low Cover and gets closer to a corner than this value we are considered in-corner // modified by Hysteresis below" >
+	float myHighCoverDistanceToCornerThresholdHysteresis 0.15f < tooltip="For Kay to leave High Cover Corner, she will need to be gets farther than the threshold PLUS this value when moving along the cover or MINUS this value when moving outward of the cover (also to be considered in cover corner when outwards)" >
+	float myLowCoverDistanceToCornerThresholdHysteresis 0.1f < tooltip="For Kay to leave Low Cover Corner, she will need to be gets farther than the threshold PLUS this value when moving along the cover or MINUS this value when moving outward of the cover (also to be considered in cover corner when outwards)" >
+	float myGapSize 0.4f < tooltip="How wide we consider gaps" >
+	float myMaximumSpeedToTriggerCover 0.f < tooltip="Need to be lower than this speed (in m/s) for cover behaviour to trigger, if equal to or less than 0 speed check is deactivated" >
+	float myMinimumTimeBehindCoverToTrigger 0.f < tooltip="Need to stay behind covers this amount of secounds for cover behaviour to start, if equal to or less than 0.f timer is deactivated" >
+	float mySearchDistance 3.f < tooltip="How far we search for a wall in meters" >
+
+	float myCoverHeightDampingSpring 150.f < tooltip="Spring value for damping the cover height. If set to 0 => no damping, direct value" >
+	float myAngleBetweenPlayerAndCoverDampingSpring 150.f < tooltip="Spring value for damping the angle between Player and Cover. If set to 0 => no damping, direct value" >
+	float myAngleBetweenPlayerAndCoverCornerDampingSpring 150.f < tooltip="Spring value for damping the angle between Player and Corner. If set to 0 => no damping, direct value" >
+	float myCoverDistanceDampingSpring 150.f < tooltip="Spring value for damping the cover distance. If set to 0 => no damping, direct value" >
+	float myAngleBetweenCameraAndCoverDampingSpring 150.f < tooltip="Spring value for damping the angle between camera dir and cover normal. If set to 0 => no damping, direct value" >
+	
+	float myMaxVelocityForCornerWhenNotADS 1.5f < tooltip="Maximum Velocity for Kay, when not in ADS, for corner behaviour (camera offset) to trigger (if not in corner already)" >
+	
+	float myMaxDistBetweenWallHits 0.75f < tooltip="Maximum horizontal distance between wall hits to be considered a continuous wall segment" >
+	
+	bool myUseWallNormalForLookDirectionScoring true < tooltip="Define what to check Look Direction against : TRUE => use Wall Normal // FALSE => use Direction to nearest point" >
+	bool myUseWallNormalForPlayerDirectionScoring true < tooltip="Define what to check Player Direction against : TRUE => use Wall Normal // FALSE => use Direction to nearest point" >
+}

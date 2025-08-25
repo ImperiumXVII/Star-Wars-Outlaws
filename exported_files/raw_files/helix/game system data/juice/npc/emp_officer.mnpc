@@ -1,0 +1,84 @@
+include "helix/game system data/juice/melee/npc_melee_config.mnpcmeleeconfig"
+include "helix/game system data/juice/npc/base_emp.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC emp_officer < uid=B0EA4E53607599070000005769C3BA47 > : base_emp
+{
+	myName "aurabesh = false, contextComment = \"The name of the Empire Commander Unit and its archetype (Revealer)\", enabled = true, guid = #91DC5D3C654E401F00051BEE92602912, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 10572, text = \"Imperial Officer\nRevealer\", type = \"MenuLine\""
+	myCharacterVisuals < uid=83E36AE361976C56000019F8FC4BA1AE > = character_visuals_2_silver_empire_imperial_officer 616C01996422F56C000085638066C620
+	myAdditionalGearGraphs 91DC5D3C653665B400014B0EAA04596D
+	myBehavior helix/behaviors/emp_officer.mbehavior
+	myMaxHealth 15
+	myHealthFormula max(1,NPCFinalHealth)
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag_1" < uid=2736B36563BFEE7E0002EDBA3DC92B16 > = Agent_Gender_FeminineTag 16DEADE6626D20EA00002E5277B65AD4
+		RBTagsTag "New RBTagsTag_1" < uid=2736B36563C007A80001F0C56D7D9FE3 > = Agent_Gender_MasculineTag 16DEADE6626D20EA00002E504CE30DE2
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag (2)" < uid=E4123D2762AF191D0000A844DBCC313E > = Agent_Faction_EmpireTag 16DEADE6614FB69800001863A66D45A1
+		RBTagsTag "New RBTagsTag (0)" < uid=EBE060C262AC89A20000C34D081C4B5C > = Agent_Archetype_LeaderTag 16DEADE6620AE45500002125B22C3903
+		RBTagsTag "New RBTagsTag" < uid=E4123D276303543700089F04E44C2669 > = Agent_BarksFamily_Officer E4123D2762F4CA2400048CAC1DDAFE39
+		RBTagsTag RBTag_Reinforcement < uid=3C2FA92B661E3D6A00172AD87320BE6B > = Agent_CanCallReinforcements 3C2FA92B661D510B00039C814C5A3821
+	}
+	myDialogueCharactersFromDatabase
+	{
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=E4123D2763E245E60003BCA5A5BF4B33 > = Imperial_OfficerF01 E4123D2763E244390003BBF69288B4BF
+		DialogueCharacterWithTags "New DialogueCharacterWithTags (0)" < uid=E4123D276527E1D6000900ED0C0C87C2 > = Imperial_OfficerF02 E4123D2763E244390003BBF9B27B3B40
+		DialogueCharacterWithTags "New DialogueCharacterWithTags (1)" < uid=E4123D276527E1DC000900EE439BD48F > = Imperial_OfficerF03 E4123D2763E244390003BBFCE09B2A79
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=E4123D2763E245E60003BCA6DF332362 > = Imperial_OfficerM01 E4123D2763E2445E0003BC02CBE5B6E1
+		DialogueCharacterWithTags "New DialogueCharacterWithTags (2)" < uid=E4123D276527E1E2000900EF9A140885 > = Imperial_OfficerM02 E4123D2763E2445E0003BC05A878394C
+		DialogueCharacterWithTags "New DialogueCharacterWithTags (3)" < uid=E4123D276527E1E6000900F02E06C097 > = Imperial_OfficerM03 E4123D2763E2445E0003BC08AAA592FC
+	}
+	myTacticalPositionFinderProfile < uid=91DC5D3C64B64AE90004AD871748D435 > = SupportTacticalPositionFinder 91DC5D3C64B64A7E0004AB13A39293EE
+	myWeaponLoadouts
+	{
+		NPCWeaponLoadout LoadoutA < uid=2736B365635FB22B000102521C27CF6A > = emp_Officer_Pistol 2736B365635FB1B70001022F9FAAB457
+	}
+	myPatrolFormationProfile < uid=91DC5D3C62E78FAD000103B18F05E5A6 > = EscortPatrolFormation 91DC5D3C62E78E2E00010370D371A7EF
+	myLootTable < uid=4171A7E165F8431E0008C1A0CA774E81 > = loot_con_OnKill_BactaOnly 2AE2EC8565F81F4F0002A84860BF6E62
+	myPickpocketableLootTable < uid=91DC5D3C64B65F27000D73A78E8A5841 > = loot_pickpocket_officer 2AE2EC8564AE8B9300025349AB7DFE25
+	myPackProfile < uid=91DC5D3C62DABBEE000193652DE541C6 > = LeaderPackProfile 91DC5D3C62DABBB900019349B6FAA2CC
+	myAudioParameters
+	{
+		mySwitches
+		{
+			AudioSwitch "NPC Faction Switch"
+			{
+				myGuid 4BFED0D00BA647AEFA0EF4BEE77E3CB0
+			}
+		}
+		myAudioSwitchByTags
+		{
+			AudioSwitchByTags OfficerMale
+			{
+				myTagsList
+				{
+					RBTagsTag "New RBTagsTag" < uid=1EC89F256377573B000064D881C79A74 > = Agent_Gender_MasculineTag 16DEADE6626D20EA00002E504CE30DE2
+				}
+				mySwitch
+				{
+					myGuid 417BB6AAD1734FCAC2D9647BD0AEF287
+				}
+			}
+			AudioSwitchByTags "Officer Female"
+			{
+				myTagsList
+				{
+					RBTagsTag "New RBTagsTag_1" < uid=1EC89F2563F380EA00004F95EB9D48C6 > = Agent_Gender_FeminineTag 16DEADE6626D20EA00002E5277B65AD4
+				}
+				mySwitch
+				{
+					myGuid 401B6D4630EDDAC60D8D6704BE9384B4
+				}
+			}
+		}
+	}
+	myAudioNPCDangerWeight 1.0
+	myPetAttackTargetType HumanoidLight
+	myMeleeConfig < uid=5C421F5C62613F6200002E8098E7C0CD > = npc_melee_config BCDE37F162445830000053EBBBF07CF3
+	myStaggerConfig < uid=5C421F5C637F29D40000B47908805EB8 > = NPCStaggerConfig_Humanoid_Light_MeleeTier3 3C2FA92B65157FB00004A3D0B15856C3
+	myCombatRole Commander
+}
+

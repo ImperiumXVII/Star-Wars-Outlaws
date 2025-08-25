@@ -1,0 +1,167 @@
+include "dlc1/game system data/juice/item/dlc1_items_questitems.mitem"
+include "helix/game system data/fruit/interactionpoints/interactionpoints.fruit"
+include "helix/game system data/juice/interactionpoints/interactionpoints_buttons.minteractionpoint"
+include "helix/game system data/juice/interactionpoints/interactionpoints_keycards.minteractionpoint"
+
+InteractionPoint UseKeyCard_B_DQ_040_PowerRoom < uid=4171A7E16668796600014DF8482C9C16 > : UseKeycardParent
+{
+	myRestrictions
+	{
+		AbilityItemUnlockRequirement PlayerHasItem
+		{
+			myItem < uid=4171A7E16668796600014DF928C9B26A > = qitem_B_DQ040_PowerRoomPass 4171A7E1666877CA00014DF24B6701E8
+		}
+	}
+	myGameAction Interact
+}
+
+InteractionPoint UseKeyCard_B_DQ_020_CabinsPass < uid=225CF6276673F3610006AC37C035463A > : UseKeycardParent
+{
+	myRestrictions
+	{
+		AbilityItemUnlockRequirement PlayerHasItem
+		{
+			myItem < uid=225CF627667403B800083613BC39CC1E > = qitem_B_DQ020_CabinsPass 225CF6276673F35D0006AC1B37488312
+		}
+	}
+}
+
+InteractionPoint UseKeyCard_B_DQ_020_KaysCabinPass < uid=225CF6276673F3610006AC38C426D74A > : UseKeycardParent
+{
+	myRestrictions
+	{
+		AbilityItemUnlockRequirement PlayerHasItem
+		{
+			myItem < uid=225CF627667403B800083614C80BE82F > = qitem_B_DQ020_KaysCabinPass 225CF6276674008C0006ACDAD824520E
+		}
+	}
+}
+
+InteractionPoint UseKeyCard_B_DQ_020_Locked < uid=CC6CF61E66CF4D63000323E7FDEC2008 > : UseKeycardParent
+{
+	myDefaultSetup
+	{
+		myLabel "branch = \"DLC1\", contextComment = \"Interaction label\", enabled = true, guid = #CC6CF61E66CF53FD000B7464E961F109, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 10730, text = \"Locked\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+	}
+	myDefaultInteractionRadius 2.0
+	myRestrictions
+	{
+		GameConditionFlag TRUE
+		{
+			myFlag FALSE
+		}
+	}
+}
+
+InteractionPoint SpyOnDoor < uid=225CF62766914D52001F21C9ED4F7EDE >
+{
+	myDefaultSetup
+	{
+		myLabel "branch = \"DLC1\", contextComment = \"Kay spy on door\", enabled = true, guid = #225CF62766914D85001F21CC6157F77B, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 11584, text = \"Spy\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myShouldWaitForGestureAnimation TRUE
+	}
+	myGameAction Interact
+}
+
+InteractionPoint DQ_20_Listen_through_door < uid=C9E22992669672A60018C94B202FED47 >
+{
+	myDefaultSetup
+	{
+		myLabel "branch = \"DLC1\", contextComment = \"DQ_20 Interaction point name action. Displayed in UI\", enabled = true, guid = #C9E22992669672400018C94ACC751215, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 11584, text = \"Listen through door\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myShouldWaitForGestureAnimation TRUE
+	}
+	myGameAction Interact
+}
+
+InteractionPoint DQ_20_Access_Roomservice < uid=C9E2299266967408001900AC9414C17A >
+{
+	myDefaultSetup
+	{
+		myLabel "branch = \"DLC1\", contextComment = \"DQ_20 Interaction point name action. Displayed in UI\", enabled = true, guid = #C9E22992669672F2001900ABAC7CEBDD, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 11584, text = \"Access Roomservice\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myShouldWaitForGestureAnimation TRUE
+	}
+	myExtraStepsSetupList
+	{
+	}
+	myRestrictions
+	{
+		GameConditionIsInCriticalNarrativeMode "New GameConditionIsInCriticalNarrativeMode"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myGameAction OrderPetCommandMain
+}
+
+InteractionPoint "DQ_20_ Turn_mic_on" < uid=C9E229926696767A001A5F01E6C6FD19 >
+{
+	myDefaultSetup
+	{
+		myLabel "branch = \"DLC1\", contextComment = \"DQ_20 Interaction point name action. Displayed in UI\", enabled = true, guid = #C9E22992669675C1001900EBA263A521, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 11584, text = \"Turn mic on\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myShouldWaitForGestureAnimation TRUE
+	}
+	myExtraStepsSetupList
+	{
+	}
+	myRestrictions
+	{
+		GameConditionIsInCriticalNarrativeMode "New GameConditionIsInCriticalNarrativeMode"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myGameAction OrderPetCommandMain
+}
+
+InteractionPoint "DQ_20_ Nix_Billboard" < uid=225CF62766978607000207982CE408F5 >
+{
+	myDefaultSetup
+	{
+		myLabel "branch = \"DLC1\", contextComment = \"DQ_20 Interaction point name action. Displayed in UI\", enabled = true, guid = #225CF627669785E50002079789301875, lineVersion = 11, maxLength = 0, productId = -1, sectionId = 11584, text = \"Push buttons\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myShouldWaitForGestureAnimation TRUE
+	}
+	myExtraStepsSetupList
+	{
+	}
+	myRestrictions
+	{
+		GameConditionIsInCriticalNarrativeMode "New GameConditionIsInCriticalNarrativeMode"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myGameAction OrderPetCommandMain
+	myLOSRequirement RequiredAllowingTransparency
+}
+
+InteractionPoint DQ_20_Access_Roomservice_Kay < uid=225CF627669A38320016B74B2E928371 >
+{
+	myDefaultSetup
+	{
+		myLabel "branch = \"DLC1\", contextComment = \"DQ_20 Interaction point name action. Displayed in UI\", enabled = true, guid = #225CF627669A38190016B74A6382ABD9, lineVersion = 8, maxLength = 0, productId = -1, sectionId = 11584, text = \"Access Roomservice\", type = \"MenuLine\""
+		myForbiddenInteractionLabel "branch = \"DLC1\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+		myShouldWaitForGestureAnimation TRUE
+	}
+	myExtraStepsSetupList
+	{
+	}
+	myAudio
+	{
+		myActivationAudio 4F064740B403CE2174B91F640579B69B
+	}
+	myRestrictions
+	{
+		GameConditionIsInCriticalNarrativeMode "New GameConditionIsInCriticalNarrativeMode"
+		{
+			myIsNegated TRUE
+		}
+	}
+	myGameAction Interact
+}
+

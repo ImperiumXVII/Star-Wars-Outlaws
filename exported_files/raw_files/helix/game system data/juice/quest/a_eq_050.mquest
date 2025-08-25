@@ -1,0 +1,53 @@
+include "helix/game system data/fruit/quest/quest.fruit"
+include "helix/game system data/juice/rbtags/quest.mrbtagstags"
+include "helix/game system data/juice/reward/quest_completion_reward.mreward"
+include "helix/game system data/juice/reward/quest_reward.mreward"
+
+Quest A_EQ_050 < uid=842ECCE463D797CA0002EC75EB8099BA >
+{
+	myName "aurabesh = false, contextComment = \"Quest Giver: The Outfitter\", enabled = true, guid = #842ECCE463D797CA0002EC6FD1FD861F, lineVersion = 13, maxLength = 0, productId = -1, sectionId = 2497, text = \"A_EQ_050\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"Quest text\", enabled = true, guid = #842ECCE463D797CA0002EC70A0185E00, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2497, text = \"Every spy needs some toys.\", type = \"MenuLine\""
+	myType Expert
+	myCompletionReward < uid=842ECCE4642C160500007331E7F941EF > = A_EQ_050_questcomplete_reward 2AE2EC85644A93B30000B3089F30C7C6
+	myIntroBeat < uid=842ECCE463D8C3A90000D84FE25180A8 >
+	{
+		myScript helix/scripts/scr_a_eq_050_kij_pln_b01_talkdroid.mscript
+		myName "aurabesh = false, contextComment = \"Beat text\", enabled = true, guid = #842ECCE463D8BFF40000D8100251A6C8, lineVersion = 7, maxLength = 0, productId = -1, sectionId = 2497, text = \"Travel to Kijimi Cantina\", type = \"MenuLine\""
+		myLevelInfo 9C4B6A046012E658000001A6972FA29E
+		myObjectives
+		{
+			QuestObjectiveTalkTo B00_010_TalkToDroid < uid=842ECCE463D8C3A90000D850DA933711 >
+			{
+				myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #842ECCE463D8BFF40000D811AE35A5CD, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2497, text = \"Talk to the Droid\", type = \"MenuLine\""
+			}
+		}
+		myQuestBeatStateGameValue < uid=842ECCE463D8C3A90000D851D582D678 >
+		{
+		}
+	}
+	myBeats
+	{
+		QuestBeat "QB01 - Receive Reward" < uid=842ECCE463D797CA0002EC79D2F30BA0 >
+		{
+			myScript helix/scripts/scr_a_eq_050_kij_pln_b02_receivedevice.mscript
+			myName "aurabesh = false, contextComment = \"Beat text\", enabled = true, guid = #842ECCE463D797CA0002EC7390392A14, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2497, text = \"Return to the Droid\", type = \"MenuLine\""
+			myLevelInfo 9C4B6A046012E658000001A6972FA29E
+			myObjectives
+			{
+				QuestObjectiveTalkTo B01_010_ReceiveDevice < uid=842ECCE463D797CA0002EC7AAE7E7783 >
+				{
+					myName "aurabesh = false, contextComment = \"Objective text\", enabled = true, guid = #842ECCE463D797CA0002EC74F2B38E4D, lineVersion = 6, maxLength = 0, productId = -1, sectionId = 2497, text = \"Receive the Comm Scrambler\", type = \"MenuLine\""
+				}
+			}
+			myQuestBeatStateGameValue < uid=842ECCE463D797CA0002EC7B0C0BF82C >
+			{
+			}
+		}
+	}
+	myQuestStateGameValue < uid=842ECCE463D797CA0002EC7CB9A82F94 >
+	{
+	}
+	myQuestStartedRBTag < uid=DA5615DD64B5180D0000ABEB89D50E49 > = World_Quest_EQ050_Started DA5615DD64A3F38A0000AC91A0E19736
+	myQuestCompletedRBTag < uid=DA5615DD64B5180D0000ABEC35760044 > = World_Quest_EQ050_Completed DA5615DD64A3F3810000AC905BF155D4
+}
+

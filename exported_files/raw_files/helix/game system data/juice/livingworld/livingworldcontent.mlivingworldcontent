@@ -1,0 +1,498 @@
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+include "helix/game system data/juice/faction/factions.mfaction"
+
+LivingWorldContent "Rebel Rocks" < uid=6F2AF9195FE0BF5C0000002DE160D579 >
+{
+}
+
+LivingWorldContent "Imperial Santa" < uid=6F2AF9195FE0BF5C0000002E47EF49D2 >
+{
+}
+
+LivingWorldContent PykePoachingStation_TreasureRoom < uid=AE8B16016335B6430002D3D47E95E3FB >
+{
+	myCompletedGameValue < uid=AE8B16016335B6A60002D41B5B74BC31 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Completed != 1"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 30"
+		{
+			myDistance 30.0
+			myOperator LessThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Completed = 1"
+		{
+		}
+	}
+}
+
+LivingWorldContent TOS_100_SmugglersCache_P2 < uid=1ED8F3166363D7D90000D8FBA2708C40 >
+{
+	myCompletedGameValue < uid=1ED8F3166363D80B0000D91AB4797787 >
+	{
+	}
+	myActivateGameCondition
+	{
+		myFormula "A_TO_ITL100_SmugglersCache_P2.myStateGameValue = IntelState.Active"
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_ContentHasBeenCompleted "Completed != 1"
+		{
+			myIsNegated TRUE
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 150"
+		{
+			myDistance 150.0
+			myOperator LessThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 150"
+		{
+			myDistance 150.0
+			myOperator GreaterThan
+		}
+	}
+}
+
+LivingWorldContent Gym_Quest_Trailblazer_Test < uid=85DDDED7640AFEB100002598E1263A1D >
+{
+	myActivateGameCondition
+	{
+		myFormula ""
+		myContextType LivingWorldContentLocation
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_IsSpaceshipOnMyLandingZone IsSpaceshipHere?
+		{
+		}
+		GameConditionQuestBeatState "trailblazer go to started"
+		{
+			myQuestBeat 85DDDED76402031100036C67A18270BE
+			myQuestBeatState Started
+		}
+	}
+	myDeactivateGameCondition
+	{
+		myFormula ""
+		myContextType LivingWorldContentLocation
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup LivingWorldGameConditionGroup
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_IsSpaceshipOnMyLandingZone SpaceshipNotHere
+				{
+					myIsNegated TRUE
+				}
+				LivingWorldGameConditionGroup "notstarted and far away"
+				{
+					myConditions
+					{
+						GameConditionQuestBeatState "trailblazer not started"
+						{
+							myQuestBeat 85DDDED76402031100036C67A18270BE
+							myQuestBeatState Started
+							myOperator NotEqual
+						}
+						GameConditionContextLivingWorldContentLocation_DistanceToPlayer ">50 meter away"
+						{
+							myDistance 50.0
+							myOperator GreaterThan
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent TOS_NGI_02_Flyermound_Weather < uid=1ED8F316642AD47E0013A94D7826595F >
+{
+	myCompletedGameValue < uid=1ED8F316642AD47E0013A94EF83B40DB >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 200"
+		{
+			myDistance 200.0
+			myOperator LessThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 625"
+		{
+			myDistance 625.0
+			myOperator GreaterThan
+		}
+	}
+}
+
+LivingWorldContent TOS_PykeFactionTerritory_LandingPad_Activate < uid=D4F63079641DA96F00029D04D7FF768B >
+{
+	myCompletedGameValue < uid=D4F63079641DA96F00029D0563696E8F >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasReputation GameConditionPlayerHasReputation
+		{
+			myFaction < uid=83E36AE3648C5BB90000A9BFC39790B8 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+			myReputationTier Good
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionPlayerHasReputation GameConditionPlayerHasReputation
+		{
+			myFaction < uid=83E36AE3648C5BB90000A9C08EA3CE09 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+			myReputationTier Good
+			myOperator LessThan
+		}
+	}
+}
+
+LivingWorldContent TOS_PykeFactionTerritory_LandingPad_Deactivate < uid=D4F63079641DAE420014D759AC307DB6 >
+{
+	myCompletedGameValue < uid=D4F63079641DAE420014D75C07A39A89 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasReputation GameConditionPlayerHasReputation
+		{
+			myFaction < uid=83E36AE3648C5BE40000A9C1B1A78106 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+			myReputationTier Good
+			myOperator LessThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionPlayerHasReputation GameConditionPlayerHasReputation
+		{
+			myFaction < uid=83E36AE3648C5BE40000A9C279973566 > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+			myReputationTier Good
+		}
+	}
+}
+
+LivingWorldContent AKI_PykeFactionTerritory_LandingPad_Activate < uid=B5AC84E76464A0A900317B43C3B9DD57 >
+{
+	myCompletedGameValue < uid=B5AC84E76464A0A900317B44C40A7314 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasReputation GameConditionPlayerHasReputation
+		{
+			myFaction < uid=83E36AE3648C5C1E0000A9C306FA78BC > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+			myReputationTier Good
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionPlayerHasReputation GameConditionPlayerHasReputation
+		{
+			myFaction < uid=83E36AE3648C5C1E0000A9C496B92DEC > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+			myReputationTier Good
+			myOperator LessThan
+		}
+	}
+}
+
+LivingWorldContent AKI_PykeFactionTerritory_LandingPad_Deactivate < uid=B5AC84E76464A0A900317B45C41A0D2A >
+{
+	myCompletedGameValue < uid=B5AC84E76464A0A900317B46021A5193 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionPlayerHasReputation GameConditionPlayerHasReputation
+		{
+			myFaction < uid=83E36AE3648C5C3D0000A9C51B9B218C > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+			myReputationTier Good
+			myOperator LessThan
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionPlayerHasReputation GameConditionPlayerHasReputation
+		{
+			myFaction < uid=83E36AE3648C5C3D0000A9C6DB671B9C > = PykeSyndicate 16DEADE65F7DDB52000000D22C63D964
+			myReputationTier Good
+			myOperator GreaterThanOrEqual
+		}
+	}
+}
+
+LivingWorldContent TOS_Mirogana_Cantina_UnloadNPCDuringMQ040 < uid=D4F6307964C3702A0004590976795C15 >
+{
+	myCompletedGameValue < uid=D4F6307964C3705E0004590A0A8D5522 >
+	{
+	}
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 100"
+		{
+		}
+		GameConditionQuestState "New GameConditionQuestState"
+		{
+			myQuest B567AAE061F3F13300001B173A8B0CF2
+			myQuestState Started
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionQuestState "New GameConditionQuestState"
+		{
+			myQuest B567AAE061F3F13300001B173A8B0CF2
+			myQuestState Completed
+		}
+	}
+}
+
+LivingWorldContent TAT_MosEisley_CityBlockers_1stStage_Activate < uid=2AEFFC7964D9E6C500055CA2888D8A99 >
+{
+	myActivationGameConditions
+	{
+		GameConditionQuestState "MQ110 Not Completed"
+		{
+			myQuest BFA41A0261B3751E00000496D134E105
+			myQuestState Completed
+			myOperator NotEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionQuestState "MQ110 Completed"
+		{
+			myQuest BFA41A0261B3751E00000496D134E105
+			myQuestState Completed
+		}
+	}
+}
+
+LivingWorldContent "TAT MicroPOI Merchant House 01" < uid=AF4E8E0864FADFA6000875839325D8C5 >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "New GameConditionContextLivingWorldContentLocation_DistanceToPlayer"
+		{
+			myDistance 100.0
+			myOperator LessThan
+		}
+		GameConditionQuestIsCompleted "New GameConditionQuestIsCompleted"
+		{
+			myQuest C5B8DCF6651420800000F6EB218F45E2
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "New GameConditionContextLivingWorldContentLocation_DistanceToPlayer"
+		{
+			myDistance 50.0
+		}
+		GameConditionTimeOfDay "New GameConditionTimeOfDay"
+		{
+			myTimeOfDay Dusk
+		}
+	}
+}
+
+LivingWorldContent TOS_Mirogana_LockCityBeforeMQ040 < uid=D4F630796509501F0002D74B232A9CFB >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance < 150"
+		{
+			myDistance 150.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestBeatState "MQ040 B02 Not Completed"
+		{
+			myQuestBeat B567AAE061F3F16000001B200DF14D61
+			myQuestBeatState Completed
+			myOperator NotEqual
+		}
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestState "MQ040 Started"
+				{
+					myQuest B567AAE061F3F13300001B173A8B0CF2
+					myQuestState Started
+				}
+				GameConditionQuestState "MQ040 Intro"
+				{
+					myQuest B567AAE061F3F13300001B173A8B0CF2
+					myQuestState Intro
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Group OR"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance > 150"
+				{
+					myDistance 300.0
+				}
+				GameConditionQuestBeatState "MQ040 B02 Completed"
+				{
+					myQuestBeat 8FD81D5163D284AB0006BF63B19A062A
+					myQuestBeatState Completed
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent AKI_EQ100_FakeShuttle < uid=E1B84E3A654BA0FA0082960CBE454C8E >
+{
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Or Condition"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState "EQ 100 B01 started"
+				{
+					myQuestBeat 7C12810B64C7B5AF0000982910353D57
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "EQ 100 B02 started"
+				{
+					myQuestBeat 7C12810B64C7B792000098392EC21423
+					myQuestBeatState Started
+				}
+			}
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Or Condition"
+		{
+			myOperator Or
+			myConditions
+			{
+				GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Player distance < 10 m"
+				{
+					myDistance 10.0
+					myOperator LessThan
+				}
+				GameConditionQuestBeatState "Beat 02 Completed"
+				{
+					myQuestBeat 7C12810B64C7B792000098392EC21423
+					myQuestBeatState Completed
+				}
+			}
+		}
+	}
+}
+
+LivingWorldContent AKI_myrra_wanted < uid=A21FC21C65C3A846003AFBD3F502B2BB >
+{
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "New GameConditionContextLivingWorldContentLocation_DistanceToPlayer"
+		{
+			myDistance 200.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "New GameConditionContextLivingWorldContentLocation_DistanceToPlayer"
+		{
+			myDistance 200.0
+		}
+	}
+}
+
+LivingWorldContent AKI_Hut_FactionDistrict < uid=A21FC21C65D32BFB0004E6D4A06FFC61 >
+{
+	myLayerType FactionDistrict
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "New GameConditionContextLivingWorldContentLocation_DistanceToPlayer"
+		{
+			myDistance 110.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "New GameConditionContextLivingWorldContentLocation_DistanceToPlayer"
+		{
+			myDistance 110.0
+		}
+	}
+}
+
+LivingWorldContent AKI_Pyk_FactionDistrict < uid=A21FC21C65D32C6B00050A0B242705F5 >
+{
+	myLayerType FactionDistrict
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "New GameConditionContextLivingWorldContentLocation_DistanceToPlayer"
+		{
+			myDistance 80.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "New GameConditionContextLivingWorldContentLocation_DistanceToPlayer"
+		{
+			myDistance 80.0
+		}
+	}
+}
+
+LivingWorldContent AKI_Myrra_Bartender < uid=A21FC21C65DF0CD3000B5EB394D60620 >
+{
+	myContentCooldown 0.0
+	myActivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "New GameConditionContextLivingWorldContentLocation_DistanceToPlayer"
+		{
+			myDistance 50.0
+			myOperator LessThanOrEqual
+		}
+		GameConditionQuestIsCompleted "New GameConditionQuestIsCompleted"
+		{
+			myQuest F3CF7529637CE2360000BF8068E874C2
+		}
+	}
+	myDeactivationGameConditions
+	{
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "New GameConditionContextLivingWorldContentLocation_DistanceToPlayer"
+		{
+			myDistance 50.0
+		}
+	}
+}
+

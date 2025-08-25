@@ -1,0 +1,30 @@
+include "helix/game system data/fruit/character/charactervisuals.fruit"
+include "helix/game system data/fruit/faction/faction.fruit"
+
+list ProximityDetectorFactionsList
+{
+	Faction*
+}
+
+class HeistTarget < uid=auto abstract=1 >
+{
+	CharacterVisualsBase* myCharacterVisuals
+	Faction* myFaction
+	float myProximityRadius < min=0 >
+	float myUnspawnDelay < min=0 >
+	ProximityDetectorFactionsList myFriendlyFactions
+	ProximityDetectorFactionsList myEnemyFactions
+}
+
+class HeistTargetCarried : HeistTarget
+{
+	int myCaptureTime < min=0 >
+	int myRegressionTime < min=0 >
+	bool myIsOnlyActiveOnDrop true
+}
+
+class HeistTargetEscorted : HeistTarget
+{
+	float mySequenceWallDetachTime < min=0 >
+	float myObstacleRaycastLength < min=0 >
+}

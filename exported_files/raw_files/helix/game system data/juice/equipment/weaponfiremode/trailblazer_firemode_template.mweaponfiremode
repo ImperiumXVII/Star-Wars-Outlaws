@@ -1,0 +1,54 @@
+include "helix/game system data/fruit/equipment/weapon/weapon_fire_mode.fruit"
+include "helix/game system data/juice/ai/npcdetectionsoundevent_weapons.mnpcdetectionsoundevent"
+include "helix/game system data/juice/projectile/ship_missile_projectile.mprojectile"
+
+WeaponFireMode trailblazer_firemode_template < uid=A207755D62C2E46C000037462B3390A4 >
+{
+	myFireEvent
+	{
+		FullAutoFireEvent FullAutoFireEvent
+		{
+			myRPM
+			{
+				myRPM 500
+			}
+		}
+	}
+	myBaseProperties
+	{
+		myInputController
+		{
+			myFireRumble 8E25811B653BA3E900006C30F06F1409
+		}
+	}
+	myProjectile < uid=A207755D62C2E46C00003747464E682C > = projectile_ship_missile_base B005013562723C5100002CF6C1C5C41B
+	myOverHeat
+	{
+		myMaxHeatFormula "100.0 * MaxHeatModifier"
+	}
+	myDamage
+	{
+		myDamage
+		{
+			myDamageFormula 0
+			myVariation 0.0
+		}
+	}
+	mySpread
+	{
+		mySpreadValues
+		{
+			mySpread
+			{
+				myMin 0.0
+				myMax 0.0
+			}
+		}
+	}
+	myUI
+	{
+		myDefaultUIGraph helix/ui/Graphs/crosshair_trailblazer_weapon.muigraph
+	}
+	myNPCDetectionSoundEvent < uid=A207755D6359427C00007CF15A3D5D94 > = WeaponTrigger_Default 16C7D1FB63497FBD000004FA01B55DE5
+}
+

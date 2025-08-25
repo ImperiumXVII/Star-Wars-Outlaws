@@ -1,0 +1,1134 @@
+include "helix/game system data/fruit/input/gameinput.fruit"
+include "helix/game system data/juice/input/inputactions.juice"
+include snowdrop/modules/core/input/gameactions.fruit
+
+TriggerGameAction "[Misc] Start"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Start Pressed (OR)"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Controller
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 300
+					myInputAction = UI_MAINMENU
+				}
+				ConditionalInputAction KB
+				{
+					myInputAction = UI_MAINMENU_KB
+				}
+			}
+		}
+	}
+	myGameAction MiscStart
+}
+
+TriggerGameAction "[Misc] Interact"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup Input
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Console
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myInputAction = RIGHT_STICK_BUTTON
+				}
+				ConditionalInputAction Keyboard
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myInputAction = KB_INTERACT
+				}
+			}
+		}
+	}
+	myGameAction Interact
+	myExcludeInActionContexts
+	{
+		AimScopeContext TRUE
+		GrapplingContext TRUE
+		HyperspacePreparationReadyContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[Misc] Hold Interact"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Only allow if Force Over Heat is unavailable"
+		{
+			myConditionalInputActions
+			{
+				ConditionalGameActionState "Cannot Force Over Heat"
+				{
+					myNegate TRUE
+					myGameActionState CanForceOverHeat
+				}
+				ConditionalGameActionState "Equipment Not Over Heating"
+				{
+					myNegate TRUE
+					myGameActionState IsEquipmentOverHeat
+				}
+				ConditionalActionGroup "Input Actions"
+				{
+					myOperator Or
+					myConditionalInputActions
+					{
+						ConditionalInputAction "Y-Triangle Pressed"
+						{
+							myInputActionType HoldDown
+							myTimer 0
+							myInputAction = Y_TRIANGLE
+						}
+						ConditionalInputAction "KB Pressed"
+						{
+							myInputActionType HoldDown
+							myTimer 0
+							myInputAction = KB_INTERACT
+						}
+					}
+				}
+			}
+		}
+	}
+	myGameAction HoldInteract
+	myExcludeInActionContexts
+	{
+		AimScopeContext TRUE
+		GrapplingContext TRUE
+		HyperspacePreparationReadyContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[Misc] FusionCutterInteract"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Hold if force over heat available but instant if not"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup "Hold if force over heat available"
+				{
+					myConditionalInputActions
+					{
+						ConditionalGameActionState Condition
+						{
+							myRequireNewInput FALSE
+							myGameActionState CanForceOverHeat
+						}
+						ConditionalActionGroup "Input Actions"
+						{
+							myOperator Or
+							myConditionalInputActions
+							{
+								ConditionalInputAction "X-Square Pressed"
+								{
+									myInputActionType HoldDownAfterTime
+									myTimer 0
+									myInputAction = Y_TRIANGLE
+								}
+								ConditionalInputAction "KB Pressed"
+								{
+									myInputActionType HoldDownAfterTime
+									myTimer 0
+									myInputAction = KB_ACTION_3
+								}
+							}
+						}
+					}
+				}
+				ConditionalActionGroup "Instant if force over heat unavailable"
+				{
+					myConditionalInputActions
+					{
+						ConditionalGameActionState Condition
+						{
+							myNegate TRUE
+							myGameActionState CanForceOverHeat
+						}
+						ConditionalActionGroup "Input Actions"
+						{
+							myOperator Or
+							myConditionalInputActions
+							{
+								ConditionalInputAction "X-Square Pressed"
+								{
+									myInputActionType HoldDownAfterTime
+									myInputAction = Y_TRIANGLE
+								}
+								ConditionalInputAction "KB Pressed"
+								{
+									myInputActionType HoldDownAfterTime
+									myInputAction = KB_ACTION_3
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	myGameAction FusionCutterInteract
+	myActionContexts
+	{
+		SequenceContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		AimScopeContext TRUE
+		GrapplingContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[Misc] Cancel"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "X-Square Pressed"
+				{
+					myInputActionType Pressed
+					myInputAction = B_CIRCLE
+				}
+				ConditionalInputAction "KB Pressed"
+				{
+					myInputActionType Pressed
+					myInputAction = KB_CANCEL
+				}
+			}
+		}
+	}
+	myGameAction Cancel
+	myExcludeInActionContexts
+	{
+		GrapplingContext TRUE
+	}
+}
+
+TriggerGameAction "[Misc] UbiVisualNotificationInteract"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Keyboard
+				{
+					myInputAction = UI_UBIVISUALNOTIFICATION_KB
+				}
+				ConditionalInputAction Gamepad
+				{
+					myInputAction = UI_MAINMENU
+				}
+			}
+		}
+	}
+	myGameAction UbiVisualNotificationInteract
+}
+
+TriggerGameAction GiveUp
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Gamepad
+				{
+					myInputActionType PressedAfterTime
+					myTimer 1000
+					myInputAction = A_CROSS
+				}
+				ConditionalInputAction Keyboard
+				{
+					myInputActionType PressedAfterTime
+					myTimer 1000
+					myInputAction = KB_C
+				}
+			}
+		}
+	}
+	myGameAction GiveUp
+	myActionContexts
+	{
+		DeadContext TRUE
+	}
+}
+
+TriggerGameAction "[Misc] Ping"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Keyboard
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 400
+					myInputAction = MIDDLE_CLICK
+				}
+				ConditionalInputAction Gamepad
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 400
+					myInputAction = RIGHT_BUMPER_R1
+				}
+			}
+		}
+	}
+	myGameAction Ping
+}
+
+TriggerGameAction "[Misc] PingSelf"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Keyboard
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 400
+					myInputAction = KB_E
+				}
+				ConditionalInputAction Gamepad
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 400
+					myInputAction = D_PAD_DOWN
+				}
+			}
+		}
+	}
+	myGameAction PingSelf
+	myActionContexts
+	{
+		CoopDownedContext TRUE
+		DefaultContext FALSE
+	}
+}
+
+TriggerGameAction "[Misc] PingHold"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Keyboard
+				{
+					myInputActionType HoldDownAfterTime
+					myTimer 400
+					myInputAction = MIDDLE_CLICK
+				}
+				ConditionalInputAction Gamepad
+				{
+					myInputActionType HoldDownAfterTime
+					myTimer 400
+					myInputAction = RIGHT_BUMPER_R1
+				}
+			}
+		}
+	}
+	myGameAction PingHold
+}
+
+TriggerGameAction "[Misc] SinglePressInteract"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "New ConditionalActionGroup"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "KB Pressed"
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 300
+					myInputAction = KB_INTERACT
+				}
+				ConditionalInputAction "Y-Triangle Pressed"
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 300
+					myInputAction = Y_TRIANGLE
+				}
+			}
+		}
+	}
+	myGameAction SinglePressInteract
+	myExcludeInActionContexts
+	{
+		AimScopeContext TRUE
+		GrapplingContext TRUE
+		HyperspacePreparationReadyContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[Misc] HoldInteract"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "New ConditionalActionGroup"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "KB Pressed"
+				{
+					myInputActionType PressedAfterTime
+					myTimer 1000
+					myInputAction = KB_INTERACT
+				}
+				ConditionalInputAction "Y-Triangle Pressed"
+				{
+					myInputActionType PressedAfterTime
+					myTimer 1000
+					myInputAction = Y_TRIANGLE
+				}
+			}
+		}
+	}
+	myGameAction HoldInteract
+	myConsoleCommand ""
+	myExcludeInActionContexts
+	{
+		AimScopeContext TRUE
+		GrapplingContext TRUE
+		HyperspacePreparationReadyContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[Misc] CancelInteraction"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Gamepad_Cancel
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myInputAction = B_CIRCLE
+				}
+				ConditionalInputAction Gamepad_Interact
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myInputAction = RIGHT_STICK_BUTTON
+				}
+				ConditionalInputAction Keypad_Cancel
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myInputAction = KB_CANCEL
+				}
+				ConditionalInputAction Keypad_Interact
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myInputAction = KB_E
+				}
+				ConditionalInputAction Gamepad_Up
+				{
+					myInputActionType PressedAfterTime
+					myTimer 1000
+					myInputAction = LEFT_STICK_UP
+				}
+				ConditionalInputAction Gamepad_Down
+				{
+					myInputActionType PressedAfterTime
+					myTimer 1000
+					myInputAction = LEFT_STICK_DOWN
+				}
+				ConditionalInputAction Gamepad_Left
+				{
+					myInputActionType PressedAfterTime
+					myTimer 1000
+					myInputAction = LEFT_STICK_LEFT
+				}
+				ConditionalInputAction Gamepad_Right
+				{
+					myInputActionType PressedAfterTime
+					myTimer 1000
+					myInputAction = LEFT_STICK_RIGHT
+				}
+				ConditionalInputAction Keypad_Up
+				{
+					myInputActionType PressedAfterTime
+					myTimer 500
+					myInputAction = KB_MOVE_UP
+				}
+				ConditionalInputAction Keypad_Down
+				{
+					myInputActionType PressedAfterTime
+					myTimer 500
+					myInputAction = KB_MOVE_DOWN
+				}
+				ConditionalInputAction Keypad_Left
+				{
+					myInputActionType PressedAfterTime
+					myTimer 500
+					myInputAction = KB_MOVE_LEFT
+				}
+				ConditionalInputAction Keypad_Right
+				{
+					myInputActionType PressedAfterTime
+					myTimer 500
+					myInputAction = KB_MOVE_RIGHT
+				}
+			}
+		}
+	}
+	myGameAction CancelInteraction
+	myActionContexts
+	{
+		SequenceContext TRUE
+	}
+}
+
+TriggerGameAction "[Misc] DropHeistTarget"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "New ConditionalActionGroup"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "New ConditionalInputAction"
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 500
+					myInputAction = KB_O
+				}
+			}
+		}
+	}
+	myGameAction DropHeistTarget
+}
+
+TriggerGameAction "[Misc] DropHeistTargetAll"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "New ConditionalActionGroup"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction "New ConditionalInputAction"
+				{
+					myInputActionType HoldDownAfterTime
+					myTimer 500
+					myInputAction = KB_O
+				}
+			}
+		}
+	}
+	myGameAction DropHeistTargetAll
+}
+
+TriggerGameAction "[Misc] Lockpicking Lock In"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Gamepad
+				{
+					myInputActionType Pressed
+					myTimer 300
+					myToggle FALSE
+					myInputAction = RIGHT_TRIGGER_R2
+				}
+				ConditionalInputAction Mouse
+				{
+					myTimer 300
+					myInputAction = KB_LOCKPICKING_LOCK_IN
+				}
+			}
+		}
+	}
+	myGameAction LockpickingLockIn
+}
+
+TriggerGameAction ArcadeGameRacingMoveLeft
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Keyboard
+				{
+					myInputActionType PressAndRepeat
+					myTimer 300
+					myInputAction = UI_MOVE_LEFT_KB
+				}
+				ConditionalInputAction Gamepad_Stick_DPad
+				{
+					myInputActionType PressAndRepeat
+					myTimer 300
+					myInputAction = UI_MOVE_LEFT
+				}
+				ConditionalInputAction Gamepad_Bumper
+				{
+					myInputActionType PressAndRepeat
+					myTimer 300
+					myInputAction = LEFT_BUMPER_L1
+				}
+				ConditionalInputAction Gamepad_Trigger
+				{
+					myInputActionType PressAndRepeat
+					myTimer 300
+					myInputAction = LEFT_TRIGGER_L2
+				}
+				ConditionalInputAction Gamepad_RightStick
+				{
+					myInputActionType PressAndRepeat
+					myTimer 300
+					myInputAction = RIGHT_STICK_LEFT
+				}
+			}
+		}
+	}
+	myGameAction ArcadeGameRacingMoveLeft
+	myActionContexts
+	{
+		ArcadeGameContext TRUE
+		DefaultContext FALSE
+	}
+}
+
+TriggerGameAction ArcadeGameRacingMoveRight
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Keyboard
+				{
+					myInputActionType PressAndRepeat
+					myTimer 300
+					myInputAction = UI_MOVE_RIGHT_KB
+				}
+				ConditionalInputAction Gamepad
+				{
+					myInputActionType PressAndRepeat
+					myTimer 300
+					myInputAction = UI_MOVE_RIGHT
+				}
+				ConditionalInputAction Gamepad_Bumper
+				{
+					myInputActionType PressAndRepeat
+					myTimer 300
+					myInputAction = RIGHT_BUMPER_R1
+				}
+				ConditionalInputAction Gamepad_Trigger
+				{
+					myInputActionType PressAndRepeat
+					myTimer 300
+					myInputAction = RIGHT_TRIGGER_R2
+				}
+				ConditionalInputAction Gamepad_RightStick
+				{
+					myInputActionType PressAndRepeat
+					myTimer 300
+					myInputAction = RIGHT_STICK_RIGHT
+				}
+			}
+		}
+	}
+	myGameAction ArcadeGameRacingMoveRight
+	myActionContexts
+	{
+		ArcadeGameContext TRUE
+		DefaultContext FALSE
+	}
+}
+
+TriggerGameAction ArcadeGameRailShooterShoot
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Keyboard
+				{
+					myInputActionType PressAndRepeat
+					myTimer 0
+					myInputAction = LEFT_CLICK
+				}
+				ConditionalInputAction Gamepad_leftTrigger
+				{
+					myInputActionType PressAndRepeat
+					myTimer 0
+					myInputAction = LEFT_TRIGGER_L2
+				}
+				ConditionalInputAction Gamepad_RightTrigger
+				{
+					myInputActionType PressAndRepeat
+					myTimer 0
+					myInputAction = RIGHT_TRIGGER_R2
+				}
+			}
+		}
+	}
+	myGameAction ArcadeGameRailShooterShoot
+	myActionContexts
+	{
+		ArcadeGameContext TRUE
+		DefaultContext FALSE
+	}
+}
+
+TriggerGameAction ArcadeGameRailShooterSuperShoot
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Gamepad_LeftBumper
+				{
+					myInputActionType Pressed
+					myTimer 0
+					myInputAction = LEFT_BUMPER_L1
+				}
+				ConditionalInputAction Gamepad_RightBumper
+				{
+					myInputAction = RIGHT_BUMPER_R1
+				}
+				ConditionalInputAction Keyboard_MouseClick
+				{
+					myInputAction = MIDDLE_CLICK
+				}
+			}
+		}
+	}
+	myGameAction ArcadeGameRailShooterSuperShoot
+	myActionContexts
+	{
+		ArcadeGameContext TRUE
+		DefaultContext FALSE
+	}
+}
+
+TriggerGameAction ArcadeGameRailShooterMoveLeft
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Left Stick Left Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = LEFT_STICK_UP
+					myBackInputAction = LEFT_STICK_DOWN
+					myLeftInputAction = LEFT_STICK_LEFT
+					myRightInputAction = LEFT_STICK_RIGHT
+					myExpectedInputAction = LEFT_STICK_LEFT
+				}
+				ConditionalRotatedInputAction "Left KB"
+				{
+					myInputActionType Analog
+					myForwardInputAction = KB_MOVE_UP
+					myBackInputAction = KB_MOVE_DOWN
+					myLeftInputAction = KB_MOVE_LEFT
+					myRightInputAction = KB_MOVE_RIGHT
+					myExpectedInputAction = KB_MOVE_LEFT
+				}
+				ConditionalRotatedInputAction "Rotated Right Stick Left Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = RIGHT_STICK_UP
+					myBackInputAction = RIGHT_STICK_DOWN
+					myLeftInputAction = RIGHT_STICK_LEFT
+					myRightInputAction = RIGHT_STICK_RIGHT
+					myExpectedInputAction = RIGHT_STICK_LEFT
+				}
+				ConditionalInputAction Dpad_Left
+				{
+					myInputActionType Analog
+					myInputAction = D_PAD_LEFT
+				}
+			}
+		}
+	}
+	myGameAction ArcadeGameRailShooterMoveLeft
+	myActionContexts
+	{
+		ArcadeGameContext TRUE
+		DefaultContext FALSE
+	}
+}
+
+TriggerGameAction ArcadeGameRailShooterMoveRight
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Left Stick Right Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = LEFT_STICK_UP
+					myBackInputAction = LEFT_STICK_DOWN
+					myLeftInputAction = LEFT_STICK_LEFT
+					myRightInputAction = LEFT_STICK_RIGHT
+					myExpectedInputAction = LEFT_STICK_RIGHT
+				}
+				ConditionalRotatedInputAction "Right KB"
+				{
+					myInputActionType Analog
+					myForwardInputAction = KB_MOVE_UP
+					myBackInputAction = KB_MOVE_DOWN
+					myLeftInputAction = KB_MOVE_LEFT
+					myRightInputAction = KB_MOVE_RIGHT
+					myExpectedInputAction = KB_MOVE_RIGHT
+				}
+				ConditionalRotatedInputAction "Rotated Right Stick Right Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = RIGHT_STICK_UP
+					myBackInputAction = RIGHT_STICK_DOWN
+					myLeftInputAction = RIGHT_STICK_LEFT
+					myRightInputAction = RIGHT_STICK_RIGHT
+					myExpectedInputAction = RIGHT_STICK_RIGHT
+				}
+				ConditionalInputAction Dpad_Right
+				{
+					myInputActionType Analog
+					myInputAction = D_PAD_RIGHT
+				}
+			}
+		}
+	}
+	myGameAction ArcadeGameRailShooterMoveRight
+	myActionContexts
+	{
+		ArcadeGameContext TRUE
+		DefaultContext FALSE
+	}
+}
+
+TriggerGameAction ArcadeGameRailShooterMoveUp
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Left Stick Up Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = LEFT_STICK_UP
+					myBackInputAction = LEFT_STICK_DOWN
+					myLeftInputAction = LEFT_STICK_LEFT
+					myRightInputAction = LEFT_STICK_RIGHT
+					myExpectedInputAction = LEFT_STICK_UP
+				}
+				ConditionalRotatedInputAction "Left KB"
+				{
+					myInputActionType Analog
+					myForwardInputAction = KB_MOVE_UP
+					myBackInputAction = KB_MOVE_DOWN
+					myLeftInputAction = KB_MOVE_LEFT
+					myRightInputAction = KB_MOVE_RIGHT
+					myExpectedInputAction = KB_MOVE_UP
+				}
+				ConditionalRotatedInputAction "Rotated Right Stick Up Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = RIGHT_STICK_UP
+					myBackInputAction = RIGHT_STICK_DOWN
+					myLeftInputAction = RIGHT_STICK_LEFT
+					myRightInputAction = RIGHT_STICK_RIGHT
+					myExpectedInputAction = RIGHT_STICK_UP
+				}
+				ConditionalInputAction Dpad_Up
+				{
+					myInputActionType Analog
+					myInputAction = D_PAD_UP
+				}
+			}
+		}
+	}
+	myGameAction ArcadeGameRailShooterMoveUp
+	myActionContexts
+	{
+		ArcadeGameContext TRUE
+		DefaultContext FALSE
+	}
+}
+
+TriggerGameAction ArcadeGameRailShooterMoveDown
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalRotatedInputAction "Rotated Left Stick Down Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = LEFT_STICK_UP
+					myBackInputAction = LEFT_STICK_DOWN
+					myLeftInputAction = LEFT_STICK_LEFT
+					myRightInputAction = LEFT_STICK_RIGHT
+					myExpectedInputAction = LEFT_STICK_DOWN
+				}
+				ConditionalRotatedInputAction "Down KB"
+				{
+					myInputActionType Analog
+					myForwardInputAction = KB_MOVE_UP
+					myBackInputAction = KB_MOVE_DOWN
+					myLeftInputAction = KB_MOVE_LEFT
+					myRightInputAction = KB_MOVE_RIGHT
+					myExpectedInputAction = KB_MOVE_DOWN
+				}
+				ConditionalRotatedInputAction "Rotated Right Stick Down Analog"
+				{
+					myInputActionType Analog
+					myForwardInputAction = RIGHT_STICK_UP
+					myBackInputAction = RIGHT_STICK_DOWN
+					myLeftInputAction = RIGHT_STICK_LEFT
+					myRightInputAction = RIGHT_STICK_RIGHT
+					myExpectedInputAction = RIGHT_STICK_DOWN
+				}
+				ConditionalInputAction Dpad_Down
+				{
+					myInputActionType Analog
+					myInputAction = D_PAD_DOWN
+				}
+			}
+		}
+	}
+	myGameAction ArcadeGameRailShooterMoveDown
+	myActionContexts
+	{
+		ArcadeGameContext TRUE
+		DefaultContext FALSE
+	}
+}
+
+TriggerGameAction "[Misc] OpenHeistBriefing"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Keyboard
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 300
+					myInputAction = UI_GAMEMENU_KB
+				}
+				ConditionalInputAction Gamepad
+				{
+					myInputActionType ReleaseBeforeTime
+					myTimer 300
+					myInputAction = UI_GAMEMENU
+				}
+			}
+		}
+	}
+	myGameAction UIOpenGameMenu
+	myActionContexts
+	{
+		UIContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		AdrenalineRushContext TRUE
+		TutorialPauseContext TRUE
+		PhotoModeContext TRUE
+	}
+}
+
+TriggerGameAction "[Misc] UnpinTargetAll"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup "Input Actions"
+		{
+			myOperator And
+			myConditionalInputActions
+			{
+				ConditionalActionGroup "Input Actions"
+				{
+					myOperator Or
+					myConditionalInputActions
+					{
+						ConditionalInputAction Controller
+						{
+							myInputActionType HoldDownAfterTime
+							myTimer 200
+							myInputAction = UI_SECONDARYINTERACT
+						}
+						ConditionalInputAction KB
+						{
+							myInputActionType HoldDownAfterTime
+							myTimer 200
+							myInputAction = KB_E
+						}
+					}
+				}
+			}
+		}
+		ConditionalGameActionState "Not in Interact Context"
+		{
+			myNegate TRUE
+			myGameActionState IsAnyPlayerInteractionNearby
+		}
+	}
+	myGameAction Unpin
+}
+
+TriggerGameAction "[Misc] MountSpeeder"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup Input
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalInputAction Console
+				{
+					myInputActionType HoldDown
+					myTimer 0
+					myForceDisplayAsTapInUI TRUE
+					myInputAction = RIGHT_STICK_BUTTON
+				}
+				ConditionalInputAction Keyboard
+				{
+					myInputActionType HoldDown
+					myTimer 0
+					myForceDisplayAsTapInUI TRUE
+					myInputAction = KB_INTERACT
+				}
+			}
+		}
+	}
+	myGameAction MountSpeeder
+	myExcludeInActionContexts
+	{
+		AimScopeContext TRUE
+		GrapplingContext TRUE
+		VehicleContext TRUE
+	}
+}
+
+TriggerGameAction "[Misc] Accessibility Setting"
+{
+	myConditionalInputActions
+	{
+		ConditionalActionGroup Touch
+		{
+			myOperator Or
+			myConditionalInputActions
+			{
+				ConditionalActionGroup "New ConditionalActionGroup"
+				{
+					myConditionalInputActions
+					{
+						ConditionalInputAction "On Foot"
+						{
+							myInputActionType PressedAfterTime
+							myTimer 300
+							myInputAction = START
+						}
+						ConditionalInputAction Space
+						{
+							myInputActionType PressedAfterTime
+							myTimer 300
+							myInputAction = START_TRAILBLAZER
+						}
+						ConditionalInputAction Speeder
+						{
+							myInputActionType PressedAfterTime
+							myTimer 300
+							myInputAction = START_SPEEDER
+						}
+					}
+				}
+			}
+		}
+	}
+	myGameAction UIAccessibilityShortcut
+	myRequireNewInputOnContextChange FALSE
+	myActionContexts
+	{
+		SabaccContext TRUE
+		UIContext TRUE
+	}
+	myExcludeInActionContexts
+	{
+		UIContext FALSE
+	}
+}
+

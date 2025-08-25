@@ -1,0 +1,60 @@
+include "helix/game system data/juice/ai/npcpathwaytraversalcapabilityprofiles.mnpcpathwaytraversalcapabilityprofile"
+include "helix/game system data/juice/npc/base_emp.mnpc"
+include "helix/game system data/juice/npc/base_emp_driver_invisible.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+include "helix/game system data/juice/vehicle/emp_trooptransport_vehicle.mvehicle"
+include "helix/game system data/juice/vehicle/test_imp_transport_drive.mvehicle"
+
+NPC emp_troop_transport < uid=16C7D1FB627BC3D70000765FBF554DA9 > : base_emp_driver_invisible
+{
+	myName "branch = \"TU1\", contextComment = \"Troop transport npc name\", enabled = true, guid = #4171A7E16683EF08001008819F7DCA5E, lineVersion = 4, maxLength = 0, productId = 149, sectionId = 10572, text = \"Troop Transport\", type = \"MenuLine\""
+	myArchetype Non-Combattant
+	myForceHideFromRadar TRUE
+	myAdditionalGearGraphs 91DC5D3C653697F100016CFE578A8DDB
+	myVehicleDriverBehavior helix/behaviors/emp_trooptransport_vehicledriver.mbehavior
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=3A129121664B49720004B82C7C05265F > = Agent_InvincibleVOTarget 3A1291216634DC1C000439525C698724
+	}
+	myPathwayTraversalCapabilityProfile < uid=91CF4D4865699D650001728A431541F2 > = ImperialTrafficProfileLarge 91CF4D486565F253000176C013DDF015
+	myVisionProfile < uid=91DC5D3C644A5E4B0001F20C627161AC > = TroopTransportVisionProfile 91DC5D3C644A5E080001F1C1B532C06B
+	myTacticalPositionFinderProfile < uid=16C7D1FB642EEDA90000735B3442DD33 > = "Default NPC Tactical Position Finder Profile" 16DEADE662E5B57E000085DD2FA3EACF
+	myVehicle < uid=16C7D1FB627BC4310000766DA8F0BFBF > = emp_trooptransport_vehicle 91119C9D64E7486000005E0D8627B921
+	myAudioParameters
+	{
+		myEmitterName NPC
+		myPropagated TRUE
+		myDoppler TRUE
+		mySwitches
+		{
+		}
+		myEmitters
+		{
+			AgentEmitter Root
+			{
+				myEmitterLabel < uid=8DE76CCF65D75CC800015DCC6B2A5FBF > = Root 3A1C5D1863906F050000AB6FBD984CC4
+				myEmitterPrefab "emitterLayerName = \"vehicles_npc\", enableDoppler = false, enablePropagation = true, sphereRadius = 8, stopOnDestroy = true"
+			}
+			AgentEmitter "New AgentEmitter"
+			{
+				myEmitterLabel < uid=8DE76CCF65D75D3400015E817E3E88E2 > = Hand 3A1C5D1863906F180000AB718F1E9EFD
+				myEmitterPrefab "emitterLayerName = \"weapons_npc\", enableDoppler = false, enablePropagation = true, sphereRadius = 1, stopOnDestroy = true"
+			}
+		}
+		myAudioSwitchByTags
+		{
+		}
+		myFootstepMarkerEventEmitterLabel < uid=8DE76CCF65D75CC800015DCDD464A0BC > = NULLREFERENCE
+		myDialogueMarkerEventEmitterLabel < uid=8DE76CCF65D75CC800015DCECF9DED68 > = NULLREFERENCE
+		myFootstepEmitterLabels
+		{
+		}
+	}
+	myCanBeDetectedByNPC FALSE
+	myResistanceProfile < uid=A207755D669A4CE1000259BF5D276490 > = TransportResistanceProfile A207755D669A4C8A00025812D41BE8BC
+	myDataStorageItemsInitializationList
+	{
+		myInitialValues "{ [\"0\"] = { { myId = 1, myValue = \"Unarmed\", }, myDataStorageClassUID = #91DC5D3C6530E8D90007A28B5AE21DD1, }, }"
+	}
+}
+

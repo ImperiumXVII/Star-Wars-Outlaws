@@ -1,0 +1,153 @@
+include "helix/game system data/fruit/ai/capinteraction.fruit"
+include "helix/game system data/juice/rbtags/allrbtags.juice"
+
+CAPInteraction Nix_MarketStall90cm_LookAroundExcited_H683 < uid=EBE060C262B19A93000085418FFBFE26 >
+{
+	mySequence helix/sequence/CAP_HW001_NIX_looking_around_excited_v01.msequence
+	myCAPScript ""
+	myPurposeTag < uid=EBE060C262B19A930000854285D32E29 > = Agent_Purpose_NixTag EBE060C262DEB9BC0000837897933AB8
+	myMetricTag < uid=EBE060C262B19A9300008543C848D62F > = Metric_MarketStall_90cm_Tag EBE060C262A317030001E173490C3388
+	myAgentRequirementsPerSlot
+	{
+		RBTagsReferenceListAgent IsPet
+		{
+			RBTagsTag "New RBTagsTag (0)" < uid=EBE060C262B19A9300008544338EC9A3 > = Agent_Archetype_PlayerPetTag 16DEADE6614FC2470000185854E587DE
+		}
+	}
+	myAgentInteractionPointCooldown 5.0
+	myInteractionPointCooldown 0.0
+	myNPCInteractionCooldown 0.0
+	myPreferedDuration 10.0
+}
+
+CAPInteraction Nix_GroundPet_LookAroundExcited_H683 < uid=5CDD6EF36581D7D1000BC5917488500B >
+{
+	mySequence helix/sequence/CAP_HW001_NIX_looking_around_excited_v01.msequence
+	myCAPScript ""
+	myPriority Medium
+	myPurposeTag < uid=5CDD6EF36581D7D1000BC59234C7A2C4 > = Agent_Purpose_NixTag EBE060C262DEB9BC0000837897933AB8
+	myMetricTag < uid=5CDD6EF36581D7D1000BC593B4074EE8 > = Metric_Ground_Pet_Tag 5CDD6EF36581D704000BC5138F6DB701
+	myAgentRequirementsPerSlot
+	{
+		RBTagsReferenceListAgent IsPet
+		{
+			RBTagsTag "New RBTagsTag (0)" < uid=5CDD6EF36581D7D1000BC594D04CEA7D > = Agent_Archetype_PlayerPetTag 16DEADE6614FC2470000185854E587DE
+		}
+	}
+	myAgentInteractionPointCooldown 5.0
+	myInteractionPointCooldown 0.0
+	myNPCInteractionCooldown 0.0
+	myPreferedDuration 10.0
+}
+
+CAPInteraction Nix_GroundPet_PlayOnGround_H716 < uid=41240B2466190A3A00316649C51346F0 > : Nix_GroundPet_LookAroundExcited_H683
+{
+	mySequence helix/sequence/CAP_H716_NIX_playing_on_ground_V01.msequence
+	myPriority Low
+	myAgentNPCInteractionCooldown 60.0
+}
+
+CAPInteraction Nix_MusicStagePet_ReactingMusic_H684 < uid=5CDD6EF36581DD310001952E401ADC8B >
+{
+	mySequence helix/sequence/CAP_H684_NIX_reacting_music_V01.msequence
+	myCAPScript helix/scripts/scr_cap_player_pet.mscript
+	myPurposeTag < uid=5CDD6EF36581DD310001952F91B117FC > = Agent_Purpose_NixTag EBE060C262DEB9BC0000837897933AB8
+	myMetricTag < uid=5CDD6EF36581DD3100019530290487F0 > = Metric_MusicStage_Pet_Tag 5CDD6EF36581DBAB000194331DDFA57B
+	myAgentRequirementsPerSlot
+	{
+		RBTagsReferenceListAgent IsPet
+		{
+			RBTagsTag "New RBTagsTag (0)" < uid=5CDD6EF36581DD3100019531EE07A88A > = Agent_Archetype_PlayerPetTag 16DEADE6614FC2470000185854E587DE
+		}
+	}
+	myAgentInteractionPointCooldown 5.0
+	myInteractionPointCooldown 0.0
+	myNPCInteractionCooldown 0.0
+	myPreferedDuration 10.0
+}
+
+CAPInteraction Nix_BedPet_Sleeping_H689 < uid=5CDD6EF36581DDE0000195E6F1D78D9C >
+{
+	mySequence helix/sequence/CAP_H689_NIX_sleeping_v01.msequence
+	myCAPScript helix/scripts/scr_cap_player_pet.mscript
+	myPurposeTag < uid=5CDD6EF36581DDE0000195E782B380B7 > = Agent_Purpose_NixTag EBE060C262DEB9BC0000837897933AB8
+	myMetricTag < uid=5CDD6EF36581DDE0000195E854C7BD13 > = Metric_Bed_Pet_Tag 5CDD6EF36581DD380001956AB84CED65
+	myAgentRequirementsPerSlot
+	{
+		RBTagsReferenceListAgent IsPet
+		{
+			RBTagsTag "New RBTagsTag (0)" < uid=5CDD6EF36581DDE0000195E9070AAB0F > = Agent_Archetype_PlayerPetTag 16DEADE6614FC2470000185854E587DE
+		}
+	}
+	myAgentInteractionPointCooldown 5.0
+	myInteractionPointCooldown 0.0
+	myNPCInteractionCooldown 0.0
+	myPreferedDuration 30.0
+}
+
+CAPInteraction Nix_TrailblazerHoardPet_HoardSleepingStage01_H691 < uid=41240B2465D4808700268D5C893D7BB1 >
+{
+	mySequence helix/sequence/cap_hxxx_nix_trailblazer_hoard_v01.msequence
+	myCAPScript helix/scripts/scr_cap_player_pet.mscript
+	myPurposeTag < uid=41240B2465D4814100268D5E64788ED4 > = Agent_Purpose_NixTag EBE060C262DEB9BC0000837897933AB8
+	myMetricTag < uid=41240B2465D4814100268D5FEA716BE0 > = Metric_TrailblazerHoard_Pet_Tag 41240B2465D48582002C15581B969E9F
+	myAgentRequirementsPerSlot
+	{
+		RBTagsReferenceListAgent IsPetAndInCorrectTrailblazerStage
+		{
+			RBTagsTag "New RBTagsTag" < uid=41240B2465D4A1D4000DC9105EC22CC5 > = Agent_Archetype_PlayerPetTag 16DEADE6614FC2470000185854E587DE
+			RBTagsTag "New RBTagsTag_0" < uid=41240B2465D717D6000472506CD0BB4C > = Agent_Location_TrailblazerStage01Tag 41240B2465D4B9DA0014676628F43702
+		}
+	}
+	myAgentInteractionPointCooldown 5.0
+	myInteractionPointCooldown 0.0
+	myNPCInteractionCooldown 0.0
+	myPreferedDuration 30.0
+}
+
+CAPInteraction Nix_TrailblazerHoardPet_HoardSleepingStage02_H692 < uid=41240B2465D7194E00064A09C40AADB5 > : Nix_TrailblazerHoardPet_HoardSleepingStage01_H691
+{
+	mySequence helix/sequence/cap_h692_nix_trailblazer_hoard_v02.msequence
+	myAgentRequirementsPerSlot
+	{
+		RBTagsReferenceListAgent IsPetAndInCorrectTrailblazerStage
+		{
+			RBTagsTag "New RBTagsTag" < uid=41240B2465D7194E00064A0A8C465585 > = Agent_Archetype_PlayerPetTag 16DEADE6614FC2470000185854E587DE
+			RBTagsTag "New RBTagsTag_0" < uid=41240B2465D7194E00064A0B0F3BFC1F > = Agent_Location_TrailblazerStage02Tag 41240B2465D4BA6D00146792079FC3FE
+		}
+	}
+}
+
+CAPInteraction Nix_TrailblazerHoardPet_HoardSleepingStage03_H693 < uid=41240B2465D7194E00064A0CE51F5784 > : Nix_TrailblazerHoardPet_HoardSleepingStage01_H691
+{
+	mySequence helix/sequence/cap_h693_nix_trailblazer_hoard_v03.msequence
+	myAgentRequirementsPerSlot
+	{
+		RBTagsReferenceListAgent IsPetAndInCorrectTrailblazerStage
+		{
+			RBTagsTag "New RBTagsTag" < uid=41240B2465D7194E00064A0D74E92997 > = Agent_Archetype_PlayerPetTag 16DEADE6614FC2470000185854E587DE
+			RBTagsTag "New RBTagsTag_0" < uid=41240B2465D7194E00064A0ECABDB0F2 > = Agent_Location_TrailblazerStage03Tag 41240B2465D4BA6D0014679468000E38
+		}
+	}
+}
+
+CAPInteraction Nix_TrailblazerDashboardPet_PlayingWithTrinketSitting_H696 < uid=41240B2465D71C9800084B2631332570 >
+{
+	mySequence helix/sequence/CAP_H696_NIX_trailblazer_dashboard_v2.msequence
+	myCAPScript helix/scripts/scr_cap_player_pet.mscript
+	myMaxOutOfNavMeshNavigationDistance 0.5
+	myPurposeTag < uid=41240B2465D71C9800084B27A22B2AEA > = Agent_Purpose_NixTag EBE060C262DEB9BC0000837897933AB8
+	myMetricTag < uid=41240B2465D71C9800084B286147996C > = Metric_TrailblazerDashboard_Pet_Tag 41240B2465D711E300009748BA2C3537
+	myAgentRequirementsPerSlot
+	{
+		RBTagsReferenceListAgent IsPet
+		{
+			RBTagsTag "New RBTagsTag" < uid=41240B2465D71C9800084B29C684D91A > = Agent_Archetype_PlayerPetTag 16DEADE6614FC2470000185854E587DE
+		}
+	}
+	myAgentInteractionPointCooldown 10.0
+	myInteractionPointCooldown 0.0
+	myNPCInteractionCooldown 0.0
+	myPreferedDuration 30.0
+}
+

@@ -1,0 +1,228 @@
+include "helix/game system data/juice/equipment/weaponfiremode/trailblazer_firemode_template.mweaponfiremode"
+include "helix/game system data/juice/projectile/ship_missile_projectile.mprojectile"
+include "helix/game system data/juice/sound/stimuli/stim_id_main.mstimulusidentifier"
+include "helix/game system data/juice/sound/weapons/player_audioweapon_traiblazer_m1.maudioweapon"
+include "helix/game system data/juice/sound/weapons/player_audioweapon_traiblazer_missile_ion.maudioweapon"
+include "helix/game system data/juice/sound/weapons/player_audioweapon_traiblazer_missile_torpedo.maudioweapon"
+
+WeaponFireMode trailblazer_concussion_missile_firemode < uid=B4FBE43065081A5D000B0B00E63411F7 > : trailblazer_firemode_template
+{
+	myProjectile < uid=B4FBE43065081A5D000B0B010AEB849B > = projectile_tb_missile_concussion B4FBE43065081A2B000B0ACDE9742657
+	myCooldown
+	{
+		myStartType OnBeginUse
+		myDuration 3.0
+		myFinalCooldownFormula "Equipment.BaseCooldown * TrailblazerEquipmentCooldownModifier"
+	}
+	myDamage
+	{
+		myDamage
+		{
+			myVariation 5.0
+			myDamageType Physical
+		}
+	}
+	myLockOn
+	{
+		myIsLockOnEnabled TRUE
+		myIsLockOnRequired TRUE
+		myResetAfterShot FALSE
+		myLockOnDurationSeconds 1
+		myMaximumLockOnTargets 1
+		myTagRangeAngles 35.0;25.0
+	}
+	myAudioData < uid=B4FBE43065081A5D000B0B02FF640EC6 > = player_audioweapon_traiblazer_M1 9DB1BD4A6274E02A00002ACB0E151418
+	myStimulusIdentifier < uid=B4FBE43065081A5D000B0B0344B4068C > = S_KAY_Space_TrailblazerMissileLaunched 3A1291216308B3ED0001C5D5BE255F62
+}
+
+WeaponFireMode trailblazer_advanced_concussion_missile_firemode < uid=B4FBE43064F980F30002BAB67E5A00BB > : trailblazer_firemode_template
+{
+	myProjectile < uid=B4FBE43064F980F30002BAB7859EE133 > = projectile_tb_missile_advanced_concussion 6B0E1DE964AFFA3B000DF29B257090D8
+	myCooldown
+	{
+		myStartType OnBeginUse
+		myDuration 3.0
+		myFinalCooldownFormula "Equipment.BaseCooldown * TrailblazerEquipmentCooldownModifier"
+	}
+	myDamage
+	{
+		myDamage
+		{
+			myVariation 5.0
+			myDamageType Physical
+		}
+	}
+	myLockOn
+	{
+		myIsLockOnEnabled TRUE
+		myIsLockOnRequired TRUE
+		myResetAfterShot FALSE
+		myLockOnDurationSeconds 1
+		myMaximumLockOnTargets 1
+		myTagRangeAngles 35.0;25.0
+	}
+	myAudioData < uid=B4FBE43064F980F30002BAB8151C3244 > = player_audioweapon_traiblazer_M1 9DB1BD4A6274E02A00002ACB0E151418
+	myStimulusIdentifier < uid=B4FBE43064F980F30002BAB9CC079EA1 > = S_KAY_Space_TrailblazerMissileLaunched 3A1291216308B3ED0001C5D5BE255F62
+}
+
+WeaponFireMode trailblazer_cluster_missile_firemode < uid=B4FBE43064F980F30002BABA62F60042 > : trailblazer_firemode_template
+{
+	myFireEvent
+	{
+		FullAutoFireEvent FullAutoFireEvent
+		{
+			myRPM
+			{
+				myRPM 300
+			}
+		}
+	}
+	myProjectile < uid=B4FBE43064F980F30002BABB1013E256 > = projectile_tb_missile_advanced_concussion 6B0E1DE964AFFA3B000DF29B257090D8
+	myCooldown
+	{
+		myStartType OnEndUse
+		myDuration 1.0
+		myFinalCooldownFormula "Equipment.BaseCooldown * TrailblazerEquipmentCooldownModifier"
+	}
+	myDamage
+	{
+		myDamage
+		{
+			myVariation 5.0
+			myDamageType Physical
+		}
+	}
+	myLockOn
+	{
+		myIsLockOnEnabled TRUE
+		myIsLockOnRequired TRUE
+		myResetAfterShot FALSE
+		myLockOnDurationSeconds 0.75
+		myMaximumLockOnTargets 3
+		myTagRangeAngles 35.0;25.0
+		myPursuitModeTagRangeAngles 24.0;24.0
+	}
+	myAudioData < uid=B4FBE43064F980F30002BABCE4697C02 > = player_audioweapon_traiblazer_M1 9DB1BD4A6274E02A00002ACB0E151418
+	myStimulusIdentifier < uid=B4FBE43064F980F30002BABD146B04B8 > = S_KAY_Space_TrailblazerMissileLaunched 3A1291216308B3ED0001C5D5BE255F62
+}
+
+WeaponFireMode trailblazer_torpedo_missile_firemode < uid=B4FBE430650054A1000053EB2E511A04 > : trailblazer_firemode_template
+{
+	myProjectile < uid=B4FBE430650054A1000053ECE942C25B > = projectile_tb_missile_torpedo B4FBE430642EB1B500003870DA761A8E
+	myCooldown
+	{
+		myStartType OnBeginUse
+		myDuration 3.0
+		myFinalCooldownFormula "Equipment.BaseCooldown * TrailblazerEquipmentCooldownModifier"
+	}
+	myDamage
+	{
+		myDamage
+		{
+			myVariation 5.0
+			myDamageType Physical
+		}
+	}
+	myLockOn
+	{
+		myIsLockOnEnabled TRUE
+		myIsLockOnRequired TRUE
+		myResetAfterShot FALSE
+		myLockOnDurationSeconds 1
+		myMaximumLockOnTargets 1
+		myTagRangeAngles 35.0;25.0
+	}
+	myAudioData < uid=B4FBE430650054A1000053EDF9FE46BE > = player_audioweapon_traiblazer_missile_torpedo DADB4E0465FD8632000006BE6707920B
+	myStimulusIdentifier < uid=B4FBE430650054A1000053EE60E0FA92 > = S_KAY_Space_TrailblazerMissileLaunched 3A1291216308B3ED0001C5D5BE255F62
+}
+
+WeaponFireMode trailblazer_proton_torpedo_missile_firemode < uid=B4FBE4306523F8E700088B98FD452BA2 > : trailblazer_firemode_template
+{
+	myProjectile < uid=B4FBE4306523F8E700088B9961C0C1AC > = projectile_tb_missile_proton_torpedo B4FBE4306523F91F00088BA46C285ED0
+	myCooldown
+	{
+		myStartType OnBeginUse
+		myDuration 3.0
+		myFinalCooldownFormula "Equipment.BaseCooldown * TrailblazerEquipmentCooldownModifier"
+	}
+	myDamage
+	{
+		myDamage
+		{
+			myVariation 5.0
+			myDamageType Physical
+		}
+	}
+	myLockOn
+	{
+		myIsLockOnEnabled TRUE
+		myIsLockOnRequired TRUE
+		myResetAfterShot FALSE
+		myLockOnDurationSeconds 1
+		myMaximumLockOnTargets 1
+		myTagRangeAngles 35.0;25.0
+	}
+	myAudioData < uid=B4FBE4306523F8E700088B9A4C05E1CC > = player_audioweapon_traiblazer_missile_torpedo DADB4E0465FD8632000006BE6707920B
+	myStimulusIdentifier < uid=B4FBE4306523F8E700088B9B2EEDA4CF > = S_KAY_Space_TrailblazerMissileLaunched 3A1291216308B3ED0001C5D5BE255F62
+}
+
+WeaponFireMode trailblazer_ion_missile_firemode < uid=B4FBE43065005527000073277F86E42F > : trailblazer_firemode_template
+{
+	myProjectile < uid=B4FBE4306500552700007328FEB772DE > = projectile_tb_missile_ion 6B0E1DE964AFC3EE0008EBCBA41ABFA3
+	myCooldown
+	{
+		myStartType OnBeginUse
+		myDuration 2.5
+		myFinalCooldownFormula "Equipment.BaseCooldown * TrailblazerEquipmentCooldownModifier"
+	}
+	myDamage
+	{
+		myDamage
+		{
+			myVariation 5.0
+			myDamageType Physical
+		}
+	}
+	myLockOn
+	{
+		myIsLockOnEnabled TRUE
+		myIsLockOnRequired TRUE
+		myResetAfterShot FALSE
+		myLockOnDurationSeconds 0.5
+		myMaximumLockOnTargets 1
+		myTagRangeAngles 35.0;25.0
+	}
+	myAudioData < uid=B4FBE430650055270000732970071F01 > = player_audioweapon_traiblazer_missile_ion DADB4E0465EB2949000000CD93E44E5C
+	myStimulusIdentifier < uid=B4FBE430650055270000732A78C3E03B > = S_KAY_Space_TrailblazerMissileLaunched 3A1291216308B3ED0001C5D5BE255F62
+}
+
+WeaponFireMode trailblazer_advanced_ion_missile_firemode < uid=B4FBE4306523F8E700088B9CFA21828B > : trailblazer_firemode_template
+{
+	myProjectile < uid=B4FBE4306523F8E700088B9D9D8BF1C2 > = projectile_tb_missile_advanced_ion B4FBE4306523F91F00088BA85902285B
+	myCooldown
+	{
+		myStartType OnBeginUse
+		myDuration 2.5
+		myFinalCooldownFormula "Equipment.BaseCooldown * TrailblazerEquipmentCooldownModifier"
+	}
+	myDamage
+	{
+		myDamage
+		{
+			myVariation 5.0
+			myDamageType Physical
+		}
+	}
+	myLockOn
+	{
+		myIsLockOnEnabled TRUE
+		myIsLockOnRequired TRUE
+		myResetAfterShot FALSE
+		myLockOnDurationSeconds 0.5
+		myMaximumLockOnTargets 1
+		myTagRangeAngles 35.0;25.0
+	}
+	myAudioData < uid=B4FBE4306523F8E700088B9EFEE3683E > = player_audioweapon_traiblazer_missile_ion DADB4E0465EB2949000000CD93E44E5C
+	myStimulusIdentifier < uid=B4FBE4306523F8E700088B9FBD6B60F1 > = S_KAY_Space_TrailblazerMissileLaunched 3A1291216308B3ED0001C5D5BE255F62
+}
+

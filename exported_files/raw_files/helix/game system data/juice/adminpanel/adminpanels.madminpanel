@@ -1,0 +1,108 @@
+include "helix/game system data/fruit/adminpanel/adminpanel.fruit"
+include "helix/game system data/fruit/adminpanel/adminpanelactiontype.fruit"
+
+AdminPanel "Example Admin Panel" < uid=4171A7E164CA3009000209CF3FE48620 >
+{
+	myAdminPanelSetup
+	{
+		myAdminPanelActions
+		{
+			AdminPanelToggleAction Any_OpenDoor_Toggle
+			{
+				mySlicingStateForAvailability
+				{
+				}
+				myIcon "mySpriteId = 1295745092, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_slicing_admin_panel_icons.spritesheet\""
+				myText "aurabesh = false, branch = \"\", contextComment = \"Example Admin Panel Text for Door\", enabled = true, guid = #4171A7E164CA44B7000094422DE4F43D, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 8765, text = \"Door control\", type = \"MenuLine\""
+				myOnButtonStateText "aurabesh = false, branch = \"MAIN\", contextComment = \"Admin Panel Toggle Text\", enabled = true, guid = #8FD81D5165C49B43000000E7370EBC98, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 8765, text = \"Opened\", type = \"MenuLine\""
+				myOffButtonStateText "aurabesh = false, branch = \"MAIN\", contextComment = \"Admin Panel Toggle Text\", enabled = true, guid = #8FD81D5165C49B43000000E8605E155E, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 9434, text = \"Closed\", type = \"MenuLine\""
+				myActionType Option_1
+			}
+			AdminPanelAction CriticalSuccess_Reward_Once
+			{
+				mySlicingStateForAvailability
+				{
+					SlicingState CriticalSuccess CriticalSuccess
+					SlicingState "New SlicingState" Success
+				}
+				myIcon "mySpriteId = -2003488645, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_slicing_admin_panel_icons.spritesheet\""
+				myText "aurabesh = false, contextComment = \"Example Admin Panel Text for Reward\", enabled = true, guid = #4171A7E164CA47230000C5C6AECA6DC7, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 513, text = \"Steal Credits\", type = \"MenuLine\""
+				myActionType Option_2
+			}
+			AdminPanelToggleAction Success_Camera_Toggle
+			{
+				mySlicingStateForAvailability
+				{
+					SlicingState Success Success
+					SlicingState CriticalSuccess CriticalSuccess
+				}
+				myIcon "mySpriteId = 214186245, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_slicing_admin_panel_icons.spritesheet\""
+				myText "aurabesh = false, contextComment = \"Example Admin Panel Text for Camera\", enabled = true, guid = #4171A7E164CA47AD0000FD63F1D691DD, lineVersion = 5, maxLength = 0, productId = -1, sectionId = 513, text = \"Camera Control\", type = \"MenuLine\""
+				myActionType Option_3
+			}
+		}
+	}
+}
+
+AdminPanel Empty < uid=4171A7E165099B3E0005B4DF83396067 >
+{
+}
+
+AdminPanel "Wanted Terminal" < uid=6F5419E765607CBB0005259CB83F91F2 >
+{
+	myAdminPanelSetup
+	{
+		myAdminPanelActions
+		{
+			AdminPanelAction ClearWantedStatus
+			{
+				mySlicingStateForAvailability
+				{
+					SlicingState Success Success
+					SlicingState "Critical Success" CriticalSuccess
+				}
+				myIcon "mySpriteId = 750915037, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_map_icons_05.spritesheet\""
+				myText "aurabesh = false, branch = \"MAIN\", contextComment = \"An option in a computer terminal to remove your wanted status\", enabled = true, guid = #6F5419E765607D0D000525A13F1C0366, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 8765, text = \"Clear Wanted Status\", type = \"MenuLine\""
+				myOnButtonStateText "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myOffButtonStateText "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+			}
+			AdminPanelAction StealCredits
+			{
+				mySlicingStateForAvailability
+				{
+					SlicingState Success Success
+					SlicingState "Critical Success" CriticalSuccess
+				}
+				myIcon "mySpriteId = -2003488645, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_slicing_admin_panel_icons.spritesheet\""
+				myText "aurabesh = false, branch = \"MAIN\", contextComment = \"An option in a computer terminal to steal credits\", enabled = true, guid = #6F5419E765607D0C000525A0B20FA7DE, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 8765, text = \"Transfer Credits\", type = \"MenuLine\""
+				myOnButtonStateText "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myOffButtonStateText "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myActionType Option_2
+			}
+		}
+	}
+}
+
+AdminPanel "Wanted Terminal No Reset" < uid=5C148C466616A81D00069FB113AF5A0C > : "Wanted Terminal"
+{
+	myAdminPanelSetup
+	{
+		myAdminPanelActions
+		{
+			AdminPanelAction StealCredits
+			{
+				mySlicingStateForAvailability
+				{
+					SlicingState Success Success
+					SlicingState "Critical Success" CriticalSuccess
+				}
+				myIcon "mySpriteId = -2003488645, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_slicing_admin_panel_icons.spritesheet\""
+				myText "aurabesh = false, branch = \"MAIN\", contextComment = \"An option in a computer terminal to steal credits\", enabled = true, guid = #5C148C466616A87600069FCD4290548C, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 8765, text = \"Transfer Arrest Credits\", type = \"MenuLine\""
+				myOnButtonStateText "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myOffButtonStateText "aurabesh = false, branch = \"\", contextComment = \"\", enabled = false, guid = #00000000000000000000000000000000, lineVersion = 0, maxLength = 0, productId = -1, sectionId = -1, text = \"\", type = \"MenuLine\""
+				myActionType Option_2
+			}
+		}
+	}
+}
+

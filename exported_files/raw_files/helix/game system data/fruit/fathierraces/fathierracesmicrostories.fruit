@@ -1,0 +1,21 @@
+include "helix/game system data/fruit/fathierraces/fathierracesinfo.fruit"
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+include "helix/game system data/fruit/intel/intelchain.fruit"
+
+class FathierRacesMicrostory < uid=auto >
+{
+	GameConditionGroup myActivationConditions < tooltip="Conditions to activate the microstory. A microstory can't be active if another one is started." >
+	IntelChain* myIntelChain < tooltip="The intel chain the player gets during the microstory." >
+	FathierGenerationInfo* myFathierGenerationInfo < tooltip="The fathier linked to the microstory" >
+	bool myUseSpecificJockey < tooltip="If true, the fathier of this microstory will use the specific jockey" >
+	JockeyInfo mySpecificJockeyInfo < tooltip="The jockey used by the fathier of this microstory if UseSpecificJockey is true" hidden=1 >
+	bool myOverrideNPCBet < tooltip="If true, the fathier of this microstory will have bets on it based on OverrideMinimumNPCBet and OverrideMaximumNPCBet" >
+	int myOverrideMinimumNPCBet 1 < min = 1 tooltip="The minimum bet on the fathier of this microstory if it's started. Overrides Minimum NPC Bet in the status data." hidden=1 >
+	int myOverrideMaximumNPCBet 1 < min = 1 tooltip="The minimum bet on the fathier of this microstory if it's started. Overrides Minimum NPC Bet in the status data." hidden=1 >
+	int myRacingIndex -1 < tooltip="If the microstory is started, the fathier will always be at given index. If this index is set under 0, the fathier will have a random index." >
+}
+
+list FathierRacesMicrostories
+{
+	FathierRacesMicrostory*
+}

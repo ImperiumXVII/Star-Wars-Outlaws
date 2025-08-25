@@ -1,0 +1,407 @@
+include "helix/game system data/fruit/ai/pathfinding/navigation_capabilities.fruit"
+
+NavigationCapability DefaultNavigationCapability < uid=595E8DFF619FA354000019D62F689CC6 >
+{
+	myNavigationCapabilityAreas
+	{
+		NavigationCapabilityAreaType "AGENT_HEIGHT_SMALL - Disabled"
+		{
+			myType AGENT_HEIGHT_SMALL
+		}
+		NavigationCapabilityAreaType "WATER_DEEP - Enabled"
+		{
+			myType WATER_DEEP
+			myEnabled TRUE
+		}
+		NavigationCapabilityAreaType "WATER_SHALLOW - Enabled"
+		{
+			myType WATER_SHALLOW
+			myEnabled TRUE
+		}
+		NavigationCapabilityAreaType "STAIRS - Enabled"
+		{
+			myType STAIRS
+			myEnabled TRUE
+		}
+	}
+	myNavigationCapabilityNavLinks
+	{
+		NavigationCapabilityNavlink Ladder
+		{
+			myType LADDER_CLIMB
+			myEnabled TRUE
+			myEntryCost 1.0
+			myCostPerMeter 2.0
+		}
+	}
+}
+
+NavigationCapability DefaultWildlifeNavigationCapability < uid=290EB60C64D1A5C50000CA29617570E5 >
+{
+	myNavigationCapabilityAreas
+	{
+		NavigationCapabilityAreaType "WATER_SHALLOW - Enabled"
+		{
+			myType WATER_SHALLOW
+			myEnabled TRUE
+		}
+		NavigationCapabilityAreaType "STAIRS - Enabled"
+		{
+			myType STAIRS
+			myEnabled TRUE
+		}
+	}
+}
+
+NavigationCapability PetNavigationCapability < uid=595E8DFF619FA354000019D7DD78436E >
+{
+	myNavigationCapabilityAreas
+	{
+		NavigationCapabilityAreaType "AGENT_HEIGHT_SMALL - Enabled"
+		{
+			myType AGENT_HEIGHT_SMALL
+			myEnabled TRUE
+		}
+		NavigationCapabilityAreaType "WATER_SHALLOW - Enabled"
+		{
+			myType WATER_SHALLOW
+			myEnabled TRUE
+		}
+		NavigationCapabilityAreaType "WATER_DEEP - Enabled"
+		{
+			myType WATER_DEEP
+			myEnabled TRUE
+		}
+		NavigationCapabilityAreaType "STAIRS - Enabled"
+		{
+			myType STAIRS
+			myEnabled TRUE
+		}
+	}
+	myNavigationCapabilityNavLinks
+	{
+		NavigationCapabilityNavlink "COMPANION - Enabled"
+		{
+			myType COMPANION
+			myEnabled TRUE
+			myCostPerMeter 0.1
+		}
+		NavigationCapabilityNavlink Drop
+		{
+			myType DROP
+			myEnabled TRUE
+		}
+		NavigationCapabilityNavlink Climb
+		{
+			myType CLIMB
+			myEnabled TRUE
+		}
+		NavigationCapabilityNavlink Leapover
+		{
+			myType LEAPOVER
+			myEnabled TRUE
+		}
+		NavigationCapabilityNavlink Ladder
+		{
+			myType LADDER_CLIMB
+			myEnabled TRUE
+			myCostPerMeter 0.5
+		}
+		NavigationCapabilityNavlink Jump
+		{
+			myType JUMP
+			myEnabled TRUE
+		}
+	}
+}
+
+NavigationCapability MassiffNavigationCapability < uid=D85A76846397E0F80000B772095C07F9 >
+{
+	myNavigationCapabilityAreas
+	{
+		NavigationCapabilityAreaType "WATER_SHALLOW - Enabled"
+		{
+			myType WATER_SHALLOW
+			myEnabled TRUE
+		}
+		NavigationCapabilityAreaType "STAIRS - Enabled"
+		{
+			myType STAIRS
+			myEnabled TRUE
+		}
+	}
+	myNavigationCapabilityNavLinks
+	{
+		NavigationCapabilityNavlink Drop
+		{
+			myType DROP
+			myEnabled TRUE
+			myCostPerMeter 1.0
+		}
+		NavigationCapabilityNavlink Climb
+		{
+			myType CLIMB
+			myEnabled TRUE
+		}
+		NavigationCapabilityNavlink Jump
+		{
+			myType JUMP
+			myEnabled TRUE
+		}
+	}
+}
+
+NavigationCapability DroidNavigationCapability < uid=D542A0986411867700000D9BBE60D57F >
+{
+	myNavigationCapabilityAreas
+	{
+		NavigationCapabilityAreaType "AGENT_HEIGHT_SMALL - Disabled"
+		{
+			myType AGENT_HEIGHT_SMALL
+		}
+	}
+	myNavigationCapabilityNavLinks
+	{
+		NavigationCapabilityNavlink Ladder
+		{
+			myType LADDER_CLIMB
+			myEnabled FALSE
+			myEntryCost 1.0
+			myCostPerMeter 2.0
+		}
+	}
+}
+
+NavigationCapability SkittererNaviationCapability < uid=5C421F5C642AE96F0007EA1E94082B0C >
+{
+	myNavigationCapabilityAreas
+	{
+		NavigationCapabilityAreaType "AGENT_HEIGHT_SMALL - Enabled"
+		{
+			myType AGENT_HEIGHT_SMALL
+			myEnabled TRUE
+		}
+		NavigationCapabilityAreaType "STAIRS - Enabled"
+		{
+			myType STAIRS
+			myEnabled TRUE
+		}
+	}
+	myNavigationCapabilityNavLinks
+	{
+		NavigationCapabilityNavlink Drop(Disabled)
+		{
+			myType DROP
+			myEnabled FALSE
+		}
+		NavigationCapabilityNavlink Climb(Disabled)
+		{
+			myType CLIMB
+			myEnabled FALSE
+		}
+		NavigationCapabilityNavlink Jump(Disabled)
+		{
+			myType JUMP
+			myEnabled FALSE
+		}
+	}
+}
+
+NavigationCapability SammakhoNavigationCapability < uid=E9DD8F60644B40A60001B916B5260971 > : MassiffNavigationCapability
+{
+}
+
+NavigationCapability ViperDroidNavigationCapability < uid=416E63E4646CCA650000C576988778CE >
+{
+	myNavigationCapabilityAreas
+	{
+		NavigationCapabilityAreaType "STAIRS - Enabled"
+		{
+			myType STAIRS
+			myEnabled TRUE
+		}
+		NavigationCapabilityAreaType "New NavigationCapabilityAreaType"
+		{
+			myType WATER_SHALLOW
+			myEnabled TRUE
+		}
+		NavigationCapabilityAreaType "New NavigationCapabilityAreaType_0"
+		{
+			myType WATER_DEEP
+			myEnabled TRUE
+		}
+	}
+	myNavigationCapabilityNavLinks
+	{
+		NavigationCapabilityNavlink "Ladder Climb DISABLED"
+		{
+			myType LADDER_CLIMB
+			myEnabled FALSE
+		}
+	}
+}
+
+NavigationCapability TshikaraNavigationCapability < uid=E9DD8F606470541D0001A6DBE16E7474 >
+{
+	myNavigationCapabilityAreas
+	{
+		NavigationCapabilityAreaType "WATER_SHALLOW - Enabled"
+		{
+			myType WATER_SHALLOW
+			myEnabled TRUE
+		}
+		NavigationCapabilityAreaType "STAIRS - Enabled"
+		{
+			myType STAIRS
+			myEnabled TRUE
+		}
+	}
+	myNavigationCapabilityNavLinks
+	{
+		NavigationCapabilityNavlink Drop
+		{
+			myType DROP
+			myEnabled TRUE
+			myCostPerMeter 1.0
+		}
+		NavigationCapabilityNavlink Climb
+		{
+			myType CLIMB
+			myEnabled TRUE
+		}
+	}
+}
+
+NavigationCapability HeavyTrooperNavigationCapability < uid=4171A7E1648AC2AB0000B9157FE05811 > : DefaultNavigationCapability
+{
+	myNavigationCapabilityAreas
+	{
+		NavigationCapabilityAreaType "STAIRS - Enabled"
+		{
+			myType STAIRS
+			myEnabled TRUE
+		}
+	}
+	myNavigationCapabilityNavLinks
+	{
+		NavigationCapabilityNavlink NoLadder
+		{
+			myType LADDER_CLIMB
+			myEnabled FALSE
+			myEntryCost 0.0
+			myCostPerMeter 1.0
+		}
+	}
+}
+
+NavigationCapability KraytDragonNavigationCappability < uid=2E5ACA7E64EDC9F7000A02CBF2A5D014 >
+{
+	myNavigationCapabilityAreas
+	{
+		NavigationCapabilityAreaType "Obstacle Walkable"
+		{
+			myType OBSTACLE
+			myEnabled TRUE
+		}
+		NavigationCapabilityAreaType "DeadBody Walkable"
+		{
+			myType DEAD_BODY
+			myEnabled TRUE
+		}
+		NavigationCapabilityAreaType "STAIRS - Enabled"
+		{
+			myType STAIRS
+			myEnabled TRUE
+		}
+	}
+}
+
+NavigationCapability NPCSpeederNavigationCapability < uid=91119C9D661F99B6002DCFF7F4DAEC44 >
+{
+	myNavigationCapabilityAreas
+	{
+		NavigationCapabilityAreaType WATER_DEEP
+		{
+			myType WATER_DEEP
+			myEnabled TRUE
+		}
+		NavigationCapabilityAreaType WATER_SHALLOW
+		{
+			myType WATER_SHALLOW
+			myEnabled TRUE
+		}
+	}
+}
+
+NavigationCapability NPCSmallSpeederNavigationCapability < uid=91119C9D660FE19C000339FA97D43F4E > : NPCSpeederNavigationCapability
+{
+}
+
+NavigationCapability SammakhoEQ110NavigationCapability < uid=E9DD8F60664C4C7F000000CD91D4287A > : SammakhoNavigationCapability
+{
+	myNavigationCapabilityAreas
+	{
+		NavigationCapabilityAreaType "WATER_SHALLOW - Enabled"
+		{
+			myType WATER_SHALLOW
+			myEnabled TRUE
+		}
+		NavigationCapabilityAreaType "WATER_DEEP - Enabled"
+		{
+			myType WATER_DEEP
+			myEnabled TRUE
+		}
+	}
+}
+
+NavigationCapability RancorNavigationCapability < uid=416E63E466850BD6000B0616D9693254 >
+{
+	myNavigationCapabilityAreas
+	{
+		NavigationCapabilityAreaType "Dead Body ENABLED"
+		{
+			myType DEAD_BODY
+			myEnabled TRUE
+		}
+		NavigationCapabilityAreaType "Stairs DISABLED"
+		{
+			myType STAIRS
+		}
+		NavigationCapabilityAreaType "Water Deep ENABLED"
+		{
+			myType WATER_DEEP
+			myEnabled TRUE
+		}
+		NavigationCapabilityAreaType "Water Shallow ENABLED"
+		{
+			myType WATER_SHALLOW
+			myEnabled TRUE
+		}
+	}
+	myNavigationCapabilityNavLinks
+	{
+		NavigationCapabilityNavlink "Ladder DISABLED"
+		{
+			myType LADDER_CLIMB
+		}
+	}
+}
+
+NavigationCapability DLC2VarakiMQ020NavigationCapability < uid=E9DD8F6067AED0900006FE55A1EA04C8 > : TshikaraNavigationCapability
+{
+	myNavigationCapabilityNavLinks
+	{
+		NavigationCapabilityNavlink Drop
+		{
+			myType DROP
+			myEnabled FALSE
+			myCostPerMeter 1.0
+		}
+		NavigationCapabilityNavlink Climb
+		{
+			myType CLIMB
+			myEnabled FALSE
+		}
+	}
+}
+

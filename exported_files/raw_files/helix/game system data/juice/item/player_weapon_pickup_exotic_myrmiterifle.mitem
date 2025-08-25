@@ -1,0 +1,30 @@
+include "helix/game system data/fruit/item/item_includes.fruit"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_pickup_exotic_myrmiterifle.mweaponfiremode"
+include "helix/game system data/juice/item/consumables.mitem"
+include "helix/game system data/juice/item/equipmentholding/holding_pickup_rifle.mequipmentholdingconfig"
+include "helix/game system data/juice/item/equipmentholding/holding_pickup_rifle_burst.mequipmentholdingconfig"
+include "helix/game system data/juice/item/player_weapon_pickup_exotic.mitem"
+include "helix/game system data/juice/item/player_weapon_pickup_rifle.mitem"
+
+WeaponItem player_weapon_pickup_exotic_myrmiterifle < uid=4C1DFD4E645CF5F80001E89D128D8FA0 > : player_weapon_pickup_rifle
+{
+	myName "aurabesh = false, contextComment = \"Exotic class template, not to be used in-game\", enabled = true, guid = #4C1DFD4E645CF8DB0001F6E80ADEC1A5, lineVersion = 13, maxLength = 0, productId = -1, sectionId = 10330, text = \"Myrmite Rifle\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"Text description for the weapon\", enabled = true, guid = #4C1DFD4E645CF8DD0001F6F263A50849, lineVersion = 10, maxLength = 0, productId = -1, sectionId = 10330, text = \"Pick-up rifle acquired from defeated Myrmites\", type = \"MenuLine\""
+	myIcon "mySpriteId = -15133388, mySpritesheet = F\"helix/ui/spritesheets/ui_spritesheet_weapon_icons_02.spritesheet\""
+	myGraphObject "helix/graph objects/weapon/gpo_player_weapon_exotic_ashiga_rifle.mgraphobject"
+	myLootGraphObject "helix/graph objects/weapon/gpo_player_weapon_exotic_ashiga_rifle.mgraphobject"
+	myAmount < uid=4C1DFD4E645CF5F80001E89EFAE49B89 >
+	{
+		myDefaultValue 0
+	}
+	myHoldingConfig < uid=7113C61165F02C6000000112BFF41C6B > = holding_pickup_rifle_burst 7113C61165F02A6B00069827F3F66DF3
+	myConsumedItem < uid=4C1DFD4E645CF9500001F90E9F8A3E71 > = con_Ammo_MyrmiteRifle 4C1DFD4E645CF8350001F356C668862E
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myFireMode < uid=4C1DFD4E645CF9500001F90F0014DE13 > = player_firemode_pickup_exotic_myrmiterifle 4C1DFD4E645CF60A0001E8F308ED9E8E
+		}
+	}
+}
+

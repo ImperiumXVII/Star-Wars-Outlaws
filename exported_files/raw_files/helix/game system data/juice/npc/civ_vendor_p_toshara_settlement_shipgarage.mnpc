@@ -1,0 +1,31 @@
+include "helix/game system data/juice/npc/base_civ_vendor.mnpc"
+include "helix/game system data/juice/npc/base_civ_vendor_ship.mnpc"
+include "helix/game system data/juice/npc/npcincludes.juice"
+
+NPC civ_vendor_p_toshara_settlement_shipgarage < uid=16DEADE660D7A663000010EC2A29D908 > : base_civ_vendor_ship
+{
+	myName "aurabesh = false, contextComment = \"NPC vendor selling ship part and upgrades\", enabled = true, guid = #F4D8AE26621785FF00025A60101925D4, lineVersion = 3, maxLength = 0, productId = -1, sectionId = 435, text = \"Ship Vendor\", type = \"MenuLine\""
+	myCharacterVisuals < uid=91DC5D3C63763B1D0000E0CF22711608 > = character_visuals_2_silver_tos_vendor_ship_mcshipface E053C1D56556094F0004B790E5A27F3D
+	myPossibleGenderTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F25650AF980000082299B68BE99 > = Agent_Gender_MasculineTag 16DEADE6626D20EA00002E504CE30DE2
+	}
+	myPossibleSpeciesTags
+	{
+		RBTagsTag "New RBTagsTag" < uid=1EC89F25650AF9860000822AE0BC860B > = Agent_Species_HumanTag 2736B365634D673A0003C27CFCFEFD1A
+	}
+	myAgentRBTags
+	{
+		RBTagsTag "New RBTagsTag (0)" < uid=E4123D2762A88B080002A4C8E0A4B9F0 > = Agent_Archetype_VendorShipMechanic E4123D2762A88B870002A4F4CFBFD1AE
+	}
+	myDialogueCharacters
+	{
+		DialogueCharacterWithTags "New DialogueCharacterWithTags" < uid=1EC89F2563DA68B000035C35383EE037 >
+		{
+			myDialogueCharacter < uid=1EC89F2563516B120000537999915716 > = AI_VENDOR_MECHANIC_M01 26F503F7624EF37D0000001B31C65E85
+		}
+	}
+	myPlayerAwarenessProfile < uid=E4123D2762A8883800017FE72BC7209D > = Vendor_Mechanic E4123D2762A8878B00017F8B479815F6
+	myVendorConfig < uid=F4D8AE266217563200002866A2EE51CA > = VendorConfig_TOS_Settlement_Neutral_Ship F4D8AE266217560300002864BA4A7293
+}
+

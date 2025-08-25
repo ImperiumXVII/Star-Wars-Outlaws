@@ -1,0 +1,56 @@
+include "helix/game system data/juice/camera/modifiers/weapon_recoil_kays_blaster.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_shake_kays_blaster.mcameramodifier"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_blaster_adrenaline_rush_default.mweaponfiremode"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_blaster_adrenaline_rush_weak.mweaponfiremode"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_blaster_ricochet.mweaponfiremode"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_blaster_speeder.mweaponfiremode"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_blaster_stun.mweaponfiremode"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_blaster_trickshot_default.mweaponfiremode"
+include "helix/game system data/juice/item/equipment/weapon_config/player_weaponconfig_blaster.mequipmentweaponconfig"
+include "helix/game system data/juice/item/player_weapon_blaster_template.mitem"
+include "helix/game system data/juice/item/player_weaponmodule_standard.mitem"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_small.mprojectile"
+include "helix/game system data/juice/projectile/weapon_projectile_stun_ring.mprojectile"
+
+WeaponItem player_weapon_blaster_default < uid=1C021E9562AC872A00003579446C1EDA > : Player_Weapon_Blaster_Template
+{
+	myName "aurabesh = false, branch = \"\", contextComment = \"Name of a weapon\", enabled = true, guid = #1C021E9562AC872A000035772D73C5B3, lineVersion = 4, maxLength = 0, productId = -1, sectionId = 459, text = \"VM-19\", type = \"MenuLine\""
+	myDescription "aurabesh = false, contextComment = \"\", enabled = true, guid = #1C021E9562AC872A00003578AB9EAFB5, lineVersion = 3, maxLength = 0, productId = -1, sectionId = -1, text = \"Kay’s blaster is a VM-19 heavy blaster pistol made by the Merr-Sonn Munitions corporation. Its lense is cracked.\", type = \"MenuLine\""
+	myConfig < uid=A207755D63217CC900002D8D009062F6 > = player_weaponconfig_blaster A207755D63217B2600004B2CF8AAC5DA
+	myFireModes
+	{
+		WeaponFireModeSlot Main
+		{
+			myIsConst FALSE
+			myFireMode < uid=A207755D62C2F37F000037581DD7979F > = player_firemode_blaster_default A207755D62C2EFBA00003748F85732B1
+			myDefaultModule < uid=A207755D6320464B00005F18B830AA26 > = player_weaponmodule_standard A207755D6310C6A9000058E93687C223
+		}
+		WeaponFireModeSlot Stun
+		{
+			mySlotTag Stun
+			myFireMode < uid=A207755D642E757F000013BE1EB71211 > = player_firemode_blaster_stun A207755D62C2F1FF0000374DFD4FC4D9
+		}
+		WeaponFireModeSlot Trickshot
+		{
+			mySlotTag TrickShot
+			myFireMode < uid=A207755D62C2F37F0000375AB7EECDB3 > = player_firemode_blaster_trickshot_default A207755D62C2F37200003756781302DE
+		}
+		WeaponFireModeSlot "Adrenaline Rush Strong"
+		{
+			mySlotTag AdrenalineRushStrong
+			myFireMode < uid=B0ED9250633EC3E700006259ECA64B2C > = player_firemode_blaster_adrenaline_rush_default B0ED9250633EC3AE000061DA7CEA7E0E
+		}
+		WeaponFireModeSlot "Adrenaline Rush Weak"
+		{
+			mySlotTag AdrenalineRushWeak
+			myFireMode < uid=B0ED9250640EFFCC0000097D8E89750E > = player_firemode_blaster_adrenaline_rush_weak B0ED9250640EFF140000097C3FD882CD
+		}
+		WeaponFireModeSlot Speeder
+		{
+			mySlotTag Speeder
+			myFireMode < uid=A51911A86762A9BE000000F4DFC4FB53 > = player_firemode_blaster_speeder A51911A86762A487000000DAC3648D2F
+			myDefaultModule < uid=A51911A86762A99E000000EB787F8B30 > = player_weaponmodule_standard A207755D6310C6A9000058E93687C223
+		}
+	}
+}
+

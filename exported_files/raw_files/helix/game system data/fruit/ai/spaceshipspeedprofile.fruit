@@ -1,0 +1,33 @@
+include "helix/game system data/fruit/settings/spaceshipenums.fruit"
+
+class SpaceshipSpeed
+{
+	SpaceshipSpeedProfileType myType Minimum
+	float mySpeed 0
+	
+	bool myUseDistanceToSpeedCurve false
+	string myDistanceToSpeedCurve < bhv=inputgraph tooltip="Overrides the default speed used. Distance on X axis and speed on Y axis" >
+	
+	bool myUseRelativeSpeed false
+	float myRelativeSpeed 0 < tooltip="Relative to the target agent" >
+	float myMinimumSpeed 0 < tooltip="Active while in Relative Speed mode" >
+	float myMaximumSpeed 10000 < tooltip="Active while in Relative Speed mode" >
+
+	float myPitchSpeed 0 < tooltip="set a value greater than 0 to override the pitch speed" >
+	float myYawSpeed 0 < tooltip="set a value greater than 0 to override the yaw speed" >
+	float myRollSpeed 0 < tooltip="set a value greater than 0 to override the roll speed" >
+	float myAcceleration 0 < tooltip="set a value greater than 0 to override the acceleration" >
+	float myPitchAcceleration 0 < tooltip="set a value greater than 0 to override the pitch acceleration" >
+	float myYawAcceleration 0 < tooltip="set a value greater than 0 to override the yaw acceleration" >
+	float myRollAcceleration 0 < tooltip="set a value greater than 0 to override the roll acceleration" >
+}
+
+list SpaceshipSpeedEntries
+{
+	SpaceshipSpeed
+}
+
+class SpaceshipSpeedProfile < uid=auto >
+{
+	SpaceshipSpeedEntries mySpeeds
+}

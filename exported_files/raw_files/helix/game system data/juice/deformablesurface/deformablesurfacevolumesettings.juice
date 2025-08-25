@@ -1,0 +1,337 @@
+include "helix/game system data/juice/deformablesurface/deformablesurfacevolumesettings_spacedust.juice"
+include snowdrop/modules/graphics/deformablesurface/deformablesurfacevolumesettings.fruit
+
+DeformableSurfaceRTQualitySetting "Snow RTQuality"
+{
+}
+
+DeformableSurfaceRTQualitySetting "Sand RTQuality"
+{
+}
+
+DeformableSurfaceQualitySettings Sand_QualitySettings
+{
+	myLow
+	{
+		myUseQuarterNormals TRUE
+		myMaxSimulationDistance 30.0
+		myMaxRenderDistance 80.0
+		myFadeRenderDistance 50.0
+		myMaxPersistanceDistance 120.0
+		myRTSetting = "Sand RTQuality"
+	}
+	myMedium
+	{
+		myUseQuarterNormals TRUE
+		myMaxSimulationDistance 50.0
+		myMaxRenderDistance 150.0
+		myFadeRenderDistance 100.0
+		myMaxPersistanceDistance 170.0
+		myRTSetting = "Sand RTQuality"
+	}
+	myHigh
+	{
+		myUseQuarterNormals TRUE
+		myMaxSimulationDistance 100.0
+		myMaxRenderDistance 200.0
+		myFadeRenderDistance 150.0
+		myMaxPersistanceDistance 220.0
+		myRTSetting = "Sand RTQuality"
+	}
+	myUltra
+	{
+		myMaxSimulationDistance 150.0
+		myMaxRenderDistance 250.0
+		myFadeRenderDistance 200.0
+		myMaxPersistanceDistance 350.0
+		myRTSetting = "Sand RTQuality"
+	}
+	myMax
+	{
+		myMaxSimulationDistance -1.0
+		myMaxRenderDistance -1.0
+		myFadeRenderDistance -1.0
+		myMaxPersistanceDistance -1.0
+		myRTSetting = "Sand RTQuality"
+	}
+}
+
+DeformableSurfaceSetting "Shallow Sand Texture" < uid=5E4B823163BFDB26000FBD74C0EE1AC6 >
+{
+	myHide FALSE
+	myMaterial helix/materials/mat_deformable_surface_sand.mmaterial
+	myTerrainType Sand
+	myTexelsPerUnit 16
+	myBlurRho 0.9
+	myBlurStrength 0.8
+	myMaxDeformationMultiplier 3.0
+	myUseMedianFilterSmoothing TRUE
+	myMedianFilterSamplePos 5
+	myUseContrastEnhancement TRUE
+	myLowerKeyPoint 0.1;0.2
+	myUpperKeyPoint 0.8;0.9
+	myGenerateObjectIdTexture FALSE
+	myDeformableSurfaceAnimationSettings
+	{
+		myAnimationType Edge
+		myAll
+		{
+			myDeformationAnimationEdgeThreshold 0.1
+			myDeformationAnimationSpeedInMetersPerSecond 0.3
+			myDeformationAnimationUpperLimit 0.8
+		}
+	}
+	myCollisionMaterialName FluffySand
+	myOverrideCollisionMaterialFromVolumeModifier TRUE
+	myTrianglesPerMeter 64.0
+	myMinDrawDist 4.0
+	myLodDistPow 0.6
+	myRTMaterialColor 0xffb18d6d
+	myDeformableSurfaceQualitySettings : Sand_QualitySettings
+	{
+	}
+	myUseExternalSDF FALSE
+}
+
+DeformableSurfaceSetting "Shallow Sand Sample Terrain" < uid=D4EC6482655F74010027E9F36B99E0CF >
+{
+	myHide FALSE
+	myMaterial helix/materials/mat_deformable_surface_sample_terrain.mmaterial
+	myTerrainType Sand
+	myTexelsPerUnit 16
+	myBlurRho 0.6
+	myBlurStrength 0.8
+	myMaxDeformationMultiplier 3.0
+	myUseMedianFilterSmoothing TRUE
+	myMedianFilterSamplePos 5
+	myUseContrastEnhancement TRUE
+	myLowerKeyPoint 0.1;0.2
+	myUpperKeyPoint 0.8;0.9
+	myDeformableSurfaceAnimationSettings
+	{
+		myAnimationType Full
+		myAll
+		{
+			myDeformationAnimationEdgeThreshold 0.2
+			myDeformationAnimationSpeedInMetersPerSecond 0.4
+			myDeformationAnimationUpperLimit 0.6
+		}
+	}
+	myCollisionMaterialName FluffySand
+	myOverrideCollisionMaterialFromVolumeModifier TRUE
+	myTrianglesPerMeter 64.0
+	myMinDrawDist 4.0
+	myLodDistPow 0.6
+	myRTMaterialColor 0xffb18d6d
+	myDeformableSurfaceQualitySettings : Sand_QualitySettings
+	{
+	}
+	myTerrainMaterialList
+	{
+		int "vt tatooine sand 01 flat rocky small" 84
+		int "vt tatooine dried mud 01 sand" 87
+		int vt_tatooine_mos_eisley_sand_01_trampled_subtle 90
+		int vt_tatooine_mos_eisley_sand_01_dirty 67
+		int "vt tatooine sand 01 soil" 76
+		int "vt tatooine sand 01 soil pebbles" 70
+		int "vt tatooine sand 01 soil pebbles medium" 73
+		int vt_tatooine_mos_eisley_sand_01_soil 66
+		int vt_tatooine_mos_eisley_sand_01_trampled 89
+		int vt_tatooine_ground_4m_01_soil_desertvalley 167
+		int vt_tatooine_ground_4m_01_soil_desertvalley_dust 181
+		int vt_tatooine_ground_4m_01_soil_dirt_canyon 164
+		int vt_tatooine_ground_4m_01_soil_dirt_desertvalley 168
+		int "vt tatooine sand 01 rough pebbles" 74
+		int "vt tatooine sand 01 flat" 69
+		int "vt tatooine sand 01 flat pebbles" 71
+		int "vt tatooine sand 01 flat pebbles medium" 72
+		int "vt tatooine sand 01 grassy" 78
+		int "vt tatooine sand 01 grassy big" 81
+		int "vt tatooine sand 01 sand rough" 68
+		int "vt tatooine sand 01 sand rough pebbles" 74
+		int "vt tatooine sand 01 wavy medium" 83
+		int "vt tatooine sand 01 wavy small" 82
+		int vt_tatooine_sand_01_base 62
+		int "vt tatooine sand 01 rough pebbles medium" 75
+		int vt_tatooine_mos_eisley_sand_01_flat 65
+		int vt_tatooine_mos_eisley_sand_01_rough 64
+		int "vt tatooine dried mud 01 base" 85
+		int "vt tatooine dried mud 01 smooth" 86
+	}
+	myUseExternalSDF TRUE
+}
+
+DeformableSurfaceSetting "Deep Sand Sample Terrain" < uid=16BCDBE264F839190002FFDA5A6950CA >
+{
+	myHide FALSE
+	myMaterial helix/materials/mat_deformable_surface_sample_terrain.mmaterial
+	myTerrainType Sand
+	myTexelsPerUnit 16
+	myBlurRho 0.7
+	myBlurStrength 1.0
+	myMaxDeformationMultiplier 3.0
+	myUseMedianFilterSmoothing TRUE
+	myMedianFilterSamplePos 4
+	myUseContrastEnhancement TRUE
+	myLowerKeyPoint 0.1;0.2
+	myUpperKeyPoint 0.9;1.0
+	myDeformableSurfaceAnimationSettings
+	{
+		myAnimationType Full
+		myAll
+		{
+			myDeformationAnimationEdgeThreshold 0.1
+			myDeformationAnimationSpeedInMetersPerSecond 0.4
+			myDeformationAnimationUpperLimit 0.8
+		}
+	}
+	myCollisionMaterialName FluffySand
+	myOverrideCollisionMaterialFromVolumeModifier TRUE
+	myTrianglesPerMeter -1.0
+	myMinDrawDist 4.0
+	myLodDistPow 0.6
+	myRTMaterialColor 0xffb18d6d
+	myDeformableSurfaceQualitySettings : Sand_QualitySettings
+	{
+	}
+	myTerrainMaterialList
+	{
+		int "vt tatooine sand 01 flat" 69
+		int "vt tatooine sand 01 flat pebbles" 71
+		int "vt tatooine sand 01 flat pebbles medium" 72
+		int "vt tatooine sand 01 grassy" 78
+		int "vt tatooine sand 01 grassy big" 81
+		int "vt tatooine sand 01 sand rough" 68
+		int "vt tatooine sand 01 sand rough pebbles" 74
+		int "vt tatooine sand 01 wavy medium" 83
+		int "vt tatooine sand 01 wavy small" 82
+		int vt_tatooine_sand_01_base 62
+		int "vt tatooine sand 01 rough pebbles medium" 75
+		int vt_tatooine_mos_eisley_sand_01_flat 65
+		int vt_tatooine_mos_eisley_sand_01_rough 64
+		int "vt tatooine dried mud 01 base" 85
+		int "vt tatooine dried mud 01 smooth" 86
+	}
+	myUseExternalSDF TRUE
+}
+
+DeformableSurfaceSetting "Sand Dunes" < uid=D4EC6482662B99A3000104CEF01396E1 >
+{
+	myHide FALSE
+	myMaterial helix/materials/mat_deformable_surface_sand_dunes.mmaterial
+	myTerrainType Sand
+	myTexelsPerUnit 16
+	myBlurRho 1.0
+	myBlurStrength 0.8
+	myMaxDeformationMultiplier 3.0
+	myUseMedianFilterSmoothing TRUE
+	myMedianFilterSamplePos 5
+	myUseContrastEnhancement TRUE
+	myLowerKeyPoint 0.1;0.2
+	myUpperKeyPoint 0.8;0.9
+	myDeformableSurfaceAnimationSettings
+	{
+		myAnimationType Full
+		myAll
+		{
+			myDeformationAnimationEdgeThreshold 0.1
+			myDeformationAnimationSpeedInMetersPerSecond 0.2
+			myDeformationAnimationUpperLimit 1.0
+		}
+	}
+	myCollisionMaterialName FluffySand
+	myOverrideCollisionMaterialFromVolumeModifier TRUE
+	myTrianglesPerMeter -1.0
+	myMinDrawDist 4.0
+	myLodDistPow 0.6
+	myRTMaterialColor 0xffb18d6d
+	myDeformableSurfaceQualitySettings = Sand_QualitySettings
+	myTerrainMaterialList
+	{
+		int "vt tatooine sand 01 flat" 69
+		int "vt tatooine sand 01 flat pebbles" 71
+		int "vt tatooine sand 01 flat pebbles medium" 72
+		int "vt tatooine sand 01 grassy" 78
+		int "vt tatooine sand 01 grassy big" 81
+		int "vt tatooine sand 01 sand rough" 68
+		int "vt tatooine sand 01 sand rough pebbles" 74
+		int "vt tatooine sand 01 wavy medium" 83
+		int "vt tatooine sand 01 wavy small" 82
+		int vt_tatooine_sand_01_base 62
+		int "vt tatooine sand 01 rough pebbles medium" 75
+		int vt_tatooine_mos_eisley_sand_01_flat 65
+		int vt_tatooine_mos_eisley_sand_01_rough 64
+	}
+	myUseExternalSDF TRUE
+}
+
+DeformableSurfaceSetting Snow < uid=05B06D7D631F2704000000BB8838CEC8 >
+{
+	myTiling 0.25
+	myMaterial helix/materials/mat_deformable_surface_snow.mmaterial
+	myTerrainType Snow
+	myBlurRho 0.4
+	myMaxDeformationMultiplier 0.95
+	myUseContrastEnhancement FALSE
+	myLowerKeyPoint 0.25;0.28
+	myCollisionMaterialName FluffySnow
+	myRTMaterialColor 0xffb7b7b7
+	myDeformableSurfaceQualitySettings
+	{
+		myLow
+		{
+			myUseQuarterNormals TRUE
+			myMaxSimulationDistance 30.0
+			myMaxRenderDistance 80.0
+			myFadeRenderDistance 50.0
+			myMaxPersistanceDistance 150.0
+			myRTSetting = "Snow RTQuality"
+		}
+		myMedium
+		{
+			myUseQuarterNormals TRUE
+			myMaxSimulationDistance 50.0
+			myMaxRenderDistance 150.0
+			myFadeRenderDistance 100.0
+			myMaxPersistanceDistance 200.0
+			myRTSetting = "Snow RTQuality"
+		}
+		myHigh
+		{
+			myMaxSimulationDistance 100.0
+			myMaxRenderDistance 200.0
+			myFadeRenderDistance 150.0
+			myMaxPersistanceDistance 250.0
+			myRTSetting = "Snow RTQuality"
+		}
+		myUltra
+		{
+			myMaxSimulationDistance 150.0
+			myMaxRenderDistance 250.0
+			myFadeRenderDistance 200.0
+			myMaxPersistanceDistance 350.0
+			myRTSetting = "Snow RTQuality"
+		}
+		myMax
+		{
+			myMaxSimulationDistance -1.0
+			myMaxRenderDistance -1.0
+			myFadeRenderDistance -1.0
+			myMaxPersistanceDistance -1.0
+			myRTSetting = "Snow RTQuality"
+		}
+	}
+}
+
+DeformableSurfaceSetting Mud < uid=5E4B823163BFE9EB0028E6ABC1C92BE9 >
+{
+	myMaterial helix/materials/mat_deformable_surface_mud.mmaterial
+	myTerrainType Mud
+	myUseContrastEnhancement FALSE
+	myRTMaterialColor 0xff5c4b2a
+}
+
+DeformableSurfaceSetting "Space Dust Sample Terrain" < uid=D4EC6482672B7D8E0008AFBCD2E374A5 > = "Space Dust Terrain" D4EC64826791FF56000544AF42686D88
+
+DeformableSurfaceSetting "Space Dust Texture" < uid=D4EC6482672C860F0000004CAB39C86B > = "Space Dust" D4EC6482672C85E80000004B6DEDD89C
+

@@ -1,0 +1,92 @@
+include "helix/game system data/fruit/equipment/weapon/weapon_fire_mode.fruit"
+include "helix/game system data/juice/bodypart/bodypart.mbodypart"
+include "helix/game system data/juice/camera/modifiers/weapon_recoil_pickup_reconfigurable_rifle.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_shake_pickup_e11.mcameramodifier"
+include "helix/game system data/juice/equipment/weaponanimationconfig/weapon_anim_pickup_reconfigurable_rifle.mweaponanimationconfig"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_pickup_rifle.mweaponfiremode"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_medium_green.mprojectile"
+include "helix/game system data/juice/sound/weapons/player_audioweapon_zerekbesh_repeater.maudioweapon"
+
+WeaponFireMode player_firemode_pickup_rifle_reconfigurable_rifle < uid=4C1DFD4E645CF0E90001CE14F0D7A104 > : player_firemode_pickup_rifle
+{
+	myFireEvent
+	{
+		FullAutoFireEvent FullAutoFireEvent
+		{
+			myRPM
+			{
+				myRPM 360
+			}
+		}
+	}
+	myBaseProperties
+	{
+		myAnimation < uid=7113C61165B8F4660004552776ACA5C6 > = weapon_anim_pickup_reconfigurable_rifle 7113C61165B8F280000636FA8F661711
+		myRecoil < uid=7113C61165B8F50000045BA7C0184C67 > = weapon_recoil_pickup_reconfigurable_rifle 7113C61165B8F4F300045BA6619A80A4
+		myInputController
+		{
+			myFireRumble 8E25811B656D8FC700002DB04FB263A3
+		}
+	}
+	mySpecializations
+	{
+		WeaponFireModeSpecialization ADSMod
+		{
+			myAimMode ADS
+			myProperties
+			{
+				myAnimation < uid=7113C61165BBA7B5000F600C598CB3BB > = weapon_anim_pickup_reconfigurable_rifle_ADS 7113C61165B8F280000636FBC817DCC5
+			}
+		}
+	}
+	myProjectile < uid=7113C61165786E1B000595822AE786CE > = weapon_projectile_blaster_medium_green F8181D48632B0AB100004E9905C4BA1A
+	myDamage
+	{
+		myDamage
+		{
+			myDamageFormula "3 * PickUpWeaponDamageBonus"
+		}
+	}
+	mySpread
+	{
+		mySpreadValues
+		{
+			mySpread
+			{
+				myMin 0.4
+				myMax 1.0
+				myIsUniform FALSE
+			}
+		}
+		mySpreadIncreaseTime 0.08
+		myTimeToMinAccuracy 0.2
+		myTimeToMaxAccuracy 0.1
+		mySpreadIncreaseSpeed 0.1
+		mySpreadReductionSpeed 0.05
+		myMovementModifier 1.0
+		myMovementSpreadThreshold 0.0
+		myMovementSpreadAcceleration 6.0
+		myMovementSpreadDeceleration 6.0
+		myAimChangeModifier 2.0
+		myMovementModifierSpeedCap 3.0
+		myAimChangeSensitivity 1.0
+		myAimChangeAccuracyRecoveryTime 0.5
+		myAmountOfAccuracyLockedRounds 0
+		myUseAimChangeSpread FALSE
+		myUseReverseSpread FALSE
+		myAimModifierData
+		{
+			myADSFormula 1.0
+			myScopeFormula 1.0
+			myLockFormula 1.0
+			myHipFireFormula 1.0
+		}
+	}
+	myFireShake < uid=7113C61165B8FE8600047072714F16D0 > = weapon_shake_pickup_e11 1C021E95638A01AF0000FF67DC7073A6
+	myUI
+	{
+		myDefaultUIGraph helix/ui/graphs/crosshair_rifle_ammunition.muigraph
+	}
+	myAudioData < uid=8DF138C66577083F000730DF024614F4 > = player_audioweapon_zerekbesh_repeater 8DF138C665770820000730DE3489A6DF
+}
+

@@ -1,0 +1,21 @@
+include "helix/game system data/fruit/combat/combat.fruit"
+include "helix/game system data/fruit/combat/damageresistance_conditions.fruit"
+
+list DamageSourceTypeListOneSize < size=1 >
+{
+	DamageSourceType
+}
+
+list DamageTypeListOneSize < size=1 >
+{
+	DamageType
+}
+
+class DamageResistance
+{
+	DamageTypeListOneSize myDamageType
+	DamageSourceTypeListOneSize myDamageSourceType
+	GameConditionDamageResistanceGroup myConditions
+	float myDamageMultiplier
+	bool myForceFlinchAnimationOnHit
+}

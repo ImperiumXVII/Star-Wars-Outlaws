@@ -1,0 +1,73 @@
+include "helix/game system data/fruit/livingworld/livingworldcontent.fruit"
+
+LivingWorldContent dlc2_livingworldcontent_nebuladive < uid=05B06D7D6733782300053CA0500FF46A >
+{
+	myLocationCooldown 10.0
+	mySharedLocationCooldown 10.0
+	myTicket < uid=05B06D7D6733782300053CA15865681B >
+	{
+	}
+	myTicketMax < uid=05B06D7D6733782300053CA2579E907A >
+	{
+		myDefaultValue 1
+	}
+	myLayerType Base
+	myActivationGameConditions
+	{
+		LivingWorldGameConditionGroup "Invalid Quest Beats"
+		{
+			myIsNegated TRUE
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState "MQ 30 Beat 5"
+				{
+					myQuestBeat 253B686766E2E5EF00049A9EE8315A07
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "MQ 30 Beat 6"
+				{
+					myQuestBeat 253B686766E2EAF300049B0C5A6C7183
+					myQuestBeatState Started
+				}
+			}
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player"
+		{
+			myDistance 10000.0
+			myOperator LessThanOrEqual
+		}
+	}
+	myDeactivationGameConditions
+	{
+		LivingWorldGameConditionGroup "MQ 30 B 5 or B6  started"
+		{
+			myIsNegated FALSE
+			myOperator Or
+			myConditions
+			{
+				GameConditionQuestBeatState "MQ 30 Beat 5"
+				{
+					myQuestBeat 253B686766E2E5EF00049A9EE8315A07
+					myQuestBeatState Started
+				}
+				GameConditionQuestBeatState "MQ 30 Beat 6"
+				{
+					myQuestBeat 253B686766E2EAF300049B0C5A6C7183
+					myQuestBeatState Started
+				}
+				GameConditionPlayerIsPlayingQuestBeat "New GameConditionPlayerIsPlayingQuestBeat"
+				{
+				}
+			}
+		}
+		GameConditionContextLivingWorldContentLocation_DistanceToPlayer "Distance to Player"
+		{
+			myDistance 10000.0
+			myOperator GreaterThan
+		}
+	}
+	myBasePriority 50.0
+	myIsScannable FALSE
+}
+
