@@ -1,0 +1,45 @@
+include "helix/game system data/fruit/gameconditions/gameconditions.fruit"
+include "helix/game system data/fruit/input/rumble.fruit"
+
+list TaggingGameConditionList < size=1 >
+{
+	GameConditionContextAgentBase
+	GameConditionGroupBase
+	GameCondition
+}
+
+class TaggingDistanceTimeScale
+{
+    float myDistance 5.0f < min=0.f tooltip="The max distance from Player to Target to select these settings" >
+	float myTimeToTag 1.0f < min=0.f tooltip="How long the camera would need to look at this target to fully tag them" >
+    float myADSMultiplier 10.f < min=1.f tooltip="If you are aiming downs sights, the timer speed will be multiplied with this" >
+	bool myOnlyWhenZooming false < tooltip="Consider these settings only when zooming (scopes or binoculars)" >
+}
+
+list TaggingDistanceTimeScaleList
+{
+   TaggingDistanceTimeScale
+}
+
+class TaggingRumbleData
+{
+	uid myAddTagRumble < bhv="constantData" constantDataType="rumble" tooltip="This rumble is played when tagging an entity." >
+	uid myRemoveTagRumble < bhv="constantData" constantDataType="rumble" tooltip="This rumble is played when removing a tag from an entity." >
+	uid myAimedAtTaggableEntityRumble < bhv="constantData" constantDataType="rumble" tooltip="This rumble is played when hovering over a taggable entity." >
+	float myAimedAtTaggableEntityRumbleCooldown 0.5f < tooltip="Cooldown in seconds for playing aimed at agent rumbles." >
+}
+
+class TaggingEntitiesSettings
+{
+	GameConditionAgentGroup myTaggableEntitiesGameConditions < tooltip="game conditions for the entity to be taggable" >
+	vec2f myFocusUIRectangle 0.5;0.5 < tooltip = "x and y screen percentages that create an area in the center of the screen where the View Finder Focus can focus tagged entities" >
+	int myHoldingTimeToTagMS 100 < default=100 min=0 tooltip="treshold in milliseconds after which a targeted entity is tagged while aiming at it with the binocular" >
+	float myScreenRatioThreshold 0.15 < bhv=percent tooltip="screen percentage minimum value to let an aimed entity being taggable. Calculated on the diagonal size of the target's bounding box" min=0.f >
+	float myTagVisibilityRange 20.f < min=0 tooltip="maximum range to display the UI of the tagged entities" >
+	float myTaggingMaximumRange 400.f < min=0 tooltip="maximum range a tagged entity is kept" >
+	float myAutomaticTagRemoveAngle 5.f < min=0 tooltip="When doing automatic tagging, if the angle between the camera forward and to the target is larger than this, cancel the automatic tag. Value is in degrees." >
+	float myAutomaticUntagTimerDuration 30.f < min=0 tooltip="When automatic tagging is enabled, after how many seconds are tagged entities removed if out of visible range?" >
+	int myMaxTaggableEntities 100 < min=0 tooltip="maximum taggable entities at the same time. If the maximum is reached, the oldest tagged entity will be removed" >
+	TaggingRumbleData myRumbleData
+	TaggingDistanceTimeScaleList myDistanceTimeScaleList < tooltip="For the automatic tagging, we will check starting from top and going down, until the distance between the player and target is within the set value. This will decide the active settings." >
+}
