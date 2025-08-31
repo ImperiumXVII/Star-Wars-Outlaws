@@ -1,0 +1,184 @@
+include "helix/game system data/juice/bodypart/bodypart.mbodypart"
+include "helix/game system data/juice/camera/modifiers/weapon_recoil_kays_blaster.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_recoil_kays_blaster_tu4.mcameramodifier"
+include "helix/game system data/juice/camera/modifiers/weapon_shake_kays_blaster.mcameramodifier"
+include "helix/game system data/juice/camera/multishake/weapon_multi_shake_kays_blaster.mmulticamerashake"
+include "helix/game system data/juice/equipment/weaponfiremode/player_firemode_blaster_template.mweaponfiremode"
+include "helix/game system data/juice/projectile/weapon_projectile_blaster_default.mprojectile"
+include "helix/game system data/juice/sound/weapons/npc_audioweapon_blasterpistol_s195.maudioweapon"
+
+WeaponFireMode player_firemode_blaster_default < uid=A207755D62C2EFBA00003748F85732B1 > : player_firemode_blaster_template
+{
+	myFireEvent
+	{
+		SemiAutoFireEvent BlasterSemiAuto
+		{
+			myRPM
+			{
+				myRPM 360
+			}
+		}
+	}
+	myBaseProperties
+	{
+		myRecoil < uid=C54AA1EA66F2BC2B0008AE118E33B468 > = weapon_recoil_kays_blaster_TU4 C54AA1EA66F69C9A0010633716915D7C
+		myInputController
+		{
+			myFireRumble 8E25811B656064FF000687630B1F6115
+			myFireVibrationTriggerEffectEnabled TRUE
+			myFireVibrationTriggerEffect
+			{
+				myAmplitude 0.5
+				myPosition 6
+			}
+			myFireTriggerThresholdEnabled TRUE
+			myFireTriggerThreshold 0.6
+		}
+	}
+	mySpecializations
+	{
+		WeaponFireModeSpecialization WeaponAnim
+		{
+			myAimMode ADS
+			myProperties
+			{
+				myAnimation < uid=7113C6116525608900025EFA6151FD63 > = weapon_anim_hay_blaster_ADS 7113C61165251F4100037B34AEBF588C
+			}
+		}
+	}
+	myProjectile < uid=7113C6116576DC7B0007DD69ABC2BE17 > = weapon_projectile_blaster_default 7113C6116576DC640007DD630B7755A6
+	myOverHeat
+	{
+		myMaxHeatFormula "100.0 * BlasterModuleHeatCapacityModifier + PlayerOverheatBonus"
+		myHeatPerUseFormula "9.0 * MaxHeatModifier * PlasmaModuleHeatCapacityModifier"
+		myCoolingOverTimeFormula 15.0
+		myActiveCooling
+		{
+			mySections
+			{
+				EquipmentOverHeatActiveCoolingSection Success
+				{
+					myStartOfSection "0.25 * FastReloadSectionStartModifier"
+					myLengthOfSection "0.3 * FastReloadSectionSizeModifier"
+					mySuperChargeBonusTime "5 * SuperChargeFastBonusTimeModifier"
+					myIsPerfect FALSE
+				}
+				EquipmentOverHeatActiveCoolingSection Success_Perfect
+				{
+					myStartOfSection "0.35 * PerfectReloadSectionStartModifier"
+					myLengthOfSection "0.08 * PerfectReloadSectionSizeModifier"
+					mySuperChargeBonusTime "5 * SuperChargePerfectBonusTimeModifier"
+					myIsPerfect TRUE
+				}
+			}
+			myFailurePenalizationTime 1.5
+		}
+	}
+	myDamage
+	{
+		myDamage
+		{
+			myDamageFormula 1
+		}
+		myRange
+		{
+			myEnabled TRUE
+			myOptimal 30.0
+			myMax 40.0
+			myMinDamagePercentatge 0.4
+		}
+		myBodyDamageMultipliers
+		{
+			WeaponDamageBodyMultiplier "Bare Head"
+			{
+				myBodyPart < uid=7113C611645DF8C20000B46EDBFB6B02 > = Head B0EA4E5360338D0B0000004BC93A6EA0
+				myMultiplierFormula 3
+			}
+			WeaponDamageBodyMultiplier LightHelmet
+			{
+				myBodyPart < uid=7113C611645DF8C20000B46FCA47F273 > = "Head (Helmet Light)" 1C021E9563876A6D0005D30AC5010080
+				myMultiplierFormula 2.5
+			}
+			WeaponDamageBodyMultiplier Helmet
+			{
+				myBodyPart < uid=7113C611645DF8C20000B4709C4D7B44 > = "Head (Helmet)" 91DC5D3C637F456B0001D16570C1CDF7
+				myMultiplierFormula 2
+			}
+			WeaponDamageBodyMultiplier Body
+			{
+				myBodyPart < uid=7113C61166ED38250004B1D094019A6E > = Body B0EA4E5360338D330000004EAC22242C
+				myMultiplierFormula "1 * NPCBodyDamageDifficultyMultiplier"
+			}
+			WeaponDamageBodyMultiplier LeftLeg
+			{
+				myBodyPart < uid=85F4BAC26564BDE500018BB8999F706F > = LeftLeg B0EA4E5360338D540000004F55C0199B
+				myMultiplierFormula 0.4
+			}
+			WeaponDamageBodyMultiplier RightLeg
+			{
+				myBodyPart < uid=85F4BAC26564BDE500018BB9E6F096C6 > = "Right Leg" B0EA4E5360338D8200000050782F5452
+				myMultiplierFormula 0.4
+			}
+			WeaponDamageBodyMultiplier LeftArm
+			{
+				myBodyPart < uid=85F4BAC26564BDE500018BBABEC454F0 > = LeftArm B0EA4E5360338E4A0000004A53D56BC3
+				myMultiplierFormula "1 * NPCBodyDamageDifficultyMultiplier"
+			}
+			WeaponDamageBodyMultiplier RightArm
+			{
+				myBodyPart < uid=85F4BAC26564BDF400018BF02E9DB63A > = RightArm B0EA4E5360338E840000004D760CEA25
+				myMultiplierFormula "1 * NPCBodyDamageDifficultyMultiplier"
+			}
+		}
+	}
+	mySpread
+	{
+		mySpreadValues
+		{
+			mySpread
+			{
+				myMin 0.55
+				myMax 0.9
+				myIsUniform TRUE
+			}
+		}
+		mySpreadIncreaseTime 0.1
+		myTimeToMinAccuracy 0.05
+		myTimeToMaxAccuracy 0.1
+		mySpreadIncreaseSpeed 1.0
+		myMovementModifier 1.2
+		myAimChangeModifier 1.1
+		myAimChangeAccuracyRecoveryTime 0.15
+		myUIMinimumSpread 0.8
+		myAmountOfAccuracyLockedRounds 1
+		myAmountOfAccuracyLockedRoundsRecoveryTime 0.2
+		myAimModifierData
+		{
+			myADSFormula "0.5 * BlasterADSMultiplier"
+		}
+	}
+	myFireMultiShake < uid=A207755D652E5B1400008DFFFD1CEF61 > = weapon_multi_shake_kays_blaster A207755D652D5412000095F5D97010E2
+	myUI
+	{
+		myDefaultUIGraph helix/ui/graphs/crosshair_pistol_blaster_overheat.muigraph
+		myUIGraphByConditions
+		{
+			EquipmentUIByConditions "Accessibility Crosshair"
+			{
+				myConditions
+				{
+					myConditions
+					{
+						GameConditionAccessibilitySimplifiedCrosshair "Simplified Crosshair"
+						{
+							myMode 2
+						}
+					}
+				}
+				myUIGraph helix/ui/graphs/crosshair_accessibility_simple.muigraph
+			}
+		}
+	}
+	myAudioData < uid=A207755D62C2ED170000375108139AFA > = npc_audioweapon_blasterpistol_S195 DADB4E0465C9F470000000E7CBFA52C7
+}
+

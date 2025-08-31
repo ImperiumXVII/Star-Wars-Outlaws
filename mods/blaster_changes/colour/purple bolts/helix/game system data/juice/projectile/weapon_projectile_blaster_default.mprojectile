@@ -1,0 +1,109 @@
+include "helix/game system data/fruit/projectile/projectile.fruit"
+include "helix/game system data/juice/ai/npcdetectionsoundevent_projectiles.mnpcdetectionsoundevent"
+include "helix/game system data/juice/projectile/realization/small_laser_green.mprojectilerealization"
+include "helix/game system data/juice/rbtags/species.mrbtagstags"
+
+BallisticProjectile weapon_projectile_blaster_default < uid=7113C6116576DC640007DD630B7755A6 >
+{
+	myObject
+	{
+		myMaterialType Energy
+		myAfterFinalImpactLifeTime 1.0
+		myStickType OnlyTranslation
+		myStickAnchorType Collider
+	}
+	myRealization < uid=7113C6116576DC640007DD641CD4D7DB > = small_laser_purple 544DB90860915B7900000330D9EC6522
+	myActions
+	{
+	}
+	myNPCImpactSoundEvent < uid=7113C6116576DC640007DD65B306E70E > = ProjectileImpact 06FDC2DB6533BA9700025735B04A8F3D
+	myInitialSpeed 200.0
+	myAccelerationType Constant
+	myAccelerationConstant 0.0
+	myAccelerationCurve "{ defaultLeftSlope = 0, defaultRightSlope = 0, defaultValue = 0, interpolator = 0, isRefinedSampling = true, keys2 = { inTangents = { 0 0, -0.38326675 -4.7615814, -0.4883796 -1.2316742, }, outTangents = { 0.30116838 8.6079407, 0.10857789 1.3489363, 0 0, }, properties = { 274, 4371, 2066, }, values = { 0 0, 1.1780767 0, 1.511821 50, }, }, numKeys = 3, }"
+	myBounceEnabled TRUE
+	myBounceVsDynamicEnabled TRUE
+	myBounceFriendlyFireEnabled FALSE
+	myAvoidPlayerWhenBouncing TRUE
+	myCanBounceConditions
+	{
+		myOperator Or
+		myConditions
+		{
+			GameConditionImpactHitBodyPart HitShield
+			{
+				myBodyPartType Shield
+			}
+			GameConditionImpactGroup HitDroidBody
+			{
+				myConditions
+				{
+					GameConditionImpactHitBodyPart NotHead
+					{
+						myIsNegated TRUE
+						myBodyPartType Head
+					}
+					GameConditionContextAgentIsSpecies TargetIsHiredGunDroid
+					{
+						myAgentContextType TargetAgent
+						mySuccessSpeciesTags
+						{
+							RBTagsTag "New RBTagsTag" < uid=7113C6116576DC640007DD6624C3DE5B > = Agent_Species_HiredGunDroidTag 4171A7E164B699C500075F9CBFE1BBA4
+						}
+					}
+				}
+			}
+			GameConditionImpactGroup HitGamorrean
+			{
+				myConditions
+				{
+					GameConditionImpactHitBodyPart NotHead
+					{
+						myIsNegated TRUE
+						myBodyPartType Head
+					}
+					GameConditionContextAgentIsSpecies IsGamorrean
+					{
+						myAgentContextType TargetAgent
+						mySuccessSpeciesTags
+						{
+							RBTagsTag "New RBTagsTag" < uid=7113C6116576DC640007DD6795A86500 > = Agent_Species_GamorreanTag 2736B365634D673A0003C27A47F64DF9
+						}
+					}
+				}
+			}
+			GameConditionContextAgentIsSpecificNPC HitND5
+			{
+				myAgentContextType TargetAgent
+				myNPCConstantData 4171A7E16412D8A70000600AA25EDD77
+			}
+			GameConditionContextAgentIsSpecificNPC HitRancor
+			{
+				myAgentContextType TargetAgent
+				myNPCConstantData 2736B36563D140850001DF8C793B440D
+			}
+			GameConditionContextAgentIsSpecificNPC HitATST
+			{
+				myAgentContextType TargetAgent
+				myNPCConstantData 16DEADE661F0807B00001B62A29CB56F
+			}
+			GameConditionImpactMaterial HitCapacitor
+			{
+				myMaterial < uid=7113C611665970A50002041AACA515AE > = MetalBounceProjectile 8F9DE2876655E0A100033838859A5A40
+			}
+			GameConditionContextAgentIsSpecies HitAncientDroid
+			{
+				myAgentContextType TargetAgent
+				mySuccessSpeciesTags
+				{
+					RBTagsTag Species < uid=3C2FA92B6748A0AC000684FED4EDCF4E > = Agent_Species_AncientDroid 3C2FA92B6748A1910006868C0FC69C06
+				}
+			}
+		}
+	}
+	myBounceSpeedRestitution 0.5
+	myBounceMaxBounces 1
+	mySeekerEnabled FALSE
+	mySeekerTurnRate 5.0
+}
+
