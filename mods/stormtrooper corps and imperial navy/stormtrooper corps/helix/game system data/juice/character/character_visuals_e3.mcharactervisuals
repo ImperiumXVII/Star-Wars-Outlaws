@@ -1,8 +1,133 @@
 include "helix/game system data/fruit/character/charactervisuals.fruit"
 include "helix/game system data/juice/character/geargraphlist/e3defaultlogicitems.juice"
+include "helix/game system data/juice/character/geargraphinfolistwrapper/character_gear_empire_rank.mcharactervisualsgeargraphinfolistwrapper"
+include "helix/game system data/juice/character/geargraphinfolistwrapper/character_visual_list_species_selector.mcharactervisualsgeargraphinfolistwrapper"
+include "helix/game system data/juice/character/geargraphinfolistwrapper/character_visuals_list_bodyparts_human_selector.mcharactervisualsgeargraphinfolistwrapper"
+include "helix/game system data/juice/character/geargraphinfolistwrapper/character_visuals_list_officer_outfit_assets_selector.mcharactervisualsgeargraphinfolistwrapper"
 include "helix/game system data/juice/rbtags/agent.mrbtagstags"
 include "helix/game system data/juice/rbtags/ethnicity.mrbtagstags"
 include "helix/game system data/juice/rbtags/species.mrbtagstags"
+
+CharacterVisuals character_visuals_npc_isb_tactical < uid=6993721763F7517100005D2F94366B5E >
+{
+	myCharacterGraph ""
+	myCharacterGraphs
+	{
+		CharacterGraph Masculine
+		{
+			myCharacterGraph "helix/graph objects/character/chr_body_human_m_base_light.mgraphobject"
+		}
+	}
+	myCharacterVisualsParts
+	{
+		GearGraphInfoList Top
+		{
+			GearGraphInfo chr_top_2_silver_imperial_officer_m
+			{
+				myGearGraph "helix/graph objects/gear/chr_top_2_silver_imperial_officer.mgraphobject"
+				myGearMeshList
+				{
+					GearMesh chr_top_2_silver_imperial_officer[jacket_mesh]
+					{
+						myUID 7D46844665522C6A000212B45E472916
+						myMaterialVariations
+						{
+							MaterialVariation ISB_officer
+							{
+								myMaterial 7D46844665522D86000212DE3271E23B
+								myWeight 1
+							}
+						}
+					}
+				}
+			}
+		}
+		GearGraphInfoList Botm
+		{
+			GearGraphInfo chr_botm_2_silver_imperial_officer_m
+			{
+				myGearGraph "helix/graph objects/gear/chr_botm_2_silver_imperial_officer.mgraphobject"
+				myGearMeshList
+				{
+					GearMesh chr_botm_2_silver_imperial_officer[pants_mesh]
+					{
+						myUID 7D468446655231FF000327856B5F9405
+						myMaterialVariations
+						{
+							MaterialVariation ISB_officer
+							{
+								myMaterial 7D468446655231FF0003278837E9511B
+								myWeight 1
+							}
+						}
+					}
+				}
+			}
+		}
+		GearGraphInfoList Boots
+		{
+			GearGraphInfo chr_botm_0_empire_officer_boot_001_m
+			{
+				myGearGraph "helix/graph objects/gear/chr_botm_0_empire_officer_boot_001.mgraphobject"
+			}
+		}
+		GearGraphInfoList Headwear
+		{
+			EmptyGearGraphInfo HeadWear
+			{
+				myChildCharacterVisualsParts
+				{
+					GearGraphInfoListWrapper HatPartial < uid=7D46844665A1581B0013915895AC8247 > = HatPartial_ISBOfficer 83E36AE36593F3C5000241D8523A3EF0
+				}
+			}
+		}
+		GearGraphInfoList holster
+		{
+			GearGraphInfo chr_acc_2_silver_imperial_officer_holster
+			{
+				myGearGraph "helix/graph objects/gear/chr_acc_2_silver_imperial_officer_holster.mgraphobject"
+			}
+		}
+		GearGraphInfoList glove
+		{
+			EmptyGearGraphInfo off
+			{
+			}
+			GearGraphInfo male
+			{
+				myGearGraph "helix/graph objects/gear/art_chr_acc_0_gen_gloves_008.mgraphobject"
+				myGearMeshList
+				{
+					GearMesh chr_acc_0_gen_gloves_008[gloves_mesh]
+					{
+						myUID 7D4684466527D03C00019A96BF98B8B7
+						myMaterialVariations
+						{
+							MaterialVariation mat_chr_acc_0_gen_gloves_008_leather_black
+							{
+								myMaterial 7D4684466527D69200019B228C6D5838
+								myWeight 1
+							}
+						}
+					}
+				}
+			}
+		}
+		GearGraphInfoList BodyParts
+		{
+			EmptyGearGraphInfo BodyParts
+			{
+				myChildCharacterVisualsParts
+				{
+					GearGraphInfoListWrapper Species < uid=7D46844665A1581B00139159DA9EEA1D > = SpeciesCivilianSelector 66F572896762C2A4000A91EF1718C0C0
+				}
+			}
+		}
+	}
+	myCharacterVisualLogicItems
+	{
+	}
+}
 
 CharacterVisuals character_visuals_e3_corrupt_officer_f_03 < uid=6993721763F7517100005D2F94366B5D >
 {
